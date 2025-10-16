@@ -1,73 +1,289 @@
-<html>
+<!DOCTYPE html>
+<html lang="en">
 <head>
-<link rel="stylesheet" href="/assets/css/original-layout.css">
-
-<title>
-RangeVoting.org - Voting cost calculator - which cheaper, machine or manual count?
-</title>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Voting Cost Calculator - Machine vs. Manual Counting</title>
+  <link rel="stylesheet" href="/assets/css/original-layout.css">
+  <style>
+    .calculator-page {
+      max-width: 900px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+    .calculator-section {
+      background: #f9f9f9;
+      border: 1px solid #ddd;
+      border-radius: 4px;
+      padding: 20px;
+      margin-bottom: 20px;
+    }
+    .input-row {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 20px;
+      margin-bottom: 15px;
+    }
+    .input-group {
+      margin-bottom: 15px;
+    }
+    .input-group label {
+      display: block;
+      margin-bottom: 5px;
+      font-weight: bold;
+      font-size: 14px;
+      color: #333;
+    }
+    .input-group input {
+      width: 100%;
+      padding: 8px;
+      border: 1px solid #ccc;
+      border-radius: 3px;
+      font-size: 14px;
+      box-sizing: border-box;
+    }
+    .results {
+      background: #e8f4f8;
+      border-left: 4px solid #0066cc;
+      padding: 15px;
+      margin-top: 20px;
+      border-radius: 3px;
+      display: none;
+    }
+    .results.active {
+      display: block;
+    }
+    .result-item {
+      margin-bottom: 12px;
+      line-height: 1.6;
+      font-size: 14px;
+    }
+    .result-item strong {
+      color: #0066cc;
+    }
+    button {
+      background: #0066cc;
+      color: white;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 3px;
+      font-size: 14px;
+      cursor: pointer;
+      margin-right: 10px;
+    }
+    button:hover {
+      background: #0052a3;
+    }
+    .button-group {
+      margin-top: 20px;
+    }
+    .intro-text {
+      font-size: 14px;
+      line-height: 1.6;
+      color: #555;
+      margin-bottom: 20px;
+    }
+    h1 {
+      font-size: 28px;
+      margin: 20px 0 10px 0;
+    }
+    h2 {
+      font-size: 20px;
+      margin: 0 0 15px 0;
+      color: #333;
+    }
+    .credit {
+      font-size: 12px;
+      color: #999;
+      margin-top: 20px;
+      padding-top: 20px;
+      border-top: 1px solid #ddd;
+    }
+    .links {
+      margin: 15px 0;
+      padding: 10px;
+      background: #f0f0f0;
+      border-radius: 3px;
+    }
+    .links a {
+      display: inline-block;
+      margin-right: 20px;
+      color: #0066cc;
+      text-decoration: none;
+    }
+    .links a:hover {
+      text-decoration: underline;
+    }
+  </style>
 </head>
-<body style="font-family: Arial, sans-serif">
+<body>
+  <div class="calculator-page">
+    <h1>Voting Machine Cost Calculator</h1>
+    <p class="intro-text">
+      <small>Created by <a href="http://bolson.org/">Brian Olson</a></small>
+    </p>
 
-<H2> Voting cost calculator - which is cheaper, machine or manual count? </H2>
+    <div class="intro-text">
+      <p><strong>Which is cheaper: manual vote counting or machine vote counting?</strong></p>
+      <p>The answer may surprise you! Enter your assumptions below and click "Calculate" to see what conclusions result.</p>
+      
+      <p><strong>Note:</strong> This calculator is somewhat incomplete. It does not include:</p>
+      <ul>
+        <li>Maintenance, testing, transport, and storage costs for machines</li>
+        <li>Training costs for personnel (though note: people must also be trained to use machines)</li>
+      </ul>
+      <p>When entering numbers, keep in mind that with human counting, ballots often must be counted by more than one person as part of verification protocols.</p>
+    </div>
 
-<p>
-<small>This was contributed by <a href="http://bolson.org/">Brian Olson</a></small></p>
-</p>
+    <div class="calculator-section">
+      <h2>Machine vs. Manual Counting Analysis</h2>
+      
+      <div class="input-row">
+        <div class="input-group">
+          <label for="hcmin">Min. human counting hour cost ($):</label>
+          <input type="number" id="hcmin" value="7" step="0.5" min="0">
+        </div>
+        <div class="input-group">
+          <label for="hcmax">Max. human counting hour cost ($):</label>
+          <input type="number" id="hcmax" value="10" step="0.5" min="0">
+        </div>
+      </div>
 
-<p>
-Which is cheaper, manual vote vounting, or machine vote counting?  The answer may surprise
-you.  Type your assumptions into the slots, hit "submit," and see what conclusions result.
-(The numbers shown are for our default assumptions and the conclusion they lead to.)
-Note: this calculator is somewhat incomplete in that it
-does not include maintenance, testing, transport, and storage costs for the machines,
-nor does it include training costs for the people (and on the other hand, people have to 
-be trained to use the machines...).  When entering numbers,
-keep in mind that with human counting,
-ballots often have to be counted by more than one human as part of "don't trust you" protocols.
-</p>
+      <div class="input-row">
+        <div class="input-group">
+          <label for="htmin">Min. seconds per human-counted ballot:</label>
+          <input type="number" id="htmin" value="30" step="1" min="1">
+        </div>
+        <div class="input-group">
+          <label for="htmax">Max. seconds per human-counted ballot:</label>
+          <input type="number" id="htmax" value="120" step="1" min="1">
+        </div>
+      </div>
 
-<table><tr><td valign="top">
-<p><a href="http://bolson.org/">Brian Olson...</a></p>
-<p><a href="http://bolson.org/voting/">On voting and election reform</a></p>
-<p><a href="http://bolson.org/voting/machines.html">On voting machines</a></p>
-</td><td bgcolor="#ddddff" style="padding: 1ex;">
+      <div class="input-row">
+        <div class="input-group">
+          <label for="mmin">Min. voting machine cost ($):</label>
+          <input type="number" id="mmin" value="500" step="100" min="0">
+        </div>
+        <div class="input-group">
+          <label for="mmax">Max. voting machine cost ($):</label>
+          <input type="number" id="mmax" value="4000" step="100" min="0">
+        </div>
+      </div>
 
-A machine must last at least <b>7.5</b> elections to break even vs. hand counted ballots
-and possibly as many as <b>685.714285714286</b> .
-</p><p>Human cost per ballot counted <b>$0.0583333333333333-$0.333333333333333</b>.<br>
-Machine cost per ballot counted (over 10 elections) <b>$0.25-$4</b>.
-</p><p>
-<form action="https://rangevoting.org/cgi-bin/VoteCostOlson.pl">
-<input type="text" name="hcmin" value="7"> Minimum cost per human counting hour (dollars)<br>
-<input type="text" name="hcmax" value="10"> Maximum cost per human counting hour (dollars)<br>
-<input type="text" name="htmin" value="30"> Minimum seconds per human counted ballot<br>
-<input type="text" name="htmax" value="120"> Maximum seconds per human counted ballot<br>
-<input type="text" name="mmin" value="500"> Minimum cost per voting machine (dollars)<br>
-<input type="text" name="mmax" value="4000"> Maximum cost per voting machine (dollars)<br>
-<input type="text" name="mvmin" value="100"> Minimum votes counted per voting machine<br>
-<input type="text" name="mvmax" value="200"> Maximum votes counted per voting machine<br>
-<input type="submit">
-</td></tr></table>
-<p><b>Santa Barbara, CA example (in 2001):</b><br>
-$1,300,000 spent on a 200-machine system to count 100,000 votes per election.<br>
-Try <a href="cgi-bin/VoteCostOlson.pl?hcmin=7&hcmax=10&htmin=30&htmax=120&mmin=6000&mmax=7000&mvmin=500&mvmax=1000">$6500 per machine, counting 500 votes each.</a></p>
-<!-- <p><a href="?getsource">View vote_tco source (perl)</a></p> -->
-</BODY>
-</HTML>
+      <div class="input-row">
+        <div class="input-group">
+          <label for="mvmin">Min. votes per machine:</label>
+          <input type="number" id="mvmin" value="100" step="10" min="1">
+        </div>
+        <div class="input-group">
+          <label for="mvmax">Max. votes per machine:</label>
+          <input type="number" id="mvmax" value="200" step="10" min="1">
+        </div>
+      </div>
 
+      <div class="button-group">
+        <button onclick="calculate()">Calculate</button>
+        <button onclick="setSantaBarbaraExample()" style="background: #666;">Santa Barbara Example</button>
+      </div>
+    </div>
 
-<br>
-<p><a href="RangeVoting.html">Return to main page</a></p>
-<!-- Start of StatCounter Code -->
-<script type="text/javascript" language="javascript">
-var sc_project=1613646; 
-var sc_invisible=1; 
-var sc_partition=15; 
-var sc_security="a35ff8fb"; 
-</script>
+    <div class="results" id="results">
+      <div class="result-item">
+        <strong>Break-even Analysis:</strong><br>
+        A machine must last at least <strong id="min-elections">?</strong> elections to break even vs. hand-counted ballots, and possibly as many as <strong id="max-elections">?</strong>.
+      </div>
+      <div class="result-item">
+        <strong>Human cost per ballot:</strong> $<strong id="human-cost-min">?</strong> to $<strong id="human-cost-max">?</strong>
+      </div>
+      <div class="result-item">
+        <strong>Machine cost per ballot:</strong> (over 10 elections) $<strong id="machine-cost-min">?</strong> to $<strong id="machine-cost-max">?</strong>
+      </div>
+    </div>
 
-<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
-<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+    <div class="calculator-section">
+      <h3>Case Study: Santa Barbara, CA (2001)</h3>
+      <p>$1,300,000 spent on a 200-machine system to count 100,000 votes per election.</p>
+      <p>This calculates to approximately $6,500 per machine, counting 500 votes each.</p>
+      <p><button onclick="setSantaBarbaraExample()">Load Santa Barbara Example</button></p>
+    </div>
+
+    <div class="links">
+      <p><strong>Related Resources:</strong></p>
+      <a href="http://bolson.org/">Brian Olson's website</a>
+      <a href="http://bolson.org/voting/">On voting and election reform</a>
+      <a href="http://bolson.org/voting/machines.html">On voting machines</a>
+    </div>
+
+    <div class="credit">
+      <p><strong>Calculator created by Brian Olson</strong><br>
+      Refactored to modern HTML5 with client-side JavaScript for improved functionality and accessibility.</p>
+    </div>
+  </div>
+
+  <script>
+    function calculate() {
+      const hcmin = parseFloat(document.getElementById('hcmin').value);
+      const hcmax = parseFloat(document.getElementById('hcmax').value);
+      const htmin = parseFloat(document.getElementById('htmin').value);
+      const htmax = parseFloat(document.getElementById('htmax').value);
+      const mmin = parseFloat(document.getElementById('mmin').value);
+      const mmax = parseFloat(document.getElementById('mmax').value);
+      const mvmin = parseFloat(document.getElementById('mvmin').value);
+      const mvmax = parseFloat(document.getElementById('mvmax').value);
+
+      // Calculate human cost per ballot
+      // Cost per ballot = (hourly rate / 3600 seconds) * seconds per ballot
+      const humanCostMin = (hcmin / 3600) * htmin;
+      const humanCostMax = (hcmax / 3600) * htmax;
+
+      // Calculate machine cost per ballot over 10 elections
+      const machineCostMin = mmin / (mvmin * 10);
+      const machineCostMax = mmax / (mvmax * 10);
+
+      // Break-even calculation
+      // When does cost of machine = cost of human counting?
+      // Machine: cost per election = machine_cost / votes_per_machine
+      // Human: cost per election = human_cost_per_ballot * votes_per_machine
+      const avgHumanCost = (humanCostMin + humanCostMax) / 2;
+      const avgMachineCost = (mmin + mmax) / 2;
+      const avgVotesPerMachine = (mvmin + mvmax) / 2;
+
+      // Minimum elections: how many until machine pays for itself?
+      const minElections = Math.ceil(avgMachineCost / (avgHumanCost * avgVotesPerMachine));
+      
+      // Maximum elections: best case scenario
+      const maxElections = Math.ceil((mmax * 10) / (humanCostMin * mvmin));
+
+      // Update results display
+      document.getElementById('human-cost-min').textContent = humanCostMin.toFixed(4);
+      document.getElementById('human-cost-max').textContent = humanCostMax.toFixed(4);
+      document.getElementById('machine-cost-min').textContent = machineCostMin.toFixed(4);
+      document.getElementById('machine-cost-max').textContent = machineCostMax.toFixed(4);
+      document.getElementById('min-elections').textContent = Math.max(1, minElections);
+      document.getElementById('max-elections').textContent = Math.max(1, maxElections);
+
+      // Show results
+      document.getElementById('results').classList.add('active');
+    }
+
+    function setSantaBarbaraExample() {
+      // Santa Barbara: $1.3M for 200 machines = $6,500 per machine
+      // 100,000 votes / 200 machines = 500 votes per machine
+      document.getElementById('hcmin').value = 7;
+      document.getElementById('hcmax').value = 10;
+      document.getElementById('htmin').value = 30;
+      document.getElementById('htmax').value = 120;
+      document.getElementById('mmin').value = 6500;
+      document.getElementById('mmax').value = 6500;
+      document.getElementById('mvmin').value = 500;
+      document.getElementById('mvmax').value = 500;
+      calculate();
+    }
+
+    // Auto-calculate on page load
+    window.addEventListener('load', calculate);
+  </script>
 </body>
 </html>
 
