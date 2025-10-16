@@ -1,0 +1,544 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Fast Implementation of Shortest Splitline Algorithm for Political Districting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2> Fast Implementation of <a href="SSArecursive.txt">Shortest Splitline Algorithm</a>
+for Political Districting </h2>
+
+<p><small>Warren D. Smith June 2011</small><p>
+
+<p>
+We'll first review what the shortest splitline algorithm is, then
+explain how to use fancy algorithms techniques from computational geometry,
+to program it so it is guaranteed to run quickly (even on worst-case input)
+and with high accuracy (in fact exact if we had exact real arithmetic and knew the 
+exact country-shape and people locations).
+</p><p>
+This page is intended for perfectionists.
+Even fairly crude algorithmic approaches suffice
+to deliver acceptable accuracy in acceptable time on realistic input, 
+so the methods discussed here
+are not really necessary.
+</p>
+
+<h3> The shortest splitline algorithm (SSA) </h3>
+
+<p>
+Was invented by Warren D. Smith in the early 2000s.  
+It is a very simple mechanical procedure that inputs the 
+shape of a country and the locations of its inhabitants, and a positive number N,
+and outputs
+a unique subdivision of that country into N equipopulous districts.
+</p>
+<blockquote>
+<b>Formal recursive formulation of shortest splitline districting algorithm:</b>
+<pre>
+ShortestSplitLine( State, N ){
+  If N=1 then output entire state as the district;
+  A = floor(N/2);
+  B = ceiling(N/2);
+  find shortest splitline resulting in A:B population ratio
+        (breaking ties, if any, as described in notes);
+  Use it to split the state into the two HemiStates SA and SB;
+  ShortestSplitLine( SB, B );
+  ShortestSplitLine( SA, A );
+}
+</pre></blockquote>
+<p><b>Notes:</b>
+</p><ol>
+<li>
+Since the Earth is round, when we say "line" we more precisely mean
+"great circle."  If there is an exact length-tie for "shortest" then break that tie by using
+the line closest to North-South orientation, and if it's still a tie, then use the Westernmost of
+the tied dividing lines.
+</li><li>
+If the state is convex, then a line will always split it into exactly two pieces
+(each itself convex).  However, for nonconvex states, a line could split it into more than
+two connected pieces e.g. by "cutting off several bumps."  (We expect that will occur 
+rarely, but it is certainly mathematically possible.)  In either case the splitline's 
+"length" means the distance between the two furthest-apart points of the line that both lie
+within the region being split.
+</li><li>
+If anybody's residence is split in two by one of the splitlines (which would happen,
+albeit very rarely) then they are automatically declared to lie in
+the most-western (or if line is EW, then northern) of the two districts.
+(An alternative idea would be to permit such voters to choose which district they want to be in.)
+</li></ol>
+<p><b>Example:</b>
+The picture shows 
+Louisiana districted using the 
+shortest splitline algorithm using year-2000 census data.
+</p><img alt="Louisiana using 2000 census data, shortest splitline algorithm"
+src="SSHR/la_final.png" />
+<pre>
+Want N=7 districts.
+Split at top level:   7 = 4+3.  This is the NNE-directed splitline.
+Split at 2nd level:   7 = (2+2) + (1+2).
+Split at 3rd level:   7 = ((1+1) + (1+1)) + ((1) + (1+1)).
+result: 7 districts, all exactly equipopulous.
+</pre>
+
+<h3> How to make a computer run the SSA very quickly </h3>
+
+<p>
+<b>Theorem (single split-stage of SSA):</b>
+Given as input:
+</p><ul><li>
+The V vertices of the border of the country (assumed to be a simple
+polygon or collection of simple polygons, can have polygonal holes, use
+anticlockwise order for outer boundaries and clockwise for inner boundaries).
+Let V=V<sub>R</sub>+V<sub>C</sub>
+where V<sub>R</sub> 
+is the number of "reflex" vertices (i.e. bent "the wrong way")
+and V<sub>C</sub> is the number of "convex" vertices (bending toward the interior of the country)
+of the country-border.
+</li><li>
+P people (specified as XY coordinates on the plane);
+note the people and polygon vertices can also be specified on the <i>sphere</i>
+using XYZ coordinates or latitude-longitude, and our methods will still work
+provided all these V+P points lie within the interior of some hemisphere.
+</li></ul><p>
+A randomized algorithm exists (on a pointer machine with real arithmetic)
+to find the (exact) "shortest splitline" which splits the population in any specified
+ratio, in 
+</p><center>
+  O(   [ V + h(P+V<sub>R</sub>) &alpha;(P+V<sub>R</sub>) ] logV  )
+</center><p>
+steps, while consuming O(P+V) memory cells.
+Here &alpha;(x) is an 
+<a href="http://xlinux.nist.gov/dads/HTML/inverseAckermann.html">inverse</a>
+<a href="http://xlinux.nist.gov/dads/HTML/ackermann.html">Ackermann</a>
+ function  (<i>extremely</I> slowly-growing)
+while h(P) is the largest possible number of <a href="HalvingLinesDey.html">halving lines</a>
+for a P-point set in the plane.
+Tamal Dey <a href="http://web.engr.illinois.edu/~jeffe/open/half.html">proved</a>
+that h(P)&le;2<sup>5/3</sup>P<sup>4/3</sup>,
+which was improved to by 
+<a href="http://arxiv.org/abs/1210.4959">Khovanova &amp; Yang 2012</a> to
+h(P)&le;[(40/3)(P-1)P<sup>3</sup>]<sup>1/3</sup>
+(which reduces the constant factor to 74.7% of Dey's
+value).
+A conjecture of Erd&ouml;s et al says 
+h(P)=P<sup>1+o(1)</sup>.  
+In the other direction, point sets constructed by Geza Toth
+show h(P)&ge;Pexp((lnP)<sup>1/2</sup>C)
+for some constant C&gt;0.
+[G.Toth: <a href="http://www.cs.bme.hu/~geza/k-set.pdf">Point sets with many k-sets</a>,
+Discrete &amp; Computational Geometry 26,2 (2001) 187-194.]
+Thus given Erd&ouml;s's conjecture our runtime bound is
+</p><center>
+  O(   [ V + (P+V<sub>R</sub>)<sup>1.001</sup> ] logV  )
+</center><p>
+steps.
+</p>
+<p>
+<b>Corollary (full SSA):</b>
+Given also an integer N with 2&le;N&le;P, we can run the whole shortest splitline
+algorithm to subdivide the country into N equipopulous (to within 1 person) districts, in 
+<center>
+  O( [V + N + h(P+V<sub>R</sub>) &alpha;(P+V<sub>R</sub>)] logV logN )
+</center><p>
+steps while consuming O(P+V+N) memory cells.
+Given Erd&ouml;s's conjecture this runtime bound is
+</p>
+<center>
+  O( [V + N + (P+V<sub>R</sub>)<sup>1.001</sup>] logV logN ).
+</center>
+<p>
+<b>Conjectural Further Speedup:</b>
+If the country is specified using only a <i>single</i> simple polygon (now no polygonal
+"holes" nor multiple connected components are allowed; the word "simple" means "not self-crossing")
+then the "logV" in all
+the runtime bounds above, can be omitted (i.e. replaced by "1").
+If we do allow holes and multiple components then still it ought to be possible
+to attain
+</p><center>
+  O( [(V + N) logV + h(P+V<sub>R</sub>) &alpha;(P+V<sub>R</sub>)] logN )
+</center><p>
+
+<p>
+<b>Optimality:</b>
+These algorithm runtimes and space-usages obviously are optimal to within logarithmic
+and inverse-Ackermanic factors and a factor of h(P)/P.
+All of these are slow growing.  
+<!--It's plausible the logV factor could be gotten
+rid of if the country-border is described by only a <i>single</i> simple polygon.-->
+If this full scheme is programmed it should be extremely
+fast and accurate, perhaps running in only a few minutes for an entire country
+using IEEE double precision real arithmetic
+to find the exact splitline to 9 decimal places, i.e. centimeter accuracy.
+</p>
+
+<p>
+<b>Proof (how the algorithm works):</b>
+We simply combine a lot of known algorithmic results from computational geometry.
+<p>
+<ol><li>
+If we are on the sphere (round earth), then
+we can perform a <a href="TheorDistrict.html#gnomonic">gnomonic</a> (central)
+projection to 
+map everything onto a flat plane in such a way that 
+geodesic segments on the sphere
+correspond to line segments on the plane.  
+As the central direction of the projection we can use the direction from
+the Earth-center
+to the center of the smallest sphere enclosing all the V+P points.
+This smallest enclosing sphere may be found in O(V+P) steps 
+(Megiddo 1983; or it is simpler to use the
+approach of Welzl 1991 based on adding the points one at a time in random order).
+Then the projection
+can be done in O(1) steps per point, i.e. also in O(V+P) steps.
+</li><li>
+Find the convex hull of the V border-points of the country (and the P people,
+except since the people are assumed to lie inside the country they can be ignored
+for this purpose).  This takes O(VlogV) steps.  We now have a subdivision
+of that convex hull polygon into polygonal 
+regions, some of which are inside the country and some of which are not.
+Also subdivide all of these regions further by
+triangulating them by diagonals 
+in O(VlogV) steps as in Fournier &amp; Montuno 1984.
+</li><li>
+Apply the preprocessing of
+<!--Kirkpatrick 1983 and-->
+Guibas, Hershberger, Leven, Sharir, Tarjan 1987
+to all those triangulated polygons.
+This paper in O(V) time builds a data structure in O(V) memory cells
+allowing arbitrary future point+direction
+queries to be answered in O(logV) steps per query,
+where each answer says which polygonal
+region the query-point is located in, and which border
+line-segment it sees if it looks
+in the given direction.
+</li><li>
+Use the algorithm of Har-Peled 2000 (viewed using "point-line duality"; see also Chan 1999)
+to "visit" each pair AB of people forming a 
+(desired population ratio) splitline for the P people.  This
+algorithm runs in O(&alpha;(P)h(P)) steps.
+For each such pair AB, find the two points where the line through AB hits the convex hull
+(this may be done in O(logV) time per query using a procedure akin to "binary search")
+then use the GHLST data structure to "look inward along AB" from those two points
+to find the two furthest-apart points on AB which lie within the country.
+</li><li>
+To be more careful and exact:
+"the" splitline corresponding to a person-pair AB is actually a
+<i>family</i> of
+splitlines (since the lines do not actually go exactly through a person, and we
+allow 1 extra person on one side of the line than the other).  
+Each family consists of all the
+lines lying between two particular lines, and
+our description last step
+was really only about finding the bounding-lines for each such family.
+We can use Har-Peled's methods to visit each such family.
+There actually is not
+just <i>one</i> point on the country-border on each end of this  line, but rather 
+the whole line-family intersects the country border (at each end) at two <i>sets</i>
+S<sub>A</sub> and S<sub>B</sub> of
+line segments (and partial line segments).   We then need to find the shortest
+line within that whole family.  It is best to 
+include the reflex vertices of the country-border polygon(s) as artificial extra "people"
+(used for the purpose of finding splitline family-boundaries AB, where A and/or B are
+allowed now to be artificial people, but <i>not</I> used for
+the purpose of reckoning population-counts on each side of the line; Har-Peled's algorithm
+can be made to handle this refinement).
+This is why the terms in the runtime bounds arising from Har-Peled's algorithm
+involve not P but rather P+V<sub>R</sub>.
+The task of finding the shortest splitting line-segment in the family
+may be accomplished by building the
+Voronoi diagram of all the L line segments in 
+S<sub>A</sub> (using construction algorithms by Yap 1987, 
+or Boissonnat et al 1992, preprocessing them for fast point-location using Kirkpatrick
+1983 or Sarnak-Tarjan 1986) in O(LlogL) time, then
+querying using all the points in S<sub>B</sub> 
+[each query takes O(logL) steps; also I think
+all this can be done using GHLST's data structure]
+to find the closest S<sub>A</sub>-point to each 
+(and vice versa with the roles of A &amp; B interchanged)
+and computing exact distances from points to line-segments (and using the true-spherical 
+distance formula if problem originally posed on round earth).
+Note that due to including all the reflex boundary-vertices as "artificial people"
+each such family only intersects the boundary polygons on <i>convex chains</i>
+and of course we discard out all but the outermost two chains for this purpose.
+</li></ol>
+<p>
+<b>Notes on the conjectural further speedup:</b>
+A V-vertex simple polygon can be triangulated in O(V), not VlogV time using
+an extremely complicated algorithm by Chazelle 1991
+(see also Amato, Goodrich, Ramos 2000).
+The GHLST data structure then can be built in O(V), not VlogV, time for a simple polygon.
+The convex hull of a single simple polygon can be found in O(V), not VlogV time
+using a method related to the "Graham scan."
+</p><p>
+The Voronoi diagram of the vertices of a <i>convex</i> V-vertex polygon
+can be built in O(V), not VlogV time using a method of
+Aggarwal &amp; Shor 1987.
+(This is relevant to the final step of
+our algorithm involving convex subchains S<sub>A</sub> and S<sub>B</sub> of the
+polygonal boundary.)
+This suggests that the distance between two convex polygonal chains, with V vertices in all,
+both inward-bending, should be computable in
+O(V) not VlogV time.
+(That was already known using 2D
+convex-programming methods if they both are outward-bending and
+with disjoint convex hulls.)
+I suspect by some "moving fingers" methods the 
+need for the GHLST data structure can be eliminated
+and so can the need for the binary-search-like procedure on the convex hull,
+but we nevertheless could obtain O(1) query-time in an "amortized" sense.
+<!--
+The Voronoi diagram of the vertices of a <i>convex</i> V-vertex polygon
+can be built in O(V), not VlogV time using a method of
+Aggarwal, Guibas, Saxe, Shor 1989; this matters re the final step of
+our algorithm involving convex subchains S<sub>A</sub> and S<sub>B</sub> of the
+polygonal boundary.
+-->
+</p>
+<p>
+<b>Notes for practical programmers (as opposed to 
+algorithm-theoreticians who want theoretical guarantees):</b>
+In practice I would recommend a number of shortcuts to make programming simpler
+without costing much:
+<ul><li>
+I would not use the whole set of people, I'd use some random subset with
+only, say, (PNlogP)<sup>1/2</sup> people, which ought to provide good enough
+accuracy almost certainly comparable or smaller than errors the census has anyway.
+(And if you want more pseudo-accuracy, later refinement could be done
+using the full population.)
+</li><li>
+I'd skip the final step (or rather, use some simplified form of it).
+That is, the whole point that really, any two people-subsets separable by
+a splitline are in general
+separable by a <i>family</i> of splitlines, is for real populations in real countries,
+not going to matter much since it only allows improving splitline lengths by tiny amounts.
+since the families will be very "thin" and only intersect the country boundaries on very short 
+subsegments.  If so, these can be dealt with by brute force rather than the fancy
+Voronoi-diagram building and point-location (asymptotically efficient) method.
+</li><li>
+The whole (very complicated) GHLST data structure 
+could be omitted if your country borders are 
+not insanely
+wiggly, by keeping track of a number of "fingers" on the borders which all move
+around slightly as Har-Peled's lines move around slightly (he visits them in a
+nice order which doesn't do a lot of "motion").
+</li><li>
+I'd not even attempt to program the "further speedup."
+</li></ul>
+
+
+<h3> References </h3>
+
+<p>
+A. Aggarwal, L. Guibas, J. Saxe, P. Shor:
+A Linear time algorithm for computing the Voronoi diagram of a convex polygon,
+Discrete &amp; Computational Geometry 4 (1989) 591-604.
+See also L.Paul Chew:
+<a href="TR90-147.pdf">Building Voronoi Diagrams for Convex Polygons in Linear Expected Time</a>,
+(1990) Dartmouth Dept. of Math &amp; Computer Science PCS-TR90-147.
+<!--also
+STOC '87 Proceedings of the nineteenth annual ACM symposium on Theory of computing 39-47 -->
+</p><p>
+Nancy M. Amato,  Michael T. Goodrich,  Edgar A. Ramos:
+<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.7327&rep=rep1&type=pdf">
+Linear-Time Triangulation of a Simple Polygon Made Easier Via Randomization</a>,
+In Proc. 16th Annu. ACM Sympos. Comput. Geom  SoCG (2000) 12pp
+</p><p>
+Jean-Daniel Boissonnat,	
+Olivier Devillers,	
+Rene Schott,		
+Monique Teillaud,	
+Mariette Yvinec:
+Applications of Random Sampling to
+on-line algorithms in computational geometry,
+Discrete &amp; Computational Geometry 8,1 (1992) 51-71.
+</p><p>
+Timothy M. Chan: 
+<a href="https://rangevoting.org/www.cs.uwaterloo.ca/~tmchan/lev2d_7_7_99.ps.gz">Remarks on k-level 
+algorithms in the plane</a> (1999).
+</p><p>
+Bernard Chazelle:
+<a href="http://www.cs.princeton.edu/~chazelle/pubs/polygon-triang.pdf">
+Triangulating a simple polygon in linear time</a>,
+Discrete &amp; Computational Geometry 6 (1991) 485-524.
+</p><p>
+Steven J. Fortune: A sweepline algorithm for Voronoi Diagrams, Algorithmica 2,2 (1987) 153-174.
+<!--
+http://en.wikipedia.org/wiki/Fortune's_algorithm
+also does additively weighted VoDs
+-->
+</p><p>
+A.Fournier &amp; D.Y.Montuno: Triangulating simple polygons and similar problems,
+ACM Trans.Graphics 3,2 (1984) 153-174.
+[O(NlogN) algorithm and O(N) if begin from a "trapezoidation."]
+</p><p>
+Leonidas Guibas, John Hershberger, Daniel Leven, Micha Sharir, Robert E. Tarjan:
+Linear-time algorithms for visibility and shortest path problems inside 
+triangulated simple polygons,
+Algorithmica 2,1-4 (1987) 209-233.
+<!--
+Given a triangulation of a simple polygon P, we present linear-time algorithms for 
+solving a collection of problems concerning shortest paths and visibility within P. 
+These problems include calculation of the collection of all shortest paths inside P 
+from a given source vertex S to all the other vertices of P, calculation of the 
+subpolygon of P consisting of points visible from a given segment within P, 
+preprocessing P for fast "ray shooting" queries, and several related problems.
+-->
+</p><p>
+Sariel Har-Peled: <a href="HarPeledWalk.pdf">Taking a walk in a planar arrangement</a>,
+SIAM J. Comput., 30,4 (2000) 1341-1367.
+<!--http://valis.cs.uiuc.edu/~sariel/papers/98/walk.pdf-->
+</p><p>
+D.G.Kirkpatrick:
+Optimal Search in Planar Subdivisions, SIAM J.Computing 12,1 (1983) 28-35.
+</p><p>
+Nimrod Megiddo: Linear-Time Algorithms for Linear Programming in R<sup>3</sup>
+and Related Problems, SIAM Journal on Computing 12,4 (1983) 759-776.
+</p><p>
+Neil Sarnak &amp; R.E. Tarjan:
+<a href="sarnak-tarjan.pdf">Planar Point Location Using Persistent Search Trees</a>,
+Communications of the ACM 29,7 (1986) 669-679.
+</p><p>
+"Soft-surfer" guide to
+<a href="http://softsurfer.com/Archive/algorithm_0109/algorithm_0109.htm">
+O(NlogN)-time algorithms to compute convex hull of N points in plane</a>.
+</p><p>
+Emo Welzl:
+Smallest Enclosing Disks (Balls and Ellipsoids), pp.359-370 in H. Maurer (Ed.), 
+New Results and New Trends in Computer Science, 
+Springer Lecture Notes in Computer Science #555, (1991).
+See also Bernd G&auml;rtner: <a href="GartnerEsa99.ps.gz">Fast 
+and Robust Smallest Enclosing Balls</a>,
+Proc. 7th Annual European Symposium on Algorithms (ESA), Springer
+Lecture Notes in Computer Science #1643, pp.325-338.
+<!--
+http://citeseer.ist.psu.edu/viewdoc/summary?doi=10.1.1.46.1450
+http://www.sunshine2k.de/stuff/Java/Welzl/Welzl.html
+-->
+</p><p>
+Chee K. Yap:
+An O(n log n) Algorithm 
+for the Voronoi Diagram of 
+a Set of Simple Curve Segments,
+Discrete &amp; Comput. Geometry 2,4 (1987) 365-393.
+</p>
+
+<!--
+Chan, T. M. (2003). "On levels in arrangements of curves". Discrete and Computational Geometry 29: 375–393. doi:10.1007/s00454-002-2840-2.
+Discrete & Computational Geometry, 29:375-393, 2003
+http://www.cs.uwaterloo.ca/~tmchan/curve.ps.gz
+Chan, T. M. (2005a). "On levels in arrangements of curves, II: a simple inequality and its consequence". Discrete and Computational Geometry 34: 11–24.
+computes all k-sets for N points in plane
+On levels in arrangements of curves, III: further improvements
+http://www.cs.uwaterloo.ca/~tmchan/iii_2_08.ps11
+In Proc. 24th ACM Symposium on Computational Geometry (SoCG), pages 85-93, 2008
+
+A dynamic data structure for 3-d convex hulls and 2-d nearest neighbor queries
+
+We present a fully dynamic randomized data structure that can answer queries about the convex hull of a set of n points in three dimensions, where insertions take O(log^3 n) expected amortized time, deletions take O(log^6 n) expected amortized time, and extreme-point queries take O(log^2 n) worst-case time. This is the first method that guarantees polylogarithmic update and query cost for arbitrary sequences of insertions and deletions, and improves the previous O(n^epsilon)-time method by Agarwal and Matousek a decade ago. As a consequence, we obtain similar results for nearest neighbor queries in two dimensions and improved results for numerous fundamental geometric problems (such as levels in three dimensions and dynamic Euclidean minimum spanning trees in the plane).
+PDF file http://www.cs.uwaterloo.ca/~tmchan/dch3d.pdf
+Journal of the ACM, 57(3):16, 2010
+
+Nancy M. Amato,  Michael T. Goodrich,  Edgar A. Ramos:
+<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.35.7327&rep=rep1&type=pdf">
+Linear-Time Triangulation of a Simple Polygon Made Easier Via Randomization</a>
+In Proc. 16th Annu. ACM Sympos. Comput. Geom  SoCG (2000) 12pp
+
+Bernard Chazelle:
+<a href="http://www.cs.princeton.edu/~chazelle/pubs/polygon-triang.pdf">
+Triangulating a simple polygon in linear time</a>,
+D&amp;CG 6 (1991) 485-524
+
+If F(N) is the most halving lines N points can have, David Eppstein's computer in 1992
+found and more computing by
+Oswin Aichholzer: Rectilinear crossing number page,
+ http://www.ist.tugraz.at/staff/aichholzer/crossings.html
+O. Aichholzer, J. Garcia, D. Orden, and P. Ramos:
+New lower bounds for the number of (<=k)-edges and the rectilinear crossing number of k_n. 
+In Actas de las IV Jornadas de Matematica Discreta y Algoritmica, pages 57-64, 2006.
+F(10)>=13
+F(12)=18
+ F(13)=31 for odd N it is somewhat silly since not half
+F(14)=22
+   equalities proven by 
+   Alina Beygelzimer &amp; Stanislaw Radziszowski Discrete Mathematics  257, 2-3 (2002)
+F(16)=27
+F(18)=33
+F(20)=38
+F(22)=44
+ F(23)=75
+F(24)=51
+ F(25)=85
+F(26)=57
+ F(27)=96
+Bernardo M.  Abrego, Silvia Fernandez-Merchant, Jesus Leanos, Gelasio Salazar
+found the exact values of F(N) for N<=27.
+For *any* N points in plane in general position  #halving lines >= (5/12)*N^2 + 3*N + 6.
+F(N) >= N*log_4(2*N/3)  for any N=3*2^j.
+Geza Toth 1999: N points in plane exist with at least
+const * N * 2^(sqrt(logK))  
+K-sets (this also works for the halving line case K=N/2 - 1).
+Geza Toth: Point sets with many k-sets, SoCG 16 (2000)
+Gabriel Nivasch: An improved simple construction of many halving edges
+  got  >=const*N*exp(sqrt(ln4 * lnN)) / sqrt(lnN).
+http://www.inf.ethz.ch/personal/gnivasch/publications/papers/many_halving_edges.pdf
+
+Lovasz:  N points in plane have at most   O(N*sqrt(K))   K-sets.   
+Tamal K. Dey: Improved bounds for planar k-sets and related problems,
+DCG 19,3 (1998) 373-382  N points in plane have at most   O(N*cbrt(K))   K-sets.   
+http://compgeom.cs.uiuc.edu/~jeffe/open/half.html
+http://www.cse.ohio-state.edu/%7Etamaldey/paper/kset/paper.ps.gz
+Erdos conjecture:  N points in plane have at most   N^(1+o(1))   halving lines 
+(or K-sets any given K which can depend on N).
+
+J.Matousek &amp; E.Welzl: Good splitters for counting points in triangles,
+J.Algorithms 13,2 (1992) 307-319
+   halfspace range counting in plane,
+easy to implement and low constants,
+query=O(sqrt(N)*logN)  
+preprocess=O(N^(3/2)* logN)  
+storage=O(NlogN)
+Matousek93 improved to 
+query=O(sqrtN) 
+space=O(N)
+preprocess=O(N^1.01)
+
+   Max Space halfspace range (general arithmetic model):
+Using point-hyperplane duality and construct arrangement and fast locate:
+O(logN) query time, O(N^d) space & preprocess,
+Matousek93 improved space by log(N)^d and preprocess by log(N)^(d-0.001)  factors,
+which is the best known result as of 1994.
+
+   SpaceTime tradeoff:
+for any M with N<=M<=N^2.01,  is O(M)-space data structure permitting
+halfspace (or simplex) range-counting query in O(N^1.005 * M^(-1/2) + log(M/N))
+Chazelle got a lower bound of N*M^(-1/2) in semigroup model.
+Matousek93 got
+space=M with N<=M<=N/log(N)^d, query=N*M^(-1/2), preproc=N^1.01+M*(logN)^0.01.
+ 
+   SpaceTime tradeoff lower bound of BCP93, general model:
+space=M, query=M^(-1/2) * (N/logN)^(5/6).
+
+Jiri Matousek: Range searching with efficient hierarchical cuttings, DCG 10 (1993) 157-182
+Jiri Matousek: <a href="http://kam.mff.cuni.cz/~matousek/nss.ps.gz">Geometric Range Searching</a>, 
+ACM Computing Surveys 26 (1994) 421-461
+
+-->
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

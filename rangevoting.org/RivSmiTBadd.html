@@ -1,0 +1,306 @@
+<html>
+<head>
+<title>
+RangeVoting.org &ndash; ADDENDUM to Rivest-Smith paper "Three Voting Protocols" 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1 align="center"> ADDENDA to "Three Voting Protocols: ThreeBallot, VAV, and Twin"
+</H1>
+
+<blockquote>
+<a href="http://theory.csail.mit.edu/ rivest">Ronald L. Rivest</a>
+        <tt>rivest AT mit.edu</tt><br>
+        Computer Science and Artificial Intelligence Laboratory<br>
+     Massachusetts Institute of Technology, Cambridge, MA 02139<br>
+<br>
+        <a href="WarrenSmithPages/homepage/works.html">Warren D. Smith</a>
+        <tt>warren.wds AT gmail.com</tt><br>
+        <a href="">Center for Range Voting</a>,
+
+<br>
+July 2007
+</blockquote>
+
+<p>
+Here is a collection of extra tidbits about ThreeBallot, VAV, and Twin,
+which due to space limits, oversights, or whatever other reason
+(e.g. somebody else suggested it) were not included in the 
+<a href="RivSmiTB.html">paper</a>.  (Sometimes several reasons all apply.)
+</p>
+
+<h3> Range voting with "no opinion" scores allowed </h3>
+
+<p>
+An important and common modification of <a href="RangeVoting.html">range voting</a>
+is also to permit voters to express "no opinion" on candidates they'd rather have judged
+by more-knowledgeable voters.  (Highest average score wins.)
+</p>
+<p>
+We can handle this kind of range voting securely via VAV as follows:
+</p>
+<ol type="a">
+<li>
+A C-candidate
+single-digit range voting election with "no opinion" votes allowed
+(11 possible scores for a candidate: 0-9 and "no opinion")
+can be mathematically transformed to be C plurality
+elections, each one with 11 candidates.
+</li><Li>
+I.e. Jo versus Tom (range voting election) becomes these 2
+plurality-voting elections:
+<center>
+Jo<sub>0</sub> vs Jo<sub>1</sub> vs Jo<sub>2</sub> vs .. vs Jo<sub>9</sub> vs Jo<sub>No opinion</sub>
+</center>
+and
+<center>
+Tom<sub>0</sub> vs Tom<sub>1</sub> vs Tom<sub>2</sub> vs .. vs Tom<sub>9</sub> vs Tom<sub>No opinion</sub>.
+</center>
+</li><li>
+This transformation was invented by Jan Kok for the purpose of running
+range voting elections on old-style plurality-voting dumb-totalizing
+machines.
+</li><li>
+However, it can also be used to run <i>secure</i> range voting elections via VAV.
+As Rivest &amp; Smith's paper shows, VAV handles plurality elections securely.
+So therefore we can via Kok's transformation handle range voting (with "no
+opinion" allowed) elections securely.  (The only flaw with this approach
+is that write-ins are no longer allowed.  Plain range voting handled via 
+ThreeBallot, not VAV, permits write-ins.)
+</li></ol>
+
+<p>
+This kind of (single-digit plus "no opinion") range voting can also be handled
+via Twin, of course.  That has the advantage that it consumes fewer pieces of paper.
+An N-candidate range election with VAV or ThreeBallot requires 3N pieces of
+paper cast per voter (assuming debundling down to single candidates); with Twin that is only N.
+</p>
+
+<h3> Cut apart ballots so we get fewer papers? </h3>
+
+<p>
+Jeiel Schalkwijk was disturbed by that paper-count:
+<blockquote>
+E.g. with 20 candidates TWIN requires 20 ballots, while VAV requires 60 ballots.
+I think it would be hard to require every voter handle 20 ballots, especially the elderly
+and uneducated voters...
+<br>
+Unless it is <i>one</i> paper, which is visibly separated mechanically and
+automatically deposited in the bin afterwards. This does making the voting
+process more complex (mechanically), but it is doable.
+</blockquote>
+</p>
+
+<P><b>Our response:</b>
+The problem with Schalkwijk's "cut-apart" suggestion is:
+<ol>
+<li>
+The ballot printer could make secret relationships among all the ballot
+numbers (or steganography for same purpose)
+and thus be able to carry out a "reconstruction attack"
+(or anybody he told his secret relations to, could do such an attack)
+to violate vote privacy.
+</li><li>
+micro-examination of torn paper could also allow reconstruction.
+</lI></ol>
+
+<p>
+But... it might work in combination with the "Shamos checker" (which prints
+random ballot numbers, instead of pre-printed ballot IDs), 
+<i>if</i> we trust the Shamos-checker, if we
+are confident there is no steganography,
+and if make two cuts not one to separate paper so that no matching
+of micro-patterns is possible.
+(Or if we just trust the printer or somehow enforce the printer's integrity.)
+</p>
+
+<h3> A way to make Twin more practical (but weaken its security) </h3>
+
+<p>
+We could make the voter fill out white ballots  with K red carbonless copies
+produced automatically as she does so.  (The reason we keep saying "carbonless" is so that there
+is no sheet of "carbon paper" for an adversary to inspect.)
+Here K is a small constant for example K=2.
+She then tosses the white ballot in the white bin and the K red ballot copies into the
+red bin.  Twin's random sampling (with replacement)
+of a previous ballot and copying it to make a receipt,
+is replaced by simply extracting (without replacement) 
+one random red ballot-copy from the red bin
+and handing it to the voter as her take-home receipt.
+</p>
+
+<p>
+This weakened version of Twin is a lot simpler.  However, it does not satisfy our
+security criteria because somebody who collected all K ballot copies, could
+then confidently fraud the corresponding original ballot. (In our genuine Twin
+scheme, you essentially never can be confident you've collected all the copies of anything.)
+It might, however, be reckoned that the security nevertheless is good enough, plus
+digital signature schemes could permit crude
+copies of receipts (since they are as good as actual receipts)
+to exist, re-endangering fraudsters.
+</p>
+
+<h3> Don't need <!--no stinking--> copying machine </h3>
+
+<p>
+Jeiel Schalkwijk
+points out that with digital signatures, any copy is legitimate.  Therefore, in (e.g.) Twin,
+there is no need for a "copy machine" and also no need for red/white carbonless copying etc; 
+we can simply extract a random ballot from the bin,
+ask the <i>voter</i> (who sees it through glass) to copy it as her take-home receipt, and then
+replace it in the bin.
+</p>
+
+<a name="circ"></a>
+<h3> Elegant "circular" trick for Twin </h3>
+
+<p>
+An elegant "circular" twist suggested by Stefan Popoveniuc is that the first 10 voters be 
+required to be <i>election workers</i>, and at the end of the day, after the last voter, they 
+each get a take-home receipt too &ndash;
+again a copy of a ballot randomly selected from the box. 
+The point is that, this way, everybody gets exactly one receipt, and nobody has to wait
+around until the end of the day who wouldn't have done so anyhow, and there is a less-severe 
+security failure for voting machines with few voters.  
+</p><p>
+However...  unfortunately in practice there are 
+not this many election workers per voting machine.
+</p></p>
+Jeiel Schalkwijk
+suggested another version:
+initially some constant K number of fake receipts (K=10? 100?)
+are placed in the bin.
+A "cryptographic hash"
+of the fake receipts is published before election day and after election day the 
+list of all fake receipts is published.
+This too allows every voter to take home a receipt.
+</p>
+
+<a name="vavanti"></a>
+<h3> Why are VAV "antivotes" different from just reverse-order ordinary (rank-order) votes? </h3>
+
+<table bgcolor="lightyellow">
+<tr bgcolor="#ffdddd"><th>#voters</th><th>their vote</th></tr>
+<tr><td>6</td><td>A>B>C</td></tr>
+<tr><td>4</td><td>C>B>A</td></tr>
+<tr><td>3</td><td>B>C>A</td></tr>
+</table>
+
+<p>
+C wins this IRV election.  But if the 4 C>B>A ballots
+were regarded as anti-votes of 4 of the 6 A>B>C ballots and
+these 8 votes were eliminated before counting, then B would win.
+</p>
+
+<p><b>The moral</b> of this little example is
+that with instant runoff voting,
+reverse-order ordinary votes do <i>not</i> cancel the original votes.
+With genuine antivotes, they do cancel.  That's one difference.  The second difference is
+that antivote ballots are <i>labeled</i> as such (with a big "A", 
+maybe a different color paper too).
+</p>
+
+<p><b>Ivan Ryan comments (somewhat edited):</b>
+The Rivest-Smith "antivote" concept is
+you match up the votes and anti-votes and cancel them out before counting.
+However, with instant runoff voting, there is another, 
+perhaps easier, method of handling antivotes that appears
+to be equivalent:
+</p><P>
+An anti-vote with
+<br> A: 1
+<br> B: 2
+<br> C: 3
+<br>
+will count as minus-one votes towards A until he is eliminated and then
+will pass to be a minus-one vote towards B, etc.
+</p>
+
+
+<a name="bigblock"></a>
+<h3> Are Rivest/Smith voting protocols ready for prime time (as of early 2008)? </h3>
+
+<p>
+No.  We've been asked stuff like "why don't you go do it in some test town/county/state
+and see what happens?"
+In my (Smith's) opinion (and it sounded to me like Rivest was probably thinking the same way),
+the prime problems with all three Rivest/Smith 
+protocols are <i>not</i> the math or theory behind them.
+It is engineering and (secondarily) politics.
+</p>
+<p>
+Rivest/Smith needs (if you want to do it right) certain machines to be located in each
+in polling place that perform certain specified tasks.
+All the tasks are known to be simple enough that they can be done 
+(and have been done) purely mechanically without need for electronics or a computer.
+<small>
+It is possible to make simulated Rivest/Smith elections without the machines, just by having
+human supervisors playing the roles of the machines for simulation purposes.  But simulations, while
+useful, are not the real thing.
+</small>
+The machines optimally should have the properties that
+<ol>
+<li>
+They indeed do these tasks.
+</li><li>
+Enough testing and experience has accumulated that we know they do them well enough.
+</li><li>
+It is <i>visibly obvious</i> to onlookers that they do them.
+</li><li>
+They are cheap and simple.
+</li>
+</ol>
+Now the first problem is, right now, you cannot buy these machines anywhere. 
+They do not exist.  
+They need to be designed, built, and tested, and during that experience, surprises
+might arise.  (Further, it might be nice to have an testing agency to certify them safe and effective.)
+There are many possible design options and which is the best and how well they will work,
+are experimental questions.
+</p><p>
+The second problem is politicians.  
+Politicians have to do something to make this happen.
+The two interact in a vicious circle.  
+(I.e. who is going to design, build, and test the machines, without any country
+demanding them?  
+And what politician is going to enact Rivest/Smith in the 
+absence of commercially-available machines?)
+<small>
+Also complicating the situation is the possibility that
+perhaps the Rivest/Smith protocols are not
+the best possible protocols.  
+Perhaps some version of Chaum's "<a href="ChaumST.html">scantegrity</a>," 
+or something else not invented yet,
+might be better.
+</small>
+It seems like the only way out of this conundrum is grant money &ndash; enough to 
+fund machine R&amp;D.
+</p>
+
+<h3> History of Election Fraud </h3>
+
+<p>
+Those devising anti-fraud voting protocols ought to have a clinician's
+understanding of what election fraud 
+really is like.  Smith wrote a <a href="FraudHist.html">description</a>
+for this purpose.
+</p>
+
+
+<h3> Kenya's rigged 2007 election </h3>
+<p>
+I <a href="EFraudKenya2007.html">used</a> this election to do a
+numerical cost-benefit calculation for the adoption of Rivest-Smith.
+The costs to Kenya of the fraud (or mere appearance of fraud)
+kept growing day after day, making the estimate a bit tough to write
+(moving target!)...  but eventually those costs grew so staggeringly large that, in my view, there
+can now be no doubt that the benefits of Rivest-Smith are indeed worth it, at least in some countries.
+</p>
+
+<p>
+See also:
+<a href="PressPakistan2007.html">Pakistan election rigging/assassination rumors</a>.
+</p>
+
+</body>
+</html>

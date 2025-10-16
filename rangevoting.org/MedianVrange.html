@@ -1,0 +1,1895 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Balinski & Laraki's "majority judgment" median-based range-like voting scheme
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+On Balinski &amp; Laraki's "majority judgment" median-based range-like voting scheme
+</H2>
+<H3><center>
+And comparison versus ordinary [i.e. average-based] <a href="RangeVoting.html">range</a> voting
+</center></H3>
+
+<center>
+<small>[Skip to <a href="#summ1">summary1</a> and <a href="#summary">summary2</a>.]</small>
+</center>
+<p>
+Michel Balinski and Rida Laraki, in 2006, <a href="BalinskiL.html">proposed</a>
+a voting method quite similar to range voting, but using median scores rather than 
+average scores, and with an interesting tie-breaking method.
+They wrote a <a href="BLpnusaPaper.pdf">paper (pdf)</a> about it.
+An <a href="BalinskiLarakiPNASpdf.pdf">updated</a>
+version of this paper has now appeared in the
+<a href="http://www.pnas.org">Proceedings of the National Academy of Sciences (USA)</a>.
+They published a
+still-later <a href="ElectionByMajorityJudgmentExptEvidenceFinal.pdf">paper</a> 
+in 2011, then finally a book
+</p><blockquote>
+  M.Balinski &amp; R.Laraki: Majority judgment, MIT Press (Cambridge MA) 2011.
+</blockquote><p>
+Unfortunately that book in no way used the extensive review of the matter we shall now give, 
+which is unbiased and the best in the  world;
+and which they were well aware of since I'd told them about it years before 
+they wrote their book.  I.e. I'm warning you that 
+their book presents an extremely biased and incomplete 
+(and intentionally so) 1-sided picture, and but does not tel you that it is doing so.
+</p><p>
+We also discuss B&amp;L's study of French voters in Orsay 2007 
+<a href="OrsayTable.html">here</a>, and (better) we summarize a whole <i>collection</i> 
+of simultaneous studies comparing many different voting systems in that same (France 2007)
+presidential election (of which theirs is just one), 
+<a href="French2007studies.html">here</a>.
+</p>
+
+<h3>The Balinski-Laraki voting method:</h3>
+<ol>
+<li>
+Voters supply, as their vote, numerical scores for each candidate from a fixed set
+of scores.  (Balinski &amp; Laraki suggested the 6-point scale {1,2,3,4,5,6}
+with 6=best and 1=worst.  Except actually they used <i>words</i> not numbers
+as the score levels.)
+</li><li>
+The candidate with the greatest <i>median</i> score wins.
+(If a candidate has an even number of scores, his <i>lower</i> bi-median is used
+as his "median" score.)
+</li><li>
+If there is a tie, then we break it by considering the "median scores of rank 1."
+That is, suppose the median score for each of the tied-set of candidates, is <I>M</i>.
+Remove one 
+<i>M</i> from each of the tied-candidates' multisets of scores, and recompute their medians.
+These are "the medians of rank 1."  The tied-candidate with the greatest <i>M</i><sub>1</sub>
+wins.
+</li><li>
+If there still is a tie, we continue on, computing the "medians of rank 2" which
+are got by removing one median value from each still-tied-candidate's score-multiset 
+and then recomputing
+the median; we similarly may define medians of rank 3, 4, etc.  We keep going
+until the tie is broken and we have a unique winner.
+</li>
+</ol>
+
+<p>
+B&amp;L give an <a href="BalinskiL.html#example">example</a>.
+An improved B&amp;L-like voting method called <a href="#GMJ">GMJ</a> 
+(it's the same as B&amp;L's but with an apparently simpler-&amp;-better
+tie-breaking procedure), was invented later by Jameson Quinn.
+</p>
+
+<h3> Who invented this? </h3>
+<p>
+The idea of median-based range voting ("highest median rating") had also been considered
+and discussed by several members of the 
+<a href="http://lists.electorama.com/pipermail/election-methods-electorama.com/">electorama</a> 
+and 
+<a href="http://groups.yahoo.com/group/RangeVoting/">range voting</a> 
+bulletin boards
+during the years 1996-2007.
+(Even something very similar, if not exactly equivalent,
+to B&amp;L's tie-breaking scheme had been proposed, although I
+have not been able to track that particular post down, so it may have just been in emails.)
+</p>
+<a name="MCAbenham"></a>
+<p>
+In particular, Chris Benham published his voting method "Majority Choice Approval" (<b>MCA</b>)
+on the internet in 2004 (or before; I am not sure when Benham first did it).  MCA is: 
+</p><ol><li>
+Each voter provides a score in the 3-element set {-1, 0, +1}
+to each candidate.
+</li><li>
+If at least one candidate has a majority of "+1" scores, then the candidate with the 
+most "+1"s wins.
+</li><li>
+Otherwise, the candidate with the most "+1 or 0" scores wins .
+</li></ol>
+<p>
+This method is equivalent to Jameson Quinn's "GMJ" method 
+in the case where there
+are exactly 3 score levels.  It may be that there is something 
+especially good about the number "3" in this context.  Certainly MCA works well in my
+<a href="BayRegDum.html">Bayesian regret</a>
+computer simulations.  MCA can also be regarded as similar to 
+<a href="Approval.html">approval voting</a>.  (The "+1" scores can be regarded as "approvals"
+and if anybody has &gt;50% approval, the most-approved wins.  Otherwise redefine "approval" to
+mean "nonnegative" and the most-approved wins.)
+</p><p>
+
+<h3>How does this compare 
+versus ordinary average-based range voting?
+</h3>
+
+<p>
+Here's a disturbing example
+created by Rob Lanphier in 1998.
+In this 99-voter election
+with 0-100 score range (four candidates A,B,C,D),
+<b>B wins</b> under the Balinski-Laraki
+voting method because B's median is 51 versus A's 50:
+</p>
+
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th colspan="4"> their vote </th>
+</tr>
+<tr> 
+<td align="center"> 49 </td>
+<td align="center">   A=100 </td><td>  B=52 </td><td>  C=0 </td><td>  D=0 </td>
+</tr>
+<tr bgcolor="#ffcccc"> 
+<td align="center"> 1 </td>
+<td align="center">   A=50 </td><td>    B=51 </td><td>  C=100 </td><td>  D=0 </td>
+</tr>
+<tr> 
+<td align="center"> 49 </td>
+<td align="center">  A=49 </td><td>   B=0   </td><td>  C=0 </td><td>  D=100 </td>
+</tr>
+</table>
+
+<p>
+98 out of 99 voters strongly prefer A over B, but the single voter 
+who slightly prefers B over A is the one that matters &ndash; B wins!
+Most people think that is not a good result;
+Lanphier considered it so disturbing that (he said at the time) median-ratings
+should be immediately dismissed from consideration as a voting system.
+In contrast, with ordinary <a href="Averaging.html">average</a>-based range voting
+A would win comfortably (A's average=74.25, B's average=26.25).
+</p>
+
+<p>
+Prof. S.J. Brams indeed points out that <i>every voter except one</i> can strongly 
+prefer <i>every</i> rival candidate
+over B, but median-based range voting still will elect B (Lanphier's example above, but 
+simplified so that only
+A and B are in the race, shows that; and you can make example elections
+demonstrating Brams's claim for any 
+number of voters and 
+also any number of extra candidates by adding further A-like candidates).
+</p>
+
+<!--
+is this: Assume there are N voters.  
+Then a candidate may lose if he is preferred to all other candidates by N-1 voters.
+Here's an example (ratings on the scale {1,2,3,4,5,6}):
+</p>
+
+<table align="left" border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> A scores </th>
+<td>  6 6 3 2 2   </td>
+<td> median=3 </td>
+</tr>
+<tr>
+<th> B scores </th>
+<td>  5 5 4 1 1     </td>
+<td> median=<b>4</b> </td>
+</tr>
+</table>
+
+<p>
+B wins, but every voter except one prefers A over B.
+Put another way, not only may a Condorcet loser be the winner, 
+but all-but-unanimous majorities may prefer every other candidate to the winner.
+</p>
+-->
+
+<p>
+Think Lanphier's 
+example is contrived and artificial and wouldn't be a problem in the <b>real world?</b>
+Wrong!  
+I contend the following (while oversimplified) is actually a fairly realistic 
+picture of what honest voting would have been in the USA 2000 presidential election
+&ndash; or at least, of a 
+of a realistic hypothetical election <i>like</i> it:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th colspan="3"> their vote </th>
+</tr>
+<tr> 
+<td align="center"> 49 </td>
+<td align="center">   Gore=100 </td><td>  Nader=30 </td><td>  Bush=0 </td>
+</tr>
+<tr>
+<td align="center"> 3 </td>
+<td align="center">   Nader=100 </td><td>  Gore=20 </td><td>  Bush=0 </td>
+</tr>
+<tr> 
+<td align="center"> 48 </td>
+<td align="center">  Bush=100 </td><td>  Gore=10   </td><td>  Nader=0 </td>
+</tr>
+</table>
+<p>
+With these votes, <b>Nader</b> would be the winner with median score 30.
+But practically every other voting system mankind ever dreamed up would elect Gore.
+Note that 97% of these voters strongly favor Gore over Nader; 52% favor Gore over Bush;
+and the average scores are
+Gore=54.4, Bush=48, Nader=17.7.
+So Median-based range not only fails to elect the clearly-right winner Gore here, it
+in fact elects the <i>worst</i> candidate.
+</p>
+
+<blockquote><small>
+To be clear:
+We are <i>not</I> trying to argue that Gore was actually best, nor Nader actually worst, 
+in the actual USA 2000
+election.  We are
+simply trying to present an artificial but realistic scenario <i>somewhat motivated</i> 
+by that election, <i>in which</i> "Gore" is best and "Nader" worst, and in which median-range 
+misbehaves
+while almost every other voting system works well.
+</small></blockquote>
+
+<p>
+A related problem is Lomax's <a href="MajCrit.html#pizza">pizza-flavor choosing</a>
+vote (0-9 score range), in which 3 friends want to buy a pizza, and one of them
+is a Jew who cannot eat pepperoni.  All like mushroom, but the two non-Jews slightly
+prefer pepperoni:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption> Lomax's Pizza election </caption>
+<tr> 
+<th> Pepperoni scores </th>
+<td>  9 9 0   </td>
+<td> median=<b>9</b> </td>
+</tr>
+<tr>
+<th> Mushroom scores </th>
+<td>  8 8 9     </td>
+<td> median=8 </td>
+</tr>
+</table>
+
+<a name="partition"></a>
+<p>
+Another problem with median-based versus average-based range voting, is that the former is
+not "consistent with respect to partitioning into districts."
+For example (now with score-range 0-9):
+</p>
+
+<table align="left" border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption> District 1: A wins </caption>
+<tr> 
+<th> A scores </th>
+<td>  9 8 7 4 0   </td>
+<td> median=<b>7</b> </td>
+</tr>
+<tr>
+<th> B scores </th>
+<td>  9 8 6 5 0     </td>
+<td> median=6 </td>
+</tr>
+</table>
+<table align="right" border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption> District 2: A wins </caption>
+<tr> 
+<th> A scores </th>
+<td>   9 4 3 2 0    </td>
+<td> median=<b>3</b> </td>
+</tr>
+<tr>
+<th> B scores </th>
+<td>   9 5 2 1 0      </td>
+<td> median=2 </td>
+</tr>
+</table>
+<table align="center" border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption> Combined country: <b>B</b> wins! </caption>
+<tr> 
+<th> A scores </th>
+<td>    9 9 8 7 4 4 3 2 0 0    </td>
+<td> median=4 </td>
+</tr>
+<tr>
+<th> B scores </th>
+<td>   9 9 8 6 5 5 2 1 0 0       </td>
+<td> median=<b>5</b> </td>
+</tr>
+</table>
+
+<p>
+In contrast,
+with average-based range voting, if A wins in both districts, then A always wins in the
+combined country (at least, if "blank" range-voting scores are forbidden).
+</p>
+
+<p>
+Average-based range voting also has the advantage of being much <i>simpler</i> to describe than
+Balinski &amp; Laraki's voting scheme.
+<!-- and it works on 
+<a href="VMSumm.html">every voting machine in the USA</a>, 
+right now, with no reprogramming or modification required.  
+(Median-based range voting can't say that?? Think it ca, with a little post-processing.)
+-->
+</p>
+
+<a name="Bishop"></a>
+<p>
+Dan Bishop pointed out another problem with the median-based system:
+election results can change if "all zero ballots" are
+added.  As a simple example, consider this 3-voter election (0-9 score range):
+</p>
+
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>A wins.</caption>
+<tr> 
+<th> A's scores: </th>
+<td>  1 6 9   </td>
+<td> median=<b>6</b>  </td>
+</tr>
+<tr> 
+<th> B's scores: </th>
+<td>  2 5 9   </td>
+<td> median=5  </td>
+</tr>
+</table>
+
+<p>
+If an "all zero ballot" A=0, B=0 is added, then, according to Balinski &amp; Laraki's rules,
+<b>B</b> is now the winner.  Indeed, one can easily set up scenarios with
+N candidates (any N&ge;2) where adding some all-zero ballots <i>completely reverses</i>
+the finish order!
+In contrast, with average-based range voting <i>provided</i>
+all voters score all candidates,
+adding an all-zero ballot (or for that matter, any number of ballots which all
+score all candidates equally)
+never changes the winner and never changes the finish order.
+</p><p>
+(This property would enable an
+interesting new kind of election fraud...:)
+Actually, in Balinski &amp; Laraki's own polling <a href="OrsayTable.html">experiment</a> in 
+France's 2007 presidential election, they instructed their voters
+that if they left any candidates unscored, they would regard those as zero (minimum) score.
+Hence by B&amp;L's own rules, if a voter did not show up at the polls to vote,
+A would win. 
+If however that voter did vote in some of the races on ballot, 
+but in this particular A-versus-B race left both 
+candidates unscored, then B would win.
+</p><p>
+Another issue,  related to some of the above, pointed out by Manzoor A. Zahid in 2009,
+is this.
+</p><table bgcolor="pink">
+<tr><th>Candidate</th>
+<th>Excellent</th>
+<th>VeryGood</th>
+<th>Good</th>
+<th>Mediocre</th>
+<th>Poor</th>
+<th>Unacceptable</th>
+</tr>
+<tr><th>A</th>
+<td>9%</td>
+<td>41</td>
+<td>50</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><th>B</th>
+<td>4</td>
+<td>47</td>
+<td>3</td>
+<td>5</td>
+<td>12</td>
+<td>29</td>
+</tr>
+</table>
+<p>
+<b>B</b> wins according to Majority Judgment ("very good"), but A is rated "good" or better by
+<i>every</i> voter, while B has a two-peaked distribution with many voters considering him 
+unacceptable.  Zahid similarly criticizes these elections (<b>B</b> wins
+according to Majority Judgment in both):
+</p>
+<table bgcolor="aqua">
+<tr><th>Candidate</th>
+<th>Excellent</th>
+<th>VeryGood</th>
+<th>Good</th>
+<th>Mediocre</th>
+<th>Poor</th>
+<th>Unacceptable</th>
+</tr>
+<tr><th>A</th>
+<td>1%</td>
+<td>98</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+</tr>
+<tr><th>B</th>
+<td>50</td>
+<td>1</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>49</td>
+</tr>
+</table>
+<p>
+</p>
+<table bgcolor="lightgreen">
+<tr><th>Candidate</th>
+<th>Excellent</th>
+<th>VeryGood</th>
+<th>Good</th>
+<th>Mediocre</th>
+<th>Poor</th>
+<th>Unacceptable</th>
+</tr>
+<tr><th>A</th>
+<td>50%</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>50</td>
+</tr>
+<tr><th>B</th>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>0</td>
+<td>51</td>
+<td>49</td>
+</tr>
+</table>
+<p>
+Average-based range voting also outperforms median-based 
+in <a href="IEVS/Pictures.html">graphical comparisons</a>,
+in computer measurements of <a href="BayRegDum.html">Bayesian regret</a>,
+and in the eyes of the world's most experienced(?) election-practitioners,
+<a href="ApisMellifera.html">honeybees</a>.
+<small>
+Also, range voting has been used for decades by academic graders, whom I do not think
+would be willing to switch to medians.
+</small>
+</p>
+
+<p>
+Average-based range voting generalizes to a <i>multiwinner</i> 
+<a href="PropRep.html">proportional representation</a>
+voting system called <a href="RRV.html">reweighted range voting</a>.
+(See papers 78 and 91 <a href="WarrenSmithPages/homepage/works.html">here</a>.)
+But there currently is no known way to generalize median-based range voting to do that
+(or if there is, it is very complicated).
+</p>
+
+<p>
+Average-based range voting is readily adapted to the case where voters have different "weights,"
+e.g. type-A voters have 54+&pi; votes whereas type-B voters have only 1 vote each.
+(Simply multiply the type-A votes by 54+&pi;...)  With median-based range voting it is
+a good deal harder to handle that.
+</p>
+
+<a name="partic"></a>
+<p>
+An extremely bothering
+problem with median-based range voting is its failure
+of "participation."
+Consider this situation:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>A wins.</caption>
+<tr> 
+<th> A's scores: </th>
+<td>   9 6 5 3 0    </td>
+<td> median=<b>5</b>  </td>
+</tr>
+<tr> 
+<th> B's scores: </th>
+<td>   9 7 4 2 0    </td>
+<td> median=4  </td>
+</tr>
+<tr> 
+<th> C's scores: </th>
+<td>   9 4 3 2 0  </td>
+<td> median=3  </td>
+</tr>
+</table>
+
+<p>
+Now suppose you and your spouse (new voters) come.
+Your votes are both: A=9, B=7, C=0, preferring the current winner A over every opponent.
+These votes cause A to <i>lose</i>, because
+the new election is now
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>B wins!</caption>
+<tr> 
+<th> A's scores: </th>
+<td>   9 9 9 6 5 3 0    </td>
+<td> median=6  </td>
+</tr>
+<tr> 
+<th> B's scores: </th>
+<td>   9 7 7 7 4 2 0    </td>
+<td> median=<b>7</b>  </td>
+</tr>
+<tr> 
+<th> C's scores: </th>
+<td>   9 4 3 2 0 0 0  </td>
+<td> median=2  </td>
+</tr>
+</table>
+
+<p>
+In short, you and your spouse's decision to vote honestly, made the election result worse
+from your point of view.  You would have been better off not voting at all
+("no-show paradox").  
+In contrast, with average-based range voting, no-show paradoxes can never occur
+<i>provided</i> there are no <a href="Blanks.html">blank</a> (no opinion) votes.
+<small> They <i>can</i> occur if blanks are allowed and are discarded before averaging.  E.g. 
+A scores: 9 0 and four blanks, avg = 4.5;
+B scores: 5 5 5 5 5 5, avg = 5;
+B wins; but you now add your vote A=8, B=9.
+That raises A's average to 17/3=5.667 and B's to 39/7=5.571
+so now A wins; this example is valid if there is no <a href="RuleD.html">quorum rule</a>.
+</small>
+</p>
+
+<p>
+Balinski &amp; Laraki pointed out the following enjoyable property
+of median-ratings (which had earlier
+been stated, albeit somewhat more clumsily worded, by electorama posters including Bart Ingles
+in 1999):
+</p>
+
+<p>
+<b>MAJORITY THEOREM (Bart Ingles, then M.Balinski &amp; R.Laraki):</b>
+With median-rating, the winner W has the property that a majority  of voters 
+unanimously rates
+him &ge;M, while no majority unanimously rates any opponent &ge;M.
+</p>
+
+<p>
+In contrast, average-based range voting does not enjoy that property, and indeed
+both average- and median-based range voting fail
+the <a href="CondDQ.html">traditional definition</a> of the "Condorcet property."
+But both average-based and median-based range voting obey a
+<a href="CondDQ.html">nontraditional definition</a> of that property
+and both, under reasonable assumptions about the behavior of 
+<a href="AppCW.html">strategic voters</a>, will elect a Condorcet winner whenever
+one exists.
+</p>
+
+<p>
+However, Ingles' theorem is not as nice as it sounds.
+Here's an example (0-9 score range, three candidates):
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>
+<b>A</b> wins under Balinski &amp; Laraki's rules.
+</caption>
+<tr> 
+<th> A's scores: </th>
+<td>  0 4 6 9   </td>
+<td> median=<b>4</b>  </td>
+</tr>
+<tr> 
+<th> B's scores: </th>
+<td>  0 3 7 9   </td>
+<td> median=3  </td>
+</tr>
+<tr> 
+<th> C's scores: </th>
+<td>  0 3 8 9   </td>
+<td> median=3  </td>
+</tr>
+</table>
+
+<p>
+As assured by the theorem,
+a majority of voters unanimously agree that A&ge;4, whereas <i>no</i>
+voter-majority unanimously agrees that B&ge;4 (or that C&ge;4).
+Sounds great at first, but... it is also true that
+a voter-majority unanimously agrees that A&le;6, whereas
+<i>no</i>
+voter-majority unanimously agrees that B&le;6 (or that C&le;6).
+So by the same logic Balinski &amp; Laraki 
+used to conclude A was the best, we can conclude A is 
+the <i>worst</i>!
+So it seems as though Balinski &amp;  Laraki's logic is self-contradictory.
+(About <a href="IrvRevFail.html">reversal failure</a>; average-based range never
+suffers that.)
+Personally, in this situation I would prefer to elect C, not A, but that is just my
+opinion.
+</p>
+<a name="ungerex"></a>
+<p>
+Steve Unger also points out the following example which also shows that Ingles' theorem is
+not as nice as it sounds and 
+makes medians look bad
+(and the median-based result <i>is</i> bad, in the view of a 78% super<b>majority</b>
+of the voters):
+</p>
+
+<table cellspacing="15">
+<caption>
+In this 9-voter 3-candidate election by Unger, 
+7 of the 9 voters prefer C over B (and 5 of the 9 prefer C over A)
+so C would defeat every rival head-to-head;
+but B wins with the highest <i>median</i> score 2.
+(Using <i>average</i>-based score voting, C wins with 2.00, A is second with 1.78 and B finishes
+far last with 1.11.)
+</caption>
+<tr><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="PapayaWhip">
+<tr> 
+<th> A's scores: </th>
+<td>  0 0 0 0 0 4 4 4 4  </td>
+<td> median=0  </td>
+</tr>
+<tr> 
+<th> B's scores: </th>
+<td>  0 0 0 0 2 2 2 2 2  </td>
+<td> median=<b>2</b>  </td>
+</tr>
+<tr> 
+<th> C's scores: </th>
+<td>  1 1 1 1 1 1 4 4 4  </td>
+<td> median=1  </td>
+</tr>
+</table>
+</td><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="PapayaWhip">
+<tr> <th> #voters </th><th> Their Vote </th> </tr>
+<td>  4 </td><td> A=4 B=0 C=1 </td></tr>
+<td>  3 </td><td> A=0 B=2 C=4 </td></tr>
+<td>  2 </td><td> A=0 B=2 C=1 </td></tr>
+</table>
+</td><tr>
+</table>
+
+<p>
+Unger's example has been criticized because the last 2 voters provided
+"non-normalized" ballots in which they did not employ the full 0-4 score range.
+If you do not like that, then change those two votes to become 
+"A=0 B=4 C=1" in which case:
+<ul><li>
+All 9 ballots now are "normalized."
+</li><li>
+B still unfairly wins using medians (all medians unchanged)
+</li><li>
+C still is
+preferred by 7/9 voters over B and by 5/9 over A
+</li><li>
+only the average-based scores change and now are C=2.00, A=1.78, B=1.56
+(finish-order unchanged).
+</li></ul>
+</p>
+<p>
+Finally, Balinski &amp; Laraki's median-based scheme is more <i>complicated</i> than
+mean-based range voting.
+</p>
+
+<H3> Tyranny of Majority </H3>
+
+<p>
+A typical "tyranny of majority" scenario (which I'm told is rude to discuss)
+is the "kill the Jews" vote.
+That is, there is a majority of non-Jews, and a minority of Jews, and they all vote
+on the question "should the Jews be killed and their money stolen and used to reduce taxes
+for the survivors?"
+</p><p>
+The same abstract type of scenario arises 
+(fortunately usually in less dramatic form) all the time, e.g.
+many "ban gay marriage" referenda passed in USA states in 2008, and 
+on 30 March 1855 a Kansas-wide referendum voted to make slavery legal.
+</p><p>
+In such votes some proposal has a very bad effect on the minority,
+but a slightly good effect on the majority, of people.   The badness can
+(and did in the case of the Jews!)
+outweigh the goodness.  It is an unfortunate fact that
+most voting methods will, with honest voting
+(where by "honest" we mean: each voter honestly says which choice would have the best effect on 
+her <i>alone</i>) kill the Jews.
+</p><p>
+Ordinary (average-based) <a href="RangeVoting.html">range voting</a> is
+one of the few voting methods that is capable of going <i>against</i> the will of
+the majority.  This happens <i>only</i> if the minority expresses their preferences strongly enough
+while the majority expresses their views weakly (both moves are honest). 
+It could
+mean that range voting would save the Jews while almost every other voting method 
+would kill them.
+(It is a fact &ndash; observed in every large range vote that I have ever seen &ndash;
+that a large fraction of voters do <i>not</i> choose to exaggerate all their scores 
+to max and min.)
+This in my view is a considerable advantage for range voting versus almost every rival
+voting method.
+</p><p>
+Which brings us to our point:   
+<b>Median-based range voting seems to be <i>more vulnerable</i>
+to tyranny of majority</b>
+than average-based range voting.
+Specifically, imagine with range 0-to-9, that there are exactly two kinds of votes: 
+strong-preference votes "kill=0, live=9" (cast by honest Jews) and
+weak-preference votes  "kill=5, live=4" cast by honest non-Jews.
+In such a scenario, if the Jews exceed 10% of the population, average based range voting 
+will let them live.  However, median-based range voting will <i>always</i> kill
+the Jews, no matter what percentage they are (provided they are a minority) and no
+matter what the particular four numerical scores (here 0, 9, 4, and 5) are.
+</p>
+
+<a name="enactability"></a>
+<h3> Enactability </h3>
+
+<p>
+It <a href="WhatVotersWant.html">appears</a> from poll data
+that average based range voting is enactable 
+by referendum, while MJ is not (probably due to its greater complexity).
+</p>
+
+<a name="GMJ"></a>
+<h3>"Graduated majority judgment" (GMJ) </h3>
+
+<p>
+GMJ was suggested by Jameson Quinn 
+as an improvement/simplification over Balinski &amp; Laraki's
+original  Majority Judgment method. It also can be regarded as a continuous-time version
+of "Bucklin voting" (as improved so that equal and/or omitted ranks are allowed).
+It works as follows:
+</p>
+<ol>
+<li>
+Each voter grades each candidate on a grading scale such as A, B, C, D, F.
+</li><li>
+The top-grade (e.g, A) votes for each candidate are tallied.
+</li><li>
+If a <i>single</i>
+candidate has a majority (that is, a number of votes &ge;50% of voters), he wins.
+</li><li>
+If <i>no</i>
+candidate has a majority the next grade down (e.g. B) is added to the tallies 
+and go back to step 3.
+</li><li>
+If <i>more than one</i>
+candidate has a majority, then remove the last grade used from the tallies
+and re-add it back "gradually" that is, at time t, 0&lt;t&lt;1, we have added a fraction t
+of his votes at that grade to each candidate's tally.   As soon as any candidate
+achieves &ge;50% of the number of voters, this process stops and he is declared winner.
+<blockquote>
+If a candidate has V votes with &Delta; to be added at the next grade, then
+the value of t causing the 50% threshhold H to be hit, is t=(H-V)/&Delta;.
+The winning candidate is the one with the least such t, among t with 0&lt;t&le;1.
+</blockquote>
+</li></ol>
+
+<p>
+If each iteration of the loop (steps 3 &amp; 4)
+is regarded as consuming 1 "time unit" then the "total time" before each candidate reaches 50%
+can be regarded as a measure of how good that candidate is, 
+and used to order all the candidates (not merely to choose a winner).
+</p><p>
+A natural name for this voting system would have been
+"first past the post," except that that phrase
+was already stupidly employed to describe <a href="Plurality.html">plurality</a> voting.
+("Stupidly" because with plurality voting
+there is no "post" and there is no "time" scale to use to reckon "first.")
+</p>
+<!--
+In addition to its better simplicity, GMJ enjoys this advantage over MJ:
+Bishop's <a href="#Bishop">objection</a> to MJ, involving adding "all-zero ballots,"
+does not work against GMJ???  Wrong. Still works.
+-->
+
+<h3>Shared advantages of median- and average-based range voting</h3>
+
+<ul>
+<li>
+In both systems voters provide quantitative scores for all candidates, "maximizing
+voter-expressivity."
+</li><li>
+Both systems enjoy "anonymity" (all voters treated equally), "neutrality" (all candidates
+treated equally), "unanimity" (unanimous winners always win),
+and "independence from irrelevant alternatives"
+(the ratings for candidate C do not affect the relative judgments of A versus B).
+</li><li>
+Both systems reduce to the <i>same</i> system &ndash;
+<a href="Approval.html">approval voting</a> &ndash; if the allowed scores are
+restricted to the two-element set {0,1}, i.e. each voter "approves" or "disapproves"
+each candidate.
+</li><li>
+Both systems are "monotonic," i.e. a voter by increasing her score for X cannot decrease X's
+winning chances.
+</li><li>
+Both systems enjoy immunity to candidate <a href="CandCloning.html">cloning</a>.
+</li><li>
+Both have the enjoyable property that 
+<a href="https://rangevoting.org/FBCexecSumm.htmlCandCloning.html">betraying your favorite does not pay</a>.
+</li><li>
+Both easily allow having <a href="Blanks.html">no opinion</a> votes.
+</li><li>
+And both systems to some extent evade the
+<a href="ArrowThm.html">Arrow</a>
+and
+<a href="GibbSat.html">Gibbard-Satterthwaite</a>
+impossibility theorems
+(<small>as was remarked by Warren D. Smith in his 1999 paper on range voting</small>).
+</li>
+</ul>
+
+<a name="summ1"></a>
+<h3>Conclusion so far</h3>
+
+<p>
+Balinski &amp; Laraki's proposal has a lot in common with 
+ordinary mean-based <a href="RangeVoting.html">range voting</a>,
+but relatively speaking suffers numerous disadvantages.
+I cannot currently see how it can have enough relative advantages
+to compensate for that.
+</p><p>
+Hence I recommend ordinary range voting.
+</p><p>
+<i>However...</i> there are more arguments to be considered; see below.
+</p>
+<hr>
+<a name="StratImpact"></a>
+<h2>What about <i>Strategy</i>?</h2>
+<a name="blquote"></a>
+<p>
+The 6 Feb. 2009 "Numbers Guy" column in the Wall Street Journal
+("And the Oscar Goes to...Not Its Voting System") contained 
+</p>
+<center>
+<table><tr><td bgcolor="lightgreen">
+Prof. Balinski... 
+calls (mean-based)
+range voting a "ridiculous method," because it can be manipulated by strategic voters.
+</td></tr></table>
+</center>
+<p>
+Balinski &amp; Laraki's <a href="BalinskiLarakiPNASpdf.pdf">PNAS-USA paper</a>
+contains a lot of theorems aimed at justifying or formalizing the notion 
+that median-based range voting is somehow "optimal" in the 
+sense that it is "least vulnerable to manipulation by strategic voters."
+</p>
+<p>
+We shall now re-examine that.
+I personally think that Balinski &amp; Laraki's "optimality" 
+and "vulnerability to strategy"
+definitions 
+were contrived &ndash; with <a href="PuzzJGA.html">other</a>
+(but seemingly at least as reasonable) definitions, their theorems utterly fail.
+Furthermore, even to the extent they are correct, their results may have little
+impact in the real world &ndash; because, e.g. even if a voting method often 
+offers only
+half the incentive to strategize, then so what &ndash; maybe exactly the same voters 
+will strategize anyhow!  (B&amp;L offered no evidence to the contrary and indeed 
+the evidence they themselves found 
+in the France 2007 election seems to support my view &ndash; their
+voters employed plenty of strategy!)
+</p><p>
+However, B&amp;L's work is not completely valueless.
+As our examination will show, there are circumstances under which median-based range voting 
+should outperform mean-based range; and we shall develop understanding of 
+just what circumstances favor median and which favor mean.
+</p>
+<a name="trimmedmean"></a>
+<h3> "Trimmed mean" family of rated-voting systems </h3>
+<p>
+There is a family of voting systems 
+<i>intermediate</i> between mean- and median-based
+range voting: 
+<b><a href="OlympBonaly.html#trim">trimmed mean</a></b>
+range voting.
+That is: with trimming-fraction T, 0&le;T&lt;50%, you discard the top T
+percent of Reagan's scores, also discard the bottom T percent, and then Reagan's final
+"trimmed mean" score is the mean of his undiscarded scores.   The candidate with the highest 
+trimmed mean wins.  In this view, 
+<ul><li>
+Average-based range voting is trimmed-mean with T=0
+</li><li>
+Median-based range voting is trimmed-mean with T=50%-&epsilon; (and with Balinski &amp;
+Laraki's tiebreaking scheme invoked if necessary afterward)
+</li><li>
+Both schemes (and this also is true for every T with 0&le;T&lt;50%)
+if all voters strategically exaggerate all scores to the top or bottom of
+their allowed range, become equivalent to <a href="Approval.html">approval voting</a>.
+</li></ul>
+<p>
+A natural question is: what is the best value of the "trim-off parameter" T?
+Is it T=0, T&rarr;50%, or somewhere in between?
+</p>
+<h3> Reduced voter-incentive to strategically exaggerate with median &ndash; fool's gold? </h3>
+<p>
+Balinski &amp; Laraki's <b>point</b>
+seems to be that for a substantial class of voters, there is
+<i>zero</i> incentive in median-based range voting to score somebody dishonestly:
+</p><a name="blthm"></a><p>
+<b>ZERO-INCENTIVE THEOREM:</b> exaggerating candidate-X's score in
+your median-based range vote, will never help you move
+X's societal-median score toward what you consider to be a more-correct value than
+the unmanipulated value it had with your honest score-vote.
+</p><p>
+That sounds good at first, but the more you think about it, the less 
+this "non-incentivation of strategy" really seems to matter.
+</p><p>
+Let's examine the situation. <i>Suppose</i> the societal
+median score for <b>Gore</b> is <b>6</b> and
+for <b>Bush</b> is <b>5</b> and the score-range is 0-to-9.  Then:
+</p>
+<table>
+<tr bgcolor="pink">
+<td width="50%">
+You have <i>zero</i> incentive to strategize (since Bush &amp; Gore's societal 
+median scores will remain unchanged even if you exaggerate all the way like Bush=0, Gore=9
+or the reverse) if...
+</td>
+<td width="50%">
+You <i>do</i> have incentive to strategize by exaggerating-to-the-max if...
+</td>
+</tr>
+<tr>
+<td bgcolor="yellow">
+<ul><li>
+your honest scores are Bush=4, Gore=8.
+</li><li>
+your honest scores are Bush=8, Gore=3.
+</li><li>
+your honest scores are Bush=5.7, Gore=5.2.
+</li></ul>
+</td>
+<td bgcolor="yellow">
+<ul><li>
+your honest scores are Bush=7, Gore=8.
+</li><li>
+your honest scores are Bush=3, Gore=4.
+</li><li>
+your honest scores are Bush=5.2, Gore=5.7.
+</li></ul>
+</td>
+</tr></table>
+<p>
+Considering the cases, <i>in a tight 2-way race with median-based range voting
+about 50% of the voters have zero incentive to strategize and 50% have
+incentive.</i>
+</p><p>
+B&amp;L seem to think that therefore, there will be lots of honest voting.
+However a different way to look at it is: <b><i>no</i> voter in this median-based range voting
+Bush-Gore scenario is hurt by strategizing, but 50% of them are hurt by not
+strategizing. And it cannot be entirely clear a priori to any voter which kind she is.</b>
+</p><p>
+Furthermore, that was only thinking about the effect of <i>one</i> voter altering her vote
+in isolation.
+If <i>many</i> voters do so, their effects <b>synergize</b> to move the median, which means that
+somebody who "has no incentive" actually <i>would</i> have incentive once the other strategizers
+(those who originally had incentive) get done moving it. 
+The more it moves, the more voters have incentive to move it.
+<small>E.g, consider the situation when the societal median scores have
+moved to Gore=8.6 and Bush=0.4, and then you
+as a typical slightly Gore-favoring voter, would then
+have incentive to exaggerate your scores to
+9 and 0 to increase Gore's win even more, 
+even if originally you had no incentive because originally your vote-alteration could 
+not have altered Bush's and Gore's medians.</small>
+So really, <i>more</i> than 50%
+of the voters have incentive, and this keeps snowballing until 100% of the Gore&gt;Bush
+voters will be incentivezed to strategize and the medians move all the way to 9 and 0.
+</p><p>
+So in view of the synergization and/or the incomplete knowledge effects, 
+<i>everybody</i> would want to strategize, i.e. vote dishonestly &ndash;
+exactly the opposite of B&amp;L's goal!
+</p><p>
+Oops.
+</p>
+
+<a name="side1"></a>
+<h3> With "one-sided strategy" (in a simple model): Medians hurt, not help! </h3>
+<p>
+Here's another serious problem.
+Remember, a big (for some people "the whole" &ndash; see the Balinski "ridiculous"
+<a href="#blquote">quote</a> above)
+motivating idea behind median-based
+instead of average-based range voting was to get more immunity to "one-sided" strategy, 
+e.g. strategy by the Bush&gt;Gore voters
+which is not countered by the Gore&gt;Bush voters.
+[They had been satisfied with plain average-based range voting
+in the case where there was <i>both</i> strategy and counterstrategy.
+<i>The great fear of these critics was unbalanced 1-sided strategy.</i>]
+</p><p>
+<small>
+In all my <a href="BayRegDum.html">Bayesian Regret</a>
+studies up to early 2009, mean-based range voting
+outperformed median-based with any strategic+honest voter mix, <i>but</i>
+all those studies involved voters who independently "flipped a probability=p coin"
+to decide whether to be honest or strategic. In other words, their
+decision to be strategic was <i>unrelated</i> to their politics. 
+I could have, but
+did not, try to have voters whose p-values were <i>correlated</i> with their
+politics.  We're now going to consider the maximum-bias situation of that sort.
+But actually the old simulations, since they usually were about elections with &le;200 voters,
+usually <i>already</I>
+had fairly large strategy-1-sideness bias just from the random voter decisions.
+</small></p><p>
+<b>But:</B> does median actually <i>work</i> to solve the 1-sided strategy problem?
+Let's work out a simple scenario, using altogether too much math.
+</p><p>
+<b>The simple model:</b>
+Suppose each voter has honest score for each candidate that is an independent
+random-uniform real number in [0,1].
+</p><p>
+That implies there are 50% Bush&gt;Gore, and 50% Gore&gt;Bush, voters.
+The Gore&gt;Bush voters have a triangular probability density of Gore scores:
+ProbDensity(x)=2x, with mean score 2/3 for Gore and mean=1/3 for Bush.
+The Bush&gt;Gore voters have the same triangular probability density of Bush scores
+and mean score 2/3 for Bush and mean=1/3 for Gore.
+Now suppose a fraction <b>F</b>, 0&le;F&le;1, of the Bush&gt;Gore voters exaggerate to
+Bush=1, Gore=0.  We'll assume there is no counterstrategy by the
+Gore&gt;Bush voters &ndash; they just stay honest.
+</p><p>
+What is the effect on Gore &amp; Bush's final scores?
+</p>
+<table>
+<tr>
+<tr><th width="50%" bgcolor="yellow">
+With median-based range voting:
+</th></tr>
+<tr><td bgcolor="yellow">
+<pre>
+If F=0 (no exagg):  Gore=0.5,               Bush=0.5.
+General-F exagg:    Gore=([F-1]+[1-F]<sup>1/2</sup>)/F, Bush=(1-[1-F]<sup>1/2</sup>)/F.
+If F=1 (max exagg): Gore=0,                 Bush=1.
+</pre>
+</td></tr><tr>
+<th width="50%" bgcolor="pink">
+With average-based range voting:
+</th></tr><tr><td bgcolor="pink">
+<pre>
+If F=0 (no exagg):  Gore=0.5,               Bush=0.5.
+General-F exagg:    Gore=(3-F)/6,           Bush=(3+F)/6.
+If F=1 (max exagg): Gore=1/3&asymp;0.3333,        Bush=2/3&asymp;0.6667.
+</pre>
+</td></tr></table><p>
+<b>SCORE-DISTORTION THEOREM:</b>
+Median-based range voting always causes more score-distortion
+than average-based (under this scenario with 1-sided strategy) if
+0.464102&le;F&le;1.
+Median causes less distortion if
+0&lt;F&le;0.464101, but the two distortions in this domain are very close, see graph.
+I.e.</p><center>
+([F-1]+[1-F]<sup>1/2</sup>)/F 
+&nbsp; &le; &nbsp;  
+(3-F)/6
+&nbsp; &le; &nbsp;  
+(3+F)/6
+&nbsp; &le; &nbsp;  
+(1-[1-F]<sup>1/2</sup>)/F
+</center><p>
+for every F with 0.464102&le;F&le;1,
+while in the range 0&le;F&le;0.464101 the maximum difference &Delta; between
+<nobr>([F-1]+[1-F]<sup>1/2</sup>)/F</nobr> 
+and
+<nobr>(3-F)/6</nobr>
+is 
+<nobr>&Delta;&asymp;0.0058</nobr>
+achieved when F&asymp;0.2540, see "max difference" point on the graph.
+[Note: only <a href="ElMargins.html">two</a>
+US presidential elections up to 2010 have had |margin|&lt;2%.]
+We have equality in the all-honest-votes
+limit F&rarr;0 and at the crossover point 
+<nobr>F=2&radic;3-3&asymp;0.4641.</nobr>
+</p>
+<a name="fancygraph"></a>
+<img src="GoreStratGraph.png"/>
+<p>
+PROOF: The formulas are worked out as follows.
+You note that there are three kinds A,B,C of voters, present in proportions
+</p><center>
+     F/2 : (1-F)/2 : 1/2     &nbsp; &nbsp;  &nbsp; [which sum to 1],
+</center><p>
+who respectively rate  Gore=0, Gore=honest, and Gore=honest. 
+The type B&cup;C voters (combined set) have a trapezoidal probability density of scores
+with the two trapezoid leg-heights being (1-F) and 1 (up to a constant multiplicative 
+scaling factor you need to choose to make the total probability-mass be 1, i.e. "normalized")
+at the Gore=0 and Gore=1 sides respectively.
+Gore's <b>median</b> score is then <i>m</i> where
+</p><center>
+F/2 + (1-F/2)&int;<sub>0&lt;x&lt;m</sub>[(1-F)+Fx]dx
+<big>/</big>
+&int;<sub>0&lt;x&lt;1</sub>[(1-F)+Fx]dx 
+= 
+1/2.
+</center><p>
+This simplifies to
+</p><center>
+   F/2 + (1-F)m + (F/2)m<sup>2</sup> = 1/2
+</center><p>
+a quadratic equation with solution
+</p><center>
+   m = ([F-1] + [1-F]<sup>1/2</sup>)/F.
+</p></center>
+Meanwhile, Gore's <b>average</b> score is
+</p><center>
+  0 + (1-F/2)&int;<sub>0&lt;x&lt;1</sub>[(1-F)+Fx]xdx
+<big>/</big>
+&int;<sub>0&lt;x&lt;1</sub>[(1-F)+Fx]dx
+</center><p>
+(note the integrals in the denominators
+are just there to provide the right normalization-constant
+for the trapezoidal probability density).  This simplifies to
+</p><center>
+ GoreAverage =  1/2 - F/6 = (3-F)/6.
+</center><p>
+Now if we solve the "crossover" equation
+</p><center>
+ GoreMedian = GoreAverage
+</center><p>
+i.e. solve
+</p><center>
+ (F-1 + [1-F]<sup>1/2</sup>)/F = (3-F)/6
+<!-- F=2*sqrt(3)-3=0.464 and F=0 -->
+</center><p>
+for F, we find that the only real solution is F=2&radic;3-3=0.4641...  
+</p><small><pre>
+<b>Details:</b>
+  6(1-F)<sup>1/2</sup>/F = 3-F - 6(F-1)/F
+  6(1-F)<sup>1/2</sup> = (3-F)F - 6(F-1)
+  6(1-F)<sup>1/2</sup> = 6-3F-F<sup>2</sup>.
+  36(1-F) = (6-3F-F<sup>2</sup>)<sup>2</sup>
+  F<sup>4</sup> + 6F<sup>3</sup> - 3F<sup>2</sup> = 0
+  roots of this quartic are
+  F=0&plusmn;0 and F=-3&plusmn;2&radic;3
+  i.e.  F=0, F=0, F&asymp;0.4641, and F&asymp;-6.4641.
+</pre></small>
+In other words,
+median is less distorted than average when 0&lt;F&lt;0.4641...,
+but average is less distorted when 0.4641...&lt;F&le;1.
+The two are equally affected when either F=0 or F&asymp;0.4641.
+</p><p>
+<b>Q.E.D.</b> <small>We thank Jameson Quinn finding an error in our old proof, now fixed.</small>
+</p><p>
+In view of this, the underlying motivation that medians save us
+from 1-sided strategy, or that it reduces
+the distortionary effect of strategy by about a factor of 6, or 2... 
+all are seen to be bogus.
+The reality (at least in this simple model) is:
+average-based range is <i>more resistant</i> to strategy than
+median-based, entirely contrary to my original (and Balinski &amp; Laraki's) intuition!!
+</p><p>
+And I think it is obvious average-based is better with 100% <i>honest</i> voters
+and with mixtures of honest and (2-sided) strategic voters &ndash;
+and in case it isn't obvious, the
+<a href="BayRegExec.html">Bayesian Regret</a> simulations indicate that.
+</p><p>
+In the scenario above if a fraction-F of <i>all</i> voters exaggerate (now
+independent of their politics, i.e. no longer 1-sided) 
+then we get average=median=0.5 for both Bush &amp; Gore, i.e. the
+2-sided strategizing &amp; counterstrategizing exactly canceled out in both systems.
+</p><p>
+So this has been just one simple model, but as far as it goes it indicates
+</p><ol>
+<li>
+average is superior to median.
+</li><li>
+naive intuitions were wrong.
+</li></ol>
+
+<h3> Something wrong with that 1-sided strategy model? </h3>
+
+<p>
+A <b>criticism</b> of the above simple 1-sided strategy model, raised by Jameson Quinn,
+is this: it models <i>all</i> Bush&gt;Gore voters as equally likely to decide to
+strategically exaggerate.   It might be more realistic to assume that the
+voters with greater Bush-Gore honest score difference, are <i>more</i> likely to exaggerate.
+Of course, this would directly <i>contradict</i> Balinski &amp; Laraki's 
+<a href="#blthm">theorem</a>
+above; B&amp;L's point was that those voters supposedly
+are exactly the ones with "zero incentive"
+to exaggerate!   But we plunge onward anyhow.  Jameson Quinn (and/or me) mooted several 
+possible ways to put this effect into the model, but they all have problems:
+</p><ol>
+<li>
+We could make the probability a Bush&gt;Gore voter decides to strategize be
+<i>linearly proportional</i> to her Bush-Gore honest score difference.
+Unfortunately that turns out to be logically inconsistent!  If you try
+to get (a) proportionality and (b) make expected fraction F of 
+the Bush&gt;Gore voters exaggerate,
+then it turns out accomplishing both (a) and (b) 
+simultaneously is <i>impossible</i> when F&ge;0.34.
+</li><li>
+We could try
+making the probability proportional
+to the <i>Pth power</i> of the Bush-Gore honest score difference, where, say, P=0.3.
+However, as of now there still is no proof that any P with 0&lt;P&le;1
+suffices to get logical consistency, plus
+this whole idea seems an unnatural kludge anyhow (why P=0.3?).
+</li><li>
+We could make the fraction F of the Bush&gt;Gore voters with the <i>largest</i>
+Bush-Gore honest score differences, be the ones who exaggerate (the "top end").
+But that would entail the <i>maximum</i>
+possible amount of contradiction with the Balinski-Laraki
+"zero incentive" theorem above which had been motivating the whole investigation
+that Median might help save us from strategy.
+</li><li>
+You could compare "apples to oranges" by assuming the top end of the average-based
+Bush&gt;Gore range voters are the ones who exaggerate, but the bottom end of these
+voters are the ones who exaggerate with median-based range (this makes sense in view
+of the Balinski-Laraki "zero incentive" theorem).   This biased-change presumably would
+make average look even <i>better</i> relatively to median, as far as resistance to 1-sided strategy
+is concerned(!), because the top end by exaggerating alters averages less than
+if the bottom end exaggerates.
+</li><li>
+You could argue that the Balinski-Laraki theorem means the top end won't 
+want to exaggerate, which would counter Quinn's psychological force that makes
+the top end more likely to exaggerate. In that case maybe we should just model all
+Bush&gt;Gore voters as approximately equally likely to do it.
+But wait &ndash; that's what our original model already did.
+</li></ol>
+
+<a name="side1a"></a>
+<h3> An improved (in the sense of being more general)  1-sided strategy model </h3>
+
+<p>
+After negotiations with chief gadfly Jameson Quinn, he invented, and W.D.Smith analysed,
+a more general model of 1-sided strategizing.  Actually it is a 1-parameter family of models.
+The model <a href="#side1">above</a>
+is a mere special case of the more general model.  Oddly enough, it turns out that the 
+above special case happens to make average-based range voting seem to have
+good (compared to median-based) resistance to 1-sided strategy;
+whereas the whole rest of the parameter space says <b>median-based has exactly
+<i>twice</i> the resistance to 1-sided strategy, versus average-based</b> range voting!!
+(Albeit the special case seems of especial importance compared to most instances
+of the general case.)
+See that <a href="MedianAvg1side.html">analysis</a> on a separate web-page.
+</p>
+
+<h3> Can 1-sided strategy even <i>exist</i> in large real-life elections? </h3>
+<p>
+A lot of people are paranoid that the Evil Other Faction will think of the idea of exaggerating 
+Bush&gt;Gore scores to the max, 
+while your Nice Kind Faction would never think of exaggerating Gore&gt;Bush scores.
+Result: horrors! disaster! Evil wins!
+</p><p>
+But, in reality, is this fear plausible?  Can anybody seriously imagine a vast conspiracy 
+will be organized on just one side to do this, with the
+other side never noticing and never doing anything about it?   Even though the whole
+idea is incredibly obvious?
+</p><p>
+There have been thousands of large range voting style
+<a href="RangePolls.html">polls</a>
+conducted, and entire major governments 
+(<a href="SpartaExec.html">Sparta</a>,
+<a href="VeniceExec.html">Venice</a>)
+have been
+run with range voting for hundreds of years.
+So far, in all that data, I have never seen any example of 1-sided strategizing.
+[E.g. in the Bush vs Kerry US presidential election of 2004, our range exit-poll
+<a href="PsEl04.html">study</a> found
+no detectable difference in the fractions of pro-Bush and pro-Gore strategizers.]
+I challenge the worriers to find such an example.
+Balinski &amp; Laraki published an entire book on this in 2011, but were
+unable to include even
+a single historical example election or poll featuring 1-sided strategy!
+Finally in 2015 I <a href="#RLC">participated</a> 
+in a actual polling study in which massive strategy did occur... and in that study,
+Balinski &amp; Laraki's "more resistant"
+method malfunctioned far worse than plain average-based score voting.
+</p><p>
+If all factions maximally
+exaggerated (using <i>either</i> average-based, or median-based, range voting)
+then we'd get <a href="Approval.html">approval voting</a>.
+</p>
+
+<h3> What happens about strategy in real life? </h3>
+<p>
+When we actually look at real-world data from humans using average-based
+and median-based range voting, what do we find? In all the cases I am
+aware of so far, the voting seems similar and the election outcomes seem
+similar. For example, in B&amp;L's 
+<a href="OrsayTable.html">own</a> data set of 1752 voters from France 2007
+there <i>obviously</i> was a huge amount of strategic voting going on since
+by far the most popular score was "zero" &ndash; which also is exactly what 
+happened in every (average-based) range voting study I am aware of, including our own, see e.g.<br>
+<a href="Beaumont.html">/Beaumont.html</a>,<br>
+<a href="RangePolls.html">/RangePolls.html</a>,<br>
+<a href="PsEl04.html">/PsEl04.html</a>,<br>
+<a href="French2007studies.html">/French2007studies.html</a>,<br>
+<a href="France2012.html">/France2012.html</a>.
+</p><p>
+So claims the voters will not feel incentivized to exaggerate, were simply wrong in real life.
+</p><p>
+On the other hand, there also was a lot of honesty going on since
+intermediate scores were very popular.
+Which <i>also</i> is exactly what happened in every average-based range voting study I am aware
+of, including our own.
+The same finish-order 1.Bayrou, 2.Royal, 3.Sarkozy, happened with
+both median-based and average-based 6-level range voting in 
+Orsay <a href="France2007.html">France 2007</a>... <i>except</i> when 
+Balinski &amp;
+Laraki <i>corrected</i> their ballots for geographic biases (their votes came only
+from Orsay, not all France) it 
+<a href="French2007studies.html#aboutMJ">appears</a>
+that Sarkozy wins (which was clearly 
+<a href="French2007studies.html#stance">worse</a>).
+</p><p>
+So, while I admit this has not been a maximally-careful examination
+of election data, I fail to see <i>any</i> noticeable difference in voter behavior
+with median- versus mean-based range voting &ndash; or to the extent there was one, MJ was, in
+Balinski &amp; Laraki's own France-2007 study, worse for France!  Also in an apparently very large
+majority of real-world cases it seems both procedures elect the same winner.
+</p>
+
+<a name="twopeak"></a>
+<h3>Median is better when each candidate's vote-scores are tightly bunched; worse with 2 peaks</h3>
+<p>
+Median should enjoy clear relative advantages over average
+in situations where the honest voter-opinions are <b>sharply peaked.</b>
+</p>
+<blockquote>
+<b>Median-Favoring Example:</b>
+Suppose the honest scores for each candidate are <i>sharply peaked</I>
+distributions, e.g. almost all
+Gore scores are near 61, almost all Bush scores are near 55, etc, on an 0-99 scale.
+(Say, to be concrete, almost all honest Gore scores are within 61&plusmn;2
+and Bush scores within 55&plusmn;2.)
+Further, suppose a goodly chunk of the voters (e.g. 25%) decide to try to throw the
+election by strategically exaggerating
+their opinions of Bush and Gore to 99 and 0 respectively.   
+Note we are supposing all this 
+exaggerating is
+entirely <i>one way</i> favoring Bush.
+<br><br>
+I suspect both these suppositions are unrealistic.  
+However, one could imagine them.
+Median-based range voting then would <i>still</i> give Bush about 56 and Gore about 60,
+i.e. would be almost entirely <i>immune</I> to this strategic conspiracy, <i>but</i>
+mean-based range voting would succumb to it and elect Bush.
+<br><br>
+<i><b>But</b> if</i> these 25% of "99 &amp; 0" voters were <i>not</i> "dishonest" but in fact 
+were expressing their honest opinions (for example, say the 25% are Jews and Gore has an evil plan
+to kill all Jews, so the honest scores really do form a 2-peaked distribution), 
+then median-based range voting would here be making a big mistake!
+<br>
+<img src="OneTwoPeaked.png">
+<br>
+More generally, whenever there is a <b>2-peaked</b> score-distribution for some candidate, 
+median is going to 
+pay essentially no attention to the sizes of the two peaks (also will ignore 
+the location of at least one of them) and hence will often
+output a pretty crazy judgment.
+</blockquote>
+<p>
+<b>Figure-skating judging</b> is an environment where these advantages-for-median
+(or for "trimmed mean" range voting) seem present.
+But it does not look to me like large political elections enjoy
+these median-favoring features (at least, not usually).  Also
+some have raised a moral objection to MJ and Trimmed Mean, which is that it is "unfair"
+that they ignore minorities of extreme voters.  The moralists say that while that can be ok
+for figure-skating judging (ignore corrupt unprofessional judges) but for democracy
+ignoring minorities is an outrage.  ("Sorry Green Party, you are outliers so we're
+going to ignore you.")
+</p><p>
+<b>For example</b>, in Balinski &amp; Laraki's own MJ vote data in France 2007, <i>none</i> of the
+candidates had tightly bunched score-distribution, and Sarkozy (the MJ winner according
+to Balinski &amp; Laraki's extrapolation
+to all France) had a strongly <i>two-peaked</i> distribution (peaks at 0 and 4 on 0-5 scale).
+Thus exactly this problem <i>happened</i> in Balinski &amp; Laraki's own experiment
+(a fact they did not notice)! &ndash; Sarkozy 
+<a href="France2007.html#aboutMJ">won</a>
+with MJ, but the democratically-correct 
+winner should have been Bayrou.
+(Both rank-order and 33 pairwise polls all unanimously and indisputably
+<a href="France2007.html">show</a> Bayrou
+would have defeated Sarkozy in a two-candidate simple majority vote, indeed would
+have defeated any rival X in a Bayrou-versus-X vote; also Bayrou won with
+approval voting, {0,1,2} score voting, and {0,1,2,3,4,5} score voting; and finally
+in retrospect later polls showed France wished Bayrou had won, e.g.
+near the end of Sarkozy's term France 
+preferred Bayrou&gt;Sarkozy by landslide 56-35 margin pairwise.)
+</p>
+
+<table><tr><td>
+<img src="BayrouScoreDistnOrsay2007.png" />
+</td><td>
+<img src="SarkozyScoreDistnOrsay2007.png" />
+</td></tr></table>
+
+<p>
+So this two-peakedness problem happened in Balinski &amp; Laraki's own MJ study and caused
+its failure.
+</p>
+
+<a name="unhappywithall"></a>
+<H3> Another (possibly highly embarrassing) real-life strategy-related problem that hurts 
+Balinski &amp; Laraki's median-based system, but not average-based range voting </H3>
+<p>
+It is an empirical fact that real-world range voters (with either median- or
+average-based range voting) award the score 0 (zero)
+far more often than any other score.  (Obviously, this is strategic.)
+Hence it might happen reasonably frequently that <i>every</i> candidate gets a
+<i>majority</i> of zero scores.  For example in the 
+<a href="FrenchStudy.html">French 2002 presidential</a>
+election (oddly enough, the election immediately prior to the one Balinski &amp; Laraki studied)
+<i>every</i> one of the 16 candidates was "disapproved" by at least 63% of the voters
+(if given a choice "approve" or "disapprove") and most by far more (80.3% 
+overall disapproval rate).
+</p><p>
+<small>
+The 2007 one that Balinski &amp; Laraki studied <a href="French2007studies.html">also</a>
+featured majority-disapproval 
+for every candidate.
+</small>
+</p><p>
+Suppose this <b>"unhappy with all choices" scenario</b>
+happens.  When it does, every candidate's median
+score will be exactly zero.  (In contrast: Their <i>average</i> scores will generally
+be distinct nonzero values, so for average everything will be fine.)
+Hence Balinski &amp; Laraki's tiebreaking procedure will be invoked.
+It will elect the candidate with the fewest 0s, which resembles
+<a href="Glossary.html#antipl">antiPlurality</a> voting.
+AntiPlurality is a well known exceedingly bad voting system.
+<p><blockquote>
+Actually, that was not a great description of the situation, so let me clarify.
+In our "for each candidate, more than half the voters give him min-score"
+scenario (so every candidate has median score = min-possible score),
+what determines who wins in MJ?  Answer: The tiebreak rule, which is
+how <i>many</i> voters burn each candidate with min-score &ndash; the
+one with the fewest burns wins.
+That would be exactly antiPlurality voting ("candidate named by fewest
+voters wins") except that in antiPlurality each voter is allowed to name only one candidate,
+while in our scenario, a voter can burn any number of candidates 
+provided it's more than half of them on average. So
+really this is more like "antiApproval voting."
+The real fear I have with this scenario is that
+the non-burn (i.e. scores that are actually informational) 
+votes are completely <i>ignored</i> by MJ in this scenario &ndash; 
+doesn't matter what values they had.
+So you could say here MJ acted like approval (which is technically equivalent to
+antiApproval) voting, but it's really more like
+"approval voting with special major-deception features added" since the poor voters
+will think their non-minimal scores are the things that matter, but
+that perception would be exactly wrong.
+They will think "if I move Hitler up from a 0 to 1 that
+won't help him nearly as much as moving him to 9," but they'd be wrong.
+</blockquote><p>
+In this situation, any version of MJ will simply elect the candidate
+with the most non-bottom votes, 
+regardless of the grade of those votes. 
+A candidate with 40% Ds and 60% Fs will beat a candidate with 30% As and 70% Fs.
+The results of such an election might be <b>largely random</b>, or at least
+hard to defend as legitimate.
+</p>
+<p>
+It is unclear how frequent and severe this pathology will be in real life.  Balinski &amp; Laraki
+only looked at one single election (where it didn't happen).   
+There then was a France-wide MJ <a href="Sondageopinionway2012FR.pdf">poll</a>
+by OpinionWay, a French polling firm, 1 year
+in advance of the <a href="France2012.html">France 2012</a> presidential election. 
+(1000 respondents, telephone; 12 "candidates," 7 score levels.)
+In this poll, it appears that a weakened and partial version of the "unhappy with all" 
+pathology <i>did</i> occur.  Specifically, MJ yielded essentially
+the same results as average-based range voting, except for rightist candidate Marine Le Pen,
+for whom a large discrepancy occurred.
+</p><table bgcolor="lightgreen">
+<caption>OpinionWay MJ poll, France 6-7 April 2011, asterisks * for "candidates" who were not
+ those who eventually really ran
+</caption>
+<tr><th>MJ-Rank</th><th>Candidate</th><th>% rating above MJ</th><th>"Majority Judgment"</th><th>% rating below MJ</th>
+<th>Score-counts (best&rarr;worst)</th>
+<th>Average</th>
+</tr>
+<tr><td>1</td><td><b>M. Aubry*</b></td><td>38.0</td><td><b>Assez Bien -</b></td><td>49.3</td><td>82, 129, 170, 126, 196, 114, 184</td><td><b>2.70</b></td></tr>
+<tr><td>2</td><td>J-L. Borloo*</td><td>46.0</td><td>Passable +</td><td>34.4</td><td>22, 62, 153, 223, 196, 159, 185</td><td>2.27</td></tr>
+<tr><td>3</td><td>D.d. Villepin*</td><td>40.1</td><td>Passable +</td><td>39.3</td><td>20, 58, 119, 204, 207, 174, 219</td><td>2.08</td></tr>
+<tr><td>4</td><td>F. Bayrou</td><td>37.9</td><td>Passable -</td><td>35.9</td><td>12, 47, 128, 192, 261, 166, 193</td><td>2.09</td></tr>
+<tr><td>5</td><td>E. Joly</td><td>29.9</td><td>Passable -</td><td>49.8</td><td>32, 47, 74, 145, 203, 190, 309</td><td>1.75</td></tr>
+<tr><td>6</td><td>N. Sarkozy</td><td>46.9</td><td>Insuffisant +</td><td>41.3</td><td>41, 87, 111, 95, 135, 118, 413</td><td>1.80</td></tr>
+<tr><td>7</td><td>JP.Chevenement*</td><td>43.1</td><td>Insuffisant +</td><td>32.2</td><td>5, 11, 58, 129, 228, 247, 322</td><td>1.41</td></tr>
+<tr><td>8</td><td>J-L. Melenchon</td><td>36.8</td><td>Insuffisant -</td><td>41.8</td><td>13, 27, 50, 112, 165, 214, 418</td><td>1.29</td></tr>
+<tr><td>9</td><td>O. Besancenot*</td><td>35.4</td><td>Insuffisant -</td><td>44.2</td><td>8, 17, 69, 99, 161, 204, 442</td><td>1.23</td></tr>
+<tr><td>10</td><td>N.Dupont-Aignan</td><td>25.5</td><td>Insuffisant -</td><td>46.7</td><td>5, 14, 27, 70, 139, 277, 467</td><td>0.97</td></tr>
+<tr><td>11</td><td>N. Arthaud</td><td>25.8</td><td>Insuffisant -</td><td>48.0</td><td>1, 9, 34, 77, 137, 261, 480</td><td>0.95</td></tr>
+<tr><td>12</td><td><b>M. Le Pen<b></td><td>44.4</td><td><b>A Rejeter -</b></td><td>0</td><td>68, 65, 70, 72, 78, 93, 556</td><td><b>1.48</b></td></tr>
+<!--2 Borloo* 46,0% Passable + 34,4%
+3 Villepin* 40,1% Passable + 39,3%
+4 Bayrou 37,9% Passable + 35,9%
+5 Joly 29,9% Passable - 49,8%
+6 Sarkozy 46,9% Insuffisant + 41,3%
+7 ChevÃ¨nement* 43,1% Insuffisant + 32,2%
+8 MÃ©lenchon 36,8% Insuffisant - 41,8%
+9 Besancenot* 35,4% Insuffisant - 44,2%
+10 Dupont-Aignan 25,5% Insuffisant - 46,7%
+11 Arthaud 25,8% Insuffisant - 48,0%
+12 Le Pen 44,4% A Rejeter -
+Here are the score voting totals found in this poll for the candidates who
+actually ran, plus Aubry (counts for scores start from max score ordered toward
+min score on 7-point scale):
+Melenchon: 13 27 50 112 165 214 418
+Joly: 32 47 74 145 203 190 309
+Aubry*: 82 129 170 126 196 114 184
+Bayrou: 12 47 128 192 261 166 193
+Sarkozy: 41 87 111 95 135 118 413
+Dupont-Aignan: 5 14 27 70 139 277 467
+LePen: 68 65 70 72 78 93 556
+Arthaud: 1 9 34 77 137 261 480
+-->
+</table>
+<p>
+Specifically, MJ ranked Le Pen dead last, while average-score claimed she finished 7th of the 12.
+</p><p>
+<b>What caused this discrepancy? And which system was better?</b>
+At least naively, MJ appears to have "judged" Le Pen wrongly while average judged her
+more correctly.
+The reason I say that was, MJ's main claim to superiority over average is its superior
+resistance to "1-sided strategy."    The reason average gave Le Pen a much
+higher place, was because she had a substantial
+number of supporters who rated her all along the scale (including "excellent").
+MJ dismissed all of them as "exaggerating strategists," paying attention <i>only</i> to the
+fact a majority of voters gave Le Pen the worst possible score "A rejeter."
+But that was wrong &ndash; those Le Pen supporters were <i>not</i> "exaggerating."
+They were being "honest." How do we know that? Because
+</p><ol type="a">
+<li>
+In the real (plurality voting) election, they voted for her, even though
+that was poor strategy (Le Pen had no chance to win so their vote was wasted/futile).
+</li><li>
+Their scores for Le Pen were spread fairly uniformly all across the scale, whereas if
+they had been about strategically exaggerating, they would have all been at the extremes.
+</li></ol>
+<p>
+(Indeed, if anything, the <i>anti</i> Le Pen faction was the one exaggerating.)
+So average, correctly (in this case)
+regarding those Le Pen scores as "honest," gave her credit for them
+and boosted her into 7th place, while MJ wrongly ignored all those scores and rated her
+with the min-possible score.  This is precisely the sort of undemocratic behavior ("ignore 
+outlier minority groups such as Rightists, Jews, Greens") critics of MJ feared.
+<small>
+But this <i>would</i> be good for eliminating bribed figure skating judges as outliers
+in the Olympics.
+</small>
+</p><p>
+<b>In what (weakened) sense is this an instance of the present section's
+"unhappy with all" pathology?</b>
+Restrict attention to
+the bottom half of the field of 12 candidates (which was where
+the discrepancy occurred &ndash; and it was a very severe one, changing Le Pen from
+<i>top</i> to <i>bottom</i> among these 6).
+Then <i>all 6</i> of them were rated "A rejeter" by a large chunk of the voters.
+(Only for Le Pen was that chunk actually over 50%, so this is only
+an approximate and weaker version of our proposed pathology.)
+As a result, MJ ignored <i>all</i> the reasonably decent scores that <i>all</i> of these
+candidates received, paying attention <i>only</i> to how many "A rejeter" and "Insuffisant"
+scores they got.   But that usually worked out ok (!) because
+all these candidates had very similarly shaped
+score-distributions, so just looking at one point of the distribution was good enough 
+for comparison purposes, so MJ produced essentially the
+same ordering as average.
+The <i>exception</i> was Le Pen, whose distribution was shaped quite
+<i>differently</i> than the other five.  
+(<a href="Why99.html#aubrygraphics">pictures</a>)
+And that was the reason for the discrepancy.
+Note that this kind of effect could have perturbed anybody in any direction, depending
+on the shape of the parts of their score distributions that MJ ignored.
+In our particular case it only moved Le Pen (from top to bottom of the 6) because only
+her distribution was differently shaped (e.g. largely flat with peaks at the two ends).  
+But if you look at the score-distributions for the top 6 candidates
+you will see that a large variety of shapes occur, e.g. Aubry 
+has 
+<i>three</i> large peaks,
+(Sarkozy also has three peaks) etc.
+</p><p>
+<b>How many score levels?</b>
+If we used a continuum-infinite score scale instead of Balinski &amp; Laraki's 6-point scale,
+this whole problem might get even worse because Caligula could win with 55% scoring him 0
+and the next 45% scoring him 0.0001, while meanwhile Jospin loses with 60% 0-scores and 40% 
+100-scores &ndash; and the reason is entirely 
+the single first 0.0001 score 
+(which in B&amp;L's system counts the same as score 97, in this scenario).   
+This suggests that, unlike for average-based range voting, making
+the scale finer-grained might make B&amp;L's median-based voting behave substantially worse,
+and suggests for Balinski &amp; Laraki
+it may matter quite a lot <b>exactly</b> how many score levels there are.
+</p><p>
+What is the optimum number?  (An important question Balinski &amp; Laraki did not address.)
+Might it be <a href="#MCAbenham">three</a>?
+</p>
+
+<a name="burr"></a>
+<H3> Nagel's &quot;<a href="BurrDilemma.html">Burr Dilemma</a>&quot;
+can favor median versus average  </H3>
+
+<p><small>
+The idea in this section is due in substantial part to Jameson Quinn, and might be very important.
+</small></p>
+
+<p>
+Suppose
+there is a 3-way race between candidates X, Y, and Z where Y is similar to Z.
+Suppose the voters who favor Y and Z outnumber those who favor X.
+With <a href="Approval.html">approval</a> voting, Y or Z would win 
+provided the Y-or-Z-favoring voters approve <i>both</i> 
+(while disapproving X) outnumbering the X-approving voters (who disapprove Y &amp; Z).
+The trouble is that members of the former faction favor Y&gt;Z or Z&gt;Y slightly.
+They would be tempted, to prevent the "wrong" member of {Y,Z} from winning,
+to strategically disapprove him.  If enough did so, then X would win, a disaster.
+</p><p>
+This has been called the "Burr dilemma," albeit a perhaps better name is the "chicken dilemma."
+If there were good pre-election polling indicating its likelihood, then the Y+Z faction
+would recognize the problem and could try to compensate with more double-approval voting.
+(Another issue would be that if those polls showed X losing, then the X-faction
+would be tempted to approve the less-bad among {Y,Z} also.)
+</p><p>
+Now it was suggested that (average-based)
+<a href="RangeVoting.html">score</a> voting could alleviate this problem because it
+would give the Y+Z faction the option of voting "X=0, Y=70, Z=100" on an 0-100 scale,
+thus "more safely and honestly" indicating their Z&gt;Y preference.
+But this is not a total cure.  We can easily envision a situation such as
+(using 0-9 score voting)
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>
+<b>X</b> wins with average=<b>4.32</b>
+versus Y and Z with 4.16 each.
+</caption>
+<tr> 
+<th> #voters </th>
+<th> their vote  </th>
+</tr>
+<tr><td> 26 </td><td> X=0 Y=7 Z=9 &nbsp;&nbsp;&nbsp; (but honestly Y=8) </td></tr>
+<tr><td> 26 </td><td> X=0 Y=9 Z=7 &nbsp;&nbsp;&nbsp; (but honestly Z=8) </td></tr>
+<tr><td> 48 </td><td> X=9 Y=0 Z=0  </td></tr>
+</table>
+
+<p>
+in which X wins, but really Y or Z should have won because the honest scores
+would have given them average=4.42. In other words, the Burr dilemma can still
+hurt average-based range voting, even with voters who only partially downgrade the
+"worst member of the good pair."
+</p>
+<p>
+But in this situation, MJ would have concluded that the <i>median</i> scores were 
+X=0, <b>Y=Z=7</b> (win) and hence would <b>not have been hurt</b> by the "Burr dilemma."
+So it may well be that in the presence of
+</p><ol type="a">
+<li>
+A "Burr dilemma" situation with three main candidates where X, Y, Z with Y similar to Z
+</li><li>
+Voters who vote in a partly-honest and partly-strategic manner
+</li><li>
+(which is <i>not</i> the same thing as: some voters vote 
+wholy-honestly while the remaining voters vote wholy-strategically)
+</li>
+</ol>
+<p>
+that median-based approaches will outperform average-based ones!
+Warren D. Smith's old (2012 and before)  <a href="BayRegExec.html">Bayesian Regret</a>
+computer election simulations had only considered honest+strategic voter mixtures as in (c)
+where each voter flipped a constant-bias coin to decide which type to be,
+and hence presumably had not experienced this Burr-effect, which happens with voter behavior (b),
+which has <i>non</i>-equivalent effect for MJ voting (although equivalent for average-based 
+score voting).
+Indeed the "flaw" in MJ voting pointed out <a href="#partition">earlier</a> about partitioning
+into districts here instead plays a <i>beneficial</i> role!
+</p><p>
+It would therefore be highly interesting to redo that simulation work, but this time incorporating
+such internally-mixed voters (we'd need first to figure out how such voters behave).  Then
+we could quantitatively assess how much this Burr effect matters and whether it is enough
+to swing Bayesian Regret's judgment to favor medians.
+</p>
+
+<a name="RLC"></a>
+<H3> Only real world test of the effect of strategic voting </H3>
+<p>
+The presidential straw <a href="RLCstrawPoll2015.html">poll</a>
+at the 2015 Republican Liberty Caucus was the only known real-world poll ever conducted 
+with ratings ballots known to feature massive organized strategic voting conspiracies.
+</p><p>
+Unfortunately for Balinski &amp; Laraki's theoretically based hopes that MJ
+would defend well against strategic voters by comparison with plain average score...
+actually, the opposite happened:
+MJ was completely <a href="RLCstrawPoll2015.html#StratImpact">destroyed</a>
+ by the strategic-voting conspiracy while
+it was plain average that defended itself fairly well.
+</p>
+
+
+<a name="twoparty"></a>
+<H3> Two-party domination? (2PD) </H3>
+
+<p>
+<a href="NESD.html">Suppose</a> all (or enough)
+voters decide that A and B are the two "major party" candidates and exaggerate
+to score A=max and B=min (or the reverse) in a naive attempt
+to "increase the impact" of their vote.   This 
+with some voting systems such as plain <a href="Plurality.html">plurality</a>, 
+Condorcet (with strict 
+rank-orderings as votes)  and
+instant runoff (IRV) <i>forces</i> either A or B always to win ("self-fulfilling prophecy").
+A "third party" candidate C
+can never win with this voter behavior (unless there is a perfect tie, but we shall regard
+that as neglectibly unlikely).
+</p><p>
+This is in my opinion (and oversimplifying) the <i>reason</i> that IRV and Plurality and 
+(presumably also?) Condorcet systems
+lead to self-perpetuating <a href="Duverger.html">2-party domination</a> (2PD).
+With 2PD, the democratic "marketplace" is severely shrunk and the fact we are 
+using voting systems more
+advanced than plain plurality becomes largely irrelevant.  This is a disaster.
+And you need to keep in mind that his kind of naive-AB-exaggeration behavior is
+very common, occurring for about 85% of Australia's voters.
+</p><p>
+Now with this voter behavior, even by 100% of all voters, it still remains entirely
+possible for a third-party candidate to win under either  approval,
+or average-based range, voting.
+Thus there is hope that range voting will enable avoiding the 2PD trap.
+(There is some, but <a href="NurserySumm.html">less</a>, such hope with approval voting.)
+</p><p>
+But with median-based range voting, this voter behavior causes one of the two major-party 
+candidates to always get median=max score.  Thus the only way a third-party candidate 
+can win, is if his median also equals the maximum possible score.
+This intuitively seems unlikely compared to the condition (average&gt;51 using 0-100 scale) 
+for a  third-party candidate to win
+with average-based range voting in this kind of scenario.
+</p><p>
+So it seems plausible that Balinski-Laraki
+voting will still fall into the 2PD democracy-destroying trap.
+</p>
+
+
+<a name="summary"></a>
+<H3>  Summary: Conditions favoring Median versus Mean-based range voting  </H3>
+
+<table cellspacing="15">
+<tr>
+<th>
+Favors Median 
+</th>
+<th>
+Favors Mean
+</th>
+</tr>
+<tr>
+<td bgcolor="yellow">
+<p>
+Honest scores for each candidate tend to 
+be "sharply peaked" &ndash; almost all scores near some numerical value
+(the value depends on the candidate)
+</p>
+</td>
+<td bgcolor="pink">
+<p>
+Honest scores for each candidate vary over a broad range or form a two-or-more-peaked
+distribution
+</p>
+</td>
+</tr>
+<!-- sorry, wrong intuition:
+<tr>
+<td bgcolor="yellow">
+<p>
+Voters' decisions whether to be "strategic" or "honest" are strongly correlated with 
+<i>which</i> of the two election "frontrunners" they support (e.g. those who support "Bush"
+are often strategic but those supporting "Gore" are usually honest)
+</p>
+</td>
+<td bgcolor="pink">
+<p>
+Voters decide how strategic/honest they want to be in a manner 
+<i>un</i>correlated with
+<i>which</I> of the two election "frontrunners" they support.
+</p>
+</td>
+</tr>
+-->
+<tr>
+<td bgcolor="yellowgreen">
+<p>
+There are just two kinds of voters: "honest" and "strategic."
+[<b>But</b> this table-line made sense before the
+<a href="#burr">Burr dilemma</a> effect above was discovered. Now we know about it,
+that could reverse this table-line!!]
+</p>
+</td>
+<td bgcolor="#FF88FF">
+<p>
+There are a continuum of kinds of voters &ndash; each varies between wholy honest
+to wholy strategic and can lie anywhere in between; and there is no simple way to 
+classify voters into just two ("honest" vs "not") pigeonholes.
+</p>
+</td>
+</tr>
+<tr>
+<td bgcolor="yellow">
+<p>
+In the 
+<a href="MedianAvg1side.html">more general 1-parameter model</a>,
+median exhibits twice the resistance to <b>1-sided strategic</b> voting...
+</p>
+</p>
+</td>
+<td bgcolor="pink">
+<p>
+...while average exhibits half the resistance.
+[But I am currently not aware of any evidence that 1-sided strategy
+actually exists in the real world in large elections.]
+</p>
+</td>
+</tr>
+<tr>
+<td bgcolor="yellow">
+<p>
+May be vulnerable to self-perpetuating "2-party domination" trap
+caused as indirect effect of voter strategizing over many consecutive elections.
+</p>
+</p>
+</td>
+<td bgcolor="pink">
+<p>
+With 2 "major parties" plus "minor" parties (who try to become more major)
+mean-based score voting may be able to avoid 2-party domination trap.
+</p>
+</td>
+</tr>
+
+</table>
+
+<p>
+I suspect these median-favoring conditions hold substantially better for skating-judging
+than for large political elections.
+(And even then, 
+<a href="OlympBonaly.html#trim">trimmed mean</a></b>
+probably is superior.)
+However, it would be better if this "suspicion" and limited evidence could be replaced by 
+a much greater amount of more-solid evidence. Our range-voting exit poll
+<a href="PsEl04.html">study</a>
+of the 2004 USA presidential election sought but
+found no evidence Kerry and Bush supporters differed in how strategic they were.
+</p><p>
+Ordinary range voting is better than Balinski-Laraki
+for (a) honest voters, or for (b)  strategizing <i>and</i> counterstrategizing
+voters, or for any mixture of (a) and (b).
+<i>However</i> for voters who each <i>internally</i> mix honesty with strategy, 
+Balinski-Laraki could outperform average-based range voting due to
+<a href="#burr">Burr dilemma</a> effect.
+A simple model makes it appear
+that 1-sided strategy distorts Balinski &amp; Laraki's system <i>more</i> than it distorts
+ordinary range voting (contrary to Balinski &amp; my own naive intuition); see 
+<a href="#fancygraph">graph</a> above &ndash; but a more 
+<a href="MedianAvg1side.html">general</a> class of models reach the opposite conclusion.
+</p>
+
+<br>
+<a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

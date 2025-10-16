@@ -1,0 +1,422 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Reweighted Range Voting - a PR voting method that feels like range voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> 
+Reweighted Range Voting &ndash;
+a <a href="PropRep.html">Proportional Representation</a>
+voting method that feels like range voting
+</H2>
+
+<p>
+<small>
+By Jan Kok &amp; Warren D.Smith.
+(There is also an easier-to-digest[?] <a href="RRVr.html">RRV page</a> by Ivan Ryan.)
+</small>
+</p>
+
+<P>
+Reweighted Range Voting (RRV)
+is based on STV (it uses the STV ideas of "Droop quota" and "ballot
+reweighting"), and chooses multiple winners in such a way as to obtain
+proportional representation. The main differences between RRV and STV
+that would be apparent to ordinary people are: 
+<ol>
+<li>
+RRV uses a more-expressive <a href="RangeVoting.html">Range-Voting</a>-style 
+ballot &ndash; voters "score" each candidate from (say) 0=bad to 9=good &ndash;
+while STV uses rank-order ballots in which expressing "strength of preference"
+is impossible;
+</li><li>
+It is simpler to explain how RRV works.
+</li></ol>
+
+<h3> How RRV works </h3>
+
+<ol type="a">
+<li>
+Each ballot is given an initial "weight" of 1.
+</li><li>
+The weighted scores on the ballots are summed for each candidate,
+thus obtaining that candidate's total score.
+</li><li>
+The candidate with the highest total score (who has not already
+won) is declared a winner. 
+(Note that the first winner in RRV is the
+same as the winner of an ordinary single-winner Range Voting
+election using the same  ballots.)
+</li><li>
+When a voter "gets her way" in the sense that a candidate she rated
+highly wins, her ballot weight should be <i>reduced</i> so that she has less
+influence on later choices of winners. To accomplish that, each ballot is given a
+new <nobr>weight = 1/(1+SUM/MAX),</nobr> where SUM is the sum of the scores 
+that ballot gives 
+to the winners-so-far, while MAX is the maximum allowed score
+(e.g. MAX=99 if allowed scores are in the range 0 to 99).
+</li><li>
+Repeat steps b-d until the desired number of winners has
+been chosen.
+</li></ol>
+
+<blockquote>
+<small>
+One can instead employ this formula in step d:
+&nbsp;
+weight = K / (K + SUM/MAX)
+&nbsp;
+where K is any positive constant.  The range 
+&frac12;&le;K&le;1 seems most interesting.
+Our formula above had used K=1, which is analogous to Jefferson &amp; d'Hondt notions
+of proportionality, which tend to favor large political parties (incentivizes smaller
+parties to merge); meanwhile
+K=&frac12; 
+is analogous to Webster &amp; Sainte-Lagu&euml; notions, which tend to be "fairer" and provide
+much smaller merge-incentive (and perhaps not even of the same sign, it might be a slight 
+split-incentive).
+<br><br>
+We also remark that votes incorporating "no opinion" scores on candidates could also be allowed.
+Ballots employing them will not affect the weighted-average scores for any candidates
+they rate with "no opinion" and such ballots will not be re-weighted when such
+a candidate wins.
+</small>
+</blockquote>
+
+<p>
+Beyond RRV's
+obvious simplicity advantage, it has other advantages such as
+<a href=" Monotone.html">monotonicity</a>.  That is, with RRV, if a voter 
+increases a rating for a candidate,
+that will never change that candidate from a winner to a loser. 
+(With
+STV, giving a candidate a better rank can cause that candidate to
+<a href="COlecture.html#nonmono">lose</a>, 
+even in the single-winner [<a href="rangeVirv.html">IRV</a>] case.)
+</p>
+<p>
+You may be thinking, "STV is good enough, why should we consider
+another PR method?" One good reason to think about RRV
+has to do with single-winner methods.
+<p>
+</p>
+RRV is a <a href="PropRep.html">PR</a> method that
+doesn't require <a href="rangeVirv.html">IRV</a> as a stepping stone. Rather, it uses
+ <a href="RangeVoting.html">Range Voting</a> (also called "score voting")
+as the stepping stone; i.e. score voting is the corresponding
+single-winner method.
+</p>
+
+<!--
+???You might want to come up with a simple example to illustrate the
+point about monotonicity.
+-->
+<hr>
+<h3> Proportionality Theorem </h3>
+<p>
+If some voter faction (call them the "Reds"),
+consisting of a fraction F (where 0&le;F&lt;1) of the voters, 
+wants to, it is capable (regardless of what the other voters do) of electing at
+least
+&lfloor;(1+N)F<sup>-</sup>&rfloor;  
+red winners (assuming, of course, that at least this many red candidates run, and the total
+number of winners is to be N).
+</p>
+<p>
+Specifically, it can accomplish that by voting MAX for all Reds and MIN for everybody else.
+</p>
+<p>
+To say that again: if 37% of the voters are reds, they can assure at least about 37% red winners
+(up to rounding-to-integers effects).
+</p>
+
+<hr>
+<a name="history"></a>
+<h3> History </h3>
+<p>
+Although I believed I was the inventor of RRV in 2004, it turns out that 
+Thorvald N. Thiele invented a
+special case of this system &ndash; namely where the only
+allowed scores are 0 and 1 (<a href="Approval.html">approval</a>-style voting)
+and with K=1 &ndash; in 1895.  Thiele's system actually was <i>used</i>
+in Sweden in about 1910 (enacted 1907), but attributed to 
+<a href="https://en.wikipedia.org/wiki/Alfred_Petersson">Alfred Petersson</a>
+of P&aring;doba,
+a prominent MP (and at least at one time a member of the Liberal party, although I do not know 
+what party he was in at the time he proposed this) and wealthy farmer.  
+I would like to know more about what happened 
+during this period of RRV use and why Sweden abandoned it in 1921 to replace it by a
+cruder "party list" PR system.
+A scholar could probably understand that by reading old Swedish government documents.
+I, however, am not that good a scholar and therefore resorted to reading books and papers
+about Sweden written in English.  The closest I found to an explanation for its abandonment
+was the following rather mysterious sentence:
+</p><blockquote>
+The regulations adopted in 1907
+were found to be technically unsatisfactory, and so various changes
+have been made in the method of election and particularly in the
+technical aspects of the system.
+<br> &nbsp;&nbsp;&ndash;
+Nils Herlitz: <a href="Herlitz1925PrSweden.pdf">Proportional Representation in Sweden</a>,
+American Political Science Review 19,3 (Aug 1925) 582-592.
+(English translation by Fred Berquist &amp; Clarence A. Berdahl.)
+</blockquote><p>
+<a href="https://sv.wikipedia.org/wiki/Nils_Herlitz">Herlitz</a>
+was a law/history professor at University of Stockholm, and by 1925
+Sweden had switched to a party list system within multiwinner districts, instituted universal
+suffrage including for women, and become generally more democratic and
+more PR all over.  What did Herlitz's sentence mean?
+My guess is it just meant that Thiele was a lot more difficult
+to count than party list PR systems.
+It (like STV) needs to be counted <i>centrally</i>; we cannot
+just use subtotal tables from precincts.   And Thiele requires multiple counting passes, with
+different ballot weights, not
+just one.  In the pre-computer era all that was a considerable burden.
+As far as the election <i>results</i> they produced are concerned, my reading did not uncover
+any commentator complaints about either Thiele or its party-list replacement.  Both generated
+multiparty parliaments which tended mainly to yield "coalition governments"; and the number
+of parties in Sweden tended to increase over time.
+</p><p>
+Thiele's system was criticized by Lars Edvald Phragmen and Nore B. Tenow;
+<a href="Phragmen.html">learn more</a>.
+And indeed the Thiele-like system Sweden enacted in 1907
+(described in English by J.H.Humphreys in this <a href="Swedish1909.txt">excerpt</a> 
+from his 1911 book) actually incorporated a <i>modification</i> designed
+to repair the most important such criticism. Specifically, for j=1,2,3,...
+while this keeps working:
+if more than j/(j+1)
+fraction of the voters have approved all members of a set of j candidates, then 
+the top-approved such set is elected.  (For example if the top 2 candidates are
+both approved on at least a fraction 2/3 of the ballots, then they win seats.)
+Only <i>after</i> these "easy call" candidates had been
+elected, did Sweden begin the Thiele process, and it was used to allocate 
+only the remaining unfilled seats &ndash; and therefore only they obeyed
+a proportionality theorem.
+</p>
+
+<hr>
+<a name="imperf"></a>
+<h3> Imperfections </h3>
+<p>
+While RRV seems superior to STV both in simplicity and properties,
+that is <b>not</b> to say that it is perfect.  Two flaws in RRV
+(which also are flaws in STV) are
+<ol>
+<li>
+a multiwinner analogue of "participation failure,"
+and 
+</li><li>
+the fact that it <a href="IrvNonAdd.html">cannot</a> be "counted in precincts" but
+only centrally.  
+<BR>
+<small>
+<a href="FWS.html">Forest Simmons</a> in 2007 solved an open problem by showing
+how to design PR multiwinner voting methods that <i>are</i>
+countable in precincts &ndash; see <a href="PuzzlePage.html#p15">puzzle 15</a> &ndash;
+but that is another story for another day.
+</small>
+</li></ol>
+
+<a name="particfail"></a>
+<p>
+To explain the former:
+here is a desirable-sounding property for
+multiwinner voting systems:
+</p>
+<table bgcolor="#ccffcc"><tr><td>
+<blockquote>
+<b>Multiwinner "participation property":</b><br>
+By casting an honest vote, you cannot cause X to be elected
+instead of Q (with all other winners staying the same)
+if you prefer Q over X.
+</blockquote>
+</td></tr></table>
+<p>
+The "STV" system used in Ireland and Australia definitely fails this property, 
+since its single-winner special case (<a href="rangeVirv.html">instant runoff voting</a>, IRV) 
+<a href="IRVpartic.html">fails</a> it.
+</p><p>
+What about our new RRV system?  It obeys this property in the single-winner
+case (because that is just range voting).
+<i>But</i> it fails it in the following
+140-voter 3-candidate 2-winner election example:
+</p>
+<table cellspacing="3" cellpadding="2" bgcolor="yellow">
+<tr><th>#voters</th><th>their vote</th></tr>
+<tr><td>50</td><td>Z=99, X=42, Q=0</td></tr>
+<tr><td>50</td><td>X=99, Q=43, Z=0</td></tr>
+<tr><td>40</td><td>Q=99, Z=53, X=0</td></tr>
+</table>
+<p>
+In the first round, 
+the totals are 
+Z=7070,
+X=7050,
+and 
+Q=6110,
+so
+RRV <b>elects Z</b>.
+That deweights X so that,
+second round, <b>Q wins.</b>
+(The second round totals are
+Q=6110,
+and
+X=6000.)
+</p>
+<p>
+Now you (an extra voter) come with a vote Q>X>Z, for example
+<blockquote>
+Q=99, X=77, Z=0.
+</blockquote>
+That makes <b>X win</b> the first round.
+(First round totals: 
+X=7127,
+Z=7070,
+and
+Q=6209.)
+But that win heavily deweights Q, allowing
+<b>Z to win</b> the second round.
+(Second round totals:
+Z=5134,
+Q=5059.8.)
+</p>
+<table cellspacing="3" cellpadding="2" bgcolor="aqua">
+<caption>Summary of situation:</caption>
+<tr><td>Before you vote:</td><td align="right">Z &amp; Q win.</td></tr>
+<tr><td>After your Q>X>Z vote:</td><td align="right">Z &amp; X win.</td></tr>
+</table>
+<p>
+The property fails.
+</p>
+<!-- NOT SO!  Psi voting obeys multiwinner participation property!!
+<p><small>
+It turns out however, that I can argue that <i>every</I> 
+proportional representation voting method
+<i>must</i> fail a property of this ilk; we shall hopefully explain that in a 
+to-be-written future web page.
+</small></p>
+-->
+
+<hr>
+<a name="oscar"></a>
+<h3> The OSCARs </h3>
+<p>
+RRV is now used by the <a href="OscarPapers.html">OSCAR</a>s 
+to select the 5 nominees for "Best Visual Effects" award
+for movies each year, according to this rule
+<blockquote>
+"Five productions shall be selected using reweighted range voting to 
+become the nominations for final voting for the Visual Effects Award."
+</blockquote>
+from
+<a href="http://www.oscars.org/awards/academyawards/rules/rule22.html">http://www.oscars.org/awards/academyawards/rules/rule22.html</a>.
+They use an 0-10 scale for ratings.
+Voting for the OSCARs is run by the accounting firm 
+PriceWaterhouseCoopers.  [Presumably, this was done as an experiment with the idea of switching other
+OSCAR categories to use RRV if it worked out well.]
+The apparently first time (2013) they employed this system, the 5 nominees were:
+</p>
+<ul><li>
+<i>The Hobbit: An Unexpected Journey</i>,
+Joe Letteri, Eric Saindon, David Clayton and R. Christopher White
+</li><li>
+<i>Life of Pi</i>,
+Bill Westenhofer, Guillaume Rocheron, Erik-Jan De Boer and Donald R. Elliott
+</li><li>
+<i>Marvel's The Avengers</i>,
+Janek Sirrs, Jeff White, Guy Williams and Dan Sudick
+</li><li>
+<i>Prometheus</i>,
+Richard Stammers, Trevor Wood, Charley Henley and Martin Hill
+</li><li>
+<i>Snow White and the Huntsman</i>,
+Cedric Nicolas-Troyan, Philip Brennan, Neil Corbould and Michael Dawson.
+</ul>
+<p>
+Published <b>pre-election predictions</b>
+included:
+</p>
+<ul><li>
+<tt>IndieWire.com</tt> (and hence <tt>IMDb</tt>) predicted the
+same five except they predicted that <i>Cloud Atlas</i> would be nominated instead of 
+<i>Snow White</i>.  
+</li><li>
+<tt>Awardscircuit.com</tt> had predicted the same thing as <tt>Indiewire</tt>
+except preferring <i>Skyfall</i> instead of <i>Avengers</i>.
+</li><li>
+<tt>Ropeofsilicon.com</tt> predicted the exact winning five.
+</li></ul>
+<p>
+The difference between the actual winning 5 from RRV versus these predictions
+indicates (Shentrup speculates) that RRV succeeded in thus-getting more <i>diverse</i>
+nominees, thus demonstrating "proportional representation" in action.
+<hr>
+<p>
+An example election
+where <a href="PRcond.html">RRV seems to greatly outperform PR-STV</a>.
+</p><p>
+A real-world high stakes 
+<a href="June2011RealWorldRRVvotes.txt ">election</a>
+with 9 winners and 39 voters that was carried out with RRV
+(you will need to view it with wide window).
+</p><p>
+Billy Tetrud writes a 
+<a href="multiWinnerBaysianRegret.html">simulator</a>
+which seems to indicate 
+that RRV outperforms STV.
+Indeed STV is outperformed by various <i>non-PR</i>
+multiwinner methods!  That seems fairly damning
+(to whatever extent Tetrud's simulator is valid).
+</p>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+<!--
+maximize( s, {
+ 99*a+25*b+25*c>=99*b+a*50+s, 99*a+25*b>=99*c+40*b+s, 
+ c*99+b*40 >= s+ a*50/2 + b*99/(1+25/99),
+ c*99+b*40 >= s+a*51/2 +b*96/(1+25/99),
+ c*99+98+b*40 >= s+a*99+(b+c)*25,
+ c*99+98+b*40 >= s+99*c+40*b+99,
+ (c+1)*99 >= s+b*99,
+});
+
+with(simplex):
+mxs := 0.0;
+for A from 1 to 5 do
+for B from 1 to 5 do
+for C from 1 to 5 do
+maximize(s , {
+ 99*A+z3*C >= s+A*x1+B*99,  #Z wins1 over X
+ 99*A+z3*C >= s+A*y1+B*y2,  #Z wins1 over Y
+ 99*A+z3*C >= s+C*99+q2*B,  #Z wins1 over Q
+ 50*x1 + 50*99 + 77 >= s+A*99 + C*z3,       #X wins1 over Z
+ 50*x1 + 50*99 + 77 >= s+C*99 + q2*50 + 99,  #X wins1 over Q
+ 50*x1 + 50*99 + 77 >= s+B*y2 + 1 + y1*A,   #X wins1 over Y
+ x1>=0, y1>=0, y2>=0, z3>=0, 
+ x1<=99, y1<=99, y2<=99, z3<=99,
+ C*99 + q2*B >= s+x1*A/2 + 99*B,  #Q wins2
+ C*99 + q2*B >= s+y1*A+y2*B,      #Q wins2
+ z3*C + 99*A/1.4 >= s+99*C + q2*B/2 + 99/(1+77/99),      #Z wins2 over Q
+ z3*C + 9*A/1.4 >= s+51*A/1.4 + y2*B/2 + y3/(1+ 77/99)   #Z wins2 over Y
+}  );
+ss := subs(%,  s);
+#print(%%, ss);
+if (ss > mxs) then mxs := ss; print(A, B, C, ss); fi;
+od; od; od;
+ 
+-->

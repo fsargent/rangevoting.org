@@ -1,0 +1,188 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Ignoring your votes
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Ignoring your votes </H1>
+
+<p><small>(<a href="IgnoreExec.html">Executive Summary</a>)</small></p>
+<p><small>WARNING. This page has some errors and is under construction.  Is the right
+idea but some details are not quite right.
+Really I should not be speaking of cells and boxes, I should be phrasing it in terms of
+"communication complexity"and should be citing <a href="communicationICML04.pdf">this paper</a>
+by Conitzer &amp; Sandholm.  Their point is IRV has a lot smaller communication complexity than
+other voting methods, i.e, the voters and everybody can transmit much less info than the other
+voting methods and still guarantee finding the official
+winner.  The untransmitted info is then ignored.
+They did not make this remark, but that demonstrates that <i>always</i>, in IRV, asymptotically 
+<i>all</i> of
+the info in the votes need never be transmitted.  But they show that
+for most other (non-IRV) 
+voting methods, if less than a constant fraction of the info is transmitted,
+then in at least some situations the voting method simply will elect the wrong winner or
+fail to know who the right one should be (hence all of the info genuinely must be used, at
+least in suitable election situations).
+</small></p>
+<p>
+You go to the trouble of registering and voting.
+Then some voting systems ignore your vote, either entirely or partially.
+This can happen either because the voter makes an error, 
+or it can happen <i>intentionally</i>
+as part of the design of the voting system.
+</p>
+<p>
+We think that is bad, and the more ignoring there is, the worse it is.
+(For one thing, just consider all the wasted effort by the voters
+in providing all that information.)
+</p>
+<h3> Rigorous definition of vote-examination fraction F </h3>
+<p>
+To turn this into something quantitative,
+define the <b>vote-examination fraction</b> of
+a voting system as follows.  
+Suppose, there is some algorithm A which &ndash;
+after the votes can been collected and stored
+(in some obvious format) in memory cells &ndash;
+examines those memory cells and computes the election winner.  
+Think of those memory cells as boxes; the algorithm A can, at any point,
+decide to open up a box and use whatever information it finds inside.
+Furthermore, suppose there exists some A with the properties that
+</p>
+<ol>
+<li>
+It <i>always</i> determines the correct winner.
+</li><li>
+It <i>always</i> does so while examining a fraction F (or less) of the memory-cells,
+i.e. it opens a fraction &le;F of the boxes and never opens the rest.
+</li>
+</ol>
+<p>
+Here F is actually a function of the number V of voters and the number C of candidates.
+We are interested in minimizing F by choice of A, for given V&ge;C&ge;2.
+(In particular, mathematicians would be interested in the limsup of F when V,C&rarr;&infin;.)
+</p>
+<h3> Examples </h3>
+<p>
+For <a href="Plurality.html">plurality</a>
+voting, F=100%, i.e. it is impossible for any A to ignore even a single memory cell.
+Proof:
+We assume each memory cell stores one vote (each vote is the name of a candidate).
+Start examining the memory cells.  Even after A has examined V-1 memory cells,
+leaving just one un-examined, it still cannot guarantee that it knows the name of the
+winner, because that last cell might break  (or create)
+a tie between two leading candidates.  (And there is no way for A to know in advance which
+cells contain which votes.)
+</p>
+<p>
+One can similarly argue, for 
+<a href="Approval.html">approval</a>
+and 
+<a href="RangeVoting.html">range</a> voting, that 
+F=100%, because again, there is no way to prevent the possibility
+that the very last cell examined
+(each cell now storing a single range or approval score for a single candidate by a single voter;
+there are VC cells in all) does not break or create a lead-tie.
+</p>
+<p>
+It is trickier to think about 
+<a href="rangeVborda.html">Borda</a>
+and <a href="rangeVcond.html">Condorcet</a>
+voting.
+We can show F&asymp;100%.
+Specifically, we can set up a C-way tie where each candidate is pairwise-tied with each other,
+<i>except</i> that if a single voter decides to act differently
+about two candidates X and Y, then one of them becomes the Condorcet winner.
+Namely, suppose half of the voters (perhaps plus one more voter) rank
+the candidates in a cyclic shift of alphabetical order, and the other half
+rank the candidates in a cyclic shift of their <i>reversed</i> alphabetical order
+(all cyclic shifts equally frequent)
+all <i>except</i> for one voter who (perhaps)
+<i>switches</i> two candidates in her ranking.
+A cannot know for sure which two candidates got switched (if any) until it has examined
+at least V&middot;(C-1) of the VC cells, and just this single switch makes the difference
+in deciding the election winner (creates or breaks tie).
+Actually, although we have imagined the votes stored in VC cells, one can also
+imagine them as being stored in only (C-1)V cells (the last-place candidate in the ranking is
+implied) in which case this is, in fact, F=100% exactly.
+But this argument required V to be an exact multiple of 2C (or
+one off) and if V is not, then it might be possible to examine somewhat fewer cells.
+</p>
+
+<h3> Instant Runoff Voting (IRV) </h3>
+<p>
+In contrast,
+<a href="rangeVirv.html">Instant Runoff Voting</a>
+is very bad in this respect.
+Experimentally, it has particularly high 
+<a href="SPRates.html">voter-error rates</a>.
+But even if every voter votes correctly, then, in
+the limit C&rarr;&infin; where the election has a large number of candidates, IRV ignores
+asymptotically 100% of the information in the votes, i.e. F&rarr;0.
+To prove that, we need to construct an algorithm A which, given VC memory cells
+containing the IRV votes
+(each voter provides the names of the C candidates in order of preference in her
+C cells)
+examines only a fraction F of these cells (where F&rarr;0 if C is large)
+but nevertheless always outputs the correct winner.
+That is done in <a href="PuzzlePage.html#p34">puzzle 34</a>, where in fact
+it is <a href="PuzzIrvIg.html">shown</a> that
+</p><center>
+ F &le; (1+1/2+1/3+1/4+&hellip;+1/C) / C.
+</center><p>
+For example if there are C=10 candidates, then at most 29.3% of the cells are 
+read by the IRV process, with the remaining 70.7% ignored.
+If we imagine the votes are  stored in only (C-1)V cells rather than CV (the last-place candidate 
+in the ranking is implied) then the denominator C on the far right of
+the formula needs to be replaced by C-1.  Either way, F&rarr;0 when C&rarr;&infin;.
+<p>
+And due to 
+<a href="RichieRV.html#ex17">non-monotonicity</a>
+and "<a href="IRVpartic.html">no show paradoxes</a>," 
+even the parts of your vote that IRV does not ignore, can
+do things you don't expect:
+<ul>
+<li>
+Raising your vote for X from <a href="rangeVirv.html#BramsEx">bottom to top</a>, can 
+actually <i>cause</i> X to <i>lose</i> the election.
+</li><li>
+Casting an honest can actually <i>hurt</i> you by yielding a worse election
+result from your point of view, than if you had not voted at all.
+</li>
+</ul>
+</p>
+<p>
+IRV voters have to ask themselves why they are being asked to fill out a rather large ballot
+of rank orderings when in fact almost everything they write will always be ignored.
+</p>
+<h3> In contrast to IRV... </h3> 
+<p>
+Range, approval, and Borda voting also never ignore 
+anything any voter says, in the rather obvious sense 
+that every vote affects every election total for every candidate
+(and in Condorcet, every vote affects every pairwise total).
+With range, approval, and Borda,
+any perturbation you make to your vote always moves the
+election results in the naively expected directions if it moves them at all,
+and casting an honest vote can never hurt you.
+(In every Condorcet system, though, 
+casting an honest vote <i>can</i> hurt you versus not voting at all.)
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

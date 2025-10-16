@@ -1,0 +1,228 @@
+<html>
+<head>
+<title>
+RangeVoting.org  - Tentative suggestion for a voting system for electing the parliament of Canada 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Tentative suggestion for a voting system for electing the parliament of Canada, 6 </H2>
+
+<p>
+<small> Warren D. Smith, October 2015</small>
+</p>
+
+<p>
+Here is one concrete tentative system suggestion for Canada.  I am putting it here
+(/CanadaSA6.html) just to serve as a reference point for further discussion.
+I obtained this system
+by hybridizing 
+<a href="RangeVoting.html">score voting</a> within ridings, with Sainte-Lagu&euml; party-list-based
+top-up, with a pseudo-party consisting of independent candidates to try to remove what otherwise would be unfair
+pro-party anti-independent biases built into the top-up system.
+<small>If T=0 our proposal simplifies to become <a href="CanadaSA5.html">pure score voting</a> 
+to elect MPs in ridings.
+</small>
+</p>
+
+<h3> Contents </h3>
+
+
+<ol><li>
+<a href="#DG"> Design goals </a>
+</li><li>
+<a href="#DF"> Defects (and advantages) </a>
+</li><li>
+<a href="#RU"> Rules of proposed voting system (on a single page) </a>
+</li></ol>
+
+<a name="DG"></a>
+<h3> Design goals </h3>
+
+The <b>goal</b> is to elect a W-member parliament, from W-T ridings (0&le;T&le;W), in such
+a way that:
+<ol type="A">
+<li>
+The system has two stages. In the first stage,
+exactly one MP is elected from each riding
+(hopefully the one that riding considers the best available!);
+call these the "local" MPs.
+</li><li>
+In the second stage, a further T  "top up"  MPs are elected, K per "region."
+<small>
+If the values were W=307, T=51, K=3
+we'd be imagining Canada divided into W-T=256 "ridings" electing 1 MP each,
+and also divided (more coarsely) into T/K=17 "regions" each electing K=3 MPs.  (Any K&ge;1 is
+allowable, albeit I suspect 3&le;K&le;5 is best.
+It is not necessary that all the K's be equal, e.g. we could have some regions elect 2 and some 4.)
+</small>
+</li><li>
+In such a way as to obtain or approach "<a href="PropRep.html">proportionality</a>."
+</li><li>
+System is simple.
+</li><li>
+The ballots are "ratings style" which allows voters to provide the
+most possible information,  but also (if that voter desires) less.
+</li><li>
+The system is immune to "candidate <a href="CandCloneSumm.html">cloning</a>."*
+</li><li>
+Raising a candidate's score on your ballot cannot hurt him*, 
+while lowering it cannot help him* 
+("<a href="Monotone.html">monotonicity</a> properties").
+</li><li>
+The system is "precinct countable," i.e. each precinct could publish
+a compact table of "subtotals," in such a way that the whole
+election process could be performed using only these precinct
+subtotals tables as input.
+</li></ol>
+<p>
+<big><b>*</b></big>
+Essentially the same  asterisks apply as in my 
+ <a href="CanadaSA1.html">first proposal</a>.
+</p>
+
+<a name="DF"></a>
+<h3> Defects (and advantages) </h3>
+<p>
+<b>Advantages:</b>
+It is quite simple.
+If the "regions" are removed (i.e. make there be only one region, the whole of Canada) it
+would get even simpler.
+This system is very similar to the MMP systems currently used by Germany and New Zealand,
+but with the following differences, all of which seem to be improvements:
+</p><ol><li>
+<a href="RangeVoting.html">Score</a> voting, not (which Germany and New Zealand use) 
+<a href="Plurality.html">plurality</a> voting, within ridings.
+</li><li>
+The use of an "independents' (pseudo)party" for Canada to try to redress unfair pro-party 
+anti-independent biases.  These have afflicted Germany &amp; New Zealand 
+so severely that New Zealand has never elected
+any independent MP ever since they adopted MMP in 1996, 
+while Germany elected three in their first MMP
+election in 1949 and zero ever after.
+</li><li>
+The use of "regions."  The proposed scheme for Canada is "tunable" 
+by adjusting the number of regions
+and by adjusting the relative numbers of ordinary and top-up seats.
+These two "knobs" tune how much regionality to have and how much PR to have.
+Many people believe MPs that exist without regions, are inherently worse.
+Whether or not you believe that, a second argument for why regionality could be good,
+is the <a href="CanadaSA1.html#rain">rain</a> argument.
+</li></ol>
+<p>
+So if Canada adopted this proposal and tuned it decently, it should become
+like, but better than, Germany and New Zealand.
+</p><p>
+The most obvious <b>defect</b> of this proposal (at least in my view) is its reliance on
+<i>party-labels</i> to provide proportionality.  If, say, parties did not exist, everybody ran independent, but 
+some candidates were similar and others dissimilar, then this system would be unable to know anything
+about those similarities and hence would become totally helpless about
+proportionality.  Also, by explicitly inserting party names into the voting system definition, we
+become inherently unable to treat independent candidates fairly, and 
+also this system definitely will be severely vulnerable to candidates "gaming the system"
+by switching parties, creating ad hoc parties, etc.  (As a partial cure for
+that, we create a pseudo-party consisting of all the independents.  This is misleading in the
+sense that independent candidates can be quite dissimilar.  But it will counteract some of the
+global unfairness against independents.)
+To stop the gaming, it probably would
+be felt necessary to enact laws forbidding such party switches, but any such anti-switching
+laws themselves would seem quite damaging!  Remember, the ultimate cure for "too-whipped" 
+parties is for unhappy MPs to be able to switch parties.
+</p><p>
+Another problem with this system: it can be poor voting strategy to honestly 
+top-rate your favorite.
+If you did, then you might be helping some party to get more top-up seats, except that
+your vote would be "wasted" for that purpose since they were doomed to get none, or
+doomed to be unable to move from 1 to 2 seats in your region... 
+hence you would have been better off
+lying about your favorite to help boost some other party's seat count.  
+<!--(With this system parties can sometimes find it best strategy
+to try intentionally to lose in certain ridings...??)-->
+
+The more lying happens in votes,
+the worse off Canada is going to be.
+</p><p>
+Neither of those two defects afflicted my <a href="CanadaSA1.html">first proposal</a>.
+</p>
+
+
+<a name="RU"></a>
+<h3> Rules of proposed voting system (on a single page) </h3>
+
+<p>
+I will regard voters as "female" and candidates as "male" just to make wording clearer.
+<small>
+Various numbers (2, 9, 1000, 3) in our description 
+have been selected pretty
+arbitrarily and could perfectly well be replaced by other numbers.  
+And we could demand T=&lfloor;W/5&rfloor;,
+where again "5" is a pretty arbitrary value. 
+</small>
+</p>
+<!--
+0. [Optional.] Each candidate in each riding receives 1000 scores of 2
+before voting starts.
+-->
+<p><b>1.</b> 
+Each voter rates each candidate in her riding, on an 0-to-9 numerical scale.
+(Voters also allowed to leave some candidates unrated, if that voter
+wishes not to express any opinion about that candidate.)
+<small>Refinement suggested by J.Quinn: 
+"Any voter who did not explicitly rate any candidates at 0 is considered to have given 0 to 
+any candidates they left blank. Any voter who did rate at least one candidate explicitly at 0 
+is considered to have expressed 'no opinion' about any candidates they left blank. 
+(I think this rule is the safest way to interpret 'intent of the voter'.)"
+</small>
+</p><p><b>2.</b>
+ In each riding, the candidate with the highest average score 
+wins that riding's MP seat.
+<small>Slight optional refinement: each candidate could receive 1000 artificial scores of 2
+before voting begins.  Then the candidate with the highest average among both his 
+genuine and artificial scores, wins.</small>
+</p><blockquote>[At this point we have elected W-T of the W seats in Parliament,
+each via the excellent 
+&quot;<a href="RangeVoting.html">score voting</a>&quot;
+single-winner system.  
+The "top up" now commences, whose mission now is to fill the remaining T seats.]
+</blockquote>
+<p><b>3.</b>
+We now compute how many seats each party "deserves" in the full, "topped-up" parliament.
+This is done by the <a href="https://en.wikipedia.org/wiki/Sainte-Lagu%C3%AB_method">Sainte-Lagu&euml;</a>
+method: each party's total vote V is the number of voters
+who rated their candidate top (if a voter had rated K candidates coequal top, then each 
+party gets 1/K share of her vote).    We successively assign seats as follows:
+whichever party has the greatest V/(2S+1) wins the next seat (provided it
+hasn't run out of candidates). 
+Here V is the votes owned by that party, and S is the number of seats that party's members currently occupy
+(initial S-values arise from the seats elected in step 2, and increment each time we award a 
+new seat to that party).
+We keep going in this way until each of the T top-up seats has been assigned a party label.
+<small>[Each candidate had pre-specified his party label. 
+Parties can expel people by 2/3 supermajority vote.]
+</small>
+</p><blockquote>[At this point we have elected W-T of the W seats in Parliament,
+and assigned party labels to the remaining T seats.  We now must assign actual <i>people</i> to those T seats.]
+</blockquote>
+<p><b>4.</b>
+Each party's candidates are sorted into decreasing order
+by their average scores they received from the voters in their ridings.
+We simply elect, from each party deserving S top-up seats, the top S as-yet-unelected members
+of their list.  [Note: independent candidates
+are regarded for the purposes of steps 3 &amp; 4 as members
+of the "independents' (pseudo)party."]
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

@@ -1,0 +1,206 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Economics Nobel Laureate Eric Maskin formulates Arrow theorem
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Eric Maskin (Economics Nobel co-Laureate 2007) gets into trouble on Arrow's theorem </H2>
+
+<p>
+QUOTE [this is from an <a href="BlueGrayMaskin.html">online report</a>, written by his hosts,
+describing a lecture "How Should We Elect Presidents?" 
+Maskin gave at Georgetown University's Gaston Hall on 17 January 2008; 
+the text of the lecture is (essentially) available
+ <a href="MaskinMajRuleBest.pdf">here</a>]:
+</p>
+<table bgcolor="lightgreen">
+<tr><td>
+<blockquote>
+In a series of comparisons, Maskin illustrated the strengths and
+weaknesses of various voting systems, including rank order voting and
+true majority rule, when measured by five standard principles:
+consensus &ndash; if everyone agrees candidate A is better than B, B will
+not be elected; anonymity &ndash; all voters should count equally,
+regardless of who you are or what state you live in; neutrality &ndash;
+electoral rules should also treat all candidates equally; transitivity
+&ndash; a system should be independent of irrelevant or fringe candidates;
+and decisiveness &ndash; the idea that there should always be a winner.
+<br><br>
+While no voting system satisfies all five principles,
+Maskin reasons that the most superior voting system is true majority rule, 
+in which voters submit rankings for all candidates and the winner is the 
+candidate who beats all the other candidates in head-to-head competitions
+based on those rankings.
+<br>
+[<small>
+Note: Maskin's "majority rule" voting
+system is <i>not fully defined</i> in either the
+lecture summary or Maskin's  <a href="MaskinMajRuleBest.pdf">text</a>
+aside from saying it is a <a href="Glossary.html#condmeths">Condorcet</a> system.
+The problem is that a
+"candidate who beats all the other candidates in head-to-head competitions
+based on those rankings" 
+can fail to <i>exist</i>; then to define the voting system
+you have to say what to do then, and Maskin does not.
+You can see our separate <a href="Maskin.html">criticism</a> of Maskin's 
+Scientific American article re that.</small>]
+</blockquote>
+</td></tr>
+</table>
+
+<h3> Response </h3>
+<p>
+Let's check out how <a href="Rangevoting.html">range voting</a>
+performs on Maskin's 5 principles.
+<ol>
+<li>
+Consensus: Range obeys it.
+</li><li>
+Anonymity: Range obeys it.
+</li><li>
+Neutrality: Range obeys it.
+[<small>
+Note: Anonymity and Neutrality imply Arrow's "no dictator" property, which is the connection
+between the way Maskin is phrasing Arrow's theorem, and the 
+<a href="ArrowThm.html">more-usual</a> formulation.</small>]
+</li><li>
+Irrelevancy: not precisely defined in the lecture-summary or Maskin's
+ <a href="MaskinMajRuleBest.pdf">text</a>.
+However, if <i>we</i> define it to mean "removing a loser from
+the race and from all ballots, should not be able to alter the
+winner" &ndash; then range obeys this criterion, unlike, e.g, 
+<a href="rangeVborda.html#JohnsonEx">Borda</a> voting.
+<small>Maskin claims on page 3 of his 
+<a href="MaskinMajRuleBest.pdf">text</a>
+that all Condorcet systems obey this principle; 
+that claim is true when a Condorcet winner exists,
+but is false for most (all?) Condorcet systems in some circumstances.
+(It is, in fact, false for <i>every</i> Condorcet system that, in some situation in which there
+is a strong but not perfectly-symmetric top-cycle, elects
+one of the cycle-members.  To prove this, simply delete another cycle-member.)
+<a href="SchulzeComplic.html">Schulze's</a> "beatpath"
+Condorcet system is an example of a system that is "cloneproof";
+Maskin was apparently unaware of Schulze's work.  Cloneproofness is not
+the same thing as this irrelevancy-condition, but it goes in that direction.
+</small>
+</li><li>
+Generic Decisiveness: If we use "continuum range voting" and every vote
+is a "generic real number" [which could be achieved by randomly
+perturbing every score by an amount of size 10<sup>-30</sup> &ndash; which would
+happen automatically if each range voter had an analog input device
+and was unable to control the slider to subatomic positional accuracy]
+then ties occur with probability 0. In other words, we get
+a clear winner.
+<small>
+Maskin in his 
+<a href="MaskinMajRuleBest.pdf">text</a>
+claims his "majority rule" voting-method enjoys "generic decisiveness."
+That would be true if some additional rules were 
+specified to produce a winner in circumstances in which there
+is a Condorcet top-<a href="CondorcetCycles.html">cycle</a>.  
+As far as I can see Maskin does <i>not
+specify</i> those rules, which is why I say his "Majority Rule" method is "undefined."
+In the event that non-specification was <i>intentional</i> because he intended that there
+<i>be</i> no winner in such circumstances, then his claim of generic decisiveness was
+false because it is 
+<a href="RandElect.html">known</a> 
+that random 3-candidate &infin;-voter
+elections are cyclic 8.78% of
+the time.  (If decisiveness fails 8.78% of the time, then it is simply
+false to claim generic decisiveness.)  So I presume Maskin did have 
+additional winner-specifying rules
+in mind despite not clearly saying what they were, and from reading his 
+<a href="Maskin.html">Scientific American</a> article I suspect he had in mind
+<a href="Glossary.html#black">Black's system</a>.
+</small>
+</li></ol>
+
+<p>
+"No voting system satisfies all five principles" eh? <a href="ArrowThm.html"><b>Wrong</b></a>.
+Or to quote Maskin on page 6 of his
+<a href="MaskinMajRuleBest.pdf">text</a>:
+"We might enquire whether there is a voting procedure that actually satisfies these principles.
+The answer unfortunately is 'no'. That answer was provided by economist Kenneth Arrow..."
+This quote is simply <b>flat-out false:</b> range voting <i>is</i> such a procedure 
+and Arrow's theorem does not apply to, and never was claimed to apply to,
+"all voting procedures" &ndash; including it does not apply
+to range voting.  Here Maskin is simply repeating a common
+misunderstanding of what <a href="ArrowThm.html">Arrow's theorem</a> actually said.
+The resolution of this misunderstanding had already been published by
+<a href="ArrowThm.html#harsanyi">Harsanyi</a>
+in the 1950s almost immediately after Arrow's work, but Maskin missed that and did not cite or
+mention Harsanyi in either his
+lecture <a href="MaskinMajRuleBest.pdf">text</a> or his
+2007 
+<a href="REVISEDMajorityRule.pdf">paper</a>.
+(Incidentally, Harsanyi also won an economics Nobel, in 1994.)
+</p>
+
+<h3> Moral </h3>
+
+<p>
+Just because you win a Nobel prize in economics, unfortunately does not
+mean you are either infallible or omniscient.  Nor does it necessarily mean
+you know much about voting. 
+You (the reader) have now verified that Maskin made a mistake.
+</p><p>
+<small>
+Actually in my (and Nobel's) opinion, even <i>having</i> a "Nobel prize in Economics"
+is a mistake.  
+(The "Nobel" prize in economics was created by the Swedish Bank, was first awarded in 1969, 
+about 75 years after Nobel died.  It was
+not approved in any way by Nobel, and its real title therefore
+is "Nobel Memorial Prize" not "Nobel prize"
+in economics.)
+I feel economics is not an advanced-enough field to deserve such a prize;
+the aura of infallibility and omniscience created by the awarding of these prizes has in
+several cases been a bad thing,  and many Economics Nobels have been awarded for feats which I as
+a mathematician do not consider very impressive.
+Also, some Economics Nobelists have made some ludicrously false and damaging statements.
+</small>
+</p><p>
+Indeed, the fact that 
+<a href="ArrowThm.html">Range Voting accomplishes what Arrow had deemed "impossible"</a>
+had  <i>already</i> been observed by, and published by
+(also Economics Nobel Laureate) John Harsanyi in the
+<i>1950s</i>, but no mention of either range voting or Harsanyi was made by
+Maskin during his lecture half a century later or in his 
+<a href="REVISEDMajorityRule.pdf">2007 paper</a>.
+</p>
+<p>
+Further, as regards the final sentence in the Maskin-report-quote, about how his
+undefined "majority rule" system supposedly comes the closest to satisfying Arrow's impossible
+conditions &ndash; here Maskin was apparently unaware (never cited, never mentioned)
+that a theorem indicating that
+<i>range voting</i>  comes the closest to satisfying a set of Arrow-like conditions,
+<i>already</i> had been published in 1999 (years before Maskin's voting work he was
+lecturing about), by
+<a href="DhillonM.html">Dhillon &amp; Mertens</a>.
+</p>
+<p>
+And finally, as for Maskin's notion <a href="Glossary.html#condwin">Condorcet winners</a>
+ought to be elected &ndash; Maskin was unfortunately unaware that with 
+<a href="AppCW.html">strategic voters</a> range voting can actually elect Condorcet winners
+<i>more often</i> than "official" Condorcet methods of the sort he
+is pushing!
+(This has been
+<a href="StratHonMix.html">experimentally verified</a>.)
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

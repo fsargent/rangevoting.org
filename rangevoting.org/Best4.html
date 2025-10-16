@@ -1,0 +1,1447 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Best Rank-Order-Ballot voting systems versus Range Voting II
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<a name="sec1"></a>
+<h1>
+ Best Rank-Order Voting Systems versus Range Voting II: N&ge;4 candidates under the 
+Random Normal Elections Model (RNEM)
+</h1>
+<p>
+By Warren D. Smith.  Email comments to: warren.wds AT gmail.com.
+</p>
+<p>
+Draft#1: 20 Oct 2008. Draft#2: 6 Nov 2008. Declaring it final 27 January 2009.
+</p>
+
+<h3>Abstract</h3>
+<p>
+Regard this as "Part II" of the preceding 
+<a href="BestVrange.html">Best Rank-Order Voting Systems versus Range Voting</a>.
+We shall re-use notions, definitions, and understanding from Part I.
+</p><p>
+Part I gave methodology for provably identifying "best" voting systems
+(measured via "Bayesian Regret") and used it to
+<ol>
+<li>
+Identify the best rank-order-ballot voting system for honest voters
+under the RNEM
+("random normal elections model");
+</li><li>
+Show the superiority of "range voting" versus every rank-order-ballot
+voting system in 3-candidate RNEM elections,
+for any mixture of honest and strategic voters.
+</li></ol>
+We now go further by identifying the pseudo-best rank-order-ballot voting system 
+for <I>strategic</I> voters in N-candidate elections.
+(This is under the RNEM, and for a certain kind of "strategic voting" we call the 
+"moving-average strategy"; here "pseudo-best" means, essentially, that the voting system
+is best for strategic voters who all have independent
+random notions of the presumed winning
+chances of the candidates. "Best" and "pseudo-best" coincide 
+if N&le;3. Severe difficulties arise if one tries to handle "best" for N&ge;4.
+Readers unhappy with the "pseudo-best" concept can console themselves with our
+<a href="#Thm1">theorem</a>
+that "pseudo-best rank-order system" and "best weighted-positional system"
+mean the same thing under the RNEM.)
+At least if the issue of "best" versus "pseudo-best" is ignored,
+we show the superiority of Range Voting over every rank-order system
+for <i>any</i> number N of candidates with 3&le;N&le;31 for V&rarr;&infin;
+<i>honest</i> voters, and also for <i>strategic</I> voters,
+and finally if 3&le;N&le;9
+for any <a href="#Plots">mixture</a> of honest and strategic voters.
+We also <a href="#Tab1">tabulate</a> the RNEM Bayesian Regrets and "wrong winner probabilities"
+of these and other voting systems, for many values of N, to about 4 decimals.
+Finally, we
+examine the N&rarr;&infin; limit, showing that all <i>sufficiently large</i> N, 
+honest range voting has regret which in the limit
+is <i>zero</i> relative to that of "random winner," whereas various
+other voting methods like Approval and Borda have asymptotically <i>non</i>zero 
+relative regret; 
+and strategic range=approval
+voting has asymptotic regret which is a constant factor times <i>smaller</i> than that of
+random winner, although certain other voting methods (e.g. plurality) with
+strategic voting have asymptotically the <i>same</i> regret as random winner.
+</p><p>
+All our results can be or are proven in fully rigorous mathematical style <i>except</I>
+<ol type="A">
+<li>
+The results with N&le;31 depend on   
+certain numerical integrations;
+</li><li>
+We show that the regret of range voting is less than the regret of the best rank-order system
+by plotting two regret-versus-electorate-composition curves, and seeing one curve always 
+is above the other.
+</li></ol>
+While this level of rigor seems good enough for the purposes of economists and 
+political scientists,
+it falls short of the standards of ultrapure mathematicians.  
+Part I had already outlined 
+mechanical methods
+for converting proofs of this sort to full rigor. 
+We show how those techniques can be extended to also work here, but we
+have not, and 
+doing so would be even more painful here than in Part I, especially for larger N.
+</p>
+
+<a name="Sec1"></a>
+<h3>1. Introduction
+</h3>
+
+<p>
+<a href="BestVrange.html">Part I</a>
+had explained the "correlation based procedure" for 
+computing Bayesian Regrets in the V&rarr;&infin; limit of V-voter RNEM elections
+for a large variety of voting systems.  
+Two kinds of multidimensional integration problems arose inside
+that procedure:
+<ol>
+<li>
+Computing "correlations" and "variances";
+</li><li>
+Computing "regrets" and/or "wrong-winner probabilities."
+</li>
+</ol>
+In Part I, we evaluated the correlations and variances for many voting systems
+(including range voting and the best-rank-order-ballot and best-ratings-ballot systems) in
+3-candidate elections as <i>closed formulas</i> involving mathematical constants
+such as &pi;.  
+We then used those formulas to evaluate the regrets and wrong-winner probabilities
+by either numerical or symbolic integration (indeed, we showed how all these 
+could also be done
+symbolically in closed form, but in some cases the formulas are large).
+</p><p>
+But it is possible instead to do both kinds of integration numerically.  
+If we employ the simplest kind of numerical integration procedure &ndash; 
+Monte Carlo integration &ndash;
+we then get a quite simple computer program adequate to reach 4-decimal accuracy
+for all numbers N of candidates with 3&le;N&le;31.
+</p><p>
+There is one problem, though.
+If correlation matrices are computed using inexact numerical-integration methods
+rather than exact formulas, they can sometimes
+fail to be positive definite.   (But of course, genuine
+correlation matrices are always positive definite symmetric,
+and with 1s in each diagonal entry.)
+Most of the time, this is not a problem,
+which is because, as a consequence of "Gershgorin's circle theorem"
+from linear algebra, any sufficiently small-norm symmetric perturbation of a positive definite
+symmetric matrix, still is positive definite.  <i>However</i>, as we saw in Part I,
+many voting methods yield "degenerate" aka "reduced-rank" correlation matrices, which
+are merely positive <i>semi</i>definite.  For them, an arbitrarily small 
+perturbation <i>always</i> exists which moves us outside of the domain of positive definite
+matrices!   With indefinite correlation matrices, we're dead &ndash;
+the whole "correlation based procedure"
+from <a href="BestVrange.html#Sec5">section 5 of Part I</a> grinds to a halt.
+</p><p>
+This obstacle can be dodged in those cases (such as "weighted positional" voting systems 
+with 100% honest voters) where exact formulas are available giving every entry
+of the correlation matrices (see <a href="BestVrange.html#Sec51">section 5.1 of Part I</a>).
+It occasionally struck in other cases, but I was able, by either perturbing the matrix entries by
+a fixed perturbation by at most a few parts in 10<sup>9</sup>, or by
+doing several re-runs with 
+different random seeds (or both), to avoid
+this problem in every case.
+</p><p>
+An engineer, confronted with this problem, might apply a numerical method
+(e.g. Higham 2002 &amp; 2008) for replacing a putative correlation matrix by the nearest matrix
+which genuinely <i>is</i> positive definite symmetric with unit diagonal, thus "repairing"
+the problem. 
+However, in this paper I am trying to be a mathematician, not an engineer,
+and my goal is to <i>prove</i> statements about optimal
+Bayesian Regrets of voting methods &ndash;
+or at least, provide an incomplete proof which we show could be
+mechanically completed, by carrying out certain 
+computations with "interval arithmetic" 
+starting from rigorous error bounds &ndash; this
+is a lesser
+standard of "proof" which I regard as still adequate for many purposes.
+Some kinds of computations &ndash; 
+e.g. carried out by "bounded depth arithmetic circuits"
+&ndash; are clearly going to work well with interval arithmetic.  But it is <i>not</i> 
+immediately clear
+that would be the case for Higham's algorithm, which involves a fairly complicated
+matrix process iterated to convergence.
+I want everything to be maximally simple.
+I therefore have abstained from these kinds of repair-attempt here.
+</p><p>
+The output of the program is given in <a href="#Tab1">table 1</a>.
+<i>If</i> the random number generators are trusted, then "Chernoff bounds" show (for all the
+integration problems here) "exponential tails," which means we can be highly confident the numbers
+the computerized Monte-Carlo
+outputs, are not far from the truth.  Based on various re-run checks, we believe the standard
+errors in all numbers are at most a few units in the last decimal place.
+</p>
+<!--table based on
+ GenCorrEps4.out
+ GenCorr31d.out
+ GenCorr31e.out
+Bugs (now fixed):
+SBR was wrong for N=31 since weight block not averaged;
+Mistyped 1 character in corrwlatin-remorming, had invalidated various old runs
+-->
+<a name="Tab1"></a>
+<table cellpadding="4" bgcolor="lightgreen">
+<caption>
+<b>Table 1.</b>
+<b>Wrong winner percentages</b> and <b>V<sup>-1/2</sup>Regrets</b> for voting methods under
+N-candidate V-voter RNEM with V&rarr;&infin;.
+Values were computed 
+either from exact formulas and/or by correlation-based procedure using separate
+Monte Carlo integrations to compute <i>both</i> correlations and regrets.
+(For N&le;3, see 
+<a href="BestVrange.html">Part I</a>.)  
+Honest Range Voting is superior (i.e. has less regret)
+to the best rank-order voting system for each N with 3&le;N&le;31.
+If we instead have strategic voters, then the same thing happens (at least, if 
+the distinction between
+"pseudo-best" and "best" is ignored)
+indicated by comparing
+"strategic approval=range"
+versus the strategic rank-order systems.
+When N=4, strategic range voting
+is also superior to the best "semi-strategic" rank-order system, which is "top-2" voting.
+See also <a href="#notestab">notes</a> below.
+</caption>
+<tr bgcolor="yellow"><th>line<br>#</th><th>#Canddts&rarr;<br>&darr;Voting Method</th><th>N=4</th><th>N=5</th><th>N=6</th><th>N=7</th><th>N=8</th><th>N=9</th><th>N=31</th></tr>
+<tr><td bgcolor="aqua">1</td><th>Magic Best</th><td align="middle">0%, 0</td><td align="middle">0%, 0</td><td align="middle">0%, 0</td><td align="middle">0%, 0</td><td align="middle">0%, 0</td><td align="middle">0%, 0</td><td align="middle">0%, 0</td></tr>
+<tr bgcolor="pink"><td>2</td><th>Honest Range</th><td>22.50%,<br>0.08299</td><td>22.28%,<br>0.0731</td><td>21.97%,<br>0.0657</td><td>21.67%,<br>0.0602</td><td>21.38%,<br>0.0559</td><td>21.10%,<br>0.0523</td><td>18.13%,<br>0.0279</td></tr>
+<tr bgcolor="pink"><td>3</td><th>Honest Best Ranked</th><td>27.83%,<br>0.1289</td><td>28.64%,<br>0.1236</td><td>28.93%,<br>0.1174</td><td>28.96%,<br>0.1113</td><td>28.86%,<br>0.1057</td><td>28.69%,<br>0.1005</td><td>23.90%,<br>0.0504</td></tr>
+<tr><td bgcolor="aqua">4</td><th>Honest Borda</th><td>27.91%,<br>0.1297</td><td>28.85%,<br>0.1255</td><td>29.32%,<br>0.1207</td><td>29.55%,<br>0.1161</td><td>29.67%,<br>0.1120</td><td>29.71%,<br>0.1083</td><td>29.31%,<br>0.0786</td></tr>
+<tr><td bgcolor="aqua">5</td><th>Honest Strat-Best-Ranked</th><td>30.44%,<br>0.1553</td><td>33.92%,<br>0.1767</td><td>36.05%,<br>0.1879</td><td>37.35%,<br>0.1925</td><td>39.03%,<br>0.2033</td><td>40.73%,<br>0.2159</td><td>52.88%,<br>0.3052</td></tr>
+<tr><td bgcolor="aqua">6</td><th>Mean-Thresh Approval</th><td>31.75%,<br>0.1695</td><td>35.96%,<br>0.2000</td><td>39.15%,<br>0.2245</td><td>41.65%,<br>0.2444</td><td>43.70%,<br>0.2613</td><td>45.41%,<br>0.2756</td><td>59.28%,<br>0.4060</td></tr>
+<tr bgcolor="yellow"><td>7</td><th>Strategic Approval=Range</th><td>37.25%,<br>0.2357</td><td>41.59%,<br>0.2728</td><td>44.79%,<br>0.3016</td><td>44.26%,<br>0.3244</td><td>49.22%,<br>0.3429</td><td>50.81%,<br>0.3578</td><td>62.41%,<br>0.4674</td></tr>
+<tr><td bgcolor="aqua">8</td><th>Honest Top-2</th><td>37.60%,<br>0.2411</td><td>42.30%,<br>0.2829</td><td>46.73%,<br>0.3303</td><td>50.67%,<br>0.3780</td><td>54.10%,<br>0.4238</td><td>57.12%,<br>0.4675</td><td>82.67%,<br>1.0440</td></tr>
+<tr><td bgcolor="aqua">9</td><th>Honest Plurality</th><td>43.24%,<br>0.3230</td><td>50.05%,<br>0.4069</td><td>55.30%,<br>0.4804</td><td>59.51%,<br>0.5460</td><td>62.96%,<br>0.6046</td><td>65.85%,<br>0.6580</td><td>87.43%,<br>1.2717</td></tr>
+<tr><td bgcolor="aqua">10</td><th>Best Semi-Strategic (Top-2)</th><td bgcolor="yellow">46.44%,<br>0.3928</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td bgcolor="aqua">11</td><th>Magic Best-Of-2</th><td>50.00%,<br>0.4652</td><td>60.00%,<br>0.5988</td><td>66.67%,<br>0.7030</td><td>71.43%,<br>0.7880</td><td>75.00%,<br>0.8594</td><td>77.78%,<br>0.9208</td><td>93.55%,<br>1.4923</td></tr>
+<tr bgcolor="yellow"><td>12</td><th>Strategic PsuBest Ranked</th><td>53.10%,<br>0.5096</td><td>56.81%,<br>0.5481</td><td>59.2%,<br>0.569</td><td>60.85%,<br>0.5806</td><td>61.94%,<br>0.5861</td><td>62.74%,<br>0.5878</td><td>68.27%,<br>0.5836</td></tr>
+<!--<tr><th>Strategic Root3</th><td bgcolor="yellow">53.16%,<br>0.5096</td></tr>-->
+<!-- <tr><th>Strategic 2Root3</th><td bgcolor="yellow">54.63/6?%,<br>0.5247/8?</td></tr> -->
+<tr><td bgcolor="aqua">13</td><th>Strategic Top-2</th><td bgcolor="yellow">53.12%,<br>0.5273</td><td>&nbsp;</td><td>&nbsp;</td></tr>
+<tr><td bgcolor="aqua">14</td><th>Strategic Borda</th><td>54.33%,<br>0.5201</td><td>58.69%,<br>0.5716</td><td>61.44%,<br>0.6005</td><td>63.42%,<br>0.6201</td><td>64.95%,<br>0.6350</td><td>66.22%,<br>0.6677</td><td>76.41%,<br>0.7809</td></tr>
+<tr><td bgcolor="aqua">15</td><th>Strategic Hon-Best-Rnkd</th><td>54.70%,<br>0.5248</td><td>59.42%,<br>0.5835</td><td>62.49%,<br>0.6199</td><td>64.73%,<br>0.6465</td><td>66.52%,<br>0.6686</td><td>68.02%,<br>0.6880</td><td>80.30%,<br>0.9089</td></tr>
+<tr><td bgcolor="aqua">16</td><th>Strategic Plurality</th><td>58.25%,<br>0.5792</td><td>66.11%,<br>0.7128</td><td>71.43%,<br>0.8170</td><td>75.29%,<br>0.9020</td><td>78.21%,<br>0.9734</td><td>80.51%,<br>1.0349<td>94.03%,<br>1.6062</td></tr>
+<tr><td bgcolor="aqua">17</td><th>Random Winner</th><td>75.00%,<br>1.0294</td><td>80.00%,<br>1.1623</td><td>83.33%,<br>1.2672</td><td>85.71%,<br>1.3522</td><td>87.50%,<br>1.4236</td><td>88.89%,<br>1.4850</td><td>96.77%,<br>2.0565</td></tr>
+<tr><td bgcolor="aqua">18</td><th>Magic Worst</th><td>100.0%,<br>2.0588</td><td>100.0%,<br>2.3259</td><td>100.0%,<br>2.5344</td><td>100.0%,<br>2.7043</td><td>100.0%,<br>2.8472</td><td>100.0%,<br>2.9700</td><td>100.0%,<br>4.1129</td></tr>
+</table>
+
+<a name="notestab"></a>
+<p>
+<b>NOTES ABOUT THE TABLE:</b>
+</p>
+<p>
+<b>How to make the table-entries rigorous via a mechanical computation:</b>
+It would be possible in principle &ndash; we have not done it, but a sufficiently 
+determined reader could, at least for small Ns &ndash;
+to employ <i>rigorous</i> numerical integration techniques to
+replace every number in table 1 with arbitrarily tight rigorous upper and lower bounds.
+That is because all of our integrals are integrating standard Gaussians times linear functions
+of the coordinates, over certain polytopal-cone regions.   Those integrands are well behaved
+because 
+they have both rapidly decreasing tails and also
+easily-computed |derivative| bounds.  Therefore numerical integration
+via summation over lattice points inside a big ball, will produce an answer whose error
+is boundable using (a) the derivative bounds, (b) tail mass-bound for integral outside
+the ball, (c) by using "interval arithmetic" to cover errors caused
+by inexact arithmetic.
+The second integration to find regrets and wrong-winner probabilities
+employs the results of the first integration (to find correlations, etc.)
+inside its integrand.  Therefore errors in the earlier results will contaminate the 
+later ones, but since these can be incorporated inside the interval arithmetic they will not
+ruin anything.
+</p>
+<p>
+By <b>semi-strategic</b> voting in a 4-candidate election, we
+mean this.  Before the election begins,
+two candidates are (randomly) named by God as the two "frontrunners." 
+The voters now vote the maximum-allowed vote for whichever of these two they prefer 
+and the minimum-allowed vote for the other.
+(This is intended to maximize the vote's "impact" on the 
+frontrunner-vs-frontrunner race, the only pairoff 
+that, they believe, probably matters.)   Then, 
+they vote honestly about the two remaining candidates
+(i.e. rank them honestly relative to each other, and subject to the constraint that
+the two frontrunners are artificially ranked top and bottom).
+With semi-strategic voters, we shall prove in <a href="#Thm3">theorem 3</a>
+that the best rank-order-ballot voting system for 4-candidate RNEM (V&rarr;&infin;)-voter 
+elections, is <b>"top-2"</b> voting,
+i.e. the weighted positional system with weights <nobr>(+1, +1, -1, -1).</nobr>
+</p><p>
+The notion of <b>strategic</b> voting we shall examine in this paper is the 
+<b>moving-average strategy:</b>
+Before the election begins,
+<b>"God"</b> randomly chooses, and publicizes,
+an ordering of the candidates from presumably-most-likely-to-win to
+presumably-least.   (The two most-likely are the two "frontrunners.")
+Each voter now votes the maximum-allowed vote for whichever of the frontrunners she prefers
+and the minimum-allowed for the other.
+She then proceeds down the rest of God's ordering in decreasing-presumed-likelihood order,
+giving each candidate either the maximum- or minimum-allowed vote
+(subject to the constraint that the vote still be legal according to the rules of 
+the voting system, given all her preceding decisions)
+<i>depending</i> on whether its utility (for that voter)
+exceeds or is less than the average-utility among the
+preceding candidates.
+</p><p>
+<b>Notation:</b>
+Many rows in <a href="#Tab1">table 1</a>
+consider the effect of <i>mis-using</i> our optimal voting systems.
+For example, if we find the best rank-order voting system for strategic voters, we could
+consider what happens if non-strategic, i.e. honest, rank-order voters employ that method
+instead &ndash; see line 5 of the
+<a href="#Tab1">table</a>.
+Or conversely, what happens if strategic voters try to
+employ the rank-order voting system (which had been stated and derived in
+<a href="BestVrange.html#Sec6">section 6 of Part I</a>)
+that is best for honest voters? &ndash; see line 15.
+</p><p>
+Semi-strategic voting, since it is partially honest, might intuitively be expected to yield
+regret lower than fully-strategic voting.
+Line 10 and 12 of <a href="#Tab1">table 1</a>
+confirm this conjecture in 4-candidate RNEM (V&rarr;&infin;)-voter elections &ndash;
+but note from line 7 that even the best semi-strategic <i>rank-order</i>
+voting system still has worse regret than fully-strategic
+4-candidate <i>range voting</i> (which in turn has worse regret than honest range voting).
+<!--</p><p>Ordering: by increasing regret when=4 -->
+</p><p>
+<b>FIRST MAIN RESULT &ndash; THE SUPERIORITY OF RANGE VOTING:</b>
+<br>
+Table 1 (and our other, unprinted, calculations of the same ilk when 10&le;N&le;30)
+indicate that for each number N of candidates with 3&le;N&le;31
+<i>range voting is superior</i> (i.e. has less regret, in the V&rarr;&infin; voter RNEM) 
+to the best rank-order system
+<i>both</i> for fully-honest <i>and</i> for fully-strategic voters &ndash;
+at least, if the distinction between "best" and "pseudo-best" is ignored, otherwise
+we still may conclude range's superiority versus the best <i>weighted-positional</i> system.
+</p><p>
+<b>Honest-strategic voter mixtures:</b>
+Based on that one would guess that when 3&le;N&le;31
+range is superior to the best rank-order
+voting system for any <i>mixture</i> of H-fraction honest and (1-H)-fraction strategic
+voters(every H with 0&le;H&le;100%).
+<a href="BestVrange.html">Part I</a> had confirmed that guess for N=3 candidates.
+This paper shall confirm it also for every N with 4&le;N&le;9,
+but things get a little trickier.
+The difficulty is that, with N=3 
+Part I had shown Borda voting to be a best rank-order voting system,
+<i>regardless</i> of whether we have honest voters,
+strategic voters, or any mixture.  
+But when 4&le;N the (pseudo)best rank-order voting system <i>depends</i> on H.
+</p><p>
+<b>Further plans:</B>
+<a href="#Sec6">Section 6</a>
+explicitly identifies the pseudo-best 
+rank-order voting system for an honest+strategic voter H-mixture.
+When 4&le;N&le;9, it never is Borda for any value of H; but Borda does nearly as well as these
+best systems especially for small N and high H.  
+Substantially greater regret for Borda versus the pseudo-best rank-order system
+is only seen (for honest voters) at fairly large N, e.g. N=31.
+</p><p>
+We then <a href="#Plots">plot</a>
+regret-versus-H for both range voting and the (pseudo)best rank-order voting system
+to verify range's superiority at a glance [since the range-regret curve lies below the
+(pseudo)best-rank-order-curve for every H].
+The same numerical methods used to compute <a href="#Tab1">table 1</a>
+are re-used in constructing these plots.  Again, by use of interval arithmetic and rigorous
+numerical integration, one could in principle mechanically convert all these curve-plots
+to fully-rigorous proofs, but we have not done so.
+</p><p>
+Finally, <a href="#Sec7">section 7</a>
+then considers the limit N&rarr;&infin; of a large number of candidates, and
+proves theorems about the asymptotic behavior of the regrets of various voting methods.
+</p>
+
+<a name="Sec2"></a>
+<h3>2. Pseudo-best vs Best</h3>
+<p>
+If one tries to find the "best" rank-order voting system for 
+moving-average-type strategic voters, one encounters difficulties.  
+The problem is that the voting
+system can know (or deduce from the strategic ballots with very high probability 
+when V&rarr;&infin; of
+making a correct deduction)
+"God's order."
+Once it has acquired this knowledge, the voting system can then attempt to compensate
+for the strategic ballots by acting in an "unfair" way, i.e. by treating different candidates
+unequally.  For example, God's two "frontrunner" candidates, even when ranked first
+by a voter, presumably would  <i>not</i> 
+be given the maximum number of points by the best weighted-positional
+voting system &ndash; and
+candidates ranked differently by God would be
+treated differently by the voting system handling any particular ballot.
+This kind of voting system seems unacceptable in practice because it <i>assumes</i> voters
+are dishonest/strategic.   Well, of course, that was the whole point&ndash; but 
+what if some voter actually is honest? In that case the voting system
+often would artificially re-rank her top-ranked candidate non-top, "refusing to accept"
+and "altering" her honest vote because "it knows she is lying"!
+This kind of behavior simply does not seem politically acceptable.
+</p><p>
+For this reason, it seems better to ask for "pseudo-best" rank-order voting systems.
+These minimize Bayesian Regret under the assumption that the voters 
+(1) use moving-average strategy, (2) each voter does that under an independent and
+random notion of what "God's order" is.
+Pseudo-best voting systems treat all candidates equally.
+</p><p>
+However, when we actually <i>evaluate BR</i> for a pseudo-best voting system, we shall
+employ the usual assumption that there is only <i>one</i> "God's order" and all the
+voters use it as the basis for their strategy.
+Note that the assumptions used when optimizing the voting system design and
+the assumptions used when evaluating that design <i>differ</i>.
+This is the whole point of "pseudobest" versus "best."
+I admit it is somewhat artificial but I did not see any better way to proceed.
+</p><p>
+The best versus pseudo-best issue did not arise in
+<a href="BestVrange.html">Part I</a> because the best and pseudo-best
+rank-order voting systems in 3-candidate elections are the <i>same</i> (both Borda).
+However when we have N&ge;4 candidates as in the present paper, they differ.
+<a href="#Sec3">Section 3</a>
+explicitly identifies the pseudo-best 
+rank-order voting system for moving-average-type strategic voters 
+in N-candidate RNEM elections.
+</p><p>
+<b>More detailed look:</b>
+The <b>truly best</b> voting system for strategic voters would have a <i>matrix</i> M of
+weights such that a candidate would receive score M<sub>ij</sub> if
+a voter ranked him <i>i</i>th while God's ordering ranked him <i>j</i>th.
+It would be possible in principle (but we shall not do it) to compute the
+optimum matrix &ndash; in which M<sub>ij</sub> was the expected utility of the candidate
+ranked <i>i</i>th by our (assumed strategic) voter and <i>j</i>th by God &ndash;
+and then to compute the Bayesian Regret of the resulting voting system using the
+correlation-based technology from 
+<a href="BestVrange.html">Part I</a>.
+</p><p>
+I consider such matrix-voting systems morally unacceptable:  the winner ought to 
+depend <i>entirely</I>
+on the votes and <i>not at all</i> on 
+a priori
+perceptions from "God" of likelihoods of winning.
+But even if we were to accept this kind of voting system, 
+we then would encounter a different problem
+as soon as we tried to use it:
+how would we decide what "God's order" was to be?
+The different candidates doubtlessly would argue and sue each other and the election authority
+endlessly to try to manipulate their 
+position in it.
+</p><p>
+If we demand that the voting system employ <i>absolutely no</i> information about "God's order"
+we presumably should have it act as though all God-orderings
+are exactly equally likely.
+Unfortunately the voting system, in its quest to optimize societal utility, could try to "outwit"
+such restrictions by "deducing" God's ordering from the votes themselves, <i>then</i> using
+the full matrix M.   If we forbid that and demand that it <i>really</I> act as
+though all God-orderings
+are exactly equally likely, then
+the optimal (as-restricted) voting system for strategic voters 
+&ndash; the <b>pseudo-best</b> voting system &ndash;
+must be a <i>weighted positional</i> system with weights 
+W<sub>i</sub>&prop;&sum;<sub>j</sub>M<sub>ij</sub>.
+</p><p>
+Equivalently, we could simply <i>demand</i> a weighted positional voting system, 
+in which case the best weights for strategic voters (maximizing societal utility) will 
+yield the (genuinely)
+<i>best</I> weighted positional voting system.   So, to summarize the outcome of
+the  preceding argumentation as a "theorem" (albeit that may be a misnomer since
+it is somewhat in the nature of a "definition"):
+</p>
+<a name="#Thm1"></a><p>
+<b>THEOREM 1 (PseudoBest Rank Order=Best Weighted Positional):</b>
+The best weighted positional voting system
+(i.e. 
+minimizing Bayesian Regret for strategic voters under some model of strategic voter behavior)
+is the <i>same thing</i>
+as the pseudo-best rank-order-ballot voting system.
+</p><p>
+Before the reader dances off into the sunset
+feeling that the "pseudobest" definition has evaded all problems...
+there can still be one more problem:
+With some voter strategic behaviors, the "best" weighted positional system could actually
+have <i>greater</I> weights for the second-ranked candidate than the top-ranked one!
+In that case, the voters of course would no longer <i>use</i> that strategic behavior
+in reality &ndash; they'd e.g. switch to ranking their true-favorite "second." The problem here
+is not that the "best weighted positional" = "pseudobest" definition is wrong; it is
+that whatever underlying 
+voter strategic behavior model was used, was unrealistic.   We shall encounter
+this exact difficulty in <a href="#Sec3">section 3</a> and propose a cure involving 
+averaging weights in increasing-weight blocks.
+</p>
+
+<a name="Sec3"></a>
+<h3>3. Best rank-order voting system for strategic voters
+(especially using "moving-average" strategy)
+</h3>
+
+<p>
+We begin by considering a very wide class of voter "strategies" &ndash;
+not just the ones Part I had been considering based on the assumption by voters that
+everybody besides two known "frontrunner" candidates had negligible winning chances.
+Instead allow voters to use <i>any</i> function F to  determine their
+votes from candidate-utilities and
+pre-published information about the candidates and their estimated election chances.
+Call a voting system <b>fair</b> if it treats all candidates and voters equally, i.e.
+is symmetric under reordering of either.  (Previous authors have called fair voting methods
+"anonymous and neutral.")  We shall only consider fair voting systems in the rest of
+this paper.
+</p>
+<a name="UndPrinc"></a>
+<p><b>UNDERLYING PRINCIPLE 
+(optimality of weighted positional under very wide class of voter strategies):</b>
+<br>
+It should be obvious to any reader who has understood the logical flows in 
+<a href="BestVrange.html">Part I</a>
+(see especially its sections 1 and 6)
+that  the optimum (regret minimizing) fair rank-order voting method in the RNEM with
+V&rarr;&infin; voters is a
+<i>weighted positional</i> system in which the weight for the <i>k</i>th-ranked candidate
+is the <i>expected utility</i> of that candidate for a random voter
+under the RNEM, <i>conditioned</i>
+on F producing a rank-ordering ranking him <i>k</i>th.
+These weights are just a certain set of constants which can be computed once and for all given
+the definition F of voter strategy.
+</p>
+<p>
+<b>Remark:</b>
+In consequence, I would expect Approval voting to still provably be superior to every
+rank-order voting system,
+for most reasonable strategy notions, for any mixture of honest and strategic voters,
+in 3-candidate RNEM elections.
+(However, we are intentionally leaving <i>that</i>
+somewhat vague; the reader will have to check
+it for any particular strategy notion.)
+</p><p>
+We now drop total generality to focus on the moving-average strategy.
+</p><p>
+<b>Incidental Observation (last-ranked's utility almost irrelevant):</b>
+In any rank-order-ballot voting system, voters employing the moving-average strategy
+will produce a rank for God's last-numbered candidate which is, under the RNEM, 
+<i>uncorrelated with and independent of</I> the utility of that candidate
+(since this vote is determined purely by the utilities of the <i>other</i> N-1 candidates)!
+More difficulties with correlation matrices will be discussed next section.
+</p><p>
+<b>A useful sequence Q<sub>k</sub>:</b>
+To identify the best fair rank-order voting system for this kind of strategic voter, 
+a useful sequence of quantities to know are
+Q<sub>k</sub>,
+the expected utility of a candidate, <i>conditioned</i> on
+a voter regarding him as having greater utility than the average-utility of k-1 given other
+candidates.
+I.e, Q<sub>k</sub> is the expected value of a standard normal deviate 
+conditioned on the fact it is greater than the average of
+k-1 other independent such deviates.
+If 2&le;k this is, as a k-dimensional integral over a halfspace, 
+</p>
+<center>
+Q<sub>k</sub>
+=
+2&int;&int;&hellip;&int;<sub>(k-1)x<sub>k</sub>&ge;(x<sub>1</sub>+&hellip;+x<sub>k-1</sub>)</sub> 
+x<sub>k</sub>P(x<sub>1</sub>)P(x<sub>2</sub>)&hellip;P(x<sub>k</sub>)
+dx<sub>1</sub>dx<sub>2</sub>&hellip;dx<sub>k</sub>.
+</center>
+<p>
+where P(x)=(2&pi;)<sup>-1/2</sup>exp(-x<sup>2</sup>/2)
+denotes the standard normal density function.
+We can evaluate the integral immediately by rotating the coordinate system so that one of
+the axes becomes perpendicular to the hyperplane 
+</p>
+<center>
+(k-1)x<sub>k</sub>=x<sub>1</sub>+&hellip;+x<sub>k-1</sub>.
+</center>
+<p>
+In that case the integrals over all the other k-1 directions can be replaced by just the value
+at the origin, so the k-dimensional integral becomes 1-dimensional, with value
+</p>
+<center>
+Q<sub>k</sub>
+&nbsp; = &nbsp; 
+2[(k-1)/k]<sup>1/2</sup>&int;<sub>0&le;x&lt;&infin;</sub>xP(x)dx
+&nbsp; = &nbsp; 
+[2(k-1)/(&pi;k)]<sup>1/2</sup>.
+</center>
+<p>
+<a name="Thm2"</a>
+<p>
+<b>THEOREM 2 (Best rank-order systems for strategic voters):</b>
+For V voters employing the moving-average strategy, the best (i.e. least expected regret) fair
+rank-order voting system under the RNEM in the V&rarr;&infin; limit is, for 2&le;N&lt;&infin;,
+the weighted-positional system whose weights are
+in decreasing order
+S<sub>J</sub><sup>(N)</sup> for
+1&le;J&le;N.
+We have
+S<sub>1</sub><sup>(N)</sup>=Q<sub>2</sub>
+while
+for 2&le;J&le;&lfloor;N/2&rfloor; they are given by this formula
+</p>
+<center>
+S<sub>J</sub><sup>(N)</sup>
+&nbsp; = &nbsp; 
+[T<sub>J</sub><sup>(N)</sup> - T<sub>N+1-J</sub><sup>(N)</sup>]
+<font size="+3">/</font>
+[B<sub>J</sub><sup>(N)</sup> + B<sub>N+1-J</sub><sup>(N)</sup>]
+</center>
+where
+<center>
+T<sub>J</sub><sup>(N)</sup>
+&nbsp; = &nbsp;
+&sum;<sub>J&le;k&lt;N</sub> Q<sub>k+1</sub>2<sup>-k</sup>binomial(k-2, J-2)
+,
+&nbsp;&nbsp;&nbsp;&nbsp;
+B<sub>J</sub><sup>(N)</sup>
+&nbsp; = &nbsp;
+&sum;<sub>J&le;k&lt;N</sub> 2<sup>-k</sup>binomial(k-2, J-2) 
+</center>
+<p>
+and for J&ge;&lceil;N/2&rceil; we can get the weights from the negation symmetry
+S<sub>J</sub><sup>(N)</sup>+S<sub>N+1-J</sub><sup>(N)</sup>=0.
+Here 
+binomial(b,a)=b!/[a!&middot;(b-a)!]
+where 0!=1. 
+</p>
+<p>
+<b>CAVEAT:</b>
+<i>However</i>, when N&ge;6 these weights S<sub>J</sub><sup>(N)</sup>
+need to be "adjusted" to cure the "disease" that some of them increase with J,
+see text below.
+<p>
+<b>REMARK:</b>
+The sum-based formula also gives the right answer for S<sub>1</sub><sup>(N)</sup> 
+provided binomial(a,b) with negative a or b are interpreted in the correct limiting sense.
+</p>
+<p>
+<b>Proof (of Theorem as supplemented by Caveat):</b>
+From linearity of expectations we have that
+&sum;<sub>1&le;J&le;N</sub>S<sub>J</sub><sup>(N)</sup>=0.
+From negation symmetry we have
+S<sub>J</sub><sup>(N)</sup>+S<sub>N+1-J</sub><sup>(N)</sup>=0 for 1&le;J&le;N.
+From the first step in the definition of the moving-average strategy, we have
+S<sub>1</sub><sup>(N)</sup>=Q<sub>2</sub>.
+Now the remaining weights not yet determined by these relations are
+S<sub>J</sub><sup>(N)</sup>
+for
+2&le;J&le;&lfloor;N/2&rfloor;.
+For these we argue as follows.  
+Why would our strategic voter rank a candidate <i>J</i>th?
+If she ranked all except <i>i</i> (i&ge;0)
+of the J-2+i candidates numbered m=3,...,J+i 
+(where m numbers them in "God's order")
+maximum, then also ranked God's <i>(J+i+1)</i>th-numbered candidate
+maximum, then that <i>(J+i+1)</i>th-numbered candidate would be ranked <i>J</i>th in
+the voter's strategic rank-ordering and would have expected utility Q<sub>J+i+1</sub>,
+and this event would occur with probability proportional to 
+<nobr>2<sup>2-J-i</sup>binomial(J-2+i, i)</nobr>.
+The powers of 2 come from the fact that each question of the form "does candidate X's
+utility lie above or below the average of the preceding candidates?" is
+an unbiased coin flip.  The binomials come from the fact that the probability
+that N coin flips yield exactly Z heads is 
+<nobr>2<sup>-N</sup>binomial(N,Z).</nobr>
+Now use 
+<nobr>binomial(b,b-a)=binomial(b,a)</nobr>
+and let k=J+i to get the claimed formula
+for T<sub>J</sub><sup>(N)</sup>.
+</p><p>
+It is also possible for <i>J</i>th rankings to arise
+via voters who rank that candidate <i>min</i>imum, in which case 
+the same formula arises "thinking negated" where the <i>J</i>th-ranking
+from top corresponds to the <i>N+1-J</i>th ranking from bottom.
+Between these we have accounted for every possibility.
+(The denominator just comes from normalizing the probability distribution; and since
+we may multiply both the numerator and denominator by the same arbitrary constant, we
+use that to simplify the exponents in the power of 2.)
+</p>
+<p>
+This causes the best voting system for strategic voters in <b>2-candidate</b> RNEM elections to
+be weighted positional with weights 
+<nobr>(Q<sub>2</sub>, -Q<sub>2</sub>),</nobr>
+which when rescaled by &radic;&pi; is
+<nobr>(+1, -1),</nobr> 
+i.e. simple plurality voting.
+Similarly the
+best voting system for strategic voters in <b>3-candidate</b> RNEM elections has
+weights 
+<nobr>(Q<sub>2</sub>, 0, -Q<sub>2</sub>),</nobr>
+which when rescaled by &radic;&pi; is
+<nobr>(+1, 0, -1),</nobr> 
+i.e. Borda voting.
+</p>
+<p>
+We already knew both these facts from 
+<a href="BestVrange.html">Part I</a>, but for
+<b>4-candidate</b> RNEM elections we move into new territory
+with the "root3 voting system."
+Its weights [rescaled by (3&pi;)<sup>1/2</sup>] are <nobr>(&radic;3, 1, -1, -&radic;3).</nobr>
+<p>
+Incidentally, note that root3 voting 
+is the first example (N=4)
+where the best weighted-positional voting
+systems for honest and for strategic voters <i>differ</I>.
+</p>
+<p>
+One can now continue on trying
+to derive the best rank-order voting systems for strategic RNEM voters
+for N-candidate elections for <nobr>N=5,6,7,&hellip;</nobr>
+We always get a weighted positional system, whose weights 
+are certain rational linear combinations of the Q<sub>j</sub>.
+When <b>N=5</b> they are [rescaled by <nobr>8(3&pi;)<sup>1/2</sup></nobr>]
+</p>
+<center>
+(8&radic;3, 8+3&radic;2, 0, -8-3&radic;2, -8&radic;3)
+</center>
+<p>
+However, a funny thing happens when <b>N=6</b> (and presumably for all N&ge;6):
+we find that 
+S<sub>2</sub><sup>(N)</sup>&gt;S<sub>1</sub><sup>(N)</sup>!
+That would mean that a voter would be better off ranking
+her favorite frontrunner <i>second</i> rather than first...
+contradicting the 
+validity and whole underlying rationale of
+the "best rank-order voting system for strategic voters."
+Presumably the right <b>cure</b> for this is to replace any 
+increasing block of weights by their averages 
+&ndash; albeit when N gets larger 
+that just leads to further 
+diseases, see <a href="#Tab2">table 2</a>, which require more curing.
+With the cures suggested there &ndash;
+namely that each <i>block</i> of B non-decreasing weights needs to be replaced by B
+repetitions of its mean, and this adjustment needs to be re-done until the weights
+form a non-increasing sequence &ndash;
+the resulting voting system will have the property under the RNEM that
+a candidate who receives score X from a strategic voter, will, in fact,
+then have expected utility X. 
+(This iterative adjustment process must terminate/converge since each adjustment <i>decreases</i>
+the sum of the squares of the weights, hence the process cannot "loop forever.")
+That property justifies our claim that the voting system is
+"optimal" for this kind of voter &ndash; it elects the candidate with the greatest expected
+(conditioned on the votes) utility.
+<b>QED.</b>
+</p><p>
+<b>Must "best voting methods for strategic voters" <i>exist?</i></b>
+We have seen that they exist in the RNEM for <i>moving-average strategy</i> with N&ge;2
+candidates and V&rarr;&infin; voters.
+But it is not clear to me that they must exist in <i>general.</i>
+The problem is this.  Our 
+"<a href="#UndPrinc">underlying principle</a>"
+makes it clear that for any F
+defining the strategic behavior, a unique best voting system will exist under
+the V&rarr;&infin; RNEM, <i>but</i>
+it might happen that that voting system is such that F no longer 
+constitutes "sensible strategy."  One could, of course, then alter F to make it "more
+sensible" and then see what voting system results, and then alter F again, and so on.
+The problem is: this
+iterative process might enter an infinite loop and never terminate.
+So my current answer to this question is "sometimes, but perhaps not always."
+</p>
+<p>
+<b>More general (albeit perhaps mysterious) remark:</b>
+it is well known that there is no such thing as "best strategy"
+if one attempts to generalize Von Neumann "game theory" to games with more than 2 players.
+So the whole question does not really make sense.   "Nash equilibrium" is an attempt to
+salvage game theory which often is useful, but for the purposes of voting theorists in
+large elections, is extremely useless.  [For example,
+an election  in which every voter votes for the 
+agreed-by-all-to-be-worst candidate "Hitler," who wins...
+is a "Nash equilibrium."]
+</p><p>
+This explains why we are always focusing on some specific voter behavior F as a strategy
+(e.g. the moving-average strategy) instead of enquiring what <i>is</i>
+"the best strategy" &ndash;
+there is no such thing.
+</p>
+
+<!--
+ Q := (k) -> sqrt(2/Pi) * sqrt((k-1)/k);
+ T := (J,N) ->  sum( Q(k+1) * 2^(-k) * binomial(k-2, J-2), k=J..N-1 );
+ B := (J,N) ->  sum(          2^(-k) * binomial(k-2, J-2), k=J..N-1 );
+ S := (J,N) ->  ( T(J,N) - T(N+1-J,N) ) / ( B(J,N) + B(N+1-J,N) );  #- is +? both wrong dammit
+ for N from 2 to 9 do
+  print("<tr><th>", N, "</th><td>");
+  xx := evalf(Q(2), 50);
+  mn := xx;
+  print(1, evalf(xx, 15), evalf(mn, 15));
+  for J from 2 to floor(N/2) do
+   xx := evalf(S(J,N), 50);
+   mn := evalf(mn + (xx-mn)/J, 50);
+   print(J, evalf(xx, 15), evalf(mn, 15));
+ od; 
+ if((N mod 2) = 1) then print(ceil(N/2), 0, evalf(mn*(1-1/J), 15)); fi;
+ print("</td></tr>"):
+ od;
+
+ for N from 2 to 31 do
+  xx := evalf(Q(2), 50);
+  print("BSW[1][",N,"]=", evalf(xx, 18), ";");
+  for J from 2 to floor(N/2) do
+   xx := evalf(S(J,N), 50);
+   print("BSW[",J,"][",N,"]=", evalf(xx, 18), ";");
+  od; 
+  if((N mod 2) = 1) then 
+   print("BSW[",(N+1)/2,"][",N,"]=", 0, ";");
+  fi;
+  for J from floor(N/2) to 2 by -1 do
+   xx := evalf(S(J,N), 50);
+   print("BSW[",N+1-J,"][",N,"]=", evalf(-xx, 18), ";");
+  od; 
+  xx := evalf(Q(2), 50);
+  print("BSW[",N,"][",N,"]=", evalf(-xx, 18), ";");
+ od;
+-->
+
+<a name="Tab2"></a>
+<table bgcolor="aqua" cellpadding="4">
+<caption>
+<b>Table 2:</b> Weights defining best rank-order voting system for strategic voters
+in N-candidate RNEM elections, computed from <a href="#Thm2">theorem 2</a>.   
+Scaled so that the max and min weights are
+&plusmn;&pi;<sup>-1/2</sup> so that the weights give expected utility of a candidate
+conditioned on strategic voter ranking him <i>k</i>th.
+(Should be accurate to 0.51 units in the last decimal place.)
+Certain blocks of weights, shown <u>underlined</u>, 
+unfortunately increase.  The correct
+cure for this disease is to replace the entire block by repetitions of its mean,
+but then additional diseases are encountered when N=31 involving the italicized weights too.
+The right cure then is to replace both the underlined <i>and</i> italicized
+weights by repetitions of their common mean (last column).  Call the
+resulting <i>adjusted</i> weights "<u>S</u><sub>k</sub><sup>(N)</sup>."
+Then observe from them that the best rank-order
+voting systems for 31, 100, and 316 candidates with strategic voters
+<i>greatly resemble approval voting.</i>
+</caption>
+<tr bgcolor="pink"><th>N</th><th>S<sub>k</sub><sup>(N)</sup> for k=1,2,&hellip;N&nbsp; (Blocks <u>underlined</u>/<i>italicized</i>)</th>
+<th>Block-mean</th></tr>
+<tr><th>2</th><td>
+0.564189583547756,
+-0.564189583547756   &nbsp; (Plain plurality)
+</td><td>
+</td></tr>
+<tr><th>3</th><td>
+0.564189583547756,
+0,
+-0.564189583547756   &nbsp; (Borda)
+</td><td>
+</td></tr>
+<tr><th>4</th><td>
+0.564189583547756,
+0.325735007935280,
+-0.325735007935280,
+-0.564189583547756   &nbsp; (Root3 voting)
+</td><td>
+</td></tr>
+<tr><th>5</th><td>
+0.564189583547756,
+0.498482082670948,
+0, sym
+</td><td>
+</td></tr>
+<tr><th>6</th><td>
+<u>0.564189583547756,
+0.587688288478586</u>,
+0.261953280543306, sym
+</td><td>
+0.575938936013171
+</td></tr>
+<tr><th>7</th><td>
+<u>0.564189583547756,
+0.633211139753256</u>,
+0.442205188900285,
+0, sym
+</td><td>
+0.598700361650506
+</td></tr>
+<tr><th>8</th><td>
+<u>0.564189583547756,
+0.656295438618553</u>,
+0.556980936770844,
+0.226420506087571, sym
+</td><td>
+0.610242511083154
+</td></tr>
+<tr><th>9</th><td>
+<u>0.564189583547756,
+0.667957199011994</u>,
+0.626712277209905,
+0.399505055925336,
+0, sym
+</td><td>
+0.616073391279875
+</td></tr>
+<tr><th>31</th><td>
+<u>0.564189583547756,
+0.679773410167051,
+0.721194190473972,
+0.741678440464367,
+0.753697372447156,
+0.761484854452681,
+0.766651755249552,
+0.769337398026234</u>,
+<i>0.767902422857322,
+0.757825643105279,
+0.730540639763292</i>,
+0.673615376561153,
+0.573822412896530,
+0.423242673970826,
+0.225831515802532,
+0, sym
+</td><td>
+0.728570519141333
+</td></tr>
+<tr><th>100</th><td>
+<u>S</u><sub>k</sub><sup>(100)</sup> are identical for k=1..39, then decrease for k=40..50.
+</td><td>
+0.772901887476515
+</td></tr>
+<tr><th>316</th><td>
+<u>S</u><sub>k</sub><sup>(316)</sup> are identical for k=1..135, then decrease for k=136..158.
+</td><td>
+0.788931905605522
+</td></tr>
+</table>
+
+<p>
+<b>NUMERICAL CONFIRMATION:</b>
+Each line in <A href="#Tab2">table 2</a>, for 2&le;N&le;9, was computed by instead 
+performing 462 million Monte Carlo experiments.  (Each experiment was
+to create N independent standard-normal deviates, compute the moving-average-strategy 
+rank-order vote
+based on those N utilities,
+and keep track of the mean utility of the candidate ranked <i>J</i>th in these
+votes for each J with 1&le;J&le;N.  The thus-obtained Monte-Carlo results, 
+rounded to 4 decimal places,
+were found to agree with the exact S<sub>J</sub><sup>(N)</sup>
+formula in every case to within an error of &plusmn;1 in the
+final decimal place.
+</p>
+<!--
+<pre>
+ 2:  0.5642, -0.5642;
+ 3:  0.5642,  0.0000, -0.5642;
+ 4:  0.5642,  0.3257, -0.3257, -0.5642;
+ 5:  0.5642,  0.4984,  0.0000, -0.4984, -0.5642;
+ 6:  0.5642,  0.5877,  0.2620, -0.2620, -0.5877, -0.5642;
+ 7:  0.5642,  0.6332,  0.4422, -0.0000, -0.4422, -0.6332, -0.5642;
+ 8:  0.5642,  0.6563,  0.5570,  0.2265, -0.2265, -0.5570, -0.6563, -0.5642;
+ 9:  0.5642,  0.6680,  0.6267,  0.3995,  0.0000, -0.3995, -0.6267, -0.6680, -0.5642;
+</pre>
+-->
+
+<a name="Sec4"></a>
+<h3>4. Some matrices, and problems with them
+</h3>
+
+<!--
+<pre>
+Honest Range Voting (N=4):
+C matrix:
+ 0.7712 -0.2571 -0.2571 -0.2571  0.4549  0.0000  0.0000  0.0000 
+-0.2571  0.7713 -0.2571 -0.2571  0.0293  0.4539  0.0000  0.0000 
+-0.2571 -0.2571  0.7713 -0.2571  0.0292  0.0274  0.4531  0.0000 
+-0.2571 -0.2571 -0.2571  0.7713  0.0292  0.0274  0.0258  0.4524 
+C matrix (Independent randomness):
+ 0.7712 -0.2571 -0.2571 -0.2571  0.4549  0.0000  0.0000  0.0000 
+-0.2571  0.7713 -0.2571 -0.2571  0.0292  0.4539  0.0000  0.0000 
+-0.2571 -0.2571  0.7712 -0.2571  0.0292  0.0274  0.4531  0.0000 
+-0.2571 -0.2571 -0.2571  0.7713  0.0292  0.0274  0.0258  0.4524 
+C.Ct matrix:
+ 1.0000 -0.2511 -0.2511 -0.2511 
+-0.2511  1.0000 -0.2511 -0.2511 
+-0.2511 -0.2511  1.0000 -0.2511 
+-0.2511 -0.2511 -0.2511  1.0000 
+All variances equal to about 0.80512.
+Exact formulas:
+0.7713=?
+0.2571=?
+0.2511=?
+</pre>
+-->
+
+<p>
+Part I had already given closed formulas for the correlation matrices for, e.g, 
+every honest weighted-positional rank-order
+voting system.  We now give a few more (without proof; in most cases the proofs
+are easy &ndash; or at least easy consequences of integrals tabulated in 
+<a href="BestVrange.html#AppB">appendix B of Part I </a>
+&ndash; but in other cases the computation is more difficult)
+</p>
+<p>
+For <b>4</b>-candidate <b>semi-strategic "top 2"</b> voting, the "C-matrix" (explained in Part I)
+can be computed in closed form.   It is "doubly rank-deficient"
+<pre>
+    [ 0.5642 -0.5642  0.0000  0.0000  0.6028  0.0000 ]
+C &asymp; [-0.5642  0.5642  0.0000  0.0000 -0.6028  0.0000 ]
+    [ 0.0000  0.0000  0.5642 -0.5642  0.0000  0.6028 ]
+    [ 0.0000  0.0000 -0.5642  0.5642  0.0000 -0.6028 ]
+</pre> 
+where the exact formulas for the numbers given as decimals are
+0.5642&asymp;&pi;<sup>-1/2</sup> and
+0.6028&asymp;(1-2/&pi;)<sup>1/2</sup>.
+We have
+<pre>
+      [ 1 -1  0  0 ]
+CC<sup>T</sup> = [-1  1  0  0 ]
+      [ 0  0  1 -1 ]
+      [ 0  0 -1  1 ]
+</pre>
+and all vote-variances are 1.
+</p>
+<a name="Thm3"></a>
+<p>
+<b>THEOREM 3 (Best Semi-Strategic Rank-Order=Top-2):</b>
+The best (regret-minimizing)
+semi-strategic voting system, under the RNEM with V&rarr;&infin; voters,
+in 4-candidate elections, is "top-2" voting, i.e. the
+weighted positional system with weights
+proportional to (+1, +1, -1, -1).
+</p><p>
+<b>Proof:</b>
+By our <a href="#UndPrinc">underlying principle</a> from section 2,
+it has to be weighted positional with weights proportional
+to expected utilities (in the eyes of any given voter) conditioned on that voter's vote.
+Because of our postulate/definition 
+that "God" chooses the two frontrunners (and two non-frontrunners)
+randomly in a way unrelated to 
+all voters' utilities, and because of our definition of "semi-strategic" voting, 
+the two frontrunners and two non-frontrunners are exactly symmetric, so their
+weights must be the same, and by translation and scaling we can make them be (+1,-1).
+<b>QED.</b>
+</p><p>
+For <b>4</b>-candidate <b>Strategic Approval=Range</b> we have rank-deficiency 1 and 
+<pre>
+    [ 0.5642 -0.5642  0.0000  0.0000  0.6028  0.0000  0.0000 ]
+C &asymp; [-0.5642  0.5642  0.0000  0.0000 -0.6028  0.0000  0.0000 ]
+    [-0.3257 -0.3257  0.6515  0.0000  0.0000  0.6028  0.0000 ]
+    [-0.2303 -0.2303 -0.2303  0.6910  0.0000  0.0000  0.6028 ]
+</pre>
+<pre>
+      [ 1 -1  0  0 ]
+CC<sup>T</sup> = [-1  1  0  0 ]
+      [ 0  0  1  0 ]
+      [ 0  0  0  1 ]
+</pre>
+All vote-variances are 1, and the additional exact formulas are
+<center>
+0.6515&asymp;2(3&pi;)<sup>-1/2</sup>,
+0.6910&asymp;(2&pi;/3)<sup>-1/2</sup>,
+0.3257&asymp;(3&pi;)<sup>-1/2</sup>,
+0.2303&asymp;(6&pi;)<sup>-1/2</sup>.
+</center>
+For <b>5</b>-candidate
+Strategic Approval=Range we have rank-deficiency 1 and 
+<pre>
+    [ 0.5642 -0.5642  0.0000  0.0000  0.0000  0.6028  0.0000  0.0000  0.0000 ]
+C &asymp; [-0.5642  0.5642  0.0000  0.0000  0.0000 -0.6028  0.0000  0.0000  0.0000 ]
+    [-0.3257 -0.3257  0.6515  0.0000  0.0000  0.0000  0.6028  0.0000  0.0000 ]
+    [-0.2303 -0.2303 -0.2303  0.6910  0.0000  0.0000  0.0000  0.6028  0.0000 ]
+    [-0.1785 -0.1784 -0.1784 -0.1784  0.7136  0.0000 -0.0001  0.0000  0.6028 ]
+</pre>
+<pre>
+      [ 1 -1  0  0  0 ]
+      [-1  1  0  0  0 ]
+CC<sup>T</sup> = [ 0  0  1  0  0 ]
+      [ 0  0  0  1  0 ]
+      [ 0  0  0  0  1 ]
+</pre>
+All vote-variances are 1, and the additional exact formulas are
+0.1784&asymp;(10&pi;)<sup>-1/2</sup> and
+0.7136&asymp;(5&pi;/8)<sup>-1/2</sup>.
+</pre>
+<p>
+<b>REMARK:</b>
+Note that in all the cases above, det(CC<sup>T</sup>)=0 so that the vote-vote
+correlation matrix CC<sup>T</sup> is <i>not</i> positive-definite; it
+is merely semidefinite.  A zero-eigenvalue eigenvector is (1,1,0,...,0),
+but this is not bothersome since strategic voters always vote (x,-x) in
+the first two coordinates and hence never "activate" this eigenvector.
+</p><p>
+A much more annoying indefiniteness problem occurs with
+5-candidate psubest-strategic-rank-order voting,
+<pre>
+      [ 1.0000 -1.0000  0.0000  0.0000  0.0000 ]
+      [-1.0000  1.0000  0.0000  0.0000  0.0000 ]
+CC<sup>T</sup> = [ 0.0000  0.0000  1.0000 -0.7071 -0.7071 ]
+      [ 0.0000  0.0000 -0.7071  1.0000  0.0000 ]
+      [ 0.0000  0.0000 -0.7071  0.0000  1.0000 ]
+</pre>
+where the exact formula for 0.7071 is 2<sup>-1/2</sup>.
+This also has det(CC<sup>T</sup>)=0, arising from the unique eigenvector with
+zero eigenvalue, which is <nobr>e=(0, 0, &radic;2, 1, 1).</nobr>
+The reason this is much more annoying is that voters <i>always</i> vote in ways non-orthogonal
+to this eigenvector, and hence with vote-utility correlation matrices generated by approximate 
+Monte-Carlo methods, there is a decent probability
+that the "correlation based procedure" from part I
+will try to Cholesky-factor a matrix with a negative eigenvalue &ndash; which, 
+of course, is
+impossible.
+</p><P>
+Experiments with the Monte-Carlo code showed, however, that 
+<ol type="">
+<li>
+Mixing in even a small percentage of honest voters always seems to cure the indefiniteness problem.
+</li><li>
+With 100% strategic voters, we (usually, depending on the random seed)
+can "adjust" the vote-utility correlation matrix by a tiny perturbation of order
+10<sup>-9</sup> in each entry
+(i.e. well below the levels of random noise from Monte Carlo)
+to make it become positive definite.
+</ol>
+</p><P>
+This same problem arose in other cases too, but the same fix has always worked
+in our experience so far.
+</p>
+
+<a name="Sec5"></a>
+<h3>5. Some remarks on some other voting systems
+</h3>
+
+<p>
+Alan Gibbard, in his proof of his version of the Gibbard-Satterthwaite theorem, 
+focused attention on the following two randomized voting methods, which, he showed,
+were the unique two "strategy-proof" rank-order voting systems (and probabilistic mixtures
+of these two):
+<ol>
+<li> <b>Random ballot:</b>
+A ballot is selected at random, and the winner is the candidate it ranks top.
+</li>
+<li> <b>Random pair:</b>
+A pair of candidates (call them A  and B)
+are selected at random. 
+All other candidates besides A &amp; B are eliminated.
+The winner is whoever wins the
+A versus B simple-majority vote based on the ballots.
+</li>
+</ol>
+In other words, strategic and honest voting, in these two 
+lottery-voting systems, are the same thing.
+</p>
+<a name="Thm4"></a>
+<p><b>THEOREM 4:</b>
+Under the RNEM with V&rarr;&infin; voters, "random ballot" has the same 
+regret as "random winner."
+Also, "random pair" has the same regret as "strategic plurality voting."
+</p>
+<p>
+<b>Proof:</b> is immediate from
+the definition of the RNEM and our model of strategic plurality
+voting.
+<b>QED.</b>
+</p>
+
+<p>
+In the real world, our model of the two "frontrunners" being "selected randomly by God"
+is not completely correct.
+I suspect, indeed, that the two frontrunners have better quality on average than 
+random candidates.  (But this certainly is not <i>always</i> the case. For example,
+two US presidents often selected by historians as the "worst" are George W. Bush and 
+Warren G. Harding.  It is hard to believe that their respective third-party opponents
+Ralph Nader and Eugene V. Debs would have made worse presidents than them.  Debs was actually
+a political <i>prisoner</i> at the time of the election but 
+Harding, once elected, pardoned him.)
+If so, then random pair in the real world presumably would have <i>worse</i> regret than
+strategic plurality voting.
+</p>
+
+<a name="Sec6"></a>
+<h3>6. (Pseudo)Best rank-order voting system for strategic+honest voter mixture
+</h3>
+
+<a name="Thm5"></a>
+<p>
+<b>THEOREM 5 (Best rank-order system for honest+strat voter mix):</b>
+The pseudo-best <!--(i.e. regret-minimizing) -->
+rank-order voting system in N-candidate elections
+in the V&rarr;&infin; voter RNEM with a mixture of H-fraction 
+honest and (1-H)-fraction strategic, voters, is weighted positional
+with weights 
+<center>
+H&middot;G<sub>k</sub><sup>(N)</sup>+(1-H)<u>S</u><sub>k</sub><sup>(N)</sup>
+</center>
+where G<sub>k</sub><sup>(N)</sup> from 
+<a href="BestVrange.html#AppA">Part I's appendix A</a> are the optimum weights for
+honest voters, and 
+<u>S</u><sub>k</sub><sup>(N)</sup> from our <a href="#Thm2">theorem 2</a>
+are the optimum weights for
+strategic voters.
+</p>
+<p>
+The <b>proof</b>
+is immediate from the 
+<a href="#UndPrinc">underlying principle</a>
+from <a href="#Sec3">section 3</a>.
+</p><p>
+With the optimum voting system known, we then can employ the known methodology from
+<a href="BestVrange.html#Sec8">section 8 of Part I</a>
+to evaluate its Bayesian regret for an H:1-H honest+strategic
+voter mixture.  When I did so using our usual
+numerical-integration-based "correlation-based procedure,"
+the result was the following plots.  The other curve plotted is the regret for
+range voting using the same H:1-H voter mixture &ndash;
+the strategic range voters are using
+moving-average strategy and thus are effectively using approval voting.
+</p>
+<p>
+<b>Interesting aside:</b>
+The best rank-order system is only a little better than Borda
+when N&isin;{4,5}.
+</p><p>
+As you can see immediately from the plots (and the case N=3 is covered in Part I)
+</p>
+<p>
+<b>CLAIM:</b>
+Range voting is superior to every rank-order
+voting system (even the best) in the V&rarr;&infin; voter RNEM, for N-candidate 
+elections with 3&le;N&le;9, at any voter-honesty fraction H with 0&le;H&le;100%,
+provided we ignore the distinction between best and pseudobest.
+(That is, more precisely: the regret of range voting is less than the regret of
+the pseudo-best rank-order system at every H, where the "pseudo-best" system
+minimizes regret in a model where the strategic voters each have independent uniform-random 
+beliefs about "God's likelihood order," <i>but then</i> actual regret is evaluated in a setting
+where there is only one, publicly known, such order.)
+
+</p>
+
+
+<a name="Plots"></a>
+<a href="Reg4to9.png"><img src="Reg4to9.png" width="99%"></a>
+<center>
+<b>Figure 1.</b>
+Regrets versus electorate honesty-percentage for several voting methods with
+V&rarr;&infin; voters under the RNEM.
+Accuracy should be substantially better than the widths of the curves and dots.
+The curve labeled "best weighted-positional" voting system, also 
+(by <a href="#thm1">theorem 1</a>)
+is the "pseudo-best rank-order voting system."
+The best and pseudo-best rank-order systems coincide in the 3-candidate case but
+not for more than 3 candidates as here.
+</center>
+<!--Plot data from GenPlot.out -->
+
+
+<a name="Sec7"></a>
+<h3>7. Large numbers N of candidates
+</h3>
+
+<p>
+What about 7, 8, 9,..., candidate elections?
+It would be nice to have a theorem proclaiming range voting's superiority versus
+the best rank-order 
+system for <i>every</i> number N&ge;3 of candidates.
+That is a good question.  It is often possible to prove 
+&int;A(x)dx&gt;&int;B(x)dx
+despite the absence of closed formulas for either integral.
+We know what the best rank-order system is for honest voters (see
+<a href="#Sec6">Part I's section 6</a>) and we know the
+pseudo-best system
+for strategic voters (here)
+so that we know what "A(x)" and "B(x)" are; the difficulty
+is that our integrals are multidimensional.
+An interesting task for future authors, then, would
+be to develop suitable "comparison theorems" enabling 
+such proofs.  
+</p><p>
+Since I currently lack
+such tools, it is useful to consider the limit of 
+N&rarr;&infin; candidates.  The idea is
+that if we can show something for both
+N&le;31 and for N&rarr;&infin;, that makes it plausible that
+it works for all N.
+</p>
+<a name="Thm6"></a>
+<p>
+<b>THEOREM 6 (Range voting's regret is small for large #candidates):</b>
+For honest range voting in the RNEM with V voters, V&rarr;&infin;, 
+as the number of candidates N becomes large,
+the regret is O(1/lnN)<sup>1/2</sup>
+times the regret of "random winner."
+</p>
+<p>
+<b>Proof sketch:</b>
+Use the results about the variances associated with the G<sub>k</sub><sup>(N)</sup>
+in <a href="#AppA">Part I's appendix A</a> 
+to see that all the "normalization factors" for range voters
+will be <i>equal</i> up to relative error 
+O(1/lnN) (except for an arbitrarily small fraction of voters, which hence will have
+an arbitrarily small effect on total utilities).
+We can now use, e.g, Chebyshev's bound on probability densities with bounded variance
+and more strongly, Hall's work cited in that appendix showing exponential tail bounds; and
+also we can use the fact that all voters  are <i>independent</i> and have <i>independent</I> 
+utility-versus-range-vote errors, combined with the Chernoff bound, to see that,
+with probability&rarr;1, <i>all</i>
+the range-vote totals will be the same as the corresponding
+true-utility-totals,
+up to additive errors whose root mean square has order 
+&plusmn;V<sup>1/2</sup>(lnN)<sup>-1/2</sup>.
+Meanwhile the <i>maximum</i> among the N true utility totals will almost surely be of order
+V<sup>1/2</sup>(lnN)<sup>+1/2</sup>.  
+Thus (now again using facts about the  G<sub>k</sub><sup>(N)</sup>
+from <a href="#AppA">Part I's appendix A</a>) even 
+the maximum <i>among</i> the errors in approximation of utilities by vote totals 
+will still be far smaller &ndash; by a factor of order 
+(lnN)<sup>1/2</sup> at least &ndash; than the maximum utility,
+<b>QED.</b>
+</p>
+<p>
+In contrast,
+</p>
+<a name="Thm7"></a>
+<p>
+<b>THEOREM 7 (Other regrets are large for large #candidates):</b>
+For each of these weighted positional voting systems:
+plurality, antiPlurality, Borda, and median-as-threshold approval voting
+(or, indeed, <i>any</i> weighted positional system in which at least a positive
+constant fraction of the system-defining weights differ by
+at least a positive constant fraction of full scale from the optimum weights
+given in <a href="BestVrange.html#Sec6">Part I's section 6</a>)
+in the RNEM with V honest voters, V&rarr;&infin;, 
+as the number of candidates N becomes large,
+the regret tends to a <i>positive constant</i> times
+the regret of "random winner."
+</p>
+<p>
+<b>Proof sketch:</b>
+Each vote will, as an approximation to utility, have additive |error|
+(on average for each voter)
+a constant fraction of full scale.   All these errors are independent,
+leading via the central limit theorem
+when V&rarr;&infin;
+to the vote totals having an expected additive |errors| 
+(as an approximation to summed candidate-utilities)
+of order V<sup>1/2</sup>, which (note) is the same typical
+order as the |utilities| themselves
+and all these errors are 
+independent in the V&rarr;&infin; limit.
+Therefore, if we elect the candidate with maximum vote rather than maximum utility, we 
+will lose utility (i.e. experience regret) of the same order as the maximum utility.
+<b>QED.</b>
+</p>
+<p>
+<b>REMARK:</b>
+I conjecture that the 
+pseudo-best rank-order system (for V&rarr;&infin; strategic voters under the RNEM)
+has the same order regret as strategic approval voting
+and random winner, but with a better
+constant factor than random winner.  
+This would follow immediately if we could prove that at least a positive constant 
+fraction of the <u>S</u><sub>J</sub><sup>(N)</sup>
+are equal, as empirically appears to be the case, for large N.
+</p>
+<p>
+<b>REMARK:</b>
+I conjecture that the best rank-order system (for V&rarr;&infin; honest voters under the RNEM)
+has the same order regret as range voting but with a greater
+constant factor due to its effective artificial uniformization of 
+the intercandidate utility spacings.  
+It easily may be shown that Borda, median-as-threshhold Approval, and Plurality 
+have successively worse
+constant factors in their regrets in the large-N limit.
+I also conjecture that strategic approval voting also obeys <a href="#Thm7">theorem 7</a>
+and with a strictly better constant factor than random winner.
+</p>
+<a name="Thm8"></a>
+<p>
+<b>THEOREM 8 (Strategic and Mean-based "honest" Approval asymptotically same):</b>
+Strategic (moving-average strategy) and honest (mean-based threshhold)
+have with probability&rarr;1 asymptotically the same regrets
+in the RNEM with V honest voters, V&rarr;&infin;, 
+as the number of candidates N becomes large.
+</p>
+<p>
+<b>Proof sketch:</b>
+The idea is that the moving average is essentially the same as the full average
+(both converge to 0 under the RNEM) for almost all of the N candidates, when N&rarr;&infin;.
+Hence the approximations of utility-totals by vote-totals
+will have asymptotically the same distributions for both voting methods.
+<b>QED.</b>
+</p>
+<a name="Thm9"></a>
+<p>
+<b>THEOREM 9 (Strategic Plurality for large #candidates):</b>
+For strategic plurality voting,
+in the RNEM with V honest voters, V&rarr;&infin;, 
+as the number of candidates N becomes large,
+the regret is <i>asymptotic</i> to the regret of random winner.
+(This is also true for the "random ballot" election method.)
+</p>
+<p>
+<b>Proof:</b>
+Consequence of our exact regret formulas and
+<a href="BestVrange.html#AppA">Part I's appendix A</a> &ndash;
+in its notation the expected regret of 
+strategic plurality is <nobr>G<sub>1</sub><sup>(N)</sup>-G<sub>1</sub><sup>(2)</sup></nobr>
+which when N&rarr;&infin; is asymptotic to the
+expected regret
+G<sub>1</sub><sup>(N)</sup>-0
+of random winner or random ballot.
+<b>QED.</b>
+</p>
+</p><p>
+Another question is: "what about other statistical/political
+models besides RNEM (such as D-dimensional
+politics models, etc)?"  Can future authors prove analogous results to ours
+in those models?  With the help of some fortuitous miracles we <i>are</i>
+able to accomplish that in some cases. 
+That will be explained in a new paper "<a href="BestVot2.html">part III</a>."
+</p>
+
+<!--
+<center>
+<a href="RegVsHonestyGraph.png"><img src="RegVsHonestyGraph2.png" width="80%"></a>
+</center>
+-->
+
+<blockquote>
+<b>References:</b>
+<br>
+G.Alefeld &amp; J.Herzberger: Introduction to Interval Computations,
+Academic Press, 1983.
+<br>
+Alan Gibbard:
+Manipulation of Schemes that
+Mix Voting with Chance, Econometrica 41 (1977) 587-600.
+<br>
+R. Hammer, M. Hocks, U. Kulisch, D. Ratz:
+Numerical Toolbox for Verified Computing I: With Algorithms and Pascal-XSC Programs, 
+Springer-Verlag, Berlin, 1994.
+<br>
+Eldon Hansen &amp; G. William Walster: Global Optimization using Interval Analysis (2nd ed.)
+Marcel Dekker, New York, 2004.
+<br>
+Nicholas J. Higham:
+Computing the nearest correlation matrix &ndash; a problem from finance,
+IMA Journal of Numerical Analysis 22,3 (2002) 329-343;
+<!-- http://www.ma.man.ac.uk/~nareports/narep369.pdf 
+Opens
+"A correlation matrix is a symetric positive definite matrix with unit diagonal." -->
+also 
+"A Preconditioned Newton Algorithm for the
+Nearest Correlation Matrix,"
+2008 preprint available here
+<nobr><a href="http://eprints.ma.man.ac.uk/1086/01/covered/MIMS_ep2008_50.pdf">
+http://eprints.ma.man.ac.uk/1086/01/covered/MIMS_ep2008_50.pdf</a>.</nobr>
+<br>
+Ramon E. Moore: Interval Analysis, Prentice Hall, Englewood Cliffs, N.J., 1966.
+<br>
+Ramon E. Moore: Methods and Applications of Interval Analysis, SIAM, Philadelphia PA 1979.
+<br>
+Miodrag S. &amp; Ljiljana D. Petkovic: Complex Interval Arithmetic and Its Applications. 
+Berlin: Wiley, 1998.
+</blockquote>
+
+<hr>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<p><a href="BestVotSumm.html">Page summarizing all 3 papers in this series</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

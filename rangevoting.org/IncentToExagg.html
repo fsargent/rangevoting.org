@@ -1,0 +1,147 @@
+<html>
+<head>
+<title>
+RangeVoting.org - why voting honestly=voting stupidly (in many voting systems)  
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Typical simple example  of how "strategic exaggeration can pay"
+causing "favorite betrayal" and "2-party domination" </H2>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+    8 
+</td>
+<td align="center">
+B>C>A
+</td>
+</tr>
+<tr bgcolor="#ccffcc">
+<td align="center">
+    6  
+<td align="center">
+C>A>B
+</td>
+</tr>
+<tr>
+<td align="center">
+    5  
+<td align="center">
+A>B>C
+</td>
+</tr>
+</table>
+
+<p>
+In this 19-voter example (containing, for those who care,  a 
+&quot;<a href="CondorcetCycles.html">Condorcet cycle</a>&quot;)
+the <b>winner is B</b>
+under a vast variety of election methods that employ rank-orderings as votes.
+(<font size="-1">Namely, all these methods declare B the winner:
+Plurality, Borda=Dabagh, Plurality with 
+Instant Runoff, Black, Schulze-Beatpath, 
+<a href="rangeVirv.html">IRV=Instant Runoff Voting</a>, 
+Loring,
+<a href="BtrIrv.html">BTR-IRV</a>, 
+<!-- Coombs is true, but the betray does not make A win with Coombs -->
+River, Maxtree,
+<a href="RankedPairs.html">Tideman Ranked Pairs</a>, Improved-Dodgson,
+Simpson-Kramer, Nanson, Rouse, Raynaud, Arrow-Raynaud,
+Condorcet Least Reversal, Woodall DAC,
+Sarvo-Plurality,   
+Sinkhorn,
+and Keener-eigenvector.</font>)
+</p>
+
+<p>
+But if the six
+C>A>B voters <a href="AlteredExagg.html">insincerely switch</a>
+to A>C>B ("<i><a href="FBCsurvey.html"><b>betraying their favorite</b></a></i>" C)
+then the "lesser evil" <b>A</b> becomes
+the winner under all these voting systems (and is the Condorcet-winner),
+which in their view is a <i>better</i> election result.
+</p>
+
+<p>
+<i>Lying paid.</i>
+</p>
+
+<p>
+This favorite-betrayal example is very important because, once voters understand that
+exaggerating their stances on the apparent-frontrunners can be necessary to
+prevent the "greater evil"
+frontrunner from winning, strategic voting is guaranteed, often causing
+"third parties" to tend to die out (since the strategic voters will
+not "waste their vote" on honest-favorite third-party candidates like C whom they perceive as
+having "no chance of winning").  
+</p>
+
+<p>
+In all of the voting systems we just mentioned, therefore,
+one might expect, or at least worry, that artificially enhanced
+<a href=Duverger.html>self-reinforcing 2-party domination</a>
+is still going to occur.
+Note that "<a href=rangeVcond.html>Condorcet methods</a>" are vulnerable to this problem:
+of the methods just mentioned, Black, Schulze-Beatpath, Loring, Nanson,
+Rouse, Raynaud, BTR-IRV, River, Maxtree,
+Tideman Ranked Pairs, and Condorcet Least Reversal all are Condorcet methods.
+Condorcet advocates might hope to escape from that trap by instead employing
+variant-Condorcet methods that permit "ranking equalities" and that are based on
+&quot;<a href="WinningVotes.html">winning votes<a>&quot; rather than "margins."  
+That initially sounded
+like a possible way out, but it <a href="VenzkeFBC3.html">isn't.</a>
+Indeed, <a href="VenzkePf.html">Kevin Venzke showed</a> that <i>every</i> Condorcet method
+(whether ranking equalities are allowed or not) suffers "favorite betrayal,"
+completely wiping out all such hopes of wriggling out of this trap.
+</p>
+
+<p>
+Note also that 
+<a href="rangeVirv.html">Instant Runoff Voting</a>
+(IRV) also is vulnerable to this problem and in fact experimentally
+IRV does lead to 2-party domination.
+For this reason "third parties" are <i>silly</i> to advocate IRV.
+(Click <a href="Why2Part.html">here</a> for more re this silliness.  See also this
+<a href="TarrIrv.html">other more realistic IRV example</a>.)
+</p>
+
+<P>This example perhaps may seem contrived and you might think it only occurs rarely.
+Not so.  
+This kind of insincere-exaggerating
+voter-strategy
+is optimal asymptotically 100% of the time in a mathematical model of a "large random electorate"
+with <i>any</i> Condorcet voting system using full rank-orderings as votes.
+And ditto for IRV voting. <a href="IRVStratPf.html">Proof.</a> 
+</P>
+
+<p>
+Range voting, however, is <i>immune to this problem</i>
+in the sense that in any 3-candidate election, it is <i>never</i>
+strategically desirable for any voter to range-vote as though X>Y when his
+true opinion is Y>X.  So in the situation illustrated, the six C>A>B voters 
+would <i>not</i> find it strategically desirable to cast a range vote 
+in which A>C>B.  And the word "never" above makes us believe that with range voting,
+2-party domination is <i>not</i> inevitable.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

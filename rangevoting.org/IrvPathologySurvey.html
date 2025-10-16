@@ -1,0 +1,312 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Survey of Instant Runoff Voting (IRV) pathologies
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Survey of Instant Runoff Voting (IRV) pathologies
+</H2>
+
+<p> 
+Before beginning, to start getting in the right frame of mind, check out this
+<a href="CompleteIdioticIRV.html">completely idiotic Instant Runoff Voting (IRV) election</a>.
+</p>
+
+<h3>
+My personal top three objections to IRV
+</h3>
+
+<ol>
+<li>
+It leads to massive self-reinforcing
+2-party domination (same as now) probably
+partly due to the <a href="#favbet">IRV spoiler effect</a>
+and partly due to the theorem that if there are enough
+voters who always "naively" rank the two major-party 
+contenders top &amp; bottom to intuitively "maximize their vote's impact,"
+then a third-party candidate can never win.
+<br>
+With huge 2-party domination, "improved" voting systems are largely irrelevant.
+</li><li>
+Also 
+<a href="BayRegDum.html">Bayesian Regret</a>
+studies indicate range voting is very robustly superior.
+</li><li>
+In view of the above plus the facts <a href="RangeVoting.html">range voting</a>
+is simpler (especially in its <a href="Approval.html">approval voting</a> simplified form), 
+less <a href="SPRates.html">error-prone</a> for voters,
+countable in precincts (IRV <a href="IrvNonAdd.html">isn't</a>),
+countable on ordinary voting machines, less prone to nasty pathologies, and
+less prone to <a href="TieRisk.html">ties</a>
+and "chad-counting nightmares," <i>why</i> would you possibly prefer IRV?
+</li>
+</ol>
+
+<h3>
+Other Overviews
+</h3>
+
+<ol>
+<li>
+<a href="CFERlet.html">IRV versus range (for IRV proponents)</a>
+</li><li>
+<a href="rangeVirv.html">More basic overview (starts with definitions)</a>
+</li></ol>
+
+<h3>
+<i>Common</i> Pathologies
+</h3>
+
+<p>
+In what I call the <a href="RandElect.html">random elections model</a>,
+(which is a rather crude probability model,
+but in my experience the results you get from it are
+surprisingly valid in real life)...
+<br>
+the two most common IRV pathologies seem to be "favorite betrayal"
+and "participation" failures.
+</p>
+
+<a name="favbet"></a>
+<p>
+In <b>Favorite Betrayal</b> [probably the most important-in-practice kind of <b>spoiler</b>],
+it is unstrategic to vote for your true favorite top.  
+In this model
+that happens <a href="IRVStratPf.html#irv">19.6%</a>
+of the time (for at least one kind of voters) in 3-candidate elections.
+There is a nice exact formula for 19.6% namely arccot(&radic;2)/&pi;.
+</p>
+<blockquote><small>
+Also for strategic voters acting on <i>imperfect</i> information, it
+happens, arguably, <i>100%</i> of the time!  That argument is based on the theory that,
+if a voter <i>does not know</i> whether the IRV-spoiler scenario will arise
+(but figures it will with probability &asymp;19.6%)
+but <i>does</i> know that historically with IRV, one of the two major-party candidates wins
+with probability&gt;99.7%, said voter would probably consider it rational to vote
+one major top, other major bottom, even if that voter honestly prefers a third-party candidate.
+If voters do this, then the 19.6% IRV-spoiler risk is avoided, but at the cost of
+sacrificing the &lt;0.3% chance to elect the good third-party candidate.  This sacrifice
+seems worth the benefit, on average.   But it is a theorem that if &gt;75% of
+voters adopt this top+bottom "naive exaggeration" voting strategy, then it becomes mathematically
+impossible for a third-party candidate to win... thus amplifying the pathology in a vicious 
+cycle...
+<br><br>
+However, this "100%" theory has been (justifiably) attacked by Jameson Quinn as resting on a 
+probabilistic delusion.  E.g. if majors are winning 
+with probability&gt;99.7% (which they have, historically, in the Australian House in 
+recent decades) that means
+the "random election model" and the 19.6% spoiler probability estimate were <i>wrong</i>;
+in a more-correct voting model, 
+the spoiler-risk is much lower, thereby incentivizing honest voting.
+However, the more honest voters there are, the more the 
+"random election model" becomes correct again... so one might expect an "equilibrium"
+might develop.   It would be interesting to examine that mathematically, but as a matter of 
+<i>reality</i> rather than mathematical models, the fact is, the last three Australian House
+elections
+(2001, 2004, 2007) combined elected zero out of 450 third-party-member seatholders despite 
+an average of about 7 candidates per seat.
+</small></blockquote>
+
+<p>
+<b>Concrete examples:</b>
+<a href="IRVcs.html">simple</a>,
+<a href="TarrIrv.html">realistic</a>,
+<a href="ClayIrv3.html">unusual structure</a>,
+<a href="ClayIrv2.html">Jeez Louise</a>.
+</p>
+
+<p>
+Incidentally these refute the false but unfortunately common claim that IRV "eliminates"
+the "spoiler" and "wasted vote" defects of plurality voting.
+</p>
+
+<p>
+In <b>Participation Failure,</b>
+the election is such that if you were to add <i>t</i> more co-voting honest voters,
+(for some <i>t</i> and some vote-type) then the election result would get worse
+from their point of view, i.e. they were "better off staying home."
+This happens 16.2% of the time in 3-candidate elections, see
+my preliminary write-up 
+<a href="PuzzIrvPartic.html">here</a>;
+and also, according to analysis by Depankar Ray,
+exactly <a href="IRVpartic.html#depankar">50% of the time</a>
+in 3-candidate elections in which the IRV and plurality winners differ.
+</p>
+<p>
+<small>
+("16.2%" ought to be expressible in close form also, but  have not tried;
+not sure how simple you could get it.   I also can semi-prove
+participation failure
+happens with probability&rarr;1  in the limit of a large number of random voters and
+large number of candidates, for two Condorcet methods.   What happens
+to these two pathology probabilities for IRV in the limit of a large number C of candidates?
+I do not know.  It certainly increases with C.
+There might be an easy argument it goes to 1?)
+</small>
+</p>
+
+</p><p>
+There are additional nasties concerning 
+<a href="IRV3.html">"top-3 only" bastardized IRV</a>
+which are
+<a href="IrvExhaustionSF.html">very common in real life</a>.
+</p>
+
+<h3><i>Less Common</i> IRV pathologies </h3>
+
+<p>
+For examples of IRV <b>refusing to elect Condorcet ("beats-all")
+winners</b>, as happened
+in <a href="Peru06.html">Peru 2006</a>, 
+<a href="Burlington.html">Burlington 2009</a>,
+France 2007, and Chile 1970, see these:
+<a href="CoreSupp.html">core</a>,
+<a href="CoreSuppPocket.html">simpler</a>,
+<a href="rangeVirv.html#nasty">nasty</a>,
+<a href="IRV1519.html">another</a>.
+We can make this <a href="PuzzlePage.html#prob18">very extreme</a>.
+But this pathology is fairly rare in the random elections model; it happens
+about 3.7% of the time (see 
+<a href="PuzzlePage.html">puzzle 17</a>).
+</p>
+<p>
+Incidentally, both 
+this and <a href="IrvRevFail.html">IRV reversal failure</a> totally refute the
+false but unfortunately common claim that IRV "always elects true-majority winners."
+</p>
+<a name="1D"></a>
+<p>
+This pathology is however <b>considerably <i>more common</i></b> in "1-dimensional politics"
+(and "2-dimensional politics," see
+<a href="IrvExtreme.html">pictures</a> where it happens
+about 25% of the time), hence it perhaps was wrong of me to label it as "less common."
+</p>
+<p>
+Here is a simple and mildly interesting model of 1-dimensional politics.
+Assume 3-candidates (A, B, and C) and all 4 "singlepeaked 1-dimensional" votes are
+equally likely:
+A>B>C, C>B>A, B>A>C, B>C>A &ndash; except the latter two have half the likelihood
+just to keep things interesting &ndash; yielding a 3-way near-tie in top rank votes.
+Note, this model is precisely regarding <i>all</i>  "interesting" 1D-politics elections
+as equally likely, where "interesting" means all 3 candidates have a chance &ndash; not
+just a 2-man race &ndash; and "1D" means the candidates A,B,C are three points on a line
+in that order, and the only votes that can happen are orderings of the three
+points in increasing-distance (from someplace) order.
+</p><p>
+<a name="csqueeze"></a>
+<b>Question:</b>
+In this cheesy 1D model (in the limit of a large number of independent random voters)
+what are the probabilities IRV yields a favorite betrayal scenario, or a
+"center squeeze" scenario where the middle candidate B is not elected by
+IRV despite being a Condorcet winner?
+</p>
+<p><b>Answers:</b>
+<ul>
+<li>
+A favorite-betrayal succeeds 1/3 of the time &ndash; whenever A or C win, the opposite camp
+finds it strategic to betray their man and rank the "lesser evil" B artificially top.
+</li><li>
+Center squeeze: B is the Condorcet winner asymptotically 100% of the time
+but wins only 2/3 of the time, so this squeeze problem happens 1/3 of the time.
+</li>
+<!-- <li>
+ Participation failure:  I think it asymp'ly has probability zero?
+</li> -->
+</ul>
+
+<p>
+A <a href="Aus07.html">look</a>
+at Australia's federal IRV races in 2007 suggests at least 9
+of the 150 were pathological, probably in this sort of center-squeeze fashion
+<small>
+(we cannot tell with certainty <i>which</i>
+pathology happened because Australia refuses to
+provide full-enough election information to allow us to reconstruct the ballots,
+but as the
+<a href="Aus07.html"> analysis</a>
+shows we can still deduce the presence of <i>either</i> paradox A <i>or</i> paradox B
+in many elections...)</small>
+and probably more.
+</p>
+
+<p>
+IRV <a href="Monotone.html">non-monotonicity</a> 
+[raising X in your vote decreases X's winning
+chances &ndash; or lowering X in your vote increases his winnign chances]: 
+this happens with probability (2.3+12.2=14.5)% in 3-candidate
+large random elections (there are two disjoint kinds of nonmonotonicity, 
+"winner now loses" and "loser now wins"
+hence the two numbers; also Schl&auml;fli function method explained in
+<a href="PuzzlePage.html#p4">puzzle #4</a>).
+<br>
+That same page shows that in 
+N-candidate elections with N large, IRV becomes overwhelmingly likely to suffer non-monotonicity.
+<br>
+<a href="RichieRV.html#ex17">Concrete example</a>.
+Also occurred in
+<a href="Burlington.html">Burlington 2009</a>.
+</p><p>
+This also can occur in 
+<a href="IrvHurtFav.html">extreme forms</a>
+where e.g. raising X all the way from bottom to
+top causes X to lose.
+(Another 
+<a href="rangeVirv.html#BramsEx">example</a>;
+see point 5 there). Here's a related
+<a href="ClayIrv2.html">weird phenomenon</a>.
+</p><p>
+For IRV <b>reversal failure</b> where IRV's "best winner" is the same as IRV's "worst loser,"
+see
+<a href="IrvRevFail.html">this</a>;
+it happens about 
+<a href="IrvRFfreq.html">2.6%</a> of the time in random 
+3-candidate elections. 
+</p><blockquote><small>
+In the "cheesy 1D model" above, an "extremist"
+A or C always wins the vote-reversed election.  
+The forward-vote election is won by the opposite extremist when B is eliminated,
+any by B when either A or C is eliminated, hence the forward and reverse winners
+are equal <i>zero</i> percent of the time asymptotically 
+and reversal failure is almost a nonproblem in that model.
+</small></blockquote>
+<p>
+Related <a href="IRVbadRemove.html">drop-out&rArr;reversal</a> paradox.
+</p><p>
+IRV <a href="IRVamp.html">exponential amplification chaos</a>.
+</p><p>
+IRV <a href="IrvIIA.html">"Irrelevant losers" who aren't</a>.
+</p><p>
+IRV exhibited a lot of the above pathologies simultaneously in the 
+<a href="Burlington.html">Burlington</a> VT 2009 mayor election.
+</p>
+
+<h3> A structural problem: Non-additivity &rArr; IRV cannot be counted in precincts </h3>
+<p>
+You can't count IRV elections in precincts because there is no such
+thing as a "precinct subtotal"
+(at least nothing that can be recorded in any form much more compact than just listing all
+the votes in that precinct, if there are a reasonable number such as 13 of candidates).
+Here is a web page to make that clear:
+<a href="IrvNonAdd.html">IRV non-additivity</a>.
+</p>
+<br>
+
+<p>
+<a href="IrvParadoxProbabilities.html">IRV paradox probabilities</a> (up to date, world's most accurate &amp; extensive list)</p>
+<p>
+<a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

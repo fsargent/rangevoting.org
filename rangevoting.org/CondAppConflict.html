@@ -1,0 +1,279 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Approval & Condorcet winners conflict?  Amazing "no-conflict" theorem!
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2>
+Approval and Condorcet winners conflict?  Amazing "no-conflict" theorem!
+</h2>
+
+<p>(<a href="#Summary">skip to end</a>)</p>
+
+<p>
+<small>
+Steven Brams
+once contended it was very rare in practice for Approval and Condorcet winners to differ
+(when the latter existed).  I disputed that, noting that
+<a href="RandElect.html">computer simulations of random normal elections</a> said different.   
+Also Blake Cretney at
+<a href="http://condorcet.org">condorcet.org</a> had the idea
+they'd often differ and usually Approval in such cases was "wrong" and Condorcet "right."
+I now do some interesting analysis that tends to support Brams' view.
+Also, we note that D.Roderick Kiewiet in <i>Polity</i> 12,1 (1979) 170-181,
+on p180 claimed that Approval Voting was "far more likely to elect Condorcet Winners"
+(than plurality), a claim we and our computers fully agree with.
+For definitions of terminology, it may help to consult the 
+<a href="Glossary.html">glossary</a>.
+</small>
+</p>
+
+<p>
+The simplest possible election example in which Condorcet and Approval
+disagree on the winner is:
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+2
+</td>
+<td align="center">
+C > A > <font color="purple">|</font> > B
+</td>
+</tr>
+<tr> 
+<td align="center">
+1
+</td>
+<td align="center">
+A > <font color="purple">|</font> > C > B
+</td>
+</tr>
+</table>
+
+<p>
+Here 
+<b>A is the approval winner</b> (unanimously approved by all 3) beating C (2 approvals) and B (0);
+<b>C is the Condorcet winner</b> (C>A by 2:1 ratio, C>B unanimously);
+C also is the plurality, Borda, and IRV winner;
+and we denote the approval threshold with "<font color="purple">|</font>".
+</p>
+<p>
+However, <i>knowing</i> it was down to C versus A, the C>A>B approval-voters would strategically
+(and I wouldn't even call this "dishonest";  I'd call it "semi-honest" because it
+only shifts the "<font color="purple">|</font>" without altering any ">") 
+disapprove A, in which case this election really would be
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+2
+</td>
+<td align="center">
+C > <font color="purple">|</font> > A > B
+</td>
+</tr>
+<tr> 
+<td align="center">
+1
+</td>
+<td align="center">
+A > <font color="purple">|</font> > C > B
+</td>
+</tr>
+</table>
+<p>
+and C would win with every method, so actually
+this was <i>not</i> a realistic example of an Approval versus Condorcet "conflict."
+</p>
+<p>
+So: what if we instead ask for an example of Condorcet versus Approval 
+disagreement
+where all the approval votes are <i>strategic</i>
+about A versus C  (i.e, always approve
+of exactly <i>one</i> of them).
+</p>
+<p><b>
+AMAZING "NO-CONFLICT" THEOREM: 
+</b>
+There <i>does not exist</i> a 3-candidate tie-free election in which the approval voters
+are both honest about their candidate orderings and strategic about their threshold-placement, 
+in which the Approval and Condorcet winners differ!
+</p>
+
+<p>
+<b>Proof:</b>
+Maximize  s  subject to these inequalities  (note I use 4-letter-long variable names):
+</p>
+<p>
+<font color="red">
+CBTA+CTBA+ACTB+ATCB+CATB+CTAB &ge; s + BCTA+BTCA+ABTC+ATBC+BATC+BTAC, 
+<br>
+CATB+CTAB+BCTA+BTCA+CBTA+CTBA &ge; s + ACTB+ATCB+BATC+BTAC+ABTC+ATBC, 
+</font>
+<br>
+<font color="blue">
+ABTC+ACTB+BATC+CATB+ATBC+ATCB &ge; s + BCTA+BATC+CBTA+BTCA+BTAC+ABTC,
+<br>
+ABTC+ACTB+BATC+CATB+ATBC+ATCB &ge; s + CBTA+CATB+BCTA+CTBA+CTAB+ACTB,
+</font>
+<br>
+ABTC &ge; 0,
+ACTB = 0,
+BCTA &ge; 0,
+BATC &ge; 0,
+CBTA &ge; 0,
+CATB = 0,
+ATBC &ge; 0,
+ATCB &ge; 0,
+BTCA = 0,
+BTAC = 0,
+CTBA &ge; 0,
+CTAB &ge; 0,
+<br>
+<font color="green">
+ABTC+ACTB+BCTA+BATC+CBTA+CATB+ATBC+ATCB+BTCA+BTAC+CTBA+CTAB = 1000
+</font>.
+</p>
+The
+<font color="red">
+first two</font> inequalities state C is the Condorcet winner, and if s>0 without a tie;
+the 
+<font color="blue">next two</font>
+state A is the Approval winner, and if s>0 without a tie;
+the next 12 make the number of voters of each type be non-negative (and zero in
+the case of vote-types with non-strategic threshold placements), and the 
+<font color="green">final</font> equality says the total
+number of voters is 1000 &ndash;  or any other positive number could be substituted for 1000,
+that will not matter.
+The maximization can be done with the "simplex algorithm 
+for linear programming" since these inequalities constitute a "linear program in standard form."
+The result is that s=0.  I.e, it is not possible to make s>0.
+<b>Q.E.D.</b>
+</p>
+<blockquote>
+<b>Remarks:</b>
+For information about linear programs, standard form, and simplex method, see 
+George B. Dantzig: <i>Linear progamming and Extensions</i>,
+Princeton University Press 1963.
+We can, by examining the optimum of the linear program, strengthen the theorem to
+state that the only possible way for Condorcet and Approval to disagree is if
+there is an exact tie for the approval winner <i>and</i> an exact 
+tie for the Condorcet winner (which still isn't much of a "disagreement").
+</blockquote>
+<p>
+Warren D. Smith   15 August 2006
+</p>
+
+<a name="Summary">
+<H2> Simpler way to see more </H2>
+
+<p>
+Actually, the above proof, while valid, is overkill.
+We can prove a better theorem with a simpler proof:
+</p>
+<p><b>
+EVEN BETTER "NO-CONFLICT" THEOREM: 
+</b>
+Let N&ge;2.
+There <i>does not exist</i> an N-candidate tie-free election 
+in which the Approval (A) and Condorcet (C) winners differ, <i>provided</i>
+that, if they were going to differ (A&ne;C) that all the approval voters would
+place their threshold strategically under the assumption the winner was going
+to be either A or C, i.e. would place it somewhere between them.
+</p>
+<p>
+<b>Proof:</b>
+Assume for a contradiction that A&ne;C.  Then the approval voters
+will strategically place their thresholds
+<font color="purple">|</font> between C and A.
+But that will cause C to be approved more times than A is approved (since C, being
+the Condorcet winner, is preferred over A by a majority).  Hence the claim A
+was the Approval winner and A&ne;C, leads to a contradiction.  Hence either A=C
+or there is no Condorcet winner C.
+<b>Q.E.D.</b>
+</p>
+<H2> Conclusions (some counterintuitive)  </H2>
+<p>
+In view of this fact, it seems that much of the so-called "conflict"
+between the Approval and Condorcet "philosophies," is illusory.
+</p>
+<p>
+We now see that approval voting <i>always will</i> elect the
+Condorcet Winner C (if C exists) provided merely that the voters
+consider it <i>likely</i> that both C and whoever (A) the putative non-C approval winner
+might be, might be elected &ndash; and hence vote strategically
+about C versus A.
+</p>
+<p>
+That sounds like a highly realistic assumption in practice.
+</p>
+<p>
+So we see that in practice, the supposed "difference" between Approval and
+Condorcet
+actually will rarely exist &ndash; so for practical purposes, Approval <i>is</i> a Condorcet
+method!
+</p>
+<p>
+Indeed &ndash; counterintuitively &ndash; it might actually be that
+Approval Voting is <i>more</i> likely to elect the Condorcet Winner in practice,
+than Condorcet Methods!
+</p>
+<p>
+Why? Because in approval voting it is quite rare that strategically voting 
+dishonestly,
+is wise. (And when it is wise, it is even rarer that people will actually realize it and do it.)
+In other words, with AV, people will tend to honestly order the candidates, and
+the only strategic decision they'll make is where to locate their approval
+<font color="purple">|</font> "threshold."
+</p>
+<p>
+In contrast, with Condorcet methods with rank-order ballots, it seems a lot more
+<a href="IncentToExagg.html">common</a>
+to see a way to be usefully strategic-dishonest in your vote. In other words, I
+suspect
+it will be comparatively common that voters will dishonestly misorder their preferences.
+</p>
+<p>
+In that case, it might well be that Condorcet rank-order ballot systems will do
+something
+silly (like <a href="DH3Summ.html">not electing</a>
+whoever should have been the Condorcet Winner with
+honest votes)
+more commonly than AV will in practice fail to elect the Condorcet Winner.
+</p>
+<p>
+In that case, for practical purposes AV will be a better Condorcet method than
+actual "official" Condorcet methods!
+</p>
+<p>
+I really think this is actually quite likely, it is not just some unlikely theoretical
+speculation. 
+And if so, it is quite a remarkable counterintuitive conclusion.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

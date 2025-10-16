@@ -1,0 +1,1132 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Rivest 3ballot secure voting scheme
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<p>
+<small>
+<b>Warning:</b>
+Rivest and I are going to be writing a joint paper on this, and the
+info in these CRV pages at present (20 Oct 2006) is known to contain some errors.
+</small>
+</p>
+
+<H2> Ron Rivest's "3ballot" scheme for cryptographically-secure voting &ndash; 
+without cryptography! &ndash; and the "BOFFO" plan </H2>
+
+<p><small>By Warren D. Smith 1 Oct 2006; revised to make it clearer 3&amp;5 Oct</small></p>
+
+<p><b>Warning:</b>  This page is now largely OBSOLETE since the actual Rivest-Smith paper 
+came out. See <a href="Press.html">press releases</a> 
+(which will link to the actual paper, among other things).
+</p>
+
+<p>
+(<a href="RivestSumm.html">Executive Summary</a>)
+&nbsp;
+(<a href="BoffoRecipe.html">Recipes only</a>)
+&nbsp;
+(<a href="SleatorCheapo.html">Cheapo plan</a>)
+&nbsp;
+(<a href="RangeVoting.html">Return to main page</a>)</p>
+</p>
+
+<p>
+Sometimes, in the course of human events, it becomes necessary to
+whack yourself upside the head for
+missing that easy idea which really turns perceptions of "what is possible"
+upside down.
+Many surfaces upside my head were awarded that treatment
+when MIT's Turing-laureate cryptographer
+Ron Rivest in late 2006 invented his brilliantly 
+simple "3ballot" system for secure voting.   Another nice name for it 
+might be Rivest's "triple threat" system.
+(Then later, Rivest himself probably began smiting his own head mightily when 
+he realized his 3-ballot plan actually did <i>not</i> work &ndash; in his words was only
+a "partial success" &ndash; for plurality voting elections &ndash; but I was
+able to fix that with the even-simpler
+"BOFFO plan," described below, to turn it into a total success!)
+</p>
+
+<p>
+Before starting, let us briefly review.
+Initially, all desired to 
+</p>
+
+<ol>
+<li>
+Have voter's votes be "secret ballot" &ndash; 
+so that nobody can know how anyone voted (not even if the voter wants to tell them)
+and hence nobody could bribe or coerce
+you to vote some way, and you could not sell your vote.
+</li><li>
+Have the election be secure and verifiable &ndash;
+so that we could all be confident that nobody voted more than once, no
+votes were inserted, deleted, or altered, 
+only authorized voters voted, and the results were computed correctly from those votes.
+</li>
+</ol>
+
+<p>
+Trouble is, these two desires seem <i>incompatible</I>.
+<small>It is trivial to get secure elections if the ballots are not secret; just
+publicize every voter-vote pair to make it trivial to verify that everybody
+voted as they said they did (or didn't) and the ballots were tallied correctly.
+But then it'd also be trivial to coerce voters, rather undermining "democracy."</small>
+</p>
+
+<p>
+But (as usual in the voting area) your initial perception of an "obvious" fact 
+(i.e. this incompatibility) is wrong.   Various different
+schemes employing advanced cryptographic
+ideas have been independently
+invented by several people (including me) that make it possible &ndash;
+at least in somewhat-idealized mathematical worlds.  These schemes involve
+voters submitting their votes in <i>encrypted</i> form so nobody knows what they are,
+and having the vote-talliers output "zero knowledge proofs" that their tallying is correct.
+That way, independent verifiers (e.g. international election-validity-assurance organizations,
+the LINUX community, the League of Women Voters, etc)
+can verify the proofs and become confident the talliers
+did not cheat, etc, <i>but</i> the proofs reveal nothing about who cast what votes
+(aside from the knowledge attainable by knowing the final election result).
+Note, in these schemes it is <i>not</i> necessary to place your trust in the government, 
+or in the programmers the government employs, or anybody.  They cannot cheat.
+It is mathematically impossible for them to cheat without being spotted (with proof
+they cheated) by the verifiers.   All we need is that at least some of 
+the verifiers programmed the verification right &ndash; and in principle 
+any hacker in the world could code up their own verifier and check the proof themselves
+according to standard published procedures.
+</p>
+
+<p>
+That was all very fine in principle, but these schemes were <i>very</i> complicated.
+I'm a math PhD and I invented some of those schemes, and I still regard them as
+very complicated and tricky math.   It seemed impossible to gain the confidence
+of Joe Public in these schemes, unless Joe Public was willing to devote
+several months (?) of his life to studying the 
+(beyond undergrad level) math and learning these schemes.
+Not likely.
+</p>
+
+<p>
+So cryptographically-secure voting was largely regarded as a great idea in principle in 
+an ivory tower &ndash;
+but in practice, fuhgeddaboutdit.
+Then suddenly, in 2006, bursting upon this squalid scene like
+a giant waterballoon filled with laughing gas, came Rivest's 3ballot scheme.
+It is <i>low tech</i>, understandable by children, and
+involves no fancy math or cryptography whatsoever.
+<small>
+We reassure the brainiacs in the audience, however, that it also is
+possible to make various "medium-tech" <i>hybrids</i> of 3ballot with high tech
+cryptographic ideas &ndash; as well as various different extra low-tech gimmicks and gizmos
+can be inserted into the picture.  Some of that will be discussed at the end.
+</small>
+</p>
+
+<H2> Range and Approval voting: good.  <br>
+Plurality: mediocre. <br>
+Borda and Condorcet: bad.<br>
+IRV: very bad. </H2>
+<p>
+Rivest's scheme turns out to be
+most natural and nicest and securest and simplest, if it is
+used with 
+<a href="AppExec.html">approval voting</a>.
+It also is highly natural and simple if used with
+<a href="RangeVoting.html">range voting</a>.
+</P>
+<p>
+One can attempt to employ Rivest's 3ballot scheme 
+with <a href="Plurality.html">plurality voting</a>, but then it
+is  less natural, less simple,
+and has greater vulnerability to an attack Rivest calls the "reconstruction attack,"
+and is <i>devastatingly</i> vulnerable to the "specified pattern attack."
+However, a new variant,  the "BOFFO plan," stated here for the first time, 
+works for plurality voting and is essentially immune to those two attacks.
+</p>
+
+<p>
+3ballot also can be made to work
+with
+<a href="rangeVborda.html">Borda</a>
+and
+<a href="rangeVcond.html">Condorcet</a>
+(rank-order ballot) voting,
+<i>but</i> the <a href="RouseCond.html">resulting scheme</a> is vulnerable to the
+reconstruction
+and
+and specified-pattern attacks, i.e. is 
+a clear failure in elections with 12 or more
+candidates.
+</p>
+
+<p>
+Finally, 3ballot does not work at all if used with
+<a href="rangeVirv.html">Instant Runoff (IRV)</a>,
+</p>
+
+<p>
+So this is (yet more) evidence
+for the superiority of range and approval voting (in yet another way &ndash; 
+ability to make them secure) over
+those other voting methods.  
+It is actually a very interesting and pedagogically useful
+way to explain and organize the exposition, to
+do it one voting method (Approval, Range, Plurality, Borda) at a time
+comparing what works and what doesn't for each.
+</p>
+
+<p>
+Ok, that is enough buildup.  Now to describe the scheme itself...
+</p>
+
+<H2> Here's the 3ballot scheme! (For Range and Approval voting) </H2>
+
+<p>
+In 3ballot, voters vote in each election, not once, but <i>exactly 3 times</i>.
+Their individual votes have to satisfy certain constraints, though.
+We shall discuss range voting and approval voting, and focus attention on
+a single candidate named Gladstone.  Recall that each voter's job in
+<a href="RangeVoting.html">range voting</a> is
+to produce a <i>score</I> for Gladstone from 0 to 99.  
+(Or more simply, from 0 to 9.  We'll do it for 0-99 for concreteness, but
+the reader should easily be able to change it to any other range A-B.)
+In <a href="AppExec.html">approval voting</a>
+the voter's job is even easier &ndash; merely to
+say whether he "approves" Gladstone (score 1) or
+"disapproves" (score 0).
+</p>
+
+
+<table cellspacing="14" bgcolor="#ffffdd">
+<tr bgcolor="#ff8888">
+<th> Step </th>
+<th> For 0-99 range voting </th>
+<th> For approval voting </th>
+</tr>
+
+<tr>
+<th>1.</th>
+<td> 
+Voters produce <i>three</i> scores A,B,C  indicating their evaluation of Gladstone
+and satisfying 0&le;A,B,C&le;99 and 99&le;A+B+C&le;198.
+The sum A+B+C is what matters and what expresses the voter's true opinion of Gladstone
+on a 99-198 scale (which is the same as the usual 0-99 scale, just shifted by adding 99).
+</td>
+<td> 
+Voters produce <i>three</i> scores A,B,C  indicating their evaluation of Gladstone
+and satisfying A=0 or 1, B=0 or 1, C=0 or 1, and 1&le;A+B+C&le;2.  I.e. if
+you approve Gladstone, 
+then approve him twice and disapprove once; if you disapprove, then disapprove
+twice and approve once.
+</td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<th>2.</th>
+<td colspan="2">
+Voters use a simple, low-tech, government machine to <i>check the validity</I> of
+their 3 ballots, i.e. to check that
+0&le;A,B,C&le;99 and 99&le;A+B+C&le;198 in the 0-99 range voting case.
+Invalid 3ballots are discarded and voter can try again.
+If the 3ballot is valid, then the machine sucks in the ballots 
+and dumps them in random order into a bin
+(to be used later in the election),
+says "thank you," and spits out a <i>copy</i> of
+<i>one</i> of the three ballots (the <i>voter chooses</i> which one) for
+the voter to keep for his records.
+<br>
+It is important that the 
+checking machine be so transparently simple that it <i>cannot remember</i>
+the 3ballots it checks and that it cannot remember which of the three ballots, the voter
+chose to copy.  It has no memory.  <small>One (disgustingly cute) way to build such a
+check &amp; copy machine in the approval-voting case
+is my <a href="TriColor.html">tricolor scheme</a>.</small>
+<blockquote>
+Worried that this might be too complicated for voters (especially
+Florida voters) or for a <i>non</i>computerized
+checking machine?  Check <a href="JKMechAdd.html">this out</a>.
+</blockquote>
+</td>
+</tr>
+
+<tr>
+<th>3.</th>
+<td colspan="2">
+Voters, as they vote, sign in to the polling place, their signature attesting "I voted."
+<i>If</i> we are permitting range or approval voting with <i>intentional blank</i>
+("no opinion about Gladstone") 
+scores, then voters would have to achieve that effect by <i>not submitting</i>
+any 3ballot for Gladstone, and the signatures would have to be individual for
+each candidate scored, attesting "I scored this candidate."
+<small>
+[Or another way to do it, would be: the voter submits, bundled
+with his Gladstone-score, an additional
+yes/no "vote" saying whether he scored Gladstone at all (yes) or not (no), this yes/no vote
+being handled trivially in the "clear" in cryptographer-lingo, i.e. just choosing
+yes or no consistently across all 3 ballots with no effort
+to disguise it.  
+This is superior in the sense the voters only need to "sign" <i>once</i> for a blanket
+statement that they "voted" in every race, where "no opinion" counts as a vote-type;
+but inferior in the sense that voters now can be bribed or coerced <i>not</i> to
+score Gladstone.]
+</small>
+</td>
+</tr>
+
+<tr  bgcolor="#ffffff">
+<th>4.</th>
+<td colspan="2">
+Government publishes (a) all the Gladstone ballots it received, (b) each
+ballot includes an ID number (also present on the voters' take-home copies)
+and (c) the names and addresses of all the voters who participated in scoring Gladstone 
+&ndash;
+all on a public bulletin board that anybody can download in full or in part.
+However, the government does <i>not</i> publish (and also does not know) which voter 
+produced which ballots.
+</td>
+</tr>
+
+<tr>
+<th>5.</th>
+<td colspan="2">
+Anybody can now (trivially) total the election and determine the winner, summed and
+average scores for all candidates, etc.
+</td>
+</tr>
+
+<tr  bgcolor="#ffffff">
+<th>6.</th>
+<td colspan="2">
+To check that the government did not evilly-discard or alter
+any substantial percentage of votes:
+remember, voters have receipts.  A voter can check that his vote (corresponding
+to the one-of-his-three that he has an official, government-certified copy of)
+is present, unaltered, on the bulletin board. (Use ballot-ID-number-based
+lookup.)  If it is not there, or is altered, raise hell.
+The government (since it does not know which third of the ballots are the copied ones)
+cannot discard or alter any substantial fraction of ballots without discarding
+ones for which official copies exist, i.e. the government would get caught
+in its evil tricks.
+</td>
+</tr>
+
+<tr>
+<th>7.</th>
+<td colspan="2">
+To check that the government did not evilly-invent any substantial percentage of fake "votes":
+Just check that the total number N of scores for Gladstone on the bulletin board,
+is exactly equal to 3V, where V is the number of voters who scored Gladstone.
+Also, start going around checking out voter names and addresses.
+They all should correspond to real people who agree that they voted.  If
+any substantial fraction (say 1%) of the voters are fake, random checking of a few hundred
+people will reveal the fraud.
+</td>
+</tr>
+
+<tr  bgcolor="#ffffff">
+<th>8.</th>
+<td colspan="2">
+To check that all ballots are valid:
+Well, it is obvious that every ballot has a score from 0 to 99 (or 0 or 1 only in the
+approval case) and anybody can check that for all the ballots on the bulletin board.
+However,  unfortunately,
+nobody can check the sum-conditions (about A+B+C) because nobody knows
+which are the triples of 3ballots versus just 3 random unassociated ballots.
+The enforcement of those conditions is caused by the checking back when the
+voter initially voted, and the fact that any alteration would be (with
+high probability) detectable by voters later.
+</td>
+</tr>
+
+<tr>
+<th>9.</th>
+<td colspan="2">
+Why you can't sell your vote (or be bribed or coerced):
+because you only have a copy of <i>one</i> of the three ballots.
+Suppose you go to the vote-buyer and say: "look, I scored Gladstone 99 &ndash; maximum &ndash;
+just like you wanted me to.  Please pay me now!"
+<br>
+The buyer than says: "But you could have just scored him 99 on this
+one ballot just to try to get money from me, while actually scoring
+Gladstone 0 on your other two uncopied ballots, i.e, in net, the lowest
+possible score for Gladstone.  In fact, you could have chosen
+your other two ballots to give Gladstone <i>any</i> allowed score-sum whatever."
+<br>
+Seller: "But I didn't!  I scored Gladstone 99 and 0 on the other two ballots,
+giving Gladstone the maximum allowed summed-score 198!"
+(putting on a very sincere expression) "Trust me!"
+<br>
+Buyer/coercer: "I believe in verification.  Prove it, or die."
+<br>
+Seller: "But I can't prove it!  (Sure, I could say my other two ballots
+were IDs 95468605567463423 and 74710737476637301 assuming I remembered that &ndash; which would be ultra hard since they are printed in the form of
+a pixel-cloud "2D barcode" rather than as human-readable "numbers"
+&ndash;  but
+then you'd just say I conveniently looked up those
+numbers on the bulletin board in a search for suitable votes to claim as 'mine.')
+So what are you going to do, kill every voter in the country because none can prove it?"
+<br>
+Coercer: (stymied)
+</td>
+</tr>
+</table>
+
+<H2> What about plurality voting? (&amp; why 3ballot is broken for plurality) </H2>
+
+<p>
+We are going to explain why the 3ballot scheme above, is <i>broken</I> for plurality
+voting, as preparation for explaining our new "BOFFO plan" (which works).
+</p>
+<p>
+One trouble with plurality voting is that if you vote Gladstone, you are
+<i>not allowed</I> to vote for any of his rivals (that would be "overvoting," which is
+illegal in plurality voting, but allowed with approval voting).
+</p>
+<p>
+So suppose we do plurality-voting-3ballot
+in a race between Gladstone and 45 rival candidates.
+You vote YES for Gladstone and NO for each of the 45 others.
+You then get your 46 votes (actually 138 votes due to the tripling)
+checked for validity by the government checking machine &ndash; which
+now has to be a more-complicated machine because it checks 138 ballots
+at once, with more complicated validity-rule, as opposed to just checking
+3 ballots with a simple validity rule.  That means the check machine
+has to be more complicated.  That complexity means it probably
+has to include a computer, and then it is more risky it might
+cheat by remembering stuff, at which point the security guarantees
+of the whole scheme would be blown out of the water since an evil government would
+trivially be able to alter ballots undetectedly.
+</p>
+<p>
+But let us assume the check machines can be trusted and continue on.
+If all the 46-subvotes are posted as one lump on
+the bulletin board (3 such lumps posted in total) then
+it becomes possible for anybody examining the bulletin board to try to
+<i>reconstruct</i> the 3ballot triples.  That is, suppose
+your vote is
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff00">
+<tr>
+<th> Ballot1 </th>
+<td bgcolor="#ffff11"> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> ... </td>
+<td> 0 </td>
+</tr>
+<tr>
+<th> Ballot2 </th>
+<td bgcolor="#ffff11"> 1 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> ... </td>
+<td> 0 </td>
+</tr>
+<tr>
+<th> Ballot3 </th>
+<td bgcolor="#ffff11"> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 0 </td>
+<td> 0 </td>
+<td> ... </td>
+<td> 1 </td>
+</tr>
+<tr bgcolor="#00ffff">
+<th> Sum </th>
+<td bgcolor="#11ffff"> 2 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> 1 </td>
+<td> ... </td>
+<td> 1 </td>
+</tr>
+</table>
+
+<p>
+where for simplicity some of 46 columns of the table have been replaced by "...".
+Gladstone (sum=2; he got your vote) is the first column and the
+rivals are in subsequent columns (sum=1 each; did not get your vote).
+</p>
+
+<p>
+The point is, an evil vote-buyer/coercer could <i>observe</i>
+that the possible two-ballot pairs that complete the triple with the one ballot
+the voter has an official certified copy of, are very few and very rare.
+If you just choose two ballots at random from the bulletin board
+they will [with very high probability,
+somewhere around 1-(4/9)<sup>45</sup>] <i>not</I> satisfy the legality condition that
+the sum of the three ballots is 1 in all 45 non-Gladstone entries.
+In fact, it is quite likely that only <i>one</i> ballot-pair from the entire country-wide
+bulletin board, could possibly work.  And even if several work,
+then the vote-buyer might well be able to reconstruct <i>all</i> ballot triples
+countrywide at once (kind of like putting together a jigsaw puzzle &ndash; even though
+some puzzle pieces fit together in several ways, only one of them works when the whole
+puzzle is assembled). 
+</p>
+<p>
+In other words, the buyer/coercer <i>reconstructs</i> the vote-triples,
+enabling him to determine from a voter's receipt, not just that individual vote, but in fact the
+whole vote-triple it was part of.
+In either case, the vote buyer/coercer
+would happily pay the voter for his vote
+&ndash; or happily punish him for not voting the "right" way.
+</p>
+
+<p>
+With approval voting, even if all scores for all candidates were bundled
+(which there would be absolutely
+no reason to do, because candidate-scoring decisions in approval voting are
+<i>independent</i>)
+then, still, random ballot triples would satisfy the (much less severe
+since overvoting is now fine) constraints
+with probability about (3/4)<sup>45</sup>, which, although small, still is
+large enough that there would 
+(in a country like the USA with 10<sup>8</sup> voters) be expected to be billions
+of ballot-pairs that would work.  So the vote-buyer would have no good reason to
+pay almost any voter, and vote-buying and vote-coercion would
+be effectively shut down with approval voting (with these numbers of candidates
+and voters).
+</p>
+
+<p>
+Now of course, you could un-bundle all the votes to defeat the reconstruction attack.
+For example, instead of posting all 46 in one lump, post 46 one-candidate sublumps.
+That totally shuts down the reconstruction attack.
+But then, we all have to <i>trust</I> that nobody overvoted &ndash; this
+cannot be <i>verified</i> by examining the bulletin board.
+Then by clever intentional distribution by the evil government of checking machines
+that have different efficiencies at spotting overvoting, a plurality
+election could be manipulated. (And indeed, precisely this sort of
+manipulation <a href="Spoiled.html">was used</a>
+in the Florida 2000 Bush-Gore-Nader election.)
+</p>
+
+<p>
+But, what is even worse is an absolutely devastating
+attack on 3ballot-for-plurality-voting
+called the <i>selected-pattern attack</i>
+(but that attack cannot be used on approval and range voting elections).
+</p>
+
+<H3> The selected pattern attack </H3>
+
+<p>
+The attacker (vote buyer or coercer) says to the voter
+(in a 33-candidate race like the Congo September 2006 presidential race)
+<blockquote>
+I want you to vote A=1, B=1, C=0, D=1, E=0, ..., Z=1 as your first vote,
+and A=0, B=0, C=1, ... as your second, and
+and A=1, B=0, C=0, ... as your third (completely specifies all patterns),
+and copy vote #1 for me to see.
+</blockquote>
+<p>
+Then
+there are 2<sup>33</sup> possible kinds of votes (which far exceeds the population of the Congo),
+so the coercer can uniquify easily.  Then the coercer, if he does not see all three
+demanded patterns posted on Rivest's "bulletin board," exacts horrific
+punishment on the voter, such as making him listen to a Bush press conference.
+</p>
+<p>
+This illustrates the tremendous devastation the
+"3-pattern attack"
+(also called the "selected pattern attack") can wreak.
+But in <a href="RangeVoting.html">range</a> and
+<a href="AppExec.html">approval</a> voting, all candidate scoring decisions are <i>independent</i>
+and can be on separate "ballots" so there <i>is no</i> pattern, so for those
+voting systems (and apparently those alone), the selected pattern attack is
+simply not a problem.
+With
+<a href="rangeVcond.html">Condorcet</a>,
+<a href="rangeVborda.html">Borda</a>, and
+<a href="Plurality.html">Plurality</a> voting,
+etc, the individual candidate-scores <i>depend</I> and hence <i>cannot</i>
+be separated
+without making ballot-validity-checking impossible.  
+That means the ballot-validity checker would have to check all 33 &ndash; i.e. with
+the tripling all 99 &ndash; of your candidate-scores to make sure their combination
+is legal.  That means either
+<ol type="a">
+<li>
+you need a <i>complicated validity checker</i>
+(destroying Rivest's goal of not needing computers) and/or 
+</li><li>
+you need to <i>bundle</i>
+all candidate scores into a 33-score (actually 99- or 132-score)
+ballot (enabling the selected pattern attack).
+</li>
+</ol>
+</p>
+
+<H3> Avoid pointless bundling </H3>
+<p>
+Incidentally,
+Rivest at one point had the idea that ballots for <i>many different races</i> should be bundled
+onto a single sheet of paper.
+That idea is completely stupid &ndash; your vote in a 12-candidate 100-voter
+local school board election (in which the selected-pattern and reconstruction attacks would
+be maximally easy!) could then be used to attack your bundled vote
+on the US presidency &ndash; and such bundling is stupid not only for security reasons but
+also for reasons of countrywide standardization of ballot formats and simplicity.
+The sole "reason" for such multirace bundling is to have a pointless
+holdover from pre-3ballot election traditions.
+</p>
+
+<p>
+Just say no to pointless bundling.
+</p>
+
+<p>
+But bundling all the <i>candidates</i> in a <i>single</i> plurality (or Borda) election onto
+one sheet of paper, is, in contrast, not at all pointless.  Some would
+even say it is "necessary" because otherwise it is impossible to tell (without
+examining many separate sheets of paper) whether your Borda or plurality vote is
+even a legal vote.
+</p>
+
+<H2> The BOFFO plan to handle plurality voting</H2>
+<H3> An (even more blitheringly simple) <i>fix</i> against those attacks! </H3>
+
+<p>
+We shall now show how to handle plurality voting in a new way that
+is immune to the reconstruction and
+specified-pattern vote-buying attacks, and which actually is even <i>simpler</i> than the
+3-ballot plan.  I call it the "BOFFO plan."
+</p>
+<P>
+The essential insight you need is that those attacks were enabled by the presence of
+extra, useless, <i>redundant information</i> in the voters' vote-triples (i.e. all
+those vast number of near-arbitrary 1s and 0s in the 3xN matrix).
+Specifically, in an N-candidate election, there are  W(N)=N&middot;3<sup>N+1</sup>
+possible legal 3ballots a voter could cast, which for N large
+is an exponentially enormous number.  
+So to prevent those attacks &ndash; and indeed to prevent any attack whatever
+that is based on hiding information in votes &ndash; we need to <i>get rid</i> of
+that redundant information and reduce the exponentially enormous configuration-count
+to a small &ndash; low-degree polynomial in N &ndash; count.   
+<small>More precisely, let the number of configurations be called W(N) with N candidates,
+and let the number of voters be V. Then smaller W(N) is better because the voting mehtod
+will then be immune to vote buying (except for negligibly small percentage of
+the votes) if V&gt;&gt;W(N).  More precisely, the maximum fraction F of the votes
+which it is possibly possible to buy, is bounded by  F&le;W(N)/V.
+</small>
+</p>
+
+<p><small>
+We may assume there are N&ge;3 candidates, since a plurality vote election with
+1 candidate is silly, and a 2-candidate plurality election is mathematically the same thing
+as a 1-candidate approval election (and we already know how to do approval elections).
+</small></p>
+
+<p>
+I call the repaired scheme "2 for and 3 against" or the "<font color="blue">BOFFO</font> plan."
+It is simple.  
+</p>
+
+<p>
+<b>The BOFFO rule:</b>
+Suppose you (Joe Voter) want to vote for <font color="blue">B</font>.
+We <i>require</i> 
+you to do so by contributing exactly 5 votes (3 "for" votes and 2 "against" votes)
+as follows:
+<table border="2" cellpadding="1">
+<tr bgcolor="#ffeeee"><td>FOR B</td></tr>
+<tr bgcolor="#ffeeee"><td>FOR O</td></tr>
+<tr bgcolor="#ffeeee"><td>FOR F</td></tr>
+<tr bgcolor="aqua"><td>AGAINST F</td></tr>
+<tr bgcolor="aqua"><td>AGAINST O</td></tr>
+</table>
+and <font color="blue">B</font>=<font color="blue">F</font> 
+(or <font color="blue">B</font>&ne;<font color="blue">F</font>) is allowed, 
+i.e. it is allowed for the three mentioned candidates 
+<font color="blue">B</font>,<font color="blue">F</font>, and <font color="blue">O</font>
+to be the same, or different, or whatever you want, but the 
+two <font color="blue">B</font>s must be the <i>same</i> and the
+two <font color="blue">F</font>s must be the same.  
+Call a vote 5-tuple of this type "of BOFFO format."
+Note that it includes 3 FOR votes and 2 AGAINST votes, with your AGAINST votes
+required to cancel your FOR votes so that the net effect is of a single FOR vote.
+Also note in the BOFFO plan, <i>there is no matrix filled with 0s and 1s</i>.
+(Anywhere.   Ever.  Not even merely mentally and virtually in anybody's head.  No matrix.)
+</p>
+
+<p>
+That, is, you vote for <font color="blue">B</font>
+(your "real" vote) but also vote both for-and-against  
+<font color="blue">O</font>
+and both for-and-against  
+<font color="blue">F</font>
+where <font color="blue">O</font> and 
+<font color="blue">F</font> are two other candidates which do not matter because your votes
+about them cancel themselves out.  <font color="blue">O</font> and 
+<font color="blue">F</font> are there purely to allow disguise.
+</p>
+
+<p>
+So in an N-candidate race, there are exactly 
+N<sup>2</sup>(N+1)/2
+valid BOFFO-style un-ordered 
+vote-5-tuples you (a voter) are allowed to output.
+<!--
+N ways to pick B
+N-1 ways to pick O ne B
+N-2 ways to pick F ne O and F ne B
+divide by 2 for swapping F,O
++
+N ways to pick B
+1 ways to pick O=B
+N-1 ways to pick F ne O and F ne B
++
+N ways to pick B
+1 ways to pick O=B=F
++
+N ways to pick B
+N-1 ways to pick F=O   both ne B
+=
+N*(N-1)*(N-2)/2 + N*1*(N-1) + N*1 + N*(N-1) = N^2 (N+1)/2
+-->
+If we count different time-orderings of the 5 subvotes as different, 
+then there are exactly 
+10N(6N<sup>2</sup>-9N+4), assuming I counted right.  
+<small>(If I did not, I'm not off by much
+and the error does not matter.)</small>
+<!--
+N ways to pick B
+N-1 ways to pick O ne B
+N-2 ways to pick F ne O and F ne B
+divide by 2 for swapping F,O
+times 5!
++
+N ways to pick B
+1 ways to pick O=B
+N-1 ways to pick F ne O and F ne B
+times 5*4*3
++
+N ways to pick B
+1 ways to pick O=B=F
+times 5*4/2
++
+N ways to pick B
+N-1 ways to pick F=O  both ne B
+times 5*4*3/2
+=
+N*(N-1)*(N-2)*5!/2 + N*1*(N-1)*5*4*3 + N*1*5*4/2 + N*(N-1)*5*4*3/2 = 10N(6N^2-9N+4)
+-->
+If we just count the number of distinct possible types of subvotes inside 
+BOFFO-5-votes, then exactly 2N types are possible.
+All these counts are indeed bounded by low-degree polynomials 
+(in fact degree=1 and 2 and 3) 
+in N.  
+(Note here that approval and range voting are superior to plurality in
+the sense that for them, the corresponding counts are bounded by 
+<i>constants</i> independent of N.)
+We are going to assume from now on that the number V of voters far exceeds
+these numbers, e.g.   V&gt;&gt;60N<sup>3</sup> (actually,
+all we shall really need in practice is V&gt;&gt;20N or so)
+and the voters are diverse enough  that
+we can assume that every possible vote-type will happen many times.
+</p>
+
+<p>
+You submit your BOFFO-type 5-vote-tuple 
+and a simple <i>checking</i> machine confirms your 5 votes were
+indeed of BOFFO format and produces an official goverment-certified
+<i>copy</i> (including copying the ballot number)
+of one of the five &ndash; you pick which &ndash; for you
+to take home with you.  <b>Variant:</b>  instead of taking one copy home, 
+BOFFO also seems to work if we agree each voter is allowed to pick <i>two</i> of her 5 ballots
+to copy and take home (and those two may also be allowed to be two copies of the
+same one ballot).  We'll come back later to why such a variant might be a good idea.
+</p>
+
+<H3> Why BOFFO works </H3>
+<p>
+<b>1. Why cannot you sell your vote?</b>
+Because if some buyer examines just one of your votes,
+that buyer has <i>no idea</i> which candidate (B here) is the one you really voted for.
+If he sees a FOR vote, it could have been for O or F, not A.  Buyer has no idea.
+if he sees an AGAINST vote, then that still tells him nothing about who B was.
+(Say he sees "AGAINST F."  Well, you could have voted for B (since F=B is allowed).
+You could have voted for A where A is anybody else (since F&ne;B is also allowed).
+Buyer has no idea.  So you cannot sell your vote. 
+</p>
+<p>
+<p>
+<b>2. Similarly you cannot be coerced to vote for somebody:</b>
+<br>
+<blockquote>
+Coercer: "I demand you vote
+for Clinton.  And bring me a receipt saying 'FOR CLINTON' on it."<br>
+You: Yes, boss!<br>
+Coercer: Very good.  But wait, how do I know you did not also vote AGAINST Clinton
+(cancelling out your FOR vote) and thus in total really voted for Bush?<br>
+You: You don't.<br>
+Coercer: (stymied).
+</blockquote>
+Or try this other scenario:
+<blockquote>
+Coercer: "I demand you vote
+AGAINST Bush.  And bring me a receipt saying 'AGAINST BUSH' on it."<br>
+You: Yes, boss!<br>
+Coercer: Very good.  But wait, how do I know you did not also vote FOR Bush
+twice (and also both FOR and AGAINST Nader) and thus in total really voted for Bush?<br>
+You: You don't.<br>
+Coercer: (foiled again).
+</blockquote>
+<p>
+<b>3. The talliers cannot cheat without
+a high chance of being detected:</b>
+<small>
+Specifically, if they alter K votes, the chance of escaping
+detection declines exponentially with K.  Altering a few hundred votes will
+in practice lead to essentially certain detection.
+</small>
+<ol>
+<li>
+Because if they alter or delete even a single vote, then
+there is a 1-in-5 chance it'll be a vote somebody has an official copy of.
+That person could check the bulletin board, see his official copy of vote #164662348
+does not correspond to the posted vote #164662348, and go to the League of Women Voters
+and their lawyers to raise hell.
+OK, 1-in-5 may not sound like much, but to change a typical important election the government
+is going to have to alter at least 1000 votes, and for sure some of
+those alterations are going to be spotted, with proof of the cheating.
+</li>
+<li>
+And if they add fake votes, then the number B of votes posted on the bulletin board
+would no longer be exactly equal to 5V where V is the number of people who voted
+(the list of those names and addresses also would be posted there on a separate list).
+So the cheat again would be detected.
+</li>
+<li>
+And if they add fake voters, then if they want to move the election by 1% they
+need to add 1% fake voters.  Then reporters checking only a few hundred voter names and addresses
+would be able to spot some fake voters and prove the cheating.
+</li>
+</ol>
+<p>
+<b>4. No attack like the specified pattern or reconstruction attack
+(based on hiding information in, or using redundant information inside votes)
+works:</b>
+in the sense that the necessary information just <i>isn't there.</i>
+That is, you cannot try to identify which vote 5-tuples are which by matching
+up subvotes, becasue essentially anything can match with essentially anything else.
+You cannot verify a voter voted with your specified 5-vote pattern, because
+each of the subvotes occurs zillions of times on the bulletin board whether
+or not your voter obeyed your command.
+</p>
+<p>
+So it now should be clear exactly why (and exactly in what sense)
+cheating and vote-buying both are impossible.
+</p>
+<a name="collusive"></a>
+<H2> Collusive attacks (and defenses) </H2> 
+<p>
+We should say, however, that the BOFFO plan (and the 3-ballot plan for 
+approval and range voting)
+both
+<i>are</i> vulnerable to certain <i>collusive</i> attacks.
+That is, a vote buyer <i>acting alone</i> cannot buy your vote (even if you,
+the voter, cooperate and try to sell it to him). And a government-tallier
+<i>acting alone</i> cannot alter a vote, delete a vote, or insert a fake vote without
+detection.
+<i>But</i> if the voter, the
+vote-buyer, and the government <i>all</i> collude (3-way collusion) then vote buying 
+becomes possible
+in numerous ways.
+</p>
+<p>
+So in this sense, these plans rather resemble "threshhold schemes" in cryptography.
+Those schemes are secure only if a number <i>below threshhold</i>
+of the players cheat &ndash; with too many colluding cheaters, they fail.
+</p>
+<p>
+We now examine several collusive attacks in detail (and propose some defenses).
+</p>
+<ol>
+<li>
+The voter simply agrees not to complain if anybody alters his vote,
+and then the government alters it, and the vote-buyer pays the voter and government to do so.
+(Probably not too serious a threat in practice since the colluders all have to trust
+one-another.  An agent provacateur voter could bring the whole house of cards crashing down.)
+</li><li>
+The vote-buyer pays the voter to give him his receipt.  From now on,
+any alteration of that voter's vote will be undetectable by anybody besides that vote-buyer.
+Now vote-buyer bribes government employee to alter the vote whose receipt he now owns.
+(For an even nastier-sounding variant, see collusive attack #4.)
+</li><li>
+The "dumpster diving" attack:
+The voter foolishly chucks his receipt in the garbage.  
+Somebody dumpster-dives to get it, sells the receipts he collects to a vote-buyer,
+who now 
+bribes government employees to alter the bulletin-board-posted
+votes whose receipts he now owns &ndash; and those alterations are undetectable except
+by the vote-buyer.
+<blockquote>
+Cures for dumpster-diving:
+<ol type="a">
+<li>
+Such receipt dumping can be discouraged by a
+rule that voters have to bring their old receipts
+to the next election in order to be qualified to 
+vote in that next one &ndash; or pay a significant fine if they cannot...
+</li>
+<li>
+The <a href="DumpsterFix.html">&quot;split receipt&quot; 
+idea</a> may largely cure the dumpster diver problem.
+</li>
+<li>
+See below for the "extra copies" fix.
+</li>
+</ol>
+</blockquote>
+</li><li>
+The "bible meeting attack":
+<ol type="A">
+<li>
+Republican voters all vote for Bush, which they do as usual
+(I discuss in 3ballot for simplicity, but this attack will also work
+against the "BOFFO" scheme which repairs 3-ballot against the redundant-info attacks;
+and it also works against receipt-swapping schemes...)
+by voting for, for, and against Bush.
+</li><li>
+They copy their "against Bush" ballot.
+</li><li>
+They turn in all their receipts to the friendly local Republican party boss
+at their born-again-Christian bible meeting,
+who'd told them all ahead of time he'd like to have their receipts
+for "safe keeping," and he'd like their "against Bush" receipts.
+(Oh, and he'd like their "for Clinton" receipts too, by the way.)
+</li><li>
+Republican party corrupt bigwigs like DeLay
+arrange with the government election office
+(the officials in which, they of course all appointed in the first place rather
+like Ken Tomlinson to CPB
+because they were party hacks)
+to alter all those against-Bush votes to "for Bush"
+and to alter all those "for Clinton" votes to "against"
+and <i>burns</i> its receipt collection.
+</li><li>
+As a result, each Republican voter-participant gets 3 votes instead of 1.
+The vote shifts by several percent in Bush's favor and he wins.
+</li></ol>
+[I've put in names from recent US history into this fantasy, but feel free to
+change the scenario to your favorite (or unfavorite) party and
+country.]  This is technically a 3-way collusion, but not really.  That is,
+generally large collusions are supposed to be unlikely and risky,
+but <i>this</i> collusion is especially nasty because it sounds <i>likely</i> and not very risky.
+It is not risky because only a few top Republicans actually know the secret.  The rest
+(all the voters at all the meetings) are innocent or at least have "plausible deniability."
+In fact for all they know, the Republican party is doing precisely what it
+should do &ndash; <i>helping</i> them with possible vote-protests they might not otherwise
+be able to undertake, and acting as a watchdog to help preserve democracy.
+<br>
+How can we protect against this attack?!  Juho Laatu suggested the 
+"extra ballot copy" fix.   That is 
+(as improved by me) the following alteration in the voting 
+procedure:
+<blockquote>
+<b>The random-extra-copy fix:</b>
+As voting proceeds, the votes (3ballots or BOFFO 5ballots) drop in random order into a
+large glass-enclosed bin.  Each voter, as she votes, rolls two dice (or some other
+obviously-random device is used).  If the dice come up double-sixes, then that voter
+is a "lucky" voter who gets to reach into the bin, pull
+out a random ballot, and have an official copy made of that ballot for her
+to take home.
+</blockquote>
+The point of this is that this way, nobody can be sure that they have the only official copy
+(or copies) of ballots.
+So if evil Republicans (or whoever) try to alter a vote, even a vote they have burned the official copy of, there might <i>still</i> be an extra official copy floating
+around somewhere that'll prove their cheating.
+<br>
+The random-extra copy fix is still
+<i>slightly flawed</i> because the <i>last</i> voter of the day knows his vote is uncopied,
+so the Evil Republicans could arrange for their conspirators to vote last, etc.
+But that would necessitate a large number of knowing colluders and hence would be
+riskier and unlikelier, and also the number of votes affectable would be smaller,
+so in practice this fix seems pretty adequate.
+(Note that this fix also protects against the "dumpster diving attack" and
+indeed <i>every</i> collusive attack we've mentioned so far.)
+There is another related fix, however, which does not even have that slight flaw
+(and it also can be used in <i>combination</i> with the randon-extra-copy fix):
+<blockquote>
+<b>The two-or-one plan:</b>
+The voter, after submitting her BOFFO 5ballot, gets <i>either</i> one of those 5 ballots
+(chosen by her) to copy and take home, or two, or two-copies-of-one.
+(Which?  Perhaps this choice should be made randomly.)
+</blockquote>
+The point: this way, even the last voter of the day, still might
+be carrying around an extra ballot copy.  Anybody collecting receipts for
+later evil destruction can never be entirely sure some voter
+was not double-crossing him...
+</li>
+</ol>
+</p>
+
+<H3> What about Borda and Condorcet and IRV (rank-order ballot) voting? </H3>
+
+<p>
+Since it is non-additive,
+<a href="rangeVirv.html">IRV (instant runoff voting)</a>
+appears to be totally incapable of being made secure by any method like this.
+For Condorcet and Borda, there is a <a href="RouseCond.html">natural way</a>
+to try to do it, invented by Mike Rouse &ndash; but it does not work, in the sense that it
+is vulnerable to vote-buyers who use the selected-pattern attack.
+
+<H2> A few other tricks (an aside 
+for the reader familiar with high tech cryptographic methods) </H2>
+
+<p>
+If you want to include some high tech cryptography,
+then the "signatures" by the voters could be unforgeable "digital signatures."
+The "government-certified official copy of the ballot" could instead be
+got by the voter requesting from the government an unforgeable "blind digital signature"
+on one of his three ballots. 
+With blind signatures, the signer has no way to know what he is signing.
+(But the government can still be sure it is not signing some bogus non-ballot, because
+it can ask the voter for a "zero knowledge proof" that the thing being signed is
+A or B or C, using a "logical OR of zero knowledge proofs.")
+</p>
+
+<H3> What about "write-in" ballots? </H3>
+
+<p>
+Write-in ballots are trivially  handled in approval and range voting.
+For plurality voting, the BOFFO scheme <i>cannot</i> handle write-in votes
+(which we must forbid) because they bring back from the grave that much-feared monster:
+mucho-information, thus permitting once again, the selected-pattern vote-buying
+(or coercing) method.  E.g. if write-ins were allowed in BOFFO, then 
+<blockquote>
+Coercer: You miserable dog, I know you were probably planning on voting for Clinton,
+in which case I'd have to kill you.<br>
+Voter: Who, me?<br>
+Coercer: I insist you vote FOR Namsquattyfish, FOR &amp; AGAINST Murgatroidodoggo,
+and FOR &amp; AGAINST GoofyThePoofy.<br>
+Voter: (weak laugh) But there are no candidates with anywhere near those-weird names.<br>
+Coercer: That's why you're going to use write-in votes, worm.  And I'll be checking the bulletin
+board afterwards to be sure somebody really did vote for &amp; against all those
+weird names, so unless you figure another voter somewhere is going to be doing that,
+you better obey. And you better spell 'em exactly right, too.<br>
+Voter: But... then I won't have any votes left to vote for Clinton.<br>
+Coercer: (smiles toothily, in the evil manner common to his kind).
+</blockquote>
+So this is yet another way in which (and re-emphasizes that)
+security can be naturally married to range &amp; approval
+voting, but not to plurality voting.
+</p>
+
+<H3> Denial of service attack / what happens after the fraud? </H3>
+
+<p>
+What if we hold an election, and protocol proves there was fraud?  Then what?
+For altered or deleted votes, we'd know who cast the votes and could try to track down who cheated
+to punish them.  (Even then, it would probably be impossible to "undo" the fraud.)
+But for <i>added</i> invented votes, we'd know there was fraud, but it
+would not necessarily be easy to track down the evildoer who added them, because 
+they did <i>not</i> come from any particular voter (which was the point).
+</p>
+<p>
+Indeed artificially adding such votes would be a way to try to
+"deny service" by forcing the election to "be fraudulent."
+</p>
+<p>
+What can we do about this?
+Well... the only thing I can suggest is to try to keep track of the chain of custody of
+official ballots by numerical-range.  If anybody introduces fake (non-official)
+ballots, they would fail (unless they could forge them, which would be comparable in difficulty
+to counterfeiting money).   
+On the other hand:
+if anybody introduces fake votes written on official ballots,
+then because we know the chain of custody of those ballots, we could
+attempt to track down the evildoer.
+</p>
+
+<H2> A few important lessons </H2>
+
+<p><b>1.</b>
+"DRE"
+voting machines (direct recording electronic computers)
+are a <i>bad</i> idea since they might remember things (like which of the ballots was copied)
+and thus would totally undermine the no-cheating guarantees.
+</p>
+<p>
+But PBOS (paper ballot optical scan) machines
+are just fine (if done right and verification of 3ballot or BOFFO-5ballot validity occurs
+beforehand in a computer-free paper-based manner).
+And once the ballots are filled out, verified, copied, and turned in,
+<i>everything is OK</i> from then on.
+Wireless interfaces, internet, you name it. It doesn't matter.
+No many how many computers the government uses from then on, no matter how many flaky, bug-ridden,
+and penetrated systems there are, no cheating can occur from then on without detection!
+</p>
+
+<p><b>2.</b>
+Approval voting is simpler than range voting is simpler than plurality voting
+for making secure with the schemes here; Borda and Condorcet cannot
+be made secure, and IRV cannot be handled at all by these methods.
+</p>
+
+<p><b>3.</b>
+See <a href="RandomRiv.html">this</a>
+for why certain "enhancements" of these schemes by putting in "randomness,"
+are actually a very <i>bad</i> idea.
+</p>
+
+
+
+<br>
+<p><a href="http://theory.csail.mit.edu/%7Erivest/Rivest-TheThreeBallotVotingSystem.pdf">Link to Rivest's original paper/notes (pdf)</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

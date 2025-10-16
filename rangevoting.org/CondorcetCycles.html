@@ -1,0 +1,796 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Condorcet cycles 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<a name="start"></a>
+<H1> Condorcet cycles </H1>
+<p><small> By Jan Kok, Clay Shentrup, &amp; Warren Smith.</small><br>
+
+<H3> What they are </H3>
+This 19-voter election illustrates a "Condorcet cycle" in which
+no candidate is pairwise-preferred over all opponents:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+    8
+</td>
+<td align="center">
+B>C>A
+</td>
+</tr>
+<tr>
+<td align="center">
+    6
+<td align="center">
+C>A>B
+</td>
+</tr>
+<tr>
+<td align="center">
+    5
+<td align="center">
+A>B>C
+</td>
+</tr>
+</table>
+
+<p>
+For example, should candidate B win?  One could argue "no, since
+A is preferred over B by 11 out of 19 voters."
+OK, so should A win?
+"no, since
+C is preferred over A by 14 out of 19 voters."
+OK, so C must be the right winner?
+"Still no, since
+B is preferred over C by 13 out of 19 voters."
+</p>
+
+<p>
+In such situations, there is  not necessarily any obvious "Condorcet winner."
+Such cycles are one inherent problem with all voting systems based on "rank order ballots."
+That is a good reason to prefer range-voting type ballots.  (With them, if
+all pairwise comparisons are done by comparing the two average scores, cycles are impossible.)
+</p>
+
+<a name="naivemaj"></a>
+<H3> Moral/philosophical importance &ndash; the demise of naive majoritarianism </H3>
+
+<p>
+"Naive majoritarianism" is the belief that if a majority of people prefer A over B, 
+then A is always the better choice; and (morally) the choice society always should make.
+</p><p>
+We now see that naive majoritarianism is simply untenable.  That is because it
+is self-contradictory.
+</p><p>
+If your value judgment is "X must be better than Y if preferred to Y by a majority", 
+then you can ultimately contradict yourself.  Two contradictory statements cannot 
+both be right.
+(I.e. if you claim that apples are better than bananas are better than 
+oranges are better than apples, then you are lying.)
+So this value judgement is simply incorrect.  It may be a good 
+<i>approximate heuristic</i>, but
+it <i>inherently</i> cannot be exactly correct.
+</p><P>
+Anybody interested in devising 
+a moral scheme which is not inherently self-contradictory, should 
+abandon naive majoritarianism and replace it with something else &ndash;
+something that can never lead to a self-contradiction-cycle.
+What?  Well, how about <a href="Bentham.html">utilitarianism</a>?
+</p>
+
+<p>
+<small>
+To say the same thing, look at it like this.
+Ask yourself:
+"who is the better candidate in the following scenarios?"
+
+<table>
+<tr><td>
+
+<table bgcolor="yellow" border="3" cellpadding="5"><tbody><tr><th>#voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+    8
+</td>
+<td align="center">
+B&gt;A
+</td>
+</tr>
+<tr>
+<td align="center">
+    11<br></td><td align="center">
+A&gt;B
+</td>
+</tr>
+</tbody></table>
+
+</td><td>
+
+<table bgcolor="yellow" border="3" cellpadding="5"><tbody><tr><th>#voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+    13<br></td>
+<td align="center">
+B&gt;C
+</td>
+</tr>
+<tr>
+<td align="center">
+    6
+</td><td align="center">
+C&gt;B
+</td>
+</tr>
+</tbody></table>
+
+</td><td>
+
+<table bgcolor="yellow" border="3" cellpadding="5"><tbody><tr><th>#voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+    14<br></td>
+<td align="center">
+C&gt;A
+</td>
+</tr>
+<tr>
+<td align="center">
+    5
+</td><td align="center">
+A&gt;C
+</td></tr></tbody></table>
+
+</td></tr>
+<tr>
+<td align="center">N.M. says A is best.</td>
+<td align="center">N.M. says B is best.</td>
+<td align="center">N.M. says C is best.</td>
+</tr>
+
+</table>
+
+<p>
+Well...  this is really just the election we 
+<a href="#start">started</a> with. 
+</p>
+</small>
+
+<a name="demiseNM2"></a>
+<p><b>Another angle on the demise of naive majoritarianism:</b>
+<p>
+The following example was pointed out by M.Balinski &amp; R.Laraki
+(I thank H.C.M.de Swart for this):
+</p><blockquote>
+Suppose there are five voters and two candidates A and B with the following evaluations
+from the voters:
+<center>
+A:  (4,  3,  2,  1,  0)
+<br>
+B:  (3,  2,  1,  5,  4)
+</center>
+Then Majority Rule would make A the winner since the first
+3 voters prefer A, but only the last 2 prefer B.
+But listing those same evaluations of A and B from high to low we find:
+<center>
+A:  (4,  3,  2,  1,  0)
+<br>
+B:  (5,  4,  3,  2,  1)
+</center>
+The evaluations of B dominate those of A, so B should win!
+</blockquote>
+<p>
+So in that scenario, ask yourself: who do <i>you</i> think should win?
+</p>
+
+<H3> How often do Condorcet Cycles occur? </H3>
+<p>
+How often
+do such cyclic situations occur in practice in real elections (as opposed
+to artificial ones cooked up to demonstrate the phenomenon)?
+That is <a href="PuzzlePage.html#prob20">not known</a> for public elections
+&ndash; although the same link demonstrates that Condorcet Cycles are very common (and very
+important and damaging) in <i>legislative votes</i> &ndash; and that damage would disappear
+if <a href="RangeVoting.html">range voting</a> were used.
+<!-- Peter Bernholz: Logrolling, Arrow Paradox and Cyclical Majorities,
+Public Choice 15 (1973) 87-95; works by William H. Riker emphasize this too -->
+Also, it is not known what "real"
+elections even <i>are</i> because in a hypothetical future world where governments
+use Condorcet voting, elections might be statistically
+different than now, for example with
+more issues, more viable candidates, and less bipolar simplism.
+</p><p>
+In <a href="RandElect.html">computer simulations of random elections</a>,
+top-cycles happen quite rarely with 3 candidates (9% of the time) but quite
+commonly with 20 candidates (68% of the time).  
+In this model, in the limit of a large number C of candidates, the
+probability that a Condorcet winner exists tends to <i>zero</i> (i.e. the probability 
+that a top-cycle exists goes to 100%) and is 
+<a href="PuzzCondProb.html">asymptotic</a> to
+2<sup>1/2</sup>8&pi;e<sup>-2</sup>(lnC)<sup>1/2</sup>/C.
+</p><p>
+Cycles are much more common than that if
+we also count <i>non</i>top cycles, 
+but this kind of cycle does not destroy Condorcet winners.  
+If all pairwise-defeats sign-matrices were equally likely [which they are not]
+then the probability that
+a transitive social ordering would exist &ndash; i.e. that there would be no cycle &ndash;
+would be N!/2<sup>(N-1)N/2</sup> in an N-candidate election, which falls off superexponentially
+to zero
+as N&rarr;&infin;; and the probability that a Condorcet winner exists &ndash; i.e. that 
+there be no <i>top</i>-cycle &ndash; would be 2<sup>1-N</sup>N, which falls off
+only exponentially toward zero.
+</p><p>
+But <i>practical</i> elections may differ statistically from these random ones.
+There is some reason to believe that real elections will have <i>fewer</i> cycles
+than random ones.  For example, there is 
+<a href="BlackSingle.html">Black's single-peakedness theorem</a>
+which says that in a "one dimensional" situation in which
+</p>
+<ol>
+<li>
+All candidates are located at positions on a <i>line</i>,
+</li><li>
+Each voter has a <i>single peaked</i> utility function that rises as you move along the line, 
+reaches a peak, then falls,
+</li><li>
+Each voter gives as his vote, his honest preference ordering of the candidates (in
+decreasing order of their utility-function values),
+</li>
+</ol>
+<p>
+then there cannot be a Condorcet cycle.  On the other hand, there is also some
+reason to believe cycles might be <i>more</i> frequent in real than random elections.
+(For example if real situations are more-than-one dimensional.)
+One reason you might expect cycles in practice is that
+many voter groups will be motivated to
+try to create a cycle by "strategic voting."  
+That in fact is exactly what happens (in part) in the
+<a href="DH3.html">DH3 pathology</a> and in <a href="CondStratProb.html">burial strategy</a>.
+</p>
+
+<p>
+There is very little real data on this question and what there is is attackable 
+as "not really real data" (because, e.g, the vast bulk of the data was from elections
+actually not conducted with  Condorcet methods).
+Here is an artificial setup to demonstrate how cycles could arise in a realistic 
+practical situation:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ddffff">
+<tr>
+<th> Issue\Candidate </th>
+<th> A </th>
+<th> B </th>
+<th> C </th>
+</tr>
+<tr>
+<td> <b>War</b> </td>
+<td> Peace! </td>
+<td> Ambiguous baloney </td>
+<td> War! </td>
+</tr>
+<tr>
+<td> <b>Corruption</b> </td>
+<td> Gambles under false names, buddies with corrupt corporate frauds who pay him $100,000 "lecture fees" for a single speech </td>
+<td> Ethical, raised money only from local individuals, abstained PAC money </td>
+<td> 70% of money from "club for growth" huge wealth-based special interest PAC </td>
+</tr>
+<tr>
+<td> <b>Religion</b> </td>
+<td> Jewish </td>
+<td> Atheist </td>
+<td> Christian </td>
+</tr>
+</table>
+
+<p>
+A lot of voters 
+are antiwar
+(62% of pollees as of 2006
+say the Iraq war was a mistake and they want it stopped), 
+so for voters whose top issue is war-vs-peace, the vote is A>B>C.
+A lot of voters are worried about government corruption.
+For voters whose top issue is corruption and special interest money,
+their vote is B>C>A.
+Finally, a lot of voters are "moral values" voters who seemingly pay no attention 
+to money and care only about the professed religious passion of the candidates.
+These voters in the 2006 USA are predominantly Evangelical Christians and they vote C>A>B.
+</p>
+
+<p>
+If all three of these kinds of voters are roughly equal in number, then the result
+of the election would be a cyclic preference order.
+</p>
+
+<p>
+We know that in the judge-"voting" 
+(i.e. <a href="SkateData1998.txt">scoring</a>) of the skaters in the 48
+top skating events in year 1998, at least 22 of those 48 "elections" 
+<a href="Skating1998.html#manycycles"">contained</a>
+Condorcet cycles.  Indeed these 22 skating events each contained "flip-flops" in which
+skater C's skate caused the relative rankings of skaters 
+A and B (who had already finished skating) to reverse
+under the "OBO"-scoring system (which is  Condorcet).
+</p>
+
+<a name="PoundstoneCycPic"></a>
+<p>
+Another example (from p.158 of William Poundstone's
+excellent 2008 book <i>Gaming the Vote</i>) is this picture.
+</p>
+
+<img src="PoundstoneCondCyc.png" alt="image showing how Condorcet cycle can arise in voting for location for state capital">
+
+<p>
+The voters in Squareovia need to decide where to
+locate their state capital &ndash; A, B, or C.
+As you can see from the red dots,
+the Squareovian population is concentrated in 3 population centers.
+</p>
+<P>
+Well, obviously, A is the best location in terms of minimizing average transport-distance.
+But the voters in the Southeast slightly prefer C and heavily prefer B (as slightly
+and significantly closer to them, although actually, none of the three choices are
+very good from their perspective).  They vote B>C>A.  
+The Northern voters say C>A>B.
+The Western voters say A>B>C.  Result: <i>cycle</i> (A&sup;B&sup;C&sup;A
+where "&sup;" means "majority preference").
+So any "Condorcet voting method," and indeed any method based just
+on rank-order votes, fails miserably.   Range voting, which
+allows voters to express <i>strength</i> of preferences, would
+presumably  succeed in choosing the best capital A.
+</p>
+<blockquote><small>
+(Related <a href="SimmonsGeomCyc.html">Simmons trapezoid example</a>.
+Related <a href="XYvote.html">two-event example</a>.)
+</small></blockquote>
+
+<H3> Here's a well-documented real example &ndash;
+School funding &amp; desegregation
+</H3>
+
+<p>
+William H. Riker (also explained in Poundstone's
+<i>Gaming the Vote</i>) found this typical example of
+a legislative-vote Condorcet cycle.
+</p>
+<p>
+<ol type="a">
+<li>
+A 1956 bill proposed to shell out federal money to states to help build schools.
+It had strong bipartisan support (because of the "baby boom" causing
+a big need at the time for more schools) versus the Status Quo.
+</li><li>
+The "Powell amendment" proposed that only states with <i>desegregated</i> schools
+in compliance with <i>Brown vs. Board of Education</i> could 
+get the federal money.
+The South opposed that idea, but the amendment passed 229-197 because Southerners were
+a minority.
+</li><li>
+However, the amended bill got rejected (i.e. the Status Quo won) 227-199.
+</li></ol>
+<p>
+This was a Condorcet cycle (where each "&lt;" represents a strong-majority-decision):
+</p>
+<center>
+Status Quo &lt; Fund schools &lt; Fund only desegregated &lt; Status Quo.
+</center>
+<p>
+If this vote had been conducted using <a hrf=RangeVoting.html">range voting</a>
+among these 3 choices,
+we suspect schools would have been funded.  But it wasn't, so they weren't.
+</p>
+
+<H3> And here are well-documented cycle examples in real-world <i>political</i> elections
+</H3>
+
+<p>
+<b>1.</b>
+The <a href="https://rangevoting.org/Romania2009.htnl">2009 Romanian presidential election</a>.
+</p>
+
+<p>
+<b>2.</b>
+In the June 2008 election by the Wikimedia Foundation
+of its Board of Trustees (one vacant seat to be filled)
+employing Schulze's beatpath Condorcet method,
+there were 15 candidates, about 26,000 eleigible voters, and 3019 valid ballots.
+Ting Chen was the clear Condorcet winner hence won the seat. However, there was a 
+<b>cyclic tie</b>
+for sixth to ninth position between J.Heiskanen, R.Postlethwaite, S.Smith, and R.Saintonge:
+JH&gt;RP&gt;SS&gt;RS&gt;JH.
+</p>
+
+<table style="text-align:center">
+<tr>
+<th></th>
+<th>TC</th>
+<th>AB</th>
+<th>SK</th>
+<th>HC</th>
+<th>AH</th>
+<th>JH</th>
+<th>RP</th>
+<th>SS</th>
+<th>RS</th>
+<th>DR</th>
+<th>CS</th>
+<th>MB</th>
+<th>KW</th>
+<th>PW</th>
+<th>GK</th>
+</tr>
+<tr>
+<th>Ting Chen</th>
+<td></td>
+<td style="background:#90ff90; color:black;">1086</td>
+<td style="background:#90ff90; color:black;">1044</td>
+<td style="background:#90ff90; color:black;">1108</td>
+<td style="background:#90ff90; color:black;">1135</td>
+<td style="background:#90ff90; color:black;">1151</td>
+<td style="background:#90ff90; color:black;">1245</td>
+<td style="background:#90ff90; color:black;">1190</td>
+<td style="background:#90ff90; color:black;">1182</td>
+<td style="background:#90ff90; color:black;">1248</td>
+<td style="background:#90ff90; color:black;">1263</td>
+<td style="background:#90ff90; color:black;">1306</td>
+<td style="background:#90ff90; color:black;">1344</td>
+<td style="background:#90ff90; color:black;">1354</td>
+<td style="background:#90ff90; color:black;">1421</td>
+</tr>
+<tr>
+<th>Alex Bakharev</th>
+<td style="background:#ff9090; color:black;">844</td>
+<td></td>
+<td style="background:#90ff90; color:black;">932</td>
+<td style="background:#90ff90; color:black;">984</td>
+<td style="background:#90ff90; color:black;">950</td>
+<td style="background:#90ff90; color:black;">983</td>
+<td style="background:#90ff90; color:black;">1052</td>
+<td style="background:#90ff90; color:black;">1028</td>
+<td style="background:#90ff90; color:black;">990</td>
+<td style="background:#90ff90; color:black;">1054</td>
+<td style="background:#90ff90; color:black;">1073</td>
+<td style="background:#90ff90; color:black;">1109</td>
+<td style="background:#90ff90; color:black;">1134</td>
+<td style="background:#90ff90; color:black;">1173</td>
+<td style="background:#90ff90; color:black;">1236</td>
+</tr>
+<tr>
+<th>Samuel Klein</th>
+<td style="background:#ff9090; color:black;">836</td>
+<td style="background:#ff9090; color:black;">910</td>
+<td></td>
+<td style="background:#90ff90; color:black;">911</td>
+<td style="background:#90ff90; color:black;">924</td>
+<td style="background:#90ff90; color:black;">983</td>
+<td style="background:#90ff90; color:black;">980</td>
+<td style="background:#90ff90; color:black;">971</td>
+<td style="background:#90ff90; color:black;">941</td>
+<td style="background:#90ff90; color:black;">967</td>
+<td style="background:#90ff90; color:black;">1019</td>
+<td style="background:#90ff90; color:black;">1069</td>
+<td style="background:#90ff90; color:black;">1099</td>
+<td style="background:#90ff90; color:black;">1126</td>
+<td style="background:#90ff90; color:black;">1183</td>
+</tr>
+<tr>
+<th>Harel Cain</th>
+<td style="background:#ff9090; color:black;">731</td>
+<td style="background:#ff9090; color:black;">836</td>
+<td style="background:#ff9090; color:black;">799</td>
+<td></td>
+<td style="background:#90ff90; color:black;">896</td>
+<td style="background:#90ff90; color:black;">892</td>
+<td style="background:#90ff90; color:black;">964</td>
+<td style="background:#90ff90; color:black;">904</td>
+<td style="background:#90ff90; color:black;">917</td>
+<td style="background:#90ff90; color:black;">959</td>
+<td style="background:#90ff90; color:black;">1007</td>
+<td style="background:#90ff90; color:black;">1047</td>
+<td style="background:#90ff90; color:black;">1075</td>
+<td style="background:#90ff90; color:black;">1080</td>
+<td style="background:#90ff90; color:black;">1160</td>
+</tr>
+<tr>
+<th>Ad Huikeshoven</th>
+<td style="background:#ff9090; color:black;">674</td>
+<td style="background:#ff9090; color:black;">781</td>
+<td style="background:#ff9090; color:black;">764</td>
+<td style="background:#ff9090; color:black;">806</td>
+<td></td>
+<td style="background:#90ff90; color:black;">832</td>
+<td style="background:#90ff90; color:black;">901</td>
+<td style="background:#90ff90; color:black;">868</td>
+<td style="background:#90ff90; color:black;">848</td>
+<td style="background:#90ff90; color:black;">920</td>
+<td style="background:#90ff90; color:black;">934</td>
+<td style="background:#90ff90; color:black;">987</td>
+<td style="background:#90ff90; color:black;">1022</td>
+<td style="background:#90ff90; color:black;">1030</td>
+<td style="background:#90ff90; color:black;">1115</td>
+</tr>
+<tr>
+<th>Jussi-Ville Heiskanen</th>
+<td style="background:#ff9090; color:black;">621</td>
+<td style="background:#ff9090; color:black;">720</td>
+<td style="background:#ff9090; color:black;">712</td>
+<td style="background:#ff9090; color:black;">755</td>
+<td style="background:#ff9090; color:black;">714</td>
+<td></td>
+<td style="background:#90ff90; color:black;">841</td>
+<td style="background:#90ff90; color:black;">798</td>
+<td style="background:#ff9090; color:black;">737</td>
+<td style="background:#90ff90; color:black;">827</td>
+<td style="background:#90ff90; color:black;">850</td>
+<td style="background:#90ff90; color:black;">912</td>
+<td style="background:#90ff90; color:black;">970</td>
+<td style="background:#90ff90; color:black;">943</td>
+<td style="background:#90ff90; color:black;">1057</td>
+</tr>
+<tr>
+<th>Ryan Postlethwaite</th>
+<td style="background:#ff9090; color:black;">674</td>
+<td style="background:#ff9090; color:black;">702</td>
+<td style="background:#ff9090; color:black;">726</td>
+<td style="background:#ff9090; color:black;">756</td>
+<td style="background:#ff9090; color:black;">772</td>
+<td style="background:#ff9090; color:black;">770</td>
+<td></td>
+<td style="background:#90ff90; color:black;">755</td>
+<td style="background:#90ff90; color:black;">797</td>
+<td style="background:#90ff90; color:black;">741</td>
+<td style="background:#90ff90; color:black;">804</td>
+<td style="background:#90ff90; color:black;">837</td>
+<td style="background:#90ff90; color:black;">880</td>
+<td style="background:#90ff90; color:black;">921</td>
+<td style="background:#90ff90; color:black;">1027</td>
+</tr>
+<tr>
+<th>Steve Smith</th>
+<td style="background:#ff9090; color:black;">650</td>
+<td style="background:#ff9090; color:black;">694</td>
+<td style="background:#ff9090; color:black;">654</td>
+<td style="background:#ff9090; color:black;">712</td>
+<td style="background:#ff9090; color:black;">729</td>
+<td style="background:#ff9090; color:black;">750</td>
+<td style="background:#ff9090; color:black;">744</td>
+<td></td>
+<td style="background:#90ff90; color:black;">778</td>
+<td style="background:#90ff90; color:black;">734</td>
+<td style="background:#90ff90; color:black;">796</td>
+<td style="background:#90ff90; color:black;">840</td>
+<td style="background:#90ff90; color:black;">876</td>
+<td style="background:#90ff90; color:black;">884</td>
+<td style="background:#90ff90; color:black;">1007</td>
+</tr>
+<tr>
+<th>Ray Saintonge</th>
+<td style="background:#ff9090; color:black;">629</td>
+<td style="background:#ff9090; color:black;">703</td>
+<td style="background:#ff9090; color:black;">641</td>
+<td style="background:#ff9090; color:black;">727</td>
+<td style="background:#ff9090; color:black;">714</td>
+<td style="background:#90ff90; color:black;">745</td>
+<td style="background:#ff9090; color:black;">769</td>
+<td style="background:#ff9090; color:black;">738</td>
+<td></td>
+<td style="background:#90ff90; color:black;">789</td>
+<td style="background:#90ff90; color:black;">812</td>
+<td style="background:#90ff90; color:black;">848</td>
+<td style="background:#90ff90; color:black;">879</td>
+<td style="background:#90ff90; color:black;">899</td>
+<td style="background:#90ff90; color:black;">987</td>
+</tr>
+<tr>
+<th>Dan Rosenthal</th>
+<td style="background:#ff9090; color:black;">595</td>
+<td style="background:#ff9090; color:black;">654</td>
+<td style="background:#ff9090; color:black;">609</td>
+<td style="background:#ff9090; color:black;">660</td>
+<td style="background:#ff9090; color:black;">691</td>
+<td style="background:#ff9090; color:black;">724</td>
+<td style="background:#ff9090; color:black;">707</td>
+<td style="background:#ff9090; color:black;">699</td>
+<td style="background:#ff9090; color:black;">711</td>
+<td></td>
+<td style="background:#90ff90; color:black;">721</td>
+<td style="background:#90ff90; color:black;">780</td>
+<td style="background:#90ff90; color:black;">844</td>
+<td style="background:#90ff90; color:black;">858</td>
+<td style="background:#90ff90; color:black;">960</td>
+</tr>
+<tr>
+<th>Craig Spurrier</th>
+<td style="background:#ff9090; color:black;">473</td>
+<td style="background:#ff9090; color:black;">537</td>
+<td style="background:#ff9090; color:black;">498</td>
+<td style="background:#ff9090; color:black;">530</td>
+<td style="background:#ff9090; color:black;">571</td>
+<td style="background:#ff9090; color:black;">583</td>
+<td style="background:#ff9090; color:black;">587</td>
+<td style="background:#ff9090; color:black;">577</td>
+<td style="background:#ff9090; color:black;">578</td>
+<td style="background:#ff9090; color:black;">600</td>
+<td></td>
+<td style="background:#90ff90; color:black;">646</td>
+<td style="background:#90ff90; color:black;">721</td>
+<td style="background:#90ff90; color:black;">695</td>
+<td style="background:#90ff90; color:black;">845</td>
+</tr>
+<tr>
+<th>Matthew Bisanz</th>
+<td style="background:#ff9090; color:black;">472</td>
+<td style="background:#ff9090; color:black;">498</td>
+<td style="background:#ff9090; color:black;">465</td>
+<td style="background:#ff9090; color:black;">509</td>
+<td style="background:#ff9090; color:black;">508</td>
+<td style="background:#ff9090; color:black;">534</td>
+<td style="background:#ff9090; color:black;">473</td>
+<td style="background:#ff9090; color:black;">507</td>
+<td style="background:#ff9090; color:black;">531</td>
+<td style="background:#ff9090; color:black;">513</td>
+<td style="background:#ff9090; color:black;">552</td>
+<td></td>
+<td style="background:#90ff90; color:black;">653</td>
+<td style="background:#90ff90; color:black;">677</td>
+<td style="background:#90ff90; color:black;">785</td>
+</tr>
+<tr>
+<th>Kurt M. Weber</th>
+<td style="background:#ff9090; color:black;">505</td>
+<td style="background:#ff9090; color:black;">535</td>
+<td style="background:#ff9090; color:black;">528</td>
+<td style="background:#ff9090; color:black;">547</td>
+<td style="background:#ff9090; color:black;">588</td>
+<td style="background:#ff9090; color:black;">581</td>
+<td style="background:#ff9090; color:black;">553</td>
+<td style="background:#ff9090; color:black;">573</td>
+<td style="background:#ff9090; color:black;">588</td>
+<td style="background:#ff9090; color:black;">566</td>
+<td style="background:#ff9090; color:black;">595</td>
+<td style="background:#ff9090; color:black;">634</td>
+<td></td>
+<td style="background:#90ff90; color:black;">679</td>
+<td style="background:#90ff90; color:black;">787</td>
+</tr>
+<tr>
+<th>Paul Williams</th>
+<td style="background:#ff9090; color:black;">380</td>
+<td style="background:#ff9090; color:black;">420</td>
+<td style="background:#ff9090; color:black;">410</td>
+<td style="background:#ff9090; color:black;">435</td>
+<td style="background:#ff9090; color:black;">439</td>
+<td style="background:#ff9090; color:black;">464</td>
+<td style="background:#ff9090; color:black;">426</td>
+<td style="background:#ff9090; color:black;">466</td>
+<td style="background:#ff9090; color:black;">470</td>
+<td style="background:#ff9090; color:black;">471</td>
+<td style="background:#ff9090; color:black;">429</td>
+<td style="background:#ff9090; color:black;">521</td>
+<td style="background:#ff9090; color:black;">566</td>
+<td></td>
+<td style="background:#90ff90; color:black;">754</td>
+</tr>
+<tr>
+<th>Gregory Kohs</th>
+<td style="background:#ff9090; color:black;">411</td>
+<td style="background:#ff9090; color:black;">412</td>
+<td style="background:#ff9090; color:black;">434</td>
+<td style="background:#ff9090; color:black;">471</td>
+<td style="background:#ff9090; color:black;">461</td>
+<td style="background:#ff9090; color:black;">471</td>
+<td style="background:#ff9090; color:black;">468</td>
+<td style="background:#ff9090; color:black;">461</td>
+<td style="background:#ff9090; color:black;">467</td>
+<td style="background:#ff9090; color:black;">472</td>
+<td style="background:#ff9090; color:black;">491</td>
+<td style="background:#ff9090; color:black;">523</td>
+<td style="background:#ff9090; color:black;">513</td>
+<td style="background:#ff9090; color:black;">541</td>
+<td></td>
+</tr>
+<caption>Election to fill vacant seat in Wikimedia Foundation Board of Trustees 2008:</caption>
+</table>
+<p>Each number represents the number of voters who ranked the candidate at the left better than
+the candidate at the top. A green entry represents a victory in that pairwise comparison 
+by the candidate at the left; a red entry represents a defeat.
+</p>
+
+
+<H3> Tideman speaks </H3>
+
+<p> 
+I finally finished reading Chapter 9 ("Cycles") of a then unpublished, but now 
+<a href="TidemanRev.html">available</a>, book
+by Nicolaus Tideman &ndash; at least I finished the parts I could
+understand. 
+Tideman used <a href="TidemanData.html">data</a> from 78 STV elections counted by the
+Electoral Reform Societies of Great Britain and Ireland (who were hired to do the counting), 
+plus 9 other
+elections, to create a mathematical model for estimating the "Probability of a
+Majority-Rule Equilibrium" (I think this means a Condorcet Winner?). With an
+infinite number of voters, and various numbers of candidates, the
+probabilities he finds are
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #candidates </th>
+<th> Prob(Majority Rule Equilibrium) </th>
+</tr>
+<tr><td>3</td><td> 0.99013</td></tr>
+<tr><td>4</td><td> 0.98012</td></tr>
+<tr><td>5</td><td> 0.97259</td></tr>
+<tr><td>6</td><td> 0.96651</td></tr>
+<tr><td>8</td><td> 0.95537</td></tr>
+<tr><td>10</td><td> 0.94357</td></tr>
+<tr><td>15</td><td> 0.90882</td></tr>
+<tr><td>20</td><td> 0.86840</td></tr>
+<tr><td>25</td><td> 0.82493</td></tr>
+<tr><td>30</td><td> 0.78027</td></tr>
+</table>
+
+<p>
+A description of Tideman's underyling model and a recalculation (and correction) of his numbers
+is <a href="TidemanElModel.html">here</a>.
+So anyhow, this is based partly on theory and partly on
+"real" data  (albeit of somewhat questionable
+"reality") and it finds considerably <i>smaller</i> 
+(4 to 9 times smaller)
+top-cycle probabilities in "reality"
+than in  <a href="RandElect.html">computer simulations of random elections</a>.
+</p><p>
+In Tideman's model, the probability that a Condorcet winner exists also tends 
+asymptotically to zero, but more slowly than in the (simpler, but less realistic)
+random election model.
+</p>
+
+<H3> Gehrlein, Feld, Grofman speak </H3>
+
+<p>
+William V. Gehrlein in his book <i>Condorcet's paradox</i>,
+(Springer Theory and Decision Library 2006)
+also addresses this question, but we have not yet seen this book.
+</p>
+<p>
+Scott L. Feld &amp; Bernard Grofman:
+<i>Who's afraid of the big bad cycle?</i>
+Journal of Theoretical Politics 4,2 (1992) 231-237.
+[For a given set of 3 candidates, the chance of a cycle among them is about 1 in 200
+based on 71 cycles found in 14270 candidate-triplets
+arising in election statistics they collected from the real world.  This compares with Tideman's 
+more modern 1 in 100 estimate based on similar methodology and more data.]
+</p>
+ 
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

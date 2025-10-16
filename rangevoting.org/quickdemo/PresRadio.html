@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>
+RangeVoting.org - demo of range voting on plurality voting machine
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> VOTE for best leader (Range voting demo) </H2> 
+
+<p>
+Award each candidate a <i>numerical score</i> from 0 to 9.
+Advise giving your favorite candidate 9 and the worst one 0.
+If you intentionally wish to express <i>no opinion</i> about that candidate, then please 
+<i>do not select any score</i> for him &ndash; equivalently leave the default
+"X" choice selected;
+only numerical scores will be incorporated into the averaging.
+</p>
+
+<table>
+<tr><td>
+<form method="post" action="http://RangeVoting.org/cgi-bin/addQvote">
+<table border="3" cellspacing="6" bordercolor="#ff0000" bgcolor="#ffff00">
+<!-- red and yellow respectively -->
+<tr><td> George Washington </td> <td> 
+<!-- this style ffff00 crap is only there to workaround a radio-buttons-on-colored-background
+  bug in some Netscape versions.  It apparently still leaves the bug alive in Netscape3. 
+  See  http://www.netmechanic.com/news/vol3/html_no1.htm  -->
+<input type="radio" name="vt1" value="0" style="background : #ffff00">0
+<input type="radio" name="vt1" value="11" style="background : #ffff00">1
+<input type="radio" name="vt1" value="22" style="background : #ffff00">2
+<input type="radio" name="vt1" value="33" style="background : #ffff00">3
+<input type="radio" name="vt1" value="44" style="background : #ffff00">4
+<input type="radio" name="vt1" value="55" style="background : #ffff00">5
+<input type="radio" name="vt1" value="66" style="background : #ffff00">6
+<input type="radio" name="vt1" value="77" style="background : #ffff00">7
+<input type="radio" name="vt1" value="88" style="background : #ffff00">8
+<input type="radio" name="vt1" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt1" value="X" style="background : #ffff00" checked>X</td> </tr>
+<tr><td> Mahatma Gandhi </td> <td> 
+<input type="radio" name="vt2" value="0" style="background : #ffff00">0
+<input type="radio" name="vt2" value="11" style="background : #ffff00">1
+<input type="radio" name="vt2" value="22" style="background : #ffff00">2
+<input type="radio" name="vt2" value="33" style="background : #ffff00">3
+<input type="radio" name="vt2" value="44" style="background : #ffff00">4
+<input type="radio" name="vt2" value="55" style="background : #ffff00">5
+<input type="radio" name="vt2" value="66" style="background : #ffff00">6
+<input type="radio" name="vt2" value="77" style="background : #ffff00">7
+<input type="radio" name="vt2" value="88" style="background : #ffff00">8
+<input type="radio" name="vt2" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt2" value="X" style="background : #ffff00" checked>X</td> </tr>
+<tr><td> Jesus Christ </td> <td> 
+<input type="radio" name="vt3" value="0" style="background : #ffff00">0
+<input type="radio" name="vt3" value="11" style="background : #ffff00">1
+<input type="radio" name="vt3" value="22" style="background : #ffff00">2
+<input type="radio" name="vt3" value="33" style="background : #ffff00">3
+<input type="radio" name="vt3" value="44" style="background : #ffff00">4
+<input type="radio" name="vt3" value="55" style="background : #ffff00">5
+<input type="radio" name="vt3" value="66" style="background : #ffff00">6
+<input type="radio" name="vt3" value="77" style="background : #ffff00">7
+<input type="radio" name="vt3" value="88" style="background : #ffff00">8
+<input type="radio" name="vt3" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt3" value="X" style="background : #ffff00" checked>X</td> </tr>
+<tr><td> Abraham Lincoln </td> <td>
+<input type="radio" name="vt4" value="0" style="background : #ffff00">0
+<input type="radio" name="vt4" value="11" style="background : #ffff00">1
+<input type="radio" name="vt4" value="22" style="background : #ffff00">2
+<input type="radio" name="vt4" value="33" style="background : #ffff00">3
+<input type="radio" name="vt4" value="44" style="background : #ffff00">4
+<input type="radio" name="vt4" value="55" style="background : #ffff00">5
+<input type="radio" name="vt4" value="66" style="background : #ffff00">6
+<input type="radio" name="vt4" value="77" style="background : #ffff00">7
+<input type="radio" name="vt4" value="88" style="background : #ffff00">8
+<input type="radio" name="vt4" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt4" value="X" style="background : #ffff00" checked>X</td> </tr> 
+<tr><td> Ronald Reagan </td> <td> 
+<input type="radio" name="vt5" value="0" style="background : #ffff00">0
+<input type="radio" name="vt5" value="11" style="background : #ffff00">1
+<input type="radio" name="vt5" value="22" style="background : #ffff00">2
+<input type="radio" name="vt5" value="33" style="background : #ffff00">3
+<input type="radio" name="vt5" value="44" style="background : #ffff00">4
+<input type="radio" name="vt5" value="55" style="background : #ffff00">5
+<input type="radio" name="vt5" value="66" style="background : #ffff00">6
+<input type="radio" name="vt5" value="77" style="background : #ffff00">7
+<input type="radio" name="vt5" value="88" style="background : #ffff00">8
+<input type="radio" name="vt5" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt5" value="X" style="background : #ffff00" checked>X</td> </tr>
+<tr><td> Muhammad </td> <td> 
+<input type="radio" name="vt6" value="0" style="background : #ffff00">0
+<input type="radio" name="vt6" value="11" style="background : #ffff00">1
+<input type="radio" name="vt6" value="22" style="background : #ffff00">2
+<input type="radio" name="vt6" value="33" style="background : #ffff00">3
+<input type="radio" name="vt6" value="44" style="background : #ffff00">4
+<input type="radio" name="vt6" value="55" style="background : #ffff00">5
+<input type="radio" name="vt6" value="66" style="background : #ffff00">6
+<input type="radio" name="vt6" value="77" style="background : #ffff00">7
+<input type="radio" name="vt6" value="88" style="background : #ffff00">8
+<input type="radio" name="vt6" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt6" value="X" style="background : #ffff00" checked>X</td> </tr>
+<tr><td> Theodore Roosevelt </td> <td> 
+<input type="radio" name="vt7" value="0" style="background : #ffff00">0
+<input type="radio" name="vt7" value="11" style="background : #ffff00">1
+<input type="radio" name="vt7" value="22" style="background : #ffff00">2
+<input type="radio" name="vt7" value="33" style="background : #ffff00">3
+<input type="radio" name="vt7" value="44" style="background : #ffff00">4
+<input type="radio" name="vt7" value="55" style="background : #ffff00">5
+<input type="radio" name="vt7" value="66" style="background : #ffff00">6
+<input type="radio" name="vt7" value="77" style="background : #ffff00">7
+<input type="radio" name="vt7" value="88" style="background : #ffff00">8
+<input type="radio" name="vt7" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt7" value="X" style="background : #ffff00" checked>X</td> </tr>
+<tr><td> Franklin D. Roosevelt </td> <td> 
+<input type="radio" name="vt8" value="0" style="background : #ffff00">0
+<input type="radio" name="vt8" value="11" style="background : #ffff00">1
+<input type="radio" name="vt8" value="22" style="background : #ffff00">2
+<input type="radio" name="vt8" value="33" style="background : #ffff00">3
+<input type="radio" name="vt8" value="44" style="background : #ffff00">4
+<input type="radio" name="vt8" value="55" style="background : #ffff00">5
+<input type="radio" name="vt8" value="66" style="background : #ffff00">6
+<input type="radio" name="vt8" value="77" style="background : #ffff00">7
+<input type="radio" name="vt8" value="88" style="background : #ffff00">8
+<input type="radio" name="vt8" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt8" value="X" style="background : #ffff00" checked>X</td> </tr>
+<tr><td> Winston Churchill </td> <td> 
+<input type="radio" name="vt9" value="0" style="background : #ffff00">0
+<input type="radio" name="vt9" value="11" style="background : #ffff00">1
+<input type="radio" name="vt9" value="22" style="background : #ffff00">2
+<input type="radio" name="vt9" value="33" style="background : #ffff00">3
+<input type="radio" name="vt9" value="44" style="background : #ffff00">4
+<input type="radio" name="vt9" value="55" style="background : #ffff00">5
+<input type="radio" name="vt9" value="66" style="background : #ffff00">6
+<input type="radio" name="vt9" value="77" style="background : #ffff00">7
+<input type="radio" name="vt9" value="88" style="background : #ffff00">8
+<input type="radio" name="vt9" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt9" value="X" style="background : #ffff00" checked>X</td> </tr>
+<tr><td> Nelson Mandela </td> <td> 
+<input type="radio" name="vt10" value="0" style="background : #ffff00">0
+<input type="radio" name="vt10" value="11" style="background : #ffff00">1
+<input type="radio" name="vt10" value="22" style="background : #ffff00">2
+<input type="radio" name="vt10" value="33" style="background : #ffff00">3
+<input type="radio" name="vt10" value="44" style="background : #ffff00">4
+<input type="radio" name="vt10" value="55" style="background : #ffff00">5
+<input type="radio" name="vt10" value="66" style="background : #ffff00">6
+<input type="radio" name="vt10" value="77" style="background : #ffff00">7
+<input type="radio" name="vt10" value="88" style="background : #ffff00">8
+<input type="radio" name="vt10" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt10" value="X" style="background : #ffff00" checked>X</td> </tr>
+<tr><td> Martin Luther King </td> <td> 
+<input type="radio" name="vt11" value="0" style="background : #ffff00">0
+<input type="radio" name="vt11" value="11" style="background : #ffff00">1
+<input type="radio" name="vt11" value="22" style="background : #ffff00">2
+<input type="radio" name="vt11" value="33" style="background : #ffff00">3
+<input type="radio" name="vt11" value="44" style="background : #ffff00">4
+<input type="radio" name="vt11" value="55" style="background : #ffff00">5
+<input type="radio" name="vt11" value="66" style="background : #ffff00">6
+<input type="radio" name="vt11" value="77" style="background : #ffff00">7
+<input type="radio" name="vt11" value="88" style="background : #ffff00">8
+<input type="radio" name="vt11" value="99" style="background : #ffff00">9
+</td><td> <input type="radio" name="vt11" value="X" style="background : #ffff00" checked>X</td> </tr>
+</table>
+<!-- br  -->
+&nbsp;
+<table>
+<tr><td> <input type="submit" value="Submit Vote!"> 
+ &nbsp;  &nbsp; 
+<input type="reset" value="Clear All">    </td></tr>
+</form>
+<tr><td>   </td> </tr>
+</table>
+</td>
+</tr>
+</table>
+
+<br>
+<p>
+This demo employs a <i>plurality-type voting machine</i> to do range voting.
+(Note.  For compatibility with the <a href="PresBallot.html">other voting machine</a>,
+the score you submit will be multiplied by 11, i.e. 9 becomes 99, 7 becomes 77, 0 stays 0, etc.)
+</p>
+
+<p>
+<a href="PresBallot.html">Try the other voting machine (with write-in scores)</a>
+</p>
+
+<p>
+<a href="../presdemo/PresBallot.html">Larger demo - vote for best US president ever</a>
+</p>
+
+<p><a href="../RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+
+
+

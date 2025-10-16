@@ -1,0 +1,200 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Tie risk
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> The risk of Tied Elections </H2>
+<p><small>By Warren D. Smith &amp; Clay Shentrup</small></p>
+
+<p>
+Tied and near-tied elections cause crises that undermine governments.
+</p>
+<blockquote><small>
+An example: Panama's presidential election of 1948.
+Arnulfo Arias Madrid won by 1562 votes &ndash; although the supreme court had not decided
+whether he was even eligible to run.
+But then after clashes in the streets,  Arias Madrid fled to the Canal Zone and
+Domingo Diaz Arosemana was declared victor 
+after 2714 Arias votes from Veraguas were declared invalid.
+But Diaz died in office in 1949.
+After that, the National Election Jury declared Arias Madrid the true winner,
+retroactively reversing its earlier decision and kicking out Diaz's VP.
+But then Arias Madrid was impeached.
+In the original election, conducted via plurality voting,
+there were many political parties and it is entirely unclear to me who "should" 
+have won the 1948 election, because nobody knows what all the voters for third-party
+candidates wanted. 
+<br>
+And in Costa Rica in the same year 1948, a disputed election led to a civil war;
+same thing happened in Nigeria 1965.
+</small></blockquote>
+
+<p>
+Obviously, with 0-99 range voting, a tie at the top is about 100 times less likely
+than with <a href="Plurality.html">plurality</a> voting.
+</p>
+
+<p>
+But switching from plurality to <a href="rangeVirv.html">IRV</a> voting
+would instead significantly <i>increase</i> the risk of ties since one
+could occur every single round.  
+Unlike, say, a tie between the 4th and 5th-place finishers in range voting, 
+which does not matter since it does not affect the identity of the winner,
+in IRV 
+every tie matters because <a href="IRVamp.html">every one, even ties 
+between apparent "no hopers" with below 1% of the vote</a> can affect
+the identity of the winner.
+Combine this with the other <a href="rangeVirv.html">nightmarish logistical properties
+of IRV</a>
+and you get a disaster waiting to happen.
+</p>
+
+<H3> Computer simulation I </H3>
+
+In a 10-round IRV election, you might naively guess there is 10 times larger tie-risk than
+in a plurality election.   Actually it is <i>worse</i> than that because the <i>early</i> rounds
+are <i>more</i> likely to have ties &ndash; but it is <i>better</i> than that because usually,
+the way that early-round ties are resolved does not affect the final outcome (although
+in principle they <a href="IRVamp.html">always can</a>).  In the computer simulations in
+paper #95 <a href="WarrenSmithPages/homepage/works.html">here</a>,
+1247400 elections (each with three candidates and either 23 or 24 voters) 
+produced these numbers of ties
+where an IRV first-round-tie has been counted as a "tie" even if its resolution did not 
+affect the identity of the winner.  (Readers who do not like that presumably should 
+mentally decrease the IRV tie count to about 75% of the value we give.)
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> Voting system </th>
+<th> #tied </th>
+</tr>
+<tr>
+<td>  Range </td>
+<td> 8029 </td>
+</tr>
+<tr>
+<td> Plurality </td>
+<td> 60750 </td>
+</tr>
+<tr>
+<td>  IRV </td>
+<td> 158355 </td>
+</tr>
+</table>
+
+<p>
+Of course, a lot of ties happened in this computer study 
+because there were only 23 or 24 voters,
+and a lot fewer would happen with 1000 times more voters.  
+However,  the  <i>relative proportions</i> of these tie counts
+should stay roughly the same with more voters.
+</p>
+
+<H3> Computer simulation II </H3>
+
+<P>
+See these  <a href="IrvExtreme.html">pictures</a> and note the prevalence of "random dotty" regions
+(indicating "near-tie nightmares") in the IRV pictures.
+</p>
+
+<H3> What if there are only two voters, both honest? </H3>
+
+<p>
+It is fairly common in real life that <i>two</i> people have to make a collective decision among
+several possible choices.  (This situation is an extreme case, hence good as a test.)
+</p><P>
+Now, obviously, practically every ranked-choice voting method (and <a href="Plurality.html">plurality</a>
+voting too) is usually going to yield a perfect tie, and then some coin-flipping is going to be
+called for.  (For example, I say go to a pizza place for dinner, you say Chinese. Result: tie.)
+You can try instant runoff voting or Condorcet, but you are still usually going to get a tie and
+the method is going to work poorly, even with 100% honest voting.
+</p>
+<p>
+For example, if the coin-flip says "Chinese" that might be a disaster since one of the voters
+is allergic to MSG, hates Chinese food, etc.   
+Her views get <i>totally</i> ignored with probability 50%.
+</p>
+<p>
+With honest range voting (especially using a continuum range such as the real interval [0,1])
+ties are <i>uncommon</i> &ndash; we 
+usually get a unique best choice and nobody's views are ignored.
+(<a href="RangeVborda.html">Borda</a> also works pretty well with two honest voters.)
+</p>
+
+<H3> A useful mental example </H3>
+
+<p>
+Here's an interesting hypothetical election to keep in mind when considering the risk of
+ties under IRV (Instant Runoff Voting).
+</p>
+<table border="3" cellpadding="5" bgcolor="aqua">
+<tr bgcolor="lightpink">
+<th> %Voters </th>
+<th> Their vote </th>
+</tr>
+<tr>
+<td> 50 </td>
+<td> Kiss > Miller > Curley </td>
+</tr>
+<tr>
+<td> 25 </td>
+<td> Curley > Miller > Kiss </td>
+</tr>
+<tr>
+<td> 25 </td>
+<td>  Miller > Curley > Kiss </td>
+</tr>
+</table>
+
+<p>
+With plain plurality voting, Kiss wins in a landslide and there's no recount
+called for.
+</p><p>
+With IRV Miller and Curley are nearly tied, and so all kinds of
+recount lawsuit nonsense ensues.
+Then the winner of that battle goes against Kiss, and then he and Kiss
+are nearly tied and so <i>another</i> series of lawsuits ensues.
+Recently, for example after the nearly-tied Franken-vs-Coleman senate race in Minnesota 2007
+which was replete with lawsuits, IRV shills such as at "FairVote"
+have been distributing propaganda of the form "if only we'd had Instant Runoff Voting,
+this nightmare near-tie+lawsuit scenario would not have happened in Minnesota."
+That's true (vote transfers from
+Independence Party candidate Dean Barkley, who got over 400,000 votes,
+would have, almost certainly, broken the tie, probably
+giving Franken a lead on the order of 20,000 votes over Coleman).  <i>But</i>
+what the IRV shills forgot to say is that IRV also leads to ties and near-tie elections,
+and overall in <i>more</i> cases than plain plurality voting, as well as potentially 
+leading to <i>worse</i> nightmares which are harder to resolve.  So IRV actually
+is <i>worse</i> as far as tie-risk and nightmare-risk is concerned, 
+and the IRV shills' propaganda
+to Minnesotans was exactly wrong.
+</p>
+
+<H3> A recent election that would have led to a nightmare with IRV </H3>
+
+<p>
+Logic isn't good enough? Computer simulations aren't good enough? OK, here is a recent
+important real election to consider if you want to know how bad IRV could get:
+<a href="rangeVirv.html#nightmare">/rangeVirv.html#nightmare</a>.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

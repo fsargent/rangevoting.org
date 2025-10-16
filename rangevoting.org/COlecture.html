@@ -1,0 +1,2066 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0037)/COlecture.html -->
+<HTML><HEAD><TITLE>RangeVoting.org - lecture "Mathematics and Democracy"</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2900.3157" name=GENERATOR></HEAD>
+<BODY style="FONT-FAMILY: Arial, sans-serif"><!--currently about 29 slides-->
+<H1>Range Voting versus other voting systems </H1>
+<P><SMALL>These are the slides for WDS presentation to Colorado State 
+legislature, 19 Sept. 2007. </SMALL></P>
+<H3>Warren D. Smith (PhD) &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
+Center for Range Voting &nbsp;&nbsp; <A 
+href="index.html">/</A> &nbsp;&nbsp; 
+<SMALL><A 
+href="http://math.temple.edu/~wds/homepage/works.html">http://math.temple.edu/~wds/homepage/works.html</A> 
+</SMALL></H3>
+<H3> Plan/Goals  </H3>
+<UL>
+<LI> Learn: What range voting is, what some other voting systems are, compare
+properties.
+<LI>
+If time, learn about "Bayesian Regret" and our computer simulations indicating objective
+sense RV better than all common voting system proposals
+<LI>
+Separate minitalk introduces "Proportional Representation" multiwinner voting systems
+<LI>
+These talk-slides will appear on web at 
+<A 
+href="COlecture.html">/COlecture.html</A>
+and the results of the mock election will be posted at
+<A 
+href="COsampleElection.html">
+/COsampleElection.html</A>
+</UL>
+
+<!--
+<hr>
+
+<h3>Plan:</h3>
+<ol>
+<li>
+<b>Define</b> Plurality, IRV, Approval, Range, Borda, &amp; Condorcet voting methods.
+Do examples.
+</li><li>
+<b>Compare</b> them in terms of a set of properties I think the CO legislators
+should care about, including
+<ol type="a">
+<li>
+"voter expressiveness"
+</li><li>
+"participation,"
+</li><li>
+"favorite betrayal" &amp; "spoilers"
+</li><li>
+"clone immunity,"
+</li><li>
+"monotonicity,"
+</li><li>
+(perhaps, if mucho time: DH3 pathology & response on removal of
+"irrelevant loser")
+</li><li>
+reaction to strategic voting  (some theorems)
+</li><li>
+Tendency to elect "extremists" or "centrists"?
+</li><li>
+"additivity" and ability to count in precincts vs statewide
+</li><li>
+"Burr Dilemma"
+</li><li>
+how people react to these systems &ndash;
+   Are they too complicated?  Error rates. Honesty rates.  Exit poll
+studies. Backsliding.  Etc.
+</li><li>
+ability/inability to use simple non-computerized voting machines
+</li><li>
+worries about "near-tie" chad-counting &amp; election administering
+"nightmares"
+</li><li>
+election auditability &amp; security issues
+</li></ol>
+Will illustrate most of those with simple election examples, sample ballots,
+</li><li>
+<b>Bayesian Regret</b> and how it indicates Range
+is the "best" of these systems.
+</li><li>
+<b>Real-world</b> political
+elections examples from
+Democrats, Republicans, other countries; "2-party domination";
+&amp; how it would benefit politicians, not just how it would
+benefit voters.
+</li><li>
+Primaries?  Influence of Cash?  **3parties as Insurance??
+</li><li>
+Who uses Range Voting? Valedictorians, Olympics, <b>Honeybees</b>...
+</li><li>
+**Introduction to <b>"proportional representation"</b>
+multiwinner systems.
+</li></ol>
+
+--><!--
+<hr>
+
+<h3> Here's what motivates <i>me</i>...???omit </h3>
+<br>
+1. We argue "range voting" is the best single-winner voting method
+among all commonly proposed alternatives.  Measurements &amp; estimates 
+<a href="LivesSaved.html">indicate</a>
+that if adopted instead of the currently most-used system, "plurality voting,"
+humanity's lot would improve by an amount comparable to or exceeding the
+improvement got from switching from undemocratic forms of government to
+democracy.   Conservative estimate:
+each day's delay in getting range voting
+costs (in statistical sense) 5000 lives.
+</p><p>
+2. We argue (by analysing an explicit political <a href="StratSumm.html">strategy</a>
+to get it)
+range voting is, in fact, an obtainable dream.
+</p><p>
+Speaker is  mathematician who co-founded the CRV in 2005.
+ot</p>
+<hr>
+-->
+<HR>
+
+<H2>Range Voting SAMPLE BALLOT </H2>
+<TABLE cellSpacing=2 cellPadding=8 width="85%" align=center bgColor=#000000 
+border=frame>
+  <CAPTION><FONT size=+2><B>1-Digit Range Voting Ballot INSTRUCTIONS:</B><BR>To 
+  vote, fill in numerical score 0-9 in blank spot next to each candidate's name. 
+  9=great, 0=terrible, 5=middling. If you wish to express <I>no opinion</I> 
+  about that candidate, then please instead fill in that score with X. Each 
+  candidate's numeric scores (on all ballots) are averaged; the highest wins. 
+  </FONT></CAPTION>
+  <TBODY>
+  <TR>
+    <TH bgColor=#ffffff><FONT size=+2>Candidates (5 in all) </FONT></TH>
+    <TH bgColor=#ffffff><FONT size=+2>Your Vote</FONT></TH></TR>
+  <TR>
+    <TD bgColor=#ffffff><FONT size=+2>
+      <P><FONT size=-1>1: </FONT><FONT size=+2>Honest <B>ABE</B></FONT> 
+      </P></FONT></TD>
+    <TD align=middle bgColor=#ffffff><FONT color=#009900 
+size=+3>9</FONT></TD></TR>
+  <TR>
+    <TD bgColor=#ffffff><FONT size=+2>
+      <P><FONT size=-1>2: </FONT><FONT size=+2>Bogus <B>BOB</B></FONT> 
+      </P></FONT></TD>
+    <TD align=middle bgColor=#ffffff><FONT color=#009900 
+size=+3>1</FONT></TD></TR>
+  <TR>
+    <TD bgColor=#ffffff><FONT size=+2>
+      <P><FONT size=-1>3: </FONT><FONT size=+2>Charisma <B>CATE</B></FONT> 
+      </P></FONT></TD>
+    <TD align=middle bgColor=#ffffff><FONT color=#009900 
+size=+3>7</FONT></TD></TR>
+  <TR>
+    <TD bgColor=#ffffff><FONT size=+2>
+      <P><FONT size=-1>4: </FONT><FONT size=+2>Dubious <B>DIANE</B></FONT> 
+      </P></FONT></TD>
+    <TD align=middle bgColor=#ffffff><FONT color=#009900 
+size=+3>X</FONT></TD></TR>
+  <TR>
+    <TD bgColor=#ffffff><FONT size=+2>
+      <P><FONT size=-1>5: </FONT><FONT size=+2>Evil <B>EVE</B></FONT> 
+    </P></FONT></TD>
+    <TD align=middle bgColor=#ffffff><FONT color=#009900 
+  size=+3>0</FONT></TD></TR></TBODY></TABLE><BR>
+<HR>
+<A name=rangeopscan></A>
+<H2>Range Voting ON A MACHINE or with OPSCAN BALLOTS </H2>
+<P><SMALL>Award each candidate a <I>numerical score</I> from 0 to 9. Advise 
+giving your favorite candidate 9 and the worst one 0. If you intentionally wish 
+to express <I>no opinion</I> about that candidate, then leave the default "X" 
+choice selected; only numerical scores will be incorporated into the averaging. 
+</SMALL></P>
+<TABLE>
+  <TBODY>
+  <TR>
+    <TD>
+      <FORM action=https://rangevoting.org/cgi-bin/addQvote method=post>
+      <TABLE borderColor=#ff0000 cellSpacing=6 bgColor=#ffff00 border=3><!-- red and yellow respectively -->
+        <TBODY>
+        <TR>
+          <TD><FONT size=+2>George Washington </FONT></TD>
+          <TD bgColor=white><FONT size=+2><!-- this style ffff00 crap is only there to workaround a radio-buttons-on-colored-background
+  bug in some Netscape versions.  It apparently still leaves the bug alive in Netscape3. 
+  See  http://www.netmechanic.com/news/vol3/html_no1.htm  --><INPUT 
+            style="BACKGROUND: #ffff00" type=radio value=0 name=vt1>0 <INPUT 
+            style="BACKGROUND: #ffff00" type=radio value=11 name=vt1>1 <INPUT 
+            style="BACKGROUND: #ffff00" type=radio value=22 name=vt1>2 <INPUT 
+            style="BACKGROUND: #ffff00" type=radio value=33 name=vt1>3 <INPUT 
+            style="BACKGROUND: #ffff00" type=radio value=44 name=vt1>4 <INPUT 
+            style="BACKGROUND: #ffff00" type=radio value=55 name=vt1>5 <INPUT 
+            style="BACKGROUND: #ffff00" type=radio value=66 name=vt1>6 <INPUT 
+            style="BACKGROUND: #ffff00" type=radio value=77 name=vt1>7 <INPUT 
+            style="BACKGROUND: #ffff00" type=radio value=88 name=vt1>8 <INPUT 
+            style="BACKGROUND: #ffff00" type=radio value=99 name=vt1>9 
+</FONT></TD>
+          <TD><FONT size=+2><INPUT style="BACKGROUND: #ffff00" type=radio 
+            CHECKED value=X name=vt1>X</FONT></TD></TR>
+        <TR>
+          <TD><FONT size=+2>Mahatma Gandhi </FONT></TD>
+          <TD bgColor=white><FONT size=+2><INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=0 name=vt2>0 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=11 name=vt2>1 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=22 name=vt2>2 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=33 name=vt2>3 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=44 name=vt2>4 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=55 name=vt2>5 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=66 name=vt2>6 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=77 name=vt2>7 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=88 name=vt2>8 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=99 name=vt2>9 </FONT></TD>
+          <TD><FONT size=+2><INPUT style="BACKGROUND: #ffff00" type=radio 
+            CHECKED value=X name=vt2>X</FONT></TD></TR>
+        <TR>
+          <TD><FONT size=+2>Abraham Lincoln </FONT></TD>
+          <TD bgColor=white><FONT size=+2><INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=0 name=vt4>0 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=11 name=vt4>1 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=22 name=vt4>2 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=33 name=vt4>3 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=44 name=vt4>4 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=55 name=vt4>5 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=66 name=vt4>6 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=77 name=vt4>7 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=88 name=vt4>8 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=99 name=vt4>9 </FONT></TD>
+          <TD><FONT size=+2><INPUT style="BACKGROUND: #ffff00" type=radio 
+            CHECKED value=X name=vt4>X</FONT></TD></TR>
+        <TR>
+          <TD><FONT size=+2>Ronald Reagan </FONT></TD>
+          <TD bgColor=white><FONT size=+2><INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=0 name=vt5>0 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=11 name=vt5>1 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=22 name=vt5>2 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=33 name=vt5>3 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=44 name=vt5>4 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=55 name=vt5>5 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=66 name=vt5>6 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=77 name=vt5>7 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=88 name=vt5>8 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=99 name=vt5>9 </FONT></TD>
+          <TD><FONT size=+2><INPUT style="BACKGROUND: #ffff00" type=radio 
+            CHECKED value=X name=vt5>X</FONT></TD></TR>
+        <TR>
+          <TD><FONT size=+2>Theodore Roosevelt </FONT></TD>
+          <TD bgColor=white><FONT size=+2><INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=0 name=vt7>0 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=11 name=vt7>1 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=22 name=vt7>2 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=33 name=vt7>3 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=44 name=vt7>4 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=55 name=vt7>5 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=66 name=vt7>6 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=77 name=vt7>7 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=88 name=vt7>8 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=99 name=vt7>9 </FONT></TD>
+          <TD><FONT size=+2><INPUT style="BACKGROUND: #ffff00" type=radio 
+            CHECKED value=X name=vt7>X</FONT></TD></TR>
+        <TR>
+          <TD><FONT size=+2>Winston Churchill </FONT></TD>
+          <TD bgColor=white><FONT size=+2><INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=0 name=vt9>0 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=11 name=vt9>1 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=22 name=vt9>2 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=33 name=vt9>3 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=44 name=vt9>4 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=55 name=vt9>5 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=66 name=vt9>6 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=77 name=vt9>7 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=88 name=vt9>8 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=99 name=vt9>9 </FONT></TD>
+          <TD><FONT size=+2><INPUT style="BACKGROUND: #ffff00" type=radio 
+            CHECKED value=X name=vt9>X</FONT></TD></TR>
+        <TR>
+          <TD><FONT size=+2>Nelson Mandela </FONT></TD>
+          <TD bgColor=white><FONT size=+2><INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=0 name=vt10>0 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=11 name=vt10>1 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=22 name=vt10>2 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=33 name=vt10>3 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=44 name=vt10>4 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=55 name=vt10>5 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=66 name=vt10>6 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=77 name=vt10>7 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=88 name=vt10>8 <INPUT style="BACKGROUND: #ffff00" 
+            type=radio value=99 name=vt10>9 </FONT></TD>
+          <TD><FONT size=+2><INPUT style="BACKGROUND: #ffff00" type=radio 
+            CHECKED value=X 
+      name=vt10>X</FONT></TD></TR></TBODY></TABLE><!-- br  -->&nbsp; 
+      <TABLE>
+        <TBODY>
+        <TR>
+          <TD><INPUT type=submit value="Submit Vote!"> &nbsp; &nbsp; <INPUT type=reset value="Clear All"> </TD></TR></FORM>
+        <TR>
+          <TD></TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P>Also try <A 
+href="http://zohopolls.com/brokenladder/2008-u-s-presidential-election-poll-using">zohopolls</A>, 
+or this <A href="http://www.demochoice.org/dcballot.php?poll=oakzoo">instant 
+runoff demo</A> (IRV will not run on many of today's voting machines). </P>
+<HR>
+
+<H2>Simple fully-worked example of a small range-voting election </H2>
+<TABLE borderColor=red cellSpacing=6 bgColor=yellow border=3>
+  <CAPTION>There are three candidates and four voters. </CAPTION>
+  <TBODY>
+  <TR bgColor=#fff6f6>
+    <TH><FONT size=+2>Candidates&#10151; </FONT></TH>
+    <TH><FONT size=+2>Amy </FONT></TH>
+    <TH><FONT size=+2>Bob </FONT></TH>
+    <TH><FONT size=+2>Cal </FONT></TH></TR>
+  <TR>
+    <TD><FONT size=+2>1st voter: </FONT></TD>
+    <TD><FONT size=+2>9</FONT></TD>
+    <TD><FONT size=+2>6 </FONT></TD>
+    <TD><FONT size=+2>0 </FONT></TD></TR>
+  <TR>
+    <TD><FONT size=+2>2nd voter: </FONT></TD>
+    <TD><FONT size=+2>9</FONT></TD>
+    <TD><FONT size=+2>9 </FONT></TD>
+    <TD><FONT size=+2>X </FONT></TD></TR>
+  <TR>
+    <TD><FONT size=+2>3rd voter: </FONT></TD>
+    <TD><FONT size=+2>8 </FONT></TD>
+    <TD><FONT size=+2>0 </FONT></TD>
+    <TD><FONT size=+2>7 </FONT></TD></TR>
+  <TR>
+    <TD><FONT size=+2>4th voter: </FONT></TD>
+    <TD><FONT size=+2>6</FONT></TD>
+    <TD><FONT size=+2>1 </FONT></TD>
+    <TD><FONT size=+2>8 </FONT></TD></TR>
+  <TR bgColor=#fff6f6>
+    <TD><FONT size=+2>sum: </FONT></TD>
+    <TD><FONT size=+2>32 </FONT></TD>
+    <TD><FONT size=+2>16</FONT></TD>
+    <TD><FONT size=+2>15 </FONT></TD></TR>
+  <TR bgColor=#fff6f6>
+    <TD><FONT size=+2>average: </FONT></TD>
+    <TD><FONT size=+2>8 </FONT></TD>
+    <TD><FONT size=+2>4</FONT></TD>
+    <TD><FONT size=+2>5 </FONT></TD></TR>
+  <TR bgColor=#fff6f6>
+    <TD><FONT size=+2>which is: </FONT></TD>
+    <TD><FONT size=+2>8=32/4 </FONT></TD>
+    <TD><FONT size=+2>4=16/4 </FONT></TD>
+    <TD><FONT size=+2>5=15/3 </FONT></TD></TR></TBODY></TABLE>
+<P>(The X's denote "intentionally left blank" by that voter to denote the fact 
+he wishes to express ignorance/no opinion about Cal and wants to leave the 
+decision about his score to other, more knowledgeable voters.) </P>
+<P>Procedure: compute Amy's, Bob's, and Cal's sums, then compute their averages 
+32/4=8, 16/4=4, 15/3=5, Because <B>Amy</B> has  highest average, she 
+wins. </P>
+<HR>
+
+<H2>Who <I>uses</I> range voting? </H2>
+<UL>
+  <LI><A href="OlympHist.html">Olympics</A> (To pick 
+  Gymnastics gold medalists, etc. since 1900) &#8658; highly familiar to all 
+  <LI>Internet sites like <A 
+  href="http://zohopolls.com/us/pres">zohopolls.com</A>, recipes, movie ratings, 
+  <A href="http://hotornot.com/">hotornot.com</A>... 
+  <LI>Schools everywhere (to pick "valedictorians") &ndash; comparable number of these 
+  "elections" to all other kinds, so lots of successful experience (how often do 
+  you hear complaints about valedictorians gotten wrong, versus political 
+  elections?) 
+  <LI>But way before all that... <A 
+  href="ApisMellifera.html">honeybees</A> have been range 
+  voting for millions of years in <I>hundreds of trillions</I> of "elections" 
+  (far more than all human-done elections)! </LI></UL>
+<CENTER><IMG alt="Apis Mellifera" src="ApisM.jpg"> </CENTER>
+<H2 align=center>Range voting &ndash; only voting system endorsed by Mother Nature! 
+</H2>
+<HR>
+<A name=votsysts></A>
+<H2>Top Single-Winner Voting Systems in one crib sheet </H2>
+<TABLE cellPadding=17 align=center>
+  <CAPTION><B>What is a "vote"? And how do votes determine winner?</B> 
+</CAPTION>
+  <TBODY>
+  <TR>
+    <TD><FONT size=+2>
+      <TABLE cellPadding=7 bgColor=#ccffcc border=1>
+        <TBODY>
+        <TR bgColor=pink>
+          <TH>System</TH>
+          <TH>A Vote</TH>
+          <TH>Who wins?</TH></TR>
+        <TR>
+          <TD>Plurality </TD>
+          <TD align=right>Name one candidate then shut up ("Nader")</TD>
+          <TD align=right>The most-named candidate. </TD></TR>
+        <TR>
+          <TD>Runoff </TD>
+          <TD align=right>"Name one candidate" again &ndash; except there might be 
+            <I>two</I> elections</TD>
+          <TD align=right>Top-two from 1st round get to be in 2nd (but only 1 
+            election needed if "majority winner")</TD></TR>
+        <TR>
+          <TD>Borda </TD>
+          <TD align=right>Rank ordering of all candidates ("Nader<SUB><FONT 
+            color=red>2</FONT></SUB>&gt;Bush<SUB><FONT 
+            color=red>1</FONT></SUB>&gt;Gore<SUB><FONT 
+          color=red>0</FONT></SUB>")</TD>
+          <TD align=right>"Borda Score"=Get K points for each voter who ranks 
+            you K slots above bottom. Highest score wins.</TD></TR>
+        <TR>
+          <TD>Condorcet </TD>
+          <TD align=right>Rank ordering of all candidates 
+            ("Nader&gt;Bush&gt;Gore")</TD>
+          <TD align=right><I>If</I> someone exists who beats every rival 
+            <I>pairwise</I>, then wins (else tricky; numerous 
+rule-flavors)</TD></TR>
+        <TR>
+          <TD>"Instant Runoff" (IRV) </TD>
+          <TD align=right>Rank ordering of all candidates 
+            ("Nader&gt;Bush&gt;Gore")</TD>
+          <TD align=right>Eliminate "loser" candidate top-ranked by fewest 
+            voters (eliminated both from election, and from all ballots). Now 
+            repeat that over &amp; over until only one remains (who wins). 
+</TD></TR>
+        <TR>
+          <TD>Approval = Range1 </TD>
+          <TD align=right>The <I>set</I> of candidates you 'approve' e.g. 
+            <NOBR>{Bush, Nader}</NOBR></TD>
+          <TD align=right>The most-approved candidate.</TD></TR>
+        <TR>
+          <TD>Range9 </TD>
+          <TD align=right>Award score in 0-9 range to each and every 
+            candidate, e.g. "Bush=5, Gore=9, Nader=9" </TD>
+          <TD align=right>Candidate with highest average score.</TD></TR>
+        <TR>
+          <TD>Range99 </TD>
+          <TD align=right>Award score in 0-99 range to each and every 
+            candidate, e.g. "Bush=50, Gore=99, Nader=99" </TD>
+          <TD align=right>Greatest average score 
+  wins.</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<HR>
+
+<H3>Are many other voting systems too...  Also there are many <I>Variant Rules</I> for these systems... </H3>
+<P>Australia forces IRV voters to rank-order <I>every</I> candidate. Other 
+places allow voters only to order <I>some</I> &amp; omit others (automatically 
+last-ranked). Some places force voters to rank their top K choices (for some 
+fixed value K, such as 2 or 3) but no more. In range-voting, "no opinion" ("X") 
+scores can also be permitted; these do not affect a candidate's average (then is 
+common to refuse to permit somebody to win if he has too-few genuine, i.e. 
+numerical, scores). 
+<P>
+<HR>
+
+<H2>An Example </H2>
+<TABLE cellPadding=17 align=left>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellPadding=5 bgColor=yellow border=1>
+        <TBODY>
+        <TR>
+          <TH>#voters</TH>
+          <TH>Their Vote</TH></TR>
+        <TR>
+          <TD>4 </TD>
+          <TD><FONT color=red>A</FONT>&gt;D&gt;E&gt;C&gt;B&gt;F </TD></TR>
+        <TR>
+          <TD>3 </TD>
+          <TD><FONT color=red>B&gt;E&gt;D&gt;F</FONT>&gt;C&gt;A </TD></TR>
+        <TR>
+          <TD>2 </TD>
+          <TD><FONT color=red>C&gt;B&gt;E&gt;D&gt;F</FONT>&gt;A </TD></TR>
+        <TR>
+          <TD>1 </TD>
+          <TD><FONT color=red>D&gt;C&gt;F</FONT>&gt;A&gt;E&gt;B </TD></TR>
+        <TR>
+          <TD>1 </TD>
+          <TD><FONT color=red>F</FONT>&gt;C&gt;E&gt;D&gt;B&gt;A </TD></TR>
+        <CAPTION>An 11-voter, 6-candidate election (candidates A,B,C,D,E,F) 
+        </CAPTION></TABLE></TD></TR></TBODY></TABLE>
+<P><B>Plurality:</B> A wins (most top-rank votes with 4). 
+<BR><B>Plurality+Runoff among top two:</B> B wins over A in the runoff, 6-to-5. 
+<BR><B>Instant Runoff (IRV):</B> C wins (eliminate E, D, F, and B in that order 
+&ndash; doesn't matter which way you break DF tie &ndash; then C beats A in final round 7 to 
+4). IRV repeatedly deletes the candidate with fewest top-rank votes, then the 
+remaining one wins. <!-- Note, when F is eliminated, there
+is a tie between F and C which we assume is broken in favor of C because
+all the F-voters have C as their second choice at that point, whereas the C-voters
+rank F near last place.  (If 
+you are morally opposed to this tie-breaking gimmick, then a 19-voter solution with
+7,5,4,2,1 in the #voters column does the job.) --><BR><B>Borda:</B> 
+D wins. (D's Borda score is 16+9+4+5+2=36 versus E with 12+12+6+1+3=34 and with 
+lower scores for A, B, C, and F.) In the Borda system a candidate gets awarded 0 
+points if ranked last, 1 if ranked second-last, 2 if... and the candidate with 
+the greatest score-sum ("Borda count") wins. <BR><B>Condorcet:</B> E wins. 
+(Since E pairwise-beats each other candidate, e.g. beating A 6:5, B 6:5, C 7:4, 
+D 6:5, and F 9:2.) <BR><B><A 
+href="rangeVapp.html">Approval</A> Voting:</B> If all the 
+<FONT color=red>red</FONT> candidates are "approved," then F wins with 7 
+approvals (versus A=4, B=5, C=3, D=6, E=5). </P>
+<P>And with 0-99 <B>Range Voting</B>, it would in fact be possible to make 
+<I>any</I> of the 6 candidates win, depending on how the voters chose the scores 
+compatibly with the orderings above. In Range Voting each voter awards a score 
+from 0 to 99 to each candidate; greatest average score wins. (<A 
+href="https://rangevoting.org/RangeVoting.org">Fancier rules</A> allow also 
+scoring a candidate with X = intentional blank = "no opinion" &ndash; only numerical 
+scores incorporated into averages.) </P>
+<HR>
+
+<H2>Voter expressiveness </H2>
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH>Expressiveness </TH></TR>
+  <TR>
+    <TD>Plurality </TD>
+    <TD>Least (your vote says the least you could possibly say!) </TD></TR>
+  <TR>
+    <TD>Approval </TD>
+    <TD>More (yes or no for <I>every</I> candidate) </TD></TR>
+  <TR>
+    <TD>Rank-order systems </TD>
+    <TD>Still More (order the candidates) &ndash; but worse than approval in sense rank-order says nothing about <I>strength</I> of preference </TD></TR>
+  <TR>
+    <TD>Range </TD>
+    <TD>Most (opinion with <I>strength</I> on every canddt, <I>and</I> can 
+      express <I>ignorance/apathy</I>) </TD></TR></TBODY></TABLE>
+<HR>
+
+<H2>"Participation" property </H2>
+<P>Desirable property: A voter, by "participating" (i.e. casting an honest vote) 
+should not worsen the election result from her point of view (versus if she had 
+not voted). </P>
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH>Participation? </TH></TR>
+  <TR>
+    <TD>Plurality </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Approval </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Condorcet Rank-order systems </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Borda Rank-order system </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Instant Runoff (IRV) </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Range (assuming no "blanks") </TD>
+    <TD>Yes </TD></TR></TBODY></TABLE><BR>
+<TABLE borderColor=red cellPadding=5 bgColor=yellow border=3>
+  <CAPTION>18-voter 3-candidate IRV example where voting honestly worsens 
+  election result. </CAPTION>
+  <TBODY>
+  <TR>
+    <TH><FONT size=+2>#voters </FONT></TH>
+    <TH><FONT size=+2>their vote </FONT></TH></TR>
+  <TR>
+    <TD><FONT size=+2>8 </FONT></TD>
+    <TD><FONT size=+2>C&gt;A&gt;B </FONT></TD></TR>
+  <TR>
+    <TD><FONT size=+2>4 &#8594; <FONT color=red>7</FONT> </FONT></TD>
+    <TD><FONT size=+2>A&gt;B&gt;C </FONT></TD></TR>
+  <TR>
+    <TD><FONT size=+2>3 </FONT></TD>
+    <TD><FONT size=+2>B&gt;C&gt;A </FONT></TD></TR>
+  <TR>
+    <TD><FONT size=+2>3 </FONT></TD>
+    <TD><FONT size=+2>B&gt;A&gt;C </FONT></TD></TR></TBODY></TABLE>
+<P>Here A is eliminated in first IRV round, then <B>B wins</B> 10:8 over C. But 
+if we add <FONT color=red>3 more</FONT> A&gt;B&gt;C voters, then B is eliminated 
+in the first round, whereupon <B>C wins</B> 11:10 over A. <FONT color=red>By 
+voting "C=worst," they made C win!</FONT> These 3 voters would have been "better 
+off staying home" and not voting. </P>
+<P><B>How common is this problem?</B> 16.2% in large 3-canddt IRV "random 
+elections" (50% in those in which the IRV &amp; plurality winners differ); if 
+large number of candidates, <I>conjecturally</I>&#8594;100%. </P>
+<HR>
+
+<H2>"Favorite betrayal" and "spoilers" </H2>
+<P>Desirable property: A voter should be able to vote her favorite top, without 
+fear that she will worsen the election result from her point of view (versus if 
+she had dishonestly voted to pretend her favorite was below top). </P>
+<P>This seems very important to make democracy work. If voting for your favorite 
+is stupid, what kind of democracy is that? </P>
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH>Safe to vote favorite top? </TH></TR>
+  <TR>
+    <TD>Plurality </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Approval </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Condorcet Rank-order systems </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Borda Rank-order system </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Instant Runoff (IRV) </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Range </TD>
+    <TD>Yes </TD></TR></TBODY></TABLE>
+<P>This problem is <I>common</I> and called "spoiler." A Nader-top, Gore-second 
+voter in Florida 2000, who voted honestly Nader-top, was being <I>strategically 
+unwise</I> because her vote made her top &amp; 2nd-choice candidates <I>both</I> 
+lose. (Nader here was the "spoiler.") Lying in her vote (by voting Gore "top") 
+would have been smarter; that way her 2nd favorite would win. Plurality voting 
+system can <I>reward voters who lie about their favorite</I>. Side effect 
+("Duverger's law"): over time, kills off all "third parties." </P>
+<P><B>Myth:</B> IRV cures this problem. <B>Reality:</B> IRV still exhibits 
+"spoilers," still encourages voters to lie about their favorite, and still kills 
+off third-parties over time (<A 
+href="FijiPol.html">Fiji</A>; <A 
+href="AustralianPol.html">Australia</A> where in all the 
+state &amp; federal IRV seats combined there is <I>one</I> third-party member). 
+</P>
+<TABLE borderColor=red cellPadding=5 bgColor=yellow border=3>
+  <TBODY>
+  <TR>
+    <TH>#voters </TH>
+    <TH>their vote </TH></TR>
+  <TR>
+    <TD align=middle>20 </TD>
+    <TD align=middle>Bush &gt; Gore &gt; Nader </TD></TR>
+  <TR>
+    <TD align=middle>10 </TD>
+    <TD align=middle>Gore &gt; Bush &gt; Nader </TD></TR>
+  <TR>
+    <TD align=middle>29 </TD>
+    <TD align=middle>Nader &gt; Gore &gt; Bush </TD></TR></TBODY></TABLE>
+<P>In this 59-voter <A href="rangeVirv.html">IRV</A> 
+election we've artificially named the candidates "Bush," "Gore" and "Nader" to 
+remind you of FL 2000... (but are not claiming this resembles FL 2000 to more 
+than a slight degree) </P>
+<P>Under the rules of IRV, Gore is eliminated and the Gore second-votes go to 
+<B>Bush</B>, who wins over Nader 30-29. </P>
+<P><I>But</I> what if 10 (or more) people in the third group, realizing Nader 
+has no chance, strategically decide insincerely to lower Nader to 2nd or last 
+place on their ballots? Then: </P>
+<TABLE borderColor=red cellPadding=5 bgColor=yellow border=3>
+  <TBODY>
+  <TR>
+    <TH>#voters </TH>
+    <TH>their vote </TH></TR>
+  <TR>
+    <TD align=middle>20 </TD>
+    <TD align=middle>Bush &gt; Gore &gt; Nader </TD></TR>
+  <TR>
+    <TD align=middle>20 </TD>
+    <TD align=middle>Gore &gt; Bush &gt; Nader </TD></TR>
+  <TR>
+    <TD align=middle>19 </TD>
+    <TD align=middle>Nader &gt; Gore &gt; Bush </TD></TR></TBODY></TABLE>
+<P>Now Bush and Gore get 20 first place votes apiece, and Bush only 19. Nader is 
+eliminated first, giving 19 votes to Gore, and <B>Gore</B> crushingly beats 
+Bush, 39-20. Those ten who switched their votes, got Gore (their second choice) 
+instead of Bush (their third choice). </P>
+<P><I>Betraying Nader paid off</I>. IRV means betraying your true favorite third 
+party candidate pays off. Voting third party can mean wasting your vote under 
+IRV, just like under plurality. </P>
+<P><B>How common is this problem?</B> 19.6% in large 3-canddt IRV "random 
+elections" but arguably 100% of the time if voters have "incomplete information" 
+&ndash; i.e. <I>very</I> common. </P>
+<HR>
+<a name="nonmono"></a>
+<H2>Monotonicity </H2>
+<P>Desirable property: A voter, by <I>increasing</I> her vote for somebody, 
+should not cause them to lose. (And <I>decreasing</I> your vote for somebody, 
+should not cause them to win!) </P>
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH>Monotonic? </TH></TR>
+  <TR>
+    <TD>Plurality </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Approval </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Condorcet Rank-order systems </TD>
+    <TD>Some yes, some no. </TD></TR>
+  <TR>
+    <TD>Borda Rank-order system </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Instant Runoff (IRV)  </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Range </TD>
+    <TD>Yes </TD></TR></TBODY></TABLE><BR><!--
+<table bgcolor="yellow" cellpadding="5" border="1" align="center">
+<caption>
+17-voter 3-canddt IRV non-monotonic example. <b>C wins.</b>
+</caption>
+<tr><th> #voters </th><th> Their Vote </th></tr>
+<tr bgcolor="#eeff88" align="center"><td> 8 </td><td> B>A>C </td></tr>
+<tr align="center"><td> 5 </td><td> C>B>A </td></tr>
+
+<tr align="center"><td> 4 </td><td> A>C>B </td></tr>
+</table>
+
+<p>
+If two of the B>A>C voters change their vote to A>B>C, raising A and lowering B,
+that causes their honest-favorite B to win under IRV.
+</p>
+-->
+<TABLE cellPadding=15 align=center>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE borderColor=red cellPadding=5 bgColor=yellow border=3>
+        <CAPTION>IRV insanity example. (20 voters, 3 canddts.) <B>B wins.</B> 
+        </CAPTION>
+        <TBODY>
+        <TR>
+          <TH>#voters </TH>
+          <TH>their vote </TH></TR>
+        <TR>
+          <TD align=middle>9 </TD>
+          <TD align=middle>A&gt;B&gt;C </TD></TR>
+        <TR bgColor=aqua>
+          <TD align=middle>6 </TD>
+          <TD align=middle>B&gt;A&gt;C </TD></TR>
+        <TR>
+          <TD align=middle>5 </TD>
+          <TD align=middle>C&gt;B&gt;A </TD></TR></TBODY></TABLE></TD>
+    <TD>
+      <TABLE borderColor=red cellPadding=5 bgColor=yellow border=3>
+        <CAPTION>After 2 votes A&gt;B&gt;C <I>reverse</I> to C&gt;B&gt;A. 
+        <BR><B>A wins.</B></CAPTION>
+        <TBODY>
+        <TR>
+          <TH>#voters </TH>
+          <TH>their vote </TH></TR>
+        <TR>
+          <TD align=middle>7 </TD>
+          <TD align=middle>A&gt;B&gt;C </TD></TR>
+        <TR bgColor=aqua>
+          <TD align=middle>6 </TD>
+          <TD align=middle>B&gt;A&gt;C </TD></TR>
+        <TR>
+          <TD align=middle>7 </TD>
+          <TD align=middle>C&gt;B&gt;A 
+</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P>Here IRV voting <I>maximally against</I> your favorite candidate &ndash; lying 
+about <I>everything</I> &amp; apparently the stupidest most-suicidal possible 
+vote &ndash; makes your favorite <I>win</I>!! </P>
+<P><B>How common is this problem?</B> &#8805;4.9+12.2=17.7% in large 3-canddt IRV "random 
+elections" (two kinds).  (Can you say "lawsuit"?) </P>
+<HR>
+
+<H2>Immune to "candidate-cloning" </H2>
+<P>Desirable property: If new candidates that are <I>almost</I> exactly the same 
+(in the view of every voter) as an old candidate X enter (or withdraw from) the 
+race, that should not affect the winner (except for possible replacement by a 
+clone). </P>
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH>Safe from clones? </TH></TR>
+  <TR>
+    <TD>Plurality </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Approval </TD>
+    <TD>Yes if all clones always share same approval-level, else no </TD></TR>
+  <TR>
+    <TD>Condorcet Rank-order systems </TD>
+    <TD>Some yes, some no. </TD></TR>
+  <TR>
+    <TD>Borda Rank-order system </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Instant Runoff (IRV)  </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Range </TD>
+    <TD>Yes </TD></TR></TBODY></TABLE>
+<P>Very serious problem because elections can easily be totally manipulated by, 
+e.g. <I>supporting</I> candidates similar to your <I>opponent</I> to make 
+<I>both lose!</I> Borda has opposite cloning problem ("teaming") &ndash; by running 
+lots of clones of yourself, you (or a clone) win! (Battle of 
+the clone armies!) Without clone-immunity, it is not about who is the best. It 
+is about which party can summon up the most gall to try this nonsense. </P>
+<HR>
+
+<H2>Removing an "irrelevant loser" Candidate </H2>
+<P>4 candidates and 7 voters. Start looking at situation on left. </P>
+<TABLE cellPadding=19>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE borderColor=red cellPadding=5 bgColor=yellow border=3 
+        <caption>Johnson's Borda example. The winner is C with 13 Borda votes. 
+        (Losers: B=12, A=11, and D=6.) </CAPTION>
+        <TBODY>
+        <TR>
+          <TH>#voters </TH>
+          <TH>their vote </TH></TR>
+        <TR>
+          <TD>3 </TD>
+          <TD>A&gt;B&gt;C&gt;D </TD></TR>
+        <TR>
+          <TD>2 </TD>
+          <TD>B&gt;C&gt;D&gt;A </TD></TR>
+        <TR>
+          <TD>2 </TD>
+          <TD>C&gt;D&gt;A&gt;B </TD></TR></TBODY></TABLE></TD>
+    <TD>
+      <TABLE borderColor=red cellPadding=5 bgColor=yellow border=3>
+        <CAPTION>Johnson's Borda example (after D eliminated). The winner is now 
+        A with 8 Borda votes. (Losers: B=7 &amp; C=6.) </CAPTION>
+        <TBODY>
+        <TR>
+          <TH>#voters </TH>
+          <TH>their vote </TH></TR>
+        <TR>
+          <TD>3 </TD>
+          <TD>A&gt;B&gt;C </TD></TR>
+        <TR>
+          <TD>2 </TD>
+          <TD>B&gt;C&gt;A </TD></TR>
+        <TR>
+          <TD>2 </TD>
+          <TD>C&gt;A&gt;B </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P>Finish order <I>reverses</I> with Borda! </P>
+<P><B>Range, Approval, Plurality:</B> Removing a loser (from all ballots &amp; 
+the election) never changes finish order for others. But with <B>IRV</B> a 
+huge-loser can enormously change things even if only 2 voters (e.g. the 
+candidate &amp; spouse only) rank him top. "IRV chaos" example with 2025 voters 
+and 12 candidates: </P>
+<TABLE borderColor=red cellPadding=5 bgColor=yellow border=3>
+  <TBODY>
+  <TR>
+    <TH>#voters </TH>
+    <TH>their IRV vote </TH></TR>
+  <TR>
+    <TD align=middle>1000 </TD>
+    <TD align=middle>Z&gt;P&gt;Q&gt;R&gt;S&gt;T&gt;U&gt;V&gt;W&gt;X&gt;Y&gt;A 
+    </TD></TR>
+  <TR>
+    <TD align=middle>512 </TD>
+    <TD align=middle>P&gt;Q&gt;R&gt;S&gt;T&gt;U&gt;V&gt;W&gt;X&gt;Y&gt;A&gt;Z 
+    </TD></TR>
+  <TR>
+    <TD align=middle>256 </TD>
+    <TD align=middle>Q&gt;R&gt;S&gt;T&gt;U&gt;V&gt;W&gt;X&gt;Y&gt;A&gt;P&gt;Z 
+    </TD></TR>
+  <TR>
+    <TD align=middle>128 </TD>
+    <TD align=middle>R&gt;S&gt;T&gt;U&gt;V&gt;W&gt;X&gt;Y&gt;A&gt;P&gt;Z&gt;Q 
+    </TD></TR>
+  <TR>
+    <TD align=middle>64 </TD>
+    <TD align=middle>S&gt;T&gt;U&gt;V&gt;W&gt;X&gt;Y&gt;A&gt;P&gt;Z&gt;Q&gt;R 
+    </TD></TR>
+  <TR>
+    <TD align=middle>32 </TD>
+    <TD align=middle>T&gt;U&gt;V&gt;W&gt;X&gt;Y&gt;A&gt;P&gt;Z&gt;Q&gt;R&gt;S 
+    </TD></TR>
+  <TR>
+    <TD align=middle>16 </TD>
+    <TD align=middle>U&gt;V&gt;W&gt;X&gt;Y&gt;A&gt;P&gt;Z&gt;Q&gt;R&gt;S&gt;T 
+    </TD></TR>
+  <TR>
+    <TD align=middle>8 </TD>
+    <TD align=middle>V&gt;W&gt;X&gt;Y&gt;A&gt;P&gt;Z&gt;Q&gt;R&gt;S&gt;T&gt;U 
+    </TD></TR>
+  <TR>
+    <TD align=middle>4 </TD>
+    <TD align=middle>W&gt;X&gt;Y&gt;A&gt;P&gt;Z&gt;Q&gt;R&gt;S&gt;T&gt;U&gt;V 
+    </TD></TR>
+  <TR>
+    <TD align=middle>2 </TD>
+    <TD align=middle>X&gt;Y&gt;A&gt;P&gt;Z&gt;Q&gt;R&gt;S&gt;T&gt;U&gt;V&gt;W 
+    </TD></TR>
+  <TR>
+    <TD align=middle>1 </TD>
+    <TD align=middle>Y&gt;A&gt;P&gt;Z&gt;Q&gt;R&gt;S&gt;T&gt;U&gt;V&gt;W&gt;X 
+    </TD></TR>
+  <TR>
+    <TD align=middle>2 </TD>
+    <TD align=middle>A&gt;P&gt;Z&gt;Q&gt;R&gt;S&gt;T&gt;U&gt;V&gt;W&gt;X&gt;Y 
+    </TD></TR></TBODY></TABLE>
+<P>With IRV, who wins? And who is a "huge loser"? And how is this election going 
+to be a <B>huge chad-counting, lawsuit-flinging election-administration 
+nightmare?</B> </P>
+<HR>
+
+<H2>"Extremists" versus "Centrists" </H2>
+<P>What is a 2D "issue space"?  Just a 2-dimensional notion of how
+people view two political issues.  For example, the "Nolan chart" (invented by
+the Libertarian Party) &ndash; although you could instead employ any other two issues
+to make your own kind of chart.
+</P>
+
+<!-- <img src="NolanChart.gif"> -->
+<img src="MyNolanChart.png">
+<img src="NolanScat.jpg">
+
+
+<P>In below computer-generated pictures, voters prefer candidates closer to 
+them. Each <I>pixel</I> is an &#8776;5000-voter <I>election</I> for a society that is 
+a "bell curve" (in both directions) centered at that pixel. So each 200×200 
+picture exhibits 40,000 elections! </P><IMG 
+src="gaussian_low.GIF"> 
+<P>All voters vote honestly. Candidates are the little circles; pixel colors say 
+which candidate won. The pictures in the top row are the hypothetical "optimum 
+voting system," which always elects the best possible candidate for society 
+(maximizing summed utility, utility being a decreasing function of 
+voter-candidate distance). The corresponding pictures in the bottom row are IRV 
+(Instant Runoff Voting). </P><IMG alt=best270.bmp 
+src="best270.bmp"> <IMG alt=best370.bmp 
+src="best370.bmp"> <IMG alt=best470.bmp 
+src="best470.bmp"> <IMG alt=best570.bmp 
+src="best570.bmp"> <BR><IMG alt=irv270.bmp src="irv270.bmp"> 
+<IMG alt=irv370.bmp src="irv370.bmp"> 
+<IMG alt=irv470.bmp src="irv470.bmp"> 
+<IMG alt=irv570.bmp src="irv570.bmp"> 
+<P>Observations: </P>
+<OL>
+  <LI>With IRV usually only about 7 of the 14 candidates can ever win. The other 
+  7 are "zeroed out" and can never win, even when they are exactly located at 
+  the center of the voter distribution. 
+  <LI>The 7 favored candidates are usually the 7 "extremists." The 7 "centrists" 
+  (located nearest the center of the picture) tend to be the ones IRV zeros out. 
+  The "extremist" win-regions grow into, invade, and take over "centrist 
+  territory." 
+  <LI>IRV also exhibits some other strange phenomena. In several cases, a 
+  candidate has a <I>disconnected</I> win-region, for example the yellow region 
+  in the leftmost picture. (Why is that yellow "island" there in the middle of 
+  the olive-green "sea"? The yellow candidate is nowhere near. Surely the three 
+  candidates that actually <I>are</I> located on the island ought to win there? 
+  But no &ndash; IRV never permits any of them to win.) There are also several other 
+  "islands" and split win-regions in these pictures. 
+  <LI>It turns out that every pixel where the IRV color disagrees with the 
+  Optimum color is an example of a situation in which IRV refuses to elect a 
+  "beats-all winner" who would defeat every opponent head-to-head. Some 
+  IRV-defenders have contended that such behavior is very rare. As you can see, 
+  that is not so; it can be quite common &ndash; happens for roughly 1/4 of the pixels 
+  in each IRV picture. You are looking at about 40,000 examples of this "very 
+  rare" behavior. 
+  <LI>Why the "random dot" regions? "Tough call" near-tie elections... </LI></OL>
+<TABLE borderColor=red cellPadding=5 bgColor=#ddddff border=3>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH colSpan=2>Favors Centrists or Extremists? </TH></TR>
+  <TR>
+    <TD>Plurality </TD>
+    <TD>Extremists </TD>
+    <TD><IMG src="IEVS/plurality666.bmp"> </TD></TR>
+  <TR>
+    <TD>Approval </TD>
+    <TD colSpan=2>Centrists <I>or</I> no bias (depends on assumed voter 
+      "thresholding" behavior); also if they vote "plurality style" will
+duplicate plur's extremist-favortism </TD></TR>
+  <TR>
+    <TD>Condorcet Rank-order systems </TD>
+    <TD>no bias </TD>
+    <TD><IMG src="IEVS/voronoi666.bmp"> </TD></TR>
+  <TR>
+    <TD>Borda Rank-order; Range </TD>
+    <TD colSpan=2>little or no bias (pictures = slightly distorted version of 
+      above) </TD></TR>
+  <TR>
+    <TD>Instant Runoff (IRV) </TD>
+    <TD>Extremists </TD>
+    <TD><IMG alt=irv270.bmp 
+src="irv270.bmp"> </TD></TR></TBODY></TABLE>
+<HR>
+
+<H2>Countable in precincts? </H2>
+<P>Counting votes in precincts (or counties), then sending the precinct totals 
+to the statewide election office &ndash; it has been a way of life in almost all US 
+states for as long as any of us have lived. </P>
+<P>But if we were to switch to IRV (instant runoff) voting, that would no longer 
+be possible. All the votes, en masse, would have to be given to statewide 
+central tabulating for <I>them</I> to count; there simply could no longer <I>be 
+such a thing</I> as a "county subtotal." </P>
+<P>This is <I>not</I> an insuperable obstacle to adopting IRV voting, but 
+<I>is</I> a huge change in US election procedures, financing, and organization, 
+and might make everything vulnerable to huge centrally-organized election frauds 
+(can't observe your and your neighbors' own votes being counted anymore). </P>
+<P>To make it clearer why there is no such thing as a district "subtotal" 
+anymore if we use IRV voting, consider this 13+13-voter example: </P>
+<TABLE cellPadding=15 align=center>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE borderColor=red cellPadding=5 align=left bgColor=yellow border=3>
+        <CAPTION>District I: <B>B wins<B> </B></B></CAPTION>
+        <TBODY>
+        <TR>
+          <TH>#voters </TH>
+          <TH>Their Vote </TH></TR>
+        <TR>
+          <TD align=middle>6 </TD>
+          <TD align=middle>A </TD></TR>
+        <TR>
+          <TD align=middle>4 </TD>
+          <TD align=middle>B </TD></TR>
+        <TR>
+          <TD align=middle>3 </TD>
+          <TD align=middle>C&gt;B&gt;A </TD></TR></TBODY></TABLE></TD>
+    <TD>
+      <TABLE borderColor=red cellPadding=5 align=right bgColor=lightgreen 
+      border=3>
+        <CAPTION>District II: <B>B wins<B> </B></B></CAPTION>
+        <TBODY>
+        <TR>
+          <TH>#voters </TH>
+          <TH>Their Vote </TH></TR>
+        <TR>
+          <TD align=middle>6 </TD>
+          <TD align=middle>C </TD></TR>
+        <TR>
+          <TD align=middle>4 </TD>
+          <TD align=middle>B </TD></TR>
+        <TR>
+          <TD align=middle>3 </TD>
+          <TD align=middle>A&gt;B&gt;C </TD></TR></TBODY></TABLE></TD>
+    <TD>
+      <TABLE borderColor=red cellPadding=5 align=left bgColor=yellow border=3>
+        <CAPTION>Combined Country: <BR><B>AC tie</B>, B loses</CAPTION>
+        <TBODY>
+        <TR>
+          <TH>#voters </TH>
+          <TH>Their Vote </TH></TR>
+        <TR>
+          <TD align=middle>8 </TD>
+          <TD align=middle bgColor=#ddff77>B </TD></TR>
+        <TR>
+          <TD align=middle>6 </TD>
+          <TD align=middle>A </TD></TR>
+        <TR>
+          <TD align=middle>3 </TD>
+          <TD align=middle bgColor=lightgreen>A&gt;B&gt;C </TD></TR>
+        <TR>
+          <TD align=middle>6 </TD>
+          <TD align=middle bgColor=lightgreen>C </TD></TR>
+        <TR>
+          <TD align=middle>3 </TD>
+          <TD align=middle>C&gt;B&gt;A 
+</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P>So merging two districts both won by Bush under IRV, can produce an IRV 
+victory for Gore. </P>
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH>Countable in Precincts? </TH></TR>
+  <TR>
+    <TD>Plurality </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Approval </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Condorcet Rank-order systems </TD>
+    <TD>Some yes, some no </TD></TR>
+  <TR>
+    <TD>Borda Rank-order system </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Instant Runoff (IRV)  </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Range </TD>
+    <TD>Yes </TD></TR></TBODY></TABLE>
+<HR>
+
+<H2>What kind of voting machines can we use? </H2>
+<P>"Dumb totalizing" machines have their advantages. Cheap, simple, <I>not</I> 
+computerized. But they were designed for <B>Plurality voting</B>. What if switch 
+to some other voting system? Need to throw them in garbage? Do we <I>need</I> 
+computerized machines (or a full-manual count)? </P>
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH>OK for "dumb totalizing" machine designed for plurality voting? </TH></TR>
+  <TR>
+    <TD>Plurality </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Approval </TD>
+    <TD>Yes </TD></TR>
+  <TR>
+    <TD>Condorcet Rank-order systems </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Borda Rank-order system </TD>
+    <TD>FAILS! </TD><!-- can't check ballot validity --></TR>
+  <TR>
+    <TD>Instant Runoff (IRV)  </TD>
+    <TD>FAILS! </TD></TR>
+  <TR>
+    <TD>Single-digit Range </TD>
+    <TD><A href="COlecture.html#rangeopscan">Yes!</A> 
+      (<A href="kokidea.txt">Surprise!</A>) 
+</TD></TR></TBODY></TABLE>
+<H2>Auditability &amp; Security Issues </H2>
+<P>How can you "audit" an IRV election? If no such thing as a "precinct 
+subtotal," then idea of selecting random precincts for recounts as a 
+sanity-check &amp; "estimator of systematic bias &amp; fraud," (e.g. required in 
+upcoming federal HR811 bill) has less meaning... </P>
+<P>If forced to use computerized machines and central counting, then how do you 
+know election wasn't <B>HACKED</B>?? <A 
+href="http://itpolicy.princeton.edu/voting/">Princeton investigation</A> of 
+<B>Diebold AccuVote-TS</B> Voting Machine ("2nd-most commonly used machine in 
+USA, used by 10% of all voters") revealed: </P>
+<UL>
+  <LI>Door on it &ndash; lock can be picked in 10 seconds. 
+  <LI>Also open with cheap "hotel minibar key" you can order off internet. Same 
+  key opens every Accuvote-TS machine in the world. 
+  <LI>Also, Diebold web page helpfully exhibits <I>picture</I> of key, and 
+  somebody actually used that picture to make their own key, sent it to 
+  Princeton, and it <I>worked!</I> 
+  <LI>Give me <I>1 minute</I> access to machine. Just once. I open door, insert 
+  &amp; withdraw memory card &amp; <I>game over</I>. I own all elections 
+  conducted by that county forever into the infinite future. Why? 
+  <OL>
+    <LI>Machines are programmed by Diebold to copy my takeover program off card 
+    &amp; run it, no questions asked, no "signature" required, no encryption, no 
+    authorization check, nothing. 
+    <LI>From then on, whenever <I>anybody</I> uses a memory card (e.g. to 
+    transmit election data to central count) takeover program gets secretly 
+    copied on/off that card ("virus") and thus infects new machine. 
+    <LI>Machine acts normal for all voters and officials always... 
+    <I>except...</I> any later time, I walk into a polling place to cast my 
+    vote, and tap my magic musical sequence ("we are the champions"?) on it. 
+    Suddenly, an "enter your fraud" screen appears saying "who would you like to 
+    win, and by how much?" I tell it. Then more viral transmission, and election 
+    mysteriously comes out the way I want. </LI></OL>
+  <LI>Diebold also boasted their machines used "world class cryptography" to 
+  prevent unauthorized data transmission. Sounds great. Even the NSA cannot 
+  crack modern cryptosystems. Guessing the "secret key" is like guessing 200 
+  coin flips in a row. Too many combinations. But... 
+  <LI>In 1997 Doug Jones (Iowa election examiner &amp; CS professor) pointed out 
+  to Diebold that they appeared to be using the <I>same</I> secret key for every 
+  Diebold machine in the world. Completely nullifying security. 
+  <LI>Diebold ignored him. 
+  <LI>Diebold accidentally <I>published</I> this key on their internet site 
+  where anybody in the world could read it, along with their entire "secret" 
+  source code. It was analysed by Prof. Avi Rubin at Johns Hopkins University in 
+  2003. 
+  <LI>After scandals came out about this &amp; other horrible aspects of their 
+  engineering, Diebold claimed this was only for old software version. New 
+  versions are fine. 
+  <LI>That was a lie. 
+  <LI>As of 2007, Diebold machines with latest software (CA's Debra Bowen found 
+  when decertifying them) <I>still</I> doing this <I>ten years</I> later. Also, 
+  the "world class" cryptography was the DES system which had been broken, and 
+  the breaks <I>published</I>, in the mid-1990s. 
+  <OL></OL>
+  <LI>Not worried about Princeton hackers and NSA-like agencies? (You should 
+  be.) OK, top Diebold executives <I>themselves</I> include at least 5 convicted 
+  felons (drug dealing, 23 counts of theft, sophisticated computerized 
+  accounting fraud). 
+  <LI>How do you know they didn't hack the machines <I>themselves</I>? Diebold 
+  has many times illegally-installed "software updates" inspected by no-one; 
+  also Diebold accidentally published "private" ballot data they were not 
+  supposed to even have on their web site for all to see; also voting machine 
+  manufacturers have been involved in bribery scandals. </LI></UL>
+<H3>Moral </H3>
+<P>With IRV, computerized machines are not avoidable (unless go for full-manual 
+count &ndash; 
+not so easy for complicated system like IRV). Current computerized 
+machines are hackable and fraudable and <I>unbelievably</I> poorly protected. 
+These machines may well be declared illegal (California decertified all or most 
+of them this year; San Francisco now apparently has to go to full-manual count). 
+Then: big scandal and heavy expenses. </P>
+<P>Range &amp; Approval: don't <I>need</I> computer in your machine; don't 
+<I>need</I> new machines or new software; easy to count. Easier transition. </P>
+<HR>
+
+<H2>Simplicity </H2>
+<P><B>Approval</B> is the <I>simplest</I> system. Even simpler than plurality 
+(no "overvoting=illegal" rule)! Note: the need to find and discard "overvotes," 
+in plurality voting, causes many difficulties including machine- and fraud-related 
+problems. </P>
+<P>How can we <B>measure</B> "simplicity"? </P>
+<UL>
+  <LI>Size of computer program. 
+  <LI>Size of English description of rules. 
+  <LI>Voter reactions &ndash; how often do they produce invalid ballots? </LI></UL>
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH>How simple / spoilage rate data </TH></TR>
+  <TR>
+    <TD>Approval </TD>
+    <TD>Simplest. And sure enough &ndash; Lowest "spoiled ballot" rates (fraction of 
+      1%). </TD></TR>
+  <TR>
+    <TD>Range </TD>
+    <TD>Second-lowest "spoiled ballot" rates! Surprise &ndash; <I>lower</I> than for 
+      plurality voting in all of several studies so far. </TD></TR>
+  <TR>
+    <TD>Plurality </TD>
+    <TD>Spoilage rates &#8776; 2% in USA </TD></TR>
+  <TR>
+    <TD>IRV </TD>
+    <TD>Highest "spoiled ballot" rates in the world (Fiji&#8776;10% spoiled; 
+      Australia&#8776;5%) When San Francisco switched to IRV, spoilage rates went up 
+      by factor of 7 for IRV vs Plurality races. </TD></TR></TBODY></TABLE>
+<HR>
+
+<H2>Legislators can take something not-very-complicated, &amp; complicate it 
+</H2>
+<P>IRV and Condorcet are the most complicated commonly-proposed voting systems. 
+But IRV doesn't seem <I>that</I> hard. (Pro-IRV propaganda calls it "Simple as 
+1-2-3.") Or is it? North Carolina adopted Instant Runoff Voting in a "pilot 
+program" for use in 2007 and 2008 elections for local offices in volunteering 
+jurisdictions. </P>
+<P><B>VERBATIM rules description for IRV:</B> as distributed to NC election 
+officials. Note: hidden in there, these NC rules make several crucial changes to 
+standard transferable-vote procedures (all for the worse in our view): </P><PRE>INSTANT RUNOFF VOTING in NORTH CAROLINA
+2007 PILOT PROGRAM - M100 METHODOLOGY - VOTING
+
+When the Instant Runoff Voting (IRV) method is used for a particular contest,
+voting for one's top choice or choices is the same as if IRV were not used.
+Each voter is allowed to vote for as many candidates as there are seats to be
+filled in column A (see Exhibit I â€“ Example IRV Ballot).
+
+Each voter is then allowed the opportunity to indicate two alternate candidate choices, 
+one per column in each of columns B and C, ranked in order of preference.
+
+The voter has the option to choose alternate candidates.
+
+For example, in the Office of Mayor contest there is one seat to be
+filled. Each voter may vote for one candidate in column A, and then may indicate
+a first alternate candidate choice in column B, and a second alternate candidate
+choice in column C. In the City Council contest there are four seats to be filled. 
+Each voter may vote for as many as four candidates in column A, and then may
+indicate a first alternate candidate choice in column B, and a second
+alternate candidate choice in column C.
+
+COUNTING - FIRST ROUND
+Only column A will be considered in the first round of counting.
+If a voter overvotes in column A, no votes in that contest on that ballot will be
+considered.  A voter may undervote in column A.
+In the first round of counting, all ballots will be counted exactly
+as if IRV were not used, with the exception that any results from columns B and C 
+will be ignored.
+If a sufficient number of candidates receive total votes exceeding the threshold of
+victory for all seats in that contest to be filled, normal procedures apply
+and there will be no need for a second round of counting. If all the seats are not
+filled, those candidates which have won seats will be removed from further
+consideration, and a number of candidates not exceeding twice the
+number of remaining seats to be filled will advance to the second round of
+counting, those candidates being the ones with the greatest numbers of first round
+votes.
+
+COUNTING - SECOND ROUND
+If a second round of counting is required, the counting shall be
+performed according to the following procedures:
+
+A) Counting a single-seat contest:
+1) Ballots shall be maintained in separate groups according to where or
+how they were cast, by precinct or one-stop polling locations, or by
+mail.
+2) For each such group, ballots shall be separated into four stacks,
+designated Stack A, Stack B, Stack C, and Stack O.
+3) If a ballot was overvoted in column A, it shall be placed into
+Stack O.
+4) If a ballot contains a vote in column A for either runoff
+candidate, it
+shall be placed into Stack A. Because these votes have already been
+counted in the first round, there is no need to count them again.
+5) If a ballot does not contain a vote in column A for either runoff
+candidate, but does contain a vote in column B for either runoff
+candidate, it shall be placed into Stack B.
+6) If a ballot does not contain a vote in either column A or B for
+either runoff candidate, it shall be placed into Stack C.
+7) Stack B ballots shall be counted by machine or by hand. Only those
+votes cast for either runoff candidate in column B shall be considered.
+These totals shall be added to the totals for those candidates from the
+first round of counting.
+8) Stack C ballots shall be counted by machine or by hand. Only those
+votes cast for either runoff candidate in column C shall be considered.
+These totals shall also be added to the totals for those candidates from
+the first round of counting.
+9) Repeat steps 1-8 as necessary until all ballots for the entire
+jurisdiction have been counted.
+10) The runoff candidate with the greatest total votes shall be
+declared the winner.
+B) Counting a multi-seat contest:
+1) Ballots shall be maintained in separate groups according to where or
+how they were cast, by precinct or one-stop polling locations, or by
+mail.
+2) For each such group, ballots shall be separated into five stacks,
+designated Stack A, Stack B, Stack B2, Stack C, and Stack O.
+3) If a ballot was overvoted in column A, it shall be placed into
+Stack O.
+4) If a ballot contains as many votes in column A as there are total
+seats to be filled, and all such votes are for candidates who either won seats
+in the first round or advanced to the second round, it shall be placed
+into Stack A. Because these votes have already been counted in the
+first round, there is no need to count them again.
+5) If a ballot contains in column A exactly one undervote or exactly one
+vote for a candidate who did not win a seat in the first round and did
+not advance to the second round, and does contain a vote in column B
+for any runoff candidate not already voted for in column A, it shall be
+placed into Stack B.
+6) If a ballot contains in column A more than one undervote or more than
+one vote for candidates who did not win seats in the first round and did
+not advance to the second round or at least one of each of these, and
+does contain a vote in column B for any runoff candidate not already
+voted for in column A, it shall be placed into Stack B2.
+7) Of all remaining ballots, any which contains in column C a vote for a
+runoff candidate already voted for in column A or B shall be placed into
+Stack O, and the rest shall be placed into Stack C.
+8) Stack B2 ballots shall be counted by machine or by hand. Only those
+votes cast for a runoff candidate in column B shall be considered.
+These totals shall be added to the totals for those candidates from the
+first round of counting.
+9) All Stack B2 ballots which contain in column C a vote for a runoff
+candidate already voted for in column A or B shall be placed into Stack
+O, and the rest shall be placed into Stack C.
+10) Stack B ballots shall be counted by machine or by hand. Only those
+votes cast for a runoff candidate in column B shall be considered.
+These totals shall be added to the totals for those candidates from the
+first round of counting.
+11) Stack C ballots shall be counted by machine or by hand. Only those
+votes cast for a runoff candidate in column C shall be considered.
+These totals shall also be added to the totals for those candidates from
+the first round of counting.
+12) Repeat steps 1-11 as necessary until all ballots for the entire
+jurisdiction have been counted.
+13) The runoff candidate with the greatest total votes shall be
+declared the winner of a seat in this contest.
+14) If not all seats have been filled, for each precinct or other ballot
+group recombine all ballots, then repeat steps 1-13 to determine the next
+winner.
+</PRE>
+<HR>
+
+<a name="CompChart"></a>
+<H2>SUMMARY of voting system "Properties" </H2>
+
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH>Expressive </TH>
+    <TH>Participation </TH>
+    <TH>Favorite-<BR>Safe </TH>
+    <TH>Clone-<BR>Safe </TH>
+    <TH>Monotonic </TH>
+    <TH>Remove-<BR>Loser-<BR>Safe </TH>
+    <TH>Precinct-<BR>Countable </TH>
+    <TH>Dumb-<BR>Machines </TH>
+    <TH>Extremist/<BR>Centrist<BR>Bias </TH>
+    <TH>Simplicity </TH></TR>
+  <TR>
+    <TH>Plurality </TH>
+    <TD bgColor=red>The Worst </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>Extremist </TD>
+    <TD>good </TD></TR>
+  <TR>
+    <TH>Approval </TH>
+    <TD><nobr><img src="thumbs-up.gif"> or <img src="thumb_down_48.png"></nobr>
+<br>on each canddt </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD bgColor=lightblue>partial </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD bgColor=lightblue>voter-<BR>behavior-<BR>dependent </TD>
+    <TD bgcolor="green">best (excellent for meetings)</TD></TR>
+  <TR>
+    <TH>Condorcet systems </TH>
+    <TD>rank order </TD>
+    <TD bgColor=red>FAILS! (2.5%?) </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>yes &amp; no </TD>
+    <TD>yes &amp; no </TD>
+    <TD bgColor=red>FAILS! 9% </TD> 
+    <TD>yes &amp; no </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>unbiased </TD>
+    <TD bgColor=red>complex </TD></TR>
+  <TR>
+    <TH>Borda </TH>
+    <TD>rank order </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>ok </TD>
+    <TD>medium </TD></TR>
+  <TR>
+    <TH>Instant Runoff (IRV) </TH>
+    <TD>rank order </TD>
+    <TD bgColor=red>FAILS! 16.2% </TD>
+    <TD bgColor=red>FAILS!<BR>19.6-100% </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS!<BR>14.7% </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD bgColor=red>Extremist </TD>
+    <TD bgColor=red>complex </TD></TR>
+  <TR>
+    <TH>Range </TH>
+    <TD  bgcolor="green">The Best </TD>
+    <TD bgColor=lightblue>yes (if no "blanks") </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>surprisingly yes </TD>
+    <TD>ok (bias, if any, small) </TD>
+    <TD>surprisingly good </TD></TR></TBODY>
+</TABLE>
+
+<HR>
+
+<H2>How "honest" versus how "strategic" are voters? </H2>
+<UL>
+  <LI>Plurality: about <B>90%</B> of voters with Nader or Buchanan favorite (in 
+  USA 2000) actually voted for somebody else. <I>Huge</I> strategic dishonesty. 
+  (Devastates USA "third parties." Massive 2-party domination in USA: 99.5%.) 
+  <LI>IRV: less clear at present, but every IRV-using country has developed 
+  massive 2-party domination in all IRV seats. ("Spoiler effect" still happens, 
+  remember.) 
+  <LI>Range voting: surprise! A lot of voter "honesty" and non-strategy. Only 
+  about <B>25%</B> of range voters vote in maximally-strategic, 
+  maximally-exaggerating-for-punch, "approval style" (all 9s and 0s, no 
+  intermediate scores). [See: <A href="http://math.temple.edu/~wds/homepage/works.html">
+USA range voting study (paper #82)</A>, <A HREF="OrsayTable.html">French RV study</A> or our <a href="index.html%3F%3F.html">TX governor race exit study</A>]
+</LI></UL>
+<P>Good. More voter honesty &#8658; better, less-strategically-distorted election 
+results for all. But why happens? </P>
+<UL>
+  <LI>Psychological reasons &ndash; Range gives them more expressiveness and ability 
+  to be honest, and they don't want to waste that? 
+  <LI>Experiment on yourself! Do you <I>want</I> to give every candidate 9 or 0? 
+  You really don't want to, do you? 
+  <LI>Some strategic imperatives motivate more than others. Voters say "why 
+  should I dishonestly say the Socialist gets a zero, when honestly I feel he 
+  deserves 3 out of 9?" Socialist has no chance anyway, many voters aren't so 
+  worried they feel they need to lie to kill him off. Non-strong motivation to 
+  be strategically dishonest. Hence a lot of useful honesty will happen. 
+  <LI>Result (in our range voting USA exit poll in 2004): <I>hugely</I> more 
+  votes for third-party contenders relative to Bush &amp; Kerry (but they still 
+  lost) </LI></UL>
+<HR>
+<A name=exitpoll></A>
+<H2>Our exit-poll (2004 Pres. election) Range and Approval study </H2>
+<TABLE cellPadding=17 align=right>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE borderColor=red cellPadding=5 bgColor=yellow border=3>
+        <CAPTION>2004 results:</CAPTION>
+        <TBODY>
+        <TR>
+          <TH>Candidate </TH>
+          <TH>Plur </TH>
+          <TH>AV </TH>
+          <TH>RV </TH></TR>
+        <TR bgColor=#ffaa00>
+          <TD>Bush(Rep) </TD>
+          <TD>50.7 </TD>
+          <TD>39 </TD>
+          <TD>40 </TD></TR>
+        <TR bgColor=#ccccff>
+          <TD>Kerry(Dem) </TD>
+          <TD>48.3 </TD>
+          <TD>61 </TD>
+          <TD>55 </TD></TR>
+        <TR>
+          <TD>Nader </TD>
+          <TD>0.38 </TD>
+          <TD>21 </TD>
+          <TD>25 </TD></TR>
+        <TR>
+          <TD>Badnarik </TD>
+          <TD>0.32 </TD>
+          <TD>0.6 </TD>
+          <TD>9 </TD></TR>
+        <TR>
+          <TD>Cobb </TD>
+          <TD>0.10 </TD>
+          <TD>2 </TD>
+          <TD>5 </TD></TR>
+        <TR>
+          <TD>Peroutka </TD>
+          <TD>0.12 </TD>
+          <TD>1 </TD>
+          <TD>6 </TD></TR>
+        <TR>
+          <TD>Calero </TD>
+          <TD>0.003 </TD>
+          <TD>0 </TD>
+          <TD>4 </TD></TR>
+        <TR>
+          <TD>Total3rd </TD>
+          <TD>0.92 </TD>
+          <TD>25 </TD>
+          <TD>49 </TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+<P>Pseudo-election with real US voters (122 range &amp; 656 approval) 
+simultaneously with the 2004 presidential election (as exit poll). Note <B>RV 
+psychological drive for human honesty</B> &#8658; hugely different election results &ndash; 
+check out how hugely distorted our "democracy" is... </P>
+<P>
+French 2007 study found <i>different winner</i>
+(the "centrist" Bayrou) from Range (also B. was a "beats-all" winner according to polls)
+than with their plurality+runoff 2nd round system
+(the "rightist" Sarkozy)
+<P>And in the 1980 US Presidential Election, according to analysis based on many 
+polls in ch. 9 of <A href="RVPapers.html">Brams &amp; 
+Fishburn's book</A>, 
+<TABLE borderColor=red cellPadding=5 align=right bgColor=yellow border=3>
+  <CAPTION>1992 results:</CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Candidate </TH>
+    <TH>Plur </TH>
+    <TH>AV </TH></TR>
+  <TR bgColor=#ffaa00>
+    <TD>Clinton(Dem) </TD>
+    <TD>43.0 </TD>
+    <TD>55 </TD></TR>
+  <TR bgColor=#ccccff>
+    <TD>Bush(Rep) </TD>
+    <TD>37.4 </TD>
+    <TD>49 </TD></TR>
+  <TR>
+    <TD>Perot </TD>
+    <TD>18.9 </TD>
+    <TD>42 </TD></TR></TBODY></TABLE>Anderson probably actually would have come in 
+<I>second</I> behind Reagan but <I>ahead</I> of Carter, under approval voting, 
+whereas under plurality voting he was far in third place with under 7% of the 
+votes. Again illustrates the tremendous distortionary penalty faced by 
+third-party candidates under the undemocratic plurality system. </P>
+<HR>
+<A name=cash></A>
+<H2>Importance of CASH as opposed to QUALITY </H2>
+<P>August 2007. Ames, Iowa. Romney overwhelmingly wins GOP straw poll. (Results 
+delayed due to malfunctioning Diebold voting machines.) Romney spent <I>$1 
+million</I> on TV ads and to bus thousands of his supporters to Ames (many-hour 
+bus rides, free wining &amp; dining) and pay "poll tax" fees so they could vote 
+for him in this poll! Far-outspent all rivals. </P>
+<P><I>Why</I> pay $1 million to fakely-win a <I>straw poll</I>??? Senseless? 
+Unfortunately, is method to this madness. </P>
+<UL>
+  <LI>Plurality voting &#8658; strange dynamics. 
+  <LI>Voters strategically foolish to vote for anybody not in top two. 
+  (Otherwise your vote "wasted.") 
+  <LI>So you have to convince voters you are in the top two. 
+  <LI>Not about convincing them you are the <I>best</I>. About convincing them 
+  you are <I>leading</I>. That takes CASH. 
+  <LI>Politicians call this "momentum." 
+  <LI>Then voters "strategically forced" to vote for you and donors "forced" to 
+  give $ to you. (Like it or not.) 
+  <LI>So by creating a fake-lead in Iowa, Romney could well actually get a 
+  <I>real</I> lead (or real 2nd-place) in Iowa; that in turn gives him 
+  "momentum" in the USA as a whole! </LI></UL>
+<P>BUT politics would be <I>HEALTHIER</I> if it were not about cash, not about 
+constructing PR-illusions, not about "momentum" and trying to force voters to 
+vote for you even though they dislike you &ndash; and more about actual 
+candidate-<I>quality.</I> (You can be good quality choice <I>without</I> 
+$millions.) </P>
+<P>With favorite-safe systems like Range Voting, voter <I>not</I> "strategically 
+forced" to vote against her true favorite when others lead in polls. Cash and 
+faking leads are less important and quality is more important. </P>
+<H3>Primaries </H3>
+<P>Republican Party would <I>also</I> be healthier. Suppose Romney is 
+poor-quality <I>but</I> manages to win the GOP nomination via such manipulations 
+(made possible by plurality voting system in primaries and in straw polls). 
+<I>Then the entire GOP has been hurt</I> and likely to lose presidency to a 
+Democrat. Suppose GOP instead were to use <I>range voting</I> in primary and 
+straw polls. Then would tend to nominate higher-quality candidates. That helps 
+entire GOP and gives them better chances against the Democrat nominee 
+(especially if the Dems foolishly do not use range voting in <I>their</I> 
+primaries, hence they nominate low-quality choice). </P>
+<P>(And could make the same argument about Hillary Clinton from the Dems' perspective...)
+</P>
+<H3>D &amp; R parties &ndash; listen up! Our computer sims &#8658; you will gain 
+&#8776;<A href="RandElect.html">30-60%</A> better 
+chances to win the presidency if your party switches to range voting primaries! 
+</H3>
+<P>
+Iowa 2008.  10 Rs, 10 Ds competing.  Plurality system:  voters "strategically forced"
+to vote for one of the "leading 2" even if not their favorite; we get the best-of-two.
+(E.g. Hillary Clinton
+probably one of the two.  Even if 65% of Dem voters want non-Hillary, HC could still
+easily win Dem nomination due to anti-HC vote-split, etc.) 
+Range voting: more like we get best of all 10.  Which yields better result for the USA 
+(and for your party's chances in the later general election)?
+<P>
+Because expect 10 Dem &amp; 10 Repub candidates in primaries, range voting will
+have maximized <i>quality advantage</i> versus
+plurality &amp; approval.  <a href="RandElect.html#RangePlur">Computer sims</a>:
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>"Random normal elections": How often do the range &amp; plurality winners agree?</b></caption>
+<!-- apparently goes to 0 when C goes to infinity, like some negative power of C times a const. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 8 </th>
+<th> 10 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 73% </td>
+<td> 61% </td>
+<td> 52% </td>
+<td> 38% </td>
+<td bgcolor="#ffcc99"> 32% </td>
+<td> 24% </td>
+<td> 19% </td>
+<td> 8% </td>
+<td> 4% </td>
+<td> 2% </td>
+</tr>
+</table>
+</P>
+<HR>
+<A name=appVrange></A>
+<H2>Approval versus Range </H2>
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH>Approval </TH>
+    <TH>Range? </TH></TR>
+  <TR>
+    <TD>simpler </TD>
+    <TD>more complex (but voters better with it than plurality, say spoilage 
+      rate data) </TD></TR>
+  <TR>
+    <TD colSpan=2>(Almost) <I>same thing</I> if all voters <I>strategic</I> &ndash; 
+      but range better quality if many <I>honest</I> voters. Real-world: 75% of 
+      range voters do <I>not</I> range-vote approval style, so RV better. </TD></TR>
+  <TR>
+    <TD>Suffers "Burr dilemma": if two good candidates, voters tempted to 
+      approve only one, can start "retaliatory spiral"; if so then both lose 
+      many votes and some worse rival wins. (Real-world example: Portugal 1986.) 
+    </TD>
+    <TD>More resistant to that because can vote 9 &amp; 8 for the two, still 
+      indicating preference but not maximally hurting one. </TD></TR></TBODY></TABLE>
+<P>Best to regard Range &amp; Approval not as <I>rivals</I> but rather as 
+<I>related / same thing</I> (Approval=Range1). 
+</P><P>
+<B>Natural progression:</B>
+Plurality &rarr; "Count All the Votes" = Approval &rarr; Range
+(What happens with Range? *Fractional votes
+are allowed.)
+</P><P>
+Legislation could adopt Approval 
+in situations where speed and simplicity paramount (votes in meetings, or on 
+stone-age voting machines) but with an upgrade to range9 or range99 mandated 
+for future. As a stopgap, both could simultaneously be used (make Approval &amp; 
+Range9 &amp; Range99 compatible by multiplying by 99 &amp; 11 &amp; 1). </P>
+<HR>
+<A name=backslide></A>
+<H2>Backsliding </H2>
+<P>Historically, many places &amp; organizations that have adopted <B>IRV</B> have often 
+decided to return to plain plurality voting. (Approximately same number of 
+switches Plur&#8594;IRV as IRV&#8594;Plur.) 
+Famous IRV&#8594;Plur Examples: New York City, Cincinnati. 
+</P>
+<P>Disquietingly, the IEEE abandoned <B>Approval</B> voting to backslide to plurality, 
+and <A href="DartmouthBack.html">Dartmouth College</A> 
+may be about to do same, although there still are many more historical 
+instances of Plur&#8594;Approval switch, than other direction. </P>
+<P>But we are unaware of <I>any</I> organization that, once it had <B>range</B> voting, 
+switched away from it. 
+<P>
+<HR>
+<A name=howtoeval></A>
+<H2>How to evaluate/compare voting systems &amp; seek best &ndash; 4 ways </H2>
+<DL>
+  <DT><B>0. Compare "properties" (as we've been doing)</B>
+  <DD>Pros: Educational.  Cons: which properties matter and how much, is <I>subjective</I> and eternally <I>debatable</I>; also just because a method fails some property
+<I>logically</I>, tells you nothing about how <I>frequent</I> and how <I>serious</I>
+that property-failure is in practice.   
+  <DT><B>1. Look at human elections through <A 
+  href="FunnyElections.html">history</A>, or artificial 
+  ones (paid subjects).</B> 
+  <DD>Pros: Real; right sample space. <BR>Cons[Historical]: Often hard to assess 
+  how "good" different election results were or would have been and what results 
+  "would" have occurred had other election method X had been used instead. (And 
+  subjective. And you'll be accused of bias.) Also, still not really correct 
+  sample space (since space might <A 
+  href="Duverger.html">change</A> over time with new 
+  X...). <BR>Cons[Paid subjects]: Very expensive. Not really real. 
+  <BR>Cons[Both]: Little data &#8658; low statistical significance &#8658; few results. And 
+  people lie to pollsters. 
+  <DT><B>2. Has Darwinian Evolution (or "Intelligent design")
+made any animals that vote as important part of their life-cycle?</B>
+  <DD> Yes! Already been done at least twice (social insects)!! 
+  <I>Hundreds of trillions</I> of very-important-to-the-insects elections so 
+  far! <I>All</I> voting systems considered (in some sense). 
+  Real (arguably more real than with humans - more years, more important to lives). 
+  Lots of data &#8658; high 
+  significance.  
+  <DT><B>3. Measure "Bayesian regret" of different election methods via computer 
+  election simulations. </B>
+  <DD>Pros: Large amounts of data &#8658; statistical significance is no problem. 
+  Artificial cyber-voters better than humans: Can read their "minds" to find 
+  their true desires unpolluted by lies (measured in standard "happiness units" 
+  too). <BR>Cons: Computer results out = only as good as the assumptions &amp; 
+  models in. Only try voting systems you try, not all possible. <BR>Pros: Can 
+  try large number of assumption sets &amp; models. If so lucky that in 
+  <I>all</I> of them, one voting method robustly is best, convincing. <BR>Con: 
+  If not so lucky &ndash; some methods best in this model, others best in that &#8658; 
+  bummer. </DD></DL>
+<HR>
+<A name=bayregm></A>
+<H2>What is Bayesian Regret? </H2>
+<P><B>Oversimplified into nutshell:</B> "Bayesian regret" of election method E 
+is "expected avoidable human unhappiness" caused by using E. Can be measured with
+computer simulations.</P>
+<P><B>More precise answer:</B> Bayesian regret is gotten via this 
+<I>procedure</I>: </P>
+<OL>
+  <LI>Each voter has a personal "utility" value for the election of each 
+  candidate. (E.g., if Nixon is elected, then Jill Voter acquires -55 extra 
+  lifetime happiness units.) In computer simulation, "voters" &amp; "candidates" 
+  are artificial, and the utility numbers are generated by some randomized 
+  "utility generator" and assigned artificially to each candidate-voter pair. 
+  <LI>Now the voters vote, based both on their private utility values, and (if 
+  strategic voters) on their perception from "pre-election polls" (also 
+  generated artificially within the simulation, e.g. from a random subsample of 
+  "people") of how the other voters are going to act. <BR><FONT size=-1>(Note. 
+  Some people here have gotten the wrong impression that this is <I>assuming</I> 
+  that voters will be "honest" or that we are assuming that honest range voters 
+  will use candidate-utilities as their candidate-scores. Neither impression is 
+  correct: These assumptions are not made.)</FONT> 
+  <LI>Election system E elects some winning candidate W. 
+  <LI>The sum over all voters V of their utility for W, is the "<FONT 
+  color=blue>achieved societal utility</FONT>." 
+  <LI>The sum over all voters V of their utility for X, <I>maximized</I> over 
+  all candidates X, is the "<FONT color=blue>optimum societal utility</FONT>" 
+  which would have been achieved if the election system had magically chosen the 
+  societally best candidate. 
+  <LI>The <FONT color=blue>difference</FONT> between 5 and 4 is the "<FONT 
+  color=blue>Bayesian Regret</FONT>" of the election system E, at least in this 
+  experiment. It might be zero, but if E was bad or if this election was unlucky 
+  for E, then it will be positive because W and X will be different candidates. 
+  </LI></OL>
+<P>Redo steps 1-6 zillion times (i.e. do zillion simulated elections) to find 
+<I>average Bayesian regret</I> of election system E. </P>
+<P><B>Comments:</B> The Bayesian regret of an election system E may differ if we 
+</P>
+<OL>
+  <LI>Vary the number of voters, 
+  <LI>Vary the number of candidates, 
+  <LI>Vary the kind of "utility generator" (e.g. could be based on different 
+  numbers of "issues" with different methods for generating the locations of the 
+  candidates in "issue space"), 
+  <LI>Use different kinds of assumed "voter strategy", or 
+  <LI>Put different amounts of "voter ignorance". (*) </LI></OL>(*) Can put in 
+voter ignorance by artificially adding random noise to voter's private utility 
+values, and then make voters act based on <I>distorted</I> values. Higher 
+amplitude noise &#8658; more ignorance. 
+<P></P>
+<P>&#8707; at least 5 different "knobs" to "turn" on our machine for measuring 
+Bayesian Regret of elctn method E. </P>
+<HR>
+
+<H2>Results of 1999 computer simulation <A 
+href="http://math.temple.edu/~wds/homepage/works.html">study</A>:</H2>
+<P>Measured Bayesian regrets for about 30 different election methods. 720 
+different "knob setting" combinations tried. Amazing result: in <I>all</I> 720 
+scenarios, range voting was best (had lowest Bayesian regret, up to 
+statistically insignificant noise). We repeat: RV best in <I>every single 
+one</I> of those 720 with either honest <I>or</I> strategic voters, regardless 
+of ignorance-level, #candidates (3-5), #voters (5-200), #issues (0-&#8734;) etc. 
+[But no system, including range is "perfect"; all on average 
+fall short of optimum utility.]
+</P><A name=numericalres></A>
+<H2>Typical BR results table (highly abbreviated) </H2>
+<TABLE borderColor=red cellSpacing=4 bgColor=yellow border=3>
+  <CAPTION><B>Regret measurements. </B>Column A: 5 candidates, 20 voters, random 
+  utilities; Each entry averages the regrets from 4000000 simulated elections. 
+  Column B: 5 candidates, 50 voters, utilities based on 2 issues, each entry 
+  averages the regrets from 2222222 simulated elections. </CAPTION>
+  <TBODY>
+  <TR>
+    <TH>Voting system </TH>
+    <TH>Regret A </TH>
+    <TH>Regret B </TH></TR>
+  <TR>
+    <TD>Magically elect optimum winner </TD>
+    <TD>0 </TD>
+    <TD>0 </TD></TR>
+  <TR bgColor=#dfffcc>
+    <TD>Range (honest voters) </TD>
+    <TD>0.04941 </TD>
+    <TD>0.05368 </TD></TR>
+  <TR>
+    <TD>Borda (honest voters) </TD>
+    <TD>0.13055 </TD>
+    <TD>0.10079 </TD></TR>
+  <TR>
+    <TD>Approval (honest voters) </TD>
+    <TD>0.20575 </TD>
+    <TD>0.16549 </TD></TR>
+  <TR>
+    <TD>Condorcet-LR (honest voters) </TD>
+    <TD>0.22247 </TD>
+    <TD>0.14640 </TD></TR>
+  <TR>
+    <TD>IRV (honest voters) </TD>
+    <TD>0.32314 </TD>
+    <TD>0.23786 </TD></TR>
+  <TR>
+    <TD>Plurality (honest voters) </TD>
+    <TD>0.48628 </TD>
+    <TD>0.37884 </TD></TR>
+  <TR bgColor=#dfffcc>
+    <TD>Range &amp; Approval (strategic exaggerating voters) </TD>
+    <TD>0.31554 </TD>
+    <TD>0.23101 </TD></TR>
+  <TR>
+    <TD>Borda (strategic exaggerating voters) </TD>
+    <TD>0.70219 </TD>
+    <TD>0.48438 </TD></TR>
+  <TR>
+    <TD>Condorcet-LR (strategic exaggerating voters) </TD>
+    <TD>0.86287 </TD>
+    <TD>0.58958 </TD></TR>
+  <TR>
+    <TD>IRV (strategic exaggerating voters) </TD>
+    <TD>0.91522 </TD>
+    <TD>0.61072 </TD></TR>
+  <TR>
+    <TD>Plurality (strategic voters) </TD>
+    <TD>0.91522 </TD>
+    <TD>0.61072 </TD></TR>
+  <TR bgColor=#dfffcc>
+    <TD>Elect random winner </TD>
+    <TD>1.50218 </TD>
+    <TD>1.00462 </TD></TR></TBODY></TABLE>
+<P><B>Warning:</B> Table makes it appear Borda is second-best after range. But 
+in fact the full study considers hundreds of tables like this, &amp; in many of 
+them, Borda is <I>not</I> second best, in fact in many it's way down in the 
+rankings. The question of which system is second best has no clear answer &ndash; some 
+better in some kinds of election situations, others in others. </P>
+<H3>Moral: <BR>Range voting will improve humanity's lot by about the same amount 
+we got by <I>inventing</I> democracy. (And that, is <I>big</I>.) </H3>
+<HR>
+<HR>
+<CENTER>Separate mini-talk</CENTER>
+<HR>
+<HR>
+<H2>Introduction to <B>"proportional representation"</B> multiwinner systems 
+</H2>
+<P>If 51% Democrat voters, you could easily get 100% Democrat winners. 
+(Massachusetts.) 51% Women voters, but way less than 51% women in the Senate. 
+12% Black voters, but way fewer in Senate. Only one atheist ever served in 
+congress (or so they claim). Etc. </P>
+<P>This is <I>disproportionality.</I> Many people feel it would be better if 
+representatives were more... representative. For a voting system to offer any 
+<I>guarantee</I> of that, it needs to be for <I>multiwinner</I> elections, e.g. 
+17-candidate, 5-winner elections. </P>
+<P>Many naive ways to turn single-winner methods into multiwinner ones (e.g. 
+"multiwinner plurality" where the top-W finishers win the W seats and you are 
+granted W plurality votes) can totally fail to deliver proportional results. 
+North Carolina's IRV-variant for multiwinner elections should tend to deliver 
+100% Democrat (or 100% Republican) winners, contrary to the professed 
+aims of those behind that legislation. </P>
+<P>"Hare/Droop reweighted STV" system (used in Ireland) is complicated. Involves 
+rank-ordering votes, "reweighting" of votes so when X wins, then those who voted X 
+now have their votes "deweighted" according to a magic formula, and then 
+continue on to select next winner (then new reweighting) etc. Formula must be 
+just right to get "proportionality theorem." Bizarre voter strategies (e.g. 
+intentionally vote for no-hoper so your vote will retain high weight on an iffy 
+seat; intentional vote-splitting in exactly the right proportions choreographed 
+by parties distributing randomized "how to vote" cards) have been observed. </P>
+<P>In "party list" systems (used in many countries, Germany, Israel, 
+Netherlands) you do not vote for <I>candidates</I>, you vote for <I>parties</I>. 
+A party with 27% of the votes gets 27% of the seats. But... that totally removes 
+<I>individual accountability</I> and can have heavy biases based on party-size. 
+(E.g. what if you aren't <I>in</I> a party?) </P>
+<P>Harder to compare multiwinner systems ("Bayesian Regret" methodology only 
+works for single-winner systems) and "properties" more complicated &amp; less 
+understood. </P>
+<P>There is a provably-proportional multiwinner version of range voting called 
+<a href="RRV.html">reweighted range voting</a (RRV). It seems both simpler and better than 
+Ireland's STV scheme and in the 1-winner case it is Range (better than IRV). 
+</P>
+<P>By act of Congress, multiwinner elections are currently <I>illegal</I> in the 
+USA for Federal seats. </P>
+<HR>
+
+<H2>Proportional Representation versus Single-Winner / Summary</H2>
+
+<ol>
+<li>
+Single-winner voting systems "nonrepresentative" but aim to pick 
+highest-quality winner. PR systems (involve <i>multi</i>winner elections)
+sacrifice both perceived winner quality and accountability of politicians to voters,
+but seek to produce winners more "representative" of the electorate.
+</li><li>
+Range voting is single-winner and hence not PR.
+<small>However, there 
+is an alternate form of Range Voting designed for multiwinner elections and designed to exhibit proportionality,
+called 
+<a href="RRV.html">reweighted range voting</a> (RRV) &ndash; described in
+paper #78 at <a href="http://math.temple.edu/~wds/homepage/works.html">http://math.temple.edu/~wds/homepage/works.html</a>.
+</small>
+</li><li>
+PR federal elections are <a href="SupremeCt.html">plausibly</a>
+<i>unconstitutional</i> in the USA.
+If are constitutional, then conceivably PR could be achieved in the House of Representatives
+at least as far as the large states are concerned (but this probably would exacerbate 
+power imbalance between large versus small states); but PR would be unachievable for
+Senate, US Presidency, and state governorships.
+</li><li>
+Which approach is better?  Unclear philosophically, unclear
+based on historical evidence, and unclear based on economic statistical evidence.
+No consensus exists.
+</li><li>
+Therefore I am <i>unsure</i> PR is an improvement &ndash; but feel <i>confident</i> that 
+switching from plurality voting to 
+range voting is an improvement.
+<small>(Much easier to <i>understand</i> and <i>measure</i>
+the relative quality of <i>single</i>-winner voting systems since can use 
+<a href="BayRegDum.html">Bayesian Regret</a>,
+but no analogous quantity known for multiwinner systems.)</small>
+</li><li>
+PR tends to get rid of 2-party domination.
+But not the only way to do that.
+The plurality + top-2-runoff(2nd round) 
+single-winner system <a href="HonestRunoff.html">led</a>
+in most or all of the large number of countries in which it has been tried,
+to having more than 2 important parties.
+</li><li>
+The very fact that neither PR nor non-PR (mainly plurality-voting-based)
+democracies exhibit obvious superiority
+over the other suggests that a democracy based on 
+<a href="RangeVoting.html">Range</a> or Approval voting
+could
+be significantly superior to either (since good reason to believe it
+will be significantly superior to plurality-based majoritarian democracy).
+</li></ol>
+
+<HR>
+<H2>Asset Voting &ndash; the simplest PR system (but untried) </H2>
+<P>There is one <I>remarkably simple</I> but <I>unconventional</I> kind of 
+provably-proportional voting: <B>Asset Voting.</B> "Unconventional" because 
+<I>both</I> the voters and the candidates participate. (Warning: this bothers a 
+lot of people, and also prevents asset voting from being used at all in 
+abstract scenarios with candidates that are not people, such as choosing pizza 
+flavors.) Asset proven (in terms of certain criteria) superior to <i>any</i> 
+"conventional" system. </P>
+<P><B>Forest Simmons' simplified version of
+<u>Asset voting</u> to elect W winners from C candidates, 0 &lt; W &lt; C:</B> 
+</P>
+<OL>
+  <LI>Each vote is "name one candidate" (plurality-style).
+  <LI>A candidate's "score" is the number of times he is named.
+  <LI>Now regard each score as the amount of an "asset" now owned by 
+  that candidate. The candidates now negotiate; any subset of them may 
+  redistribute their assets among themselves. 
+  <LI>After all negotiations and redistributions end, the W "wealthiest" 
+  candidates win. </LI></OL>
+<P><SMALL>In variants, only certain kinds of redistributions are permitted, for 
+example the candidates in increasing order of "wealth" drop out, redistributing 
+their assets among the remaining ones as they do so. This "poorest first" 
+variant has the advantage that it forces the procedure to <I>end</I> quickly and 
+everybody <I>knows</I> when it has ended. </SMALL></P>
+<P><SMALL>
+You can also 
+compromise and, e.g, provide the voter with <I>three</I> plurality-style 
+ballots, enabling her to split up her vote three ways &ndash; or fewer by using more 
+than one ballot to vote for the same candidate. </SMALL></P>
+
+<H3>Example </H3>
+
+<TABLE borderColor=red cellPadding=5 bgColor=yellow border=3>
+  <TBODY>
+  <TR>
+    <TH>#Voters </TH>
+    <TH>their vote </TH></TR>
+  <TR>
+    <TD>38 </TD>
+    <TD>Bush </TD></TR>
+  <TR>
+    <TD>37 </TD>
+    <TD>Gore </TD></TR>
+  <TR>
+    <TD>20 </TD>
+    <TD>Nader </TD></TR>
+  <TR>
+    <TD>5 </TD>
+    <TD>Buchanan </TD></TR></TBODY></TABLE>
+<P>This is a make-believe analogue of the 2000 US presidential election. It's 
+unrealistic in several ways, the most obvious being that it was a 
+<I>one</I>-winner election, not a multiwinner election (asset voting <I>can</I> 
+be used for single-winner elections but is <I>intended</I> for 
+more-than-one-winner elections). Ignore the unreality. We are just trying to 
+illustrate how it might work in a simple and familiar way. </P>
+<P>In this election, Nader could decide to drop out of the picture and award his 
+20 asset points to Gore. (Both Bush and Gore would, no doubt, try to make deals 
+with Nader to try to get his assets. But, let us suppose that Nader, after 
+considering his options, the offered deals, and the fact he considered his views 
+closer to Gore's than to Bush's, preferred Gore.) In that case, Gore would win 
+with 37+20=57 asset points to Bush's 38. (Buchanan could <I>also</I> decide to 
+give his assets to some candidate, but in the particular scenario here, 
+Buchanan's decision would not be able to change the winner.) </P>
+<P>Now if this <I>were</I> a <i>2</i>-winner election, then both Bush and Gore would be 
+winners no matter what Nader and Buchanan decided to do (albeit either Bush or 
+Gore could in theory cause either Nader or Buchanan to be a winner by 
+sacrificing their own chances &ndash; not likely). </P><BR>
+<P><A href="RangeVoting.html">Return to main RV 
+page</A></P><!-- Start of StatCounter Code -->
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

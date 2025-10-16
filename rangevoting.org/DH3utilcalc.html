@@ -1,0 +1,158 @@
+<html>
+<head>
+<title>
+RangeVoting.org - DH3 utility calculation
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> <a href="WinningVotes.html#DH3">DH3</a> utility calculation </H2>
+
+<p><small> By Clay Shentrup &amp; Warren D. Smith </small></p>
+
+<p>
+Imagine that my sincere election utilities are
+<center>
+U<sub>A</sub>=10, &nbsp;&nbsp;
+U<sub>B</sub>=2, &nbsp;&nbsp;
+U<sub>C</sub>=1, &nbsp;&nbsp;
+U<sub>D</sub>=0.
+</center>
+<br>
+Suppose I believe that, if I alter my 
+vote to "bury the rivals B and C" (as opposed to voting A&gt;B&gt;C&gt;D honestly),
+that can either
+</p>
+<dl>
+<dt><b>X.</b></dt><dd>
+Have no winner-altering effect.   (The most likely possibility, by far.)
+</dd>
+<dt><b>Y.</b></dt><dd>
+If I choose to "bury the rivals" that unfortunately might
+cause D to win, whereas someone else 
+(whose expected utility is [10+2+1]/3 = 13/3 = 4.3
+assuming equal chances for each of {A,B,C}) 
+would have otherwise won.
+My utility loss in this case is <b>&ndash;4.3</b>.
+</dd>
+<dt><b>Z.</b></dt><dd>
+If I choose to "bury the rivals" that might work and 
+cause A to win, whereas someone else (whose expected utility is [2+1+0]/3 = 1
+if all three among {B,C,D} are equally likely; but no matter what the likelihoods
+the expected utility is at most 2)
+would have otherwise won. 
+My utility gain in this case is somewhere between <b>+8</b> and <b>+10</b>.
+</dd>
+</dl>
+<p>
+The expected alteration in value for me
+<i>if I choose to  bury</i>
+is 
+&nbsp; &ge;8&times;P(Z) - 4.3&times;P(Y). &nbsp;
+If this is <i>positive</i>, then it is strategically wise for me to bury.
+If P(Z) and P(Y) are approximately equal &ndash; or if I consider Z to be more likely 
+than Y (or even if I consider Y more likely by a factor of 186%) &ndash;
+then the correct strategy for me is
+to bury the rivals.
+</p>
+<p>
+Most people who object to  DH3 as a criticism of Condorcet voting methods, 
+claim event Z is
+very unlikely because it requires a lot of voters to strategize.  
+<small>
+(For example, if 1000 out of 2000 voters needed to strategize to make Z happen
+and each one did so with
+independent probability&le;33.3%, then
+the likelihood of Z would be below 10<sup>-51</sup>.)
+</small>
+Because Z is unlikely (the objectors continue) strategizing is not worth it, so we do not
+have to worry about it.
+</p><p>
+However, Y tends
+to require even <i>more</i> voters to strategize, 
+hence by their reasoning is even <i>less</i> likely.
+<small>
+(For example, if 1<b>1</b>00 out of 2000 voters need to strategize to make Y happen,
+and each one does so with
+independent probability&le;33.3%, then
+the likelihood of Y would be below 10<sup>-30</sup> times the likelihood of Z!)
+</small>
+If so, then 8&times;P(Z) - 4.3&times;P(Y)  is positive.
+Then burying will rationally happen.  Then the DH3 <a href="DH3Summ.html">pathology</a>
+will happen.  Note that this happens even if the DH3-objectors were exactly correct.
+Indeed, the more-correct they are that strategic Condorcet voting is unlikely, the
+<i>more</i> justified it becomes for any given voter to strategize.
+</p>
+
+<h2> Let's do that again but now with A,B,C nearly equal and good, D bad: </h2>
+
+<p>
+The most severe form of the DH3 pathology supposes A,B,C are nearly equal in
+utility to all voters, while D is a lot worse.   
+(What we just analysed was a less-severe form
+of the DH3 pathology, with numbers altered to make it less severe but more-clearly likely 
+to happen.)  Let's now examine this most-severe form.
+</p><P>
+Imagine that my sincere election utilities are
+<center>
+U<sub>A</sub>=10, &nbsp;&nbsp;
+U<sub>B</sub>=9, &nbsp;&nbsp;
+U<sub>C</sub>=8, &nbsp;&nbsp;
+U<sub>D</sub>=0.
+</center>
+Suppose I believe my burying-vote can either
+</p>
+<dl>
+<dt><b>X.</b></dt><dd>
+Have no winner-altering effect.   (The most likely possibility, by far.)
+</dd>
+<dt><b>Y.</b></dt><dd>
+If I choose to "bury the rivals" that unfortunately might
+cause D to win, whereas someone else 
+(whose expected utility is [10+9+8]/3 = 27/3 = 9
+assuming equal chances for each of {A,B,C}) 
+would have otherwise won.
+My utility loss in this case is <b>&ndash;9</b>.
+</dd>
+<dt><b>Z.</b></dt><dd>
+If I choose to "bury the rivals" that might work and 
+cause A to win, whereas someone else (whose expected utility is [9+8+0]/3 = 17/3 = 5.7
+if all three among {B,C,D} are equally likely; but no matter what the likelihoods
+the expected utility is at most 9)
+would have otherwise won. 
+My utility <i>gain</i> in this case is somewhere between <b>+1</b> and <b>+10</b>.
+</dd>
+</dl>
+<p>
+The expected alteration in value for me 
+<i>got by choosing to  bury</i>
+is 
+&nbsp; &ge;1&times;P(Z) - 9&times;P(Y). &nbsp;
+If this is <i>positive</i>, then it is strategically wise for me to bury.
+If Z is viewed as lots more likely than Y 
+then burial is a good idea.
+(Burying is always a good idea if Z at least 9 times more likely.  
+Burying is
+never a good idea if  P(Y)&ge;1.25&times;P(Z).   
+If 0.8&times;P(Y)&le;P(Z)&le;9&times;P(Y)
+then burying <i>might</i> be a good idea.)
+
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

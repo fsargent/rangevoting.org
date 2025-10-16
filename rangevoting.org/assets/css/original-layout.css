@@ -1,0 +1,245 @@
+/* Original RangeVoting.org Layout Styles - Extracted from inline CSS */
+
+body {
+min-width: 736px;
+background: white;
+color: #1b1b1b;
+padding: 10px;
+margin: 0px;
+}
+
+a {
+border: 1px;
+color: #00d;
+text-decoration: none}
+
+a:visited {
+color: #5f0e00;
+text-decoration: none}
+
+a:hover {
+background: #d19a3b; /*f66*/
+color: #000}
+
+div#linkbarcontainer1 {
+float: right;
+z-index: 97;
+clear: left;
+width: 100%;
+background:#fefefe;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px}
+
+div#linkbarcontainer2 {
+float: right;
+padding-left: 10px; /*make smaller or larger? activates 2 safari bugs*/
+z-index: 97;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px}
+
+div#lmenucontainer {
+float:left; 
+width: 165px;
+margin-top: 0px;
+}
+
+div#headline {
+margin-left: 40px;
+margin-right: 35px;
+margin-bottom: 67px;
+margin-top: 0px;
+clear: both;
+padding-left: 0px;
+text-align: center}
+
+div#search {
+margin-top: 10px;
+margin-right: 1px;
+margin-left: 5px;
+margin-bottom: 2px;
+border: 1px black solid;
+float: right;
+width: 290px; /*adjusted to the pixel to prevent a safari bug*/
+z-index: 0;
+background-color: #FD0;
+padding: 2px;
+text-align: left }
+
+div#main {
+/*width: 100%;*/
+margin-top: 0.7em; /*28px;*/
+margin-left: 159px;
+font-family: arial,sans-serif,arial narrow;}
+
+/*<span>THIS HERE</span> elements inside hyperlinks in main normally are invisible:*/
+div#main a span {display:none;} 
+
+/*but appear on hover:*/
+div#main a:hover span {display:block;
+position:relative; 
+margin-top:-21px; 
+background:#d5d5ff;
+z-index:100}
+
+div#footer {
+margin-top: 132px;
+margin-left: 140px;
+margin-right: 140px;
+font-size: 8px;
+font-weight: bold;
+text-align: center }
+
+/*CSSplay horizontal flyout menu.  
+We are mostly only going to use 1 menu level, not multiple.  But do use multiple some places.
+[DL-based menus are easier to style and do, but do not lend themselves to multiple levels, so no.]
+Fails in IE5mac, Works in Safari1.3.2, IE5.5, IE6, IE7, Firefox3.5, Opera8.54, Konqueror, SeaMonkey2, MSIE7, MSIE5.5/windows, Mozilla and Netscape:*/
+/* style the outer div to give it width: */
+.Hmenu {
+width:560; /*140*4, need more if more than 4 items in row*/
+height:30px;
+float: right;
+text-align: center;
+}
+/* remove all bullets, borders and padding from default list styling: */
+.Hmenu ul {
+padding:0;
+margin:0;
+list-style-type:none;
+}
+.Hmenu ul ul {
+width:140px;
+}
+/* float list to make it horizontal and relative position so can control dropdown menu position: */
+.Hmenu li {
+float:left;
+width:140px;
+position:relative;
+}
+/* style the links for top level: */
+.Hmenu a, .Hmenu a:visited {
+display:block;
+font-size:13px;
+text-decoration:none; 
+color:#000; /*text color black=000*/
+width:129px; /*150-11*/
+height:30px; 
+border:1px solid #fff; 
+border-width:1px 1px 0 0; 
+background:#88b0d7; /*this is brighter blue; drab olive= d4d8bd*/
+padding-left:10px; 
+line-height:29px;
+}
+/* a hack so that IE5.5 faulty box model is corrected: */
+* html .Hmenu a, * html .Hmenu a:visited {
+width:140px;
+}
+/* style the second level background: */
+.Hmenu ul ul a.drop, .Hmenu ul ul a.drop:visited {background:#949e7c;}
+/* style the second level hover: */
+.Hmenu ul ul a.drop:hover {background:#d19a3b;}
+.Hmenu ul ul :hover > a.drop {background:#d19a3b;}
+/* style the third level background */
+.Hmenu ul ul ul a, .Hmenu ul ul ul a:visited {background:#88b0d7;}
+/* style the third level hover */
+.Hmenu ul ul ul a:hover{background:#d19a3b;}
+.Hmenu ul ul ul :hover > a {background:#d19a3b;}
+/* style the table so that it takes no part in the layout - required for IE to work: */
+.Hmenu table {border-collapse:collapse; border:0; position:absolute; left:0; top:-1px;}
+/*in above line, use top for dropdown, bottom for flyup.*/
+/* hide the sub levels and give them absolute position so they take up no room: */
+.Hmenu ul ul {
+visibility:hidden;
+position:absolute;
+top:31px; /*change to bottom for flyup, top for dropdown*/
+left:0; 
+width:140px;
+}
+* html .Hmenu ul ul {bottom:30px;}
+/* position third level flyout Hmenu: */
+.Hmenu ul ul ul{
+left:140px; 
+top:0; /*change to bottom for flyup, top for dropdown*/
+width:140px;
+}
+/* position third level flyout Hmenu for left flyout: */
+.Hmenu ul ul ul.left {left:-140px;}
+/* style second level links: */
+.Hmenu ul ul a, .Hmenu ul ul a:visited {
+background:#88b0d7; /*drab olive*/
+color:#000; /*text color black=000*/
+height:auto; 
+line-height:1em; 
+padding:5px 10px; 
+width:119px
+/* yet another hack for IE5.5: */
+}
+* html .Hmenu ul ul a{width:140px;}
+/* style the top level hover: */
+.Hmenu a:hover, .Hmenu ul ul a:hover{
+color:#000;
+background:#d19a3b;
+}
+.Hmenu :hover > a, .Hmenu ul ul :hover > a {
+color:#000;
+background:#d19a3b;
+}
+/* make the second level visible when hover on first level list OR link: */
+.Hmenu ul :hover ul{
+visibility:visible;
+height:auto;
+}
+/* keep the third level hidden when hover on first level list OR link: */
+.Hmenu ul :hover ul ul{display:none;}
+/* keep the fourth level hidden when hover on second level list OR link: */
+.Hmenu ul :hover ul :hover ul ul{display:none;}
+/* make the third level visible when hover over second level list OR link: */
+.Hmenu ul :hover ul :hover ul{ 
+display:block;
+bottom:0;
+}
+/* make the fourth level visible when hover over third level list OR link */
+.Hmenu ul :hover ul :hover ul :hover ul { 
+display:block;
+bottom:0;
+}
+
+/*CSSplay vertical flyout menu.  Useful to know: &laquo; is << &raquo; is >>
+Fails in IE5mac.
+Works in Safari1.3.2, IE5.5, IE6, IE7, Firefox, Opera, Mozilla and Netscape:*/
+/* This copyright notice must be untouched at all times.
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/flyout_4level.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any
+way to fit your requirements. */
+.Vmenu { margin: 10px; height: 100px; font-size:9pt; font-family: "arial narrow", 
+"Helvetica Compressed",
+"Helvetica Narrow",
+"DejaVu Sans Condensed", 
+"Droid", "Playbill", "CampanileFLF";}
+.Vmenu ul { margin: 0pt; padding: 0pt; position: relative; z-index: 500; list-style-type: none; width: 9em; }
+.Vmenu li { background-color: #6699ff; float: left; }
+.Vmenu li.sub { background-color: #6699ff; }
+.Vmenu table { position: absolute; border-collapse: collapse; top: 0pt; left: 0pt; z-index: 100; font-size: 1em; margin-top: -1px; }
+.Vmenu a.last, .Vmenu a:visited.last {border-width:1px;}
+.Vmenu a, .Vmenu a:visited { border: 1px solid #ffffff; border-width:1px 1px 0 1px; display: block; text-decoration: none; height: 2em; line-height: 2em; width: 9em; color: #000000; padding-left: 0.5em; font-weight: normal; font-style: normal; font-variant: normal; text-transform: none; }
+.Vmenu b { float: right; margin-right: 5px; }
+* html .Vmenu a, * html .Vmenu a:visited { width: 9em; line-height: 2em; }
+* html .Vmenu a:hover { border-color: #ffffff; color: #000000; background-color: #ff6600; position: relative; font-weight: normal; font-style: normal; font-variant: normal; text-decoration: none; text-transform: none; }
+.Vmenu li:hover { position: relative; }
+.Vmenu a:active, .Vmenu a:focus { border-color: #ffffff; color: #000000; background-color: #ff6600; font-weight: normal; font-style: normal; font-variant: normal; text-decoration: none; text-transform: none; }
+.Vmenu li:hover > a { border-color: #ffffff; color: #000000; background-color: #ff6600; font-weight: normal; font-style: normal; font-variant: normal; text-decoration: none; text-transform: none; }
+.Vmenu li ul { padding: 2em; visibility: hidden; position: absolute; top: -2.5em; left: 5em; background-color: transparent; }
+.Vmenu li:hover > ul { visibility: visible; }
+.Vmenu ul a:hover ul ul { visibility: hidden; }
+.Vmenu ul a:hover ul a:hover ul ul { visibility: hidden; }
+.Vmenu ul a:hover ul a:hover ul a:hover ul ul { visibility: hidden; }
+.Vmenu ul a:hover ul { visibility: visible; }
+.Vmenu ul a:hover ul a:hover ul { visibility: visible; }
+.Vmenu ul a:hover ul a:hover ul a:hover ul { visibility: visible; }
+.Vmenu ul a:hover ul a:hover ul a:hover ul a:hover ul { visibility: visible; }
+

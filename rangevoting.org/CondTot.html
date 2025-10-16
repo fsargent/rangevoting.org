@@ -1,0 +1,80 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Can Condorcet voting be handled by totalizing machines?
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Can Condorcet voting be handled by totalizing machines? </H2>
+
+<p>
+<b>Q.</b> I'm not convinced that totalizing machines can't be used for a
+Condorcet method, through a device similar to the one used to implement
+range on noncomputerized totalizing machines.
+You simply implement all the pairwise elections...
+</p>
+
+<p>
+<b>A.</b> Yes, <i>except</i> for two problems.
+</p>
+
+<p>
+First, 30-candidate elections would
+not be doable.
+Because, a voter would have to specify his opinion on all 30&times;29/2=435 candidate
+pairs. That is too much to ask. 30 inputs is reasonable to ask,
+especially if a lot are allowed to be left blank or filled with
+some common value, as in range voting.
+But 435 is too much.
+</p>
+
+<p>
+(The Congo held a presidential election in July-August 2006 with 33 candidates.)
+</p>
+
+<p>
+Second,  the machine would have to
+reject "invalid" votes in which the input corresponded to a cyclic directed graph,
+i.e. was crazy and clearly not intended by the voter since logically meaningless.
+Totalizing machines cannot do that detection and rejection.
+</p>
+
+<p>
+(Third, I don't think most human voters would like providing this kind of input anyhow
+&ndash; they'd find it confusing and annoying. )
+<!--
+ You could ask for a <i>rank ordering</i>
+of the candidates as input, but dumb-totalizing voting machines designed for plurality voting
+cannot neither accept, nor check the validity of, such input.) -->
+</p>
+
+<p>
+For IRV voting, it is even worse since IRV is 
+<a href="IrvNonAdd.html">not additive</a>
+at all, even in terms of pairwise
+results, and also since IRV votes are rank orderings and detecting whether a vote <i>is</i>
+a rank ordering, and rejecting it as "invalid" otherwise, is beyond noncomputerized 
+totalizing machines.
+</p>
+
+<p>
+So: no.  Borda, Condorcet and IRV voting (the latter for even more reasons)  can<i>not</i> 
+be done on
+these machines, but range (including <i>both</i> averaging- and totalling-based range
+voting) <a href="kokidea.txt">can</a> be done.
+</p>
+
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

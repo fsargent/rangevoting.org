@@ -1,0 +1,313 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Pro-Extremist versus Pro-Centrist bias
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Pro-Extremist versus Pro-Centrist bias in Voting Methods </H2>
+<p><small>By Warren D. Smith</small></p>
+<p>
+This page will try to present a concise explanation,
+including "pretty pictures" (Yee diagrams) of why we claim:
+</p>
+<ul><li>
+Instant Runoff (IRV), plain Plurality (and presumably also plurality plus separate top-two runoff)
+are <i>biased</i> voting systems in the sense that, with honest voters,
+these systems tend to favor <i>extremist</i> candidates.
+</li><li>
+Approval voting can be biased in the opposite direction &ndash; tending to 
+favor <i>centrist</i> candidates.  This depends on how the voters behave.
+Honest approval voters can "place their approval threshold" at different "quality levels."
+For example, if there are 7 candidates named A,B,C,D,E,F,G and some voter
+honestly regards A as the best and G as the worst in the order
+A&gt;B&gt;C&gt;D&gt;E&gt;F&gt;G, then
+it would be "honest" for the voter to approve A and B,
+which would happen if voter placed her "threshold" between B and C.
+It also would be honest to approve A,B,C and D,
+which would happen if voter placed her "threshold" between D and E.
+Any prefix in the ordering is honest, but, for example, approving E but <i>not</i> A would be
+a "dishonest" approval vote.  
+Assuming all voters are honest, then with some strategies for choosing their approval threshold,
+approval voting exhibits no centrist/extremist bias.  But with other threshold-choosing
+strategies,
+it exhibits pro-centrist bias.
+</li><li>
+Condorcet and Score voting both have little or no bias favoring either centrists or
+extremists.
+</li></ul>
+<h3> Yee diagrams </h3>
+<p>
+Ka-Ping Yee in 2006 introduced a wonderful
+way to examine single-winner election methods
+via computer graphics.  
+Versions 2.0 and above of my program <a href="IEVS/IEVS.c">IEVS</a>
+(<i>I</i>nfinitely <i>E</i>xtendible <i>V</i>oting <i>S</i>imulator;
+see <a href="IEVS/IEVSinputs.txt">example input</a>)
+support generation of Yee-type pictures and the pictures in this directory were produced
+by using IEVS.
+</p><p>
+To explain how Yee pictures work: imagine the N "candidates" are N fixed
+points in the Euclidean plane.
+The voters also are points in that plane, but imagine they are random points
+sampled from a 2-dimensional 
+<a href="gauss2.gif">Gaussian</a> distribution with prescribed variance and 
+prescribed centerpoint (peak location) <i>(x,y)</i>.
+Imagine these voters conduct an election to choose a winner.
+Voters prefer candidates that are nearer to them ("utility is a decreasing function 
+of voter-candidate distance").
+We then <i>color</i> the pixel at <i>(x,y)</i> with the color of the <i>winner</i>
+(selected from a fixed N-color palette).  Do this for every 
+<i>(x,y)</i> and the result is a multicolored picture.
+You get different pictures depending on the candidate-coordinates, the
+voting method used, and the variance of the Gaussian.
+</p>
+
+<H3> Some simple symmetrical point sets (to introduce reader to concept) </H3>
+<H3> First example: 3 candidates at the vertices of an equilateral triangle </H3>
+
+<p>
+All election methods ever seriously proposed  return the same Yee-picture (at left;
+the candidate-locations are indicated by the little colored circles)
+</p>
+<img src="IEVS/vorEqTri.bmp" alt="vorEqTri.bmp">
+<img src="IEVS/worstEqTri.bmp" alt="worstEqTri.bmp">
+<p>
+All those methods perform "optimally," i.e. elect the best winner for society always
+in this scenario.  If they instead were to elect the <b>worst</b> winner,
+we'd instead get the picture at right.
+</p>
+
+<H3> Second example: 4 candidates at the vertices of a square (the corners of the image) </H3>
+
+<p>
+<i>Almost</i> all election methods ever seriously proposed  return the same Yee-picture
+(at left):
+</p>
+<img src="IEVS/vorSquare.bmp" alt="vorSquare.bmp">
+<img src="IEVS/irvSquare.bmp" alt="irvSquare.bmp">
+<img src="IEVS/irvPent5.bmp" alt="irvPent5.bmp">
+<p>
+which again represents optimal performance.
+But not all: the <b>IRV</b> (instant runoff) method returns a rather different (and crazy)
+picture (using for the voter-Gaussian's &sigma;=196 in each axis direction; the picture
+is 200x200), at middle.
+If we go to pentagonal rather than square symmetry (rightmost picture), 
+then <b>IRV</b> behaves better  &ndash; it always elects the optimal winner in
+the large #voters limit &ndash; but in some ways it behaves even more peculiarly:
+here there is a <i>pentagonal ring</i> of "tough to call" elections in which IRV
+(due to voter randomness) occasionally returns a suboptimal winner.  The <i>truly</i>
+tough-call elections are near the center of the pentagon,
+but that is not the way IRV perceives it.
+</p>
+
+<H3> Our workhorse: A set of 14 random points </H3>
+
+<p>
+The points are:
+(120,126), (64,158), (102,114), (35,164), (66,161), (146,164), (153,59), (115,101), 
+(136,112), (95,59), (117,37), (164,80), (31,153), (170,82).
+The picture window is [0,199]&times;[0,199] with the origin in the lower left corner.
+In all the pictures in this section the utility function is
+1/&radic;(12000+Distance&sup2;) and the Gaussian has &sigma;=70 in each axis direction.
+</p>
+<p>
+<h3>Unbiased voting methods</h3>
+<p>
+In the limit of a large number of voters, all of the following voting methods,
+<ol>
+<li>
+The hypothetical <b>optimum</b> method (best societal utility winner), 
+</li><li>
+all "<b>Condorcet</b> methods" with honest voters
+<blockquote>
+The theorem that with honest voters distributed centrosymmetrically about
+any given pixel, and utility a decreasing function of voter-candidate distance,
+a Condorcet winner always exists and is the closest candidate to that pixel,
+apparently was first proved by
+[Otto A. Davis, Morris H. DeGroot, Melvin J. Hinich:
+Social Preference Orderings and Majority Rule,
+Econometrica 40,1 (Jan 1972) 147-157,
+see thms 1 and 4 and corollary 2].
+It also was mentioned by
+[Richard D. McKelvey:
+Intransitivities in multidimensional voting methods and
+some implications for agenda control,
+J.Economic Theory 12 (1976) 472-482.]
+</blockquote>
+</li><li>
+<b>Approval</b> voting with "oblivious random threshold" (that is, each voter approves
+candidates closer to them than R, where each voter independently chooses R
+at random according
+to some fixed everywhere-positive probability density on the positive reals),
+</li><li>
+<b>Approval</b> voting with the following kind of voter behavior:
+(a) hold approval election, (b) hold another this time with voters approving
+candidates above a utility threshold, disapproving those below, and toss a fair coin to
+decide whether to approve anybody whose utility is
+exactly equal to the threshhold &ndash; where each voter uses the utility of
+the previous round's winner as her threshold, (c) keep re-doing approval elections
+as in (b) until a steady state (same winner every time) is reached (which we can prove
+will happen with probability&rarr;1)
+</li></ol>
+<p>
+by <i>theorem</i>, will produce a Yee diagram exactly the same as the 
+<a href="http://en.wikipedia.org/wiki/Voronoi_diagram"><i>Voronoi</i> diagram</a>
+of the points (candidates).  That is: the region of the image-plane closest to candidate X, will
+be the win-region for candidate X (hence colored X's color).  I.e. whenever the center of
+the voter distribution lies closer to X than to any other candidate, then X will win.
+</p>
+<img src="IEVS/vor14.bmp" alt="vor14.bmp" align="left">
+<blockquote>
+<b>Example Voronoi diagram:</b>
+With candidates located at these 13 random points
+(69,173), (152,133), (162,46), (27,164), (82,156), (170,30), (116,129), 
+(49,85), (114,101), (72,41), (134,118), (106,111), (81,83), 
+[and the utility function is
+1/&radic;(12000+Distance&sup2;) and the Gaussian has &sigma;=70 in each direction]
+the Voronoi diagram is  shown at left.
+</blockquote>
+<p>
+It is a theorem that Voronoi regions always are convex polygons (in 3D, convex polyhedra)
+containing the candidate of their color.
+</p>
+<br><br><br><br>
+<h3> Score voting &ndash; not very biased in either direction </h3>
+
+<img src="IEVS/range14.bmp" alt="range14.bmp" align="left">
+<p>
+For the 13 candidates in the Voronoi diagram above, 
+<b>Score</b> voting (also called range voting)
+using "normalized" scores &ndash; i.e. each voter rescales and translates
+her candidate-utilities so
+that the worst candidate (in her view) has minimum-allowed score and the best one has
+maximum-allowed score &ndash;
+yields a picture which is a slightly distorted version of the Voronoi diagram.
+</p><p>
+Evidently score voting's pro-extremist or pro-centrist bias (if any) is small.
+If you inspect the picture very carefully, you should perceive a slight pro-centrist bias.
+</p>
+
+<br><br><br><br>
+<h3> Approval as a Pro-Centrist voting method </h3>
+
+<img src="IEVS/approval14.bmp" alt="approval14.bmp" align="left">
+
+<p>
+For the 13 candidates in the Voronoi diagram above, 
+<b>Approval</b> voting &ndash;
+assuming now that the voters use the mean candidate-utility as their
+"approval threshold" &ndash;
+does <i>not</i> yield
+the Voronoi diagram.  As you can see,
+it obliterates the win regions of many candidates &ndash; no matter where the center
+of the Gaussian voter distribution, those candidates can never win.
+It plainly seems to favor
+centrists over extremists in the sense that the candidates with nonempty win-regions 
+mostly are centrally located.  [You can tell which candidates 
+by comparing the colors of those candidates (i.e. the colors inside those little circles which 
+represent "candiates") with the colors of the win-regions.]
+With this voter-behavior, approval has a large pro-centrist bias;
+but as we saw previously, with certain other voter behaviors approval is unbiased.
+Under <a href="AppCW.html">reasonable assumptions</a> about voter behavior, approval will
+always elect <i>Condorcet winners</i>, and in that case the Voronoi diagram is generated exactly
+and approval would be completely unbiased, and in our 2D scenarios optimum.
+</p>
+<br><br>
+
+
+<h3> Extremist-favoring voting methods </h3>
+<p>
+Meanwhile, <b>IRV</b> (honest voters, lefthand picture below)
+exhibits crazy behavior in which about half the candidates can <i>never win</i>,
+many others do not lie within their own win-regions, the win regions can exhibit crazy shapes
+(including severely-nonconvex, disconnected, and non-simply connected...), and
+there are a lot of "close call" (random dot) regions representing 
+election "near-tie nightmares."  
+Incidentally, IRV supporters have told me they believed it was <i>rare</i> for
+IRV to fail to elect a Condorcet winner (when one existed).  They're wrong: <i>every pixel</i>
+in this picture where the IRV picture differs in color from the Voronoi pixel,
+is a counterexample.
+Observe that IRV gives "outsiders" or "extremists"
+a large advantage over "centrists" &ndash; it is almost impossible 
+for a centrist candidate to win with IRV in this picture, since all the centrist candidates have
+no win-region (except perhaps the red candidate and then only by benefitting from
+"random dottiness").
+Basically only 8  out of the 14 candidates can win (have non-empty win-region in Yee diagram)
+and all 8 are "extremists" i.e. non-centrally located.  The centrists all get "zeroed out"
+and IRV never permits them to win.
+This usually happens with nearly any set of 14 random points in the square; 
+it is not a special characteristic
+just for our  particular choice of 14 points.
+</p><p>
+<a href="IrvExtreme.html">A more detailed pictorial examination of IRV</a>.
+</p><p><small>
+[Note: if we tell our computer program 
+IEVS to use more voters,
+then the "randomness" in the pictures diminishes, but it costs a lot
+more computer time.  In all these pictures, each pixel has <tt>TopYeeVoters=256</tt>
+which, roughly, means that each pixel is based on votes from &asymp;2500 voters. I actually
+prefer to use this parameter setting as opposed to trying much harder to take 
+the number of voters to &infin;, because that way we can see the presence of
+"near-tie election nightmares" corresponding to "random dottiness" easily in the picture.]:
+</small></p>
+<img src="IEVS/irv666.bmp" alt="irv666.bmp">
+<img src="IEVS/plurality666.bmp" alt="plurality.bmp">
+<p>
+At right above is plain <b>plurality</b> voting, which is the least expressive 
+common voting method
+(voters can only indicate their top choice).
+Observe that it obliterates all
+the centrist candidates down to zero-win-regions (and the light-blue candidate is
+not in its own win-region).    Only 7 of the 14 candidates can win and 
+every one is an "extremist."
+</p>
+
+<h3> A few voting methods with low Bayesian Regret </h3>
+<p>
+Below are the four voting methods that (with range voting) were the best according
+to IEVS's <a href="BayRegDum.html">Bayesian regret</a>
+measurements. From left to right, 
+<b>Range+top2-runoff</b>, 
+<b>Approval(mean-based threshold)+top2-runoff</b>, 
+<b>Brian Olson's IRNR system</b>,
+and <b>Chris Benham's MCA system.</b>
+(Some of these don't look too good, so how can these methods be the "best"? Well,
+IEVS also takes account of a vast number of non-geometric scenarios.  Just because methods
+do not perform terribly well in these Yee-type 2D geometric scenarios, does not
+necessarily prevent good performance in others.)
+Notice how the top-2-runoff between the top two range voting finishers tends
+to help correct for distortions caused by "normalization" effects in plain range voting.
+(It also tends to fix problems caused by "strategic voting," since even strategic voters
+will vote honestly in the runoff round, but
+that is not an issue here since these
+pictures involve honest voters.)  Thus the range+top2runoff picture (left below) does 
+look quite good, i.e. greatly resembles the optimum-winner (Voronoi diagram) picture.
+IRNR looks worse (e.g. several winners not in their own win-regions, some weird shapes)  
+but still not too bad,
+albeit MCA and Approval+top2-runoff look pretty bad.
+</p>
+<img src="IEVS/range2runoff666.bmp" alt="range2runoff666.bmp">
+<img src="IEVS/app2runoff666.bmp" alt="app2runoff666.bmp">
+<img src="IEVS/irnr666.bmp" alt="irnr666.bmp">
+<img src="IEVS/mca666.bmp" alt="mca666.bmp">
+<br><br>
+<p><a href="IEVS/Pictures.html">Lots more Yee diagrams for more voting methods</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+
+
+

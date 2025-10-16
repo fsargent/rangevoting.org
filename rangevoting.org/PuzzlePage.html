@@ -1,0 +1,3924 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Puzzles
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<FORM METHOD="POST" ACTION="https://rangevoting.org/cgi-bin/DoPassword.cgi">
+
+<H1> Puzzles about or related to Voting &amp; Democracy </H1>
+
+<p><small>
+Please only ask for at most <i>one</i>
+solution at a time, i.e. all passwords except one should be left
+blank! (Hit the "reset" button to make all blank.)
+Puzzles range from "easy" to "so hard nobody can currently solve them" (i.e. "open");
+we've taken pity on you by giving a very-subjective
+"difficulty level" from <font color="red">[0]</font> to <font color="red">[9]</font>.
+If you can solve one of the 
+<b>open <font color="red">[9]</font></b> problems please let warren.wds at gmail.com know!
+[You can also contribute new puzzles to him...]
+</p>
+<p>
+For <b>terminology</b>, it may help to consult our <a href="Glossary.html">glossary</a>.
+"Range Voting" will generally mean "continuum range voting" and <i>not</i>
+range voting with scores restricted to the discrete set {0,1,...,99} for 
+mathematical analysis purposes.
+<br>
+(Return to <a href="RangeVoting.html">main page</a>.
+See puzzle <a href="PuzzIndex.html">index</a>.
+Puzzle answers only available to those who know the password, i.e, CRV members!
+<a href="voldir/Volunteer.html">Join CRV</a>)
+</p>
+<p>
+<small>
+Feb 2007: All three original wide-open math problems have now been (pretty much) knocked off by
+the combined efforts of W.D.Smith &amp; Forest W. Simmons!  They're being demoted
+to <font color="red">&le;[8]</font> and we added some new 
+<font color="red">[9]</font>s!
+</small>
+</p>
+</small>
+</p>
+
+<hr>
+
+<a name="p0"></a>
+<p><b>Puzzle #0 (Voting power &ndash; ultra-easy speed problem):</b><br><small><font color="red">[0]</font></small>
+Three stockholders own 47%, 34%, and 19% of the stock in some corporation, respectively.
+What are their relative powers in a 2-way vote?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw0" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p1"></a>
+<p><b>Puzzle #1: The minimum it takes to elect US president:</b><br><small><font color="red">[1]</font></small>
+What is the smallest percentage of votes needed to elect a US president?
+(Assume 2004's population distribution, and a 2-candidate race;
+disallow "faithless electors," and assume no need to send
+any election to coin-tossing, congress, or the courts for resolution.
+Assume state turnouts proportional to populations &ndash; or don't [which leads to 
+a different answer].)
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw1" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p2"></a>
+<p><b>Puzzle #2: Small elections in which many voting systems all disagree:</b><br><small><font color="red">[5]</font></small>
+Find an example election in which
+<a href="AppExec.html">Approval Voting</a>,
+<a href="rangeVborda.html">Borda Voting</a>,
+<a href="Plurality.html">Plurality</a> Voting,
+Plurality Voting with Top-Two Runoff,
+<a href="rangeVirv.html">Instant Runoff Voting (IRV)</a>,
+and 
+<a href="rangeVcond.html">
+Condorcet methods</a>,
+all return different unique-winners.
+Election examples with fewer voters and fewer voter-types are preferred 
+as "more elegant."
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw2" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p3"></a>
+<p><b>Puzzle #3 (interesting &ndash; easy once you see it, otherwise hard!):</b><br><small><font color="red">[4]</font></small>
+Three people enter a room and a red or blue mark is made on each person's forehead. 
+The color of each mark is determined by a coin toss, with the outcome of one coin 
+toss having no effect on the others. Each person can see the others' marks but not his own.
+<br>
+<i>No communication of any sort is allowed</i>, 
+except for an initial strategy session before the game begins. 
+Once they have had a chance to look at the other marks,
+they must (simultaneously) guess the color of their own marks, or pass. 
+The group shares a hypothetical $3 million prize if at least one player guesses 
+correctly and none guess incorrectly.
+<br>
+The problem is to find a 
+strategy for the group maximizing its chances of winning the prize.
+<br>
+For example, one obvious strategy for the players would be for one player always to guess 
+"red" while the others pass. That would give the group a 50% chance of winning 
+the prize.  Can the group do better?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw3" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p4"></a>
+<p><b>Puzzle #4: Non-monotonicity probabilities in IRV voting:</b><br><small><font color="red">[6]</font></small>
+Consider 17 voters electing one winner from 3 candidates using 
+<a href="rangeVirv.html">IRV (Instant Runoff)</a> voting.  
+(Each vote is a preference ordering among the three candidates; 
+the candidate with the fewest top-rank votes is eliminated repeatedly until only 
+one &ndash; the winner &ndash; remains.)
+Among all the possible elections of this sort: what fraction have the 
+unhappy "non-monotonic" property
+that the winner would have lost to some loser L,
+if only some subset of identically-voting voters had 
+changed their top-rankings <i>away</i>
+from L?  (Disallow elections involving ties.)
+</p>
+
+<p><b>Extra credit:</b>
+What if, instead of 17 voters, we allow the number of voters to tend to infinity?
+</p>
+
+<p><strike><b>Open:</b></strike> Solved! <small><font color="red">[8]</font></small>
+What if we then also allow the number of <i>candidates</i> to tend to infinity?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw4" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p5"></a>
+<p><b>Puzzle #5 (<strike>open</strike> now solved! &ndash; voting systems obeying both ICC and AFB):</b><br><small><font color="red">[7]</font></small>
+Two desirable properties of a voting system &ndash; both of which Range Voting has &ndash;
+are "immunity to candidate-cloning" (ICC) and "avoiding favorite betrayal" (AFB).
+<br>
+AFB: voters should never have strategic incentive to "betray" their favorite 
+candidate by voting him below some other.
+<br>
+ICC: political parties should be unable to usefully manipulate an election
+by running clones of their own, or of an opposed, candidate; voters here are assumed
+to vote honestly and to have only tiny preferences (which they may express in their
+votes, if they exist) among the clones.
+<br>
+In contrast: the USA's present "plurality" voting system fails both tests:
+It was strategically unwise in Florida in 2000 to vote for Nader even if he was your favorite;
+and by sponsoring extra "clones" of your top opponent, that can cause their vote
+to be split and hence cause both clones to lose, and you to win.
+<br>
+<b>Question:</b>
+Is range voting (and obvious variants of it) the <i>only</i> nontrivial single-winner
+voting system to satisfy both properties?
+(A "voting system" inputs a set of votes and [deterministically] outputs the name of a winner.
+The votes are numerical scores for some-or-all candidates, or rank-orderings of
+some-or-all candidates, optionally with ranking-equalities permitted.)
+<br>
+Note: Many voting systems are known (beyond just variants of range voting) which
+<a href="FBCsurvey.html">satisfy AFB</a>, and many also are known 
+(such as 
+<a href="SchulzeExplan.html">Schulze<a/>
+<a href="SchulzeComplic.html">beatpaths</a>,
+<a href="rangeVirv.html">IRV</a>,
+[but not <a href="BtrIrv.html">BTR-IRV</a>!],
+Woodall-DAC, and Heitzig River)
+that satisfy ICC.
+But I do not know of any systems besides range voting variants
+which satisfy both simultaneously.  
+<br>
+<b>Partial credit:</b> Must any such system employ continuum votes?
+What if the problem is restricted to systems based on pure-rank-order ballots
+(with candidate-equalities forbidden)?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw5" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p6"></a>
+<p><b>Puzzle #6: Dice:</b><br><small><font color="red">[2]</font></small>
+Suppose there are 4 dice: Blue, Green, Red, and White.
+These dice have different numbers than usual printed on their six faces.
+After observing a long sequence of experiments rolling pairs of these dice,
+you conclude that
+<ul>
+<li>
+When both are rolled simultaneously, the blue die gives a higher number than the green die
+2/3 of the time.
+</li>
+<li>
+When both are rolled simultaneously, the green die gives a higher number than the red die
+2/3 of the time.
+</li>
+<li>
+When both are rolled simultaneously, the red die gives a higher number than the white die
+2/3 of the time.
+</li>
+</ul>
+You are now asked to consider rolling the blue and white dice simultaneously.
+What can you conclude about the probability P that the blue die will
+produce a higher value than the white one?  (Is P>50%?)
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw6" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p7"></a>
+<p><b>Puzzle #7: Probabilities of "Condorcet cycles."</b><br>
+<small><font color="red">[6]</font></small>
+Assume there are V voters, V large, each of whom cast any of
+the 6 possible votes A>B>C, B>A>C, A>C>B, B>C>A, C>A>B, C>B>A
+randomly, independently, and with equal likelihood for all 6 votes,
+in a 3-candidate Condorcet election.  In other words, all 6<sup>V</sup>
+elections are equally likely.
+</p>
+<p>
+Then: what is the probability of an A>B>C>A clockwise "Condorcet preference cycle"?
+</p>
+<p>
+<b>Extra credit:</b> what about if we now permit candidate-equalities in votes
+so that <i>twelve</i> votes
+<center>
+    C>A>B, C>B>A, B>A>C, B>C>A,  A>B>C, A>C>B,
+<br>
+    C>A=B, C=B>A, B=A>C, B>C=A, A>B=C, A=C>B
+</center>
+become possible.  If all 12<sup>V</sup> elections are now considered
+equally likely, then
+what is the probability of an A>B>C>A clockwise "Condorcet cycle"?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw7" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p8"></a>
+<p><b>
+Puzzle #8: Probabilities of Favorite-Betrayal Lesser-Evil scenarios with
+Condorcet voting in 3-candidate elections with equal rankings permitted:
+</b><br><small><font color="red">[6]</font></small>
+Again suppose there are V voters and all 12<sup>V</sup> elections
+are equally likely.
+We shall only be interested in the V&rarr;&infin; limit.
+Suppose the election proceeds as follows.
+If a candidate exists who pairwise-beats (or at least ties)
+every other, then he is the winner.  (And we disallow elections with more than one winner.)
+Otherwise, the candidate X,  suffering at most one
+pairwise defeat and with that defeat being the "weakest,"
+wins.
+</p>
+<p>
+There are two possible ways to define that Y>X is the "weakest defeat":
+<ol type="a">
+<li>
+"Margins":
+the difference between the number of Y>X voters and X>Y voters is minimal.
+</li>
+<li>
+"Winning votes":
+There are the fewest voters ranking Y>X in the defeat of X by Y
+(we <i>ignore</i> the number of X>Y and X=Y voters, so long as this <i>is</i>
+a defeat, i.e. the number of Y>X voters exceed the number of X>Y voters).
+</li>
+</ol>
+</p>
+<p>
+In either system: <i>what is the probability</i> that this election will include a
+"Favorite-Betrayal Lesser-Evil (FBLE) scenario" in which, say, A wins,
+but some "C-top and B>A" voters by dishonestly rating their favorite C <i>below</i> top,
+can cause the "lesser evil" B to win instead of A (a result they prefer)?
+Note: It only counts as FBLE if those voters can <i>only</i> achieve their
+B-wins goal by demoting C <i>below</i> top.
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw8" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p9"></a>
+<p><b>
+Puzzle #9 (<strike>open</strike> now solved! &ndash; voting systems in which semi-honest voting is strategic):
+</b><br><small><font color="red">[7]</font></small>
+Let a "voting system" mean a map from a set of votes (each a rank-ordering of the candidates
+with equality-rankings permitted, or an assignment of a real number score in [0,1] to
+each candidate) to the identity of a single "winner" candidate.
+</p>
+<p>
+Call a voter's vote X "semi-honest" if it, while perhaps differing from his honest opinion,
+has the same rank-ordering
+as a <i>limit</i> of a sequence of score-assignments that agree in their ordering
+with the honest one.
+For example, if the voter honestly feels <i>A>B=C>D>E</i>, then a vote A=B=C>D=E
+would be semi-honest, a vote A>B=C>D>E would be honest and hence automatically semi-honest, 
+but both B>A and B>C would be dishonest statements that are not even semi-honest.
+</p>
+<p><b>Question:</b>
+Does there exist a nontrivial voting system for 4-candidate
+elections in which semi-honest voting is always strategically optimal?
+(Range voting has this property for elections with &le;3 candidates.)
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw9" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p10"></a>
+<p><b>
+Puzzle #10 (cake cutting):
+</b><br><small><font color="red">[6]</font></small>
+A well known way to cut a cake into two pieces that assures 
+that each person gets at least half of
+the value of the cake (where the two players may value 
+different cake-parts differently, e.g.
+one likes chocolate and another likes cherries) is the "cut and choose" protocol
+where player A cuts the cake and then player B chooses his piece.
+</p>
+<p>
+Can you devise a similar protocol for <i>three</i> cake-eating players assuring each
+will regard his/her piece as containing at least as much value as either one
+of the other pieces?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw10" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p11"></a>
+<p><b>
+Puzzle #11 (pie-style cake cutting):
+</b><br><small><font color="red">[7]</font></small>
+In the previous problem
+completely arbitrary styles of cake-cutting were permitted,
+i.e. players could receive arbitrary-shaped (and perhaps not even connected)
+pieces.  In that case no matter what the number
+N of players, there always exists a way to cut the cake into N pieces
+so that each player would regard his own piece as at least as valuable (by his own
+measure of value) as any of the others.
+</p>
+<p>
+But <i>now</i> suppose
+that the cake (regarded as a circular disk)
+must be cut into <i>wedges</i> along <i>radial line segments</i>, with each player getting
+<i>exactly one</i> wedge.
+Then:
+does a way <i>exist</i> to
+cut the cake into N pieces
+so each player regards his own piece as at least as valuable
+as any of the others?
+Solve the cases N=3 and N=500.
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw11" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p12"></a>
+<p><b>
+Puzzle #12 (cutting of 2-dimensional cakes):
+</b><br><small><font color="red">[7]</font></small>
+Given a 2-dimensional disk "cake" and N players each of whom have (perhaps) different
+everywhere-positive-and-finite value-densities on that cake.
+Is it possible to cut the cake into N disjoint
+pieces, one for each player, such that the players
+are "envy-free," i.e. regard themselves as owning an at-least-as-valuable piece
+of the cake as any rival?  We ask this question twice:
+<ol type="a">
+<li>
+Under the demand that the pieces be <i>contiguous</i>.
+</li>
+<li>
+Under the demand that the pieces be <i>convex</i>.
+</li></ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw12" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p13"></a>
+<p><b>
+Puzzle #13 (range-voting with outlier-discarding):
+</b><br><small><font color="red">[2]</font></small>
+Suppose each voter's "vote" is an integer
+numerical score from 0 to 99 for each candidate, for example a legal vote
+in a 4-candidate election might be (99, 54, 0, 99).
+Suppose the "final score" for a candidate is the average of all his scores that remain
+after you discard the top X% and the bottom X% of them. 
+<small>
+If X=50, this
+is just the <i>median score</i>, and if X=0 then this is just the usual kind
+of range voting. These are both important special cases.  But more generally
+any fixed X with 0&le;X&le;50 can be considered.
+</small>
+One of the advantages of ordinary range voting, which appears to be sacrificed in this
+more general kind of voting, is the fact that with range voting only a <i>small</i>
+amount of information may be sent by each precinct to central tabulating, <i>summarizing</i>
+all the ballots (no matter how many) in that precinct.  The entire set of
+ballots need not be sent.
+<ol type="a">
+<li>
+Show that this "appearance" is delusory &ndash; this more general kind of range voting
+<i>still</i> has the small-amount-of-info-summary-can-be-sent property allowing
+precincts to do their own "subtotals."
+</li>
+<li>
+Why is this more-general kind of range voting (with X&gt;0)
+far less democratic than ordinary range voting (with X=0)?
+</li>
+<li>
+What bad phenomenon would often happen in practice if median-range-voting
+(the X=50 special case) were adopted?  Hint: consider the 
+<a href="FrenchStudy.html">French Approval-Voting study</a>.
+</li>
+</ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw13" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p14"></a>
+<p><b>
+Puzzle #14 (mostly open &ndash; Social science/economics research. Suggested by Aaron Krowne):
+</b><br><small><font color="red">[9]</font></small>
+Compare macro-economic
+metrics, including soft ones like "economic freedom" (a number of indexes for
+this exist).   One might hypothesize that countries with "better voting
+systems" will progress "forward" in these various metrics faster than countries
+with worse voting systems.
+There may already be enough historical data in the 20-50
+most recent years past to reveal some 
+interesting economic-political correlations.
+<small>
+Colloquially, this seems to be happening.  Median incomes in the US 
+[which has one of the worst voting systems]
+continue to fall (since the 70s), the Gini index is rising, class
+mobility is falling, the prison population is rising (and accelerating),
+the black market sector is growing, and economic freedom is falling.
+Meanwhile Ireland and Switzerland [with two of the best, in my opinion,
+governmental setups] have impressive economies.  (2010: Oops! &ndash; Ireland's
+banks just blew sky high due to massive risk taking and speculation, then
+the government bailed them out sending the ountry into huge debt over 10&times;GDP,
+but Ireland was supposedly a great success when we wrote this, i.e. before that happened...)
+</small>
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw14" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p15"></a>
+<p><b>
+Puzzle #15 (<strike>open</strike> now solved! &ndash; multiwinner EP &amp; PR voting systems):
+</b><br><small><font color="red">[7]</font></small>
+The goal of a "multiwinner voting system" is to, from the "votes,"
+determine W winners from C 
+candidates where 0&lt;W&lt;C.
+The system is "proportional" (PR) <i>if</i>, 
+supposing the voters and candidates each are colored one of
+a finite number of colors (i.e. voter Joe is "green," candidate Mary is "black"), and
+supposing each voter prefers each candidate of his own color above all others
+(and says so in her vote), <i>then</i> the winning slate of candidates will
+have the same color composition as the voters (up to unavoidable integer-roundoff effects
+and limitations caused by perhaps too few candidates existing of some color).
+<small>For example, the famous Hare/Droop-STV system [single transferable vote with 
+"Droop quotas" and "reweighting"] invented by Hare and Droop in 1800s England,
+is PR.  That is, if there are 60% red, 30% black, and 10% white voters,
+then we will automatically get 6,3, and 1 red, black, and white winners respectively in
+a Hare/Droop-STV
+election with W=10 assuming enough candidates of each color are available.</small>
+The voting system is required to depend upon the votes <i>only</i>, hence
+does <i>not</i> know
+the candidate- or voter-colors.  
+"Votes" are either preference orderings or numerical scores
+(and perhaps other things would also be permissible &ndash; if you can solve this we 
+are willing to be generous with the conditions).
+The system is "efficiently parallelizable" (EP) if an election with an enormous number
+of voters can be handled by efficient combination of subresults computed
+in each election district from only the votes in that district, and these subresults
+consist of a very small amount of data compared 
+to the large number of votes that they summarize.  For EP to hold, 
+we require all this data
+to be transmitted <i>unidirectionally</i>, i.e. 
+voters&rarr;district-agency&rarr;central-agency.
+<small>For example the plurality system is EP because each district can simply compute
+its total vote counts for each candidate, then pass only these subtotals on to the
+central election agency.</small>
+</p>
+<p><b>Question:</b>
+Does there exist a nontrivial multiwinner voting system which is both
+PR and EP?
+(And if "yes," then please construct one!)
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw15" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p16"></a>
+<p><b>
+Puzzle #16 (Raising the mean of both sets by shuffling them &ndash; easy):
+</b><br><small><font color="red">[0]</font></small>
+Suppose you have two sets A and B of numbers.
+Now rearrange the numbers to get two new sets A' and B'
+(same numbers, but moved around).  
+For example we could have 
+A={1, 3} and B={2, 4} 
+which after rearrangement becomes 
+A'={1, 2} and B'={3, 4}.
+Note that in this example, the <i>mean</i> of A decreased but the mean of B increased,
+with overall mean staying the same.
+<br>
+<b>Question:</b> Is it possible to make the means of <i>both</i> sets increase?
+(And if "yes," then please construct example!)
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw16" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="puzz17"></a>
+<p><b>Puzzle #17 &ndash; Probability of "Peru scenario":</b><br><small><font color="red">[6]</font></small>
+Consider V voters electing one winner from 3 candidates using
+<a href="rangeVirv.html">IRV (Instant Runoff)</a> voting.
+(Each vote is a preference ordering among the three candidates;
+the candidate with the fewest top-rank votes is eliminated repeatedly until only
+one &ndash; the winner &ndash; remains.)
+Assume all 6<sup>V</sup>  elections are equally likely.
+</p>
+<p>
+<b>Question:</b>
+What is the probability, conditioned on there being a
+&quot;<a href="Glossary.html">Condorcet winner</a>&quot;
+W who would pairwise-beat
+every other candidate,
+that W will be <i>eliminated</i> in the first IRV round?
+(Disallow elections involving ties and concern yourself only with 
+the V&rarr;&infin; limit.)
+<small>
+We call this the "Peru scenario" since it apparently happened in the
+2006 <a href="Peru06.html">Peru national election</a>.
+</small>
+</p>
+<p>
+<b>Extra Credit:</b>
+Also evaluate the same probability in the alternative
+<a href="Glossary.html#Dirichlet">Dirichlet</a> probabilistic model.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw17" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="prob18"></a>
+<p><b>Puzzle #18 &ndash; IRV refuses to elect a candidate who beats 
+every other pairwise by 99:1 margin?</b><br><small><font color="red">[2]</font></small>
+In the <a href="rangeVirv.html">Instant Runoff (IRV)</a> voting method,
+Prove it is possible for a candidate L to win, even though a candidate W "should have"
+won in the sense that, for every candidate X, including X=L,
+the ballots indicate that W pairwise-beats X by at least a 99:1 margin?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw18" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="prob19"></a>
+<p><b>Puzzle #19 &ndash; 
+A situation with random other voters where your strategically best range vote is honest.
+</b><br><small><font color="red">[4]</font></small>
+Suppose there are N&gt;0 voters in addition to you in a 
+range-voting election with 3 candidates.
+Suppose you know absolutely nothing about how 
+the other N voters voted, i.e. regard all
+their scores for all candidates as 3N random numbers 
+independently uniform within the permitted range.
+(Equivalently: regard every possible vote by each of them as equally likely.)
+</p>
+<p>
+Suppose your true utilities for the elections of the candidates 
+are 0 for the worst candidate, 
+1000 for the middle candidate, and 2000 for the best candidate.
+</p>
+<p>
+Prove that for each N&gt;0, including the limit when N&rarr;&infin;,  your 
+uniquely strategically-best
+range vote is the "honest" one (0, 0.5, 1)  assuming the score-range 
+is the interval [0,1], and in particular that this
+honest vote yields superior expected utility 
+for you than either "exaggerated" approval-style
+vote (0, 0, 1)  or  (0, 1, 1).
+Also, prove this is still true even if your utility for the middle candidate is not 
+exactly 1000 &ndash; i.e. if it is slightly perturbed away from 1000, with the size
+of the perturbation being small enough compared to some power of N, then your
+strategically best range vote is <i>not</i> approval-style.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw19" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="prob20"></a>
+<p><b>Puzzle #20 &ndash; 
+(partly open) How often do "Condorcet cycles" arise in real elections with rank-order ballots?
+Give some prominent real historical examples of such elections.
+</b><small><font color="red">[6]</font></small>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw20" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="prob21"></a>
+<p><b>Puzzle #21 &ndash; (partly open) how many arcs must be deleted from an n-node 
+directed graph to get rid 
+of all cycles?</b><br><small><font color="red">[8]</font></small>
+Let F(n) denote the maximum, over all n-node directed graphs G (note: singly-directed arcs only;
+bidirected arcs not allowed), of the minimum number of arcs you need to erase from G in order
+to cause G to become acyclic.  For example, F(2)=0 and F(3)=1.
+Find values of F(n), upper and lower bounds on F(n), and asymptotics.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw21" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="prob22"></a>
+<p><b>Puzzle #22 &ndash; How bad can Condorcet cycles be? </b><br><small><font color="red">[7]</font></small>
+As is well known, voters who provide rank-order ballots can create a
+<a href="CondorcetCycles.html">preference cycle</a> in which each candidate
+is beaten pairwise by some other (and in which, therefore, it is not easy to
+claim there is any clear winner).  This can happen with 3 candidates.
+We now investigate just how nasty such things can be.
+<br>
+<b>(a)</b> 
+Is it possible for every <i>pair</i> of candidates to <i>both</i> be pairwise-beaten
+by some other candidate?  If so, find the smallest number of candidates that makes that possible.
+<br>
+<b>(b)</b> 
+Is it possible for every <i>triple</i> of candidates to <i>all three</i> be pairwise-beaten
+by some other candidate?  If so, find the smallest number of candidates that makes that possible.
+<br>
+<b>(c)</b> 
+Is there any upper limit on K such that
+every <i>K-tuple</i> of candidates can <i>all K</i> be pairwise-beaten
+by some other candidate?  
+<br>
+<b>(d)</b> 
+What is the largest possible number of 3-candidate preference cycles that can
+occur simultaneously in an N-candidate election?
+<br>
+<b>(e)</b> 
+What is the largest possible number of 4-candidate preference cycles that can
+occur simultaneously in an N-candidate election?
+<br>
+<b>(f)</b>
+Is it possible for every 4-tuple of candidates (considered on their own with
+all others erased from all votes) to contain at least one preference cycle
+in an N-candidate election with N&ge;5?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw22" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="prob23"></a>
+<p><b>Puzzle #23 &ndash; Avoiding favorite-betrayal (Chris Benham):</b><br><small>
+<font color="red">[2]</font></small>
+Is there a nontrivial
+voting system in which the votes are strict <i>rank-orderings</i> of all the candidates,
+and in which there is never any strategic incentive
+for a voter to "betray his favorite" by ranking him below top?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw23" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p24"></a>
+<p><b>Puzzle #24 &ndash; What is the probability
+plurality elects the candidate a majority 
+least-likes?  </b><small><font color="red">[6]</font></small>
+<br>
+<b>(a)</b>
+Consider 7 voters electing a unique winner from 3 candidates using
+<a href="Plurality.html">plurality</a> voting.
+Among all the possible elections of this sort: what fraction have the
+unhappy property
+that a majority of the voters
+agree that the winner is actually the candidate they least-like?
+(Assume all 6 possible votes A>B>C,
+A>C>B, B>A>C< B>C>A, C>A>B, C>B>A equally likely, all voters independent.)
+<br>
+<b>(b)</b>
+What if now instead of 7 voters, we consider the
+limit as the number of voters tends to infinity, and ask what is the probability
+that the plurality winner in a vote for best candidate, coincides with the plurality "winner"
+in a vote for <i>worst</i> candidate?
+</p>
+<p>
+(Hint: your probabilities should range between about 2% and 10%.)
+Type password to get answer:
+<input type="text" value="" name="pw24" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p25"></a>
+<p><b>Puzzle #25 &ndash; Pancyclicity:</b><br><small><font color="red">[6]</font></small>
+In any N-player
+round-robin tournament in which each player has the
+same score ("score" is number of other players he defeats pairwise; we only consider 
+"win" and "loss" game results with "draws" are forbidden), prove that
+each pairwise defeat A>B is part of at least one K-player preference cycle
+(for example, with K=4, a 4-player cycle including A>B might be "A>B>C>D>A",
+but A>C>B>D>A does not count as a "4-cycle including A>B")
+and this is simultaneously true for <i>every</i> cycle-length K with 3&le;K&le;N.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw25" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p26"></a>
+<p><b>Puzzle #26 &ndash; Super-bad tournaments:</b><br><small><font color="red">[5]</font></small>
+Call an N-player
+round-robin tournament "super-bad" if every player A loses pairwise to some other
+player, who loses to another,... who loses to player B, i.e. there is a path
+of pairwise defeats leading from A to B, for <i>every</i> A and B.
+This seems about as bad as things possibly could be (from the
+standpoint of determining who should be
+the "winner") but we shall see that it is an extremely common state of affairs.
+<br>
+<b>(a)</b>
+Prove a tournament is super-bad if and only if <i>each</i> player is a member of
+at least one "cycle" of K defeats, for <i>every</i> value of K from 3 to N
+simultaneously.
+<br>
+<b>(b)</b>
+Assuming each pairwise defeat-or-victory is determined by a coin flip
+("random tournament"),
+find the probability P(N) that an N-node tournament is super-bad.
+In particular, compute P(20) accurate to 8 decimals.
+<br>
+<b>(c)</b>
+Let us say that a player who either pairwise-defeats,
+or "defeats" via a 2-long path, each other player,
+has "bragging rights."
+In the same probabilistic model as in (b), show that,
+with probability tending exponentially toward 1 as N&rarr;&infin;,
+<i>every</i> player has bragging rights.
+<br>
+<b>(d)</b>
+Show that not  only does every player A "defeat" every player B via a 2-hop defeat-path AXB,
+indeed this happens (with probability&rarr;1  exponentially as N&rarr;&infin;)
+for at least N/5 <i>distinct</i> 2-defeat paths.
+Further, there are (again with probability&rarr;1  exponentially as N&rarr;&infin;)
+at least
+<center>
+(N-2)(N-3)(N-4)&middot;&middot;&middot;(N+1-L) / (3N)
+</center>
+<br>
+different L-defeat paths from each A to each B
+where L=&lfloor;log<sub>2</sub>N&rfloor; .
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw26" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p27"></a>
+<p><b>
+Puzzle #27 &ndash; A quantity like the "Ramsey numbers" but defined for
+directed rather than undirected graphs.</b><br><small><font color="red">[8]</font></small>
+Let R(n) denote the smallest number Q such that every
+tournament with &ge;Q players
+(i.e, complete directed graph on &ge;Q nodes)
+contains an acyclic n-player subtournament.
+Re-expressed in voting-theory language:
+R(n) is the smallest number Q of candidates in a ranked-ballot election,
+such that it is guaranteed that at least one subset
+containing at least n of those candidates can be unambiguously
+ranked in relation to one another!
+Find values of R(n),  upper and lower bounds,  and asymptotic behavior.
+In particular, prove that R(n) grows exponentially with n.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw27" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p28"></a>
+<p><b>Puzzle #28 &ndash;
+How many votes suffice to create any "tournament" configuration?</b><br><small><font color="red">[8]</font></small>
+In a ranked-ballot voting system,
+<br><b>(a)</b>
+Show that any "tournament" (i.e. configuration of (n-1)n/2 pairwise-beats relationships among
+n candidates) is attainable where "A beats B"
+when more voters say A>B than B>A in their ballots,
+and there are enough voters.  
+(And let us agree not to allow "ties.")
+<br><b>(b)</b> 
+Define M(n) to be the minimum number of rank-order-ballot
+votes required to create any n-player tournament
+in the this way (maximized over all such tournaments; elections with "ties" not permitted).
+Then show M(2)=1, M(3)=M(4)=M(5)=M(6)=3, and M(n) is always an odd number and M(n+1)&ge;M(n).
+<br><b>(c)</b> 
+Show M(n)&le;2n-1 and M(n)&le;n+1.
+<br><b>(d)</b> 
+Show M(n)&ge;Cn/lg(n) 
+for all sufficiently large n,
+where lg(X)=log<sub>2</sub>X,
+if C is any constant with 0&lt;C&lt;1/2.
+<br><b>(e)</b> 
+Show M(n)&le;Kn/lg(n)
+for all sufficiently large n,
+for some positive constant K.
+<br><b>(f)</b> 
+But what if, to declare that "A beats B," we need, not a mere majority of voters,
+but in fact a fraction-f <i>super</i>majority (for some f=&epsilon;+1/2)?
+Prove then that unattainable tournaments exist (for each &epsilon;&gt;0)
+and indeed that an unattainable tournament with O(&epsilon;<sup>-2</sup>) players
+exists &ndash; and not only exists, but in fact a random tournament of that size
+is highly likely to be unattainable.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw28" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p29"></a>
+<p>
+<b>Puzzle #29 &ndash; Team comparisons. </b><br><small><font color="red">[2]</font></small>
+Suppose two "teams" of N numbers are compared by
+comparing the largest number on the first team, with the largest on the second;
+then the second-largest on the first team, with the second-largest on the second;
+and so on, with the team that wins the most comparisons being "the better team."
+(This is actually a pretty realistic model of, e.g, chess teams.)
+<br>
+<b>(team mergers)</b>
+Suppose A is a better team than B, and C is a better team than D.
+Does it (or does it not) follow that the <i>union</i> of A and C, is a better team than
+the union of B and D?
+<br>
+<b>(transitivity)</b>
+Suppose A is a better team than B, and B is a better team than C.
+Does it (or does it not) follow that A is a better team than C?
+<br>
+<b>(structures)</b>
+Which possible "betterness structures" are possible among N-man teams?
+<br>
+<b>("different" comparison method)</b>
+Suppose we instead compare teams by comparing every number of team #1 with
+every number on team #2; whichever team wins the most comparisons, is "better."
+For 3-man teams, show that this "different" method of comparing teams, is actually
+equivalent to the old method.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw29" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p30"></a>
+<p>
+<b>Puzzle #30 &ndash; Election where Borda and Approval voting maximally disagree. </b><br><small><font color="red">[2]</font></small>
+Find an example election with 4 candidates in which 
+Approval and
+Borda Voting
+give reversed results.
+(Solutions with fewer voters preferred. 
+For extra credit, can you generalize your example
+to N candidates?)
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw30" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p31"></a>
+<p>
+<b>Puzzle #31 &ndash; Election where Borda reverses </b><br><small><font color="red">[2]</font></small>
+Find an example election with N candidates in which 
+Borda Voting
+gives reversed results when the last-place (or first-place) candidate is removed.
+Even better: do this for <i>every</i> "weighted positional" voting system.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw31" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p32"></a>
+<p>
+<b>
+Puzzle #32 &ndash; The "Three Stooges voting problem" (Alan Frieze):
+</b>
+<br><small><font color="red">[6]</font></small>
+There are 3 candidates for Mayor: A.Moe, B.Larry, and C.Curly.
+There are N voters and the winner is a function 
+F(x<sub>1</sub>, x<sub>2</sub>,...,  x<sub>N</sub>)
+of the votes of each voter, x<sub>j</sub>&isin;{A,B,C}.
+<br>
+Warning: F is
+not the simple majority function and it is known only
+to the manufacturers of voting machines.
+The <i>Stooge Holistic Information Times</i>
+claims the voting system is "fair" because if 
+y<sub>i</sub>&ne;x<sub>i</sub> for all i&isin;{1,2,...,N},
+then 
+F(x<sub>1</sub>, x<sub>2</sub>,...,  x<sub>N</sub>)
+&ne;
+F(y<sub>1</sub>, y<sub>2</sub>,...,  y<sub>N</sub>).
+<br>
+But conspiracy theorists claim there exists j so that
+the value of F is completely determined by x<sub>j</sub>, i.e. some voter j
+holds total power.  Are they right?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw32" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p33"></a>
+<p>
+<b>
+Puzzle #33 &ndash; (Wisest allocation of vote-weights):
+</b>
+<br><small><font color="red">[3]</font></small>
+Suppose there are some very large number N of independent
+voters who need to make
+a yes/no decision.  
+We suppose this decision has a "right" and "wrong" answer.
+Suppose voter K would have (independent) probability P<sub>K</sub>
+of making the "right" decision on his own.  (Hopefully all the P<sub>K</sub>&ge;1/2,
+i.e. hopefully humans are better decision-makers than coin tosses.
+The P<sub>K</sub>  may
+differ because some voters are wiser or better informed than others, but
+we'll assume the P<sub>K</sub>-1/2 don't vary too tremendously.)
+Suppose voter K gets to cast W<sub>K</sub> votes.
+<br>
+<b>Question:</b>
+What (approximately) 
+is the best choice of the weights W<sub>K</sub>, maximizing the chance that
+the collective decision will be the right one?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw33" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p34"></a>
+<p>
+<b>Puzzle #34 &ndash; How much ignoring does Instant Runoff Voting do?
+</b><br><small><font color="red">[5]</font></small>
+It has often been noted that 
+<a href="rangeVirv.html">Instant Runoff Voting (IRV)</a>
+ignores a large portion of a large number of the votes, which is
+one reason behind some of the <a href="rangeVirv.html#nasty">crazy paradoxes</a> IRV suffers.
+In this puzzle, we shall prove a theorem showing,
+quantitatively, that IRV <i>always</i> ignores <i>asymptotically all</i>
+the information in the votes.
+Suppose there are V voters and C candidates.
+<br>
+<b>A. Prove</b>
+that IRV <i>never</i> examines more than a fraction
+(H<sub>C</sub>-1/2)/C
+of the CV "cell entries" inside the votes,
+where H<sub>n</sub>=1+1/2+1/3+1/4+...+1/n is the <i>n</i>th "harmonic number."
+When C=10, this fraction is 6121/25200&asymp;24%,
+when C=20, it is 15%, and when C&rarr;&infin; it goes to 0.
+<br>
+<b>B. Prove</b>
+that IRV usually will not elect Condorcet winners (even when Condorcet Winners exist)
+in the <a href="RandElect.html">random election model</a>
+in the limit C&rarr;&infin; with V fixed,
+nor in any limit V,C&rarr;&infin; with C&ge;V<sup>0.51</sup>.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw34" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p35"></a>
+<p>
+<b>Puzzle #35 &ndash; Gerrymandering cancellation theorem
+</b><br><small><font color="red">[2]</font></small>
+Suppose there are two political parties A &amp; B and two corresponding
+kinds of voters (all voters are total party-loyalists).
+Suppose the country is gerrymandered by party A.
+<br>
+<b>(a)</b>
+What is the largest fraction of congress that they can,
+by means of that gerrymandering,
+cause to become As?  (Compare with this: in Ohio in 2006, &asymp;60% of
+voters voted Democratic, but only 39% of the congressmen they
+elected were Democratic.)
+<br>
+<b>(b)</b>
+Now suppose the country instead is optimally-gerrymandered by party B.
+Prove this <b>theorem:</B> <i>the "double congress" elected via gerrymandering(A)
+[congress #1]
+<i>and</i> via gerrymandering(B)
+[parallel congress #2] is, in net, of the same composition as the electorate.</i>
+<br>
+<b>(c)</b>
+Does any analogue of the gerrymandering cancellation theorem
+hold if there are <i>three or more</i> parties and voter-types?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw35" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p36"></a>
+<p>
+<b>
+Puzzle #36: Additive utilities:
+</b><br><small><font color="red">[5]</font></small>
+A common model in social choice theory is one in which
+each human has a "utility" (real number) for each possible event,
+and it is deemed "best" to alter events in order
+to maximize the sum (over all humans) of the utility.
+In this and the next few puzzles we explore the foundations and limits of that picture. <br>
+<b>(a)</b>
+If the quantity to be maximized is not &sum;<sub>n</sub> U<sub>n</sub>
+but rather
+g(&sum;<sub>n</sub> f(U<sub>n</sub>))
+where f and g are some 1-to-1 smooth functions,
+then argue that this is really just the same thing
+as the original additive-utility picture.  (This is just
+"utilities in disguise" where f and g are the "disguising functions.")
+<br>
+<b>(b)</b>
+Recognize that many common symmetric
+functions in mathematics are just addition in disguise.
+In particular, do this for the <i>product</i> function &prod;<sub>n</sub> U<sub>n</sub>,
+the <i>L<sub>p</sub>-norm</i> functions
+(&sum;<sub>n</sub> U<sub>n</sub><sup>p</sup>)<sup>1/p</sup> with p&gt;0,
+and (in a limit sense) the <i>max</i> and <i>min</i> functions.
+<br>
+<b>(c)</b>
+But not every smooth continuous function invariant under permutations of its N arguments,
+and monotonic in each, is just addition in disguise.  When N=3 prove that the 
+"combined addition and multiplication" function abc+a+b+c is not
+just addition in disguise.
+<br>
+<b>(d)</b>
+But when N=2 it is: prove that ab+a+b <i>is</i> just addition in disguise. <br>
+<b>(c')</b>
+An example of a 2-person combining function which is not
+just addition in disguise is
+ab+a<sup>b</sup>.
+<br>
+<b>(e)</b>
+It seems reasonable to demand that any method of combining N real utilities to get 
+a single real "social utility"  must 
+<ol>
+<li>
+be symmetric, i.e. invariant under permutations
+of its N arguments,
+</li><li>
+be smooth and monotonic-increasing in each argument alone,
+</li><li>
+feature "zero," that is, there exists a "don't give a damn" utility value Z such that
+combining U with Z always yields U.
+</li><li>
+feature "inverses," i.e. for each individual utility U, there exists a 
+"negated" utility V such that combining U with V yields a constant value,
+and in particular, the value Z.
+</li><li>
+be "self consistent," that is, if you combine a,b,c,d,  then you ought
+to get the same result as combining in pairs such as (a,b) and (c,d)
+and then combining the resulting two values.
+</li>
+</ol>
+where I have ordered these demands in decreasing order of subjective 
+reasonableness.  Prove that these demands <i>force</i> the utility-combining
+function to be 
+the same thing as real-number addition (or one of its disguises). <br>
+<b>(f)</b> Can you argue from biology, human physiology, or biochemistry 
+that additive utility truly does exist? 
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw36" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p37"></a>
+<p>
+<b>
+Puzzle #37: Additive utilities II:
+</b><br><small><font color="red">[4]</font></small>
+Prove that the following three axioms force
+any "social utility" to be just the sum of 
+(perhaps "in disguise" as in the previous puzzle) the individual utilities:<br>
+<b>
+Axiom 1. [invariance under voter reordering]</b>
+Social utility does not depend in which order the voters are
+permuted.<br>
+<b>
+Axiom 2. [utility-order-invariance under adding a constant]</b>
+After you add an arbitrary constant C to every utility of some particular voter,
+then if A was a "better" candidate than B (higher
+social utility) then it still is.<br>
+<b>
+Axiom 3. [non-silly]</b>
+With random real number input (i.e. each individual utility independently sampled from
+some probability density), there will (at least with some
+positive probability) exist some unique candidate yielding maximum social utility,
+i.e. the social utility does not
+merely always say all candidates are equal; and the social utility exists
+for generic real number input (personal utilities)
+at least within some neighborhood
+of the vector with all entries C (for some constant C).
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw37" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p38"></a>
+<p>
+<b>
+Puzzle #38: <i>Non</i>Additive utilities:
+</b><br><small><font color="red">[4]</font></small>
+Criticize the axioms that underlay the preceding two puzzles' proofs
+that utility-aggregation must be additive.
+Then consider the following non-additive utility-combining method, suggested
+by Clay Shentrup:
+<br>
+The "Shentrup Social Utility," as a function
+of the personal utilities of each of V people, is:
+<center>
+SSU = Max<sub>x</sub> &nbsp; x &middot; (#people whose utility is at least x).
+</center>
+Which of those axioms does SSU obey and which does it disobey?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw38" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p39"></a>
+<p>
+<b>
+Puzzle #39: Utility=Log(Wealth)?
+</b><br><small><font color="red">[4]</font></small>
+Claude Elwood Shannon (and much earlier, Daniel Bernoulli)
+had the idea that "utility" and "money" were approximately 
+related by the formula utility=log(wealth).
+Let's explore that.
+<br>
+<b>(a)</b>
+Show that this formula is consistent with the idea that doubling your wealth causes the same
+increase in happiness, regardless of your initial wealth.<br>
+<b>(b)</b>
+Suppose you are offered the opportunity to participate in this wager:
+if event E happens, each dollar you bet is replaced by R&gt;1 dollars;
+but if E does not happen, you lose all the money you bet.
+The probability of E is (you believe) P.
+How much money should you bet, in order to maximize your expected Shannon-utility?<br>
+<b>(c)</b>
+Show that, under the Shannon formula, or indeed any formula of the form
+utility=ConcaveDownFunction(wealth),  removing some money from a random person and giving it
+to another random other person, decreases the expected sum of utilities, i.e. "random theft is
+socially bad."  [Similarly, making any fair monetary bet causes negative expected utility gain,
+i.e. such a utility function is "risk averse."]
+Also, transferring money from poorer to richer people is socially bad,
+but transferring money from richer to poorer people (provided the rich one stays richer)
+is socially good.<br>
+<b>(d)</b>
+Criticize the Shannon formula.<br>
+<b>(e)</b>
+How could you try to do a better job than Shannon?
+Try to devise a formula that smoothly handles <i>negative</i> wealth (i.e. debt).
+What about wagers involving risk of death?  How should a bettor optimally handle them?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw39" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p40"></a>
+<p>
+<b>
+Puzzle #40: Feel alike &rArr; vote same?
+</b><br><small><font color="red">[5]</font></small>
+A single-winner voting system satisfies FAVS if the best strategy for any set of "feel alike"
+voters is for all members of the set to vote in the same manner.
+<br><b>(a)</b>
+Show that instant runoff voting (IRV) fails FAVS.
+<br><b>(b)</b>
+Show that Borda voting fails FAVS.
+<br><b>(c)</b>
+Show that the Schulze beatpaths Condorcet method (with Simpson-Kramer min max as
+a tiebreaker, i.e. of two tied Schulze winners, the one with a milder worst-defeat
+is preferred) fails FAVS.
+<br><b>(d)</b>
+Show that Approval voting satisfies FAVS &ndash; but fails it if we allow 
+incomplete-information scenarios
+(i.e. in which the strategic-voter-set does not have complete information about all
+the other votes).
+<br><b>(e)</b>
+Show that range voting always satisfies FAVS in both complete and incomplete information
+scenarios.
+<br>
+(It is not clear whether satisfying FAVS is desirable, but this result is of interest
+for refuting the vague claim that strategy in range voting is comparatively 
+"complicated" or "messy.")
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw40" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p41"></a>
+<p>
+<b>
+Puzzle #41: Invisibly Corrupted Computer Programs.
+</b><br><small><font color="red">[8]</font></small>
+Explain how it is possible for 
+an operating system such as LINUX
+to be corrupted (so that, e.g, "Mortimer Snerd" can always log in)
+in such a way that scrutinizing the full source code for LINUX will fail
+to uncover anything special about Mortimer Snerd &ndash; even if the scrutinizer is
+amazingly incredibly wise and intelligent.
+(Thus, inspecting the source code of a program is inadequate for security purposes.)
+Hint: LINUX is written in the C language, and the gcc C-compiler is also written in C
+and is part of LINUX.
+</p>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw41" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p42"></a>
+<p><b> Puzzle #42: Probability of Condorcet cycle:</b>
+<br><small><font color="red">[5]</font></small>
+Suppose there are some odd number V&ge;3 of voters, each casting
+a random rank-ordering of the C candidates as her ballot.
+Let P(V,C)  be the probability that a Condorcet ("beats all") winner
+does <i>not</i> exist.
+Prove the surprising and elegant exact equality
+P(V,4)=2&middot;P(V,3).
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw42" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p43"></a>
+<p><b> Puzzle #43: Approval voting strategy most likely to elect Condorcet winner </b>
+<br><small><font color="red">[6]</font></small>
+Suppose there are C candidates and V voters, and each voter's
+honest ranking of the candidates, is random (all C! orderings equally likely).
+Suppose we hold a single-winner approval-voting election and every voter
+approves her top J candidates (for some J with 0&lt;J&lt;C).
+<br>
+<b>(a)</b>
+Which value of J leads to the largest chance that the election winner
+will be a Condorcet ("beats all") winner (based on the true, honest
+voter preference orderings)?
+<br>
+<b>(b)</b>
+What if we have two approval style elections sequentially,
+where voters approve the top J candidates in election #1,
+the top K finishers get to run in election #2, and voters approve their top L
+candidates in the "runoff" election #2.
+What is the "best" (J,K,L) which causes society to have the greatest chance
+of electing a Condorcet winner?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw43" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p44"></a>
+<p><b> Puzzle #44:  Shannon Utility Honesty property</b>
+<br><small><font color="red">[2]</font></small>
+Suppose you can buy arbitrary amounts of substances 1, 2, &hellip;, n.
+If V<sub>k</sub> is the amount of substance <i>k</i> that you buy, your total utility is
+</p>
+<p><tt><center><big>U = <i>u</i><sub>1</sub>V<sub>1</sub> + <i>u</i><sub>2</sub>V<sub>2</sub> + &hellip; + <i>u</i><sub><i>n</i></sub>V<sub><i>n</i></sub></big></center></tt></p>
+<p>
+i.e. u<sub><i>k</i></sub>&gt;0 is your <i>utility density</i> for substance <i>k</i>.
+Suppose that the total amount of money you spend to buy substance <i>k</i> is x<sub>k</sub>,
+and the total amount of money you can (and must) spend is 
+X=&sum;<sub>1&le;k&le;n</sub>x<sub>k</sub>.
+Prove that under the following pricing scheme, your best strategy is to provide
+an amount of money x<sub>k</sub> exactly <i>proportional</i> to 
+u<sub>k</sub>.
+Magic pricing scheme:
+If you spend $<i>x<sub>k</sub></i> to buy substance <i>k</i>, then you get volume 
+<center>
+<i>V<sub>k</sub></i> = A+Bln(<i>x<sub>k</sub></i>)
+</center>
+of it, where A and B, B&gt;0, are arbitrary constants.
+Thus, selling people stuff with this pricing scheme can be used to assess their
+honest utility densities.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw44" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p45"></a>
+<p><b> Puzzle #45: (<strike>open</strike> now solved!) Min-Max matrix product</b>
+<br><small><font color="red">[8]</font></small>
+The <i>min-max product
+C = A*B</i> of two n&times;n matrices A and B (yielding another C)
+is defined by 
+
+<center>
+C<sub>ij</sub> = max<sub>1&le;k&le;n</sub>min{A<sub>ik</sub>, B<sub>kj</sub>}.
+</center>
+This is just like the usual matrix product but replace the additions by
+maxes and the multiplications by mins.
+It is known that two n&times;n matrices can be multiplied in a subcubic number of
+elementary steps; V.Strassen in 1969 found an O(n<sup>2.807</sup>)-step algorithm
+and the current record, due to D.Coppersmith and S.Winograd building on a great mass
+of previous theory, is O(n<sup>2.376</sup>).
+
+</p>
+<p><b>Question:</b>
+is there a subcubic algorithm to compute min-max matrix products?
+[Application to voting:
+This yields a subcubic algorithm to find the
+<a href="SchulzeExplan.html">Schulze<a/>
+<a href="SchulzeComplic.html">beatpaths</a>
+candidate-ordering starting from the pairwise matrix.]
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw45" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p46"></a>
+<p><b> Puzzle #46:  Probability of unclear election winners</b>
+<br><small><font color="red">[6]</font></small>
+In the <a href="RandElect.html">random election model</a>, with 3 candidates and
+rank-order votes from V&rarr;&infin; voters, 
+</p>
+<ol type="a">
+<li>
+What is the probability that some two weighted positional voting methods
+will disagree on the winner? 
+</li><li>
+And what is the probability that <i>every</i>
+weighted positional voting method's winner will agree <i>but</i>
+disagree with the Condorcet winner?
+</li><li>
+Prove the latter problem cannot happen if
+the model of voters instead is that voters and candidates are points on a line
+and voters prefer candidates located closer to them.
+</li></ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw46" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p47"></a>
+<p><b> Puzzle #47:  "Vote for N" leading to unclear election winners</b>
+<br><small><font color="red">[5]</font></small>
+Find a rank-order-ballot election with 5 candidates and as few voters as you can,
+in which
+<ul>
+<li>
+vote-for-1 elects A
+</li><li>
+vote-for-2 elects B
+</li><li>
+vote-for-3 elects C
+</li><li>
+vote-for-4 elects D
+</li><li>
+The Borda Count elects E.
+</li></ul>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw47" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p48"></a>
+<p><b> Puzzle #48:  How many votes to count to get confidence?</b>
+<br><small><font color="red">[5]</font></small>
+Suppose there are N voters in a 2-choice election.  Each voter is an independent
+fair coin flip.  We shall be interested only in the limit N&rarr;&infin;.
+Then: what is the minimum fraction F of the votes that need
+to be counted to obtain probability 1-C  or
+greater  (0&lt;C&lt;1/2)  that the winner among the counted votes, is in fact
+the winner among all the votes?  (Assume the votes are counted in random order.)
+<b>Hint:</b> The answer is F = cos(&pi;C)&sup2; = cos(&pi;[1-C])&sup2;.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw48" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p49"></a>
+<p><b> Puzzle #49:  Machievellian Agenda Manipulation</b>
+<br><small><font color="red">[4]</font></small>
+Suppose there are 3 voters and their opinions of the candidates are as follows:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+</tr>
+<tr> 
+<th> Voter#1: </th>
+<td> A>C>B>E>F>D>G>H </td>
+</tr>
+<tr> 
+<th> Voter#2: </th>
+<td> F>G>C>D>B>H>A>E </td>
+</tr>
+<tr> 
+<th> Voter#3: </th>
+<td> B>D>G>C>E>F>H>A </td>
+</tr>
+</table>
+<p>
+Candidate H seems to be the least-deserving of election.
+Construct a "knockout tournament"
+sequence of head-to-head elections to cause H to win.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw49" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p50"></a>
+<p><b> Puzzle #50: How many checks to get confidence?</b>
+<br><small><font color="red">[6]</font></small>
+Suppose you want to know, with correctness probability ("confidence") at least C,
+whether a given set of N objects contains B or more "bad" objects.
+What is the minimum number S of randomly chosen objects (sampled without replacement)
+that you need to examine to answer the question?
+</p>
+<p>
+In a voting application, the "objects" might be "precincts" or "voting machines."
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw50" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p51"></a>
+<p><b> Puzzle #51: Getting true (not fake) randomness</b>
+<br><small><font color="red">[2]</font></small>
+The Ohio 2004 presidential election was recounted. The recount was supposed to be of
+a random subset of precincts.  But election administrators arranged a conspiracy to
+recount a <i>non</i>random subset of precincts, intentionally selected to make sure that
+the recounts would discover little or no discrepancy. (They were later convicted and jailed, 
+despite their defense that they were just following orders from higher-ups.)
+This leads to the question: how can we pick <i>true</i> random choices for such purposes,
+that, all players can be confident, were not pre-arranged?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw51" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p52"></a>
+<p><b> Puzzle #52:  How many votes to count to get 100% certainty of winner?</b>
+<br><small><font color="red">[3]</font></small>
+Suppose the candidate with the leading vote share 
+(in a <a href="Plurality.html">plurality</a>-style election)
+has a fraction V of the votes, 0&lt;V&le;1.
+How many of the N votes must be counted in order for the counter (who does not
+initially know either V or the winner's name) to reach 100% certainty of the identity of this
+winner?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw52" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p53"></a>
+<p><b> Puzzle #53:  Districting is unavoidably "chaotic"
+</b>
+<br><small><font color="red">[3]</font></small>
+Suppose it is your job to divide a country (compact connected set in the plane)
+into N equipopulous  electoral "districts" (ditto) for some given N&ge;2.
+To avoid bias, the only information that is allowed to affect your
+districting-drawing is (1) the shape of the country, and (2) the
+population-density function.  Here "shape" is a EW-mirror-invariant notion,
+i.e. two shapes that are the same after mirroring "East" for "West"
+are the "same" shape.
+Further, to force you to deliver districts which are not completely
+asinine, we demand that
+<blockquote>
+The total length of all district-boundaries, is at most twice the minimum
+possible length.
+</blockquote>
+<ol type="a">
+<li>
+<b>Prove</b> that arbitarily tiny changes ("tiny" measured in any L<sub>p</sub> norm)
+in population density (caused by, e.g, a tiny fraction of the people moving)
+necessarily will sometimes cause vast changes in your districting,
+i.e. every district will
+change by at least a positive constant fraction of all the area in the country and at least
+a positive constant fraction of the people who used to reside in that district, no longer will.
+(This is unfortunate because it means that sometimes, some politician will find himself,
+after redistricting, in a new district very unrelated to his old one.)
+</li><li>
+Prove that even if we allow the districting to depend also on
+the <i>previous</i> districting,
+then it still is not possible to avoid "chaos."
+</li>
+</ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw53" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p54"></a>
+<p><b> Puzzle #54: Better than average
+</b>
+<br><small><font color="red">[0]</font></small>
+In 1987 John J. Cannell publicized the fact that all 50 US states reported 
+that their students
+were better than the national average on standardized tests.
+</p>
+<ol type="a">
+
+<li>
+Is that actually possible?
+</li>
+<li>
+Is something close to it possible &ndash;
+i.e. can we have a probability distribution 
+on the real interval [0, 100] such
+that there is an arbitrarily high probability that a random sample will be
+above average?
+</li>
+</ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw54" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p55"></a>
+<p><b> Puzzle #55: How often is voting honestly worse than not voting with Instant Runoff Voting?
+</b>
+<br><small><font color="red">[5]</font></small>
+In IRV, voting honestly 
+can be worse (for a set of co-feeling voters) than not voting at all.
+<ol type="a">
+<li>
+Find a concrete example of that.
+</li><li>
+In the <a href="RandElect.html">random elections model</a>,
+with 3-candidate V-voter elections (V&rarr;&infin;) 
+show that the <i>likelihood</i> of that
+is 16.2%.
+More precisely, this is the chance that a random IRV election will be a situation in which
+adding some extra number of voters of some common type (such as "A>B>C") will cause the winner
+to get worse from their point of view.
+(Also show it is 7.4% in the <a href="Glossary.html#Dirichlet">Dirichlet model</a>.)
+</li><li>
+<b>(Open)</b> <small><font color="red">[9]</font></small>
+In the limit of a large number C of candidates, what happens to
+this likelihood?
+</li><li>
+In a random 3-candidate IRV election as above but now
+restricting attention to the <i>subset</i> of such
+elections in which the IRV and plurality
+voting winners <i>differ</i>,
+what is the likelihood?  If we (further) restrict to the (contained) subset
+in which for some constant K with 0&lt;K&lt;1 (for example K=99%, but the precise
+value is irrelevant) the second-placer gets &le;K times as many top-rank votes
+as the first-placer, and the third-placer gets
+&le;K times as many top-rank votes as the second-placer,
+and the IRV and plurality winners differ, then show this
+probability tends to 100% in the V&rarr;&infin; limit.
+</li><li>
+In contrast, with both Approval and Range voting, voting honestly 
+is <i>never</i> worse 
+than not voting at all.
+</li>
+</ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw55" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p56"></a>
+<p><b> Puzzle #56:  How often is voting honestly worse than not voting (with Condorcet)?
+[Mostly open]
+</b>
+<br><small><font color="red">[9]</font></small>
+In every Condorcet voting system, it is a known theorem 
+that voting honestly 
+sometimes is worse (for a set of co-feeling voters) than not voting at all.
+In this puzzle we investigate how frequent that phenomenon is.
+Define a V-voter C-candidate election scenario to be a "participation failure"
+if there is some rank-order-ballot vote Q, and some 
+<i>t</i>&gt;0, such that adding <i>t</i> extra identical Q-type ballots, will cause the
+election result to worsen (from the point of view of the <i>t</i> extra voters).
+<ol type="a">
+<li>
+Is a participation failure scenario possible when C=3?  
+If so, what is its likelihood P<sub>3</sub>
+(in the "<a href="RandElect.html">random election model</a>")
+in the limit V&rarr;&infin;?
+</li><li>
+Same question when C=4.
+</li><li>
+Same question when C&rarr;&infin;.
+</li>
+</ol>
+In particular consider the three simplest Condorcet systems, "Simpson-Kramer minmax"
+(the candidate with the least-severe worst-pairwise-defeat, wins),
+"basic Condorcet"  (the candidate with the least sum-of-defeat-margins, wins),
+and "Copeland" (the candidate who pairwise-defeats the most opponents wins).
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw56" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p57"></a>
+<p><b> Puzzle #57: How often is dishonesty better strategy than honesty with IRV?
+</b>
+<br><small><font color="red">[3]</font></small>
+With V voters there are exactly C!<sup>V</sup> possible different C-candidate elections
+employing  rank-order ballots (as would be the case with 
+IRV=instant runoff voting).
+<ol type="a">
+<li>
+Prove that in the limit V&rarr;&infin; with C&ge;3 held fixed,
+the percentage of these elections in which some co-voting voter-subset
+would have gotten a better IRV winner by voting dishonestly, tends to 100%.
+</li><li>
+Further, prove that the probability that any particular
+<i>random voter-type</i> would have gotten a better IRV winner by voting dishonestly,
+is at least  (C-2)/C,  i.e. tends to 100% when V&rarr;&infin;  if then C is
+made large.
+</li><li>
+Note that the difficulty (for the particular co-voting voter-subset)
+of actually <i>determining</i> a dishonest vote strategy that does this,
+is easy &ndash; polynomial time algorithm &ndash; in fact
+trivially easy if the honest-voting IRV winner is known.
+</li><li>
+Compare IRV in this respect with Approval Voting and Range Voting.
+(See also <a href="#p62">puzzle 62</a> for Condorcet voting.)
+</li>
+</ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw57" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p58"></a>
+<p><b> Puzzle #58:  Gerrymandering
+</b>
+<br><small><font color="red">[5]</font></small>
+Let N be a number of the form  N=2<sup>p</sup>q  with q odd.
+(Every number may be written in such a form, of course.)
+
+<br>
+Suppose there are N small disjoint discs ("equipopulous towns") in a
+convex plane region ("country"),
+no three collinear, each town either red or blue, with the ratio of red:blue
+being  &lceil;q/2&rceil;:&lfloor;q/2&rfloor;.
+</p>
+<dl>
+<dt><b>Red gerrymander:</b></dt>
+<dd>
+Prove that it is possible to divide the country into 2<sup>p</sup> 
+disjoint <i>convex</i>
+subsets ("districts") such that each contains q towns which are
+&lceil;q/2&rceil; red versus &lfloor;q/2&rfloor; blue,
+i.e. so that <i>every district is majority-red</i>.
+(May be necessary to cut through towns
+so that a district contains, e.g, half a town, but the total number of towns, counting
+fractional parts fractionally, is always exactly 
+q per district and always it is an exact 
+&lceil;q/2&rceil;:&lfloor;q/2&rfloor;
+red:blue ratio in each.)
+</dd>
+<dt><b>Blue gerrymander:</b></dt>
+<dd>
+If p&ge;1 prove that it is possible to divide the country into q disjoint 
+<i>contiguous</i>
+districts (each containing exactly 2<sup>p</sup> towns)
+such that each district is either exactly red-blue balanced
+(albeit we can add a smidgen of extra blue to each if we permit slightly inexact
+equipopulousness or if we make one fewer balanced district)
+or is 100% red.
+</dd>
+</dl>
+<p>
+In other words (and oversimplifying slightly), in a slightly-red-majority country,
+red always can gerrymander to get 100% of all the congressmen (even if forced to use
+convex districts only); 
+while blue can gerrymander to get <i>almost</i> all the congressmen 
+(even if forced to use
+contiguous districts only).
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw58" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p59"></a>
+<p><b> Puzzle #59: Gerrymandering "Squareland"
+</b>
+<br><small><font color="red">[4]</font></small>
+Starting at bit #273 after the binary"decimal" point, &pi; in binary first has a string
+of 240 bits containing exactly 50% 1-bits and 50% 0-bits.  
+<small>
+The only reason we are bringing in &pi; is to get 240 random bits that I clearly did not
+choose maliciously; they really are "random."
+</small>
+It is:
+</p>
+
+<table>
+<tr><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+
+<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+<tr><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+
+<tr><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td></tr>
+
+<tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td></tr>
+
+<tr><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td></tr>
+<tr><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td></tr>
+
+<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>1</td><td>1</td><td>1</td><td>1</td><td>1</td><td>0</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+
+<tr><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>0</td></tr>
+<tr><td>1</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>1</td><td>1</td><td>0</td></tr>
+
+<tr><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>1</td><td>0</td><td>0</td><td>0</td><td>1</td><td>0</td><td>1</td><td>1</td><td>1</td></tr>
+</table>
+
+<p>
+Regard this as a 15&times;16 checkerboard with one person per square,
+each person either red (1) or blue (0): "Squareland."
+<ol type="a">
+<li>
+Gerrymander squareland into 16 contiguous
+districts, each one consisting of exactly 15 squares,
+such that red has a majority in as many districts as possible.
+["Contiguous" here means one can reach any
+square in the district by a succession of horizontal &amp; vertical singlesteps
+starting from any other, and always staying inside the district.]
+</li><li>
+Same thing, but now try to
+make <i>blue</i>
+have a majority in as many districts as possible.
+</li><li>
+Prove your gerrymanders are optimal.
+</li><li>
+It was claimed on page 31 of
+[N. Apollonio, R.I.Becker, I.Lari, F.Ricca, and B.Simeone:
+<i>The Sunfish against the Octopus: opposing compactness to
+gerrymandering</i>, pp 19-41 in:
+B. Simeone and F. Pukelsheim (Eds.) Mathematics and Democracy: Recent
+Advances in Voting Systems and Collective Choice, Springer 2006],
+that for <i>any</i> odd s&ge;3, <i>any</i> (<i>s</i>+1)&times;<i>s</i>
+"squareland" containing exactly 50% red and 50% blue people (one person per square)
+could be gerrymandered to yield <i>s</i> red congressmen versus only a single blue congressman
+(each congressman representing a disjoint district, consisting of exactly <i>s</i> squares,
+containing a majority of his color, and districts must be contiguous).
+If you achieve 15:1 congressional ratios in  the preceding problems, then
+you have verified their claim for one particular case with
+<i>s</i>=15 &ndash; but they are, far more generally,  claiming it for
+<i>every</i> odd <i>s</i>&ge;3 and no matter what the 50-50 configuration of 1s and 0s.
+<br>
+<b>Prove:</b> they were wrong.
+</li><li>
+What if we weaken their claim so that it holds, not for <i>every</i> 
+50-50 configuration of 1s and 0s, but instead merely for a 
+positive constant fraction of
+<i>random</i> 50-50 
+configurations when <i>s</i>&rarr;&infin;?
+Is it then true?
+</li><li>
+<b>(Open)</b> <small><font color="red">[9]</font></small>
+Define F(s) to be the minimum [over all 50-50 configurations of 1s and 0s
+arranged in an <i>s</i>&times(<i>s</i>+1) array, <i>s</i> odd]
+of the maximum number of majority-0-districts that can be achieved
+among <i>s</i>+1 contiguous <i>s</i>-resident districts.
+What is F(s)'s asymptotic behavior when <i>s</i>&rarr;&infin;?
+</li><li>
+Prove that for
+asymptotically 100% of 50-50 configurations of 1s and 0s, 
+a gerrymanderer can achieve asymptotically 100% red-majority s-resident districts.
+</li>
+</ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw59" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p60"></a>
+<p><b> Puzzle #60: Range and Approval as "universal" voting systems
+</b>
+<br><small><font color="red">[5]</font></small>
+Suppose every voter has a private preference ordering of all candidates, and "approves"
+those above some threshold that she chooses.
+Depending on how the voters set their thresholds, different 
+approval-election winners will
+result.  Call the set of possible approval-voting winners "A."
+<ol type="a">
+<li>
+Prove the Condorcet ("beats all") winner, if one exists, is always in A.
+</li>
+<li>
+Prove the Plurality winner is always in A.
+</li>
+<li>
+Prove the AntiPlurality winner is always in A.
+</li>
+<li>
+Prove the Borda winner &ndash; or indeed the winner in any 
+"<a href="WtPositnl.html">weighted positional</a>" voting
+system &ndash; is always in A.
+</li>
+<li>
+Prove the top-2-runoff (plurality, then a second round among the top 2 finishers) 
+winner is always in A.
+</li>
+<li>
+Prove the IRV (Instant Runoff Voting) winner is always in A.
+</li>
+</ol>
+In this sense Approval Voting is "universal" in that it can imitate all these other 
+commonly proposed voting systems (and range voting then is even more universal).
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw60" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p61"></a>
+<p><b> Puzzle #61: Voting system "stability" (S.J.Brams)
+</b>
+<br><small><font color="red">[4]</font></small>
+An election outcome is "stable" if it is achieved by <i>some</i> set of (honest) votes
+such that no voters of any single type have an incentive to change their votes.
+Further, it is "strongly stable" if no subset of colluding (perhaps un-alike)
+voters have incentive
+to change their votes.
+Otherwise it is "unstable."
+(Here "election outcomes" are allowed to be "lotteries.")
+When considering <a href="Approval.html">approval voting</a> it is of
+interest to restrict attention to "semi-honest" votes, i.e. in which each voter
+genuinely prefers all her approved candidates over all her disapproved ones
+(and we forbid all-approved or all-disapproved "null votes").
+<ol type="a">
+<li>
+For semi-honest approval voting, prove that an election winner is strongly stable
+if and only if it is a unique Condorcet ("beats-all") winner.
+</li>
+<li>
+Prove that it is impossible for any Condorcet voting system always to elect a
+stable winner &ndash; <i>even</i> if we only demand such stability in cases where the winner
+is a "beats-all" winner.
+(So in this sense, <b>Condorcet systems are actually worse at electing Condorcet winners
+than approval voting</b>, despite the fact that approval voting is not a Condorcet
+voting system!)
+</li>
+<li>
+Prove that it is impossible with <i>any</i>  deterministic voting system
+based on rank-order ballots
+(except for a "dictatorship"; and we shall assume the system always elects candidates
+who are unanimously top-ranked) always to elect a stable winner.
+</li>
+<li>
+Prove that approval voting does not always elect a stable winner.
+</li>
+</ol>
+</p>
+<p>
+<b>Comment:</b>
+The idea here is the approval-votes fluctuate with
+time in response to opinion polls, random noise,
+and voter re-strategizing &ndash; but stay semi-honest.
+Once the votes reach a
+"stable" configuration, they stop fluctuating
+because from then on nobody has incentive to change
+and repeated opinion polls delivering the
+same answer eliminate the random noise.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw61" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p62"></a>
+<p><b> Puzzle #62: How often is dishonesty better strategy than honesty with Condorcet?
+</b>
+<br><small><font color="red">[4]</font></small>
+With V voters there are exactly C!<sup>V</sup> possible different C-candidate elections
+employing  rank-order ballots.
+We shall be considering the "large electorate" limit V&rarr;&infin; with C held fixed.
+<ol type="a">
+<li>
+Prove that when C is made large,
+the percentage of Condorcet-system
+elections in which some co-voting voter-subset
+would have gotten a better winner by voting dishonestly, tends to 100%.
+</li><li>
+Also note that it is very easy for this voter-type 
+to determine such a better-than-honesty strategy.
+</li><li>
+<b>(Partly Open)</b>
+<small><font color="red">[8]</font></small>
+Suppose now that we choose a random voter-type.  What is the probability that
+it can improve the election result by voting dishonestly, in the limit
+lim<sub>C&rarr;&infin;</sub>lim<sub>V&rarr;&infin;</sub>?
+I do not know the answer in general, but have been able to prove this limit is 100%
+for several commonly used Condorcet methods.
+</li></ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw62" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p63"></a>
+<p><b> Puzzle #63 (<a href="http://www.aceproject.org">ACE</a>): Optimal size for a legislature
+</b>
+<br><small><font color="red">[2]</font></small>
+Consider the amount of
+communication a congressman has to do with both his constituency and
+with his fellow legislators.
+<ol type="a">
+<li>
+Argue that it is minimized if the size of the legislature is proportional 
+to the <i>square root</i>
+of the country's population P.
+</li>
+<li>
+But can you argue for other "optimal legislature size"
+functions such as P<sup>1/3</sup> or P<sup>2/5</sup> or log(P)?
+</li>
+</ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw63" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p64"></a>
+<p><b> Puzzle #64: Expected number of votes counted before certain
+</b>
+<br><small><font color="red">[6]</font></small>
+Suppose you have N voters, V of whom vote for the leading
+candidate Larry  (Plurality voting).
+</p><p>
+A counter starts counting the N votes one by one in random order until
+first becoming sure that Larry won (and this counter knows N,
+but does not a priori know V or Larry's identity).
+<ol type="a">
+<li>
+How many votes, in <i>expectation</i>, are counted?
+</li><li>
+A naive attempt at an answer is N&sup2;/(2V).
+Explain why this and similar naive attempts are wrong.
+(<small><font color="red">[9]</font></small> Get good upper bounds on the error.)
+</li></ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw64" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p65"></a>
+<p><b> Puzzle #65: Partitioning squareland into some nice patterns
+</b>
+<small><font color="red">[4]</font></small>
+<ol type="a">
+<li>
+Can a 6&times;10 checkerboard be partitioned into 12 districts, each
+consisting of exactly 5 squares (and each contiguous) and each of a different shape?
+(Here "same shape" means either rotating or mirroring.)
+</li><li>
+What about an N&times;10 checkerboard for some N&ge;7?  Can it be partitioned
+into 2N
+5-square districts, each contiguous and all different in shape?
+</li><li>
+What if we try to partition a W&times;H 
+checkerboard into 35 districts, each
+consisting of exactly 6 board-squares 
+(and each contiguous) and each of a different shape?
+For which W and H can this be done?
+</li></ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw65" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p66"></a>
+<p><b> Puzzle #66: Optimal Districting
+</b>
+<br><small><font color="red">[8]</font></small>
+Divide an equilateral triangle, square, regular pentagon, regular hexagon, circle, and the surface of a sphere, into N equal-area pieces with the least cutting. 
+(<small><font color="red">[9]</font></small> 
+And what about "districting" in three or higher dimensions?) 
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw66" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p67"></a>
+<p><b> Puzzle #67: Dice can do damned near anything?
+</b>
+<br><small><font color="red">[7]</font></small>
+Can Alice construct some number of dice such that, 
+no matter which <i>two</i> of them Bob selects,
+Alice can select a third which "beats" either ("beats" means more than half the time
+during any long-enough sequence of rolls of die#1 versus die#2,
+will roll a higher number)?  And if so, what is the minimum number of dice Alice needs?
+</p>
+<p>
+More generally: what is the minimum number F(n) of dice Alice needs so that no matter
+which n of them Bob selects, Alice can select another from her collection
+which pairwise-beats all Bob's dice?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw67" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p68"></a>
+<p><b> Puzzle #68: A random person
+</b>
+<br><small><font color="red">[3]</font></small>
+You would like to select a random (uniform) person.
+How should you do it?
+<small>
+Pollsters often want to do that, or say that they've done it.  
+But do they really?
+After you think about what it takes to select a random person, you can ponder that
+from a position of strength.
+</small>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw68" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p69"></a>
+<p><b> Puzzle #69:  Optimal way to form a "coalition"
+</b>
+<br><small><font color="red">[3]</font></small>
+In many (all?) parliamentary governments, if no one political party has
+a majority of the seats in parliament, then it is necessary for
+some subset of the parties &ndash; together holding 
+a majority of seats &ndash;
+to form a "coalition" to govern.
+Assume each party has a positive "regret" value associated with being in a
+coalition with each other party (with the regret values being known functions
+of the ordered pair of parties).
+Prove that finding the <i>optimum</i> coalition &ndash; minimizing
+the sum (or the max) of regrets &ndash; or even merely <i>approximating</i>
+optimality to within a factor of some positive power of N
+(where N is the number of parties) is NP-hard.
+Hence, if P&ne;NP, there
+is <i>no</i> efficient algorithm to determine
+or approximate optimum coalitions.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw69" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p70"></a>
+<p><b> Puzzle #70:  "Marriages" and "Capitalism."
+</b>
+<br><small><font color="red">[5]</font></small>
+Suppose there are N men and N women. Each man has a preference order
+on the women, and vice versa.
+We wish to arrange N marriages pairing them off.
+<i>But</i>, if the set of marriages has the property that
+some man m and woman w would both prefer each other to their current partners,
+then we say it is "unstable."
+<ol type="a">
+<li>
+Prove there is a (simple) method that always succeeds in
+arranging N stable marriages.
+</li><li>
+Prove the "superiority" of heterosexual marriages over homosexual ones
+by showing that in the same problem with 2N people &ndash;
+but now all of 
+the <i>same</i> sex 
+(and each has a preference ordering on the 2N-1 others) &ndash;
+a stable set of N marriages can <i>fail</i> to exist.
+(<small><font color="red">[9]</font></small>
+And, with random preference orderings, what is the probability of that?)
+</li><li>
+What if we have <i>three</i> "sexes" (N members of each are present)
+and we need to arrange N "marriages" which are disjoint triples 
+each containing
+one representative of each sex. 
+Prove that a "stable" set of marriages
+always exist in which no person X would prefer to leave their marriage and
+join another (kicking out the X's-sex member Y of that one) both of whose
+other-sex members would prefer X to Y (we assume each person has a preference
+order on all representatives of each foreign sex).
+But on the other hand, 
+if each person is assumed to have a preference order on
+<i>pairs</i> of foreign-sex people then prove that arranging N stable marriages
+can be impossible.
+</li><li>
+Returning to the conventional 2-sex problem:
+What if we want, among all possible stable N-marriage pairoffs, to find
+the "optimum" one, maximizing utility summed over all 
+people (we assume each person now has a known real "utility" value for
+marrying each other person).  State an efficient way to find this optimum.
+</li><li>
+What if we want the optimum N-marriage pairoff, but now <i>not</i>
+requiring stability?  Demonstrate that optimizing utility can
+be incompatible with stability.  
+(Can this be viewed as a "failure of capitalism"? 
+Is there any way instead to see it is a "success"?)
+</li><li>
+State an efficient method for finding the optimum (but perhaps unstable)
+N-marriage pairoff.
+</li><li>
+In the 2-sex problem, show that no matter what procedure is
+employed to produce the N stable marriages, it (sometimes) will always pay
+for somebody to lie about their preference order.
+</li><li>
+Demonstrate that there is <i>no</i> efficient way to find the optimum
+3-sex N-"marriage" triples (assuming each person 
+has a pre-stated utility value for each other; the "optimum" maximizes
+utility of X's two partners for X, summed over all X).
+</li>
+</ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw70" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p71"></a>
+<p><b> Puzzle #71: The impossibility of districting into squares &amp; triangles
+</b>
+<br><small><font color="red">[6]</font></small>
+Consider (on a flat Earth) a rectangular "country."
+<ol type="a">
+<li>
+Prove that, for a generic rectangle, there is no way to divide it into
+any finite number N of squares (we are not requiring the squares to
+be equal and not pre-specifying N).
+</li><li>
+However, certainly <i>some</i> rectangles can be divided into N squares.
+(Prove that is this is possible for <i>some</i> value of N&ge;1, then it
+is possible for an <i>infinite set</i> of N&ge;1.)
+In that case, prove that, for some 
+well-behaved smooth population density function within the rectangle you create,
+that there is no way to divide it into N
+squares with all populations equal, for any N&ge;2.
+</li><li>
+But, argue it is no problem to divide a rectangle into N equipopulous
+<i>rectangles</i>.  
+</li><li>
+What if we want to divide a rectangle into N equipopulous triangles?
+</li></ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw71" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p72"></a>
+<p><b> Puzzle #72: Coloring districts 
+</b>
+<small><font color="red">[6]</font></small>
+<ol type="a">
+<li>
+Suppose we have a rectangular "country" (on a flat Earth)
+divided into <i>triangular</i> districts,
+any two of which either share an entire edge,
+or share at most a single point ("face-to-face").
+How many colors (at most) are needed to color the districts so that no two
+districts which share nonzero boundary length, have the same color?
+</li><li>
+Suppose our rectangle instead is
+divided into <i>convex quadrilaterals</i> (again subject to the "face-to-face" condition), 
+How many colors (at most) are needed now?
+</li><li>
+Suppose our country (now of any shape) is divideable into
+(and divided into) face-to-face <i>parallelograms</i>.
+How many colors (at most) are needed now?
+</li><li>
+What if we further demand that the face-to-face
+parallelograms each be <i>rectangles</i>?
+</li><li>
+Consider districting some (planar, simply-connected)
+country using the <a href="GerryExamples.html">shortest splitline algorithm</a>.
+How many colors then (at most) are needed?
+</li></ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw72" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p73"></a>
+<p><b> Puzzle #73: Manipulation of most reasonable voting methods is easy
+</b>
+<br><small><font color="red">[6]</font></small>
+An election using some voting method is "weakly monotone" 
+with respect to some "manipulator"
+co-voting voter subset if,
+for every pair of candidates (A,B),
+either
+<ol type="I">
+<li>
+B cannot be made to win for any manipulator votes, or
+</li><li>
+if all the manipulators rank B top and A bottom, then A will not win.
+</li></ol>
+Prove that, for weakly monotone elections,
+there is a simple way (polynomial time algorithm) for the manipulator set to
+determine a voting strategy that almost always
+succeeds in improving the election result for them if such an improvement is achievable.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw73" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p74"></a>
+<p><b> Puzzle #74: How bad can "Shortest Splitline" districts be? 
+</b>
+<small><font color="red">[4]</font></small>
+<ol type="a">
+<li>
+Suppose we have a rectangular "country" (on a flat Earth)
+and suppose the population distribution inside it is uniform.
+If we partition it into N districts
+using the <a href="GerryExamples.html">shortest splitline algorithm</a>,
+then how much worse (in terms of total length of cutting) can it be than
+the hypothetical optimum districting which minimizes  cutting length?
+In particular: prove the worst (i.e. maximum)
+possible ratio in the limit N&rarr;&infin;
+is
+(3<sup>1/2</sup>+3<sup>-1/2</sup>)/12<sup>1/4</sup>&asymp;1.24080647880279946525.
+</li><li>
+One might now boldly conjecture that the 
+shortest splitline algorithm never produces cutlength
+exceeding the optimum by more than some constant factor C no matter how the initial
+country is shaped, and no matter how the population is distributed inside the country,
+and no matter what number <nobr>N&ge;1</nobr> districts we want.
+Disprove that conjecture with uniform population density.
+</li><li>
+Also disprove the conjecture for a square-shaped country containing
+<i>non</i>uniform population.
+</li><li>
+This "Approximation Conjecture"
+is, however, reborn if we restrict attention to <i>convex</i> countries with
+uniform population densities.
+(<small><font color="red">[9]</font></small>
+I presently have no full proof or disproof even for a rectangular country, 
+but I believe in this conjecture.  Later note: I believe I've proved the conjecture.)
+Prove the shortest splitline algorithm applied to a convex country will only employ
+all-internal splitlines, and will only produce convex districts.
+</li><li>
+Prove the Approximation Conjecture in the case of convex planar countries
+with arbitrary smooth population densities
+everywhere bounded below and above by positive constants,
+in the N&rarr;&infin; limit.
+</li></ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw74" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p75"></a>
+<p><b> Puzzle #75: Monty Hall problem 
+</b>
+<br><small><font color="red">[2]</font></small>
+This is a famously tricky probability puzzle.
+A television game show host asks a contestant to choose one of three closed doors.
+Behind each door is a prize to be awarded to the contestant.
+One of the prizes is valuable (pot of gold), other two are not (worms).
+The contestant chooses a door.  But before opening it, the host opens
+a <i>different</i> door (revealing worms) and asks: would you like to switch doors?
+<b>Should she switch?</b>
+</p>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw75" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p76"></a>
+<p><b> Puzzle #76: Monarch family lines 
+</b>
+<br><small><font color="red">[3]</font></small>
+The English Monarchs adopted the rule that the first-born male legitimate child of the Monarch,
+would (after the Monarch died) become the new one &ndash; but if there were none,
+then the oldest female legitimate child would be crowned.
+If neither existed, then the line of Monarchs would come to an end.
+(In practice, at that point, there would usually be a war.  Also, things generally
+went very badly for children who were too
+young at the time of their enthronement.
+But we shall ignore that.)
+</p><p>
+Suppose each Monarch has N legitimate children who survive him, N&ge;0, 
+with probability P(N) &ndash;
+for some fixed probability distribution P(0), P(1), P(2), ...  (all positive).
+<ol type="a">
+<li>
+Prove that with probability 100%, the Monarch-line will end.
+</li><li>
+Find the expected number of generations the line persists.
+</li><li>
+Even though the royal line will die out with probability 100%, prove that
+the number of descendants of some particular individual can (in this model) grow indefinitely
+without end, and indeed will do so with positive probability under this model
+exactly when &sum;<sub>n&ge;0</sub> nP(n) &gt; 1.
+</li></ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw76" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p77"></a>
+<p><b> Puzzle #77: Learning how to play games
+</b>
+<br><small><font color="red">[8]</font></small>
+"Matrix games" arise all the time in political science, economics, 
+and of course, gameplaying.
+The rules are: there is a rectangular "payoff matrix" M.
+There are two players, "White" and "Black."
+If White chooses strategy w and Black chooses strategy b 
+(both announce simultaneously), then
+Black pays White M[w,b] dollars.  (Which could be negative.)
+It is known that there always exists an optimal policy for both players,
+which is always a so-called "mixed strategy" in which you employ strategy n 
+with probability p[n] for some magical fixed probability-vector p,
+<i>randomly</i> choosing which pure-strategy to use.
+This probability-vector describes your optimal policy completely.
+Your problem as a gameplayer, then, is to determine what that optimal vector is.
+</p>
+<ol type="a">
+<li>
+If you somehow
+knew the probability vector of your opponent, then explain how quickly to determine
+your best vector.
+</li><li>
+Prove that the following approach will converge to yield
+optimum vectors for both players after G games are played 
+in the limit G&rarr;&infin;.
+Start with each vector initially equal to the uniform
+probability distribution.  Play "games" versus yourself.  
+Each game, have each "side" assume 
+his opponent's probability vector is the same as this probability distribution on moves:
+"choose a random previous game
+and pick the move that side made in that game (except if the random game is the first, then
+make a random-uniform move)."  
+Under this assumption, have the other side make a move, then pick your best response.
+That is your move.
+</li>
+</ol>
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw77" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p78"></a>
+<p><b> Puzzle #78: Florida counties' biased enforcement of rules for overseas ballots in 2000
+</b>
+<br><small><font color="red">[4]</font></small>
+In the 2000 US presidential election in Florida, after Gore challenged the
+election there was only one class of ballots which had not yet been
+counted &ndash; late-arriving overseas ballots.  So they became critical.
+</p><p>
+The <i>NY Times</i> (Front page, 15 July 2001) manually examined the
+2490 late-arriving overseas ballots in FL 2000.
+They found that 680 violated state election laws and rules
+and hence should have been rejected.
+Here's how they got counted:
+</p>
+<table cellspacing="3" bgcolor="#ffffcc">
+<tr><th>
+In Bush-won counties:</th>
+<td> 530 accepted, 523 rejected and hence uncounted.</td></tr>
+<tr><th>
+In Gore-won counties:</th>
+<td> 150 accepted, 666 rejected. </td></tr>
+</table>
+<p>
+I.e. 
+of the 680 uncompliant but accepted ballots 80% were in Bush counties.  (Bush-Gore margin: 537.)
+(The <i>NY Times</i> also examined the 1824 flaw-free late-overseas ballots, but
+there was almost no bias there since only
+11 were rejected.)
+</p>
+<p>
+If the enforcement-levels
+for these laws and rules had been unaffected 
+by whether Gore or Bush happened to be winning in each county, then
+show that the chance of an anti-Gore bias this-or-more-severe would happen
+by luck, was below 10<sup>-50</sup>.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw78" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p79"></a>
+<p><b> Puzzle #79: Biased purging in Ohio 2004
+</b>
+<br><small><font color="red">[3]</font></small>
+Between 2000 and 2004 
+(before the November 2004 Bush vs. Kerry US presidential election)
+"purging" of lists of registered voters was carried out by
+various Ohio counties.  
+Consider a county to have been "purged" if the number of registered voters 
+dropped at least 6.5% in this period.
+<small>
+(Note this definition is necessarily somewhat arbitrary, e.g.
+some counties might consider themselves to have "purged" even if
+their number of registered voters <i>increased</i> from 2000-2004.
+For the purposes of this puzzle
+we are making an "effective" definition of purging based on <i>results</i>,
+not a definition based on <i>alleged intentions</i>.)
+</small>
+</p>
+<pre>
+The 16 Kerry-Won Counties:      The 72 Bush-Won Counties:
+4 purges                        0 purges
+(Athens, Belmont,
+Jefferson, Monroe)
+
+[Source: www.feminist.org   Ohio registered voter dataset]
+</pre>
+<p>
+Assume that the probability that a county performed a purge
+was unaffected by whether they were a Bush- or Kerry-county.
+What is the probability that this large an anti-Kerry bias arose by luck?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw79" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p80"></a>
+<p><b> Puzzle #80: Biased Voter turnout in Lucas County Ohio 2004
+</b>
+<br><small><font color="red">[3]</font></small>
+In the 2004 US presidential election in Lucas County in the critical state of Ohio:
+<ol>
+<li>
+In Toledo: 
+<ul>
+<li>
+The 110 
+lowest-turnout precincts (all the ones
+with &lt;68% turnout) 
+were won by Kerry.
+</li><li>
+Bush won 9 of the 15 highest-turnout precincts (all the ones
+with &gt;85% turnout).
+</li>
+</ul>
+</li><li>
+Outside of Toledo:
+<ul>
+<li>
+The 6
+lowest-turnout precincts (all the ones
+with &lt;66.6% turnout) 
+were won by Kerry.
+</li><li>
+Bush won 37 of the 45 highest-turnout precincts (all the ones
+with &gt;84% turnout).
+</li>
+</ul>
+</li></ol>
+<p>
+<b>A.</b>
+Assuming that registered voters were equally likely to vote
+regardless of whether they supported Bush or Kerry
+(and that there was no unethical vote- or turnout manipulation)
+show the probability P that an anti-Kerry bias this or more severe would
+have happened by luck, obeyed P&lt;10<sup>-13</sup>.
+</p>
+<p>
+<b>B.</b>
+But perhaps Democratic registered voters (Kerry was Democratic) 
+are just less likely to vote than Republican ones &ndash;
+e.g. Democrats are just less-socially-responsible!
+Consider that possibility.
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw80" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p81"></a>
+<p><b> Puzzle #81: Hierarchical government
+</b>
+<br><small><font color="red">[5]</font></small>
+<b>A.</b>
+Suppose there are N people in a country.
+They wish to elect <i>n</i> congressmen (1&le;n&lt;&lt;N).
+</p>
+<dl>
+<dt><b>Straightforward way:</b></dt>
+<dd> 
+The people are divided at <i>random</i> into n disjoint subsets of cardinality N/n each.
+Each district then elects one congressman in a single-winner election.
+</dd>
+<dt><b>Hierarchical way:</b></dt>
+<dd> 
+The people are divided at <i>random</i> into N/3 disjoint subsets of cardinality 3 each.
+Each triple selects one of its members to promote to "the next level."
+We now proceed recursively using the N/3 next-level people only, etc, each level
+reducing the number of people by a factor of 3, until only n people remain.
+(Assume N/n is an exact power of 3 to avoid hassles.  In the present-day USA,
+N/n&asymp;3<sup>12</sup>&asymp;10<sup>6</sup>.)
+</dd>
+</dl>
+<p>
+Suppose the people are of two types "black" and "white."  All are
+total racists, i.e. only vote for members of their own race.
+Analyse how a small racial imbalance in the population (say 0.000001 away from
+perfect balance)
+is magnified in the congress.
+</p>
+<p>
+<b>B.</b>
+The above could be criticized as a naive, unrealistic model.  Here is another.  Assume
+the blacks, though in the minority, try to dominate the government.
+They gerrymander the districts so each is either all-white or has a slight
+black majority.  They also manipulate the triples in the hierarchical scheme so
+that each triple is either 2 blacks versus 1 white, or 3 whites.
+How well do these government-takeover plans work?
+</p>
+<p>
+<b>C.</b>
+Suppose the whites "fight back" in the hierarchical scheme by making
+<i>all</i> triples be 2:1 or 1:2 (if this is possible).  Then what?
+</p>
+<p>
+<b>D.</b>
+Finally suppose our blacks and whites are so racist 
+they cannot stand being in the same triple.
+I.e. all triples are now totally segregated 3:0 or 0:3.  Then what?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw81" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p82"></a>
+<p><b> Puzzle #82: Proxies and cycles
+</b>
+<br><small><font color="red">[7]</font></small>
+Imagine a government set up as follows.  Each voter can either vote on a decision,
+or grant her vote to somebody else that she chooses (her "proxy").  That proxy would then have
+two votes, or if she were the proxy of two people, would have three, et cetera.
+</p><p>
+But difficulties arise if a chain of voter-to-proxy arrows is ultimately
+<i>cyclic</i>.
+In that case everybody in the cycle "passes the buck" and nobody actually votes.
+The goal of this puzzle is to model this.
+</p><p>
+Suppose there are N voters in all (N large) and everybody chooses their proxy 
+uniformly independently at random from among the other N-1 voters.  For each voter
+the probability that they vote is P and the probability they "pass the buck" is Q=1-P.
+Then what is the number of voters we expect to be disenfranchised
+because their vote is transferred into a "buck-passing cycle"?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw82" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p83"></a>
+<p><b> Puzzle #83: Zero-info honesty
+</b>
+<br><small><font color="red">[5]</font></small>
+The <i>Zero-Info Honesty criterion</i> (ZIH) for a voting method
+states:
+"If all the other voters vote randomly independently (all votes equally likely) 
+then it should be strategically optimal for you to cast an honest vote."
+</p>
+<p>
+Here "honest" means "rank in honest order of preference" (for a rank-order voting method)
+but means "rank with favorite=max, most-hated=min, and other linearly interpolated according
+to your utilities for their election" for range voting.
+</p>
+<b>A.</b>
+Prove that range voting disobeys ZIH.
+(This can be regarded as a flaw in range voting; on the other hand, note that
+optimal zero-info range voting strategy is never to be so-dishonest as to rank A>B
+if you honestly feel B>A.)
+</p><p>
+<b>B.</b>
+Prove that Borda and Plurality voting both obey ZIH.
+</p><p>
+<b>C.</b>
+<small><font color="red">[9]</font></small>
+It naively seems like Instant Runoff Voting (IRV) and many
+(perhaps all) usually-proposed
+Condorcet Methods should
+obey ZIH.  Can you prove or disprove that?
+</p>
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw83" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p84"></a>
+<p><b> Puzzle #84: Optimum districting longer for larger country?
+</b>
+<br><small><font color="red">[1]</font></small>
+Consider the "optimum" (i.e. with shortest total length of the inter-district boundaries) 
+way to divide a country A into N districts. 
+Now consider a new country B which contains A as a strict subset.
+</p><p>
+Is the optimum N-district partitioning of B always longer than (or the same length as)
+the optimum N-district partitioning of A?
+</p><p>
+Type password to get answer:
+<input type="text" value="" name="pw84" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p85"></a>
+<b>Puzzle #85: Condorcet cycle probability (<a href="Glossary.html#Dirichlet">Dirichlet</a> model)</b>
+<br><small><font color="red">[5]</font></small>
+In <a href="PuzzlePage.html#p7">puzzle 7</a>
+we had asked for the
+probability of an A>B>C>A clockwise "Condorcet preference cycle" in
+a 3-candidate rank-order-ballot election in which all V voters cast 
+any of the 6 possible ballot-types 
+<center>
+ABC, ACB, BAC, BCA, CAB, CBA
+</center>
+with equal likelihood independently,
+in the limit V&rarr;&infin;.  
+We found the answer was a certain
+exact formula whose approximate value was 8.78%.
+<i>Now</i> consider the "Dirichlet model" in which the six vote count <i>totals</i>
+are selected by tossing 5
+points random-uniformly onto a line-segment and choosing the 6 intervals
+that result.
+In more hifalutin words the 6 totals are chosen 
+uniformly at random from the 5-dimensional simplex
+<center>
+ABC+ACB+BAC+BCA+CAB+CBA=100,  &nbsp;
+ABC&ge;0, ACB&ge;0, BAC&ge;0, BCA&ge;0, CAB&ge;0, CBA&ge;0
+</center>
+(using 3-letter variable names)
+in 6-dimensional space. 
+What is the probability of an A>B>C>A clockwise Condorcet cycle then?
+</p>
+<p>
+<b>Extra Credit:</b>
+What is the probability that a Condorcet Winner exists in a <i>four</i>-candidate
+election (vote counts similarly random uniform but now from the 23-dimensional simplex).
+</p>
+</p><p>
+Type password to get answer:
+<input type="text" value="" name="pw85" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p86"></a>
+<p><b>Puzzle #86: Copeland is comparatively good with strategic voters</b>
+<br><small><font color="red">[5]</font></small>
+The "Copeland" rank-order-ballot voting system elects whoever
+wins the most pairwise contests.
+(The "Copeland score," i.e.
+total number of pairwise contests you win, must be between 0 and
+N-1 inclusive in an N-candidate contest; pairwise-ties count as half.)
+One of Copeland's defects is its propensity for having co-winners with
+equal-maximal Copeland score.
+It is important to add some
+tie-breaking method to Copeland to repair that flaw.
+In this puzzle we shall show that Copeland enjoys some advantages
+related to strategic voters.
+</p>
+<ol type="a">
+<li>
+Show that Copeland is a "Condorcet voting method,"
+</li><li>
+Show that N-candidate Copeland <i>using Borda-score for tie-breaking</i> is
+"highly resistant to burial strategy"
+if N&le;4 in the following sense.
+If C is the winner with honest votes, then the act by "X>C>others"-voters of "burying" C by
+changing their vote to "X>others>C" can only elect X (at least if we neglect the
+possibility of perfect pairwise-ties between two candidates) as a probability&rarr;0
+event in the random-elections model in the limit of a large number of voters.
+[Very few Condorcet methods enjoy such good burial-resistance, so this makes
+Copeland quite special.]
+</li><li>
+But the reader is warned that this is a <i>limit</i> statement special to
+the random elections model. Show that with N=3 and N=4, the act by
+"X>C>others"-voters of "burying" C by
+changing their vote to "X>others>C" <i>can</i> elect X.
+</li><li>
+If N&ge;5 show that burial does succeed in Copeland/Borda sometimes,
+i.e. the act by "X>C>others"-voters of "burying" C by
+changing their vote to "X>others>C" <i>can</i> elect X.
+Indeed, in the <a href="RandElect.html">random elections model</a>, show burial
+succeeds at least a <i>positive constant</i> fraction of the time.
+</li><li>
+Despite the ways (shown in this puzzle) in which Copeland is atypically strategy resistant
+among Condorcet voting methods, it is poor in another way: it is very vulnerable to 
+<a href="CandCloning.html">candidate-cloning</a>.
+</li></ol>
+</p><p>
+Type password to get answer:
+<input type="text" value="" name="pw86" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p87"></a>
+<p><b>Puzzle #87 (Generalized "Monty Hall" probability puzzles, cf. puzzle #75):</b>
+<small><font color="red">[2]</font></small>
+<ol type="a">
+<li>
+Mr. Smith has two children, at least one of whom is a boy. What is the probability that the other is a boy?
+</li><li>
+John Allen Paulos, a mathematician at Temple University, has proposed a 10-door version of 
+the Monty Hall Problem. Once again, there is a
+car behind one door and goats behind all the others. You pick one door, but before 
+it's opened
+Monty will always open seven other doors to reveal goats. Then he'll
+give you
+a chance to stick with your original door or switch to either of the remaining two unopened doors. 
+Suppose you originally chose Door 1, and Monty opens every other door except Door 5 and Door 8. 
+Should you switch to 5 or 8? And what are the odds the car is behind either 5 or 8?
+</li></ol></p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw87" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p88"></a>
+<p><b>Puzzle #88 ("Optimum" voting system maximizing chance of Condorcet winner):</b><br><small><font color="red">[8]</font></small>
+Which <a href="WtPositnl.html">weighted positional</a> voting system,
+in a 3-candidate election
+(in the "<a href="Glossary.html#Dirichlet">Dirichlet</a>" probability model)
+maximizes the chance of electing a Condorcet "beats-all" winner?
+(Also, for comparison, compute this chance for Plurality, Borda, AntiPlurality, and IRV.)
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw88" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p89"></a>
+<p><b>Puzzle #89 (Probability of Majority-top winner in Dirichlet election):</b><br><small><font color="red">[4]</font></small>
+In the "<a href="Glossary.html#Dirichlet">Dirichlet</a> model" of random 3-candidate elections (rank-order voting: 3!=6 possible 
+vote types) what is the probability that some candidate will win with a majority of
+the top-rank votes (thus avoiding any need for a "runoff")?
+</p><p>
+<b>Bonus questions:</b>
+Also solve for arbitrary number C&ge;3 of candidates insetad of merely C=3, and
+also in the <a href="RandElect.html">random election model</a>.
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw89" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p90"></a>
+<p><b>Puzzle #90 (Burial works in Condorcet voting):</b><br><small><font color="red">[3]</font></small>
+Prove "burial stategy" works (sometimes) in every Condorcet voting method.
+That is, there exists a situation with N candidates
+(for each fixed N&ge;3) in
+which A wins, but the B&gt;A&gt;others voters can make B win by strategically
+re-voting B&gt;others&gt;A.
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw90" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p91"></a>
+<p><b>Puzzle #91 (Number of count-types to publicize):</b><br><small><font color="red">[3]</font></small>
+<small> (This puzzle suggested by The League of Women Voters of New Mexico.)</small>
+Suppose voters in an N-candidate election submit a rank-order ballot
+which ranks some subset of the N candidates in order, then leaves the remaining 
+candidates unranked.  For example in a 5-candidate election a legal vote would
+be "C>A>B>(all unranked candidates)."
+How many different kinds of "total" should the election office in each precinct 
+publish in order to hold an election
+</p>
+<ol type="a">
+<li>
+Using a Condorcet method based on the "pairwise matrix"?
+</li><li>
+Using "instant runoff voting"?
+</li><li>
+Using Borda count?
+</li><li>
+Using range and approval voting?
+</li>
+</ol>
+<p>
+(Give both a formula in terms of N, and compute the numbers when N=10.)
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw91" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p92"></a>
+<p><b>Puzzle #92 (Permit cycles in Condorcet ballots?):</b><br><small><font color="red">[3]</font></small>
+Although it seems senseless to cast a rank-order ballot which includes a 
+<a href="CondorcetCycles.html">cycle</a>
+(such as A>B>C>A)... permitting voters to do that would have the advantage that would allow
+"dumb totalizing" voting machines to process votes for all Condorcet systems based
+on "pairwise matrices."  (It is beyond
+the capability of such a machine to detect cycles and thus forbid
+illegal votes, but if we make cyclic-votes <i>legal</i>, then there is no problem.)
+Votes in an N-candidate 
+election could be cast as (N-1)N/2 pairwise one-bit "A&gt;B versus A&lt;B" choices.
+<br><br>
+In this puzzle we explore the consequences of permitting cyclic ballots.
+<ol type="a">
+<li>
+Is it <i>really</i> beyond the capability of a "dumb totalizing" machine to
+detect cyclic ballots?
+</li><li>
+Show that casting a cyclic ballot can be strategically useful with both 
+"Simpson-Kramer min-max" and "basic Condorcet" voting.
+In other words, we expect strategic voters sometimes intentionally to employ this option;
+doing so is <i>not</i> "senseless" strategically although it still does seem senseless
+as an honest vote.
+</li><li>
+<b>(Open <font color="red">[9]</font>)</b>
+What about with "Tideman ranked pairs" and "Schulze beatpaths" Condorcet voting?
+</li>
+</ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw92" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+
+<a name="p93"></a>
+<p><b>Puzzle #93 (Supermajorities):</b><br><small><font color="red">[6]</font></small>
+Suppose, in order for us to say that "society prefers A over B"  we demand that
+A would beat B in a 2-choice majority vote, by at least a fraction-F <i>super</i>majority
+(for some F with &frac12;&le;F&lt;1).
+</p>
+<ol type="a">
+<li>
+Prove that, for <i>any</i> F, no  matter how close to 100%, preference 
+<a href="https://rangevoting.org/CondorcetCycles.htl">cycles</a> are
+possible.
+</li><li>
+Suppose, by happenstance, society happens to be so hugely decisive that 
+for <i>every</i> candidate-pair A,B, it prefers A over B (or the reverse)
+by a (>2/3) supermajority.
+In such a case, prove preference cycles are impossible.
+</li><li>
+Suppose each candidate is a point in an n-dimensional "issue space."
+Suppose each voter has a utility function, on that space, which is 
+concave-&cap; (but different voters may have different utility functions).
+Prove, for each n&ge;2, that  cycles of n-to-1-ratio supermajority preferences are possible
+(e.g. a cycle of 2/3-supermajority preferences is possible in the 2-dimensional case).
+</li><li>
+Suppose each voter has a utility function, on that space, which either is
+the (negated) 
+distance to the candidate, or which is the inner product with the candidate's location
+(both will work).
+Further, suppose the voters are distributed according to a 
+<i>log-convex probability density</i> (for example a multidimensional normal density).
+Then prove that no cycle of (&ge;F)-supermajority preferences can exist if 
+F&ge;1-e<sup>-1</sup>&asymp;63.212%.
+</li>
+</ol>
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw93" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+
+
+<a name="p94"></a>
+<p><b>Puzzle #94: The "YN model" &ndash; a simple voting model 
+in which range voting behaves optimally    
+while many competing voting systems can behave pessimally:</b><br><small><font color="red">[7]</font></small>
+The "YN-model" is a simple model of voting
+(with a fair amount of realism) in which range voting
+performs optimally with "honest voters."  
+There are <i>m</i> independent "issues"
+and 2<sup>m</sup> "candidates"; each candidate announces
+a clear yes or no stance on each issue, and by some benificent miracle we have a full
+democratic marketplace, i.e, every possible issue-stance is
+represented.  Hence (in the case m=4) we can name the 16 candidates YYYY
+("yes" on all 4 issues), YYYN, YYNY,..., NNNN.
+Suppose, for each voter, the <i>utility</i> of electing
+any given candidate is just the 
+<i>number of issues</i>
+on which that candidate agrees with the voter.
+Finally, we suppose without loss of generality
+that all <i>m</i> issues each would win if put to a single-issue
+yes/no vote, therefore the objectively best candidate is YYYY.
+<small>The "without loss of generality" is because we could just 
+rename the issues to make "yes" become "no" for that issue, e.g. the issue
+"raise taxes?" becomes "do not raise taxes," so with such canonical
+renaming we can always cause
+the best candidate to be named YYYY.
+</small>
+</p>
+<ol type="a"><li>
+Prove that <b>range</b> voting, with "honest voters" (who always score their
+favorite <i>m</i>, their least-favorite 0, and everybody else linearly-interpolated
+between according to their utility) 
+will <i>always elect the best</i> candidate in the YN model (i.e,
+here, YYYY).
+</li><li>
+But show that <b>plurality</b> voting can
+unambiguously elect the worst candidate (here NNNN)
+while causing the best candidate (YYYY) to have <i>zero</i> votes.
+</li><li>
+Hence <b>Instant Runoff</b> (and <b>Coombs</b>), in such an election,
+would fail to elect YYYY.  
+Can IRV ever elect the worst candidate NNNN?
+</li><li>
+Show that <b>Condorcet Cycles</b> can happen in the YN model.
+</li><li>
+Show that all <b>Condorcet</b> methods (with honest voters)
+can elect the worst candidate NNNN 
+<i>and</i> can mis-order the finishers 
+exactly backwards so that candidates with more Ns always are majority-preferred 
+over those with fewer!
+</li><li>
+Show that <b>Borda</b> voting (with honest voters)
+both can elect the worst candidate NNNN and order the candidates exactly backwards.
+</li><li>
+Show that <b>Approval</b> voting (with honest voters who approve the top F percent
+of the available candidates and disapprove the rest, 
+where F is any fixed value with 0&lt;F&le;50%)
+can elect the worst candidate NNNN.
+(And range voting can also do this with strategic voting.)
+</li><li>
+(Partially open <font color="red">[9]</font>) What about <b>Coombs</b> voting?  Can it elect the worst candidate NNNN?
+</li><li>
+What about <b>Copeland</b> voting?  Can it elect the worst candidate NNNN?
+</li>
+</ol>
+
+<p>
+<b>Comment:</b>
+Most analyses of voting system "properties" ignore the fact  that "issues" exist and candidates
+have stances on them.  The YN model is approximately the simplest and most natural 
+possible voting model which <i>doesn't</I> ignore that.   It turns out that honest range voting
+is always optimal in the YN model and is "self consistent."  But most other commonly
+proposed voting methods
+turn out to be both "self contradictory" and non-optimal (indeed they can
+even behave pessimally)
+in the YN model.
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw94" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+
+<a name="p95"></a>
+<p><b>Puzzle #95 (The "random YN model"):</b><br><small><font color="red">[8]</font></small>
+The "YN-model" answers to the <a href="PuzzAggreg.html">previous</a>
+puzzle have been attacked as 
+not very relevant to real life.  That is, the election examples constructed to
+demonstrate that, e.g. Plurality voting can elect the worst winner NNNN,
+are (speculate the critics) unlikely to arise.
+To address that, now consider <i>random</i> voters.   That is, every possible
+issue-stance (from among the 2<sup>m</sup>)
+are equally likely and we pick some large number V (far exceeding 2<sup>m</sup>)
+of such random voters. We than <i>canonize</i> them by reversing the signs
+of some of the issues so that for each issue considered alone, "Y" is the majority winner.
+(This canonical-renaming is purely for convenience and has no genuine effect.)
+</p>
+<ol type="a">
+<li>
+"Honest" range voting (defined in previous puzzle) always elects the best candidate YYY...YY.
+</li><li>
+Show that, with honest plurality voting, a "bad" candidate (over 50% "N"s in his name)
+will be elected with chance greater than some absolute positive constant C.  
+(And what is C?)
+</li><li>
+Show that, with honest approval voting where voters approve the top F-fraction of
+the candidates (for any fixed F with 0&le;F&lt;50%) a "bad" candidate (over 50% "N"s in his name)
+will be elected with chance greater than C.
+</li><li>
+Show the same thing for Borda voting.
+</li><li>
+<i>STILL OPEN <font color="red">[9]</font>:</i>
+What about with Condorcet, Coombs, and IRV voting?
+</li></ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw95" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+
+<a name="p96"></a>
+<p><b>Puzzle #96 (Human "happiness" and Darwinian evolution):</b><br><small><font color="red">[2]</font></small>
+Here are some nowadays well-accepted
+scientific findings about the nature of human happiness (revealed by
+survey studies).
+Are all of these findings predicted by just one theory &ndash; Darwinian evolution?
+</p>
+
+<ol type="a">
+<li>
+If asked to choose between (i) get $240 and (ii) 25% chance of getting $1000, most people
+choose (i).
+But if asked to choose between (i) lose $740 and (ii) 75% chance of losing $1000, most people
+choose ii.
+</li><li>
+More generally it seems people are assymetrically
+risk-averse about losses but willing to take risks for gains.
+choose ii.
+</li><li>
+Within a single country or region, people with more wealth and social status tend to be happier.
+However, people in rich countries are not substantially happier than those in poor countries
+(except for people so poor they are literally in danger of dying soon &ndash; they 
+genuinely are less happy).
+</li><li>
+A person who has less stuff than his neighbors (e.g. they have a swimming pool, you do not), 
+tends to be unhappy.  But that same person in the same circumstances would be happier
+if transplanted to a different location with poor neighbors, so that now he had the most stuff
+comparatively speaking.   I.e. happiness is not about absolute wealth, it is more
+about relative wealth.
+</li><li>
+80% of your happiness level is explained purely by your preset "set point" which is determined
+by genetics (or anyhow is not modifiable) and only 20% by the circumstances you
+find yourself in.  If you improve/worsen your circumstances you get happier/sadder &ndash; but
+only temporarily before returning to your "set point" (even though the improvement/worsening
+is permanent). 
+</li></ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw96" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+
+<a name="p97"></a>
+<p><b>Puzzle #97 ("Allais Paradox" for utilities):</b><br><small><font color="red">[2]</font></small>
+Maurice Allais conducted the following experiment in the 1950s. 
+He asked people to preference-order the
+following four alternatives:
+<ol type="A">
+<li>
+You get $1 million.
+</li><li>
+Get $5M with chance 0.1, $1M with chance 0.89, and zero with
+chance 0.01.
+</li><li>
+Get $1M with chance 0.11, and zero with chance 0.89.
+</li><li>
+Get $5M with chance 0.1 and zero with chance 0.90.
+</li>
+</ol>
+</p>
+Allais claimed that most people prefer A>B and D>C.
+Does that make sense?
+<ol type="a"><li>
+Use "utilities" to
+prove that anybody who prefers A>B (prefers A over B) must prefer C>D.
+(This is true regardless of the utility values of the different amounts of money,
+and it is also true if both the ">" relators are replaced by "<" or both by "=".)
+</li><li>
+So how can we explain Allais' survey finding?  Does it mean that the whole
+utility model is not a good basis for human behavior? If so, what should it be replaced by?
+</li>
+</ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw97" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+
+
+<a name="p98"></a>
+<p><b>Puzzle #98 (Random Sampling of a Subset):</b><br><small><font color="red">[4]</font></small>
+Suppose we make <i>n</i>  independent tosses of a <i>p</i>-biased coin.
+(As is well known) the number <i>h</i> of heads that results is <i>np</i>
+in expectation, with
+variance=<i>npq</i>.
+</p><p>
+<i>Now</i> suppose we toss some coin (with unknown bias) <i>N</I> times, 
+with the result we get <i>H</i>
+heads.   A random subsample of <i>n</i> of the <i>N</i> tosses is then selected
+(0&le;n&le;N, and note this sampling is <i>without</i> replacement).
+It contains (say) <i>h</i> heads.
+Prove that <i>h</i>'s mean=<i>nH/N=np</i>  (if we define <i>p=H/N</i> and <i>q=1-p</i>)
+and its
+variance=<i>npq</i>&times;<i>(N-n)/(N-1)</i>.
+Note the "sampling without replacement correction factor"
+<i>(N-n)/(N-1)</i>.
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw98" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+
+
+<a name="p99"></a>
+<p><b>Puzzle #99 (Efficient generation of correct "random election" pair-margins matrices):</b><br><small><font color="red">[6]</font></small>
+Many election methods for N-candidate elections with rank-order ballots,
+as their first step, compute the "pairwise table" giving the "margin" by which A defeats
+B (i.e. the number of voters who prefer A&gt;B minus the number who prefer B&gt;A,
+for every A,B).
+</p><p>
+Suppose all V votes are independent random orderings
+(all N! orderings equiprobable) with V very large.
+</p>
+<ol type="a">
+<li>
+In the V&rarr;&infin; limit, what kind of probability density do these matrices arise from?
+</li><li>
+Find a way to generate the N&times;N pairwise matrix
+resulting from such votes, without actually generating and processing all the votes.
+I found an interesting
+O(N<sup>5</sup>)-time,
+O(N<sup>2</sup>)-space
+algorithm. (Note these time and space bounds do <i>not</i> involve V.) 
+However, soon after, I realized that there was a simpler algorithm
+running in only O(N<sup>2</sup>)-time and O(N)-space.
+</li>
+</ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw99" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+
+<a name="p100"></a>
+<p><b>Puzzle #100 (Copeland Tie Probability and Behavior):</b><br><small><font color="red">[6]</font></small>
+The "Copeland" voting method for N-candidate elections with rank-order ballots
+is:
+<!-- (0) compute the "pairwise table" giving the "margin" by which A defeats B;  -->
+(1) The number of candidates whom X pairwise-defeats is X's "Copeland score."
+(2) The candidate with greatest Copeland score is the winner.
+</p>
+<ol type="a">
+<li>
+What (as a function of N in the limit of V&rarr;&infin; 
+voters each of whom casts an independent random ordering as her vote,
+all N! orderings equiprobable) is the probability that this will yield at least two 
+tied-winners?
+In particular, show that the tie-probability is 
+&asymp;17.5% when N=4 and
+&asymp;24.8% when N=10.
+</li><li>
+What is the chance for a (&ge;3)-way tie?
+</li><li>
+(Open) When N&rarr;&infin; show that the chance of a tie shrinks to 0.
+</li><li>
+What will be the typical winning Copeland Score?
+</li><li>
+What do you estimate
+is the tie probability in real life (as opposed to in part a's "random elections model")?
+</li>
+</ol>
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw100" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p101"></a>
+<p><b>Puzzle #101 (Weighted sampling):</b><br><small><font color="red">[4]</font></small>
+You are a pollster.  You want to predict whether the N voters are going to vote
+YES or NO in the forthcoming election.
+If you pick a sample of n (1&le;n&lt;&lt;N)
+future voters at random, the variance in your prediction
+of the number of YES votes
+would be npq where q=1-p and p is the probability a random voter votes YES.
+But you want to outperform that &ndash; 
+you want smaller prediction variance using a smaller sample!
+Can you do that? And how? Does this really work?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw101" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p102"></a>
+<p><b>Puzzle #102 (Probability Condorcet Winner exists):</b><br>
+<small><font color="red">[8]</font></small>
+In the <a href="RandElect.html">random election model</a> (also called the "impartial culture")
+</p>
+<ol type="a">
+<li>
+Find an <i>exact</i> formula, expressed as a 1-dimensional integral, for the probability P(N)
+that a
+&quot;<a href="CondorcetCycles.html">Condorcet Winner</a>&quot;
+(i.e. a candidate who pairwise-defeats all the others by majority-vote)
+exists
+in a V-voter N-candidate rank-order-ballot election in the V&rarr;&infin; limit.
+[Hint: it will help immensely to have solved <a href="PuzzlePage.html#p99">puzzle #99</a>
+first.]
+</li><li>
+Then find a simpler <i>asymptotic</i>
+formula, valid when N&rarr;&infin;, not involving any integrals.
+</li><li>
+Your formula should prove that the probability that a Condorcet Winner exists is less than
+N<sup>-0.99</sup>
+for all sufficiently large N.
+Prove this is <i>also</I> true in the
+<a href="Glossary.html#Dirichlet">Dirichlet model</a>.
+</li></ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw102" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+
+<a name="p103"></a>
+<p><b>Puzzle #103 (Counting rank-order votes in "D-dimensional politics"):</b><br><small><font color="red">[5]</font></small>
+Suppose politicians and voters are points in a D-dimensional "issue space."
+Suppose, given a choice between two candidates, voters prefer the one located nearer to them.
+<ol type="a">
+<li>
+Suppose there are N candidates.  What is the number of possible
+rank-order votes that the rules of the voting system allow a voter to cast?
+</li><li>
+But some of those legally-permitted votes would be dishonest for <i>every</I>
+voter and hence would never occur.  How many honest vote-types could actually occur?
+</li><li>
+Compare the two preceding answers.
+</li></ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw103" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p104"></a>
+<p><b>Puzzle #104 (Voting system incentivizing voter to reveal honest utilities):</b><br><small><font color="red">[8]</font></small>
+Is there any way to incentivize a voter (by asking her a single question) to state her
+sincere normalized utilities for the N candidates, e.g. X=10, Y=3, Z=0?
+We know that in this case the voter would consider a 30% chance of getting X
+instead of Z to be equal in value to a guarantee of getting Y. But can we use
+that kind of knowledge to solve this problem?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw104" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p105"></a>
+<p><b>Puzzle #105 (Identifying Condorcet Winners by examining few pairs):</b><br><small><font color="red">[8]</font></small>
+A "Condorcet winner" is a candidate who defeats every rival pairwise.
+(To avoid annoyance, assume there are no pairwise ties.)
+As is well known, if N&ge;3 then there can
+<a href="CondorcetCycles.html">fail</a> to be a Condorcet winner in
+an N-candidate election.
+Obviously, in an N-candidate election, we can decide whether a
+Condorcet winner exists (and if one does exist, identify who)
+by examining all (N-1)N/2 candidate-pairs.
+</p>
+<ol type="a">
+<li>
+<small><font color="red">[2]</font></small>
+Show that it suffices to examine at most 2N-3
+candidate-pairs.  Indeed, more strongly, it suffices to examine
+2N-2-&lfloor;lgN&rfloor; pairs where lgN=log<sub>2</sub>N.
+</li><li>
+<small><font color="red">[2]</font></small>
+Show that at least N-1 pairs need to be examined.
+</li><li>
+<small><font color="red">[9]</font></small>
+Can this "window" [N-1, 2N-3] of bracketing bounds be shrunk?
+As a step in that direction, show that there is a <i>randomized</i> algorithm which
+will examine at most 2N-3 pairs but which <i>in expectation</i> (i.e. on average)
+will examine a number
+asymptotic to 1.5N.
+</li><li>
+<small><font color="red">[8]</font></small>
+What if you have a "quantum computer"? Then find <i>sub</i>linear-stepcount
+algorithms to verify, find, and/or disprove the existence of Condorcet winners
+(with confidence&ge;99.99% of answer being correct), assuming we can consult
+a unit-time "quantum oracle" which,
+given two any candidates A and B, will inform us who defeats the other pairwise.
+</li></ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw105" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p106"></a>
+<p><b>Puzzle #106 (Quick elimination of no-hopers in Instant Runoff Voting):</b><br><small><font color="red">[2]</font></small>
+IRV vote-counting software software  by "Election Solutions Inc."
+often immediately simultaneously eliminates a large number of low-vote-getting candidates
+because "his/her defeat was mathematically inevitable."
+<ol type="a">
+<li>
+Show it is <i>not</I> necessarily legitimate to eliminate a subset of candidates
+each of whose IRV "defeats are inevitable."
+</li><li>
+But show that there is a simple criterion for identifying an (often-large) subset of the 
+candidates, 
+which
+it <i>is</I> legitimate to initially simultaneously eliminate.
+</li>
+</ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw106" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+<a name="p107"></a>
+<p><b>Puzzle #107 (IRV gets it wrong):</b><br><small><font color="red">[1]</font></small>
+Clay Shentrup wants to know an argument that instant runoff voting (IRV) gets
+the winner wrong in at least one of these two elections:
+</p>
+<pre>
+#voters their vote          #voters their vote
+------- ----------          ------- ----------
+8       B>A>C               4       B>A>C
+5       C>B>A               6       C>B>A
+4       A>C>B               5       A>C>B
+(winner = C)                2       B>C>A
+                            (winner = C)
+</pre>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw107" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p108"></a>
+<p><b>Puzzle #108 (1D political spectrum model):</b><br><small><font color="red">[6]</font></small>
+Here is a simple model of elections:
+the "voters" (of which there are an infinite number)
+are the uniform distribution on the real interval (-1, 1).
+The N candidates each are independent random samples from that distribution, i.e. 
+points x on the real line with -1&lt;x&lt;+1.
+Voters prefer candidates located nearer to them.  In this puzzle assume voter honesty.
+<ol type="a">
+<li>
+The <b>optimal</b>-behaving voting systems:
+Show that every Condorcet method,
+Coombs (repeated elimination of the candidate with the most last-place votes),
+and
+Approval where voters approve candidates
+within distance D [where D is a random number from some
+fixed positive probability density on (0, 2) &ndash; each voter with independent randomness],
+all will elect the candidate closest to 0.
+[Which, we remark, would seem to be the best winner.]
+</li><li>
+The <b>asymptotically optimal</b>-behaving systems:
+Show
+Borda
+and range voting (where voters score their favorite
+max, their most-hated min, and everybody else linearly interpolated in between according
+to their utility, where utility is a decreasing concave-&cap; or linear
+function of voter-candidate distance)
+will with probability&rarr;1
+when N&rarr;&infin; elect a candidate within (-&epsilon;, &epsilon;).
+More generally than Borda, also show this for
+every <a href="WtPositnl.html">weighted positional</a>
+voting method with a strictly decreasing concave-&cap; positive weight sequence.
+"Concave-&cap;" is not the tightest possible condition on the weights
+so that this works &ndash; what is?
+</li><li>
+The <b>bad</B>-behaving systems:
+With approval voting where voters approve candidates within distance D (for some fixed D, 0&lt;D&lt\
+;1),
+we get an exact tie between all candidates in the subinterval
+(D-1, 1-D).
+The worst case D&rarr;0+ is plurality voting.
+The best case is D=1 where the candidate nearest to 0 wins.
+Range voting with a "stairstep" utility(distance)
+function acts the same as that type of approval voting.
+With approval voting where voters approve the top-F fraction of the candidates
+(for some fixed F, 0&lt;F&le;1/2),
+we get in the N&rarr;&infin; limit that the winner will lie
+within distance &epsilon; of one of the two points
+&plusmn;(1-2F).
+The best case is when F=1/2.
+With instant runoff, the winner's probability density is supported on
+(-2/3, 2/3) and is rather peculiar &ndash; it has 4 peaks!
+</li>
+</ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw108" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p109"></a>
+<p><b>Puzzle #109 (Information content of ballots):</b><br><small><font color="red">[3]</font></small>
+The number of possible approval-style ballots in an N-candidate election, is 2<sup>N</sup>;
+but 2<sup>N</sup>-2 if the two "silly" (all-approve or all-disapprove) ballots are excluded.
+The number of possible rank-order-style ballots in an N-candidate election, is N!.
+</p>
+<ol type="A">
+<li>
+Compare these formulas. Which is greater?
+</li><li>
+Suppose we have "tactical" (rather than "honest") voters in an election where the
+two "front runner" candidates are known; and suppose the tactical voters always rate these two
+candidates maximum or minimum (i.e. never rating them intermediate).
+<i>Now</i> what are the counting formulas, and which is greater?
+</li><li>
+Finally, suppose we have tactical voters who employ the "moving average strategy."
+That is: there is a publicly known ordering of the candidates from a priori most-likely-to-win
+to a priori least-likely-to-win.  The voters begin by awarding the two frontrunners the max and min
+allowed votes, then go through the remaining candidates in decreasing order of victory-chances,
+awarding each the max- or min-allowed-vote depending on whether the voter regards him as
+better than average or worse than average where the "average" is taken among the <i>preceding</I>
+candidates only.
+<i>Now</i> what are the counting formulas, and which is greater?
+</li><li>
+How could you encode a rank-order ballot Gore&gt;Kennedy&gt;Bush using 3 bits?
+In the other direction, suppose you knew Gore, Kennedy, and Bush were the three
+candidates; how could
+you decode the binary number 010 to determine what the rank-order ballot was?
+</li><li>
+Further, show how to encode and decode <i>three independent</I> rank-order ballots
+(honest voters) using only 8 bits in all (for an average of only 8/3&asymp;2.667 bits
+per ballot).  More generally, anything which has only W possible values, can be
+encoded using log<sub>2</sub>W bits per thing (if there is a long sequence of them)
+and using &lceil;log<sub>2</sub>W&rceil; bits (if there is only one).
+</li>
+</ol>
+<p>
+Can you draw any "take-home lessons" from this exercise?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw109" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p110"></a>
+<p><b>Puzzle #110 (Counting rank-order votes):</b><br><small><font color="red">[5]</font></small>
+In an N-candidate election, cast a rank order vote in which <i>equalities</i> in rank are allowed.
+For example, if N=4, the vote A&gt;B=C&gt;D would be permitted.
+If equalities were not allowed, the number of possible votes would be N! &ndash;
+but we <i>are</i> allowing them, so how many are there?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw110" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p111"></a>
+<p><b>Puzzle #111 (CTT voting in legislatures):</b><br><small><font color="red">[3]</font></small>
+Is <a href="CTT.html">CTT voting</a> a bad idea for voting in legislatures?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw111" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p112"></a>
+<p><b>Puzzle #112 (Probabilities voting methods "vulnerable to strategy"):</b><br><small><font color="red">[8]</font></small>
+A single-winner election with honest voters and some given voting method will be called
+"vulnerable to strategy" if there exist some subset of the voters, who, by changing
+their votes, could cause the winner to change to somebody else whom they (unanimously) prefer.
+[This subset is <i>not</i> required to consist of identical voters; their honest
+and/or strategic votes both are allowed to be multi-element sets.]
+This puzzle investigates the probability that an election is vulnerable to strategy, in
+the <a href="RandElect.html">random election model</a> (also called the "impartial culture")
+with V&rarr;&infin; voters.
+</p>
+<ol type="a">
+<li>
+In 2-candidate simple-majority elections, show every election is invulnerable to strategy.
+Hence in the rest of this problem assume the number N of candidates is fixed with N&ge;3.
+</li><li>
+For plain <a href="Plurality.html">plurality</a>, <a href="rangeVborda.html">Borda</a>,
+and indeed <i>every</I> nontrivial <a href="WtPositnl.html">weighted positional</a> method,
+show that the strategy-vulnerability probability&rarr;1.
+</li><li>
+Also show this for "Coombs elimination" (whose rules are: the candidate with the greatest number
+of last-place rankings is repeatedly eliminated until only one remains &ndash; the winner).
+</li><li>
+Show for <a href="Approval.html">approval</a> voting where the honest voters approve the
+top-F-fraction of the N candidates, for any fixed F with 1/N&le;F&le;1-1/N, that the
+strategy-vulnerability probability&rarr;1.
+</li><li>
+Show for range voting the strategy-vulnerability probability&rarr;1.
+</li><li>
+Show for <a href="MedianVrange.html">median-based</a> range voting the
+strategy-vulnerability probability&rarr;1.
+(This is despite the theorem by Balinski &amp; Laraki that median-based range voting is
+"optimum" in terms of <i>their</i> definition of "vulnerability to strategy.")
+</li><li>
+Argue that for most Condorcet methods (including Nanson-Baldwin, Schulze-beatpaths,
+and least-reversal "basic" Condorcet), the strategy-vulnerability probability&rarr;1.
+</li><li>
+<i>However</i>, show for Instant Runoff Voting (<a href="rangeVirv.html">IRV</a>),
+and also for the following two Condorcet methods which somewhat resemble IRV in their workings:
+<a href="TidemanRev.html#WBSIRV">WBS-IRV</a>
+and
+<a href="BtrIrv.html">BTR-IRV</a>,
+that the strategy-vulnerability probability goes to a <i>constant</I> depending on N,
+and for each N with 3&le;N&lt;&infin; the constant is strictly positive
+(and also is below 1 if N=3, and presumably below 1 for every fixed N with 3&le;N&lt;&infin;).
+[Incidentally, note: plain IRV is <i>not</i> a Condorcet method.]
+However, for IRV the constant goes to 1 when N&rarr;&infin;.
+</li><li>
+Find upper and lower bounds and/or estimates, for these constants.
+Note by this measure, IRV is "superior" to Borda, Approval, Plurality, and most Condorcet methods;
+can you argue that WBS-IRV and/or BTR-IRV in turn are "superior" to IRV?
+</li><li>
+Further, argue that for a <i>very wide class</i> of voting methods (seemingly including all
+"reasonable" ones), the liminf probability of vulnerability to strategy exceeds some positive
+constant.
+</li><li>
+<i>But</i>:
+<a href="PuzzJGA.html#JGAcrit">criticize</a> our definition of "vulnerable to strategy"
+and indeed criticize the <i>whole idea</i> of comparing voting methods 
+based on the "probability       
+in the random election model of vulnerability to strategy" as misleading.
+Find some <a href="PuzzJGA.html#theex">examples</a>
+of (also reasonable-sounding) alternate definitions/models
+in which some of the above results become quite different.
+</li></ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw112" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p113"></a>
+<p><b>Puzzle #113 (What do rank-order-ballot[equalities permitted] systems do if given approval-style votes):</b><br><small><font color="red">[4]</font></small>
+Suppose the ballots are rank-orderings of the N candidates in
+which <i>equalities</i> in rank are allowed.
+Now suppose that only "approval-style" such ballots are cast, i.e. involving
+<i>at most one</i> "&gt;"
+and all the others are "=".
+Thus the vote A=B&gt;C=D=E would be permitted but A&gt;B=C&gt;D=E would not.
+</p>
+<ol type="A">
+<li>
+Prove that every Condorcet voting system will deliver
+the <i>same</i> winner as approval voting.
+</li><li>
+Further, this generalization of the Borda-system's rules
+to allow equalities in the rank-order ballots, also will always
+deliver the <i>same</i> winner as approval voting:
+each set of K co-equal candidates on a ballot, is given Borda score the <i>average</i> of
+the Borda scores that K candidates with those rankings, would have normally gotten.
+For example, the ballot  A=B&gt;C=D=E would yield Borda scores for C, D, and E of
+(0+1+2)/3=1 each, and Borda scores for A and B of (3+4)/2=3.5 each.
+</li><li>
+However, the following natural generalization of the instant runoff voting (IRV) system's rules
+to allow equalities in the rank-order ballots, will <i>not</i> necessarily
+deliver the same winner as approval voting:
+a ballot ranking K candidates co-equal top, is regarded as casting 1/K votes for each;
+the candidate with the fewest votes is eliminated (both from the election and all ballots);
+and then we continue on recursively in the resulting (N-1)-candidate election until only
+one candidate remains (who wins).
+</li>
+</ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw113" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p114"></a>
+<p><b>Puzzle #114 (One quantitative measure of clone-immunity [Jack Rudd]):</b><br><small><font color="red">[5]</font></small>
+Suppose you have two camps of supporters, camp A and camp B. You have an
+n-candidate election, in which 1 candidate (candidate A) is from camp A, and the
+other candidates (B<sub>1</sub>, B<sub>2</sub>, B<sub>3</sub>,..., B<sub>n-1</sub>)
+are from camp B.
+The A-supporters want to elect
+A, the B-supporters want to elect anyone but A.
+</p><p>
+There is, however, a twist to this election: the A-supporters have to vote
+<i>first</i>. Their votes are then displayed publicly, and the B-supporters vote in
+response to this. Both camps can co-ordinate their votes so as to get an optimal
+result from their point of view.
+</p><p>
+Let c be the least number such that, if the proportion of the electorate in the A
+camp is greater than c, they can force the election of candidate A.
+Then prove:
+<ol type="a">
+<li>
+For Plurality, Top-Two Runoff, IRV and Condorcet voting, c=&frac12;.
+</li><li>
+For Approval and Range voting, c=&frac12;.
+</li><li>
+For Borda voting, c is a function of n. Find this function, and to what
+value it converges as n tends to infinity.
+</li><li>
+Prove that for Anti-Plurality voting, c is a function of n. Find this function, and
+to what value it converges as n&rarr;&infin;.
+</li></ol>
+<b>Extension:</b>
+what happens if we remove the "twist" that the A-supporters vote first (now everybody votes
+simultaneously by secret ballot)?
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw114" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p115"></a>
+<p><b>Puzzle #115 (How often do "wrong winners" occur in real life with IRV [Clay Shentrup]):</b><br><small><font color="red">[2]</font></small>
+Instant Runoff Voting (for example) can exhibit many paradoxes including
+<a href="Monotone.html">nonmonotonicity</a>,
+no-show paradox,
+and <a href="IrvRevFail.html">reversal failure</a>.
+One form of nonmonotonicity is:
+X wins, but increasing X in some votes causes X to <i>lose</i>
+(or the time-reverse of this scenario <i>also</i> is non-monotonic).
+One form of no-show paradox is:
+X loses, but adding some new X-bottom votes causes X to win.
+In reversal failure, X wins, but if all the votes are reversed ("trying to select                      
+the worst candidate")
+then X still "wins."
+</p><p>
+Suppose we examine real-life IRV elections
+and find some percentage P
+of elections in which you can tell that such a paradox existed.
+Critics have objected to such discoveries by complaining: "But
+this 'paradox' is merely <i>hypothetical</i>.  E.g. you <i>hypothesize</i> 
+that some extra X-bottom voters appear, etc, causing the paradox. 
+But <i>really</I> they did not. 
+So your so-called paradox doesn't bother me.   I want to see <i>real life</i> elections 
+where IRV clearly generated the 'wrong winner' otherwise I'm unimpressed."
+</p>
+<ol type="a">
+<li>
+Argue that, even if there is no way to tell
+who the "right winner" even was,
+still, the percentage of IRV elections with wrong winners
+due to such paradoxes, must be at least P/2.
+</li><li>
+Now attack your own last answer:
+explain why
+that argument to deduce P/2 as a lower bound, while
+presumably approximately valid (and we recommend you believe it for practical purposes)
+really is not rigorous.
+</li></ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw115" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+<a name="p116"></a>
+<p><b>Puzzle #116 (Inferring political "positions" of politicians in D-space):</b><br><small><font color="red">[6]</font></small>
+At present there are 100 senators, and each votes about 600 times on a yes-no question
+during a 2-year senate.   Each senator's 600 bits are publicly known.  (Actually, some
+senators abstain from voting sometimes, so there will be fewer than 600 bits; and
+sometimes senators get replaced in the middle of the term, in which case there would be
+more than 100 senators.)
+Devise an algorithm to place the senators along a line ordered from "leftmost" to "rightmost,"
+in such a way that nearby senators tend to usually agree in their votes, whereas far-apart
+senators usually <i>dis</i>agree in their votes.
+More generally, instead of a line, we could have a D-dimensional "issue space."
+(D=2 is of interest for pictorial purposes, but we could also consider D=3, etc.)
+Given some number D&gt;0,
+devise an algorithm to place the senators as points in D-space
+in such a way that nearby senators tend to usually agree in their votes, whereas far-apart
+ones usually disagree.
+</p>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw116" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+
+<a name="p117"></a>
+<p><b>Puzzle #117 (Bayes-Laplace-Dirichlet law & "soft quorum" for range voting):</b><br><small><font color="red">[5]</font></small>
+Suppose there is some binary quantity B (i.e. yes=1 or no=0, for example "do you think there
+should be a $5/gallon gasoline tax?").
+You ask a random sample of S&ge;0 people for their values of B, and the result is that
+Y say "yes"
+while N say "no"
+where Y+N=S.
+</p>
+<ol type="a">
+<li>
+Given this data: what is the Bayesian estimate of the probability P
+that a random person says "yes"?
+</li><li>
+And what is the variance in this estimate?
+</li><li>
+How can a similar formula be used to make range voting have a "soft quorum"?
+</li></ol>
+
+<p>
+Type password to get answer:
+<input type="text" value="" name="pw117" size="15" maxlength="15">
+<input type="submit" value="Get Answer!"><input type="reset">
+</p>
+
+
+</FORM>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

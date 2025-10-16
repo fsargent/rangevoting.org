@@ -1,0 +1,168 @@
+
+<html>
+<head>
+<BASE HREF="">
+<title>                                                                                            RangeVoting.org - answer to puzzle 99 - correctly generating random pairwise matrices
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Puzzle #99: Efficient generation of "random election" pair-margins matrices
+</H2>
+
+<p><b>Puzzle:</b><br>
+Many election methods for N-candidate elections with rank-order ballots,
+as their first step, compute the "pairwise table" giving the "margin" by which A defeats
+B (i.e. the number of voters who prefer A&gt;B minus the number who prefer B&gt;A,
+for every A,B).
+</p><p>
+Suppose all V votes are independent random orderings
+(all N! orderings equiprobable) with V very large.
+</p>
+<ol type="a">
+<li>
+In the V&rarr;&infin; limit, what kind of probability density do these matrices arise from?
+</li><li>
+Find a way to generate the N&times;N pairwise matrix
+resulting from such votes, without actually generating and processing all the votes.
+I found an interesting
+O(N<sup>5</sup>)-time,
+O(N<sup>2</sup>)-space
+algorithm.  
+However, soon after, I realized that there was a simpler algorithm
+running in only O(N<sup>2</sup>)-time and O(N)-space.
+</li>
+</ol>
+
+
+<h2> Answer </H2>
+<p>
+<b>a.</b>
+The upper-triangle of the matrix is an (N-1)N/2-dimensional zero-centered
+Gaussian distribution.
+(Note: not N&sup2; dimensional, because the diagonal of the matrix is
+all-zero and the lower triangle is determined by antisymmetry from the upper triangle.)
+The "Gaussian" is a result of the central limit theorem in 
+the V&rarr;&infin; limit in this (N-1)N/2-dimensional space.
+</p>
+<p>
+The entries in a given row or column of the matrix are <b>correlated</b>.
+Specifically, if V<sub>AB</sub> is a &plusmn;1-valued coin-toss random deviate
+indicating for some voter indicating whether 
+she prefers A over B or the reverse, then its mean is
+E(V<sub>AB</sub>)=0 and its variance  is
+var(V<sub>AB</sub>)=1.
+Because once we know a voter prefers A&gt;B, the probability is 2/3 she prefers A>C
+[consider the three possibilities A>B>C, A>C>B, C>A>B], we have that
+correl(V<sub>AB</sub>,V<sub>AC</sub>)=1/3=2/3-1/3.
+Therefore (now applying the central limit theorem to these votes
+after rescaling and translating everything appropropriately) in the limit of a huge number
+of voters we get that the mean of each off-diagonal matrix element's Gaussian is
+0, its variance is 1, and the correlation between any two different Gaussians in the same row 
+(or in the same column) of the upper triangle is 1/3.
+</p>
+<p>
+<b>b.</b>
+<b>The naive slow algorithm</b>, running in O(N!&middot;N<sup>2</sup>) 
+steps, would be to generate a (standard Gaussian random)
+vote-count for each of the N! different possible kinds of vote, then add
+the resulting N! matrices (each N&times;N) together.
+That generates the correct (N-1)N/2-dimensional Gaussian distribution.
+</p>
+
+<p>
+<b>There is an interesting faster algorithm</b>. If N=1+p, where p is prime, then
+instead of using N! vote types it suffices to use (N-2)(N-1)N.
+(And if N&ne;1+p that is ok; simply increase N to the next suitable value by
+adding extra fake candidates. Because of standard number-theoretical results
+about "prime gaps" and polynomial time primality testing,
+this won't increase the runtime bound by more than a constant factor;
+nor will it alter the correctness of the statistical distribution.)
+</p><P>
+The 
+(N-2)(N-1)N
+permutations are precisely the members of the triply-transitive
+permutation group SL<sub>2</sub>(p) got as follows.
+Let the N items being permuted be 
+{&infin;,0,1,2,...,p-1}.
+The permutations are then precisely the degree-(1,1) rational bijections
+<center>
+x &rarr; (ax+b)/(cx+d)
+</center>
+(with all arithmetic mod-p)
+where ad-bc=1.
+<blockquote><small>
+E.g. see George Mackiw: The Linear Group SL(2,3) as a Source of Examples,
+<i>The Mathematical Gazette</i> 81,490 (March 1997) 64-67.
+</small></blockquote>
+<!--  or q  (where q is some nonsquare and nonzero constant mod p).-->
+</p><p>
+Why does the subgroup
+SL<sub>2</sub>(p) 
+generate the (same) correct
+(N-1)N/2-dimensional Gaussian distribution as the full N!-size group?
+Because all its covariances are the same.
+Specifically:
+</p>
+<ul>
+<li>
+(Where A,B,C,D unequal)
+If a vote says A>B, then the probability it says C>D is (correctly) exactly &frac12;.
+Indeed, once we have decided where the vote-permutation f maps A and maps B,
+then we can demand that f(C)-f(D) is any specified (finite nonzero) value
+and solve the resulting (simultaneous linear) equations for f;
+there always will be a unique solution and since our group includes cyclic shifts
+mod p (that is, x&rarr;x+1) this means C>D and D>C are equiprobable when both are finite.
+Further, we can instead specify f(A), f(B) and demand f(C)=&infin;,
+or we can specify f(A), f(B) and demand f(D)=&infin;;
+either way we get a unique solution and equiprobability of D&gt;/&lt;C.
+</li><li>
+(Where A,B,C unequal)
+If a vote says A>B, then the probability it says A>C>B (or A>B>C, or C>A>B)
+is also exactly correct
+because due to triple-transitivity we can simply solve for the unique
+f with f(A), f(B), f(C) specified.
+</li>
+</ul>
+<p>
+<b>But there is a much simpler and faster algorithm still:</b>
+Let X<sub>ab</sub> (for 1&le;a&le;b&le;N) be 
+(N+1)N/2 independent standard normal random variables, then 
+Margin<sub>ab</sub>=X<sub>aa</sub>-X<sub>bb</sub>-X<sub>ab</sub> for a&ne;b.
+Thus: Direct an edge
+in the defeat-tournament
+from a to b if X<sub>aa</sub>-X<sub>bb</sub>&gt;X<sub>ab</sub> 
+and from b to a otherwise.  This is an <i>incredibly simple</i>
+O(N&sup2;)-time algorithm and the space usage may even
+be reduced to O(N) by only handling one row of X
+at a time (but storing the diagonal of 
+the X matrix always).  (The correctness of the algorithm is again because it produces
+the correct pairwise correlations  &ndash; namely 1/3 &ndash; that is straightforward to check.)
+</p>
+
+<pre>
+INCREDIBLY SIMPLE ALGORITHM TO GENERATE NxN Margin Matrix (and defeat matrix):
+for a from 1 to N { diag[a] = RandNormal(); MarginMat[a][a] = 0.0; DefeatMat[a][a] = 0; }
+for a from 1 to N-1 {
+   for b from a+1 to N {
+      x = RandNormal();
+      y = diag[a] - diag[b] - x;
+      MarginMat[a][b] =  y;
+      MarginMat[b][a] = -y;
+      if(y>0.0){ DefeatMat[a][b] =  1;  DefeatMat[b][a] = -1; }
+      else{      DefeatMat[a][b] = -1;  DefeatMat[b][a] =  1; }
+   }
+}
+NOTE the margin matrix will be correct up to a <i>scaling factor</i>.
+</pre>
+
+
+
+
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

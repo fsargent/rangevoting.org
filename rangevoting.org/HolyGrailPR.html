@@ -1,0 +1,2850 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Optimal proportional representation, Holy grail??
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> "Optimal proportional representation" multiwinner voting systems IV: "Holy Grails" found </H2>
+
+<p><small>
+Toby Pereira, Forest W. Simmons, Warren D. Smith. Dec 2015-Feb 2016.
+PRELIMINARY DRAFT?? ONLY PARTLY WRITTEN
+</small></p>
+
+<h3> Table of contents </h3>
+<ol><li>
+<a href="#summres">Introductory Results Summary</a>
+</li><li>
+<a href="#ovw">Overview</a>
+</li><li>
+<a href="#multPSV">Multiplicative sequential proportional approval voting (MSPAV)
+</a>
+</li><li>
+<a href="#multPRV">Multiplicative sequential proportional range voting (MSPRV)</a>
+</li><li>
+<a href="#hg1">First holy grail scheme: MSPAV with best ordering</a>
+</li><li>
+<a href="#computexpts">Computer experiments with the "MSPAV with best ordering" holy grail scheme
+</a>
+</li><li>
+<a href="#failgrail">A failed holy grail scheme (but useful to think about)</a>
+</li><li>
+<a href="#hg2">Second holy grail scheme: MSPAV with infinite-cloning transform</a>
+</li><li>
+<a href="#hg3">Third holy grail scheme: Ebert with optimum approval-removal</a>
+</li><li>
+<a href="#conclu">Conclusion, comparison, problems for future </a>
+</li><li>
+<a href="#refs">References</a>
+</li></ol>
+
+<a name="summres"></a>
+<h3> Introductory Results Summary </h3>
+<p>
+We <a href=" NonlinQuality.html ">previously</a> had identified,
+as a (the?) top open problem in multiwinner voting systems, whether
+a "holy grail" such system exists.  The main properties asked of the holy grail
+were that
+</p><ol><li>
+ it have "<a href="RangeVoting.html">score</a> style" ballots (or their simpler
+degenerate case,  "<a href="Approval.html">approval</a> style" ballots)
+</li><li>
+ it be "party-free" 
+(i.e. not assuming/demanding the existence of,
+or anything about the internal structure of, political parties);
+</li><li>
+it elect the "optimum" parliament, meaning the one maximizing some specified
+computable continuous "quality function" Q (and one could also demand, more strongly, that
+Q be, not merely continuous, but actually <i>smooth</i>, for your favorite
+notion of smoothness);
+</li><li>
+this quality function should be such that the method is "monotonic" 
+<!-- [QUESTION: and "participatory"??] -->
+(e.g. a voter, by raising her score for some candidate X, must increase Q for
+all X-containing parliaments while leaving Q unaltered for X-omitting parliaments);
+and 
+</li><li>
+it obey 
+"<a href="NonlinQuality.html#strongPRthm">strong</a>
+proportional representation (<a href="PropRep.html">PR</a>)."
+</li></ol><p>
+Here &quot;<a href="#basicpr">basic PR</a>&quot;
+means that in scenarios consisting of "colored" candidates and voters
+and featuring "maximally racist" voting behavior, the parliament will be guaranteed to
+have the same color-composition as the electorate &ndash; up to errors of order &plusmn;1 seat
+per color, i.e. of the same order forced by integer roundoff demands, and provided
+enough candidates of each color run (e.g. we cannot elect 5 Greens if only 3 run).
+</p><p><small>
+To be clear: the voting system <i>never</i> knows and is never told
+the colors of any voter or any candidate,
+it only knows the votes.  And there is no requirement for any voters to vote
+in "color-like" fashion.  We are merely demanding that <i>if</i> they do,
+<i>then</i> proportional representation with respect to colors, must happen.
+</small></p><p>
+"Strong PR" means if we add uncolored candidates
+&ndash; whose ratings depend only on the candidate and not on the voter &ndash;
+to that picture, then the
+<i>colored subset</i> of the parliament will be guaranteed to
+have the same composition as the electorate. 
+As bonus properties, it would be pleasant if the voting method
+</p><ol start="6"><li>
+reduce to <a href="RangeVoting.html">range voting</a>, aka score voting, in
+the single-winner subcase;
+</li><li>
+be computationally efficient;
+</li><li>
+??
+</li></ol>
+<p>
+It originally seemed as though the holy grail were impossible, and indeed Smith had been
+able to produce impossibility proofs under certain ansatzes.
+</p><p>
+However, the present paper succeeds in finding <i>three</i> holy grail systems.
+The <a href="#hg1">first</a>, which is the simplest to define and program, 
+unfortunately is computationally very laborious &ndash; the work grows like W!V, note the
+factorial sign,  merely to evaluate Q for a specified W-member parliament (V voters).
+</p><p>
+The <a href="#hg2">second</a>, which unfortunately is the most
+complicated to define (it involves numerically solving
+a system of ordinary differential equations as a sub-algorithm!), 
+involves a quality function Q which should be
+evaluable to D decimal places of accuracy 
+in a number of steps bounded by (V+1)polynomial(C,T,D)
+for a W-winner, V-voter, C-candidate election.
+Here T is the number of "transitions" within the algorithm, which hopefully 
+usually is small, e.g.
+upper bounded by polynomial(C).  
+Unfortunately we are unable to rule out the possibility
+that T might be exponentially large, e.g. have the same order as 2<sup>W</sup>.  
+The situation is analogous to 
+the "simplex algorithm" for linear programming
+(Dantzig 1963).
+In practice, 
+simplex experimentally virtually always runs in a polynomially bounded number of steps,
+<i>but</i> examples have been artificially constructed 
+which cause exponential runtime.
+</p><p><small>
+The first such construction was by Klee &amp; Minty 1972.
+Over the next few decades, various 
+fancier "pivot rules" were proposed that hopefully would allow simplex
+to dodge the exponential examples, plus in some cases made simplex perform
+experimentally better.  But as the decades rolled by,
+virtually every promising-seeming deterministic pivot rule
+was defeated by some (sometimes quite complicated) artificial exptime example:
+Jeroslow 1973, Goldfarb &amp; Sit 1979, and 
+Friedmann 2011, and
+Freidman-Hansen-Zwick 2011a, 2011b.
+<!--
+One pivot rule that still
+(at least as of 2016) survives
+the assault by constructors of exptime counterexamples,
+is Zadeh 2008's "re-entry avoiding" pivot rule &ndash; but 
+and 
+also several randomized pivot rules <i>might</i>
+be able to assure polynomial <i>expected</i> runtime,
+see 
+G&auml;rtner, Henk, Ziegler 1998.
+-->
+Historically, that simplex method quagmire 
+was dodged when so-called "interior point methods" (IPMs) were invented which
+guarantee polynomial runtime bounds for
+linear programming.  
+Also, Kelner &amp; Spielman 2006 eventually found
+a randomized algorithm, whose "simplexity" is arguable, with a polynomial bound
+on expected runtime. But in both, the
+polynomial was <i>not</i> of the number of dimensions and constraints,
+but instead based on the number of <i>bits</i> of input.
+We have been unable to find an analogue of either
+IPM or Kelner/Spielman for the voting method we are speaking
+of here, and do not know whether one exists.
+</small></p><p>
+A <a href="#hg3">third</a> 
+holy grail scheme called PAMSAC was invented by Toby Pereira after S&amp;S showed him
+their first one.  We'll generalize,
+re-describe and re-prove it.
+Pereira's original PAMSAC cost function Q had impractically enormous
+computational requirements &ndash; exponential in VW+C,
+where V is the number of voters, C of candidates, and W of winners.
+We however shall show how to compute the PAMSAC Q function to
+D-decimal accuracy in time&le;polynomial(V,W,D)
+<i>provided</i> V&ge;2<sup>W</sup>; and by replacing the "CFAT" inside it by a
+"slimmed CFAT" this proviso may be weakened to V&gt;6(W+1)W, 
+which effectively means there no longer is any proviso.
+Further, we have certain heuristic randomized algorithm speedups which
+(we argue nonrigorously) 
+should reduce the runtime bound to V&middot;polynomial(W,D) in almost all realistic elections
+&ndash; in other words enjoying linear growth with V if W and D are held fixed.
+</p><p>
+Along the way to producing our holy grails, we present two new
+strong-PR voting systems that are both simple 
+and computationally efficient (polynomial time): MSPAV
+(multiplicative sequential proportional approval voting),
+and MSPRV
+(" " " range ").
+Neither enjoys the full set of Holy Grail properties, but
+they are simple and they do enjoy strong PR.
+</p><p>
+CURRENTLY HG SCHEME #1 and most of #3 MANUALLY CHECKED BY WDS.
+HG #2 NEEDS MORE CHECKING.
+NOTHING COMPUTER CHECKED.
+NOT CHECKED BY FWS.
+</p>
+
+<a name="ovw"></a>
+<h3> Overview </h3>
+
+<p>
+Parts 
+<a href="QualityMulti.html">I</a>
+and
+<a href="NonlinQuality.html">II</a>
+of this series had 
+investigated "optimizing" multiwinner voting systems.
+I.e. let there be V voters, C candidates, W winners, 
+0&lt;W&lt;C, usually in practice C&ll;V, and in which the ballots were 
+<a href="RangeVoting.html">score</a>-style
+or, more simply, <a href="Approval.html">approval</a>-style.
+(Score: each voter scores each candidate with a real number 
+from 0 [undesired] to 1 [desired].
+Approval: the only permitted scores are 0 [disapproved] and 1 [approved], 
+intermediate reals are forbidden.)
+</p><p>
+Define a continuous (or more smooth) <b>"quality function"</b> Q
+of the scores on the ballots and the winner-set.
+For approval-style ballots there are only 2<sup>C</sup> possible ballot-types, and
+we can demand Q be a continuous function of the 2<sup>C</sup> different counts, now regarded 
+as real numbers.  For score-style ballots we'll assume continuum scores, i.e.
+each voter scores each candidate with a real number from the interval [0,1],
+and demand Q be a continuous function of all those scores.
+</p><p>
+The voting method is to elect the W-element subset of the candidates that maximizes Q.
+(Sometimes we prefer to <i>minimize</i> Q, in which case it is better referred to
+as a "cost" or "penalty" function.)
+We'd previously stated various properties such multiwinner voting systems might or might not obey.
+The "holy grail" combination of properties was singled out for special attention as both 
+particularly desirable, and which nobody had managed to attain.  
+Smith suspected it was impossible.
+</p><p>
+We here attain the holy grail, indeed we have found 3 different holy grail voting methods.
+However, our <a href="#hg1">first</a> and simplest holy grail voting method
+comes about in a rather unexpected and somewhat nasty way.
+</p><p>
+All our previous failed attempts to design holy grail voting methods had 
+involved rather "natural" and "nice" Q, which could be evaluated
+from the V ballots and the W winning candidates
+via a straightforward polynomial-time computation.  Indeed, the number of
+computational steps to compute Q was bounded by an
+expression of form O(VClogC) at most.
+Unfortunately finding the <i>optimum</i> parliament, maximizing Q,
+was shown to be NP-hard &ndash; and not only for our Q's, but also
+for essentially <i>any</i> voting method achieving "optimal"
+proportional representation (PR), for <i>any</i> reasonable notion of "optimal."
+And this also was shown for various merely-approximate optimality notions.
+In other words, brute force evaluation of Q for every 
+possible parliament, then picking the best, is in some sense necessary
+for any good-performing PR voting method.  There is no quick way to shortcut
+that to rapidly produce the optimum parliment, and any attempt to
+try will unavoidably, in at least some elections, produce poor results. (Unless P=NP.)
+</p><p>
+But we were willing to accept that need for heavy computation, for several reasons:
+</p><ol><li>
+It was, by theorem, unavoidable (unless P=NP).
+</li><li>
+The search could be programmed to run in O(V) work per possible-parliament &ndash; 
+very fast on a per-parliament basis.
+</li><li>
+The "parliament quality" function Q, evaluated at the optimum,
+could be published and easily verified by anybody, and
+(if wrong or non-maximal) potentially refutable by anybody, and
+with rapid verification of the counterexample (once found)
+by anybody.
+</li><li>
+There were <a href="QualityMulti.html#stratvote">arguments</a>
+that <i>if</i> the computational needs were so heavy they might
+not be feasible, then we should not have been conducting a multiwinner 
+election with those parameters anyway,
+because it would be inherently ultra-vulnerable to "strategic voting."
+</li><li>
+We could allow each voter, and perhaps other interest groups (parties? media?)
+to submit suggested-parliaments to the election authority, which could
+then elect the highest-Q suggestion (plus possibly awarding
+a money prize to that suggester).  This would not necessarily
+produce the greatest-Q possible parliament, but that would "not be the
+election authority's fault."
+</li></ol>
+<p>
+The first holy grail scheme developed in the present paper, however, makes this situation worse.
+Its quality function Q no longer appears to be polynomial-time computable!
+It <a href="#likelyNPhard">likely</a>
+is NP-hard to compute, and perhaps even computing it approximately is NP-hard.
+The entire optimization problem
+(finding the Q-maximizing parliament) is no longer merely an NP-hard task, it instead
+lies in the complexity class NP<sup>NP</sup> (next level up within
+the "polynomial hierarchy").   Once the optimum parliament is
+found, it is neither easily verified nor easily refuted, albeit it still 
+should be a lot easier to compute its Q value than it is to perform the full optimization.
+</p><p>
+This all was rather annoying and led us to wonder 
+whether this "next level" computational complexity was
+somehow inherent and unavoidable for any holy grail voting method.
+</p><p>
+We then devised a <a href="#hg2">second</a>
+holy grail method which made us suspect that it wasn't.
+Specifically, we showed its
+Q function was evaluable to D-decimal accuracy a number of arithmetic operations
+bounded by polynomial(V,W,D,T), where T
+seemed plausibly likely to almost-always be upper bounded by polynomial(W).
+</p><p>
+Finally, we found a third
+holy grail method with Q function genuinely evaluable in
+time bounded by polynomial(V,W,D).
+With this voting method optimizing Q once again is a mere coNP&cup;NP problem.
+</p><p>
+But unfortunately, this third method is complicated to explain and 
+to program for a computer,
+and the polynomials governing its runtime and memory usage both are rather large.
+Our second method is probably the most feasible for practical use, but it 
+is very complicated to explain.
+</p><p>
+It unexpectedly turned out to be crucial for inventing all
+of these schemes to study several interesting kinds of <b>"transforms"</b>
+which convert multiwinner voting methods into different ones.
+CROSSREFS??
+In the previous papers we already discussed the 
+"<a href="NonlinQuality.html#pt">Kotze-Pereira transform</a>"
+of a set of score-ballots into a weighted set of approval-type ballots,
+and "coin-flip approval" transforms which convert a
+set of approval-type ballots into a 
+different weighted set of approval-type ballots.
+(Despite the latter's name, both are wholy deterministic.)
+Both shall be used here.  Indeed, we shall focus entirely on
+the problem of inventing voting methods using <i>approval</i> ballots, because score-type
+ballots can then be handled via an initial 
+<a href="NonlinQuality.html#pt">Kotze-Pereira transform</a>.
+And for our second holy grail method we shall also employ the new "infinite-cloning transform,"
+which seems the most remarkable among these ideas.
+</p><p>
+So the holy grail problem now seems completely solved from the standpoint of theory,
+but in practice our solutions may be unacceptable in the sense that 
+hardly any politicians and voters would be willing/able to understand them, and/or the
+computational memory and/or time complexities would be too great.
+That quite likely would render them, as a practical matter, unenactible.
+</p><p>
+If so, the <b>question for future authors</b> becomes: 
+is there some holy grail voting method enjoying <i>both</i> the simplicity of
+description (or simpler!) of our first solution, and better computational efficiency
+than we've so far managed to attain?
+</p>
+
+<a name="multPSV"></a>
+<h3> Multiplicative sequential proportional approval voting (MSPAV) </h3>
+
+<!--
+<p>
+This multiwinner voting system was invented by Forest W. Simmons in December 2015,
+albeit the version we present here is a little different than his.
+</p>
+-->
+<p>
+Algorithm definition:
+</p><blockquote>
+<p><b>1.</b>
+Each voter, as her ballot, <i>approves</i> or <i>disapproves</i> each candidate.
+</p><p><b>2.</b>
+Let Q=0.
+Initialize S as the number of seats that currently are unfilled, and let
+the common initial weight of each of the ballots be 1
+(unless they were already weighted a priori).  
+These weights will remain nonnegative throughout the process.
+<br> &nbsp;&nbsp;&nbsp;
+Also fix a constant &Delta;&gt;-1; here &Delta;=1/2 seems appropriate for
+<a href="https://en.wikipedia.org/wiki/Sainte-Lagu%C3%AB_method">Sainte-Lagu&euml;</a>-like
+PR and &Delta;=1 for 
+<a href="https://en.wikipedia.org/wiki/D%27Hondt_method">d'Hondt</a>-like.
+</p><p><b>3.</b>
+Loop:
+</p><ol><li>
+Elect the (as-yet unelected) candidate X with the greatest weighted approval
+(and let that weighted approval be A).
+Meanwhile a hypothetical universally-approved candidate
+would have
+weighted approval U with the same ballot weightings.
+</li><li>
+Q&larr;Q+mono(A); &nbsp; If S&le;1 then stop.
+</li><li>
+If A&gt;0 then:
+Multiply the weights of each ballot that approved X by F, where 0&le;F&le;1 is
+given by
+<a name="deweightformula"></a>
+<center>
+         F<sub>1</sub> = max(1-h, &frac12;)
+&nbsp;&nbsp; where &nbsp;&nbsp; h=A<sup>-1</sup>U/(S+&Delta;).
+</center>
+Possible variant F-formulas:
+Four inequivalent alternatives which also work (we'll discuss below how
+they were obtained; <a href="#altbreakpt">see</a> also
+F<sub>1b</sub>, F<sub>2b</sub>, F<sub>3b</sub> for three further possibilities)
+are
+<center>
+         F<sub>2</sub> = 1-h if h&le;&frac12;, else [4h]<sup>-1</sup>;
+&nbsp;&nbsp; 
+         F<sub>3</sub> = 1-h if h&le;&frac12;, else 4<sup>-1</sup>+[4h]<sup>-2</sup>;
+<br>
+F<sub>4</sub> = max{ 1-U/([S+&Delta;]A), (U-A)[S+&Delta;]/(2[S+&Delta;-1]U-A[S+&Delta;]) };
+&nbsp;&nbsp;
+         F<sub>&infin;</sub> = [1+A<sup>-1</sup>U/(S-2+&Delta;)]<sup>-1</sup>.
+</center>
+<!--
+1-h and 1/(A+B*h) have the same value and h-derivative at h=1/2
+Series[ 1-x - 1/(A+B*x), {x,1/2,3}]
+if 2*A+B=4,  4*B=(2*A+B)^2  so A=0, B=4
+
+Series[1-x - A - 1/(B+C*x), {x,1/2,4}]
+solve A+2/(2*B+C)=1/2, 4*C=(2*B+C)^2 for B,C
+C=4/(1-2*A)^2, B=-A*C.  To avoid singularity at positive x need A<=0.
+Example A=1/4, B=-4, C=16
+1/4 - 1/(4-16*x)  has singularity at x=1/4.
+-->
+</li><li>
+Decrement S.
+</li></ol>
+<p>
+EndLoop.
+</p>
+</blockquote>
+<p>
+<b>Remarks.</b> Q is <i>unused</i> and hence its update in step 3.2 and 
+initialization in step 2 both may be <i>jettisoned</i>.  
+The purpose of Q is, at algorithm termination, to 
+provide a numerical measure of the "<i>quality</i>" of the election result, and
+different such quality-measures can be got by use of different "mono(x)" functions.
+Here mono(x) is assumed to be some particular continuous monotone function of x&ge;0,
+most simply mono(x)=x, but we also could consider, e.g, mono(x)=x<sup>-1/2</sup>.
+For purposes of the present section (since the algorithm does not ever use Q) 
+it does not matter what mono(x) is.  
+However, <a href="#failgrail">later</a> we shall have purposes in mind for using
+Q, and at that point we shall care.
+</p><p>
+In step 3.3 the test "if A&gt;0" can be jettisoned if we know a priori that every candidate
+is approved by at least one voter (e.g. by themselves).  Such elections have been called 
+"narcissistic."
+</p>
+<a name="strongpr1"></a>
+<p>
+The main <b>theorem</b> about MSPAV is that it obeys "strong PR."
+That is: 
+</p>
+<ol><li>
+<a name="basicpr"></a>
+The method obeys <b>"basic PR"</b>:  
+If each voter and candidate is "colored" and each voter approves
+exactly the candidates of the same color as that voter ("maximal racism"), then (provided enough
+candidates of each color run) the parliament automatically will have
+the same color composition as the electorate (up to small errors forced by integer
+roundoff requirements, since we refuse to cut MPs in half).
+<blockquote><small>
+Terminology note: 
+"Partisanship" may be a more appropriate descriptor than "racism."  
+(And, e.g, "racist voting"&harr;"party-slate voting," etc.)
+We chose the "colored" terminology to emphasize the point that "color" could be <i>anything</i> &ndash;
+e.g. gender, militarism &ndash; and does
+<i>not</i> necessarily correspond to political party identity.
+Indeed, the goal is to design voting methods that work regardless of 
+whether political parties even exist, and the definition of "work" similarly
+does not require political parties to exist.
+</small>
+</blockquote>
+</li><li>
+Further, if there also are <b>universally-approved (uncolored)</b> candidates, then
+MSPAV first elects them and then colored MPs; whereupon the colored MPs will, 
+if considered by themselves, obey basic PR.
+</li></ol>
+<p><b>Proof.</b>
+The key is the formula for F.  
+It was obtained by solving
+</p><center>
+ SA/U = (S-1)A'/U' + 1 = (S-1)(AF)/(U-A+AF) + 1 &nbsp;&nbsp;&nbsp;  for &nbsp;&nbsp; F.
+</center><p>
+Here the lefthand side is the number of seats (from among the S seats remaining to be filled)
+that would be proportionately "deserved" by the faction supporting the elected candidate X,
+under maximal-racism conditions.  The primed quantities A' and U' denote A and U
+<i>after</i> the deweighting by multiplying the weights of all X-approving ballots by F;
+the point is that
+<nobr>(S-1)A'/U'+1</nobr>
+should <i>also</i> give the number of seats that faction proportionately deserves.
+The equality of that and SA/U, by induction, guarantees basic PR.
+We then note that A'=AF and U'=U-A+AF.
+Upon solving the resulting equation for F, we find the <b>naive reweighting factor formula</b>
+</p><center>
+F<sub>naive</sub> = 1 - A<sup>-1</sup>U/S.
+</center><p>
+Unfortunately, this naive formula can become <b>negative</b>, 
+which occurs when no candidate has 
+enough approval to "deserve" a seat, but nevertheless 
+we must elect one, so we do.
+Negative reweighting factors seem to be something we should avoid,
+since otherwise the algortihm will start awarding seats with the goal of
+<i>intentionally hurting</i>
+factions, without accomplishing anything positive.
+(If F-values always are nonnegative, then given that all approvals begin
+nonnegative, they will stay that way forever.)
+Even F=0 seems something we usually want to avoid, because we want
+to avoid situations where various factions have zero weighted approval,
+so that their approval will stay zero forevermore, giving us no way to decide
+which among them should win the next seat.
+</p><p>
+So the question is how best to modify the naive formula in those
+problematic regimes.
+Here are some <b>desiderata</b> (for the following discussion regard &Delta;=0;
+we will discuss nonzero &Delta; later):
+</p>
+<ol><li>
+Always 0&lt;F&lt;1.
+</li><li>
+F should be <i>monotonically increasing</i> as a function of A/U&ge;0
+with S&ge;2 held fixed.
+</li><li>
+F should agree (either exactly, or with error sufficiently small not to matter)
+with the naive formula when SA/U is large enough; it
+should only differ when SA/U is so small that this faction (naively speaking) 
+"deserves" few or no further seats.
+</li><li>
+F should be <i>continuous</i> as a function of A, U, and S.
+(And more strongly, perhaps we also should demand some degree of <i>smoothness</i>.)
+<br>&nbsp;&nbsp;&nbsp;
+Note that F<sub>1</sub>=max(1-h,&frac12;)    
+obeys all the preceding desiderata, agreeing with the naive formula
+for factions deserving &ge;2 more seats &ndash;
+but causing deweighting by a factor of 2 from then onwards.
+And this 
+is continuous across h=&frac12;.  We could also 
+<a href="#altbreakpt">consider</a>, say,
+<nobr>max(1-h,&frac13;)</nobr>
+which agrees with the naive formula
+for factions deserving &ge;3/2 more seats.
+</li><li>
+(S-1)A'/U' must always be less than SA/U, so that a faction
+never "deserves" more seats after it gets a new seat!
+This demand forces
+<nobr>F&lt;(U-A)S/([S-1]U-AS).</nobr>
+</li><li>
+When SA/U&lt;1 then one perhaps might
+further demand that
+(S-1)A'/U' always be &le;SA/(2U),
+i.e. after a faction that naively deserves &lt;1 more seat
+wins a new seat, it then always thinks it deserves
+at most <i>half</i> the seats it did before.
+<!-- That means  F &le; (U-A)S/(2[S-1]U-AS) ?? -->
+This would suggest solving
+<center>
+max(SA/U - 1, SA/(2U)) = (S-1)A'/U'  = (S-1)(AF)/(U-A+AF)
+</center>
+for F to obtain the formula
+<center>
+F<sub>4</sub> = max{ 1-U/(SA), (U-A)S/(2[S-1]U-AS) }.
+</center>
+</li></ol>
+<!--
+We therefore instead use F<sub>1</sub>=max(F,&frac12;),
+which prevents F<sub>1</sub> from ever getting below &frac12;.
+This causes any faction with &le;2 quotas worth of approval, i.e. "deserving"
+&le;2 more seats,
+to be deweighted by a factor &frac12; from then on.  This won't change anything
+<i>except</i> that if at some point all factions have too little weighted-approval to
+"deserve" election, then behavior improves (e.g. no negative weights).
+-->
+<p>
+Also, note that rather than needing a fraction 1/S of the V voters to approve you 
+(in maximal racism basic-PR situations) to "deserve" one of the S seats,
+one arguably "deserves" a seat with
+only <nobr>&lfloor;V/(S+1)&rfloor;+1</nobr> votes.
+This formula is known as the 
+"<a href="https://en.wikipedia.org/wiki/Droop_quota">Droop quota</a>,"
+as opposed to the more naive formula
+V/S, which is the "Hare quota."  
+These are named after 
+Thomas Hare (1806-1891) and Henry R. Droop (1832-1884),
+two of the early investigators of proportional representation mathematics.
+Droop's point was that at most S candidates could each acquire a Droop quota under
+plurality-style "name one candidate" voting.
+The main difference between Hare and Droop is 
+the use of S+1 rather than S,
+and one could also consider S+&Delta; for any constant &Delta; to get still other
+proportionality notions.
+When we do both that and the max(h,&frac12;) trick, then we get
+<nobr>F<sub>1</sub>=max{1-A<sup>-1</sup>U/(S+&Delta;),&frac12;},</nobr>
+and more generally any of our formulas with &Delta;=0 are appropriately
+converted by replacing S by (S+&Delta;) everywhere inside them, e.g. 
+</p><center>
+F<sub>4</sub> = max{ 1-U/([S+&Delta;]A), (U-A)[S+&Delta;]/(2[S+&Delta;-1]U-A[S+&Delta;]) }.
+</center><p>
+Finally, we note that MSPAV will always elect universally-approved candidates in preference
+to any candidate approved by only some of the voters, and whenever it does so, then
+<i>all</i> ballots are deweighted by the <i>same</i> factor F.
+Therefore, MSPAV obeys not just basic, but actually <i>strong</i> PR.
+(Actually, of course, it does not matter for this purpose what deweighting factor F&gt;0 
+is used whenever a universally-approved candidate is elected.)
+<b>Q.E.D.</b>
+</p><p>
+<b>Remarks:</b>
+Note F<sub>1</sub> is continuous, positive and non-increasing 
+for all real h.
+The formulas F<sub>2</sub> 
+and F<sub>3</sub> 
+similarly were devised also to equal 1-h when 0&le;h&le;&frac12;
+(i.e. for factions naively deserving &ge;2 more seats)
+but now also enjoying continuous h-<i>derivative</i>
+for all real h.  Note both F<sub>2</sub> and F<sub>3</sub> are positive and decreasing 
+for all real h,  and F<sub>2</sub> goes to 0, but F<sub>3</sub> goes to 1/4, 
+when h&rarr;&infin;.
+The differences between these formulae hopefully do not matter in the 
+sense that in "racist voting" scenarios they
+only change seat counts for color classes which "deserve less than 2 seats."  In other
+words, proportionality remains valid up to 
+acceptable errors with one formula, if that were true with another.
+<a name="altbreakpt"></a>
+The above formula-surgeries 
+F<sub>1</sub>, F<sub>2</sub>, F<sub>3</sub>
+all were devised based on h=&frac12; (i.e. 2 naively deserved seats)
+as the breakpoint; we also could consider the <b>alternative breakpoint "3/2 seats"</b>
+in which case those formulae would instead become
+</p><center>
+         F<sub>1b</sub> = max(1-h, &frac13;);
+&nbsp;&nbsp; 
+         F<sub>2b</sub> = 1-h if h&le;&frac13;, else 3<sup>-1</sup>+[9h]<sup>-1</sup>;
+&nbsp;&nbsp; 
+         F<sub>3b</sub> = 1-h if h&le;&frac13;, else 2<sup>-1</sup>+h<sup>-2</sup>/54.
+</center>
+<p>
+The formula F<sub>&infin;</sub> is even smoother, namely <i>analytic</i> in h; 
+it is asymptotic to
+F<sub>1</sub> when S&rarr;&infin;, and equals it when h=&frac12;, and
+F<sub>1</sub>&lt;F<sub>&infin;</sub>&lt;1
+when 2-&Delta;&lt;S<&infin; and 0&lt;h&lt;&frac12;.
+Unfortunately F<sub>&infin;</sub>&notin;[0,1]
+when S-2+&Delta;&lt;0.
+Therefore, if you want to use the F<sub>&infin;</sub> variant, insist that &Delta;&gt;0.
+With that restriction,
+every deweighting that can actually occur (i.e. those with S&ge;2) will obey
+0&lt;F<sub>&infin;</sub>&lt;1.
+</p><p>
+Among these F-formula choices, Smith personally currently prefers formula
+F<sub>4</sub>?? <!-- F<sub>1</sub> and F<sub>3</sub>?? -->
+</p><p>
+The <b>main algorithmic differences</b> between MSPAV and <a href="RRV.html">RRV</a>
+(reweighted range voting, a different "sequential" proportional representation voting method
+which had been invented independently by both Simmons and Smith in the early 2000s
+&ndash; but which, we later found out,  in an
+approval voting special case 
+already had been invented in 1895 by T.N.Thiele) &ndash; are
+</p><ol><li>
+With MSPAV, the weighting is done <i>multiplicatively</i>;
+</li><li>
+MSPAV needs foreknowledge of the number of seats to be filled.
+</li></ol>
+<p>
+RRV uses a quite different ballot weighting scheme; and RRV
+does not need to know in advance how many seats are to be filled &ndash; it just
+fills them one by one until we tell it to stop.
+This is since MSPAV fills the seats in "backwards" order (decrementing S as it goes), if
+RRV is regarded as filling them in "forwards" order.  
+</p>
+<!--
+<p>
+Another important fact about MSPAV is 
+<b>time-order invariance under maximal racism.</b>
+That is: MSPAV successively 
+"greedily" elects the candidate with the 
+greatest weighted approval in step 3.1.
+However, if the same parliament had been elected in <i>any</i> other time-order with
+the same deweighting formula employed (using whatever the weighted approval A
+was for each successively elected candidate at his time of election) 
+then <i>under conditions of maximal racism</i>,
+the <i>same</i> set of MPs would be elected with
+the <i>same</i> respective weighted approvals.
+</p><p>
+In addition to colored candidates under maximum racism,
+we can also allow additional <i>uncolored universally-approved candidates</i>.
+In that case, 
+time-order invariance still holds <i>restricted</i>
+to time-reorderings of the colored and uncolored MPs <i>only</i>.
+I.e. the colored ones get shuffled among themselves arbitrarily,
+and the uncolored ones also get  shuffled among themselves arbitrarily,
+but no colored and uncolored MP are ever exchanged.
+</p><p>
+Our (later) goal will be to devise <i>optimizing</i> voting systems, which 
+elect the parliament that maximizes a "quality function" Q.  
+Our Q's will be such that
+MSPAV can be regarded as a "greedy heuristic" striving to approximately maximize Q.
+Indeed, our Q will be regardable as the summed (over all MPs) weighted approval with
+the same kind of weighting and deweighting factors that MSPAV employs.
+That will be explained later.  For now, we need to ask how to begin to break
+out of the "greedy" one-at-a-time mindset and move toward the "global optimum" mindset.
+As a good step in that direction, suppose instead of electing one candidate at a time 
+(like MSPAV), we elect some number K simultaneously.  Different chunk-cardinalities K
+could occur at different times during the process; we shall here concentrate on just
+one particular chunk, ignoring the cardinalities and nature of the others.
+</p><p>
+<b>Chunk-deweighting formula:</b>
+If K candidates are simultaneously elected, all of whom under maximal-racism 
+conditions have the same color, then the appropriate multiplier F for
+then deweighting the ballots that had approved those candidates, is
+</p><center>
+F = max{ 1 - K<sup>2</sup>A<sub>K</sub><sup>-1</sup>U/(S+&Delta;), 1/2 }
+</center><p>
+where W is the number of winners, i.e. number of seats in parliament to be filled, and
+A<sub>K</sub>
+is the summed (over all K of these elected candidates,
+and weighted-summed over all the voters) approval, and
+U is the weighted approval for a single hypothetical universally-approved candidate,
+so that KU would be the summed
+weighted approval for a hypothetical K-candidate set of
+universally-approved candidates.
+</p><p>
+<b>Derivation:</b>
+Solve 
+</p><center>
+SA<sub>K</sub>/(KU) = (S-K)(A<sub>K</sub>F)/(KU-A<sub>K</sub>+A<sub>K</sub>F) + K
+&nbsp;&nbsp;&nbsp; for  &nbsp;&nbsp; F  
+</center><p>
+where S is the number of seats still available, finding
+F=K<sup>2</sup>U/(AS);  then replace S by S+&Delta;
+and apply the max(x,&frac12;) function to F.
+</p>
+-->
+<p>
+<b>Runtime:</b>
+With V&gt;1 voters, C candidates, W winners, 0&lt;W&lt;C,
+MSPAV will run in O(CVW) steps using O(CV) words of memory.
+If C is less than or equal to the word size (in bits) of the computer, then
+O(V) words of memory suffice.
+</p>
+<a name="multPRV"></a>
+<h3> Multiplicative sequential proportional range voting (MSPRV) </h3>
+
+<blockquote>
+<p><b>1.</b>
+Each voter, as her ballot, <i>scores</i> each candidate with a real number
+lying in the interval [0,1]. (Greater scores for more-preferred candidates.)
+</p><p><b>2.</b>
+Convert the score-style ballots to a weighted set of approval-style ballots
+via the <a href="NonlinQuality.html#pt">Kotze-Pereira transform</a>.
+</p><p><b>3.</b>
+Elect parliament via MSPAV.
+</p>
+</blockquote>
+<p>
+<b>Strong-PR theorem.</b>
+MSPRV obeys basic PR. 
+Further, if there also exist uncolored "<b>commonly rated candidates</b>" who are
+scored the same by all voters (i.e. the score for each depends only on the 
+candidate, not on the voter) then the colored subset of the parliament will 
+have the same color composition as the electorate
+(up to small errors forced by integer roundoff requirements,
+and provided enough candidates of each color run).
+</p><p>
+<b>Proof.</b>
+For this kind of "max-racism plus commonly-rated candidates" election,
+the <a href="NonlinQuality.html#pt">Kotze-Pereira transform</a>
+converts the ballots,
+for an uncolored candidate X with common-score Y,
+into a weight-fraction Y of ballots which approve X,
+and a weight-fraction <nobr>1-Y</nobr> of ballots which disapprove X;
+where each of these two subclasses of ballots are identical
+as regards all the non-X candidates.
+Now if MSPRV elects X, then all X-approving ballots all are
+deweighted by the <i>same</i> multiplier F, while all
+the weights for X-disapproving ballots are left unaltered.
+This leaves the weighted approvals for all the non-X candidates
+<i=>unaltered</i>  except for an overall constant multiplicative factor.
+Hence, color-proportionality within the <i>colored portion</i> of parliament is
+unaffected by the election (or not) of X.
+<b>Q.E.D.</b>
+</p><p>
+Even more strongly, MSPRV enjoys <b>"subfaction proportionality."</b>
+Suppose the Red Party has factions inside it.  Each faction scores 
+candidates with non-Red colors, zero.
+(Also all non-red colored voters score all flavors of Reds zero.
+We also permit uncolored commonly rated candidates.)
+But the different Red factions score various Red candidates differently.
+In that case, MSPRV will, if we consider the Red-portion of parliament <i>alone</i>,
+elect the same proportions of each kind of Red MP, as it would have done if the
+Red voters were the only voters and the Red candidates the only candidates.  
+(As usual, only up to integer roundoff and 
+provided enough candidates of each type run.)
+</p><p>
+<b>Proof.</b>
+This is because all elections of non-Red candidates deweight all Red-voter ballots
+<i>equally</i>; and since all elections of Red candidates deweight all non-Red 
+ballots equally.  Hence within-Red proportionality is unaffected by non-Red voters, and 
+color-proportionality within non-Red colors, is unaffected by Red voters.
+<b>Q.E.D.</b>
+</p><p>
+<b>Monotonicity property:</b>
+If a voter raises her score for some candidate X (leaving
+all her other scores unaltered), that can <i>cause</i> X to be elected,
+but cannot cause X to stop being elected.
+</p><p>
+<b>Proof.</b>
+X's (weighted) approval increases, while other candidates' approvals
+are unaltered.  That can cause X to get elected in some MSPAV step 3.1.
+<b>Q.E.D.</b>
+</p><p>
+<b>Note re "<a name="phantom">phantom voters</a>":</b>
+We can regard any election as having more voters, all of whom
+score all candidates 0.  If some of those "phantom voters" increase a score for
+some candidate, then it is as if a new voter appeared.  And monotonicity applies
+to those "appearances."
+</p><p>
+<b>Single-winner case:</b>
+MSPAV if the parliament only has 1 seat, is just 
+<a href="Approval.html">approval</a> voting;
+meanwhile MSPRV is just 
+<a href="RangeVoting.html">range</a> voting.
+</p>
+
+<a name="hg1"></a>
+<h3> First holy grail scheme: MSPAV with best ordering </h3>
+
+<p>
+In MSPAV (and hence in MSPRV) the candidates are elected sequentially
+<i>greedily</i>, i.e. in step 3.1 always electing the available candidate 
+that increases Q by the most.  
+However, if our goal were to maximize the <i>final</i> value of Q, we
+might be able to do better by instead in step 3.1 picking some non-greedy choice,
+hoping that this would permit later seat-elections to increase Q by more
+than enough to compensate.  Or, conceivably, electing the same parliament but in a
+different (non-greedy) time-order also might allow increasing Q.
+</p><p>
+Also note that if in some MSPAV step 3.1 we did <i>not</i> elect the greedy candidate,
+but rather somebody else, that would still be ok in the sense that the F formulas
+would then automatically perform the correct reweightings
+to make the algorithm strive to restore proportionality &ndash; and indeed 
+will always succeed &ndash;
+i.e. still will generate a strong PR parliament given a racism+uncolored voting scenario 
+&ndash; provided
+the artificially-forced MPs do not create overrepresentation of some color thus
+making that impossible.
+</p><p>
+To pursue this idea, consider the following algorithm, which 
+given a set of weighted approval ballots (or,
+via the <a href="NonlinQuality.html#pt">Kotze-Pereira transform</a>, score-style ballots)
+and a tuple 
+</p><center>
+(M<sub>W</sub>, M<sub>W-1</sub>, ...,  M<sub>2</sub>, M<sub>1</sub>)
+</center><p>
+of the W members, listed in 
+some specific order, of a putative parliament, computes a real-valued
+<b>quality measure Q</b> for that ordered-parliament with those ballots.  (Note,
+this Q can depend on the ordering.)
+</p>
+<blockquote>
+<p>
+<b>Q-computing algorithm</b>: 
+Input is V <a href="Approval.html">approval</a>-style
+ballots and a putative <i>ordered</I> W-member parliament
+(M<sub>W</sub>, M<sub>W-1</sub>, ...,  M<sub>2</sub>, M<sub>1</sub>).
+</p><p><b>1.</b>
+Let Q=0 and S=W and let each
+ballot initially have weight 1
+(unless they are already weighted a priori).
+Fix a constant &Delta;&gt;-1; here &Delta;=1/2 seems appropriate for
+Sainte-Lag&uuml;e-like and &Delta;=1 for d'Hondt-like PR behavior.
+</p><p><b>2.</b>
+Loop:
+</p><ol><li>
+Suppose M<sub>S</sub> has weighted approval A, while
+a hypothetical candidate
+approved by every voter who approved any member of parliament
+would have
+weighted approval U with the same ballot weightings.
+</li><li>
+Q&larr;Q+mono(A); &nbsp; If S&le;1 then return Q and stop.
+</li><li>
+If A&gt;0 then:
+Multiply the weights of each ballot that approved M<sub>S</sub> by F, where 0&le;F&le;1 is
+given by the same 
+<a href="#deweightformula">formulas</a> stated in MSPVA step 3.3.
+</li><li>
+Decrement S.
+</li></ol>
+<p>
+EndLoop.
+</p>
+</blockquote>
+<p>
+We assume that mono(x) is a known continuous 
+function <i>monotonic</i> on  reals x&ge;0.
+</p><p>
+The <b>first holy grail</b> election method, 
+then, is to elect the ordered parliament (selected from
+among all possible W-member parliaments <i>and</i>
+all W! possible orderings of each parliament)
+that, if mono(x) is monotonic-<i>in</i>creasing, <i>max</i>imizes Q.  
+[If, however,
+mono(x) were monotonic-<i>de</i>creasing, then it instead would be appropriate
+to <i>min</i>imize Q.
+But to keep the present arguments simple we shall, 
+without loss of generality, assume mono(x) is increasing and Q is
+maximized &ndash; because otherwise we could simply negate both mono(x) and Q.]
+Different quality measures Q result from different mono(x) functions.
+</p><p>
+What properties does this election method have?
+</p><ol><li>
+Q is a <i>continuous</i>
+function of the scores on the ballots.  
+Proof: The max of a finite number of continuous functions is a continuous function.
+<br> &nbsp;&nbsp;&nbsp;
+<small>
+Incidentally, it is well known that the L<sub>p</sub> norm
+of a finite set of nonnegative reals tends, in the limit p&rarr;&infin;, to their maximum.
+Therefore, anybody who is unsatisfied with mere continuity, and wants more
+smoothness, could get it by letting Q for an <i>un</i>ordered parliament
+be the L<sub>p</sub> norm of the Q's for its W! possible orderings 
+&ndash; we elect the parliament with maximum Q &ndash; using some finite p
+large enough so that the other properties we want cannot be destroyed, at least not to
+within acceptable &plusmn;1 seat errors.
+</small>
+</li><li>
+The holy grail obeys strong PR.
+Proof: suppose it didn't.  Then in some election consisting solely of
+colored candidates with maximally-racist voters, 
+<i>plus</i> (optionally) commonly-rated uncolored candidates,
+at least two colors would be disproportionally represented.
+Suppose red is the most-overrepresented color
+and blue the most-underrepresented.  There are two cases:
+<ol type="i"><li>
+The last blue came chronologically <u>after</u> the last red.
+Then we claim
+Q could be increased by <i>not</i> electing the chronologically last red, 
+and electing one extra blue as the chronologically last seat.
+This is an "edit"
+of the supplied time-ordered list of MPs consisting of
+one red deletion, one blue append, and 
+(therefore) a shift-one-seat-earlier
+of the chain of MPs lying chronologically between them.
+The unelection of the last red of course increases A for all future <i>un</i>colored seats
+by eliminating what would have been a deweighting.  
+(No <i>colored</i> seat's approval is affected.)
+It also increases S&rarr;S+1 for all future seats, which increases all their F
+multipliers too.
+The election of the extra blue, however, has no opposite-sign effects on the future
+because it, being chronologically last, has no future.
+And since by assumption blue is the most-underrepresented party, blue will be the greedy
+choice [maximum weighted approval A, hence maximum mono(A), hence maximally increasing Q]
+for the last seat.
+Hence the net effect on
+Q is clearly to increase it &ndash; <i>except</i> that one might worry
+about that deleted red.  But since by assumption the reds are the most over-represented party,
+the chronologically <i>last</i> red's election clearly was the exact opposite of "greedy,"
+i.e. any other-color candidate by being elected instead at that moment, would have increased Q.
+So this worry does not destroy the proof.
+</li><li>
+The last blue came chronologically <u>before</u> the last red.
+In this case we claim
+Q could be increased by <i>replacing</i> the election of the chronologically last red
+by a blue.  (A "point mutation" edit, in biological DNA terminology.)
+Since by assumption the reds are the most-overrepresented party
+and the blues the most-underrepresented &ndash; <i>and</i> by &gt;1 extra seat &ndash;
+this change clearly used greater A and hence
+will clearly increase F, i.e. the blues deserved this
+seat more than reds.  (Our definition of "deserves more" is "has greater weighted approval."
+Similarly for notion of "most underrepresented.")
+Thenceforth all A's and hence F's
+for all future <i>un</i>colored candidates will increase.
+Future <i>colored</i> A's will not be affected, except for reds and blues.
+But since by assumption this was the last red after the last blue, 
+there are no reds and blues in the "future."
+All these effects caused by our edit are Q-increasing.
+</li></ol>
+Either way, Q increases, contradicting the original assumption that Q was maximal.
+Since contradictions are impossible, we must have had strong PR.
+</li><li>
+The holy grail is monotonic.
+Proof:
+If a voter increases her score for candidate X
+(leaving all her other scores unaltered) then
+plainly that leaves Q for an X-omitting parliament unaltered.  
+But we'll now see it increases Q for any X-containing ordered parliament.
+X's election is with more approval A.
+The future (chronologically after X) candidates can then be regarded as a
+multiwinner election with fewer seats to fill, and fewer candidates &ndash;
+but with ballot-weights <i>altered</i> 
+so that every elected candidate gets <i>more</i> (or the same) approval,
+because the X-caused F increased.
+So we can then argue inductively about this sub-election,
+using inductively assumed monotonicity  (possibly including
+"<a href="#phantom">phantom</a> voter" monotonicity):
+it also can only increase Q.
+This induction on S terminates when there are S&le;2 seats left, 
+because monotonicity is obvious
+for elections of W-winner parliaments with W=1 or W=2.
+</li></ol>
+<p>
+<b>Was that too facile?</b>
+The above reasoning has (dangerously) hidden the effect of the 
+<a href="NonlinQuality.html#pt">Kotze-Pereira transform</a>.
+We claim the above proof was ok provided all Holy Grail ballots were <i>approval style</i>, 
+i.e. there was no Kotze-Pereira transform.  
+But one might worry the Kotze-Pereira-transform is potentially ruining both parts 1 and 3
+of the proof.
+Example: with the KP transform,
+as you raise X's score above Y's on your ballot:
+</p><ul><li>
+<i>before</i>
+ we had YX and Y approval-ballots with the weight of XY's rising and the weight of
+Y's <i>shrinking</i> (summed weight remaining fixed); at the crossover we have only XY;
+</li><li>
+<i>after</i> we have XY and X only with X's rising and XY's staying at the same weight.
+Such crossovers are continuous events, so proof part 1 still is ok.
+</li></ul><p>
+The Y-shrinkage phase is worrying re proof part 3.   (The others are ok.)
+But this is ok; the summed-weight staying fixed
+means the deweighting effect of Y caused by X's election (with greater F), 
+<i>stays fixed</i> thanks to the following identity
+</p><center>
+(1-r/A)A+(q-A)
+=
+A-r+q-A
+=
+q-r
+</center><p>
+which is <i>independent</i> of A.
+Here (1-r/A)A is the naively-deweighted approval A for X (actually for XY
+before the crossover) while (q-A)
+is the approval for Y 
+(but for XY after the crossover) with the sum (q-A)+A remaining fixed.
+Our point is that the quantities here denoted r and q both stay fixed
+as some X-score rises during the pre-crossover phase.  
+Therefore q-r stays fixed.
+Therefore the net effect of both changing the ratings-style ballots (via a continuous
+motion over a positive timespan), and electing X, and (therefore) deweighting,
+is to leave the net weighted approval for Y unaffected &ndash; as we should.
+</p><p>
+So this identity proves the theorem, at least when the naive reweighting factor formula
+is being used.  "Surgical alterations" of the reweighting factor formula
+could alter that &ndash; but we assume those only are invoked (and only can be invoked)
+once all parties have already gotten all the seats they "deserve." 
+In that case violations of strong PR are <i>bounded</i>
+by the number of seats that can be awarded to a party after that point.
+If our "surgical alterations" were designed keep that number small, e.g. bounded
+by some absolute constant, in all "racist voting plus commonly rated candidates"
+scenarios &ndash; or if we do not care about violating strong PR in such situations &ndash;
+that is ok.
+</p><p>
+So the proof is now complete.
+</p>
+<p>
+<b>Runtime:</b>
+With V voters, C candidates, W winners, 0&lt;W&lt;C,
+the Holy Grail scheme, assuming approval-style ballots, 
+can be made (using "incremental" algorithm techniques,
+cf. Arndt 2011)
+to run in O(W!V) steps using O(V) words of memory
+to compute Q for any given W-member ordered parliament;
+and hence by brute force consideration of every possible ordered parliament
+in O(C!V/(C-W)!) steps to find the optimum (Q-maximizing) parliament.
+</p><p>
+With score-style ballots, the 
+<a href="NonlinQuality.html#pt">Kotze-Pereira transform</a> requires an initial
+O(VC) steps to convert them into &le;min(VC,2<sup>C</sup>)
+weighted approval-style ballots.
+</p><p>
+<b>How outrageously slow is that?</b>
+We would prefer it if the Holy Grail for approval-style ballots somehow
+could be made to run about W! times faster, i.e. if the Q-computing algorithm had
+runtime&le;polynomial(V,C).  
+Call that desire a <b>polynomially-efficient holy grail.</b>
+(We'll achieve it later, but for the moment we want to demonstrate
+that it is unclear whether it is possible.)
+</p><p>
+We have <a href="QualityMulti.html#X3C">elsewhere</a>
+presented arguments that for "optimum PR" elections it is
+inherently NP-hard to find an optimum parliament, and
+<a href="QualityMulti.html#MVC">indeed</a>
+even to attain  approximate optimality.
+So a certain amount of brute force computing is <i>necessary</i>
+to perform optimum PR elections.
+</p><a name="likelyNPhard"></a><p>
+However, the above Holy Grail scheme worsens that picture
+by now employing a
+Q function (quality measure) which is hard even to <i>evaluate</i> for
+a wholy-known parliament!
+We indeed might well speculate that our particular Q is <i>NP-hard</i> to
+evaluate, perhaps even NP-hard to approximately evaluate.
+The basis for the first speculation is that
+&quot;minimum feedback 
+<a href="https://en.wikipedia.org/wiki/Feedback_arc_set">arc set</a>&quot;
+(and <a href="https://en.wikipedia.org/wiki/Feedback_vertex_set">vertex set</a>)
+and 
+&quot;<a href="https://en.wikipedia.org/wiki/Maximum_cut">max cut</a>&quot;
+and "sparsest cut,"
+maximum and minimum "linear arrangement,"
+and the "traveling salesman problem"
+all are known NP-complete problems that 
+look related to the problem of finding the Q-maximizing ordering of a parliament with the
+present section's definition of Q.
+</p><p>
+The basis for the stronger speculation is the observation that known results
+(Amb&uuml;hl et al 2011; Crescenzi, Kann et al 1998+;
+Orponen &amp; Mannila 1990;
+Engebretsen &amp; Karpinski 2006)
+indicate that (subject to very-believed computer science conjectures)
+there exists a constant &kappa;&gt;1
+such that the versions of those problems that correspond best to the 
+Q-<i>max</i>imizing problem, namely <i>min</i>imum feedback vertex and arc sets,
+<i>min</i>imum linear arrangement,
+<i>sparsest</i> cut, 
+and traveling salesman problem with  edge costs {1,2} only,
+<i>all</i> are inapproximable to within factor &kappa;
+via polynomial time algorithms.
+That vaguely suggests that perhaps the holier grail might be unattainable.  Specifically,
+no matter how you tried to design a polynomial-time-computable quality function Q, those
+results suggest it would inherently be unable to approximate the present section's
+holy grail Q 
+well enough.   That suggests the whole approach of trying to emulate our
+holy grail function, approximately, via something faster, is doomed to failure.
+</p><p>
+Any polynomial-time efficient Q
+defining a holy grail voting method, 
+if one exists, therefore would need to have a quality function Q
+quite different from ours.
+Which is, in fact, exactly what is going to happen.
+</p>
+
+<a name="computexpts"></a>
+<h3> Computer experiments with the "MSPAV with best ordering" holy grail scheme </h3>
+
+<p>
+Tabulated below are some example elections using MSPAV with best ordering.
+</p>
+<table cellspacing="5"><tr><td>
+<table>
+<tr bgcolor="pink"><th>A</th><th>AB</th><th>B</th>
+<th>best ordered<br>parliament</th>
+<th>seat counts<br>A, B</th><th>Q</th></tr>
+<tr><td>1</td><td>10</td><td>2</td><td>BBBBBBABABAB</td><td align="center">3, 9</td><td>72.9874</td></tr>
+<tr><td>1</td><td>10</td><td>3</td><td>BBBBBBBBABAB</td><td align="center">2, 10</td><td>78.6956</td></tr>
+<tr><td>2</td><td>10</td><td>1</td><td>AAAAAABABABA</td><td align="center">9, 3</td><td>72.9874</td></tr>
+<tr><td>3</td><td>10</td><td>1</td><td>AAAAAAAABABA</td><td align="center">10, 2</td><td>78.6956</td></tr>
+<tr><td>5</td><td>10</td><td>1</td><td>AAAAAAAAABAB</td><td align="center">10, 2</td><td>90.7611</td></tr>
+<tr><td>1</td><td>10</td><td>1</td><td>ABABABABABAB</td><td align="center">6, 6</td><td>68.3474</td></tr>
+<tr><td>2</td><td>10</td><td>2</td><td>ABABABABABAB</td><td align="center">6, 6</td><td>74.485</td></tr>
+<tr><td>3</td><td>10</td><td>3</td><td>ABABABABABAB</td><td align="center">6, 6</td><td>80.8708</td></tr>
+<tr><td>2</td><td>10</td><td>0</td><td>AAAAAAAAAAAA</td><td align="center">12, 0</td><td>75.1304</td></tr>
+<tr><td>0</td><td>10</td><td>1</td><td>BBBBBBBBBBBB</td><td align="center">0, 12</td><td>68.8696</td></tr>
+<tr bgcolor="orange"><td>3</td><td>0</td><td>3</td><td>ABABABABABAB</td><td align="center">6, 6</td><td>21.4129</td></tr>
+<tr bgcolor="orange"><td>1</td><td>0</td><td>3</td><td>BBBBBBBABABA</td><td align="center">3, 9</td><td>17.0668</td></tr>
+<tr bgcolor="orange"><td>1</td><td>0</td><td>2</td><td>BBBBBABABABA</td><td align="center">4, 8</td><td>11.6476</td></tr>
+<tr bgcolor="orange"><td>2</td><td>0</td><td>2</td><td>ABABABABABAB</td><td align="center">6, 6</td><td>14.2752</td></tr>
+<tr bgcolor="orange"><td>1</td><td>0</td><td>5</td><td>BBBBBBBBABAB</td><td align="center">2, 10</td><td>28.778</td></tr>
+<tr bgcolor="orange"><td>0</td><td>0</td><td>1</td><td>BBBBBBBBBBBB</td><td align="center">0, 12</td><td>6.26087</td></tr>
+</table>
+</td><td>
+<table>
+<tr bgcolor="aqua"><th>A</th><th>AB</th><th>B</th>
+<th>best ordered<br>parliament</th>
+<th>seat counts<br>A, B</th><th>Q</th></tr>
+<tr><td>1</td><td>10</td><td>2</td><td>BBBBBABBAAAB</td><td align="center">4, 8</td><td>5.46684</td></tr>
+<tr><td>1</td><td>10</td><td>3</td><td>BBBBBBBABAAB</td><td align="center">3, 9</td><td>5.28647</td></tr>
+<tr><td>2</td><td>10</td><td>1</td><td>AAAAABAABBBA</td><td align="center">8, 4</td><td>5.46684</td></tr>
+<tr><td>3</td><td>10</td><td>1</td><td>AAAAAAABABBA</td><td align="center">9, 3</td><td>5.28647</td></tr>
+<tr><td>5</td><td>10</td><td>1</td><td>AAAAAAAAAAAB</td><td align="center">11, 1</td><td>4.94185</td></tr>
+<tr><td>1</td><td>10</td><td>1</td><td>BABABABAAAAB</td><td align="center">7, 5</td><td>5.63424</td></tr>
+<tr><td>2</td><td>10</td><td>2</td><td>BBBAABAABAAB</td><td align="center">6, 6</td><td>5.38949</td></tr>
+<tr><td>3</td><td>10</td><td>3</td><td>BBAABABABAAB</td><td align="center">6, 6</td><td>5.17793</td></tr>
+<tr><td>2</td><td>10</td><td>0</td><td>AAAAAAAAAAAA</td><td align="center">12, 0</td><td>5.29951</td></tr>
+<tr><td>0</td><td>10</td><td>1</td><td>BBBBBBBBBBBB</td><td align="center">0, 12</td><td>5.53515</td></tr>
+<tr bgcolor="orange"><td>3</td><td>0</td><td>3</td><td>BBBBBAAAABAA</td><td align="center">6, 6</td><td>9.92263</td></tr>
+<tr bgcolor="orange"><td>1</td><td>0</td><td>3</td><td>BBBBBBBBABAA</td><td align="center">3, 9</td><td>11.5703</td></tr>
+<tr bgcolor="orange"><td>1</td><td>0</td><td>2</td><td>BBBBBBBAABAA</td><td align="center">4, 8</td><td>13.7269</td></tr>
+<tr bgcolor="orange"><td>2</td><td>0</td><td>2</td><td>AAAAABBBBABB</td><td align="center">6, 6</td><td>12.1527</td></tr>
+<tr bgcolor="orange"><td>1</td><td>0</td><td>5</td><td>BBBBBBBBBBAA</td><td align="center">2, 10</td><td>9.04999</td></tr>
+<tr bgcolor="orange"><td>0</td><td>0</td><td>1</td><td>BBBBBBBBBBBB</td><td align="center">0, 12</td><td>18.358</td></tr>
+</table>
+</td></tr></table>
+<p>
+In all the above elections
+there are exactly two political parties, "A" and "B";
+and exactly 12 seats in the parliament. We use &Delta;=&frac12;.
+In the table on the left, we use mono(x)=x and F<sub>&infin;</sub>,
+but in the righthand table 
+we use mono(x)=x<sup>-1/2</sup> and F<sub>4</sub>.
+</p><p>
+Each row of each table states one election. 
+The first three columns describe the votes:
+The first column states the number of voters approving party A.
+Similarly the second column states the number of voters approving
+both parties A and B,
+while the third column gives the number of voters approving B only.
+(We assume "racist" voting, i.e. each voter who approves any A-member,
+approves them all;
+and that there are an unlimited supply of candidates from each party.)
+</p><p>
+Column 4 gives the best ordered parliament in chronological order (left to right as time increases)
+of election.  Although there may be more than one co-equally-best ordered parliament, we only state one.
+</p><p>
+Columns 5 and 6 give the seat counts for parties A and B in that parliament.
+Finally, the last column states the value of Q (which in the lefthand table
+is <i>max</i>imum possible, but in the righthand table is <i>min</i>imum possible, because
+we only are considering the <i>best</i> possible parliament).
+</p><p>
+Gratifyingly, in every case with zero voters approving <i>both</i> parties
+(bottom 6 rows of table, colored orange),
+as expected, the parliament exhibits perfect PR.
+That is, the A:B seat-ratio
+in the parliament, is the same as the A:B approval-ratio in the ballots.
+</p><a name="cpaidefn"></a><p>
+One might like that to be unaffected by the number of "approve both A &amp; B" ballots. I.e,
+</p><p>
+<b>Possible "cross-party approval independence" (CPAI) property:</b>
+Adding all-party-approving ballots to an election 
+ought not to affect the seat-count ratios amongst the parties 
+(assuming otherwise "racist" party-line voting).
+</p><p>
+But arguments can be made that CPAI is an <i>un</i>desirable property.
+The question is debatable:
+<dl>
+<dt>Undesirable:</dt>
+<dd>
+  Imagine a million-voter electorate, all of whose voters approve
+all candidates from <i>both</i> parties A and B.  
+In that case presumably there would be a 50:50 split of the seats
+A:B (either due to symmetry, or just in expectation if ties were broken by coin flips).
+Now add to this 3 more voters (now 1000003 in all) with two approving A only,
+while one approves B only.  Then CPAI would demand a 2:1 seat split.  It seems
+unreasonable that just 3 voters out of a million should so-drastically alter parliament
+in this scenario.
+</dd>
+<dt>Desirable:</dt>
+<dd>
+MORE??
+</dd>
+</dl>
+Regardless of the outcome of that debate, we
+feel intuitively that, at least, we ought to have the weaker
+</p><p>
+<b>"Cross-party approval diminution" (CPAD) property:</b>
+Adding all-party-approving ballots to an election 
+either ought not to affect the seat-count ratios amongst the parties 
+(assuming otherwise-"racist" party-line voting) <i>or</i>
+it ought to <i>diminish</i> ratios that had exceeded 1.
+</p><p>
+CPAI is achievable. For example <a href="RRV.html">Thiele's method</a>,
+also called "reweighted range voting" if scoring-style ballots are used, achieves CPAI.
+But at this point is is unknown whether CPAD is achievable <i>in combination</i>
+with the "holy grail" properties.
+</p><p>
+However, evidently, in the lefthand table, the ratios <i>are</i> affected, i.e. CPAI
+is violated (although never by more than 1 seat per party in the examples tabulated); 
+and more disturbingly, those effects have the "wrong sign" &ndash; adding
+"approve A&amp;B" ballots sometimes 
+<i>magnifies</i> the seat-count ratio for the stronger versus
+the weaker party, whereas one would intuitively desire either no effect (CPAI), 
+or a diminution.  Thus the lefthand table also demonstrates CPAD violations.
+</p><p>
+However, by replacing mono(x)=x by mono(x)=x<sup>-1/2</sup> and 
+F<sub>&infin;</sub> by F<sub>4</sub> 
+(righthand table)
+the number of violations of the CPAI property is diminished;
+indeed we get perfect CPAI PR except for two elections 
+in which we have CPAI to within &plusmn;1 seat errors in both cases,
+<i>and</i> the discrepancies from CPAI all have the "correct sign" i.e.
+obey CPAD.  But bizarrely,
+the symmetric A=1, A&amp;B=10, B=1 election then prefers to elect 7 A's and 5 B's
+(or the reverse &ndash; 7 B's and 5 A's &ndash; these two parliaments are co-equally optimal) 
+breaking the symmetry.
+This suggests the resulting system still violates CPAD, even though, technically, there
+are no CPAD violations in the righthand table above.
+</p><p>
+Strangely enough, in every election shown, <i>either</i> the
+righthand or lefthand election method delivered perfect CPAI PR, but sometimes not both.
+</p><p>
+Now for a further investigation. In the table below,
+the same two sets of voters elect parliaments with 6, 12, 18, 24, and 30 seats,
+each time using F<sub>&infin;</sub>, &Delta;=&frac12;, and mono(x)=x.
+(Also note, in every case, if the "A&amp;B-approve" bipartisan voters were removed,
+then we'd have perfect PR, i.e. exactly the same votes ratios as seats ratios.
+Those are not shown; just trust me about that.)
+</p>
+<table>
+<tr bgcolor="pink"><th>A</th><th>AB</th><th>B</th>
+<th>best ordered<br>parliament</th>
+<th>seat counts<br>A, B</th><th>Q</th><th>seat counts A, B<br>with F<sub>4</sub> and mono(x)=x<sup>-1/2</sup></tr>
+<!-- 6 seats:-->                      
+<tr bgcolor="orange"><td>5</td><td>10</td><td>1</td><td>AAAAAB</td><td align="center">5, 1</td><td>48.1093</td><td align="center">5, 1</td></tr>
+<tr bgcolor="orange"><td>1</td><td>10</td><td>2</td><td>BBBABA</td><td align="center">2, 4</td><td>38.7278</td><td align="center">3, 3</td></tr>
+
+<!-- 12 seats:-->                      
+<tr bgcolor="orange"><td>5</td><td>10</td><td>1</td><td>AAAAAAAAABAB</td><td align="center">10, 2</td><td>90.7611</td><td align="center">11, 1</td></tr>
+<tr><td>1</td><td>10</td><td>2</td><td>BBBBBBABABAB</td><td align="center">3, 9</td><td>72.9874</td><td align="center">4, 8</td></tr>
+
+<!-- 18 seats:-->                      
+<tr><td>5</td><td>10</td><td>1</td><td>AAAAAAAAAAAAAABABA</td><td align="center">16, 2</td><td>133.449</td><td align="center">16, 2</td></tr>
+<tr><td>1</td><td>10</td><td>2</td><td>BBBBBBBBBABABABABA</td><td align="center">5, 13</td><td>107.251</td><td align="center">5, 13</td></tr>
+                 
+<!-- 24 seats:-->                                                                            
+<tr><td>5</td><td>10</td><td>1</td><td>AAAAAAAAAAAAAAAAAABABABA</td><td align="center">21, 3</td><td>176.126</td><td align="center"></td></tr>
+<tr><td>1</td><td>10</td><td>2</td><td>BBBBBBBBBBBABABABABABABA</td><td align="center">7, 17</td><td>141.501</td><td align="center"></td></tr>
+
+<!-- 30 seats:-->
+<tr><td>5</td><td>10</td><td>1</td><td>AAAAAAAAAAAAAAAAAAAAAAABABABAB</td><td align="center">26, 4</td><td>218.778</td><td align="center">26, 4</td></tr>
+<tr bgcolor="aqua"><td>1</td><td>10</td><td>2</td><td>BBBBBBBBBBBBBBABABABABABABABAB</td><td align="center">8, 22</td><td>175.756</td><td align="center">8, 22</td></tr>
+</table>
+<p>
+The CPAD property evidently is violated in all 
+non-orange elections tabulated, but the violation is only by
+1 seat extra except in the bottom line of
+the table (30-member parliament; colored aqua) where the violation is by 2 seats:
+(8,22) versus (10,20).  Also, the rightmost column of the table shows what would
+happen to the seat-counts if we changed the election method to use 
+F<sub>4</sub>, &Delta;=&frac12;, and mono(x)=x<sup>-1/2</sup>.  Note
+that CPAD still would be violated.
+</p><p>
+<b>Note re runtime:</b>
+For elections of the above kind featuing K parties
+and completely-partisan voting,
+it is trivially possible to maximize Q and find the "best" parliament
+in only order K<sup>W</sup>V steps rather than W!V.
+It is an <b>open question</b> whether such a speedup is
+possible for entirely-general elections.
+</p><p>
+Now let us redo something much like our original 12-member parliament, 2 parties study,
+but now for a 24-member parliament.
+MORE???
+</p>
+
+<a name="failgrail"></a>
+<h3> A failed holy grail scheme (but useful to think about) </h3>
+<p>
+Here is a straightforward 
+attempt to generalize MSPAV to create a holy grail voting system 
+whose quality function Q is evaluable in polynomial
+time.   As we'll see, this attempt fails &ndash; but the explanation of why and how it fails
+will be useful mental preparation for the next section.
+</p><p>
+<b>Algorithm</b> for computing a quality function Q for a parliament &alpha;
+using a weighted set of <a href="Approval.html">approval</a>-style ballots &beta;:
+<ol><li>
+Initialize Q&larr;0.
+</li><li>
+While &alpha;&ne;&emptyset; do
+<ol><li>
+Let S be the cardinality of &alpha;.
+</li><li>
+Let U be the summed weight of all of the ballots in &beta;
+that approve at least one member of &alpha;.
+</li><li>
+Let X be the current approval winner within &alpha; 
+according to the current weighted ballot set &beta;,
+and let A be X's weighted approval in &beta;. 
+</li><li>
+Update &alpha; by removing X.
+</li><li>
+Update &beta; by multiplying the weight of each ballot that approved X by a factor of
+F=max{1-A<sup>-1</sup>U/(S+&Delta;), &frac12;}.
+</li><li>
+Q &larr; Q+A;  [or more generally we could consider Q &larr; Q+mono(A);]
+</li></ol>
+End While.
+</li><li>
+Output Q and stop.
+</li></ol>
+<p>
+In this algorithm &Delta; is a constant, e.g. &Delta;=&frac12;.
+Incidentally, if desired (and if &Delta;&ge;0)
+we can agree to <b>pre-normalize</b> the ballot weights
+so that they sum to 2W<sup>-1</sup>(W+&Delta;)/(1+W+2&Delta;)
+where W is the number of seats being elected, i.e. the
+cardinality of the input parliament &alpha;.
+This normalization ensures (a priori) that the final value of Q will obey 0&le;Q&le;1,
+with Q=1 happening only if every ballot approves every candidate in &alpha;.
+</p><blockquote>
+Derivation of that normalization:
+Let Z be the sum of the ballot-weights.
+If all ballots approve all candidates
+then the deweighting factor F is
+<nobr>F[S]=1-1/[S+&Delta;]</nobr> 
+if <nobr>S+&Delta;&ge;2</nobr>, which in turn is assured if <nobr>&Delta;&ge;0.</nobr>
+Here we have written F[S] to make it explicit that F
+depends on the number S of seats remaining to be filled.
+These F[S] are used for S starting at W (the number of seats in parliament)
+and going down to 2.  Then
+<center>
+Q = Z + Z F[W] + Z F[W] F[W-1] + ... + Z F[W] F[W-1] ... F[3] F[2].
+</center>
+Now sum the series to find
+<center>
+Q = Z+Z&sum;<sub>2&le;k&le;W</sub>&prod;<sub>k&le;S&le;W</sub>(1-1/[S+&Delta;])
+  = Z+Z(W-1)(&Delta;+W/2)/(&Delta;+W).
+</center>
+Hence to cause Q=1 we need 
+<nobr>Z=(&Delta;+W)/(&Delta;+W+[W-1][&Delta;+W/2])</nobr>
+which simplifies to 
+<nobr>Z=(2/W)(W+&Delta;)/(1+W+2&Delta;)</nobr>
+valid if &Delta;&ge;0.
+</blockquote><p>
+This quality function obviously is computed in
+O(W<sup>2</sup>V) steps if there are V&gt;1 voters and W&ge;1 winners.
+This is polynomial time.
+</p><p>
+And the election method consisting of electing the W-winner parliament that maximizes Q
+indeed will obey some of the Holy Grail desiderata:
+</p><ol><li>
+Strong PR.  
+Because:
+It should be obvious from the <i>multiplicative</i> nature of the reweighting that if it obeys
+basic PR, then it must also obey strong PR.
+To see it obeys basic PR, suppose not.  I.e. suppose a Q-maximizing parliament &alpha; 
+in a "racist voting" scenario was disproportional.
+The <i>last</i> MP "elected," i.e. the last X removed from &alpha; by the above algorithm, then
+will necessarily be from
+the most under-represented <i>available</i> color.  
+But at that final moment there is only one candidate still
+available, and he necessarily is the most over-represented  color, which is why he still <i>is</i>
+available.
+Now replace that X by a member of the <i>genuinely</i> most-under-represented color
+(who, we postulate, would be available in the full pool of candidates, but
+is not available
+in the parliament &alpha; presented to us as a fait accoompli).
+Obviously, that would "greedily" increase Q.
+This increase contradicts the assumption Q was maximized by the present parliament &alpha;,
+thus proving basic PR holds in the sense that no 
+over- or under-represented color can exist in a maximum-Q parliament (provided enough candidates
+of each color had run).
+</li><li>
+Monotonicity.
+If the approval for some member X of parliament is increased (all else staying the same), 
+that will increase that parliament's
+Q-score, while leaving the Q of X-omitting parliaments unaltered.
+Because:
+The "unaltered" part is obvious.
+The "increase" part's proof is similar to our previous holy grail algorithm, by induction on parliament cardinality.
+</li></ol><p>
+Unfortunately, this quality function Q <b>fails</b> to yield a holy grail voting method,
+because it is <i>discontinuous.</i>
+Consider E&gt;1 parliamentarians whose weighted approvals are exactly <i>tied</i>.
+Now consider breaking the tie by, e.g. infinitesimally reducing the approval for one while infinitesimally
+increasing it for another.  In that case, the value of Q will, in general, <i>jump</i> discontinuously
+versus if the tie had been infinitesimally broken in a different manner.
+</p>
+
+<a name="hg2"></a>
+<h3> 
+Second holy grail scheme: MSPAV with infinite-cloning transform
+</h3>
+<p>
+THIS SECTION NOT YET FINISHED??
+</p><p>
+Our approach to create a (genuine) holy grail scheme 
+will be to use the failed scheme above, but try
+to convert its quality function Q to become continuous without
+sacrificing either its desirable properties or its
+polynomial-time algorithmic efficiency.  
+There is an interesting and fairly general looking
+transformation we can employ for that purpose.
+</p><p>
+<b>M-fold cloning transformation.</b>
+"Clone" each member of parliament M times (getting a new parliament with MW seats instead of W).
+(All clones receive the exact same approvals on ballots.)    
+Call the resulting quality function Q<sub>M</sub>.
+</p><p>
+Now consider the
+<b>M&rarr;&infin; limit</b>
+of some <b>post-processed</b> version of Q<sub>M</sub>, such as 
+(Q<sub>M</sub>)<sup>1/M</sup>
+or
+Q<sub>M</sub>/M.
+</p><p>
+The hope is that (i) some such "clone+post-process+limit" transformation converts a discontinuous Q
+into a continuous one, and (ii) while still preserving the polynomial-time computational
+complexity of our Q.  Obviously, in general these hopes are not necessarily going to be satisfied, 
+and a certain amount of creative art is needed to make (i) and (ii) happen &ndash;
+but it often seems plausible that such an attack will work.
+</p><p>
+To explain why this could hope to yield a continuous Q even though the original untransformed Q is discontinuous:
+Suppose there are two candidates with the first having
+a lot more approval then the second.
+The chronological election order behaves like
+1111122222
+and if the second's approval increases then maybe
+1121212122,
+and if it increases further then maybe
+2212121211,
+and after still further increase maybe
+2222211111.
+Here we have shown M-fold cloning with multiplicity factor M=5.
+So in this way, if M&rarr;&infin;
+we could hope to get a continuous quality function, where we do not just discontinuously
+jump from a 12 to a 21 election situation, but rather pass through an infinity of intermediate states.
+</p><p>
+But then what if there is a <i>three</i>-way near tie among candidates 1, 2, and 3?
+We then realize the behavior could get quite messy...
+</p><p>
+Now let us discuss how we are going to apply this whole idea to
+the specific "failed" Q above.  Our examination will start out <b>abstract</b> but 
+we shall make it more specific toward the end by working out the particular formulas we need.
+</p><p>
+It is more useful to view everything <i>not</i> as M-fold cloning with M&rarr;&infin;, but
+rather as continuum-divisible candidates using continuum time.
+</p><p>
+That is, an election might proceed as follows.
+Candidate 1 is the most approved.   We elect 0.37 of him, causing,
+via "fractional deweighting" of his ballots, his approval to drop to
+become exactly equal to candidate 2's.
+Now we fractionally-elect both candidate 1 and 2 at relative "election rates"
+of 0.53 and 0.32 (causing their deweightings to remain exactly equal
+to each other as time goes by), and keep doing that for just the right
+amount of time
+to cause both their approvals to become exactly equal to candidate 3's.
+Now we fractionally-elect both 1, 2, and 3 at relative rates... until
+candidate 1 drops out of the picture since he has now been fully elected,
+now only 2 &amp; 3 continue on being fractionally elected.  Etc.
+</p><p>
+This then is a continuum-time election process with a finite number
+of possible "states."  Transitions between the states occur whenever
+two candidates' approval levels become equal (approval levels change continuously
+with time)
+or whenever a candidate becomes 100%-elected (his election-fraction also
+changes continuously with time).
+</p><p>
+Each time such a state-transition occurs we need to solve some set
+of simultaneous equations to determine the new "election rates" for whichever
+candidates are then involved,
+and then solve some other equations to determine how long to proceed until the
+next state-transition occurs.
+</p><p>
+WRONGNESS NEEDS TO BE FIXED??:
+The total algorithmic runtime should then be <nobr>polynomial(C)VT</nobr>
+where C is the number of candidates, V&gt;1  is the number of voters, and
+T is the number of transitions between states,
+<i>provided</i> those simultaneous equations can be solved in polynomial(C) steps
+each transition??
+</p><p>
+The number T of possible algorithm-states is 
+at most 2<sup>W</sup> where W is the number of winners,
+since this counts the number of possible subsets of the W members of parliament.
+But note that if a candidate gets incorporated into the current state, then
+he necessarily stays in it until he becomes fully elected, whereupon he leaves it,
+never to return.
+This "once in, once out"
+behavior means that the possible state-transitions are not
+arbitrary and there 
+cannot be anywhere near as many as 
+2<sup>W</sup> when W is large.
+</p><p>
+How many states can arise?
+The answer is the solution of this combinatorial problem.   Get out your pencil and draw
+W different horizontal line segments like this:
+</p><pre>
+    *------------*
+           *--------------*
+       *-------*
+</pre><p>
+(here shown with W=3 representing the time-intervals when each of the W members of
+parliament is involved in the algorithm's "state"). 
+Then ask: what is the maximum possible number of different
+"states" (i.e. different intersections of these W line segments with a
+rightward-moving vertical scanline representing "time") that
+can occur in any such drawing?
+If the answer is called T(W), then we find
+</p><center>
+T(0)=1,
+T(1)=3 (if the "before" and "after" states are counted separately),
+T(2)=5,
+T(3)=7, ...
+etc
+</center><p>
+and T(W+1)=2+T(W) because each new line-segment (at worst) splits the states occuring at 
+each of its two endpoints.
+Hence T(W)=2W+1.
+</p><p>
+This is indeed much slower-growing than 2<sup>W</sup> and
+ensures the whole algorithm will run in a number of steps bounded by a polynomial.
+</p><p>
+Excellent.
+</p><p>
+Now to make this efficient, we need the simultaneous equations to be <i>linear</i> equations
+(efficiently solvable via Gaussian elimination);
+or if they somehow are
+solvable via linear programming (or semidefinite or convex programming)
+that also would
+be acceptable, since those also have polynomial-time algorithms.
+The point is, we need them to be solvable more efficiently than
+general simultaneous nonlinear equations, because for them only
+exponential-time algorithms are known.
+</p><p>
+The other kind of equation &ndash; to determine the timespan until the next
+state-transition &ndash;
+is trivial because it involves only one variable, so some sort of binary
+search procedure (or any other efficient 1-dimensional rootfinding scheme;
+see Press et al and note the monotone-decreasing nature of anybody's weighted approval
+causes such roots to be unique)
+will solve it to high accuracy fast.
+</p><p>
+All that has been a somewhat abstract proof sketch
+telling us whether and when our whole "M-fold cloning in the M&rarr;&infin; limit" idea
+can be made to work to yield a polynomial-time algorithm
+for evaluating a now-continuous parliament-quality function.
+</p><p>
+We now shall make this proof more <b>concrete</b> and less abstract
+by working out what, exactly, all the equations are for our particular application.
+</p><p>
+<b>Iterated deweighting.</b>
+Let us consider the F<sub>1</sub>, 
+F<sub>2</sub>, and F<sub>3</sub>
+deweighting 
+<a href="#deweightformula">formulas</a>,
+all of which, we remind the reader, are the same if h&le;&frac12;,
+namely
+</p><center>
+F = 1-h
+&nbsp;&nbsp; where &nbsp;&nbsp; h=A<sup>-1</sup>U/(S+&Delta;),
+</center><p>
+were A is the weighted approval of the candidate currently being elected, 
+U is (with the same ballot weightings) the weighted approval of a
+hypothetical universally approved candidate,
+S is the number of seats remaining to be filled (just before our candidate is elected),
+and &Delta; is a constant such as 1/2.
+</p><p>
+The <i>effect</i> of deweighting using this F is to replace A by A'  and U by U' 
+and finally S by S-1 where
+</p><center>
+U' = U - U/(S-&Delta;),
+&nbsp;&nbsp;&nbsp;
+A' = A - U/(S-&Delta;).
+</center><p>
+Letting B=A/U and B'=A'/U', we also find
+</p><center>
+B' = [1 + 1/(S-&Delta;-1)] B - 1/(S-&Delta;-1).
+</center><p>
+Now let us iterate this replacement K times, causing the replacements 
+U&rarr;U<sup>(K)</sup> and B&rarr;B<sup>(K)</sup>
+where for example B<sup>(0)</sup>=B and B<sup>(1)</sup>=B'.
+Writing J=S-&Delta; for brevity, the U result is
+</p><center>
+U<sup>(K)</sup> 
+= U &prod;<sub>0&le;r&le;K-1</sub> [1-1/(J-r)]  
+= [1 - K/J] U
+= [1 - K/(S-&Delta;)] U
+</center><p>
+because the product telescopes.
+The first few B iterates are
+</p><center>
+B<sup>(1)</sup> = [1+1/(J-1)] B  - 1/(J-1), <br>
+B<sup>(2)</sup> = [1+1/(J-2)] B<sup>(1)</sup> - 1/(J-2) = [J/(J-2)] B - 2/(J-2), <br>
+B<sup>(3)</sup> = [1+1/(J-3)] B<sup>(2)</sup> - 1/(J-3) = [J/(J-3)] B - 3/(J-3), <br>
+B<sup>(4)</sup> = [1+1/(J-4)] B<sup>(3)</sup> - 1/(J-4) = [J/(J-4)] B - 4/(J-4), <br>
+</center><p>
+making it clear that the general B result is
+</p><center>
+B<sup>(K)</sup> = [J/(J-K)] B - K/(J-K)
+= (S-&Delta;)B/(S-&Delta;-K) - K/(S-&Delta;-K)
+</center><p>
+which is readily proved by induction via
+<nobr>B<sup>(K)</sup>=[1+1/(J-K)]B<sup>(K-1)</sup>-1/(J-K).</nobr>
+And then
+<nobr>A<sup>(K)</sup>=U<sup>(K)</sup>B<sup>(K)</sup>.</nobr>
+</p><p>
+Of course, the above derivation assumed h&le;&frac12; and hence
+those iteration formulas break down
+if h&gt;&frac12;.  But this regime also can be handled.
+It is simplest to do so if we are using formula F<sub>1</sub>=max(&frac12;,1-h),
+because then the K-fold iterated deweighting factor F is simply 2<sup>-K</sup>.
+In this way, the general notion of "iterating the F<sub>1</sub> deweighting formula K times"
+can be defined, and efficiently computed, for any real K.
+One would need to use an efficient
+1-dimensional rootfinder to find the "critical" least K,
+call it K<sub>crit</sub>, causing h to rise to &frac12;.
+(Again note the monotone-decreasing nature of anybody's weighted approval
+causes such roots to be unique.)
+If the desired K is greater than K<sub>crit</sub>, then cut the K-fold iteration into two parts: before
+and after this transition, and perform them each separately.
+</p><p>
+The resulting formulas place us in a position to consider <i>fractional</i> iteration, i.e. the notion of
+<b>"electing somebody K times"</b> where we now allow K to be a <i>non</i>integer real number.
+The effect of that is to replace 
+U&rarr;U<sup>(K)</sup> and A&rarr;A<sup>(K)</sup>
+and S&rarr;S-K, and each ballot that approved him is deweighted to 
+A<sup>(K)</sup>/A times its original weight, while the weight of each ballot that disapproved him 
+is unaltered.
+</p><p>
+[More generally, a theory of "fractional iteration" was devised by Ernst Schr&ouml;der
+in 1871 and is discussed at length in the book by Kuczma et al.  However, we do not need
+general Schr&ouml;der theory to handle F<sub>1</sub>.]
+</p><p>
+We also can consider the notion of fractionally-electing a <i>set</i> of E candidates
+who all are tied, i.e. all have equal weighted approval.
+To do so, we 
+&epsilon;<sub>1</sub>-elect candidate 1, then
+&epsilon;<sub>2</sub>-elect candidate 2, ... then
+&epsilon;<sub>E</sub>-elect candidate E, 
+then repeat this cycle, where the
+&epsilon;<sub>j</sub> all are positive <i>infinitesimals</i>.
+The ratios of the
+&epsilon;<sub>j</sub> are the relative "election rates" of these E candidates,
+and need to  be chosen in such a way as to cause all their weighted approvals to remain tied
+as we proceed.   
+That may be accomplished by solving a set of E simultaneous linear equations.
+</p><p>
+In general, the
+&epsilon;<sub>j</sub>
+will be unequal, but 
+if E=2 then we enjoy equality &epsilon;<sub>1</sub>=&epsilon;<sub>2</sub>;
+and in any "no overlap"
+situation where no two current candidates are simultaneously approved by any voter,
+we also would enjoy equality <nobr>&epsilon;<sub>1</sub>=&epsilon;<sub>2</sub>=...=&epsilon;<sub>E</sub>.</nobr>
+</p><p>
+Determining the
+&epsilon;<sub>j</sub>
+may be accomplished via Gaussian elimination in O(E<sup>3</sup>) operations,
+plus the time required to write down the system of equations in the first place, which obviously is 
+at most O(VW).
+Once the
+&epsilon;<sub>j</sub> have been found,
+performing the process is simply a matter 
+of solving a system of first-order ODEs (ordinary differential equations) to
+track the time-evolution of the ballot weights for the 
+R relevant kinds of ballots.
+Here of course R&le;min(2<sup>E</sup>, V)
+because there are only V ballots (since V is the number of voters) and
+because a ballot could approve any subset of those E candidates, and
+there are 2<sup>E</sup> such subsets.
+</p><p>
+If ODE-system solving is regarded as efficient enough to get enough accuracy,
+and we don't worry about very unlikely ultra-near-ties where you would need extreme accuracy,
+then
+this shows there is an efficient algorithm.
+We should really write down the system of equations and the ODe system fairly  explicitly...
+LITERATURE: 
+I think Ker-I Ko has a book where he shows ODE-solving is a polytime task within
+his notion of "polynomial time computable real numbers."  
+[Specifically the initial value problem y'=f(x,y) with y(0) specified, is
+computable function if f is and if solution unique.  If furthermore f is Lipshitz with
+respect to its 2nd argument, then
+y is P-space computable but this can be P-space complete.]
+Have to look that up.
+See also 
+Bournez, Graca, Pouly 2011 &amp; 2016
+and Smith ????.
+In our case the "stiffness" of our ODE system is less than E, 
+and presumably additive errors &epsilon; with 1/|&epsilon;| bounded
+by a polynomial in V and C would be acceptable, which should be achievable
+using plain 4th order Runge Kutta as in the Press book...
+albeit with fancier high order ODE-solving schemes probably
+exponential accuracy would be achievable...
+So I think this will prove we indeed have gotten it into polynomial time, with approriate definitions and
+caveats...
+Albeit... it's a rather horribly messy algorithm...
+</p>
+
+<a name="hg3"></a>
+<h3> Third holy grail scheme: Ebert with optimum approval-removal </h3> 
+
+<p>
+Algorithm definition: For a V-voter, C-candidate, W-winner election,
+with 1&le;W&lt;C and 6(W+1)W&lt;V, 
+this algorithm will compute a cost-function Q of
+the ballots and the W-winner parliament.  
+The election method then is to elect the W-member
+parliament having minimum cost.
+</p><blockquote>
+<p><b>1. [Input and pre-process votes]</b>
+Each voter, as her ballot, <i>approves</i> (1) or <i>disapproves</i> (0) each candidate.
+We allow arbitrary positive voter weights;
+most simply all voters v have weight &rho;<sub>v</sub>=1.
+If <a href="RangeVoting.html">score</a>-style ballots instead were provided,
+then convert them to weighted <a href="Approval.html">approval</a>-style ballots
+via a preliminary <a href="NonlinQuality.html#pt">Kotze-Pereira transform</a>; 
+then let &rho;<sub>v</sub>
+denote the weight of voter v's ballot.
+</p><p><b>2. ["Approval removal"]</b>
+The approval by voter v for candidate c is thus a boolean quantity (1 or 0).
+Replace it by X<sub>vc</sub>. Here the X<sub>vc</sub> are VW different
+real-valued variables each constrained to lie
+within the real interval [0,1] if v approved c, but constrained to equal 0 if v disapproved c.
+Their values will be explained/determined later (via the cost-minimization in step 5).
+<!--
+This can be viewed as each voter v who wants to approve c, actually approving him only with
+probability X<sub>vc<sub> &ndash; except that the process is deterministic...
+-->
+</p><p><b>3. [CFAT]</b>
+Apply a "coin-flip approval transform" 
+(<a href="NonlinQuality.html#coinflip">CFAT</a>) 
+to convert the resulting set of 
+weighted partial-strength approvals, to a different such set.
+The simplest CFAT is that each voter is split into two voters, each with half-weight: 
+the first approves
+candidate c (with strength X<sub>vc</sub> as before)
+if the original voter did; the second simply disapproves candidate c.
+This splitting is repeatedly done for each member c among the W members of parliament, 
+so that at the end of the process each voter is split into
+2<sup>W</sup> voters, each weighted 2<sup>-W</sup> times
+the original voter's weight.   
+</p><blockquote>
+Fancier kinds of CFAT also are possible involving
+"biased coins," where the weights &rho;<sub>a</sub> and &rho;<sub>b</sub>
+of the two daughter-voters a,b are no longer equal, but instead are pre-specified positive
+multiples of the original weight &rho;<sub>v</sub> of the voter v, with
+<nobr>&rho;<sub>v</sub>=&rho;<sub>a</sub>+&rho;<sub>b</sub>.</nobr>
+Also possible are certain cleverer kinds of "coins" which replace
+the exponentially growing 2<sup>W</sup> with certain quantities bounded by polynomial(W).
+See the text for descriptions of how those work and their properties.
+</blockquote>
+<p><b>4. [Extra fake voters]</b>
+Adjoin 3W fake voters, each of whom approves every candidate.
+Equivalently but more simply, a single fake voter v weighted &rho;<sub>v</sub>=3W will do,
+such that X<sub>vc</sub>=1 for every candidate c.
+(It also is possible to omit this step by replacing it with
+various other devices.)   
+</p><p><b>5. [Compute cost function]</b>
+Compute the "<a href="NonlinQuality.html#tcex">Ebert</a> cost function" Q as follows.
+Let A<sub>c</sub> denote the sum, over all voters v, of the 
+&rho;<sub>v</sub>X<sub>vc</sub>-weighted approval
+for candidate c, that is
+A<sub>c</sub>=&sum;<sub>voters v</sub>&rho;<sub>v</sub>X<sub>vc</sub>.
+Let load(v)=&sum;<sub>winning c</sub>X<sub>vc</sub>/A<sub>c</sub>
+be the sum, over all W winning candidates c, of 
+X<sub>vc</sub>/A<sub>c</sub>.
+Finally define 
+Q=min&sum;<sub>voters v</sub>&rho;<sub>v</sub>load(v)<sup>2</sup>,
+where the minimization is done over all possible choices of the VW variables
+X<sub>vc</sub> subject to the constraints
+</p><center>
+0&le;X<sub>vc</sub>&le;1 
+&nbsp; and &nbsp; 
+X<sub>vc</sub>=0 if v disapproved c
+&nbsp; and &nbsp; 
+&sum;<sub>v</sub>&rho;<sub>v</sub>X<sub>vc</sub> &ge; 3W for each winning c.
+</center><p>
+<!-- and optionally?? &sum;<sub>c</sub>X<sub>vc</sub>&ge;1.  -->
+
+The text will explain how this minimization problem can
+be solved to D-decimal accuracy in polynomial(V',W,D) steps
+where V' is the number of distinct voter-types 
+<i>after</i> the CFAT transformation in step 3 and fake-voter adjoining in step 4.
+It will be seen that the minimum always is unique if (i) it exists and (ii)
+not all members of parliament were approved by exactly the same sets of voters.
+It will exist <i>if</i> all W members of parliament would have got at least 3W approvals
+if there had been no removal &ndash; i.e, because we have written in step 4, always.
+</p>
+</blockquote>
+
+<p>
+<b>Lemmas about concave-&cup; functions:</b>
+A smooth function of n variables is "concave-&cup;" if along any line in n-space,
+its second derivative is nonnegative (or, for "strict" concavity, positive).
+</p><p>
+<b>Lemma 1:</b>
+1/(x<sub>1</sub>+x<sub>2</sub>+...+x<sub>n</sub>)
+is concave-&cup; wherever its denominator is positive.
+This concavity is strict along all lines except those 
+perpendicular to the (1,1,...,1) direction.
+Essentially because: 
+the second derivative of 1/(K+x) with respect to x is 2/(K+x)<sup>3</sup>.
+</p><p>
+<b>Lemma 2:</b>
+When x and A+x are positive,
+x/(A+x)
+is <i>not</i> a concave-&cup; function of x.
+[Its second derivative is  -2A/(A+x)<sup>3</sup>.]
+However, its <i>square</i>
+is concave-&cup; 
+wherever 0&lt;2x&lt;A.
+Because:
+Its second derivative is  2(A-2x)A/(A+x)<sup>4</sup>.
+</p><p>
+<b>Lemma 3:</b>
+Indeed 
+<nobr>[(W-1+x)/(A+x)]<sup>2</sup></nobr>
+is a concave-&cup; function of x
+wherever x&gt;0 and
+1&le;W&le;A+1 
+and
+2x+3W&le;A+3.
+Because:
+Its second derivative is  
+<nobr>2(A+1-W)(A+3-3W-2x)/(A+x)<sup>4</sup>.</nobr>
+</p><p>
+<b>Lemma 4:</b>
+[x/(A+x)+(W-1)/(B+x)]<sup>2</sup> 
+is a concave-&cup; function of x
+wherever 0&le;x&le;1 and 3&le;3W&le;min(B,A)+1.
+Essentially because:
+Its second derivative is  
+</p><center>
+2[(W-1)/(B+x)<sup>2</sup>-A/(A+x)<sup>2</sup>]<sup>2</sup>
+&nbsp; + &nbsp; 
+4[(W-1)/(B+x)<sup>3</sup> - A/(A+x)<sup>3</sup>] [(W-1)/(B+x)+x/(A+x)].
+</center><p>
+and the first term is a square (hence nonnegative) 
+while the second is a product of two terms, each nonnegative
+under our assumptions.
+</p><p>
+<b>Lemma 5:</b>
+The square of a concave-&cup; function is concave-&cup; wherever the original function
+was positive.
+Because:
+The second derivative of (&frac12;)f(x)<sup>2</sup> is  
+<nobr>f(x)f''(x)+f'(x)<sup>2</sup>.</nobr>
+</p><p>
+<b>Lemma 6:</b>
+The sum, and indeed any linear combination with positive coefficients, 
+(and also the max), of
+concave-&cup; functions also is concave-&cup;.
+</p><p>
+<b>Lemma 7:</b>
+if f(x) is a concave-&cup; real-valued function
+and g(x) is a linear transformation
+(x and g can be vector-valued, not necessarily with the same dimensionalities),
+then f(g(x)) is concave-&cup;.  If, furthermore,
+g is invertible [more precisely, if x can be 
+back-deduced from g(x)]
+and f is strictly concave-&cup;
+then f(g(x)) is <i>strictly</i> concave-&cup;.
+</p><p>
+Now by combining lemmas 1-7, noting that the CFAT is a linear transformation, and
+doing a little thinking, we obtain the
+</p><a name="convexitythm"></a><p>
+<b>Concavity Theorem:</b>
+Our "sum of squared loads" cost function Q is a concave-&cup; function of the
+WV "approval removal" variables X<sub>vc</sub>
+in the domain where 
+0&le;X<sub>vc</sub>&le;1
+and where each  of the W winning candidates gets at least 
+3W approvals <i>after</i> all "approval removals," i.e. A<sub>c</sub>&ge;3W
+for each winning candidate c.
+(Indeed, each squared load is individually concave-&cup;.)
+The concavity of Q is strict provided that 
+not all members of parliament are approved by exactly the same sets of voters.
+</p><p>
+Because of the concavity theorem, it is possible to <i>compute</i> the
+optimum (i.e. Q-minimizing) choice of the X<sub>vc</sub>'s,
+for any specified W-member parliament,
+subject to our
+linear inequality constraints, to D-decimal (or better)
+accuracy via known <b>"convex programming"</b> algorithms such as the 
+"<a href="https://en.wikipedia.org/wiki/Ellipsoid_method">ellipsoid method</a>"
+in time bounded by a known polynomial(V',W,D).
+Due to the <i>strict</i> concavity, this optimum will automatically be <i>unique</i>.
+</p><p>
+That allows us to compute our cost function Q in polynomial time, with the <i>proviso</i>
+that there might be no solution of the convex programming problem.
+For example, if some member c of parliament has less than 3W approvals, 
+then there clearly cannot be a solution.
+In such a case our algorithm must declare failure.
+Indeed, if fewer than W candidates got &ge;3W approvals, then <i>no</i> possible 
+W-member parliament would have a computable Q, which would be complete failure.
+However, the purpose of putting step 4 in the voting method
+was to prevent this problem from ever occuring.
+</p><p>
+Was our insertion of step 4 legitimate?  Let us explain this in more detail.
+If we insist that candidates must be approved by at least 3W voters, even
+after all approval-removal, in order to win a seat, then at least one parliament meeting
+the conditions for Q-computability will always exist provided
+there exist at least W candidates each of whom got at least 3W approvals
+with the CFAT, but without doing any removals.
+Without step 4, if enough voters hated enough candidates, then it would be possible
+for no parliament to exist meeting our conditions.  However, in that case,
+at least for elections large enough so that V&ge;6(W+1)W,
+it would not matter what we do, because 
+the problematic candidates would all have gotten
+so few approvals that they do not even "deserve"
+half a seat (reckoned by <a href="https://en.wikipedia.org/wiki/Droop_quota">Droop quotas</a>) 
+so that their election could not violate basic PR in any "racist voting" situation
+by more than half a seat per "color."
+So we could, for example, simply elect the W most-approved candidates whenever fewer than
+W had &ge;3W approvals.  But to treat everything in a simple and unified way we added step 4 to
+the algorithm, which adjoins 3W fake voters who each approve everybody. 
+If we knew that every candiate got
+at least one approval (e.g. from themselves) then we could have step 4 add only 3W-1.
+Provided we regard these 3W fake voters as too few to hurt proportionality &ndash; they amount
+to less than half a Droop quota if V&gt;6(W+1)W &ndash; problem solved.
+</p><p>
+<b>Voting system properties.</b>
+In the previous papers (specifically part 
+<a href="NonlinQuality.html">II</a>) of this series,
+we already had examined the "PerEbert" voting system, involving minimizing a "sum of squared loads"
+cost function, and proved it yielded both basic and strong PR.   Indeed, we 
+<a href="NonlinQuality.html#leastsqthm">showed</a> that
+in "racist voting" basic PR elections, it became exactly equivalent to
+Sainte-Lag&uuml;e party-list.
+</p><p>
+We 
+<a href="NonlinQuality.html#coinflip">further</a>
+had examined the effect of the CFAT on PerEbert, for
+a definition of CFAT involving W "coin tosses,"  each with an arbitrary
+single fixed "coin-bias" value.   We proved that the resulting voting system
+in "racist voting" basic PR elections, with fair coins was exactly equivalent to
+d'Hondt party-list PR; and for general coin bias yielded 
+a kind of PR corresponding to Smith's
+<a href="NewAppo.html">new</a> "divisor method" of party-list voting
+continuously variable between Sainte-Lag&uuml;e and d'Hondt
+by choice of the "coin bias" parameter.
+</p><p>
+We also 
+<a href="NonlinQuality.html#shiftrecip">had</a>
+<a href="NonlinQuality.html#shiftsec">examined</a>
+the effect of (what we called) "shifts" or "ghost voters"
+upon this PR.  These in the present paper are instantiated by step 4.
+We had shown that if the number of ghost voters was smaller than order V/W,
+then their effect on proportionality was small.  This is exactly what happens for us
+if V&gt;6(W+1)W.
+Further, we showed that the effect of
+adding order V/W ghost voters perturbed
+Sainte-Lag&uuml;e in the "opposite direction" to d'Hondt (approximately &ndash; 
+exact equivalence to d'Hondt party list is unattainable in this manner).
+Therefore, the PR-altering effect of adding ghost voters in our step 4 will be 
+opposite in sign to the effect caused by the CFAT in step 3 and 
+indeed by appropriately choosing both the number of ghosts
+and coin-bias, these two effects could, if desired, be made
+(at least within first order approximation) to cancel each other out 
+so that we would still enjoy
+Sainte-Lag&uuml;e-like PR.  
+Or by manipulating the ghost-voter count and CFAT coin-bias our PR
+could be tuned to yield other PR notions.
+</p><p>
+<b>Monotonicity.</b>
+However, paper 
+<a href="NonlinQuality.html">II</a>
+also 
+<a href="NonlinQuality.html#nonmonothm">showed</a>
+<a href="NonlinQuality.html#ebertnonmono">that</a>
+the PerEbert voting method disobeys "monotonicity."
+The main innovation here is to realize that the "optimized approval removal"
+in our steps 2 and 5 both
+<ol type="i"><li>
+can be implemented efficiently thanks to our concavity
+<a href="https://rangevoting.org/convexitythm">theorem</a>
+and known convex programming algorithms, 
+</li><li>
+restores the following <i>weak</i> form of monotonicity, 
+<blockquote>
+<b>Weak monotonicity:</b>
+Voters by adding
+additional approvals of some parliament, 
+<i>can never increase</i> its cost function Q.
+</blockquote>
+</li><li> 
+will not wreck the other
+holy grail properties.
+</li><li> 
+Finally, see below about "strong monotonicity."
+</li></ol>
+</p>
+Weak monotonicity obviously holds because if the additional approvals did increase Q, then
+we could simply remove them to return to exactly the original Q value.
+And whatever the "optimum" (i.e. Q-minimizing) removal is, must do either this well or better
+(i.e. must make Q as small, or smaller, than it was originally).
+</p><p>
+<b>Strong monotonicity:</b>
+A stronger and more desirable monotonicity statement would
+replace "can never increase" with "always decreases."
+</p><p>
+This also is true.  The reason is that we've already shown that
+the optimum of our convex program is generically
+<i>unique</i> and it is 
+a continuous and smooth, indeed <i>analytic</i> function of its 
+parameters &rho;<sub>v</sub> 
+(essentially because of the well known theorem that the roots of a polynomial are
+continuous and smooth &ndash; and analytic except on a set of 
+lower dimensionality &ndash; functions of its coefficients).  
+If our monotonicity were merely weak
+then an analytic function would have a "flat spot" &ndash; an open set in the complex plane
+throughout which the function assumed a constant value.  But by analytic continuation, this
+is impossible unless the function everywhere equals that constant, which in our problem is
+plainly untrue.
+ </p><p>
+<b>Approval-removal does not hurt PR.</b>
+Approval removal does not destroy either basic PR or strong PR.
+To see this, it suffices to observe that
+those PR claims (by their definitions) pertain only to "racist voting"
+situations with enough candidates of each "color" available; and in
+those situations &ndash; at least if there are no "integer roundoffs" i.e.
+each party that deserves 6 seats was getting 6 seats, there were never
+any parties which deserved 5.8 and therefore got 6, i.e. we restrict attention
+to racist voting elections with 
+all voter "loads" equal &ndash;
+then minimizing cost can be accomplished without
+doing <i>any</i> removals.
+In such situations we claim
+PR still happens by minimizing the Ebert "sum of squared load" cost function,
+even if optimal approval removal is also happening.
+Why?  Our concavity 
+<a href="https://rangevoting.org/convexitythm">theorem</a>
+shows the optimum removal is unique in all no-roundoff
+racist situations with &ge;2 colors.
+So if "no removal" is optimum, then it is the <i>unique</i> optimum.
+</p><p>
+Specifically, in any situation where the voter loads all are equal, then an equivalent
+form of the Ebert cost function (namely: variance among the voter loads;
+minimizing this is equivalent to minimizing Ebert if the number of
+voters and number of seats both are fixed, as 
+was demonstrated in paper II's
+"Ebert &amp; Variance" 
+<a href="NonlinQuality.html#ebertvarremark">remark</a>)
+is minimized since it is zero.
+In "basic PR" racist voting situations, 
+that happens provided
+that Sainte-Lag&uuml;e manages to attain "perfect PR" with no "leftovers" i.e. no
+roundoffs to integers needed.
+</p><p>
+This also happens in "perfect strong PR" racist voting situations with
+"commonly-rated candidates" adjoined, since the commonly rated
+candidates do not affect the perfect situation that the load variance
+is 0.
+The result of these thoughts is the
+</p><p>
+<b>Theorem (Approval removal does not affect "perfect PR"):</b>
+Approval removal does not destroy
+"perfect basic PR"
+and does not destroy "perfect strong PR."
+</p><p>
+However, we still need to prove the <b>stronger theorem</b>
+which also allows imperfect PR
+(i.e. including nontrivial integer roundoffs).  We now do so.
+For simplicity,
+let us first examine the case of <i>two</i> "colors" (e.g. political parties)
+in "basic PR" situations.  
+<!--
+The reader should be able to see 
+that our arguments are easy to 
+generalize to any number&ge;2 of of parties 
+and also allowing "commonly rated candidates."
+-->
+We are going to consider four cost function variants 
+Q<sub>1</sub>, Q<sub>2</sub>, Q<sub>3</sub>, Q<sub>4</sub>.
+</p><p>
+Assume racist voter behavior since we are examining "basic PR."
+Let the first party have X voters and win S seats; the second
+has Y voters and wins T seats.
+</p><p>
+The Ebert cost function is
+<p><center>
+   Q<sub>1</sub> =  S<sup>2</sup>/X + T<sup>2</sup>/Y.
+</center><p>
+If that cost is minimized subject to S+T=fixed we find via the method of
+Lagrange multipliers that
+S/Y=T/Y, i.e. perfect proportionality.   Presumably in the imperfect
+case where we require S and T be integer the answer would be the same as
+the optimum real-number S and T, except one would round one of them up and the other down.
+If we let X' and Y' denote the reduced values of X and Y got by doing
+approval-removals (if any) then the cost function instead is
+<p><center>
+    Q<sub>2</sub> = S<sup>2</sup>/X' + T<sup>2</sup>/Y'
+</center><p>
+if all removals are "all or none" i.e. each voter either removes all or
+none of her approvals.
+This Q<sub>2</sub> formula also is valid if all removals are fractional and equal
+(for example if each approving voter removes a fraction 0.37 of each
+of her approvals,
+where 0.37 is any value that does not depend on the voter except is allowed
+to depend on her party).  Note Q<sub>2</sub>&ge;Q<sub>1</sub> 
+and indeed Q<sub>2</sub>&gt;Q<sub>1</sub>
+if 0&le;X'&lt;X or 0&le;Y'&lt;Y or both, regardless of S and T.
+Therefore, approval-removal does not help, i.e. cannot reduce cost,
+ in "perfect PR" or "imperfect PR" 2-party situations with either all-or-none,
+or equidistributed-within-each-party-fractional, removals.
+</p><p>
+If we do CFAT (using "fair coins"; with other coin-biases the 
+shifts "1/2" in the cost formulas below would
+change to other constants) without any approval removal
+then by the analysis <a href="NonlinQuality.html#coinflip">given</a>
+previously in paper II,
+the cost function becomes
+<p><center>
+    Q<sub>3</sub> = (S+1/2)<sup>2</sup>/X + (T+1/2)<sup>2</sup>/Y
+</center><p>
+Finally if we do <i>both</i> CFAT and approval removal the cost function becomes
+<p><center>
+    Q<sub>4</sub> = (S+1/2)<sup>2</sup>/X' + (T+1/2)<sup>2</sup>/Y'
+</center><p>
+assuming either all-or-none,
+or equidistributed-within-each-party-fractional, removals
+happening prior to CFAT.
+</p><p>
+Again, Q<sub>4</sub>&ge;Q<sub>3</sub> and indeed Q<sub>4</sub>&gt;Q<sub>3</sub>
+if 0&le;X'&lt;X or 0&le;Y'&lt;Y or both, regardless of S and T.
+Therefore, approval-removal does not help, i.e. cannot reduce cost,
+in either "perfect PR" or "imperfect PR" 2-party situations with all-or-none,
+or equidistributed-within-each-party-fractional, removals.
+</p><p>
+Now we claim as a <b>lemma</b>
+that the optimum way to remove approvals in racist-voting
+situations is, in fact, equidistributed-within-each-party-fractional.
+Why?  Basically because of 
+the previously shown
+concave-&cup; nature of the Ebert cost function in approval-variable space:
+If you are minimizing any strictly-concave-&cup; function of N variables within
+some real interval (same interval for every variable, and function
+invariant under permuting the variables) then it is a
+fairly well known theorem that this minimum necessarily
+</p><ol type="i"><li>
+is unique and
+</li><li>
+occurs when all the variables have equal value.
+</li></ol><p>
+That theorem is an immediate corollary of 
+<a href="https://en.wikipedia.org/wiki/Jensen%27s_inequality">Jensen's inequality</a>.
+So that has proven 
+</p><p>
+<b>Theorem (interacting CFAT &amp; approval-removal):</b>
+<i>Interacting</i> CFAT and approval removal, cannot
+destroy basic PR in either perfect-PR or imperfect-PR (rounded) scenarios.
+</p><p>
+We proved this for only 2 parties, but
+actually our whole argument works with any number (not necessarily 2)
+of parties &ndash; it generalizes trivially.  (With large numbers of
+parties it becomes
+far less clear what the optimum rounding to integer seat counts is,
+but that doesn't matter, since the proof argument does not need to
+know what it is!)
+</p><p>
+Now finally, we can <b>extend the theorem</b> to also allow "strong PR,"
+essentially because commonly-rated candidates cannot alter the minimality of the variance
+in the equivalent variance-based 
+<a href="NonlinQuality.html#ebertvarremark">formulation</a>
+of the Ebert cost function,
+and since the 
+<a href="NonlinQuality.html#pt">Kotze-Pereira transform</a>
+is known not to hurt either basic or strong PR.
+</p><p>
+<b>About convex programming.</b>
+Which <a href="https://en.wikipedia.org/wiki/Convex_optimization">convex programming</a>
+algorithm will give us the best possible performance, 
+meaning the least runtime and/or
+the least memory consumption?
+To learn about this, a good start is the review paper by Bubeck 2015
+and the earlier ones by Bland, Goldfarb, and Todd 1981 and
+Goldfarb &amp; Todd 1982.
+(And the book by Gr&ouml;tschel, Lovasz, and Schrivjer remains a classic, albeit somewhat dated.)
+</p><p>
+<b>Definition of "convex programming."</b>
+Given a concave-&cup; real-valued Lipshitz function F(x),
+where x is an N-dimensional real vector,
+and a convex subset S of N-dimensional space, the "convex programming problem"
+is to find the minimum of F(x) among all x&in;S.
+A convex programming algorithm will be said to be "polynomial time"
+if it provably always succeeds in finding that minimum to D-decimal accuracy,
+in a number of steps upperbounded by a known polynomial(N,D,L),
+where L is the input length in bits, and
+each "step" may involve an evaluation of F(x), its gradient &nabla;F(x),
+a D-decimal-accuracy arithmetic operation, or consultation of an "S-membership oracle"
+which either reports that a provided vector x indeed lies inside S, or
+returns a hyperplane separating x from S.
+</p><p>
+The historically first (or at least, first to achieve wide recognition)
+polynomial algorithm for convex programming in N dimensions was the
+<b><a href="https://en.wikipedia.org/wiki/Ellipsoid_method">ellipsoid algorithm</a></b>.  
+This algorithm maintains an N-dimensional
+ellipsoid known to
+enclose the minimizing point x.
+In our application, our dimensionality N obeys N&le;VW,
+and since all our X<sub>vc</sub>  lie within the real interval [0,1],
+we could begin with the sphere centered at (&frac12;,&frac12;,,...,&frac12;) 
+with radius (N/2)<sup>1/2</sup>.
+Each "major step," the ellipsoid algorithm evaluates &nabla;F(x) at the ellipsoid's center,
+or consults the S-membership oracle, or both.  Either way, it finds a hyperplane H
+which separates the present ellipsoid centerpoint from the desired minimizing x.
+We then use H to cut the current ellipsoid in half. The undesired "wrong" hemiellipsoid
+is discarded.  The "right" hemiellipsoid is then replaced by the smallest
+ellipsoid surrounding it (which can be computed via a certain known formula
+involving a constant number of N&times;N matrix-vector multiplications; preferably implemented
+with numerically better behaved "matrix-factorization update" techniques as discussed by
+Goldfarb &amp; Todd 1982)
+and we continue on.  Each such step provably decreases the N-dimensional volume of the
+ellipsoid by multiplication by a 
+<nobr>factor&le;exp(-[2N]<sup>-1</sup>)&lt;1.</nobr>
+This factor assures convergence to D-decimal accuracy in polynomial time.
+Specifically, in our application the number of major steps required is O([L+D]N)
+where L is the length of the input in bits.
+Since an N&times;N matrix-vector multiplication requires order N<sup>2</sup>
+arithmetic operations, the <b>total runtime</b> would be at least of order N<sup>3</sup>D
+arithmetic operations, where for our election application N&asymp;V'W.
+</p><p>
+For smooth cost functions (which ours is), 
+the linear dependence on D can be reduced to ultimately-logarithmic by switching to 
+a quadratically convergent iteration such as the N-dimensional Newton
+iteration &ndash; or quasiNewton or conjugate-gradient methods &ndash; once
+the ellipsoid method gets near enough to the answer to assure that
+these methods will converge.
+</p><p>
+Although this is polynomially bounded, unfortunately for us it is a horrifyingly large polynomial.
+Furthermore, the <b>memory space</b> needed just to <i>describe</i> an N-dimensional ellipsoid
+(or N-dimensional simplex; another version of the ellipsoid algorithm employs enclosing simplices
+rather than ellipsoids)
+would be order N<sup>2</sup>
+numbers, which in our application means order (V'W)<sup>2</sup> numbers.
+Keep in mind that in real world applications it would be common for 
+10<sup>4</sup>&le;V&le;10<sup>9</sup>.
+</p><p>
+The two most horrifying aspects of this are the quadratic dependence of the <i>memory</i> usage
+on the number V' of (pseudo)voters, and also the cubic or worse
+dependence of the <i>runtime</i> on V'.   (And actually, the runtime can be quite a bit worse if 
+multiprecision arithmetic is needed due to possibly poor numerical behavior of at least
+some variants of the ellipsoid algorithm when
+one tries to employ single precision arithmetic.)
+</p><p>
+<b>(Usually) saving the day.</b>
+We now want to point out some features of our particular convex programs which ought to allow,
+in almost all elections, reducing the memory-space needs to O(V'+W<sup>2&kappa;</sup>) numbers
+and the runtime to
+O(V'W<sup>3&kappa;-1</sup>) arithmetic operations.
+These improved bounds often should be quite acceptable, since both their dependencies
+on V' are merely <i>linear</i>, and since the number W of winners in
+real-world elections tends to be small,
+anyhow much smaller than V.
+</p><p>
+The idea is as follows.  Randomly
+divvy up the V' pseudovoters into about V'/W<sup>&kappa;</sup>
+disjoint sets, each consisting of
+about W<sup>&kappa;</sup> voters.
+(The constant &kappa; can be chosen empirically to get the best performance,
+from among, say, 1&le;&kappa;&le;3.)
+For each such set in succession, use convex programming to optimize its own
+X<sub>vc</sub> variables (leaving all the X<sub>vc</sub> for v in other sets, fixed).
+Each such optimization runs in polynomial(W) arithmetics and memory.
+Call the entire set of all V'/W<sup>&kappa;</sup>
+of these reduced-dimension optimizations, an
+"iteration."   <i>If</i> each iteration reduces the location-error
+for the minimizing x, by a constant factor (or better), then O(D) iterations
+will suffice to reach D-decimal accuracy.   We believe that most elections
+with high probability (given the randomized voter partitionings)
+will behave that way.  If so, excellent.  If
+not, then more iterations will be needed, but we still will 
+safely decrease Q each iteration and this process is guaranteed to converge to the minimum
+&ndash; that convergence will just take more iterations than we'd hoped.
+Probably even better than fully optimizing for each voter-subset, would be
+to do just one major step of the ellipoid method within a
+voter-subset, then switch to a different voter-subset and continue on.
+</p><p>
+We also remark that other ideas in Bubeck 2015 may allow further speedups.  
+There are many
+algorithm variants one could try, 
+and which perform best is largely an experimental question.
+For example, the "conjugate gradient" and
+"Nesterov accelerated gradient descent"
+(NAGD) general purpose optimization methods
+plausibly will work well, the latter because it is plausible that for
+most elections our cost function is "strongly concave" with small "condition number."
+</p><p>
+Minimization methods like BFGS quasi-Newton and the ellipsoid method have the
+advantage that they can "understand" general quadratic and general concave-&cup;
+functions, but the disadvantage that this understanding requires a
+model containing order N<sup>2</sup> numbers in N dimensions, and work
+growing quadratically or worse with N.
+Meanwhile although first-order methods like crude gradient-descent cannot understand 
+general such functions, they work well for minimizing functions
+whose "condition number" is small, e.g. which are approximately spherically symmetric
+about their minima.  For them a step takes only O(N) time and memory.
+This led to the question: what was the best possible
+performance, as a function of the condition number &kappa;&gt;1, for a first-order method,
+requiring storing only O(N) numbers?  This question ultimately was answered by 
+Yurii E. Nesterov and
+Arkadi Nemirovsky in the 1980s, who showed that the naive gradient descent requirement of order
+&kappa; iterations to halve the error, was improvable to order &radic;&kappa;
+but not further.  
+See  Bubeck, Lee, Singh 2015,
+Allen-Zhu &amp; Orecchia 2015, and
+Kim &amp; Fessler 2015
+for recent papers about methods related to NAGD
+which achieve optimum performance-dependence on the condition number
+for a first-order minimization method.
+<!--
+Nesterov's original paper was in Russian but is reviewed in English inside
+Beck &amp; Teboulle 2009.
+-->
+</p><p>
+For us, the important &ndash; albeit nonrigorous &ndash; realization is that 
+the runtime and memory dependence
+on V' can be reduced to <i>linear</i> while keeping the dependence on W polynomial.
+This claim in fact could be made <i>rigorous</i> provided we <i>forbid</i>
+elections featuring condition number &kappa; depending too strongly on  the number V of voters.
+For example if &kappa;=V<sup>o(1)</sup> then
+we could prove runtime growing like V<sup>1+o(1)</sup>.
+</p><p>
+<b>About the CFAT and "slimmed" versions thereof.</b>
+The <a href="NonlinQuality.html#coinflip">CFAT</a>
+splits each voter into 2<sup>W</sup> different voters,
+by "tossing W coins" in all possible ways.
+This exponential blowup is acceptable if V&ge;2<sup>W</sup>
+because in that case the number of voters will still be of order V
+after merging voters having the same approval "type" (i.e. who approve the same set of
+winning candidates) by summing their weights &rho;<sub>v</sub>.
+And indeed, in most real-world large government elections 
+this  V&ge;2<sup>W</sup>
+condition has historically been satisfied.
+For example, in Australia, each state elects 12
+<a href="https://en.wikipedia.org/wiki/Australian_Senate">senators</a> to
+the federal parliament via a PR-STV multiwinner
+voting method, but only W=6 at a time (staggered terms)
+with typically about V=4&times;10<sup>6</sup> voters per state.
+In Canada, there are single-winner elections in ridings.  As far as we've been able
+to <a href="CanadaSeatsVotes.html">tell</a>, 
+the record largest number of candidates that ever ran in a riding was 13, and
+each riding contains up to about 10<sup>5</sup> registered voters.  So even if
+Canada switches to a PR system involving multiwinner elections, it
+seems likely that it will have W&le;13 and V&ge;10<sup>5</sup>.
+</p><p>
+However, we claim it is possible to replace our CFAT by "slimmed" variants
+featuring only polynomial blowup.
+We actually know many ways to do that, but the slimmest among them is as follows.   
+Consider only the W winners.
+There are exactly W+1 subsets S of these winners with &ge;W-1 members each.
+For each such S, replace each voter by one who approves the <i>intersection</i> of whoever
+she originally approved, with S.
+In this way each voter is replaced by W+1 new voters, <i>not</i> 2<sup>W</sup>.
+These new voters shall have two weights. Namely, one of the W+1 new voters
+is idential to the original voter, except will have a reduced weight; and the other W
+each shall have the second weight.
+</p><p>
+??
+</p><p>
+<b>What is the purpose of the CFAT?</b>
+It may seem as though the CFAT step 3 could simply be omitted from our voting method,
+while still enjoying Holy Grail properties.
+However, we would then suffer disagreeable behavior on the following class of 
+(W=2)-winner elections
+with V=2(1+x)N voters and 4 candidates named A,B,C,D:
+</p><table bgcolor="aqua">
+<tr bgcolor="yellow"><th>#voters</th><th>Candidates they approve</th></tr>
+<tr><td>xN</td><td>A,B,C</td></tr>
+<tr><td>xN</td><td>A,B,D</td></tr>
+<tr><td>N</td><td>C</td></tr>
+<tr><td>N</td><td>D</td></tr>
+</table><p>
+If x&gt;0 is small, then the winners are {C,D}.
+But when x&rarr;&infin; we would like {A,B} to win.
+Without the CFAT, unfortunately {C,D} would remain the unique winning parliament 
+regardless of the value of x&ge;0, and the possibility of removing approvals for A and/or B
+cannot avoid this.
+</p><p>
+But with CFAT, it turns out that {A,B} wins when x&gt;3 while {C,D} wins when 0&le;x&lt;3.
+</p><p>
+??
+</p>
+
+
+<a name="conclu"></a>
+<h3> Conclusion, comparison, problems for future </h3> 
+
+<p>
+??
+</p>
+
+<h3> Random notes / Tasks to do </h3> 
+
+
+</p><p>
+A computer check of the claims in our proof would help confirm or deny.
+The holy grail election method needs to be programmed and made available as software.
+Run test elections. Devise illustrative election examples.
+</p><p>
+The following weak "participation" property: if a new approval-style voter comes,
+she will increase Q more for parliaments with more approved MPs &ndash; 
+seems likely to be false.   Decide that.
+</p><p>
+List more properties HG obeys.
+</p><p>
+Write an introduction.
+</p>
+
+
+
+<a name="refs"></a>
+<h3> References </h3> 
+
+<p>
+Zeyuan Allen-Zhu &amp; Lorenzo Orecchia:
+<a href="http://arxiv.org/abs/1407.1537">
+Linear Coupling: An Ultimate Unification of Gradient and Mirror Descent</a>,
+(2014-2015) arXiv/1602.05248.
+</p><p>
+C. Amb&uuml;hl, M. Mastrolilli, O. Svensson:
+<a href="AmbuhlInapprox2011.pdf">Inapproximability Results for 
+Maximum Edge Biclique, Minimum Linear Arrangement, and Sparsest Cut</a>,
+SIAM J. Computing 40,2 (2011) 567-596.
+<!-- it is shown that no PTAS exists, i.e. there exists C so that approximation to within
+a factor C in polytime is impossible, provided SAT cannot be solved in time 
+O(2^(N^epsilon)) for every epsilon>0.   But for some of these, log-factor approximation is
+possible in polytime.
+-->
+</p><p>
+J&ouml;rg Arndt: <a href="http://www.jjj.de/fxt/#fxtbook#fxtbook">Matters computational:
+Ideas, Algorithms, Source Code</a>,
+Springer 2011.
+</p><p>
+Michel L. Balinski &amp; H. Peyton Young:
+<a href="http://www.amazon.com/Fair-Representation-Meeting-Ideal-Vote/dp/081570111X">Fair 
+representation: Meeting the Ideal of One Man, One Vote</a>,
+Yale Univ. Press 1982.   
+Also there was a second edition from 
+<a href="http://www.brookings.edu/research/books/2001/fair-representation">Brookings</a>
+Institution Press 2001.
+JF1075.U6B3.
+<!--
+ML Balinski & H.P. Young:
+<a href="http://www.pnas.org/content/77/1/1.full.pdf">The Webster method of apportionment</a>,
+Proc. Nat. Acad. Sci. USA 77,1 (1980) 1-4.
+--
+</p><p>
+Amir Beck &amp; Marc Teboulle:
+<a href="https://web.iem.technion.ac.il/images/user-files/becka/papers/71654.pdf">
+A Fast Iterative Shrinkage-Thresholding Algorithm for Linear Inverse Problems</a>,  
+SIAM Journal on Imaging Sciences 2,1 (2009) 183-202.
+-->
+</p><p>
+Robert G. Bland, Donald Goldfarb, Michael J. Todd:
+<a href="ellipsoid-survey.pdf">The ellipsoid method: a survey</a>,
+Operations Reserach 29,6 (Nov-Dec 1981) 1039-1091.
+</p><p>
+Olivier Bournez, Daniel S. Graca, Amaury Pouly:
+<a href="BGP2011analyticODEs.pdf">Solving 
+Analytic Differential Equations in Polynomial Time over
+Unbounded Domains</a>,
+Mathematical Foundations of Computer Science 2011
+(Volume 6907 of Springer Lecture Notes in Computer Science) 170-181.
+See also
+<a href="https://arxiv.org/abs/1601.05360">
+Polynomial Time corresponds to Solutions of Polynomial Ordinary
+Differential Equations of Polynomial Length</a>
+(2016) by same 3 authors, arXiv 1601.05360.
+</p><p>
+Sebastien Bubeck:
+<a href="http://arxiv.org/abs/1405.4980">Convex Optimization: Algorithms and Complexity</a>,
+Foundations and Trends in Machine Learning 8, 3-4 (2015) 231-357.
+</p><p>
+Sebastien Bubeck, Yin Tat Lee, Mohit Singh:
+<a href="http://arxiv.org/abs/1506.08187">
+A geometric alternative to Nesterov's accelerated gradient descent</a>,
+(2015) ArXiv 1506.08187.
+</p><p>
+Volkan Cevher, Stephen Becker, Mark Schmidt:
+<a href="">Convex Optimization for Big Data</a>,
+IEEE Signal Processing Magazine 31,5 (1014) 32-43.
+</p><p>
+Pierluigi Crescenzi, Viggo Kann, M.Halldorsson, M.Karpinski, G.Woeginger (editors):
+<a href="http://www.nada.kth.se/~viggo/wwwcompendium/">Online 
+compendium of NP optimization problems</a>,
+continually updated electronic book.
+Described in paper
+<a href="http://www.nada.kth.se/~viggo/problemlist/statistics/statistics/">
+How to find the best approximation results &ndash; a follow-up to Garey and Johnson</a>,
+ACM SIGACT News 29,4 (Dec. 1998) 90-97.
+Two particular pages of interest to us:
+<a href="http://www.nada.kth.se/~viggo/wwwcompendium/node20.html">minimum feedback arc set</a>
+&amp;
+<a href="http://www.nada.kth.se/~viggo/wwwcompendium/node19.html#3336#3336">minimum feedback vertex
+set</a>.
+</p><p>
+George B. Dantzig: Linear programming and extensions, 1963.
+Reprinted by Princeton Univ. Press 1998.
+</p><p>
+Henry R. Droop:
+On Methods of Electing Representatives,
+Journal of the Statistical Society of London 44,2 (June 1881) 141-202. 
+<a href="Droop1881.pdf">Reprinted</a> in Voting Matters 24 (Oct. 2007) 7-46.
+</p><p>
+Lars Engebretsen &amp; Marek Karpinski: 
+<a href="http://www.sciencedirect.com/science/article/pii/S0022000005001285">Approximation 
+Hardness of TSP with Bounded Metrics</a>, 
+J. Comput. System Sci. 72,4 (2006) 509-546.
+</p><p>
+Oliver Friedmann:
+<a href="http://files.oliverfriedmann.de/papers/zadeh_lower_bound.pdf">
+A subexponential lower bound for Zadeh's pivoting rule for solving linear programs and games</a>,
+Proc. 15th conf on Integer Programming and Combinatoral Optimization (IPCO 2011)
+192-206 (Springer LNCS #6655).
+</p><p>
+Oliver Friedmann, Thomas Dueholm Hansen, Uri Zwick:
+<a href="http://files.oliverfriedmann.de/papers/random_facet_lower_bound.pdf">Subexponential lower bounds for randomized pivoting rules for solving linear programs</a>, 
+Proceedings of the 43rd ACM Symposium on Theory of Computing (STOC 2011).
+</p><p>
+Oliver Friedmann, Thomas Dueholm Hansen, Uri Zwick:
+<a href="http://files.oliverfriedmann.de/papers/random_edge_lower_bound.pdf">
+Subexponential lower bounds for randomized pivoting rules for the simplex algorithm</a>,
+Proceedings of the 43rd ACM Symposium on Theory of Computing (STOC 2011).
+</p><p>
+Michael R. Garey &amp; David S. Johnson:
+Computers and Intractability: a guide to the theory of NP-completeness, 
+W.H. Freeman &amp; co,
+San Francisco 1979.
+</p><p>
+Bernd G&auml;rtner, Martin Henk, G&uuml;nter M. Ziegler:
+Randomized Simplex Algorithms on Klee-Minty Cubes,
+Combinatorica 18,3 (March 1998) 349-372.
+<!--
+shows quadratic lower bound on expected #steps, and apparently also
+a quadratic upper bound in certain classes of problems.
+-->
+</p><p>
+Donald Goldfarb &amp; William Y. Sit:
+<a href="http://ac.els-cdn.com/0166218X79900040/1-s2.0-0166218X79900040-main.pdf?_tid=59d4f69c-ecab-11e5-b341-00000aab0f26&acdnat=1458265819_ef403c0fe8b0f95dbbfabad666b2f5b7">Worst case behavior of the steepest edge simplex method</a>, 
+Discrete Appl. Matha. 1,4 (1979) 277-285.
+</p><p>
+Donald Goldfarb &amp; Michael J. Todd:
+Modifications and Implementation of The Ellipsoid
+Algorithm for Linear Programming, Mathematical Programming 23,1 (1982) 1-19.
+</p><p>
+Martin Gr&ouml;tschel, Laszlo Lovasz, , Alexander Schrijver:
+Geometric Algorithms and Combinatorial Optimization,
+Springer 1993.
+</p><p>
+Refael Hassin &amp; Shlomi Rubinstein:
+Approximation algorithms for maximum linear arrangement,
+Information Processing Letters 80,4 (Nov. 2001) 171-177.
+<!-- constant factor approximation methods devised.  Exact optimum is NP-hard. -->
+</p><p>
+R.G. Jeroslow:
+<a href="http://ac.els-cdn.com/0012365X73901714/1-s2.0-0012365X73901714-main.pdf?_tid=26e70176-ecab-11e5-8321-00000aacb362&acdnat=1458265734_cd6728f04fefb530bf3cdb2668bb36b4">
+The simplex algorithm with the pivot rule of maximizing criterion improvement</a>,
+Discrete Maths. 4,4 (1973) 367-377.
+</p><p>
+Jonathan A. Kelner &amp; Daniel A. Spielman:
+<a href="http://math.mit.edu/~kelner/Publications/Docs/SimplexStoc.pdf">
+A randomized polynomial-time simplex algorithm for linear programming</a>,
+Proceedings of the thirty-eighth annual ACM symposium on Theory of computing,
+STOC 38 (2006) 51-60. 
+</p><p>
+Donghwan Kim &amp; Jeffrey A. Fessler:
+<a href="http://arxiv.org/abs/1406.5468">Optimized first-order methods
+for smooth convex minimization</a>,
+(2014-2015) arXiv 1406.5468.
+</p><p>
+Victor Klee &amp; G.J. Minty: How good is the simplex algorithm,
+pp. 159-177 in
+O. Shisha (ed.) <i>Inequalities III</i>,  Academic Press, 1972.
+</p><p>
+Ker-I <a href="http://people.cs.nctu.edu.tw/~kyko/">Ko</a>: 
+Computational Complexity of Real Functions, Birkhauser Boston, Boston, MA, 1991.
+QA267.7.K6 1991
+</p><p>
+M. Kuczma, B. Choczewski, R. Ger: Iterative functional equations.
+Volume 32 of "Encyclopedia of Mathematics and its Applications," Cambridge
+University Press, Cambridge 1990.
+[QA267.7.K6 1991??]
+</p><p>
+Pekka Orponen &amp; Heikki Mannila:
+<a href="https://users.ics.aalto.fi/orponen/papers/approx.pdf">
+On Approximation Preserving Reductions:
+Complete Problems and Robust Measures</a>,
+Report C-1987-28, Department of Computer Science, University of Helsinki, revised May 1990.
+</p><p>
+Frederick W. Owens:
+On the Apportionment of Representatives, 
+Quarterly Pub. Amer. Statist. Assoc. 17,136 (Dec 1921) 958-968.
+</p><p>
+Christos H. Papadimitriou &amp; Mihalis Yannakakis:
+The Traveling Salesman Problem with Distances One and Two,
+Mathematics of Operations Research  18,1 (Feb. 1993) 1-11.
+</p><p>
+Toby Pereira:
+<a href="http://arxiv.org/abs/1602.05248">
+Proportional Approval Method using Squared loads, Approval removal and 
+Coin-flip approval transformation (PAMSAC) &ndash;
+a new system of proportional representation using approval voting</a>,
+arXiv/1602.05248, Feb. 2016.
+</p><p>
+William H. Press, Saul A. Teukolsky, William T. Vetterling, Brian P. Flannery:
+<a href="http://numerical.recipes/">Numerical recipes</a>,
+The Art of Scientific Computing,
+Third Edition, 1256 pages,
+Cambridge University Press 2007.
+</p><p>
+Thorvald N. Thiele:
+<a href="https://books.google.com/books?id=oAMXAAAAYAAJ&pg=PA415&lpg=PA415&dq=Thiele+Om+flerfoldsvalg&source=bl&ots=_AFoEKMdA8&sig=IcJya-OQrToFYzVtLW1mnCXQqy0&hl=en&sa=X&ved=0ahUKEwii5be_6J_JAhVIjz4KHW6KDLwQ6AEIKjAD#v=onepage&q=Thiele%20Om%20flerfoldsvalg&f=false#v=onepage&q=Thiele Om flerfoldsvalg&f=false">Om
+flerfoldsvalg</a> [On multiple election],
+Oversigt over Det Kongelige danske videnskabernes selskabs forhandlinger
+=
+Bulletin de L'Acad&eacute;mie royale des sciences et des lettres de Danemark,
+Copenhague Kongelige Danske Videnskabernes Selskab 
+= 
+Royal Danish Academy of Sciences and Letters 3,4  (1895) 415-441.
+</p><p>
+Norman Zadeh:
+<a href="https://web.stanford.edu/group/SOL/reports/OR-80-27.pdf">
+What is the Worst Case Behavior of the Simplex Algorithm?</a>
+Tech. Rept. #27, Department of Operations Research, Stanford (1980).
+</p>
+<!--
+Peter Deuflhard: Order and step-size control in Extrapolation methods,
+Numerische Mathematik 41 (1983) 399-422.
+P.Deuflhard: Recent Progress in Extrapolation methods for ordinary differential
+equations, SIAM Review 27 (1985) 505-535.
+W.B.Gragg: Repeated extrapolation to the limit in the numerical solution
+of ordinary differential equations, SIAM J. Numer. Anal. 2 (1965) 384-403.
+J.Stoer and R.Bulirsch: Introduction to Numerical Analysis,
+Springer-Verlag 1980.
+Fred T. Krogh: Stepsize Selection for Ordinary Differential Equations,
+ACM Transactions on Mathematical Software 37,2 (April 2010) 15:1-15:11.
+
+G.J. Cooper &amp; J.H. Verner: Some Explicit Runge-Kutta Methods of High Order,
+SIAM J. Numer. Anal. 9,3 (1972) 389–405. 
+Conditions are derived which suffice to establish the order of a Runge”Kutta method. Basic implicit and 
+explicit methods of arbitrarily high order are obtained, and are used to establish more 
+efficient explicit methods. In particular, eleven-stage methods of order eight are 
+obtained and some properties of such methods are indicated.
+Arthur G. Werschulz:
+Computational complexity of one-step methods for systems of differential equations,
+Mathematics of Computation 34,149 (1980) 155-174
+http://www.ams.org/journals/mcom/1980-34-149/S0025-5718-1980-0551295-0/home.html
+
+P.J. Prince &amp; J.R. Dormand: High order embedded Runge-Kutta formulae, 
+J. Computational and Applied Mathematics, 7,1 (March 1981) 67-75.
+Their 8th order Runge-Kutta method is one of the best for serial machines in tests.
+
+Terry Feagin: A Tenth-Order Runge-Kutta Method with Error Estimate,
+Proceedings of the IAENG Conf. on Scientific Computing, 2007 (edited
+version)
+Terry Feagin: High-order Explicit Runge-Kutta Methods Using M-Symmetry,
+Neural, Parallel & Scientific Computations 20,4 (December 2012) 437-458.
+http://sce.uhcl.edu/rungekutta/
+Looks like his 10-12 method is good in tests.
+
+Our application is not very stiff, time-scale ratio E at most. 
+We seem suited to Bulirsch Stoer using palindromicity.
+-->
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+<!--
+second derivative (A)/(p+q*x) with respect to x = 2*A*q^2 / (p+q*x)^3
+if p+q*x>0 always concave-U.
+
+second derivative (B*x)/(p+q*x) with respect to x = -2*B*p*q / (p+q*x)^3  
+(note numerator has no x in it!)
+now if p+q*x>0, we need p*q<0.
+
+linear combination of both kinds of terms: safely concave-U  provided A*q>B*|p|.
+What normally would happen is |p|>>q and |A|>>B.
+In fact normally q=B=1, while A=p=order #voters.
+Squaring will help?
+
+product of both kinds of terms:
+   A*B*x / (p+q*x)^2   whose 2nd deriv is   2*A*B*q*(q*x-2*p) / (p+q*x)^4
+     x^2 / (p+q*x)^2   whose 2nd deriv is   2*p*(p-2*q*x) / (p+q*x)^4
+
+second derivative f(x)^2 with respect to x = 2*f*f'' + 2*f'^2.
+For us, f=load>0.   Sum of loads = 1.   Load sum is nonstrictly concave-U.
+
+second derivative f(x)*g(x) with respect to x
+g f'' + 2 f' g' + f g''.
+
+second derivative of (x/(K+x))^2 + (K/(K+x))^2 with respect to x
+4*K*(2*K-x) / (K+x)^4
+concave-U if 2K>x>0
+
+second derivative of (x/(K+x))^2 + (1/C)*(C*K/(K+x))^2 with respect to x
+imagining 0<C<<1
+2*K*(3*C*K+K-2*x) / (K+x)^4
+concave-U if K>2x>0   regardless of the value of C>0
+
+this is not working out for me.  The Q function is not necessarily concave-U.
+
+TOBY PERIEIRA 1 Nov 2016:
+ think PAMSAC can produce "wrong" results because it only has weak monotonicity.
+E.g. Approval voting, 2 to elect:
+
+1 voter: AB
+1 voter: AC
+
+PAMSAC elects AB (or AC) over BC because of its approval removal. 
+To elect AB, it effectively changes the ballots to:
+
+1 voter: B
+1 voter: A
+
+AB then beats BC in a tie-break because it has more total approvals. It doesn't beat
+it by its overall score (based on squared loads), making it a fragile victory.
+But with this example:
+
+100 voters: AB
+100 voters: AC
+1 voter: B
+1 voter: C
+
+Approval removal can't save AB (or AC), and so BC is elected. Candidate A is approved 
+by 200 out of 202 voters but still fails to be elected, so this is definitely 
+ shortcoming for PAMSAC. This example seems pretty obvious actually. I should have
+come up with it before! It doesn't make PAMSAC an awful system though, because
+all other systems that I'm aware of also produce "wrong" results. But it
+does show that more work needs to be done.
+
+WDS:
+am I confused?... Since I think the "First holy grail scheme: MSPAV with best ordering"
+mentioned in our horribly still unfinished
+  /HolyGrailPR.html
+indeed would elect AB (or AC) in the above example.
+
+TP: PAMSAC also appears to fail independence of irrelevant ballots - at least
+in a weak sense. Irrelevant ballots are ballots that approve all or none
+of the candidates in question. If A and B are parties fielding many
+candidates each, we could have the following ballots:
+
+2 voters: A
+10 voters: AB
+1 voter: B
+
+A method passing this criterion would elect twice as many A as B candidates
+(the 10 AB voters are ignored). But according to my calculations, PAMSAC
+would be indifferent between anything from a 12:1 A:B ratio to a 2:11 ratio!
+I say it weakly fails because the "correct" result is within its range.
+
+But if we had these ballots:
+
+2 voters: A
+10 voters: AB
+0 voters: B
+
+it would conclusively elect all A candidates. Which is a good thing.
+
+WDS:Is there anything wrong with simply eliminating all
+the irrelevant ballots (which approve all or none) before
+we begin?
+--well, to answer my own question, if the approval ballots arose
+from a Kotze-Pereira transform.. then any score-style ballot
+all of whose scores were positive and distinct, is going to cause a positive
+weight for an all-approve ballot.  If we artificially eliminated those
+all-approve ballots, that'd be like distorting the original score-style ballot
+in a way that looks pretty unacceptable.
+
+WDS:
+Also in this example
+2 voters: A
+10 voters: AB
+0 voters: B
+MSPAV with best ordering too would conclusively elect all A candidates.
+
+Finally in TP's example
+2 voters: A
+10 voters: AB
+1 voter: B
+where you'd like a method that elects twice as many A as B candidates
+(ignoring the 10 AB voters), I think that is indeed going to happen, or
+close to it, with this method?  Er, maybe not.  Somehwre between 1:1 and 2:1 A:B
+ratio, I think is going to happen.
+
+Toby Pereira:
+ But a more general definition for multi-winner participation (that works for
+ approval or score but makes less sense for ranked voting) is that by casting
+ an honest vote, a voter can never cause the number of elected candidates
+ that they have approved (or the total score they have given to the elected
+ candidates) to go down. It could be possible for a method to pass the
+ definition you've linked to but fail the one I've given. I'm pretty sure psi
+ voting would pass it anyway, and PAMSAC might.
+-->

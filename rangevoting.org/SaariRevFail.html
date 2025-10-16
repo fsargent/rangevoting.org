@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>
+RangeVoting.org -  An election identical to its reversal 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> An election identical to its reversal </H1>
+
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> v </td>
+<td align="center"> H>A>K </td>
+</tr>
+<tr> 
+<td align="center"> v </td>
+<td align="center"> K>A>H </td>
+</tr>
+<tr> 
+<td align="center"> w </td>
+<td align="center">  H>K>A </td>
+</tr>
+<tr> 
+<td align="center"> w </td>
+<td align="center">  A>K>H </td>
+</tr>
+</table>
+
+<p>
+This is a (2v+2w)-voter three-candidate election where
+v and w are any integers with 0&le;v&le;w.
+The three candidates are named A, H, and K.
+</p><p>
+Suppose every voter <i>reverses</i> her preference order (i.e. they are now
+attempting to choose the worst candidate rather than the best).
+In that case the <i>same</i> election, with the same set of ballots, results!
+</p><p>
+Hence every voting method that does not output a perfect tie
+in this election, exhibits "reversal failure" where, if all ballots are reversed
+so voters are "trying to determine the worst candidate" rather than best,
+then, embarrassingly, the same "winner" is chosen.  In fact, the <i>entire finish order</i> is 
+the same, making that voting method look extremely stupid because it just totally
+contradicted itself.
+</p><p>
+<b>Examples (with 0&lt;v&lt;w):</b>
+</p><ul>
+<li>
+Plain <a href="Plurality.html">plurality</a> voting
+system (also true for Carey's voting system):
+H wins with v+w votes. A comes in second with w votes.
+After reverse all ballots, <i>still</i> H wins with v+w votes with A second with w votes.
+How can the "best to worst" ordering be the same as the "worst to best" ordering?
+</li><li>
+Bucklin voting system:
+K wins with A second.
+</li><li>
+A version of the IRV (instant runoff) system in which, to break ties in some round, 
+we agree that if candidate X was leading candidate Y before the round involving an XY tie, then
+we regard that round as "won by X" instead of "tie."
+In this system, K is eliminated in round 1, 
+then the AH tie in the second and final round is broken
+in favor of H.
+(After all ballots reverse: same thing happens.)
+</li><li>
+The "opposite" version of IRV in which, to break ties in some round, 
+we agree that if candidate X was leading candidate Y before the round involving an XY tie, then
+we regard that round as "won by Y" instead of "tie."
+In this system, K is eliminated in round 1, 
+then the AH tie in the second and final round is broken
+in favor of A.
+</li><li>
+Coombs' runoff system (with similar tie-breaking conventions as we just explained for IRV).
+</li></ul>
+<p>
+All of those voting systems are maximally-embarrassed 
+by this election example: they all, insanely,
+contend the candidates are ordered from best-to-worst in the "same" unique
+order as you get by ordering them worst-to-best.
+</p><p>
+However, all voting methods (including Borda and many Condorcet systems)
+which are based <i>purely on the pairwise table</i> regard this as a perfect 3-way tie,
+because every pairwise 2-candidate subrace is a perfect v+w:v+w tie.
+These include the following systems:
+Baldwin, Black, Borda, Copeland, Dodgson, Nanson, Raynaud, 
+Schulze, Simpson, Small,  and Tideman.
+</p>
+<p><b>
+Superiority of <a href="RangeVoting.html">score voting</a> versus every ranking-based 
+voting method:</b>
+For any election in the Saari-Barney family, every ranking-based
+voting method contends either that
+</p><ol><li>
+ the election
+is a perfect 3-way tie, or 
+</li><li>
+makes an insane maximally-self-contradictory 
+"reversal failure" contention.
+</li></ol>
+<p>
+Both of those outcomes are unattractive.
+But <a href="RangeVoting.html">score voting</a> will never exhibit any kind
+reversal failure, and will in general not produce ties even in scenarios that
+ranking methods regard as ties.
+For example the scores A=9.14, H=7.43, K=1.12 provided by a score-voter would be
+regarded by a ranking method as the "same ballot"
+as A=5.00, H=0.01, K=0.00.  
+Meanwhile score voting correctly regards these two ballots as quite different.
+With continuum scores, score voting will have "probability 0" of producing a tie,
+even in scenarios which ranking systems regard it as a tie.  Why throw away information?
+</p>
+
+<h3> Source </h3>
+<p>
+This election-family was given by
+</P>
+<blockquote>
+Donald G. Saari &amp; Steven Barney:
+Consequences of reversing preferences,
+Mathematical Intelligencer 25,4 (2003) 17-31.
+</blockquote>
+<p>
+and then also discussed by Ivars Peterson in <i>Science News</i>
+(16 October 2003).
+</P>
+<p>
+However, Saari, Barney, and Peterson did not draw from this the lesson that I
+do, which is that RANKINGS ARE BAD, SO USE SCORE-BASED BALLOTS.
+</p><p>
+Instead, the (much less profound, but also correct) lesson Saari draws from this
+election is that <i>Borda's</i> voting method is the only one among "positional
+weighted" ranking-based voting systems, which, in 3-candidate elections, is
+immune to reversal failure.
+</P>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

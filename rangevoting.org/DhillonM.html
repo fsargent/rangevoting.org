@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Dhillon & Mertens's characterization of (normalized) range voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Dhillon &amp; Mertens's characterization of (normalized) range voting </H2>
+
+<p>
+<b>THEOREM claimed by Dhillon &amp; Mertens (1999):</b>
+Normalized 
+continuum-score
+<a href="RangeVoting.html">Range Voting</a>
+("normalized" meaning that every voter scores her favorite with the maximum
+allowable score and her most-hated candidate with the minimum)
+is the <i>unique</i> voting system (in situations with at least 3 voters and at least 5 candidates)
+obeying the following axioms:
+</p>
+<dl>
+<dt><b>INDIV:</b></dt>
+<dd>
+If all voters are totally indifferent, so is society (note: "society" means
+the <i>output</i> of the voting system).
+</dd>
+<dt><b>NONT:</b></dt>
+<dd>
+Society is not <i>always</i> indifferent.
+</dd>
+<dt><b>NOILL:</b></dt>
+<dd>
+If every voter is indifferent <i>except</i> for one voter,
+then society is not always opposed to her.
+</dd>
+<dt><b>ANON:</b></dt>
+<dd>
+Permuting the voters has no effect.
+</dd>
+<dt><b>CONT:</b></dt>
+<dd>
+Continuity. This axiom is rather technical. But it
+has in mind that
+voter preferences are somehow continuously variable.
+[You will need to consult the original paper to get the full details; I think they are trying to
+say voter preferences must form a compact set in a topological space, or
+something like that.]
+</dd>
+<dt><b>IRA:</b></dt>
+<dd>
+If a "candidate" which happens to be a lottery among
+some subset S of candidates, is removed, then the election result
+(as a full ordering among all candidates and lotteries among candidates in S) is unaltered.
+</dd>
+<dt><b>MON:</b></dt>
+<dd>
+Monotonicity.  
+<ul>
+<li>
+One possible monotonicity-axiom would be that if society is indifferent about X versus Y,
+and a new voter, who prefers X over Y, enters the picture, 
+then the new augmented society should prefer X over Y.
+</li><li>
+A second such axiom could be that if society regards X as better than or equal to Y,
+and a new voter comes who is indifferent about X versus Y, then 
+the new augmented society should still regard X as better than or equal to Y.
+</li><li>
+A third such axiom could be that if
+society regards X as better than or equal to Y,
+and a new voter comes who prefers X over Y, then
+the new augmented society should still regard X as better than or equal to Y.
+</li></ul>
+<blockquote><small>
+It is messy to state Dhillon and Mertens's monotonicity axiom,
+which is why have not stated it (see their paper); but suffice it to say 
+that it actually is <i>weaker</i> than <i>any</i> of these three
+axioms (i.e. any of them imply it, but the reverse implications do not hold).
+<!-- <br><br>
+Here is the full statement.  Let "&sim;" denote societal indifference, 
+i.e. X&sim;Y if and only if X&ge;Y AND Y&ge;X;
+and X&ge;Y if and only if NOT Y&gt;X, and "&gt;" denotes societal preference.]
+D&amp;M's MON axiom then says:
+<br><br>
+For any three "candidates" (which are lotteries) P, Q, and R, consider two possible
+elections with the same sets of voters and candidates, but with exactly one voter (say,
+for concreteness,  the last) perhaps changing her vote between the two elections. 
+IF  in election#1  R &sim; P &ge; Q  AND this last voter is totally indifferent AND  
+in election #2 this last voter changes her opinion on P,Q, and R to  P &sim; Q &gt; R,
+THEN:
+<center>
+       if election #2 says  Q&sim;R, then election #2 also says   P&ge;Q.
+</center> -->
+</small></blockquote>
+</dd>
+</dl>
+
+<hr>
+
+<p>
+Note: I am not necessarily vouching for the validity of this theorem.   
+For that see the paper
+which states and proves it (referenced below with link to pdf file); 
+I am merely transmitting the news.  
+I have in fact been unable
+to fully read+digest their
+paper, in part due to my laziness 
+and also in part due to the dogged determination 
+of its authors to use Notation From Hell (some of which
+apparently is not even defined in their paper) and to refuse to use plain English.  
+(See <a href="DhillMertTryHarder.html">attempt</a> to decipher.)
+That being said, I <i>am</i> convinced
+that Normalized Range Voting does obey all the criteria in the
+theorem.  (That's the easy part of the theorem.)  
+The hard and impressive part of their theorem is that nothing else does.  
+Their conditions are all extremely weak and hence extremely unobjectionable, which
+is why this theorem is impressive.  
+Incidentally, they probably could prove their result <i>without</i>
+needing to assume #candidates&ge;5 <i>if</i> they were willing to start from a
+slightly stronger, e.g, monotonicity axiom. 
+Another nice thing (which was intentional)
+is that their conditions resemble
+very much the conditions in <a href="ArrowThm.html">Arrow's <i>impossibility</i> theorem</a>.
+Thus the Dhillon-Mertens theorem can be interpreted as saying that range voting comes closer
+than any other voting system, to satisfying Arrow's desiderata. 
+(Actually, [unnormalized] range voting <a href="ArrowThm.html">totally</a>
+satisfies <i>all</i> of Arrow's desiderata &ndash; but only 
+under some wordings of his Theorem...)
+</p>
+
+<hr>
+
+<h3> Source </h3>
+
+<p>
+Amrita Dhillon &amp; J-F. Mertens: <a href="DhillonMrelUtil.pdf">Relative Utilitarianism</a>,
+Econometrica 67,3 (May 1999) 471-498.
+</p>
+<!--
+There is another, presumably better, 1996 paper by them titled 
+<i>Relative Utilitarianism: an Improved Axiomatisation</i>,
+but I have not seen it.
+(Paper #9655, Catholique de Louvain &ndash; Center for Operations Research and Economics.)
+I guess it later became the 1999paper.
+Its abstract reads:
+"In a framework of preferences over lotteries, we show that an axiom system consisting of 
+weakened versions of Arrow's axioms has a unique solution. "Relative Utilitarianism" 
+[this is also called "Normalized Range Voting"]
+consists of first normalising individual von Neumann-Morgenstern utilities between 0 and 1 and
+then summing them. This axiomatisation largely supersedes the one in Dhillon &amp; Mertens 1993."
+-->
+<small>
+<p>
+I thank Professor <a href="http://euclid.trentu.ca/pivato/">Marcus Pivato</a>
+for bringing this paper to my attention.
+He wrote a paper "Twofold optimality of the Relative Utilitarian Bargaining Solution"
+Social Choice and Welfare 32,1 (January 2009) 79-92,
+in which he presents two ways in which Normalized Range Voting is a uniquely optimal procedure.
+It also seems to be a good paper and it builds on 
+(or re-does better) some previously published results,
+by, e.g. Uzi Segal [Let's agree all dictators are equally bad,
+Journal of the Political Economy 108,3 (June 2000) 569-589].
+</p><P>
+There is also this other paper which I have not seen:
+</p><P>
+Amrita Dhillon:
+Extended Pareto rules and relative utilitarianism,
+Social Choice and Welfare 15,4 (August 1998) 521-542.
+</p>
+</small>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

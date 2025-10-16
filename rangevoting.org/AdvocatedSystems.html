@@ -1,0 +1,424 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Other voting systems we advocate 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Other voting systems we advocate (under the right circumstances) </H2>
+
+<p>
+Generally speaking, we regard <a href="RangeVoting.html">range voting</a>
+as the best single-winner voting system, for a wide variety of reasons.
+</p>
+
+<p>
+However, <a href="Approval.html"><b>approval voting</b></a>, 
+which is the maximally-simple degenerate special case of
+range voting, can for some purposes be superior.
+</p>
+
+<H3> Approval voting </H3>
+
+
+<p>
+<table cellpadding="15"  align="right">
+<tr><td>
+<caption> AV Ballot </caption>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<td> A.Lincoln </td> 
+<td> <input type="checkbox" id="bogus" checked="checked" value="ignore"> </td>
+</tr>
+<tr> 
+<td> A.Hitler </td> 
+<td> <input type="checkbox" id="bogus" value="ignore"> </td>
+</tr>
+<tr> 
+<td> O.Arias </td> 
+<td> <input type="checkbox" id="bogus" checked="checked" value="ignore"> </td>
+</tr>
+<tr> 
+<td> J.Stalin </td> 
+<td> <input type="checkbox" id="bogus" value="ignore"> </td>
+</tr>
+</table>
+</td></tr>
+</table>
+
+In approval voting, you "approve" of some candidates and "disapprove" of others, and the candidate
+approved by the most voters wins.  This has also been called "set voting," because your
+vote is the <i>set</I> of candidates you approve.
+</p>
+
+<p>
+Approval voting is probably the simplest voting system in the world.  It is even simpler
+than <a href="Plurality.html">plurality</a> voting because there is no rule about
+"overvotes" being illegal (and therefore no need to detect overvoters to punish them).
+To switch from plurality voting all you need is to change the instruction "vote for one"
+to "vote for one or more."  Simple.  Total cost of switching: zero.
+</p>
+
+<p>
+Range voting seems <a href="AppExec.html">superior</a>
+to approval voting because it allows more expressivity
+(some candidates can be approved, some "highly approved", some "very very disapproved" etc),
+but unfortunately it is more complicated.  Although both approval and range voting can be run
+on <a href="VotMach.html">all voting machines</a>, with the worst kinds of voting machines
+approval could be significantly easier for voters than range voting.  
+</p>
+
+<p>
+Also, for use in votes at <i>meetings</i> you can do approval voting by simply raising your
+hands (or better, holding a red card in your raised hand) and counting the hands that approve of X.
+Trying to do range voting, Borda voting, Condorcet voting, and etc would be far slower
+and more error-prone.  Further, plurality voting also is error-prone because there is no
+easy way to be sure that some of the 1000 people in that room have not (illegally) voted twice.
+That makes it easy to cheat in plurality votes in large meetings &ndash; besides the fact 
+plurality is a worse voting system than approval anyhow.
+</p>
+
+<p>
+We do not actually regard range and approval voting as <i>competing</i> because approval voting is
+just a special case of range voting and the two can 
+<a href="Why99.html#coexist">peacefully coexist</a>.
+</p>
+
+
+
+<H3> Clarke-Tideman-Tullock (CTT) monetary-voting </H3>
+
+<p>
+<table cellpadding="15"  align="right">
+<tr><td>
+<caption> CTT Ballot </caption>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<td> A.Lincoln </td> 
+<td> $2300 </td>
+</tr>
+<tr> 
+<td> A.Hitler </td> 
+<td> $0 </td>
+</tr>
+<tr> 
+<td> O.Arias </td> 
+<td> $1900 </td>
+</tr>
+<tr> 
+<td> J.Stalin </td> 
+<td> $0 </td>
+</tr>
+</table>
+</td></tr>
+</table>
+
+A really dramatically original voting system 
+was developed by Clarke, Tideman, and Tullock in
+the 1960s and 1970s.
+It involves <i>secret</i>-ballot
+voting with <i>money bids</i> and in some cases, some voters (bidders) will later be
+forced to <i>pay</i> some or all of their bid for candidate X, if candidate X wins.  
+The formula for determining the payments is very cleverly devised in such a way 
+that the <i>best policy</i> (in terms of maximizing personal monetary reward in some
+scenario where each election possibility is worth some amount of money to that voter)
+for each voter individually is to bid <i>honestly</i>, i.e. to actually state
+their honest estimate of their personal money value for that candidate's election.
+Then the candidate with the highest summed dollar-amount bid for him, wins.
+(Voters can bid different amounts for several candidates; there is no
+restriction forcing them to bid for only one.)
+</p>
+
+<p>
+So if every voter tries greedily to maximize his own personal wealth and happiness
+when choosing his vote, the result will be the election of the best possible candidate 
+maximizing total money-benefit to all.  This voting system is thus "perfect"!
+</p>
+
+<p>
+Before you get too excited about the "perfection" of this scheme, though, 
+we point out a few problems.
+</p>
+
+<ul>
+<li>
+Votes based on paying money are
+<a href="USconstitution.txt">unconstitutional</a>
+(under the 24th amendment) for governmental elections in the USA.
+</li>
+<li>
+In  elections with <i>few</i> (under 1000?)
+voters, the CTT payment formula is such that typically, a
+fairly <i>large</i> fraction of the money bid actually
+gets extracted from the voters &ndash; large
+enough that good non-monetary voting systems will be superior.
+(I.e, range voting may make less-good decisions than CTT because it is not "perfect,"
+but CTT's improvement in decision-quality
+will be outweighed by the money-costs extracted from the voters, so that overall
+CTT will be worse for them.)
+Therefore CTT can only hope for superiority over good non-monetary
+"conventional" voting systems in <i>large</i> elections; in those the Clarke tax payments
+(usually) become very small.
+</lI>
+<li>
+The "perfection" of CTT voting is
+only true in a mathematical idealized world in which certain assumptions are made.
+In reality in most large governmental elections, those assumptions are <i>extremely false</i>.
+This will cause enormous "utility distortions" which cause the decision made
+by CTT <i>not</i> to be the best for society at all.  I.e. in the
+real world, CTT will <i>not</i> provide perfection.    Just how well or badly it will do is
+an experimental question with an unknown answer (since no large CTT elections
+have ever been conducted) but it is quite plausible it will actually do worse than
+"imperfect" but simpler non-monetary conventional systems like range voting.
+Therefore CTT can only hope for superiority over the better non-monetary
+"conventional" voting systems in elections which are <i>not too large</i>.
+I.e, in view of this and the previous point, CTT needs elections of <i>intermediate size</i>.
+</li>
+<li>
+CTT also has problems concerning nonpayment, escrowing, breaching of bid-secrecy, 
+the fact that happiness and money are not exactly the same thing, and collusions.
+</li>
+</ul>
+
+<p>
+In view of all this, it seems to us that CTT voting might work well 
+in corporate <i>stockholder votes</i>
+in corporations that have between 1000 and 100,000 stockholders, with the voter payments
+("Clarke taxes") donated to charity.
+For that purpose the US constitution does not forbid CTT, and
+the CTT voting system's perfection will actually pretty much happen 
+(if the system is designed carefully)
+because the mathematical assumptions will in fact then be approximately true in the real world
+&ndash;
+and, if so, CTT voting will yield the best corporate profits.
+But for corporate votes with too few or too many stockholders,
+<a href="RangeVoting.html">range voting</a>
+with one range vote cast by each share of stock, is
+probably better.
+</p>
+
+<p>
+More generally, <b>corporations</b> that adopt superior voting methods such as range voting
+to make hiring decisions at meetings, etc, 
+will, slowly but surely,  enjoy steadily compounding advantages
+over their rivals that use poor voting methods such as plurality or Borda
+because they will, on average, make better decisions &ndash; and this
+improvement comes at a cost of zero.
+To corporations we say: there is probably no move you can make that will give you this
+large an improved competitive advantage over your rivals, that is, at the same time,
+this easy and cheap to implement.  (Talk about a no-brainer!)
+</p>
+
+<p>
+<a href="CTT.html">We discuss CTT voting in far greater detail here</a>,
+including making some significant new realizations and improvements that seem
+essential for good performance in practice.
+</p>
+
+<H3> What if somebody insists on "rank order ballots"? </H3>
+
+<p>
+We do not know what is the best voting scheme based on ballots which are
+rank-orderings of the candidates.
+Quite possibly, no clearly-best such scheme exists.
+Every scheme we are aware of does something horrible in at least one 
+election-circumstance.
+And that is not just due to our ignorance &ndash; there 
+are <a href="ArrowThm.html">impossibility theorems</a>
+saying that every ranked-ballot scheme (whether anybody has invented it, or not) fails to
+satisfy at least one of a list of desirable-sounding
+criteria, in some elections.
+There just is no ranked-ballot
+scheme that clearly is head and shoulders above its rivals.
+We are therefore very hesitant to suggest one.
+</p>
+<p>
+There are many problems with the whole idea of rank-order ballots, but they all
+<i>fundamentally spring</i> from these two difficulties:
+<ol type="a">
+<li>
+With rank-order ballots, "preference cycles" become possible
+such as "A&gt;B&gt;C&gt;A" in this 19-voter example:
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+    8
+</td>
+<td align="center">
+B&gt;C&gt;A
+</td>
+</tr>
+<tr>
+<td align="center">
+    6
+<td align="center">
+C&gt;A&gt;B
+</td>
+</tr>
+<tr>
+<td align="center">
+    5
+<td align="center">
+A&gt;B&gt;C
+</td>
+</tr>
+</table>
+
+Meanwhile with range- or approval-voting ballots, cycles simply cannot exist.
+</li><li>
+With rank-order ballots, the changes you can make to a vote
+are "discrete" rather than "continuous".  
+You can't smoothly vary your
+vote's view of the relative quality of candidates A and B.
+</li>
+</ol>
+</p>
+<p>
+Incidentally, one could optionally permit or forbid <i>equalities</i> in the rank-ordering
+(e.g. "A&gt;B=C&gt;D=E&gt;F") and one also could permit or forbid only ranking 
+<i>some</i> but not
+all of the candidates (e.g. "A&gt;D&gt;F"), 
+and these may alter the view of what the best voting system is.
+</p>
+<p>
+However, if you really, really, really push us hard to choose a system, and you insist
+(in our view very foolishly) on using <i>rank-order</i> ballots, then 
+<a href="SchulzeComplic.html">Schulze beatpaths</a> and
+<a href="TidemanRev.html#wbsirv">WBS-Irv</a> 
+seem tolerably decent attempts to
+save you from yourself.  
+</p>
+
+<a name="multi"></a>
+<H3> What about <i>multi</i>winner elections? </H3>
+
+<p>
+(For example, electing a "committee" of 5 people from 23 candidates.)
+</p>
+
+<p>
+The trouble with naively applying some scheme designed for single-winner elections
+(such as range or plurality voting) to the committee-problem, is the
+quality of a committee is
+not about just the sum of the perceived qualities of its members.  It is
+also about diversity.
+</p>
+
+<p>
+For example, if an electorate contains 51% Whigs and 49% Tories,
+then using either range, plurality, approval, or instant-runoff
+voting with the top 5 scorers being elected,
+we might well elect a 100%-Whig committee!  
+We don't recommend that.
+It would probably be better to elect 3 Whigs and 2 Tories.
+</p>
+
+<p>
+That is the goal of <a href="PropRep.html">proportional representation</a>
+systems.
+</p>
+
+<p>
+It is much harder to compare multiwinner systems than it is to compare single-winner 
+systems, because for the latter problem we have the 
+powerful <a href="BayRegDum.html">Bayesian Regret</a> yardstick available.
+Also, multiwinner systems have been less investigated.
+</p>
+
+<p>
+Nevertheless, we do have two such systems to recommend:
+</p>
+<a name="asset"></a>
+<ul>
+<li>
+<a  href="RRV.html">Reweighted range voting</a> is a variant of range voting designed for use
+in multiwinner elections and which obeys a proportionality theorem.
+We believe it is superior to, simpler than, and obsoletes, <i>all</i> "single transferable vote"
+systems (except perhaps in very small hand-counted elections, where the latter might
+be quicker to count).
+</li>
+<li>
+<b><a href="Asset.html">Asset voting</a></b>
+is an "unconventional" voting system in which <i>both</i> 
+the voters and the candidates participate.  (Warning: this bothers a lot of people,
+and also it prevents asset voting from being used <i>at all</i> in abstract scenarios with 
+candidates that are not people, such as voting to choose pizza flavors.)
+Asset voting has been proven to be (in terms of certain criteria) superior to <i>any</i>
+"conventional" system.
+</li>
+</ul>
+
+<p>
+These two systems are described in
+papers 77 &amp; 78, and 
+multiwinner systems generally are
+surveyed in paper 91,
+<a href="WarrenSmithPages/homepage/works.html">here</a>.
+</p>
+
+<a name="asset"></a>
+<p>
+Asset voting is simple enough that we can describe it here in full:
+</p>
+
+<p>
+<b>Asset voting to elect W winners from C candidates, 0 &lt; W &lt; C:</b>
+</p>
+<ol>
+<li>
+In a C-candidate asset election,
+each vote is a real C-vector (i.e list of C numbers), 
+each entry of which is nonnegative
+and with all the entries summing to 1.
+For example a legal vote would be (0.4, 0.3, 0, 0.3)
+in a 4-candidate election, since 0.4+0.3+0+0.3=1.
+</li><li>
+Compute the sum-vector S, that is, the list of
+each of the C candidates' totals.
+</li><li>
+Now regard each S<sub>n</sub> as
+the amount of an "asset" now owned by candidate <i>n</i>.
+The candidates now negotiate; any subset
+of them may redistribute their assets among themselves.
+</li><li>
+After all negotiations and redistributions end, the W "wealthiest"
+candidates win.
+</li>
+</ol>
+<p>
+<small>
+In variants, only certain kinds of redistributions are permitted, for example the
+candidates in increasing order of "wealth" drop out, redistributing their assets among
+the remaining ones as they do so.  
+This "poorest first"
+variant has the advantage that it forces the procedure to
+<i>end</i> quickly and everybody <i>knows</i> when it has ended.
+Forest Simmons recommends that
+electorates that don't want to deal with any ballots other than
+Plurality style ballots, should use a <b>simpler</b> version of Asset Voting or
+that uses only Plurality-style ("name one candidate") ballots (the named
+candidate gets 100% of that voter's assets).
+</small>
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

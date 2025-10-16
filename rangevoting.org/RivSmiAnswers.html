@@ -1,0 +1,1194 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Answers to Questions from New York Times Readers about Rivest/Smith Antifraud techniques
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answers to Questions about <a href="RivSmiPRshort.html">Rivest/Smith Antifraud techniques</a>  </H2>
+<p><small>By Warren D. Smith</small> &nbsp;&nbsp;
+<small>
+<a href="RangeVoting.html">Return to main range voting page</a>
+</small>
+</p>
+
+<p>
+On 7 January 2008 the <i>New York Times</i> published an <a href="PoundstoneOpEd1.html">op-ed</a>
+by William Poundstone about one (called "Twin")
+of the three Rivest/Smith antifraud voting protocols.   
+<i>New York Times</i> readers then immediately sent in
+a vast number of  questions/comments.
+Due to the severe word-count limitations of op-eds, Poundstone was of course unable to
+describe Rivest/Smith in full, and unfortunately did not provide a pointer to Rivest &amp; Smith's paper
+nor the <a href="">RangeVoting.org</a>
+web subpages which <I>do</i> provide a full description.
+Most (in fact I think all) of the questions and answers 
+were already known to us ("us" meaning Rivest &amp; Smith) and
+discussed in our 
+<a href="WarrenSmithPages/homepage/tb8.pdf">paper (pdf)</a>.
+The paper also is
+<a href="RivSmiTB.html">available</a> in HTML format
+(but the pictures and
+formatting are not as nice); there also is an 
+<a href="RivSmiTBadd.html">addendum</a> discussing interesting stuff that was not in the paper,
+and a 
+<a href="RivSmiPRem.html">short press release</a>,
+and a
+<a href="RivSmiPRshort.html">more detailed and clearer, but longer</a> essay too.
+You can also read an
+<a href="EFraudKenya2007.html">analysis</a>
+about cost-effectiveness vis-a-vis
+Kenya's apparently-rigged 2007 election,
+and a page about 
+<a href="FraudHist.html">election fraud through history</a>
+which debunks several widespread myths and tells you various things I bet you didn't know.
+</p>
+
+
+<hr>
+<h3> Questions+Answers: </h3>
+<hr>
+
+<p><b>Adam Cherson (NY, NY):</b>
+Basic elements for a fair and accurate voting:
+<ol><li>
+verification of the identity of each voter, 
+</li><li>
+secrecy of the ballot, 
+</li><li>
+a redundant paper record for future verification, 
+</li><li>
+an accurate counting system, and
+</li><li>
+ a way of independently verifying each of the prior 4 elements.
+</li></ol>
+</p>
+
+
+<p><b>Response:</b>
+Seems to be more of a statement than  question, but Rivest/Smith incorporates all these elements.
+Nobody knows how you voted.  There are redundant paper records that <i>everybody</i> can use to
+check things and to prove fraud (if there was fraud), which is <i>maximum</i> verifiability 
+(and maximum independence of same).
+It is <i>impossible</i> for a fraud to have a good chance of escaping detection by those checks.
+<i>Anybody</i> in the world can download and count the all votes (ditto the
+lists of all voters who voted and all voters eligible to vote)
+which is <i>maximum</i> transparency
+and accuracy.
+</p><p>
+Cherson also continued by advocating use of biometric identification-verification techniques.  
+Rivest/Smith take no position on that issue and it is a separate 
+issue which either can be or can not-be
+used in combination with Rivest/Smith protocols.
+</p>
+
+<hr>
+
+<p><b>Marty (Fishkill NY):</b>
+"...have 95 percent assurance of...fraud"
+OK! THEN what will be done?
+</p>
+
+<p><b>Response:</b>
+First of all, the fuller quote was "95% assurance of <i>detecting</i> fraud."  
+If the fraud is detected, then we will have 100% proof there was a fraud.
+If it escapes detection, then we'll have no proof there was fraud &ndash; but since
+it was unlikely to have escaped detection we will be pretty confident there was no fraud, and
+we will in fact know (pretty much) the <i>exact</i> numerical amount of confidence we have.
+</p><p>
+Second, assuming the fraud is detected &ndash; then what?  
+Excellent question.  
+As the paper discusses somewhat, 
+we will be able to make estimates at that point of how big the fraud was
+and in what direction.  We also will be able, by using "chain of custody" records
+for different ballot-ID-number
+ranges, 
+to try to narrow down when and where the fraud occurred so that we can try to punish somebody and/or fix the
+problem.
+</p>
+
+<hr>
+<a name="jimbow"></a>
+<p>
+<b>Jimbo W. (Bonita Springs, FL):</b>
+One question I have concerns initialization:
+how does voter number 1 get a random copy of someone else's ballot?
+</p>
+
+<p><b>Response:</b>
+The paper proposes that the first 10 voters on each machine get no copies of preceding voters's
+ballots.   There have also been some <a href="RivSmiTBadd.html#circ">other ideas</a>.
+</p>
+
+<hr>
+<a name="hunts"></a>
+<p>
+<b>S.Hunts (Cupertino, CA):</b>
+I don't see what guarantees the integrity of a ballot from the
+time it is cast until it
+such time as a copy may be handed out as a receipt to another voter.
+Why couldn't poll workers siphon off and modify/replace ballots right
+after the ballots are cast?
+</p>
+
+<p><b>Response:</b>
+Another excellent question.  Rivest/Smith depends on having certain simple kinds of voting machines
+which we must trust are doing what they are supposed to be doing.  Well, to be more precise,
+we do not have to "trust" them since what they do is so simple and done in such
+a transparent (literally) way that everybody looking can <i>see</i> they are doing it.
+</p><p>
+Specifically, for the "Twin" scheme discussed in the op-ed, 
+the machine needs to have a translucent glass ballot box in which ballots 
+are being circulated around randomly;
+and it needs to, on command, spit out
+an official copy of a random ballot from inside the box.
+The voter should be able to <i>see</i> the validity of the copy.
+(In another variant, it also is possible to have the voters <i>themselves</i> make
+the copy using just an ordinary pen, looking
+thru glass at a randomly selected [by the machine, perhaps with some input from the human too] ballot.
+That can be done by taking
+<a href="RivSmiTBadd.html#circ">advantage</a> of the fact that "digital signatures" are unforgeable.)
+The machine has to be such that corrupt poll workers, etc cannot mess with the ballots in the 
+box  <i>during</i> the voting &ndash; that would defeat security.  
+If the corruptors mess with the ballots and boxes <i>after</i> the voting day has ended, or
+alter the counts, etc, <i>that</i>
+does not bother Rivest/Smith &ndash; their fraud will then be detectable, with proof.
+So Rivest/Smith kind of boils down the security requirements to this: certain machines need to do what they
+are supposed to do <i>during</i> voting.   If funny stuff goes on afterwards, that is ok.
+(Of course, we do not recommend therefore being totally 
+lax about securing ballots after voting has ended.  Naturally
+we want due diligence exerted to protect them even then.  We are just saying, if that protection fails, 
+our protocols assure that the public will know.)
+</p>
+
+<hr>
+<p><b>Anak (Mountain View, CA):</b>
+Assume I wanted to create confusion about a legitimate election
+result. What if I tampered with my photocopy of random voting record,
+to make it seem that this (forged) vote was never counted. How will
+officials now argue that this vote was
+never meant to be counted?
+</p>
+
+<p><b>Response:</b>
+Another excellent question.  One answer is, the receipts have to be designed to be
+hard to tamper with.
+(E.g. counterfeiting money is hard.)
+When you come forward with your receipt saying "I have legal proof this election was fraudulent,
+right here, on this official, government-certified receipt" that has to <i>mean</i> something.
+</p>
+<p>
+A second answer, discussed in the paper, is that the receipts could have "digital signatures" on them.
+This would completely prevent tampering and receipt-forging by anybody ignorant of
+the government's "secret key" number.  (The government itself then could still forge receipts
+but the only reason for it to do that would be in order to prove itself fraudulent.)
+This then could be done even with low quality scrap paper, eraseable ink,
+(no need for fancy money-like paper etc);
+<i>but</i> you'd need to introduce "digital signatures" into the picture, which involves other issues
+(that's discussed in the paper).
+</p>
+
+<hr>
+<p><b>joe m (brooklyn, ny):</b>
+Brilliant! This proposal is simple, transparent and uses the internet the greater civic good. Further, while 
+it addresses concerns with new voting methods, it will also highlight that old methods
+probably also had limitations.
+<br><b>(RoughAcres, New York):</b>
+This is an elegant and simple solution &ndash; I LOVE it.
+<br><b>(MIke, Columbus):</b>
+Very interesting idea. I would very much like to see this tried out
+somewhere.
+<br><b>Others:</b>
+Similar.
+</p>
+
+<p><b>Response:</b>
+Thank you.
+<p>
+
+<hr>
+<a name="dcgreene"></a>
+<p><b>D. C. Greene (Kennett, MO):</b>
+Politicians have been stealing votes and rigging elections ever since
+mankind began voting. There will never be a perfect system. Whether
+dropping pebbles in clay jar representing one's favorite to lead your
+village, or touching a computer screen to indicate your choice,
+someone will be working and perfecting ways to steal, nullify or
+switch your vote. I recall, years ago, as a community college student
+sitting in a class on government, taught by an elderly retired judge.
+In retrospect, the judge almost tearfully described how he helped
+steal local elections. It was easy, he said. Local political leaders
+would ask respected elderly citizens to act as poll watchers. The
+elderly folks would feel honored and would show up before the polls
+opened and stay until closing, perhaps late that night. Late that
+night, when many of the poll workers were pretty well exhausted and
+perhaps dozing off, the ballot boxes would be swapped with boxes
+stuffed with the right number of votes to assure the desired outcome.
+I am sure this practice was very common back in the days of paper
+ballots, which each voter marked and then dropped into the slot of a
+ballot box. And I suspect that vote rigging is even more common today
+in spite of all the bells &amp; whistles and electronic gadgets used to
+record the vote. Vote fraud is further compounded by politicians and
+political parties that seek ways to make it easy to deliver bodies to
+vote their way. If you remember the story about "Landslide" Lyndon
+Johnson who was first elected to the U.S. Senate when the dead people
+in a rural Texas cemetery got up out of their graves and went to town
+an cast enough votes to swing the election in his favor. The
+"zombies?" even lined up and voted in the order that their graves were
+laid out back at the cemetery. Nowadays, politicians and their
+political parties seek ways to make it so easy to cast a ballot that
+not even the citizenship, legitimacy or identity of the people showing
+up to vote can be challenged. Voting machines are only a tiny part of
+the problem.
+</p>
+
+<p><b>Response:</b>
+D.C. Greene's thinking has been true throughout the past.
+However, with Rivest/Smith antifraud voting protocols, 
+we can prove <i>theorems</i> that undetected fraud
+is <i>impossible</i> &ndash; subject to certain assumptions, which we can list.
+Then the <i>only</i> way to have fraud is to violate our assumptions &ndash; or risk detection with proof
+of fraud.  I believe/hope our techniques can usher in a whole new level of
+security/reliability/transparency/confidence in elections, which humanity simply has never
+previously attained.   
+</p><p>
+Now for example, if anybody switched or stuffed the ballot boxes at the end of the day, with Rivest/Smith,
+that would be detected by the voters, with proof of fraud, using the receipts. Won't work.
+If voters from cemeteries were recruited, then, to have a 5% fraud, you'd need 5% fake voters,
+and anybody checking the (published on a web site) list of voters-who-voted would detect 1 fake voter
+per 20 random voters checked.   It thus
+would be within the reach of even a <i>single person</i> (e.g. newspaper reporter)
+to do the checking
+required to prove this <i>nationwide</i> fraud!
+</p>
+One more comment:
+it <i>would</i> be possible to make old-style paper-ballot voting secure <i>if</i>
+we have a never-sleeping, invincible incorruptible armed guard guarding all the ballots 24 hours
+day 7 days a week, etc.   I don't consider that
+to be realistic, but we can at least conceive of it.  Now here's my point.   Even if
+we had all that perfect security, then there would be no way for the general public
+to <i>know</i> that.
+How could the general public be confident every guard was present
+24 hours a day, etc, even if they actually were?
+So there would be no reason for <i>public confidence</i> in the election system's security even if it
+in fact were secure.   That's a big advantage for Rivest/Smith &ndash; with our protocols
+we <i>can</i> provide such public confidence (not to mention, we do not
+need all those perfect-supermen armed guards).
+<p>
+</p>
+
+<hr>
+<p><b>Sam Lauber (unknown location in cyberspace):</b>
+There's a serious flaw in the "Twin" proposal. It's vulnerable to this
+fraud (I'll call it the two-copy attack):
+<br>
+<ol>
+<li>
+A candidate ("Candidate A") bribes the poll-workers (with money
+delivered through a proxy).
+</li><li>
+Poll-workers make two copies of every ballot.
+</li><li>
+Before the polls open, a poll-worker goes inside a voting booth
+with the copies of the ballots, casts a few votes for A's opponent
+("Candidate B"), and casts every other ballot for A.
+</li><li>
+The poll-workers modify the bin so that the fraudulent ballots are
+the ones the voters get copies of, and the ballots actually cast by
+the voters get dropped into a shredder or otherwise destroyed...
+</li></ol>
+</p>
+
+<p><b>Response:</b>
+Rivest/Smith depends on
+the assumption that certain machines in the polling place actually do do what
+they are supposed to, and further that they are built in such a way
+that the voter
+(and, e.g, observers) can <i>see</i> with her own eyes they are doing it.
+</p><p>
+The tasks these machines perform are simple ones capable of being done by
+pre-computer technology.
+</p><p>
+So for example, in TWIN, the machine accepts your vote,
+drops it in the ballot box, and a random ballot  previously in the box
+is copied and you get the take-home copy.
+</p><p>
+You can <i>see</i> because the ballot box is made of translucent glass, that
+your vote is really going in there and not being shredded.   You can
+<i>see</i> that when, say, the ballot box is tumbled and shaken, a
+pretty-random ballot inside is being sampled. When it
+makes a copy, you can <i>see</i> with your own eyes that the copy is the same as the
+original (you see both thru glass).
+</p><p>
+I agree if the machines in the polling place are allowed during voting
+to do mysterious stuff not what the Rivest/Smith protocol says they
+are supposed
+to do, then RS is busted.
+However it is an underlying assumption of RS that that does not happen
+and everybody can see it does not happen.  (Or if it does, everybody can see it
+does and the fraud is detected immediately.)
+</p><p>
+Now once the voting day has ended, of course, <i>then</i>, nobody can see the
+machines and they and the poll workers might commence nasty tricks.
+However, RS does not care
+in the sense that those manipulations then would be detected by the public,
+thanks to the RS protocols.  (Also, if, say, halfway through the voting day they
+illegally closed the polls for 30 minutes and did some nasties, then
+re-opened the polls,  RS would still seem immune to that.)
+</p>
+
+<hr>
+<p><b>(Please, Anywhere):</b>
+Ballot images are secret for good reason:
+It is easy to buy or coerce votes if ballots can
+be recognized by combinations of downballot contests,
+patterns of zig-zag oval filling, or "stray" marks.
+See scantegrity.org for a real solution.
+</p>
+
+<p><b>Response:</b>
+Rivest/Smith do <i>not</i> propose to publicize the ballot <i>images</i>
+&ndash; for precisely this reason.
+All the <i>vote-information</i> on each ballot will be publicized on a government web site for easy lookup
+by checkers.  But not the "image."  (If the government tries to post fake information, that won't work; that
+would be detected with proof of fraud by the receipts.) 
+Also, "zig-zag patterns downballot" 
+won't work because Rivest &amp; Smith  
+in their paper insisted on ballot "debundling" for precisely that sort
+of reason.
+</p><P>
+"<a href="http://scantegrity.org">Scantegrity</a>"
+is another antifraud voting protocol, mainly
+due to David Chaum, which also is interesting.  
+Last time I checked I did not feel it had reached 
+as completely-investigated a state as I would like, though.
+I have attempted 
+to examine/explain scantegrity and compare with
+with Rivest/Smith, <a href="ChaumST.html">here</a>.  
+(There is a chart at the end listing relative advantages
+and disadvantages versus Rivest/Smith protocols.)
+</p>
+
+
+<hr>
+<p><b>J N Harris (Greater Cleveland):</b>
+Having been involved in raising flags about the dangers and weaknesses
+of electronic voting, I don't find this an "elegant and simple
+solution" at all. Instead, this proposal has all the makings of a
+logistic mess.
+</p><p>
+Consider the hackability of websites; the false assumption that
+millions of people &ndash; many without web access &ndash;will somehow all feel
+compelled through public zeal to go online (enough of this high-tech
+utopiana); that another bureaucratic layer will be added to an already
+strained process; that privacy issues will inevitably arise. In fact,
+there are so many holes in this piece of virtual Swiss cheese that I
+am amazed anyone can take this proposal seriously.
+</p><p>
+Here is a fairly simple and elegant solution that exists already:
+optical scanners with paper ballots that can actually be stored,
+referred to, and recounted. If we can get that system in place and
+working properly, we'll go a long way to eliminate public mistrust and
+help guarantee a more accurate vote count than presently exists.
+</p>
+
+<p><b>Response:</b>
+First of all, it <i>does not matter</i> if the government website, your computer,
+the entire internet, or whatever, is hacked.
+If so, that will be detected, with proof of fraud, by Rivest/Smith protocols.
+</p><p>
+Second, Harris is wrong that optical scanners etc work.
+Well... I do not want to disparage his idea &ndash; it would be nice.
+Indeed, I recommend precinct-based
+optical scanners, which preferably would be <i>non</i>computerized ones, as a comparatively
+simple, cheap, and durable presently-available technology with inherent paper trail.
+<i>But</i> I just want to say that that old-style idea is <i>not</i> fraudproof. 
+For example, somebody
+alters or burns a box of ballots in Harris's storage warehouse.  Result: game over,
+fraud is successful. (Also the manufacturer of the opscan machines could have
+put in secret "back doors" or radio controls to enable easy fraud anytime...
+you have to realize we are up against the likes of the NSA, Chinese equivalent, big corporations, etc all of
+whom have a lot of resources and motivation to fraud elections.)
+With Rivest/Smith, if a box of ballots is destroyed or altered,
+<i>it does not matter</i> in the sense that this fraud will be detected, with proof.
+</p>
+<p>
+Third, Harris is correct that Rivest/Smith  will be somewhat more complicated for voters and officials to
+deal with.  ("Logistic mess.")  We feel, however, that the extra complexity is manageable.
+For example, our schemes are simple enough to be explained to children, and thanks to
+the so-called "easy upgrade" property, we can allow "Luddite"
+voters, if they desire, to use <i>old-style</i> insecure 
+voting, and their ballots get magically "contagiously protected" upon being mixed into the same box as
+the new-style secure ballots, a remarkable fact discussed in our paper.
+</p><P>
+The <i>question</i> is, are the <i>advantages</i> in having an unprecedented new level of 
+election security/transparency/confidence worth the logistical hassle/<i>cost</i>?
+For one indication that they <i>are</i> worth it, at least in some places, please
+see this analysis of what just happened in
+<a href="EFraudKenya2007.html">Kenya</a>.
+</p>
+
+<hr>
+<p><b>C Goldman (Austin TX):</b>
+Can this really work? I am not convinced, because the votes may still
+be counted by an optical scanner which we know can be easily hacked.
+IF you are only able to confirm someone else's vote, you still
+wouldn't know if yours was cast correctly, unless they also offer a
+paper receipt of your own vote.
+</p>
+
+<p><b>Response:</b>
+If an optical scanner is hacked, <i>that will not matter</i> 
+in the sense that that fraud will be detected, with proof, via the receipts.
+The point is the hackers, the hacked computers, etc, all <i>cannot know</i> who has what receipts.
+It does not matter how smart, hacked, and evil they are. They still cannot know.
+So if they change enough votes to make the fraud large enough to be interesting,
+then they will be unable to avoid changing a lot of votes that have receipts in unknown hands. 
+The fraud will then be spotted.   "Hacking" is simply irrelevant to this truth.
+</p><P>
+But the fact that in "Twin" voters are checking somebody <i>else's</i> vote, and therefore are  less motivated,
+<i>does</i> bother us.  Rivest and Smith therefore invented two other protocols, called "VAV" and "ThreeBallot,"
+which allow voters to check their <i>own</i> ballots, but <i>still</i> are both fraudproof and proof against
+vote-coercion and vote-selling.
+</p><P>
+Note also
+that you could turn in your receipt to some checker organization
+that you trust (such as, the League of Women Voters, international election protection groups like OSCE,
+or your favorite Political Party) and they could do the checking for you, as well as pursuing any legal
+battles that result if and when the check proves a fraud occurred.
+This option also goes a long way toward answering Harris's objection above that not everybody is 
+internet-savvy.
+</p><p>
+
+<hr>
+<p><b>David K. McClurkin (Beachwood, Ohio):</b>
+It is vital that attention be given to how to involve voters who are
+not Internet-savvy or have no free access to the web site proposed.
+Would this proposal tend to exclude that demographic which tends to be
+the most persistent in showing up to vote?
+</p>
+
+<p><b>severinagrammatica (Washington, DC):</b>
+This plan discriminates against poor people and others without computers or those like my aged 
+mother who uses the computer only for email. 
+Lots of people eliminated. 
+Are the MIT people, gulp, purposely trying to eliminate a substantial element of the 
+already-oppressed masses who would vote Democratic?
+</p>
+
+<p><b>Response:</b>
+First: See last paragraph of above answer!
+</p><p>  
+Second: There
+would undoubtably be some demographic biases in that some classes of voters
+would be less likely to check their receipts later, versus others.  
+However, so long as nobody
+is 100% predictable, Rivest/Smith protocols would successfully cause any
+fraudsters to risk
+detection with proof of fraud.  And even if a fraudster <i>knew</i> that Joe Schnozz
+was never going to check his receipt, indeed even if
+Joe helpfully <i>handed</i> the fraudster his receipt saying 
+"Here! You have it now so you <i>know</i> I am not going to check this later!"
+then the fraudster <i>still</i> could not risk frauding the corresponding ballot because
+he could not know some other receipt was not floating around for it.
+</p>
+
+<hr>
+<p><b>Alan T. Burrell (Avondale Estates, GA):</b>
+How cumbersome this proposal is. Besides, a printout of a vote still
+does not assure me that it reflects a real vote, and not some fiction
+of the machine...
+</p>
+
+<p><b>Response:</b>
+Again (cf. answer <a href="#hunts">above</a> to Hunts),
+Rivest/Smith only works under the assumptions the machines in each polling place
+are doing what they are supposed to do &ndash; but that thing is so simple that voters ought
+to be able to <i>see</i> that (and could, e.g. videotape the machines not doing it then show the video
+on the Nightly News).  In particular, as I said to Hunt, voter could verify she was getting
+a correct copy right then and there, and there is even a way to
+have the voter create her own copy with her own hands with her own pen, no photocopy machine needed.
+</p>
+<p>
+Incidentally, in all the Rivest/Smith protocols (VAV, Twin, and ThreeBallot)
+the machines we need are sufficiently simple that they do <i>not</i> require a computer &ndash;
+what they need to do is doable purely mechanically.
+</p>
+
+<hr>
+<p><b>Ray Padgett (Ponce de Leon, FL):</b>
+Offers own "Vote By Mail Plan"
+[with detailed description that appears to have been truncated by the
+NY Times]
+</p>
+
+<p><b>Paul Wertz (Eugene, Ore.):</b>
+Observing this debate is like watching a city council meeting in Crazytown. 
+Oregon dropped the voting booth system a few years ago and went to a vote-by-mail 
+system that is as close to perfect and noncontroversial as it can get. 
+We have 15 days from the day our ballots arrive at our homes to return them by mail
+&ndash;
+or drop them in postal-like white drop boxes. The system cut election costs. 
+The results are verifiable. We often have huge voter turnouts. 
+George Bush's friends at Diebold make not a penny. 
+And there are no complaints. 
+But, go ahead and keep dreaming up ways of tweaking the corrupt electronic systems 
+if it makes you happy. Why solve the problem?
+</p>
+
+<p><b>Response:</b>
+The trouble with most vote-by-mail schemes is you can sell your vote.  For example,
+you watch me voting by mail and sending it in.  You then say "I know you just voted for X.
+Therefore I will pay you a bribe-reward, or mete out a punishment, depending on who X is."
+Padgett apparently
+wants to try to preserve anonymity by having a secret vote-ID  number only that voter knows.
+So your vote is then published saying <i>not</i> "this is the vote of Joe D. Schnoz" but
+<i>rather</i> "this is the vote of voter #75875397."
+</p><p>
+That does not work, though:
+<ol>
+<li>
+If Joe has no proof he is voter #75875397 then he cannot
+prove fraud in court later.  
+</li><li>
+If Joe <i>does</i> have proof he is
+voter #75875397, then he can sell his vote by saying "Hey vote-buyer!  Here is proof I'm
+voter  #75875397 and now checking the public list of votes, we see I voted for the candidate
+you wanted! So pay me now."  (Similarly, Joe could be coerced by a vote-coercer.)
+</li></ol>
+I won't say for sure that Padgett's
+scheme is unworkable because as I said, his description got truncated by
+the New York Times comment gizmo.  But it looks likely to have one of the flaws I just described.
+The joy of the Rivest-Smith protocols is  that they are immune to <i>both</i> fraud <i>and</i>
+vote-selling/buying/coercing.
+</p>
+<a name="wertz"></a>
+<p>
+Also, to Mr. Wertz: I have a lot of doubts Oregon made a good move by adopting vote-by-mail.
+It is trivial to "lose" ballots from a "wrong" zipcode containing too many of the wrong kind
+of voter.  Or impose discriminatory enforcement of 
+trivial rules just for zipcode A but not zipcode B
+to introduce biases.
+And vote-selling/buying/coercion now is made trivial by Oregon.
+Indeed, it seems to me, Oregon's system has all the same security holes ordinary Boss-Tweed-era
+paper-ballot voting had, plus lots more.  
+One might even go so far as to say that Oregon is just asking for it.
+<a href="http://www.ejfi.org/Voting/Voting-77.htm">Dr. Charles Corry on mail-in-ballot 
+problems</a>.
+<small>And check out Ruth Charles just below:</small>
+</p>
+
+<hr>
+
+<p><b>Ruth Charles (Winona, MN):</b>
+I voted by mail and it was a disaster! 
+My candidate pulled out of the race and my vote was no longer valid and I could not change it!
+MN has an excellent system for voting. We use optical scan ballots, that leave a paper trail. 
+We have a mandatory audit of the voting machines one week after the election, which proved in 2006 to work!
+Check out <a href="http://ceimn.org">http://ceimn.org/</a>
+for the full report. 
+As an election judge who helped people vote that day, and as an observer of the audit, I was 
+pleased that everyone who voted had their vote counted that day!
+</p>
+
+<p><b>Response:</b>
+Bingo.
+</p>
+
+<hr>
+
+<p><b>Joe K (Berkeley, CA):</b>
+[multipart question which I am splitting into numbered sub-questions]
+<ol>
+<li>
+What happens if reviewers disagree about the validity of a vote? 
+</li><li>
+Doesn't the proposal assume that people won't behave strategically? 
+</li><li>
+Suppose in a closely contested election, Sam, a partisan of Party A, 
+receives a photocopied ballot with a vote for the presidential candidate of Party B. 
+If Sam promptly goes online and claims that the recorded ballot is incorrect and is 
+really for the candidate of Party A, then either (a) there are no others commenting on the ballot, and 
+Sam's lie would invalidate the vote, or (b) there will be others disputing what Sam says. 
+Then what do you do? 
+</li><li>
+It seems that no matter what you do, there would be some probability of the vote being invalidated. 
+Hence there is an incentive for strategic fraud. 
+</li><li>
+Who will verify the verifiers?
+</li></ol>
+</p>
+
+<p><b>Response:</b>
+Jeez Louise! &ndash; You are making me work for a living with this one...
+<ol>
+<li>
+<b>Q.</b>
+What happens if reviewers disagree about the validity of a vote? 
+<br>
+<b>A.</b>
+Well first of all, the Rivest-Smith machine at the polling place is supposed to <i>check</i> your vote's 
+validity and refuse to let you vote invalidly.
+If we don't have that, there are various ways you can imagine to try to make "Twin" degrade gracefully,
+which Rivest and Smith didn't discuss, such as, posting the vote on the public bulletin board
+along with a comment saying "invalid vote"
+or "reviewers disagree on this vote"...  
+and these physical ballots would be saved for further argument/debate...
+</li><li>
+<b>Q.</b> 
+Doesn't the proposal assume that people won't behave strategically? 
+<br>
+<b>A.</b> Meaning what?
+</li><li>
+<b>Q.</b>
+Suppose in a closely contested election, Sam, a partisan of Party A, 
+receives a photocopied ballot with a vote for the presidential candidate of Party B. 
+If Sam promptly goes online and claims that the recorded ballot is incorrect and is 
+really for the candidate of Party A, then either (a) there are no others commenting on the ballot, and 
+Sam's lie would invalidate the vote, or (b) there will be others disputing what Sam says. 
+Then what do you do? 
+<br>
+<b>A.</b> Well, Sam can't just "go online" and invalidate a vote like nothing.
+He has to make a formal complaint (or have some helper group like the League of Women Voters, or Party A,
+make it for him) and that formal complaint is not going to be based on Sam's unsupported word, it
+is going to be based on him producing the receipt that proves it.  And if Sam hasn't got
+such a receipt, since he made up a fantasy, that isn't going to fly.
+(To quote voting-expert Al Capone: 
+"an unkind word and a receipt, will take you further than an unkind word alone.")
+</li><li>
+<b>Q.</b>
+It seems that no matter what you do, there would be some probability of the vote being invalidated. 
+Hence there is an incentive for strategic fraud. 
+<br>
+<b>A.</b> I'm not following you. And 
+if receipts are
+unforgeable (and if you understand "digital signatures," you know how to accomplish that &ndash;
+counterfeiting money is merely difficult; forging something signed with a digital signature
+is literally beyond the capability of humanity) then Sam cannot forge a fake receipt to pull 
+off his little prank.
+</li><li>
+<b>Q.</b>
+Who will verify the verifiers?
+<br>
+<b>A.</b>
+Not sure what exactly you meant by that.
+Rivest/Smith assumes there are machines at the polls which do certain specified tasks. 
+These tasks are simple enough that computerized machines are <i>not</i> needed.
+If said machines 
+do not do them, then that is immediately visible to the voters in the polls, who can take a videotape
+of the misbehavior to their local TV station if their complaints are ignored. 
+Among these tasks are verifying the validity of ballots.  
+Video a machine accepting an invalid ballot?
+Fine, you have proof of fraud.
+</li></ol>
+</p>
+
+<hr>
+
+<p><b>Josh C (Livingston, NJ): </b>
+The first thing that worries me about this system is not a technological problem, but a human one. 
+If everyone gets a random vote that is not theirs, their willingness to share the information on that 
+vote will increase dramatically. Of course, this is not a problem after the election, however, people 
+would be much more willing to share the vote on their receipt during the election to some sort of online 
+exit poll than if it were their own vote. Unlike mainstream news sources, these exit polls could be 
+continuously updated throughout the day, causing problems not unlike the early calls of the vote in 
+Florida in the 2000 Presidential election. Since the vote on anyone's receipt is random, the 
+validity of that poll [could be excellent, perhaps  good deal better than today's exit polls].
+</p>
+
+<p><b>Response:</b>
+This point has been raised before.
+My personal (Smith's) answer (which may disagree with Rivest's view and others's views) is, 
+I'm dubious this is a "problem"; many might
+well consider it a "feature."  (But a lot of people, especially Europeans,
+don't like it when I say that.)
+</p><p>
+To go into this a little, <i>why</i>
+do we care if early returns are announced (and they already
+are &ndash; voters
+in Hawaii know what happened in Maine already when they vote...)?
+Well, I think the reason is that voters with more <i>knowledge</i> have more <i>power.</i>
+For example, consider an A versus B versus C race.  If I have the <i>knowledge</i>
+that C is well behind A and B, then I can choose to ignore C and just vote for A or B.
+If you do not have that knowledge, you might waste your vote on C, thus having less power than me.
+If I know A is well ahead of every rival, I can skip voting and have a fun time at a party, while
+unknowing you waste your time voting and have less happiness
+than I do. (Makes you jealous, right? You wish I too were unhappy?)
+</p><p>
+Now my point is, this is <i>not</i> a flaw in our <i>security protocol</i>.  
+It is a flaw (if it is a flaw) in the <i>voting system <b>itself</b>.</i>
+(No matter what security
+protocol you had, somebody could still exit poll to get more knowledge=power.  Even
+if you outlawed publishing exit poll results &ndash; which would probably be an unconstitutional 
+repression of free speech &ndash; then the candidates could still <i>privately</i> poll and
+just tell their campaign organizations the results, keeping the power to themselves.
+That might make it even worse, actually.)
+</p><p>
+If the USA's current "plurality" voting system were replaced by a better one inherently 
+more-immune to
+the "spoiler" pathology and more immune to "strategic" voting, then this problem would diminish.
+I strongly recommend that.  There is a much superior voting system called 
+"<a href="RangeVoting.html">range voting</a>"
+which also has a good simplified form called
+"<a href="Approval.html">approval voting</a>."
+We recommend them.  Rivest/Smith antifraud techniques also work happily
+with these improved voting systems, see answer to <a href="#diag">Diagoras</a> below.
+</p><p>
+The question of which voting system to use (e.g. Approval versus Plurality) 
+is an (almost) entirely <i>independent</i>
+question from the question of how to make that voting correct, secure, and fraudproof &ndash;
+and may be even more important.
+</p>
+
+<hr>
+
+<p><b>Brad Friedman (CA):</b>
+Please remind Poundstone that the legitimate fears are
+not of "voter fraud" as he misleadingly claims, but of election fraud.
+</p>
+
+<p><b>Response:</b>
+I (basically) agree: That would for sure have been preferable wording and probably was what Poundstone intended
+(i.e. this was accidental).  But you'd have to ask him; I'm not his keeper...
+</p>
+
+<hr>
+
+<a name="diag"></a>
+<p><b>Diagoras (New York):</b>
+Potentially, rangevoting, as the developers call it, could solve the problem of confidence in the 
+voting mechanism. 
+Left unaddressed is the problem that single-choice ballots are a deeply flawed method of measuring 
+voter sentiment.
+A nonpartisan vote-by-preference system, with so-called instant primaries, is vastly superior...
+</p>
+
+<p><b>Response:</b>
+Diagoras is confused about terminology but correct on the issues.
+The three antifraud voting protocols Rivest &amp; Smith propose are
+called "VAV," "ThreeBallot,"
+and (the one described in the op-ed) is "Twin."
+<i>Not</i> "rangevoting."  They indeed would increase confidence in voting  and decrease fraud.
+</p><p>
+But Diagoras is entirely correct that single-choice ballots 
+(called "<a href="Plurality.html">plurality voting</a>", i.e, the voting method currently most-used
+in the USA) are a "deeply flawed method of measuring voter sentiment."
+A much better way of measuring voter sentiment, is <a href="RangeVoting.html">range voting</a>
+in which every voter <i>scores</i> every candidate on an 0-to-9 goodness scale (say),
+and the highest average score wins.   
+I <a href="BayRegExec.html">believe</a> range voting also is superior to "preference-ranking"
+voting systems such as <a href="CFERlet.html">instant runoff</a> and
+<a href="BordaExec.html">Borda</a> in essentially all ways.
+There also is a system called
+<a href="Approval.html">approval voting</a>,
+which is simpler than <i>both</i> plurality <i>and</i> range voting, as well as being greatly superior
+to plurality voting.  With approval, the voter makes  "yes/no" (approve/disapprove) decision 
+on <i>every</I> candidate, as her vote.  Most-approved wins.
+</p><p>
+Rivest/Smith security-enhancing protocols are usable with other voting systems, not just with plurality:
+</p>
+<table bgcolor="lightpink" cellspacing="3">
+<tr> <th>Voting system</th> <th> Allowed Rivest/Smith antifraud protocols </th> </tr>
+<tr> <td>Plurality (name one candidate) voting</td> <td> VAV*, Twin </td> </tr>
+<tr> <td>Approval (yes/no on each candidate) voting</td> <td> ThreeBallot, Twin </td> </tr>
+<tr> <td>Range (score each candidate 0-9) voting</td> <td> ThreeBallot, Twin </td> </tr>
+<tr> <td>Range with "no opinion" vote-scores also allowed</td> <td> VAV*, Twin </td> </tr>
+<tr> <td>Borda, Instant Runoff, Condorcet (rank-order ballots)**</td> <td> VAV*, Twin </td> </tr>
+</table>
+<p>
+*: write-in votes not allowed.
+</p><p>
+**: "short ballot assumption" must be valid to prevent vote-selling &ndash; meaning that 
+if there are too many candidates in the race, then Rivest/Smith techniques cannot
+prevent vote-selling.
+</p><p>
+By using <i>both</i> antifraud techniques <i>and</i> inherently superior forms of voting 
+(like range  or approval voting)
+at the same time, we 
+could get the best of all worlds.
+</p>
+<p>
+Please <a href="Endorse.html">endorse</a> range voting.
+</p>
+
+<hr>
+
+<a name="erikaa"></a>
+<p><b>Erika A (New York, NY):</b>
+How is this system any less hackable than paper ballots (which can be switched) and 
+electronic machines (which can lie)? The results that appear on the... printout...
+could be changed in the moments between the votes are placed and actually printed out (the voting 
+machines could be programmed to do this).
+</p>
+
+<p><b>Response:</b>
+The "voting machines" we have in mind are <i>not</i> computerized hence cannot be programmed.
+(Their and the polling-place protocols's sole functions are 
+[1] make sure the ballot you give them is valid; 
+[2] make sure you are an eligible 
+voter and once you vote, your name is crossed off the list of eligible voters so
+you cannot vote again; 
+[3] puts your vote
+into the ballot box while spitting out a copy of a random ballot already in that box
+to you as your take-home "receipt.")
+Also, the fact it is copying a random ballot from the box will be visually obvious to the voter
+receiving that ballot-copy (she can use her own eyes to verify the copy <i>is</i> correct and
+to see thru the semi-transparent glass ballot box that the selection <i>did</i> seem random).
+</p><p>
+The paper ballots cannot be "switched" without this fraud being detected, with proof, very soon, via all the
+take-home vote-receipts.
+</p>
+
+<hr>
+
+<p><b>Erika A (New York, NY) continues:</b>
+It is also unclear to me what you would do with suspicion of fraud (which also would show up on a 
+hackable website, by the way) if all of the "evidence"
+has been dispersed into the general population and basically lost. How would we ever do a re-count?
+</p>
+
+<p><b>Response:</b>
+The evidence is dispersed but a substantial fraction can be re-gathered.
+To be concrete, suppose the Democrats feel they've been victimized by a fraud in race X.
+They can advertise "voters: please check your receipts for race X and/or send us
+those receipts and we'll check them for you.  Especially send us ones that prove fraud."
+The Democratic party then owns, say, 1000 government-certified receipts proving fraud happened.
+They can use them in court.  Also, any single individual or group who has 1 or more receipts
+proving fraud, can take it to the media and/or the courts.  With proof of fraud
+&ndash; not just mere allegation but proof.
+(Also the internet could be used by the scrutineers as a communication device... for example
+The League of Women voters could make their own "mirror" of the government website,
+etc...)
+</p><p>
+Also, it <i>does not matter</i> if the website is "hacked."
+If it is, then the website will give out false information.  Fine.  If so, that information's
+falsity will be detected by the receipts. If the website gives out info that varies from recipient
+to recipient and time to time, that too can be spotted by comparisons (and the website will
+"digitially sign" its output, causing those comparisons to be unfakeable proof useable in a court of law
+under current US law about digital signatures; and the website will offer "full dataset download"
+option to whomever wants it; and then <i>anybody</i> in the world can count the votes, note &ndash;
+we in no way depend on government counters to add correctly).
+</p>
+
+<hr>
+
+<p><b>Enthusiast:</b>
+Great! 
+Let's get Rivest/Smith up and running someplace and start using it!
+</p>
+
+<p><b>Response:</b>
+Unfortunately, it isn't so easy... To see why we aren't ready at present for prime time,
+check <a href="RivSmiTBadd.html#bigblock">this</a>.
+</p><p>
+In contrast, 
+<a href="RangeVoting.html">range voting</a> and
+<a href="Approval.html">approval voting</a> and
+<a href="SplitLR.html">shortest-splitline no-gerrymandering districting method</a> 
+<i>are</i> ready for prime time.
+You can 
+<a href="Endorse.html">endorse</a> them.  (Please!)
+</p>
+
+<hr>
+
+<p><b>Brad Friedman (CA) again:</b>
+[Twin] seems to offer a false sense of confidence that votes are being
+accurately recorded.
+</p>
+
+<p><b>Response:</b>
+The voter writes her vote on paper and verifies it is correct with own eyes
+before it gets put in the ballot box.
+When she receives the receipt (ballot copy) she also can
+verify with her own eyes it is an accurate copy.
+If votes are inaccurately transcribed from the paper ballots onto the government bulletin board
+(whether intentionally or inadvertently)
+then  voters can, by using their receipt and comparing it with that bulletin board, prove this.
+They hold in their hands, a government
+certified proof, useable in a law court, that fraud or error occurred.
+For any large fraud, this spotting will be
+almost immediate, by massive numbers of people with massive numbers of proofs.  
+Not only that, but we will know specifically
+<i>which</i> votes were inaccurately recorded and <i>how</i> they were inaccurately recorded
+(for a large random constant-fraction of them) with proof, valid in a
+law court,
+on every single one.
+</p>
+<p>
+Let me continue: Mr. Friedman is a well known voting reform advocate who
+runs <a href="http://www.BradBlog.com">BradBlog.com</a>.
+I challenge him to name any occasion, in all of US history, where
+that kind of level of immediacy, verifiability, and level of proof of fraud, 
+and public-confidence in the claim of fraud or no-fraud,
+has ever been equalled, or even approached, by any "conventional"
+voting protocol such as the ones he generally talks about.
+</p>
+
+<hr>
+
+<p> <b>Fred Silverman (Bedford Hills, NY; F.S. is 
+producer of the PBS special "who counts? Election Reform in America"; I am numbering his paragraphs 
+for later reference):</b>
+(1) [This is] yet one more way to rationalize the use of electronic voting machines. 
+The issue is not to make a failed technology more palatable but to find a process 
+that builds confidence in our electoral system.
+</p><p>
+(2) As long as private companies use proprietary software that the public is forbidden to examine, 
+there will always be questions. 
+Our election system must be transparent. 
+Either we mandate an open architecture for our electronic voting or we go back to paper.
+</p><P>
+(3) A combination of vote by mail and paper ballots may be the most foolproof system. 
+I certainly hope that the New York Board of Elections will allow our counties to choose this
+</p>
+
+<p><b>Response:</b>
+(1) Rivest/Smith does <i>not</i> require the use of "electronic voting machines."
+As we said right up front in our paper &ndash; indeed this was one of its big points &ndash;
+the Rivest/Smith protocols can be done entirely low-tech without computers and without electronic
+machines. (Admittedly the internet is used, but only as a communication medium, which in principle
+could be replaced by any other communication medium, electronic or not.)
+F.S. is thus entirely mistaken both about what we said and about our goals. 
+He appears to be arguing with somebody else.
+</p><P>
+(2) I, at least (I can't speak for Rivest) think open-source software is a good idea, but 
+that is not sufficient.  
+Let me elaborate.  LINUX is open-source software.  Microsoft Windows is proprietary software.
+Both contain enormous numbers of bugs, are well beyond the capacity of any human or set of humans
+(even aided by the best verification software tools that exist) to verify.  
+Both quite likely contain security "back doors" intentionally implanted by the likes of the
+NSA, Chinese Secret Service, etc.
+If the <i>hardware</i> or microcode of a machine contained secretly-implanted security holes, 
+that could be even nastier.  
+The idea of "going back to paper," including manual counting,
+is (a) compatible with Rivest/Smith [if desired], (b) is still used
+in many countries, e.g. Denmark, and (c) actually in many situations is
+actually <i>cheaper</i> than counting votes with machine aid.  This last may seem surprising, but
+<a href="VoteCostCalc.html">try</a> the calculation yourself!
+(And see <a href="FraudHist.html#handc">more discussion</a>.)
+</p><P>
+(3) Re vote-by-mail, see our <a href="#wertz">answer to Wertz</a> above.
+</p>
+
+<hr>
+
+<p><b>Cynthia J. Eiseman (Philadelphia):</b>
+As the judge of elections at my polling place...
+I see two problems with Rivest/Smith's proposed method for averting election fraud:
+(1) Some voters will not like having ballots containing serial numbers; 
+they will worry that their votes are not truly secret. 
+(2) Where will election workers get randomly selected ballots 
+to copy and give to the first few voters who come to the polling place on Election Day?
+</p>
+
+<p><b>Response:</b>
+(1) The voter comes to the polling place.  She selects from a big pile of pre-numbered
+blank ballots, a random ballot.
+She fills it out with her vote and puts it in the machine/ballot box. 
+Now.   In what way, does the fact that 
+this ballot said on it, "ballot #85776644," in any way render her vote non-secret?
+</p><p>
+(2) See <a href="#jimbow">above</a> response to Jimbo W.
+</p>
+
+<hr>
+
+<p><b>Jeff Schwarz (West Paterson, NJ):</b>
+William Poundstone's
+suggestion is a good start. 
+But it needs (1) a way to prevent someone from tampering with the cast vote before the photocopy is made. 
+(2) It also needs a way to prevent people from adding votes, which would have no photocopy and so would never 
+get checked on the Web site.
+</p>
+
+<p><b>Response:</b>
+We (in the paper) already do have these things.<br>
+(1) See <a href="#hunts">above</a> response to S.Hunts.<br>
+(2) The list of names+addesses-of-people-who-voted, extracted from polling-place sign-in sheets,
+is published on the web site too, along with the list of votes
+(but it does <i>not</i> say, and nobody ever knew, how each person voted).
+Extra votes cannot be added without making more votes than voters, which would
+be an instantly-detectable-by-all fraud.  (And see also our <a href="#dcgreene">answer</a> to D.C.Greene.)
+</p>
+
+<hr>
+
+<p><b>John David (Fairfield, Conn; I number his claims for reference):</b>
+As a student of electronic voting, I read William Poundstone's
+proposal with some amusement and a lot of alarm. It is completely unworkable, given the workings of 
+our electoral system and its laws.
+</p>
+<p>
+(1) The proposal itself has some merit.
+But it cannot*
+be adapted to actually work in the context of the election laws of some states, which do not have 
+strictly interpreted recount laws, which prohibit the examination of ballots except under official recount 
+circumstances.
+</p><p>
+(2) Using serialized ballots to randomly verify the results of an election is not a new idea, and it is 
+entirely obvious.
+(3) But rather than having the public get involved, this would have to be carried out correctly at the 
+state Department Of Elections level.
+(4) What this really brings up is the entire lack of a government-sponsored official advisory committee to
+give scientific guidance and recommendations to the states on how to make our elections safe and 
+secure in this new electronic age.
+</p>
+<p>
+<small>
+*Actually the published letter in the NY Times of 9 January
+said "can," but I think "cannot" was intended by David.
+</small>
+</p>
+<p><b>Response:</b>
+(1) It probably is true that State and/or Federal election laws would need to change to implement Rivest/Smith
+antifraud voting protocols.  For example, there could be a law saying "implement Rivest/Smith
+antifraud voting protocols"!
+</p>
+<p>
+(2) I'm not sure that Rivest/Smith was so "obvious."  It actually kept striking me, 
+when I was working on this paper,
+how incredibly simple the final voting methods were, 
+but how incredibly hard it nevertheless was, to
+think of them.    (Perhaps David is just a lot smarter than us, or perhaps he is not fully understanding
+our proposals, I cannot say which.  Anyway, I'm glad he thinks it is obvious.)
+</p>
+<p>
+(3) I don't see why it is more "correct" for the state dept of elections to carry this out
+than the public.  Indeed, I think the opposite.  
+Plus, the whole point is that maybe the public <i>does not trust</i>
+the dept. of elections.   With Rivest/Smith protocols, they do not need to trust them.
+</p>
+<p>
+(4) The good news is that
+actually there is such a committee, and Rivest is a member of it.  It is called the 
+<a href="http://www.eac.gov">EAC</a> (Election Assistance Commission).  
+It was created by HAVA
+(Help America Vote Act).
+The bad news, in my (Smith's) opinion, is this is a toothless body which has been constructed to be
+dominated by voting machine industry flacks who can be counted upon to deter any prospect of real reform.
+I am not necessarily speaking for Rivest in that opinion, though.
+</p>
+
+<hr>
+
+<p><b>Robert T. Carlson (Port Richmond, Calif.):</b>
+This is a welcome and novel idea.. inspired by the open source software movement...
+[but] the random ballot receipt system... could be rigged by voting machine manufacturers that 
+programmed their machines to spew bogus random receipts.
+Thus a more secure system would be doublechecked by another layer of exit polls not subject to 
+manufacturer manipulation.  [There are great exit polls in Germany.]
+</p>
+
+<p><b>Response:</b>
+First, Rivest/Smith specifically wanted the machines to be <i>non</i>computerized hence not "programmable."
+Second, they want the machines to be such that the voter can <i>see</i>, with her very
+own eyes, that the copy is a genuine copy of a random
+ballot that previously was present in the ballot box.
+These means she can see both the original and copy thru glass, and she can see the random selection
+mechanism thru glass, and it really does seem random.
+</p><p>
+We certainly have no objection to more layers of defense, including exit polls.
+(But: warning: I speculate Germany contains a more-homogeneous population than most countries 
+which causes its
+exit polls to perform anomalously well.)
+</p><p>
+<small>
+Incidentally, while we are in no way opposed to "open source," we wish to 
+emphasize that it 
+in no way prevents cheating, a point made very strongly by Ken
+Thompson in his Turing Award Lecture
+"Reflections on Trusting Trust,"
+[Communications of the ACM 27, 8 (August 1984) 761-763]
+<a href="http://www.acm.org/classics/sep95/">http://www.acm.org/classics/sep95</a>.
+</small>
+</p>
+
+<hr>
+
+<p><b>Rob Harmon (Vashon, Wash.):</b>
+William Poundstone offers some intriguing ideas for reducing the possibility of voter fraud. 
+It should be noted however, that unless the software that randomizes the ballots is open source, 
+there will be no way to ensure that the ballots are indeed random. Therefore, regardless of how 
+well the system works, the public will continue to distrust it.
+</p>
+
+<p><b>Response:</b>
+There <i>is</i> no "software for randomizing the ballots."  Therefore there is no
+worry that it is not open source, or closed source, or whatever.
+With Rivest/Smith's proposal,
+the randomization is done by hardware at the polling place.
+(E.g, most simply,
+this "hardware" might just be a big translucent  
+glass box full of ballots which you shake, then pick one to
+make a copy of as your take-home receipt.)
+The public, since it can see with its very own eyes how the randomization is working, and the machine/box
+is constructed in such a way as to make it obvious what is happening, <i>can</i> trust it.
+</p>
+
+<hr>
+
+<p><b>Jean Camp (Bloomington, IN):</b>
+...This system embeds an inappropriate degree of blind individual trust in technical expertise. 
+Your average voter could no more do the math than your average cryptographer could do brain surgery...
+</p>
+
+<p><b>Response:</b>
+Actually you have the right idea in mind, but have it exactly wrong about Rivest/Smith. 
+The whole point of Rivest/Smith
+is that you do <i>not</i> have to trust the experts!
+</p>
+<p>
+For example, right now, you have to believe the voting machines are counting correctly, the election officials
+are not cheating, etc. etc. <i>That's</i> blind trust.
+With Rivest/Smith, if those things/people are cheating, <i>you will catch them.</i>
+Get it?  
+No trust involved.  Verification involved.  By you. 
+Personally.
+In a way simple enough to explain to children.
+</p>
+<p>
+<i>It doesn't matter</i> if the government's bulletin board, the internet,
+the election workers, etc etc all
+are corrupt.
+<i>It doesn't matter</i> if the fraudsters have got huge supercomputers and armies of hackers
+helping them.
+If the Rivest/Smith assumptions are met, i.e. the machines in the polling places do what they
+are supposed to
+and the protocols are followed in each polling place, then all the corruption,
+hacking, and supercomputers
+in the world aren't going to allow the evil government to tell who has a receipt for what.
+So they can't fake it without the fraud being detected, with proof, by the voters themselves
+via the receipts.   
+</p>
+<p>
+And you don't need to trust any expert.  You can see it all by yourself.
+</p>
+
+<hr>
+
+
+
+
+
+<p>(65 comments so far as of 8 January...  I've tried to answer all the best questions...)
+&ndash; Warren D. Smith.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

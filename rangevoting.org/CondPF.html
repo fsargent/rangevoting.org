@@ -1,0 +1,142 @@
+<html>
+<head>
+<title>
+RangeVoting.org - "Participation failure" is forced in Condorcet methods with at least 4 candidates
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> 
+"Participation failure" is forced in Condorcet methods with at least 4 candidates
+</H2>
+
+<p>
+We shall prove the following theorem.  
+<br>
+<small>
+Our proof is an improvement &amp; simplification of
+an earlier proof by Markus Schulze which in turn simplified one by Herve Moulin.
+</small>
+</p>
+
+<p>
+<b>Theorem:</b>
+It is impossible for any (possibly nondeterministic)
+single-winner election method (with preference orderings
+as votes) with &ge;4 candidates to satisfy both
+<dl>
+<dt>
+<b>Condorcet:</b>
+</dt>
+<dd>
+if there is a Condorcet ("beats all") Winner, he
+must be elected uniquely and with certainty,
+</dd>
+<dt>
+<b>(Strong) participation:</b>
+</dt>
+<dd>
+adding votes
+with A ranked top
+cannot decrease the probability A wins, and adding
+votes with B ranked below all voters who win with positive probability,
+cannot increase the probability that B wins.
+</dd>
+</dl>
+
+<hr>
+
+<p>
+<small>
+Note: further, the extension to our proof will produce
+"maximally dramatic" no-show
+paradoxes requiring only a single no-show voter.
+</small>
+</p>
+
+<p><b>Proof:</b>
+Suppose such a method existed. Then starting with the
+14-voter scenario below
+we shall in six further steps
+derive a contradiction.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption><b>Situation 1:</b></caption>
+<tr><th> #voters </th><th> their vote </th></tr>
+<tr><td> 6 </td><td> A>D>B>C </td></tr>
+<tr><td> 5 </td><td> D>B>C>A </td></tr>
+<tr><td> 3 </td><td> B>C>A>D </td></tr>
+</table>
+
+<p>
+ <b>Situation 2:</b>
+Suppose B was elected with positive probability
+in situation 1. When we add 7 B>D>A>C voters, B
+must be elected with positive probability
+(by participation) while
+D must be elected with certainty according to Condorcet.
+Contradiction.
+</p><p>
+ <b>Situation 3:</b>
+Suppose C was elected with positive probability
+in situation 1. When we add 9  C>B>A>D voters, C
+must be elected with positive probability (by participation) while
+B must be elected with certainty according to Condorcet.
+Contradiction.
+</p><p>
+ <b>Situation 4:</b>
+Suppose D was elected with positive probability
+in situation 1. When we add 3 D>A>B>C voters, D
+must be elected with positive probability (by participation) while
+A must be elected with certainty according to Condorcet.
+Contradiction.
+</p><p>
+ <b>Situation 5:</b>
+We conclude from situations 2-4 that A must be elected with
+certainty in situation 1.
+When we add 7 C>A>B>D voters,
+B and D must be elected each with
+zero probability (by participation).
+</p><p>
+ <b>Situation 6:</b>
+Suppose A was elected with positive probability
+in situation 5. When we add 8 A>C>B>D voters, A
+must be elected with positive probability (by
+participation) while
+C must be elected with certainty according to Condorcet.
+Therefore, A couldn't be elected with positive probability in situation 5.
+</p><p>
+ <b>Situation 7:</b>
+Suppose C was elected with positive probability
+in situation 5. When we add 6 C>B>A>D voters, C
+must be elected with positive probability (by participation) while
+B must be elected with certainty according to Condorcet.
+Therefore, C couldn't be elected with positive probability in situation 5.
+<br>
+<b>Q.E.D.</b>
+</p><p>
+<b>Extension:</b>
+In the scenarios in our proof with k identical no-show voters, we
+can &ndash; by adding those voters one at a time until the first
+one that changes the winner &ndash;
+produce a "no-show paradox" scenario with only a <i>single</i> no-show voter.
+<br>
+<b>Q.E.D.</b>
+</p>
+<br>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

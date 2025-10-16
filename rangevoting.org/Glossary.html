@@ -1,0 +1,713 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Glossary
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Glossary of voting-related terms </H2>
+
+<dl>
+<a name="antipl"></a>
+<dt><b>AntiPlurality Voting:</b></dt>
+<dd>
+A voting system (which nobody seriously proposes for real-life use because it
+is universally agreed to be poor) where each vote is the name of a single candidate,
+and the <i>least</i>-named candidate wins.
+</dd>
+
+<dt><b><a href="Apportion.html">Apportionment</a></b></dt>
+<dd>
+Schemes to assign to each state in the USA, a number of congressmen (based on state populations);
+also mathematically related or equivalent are schemes (such as d'Hondt or Sainte-Lagu&euml;) to
+assign to each political party, a number of seats in parliament (based on party vote counts 
+in an election).
+</dd>
+
+<dt><b><a href="rangeVapp.html">Approval Voting</a>:</b></dt>
+<dd>
+Voting system where a voter <i>approves</i>
+or  <i>disapproves</i> of each candidate, and the most-approved candidate wins.
+This is a degenerate form of range voting arising when only two numerical
+values (the range-endpoints) are allowed scores.  
+It is also the same as plurality voting with "overvoting" allowed.
+(We could also consider "trinary" approval voting also permitting "intentional blanks";
+then an approval counts 1, a disapproval 0, and the candidate with the highest average
+score is elected.)  Invented by <a href="OttewellEndorse.html">Guy Ottewell</a> in 1968.
+</dd>
+
+<dt><b><a href="ArrowThm.html">Arrow's impossibility theorem</a></b></dt>
+<dd>
+(See the linked page.)  There are also many other impossibility theorems, some of which I 
+consider more important (even though it was Arrow's which won the Nobel Prize)
+such as the <a href="GibbSat.html">Gibbard-Satterthwaite</a> 
+and 
+<a href="SimmonsSmithPf.html">Smith-Simmons</a> theorems.
+</dd>
+
+<dt><b><a href="Asset.html">Asset Voting</a></b></dt>
+<dd>
+An unconventional <a href="#PR">PR</a>
+voting system proposed for multiwinner elections. The simplest version
+(by F.Simmons) is this (for W-winner, C-candidate elections 1&le;W&lt;C):
+<ol><li>
+Each voter names one candidate as her vote; 
+</li><li>
+Regard each candidate's vote-total
+is his amount of "assets"; 
+</li><li>
+The candidates negotiate to transfer assets among themselves;
+</li><li>
+Once all negotatiations and asset-transfers are ended, then the W "richest"
+candidates win.
+</li></ol>
+</dd>
+
+
+<dt><b><a href="BayRegDum.html">Bayesian regret</a>:</b></dt>
+<dd>
+The "Bayesian regret" of an election method E is the "expected avoidable 
+human unhappiness" caused by using E
+(within a certain mathematical/probabilistic model &ndash; no actual humans are involved).
+Better voting systems have smaller regret values.
+The regret value of any given election system in any given probabilistic
+scenario can be measured.  This gives a quantitative way to compare 
+the quality of two election systems.
+</dd>
+
+<dt><b>"Binary" election or referendum:</b></dt>
+<dd>
+Means there are only two candidates (or options), e.g. "yes" versus "no."
+</dd>
+
+<a name="black"></a>
+<dt><b>Black's Voting Scheme:</b></dt>
+<dd>
+Elect a Condorcet Winner if one exists, otherwise use the Borda system.
+(A simple way to handle Condorcet cycles due to Duncan Black. This particular
+Condorcet method is generally looked down on by modern Condorcetists, but it might
+still have some good <a href="CondBurial.html">points</a>.)
+</dd>
+
+<a name="Borda"></a>
+<dt><b><a href="rangeVborda.html">Borda Voting</a>:</b></dt>
+<dd>
+Voting system where a vote is a rank-ordering of all the <i>N</i> candidates. 
+The <i>k</i>th-ranked candidate gets score <i>N-k</i>.  The candidate with
+the highest score-sum is elected.  (It is also possible in various ways to
+allow "truncated ballots" in Borda voting where you only
+rank some of the candidates; but it is unclear how best to do that
+and there are several competing approaches. One is: a candidate ranked S spots above the
+bottom-ranked candidate on that ballot gets Borda score S.)
+<br>
+Attributed to 
+<a href="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Borda.html">Jean-Charles de Borda</a> 
+(1733-1799).
+This is a <a href="#WeightedPos">weighted positional</a> voting system.
+</dd>
+
+<dt><b><a href="BtrIrv.html">BTR-IRV</a>=Bottom Two Ranks-IRV:</b></dt>
+<dd>
+Attempt to improve IRV voting system to cause the Condorcet winner (if one exists)
+always to win.
+Each vote is a rank-ordering of all the <i>N</i> candidates, for example
+"Nader&gt;Gore&gt;Bush&gt;Buchanan" would be a possible vote (with <i>N=4</i>).
+After collecting the votes, the <i>N</i>-candidate election proceeds in a sequence
+of <i>N-1</i> "rounds."
+In each round one candidate is eliminated
+and he is erased from all votes.  For example, if "Bush" were eliminated,
+then the above vote would become
+"Nader&gt;Gore&gt;Buchanan."
+<br><br>
+The one to eliminate is
+found as follows.
+Find the two candidates A and B whom the fewest voters top-rank.
+Now, ignoring all candidates except A and B in all the votes,
+i.e. based solely on the A&gt;B and B&gt;A relations in those votes,
+perform a 2-candidate majority election among A and B only.
+The loser of that "election" is the one we eliminate.
+<br><br>
+The BTR-IRV system was invented by <a href="http://cec.wustl.edu/~rhl1/">Rob LeGrand</a>.
+</dd>
+<a name="clones"></a>
+<dt><b><a href="CandCloning.html">Cloning</a>:</b></dt>
+<dd>
+"Cloning" a candidate is the hypothetical operation of creating a candidate
+the same as the original one in every important way (in particular, all clones
+are ranked adjacent by every rank-order voter, and within &epsilon; by every range-style voter
+in the limit &epsilon;&rarr;0)
+and adding him as a new
+contender to the race.  Of course this rarely or never exactly happens, but it often 
+approximately happens.  Many voting systems react very badly to cloning.  For
+example, in the plurality system, a candidate who is clearly the best may spawn 
+imitators ("clones") with mild deviations, exactly
+<i>because</i> his stances are so clearly the best.  Then all the clones lose (due to vote-splitting)
+causing a bad candidate to win.  Range voting, in contrast, has no problem with cloning
+and vote-splitting simply does not exist with range voting.
+</dd>
+
+<a name="condmeths"></a>
+<dt><b><a href="rangeVcond.html">Condorcet</a>:</b></dt>
+<dd>
+A wide class of voting systems are called "Condorcet systems" if they
+always elect the "Condorcet winner" if he exists (but do various other things,
+depending on which system it is, when and if he does not exist).  BTR-IRV is a
+recent example of a Condorcet system; new ones seem to be proposed about once a year.
+The original concept and the first Condorcet voting system (the "least reversal"
+system) both were invented by
+Marie Jean Antoine Nicolas de Caritat, the 
+<a href="http://www-groups.dcs.st-and.ac.uk/~history/Mathematicians/Condorcet.html">Marquis de Condorcet</a> 
+(1743-1794).
+Other Condorcet systems include 
+<a href="RankedPairs.html">Tideman Ranked Pairs</a>,
+<a href="SchulzeComplic.html">Schulze Beatpaths</a>,
+and several other methods, such as 
+Simpson-Kramer MinMax
+and Smith-prefaced methods, are described <a href="SchulzeExplan.html">here</a>.
+</dd>
+
+<dt><b><a href="CondorcetCycles.html">Condorcet cycles</a>:</b></dt>
+<dd>
+or "preference cycles"
+are a common way in which Condorcet winners can fail to exist, i.e. in
+which each candidate would lose to some other in a pairwise contest.
+</dd>
+
+<a name="condwin"></a>
+<dt><b>Condorcet Winner (traditional definition):</b></dt>
+<dd>
+Consider an election system in which votes can be used (at least if we assume "honest" non-strategic voting)
+to deduce the voter's
+preference within each candidate pair.  If a candidate A is preferred over
+each other candidate B by a majority of the voters, then A is a Condorcet Winner
+or "beats-all winner." (There is no necessity
+that a Condorcet winner exist, however. 
+One appears to exist somewhere between 80
+and 100% of the time in practical elections.)
+<!-- NES data makes it appear that the US presidential race has always
+yielded a Condorcet winner ever since NES began taking data in the 1940s,
+with the asterisk that *Gore* was the CW in 2000.  Thus
+(fortunately, since this makes determining the winner easier)
+cycles are rare in practice -->
+<br><br>
+It is also possible to define Condorcet winner in <a href="CondDQ.html">
+inequivalent nontraditional ways</a>.  Range voting is a Condorcet voting method under
+the nontraditional definition, but not with the traditional one.  (The two definitions
+are in fact equivalent on every voting method that Condorcet himself ever considered,
+and indeed that had ever been considered in the political science literature before the 1990s,
+i.e. all "ranked ballot" methods.  Hence, it is not possible for us to tell which
+definition-version Condorcet himself would have preferred, nor is it possible for us to tell whether
+Condorcet himself would have agreed that Range Voting meets his criterion.)
+</dd>
+
+<a name="Coombs"></a>
+<dt><b>Coombs:</b></dt>
+<dd>
+The Coombs system is like <a href="rangeVirv.html">IRV</a>
+except that the candidate <i>bottom</I>-ranked by the
+<i>most</i> voters is eliminated each round.
+Unfortunately, strategic voters are tempted to bottom-rank the candidate they
+like least <i>among</i> the frontrunners in the pre-election polls
+(as opposed to the one they truly like least),
+to try to defeat him by getting him eliminated.  This will cause
+surefire elimination of all the frontrunners and the surefire election
+of a "dark horse" every time.   Not very useful.
+</dd>
+
+<a name="Copeland"></a>
+<dt><b>Copeland:</b></dt>
+<dd>
+In the Copeland system,
+each vote is a rank-ordering of the candidates and
+the candidate with the greatest "Copeland score" (i.e. defeating the most
+rivals pairwise) wins.     Copeland has an unfortunate propensity for
+exactly-tied winners 
+(<a href="PuzzlePage.html#p100">puzzle #100</a>)
+and it is highly vulnerable to <a href="CandCloneSumm.html">candidate-cloning</a>.
+But it enjoys some good properties of "resistance to strategic voting," see
+<a href="PuzzlePage.html#p86">puzzle #86</a>.
+</dd>
+
+<dt><b><a href="rangeVcumulative.html">Cumulative Voting:</a></b></dt>
+<dd>
+Like plurality voting, except each voter can vote some fixed number (for example 5)
+of times in the same election, and her 5 votes need not be all the same.
+However, strategically speaking, it is best if all her votes <i>are</i> the same,
+in which case cumulative voting just becomes the same thing as the 
+<a href="Plurality.html">plurality</a> system
+(but more complicated) &ndash; which is stupid.  (Cumulative voting has also
+been suggested for <i>multi</i>winner elections &ndash; which also is not a very good idea &ndash;
+but we shall not discuss that here.)
+</dd>
+
+<a name="Dirichlet"></a>
+<dt><b>Dirichlet model:</b></dt>
+<dd>
+A probabilistic model for elections in which, if there are N possible allowed votes a
+voter can cast, then the N vote-totals in the election form an N-vector uniformly distributed
+on the (N-1)-dimensional simplex
+<center>
+V<sub>1</sub>+V<sub>2</sub>+V<sub>3</sub>+...+V<sub>N</sub>=100, &nbsp;
+V<sub>1</sub>&ge;0, V<sub>2</sub>&ge;0, V<sub>3</sub>&ge;0, ..., V<sub>N</sub>&ge;0.
+</center>
+in N-dimensional space.  This is different from the "random elections model."
+</dd>
+
+<dt><b><a href="DH3.html">DH3 pathology</a>:</b></dt>
+<dd>
+Our name for a devastatingly common and severe problem that arises in many voting systems whenever
+there are three "main rival" good candidates and 1 or more "dark horse" bad candidates who
+would initially appear to have no hope to win because all voters unanimously mentally agree they
+all are worse quality than all three main rivals.  In many voting systems
+voters feel strategically forced to
+"exaggerate" the differences between the 3 main rivals in their votes, which then
+guarantees the election of a bad "dark horse."
+<small>We later found out that very similar ideas had been proposed by political
+science professor Burt L. Monroe under the name "NIA" in work which apparently was never
+published.</small>
+</dd>
+
+<dt><b><a href="Duverger.html">Duverger's law</a>:</b></dt>
+<dd>
+The empirical fact (supported by a vast amount of data) that plurality voting systems
+tend over time to lead to self-reinforcing 2-party domination.  The same is
+true (various post-Duverger authors pointed out) with instant runoff voting (IRV).
+In contrast (as Duverger
+also pointed out) proportional representation party-list systems 
+and the (French) plurality-with-separate-top-two-runoff system (T2R) both
+tend to lead to many political parties.
+</dd>
+
+<dt><b><a href="FBCsurvey.html">Favorite betrayal</a>:</b></dt>
+<dd>
+Our name for the 
+phenomenon, common to many kinds of voting systems, that it often is strategically
+advantageous for a voter to rank her favorite candidate <i>below</i> top
+in his vote.  This can often be useful to help a "lesser evil" defeat
+a greater one.   It is a very serious threat that strikes at the very core of democracy, if
+a voting system motivates people not to vote their favorites top.
+Range and Approval voting both 
+avoid this flaw, but IRV, Borda, all Condorcet systems, and Plurality
+all suffer from it.
+</dd>
+
+
+<dt><b>Gender Convention:</b></dt>
+<dd>
+In the USA at present (2013) the
+majority of voters are female, while the majority of 
+candidates for office (and office holders) are male.
+It therefore is convenient when talking about voting systems to use words like "she" and "her"
+when discussing voters, versus "he" and "his" when discussing candidates.
+We suggest this convention purely for the purpose of making your writing clearer &ndash;
+accusations of sexism be damned.
+</dd>
+
+<a name="irv"></a>
+<dt><b><a href="rangeVirv.html">IRV</a>=Instant Runoff Voting</b>
+(also called "The alternative vote" in, e.g, Britain)<b>:</b></dt>
+<dd>
+A bastardized  version of the "Hare/Droop reweighted STV"
+multiwinner proportional voting system.   More precisely, IRV is 
+the <i>single</i>-winner special 
+case of this voting system.  (Hence IRV no longer has any claims to being
+a "proportional" voting system, which was the whole reason Hare and Droop invented STV in 
+1800s Britain &ndash; but it is simpler.)
+The <a href="http://www.fairvote.org">main US advocates of IRV</a>
+unfortunately were influenced by the British 
+<a href="http://www.electoral-reform.org.uk/">Electoral Reform Society (ERS)</a>,
+which advocates <a href="PropRep.html">proportional representation</a>
+election of parliament
+via Hare/Droop STV.  In fact for over 100 years Hare/Droop STV
+was the <i>only</i> known voting system achieving <i>proportionality</i>, so the ERS's 
+stance was well
+justified.  However, in a single-winner context, where proportionality is not an issue and
+STV degenerates to IRV, this whole stance <a href="IrvLogicBogus.html">makes no real sense</a>.
+(It is like saying "lye tastes good as a trace ingredient of chocolate, therefore,
+we should eat lye.")
+Incidentally, there is a multiwinner proportional version of Range Voting,
+called "<a href="RRV.html">reweighted range voting</a>" (paper #78
+<a href="WarrenSmithPages/homepage/works.html">here</a>)
+which is simpler than, as well as apparently superior to,
+Hare/Droop STV; thus even Hare/Droop STV should now probably be regarded as obsolete,
+see paper #91 <a href="WarrenSmithPages/homepage/works.html">here</a>.
+<br><br>
+Specifically IRV <b>works as follows:</b>
+each "vote" is a rank ordering of all the <i>N</i> candidates.  
+The election proceeds in <i>N-1</i> "rounds": each round, the candidate top-ranked by 
+the fewest votes is eliminated (both from the election, and from all orderings inside votes).
+After <i>N-1</i> rounds only one candidate remains, and is declared the winner.
+<br><br>
+(It is also possible in various ways to
+allow "truncated ballots" in IRV voting where you only
+rank some of the candidates; but it is unclear how best to do that
+and there are several competing
+approaches.)
+</dd>
+
+<a name="majority"></a>
+<dt><b>Majority:</b></dt>
+<dd>
+Means <i>more than half</i> of all voters.
+(As opposed, e.g. to a mere "plurality.")
+</dd>
+
+
+<a name="mono"></a>
+<dt><b><a href="Monotone.html">Monotonicity</a>:</b></dt>
+<dd>
+A voting sytem is "monotonic" if
+<ol><li>increasing your vote for X cannot worsen X's winning chances;
+</li><li>
+decreasing your vote for Y cannot improve Y's winning chances.
+</li></ol>
+Approval, Borda, and Range voting are monotonic.  But Instant Runoff Voting (IRV) is not.
+Some Condorcet systems are monotonic, <a href="SmithIRV.html">others</a> are not.
+</dd> 
+
+<a name="normalized"></a>
+<dt><b>Normalized:</b></dt>
+<dd>
+A range vote is "normalized" if it rates the best candidate (in the view of that voter) 
+with the maximum possible score, and the worst with the minimum possible score.
+</dd> 
+
+<dt><b><a href="NurseryEffect.html">Nursery effect</a>:</b></dt>
+<dd>
+Our name for the empirical
+phenomenon that, under range voting, small ("infant") third parties
+tend to receive the benefits of honest voter-ratings (since there is little incentive
+for range voters to be dishonest-strategic about candidates who have little chance to win)
+&ndash;
+and therefore experimentally collect far greater vote counts than under either
+approval or plurality voting (systems in which strategic exaggeration by voters is
+virtually mandated).  This "coddles" them in a "protective nursery" giving them a chance
+to grow into larger parties.
+</dd>
+
+<dt><b>Overvote:</b></dt>
+<dd>
+When, in plurality voting, you vote for more than one candidate.
+The Plurality System forbids overvotes (if you try it, your vote will be discarded
+as "spoiled")
+but the Approval System allows them.
+</dd>
+
+<dt><b>Pathologies/Paradoxes:</b></dt>
+<dd>
+A <i>pathology</i> is a situation in which a voting system appears to malfunction and
+misbehave, delivering a result which hurts society.   Instant Runoff Voting (IRV) suffers
+<a href="IrvPathologySurvey.html">many kinds</a> of pathology, quite
+<a href="IrvParadoxProbabilities.html">frequently</a>,
+while range voting is
+well behaved and suffers comparatively few.
+</dd>
+
+<dt><b><a href="Plurality.html">Plurality</a> system:</b></dt>
+<dd>
+Also known as "first-past-the-post," plurality is by far the most common 
+voting system for single-winner races. (Unfortunately.) Your "vote" is the "name of a single 
+candidate," and the most-named candidate wins.
+</dd>
+
+<a name="PR"></a>
+<dt><b>PR=<a href="PropRep.html">Proportional Representation</a>:</b></dt>
+<dd>
+Voting systems intended for <i>multi</i>winner elections which strive to satisfy the ideal
+that the election winners "represent" the voters well.  For example, if the voters are 51%
+female but the winners are 4% women  (US Congress, approximate historical average)
+then that is highly "disproportional."  If 33% of all voters are not registered as either
+"Democrats" or "Republicans," but 100% of all winners are, that again is 
+highly disproportional.  (Survey of PR voting systems: 
+<a href="WarrenSmithPages/homepage/works.html">#91 here</a>.)
+</dd>
+
+<a name="REM"></a>
+<dt><b><a href="RandElect.html">Random Elections Model</a>:</b></dt>
+<dd>
+Also known in the literature as the "Impartial Culture," the
+random elections model
+postulates that each of the V voters casts one of the N allowed votes uniformly
+at random (and independently of every other voter), so that every possible election 
+(where "election" means "table saying the vote cast by each voter")
+is equally likely.  One then generally is interested in the limit V&rarr;&infin;.
+It is better to generalize this to voting systems such as
+continuum <a href="RangeVoting.html">range voting</a>
+in which an infinite set of votes is allowed.  To do that, we suppose each voter has
+an independent identical normal-random-variate for the "utility value"
+of each candidate.  The voter than acts based on these utilities in deciding on her vote.
+For voters who act "honestly" this is equivalent to the impartial culture for rank-order
+ballots. But since it also allows other kinds of ballots, it is a more general model.
+(This is different from the <a href="#Dirichlet">Dirichlet Model</a>.)
+</dd>
+
+<dt><b><a href="RangeVoting.html">Range Voting</a></b>, also called <b>Score Voting:</b></dt>
+<dd>
+Excellent voting system in which each voter provides a numerical score within a given
+<i>range</i> to each candidate and the candidate with the greatest score-sum wins.  
+(For example, if the allowed range was 0-99, then a valid
+range vote might be "Lincoln=99, Harding=0, Washington=99, McKinley=47.")
+A system very much like range voting is used by the Olympics to select gold-medal gymnasts.
+A variant permits <a href="Blanks.html">X</a>, i.e. "intentional blank," votes
+for candidates about whom the voter has no opinion.    In that case the candidate with
+the highest average score (where the Xs for you are not incorporated into your average)
+wins.
+</dd>
+
+<dt><b><a href="PlurRunoff.html">Runoff</a> elections:</b></dt>
+<dd>
+System where  a <i>second</i> election is held to determine the final winner.
+In the most common version, we have a first round plurality election, then if anybody got over 50% of
+the votes, they win.  Otherwise, the top two finishers participate in an extra "runoff" election
+and the winner among them is the final winner.
+This system is used in France and many other countries to elect presidents, and it has been
+very common <a href="FunnyElections.html">historically</a> that the final winner has differed from 
+the first round's winner.
+</dd>
+
+<a name="Quas"></a>
+<dt><b>Quas "1-dimensional political spectrum" model:</b></dt>
+<dd>
+Simple probabilistic model of elections introduced by Anthony Quas,
+suitable for use with rank-order-ballot voting systems.
+The &infin; "voters" are the uniform distribution on the real interval (0,1).
+The C "candidates" are C random points on that interval, i.e. C
+independent random samples from the voter-distribution.  The voters are assumed to order the 
+candidates by distance away from them (closest candidate ranked top).
+Example theorem (proven by W.D.Smith 2010): in the C-candidate Quas model, C&ge;2,
+the probability that  "majority-top winner" exists
+(i.e. that there exists a candidate ranked unique-top by over 50% of the voters)
+is exactly 2<sup>2-C</sup>.
+<br> &nbsp;&nbsp;&nbsp;
+Quas's model has the flaw (or "property") that Condorcet voting methods are optimal 
+for it (assuming honest voters and a concave-&cap; voter-candidate distance-based
+utility function).  That is a consequence of 
+<a href="BlackSingle.html">Black's 1D theorem</a>. 
+That is, with honest voting, any Condorcet method will automatically
+elect whichever candidate is located nearest to &frac12;.  Meanwhile range voting,
+instant runoff, etc, will not always do so (and nor will Condorcet 
+voting with strategic voters).
+</dd>
+
+<dt><a name="SmithSet"></a><b>Smith set:</b></dt>
+<dd>
+If all candidates in a set S pairwise-beat all candidates in the complement subset
+(i.e a voter majority prefers each S-member over each candidate not in S)
+and S is the smallest nonempty such set, then S is called the "Smith Set."
+A "Condorcet winner" is a 1-element Smith set.  (Related is the "Schwartz set" in which
+"beat" is replaced by "beat or tie.")
+</dd>
+
+<dt><b><a href="Spoiled.html">Spoiled ballots</a>:</b></dt>
+<dd>
+Ballots that do not meet the rules of the voting system and hence which are discarded 
+without using them in the election.  For example, "overvotes" are spoiled plurality votes,
+and ballots not giving a rank order, such as Gore=2, Bush=2, Nader=1, Buchanan=0, are
+spoiled for use in Borda and IRV.
+Ballot "spoilage" has historically been heavily used by 
+election <a href="LessFraud.html">fraudsters</a> and manipulators.
+Some election systems like plurality and especially IRV are prone to spoilage, other
+systems like Range Voting are comparatively immune to spoilage &ndash; e.g, in single-digit
+range voting, <i>any</i> way to fill in the slots with either single digits or
+intentional (or unintentional) blanks is a valid ballot.
+</dd>
+
+<dt><b>Spoiler:</b><a name="spoiler"></a></dt>
+<dd>
+A "spoiler" is a candidate S, such that, if you vote for S, that could cause both S and
+your second-favorite candidate Q <i>both</i> to lose, whereas if you had voted for Q (e.g. if
+S were to drop out of the race, or if you just voted dishonestly to strategically pretend
+Q was your true favorite), then Q would have won.  
+Spoilers can exist in Plurality, IRV, Borda, and  Condorcet voting
+but do not exist in Approval and Range voting.
+</dd>
+
+<dt><b>Strategic voting</b> (also called <b>insincere</b> or <b>tactical</b> voting)<b>:</b></dt>
+<dd>
+The practice of submitting a "dishonest" vote, presumably in order to increase its
+chances of causing something good (from that voter's point of view) to happen.
+(Actually, some gameplayer-types object to the use of words such as "dishonest" or
+"distorted," since in
+their view votes have no inherent meaning, therefore, it is impossible to mis-state their
+meaning and hence
+dishonesty is not possible.  In their view voting is just a game, the election system defines
+the rules of the game, votes are moves 
+in the game, and you play to win the most that you can.)
+<br><br>
+For example, in the USA's single-winner
+plurality voting system, it is often strategically-poor gameplaying to vote
+for your favorite candidate &ndash; if he has no chance to win, it is
+certainly strategically pointless to waste your vote on him.  
+<br><br>
+Good voting systems have the property that "best strategic votes" and "honest votes" are
+usually the same thing (or at least close to being
+the same thing, in some metric); but in bad voting systems
+like Plurality and Borda, the two often differ greatly.
+</dd>
+
+<dt><b><a href="TTRexec.html">Top-two runoff (T2R)</a>:</b></dt>
+<dd>
+System (used in many countries as of 2013, e.g. <a href="France2012.html">France's 2012</a>
+and <a href="France2007.html">2007</a>
+presidential elections) 
+where the top two candidates reckoned by
+a plurality-voting election, get to run in a second, binary, election, whose winner
+wins the seat.  This partially corrects serious distortions from plain plurality voting
+(i.e. the first round by itself) and seems often to overcome Duverger's law
+of 2-party domination.
+In the real world 
+T2R exhibits some important <a href="TTRvsIRVrevdata.html">statistical differences</a>
+versus the "instant runoff" (IRV)
+system, in particular IRV still yields 2-party domination.
+</dd>
+
+<dt><b>Turnout:</b></dt>
+<dd>
+The percentage of people eligible to vote who actually do vote in some election.
+</dd>
+
+<dt><b><a name="Uncovered"></a>
+Uncovered set</b> (and the notion of <b>"covering"</b>)<b>:</b></dt>
+<dd>
+In a multicandidate election using rank-order ballots,
+candidate X "covers" candidate Y if and only if
+<ol type="a">
+<li>
+every candidate that beats X also beats Y (pairwise),
+<i>and</i>
+</li><li>
+X beats at least one candidate that Y does not,
+or X ties at least one candidate that 
+beats Y.
+</li></ol>
+Equivalent definition of "X covers Y":
+X does at least as well as Y (with regard to pairwise win/tie/loss &ndash;
+we ignore how <i>severe</i> those losses are, merely taking account of whether they <i>exist</i>)
+against each candidate, and better versus at least one.
+<br><br>
+(Here we assume that any candidate is automatically tied with <i>itself</i>.
+Hence "X covers Y" prevents "Y beats X," and in the absence of
+nontrivial ties, would force "X beats Y."
+If X is tied with Y, it can still cover Y, as long as it does as 
+well as Y against the other candidates and strictly better against at least one of them.)
+<br><br>
+Final equivalent definition of "X covers Y": Either
+<ul><li>
+X beats Y and does at least as well as Y versus each rival, or
+</li><li>
+X ties Y and does at least as well as Y versus each rival and better than Y versus at
+least one rival.
+</li></ul>
+The covering relation forms a "partial order" among the candidates.
+Hence there always is at least one uncovered candidate.
+If and when a <a href="#condwin">condorcet winner</a>
+exists, it is the sole uncovered candidate.
+The uncovered set is a subset of the <a href="#SmithSet">Smith set</a>.
+<br><br>
+A geometrical theorem:
+If the voter locations are centro-symmetric around some center in some Euclidean space, 
+and voter preferences are based on the Euclidean <i>distance</i> 
+from that voter to each candidate (closer preferred) then X covers 
+Y if and only if X lies closer to the center than Y.  
+The covering relation then is a total order and the
+uncovered set consists exactly of the candidates at minimum distance to the central point.
+<br><br>
+But for <i>non</i>symmetric voter distributions in Euclidean space, 
+the situation is more complicated.
+The uncovered set can then contain many candidates and have a non-ball, indeed nonconvex,
+shape. 
+<br><br>
+A theorem about "agenda manipulation" (by Nicholas R. Miller):
+Suppose the one winner among a set of candidates is decided by a pairwise 
+<i>knockout tournament</i>.
+That is, in each round of the tournament, two candidates X and Y compete, and if the voters
+by majority prefer Y over X, then X is eliminated.  We continue
+until only a single candidate remains, and he is the winner.
+Suppose the designer of the tournament (i.e. of the schedule of who is paired
+with who &ndash; we assume designer knows all voters' preference orderings, and
+that all voters vote honestly) can force any specified
+candidate in some set T to win.  
+Miller's theorem: 
+T, and the uncovered set S, are the same.
+<br><br>
+Score Voting
+does not necessarily elect a member of the uncovered set, albeit if
+we change the definition of "X covers Y" to incorporate preference <i>strengths</i>
+instead of ignoring them &ndash; which seems more sensible if using a score-based ballots
+&ndash; then it does, indeed then the score voting winner
+always is the <i>only</i> uncovered candidate.
+So with this redefinition and score voting, the uncovered set is trivialized and
+agenda manipulation is
+made impossible <i>if</i>
+voters must score self-consistently in different rounds.
+Agenda manipulation unfortunately would remain possible
+with no such self-consistency constraint, but by just having a single range voting election,
+one round only, there is no "agenda" to be manipulated...
+</dd>
+
+<dt><b><a name="WeightedPos"></a>
+<a href="WtPositnl.html">Weighted positional system:</a></b></dt>
+<dd>
+Voting system where a vote is a rank-ordering of all the <i>N</i> candidates. 
+The <i>k</i>th-ranked candidate gets score <i>W<sub>k</sub></i> for some fixed
+set of "weights" W<sub>1</sub>&ge;W<sub>2</sub>&ge;W<sub>3</sub>&ge;...&ge;W<sub>N</sub>.
+The candidate with
+the greatest score-sum is elected.  
+(For example, Borda is the weighted positional system
+with W<sub>k</sub>=N-k, and plurality is the
+weighted positional system with 
+W<sub>1</sub>=1 and W<sub>k</sub>=0 for 2&le;k&le;N.)
+<a href="PuzzlePage.html#p31">Puzzle 31</a>
+demonstrates one very embarrassing flaw in all weighted positional systems.
+</dd>
+
+<dt><b><a href="WinningVotes.html">Winning votes</a></b> versus <b>Margins:</b></dt>
+<dd>
+In Condorcet voting methods in which equal rankings are permitted in votes,
+there are two natural ways to reckon the "strength"
+of a "pairwise victory":
+margins and winning votes.
+The "margin" of A over B is the number of votes saying A>B,
+minus the number saying B>A.
+If more votes say A>B than B>A, then A wins that pairwise contest, and the number
+of "winning votes" is precisely the number of votes saying A>B.  Otherwise it is zero.
+The distinction between these two concepts may sound minor, but it can have some
+<a href="WinningVotes.html">profound consequences</a>.  If equal rankings are <i>forbidden</i>
+(i.e. you are allowed to vote "A>B" or "B>A" but never "A=B") then the
+distinction between winning votes and margins vanishes.
+</dd>
+
+</dl>
+
+
+<H3> Other glossaries </H3>
+
+<ul>
+<li>
+<a href="http://www.york.cuny.edu/~malk/fairness-glossary.html">Joe Malkevitch's 
+Fairness and Equity Glossary</a>
+</li><li>
+<a href="http://www.mtholyoke.edu/acad/polit/damy/BeginnningReading/glossary_of_terms.htm">
+Douglas J. Amy's Proportional Representation Voting Glossary</a>
+</li><li>
+<a href="http://www.deborda.org/storage/publications/Glossary2.doc">
+Peter Emerson's Voting Terms Glossary</a> at his 
+<a href="http://www.deborda.org/">deborda.org</a> website.
+</li>
+</ul>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

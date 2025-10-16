@@ -1,0 +1,579 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Approval Voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Why Range Voting is Better than Approval Voting </H2>
+
+<p>
+(<a href="#Summary">Skip to end</a>)
+&nbsp;
+(<a href="AppExec.html">Executive summary</a>)
+&nbsp;
+(<a href="Approval.html">Paean to AV</a>)
+</p>
+
+<p>
+<b>
+1. What they are:</b>
+<i>Range voting</i>: 
+In an N-candidate election, each vote 
+is an N-tuple of numbers each in the range 0 to 99.
+The Kth number in the tuple is a "score" for candidate K.
+You take the average of all the Kth entries to find
+the average score for candidate K.  <i>The candidate
+with the highest average score wins.</i>
+(Voters are allowed to leave an entry <i>blank</i> to denote
+"don't know anything about that candidate."  Blank entries
+not incorporated into average.)
+</p>
+
+<p>
+<i>Approval voting</i>:  
+Same thing as range voting, except
+each number, instead of being anywhere from 0 to 99 has to be 
+either 0 ("disapprove") or 1 ("approve").
+[Thus, approval voting is really just a special case of range voting.]
+</p>
+
+<p>
+<b>
+2. Simplicity:
+</b>
+Approval voting wins this one: it obviously is simpler.
+(But not by as much as you might think, since Jan Kok showed a 
+<a href="VotMach.html">simple way</a> to
+use any voting machine capable of handling multiple plurality contests &ndash; i.e.
+all voting machines in the USA &ndash; to perform "single digit" range elections.
+On lever machines, optical scan machines, and many kinds of punch card machines,
+the voter finds it extremely easy and straightforward to use any of
+Plurality, Approval, or single-digit Range Voting, often with no real advantage in
+simplicity for either.)
+</p>
+
+<p>
+In fact, it has been argued that approval voting actually is <i>simpler</i>
+&ndash; both to understand and to count &ndash;
+than plurality voting:
+since no special caution is necessary to detect "overvotes" and discard them.
+("Overvotes," and in fact every possible combination of approval and disapproval
+votes, are perfectly legal under AV &ndash; there is no artificial distinction 
+between "legal" and "illegal" votes that can be used to "justify" massively
+discriminatory "<a href="Spoiled.html">ballot spoilage</a>" manipulations.)
+</p>
+
+<p>
+<b>
+3. Expressivity and Honesty:</b>
+Obviously, with range voting, you are free to cast an "approval style" vote
+by only using 99s and 0s, never using anything in between &ndash; if you so desire.  
+(And in fact, "strategic" voters usually would do exactly this.)
+So range voters clearly can be either equally expressive, or
+more expressive, than approval voters.
+</p>
+
+<p>
+The more information voters can submit in their vote, the better we expect
+the results of the election (from their point of view) to be.
+</p><p>
+A real-world example where real voters for the President of France produced
+a 3-humped score distribution is 
+<a href="Why99.html#aubrygraphics">here</a>.  These three humps
+were genuine ("statistically significant") and prove that at least 7 score-levels are needed,
+in at least some real-world circumstances, for voters to express their feelings.
+Some have criticized score voting because of an alleged "lack of meaning" 
+("what exactly does it <i>mean</i> if
+I award 5 rather than 6?").  One reason that
+criticism is wrong because, clearly, the voters of France feel there is
+a meaning that is clear enough to them that they produce this 3-humped distributiuon.  It
+does not matter what some critic understands or not about his internal meaning.  What matters
+is what the bulk of the population of actual countries feel when they cast actual votes.
+</p>
+
+<p>
+So the question is: is approval voting better because it is simpler, or is range 
+voting better because it allows more expressive freedom?
+</p>
+
+<p>
+The answer hinges on how many voters will choose to be "honest" and how many will be
+"strategic" (and how many will adopt some compromise).  That is because if
+all voters are strategic, then range voting will simply degenerate to approval voting
+and then there would be no reason to adopt RV, since it is more complicated.
+</p>
+
+<p>
+However, Doug Greene and W.D.Smith did a range voting election among random 
+voters emerging from polls in the 2004 Presidential election in New York State
+(<a href="WarrenSmithPages/homepage/works.html">#82 here</a>).
+We found that (with 90% confidence) less than 33% of range voters vote
+approval-style (central estimate: 25-26%), 
+and, further, that less than 43% even use the full range
+(i.e. include both a 99 and a 0 in their vote).   We told them to vote as they
+actually would if the real election were being held using range voting, and I
+know I told my voters things like "the only meaning of the numbers you supply are
+the numbers themselves; your job is to choose them to make it the most likely
+the election will turn out in a way you like."  Now while I concede that
+the 25% and 43% would undoubtably rise if our voters were exposed to more
+information and thought longer than 1 minute (most or all of them had never heard of
+range voting before they met us), it seems clear there will always be a substantial
+fraction of range voters who do <i>not</i> want to vote approval-style.
+</p>
+
+<p>
+This finding was surprising news to many in the voting research field.  
+There is evidently a large psychological urge to be honest
+and that urge seems to affect range voters to a far greater degree than plurality voters.
+(It is known from National Election Study data that fewer than 1 in 10 of
+year-2000 voters whose favorite was Nader, actually voted for Nader; same thing happened
+with Buchanan &ndash; i.e. plurality voters are <i>very</i> strategic/dishonest.  Interesting
+contrast, eh?  Range voting somehow stimulates people's honesty more than plurality does.)
+</p>
+
+<p>
+Incidentally, this is not just purely an irrational quirk of human beings.  There also
+is logic behind it.  Specifically, if you are going to be  strategically dishonest
+in your vote, then some parts of that vote matter more than others.
+Namely, the parts which concern the 2 or 3 candidates you think are most likely to win.
+For them, it makes a good deal of sense to exaggerate and rate them all 0s or 99s.
+<i>But</i> the "payoffs" for dishonesty about the remaining candidates
+(whom you think have extremely tiny chance of winning) are extremely small.
+The typical voter thinks: "why bother?  I'll just be honest about them."
+And he is right to think so.
+</p>
+
+<p>
+Now.  Given that we know this fact about human beings and their observed behavior,
+it seems clear that range voting is better than approval voting, because
+it allows more humans to satisfy their urges for honesty, and therefore
+will produce election results that more honestly reflect voters' true opinions.
+</p>
+
+<p>
+This can be a big effect favoring range over approval, and it can lead to
+dramatically different vote counts.
+</p>
+
+<p>
+<b>
+4. <a href="NurseryEffect.html">Nursery effect</a>:</b>
+In particular, a dramatic experimental difference between range and approval voting &ndash;
+which appears to be a consequence of exactly the sort of "weighing the
+relatively importance of strategy and honesty for different candidates" thinking
+we just described &ndash; is the "nursery effect."  That is, small "helpless infant" 
+third parties <i>all</i> receive
+<i>hugely</i> <a href="PsEl04.html">larger totals</a> 
+under range voting than approval voting.
+That (we hypothesize) is due to honest range
+voters who under approval voting feel forced to dishonestly
+give those parties exactly zero.  This effect causes small third parties to be capable of
+attracting donors and supporters and candidates &ndash; and therefore to be capable
+of growing into big "grown-up" parties with range voting.  With approval voting,
+it may be that third parties will simply never be able to break out of infancy &ndash;
+leaving your country trapped in permanent (and inherently quite undemocratic)  2-party domination.
+</p>
+
+<p>
+This is an advantage of range voting over
+approval voting from the point of view of third parties &ndash;
+all US third parties would have gotten 2% or less under approval voting in 2004
+and hence qualify as "helpless infants."
+But, e.g, Michael Badnarik, the Libertarian party's presidential candidate, who got 0.3% under
+plurality in 2004, would have gotten 0.6% under approval and <i>9% under range</i>.
+Range from his view was 15 times better than approval.
+</p>
+
+<p>
+Why do we care about Michael Badnarik's happiness?  Several reasons.  First, third parties
+as the ones most victimized by the unfair plurality system, are going
+to play an essential role in bringing us voting reform.  If you ask them
+to support approval rather than range, then they won't.  If you can't even get support
+from those with the most at stake, forget getting anywhere.  So you won't
+get voting reform.  Game over, you lose.  <i>This trumps every other
+argument about range versus approval voting.</i>
+</p>
+
+<p>
+Second, it seems to us healthier to have a voting system in which small third parties are capable
+of growing into big ones.  That prevents permanent unhealthy sterile 2-party domination,
+and more generally prevents parties from getting into power, 
+becoming corrupt, and then staying in power without ever having to fear being 
+supplanted by newcomers.  
+</p>
+
+<p>
+<b>
+5. When is the range-favoring approval-disfavoring effect largest?</b>
+When we have an election with a large number of candidates,
+and have a lot of honesty in our voters, then range does maximally
+better than approval voting.  (Indeed in this regime, 
+even <a href="rangeVborda.html">Borda</a>
+voting is superior to approval.)
+But in elections with small numbers
+of candidates and highly strategic voters, 
+range and approval voting act the same.
+Note that the Iowa 2008 caucuses are likely to fall exactly in the former, maximally-range-favoring,
+regime.
+</p>
+
+<p>
+Even a small percentage of honest range voters can make a big difference in quality.
+To illustrate how that can be, consider the following artificial example.
+Suppose there are 20 candidates, 7 fairly-universally agreed to be good and 13
+fairly-universally agreed to be bad.  Rational approval voters (or strategic range voters)
+will approve of all 7 good ones but none of the 13 bad ones.  Result: 7-way tie.
+This tie will then be broken by random chance, or by the effects of a tiny number of irrational or
+dishonestly biased voters (such as bribed ones, or family members of the candidates)
+with the result that, on average, the 4th-best candidate will be elected.
+Now suppose that a fraction (and even only, say, 5% of the population, will work excellently)
+of the voters are honest range voters, and there is a collectively  perceptible quality
+gradient among the good 7.  In that case, the best candidate, not the 4th best, will win.
+</p>
+
+<p>
+If we say to the voters: "sorry, we are going to <i>force</i> you <i>all</i> to 
+strategically-exaggeratingly employ approval-style votes (0 and 99 only,
+intermediate values forbidden)" then we <i>intentionally</i> sacrifice all
+chance of this enormous quality improvement.  What benefit is worth that cost?
+</p>
+
+<p>
+<b>
+6. California 2003: an election with 135 candidates.
+</b>
+Suppose most voters knew something about, say, 5 of the 135 candidates, and 
+nothing about the other 130.  With approval voting, they would probably "play it safe"
+by disapproving of all the unknowns, resulting in a huge bias against lesser-<i>known</i>
+candidates, as opposed to what we want, i.e. a bias against lesser-<i>quality</i> candidates.
+(That behavior was common in the sample of people I polled.
+In the version of range and approval I have advocated above
+they could leave those candidates <i>blank</i>.  But it is an experimental fact that
+many voters prefer zeros to blanks in such cases.)
+</p>
+
+<p>
+With range voting, they could give the unknowns all X, where X is a number they choose
+to fill in everything else with.
+For many voters quite possibly X would not be zero.  This would <i>lessen this bias.</i>
+</p>
+
+<p>
+In riposte it was pointed out to me that Approval voters could simulate (a noisier
+version of) range voting by tossing appropriately biased dice to select whether 
+to approve each candidate.  However &ndash; be realistic.
+That is not going to happen in the real world.  
+</p>
+
+<p>
+So: range voting handles ignorant voters better than approval voting does &ndash; the latter
+tends to introduce more artificial biases in that situation.
+</p>
+
+<p>
+<b>
+7. <a href="BayRegDum.html">Bayesian Regret</a> (For Statistics Nerds):</b>
+Approval voting does quite badly (measured by Bayesian Regret)
+compared to many other more expressive voting systems such
+as Borda and Black, when there are 4 or more candidates and we have honest voters.
+The more candidates, the worse approval does, with a very big gap developing.
+This was shown in computer experiments by Merrill, later confirmed by me.
+</p>
+
+<p>
+Approval is better than these systems &ndash; for strategic voters &ndash; but is worse for honest ones.
+</p>
+
+<p>
+The joy of range voting is it is better <i>both</i> for honest <i>and</i>
+for strategic voters.
+Computer Bayesian regret measurements by me show range voting as good or better
+than every other voting system tried including Approval, Plurality, IRV, Condorcet, Borda,
+in a vast number of different kinds of scenarios with either honest or
+strategic voters, whether there are 5 voters or 200, and either 3,4, or 5 candidates,
+under different kinds of "utility generators", and with
+different levels of "voter ignorance".
+(For W.D.Smith's papers on voting see 
+#56, 59, 76-80 <a href="WarrenSmithPages/homepage/works.html">here</a>.)
+
+<p>
+<b>
+8. Potential for Ties and Near-tie nightmares:</b>
+Remember how Bush v Gore, Florida 2000, was officially decided by only 537 votes,
+and this caused a huge crisis?  Ties and near-ties are bad.  
+</p>
+
+<p>
+Exact and "1-off" ties are much less likely in range voting than approval voting, simply because
+there is a large range 0-99 rather than 0-1.  (Near-ties are probably also less likely,
+but not tremendously so.)
+</p>
+
+<p>
+<b>
+<a name="Smart">
+9. Unfair advantage for smarter voters?</b>
+It was suggested to us that an "advantage" of approval over range
+was that in range voting, some voters will be honest and others will be
+strategic (i.e. vote approval-style), and the latter will have an "unfair" advantage.
+Meanwhile with approval voting, all voters will (to a good approximation) be
+forced to act strategic, like it or not.  So this "unfairness" would largely vanish.
+</p>
+
+<p>
+We reply:  if you buy this logic, then it would follow that you also support forcing
+voters to vote Democrat or Republican in the present plurality system.  Since,
+after all, voting third-party is (while honest) strategically stupid.  Those
+who like third-party candidates and who are stupid enough to honestly say so
+are placed at an "unfair" disadvantage and we should force them to vote Democratic
+or Republican to protect them from themselves.  Right?
+</p>
+
+<p>
+Well, no.  Nobody supports that.  This is not an "unfair" advantage anyhow, since
+nobody is forcing any voter to do anything and all voters are treated the same.
+</p>
+
+<p>
+Another reply:  Any such "advantage" of subset A of voters over subset B of voters, 
+does not exist if A and B both contain equal fractions of strategic members.  Our 2004 
+study of real-world voters found no evidence that, e.g. supporters of Democratic 
+presidential candidate John Kerry were any more or less strategic than
+supporters of Republican presidential candidate George Bush.  
+Our study <i>did</I> find that
+"third party" voters (i.e. those who gave a positive score to somebody besides
+Bush &amp; Kerry) <i>were</i> distinctly less strategic.  But this did not mean
+that third-party candidates got more of an advantage under approval voting &ndash;
+instead, they got far more votes with <i>range</i> voting &ndash; and
+this was due, apparently, to voter <i>honesty</i>, not strategy!
+So: this feared phenomenon
+simply did not exist in the 2004 election, in reality!
+</p>
+
+<p>
+Third reply:  What about candidates who have little chance?  By forcing voters
+to vote all-or-nothing on them (Approval) we get a highly distorted score for them.
+This all has nothing to do with "unfair strategic advantages" since for these
+candidates any such "advantage" is very small since they aren't gong to win.
+So in recompense for this distortion, we gain nothing.
+</p>
+
+<p>
+More about this:
+The worry that strategic range voters could have more relative power than honest ones, is often raised
+as a <a href="RVcrit.html">criticism</a> of range voting and a reason to prefer approval voting.
+I think it useful to distinguish <i>strategic</I> voters, who are 
+trying to get a candidate they like elected, but
+feel that casting an exaggerated vote is a better way to accomplish that goal, versus plain <i>dishonest</i>
+voters, who are trying to elect a candidate they do <i>not</i> like (e.g. because they
+have been bribed).  Strategic voters are not so bad because strategic voters with different politics
+tend to cancel out, and even if they do not <i>exactly</i> cancel, 
+a pretty good candidate still tends to win.   I find it hard to believe that voters in one
+political camp will be systematically more strategic (repeatedly, throughout history,
+without any rapid learning going on?!?) than those in a strong rival camp.
+<i>Dishonest</i> voters could be serious in some contexts especially, such as 
+judging <a href="OlympBonaly.html">skating</a> contests.  
+For that purpose I would recommend <i>trimmed-mean</I> range voting
+which is a variant of range voting
+designed to be immune to a certain percentage
+of corrupt voters.  But trimmed-mean range voting seems inappropriate for large political elections
+because of its anti-democratic features (the votes of "extremists" are tossed in the garbage).
+</p>
+
+<p>
+<b>
+10. Mitigation of ignorance/indecisiveness:
+</b>
+By not requiring all-or-nothing ratings, Range Voting mitigates the effects of poor
+strategy and voter misjudgement about the candidates. Better than the
+misinformed voter not vote his misinformation full-strength, as he must do
+in Approval.
+</p>
+
+<p>
+Another view of the same thing:
+Sometimes someone doesn't know whether or not to vote for someone in
+Approval. Approval then forces her to vote a decisiveness that she
+doesn't feel.  Range Voting lets her vote her indecisiveness. If you don't
+know, why should you have to decisively vote all or nothing?
+</p>
+
+<p>
+<b>
+11. Familiarity:
+</b>
+Range Voting is more familiar than Approval Voting, making it easier to "sell"
+and more adoptable.
+Who has not been asked to rate 
+something from 0 to 10?
+</p>
+
+<a name="IEEE">
+<p>
+<b>
+12. A failure of approval voting in the real world:
+</b>
+The IEEE (Institute of Electrical and Electronic Engineers <small>world's largest professional
+organization, comparable in clout, money, and membership to some small countries</small>)
+adopted approval voting in 1987, but then backslid by restoring plurality voting in 2002.
+Why?  Their claimed reason was the large percentage (80%) of IEEE members who voted
+plurality-style.  In contrast, our studies show with range voting, only a small percentage vote
+in plurality style (about 19%).  So: that excuse for backsliding will not be available
+with range.
+</p>
+
+<p>
+<b>
+13. Burr's dilemma:
+</b>
+Approval voting is subject to a problem which
+Nagel dubbed <a href="BurrSummary.html">Burr's dilemma</a>.
+Range voting is less subject to that problem.
+</p>
+
+<p>
+<b>
+14. Saari's attacks on approval voting:
+</b>
+Mathematician Don Saari raises two criticisms of Approval Voting.
+The first is what might be called "indecisiveness."   The trouble is,
+voters who feel A>B>C are forced to vote as though A=B>C or as though A>B=C.
+They have to decide which way to score B &ndash; approve or not.
+They may, depending on whim, rumors, or whatever &ndash; some rather random and 
+arbitrary-seeming cause &ndash;
+decide to go predominantly one way or the other, causing a big swing.
+</p><p>
+That prospect makes Saari uncomfortable.
+</p><p>
+Now actually, in <a href="BayRegExec.html">Bayesian Regret measurements</a>, 
+approval still works quite well despite this effect.   So it is not immediately
+clear there  is any <i>real</i> ground for discomfort.  
+<small>
+Remember, it does not matter whether "Saari is uncomfortable."  
+What matters is "the <a href="BayRegExec.html">Bayesian Regret</a> for all of society."</small>
+</p>
+<a name="newenh"></a>
+<p>
+Saari's second criticism [raised with J.Van Newenhizen:
+"The Problem of Indeterminacy in Approval, Multiple and Truncated Voting Systems,"
+<i>Public Choice</i>
+59,2 (1988) 101-120; <a href="RR87-18.pdf">responses</a>
+&amp; <a href="UnmitEvil.pdf">rejoinders</a> 59,2 (1988) 121-131, 133-147, 149], 
+which is related and is intended
+to make the first criticism maximally dramatic, is this.
+</p>
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+    9999
+</td>
+<td align="center">
+<font color="red">A&gt;B</font>&gt;C
+</td>
+</tr>
+<tr>
+<td align="center">
+    1 nut
+<td align="center">
+<font color="red">C&gt;B</font>&gt;A
+</td>
+</table>
+<p>
+"Obviously" <b>A</b> should be the winner here.
+But with approval voting it is <i>possible</i> 
+that the 9999 voters will all approve <i>both</i> the excellent A <i>and</i> the mediocre B &ndash;
+perhaps because of a rumor that the horrible C might win, and they are determined
+to prevent <i>that</i>.
+Although  this is possible, it seems highly unlikely; and
+indeed Saari himself on other occasions, including in email to me, claimed approval voters would
+have no reason to do anything other than always approving just <i>one</i> candidate (!) &ndash;
+Saari was also <a href="FrenchStudy.html">wrong</a> about that, but he's right that
+in small (e.g. 10 or fewer voters)
+approval elections with 3 candidates, vote-for-one is a 
+<a href="RVstrat3.html">pretty good</a> strategy.
+Anyway, to return to Saari's line of thought:
+if all the <font color="red">red</font> candidates get approved, the
+mediocre <b>B</b> would win with <i>unanimous</i> approval, even though he
+also is unanimously agreed to be mediocre and A is agreed by 9999-to-1 margin to be excellent.
+</p>
+<p>
+The problem here is all of B's votes are really second-place votes, but approval
+"rounds them off" to count as full-approval just like for A.
+</p>
+<p>
+Both of these Saari-problems are cured, either partially or totally, by range voting:
+range voters are <i>not</i> forced to "round off" B to full equality with A.
+(If even a few percent rated B slightly below A, this pathology could not happen.)
+And wild swings caused by rumors driving biased roundoffs, would diminish.
+(A different cure for wild rumor-driven swings is Simmons' <a href="DynDefn.html">DYN</a>
+modification of approval.)
+</p>
+<p>
+<small><b>To repeat ourselves:</b>
+Dana Mackenzie (SIAM News Oct 2000) describess it thus:
+<blockquote>
+Saari called approval voting a "cure worse than the disease," 
+on the grounds that it divorces the results of an election from the voters' preferences. 
+That is, the same voter profile can produce many different results, depending 
+on where each voter decides to draw the line between approved and non-approved candidates. 
+Brams, however, viewed this as an advantage, because it gives each voter "sovereignty" over the way 
+she expresses her preferences.
+</blockquote>
+Well, note that range voting does <i>not</i> perform such a "divorce,"
+although it is true that the same preferences with <i>strength information removed</i>
+can produce many different results with range voting (depending what preference strengths are used).
+Borda voting divorces the results of the election from this strength information.
+Range voting does not.
+</p><p>
+Saari in his book "Chaotic Elections" notes that in, e.g. a perfectly symmetric 3-way cyclic tie,
+with approval voting "anybody could win."  Saari regards that as a disadvantage of approval voting.
+With (continuum) range voting, such ties will generically not happen at all, which I would regard
+as an advantage for range voting.
+</small>
+</P>
+
+
+<hr>
+<a name="Summary">
+<p>
+<b>
+15. Summary:
+</b>
+Isn't the purpose of voting to provide information about your opinions?
+Why would you want to have a system (Approval) that forces you to express less information,
+when you can have one (Range) that permits you to express more?
+</p>
+
+<p>
+Range is better than approval for honest voters and the same as approval for
+strategic voters, and in practice there are a lot of both kinds of voter.
+Consequently there is a big quality advantage for range voting, especially
+if there are a lot of candidates, and this advantage is well worth the
+slight extra complexity of range.  And thanks to the 
+<a href="NurseryEffect.html">nursery effect</a>,
+unified third party support for range can happen &ndash; but unified third party support
+for approval cannot happen.  That is a huge tactical advantage for range in the fight
+to get voting reform.
+</p>
+
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

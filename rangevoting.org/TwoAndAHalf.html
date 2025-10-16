@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>
+RangeVoting.org - "Two and a half" candidates
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> "Two and a half" candidates </H2>
+
+<p>
+The problem with a lot of voting systems such as 
+<a href="rangeVborda.html">Borda</a>, 
+<a href="rangeVborda.html">IRV</a>, 
+and (albeit to a somewhat lesser extent)
+<a href="rangeVcond.html">Condorcet</a>
+is that they were really invented by the following flawed process:
+</P>
+
+<ol>
+<li>
+Realize that <a href="Plurality.html">plurality</a>
+voting, while it works well if there are <i>two</i> candidates,
+often performs badly if there are more.
+</li><li>
+Consider the case of two main candidates A &amp; B, plus an additional "half" a candidate C,
+that is, a third candidate who has not enough support
+to have any hope of winning, but enough so that he, by distortionary
+effects like the "spoiler" and "vote splitting" and <a href="CandCloning.html">cloning</a>
+pathologies, sometimes can swing the A versus B election
+in a harmful and annoying way.
+</li><li>
+Try to invent a  new voting system that performs well in these 
+"two and a half" candidate elections.
+</li><li>
+Proclaim success.
+</li>
+</ol>
+
+<p>
+The problem here is the final step "proclaim success."
+That was not justified.  Really, you need to go further by considering the <i>full</i>
+set of scenarios with <b>three</b>, not two-and-a-half, candidates.
+E.g. situations where you no longer are allowed to pre-suppose that the third candidate never
+has a chance to win.  
+</p>
+
+<p>
+In that case, you quickly see that IRV and Borda no longer are much good and
+<a href="IRVpartic.html">still</a> suffer from spoiler and lesser-evil pathologies (plus more,
+e.g. IRV suffering from 
+<a href="Monotone.html">non-monotonicity</a>
+and winner=loser <a href="IrvRevFail.html">reversal failures</a>,
+and Borda suffering weird effects
+when you eliminate
+<a href="rangeVborda.html#JohnsonEx">&quot;irrelevant loser&quot;</a> candidates). 
+Condorcet <a href="IncentToExagg.html">also suffers</a> from
+these.
+There are also
+<a href="AddTopFail.html#Rouse">honest voting can hurt you</a> paradoxes.
+</p>
+<p>
+Even better, we should even go further still and
+start to consider <b>three-and-a-half</b>
+candidate situations.  We then encounter the horrific 
+<a href="DH3.html">DH3 pathology</a>
+afflicting Borda and Condorcet.
+</p>
+
+<p>
+<a href="RangeVoting.html">Range voting</a> performs
+well throughout the whole space of three-and-a-half 
+candidate situations
+and is immune to DH3, favorite-betrayal, spoiler, cloning, vote-splitting,
+monotonicity-failure, and honest-voting-hurts
+effects.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

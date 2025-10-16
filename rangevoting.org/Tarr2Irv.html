@@ -1,0 +1,121 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Tarr's IRV example (simpler)
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> IRV favorite betrayal example by Adam Tarr (<i>not</i> involving any "cycle") </H2>
+
+<p>
+<a href="TarrIrv.html">(More detailed look)</a> 
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff00">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+    45
+</td>
+<td>
+A>B>C
+</td>
+</tr>
+<tr>
+<td align="center">
+    10 
+<td>
+B>A>C
+</td>
+</tr>
+<tr>
+<td align="center">
+    10 
+<td>
+B>C>A
+</td>
+</tr>
+<tr bgcolor="#dfffcc">
+<td align="center">
+    <b>35</b>
+<td>
+C>B>A
+</td>
+</tr>
+</table>
+
+<p>
+In this 100-voter example election, under IRV, <b>"A" wins</b>.
+("B," with the fewest top-rank votes, is eliminated in the first round
+then A wins 55 to 45 over "C".)  This is a fairly <i>realistic</i> scenario
+of the sort that arises with voters and candidates positioned along a one-dimensional line.
+</p>
+
+<p>
+Now suppose
+eight voters in the bottom faction cleverly (but dishonestly) switch their top-two
+preference order, "betraying" their favorite C.
+Result:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff00">
+<tr> 
+<th> #voters </th>
+<th> Their (new) Vote </th>
+</tr>
+<tr> 
+<td align="center">
+    45
+</td>
+<td>
+A>B>C
+</td>
+</tr>
+<tr>
+<td align="center">
+    10 
+<td>
+B>A>C
+</td>
+</tr>
+<tr bgcolor="#e8ff99">
+<td align="center">
+  <b>18</b>
+<td>
+B>C>A
+</td>
+</tr>
+<tr bgcolor="#dfffcc">
+<td align="center">
+  <b>27</b>
+<td>
+C>B>A
+</td>
+</tr>
+</table>
+
+<p>
+Then 
+"C" is eliminated in the first round,
+and then in the second round <b>"B" wins</b> over "A" 55-to-45.
+From those 8 voters' point of view, this was an improvement.
+The betrayal worked.
+</p>
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

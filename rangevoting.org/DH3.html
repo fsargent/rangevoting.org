@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>
+RangeVoting.org - DH3 pathology
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> The DH3 "Dark Horse plus 3 rivals" pathology </H2>
+
+<p>
+<a href="DH3Summ.html">(Executive summary)</a>
+</p>
+
+<p>
+Many voting system "pathologies" or "paradoxes" or "bad behaviors"
+have been noticed over the years.
+But some are more worrisome and damaging than others:
+<ul>
+<li>
+The most damaging ones are those that cause the
+<i>worst</i> possible winner to be elected.
+(Of course, even if they cause the <i>second-best</i> winner to be
+elected instead of the best, that also is bad. But not as bad.)
+</li>
+<li>
+The ones that are most damaging arise <i>often</i> in actual practice.
+</li>
+</ul>
+
+<p>
+The DH3 pathology is a very very bad pathology by those measures, and it
+affects a lot of voting systems.  (In view of its frequency and seriousness,
+some would not use the word "affects."
+They would use the word "destroys.")
+In particular most (every?) "Condorcet 
+method with full A>B>C>&middot;&middot;&middot;&middot;&middot;&middot;>Z rank-orderings
+as votes" suffers from DH3.  (That includes <a href="BtrIrv.html">BTR-IRV</a>,
+Tideman's <a href="RankedPairs.html">ranked pairs</a>, and Schulze's
+<a href="SchulzeComplic.html">beatpaths</a> systems.)
+Also, so does the <a href="rangeVborda.html">Borda system</a>.
+Permitting equalities in vote-rankings,
+using either <a href="WinningVotes.html">winning votes</a> or margins,
+does not avoid the DH3 pathology,
+although I initially thought they might work for that purpose.
+(<a href="WVmore.html">Answers to questions about that</a>.)
+But range voting, 
+<a href="Plurality.html">plurality</a>, and <a href="rangeVirv.html">IRV</a>
+are immune to DH3. <small>
+In the example below,
+strategic Range Voters would simply rank one of A,B,C max and everybody else min.
+C would win.</small>
+</p>
+
+<H3>What is DH3?</H3>  
+<p>
+It is simply this.  Suppose there are 3 main rival
+candidates A, B, &amp; C,
+who all have some good virtues.  This happens a lot.
+(In fact, whenever it doesn't happen, the situation is uninteresting &ndash; only 2 real contenders &ndash;
+and we almost
+might as well just be using the <a href="Plurality.html"> plurality</a> voting system.)
+Let us suppose support is roughly equally divided
+among those three, say 31%, 32%, and 37%, although the precise numbers do not matter much.
+Suppose also there are one or more additional "dark horse" candidates whom nobody
+takes seriously as contenders because they stink.  For simplicity assume there is only  one
+dark horse D, but what we are going to say also
+works (indeed works even more powerfully)
+with more than one.
+</p>
+
+<p>
+Now, what happens?  The A-supporters say to themselves:
+"We are in trouble.  Polls suggest A is going to lose if we just vote A>B>C>D
+as is our honest opinion.  But if we exaggeratedly vote A>D>B>C downgrading A's main
+rivals as far as we can, then maybe A will have a chance."
+The B-supporters say "those rotten A-supporters for sure are going to exaggerate
+and effectively get <i>twice</i> the A-versus-B discriminating power as if they
+were honest.  We cannot sit still and just take that.
+We have to fight back by also exaggerating: B>D>C>A."
+And similarly the C-supporters say "we will not just sit back
+and be robbed of our deserved victory by those dishonest exaggerating scum.  We
+will also exaggerate:  C>D>A>B."  (And by the way, they are completely right.
+C would definitely lose to A or B if they just sat there.)
+</p>
+
+<blockquote>
+<a href="rangeVborda.html#DH3ex">Pictorial example</a> under Borda;
+<a href="WinningVotes.html#DH3">careful examination</a> in several kinds of Condorcet systems.
+</blockquote>
+
+<p>
+Incidentally, some purists may quibble: why did the A-fan voters decide to exaggerate?
+Well the C-fans felt forced to do so because, given that the A- and B-fans already chose
+to exaggerate, the C-voters knew that C could not win without exaggeration.
+But all three kinds of voters do not know what the others are going to do and how
+many of them are going to do it (nor even how many of them there <i>are</i>),
+and hence have to <i>guess</i>, and their guess is "most of those rotters are
+probably going to exaggerate"!  So based on this guess, they feel they too must exaggerate to
+get any chance of victory.  (And that feeling is <i>always</i> accurate in the sense that, if some
+appropriate fraction of the opposing voters exaggerated, then [1]
+our candidate would be sure
+to lose to a rival, but [2] by such exaggeration we could regain the victory.)
+</p>
+
+<p>
+The result of the new exaggerated votes is: D, the <i>worst</i> candidate
+in the eyes of <i>all</i>, wins the election.  
+Guaranteed.
+As we said, this happens with the Borda system and also with every Condorcet method.
+</p>
+
+<p>
+In contrast, with <a href="RangeVoting.html">range voting</a> the A voters will
+exaggerate thus: A=99, B=C=D=0, and if everybody acts that way, then C
+will (deservedly) be elected.  (There is <i>no</i> advantage a range voter gains by dishonestly
+scoring 
+D above B and C &ndash; this can't help A win versus B and/or C and simply incurs risk
+that D will win.  But there <i>is</i> sometimes advantage for  Condorcet or Borda voters.)
+C also wins with IRV and plurality.
+This is an example of the fact that range voting is designed to exhibit
+only a mild degradation in reaction to dishonestly-exaggerated "strategic voting."
+With Condorcet and Borda, the allergic reaction is not mild: it is
+"anaphylactic shock."
+</p>
+
+<p>
+<b>How common is this?</b>
+Very common &ndash; every situation with 3 near-equal good rivals and one or more other (less-good)
+candidates is fodder for DH3.  I.e. whenever it is not merely essentially a 2-man race.
+Here is 
+<a href="rangeVborda.html#bossbulb">the (amusing?) story</a>
+of how DH3 happened in the only serious-stakes ($100,000+) 
+ranked-ballot vote I was ever involved in.  DH3-like phenomena were also 
+<a href="rangeVborda.html#kiribati">immediately observed</a>
+in the only government in the world (<a href="FunnyElections.html#kiri91">Kiribati</a>) 
+that tried Borda voting.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Randomness in Rivest 3ballot scheme?  Bad idea
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>  Randomness in Rivest 3ballot scheme?  Bad idea </H2>
+
+<p>
+Some people have suggested, that in Rivests's 3ballot scheme, it would be better if
+the voting <i>machine</i> were to choose the 3 ballots <i>randomly</i>,
+(as opposed to the voter choosing them) and then the machine were
+to spit out a copy one of them for the voter to take home (as usual).
+There are two variants here: either <b>1</b>
+the voter chooses which of the three
+to copy and get, or <b>2</b>
+the machine makes that choice also at random.
+</p>
+
+<p>
+<b>The point</b> of these suggestions was supposed to be that
+the voter has an annoying job filling in 3 ballots (or in BOFFO, five ballots)
+instead of just one.  This way the machine saves that voter the labor.
+The machine just asks the voter for his <i>one</i> (actual-summed) ballot
+and creates three that have the desired suma nd meet all the
+constraints.  Saving labor.
+</p>
+
+<p>
+<b>But</b> this is a very bad idea.   Aside from the fact such a machine would
+probably have to be computerized (bad!) and we'd have to <i>trust</i> its "randomness"
+really was random, there are more severe problems.
+</p>
+
+<p>
+Variant 
+<b>2</b>,
+of the scheme is simply vulnerable to vote-buying and coercing.
+E.g, the coercer says to the voter: "if you show me a receipt saying 'voted for Clinton'
+then I will  pay you a dollar."  The voter then has a 2/3 chance of getting
+the dollar if she voted for Clinton, and only a 1/3 chance if not.
+In other words, this "harmless"
+addition of randomness <i>broke</i> the security properties
+of the 3ballot scheme.
+</p>
+
+<p>
+Variant 
+<b>1</b>,
+of the scheme is also vulnerable to vote-buying and coercing
+if it is used with plurality voting.
+E.g, suppose the vote-buyer supports Clinton and  Nader  but is opposed to Bush.
+Buyer tells voter: 
+"if you show me a receipt saying 'voted for Clinton and Nader'
+then I will  pay you a dollar."  The voter then has a 2/3 chance of being able
+to get
+the dollar if she voted for Clinton, and only a 1/3 chance if not.
+</p>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

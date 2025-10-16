@@ -1,0 +1,978 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Instant Runoff Voting (IRV)
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Why Range Voting is Better than IRV  (Instant Runoff Voting)
+</H2>
+
+<p>
+(<a href="IrvExec.html">Executive summary</a>)&nbsp;&nbsp;&nbsp;
+(<a href="#Summary">Skip to end</a>)&nbsp;&nbsp;&nbsp;
+(<a href="Irvtalk.html">Common Errors, Myths, Mis-statements, &amp; Lies about IRV</a>)
+(<a href="Dean2016Refut.html ">Refutation of many</a> Errors, Myths, Lies in
+NY Times op-ed by Howard Dean 2016)
+(<a href="CobbVideoRefut.html">Refutation</a> of Errors, Myths, Lies in
+Green Party youtube video by David Cobb 2016 &ndash; he 
+<a href="CobbIRVWrong.html">learned nothing</a> from our previous refutation
+of him from 2004)
+<br>
+(<a href="TarrIrv.html">How we know IRV just leads to 2-party domination</a>)&nbsp;&nbsp;&nbsp;
+(<a href="NoIrv.html">Quick summary why third parties should <i>not</i> want IRV</a>)
+<br>
+(<a href="KISSirv.html">oversimplified argument why third parties should <i>not</i> want IRV</a>)
+&nbsp;&nbsp;&nbsp;
+(<a href="Peru06.html">Peru 2006 election=apparent IRV failure</a>)
+<br>
+(Flawed <a href="TwoAndAHalf.html">&quot;two and a half&quot; candidate</a> thinking)
+(Quick example of <a href="IRVpartic.html">"Nader spoiler" phenomenon under IRV</a>)
+(<a href="IRVcs.html">Another</a>)
+(<a href="IRV1519.html">Another</a>)
+<br>
+(<a href="CFERlet.html">Argument for IRV-proponents that AV &amp; RV is better</a>)
+<br>
+(<a href="CompleteIdioticIRV2.html">Worked simple IRV election</a> exhibiting many pathologies
+all in a single example)
+<br>
+(<a href="IRVpereira.html">Another simple IRV election</a> showing even more pathologies)
+</p>
+<p>
+<b>1. What they are.</b>
+<i>Range voting</i>: In an N-candidate election, each vote
+is an N-tuple of numbers each in the range 0 to 99.
+The Kth number in the tuple is a "score" for candidate K.
+You take the average of all the Kth entries to find
+the average score for candidate K.  The candidate
+with the highest average score wins.
+(Voters are allowed to leave an entry <i>blank</i> to denote
+"don't know anything about that candidate."  Blank entries
+not incorporated into average.)
+</p>
+
+<p>
+<i>IRV</i>: Each vote is an ordering of the N candidates
+from best to worst.  (Voters are <i>not</i> allowed to omit a
+candidate they know nothing about, and are <i>not</i> allowed
+to regard two candidates as <i>equal</i>.)
+We proceed in "rounds".  Each round, the candidate top-ranked
+by the fewest voters is eliminated.  (Ties must be broken by some
+means, such as a coin flip.)  After N-1 rounds, only
+one remains &ndash; the winner.
+</p>
+
+<a name="SimpleEx"></a>
+<p>
+<b>2. Examples:</b>
+Say the N=3 candidates are named Amy, Bob, and Cal,
+and the 9 range votes for them are:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" rules="rows">
+<tr> 
+<th> Candidates&#10151; </th>
+<th> Amy </th>
+<th> Bob </th>
+<th> Cal </th>
+</tr>
+<!-- <tr bgcolor="#000000"> 
+<td> <br> </td>
+<td> <br> </td>
+<td> <br> </td>
+<td> <br> </td>
+</tr> -->
+<tr> 
+<td> 1st voter: </td>
+<td> 99 </td>
+<td> 77 </td>
+<td> 0 </td>
+</tr>
+<tr> 
+<td> 2nd voter: </td>
+<td> 98 </td>
+<td> 98 </td>
+<td> X </td>
+</tr>
+<tr> 
+<td> 3rd voter: </td>
+<td> 87 </td>
+<td> 0 </td>
+<td> 71 </td>
+</tr>
+<tr> 
+<td> 4th voter: </td>
+<td> 99 </td>
+<td> 1 </td>
+<td> 98 </td>
+</tr>
+<tr> 
+<td> 5th voter: </td>
+<td> 52 </td>
+<td> 99 </td>
+<td> X </td>
+</tr>
+<tr> 
+<td> 6th voter: </td>
+<td> 26 </td>
+<td> 98 </td>
+<td>  5 </td>
+</tr>
+<tr> 
+<td> 7th voter: </td>
+<td> 10 </td>
+<td> 96 </td>
+<td> X </td>
+</tr>
+<tr> 
+<td> 8th voter: </td>
+<td> 0 </td>
+<td> 70 </td>
+<td> 99 </td>
+</tr>
+<tr> 
+<td> 9th voter: </td>
+<td> 0 </td>
+<td> 1 </td>
+<td> 99 </td>
+</tr>
+<!--
+<tr bgcolor="#000000"> 
+<td> <br> </td>
+<td> <br> </td>
+<td> <br> </td>
+<td> <br> </td>
+</tr> -->
+<tr bgcolor="#cfffaa">
+<td> sum: </td>
+<td> 441 </td>
+<td> 540 </td>
+<td> 372 </td>
+</tr>
+<tr bgcolor="#cfffaa">
+<td> average: </td>
+<td> 49 </td>
+<td> 60 </td>
+<td> 62 </td>
+</tr>
+</table
+
+<p>
+(The X's denote "intentionally left blank" by that voter
+to denote the fact he wishes to express ignorance about Cal and
+wants to leave the decision about his score to other, more knowledgeable
+voters.) 
+</p>
+
+<p>
+Because <b>Cal</b> has the highest average, he <b>wins</b> with range voting. </p>
+</p>
+
+<p>
+The corresponding 9 IRV votes (assuming all the voters ignorant
+about C "play it safe" by ranking him last &ndash; which anyway is effectively necessary since
+IRV does not permit "no opinion" votes and regards all unranked candidates as ranked last &ndash;
+and that voter #2, since forced to choose between
+Amy and Bob, gives a slight preference to Amy) are
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" rules="rows">
+<tr> 
+<th> Voter </th>
+<th> His Vote: </th>
+</tr>
+<!-- <tr bgcolor="#000000"> 
+<td> <br> </td>
+<td> <br> </td>
+</tr> -->
+<tr> 
+<td> 1st voter: </td>
+<td> A>B>C </td>
+</tr>
+<tr> 
+<td> 2nd voter: </td>
+<td> A>B>C </td>
+</tr>
+<tr> 
+<td> 3rd voter: </td>
+<td> A>C>B </td>
+</tr>
+<tr> 
+<td> 4th voter: </td>
+<td> A>C>B </td>
+</tr>
+<tr> 
+<td> 5th voter: </td>
+<td> B>A>C </td>
+</tr>
+<tr> 
+<td> 6th voter: </td>
+<td> B>A>C </td>
+</tr>
+<tr> 
+<td> 7th voter: </td>
+<td> B>A>C </td>
+</tr>
+<tr> 
+<td> 8th voter: </td>
+<td> C>B>A </td>
+</tr>
+<tr> 
+<td> 9th voter: </td>
+<td> C>B>A </td>
+</tr>
+</table>
+
+<p>
+Then C is eliminated in the first round, at which point the second and
+final round is <b>won by B</b> by 5-to-4 over A.
+</p>
+
+<a name="mono"></a>
+<p>
+<b>3. Monotonicity and Honesty:</b>
+In range voting, if any set of voters increase a candidate's score,
+it obviously can help him, but cannot hurt him.  That is called monotonicity.
+</p>
+
+<p>
+Two of IRV's flaws are that it is not monotonic and dishonesty can pay.
+In the example, suppose the 1st voter, instead of honestly stating
+her top-preference was A, were to dishonestly vote C>A>B,
+i.e. pretending great <i>love</i> for her truly most-hated candidate C,
+and pretending a <i>lack</i> of affection for her true favorite A.
+In that case the first round would eliminate either C or B
+(suppose a coin flip says B) at which point <i>A would win</i> the
+second round 5-to-4 over C!  (Meanwhile if C still were eliminated
+by the coin flip then B would still win over A in the final
+round as before.)
+In other words: in 3-candidate IRV elections, lying can help. 
+Indeed, lying in bizarre ways can help.
+</p>
+
+<p>
+In this IRV example, <i>voter1's vote for her true favorite (here A)
+actually caused him to lose</i>!!  
+<A href="Monotone.html">Analysis</a> by W.D.Smith 
+shows that
+about 15% of 3-candidate IRV elections are non-monotonic.
+(See also 
+<a href="PuzzlePage.html#p4">puzzle #4</a>,
+and our <a href="IrvParadoxProbabilities.html">compilation</a>
+of probabilities of many possible logical "paradoxes," including this one,
+for IRV in three probabilistic settings.)
+Whenever this happens we would expect tremendous rage from the "robbed
+winner" and calls for reform of the idiotic IRV voting system, and for the
+heads of the idiotic activists who originally advocated IRV and got us into this mess.
+</p><p>
+That usually has been prevented in practice by simply keeping the votes secret
+to try to prevent anybody from  proving this occurred.
+</p><p>
+In contrast, in 3-candidate range elections, it is <i>never</i> a smart strategic move
+for any voter to be dishonest about her relative ordering of A, B, and C;
+if an intelligent range voter feels that A>B, she will never provide
+a vote in which B>A.
+</p>
+
+<p>
+<b>4. Wise to vote for your favorite?</b>
+In range voting, scoring your favorite candidate top can never hurt you.
+In IRV, it <a href="TarrIrv.html">can</a> &ndash; indeed as we just saw it
+can even hurt that favorite candidate directly, although more commonly it prevents,
+say, both your first and second favorite from winning.
+</p>
+
+<p>
+As <a href="OssipoffEnd.html">Mike Ossipoff</a> has often emphasized, it is very
+important to make democracy work well that it always be a <i>good</I> 
+idea &ndash; not a bad idea &ndash;
+to vote for your favorite candidate.
+</p>
+
+<p>
+<b>5. Simplicity:</b>
+Range voting is simpler than IRV.
+If you don't believe me, try writing a computer program to do both.
+The range voting program will be shorter.
+Range voting also is simpler in the sense that it requires fewer operations
+to perform an election.  In a V-voter, N-candidate election,
+range voting takes roughly 2VN operations.  However, IRV voting
+takes roughly that many operations every 2 rounds.  In a 135-candidate
+election like California Gubernatorial 2003, IRV would require about 67 times
+as many operations.  (In fact, range voting is simple enough that it could
+be done with hand calculators, if necessary.)
+</p>
+
+<p>
+Another aspect of that: every possible  way to give the candidates scores is
+a legal range vote.  <i>Not</i> every possible way to give the candidates
+rankings is a legal IRV vote &ndash; if you accidentally rank two candidates equal,
+for example, IRV would consider that an illegal vote and your ballot would be discarded.
+In, say, the 135-candidate CA governor-recall election of 2003, the chances you would screw up
+when trying to provide a full rank ordering of the 135 candidates, would be immense.
+But it would be easy to produce a valid range ballot.  In other words, range voting
+is a lot less susceptible to <a href="Spoiled.html">ballot spoilage</a> than IRV.
+</p>
+
+<p>
+Think I'm confused?  Check the <a href="SPRates.html">data on actual observed rates</a>
+of ballot spoilage errors.
+</p>
+
+<p>
+<b>6. Strategy and 2-party Domination:</b>
+A lot of voters will, in an election like Bush v Gore v Nader 2000,
+exaggerate their good and bad opinions of Bush and Gore by artificially ranking
+them first and last, even if they truly feel the third-party candidate Nader is best or worst.
+They will do this in order to give their vote the "maximum possible impact"
+so it is not "wasted".  Once they make this decision, in IRV, Nader automatically
+has to go in the middle slot, they have no choice about him.  If all
+voters behave this way, then automatically the winner will be either
+Bush or Gore.  Nader can <i>never</i> win an IRV election with this kind of strategic voters.
+(Unless it is an exact 3-way tie and the tie-break goes Nader's way,
+which'll never happen in reality.)
+</p>
+
+<p>
+In view of this, third parties are silly to push IRV.  They should advocate range.
+(Fact: The countries that used IRV as of 2002, namely 
+<a href="Ireland2002.html">Ireland</a>,
+<a href="AustralianPol.html">Australia</a>,
+<a href="FijiPol.html">Fiji</a>,
+and
+<a href="MaltaPol.html">Malta</a>,
+all are 2-party dominated in their IRV seats [and Malta throughout].  
+Here is a <a href="TarrIrv.html">deeper look</a> at how 
+IRV causes 2-party domination and here is a tentative 
+<a href="NESD.html">theory</a> about which voting systems cause 2-party domination.)
+</p>
+
+<p>
+Analogously, in range voting, if the voters exaggerate and give Gore=99 and Bush=0 
+(or the reverse) in order to get maximum impact and not waste their vote, then 
+they are still free to give Nader 99 or 0 or anything in between.
+Consequently, it would still be <i>entirely possible</i> for Nader to clearly
+win with range,
+and without need of any kind of tie, and even if <i>every single voter</i> acts
+in this exaggerating way.
+</p>
+
+<p>
+Think this kind of strategic thinking won't matter much?  Wrong:
+<ol>
+<li>
+The "National Election Study" showed that in 2000, among US voters who honestly liked
+Nader better than every other candidate, fewer than 1 in 10 actually voted
+for Nader.  That was because of precisely this sort of strategic ploy &ndash; these
+voters did not wish to "waste their vote" and wanted "maximum impact"
+so they pretended either Bush or Gore was their favorite. (Same thing happened
+with voters whose true favorite was Buchanan.)  In short, strategy
+has an enormous impact in the real world, and over 90% of
+voters act strategically and not honestly, given the chance.
+That is exactly why third parties always die out and we are stuck with 2-party domination.
+</li>
+<li>
+<a href="IRVStratPf.html">Here</a> is an argument that this kind of
+insincere-exaggerating voter-strategy is strategically-optimal asymptotically 100% of the 
+time in a mathematical model of a  "large random electorate" with IRV voting.
+</li>
+</ol>
+</p>
+
+<a name="nightmare"></a>
+<p>
+<b>7. Potential for nightmare <a href="TieRisk.html">ties</a> and near-ties:</b>
+Remember how Bush v Gore, Florida 2000, was officially decided by only 537 votes,
+and this caused a huge lawsuit and chad-examining
+crisis?  Ties and near-ties are bad.  In IRV
+there is potential for a tie or near-tie every single round.  That makes
+the crisis-potential inherent in IRV much larger than it has to be.  That also
+means that in IRV, every time there is a near-tie among two no-hope
+candidates, we have to wait, and wait, and wait, until we have the <i>exact</i> vote
+totals for the Flat-Earth candidate and for the Alien-Kidnapping candidate 
+since every last absentee ballot has finally arrived...
+before we can finally decide which one to eliminate in the first round.
+Only then can we proceed to the second round.  We may not find out the winner
+for a long time.  The precise order in which the no-hopers are eliminated matters
+because it can affect the results of future rounds in a repeatedly 
+<a href="IRVamp.html">amplifying</a> manner.
+</p>
+
+<p>
+Don't think this will happen?  In the CA gubernatorial recall election of 2003,<br>
+<blockquote>
+&nbsp;&nbsp;&nbsp;
+  D. (Logan Darrow) Clements   got  274  votes, beating   Robert A. Dole's  273.<br>
+Then later on in the same election,<br>
+&nbsp;&nbsp;&nbsp;
+  Scott W. Davis               got  382 votes, beating    Daniel W. Richards's 381.<br>
+Then later on in the same election,<br>
+&nbsp;&nbsp;&nbsp;
+  Paul W. Vann        got 452 and   Michael Cheli 451 votes.<br>
+Then later on in the same election,<br>
+&nbsp;&nbsp;&nbsp;
+   Kelly P. Kimball  got  582  and  Mike McNeilly  581 votes.<br>
+Then later on in the same election,<br>
+&nbsp;&nbsp;&nbsp;
+  Christopher Ranken got  822  and  Sharon Rushford 821 votes.<br>
+</blockquote>
+Have you had enough yet?    Eventually Schwarzenegger won.  
+Oh, was that what you wanted to know?
+</p>
+
+<p>
+(Incidentally, imagine the horror if each voter were required to provide a preference ranking
+of all 135 candidates in this race.
+<a href="presdemo/PresBallot.html">Meanwhile</a> with range voting they
+just rank the ones they know about and leave the rest blank, or they could
+opt to "fill in all the rest with Z" where Z is a number they specify.  Much
+less labor for the voter &ndash; and no worries about accidentally giving two candidates
+the same rank, thus invalidating your IRV vote.  
+Also it is much more honest to rate most of them "unknown"
+i.e. "blank" &ndash; which honesty will lead to a far less distorted result &ndash;
+but that honesty is <i>forbidden</i> with IRV.)
+</p>
+
+<p>
+Think the CA 2003 recall was a monster not likely to recur?  Actually in New South Wales
+(Australia) in 1974 they had an IRV election with 73 candidates, and voters were
+required by law to (1) vote and (2) rank all 73 of them (none missed) &ndash; but they also
+were given the option of voting a pre-prepared straight-party ticket instead.
+(Those tickets were pre-prepared by the parties in the maximally strategic and hence probably
+dishonest manner that party could dream up.)
+Might that have produced some biases?
+</p><p>
+Think this all isn't really a problem because those elections were specifically chosen
+by me as nightmares?  (And yes, they were.)  OK, check 
+our  <a href="#Deby">remarks below</a> about <i>typical</i> elections.
+</p>
+
+<p>
+Meanwhile, in range voting, the only thing that matters is the top scorer.
+Ties for 5th place, do not matter in the sense they do not lead to crises.  
+Furthermore, because all votes are real numbers
+0-99 rather than discrete and from a small set, <i>exact</i> ties are even less likely still.
+(And if the range were, say, 0-999 then they would be even less likely still.)
+Exact ties in range elections can thus be rendered extremely <i>unlikely</i>,
+while exact ties (or within 1) in IRV elections can be extremely <i>likely</i>.
+Which situation do you prefer?
+</p>
+
+<p>
+<b>
+8. Communication Needs &amp; Nightmare Potential:</b>
+Suppose a 1,000,000-voter N-candidate election is carried out at 1000 different 
+polling locations, each with 1000 voters.  In range voting, each location can then 
+compute its own subtotal N-tuple and send it to the central agency, which then adds up 
+the subtotals and announces the winner.  That is very simple.  That is a very small
+amount of communication (1000&middot;N numbers), and all of it is one-way.  Furthermore, if
+some location finds it made a mistake or forgot some votes,
+it can send a corrected subtotal, and the central agency can then easily 
+correct the full total by doing <i>far</i> less work than everybody
+completely redoing everything.  
+</p>
+
+<p>
+But in IRV voting, we cannot do these things because IRV is not additive.
+There is <a href="IrvNonAdd.html">no such thing</a>
+as a "subtotal" in IRV.    In IRV every single vote
+may have to be sent individually to the central agency (1,000,000&middot;N numbers, 
+i.e. 1000 times more communication).  [Actually there are clever ways to reduce this, 
+but it is still bad.] If the central agency then
+computes the winner, and then some location sends a correction, that may require
+redoing almost the <i>whole</i> computation over again.  There could easily be 100 such
+corrections and so you'd have to redo everything 100 times.  Combine this
+scenario with a near-tie and legal and extra-legal battle like in Bush-Gore
+Florida 2000 over the validity of every vote, and this adds up to a 
+<i>complete nightmare</i> for the election administrators.
+</p>
+
+<p>
+Don't think IRV nightmares really can happen?  Here's what really happened 
+when San Francisco adopted IRV:
+</p>
+
+<a name="SanF"></a>
+<ul>
+<li><tt>
+  <i>Preferential voting software breaks down in San Francisco</i>
+  Thu, 4 Nov 2004 10:07:12 PST
+<br><br>
+  In the election of 2 Nov 2004, San Francisco's district supervisor
+  election used ranked-choice voting for the first time.
+  It went just fine on Tuesday during the election.
+  Preliminary results showed candidates in three districts had won by a clear
+  majority (so no reranking-rounds were needed), whereas the other four seats 
+  remained to be determined by the preferential ballot counting process.
+  The computer processing broke down completely on Wednesday afternoon when election
+  workers began to merge the first, second, and third choices into the
+  program that is supposed to sequentially eliminate low-vote candidates
+  and redistribute voters' second and third choices accordingly. 
+<br><br>
+  However [fortunately], no San Francisco ballots were lost, because each ballot has a
+  paper trail.
+<br><br>
+  The software is provided by ES&amp;S (Election Systems and Software, in
+  Omaha). This system has undergone federal and state testing, as well
+  as pre-election testing in which everything seemed to work perfectly.
+  The results of the four contested supervisors' races are expected to be delayed 
+  up to two weeks. 
+  [Suzanne Herel, <i>San Francisco Chronicle</i>, 4 Nov 2004, front page continued on A7]
+</tt>
+</ul>
+
+<p>
+<b>9. Voter Expressivity:</b>
+In range voting, voters can express the idea that they think 2 candidates are equal.
+In IRV, they cannot.  (There are modifications of IRV which permit equalities, but
+they are much more complicated.  They involve considering "every possible compatible
+ordering."   In fact they are so complicated I doubt most voters will ever be able
+to fully describe how they work.  Later note: Tom Ruen suggested
+a new simple IRV variant which permits
+ranking-equalities in votes: you just
+view K equally-top-ranked candidates as each having 1/K of a vote!)
+</p>
+
+<p>
+A lot of voters want to just vote for one candidate, plurality-style.
+In range voting they can do that by voting (99,0,0,0,0,0).
+Similarly, a lot of voters want to vote <i>against</i> one
+candidate, <i>anti</i>-plurality-style (such as Donald Trump in USA 2016 election).
+In range voting they can do that by voting (0,99,99,99,99,99).
+But in IRV, they defiontely cannot do the latter,
+and in straight IRV the former is also impossible, albeit
+some variants of IRV &ndash; 
+with "truncation" &ndash; permit it.
+(In most of Australia, full orderings of all candidates
+are required or your IRV vote is invalid.  But in Ireland and Malta, just naming
+your first few choices and not the others is allowed.)
+</p>
+
+<p>
+Range voters can express the idea they are <i>ignorant</i> about a candidate and want to leave the
+task of rating him to other, hopefully more knowledgeable voters.  In IRV, they
+can't choose to do that.  (<font size="-1">Even in IRV with ballot "truncation,"
+a voter simply cannot express the idea that Gandhi is best, Hitler is worst, and he is ignorant
+about Perot and Anderson.</font>)
+</p>
+
+<p>
+IRV voters who decide, in a 3-candidate election, to rank A top and B bottom,
+then have no choice about C &ndash; they are forced to
+middle-rank him and can in no way express
+their opinion of C.   In range voting, they can.
+</p>
+
+<p>
+If you think  A>B>C>D>E,  undoubtably some of your preferences are 
+more <a href="SmittyExp.html">intense</a>
+than others.    Range voters can express that.  IRV voters cannot.
+</p>
+
+<p>
+<b>
+10. Bayesian Regret (For Statistics Nerds):</b>
+Extensive computer simulations of millions of artificial "elections"
+by W.D.Smith show that range voting is the best single-winner voting
+system, among a large number compared by him (including IRV, Borda, Plurality,
+Condorcet, Eigenvector, etc.) in terms of a statistical yardstick called "Bayesian regret".
+This is true regardless of whether the voters act honestly or strategically, whether
+the number of candidates is 3,4, or 5, whether the number of voters is 5 or 200,
+whether various levels of "voter ignorance" are introduced, and finally
+regardless of which of several randomized "utility generators" are
+used to generate election scenarios.
+</p>
+
+<p>
+Smith's papers on voting systems are available 
+<a href="WarrenSmithPages/homepage/works.html">here</a>
+as #56, 59, 76, 77, 78, 79, 80, 81, 82, 89, 90, 95, 96, 97,...
+</p>
+
+<p>
+<b>
+11.USA History Lesson:</b>
+About 2 dozen US cities have over the years adopted IRV or related 
+single-transferable-vote systems,
+the largest being New York City in 1936.
+However, almost all of those cities later decided to get rid of it.  (As of 2000 apparently
+the only exception was Cambridge MA, which still uses PR-STV, which is a multwinner
+system which in the single-winner case reduces to IRV.)  
+I guess IRV advocates should be asking themselves &ndash;
+why did these cities <a href="BackSlide.html">backslide</a>?  
+But oddly enough, they never seem to ask themselves that.  In 
+fact, they usually don't even know it.
+</p>
+
+<a name="nasty"></a>
+<p>
+<b>
+12. Occasional Extremely Nasty and Illogical Results.
+</b>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+<th> simplified </th>
+</tr>
+<tr> 
+<td align="center"> 50 </td>
+<td align="center">  A>B>C>D>E </td>
+<td align="center"> A>B </td>
+</tr>
+<tr> 
+<td align="center"> 51 </td>
+<td align="center">  B>A>C>D>E </td>
+<td align="center"> B </td>
+</tr>
+<tr> 
+<td align="center"> 100 </td>
+<td align="center">  C>D>B>E>A   </td>
+<td align="center"> C>D </td>
+</tr>
+<tr> 
+<td align="center"> 53 </td>
+<td align="center">   D>E>C>B>A  </td>
+<td align="center"> D </td>
+</tr>
+<tr> 
+<td align="center"> 49 </td>
+<td align="center">      E>D>C>B>A         </td>
+<td align="center"> E>D </td>
+</tr>
+</table>
+
+<p>
+In this 303-voter example by Mike Ossipoff,
+the centrist candidate <b>C</b> is the favorite of far more voters than anybody else,
+and not only would win a head-to-head contest with any single opponent
+(based on these votes) but in fact would do so 
+by approximately a 2:1 <i>margin</i>.     
+(Details: C beats A by 202 to 101; beats B by 202 to 101;
+D by 201 to 102; and E by 201 to 102.)
+So the "right"  winner here clearly seems to be C,
+and almost every ranked-ballot voting system would indeed elect C.
+But not IRV.  IRV elects <b>D</b>!
+That's because IRV only examines the preference relations in the "simplified" votes, and
+<i>ignores</i> the others.
+</p>
+
+<p>
+(Incidentally, this example is <i>highly realistic</i> of the sort that arises in
+"one-dimensional politics" &ndash; it only requires that the
+favoriteness support taper off somewhat gradually
+with distance from the center &ndash; not a controversial assumption.)
+</p>
+
+<p>
+You can make this example even sicker: [the reader may enjoy this easy exercise]
+construct a <a href="PuzzlePage.html#prob18">scenario</a>
+in which the Condorcet Winner beats each other candidate pairwise by at least a
+99:1 margin (!), <i>and</i> every voter ranks him top or second-top,
+<i>but</i> nevertheless he is eliminated in the very first round of IRV voting!
+</p>
+
+<a name="BramsEx"></a>
+<p>
+Here is another example illustrating several crazy IRV phenomena in a single election.
+(<font size="-1">Source: 
+S.J.Brams:
+The AMS Nomination Procedure Is Vulnerable to 'Truncation of
+Preferences,' Notices of the Amer. Math'l. Soc. 29,2 (Feb. 1982) 136-138
+</font>.)
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr> 
+<td align="center"> 7 </td>
+<td align="center">  B>G>N>F </td>
+</tr>
+<tr> 
+<td align="center"> 6 </td>
+<td align="center">  G>B>N>F </td>
+</tr>
+<tr> 
+<td align="center"> 5 </td>
+<td align="center">  N>G>B>F   </td>
+</tr>
+<tr> 
+<td align="center"> 3 </td>
+<td align="center">   F>N>G>B  </td>
+</tr>
+</table>
+
+<p>
+<b>B wins</b> this IRV election.  (F, G, and N are eliminated, in that order.)
+</p>
+
+<p>
+Illogical but true facts:
+</p>
+<ol>
+<li>
+This is despite the fact that G would win direct
+pairwise elections versus every opponent, e.g. G would beat B by 14 to 7.
+</li>
+<li>
+If the 3 voters in the last row had
+ranked F first but <i>refused</i> to say more, i.e. refused to provide
+their 2nd, 3rd, &amp; 4th choices &ndash;
+then G would have won (which those voters prefer over B).
+This shows how IRV voters can be motivated to
+<i>truncate</i>, i.e. refuse to rank-order some of the candidates, thus 
+defeating IRV's goal
+of gathering ordering information from the voters.
+(Instead of truncating, <i>lying</i> also works &ndash; e.g. these voters could have lied 
+by pretending their second choice N was actually G.)
+</li>
+<li>
+This same election <i>but</i> with no F thus also illustrates a "no show paradox":
+the 3 voters in the last line then would be better off
+"not showing up" to cast their honest vote, since
+that way they would get a better election winner!  (<a href="IRVpartic.html">See that 
+again in slo-mo</a>)
+</li>
+<li>
+That no-F scenario also shows how the voters in the last line would be motivated to
+"betray" their true-favorite N (Nader) by dishonestly voting G>N>B to
+rank G (Gore) top; then G would win, whereas their honest vote causes both G and N to lose.
+This refutes the myth that IRV "cures" that "spoiler" problem with plurality voting.
+</li>
+<li>
+And: if these 3 voters instead had dishonestly voted
+B>F>N>G,  then G would have won (which they'd prefer to the old winner B)
+despite the fact this just <i>raised</i> their opinion of B from last to
+first place!
+That is a severe
+example of "non-monotonicity" and "raise-to-top failure."
+</li>
+</ol>
+
+<p>
+Meanwhile: <i>range voting</i> is monotonic, showing up to cast a range vote
+can never hurt you,  "raise-to-top failure" never happens, "betraying" your favorite
+by voting him sub-top is never strategically useful,
+and range never seems to do anything especially illogical and
+hard to justify.
+</p>
+
+<p>
+And here is a simple <a href="IrvRevFail.html">winner=loser IRV paradox</a> also illustrating
+several other pathologies; 
+<a href="CoreSuppPocket.html">another nasty example</a>;
+and here is an explanation of why the 
+whole underlying philosophy of IRV is <a href="IrvLogicBogus.html">self-contradictory</a>.
+</p>
+
+<p>
+<b>
+13. IRV ignores many of the votes:
+</b>
+One of the reasons for the bad behavior in the table two-above was that
+IRV <i>only</i> examines the "simplified" parts of the votes, and ignores the rest.
+</p>
+
+<p>
+What would you say about a project-manager who made irrevocable decisions,
+having looked at only a tiny fraction of the available information? That's
+what IRV does when it eliminates candidates based only on first-place votes.
+<small>In fact we can prove a theorem that IRV ignores asymptotically 100% of
+the information available in the ballots, see <a href="PuzzlePage.html#p34">puzzle 34</a>.</small>
+</p>
+
+<p>
+In contrast, Approval, RV, Condorcet, and Borda all take into account <i>all</i>
+information in all votes, ignoring none.
+</p>
+
+
+<p>
+<b>
+14. IRV <a href="IrvNonAdd.html">can't be counted</a>
+with a lot of existing voting equipment.
+</b>
+Nor can
+Condorcet.  However, Range Voting and Approval Voting <a href="VotMach.html">can</a>
+be counted
+with all existing voting equipment.  That could make a big difference in
+success rate and monetary savings for voting-reformers trying to change the system.
+</p>
+
+<a name="Deby"></a>
+<p>
+<b>
+15. Q. Do you really expect me to believe that non-monotonic IRV elections,
+"no-show paradox" nightmares, and near-tie
+IRV nightmares <i>really</i> are going to happen in <i>real</i> elections?  Because
+I've never heard of an example.  I bet examples are unbelievably rare and will
+never really occur.
+</b>
+</p>
+
+<p>
+<b>A.</b> "Yes,"  we really expect you to believe this, and "no,"
+such examples are <i>not</i> unbelieveably rare.
+</p>
+
+<p>
+In most IRV elections that have been held throughout history, the votes were simply 
+never made public, preventing anybody from knowing about whatever
+non-monotonicity occurred.  However,
+<a href="http://www.debian.org/">Debian</a> has employed ranked-ballot elections for their
+leader each year since 1999 and published the votes in the most recent 5 of these 7 cases,
+i.e. 2001-2005.
+<a href="Debian2003.html">See this discussion of the Debian elections</a>,
+including why they may be the only real and consequential moderately large
+ranked ballot elections with
+publicly available full  vote sets in the entire world.  (If you know of any others,
+please tell me about them!)
+Of these 5 elections,
+one exhibited an exact tie in an IRV round, and another exhibited a 1-off near-tie.
+The 2003 Debian election,
+with 4 candidates and over 450 voters</a>,
+was a complete nightmare for IRV since it involved at least  <i>two different </i>
+IRV near-ties, severe-nonmonotonicity examples, and no-show-paradox examples <i>each</i>!
+</p>
+
+<p>
+We also recently ran a range-voting <a href="Beaumont.html">exit poll</a>
+in the 2006 Texas governor election (5 candidates), and voila &ndash;
+our poll's IRV winner was Perry, but Strayhorn was preferred pairwise
+over every other candidate
+by our pollees.  (Strayhorn was heavily victimized by IRV because
+a tremendous number of voter's "Strayhorn>Others" preference relations were <i>ignored</i> by IRV,
+which eliminated her in the second round.)  Range Voting actually agreed with IRV in
+this case that Perry was the winner, but Range correctly gave it to Perry by
+only a very small margin over Strayhorn. (More voters said Strayhorn>Perry than said
+Perry>Strayhorn, but the Perry voters gave Perry higher scores, which was enough
+to make range voting elect Perry.)  This exit poll was also interesting in this sense &ndash;
+a tremendous number of voters wanted to express <i>no opinion</i> about certain 
+candidates.  Those voters were <i>not</i> trying to rank those candidates last.  They could have
+done so, but chose not to, and chose to explicitly circle "no opinion" on
+that ballot slot. IRV tells those voters: "Tough.  No matter if you are totally ignorant 
+and fully admit it &ndash; we <i>demand</i> that you express an opinion even though you do 
+not want to."
+Is that likely to lead to good results?
+</p>
+
+<p>
+Then, to really put the nail in IRV's (and plurality-with-delayed-runoff's) coffin, 
+in the <a href="Peru06.html">Peru election of 2006</a>
+Garcia won despite the fact that, pre-election polls indicated Lourdes Flores was 
+pairwise-preferred over both him and Humala!  (<a href="FunnyElections.html">More examples</a>,
+e.g. Chile 1970.)  And 
+<a href="Ireland1990.html">Ireland 1990</a> was the only case, in all of Irish history, where
+a federal IRV election gave a different winner than plain-plurality voting &ndash; and it
+exhibited numerous pathologies including no-show and
+(in a modified scenario)
+non-monotonicity (if Lenihan voters had voted for his
+arch-rival Currie, then Lenihan would have won)!
+And the famous <a href="LizVwiz.html">Lizard vs. Wizard</a> Louisiana 1991 election
+was another example of non-monotonicity (if Duke voters had instead decide to vote
+for Edwards, that would have stopped Edwards from winning)!  Indeed if you look
+at <a href="LAgovs.html">all</a>  the Louisiana governor elections one finds lots
+of pathologies.   I also examined the most recent 
+<a href="https://rangevoting.org/Aus07.htl">2007 Australian</a>  IRV elections cycle (involving 150 IRV elections
+to the federal house).  At least 9 exhibited pathologies.
+</p>
+
+<p>
+Next question?
+</p>
+
+<p>
+<b>
+16. Q. OK, OK, I concede IRV is a worse voting system than Range Voting,</b>
+<i>but</i>
+it has the Reform-<i>Momentum</i> right now.  So you by promoting range voting are doing us
+all a disservice, and being strategically unwise by splitting voting-reform forces.
+</p>
+
+<p>
+<b>A.</b>
+While that assertion may initially sound plausible, in fact a 
+<a href="IRVsplitExec.html">deeper understanding</a>
+shows that it is exactly wrong: range is actually unifying reform forces that would
+otherwise remain divided.
+</p>
+
+
+<hr>
+<a name="Summary"></a>
+<p>
+<b>
+17. Summary:
+</b>
+Isn't the purpose of voting to provide information about your opinions?
+Why would you want to have a system (IRV) that forces you to express less information,
+when you can have one (Range) that permits you to express more?
+</p>
+
+<p>
+Why would you want a more complicated system, with more nightmare potential, more
+tie-potential, longer delays, more chance of extremely goofy illogicality,
+and vastly larger communication needs (IRV) when you 
+can avoid all that with Range?
+</p>
+
+<p>
+Why would you want a system where voting for your favorite can actually 
+<a href="IrvHurtFav.html">hurt</a> both
+him and you (IRV) when
+you could just have a monotonic system (Range) in which voting for your favorite
+never hurts him?  Bottom line: A voter who feels Nader>Gore>Bush, 
+by thus-voting Nader top, can cause
+<i>both</i> Nader and Gore to <i>lose</i> to Bush, under either plurality or IRV voting
+(whereas voting Gore top would have caused him to win).
+With range voting, voting Nader top cannot cause Gore to lose to Bush.
+Ever. Under any circumstances.  Period.  <small>(Gore could still lose to Bush, but not as a 
+result of a range-vote for Nader.)</small>
+</p>
+
+<p>
+Why would you want a system (IRV)
+that goes to a lot of trouble to collect votes, then ignores them?
+</p>
+
+<p>
+Why would you want a system that can't be handled by many of today's voting machines
+(IRV) when you can have one that runs on every voting machine in the USA, right now
+(range)?
+</p>
+
+<p>
+If you think 2-party domination is a bad thing and would like to see a greater
+diversity of parties and more voter choice,  then why would you want IRV (in which, with 
+strategically-exaggerating voters, 3rd parties have no chance, and
+which in Australia, Malta, and Ireland still led to 2-party domination) when you could have Range?
+</p>
+
+<p>
+And why wouldn't you want the <i>best</i>
+system (among all commonly-proposed rivals), as measured by "Bayesian regret" (Range)??
+</p>
+
+<p>
+(Duh!)  You want range voting.  Forget IRV voting.
+</p>
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<p><a href="http://bolson.org/voting/irv/">Brian's Olson's anti-IRV page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

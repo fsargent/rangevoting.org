@@ -1,0 +1,228 @@
+<html>
+<head>
+<title>
+RangeVoting.org - suggested Ballot Initiative
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H2> Possible Language for a Ballot Initiative for "Democracy Improvement" </H2>
+
+
+<FONT SIZE=-1>
+<p>
+[The hyperlinks lead to additional explanatory or justifying information.
+In item III we are not fixated on the range <a href="Why99.html">0 to 99</a>
+and are fully amenable to other ranges such as
+0 to 9 or, less desirably -10 to +10,
+if those are felt superior; the range 0-99 is chosen merely for
+concreteness.]
+</p>
+</FONT>
+
+<ol type=I>
+<li>
+<b>We hereby <a href="GerryExamples.html">outlaw gerrymandering</a>:</b>  
+All N election districts shall be 
+drawn by the following completely unbiased  automatic procedure:
+<ol>
+<li>
+Start with the boundary outline of the state. <small>(Note: for states containing major
+separate islands or
+pieces such as Michigan or Hawaii, the pieces must be pre-joined by line-segments to  create
+an artificial all-enclosing boundary.  Each line used must have the property that the
+entire state lies on one side of it.  Second note:
+The procedure described holds for congressional districts and statehouse seats.
+For county or city governments based in districts within that county, the same procedure must
+be used but starting from the county or city outline not the state outline.)</small>
+</li>
+<li>
+Let N=A+B where A and B are as nearly equal whole numbers as possible.
+(For example, 7=4+3.)
+</li>
+<li>
+Among all possible dividing lines
+that split the state into two parts with population ratio A:B,
+choose the shortest.  (Note: since the Earth is round, when we say "line" we more precisely mean
+"great circle."  If there is an exact length-tie for "shortest" then break that tie by using
+the line closest to North-South orientation, and if it's still a tie, then use the Westernmost of
+the tied dividing lines.)
+</li>
+<li>
+We now have two hemi-states, each to contain a specified number (namely A and B)
+of districts.  Handle them recursively via the same splitting procedure.
+</li>
+<li>
+(After this initiative is passed, redistricting to meet these
+standards must happen within 365 days.  After that, exactly one redistricting must
+happen between US censuses, and it is to be conducted within 365 days after the census
+data is made public. Exception to the preceding 2 sentences: we allow
+redistricting caused by any successful court challenge
+arguing that our rules were not followed during those district drawings.  The maximally-populous
+district must have population at most 6% higher than the minimally-populous one,
+otherwise our rules have not been followed well enough.)
+For examples of how all 50 states would look if districted in this manner, see
+<a href="SplitLR.html">splitlinings page</a>.
+<!--
+, you may see this approximate sketch of how this method would redistrict
+Tennessee <a href="Tennessee.png"> (png)</a>
+<a href="Tennessee.ps"> (ps)</a>
+<a href="Tennessee.pdf"> (pdf)</a>
+<a href="Tennessee.tiff"> (tiff)</a>. -->
+</li>
+<li>
+If anybody's residence is split in two by one of the splitlines (which would happen,
+albeit very rarely)
+then they are automatically declared to lie in
+the most-western (or if line is EW, then northern)
+of the two districts.
+</li>
+</ol>
+</li>
+<li>
+We hereby enact <b>Uniform ballot standards:</b>
+<ol> 
+<li>
+<b><a href="Spoiled.html">Uniform rejection-standard</a>:</b>  
+each voter's ballot
+must be <i>immediately</i> checked for validity, and the voter <i>immediately</i> notified
+of its non-validity so that he/she can try again to produce a valid ballot.
+Voting machines that silently reject invalid ballots are hereby illegal.
+(Exception: in locales that use <i>hand-counted</i>, not machine-counted, ballots,
+this statute is dropped since it would conflict with the desire for
+ballot secrecy and anonymity.)
+</li><li>
+<b>Uniform format:</b>
+In any statewide race, all ballots for that race must have the same format statewide
+wherever the same type of voting machine is used.  
+</li>
+</ol>
+</li>
+<li>
+We hereby <b>improve the voting system</b> to allow voters to express more information
+in their votes and to reconcile the desire to express their opinions honestly
+in their vote, with the desire not to be strategically foolish:
+<ol>
+<li>
+Each vote in an N-candidate election with N&gt;2 
+(<font size="-1">Note: N <i>includes</i> all "write-in" candidates, if they are allowed</font>)
+shall consist of one numerical score from 0 to 99
+awarded to each candidate (for example "57, 0, 34, 99" could be one vote in a 4-candidate 
+election);
+</li>
+<li>
+Voters are allowed to fill entries with an "X" ("intentional blank") 
+if they desire not to express an
+opinion about that candidate (for example "57, 0, X, 99");
+</li>
+<li>
+A candidate's "total" is the average of all his non-blank scores;
+</li>
+<li>
+The candidate with the highest total wins. 
+</li>
+<li>
+(Exception: to prevent
+candidates admired by a small group but unknown to everybody else from winning,
+each candidate is pre-awarded K artificial <i>zero</i> scores, where K is 5% of the number of 
+voters in the previous iteration of that race.
+This also is intended to remove
+any fear from voters about honestly putting "blank.")
+</li>
+<li>
+Any illegible or out-of-range score shall be treated as "blank" so that the rest of that ballot's
+scores still get used.   
+</li>
+</ol>
+<a href="RExample.html">Example</a>.
+</li>
+<a name="ballaccess"></a>
+<li>
+We hereby <b>democratize ballot access:</b>
+Anybody can get on any ballot for any office provided they collect at least 2,500
+signatures of citizens legally qualified to be voters, or
+at least the square root of the number of voters in the preceding election for that post
+(if there was a precedent, otherwise 100 signatures will suffice), 
+whichever is fewer; and provided they submit this petition a month
+or more before election day.
+</li>
+<li>
+We hereby <b>free access to election information:</b>
+All election results including precinct by precinct counts (where those precincts produce them)
+should be publicly posted on the internet within 5 days of the election
+as some measure of protection against fraud.
+</ol>
+
+<p>
+<b>Mathematical facts about the
+&quot;<a href="RangeVoting.html">range voting</a>&quot; system in III:</b>
+Please note that awarding a high or low score to
+candidate C in no way affects the battle purely between candidates A and B, so that
+voters may feel free to express their honest opinion of C without fear of
+hurting A by "denying him your vote."
+Also please note that if candidate A has several "clones" A2, A3, 
+then that will neither hurt nor help them, unlike in the old system where the 
+clones might "split the vote" and lose.  Also note that, surprisingly, it is known how to
+run this kind of election on <a href="VotMach.html">any voting machine in the USA</a>
+with no modification needed.
+Finally note that voters now can express information about <i>all</i> the candidates instead
+of just one, or, by voting like (0,99,0,0), can choose to act just like voters in the 
+old system.
+</p>
+
+<p>
+<b>Historical facts about ballot access in IV:</b>
+In all US history since the age of preprinted ballots began (about 1890)
+up to 2005, there have only been <i>two</i> cases where a 
+ballot for some statewide office (or US presidential race)
+has ever had more than 10 candidates on it,
+<i>provided</i> at least 2500 signatures were required to get on ballot
+(and even in those cases, there were &le;12 candidates).
+(<a href="BallAccess.html">More facts</a>)
+</p>
+
+
+
+
+<hr>
+
+<a name="ballstatelist">
+<p>
+<b>Postscript:</b>
+The following US states allow statutes to be passed by "initiative":<br>
+&nbsp;&nbsp;&nbsp;
+AZ, AR, CA, CO, ID, MO, MT, NE, ND, OK, OR, SD, UT, WA.<br>
+The following US states allow constitutional amendments to be passed by
+"initiative":<br>
+&nbsp;&nbsp;&nbsp;
+AZ, AR, CA, CO, FL, IL, MI, MO, MT, NE, NV, ND, OH, OK, OR, SD.<br>
+We recommend constitutional amendments since we wish to prevent legislatures from simply
+overturning the law and re-gerrymandering whenever they feel like it.
+</p>
+
+<p>
+The usual procedure is, you formulate the wording very carefully of your
+initiative, then you collect signatures to get it put on the ballot.
+Your state's "secretary of state" office should probably have info on how to go 
+about it and how many signatures are required.  If anybody collects that information
+please let us know, and we will  <a href="BIanswers.html">post answers</a>.
+</p>
+
+<p>&bull; 
+<a href="Top10BallotInit.pdf">Top 10 Things to Think Through Prior to Launching a Ballot Measure Campaign</a>
+(from the "Ballot Initiative Strategy Center")
+</p>
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

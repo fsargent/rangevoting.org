@@ -1,0 +1,212 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Typical Margins of Victory with different voting systems in real life
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Typical Margins of Victory with different voting systems in real life
+</H2>
+<p>
+Some have feared that margins of victory might typically 
+be a lot larger or smaller with different voting
+systems.
+To investigate that, this page collects victory-margin data of the winner
+versus the 2nd place finisher, in various important elections using different voting systems.
+</p><p>
+There are some surprises.  <a href="https://rangevoting.org/RangeVoting.htl">Range</a>
+voting seems to produce larger victory-margins than
+<a href="Approval.html">approval</a> voting (which can be regarded as range voting with
+only the <i>endpoints</i> of the score-range permitted as valid scores)?! &ndash;
+(happened in 6 our of 7 elections looked at so far)
+exactly the opposite of what one might naively expect from their 
+<a href="#noise">Noise Levels</a> arising
+from random votes.  
+</p><p>
+[I contend noise levels are of little or no importance for
+predicting real life victory margins, and this surprise, assuming it is not just a statistical
+illusion/fluke, supports my contention.]
+</p>
+
+<h3> The Popular &amp; Electoral College vote-margins in USA presidential elections 1908-2008 </h3>
+
+<p>
+These elections, of course, were conducted using
+<a href="Plurality.html">plurality</a> voting.
+</P>
+<img src="USpresidMargins19082008.png"/>
+
+<h3> The Closest US presidential elections </h3>
+<pre>
+<b>2000</b>
+Gore=      50992335
+G.W.Bush=  50455156   (wins in electoral college)
+Difference=  537179 = 0.53% of the G+B votes = 58*noise
+NoiseLevel=   10072
+
+<b>1960</b>  (Election substantially fraudulent.)
+Kennedy=   34226731   (wins)
+Nixon=     34108157
+Difference=  118574 = 0.174 of the K+N votes = 14.3*noise.
+NoiseLevel=    8266
+
+<b>1876</b>  (Election substantially fraudulent.)
+Tilden    =4285992
+Hayes=     4033768   (wins in electoral college)
+Difference= 252224 = 3.03% of the T+H votes = 87*noise
+NoiseLevel=   2884
+</pre>
+<p>
+In the above  NoiseLevel=&radic;N
+where N=total number of votes for both of the top 2 candidates combined.
+The "signal" (i.e. vote difference) far exceeded the "noise"
+in even the closest election ever, which was 14.3&sigma;.
+</p>
+<a name="landslide"></a>
+<h3> Biggest "Landslide" US presidential elections </h3>
+<pre>
+<b>1984</b>
+Reagan=    58.8%
+Mondale=   40.6%
+Difference=18.2%
+
+<b>1972</b>
+Nixon=     60.7%
+McGovern=  37.5%
+Difference=23.2%
+
+<b>1964</b>
+Johnson=   61.1%
+Goldwater= 38.5%
+Difference=22.6%
+
+<b>1936</b>
+F.Roosevelt=60.8%
+Landon=     36.5%
+Difference= 24.3%
+
+<b>1920</b>
+Harding=   60.3%
+Cox=       34.1%
+Difference=26.2%
+
+<b>1904</b>
+T.Roosevelt=56.4%
+Parker=     37.6%
+Difference= 18.8%
+</pre>
+
+<h3> The Biggest Landslide French Presidential election </h3>
+<pre>
+<b>2002</b>   (two-man runoff)
+Jacques Chirac=   82.21%
+Jean-Marie Le Pen=17.79%
+Difference=       64.42%
+</pre><p>
+The margin of victory here got within a factor of 1.55 of 
+maximum possible (which would be 100%).
+In all 6 US landslides listed, it got within a factor &le;5.5.
+</p>
+<h3> Comparison of victory-margins in different voting systems </h3>
+
+<p>
+<a href="French2007studies.html">France 2007</a>
+comparison of victory-margins in different voting systems, given
+as a percentage of max theoretically possible margin:
+</p><pre>
+ <b>Voting system</b>           <b>victory margin</b>
+ Plurality:              31.2%-25.9% =    5.3%   (official results, first round)
+ SimpleMajority:         53.1%-46.9% =    6.2%   (official runoff results)
+ ApprovalVoting:         42.8%-41.6% =    1.2%
+ (2,1,0)RangeVoting:     (1.08-0.96)/2  = 6.0%
+ (5,4,3,2,1,0)RangeVote: (3.132-2.825)/5= 6.1% [or (3.041-2.774)/5=5.34%]
+ (5,4,3,2,1,0)MedianScore:  (3-3)/5     = 0
+ Condorcet:     52.0% to 48.0% pairwise = 4.0%  (also valid for Coombs final round)
+ PseudoBorda:        (859.4-778.7)/1100 = 7.3%
+</pre>
+
+<p>
+Comparison of victory-margins in several voting systems (using poll data) 
+<a href="RangePolls.html">from</a>
+USA presidential elections 1988-2008 (expressed as percentage of max
+possible margin; median scores got from same poll/ballot data as range):
+</p><pre>
+ <b>voting system          year-1988</b>
+ Plurality(Official):    7.8%
+ Approval:               2% (5canddts)
+ Range (average-based):  6.33% (4pt allowed-score-range, 5canddts)
+ MedianScore:            0
+
+ <b>voting system          year-1992</b>
+ Plurality(Official):    5.6%
+ Approval:               1.2% (3canddts)
+ Range:                  8.33% (7pt range, 3canddts)
+ MedianScore:            0
+
+ <b>voting system          year-1996</b>
+ Plurality(Official):    8.5%
+ Approval:               4% (4canddts)
+ Range:                  6.66% (4pt range, 2canddts)
+ MedianScore:            33.3%
+
+ <b>voting system          year-2000</b>
+ Plurality(Official):    0.51%
+ Approval:               4% (4canddts)
+ Range:                  4.17% or 6.64%  (101pt range, 4canddts)
+ <a href="RangeVoteUIowa2000data.txt">MedianScore:</a>            0
+
+ <b>voting system          year-2004</b>
+ Plurality(Official):    2.47%
+ Approval:               6% (3canddts)
+ Range:                  9.3% (-5 to +5 range omitting 0 thus 10 possible scores, 2canddt)
+ MedianScore:            10%
+
+ <b>voting system          year-2008</b>
+ Plurality(Official):    7.26%
+ Approval:               21.3% (2canddts)
+ Range:                  5.66%  (4pt range  among Obama & McCain only; ABC August poll)
+ MedianScore:            0      (4pt range  among Obama & McCain only; ABC August poll)
+ Range:                  4.4%  (101pt range among many canddts but we ignore everybody but 
+                                         Obama & McCain; Gallup August poll)
+ MedianScore:            3% ?    guess based on partial Gallup 101pt range-score data
+</pre>
+
+<a name="noise"></a>
+<h3> Theoretical root-mean-square "noise levels" from random votes </h3>
+
+<p>
+For <a href="Approval.html">approval</a>
+voting (each vote is 1=approve or 0=disapprove selected by a coin toss)
+N votes should lead to 
+<nobr>N/2&plusmn;(N/4)<sup>1/2</sup></nobr> approvals, i.e. the "noise level"
+for the average approval-level would be (4N)<sup>-1/2</sup>.
+</p><p>
+For continuum range voting with the real interval [0,1] as score range, but
+based on <i>medians</i> not averaging, assuming uniform random
+vote-scores, we'd 
+<A href="PuzzMedianAvgStdDev.html">expect</a>
+noise level (8+4N)<sup>-1/2</sup>, i.e. essentially the same for large N.
+</p><p>
+For continuum average-based range voting with the real interval [0,1] as score range, 
+we'd expect noise level (12N)<sup>-1/2</sup>, i.e. &radic;3 times smaller.
+</p>
+
+
+</p><p>
+
+<br>
+<a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

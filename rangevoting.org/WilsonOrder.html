@@ -1,0 +1,1651 @@
+<html>
+<head>
+<title>
+RangeVoting.org - D dimensional orderings and Stirling numbers
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> D-dimensional orderings  and Stirling numbers </H1>
+
+<p>
+By Warren D. Smith, October 2014. 
+</p><p>
+<b>ABSTRACT.</b>
+We find the maximum, and generic, number of "orderings" of N points in D-dimensional space,
+provided the points are ordered by increasing distance from another (movable) point, 
+or along a  (movable) direction.   We also find asymptotic formulas for these quantities,
+and for Stirling numbers of both kinds, along any ray in the (N,D) parameter-plane.
+</p>
+
+<h3> Statement of our two problems </h3>
+<p>
+Let there be N "candidates," who each are distinct points in D-dimensional "issue space." 
+<ol><li>
+Let a "voter" be <i>another point</i> 
+in D-space, and assume any voter rank-orders the candidates by distance from her
+(nearer candidates preferred). 
+Define <b>R(N,D)</b> to be the maximum (or generic) number of different orderings that could 
+arise as the position of the voter is varied. 
+</li><li>
+Define <b>Q(N,D)</b> to be the maximum possible (or generic)
+number of honest linear-orderings of those 
+candidates under different directional preferences.  In this model, a 
+"voter" instead is a <i>direction</i> (unit length D-vector) and the ordering is of the 
+candidates in that direction, i.e. by their dot-product with that direction.
+</li></ol>
+<p>
+The problems are to understand R(N,D) and Q(N,D).
+</p><p>
+<b>Notes:</b> 
+"Orderings" that include ties are ignored.
+The number of orderings
+which arises when the N candidates are <b>generic</b> points, i.e. whose coordinates
+disobey every non-identity multivariate polynomial equation with integer coefficients,
+is one problem, and the <b>maximum</b> number (maximized over all N-point sets in D-space), 
+is a different problem &ndash; so really we have 4 problem versions.
+It is not immediately obvious the generic and maximum numbers are always the same, but we will
+prove they are.
+It also may not be immediately obvious any single-valued "generic" count always exists &ndash; but
+it does, as we'll also prove (e.g. it
+eventually will become obvious once you know Zaslavsky's theorem; also follows from our proof of
+the fundamental recurrences).  It indeed will turn out that we could have permitted
+the candidates to lie in any higher dimensional space (say D+&Delta; dimensional for &Delta;&ge;0) 
+provided the <i>voter</i> still is demanded to lie in D-space; the answer-counts are not affected
+by this change in the problem definition.
+</p><p>
+Of course R(N,D)&ge;Q(N,D)&ge;1, indeed Q(N,D) 
+arises from the R(N,D) problem by insisting the voter lie on the "sphere at infinity."
+The ultimate level of 
+understanding would be to find exact formulas for them, but one also could 
+just find upper &amp; lower bounds.  We are going to find exact formulas.
+We also shall find somewhat simpler upper bounds (valid for the "maximum" versions)
+which are asymptotically tight when N&rarr;&infin; with D fixed.
+</p><p>
+These problems can be regarded as fundamental problems in political science,
+and also have interest in combinatorial geometry.
+</p><p>
+Obviously R(N,D)=Q(N,D)=N! if D is made sufficiently large with N fixed.
+But when D is fixed and N grows large, it is interesting and important that
+there are far fewer "D-dimensional orderings"
+than the total number N! of possible orderings of N items.
+</p>
+
+<h3> These problems, and their solution, are (mostly) not new! </h3>
+
+<p>
+A funny thing happened after I wrote the first draft of this paper.
+Richard P. Stanley pointed out Good &amp; Tideman 1977,
+which solves my same R(N,D) problem expressing it as a certain sum of 
+"<a href="http://dlmf.nist.gov/26.8">Stirling</a> numbers of the first kind." 
+It seemed to me their proof might not be fully rigorous (there were several fine points 
+they'd blissfully ignored) but basically they'd "scooped" me 37 years prior.
+Tideman then recommended the followup paper Zaslavsky 2002.
+Zaslavsky redid the Good-Tideman proof his own way (he also had some criticism of
+it but which, he ultimately concluded, does not matter in the sense that
+Good &amp; Tideman's answer still comes out correct), also with a more general result.
+Zaslavsky claims, now using Mathematica's 
+<a href="http://mathworld.wolfram.com/StirlingNumberoftheFirstKind.html">notation</a> 
+for Stirling numbers, that
+</p><center>
+R(N,D) = &sum;<sub>0&le;k&le;D</sub> |StirlingS1(N,N-k)|.
+</center><p>
+<!--
+This sum agrees with me
+when N=D+1,D+2,D+3 for each D=1,2,3 <i>except</i> it gives
+R(5,3)=96
+while I had found 106, and
+R(6,3)=326 while I had found 386.  Ouch!!
+So not only was I scooped, but some of my results actually were contaminated by some error.
+-->
+By agreeing (as is standard) that if N-k is negative then the StirlingS1 
+equals zero, the problem is avoided that Zaslavsky's sum
+would otherwise become undefined when N&lt;D.
+</p>
+<a name="thetabs"></a>
+<table bgcolor="pink">
+<caption>
+R(M+D,D) for D=1,2,3,...,9 and M=1,2,3,...,10.  Also note R(N,D)=N! if N&le;D+1.
+</caption>
+<tr bgcolor="aqua"><th bgcolor="orange">D\M</th><th>M=1</th><th>M=2</th><th>M=3</th><th>M=4</th><th>M=5</th><th>M=6</th><th>M=7</th><th>M=8</th><th>M=9</th><th>M=10
+</th></tr><tr><th bgcolor="aqua">D=1</th><td>2</td><td>4</td><td>7</td><td>11</td><td>16</td><td>22</td><td>29</td><td>37</td><td>46</td><td>56</td>
+</td></tr><tr><th bgcolor="aqua">D=2</th><td>6</td><td>18</td><td>46</td><td>101</td><td>197</td><td>351</td><td>583</td><td>916</td><td>1376</td><td>1992</td>
+</td></tr><tr><th bgcolor="aqua">D=3</th><td>24</td><td>96</td><td>326</td><td>932</td><td>2311</td><td>5119</td><td>10366</td><td>19526</td><td>34662</td><td>58566</td>
+</td></tr><tr><th bgcolor="aqua">D=4</th><td>120</td><td>600</td><td>2556</td><td>9080</td><td>27568</td><td>73639</td><td>177299</td><td>392085</td><td>808029</td><td>1569387</td>
+</td></tr><tr><th bgcolor="aqua">D=5</th><td>720</td><td>4320</td><td>22212</td><td>94852</td><td>342964</td><td bgcolor="yellow">1079354</td><td>3029643</td><td>7734663</td><td>18239040</td><td>40210458</td>
+</td></tr><tr><th bgcolor="aqua">D=6</th><td>5040</td><td>35280</td><td>212976</td><td>1066644</td><td bgcolor="yellow">4496284</td><td bgcolor="yellow">16369178</td><td>52724894</td><td>153275513</td><td>408622073</td><td>1011778943</td>
+</td></tr><tr><th bgcolor="aqua">D=7</th><td>40320</td><td>322560</td><td>2239344</td><td>12905784</td><td>62364908</td><td>258795044</td><td>944218666</td><td>3090075848</td><td>9219406943</td><td>25407870031</td>
+</td></tr><tr><th bgcolor="aqua">D=8</th><td>362880</td><td>3265920</td><td>25659360</td><td>167622984</td><td>916001880</td><td>4280337452</td><td>17499398776</td><td>63850536496</td><td>211361047584</td><td>643294838111</td>
+</td></tr><tr><th bgcolor="aqua">D=9</th><td>3628800</td><td>36288000</td><td>318540960</td><td>2330016768</td><td>14238041208</td><td>74162765536</td><td>336653747176</td><td>1358262331112</td><td>4951400140040</td><td>16530707226038</td>
+</td></tr>
+</table>
+<p>
+Then I worked harder at literature searching and
+found Cover 1967, which had scooped me even earlier by solving the Q(N,D) problem!
+Cover found the recurrence
+</p><center>
+Q(N+1,D) = Q(N,D) + N&middot;Q(N,D-1)
+</center><p>
+which together with the base cases that Q(N,D)=N!
+if N&le;D+1 and Q(N,1)=2 if N&ge;2, suffice to fill the whole 
+Q-table.  
+Incredibly enough, I then observed empirically that the <b><i>exact</i> same
+recurrence</b> as Cover's for Q(N,D), also is obeyed by R(N,D) &ndash; albeit since
+the first row of the R-table
+is different from the first row of the Q-table, we do not get the same tables.
+[We <a href="#fundrecur">later</a> will present an extremely simple
+proof of both Cover's and my new recurrence; which also shall show they solve 
+both the "generic" and "maximum" problem versions.  The previous authors
+had only considered "generic," except for Edelsbrunner for Q(N,2).]
+Specifically:
+The way I have laid out these tables, the recurrence determines each
+table-entry from the entry immediately above and the one immediately leftward,
+for example 16369178=4496284+11&times;1079354 highlit yellow above.
+The leftmost column of each table is trivially found since it just consists of factorials.
+The top row of each table also is given by a simple formula: 
+Q(N,1)=2 if N&ge;2, and R(N,1)=(N-1)N/2+1.
+Actually we could, if desired, also define R(N,0)&equiv;1 and then the recurrence still would
+hold in the thus-extended R-table.
+</p>
+<table bgcolor="pink">
+<caption>
+Q(M+D,D) for D=1,2,3,...,9 and M=1,2,3,...,10.  Also note Q(N,D)=N! if N&le;D+1.
+</caption>
+<tr bgcolor="aqua"><th bgcolor="orange">D\M</th><th>M=1</th><th>M=2</th><th>M=3</th><th>M=4</th><th>M=5</th><th>M=6</th><th>M=7</th><th>M=8</th><th>M=9</th><th>M=10
+</th></tr><tr><th bgcolor="aqua">D=1</th><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td><td>2</td>
+</td></tr><tr><th bgcolor="aqua">D=2</th><td>6</td><td>12</td><td>20</td><td>30</td><td>42</td><td>56</td><td>72</td><td>90</td><td>110</td><td>132</td>
+</td></tr><tr><th bgcolor="aqua">D=3</th><td>24</td><td>72</td><td>172</td><td>352</td><td>646</td><td>1094</td><td>1742</td><td>2642</td><td>3852</td><td>5436</td>
+</td></tr><tr><th bgcolor="aqua">D=4</th><td>120</td><td>480</td><td>1512</td><td>3976</td><td>9144</td><td>18990</td><td>36410</td><td>65472</td><td>111696</td><td>182364</td>
+</td></tr><tr><th bgcolor="aqua">D=5</th><td>720</td><td>3600</td><td>14184</td><td>45992</td><td>128288</td><td>318188</td><td>718698</td><td>1504362</td><td>2956410</td><td>5509506</td>
+</td></tr><tr><th bgcolor="aqua">D=6</th><td>5040</td><td>30240</td><td>143712</td><td>557640</td><td>1840520</td><td>5340588</td><td>13964964</td><td>33521670</td><td>74911410</td><td>157554000</td>
+</td></tr><tr><th bgcolor="aqua">D=7</th><td>40320</td><td>282240</td><td>1575648</td><td>7152048</td><td>27397768</td><td>91484824</td><td>273029356</td><td>742332736</td><td>1866003886</td><td>4386867886</td>
+</td></tr><tr><th bgcolor="aqua">D=8</th><td>362880</td><td>2903040</td><td>18659520</td><td>97332048</td><td>426105264</td><td>1615407976</td><td>5437818960</td><td>16572810000</td><td>46428872176</td><td>121005626238</td>
+</td></tr><tr><th bgcolor="aqua">D=9</th><td>3628800</td><td>32659200</td><td>237913920</td><td>1405898496</td><td>6945266928</td><td>29560978592</td><td>111128262992</td><td>376293222992</td><td>1165584049984</td><td>3343685322268</td>
+</td></tr>
+</table>
+<p>
+I think I should be forgiven for rediscovering all this, because the authors of the original papers
+I worked in blissful ignorance of, also mainly were unaware of each other.
+Zaslavsky 2002, and Good &amp; Tideman 1977, were unaware of Cover 1967.  
+Edelsbrunner 1987 [who in his book solved the Q(N,2) problem],
+and the "geometric k-sets" literature in general,
+seemed unaware of either; and Orlik &amp; Terao in their 1992 book 
+putatively summarizing the
+entire area, didn't mention any of them.
+Nor was the poser (to me in 2014) of these problems, David W. Wilson, aware of any of them.
+Hence it would not surprise me if even more discoverers exist.
+Indeed, I then found Gould 1974, who used Cover 1967 to show
+</p><center>
+Q(N,D) = 2 &sum;<sub>0&le;j&le;&lfloor;(D-1)/2&rfloor;</sub> |StirlingS1(N,2j+1+N-D)|
+</center><p>
+<!--
+2*Sum[Abs[StirlingS1[13-1, 13-(7-1-2*j)]], {j,0,(7-1)/2}] = 5340588 = Q(12,6)
+2*Sum[Abs[StirlingS1[14-1, 14-(7-1-2*j)]], {j,0,(7-1)/2}] = 13964964 = Q(13,6)
+2*Sum[Abs[StirlingS1[13-1, 13-(8-1-2*j)]], {j,0,(7-1)/2}] = 27397768 = Q(12,7)
+-->
+where the sum alternatively may be taken to be over all non-negative integer j 
+under the convention that StirlingS1(N,K)=0 if N&lt;K.
+Gould's referee pointed out that 
+Cover's recurrence relation had been discovered (without proof) by
+Bennett 1956, who probably would have done more if he had not died in that same year.
+The StirlingS1's are fundamental combinatorial quantities and may be defined as
+StirlingS1(N,K)=(-1)<sup>N+K</sup> times
+the number of permutations of N objects having exactly K cycles.
+[In fact, as better names, Knuth recommends calling them "Stirling cycle numbers" 
+and for Stirling numbers of the 2nd kind, the 
+corresponding better name is "Stirling subset numbers."]
+They may be computed from the recurrence
+</p><center>
+StirlingS1(N+1,K) = StirlingS1(N,K-1) - N&middot;StirlingS1(N,K)
+</center><p>
+with base cases 
+StirlingS1(N,K)=0 if either K&gt;N, K&le;0, or N=0; except for Stirling(0,0)=1.
+Also 
+StirlingS1(N,1)=(-1)<sup>N+1</sup>(N-1)!,
+StirlingS1(N,1)=(-1)<sup>N</sup>(N-1)!H<sub>N-1</sub>,
+StirlingS1(N,N)=1,
+and
+StirlingS1(N,N-1)=(1-N)N/2.
+When I finally became aware of all that, I was able &ndash; suddenly with a full view
+of the situation and everybody's ideas &ndash; to simplify and/or generalize their results.
+I then entirely rewrote the present paper.
+</p><p>
+Although the closed form expressions of Q(N,D) and R(N,D) 
+as sums of Stirling numbers were rather mysterious to their original discoverers, they now
+are trivial to derive from the fundamental recurrences for Q and R and StirlingS1.
+They are not terribly directly useful, indeed
+it seems easier to go in the other direction by computing StirlingS1 from R:
+</p><center>
+StirlingS1(N,N-D) = (-1)<sup>D</sup> [ R(N,D) - R(N,D-1) ].
+</center><p>
+The real benefit is that the wealth of knowledge about
+(e.g. <a href="#asysect">asymptotics</a> and identities involving) Stirling numbers
+can then be quickly translated into knowledge about Q(N,D) and R(N,D).
+For example, known "generating functions" for the StirlingS1's include
+</p><center>
+&sum;<sub>K&ge;0</sub> StirlingS1(N,K) t<sup>K</sup> = t(t-1)(t-2)...(t+1-N)
+&nbsp;&nbsp;&nbsp; and &nbsp;&nbsp;&nbsp; 
+&sum;<sub>K&ge;0</sub> |StirlingS1(N,K)| t<sup>K</sup> = t(t+1)(t+2)...(t+N-1);
+<br>
+&sum;<sub>N&ge;0</sub> StirlingS1(N,K) t<sup>N</sup>/N! = ln(t+1)<sup>K</sup>/K! 
+&nbsp;&nbsp;&nbsp; and &nbsp;&nbsp;&nbsp;
+&sum;<sub>N&ge;0</sub> |StirlingS1(N,K)| t<sup>N</sup>/N! = ln(1-t)<sup>K</sup>/K! 
+&nbsp;&nbsp; both for |t|&lt;1;
+<br>
+&sum;<sub>N&ge;0</sub> &sum;<sub>K&ge;0</sub>
+StirlingS1(N,K) x<sup>N</sup> y<sup>K</sup> / N! = (1+x)<sup>y</sup>.
+</center>
+<a name="niftyident"></a>
+<p>
+Using the top right identity, it is not hard to find these generating functions:
+</p><center>
+&sum;<sub>D&ge;1</sub> Q(N,D) t<sup>D</sup> = 2 (1+2t)(1+3t)(1+4t)...(1+[N-1]t) t/(1-t) 
+&nbsp;&nbsp;&nbsp; and &nbsp;&nbsp;&nbsp;
+&sum;<sub>D&ge;0</sub> R(N,D) t<sup>D</sup> = 
+(1+t)(1+2t)(1+3t)...(1+[N-1]t) / (1-t).
+</center>
+
+<h3> A little Terminology &amp; Background </h3>
+
+<p>
+Let <b>VoD</b> stand for 
+<a href="http://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi diagram</a>.
+The <b>all-orders Voronoi diagram</b> of N points in D-space (AOVoD)
+shall mean the arrangement of the H=(N-1)N/2 hyperplanes that are perpendicular bisectors of
+the line segments whose endpoints are two distinct points within our set of candidates.
+</p><p>
+It is a useful and fairly well known fact that the number A(H,D) of cells in
+an arrangement of H generic hyperplanes in D-space (this formula also gives 
+the maximum possible number
+of cells, maximized over all possible such hyperplane arrangements, i.e.
+for this cell-counting problem, the generic and maximum values are equal) is
+</p><center>
+<b>A(H,D)</b> = the unique polynomial(H) of degree=D
+whose value agrees with 2<sup>H</sup> for each H=0,1,2,3,...,D
+<br>
+= &nbsp; &sum;<sub>0&le;K&le;D</sub> H! / [(H-K)! K!]
+&nbsp = &nbsp; H<sup>D</sup>/D! + O(H<sup>D-1</sup>).
+</center><p>
+Also, the number of <i>infinite</i> cells in this arrangement
+is (both generically and maximally)
+</p><center>
+A<sub>&infin;</sub>(H,D) = 2A(H-1,D-1) &nbsp; when H&ge;1 and D&ge;1,
+but A<sub>&infin;</sub>(0,D)=1 and A<sub>&infin;</sub>(H,0)=0. 
+</center><p>
+One proof is via Zaslavsky's theorem discussed below.  But that is overkill.
+A different proof is to note the recurrence
+<nobr>A(H,D)=A(H-1,D)+A(H-1,D-1)</nobr>
+holds generically and maximally.
+This arises by considering adding hyperplane H to the arrangement formed from hyperplanes 1,2,3,...,H-1.
+Note the arrangement <i>intersected</i> with this new hyperplane is a (D-1)-dimensional arrangement
+and its cell-count is the number of cells of the D-dimensional arrangement that are split by
+the new hyperplane.
+The base cases are 
+A(1,D)=2 when D&ge;1,
+and
+A(H,1)=H+1.
+All these base and inductive cases obviously hold both generically and maximally.
+We then may show the sum-of-binomials formula satisfies them all.  Also, 
+A<sub>&infin;</sub>(H,D)=2A(H-1,D-1) 
+arises by replacing the "sphere at infinity" by two suitable 
+hyperplanes parallel to one of the original ones (these exist if H&ge;1 and D&ge;1) but
+very far away (this does not change the count of infinite cells), 
+and considering the  (D-1)-dimensional situation on those hyperplanes only.
+</p>
+
+<h3> Connection of our problems to all-orders VoD </h3>
+
+<center>
+R(N,D) = #regions in all-orders-VoD of N points in D-space
+<br>
+  = #distance-orderings of the N points in D-space,
+     viewed from a movable additional point
+<br>
+&ge;
+<br>
+Q(N,D) = #infinite regions in all-orders-VoD of N points in D-space
+<br>
+  = #cells in the intersection of all-orders-VoD with "sphere at infinity"
+<br>
+  = #linear orderings of the N points, along some variable direction.
+</center>
+<p>
+Further, by constructing the AOVoD you can actually algorithmically
+determine all these orderings for any particular N-point set.
+One ordering corresponds to each cell in the arrangement (voter
+can be located anywhere in that cell); for the Q(N,D) problem only the infinite cells
+matter.  
+If D is fixed, N large, then (we'll see) the run time is proportional to their number
+if Edelsbrunner 1987's arrangement-constructing algorithms are used.
+</p><p>
+Oddly enough, although the <b>number</b> of orderings remains unchanged as the N points are moved
+(provided the motion keeps them generic), the <b>set</b> of these orderings can change.
+This is demonstrated by the right half of the figure below (due to Cover for the Q-problem).
+<img src="WilsonOrdFig.png"/>
+<p><b>Figure:</b> At left: the three perpendicular bisector lines of points A,B,C coincide at the
+triangle's circumcenter. At right: two generic 4-point sets. Each shows R(4,2)=18 and Q(4,2)=12,
+but the set of 12 linear orderings for the top point set <i>differs</i> from the set
+of 12 for the lower set (no matter how the points are labeled); and similarly
+the set of 18 distance orderings for the top point set <i>differs</i> from the set
+of 18 for the lower set.
+To see that, note that in the top set, all 4 points can be at either extreme end
+of the ordering, but in the bottom set, the middle point cannot be extreme in any linear ordering,
+and cannot be furthest in any distance ordering.
+</p>
+
+<h3> Direct solutions in some small dimensions D (or for small numbers N of points) </h3>
+
+<center>
+<b>If N=0 or N=1</b> then Q(N,D)=1 for each D&ge;1.
+</center>
+<p>
+Because: There is exactly one ordering of N=0 or of N=1 candidates.
+</p>
+
+<center>
+<b>If N&le;D+1</b> then Q(N,D)=R(N,D)=N!.
+</center>
+<p>
+Because: If the N points form a regular simplex (or any nearly-regular simplex) then
+by symmetry any ordering is achievable.  And we'll later see (e.g. from Zaslavsky's theorem)
+that the values of Q(N,D) and R(N,D)
+are the same for <i>any</i> generic N-point set as for any other.
+</p>
+
+<center>
+<b>If N=D+2</b> then Q(N,D)=(D+1)!D and R(N,D)=(D+1)!(D+1).
+</center>
+<p>
+Because: If the N points form a regular simplex (or any nearly regular simplex) plus its
+centerpoint (or near-enough point to the center)
+then by symmetry any ordering is achieveable for the D+1 simplex vertices.
+However, for Q(N,D), the centerpoint lies strictly inside the convex hull of the other points,
+hence cannot be one of the two extreme points of the ordering.  It should be obvious it can be any other, though.
+So we do not get (D+2)!=(D+1)!(D+2), but rather only (D+1)!D orderings.
+For R(N,D), the centerpoint can be made first (nearest to the voter) in the ordering by placing voter nearby
+to it.  But it cannot be made last. Hence
+we do not get (D+2)!=(D+1)!(D+2), but rather only (D+1)!(D+1) orderings.
+</p>
+
+<center>
+If N&ge;2 then <b>Q(N,1)</b> = 2  &nbsp; both generically and maximally.
+</center><p>
+Because: The forwards &amp; backwards ordering of the candidates along the real line.
+</p>
+
+<center>
+<b>R(N,1)</b> = (N-1)N/2 + 1 &nbsp;  both generically and maximally.
+</center><p>
+Because: the all-orders-VoD is delineated by (N-1)N/2 candidate-pair-midpoints,
+which generically all are distinct.  
+<!-- Meanwhile  A(H,1) = (N^2-N+2)/2  which is the same. -->
+</p>
+
+<center>
+If N&ge;2 then &nbsp; <b>Q(N,2)</b> = (N-1)N  &nbsp;  both generically and maximally.
+</center><p>
+Because the all-orders-VoD infinite regions are got from the
+(N-1)N/2 point-pair-bisector lines intersecting the "circle at infinity."
+Each line has two endpoints at infinity, and all line-slopes are
+generically distinct hence all endpoints distinct.   These endpoints
+partition the circle at infinity into
+the same number of arcs, except if 0 endpoints then 1 arc (the whole circle).
+</p>
+
+<center>
+<b>R(N,2)</b> = (3N<sup>4</sup> - 10N<sup>3</sup> + 21N<sup>2</sup> - 14N + 24)/24
+</center><p>
+generically. 
+The following demonstration does not make it clear it also is maximum.
+<!-- Meanwhile  A(H,2) = (N^4-2*N^3+3*N^2-2*N+8)/8  differing by a poly of degree=3. -->
+Proof:
+Each 3-tuple of points has a (generically distinct) circumcenter where
+their three point-pair-bisector lines concur.  The intersection points
+of the lines
+therefore consist of (N-2)(N-1)N/6 points where we have 3-line-concurrences,
+plus (N-3)(N-2)(N-1)N/8 points where we have 2-line concurrences.
+So there are
+</p><center>
+   (N-2)(N-1)N/6+ (N-3)(N-2)(N-1)N/8 = (N-2)(N-1)N(3N-5)/24
+</center><p>
+vertices in the all-orders-VoD line-arrangement, all generically
+distinct, and this
+is maximal.
+Each line contains N-2 vertices that are 3-way plus
+(N-2)(N-3)/2   that are 2-way, for, in all, (N-1)(N-2)/2 vertices on
+each line,
+all generically distinct.  There are (N-1)N/2 point-pair bisector lines,
+all generically distinct.
+Hence the whole AOVoD can be regarded as a polyhedral planar graph with
+</p><center>
+V = (N-2)(N-1)N(3N-5)/24+1 
+</center><p>
+vertices (note I have added one
+additional vertex at infinity)
+and
+</p><center>
+E = [(N-1)N/2][(N-1)(N-2)/2+1]
+ = (N-1)N(N<sup>2</sup>-3N+4)/4
+</center><p>
+edges.
+One can also compute the number E of edges in a different way using
+2E=&sum;(valencies), finding
+</p><center>
+2E = (N-2)(N-1)N+(N-3)(N-2)(N-1)N/2+(N-1)N
+      = (N-1)N(N<sup>2</sup>-3N+4)/2
+</center><p>
+Hooray, these two calculations of E agree.
+Hence using Euler's polyhedral formula V-E+F=2
+the number of faces (cell regions) is
+</p><center>
+   F =  2-V+E
+ =  2 - 1 -  (N-2)(N-1)N(3N-5)/24 + [(N-1)N/2] [(N-1)(N-2)/2+1]
+=  (3N<sup>4</sup> - 10N<sup>3</sup> + 21N<sup>2</sup> - 14N + 24)/24
+</center><p>
+using the first E formula
+(the second of course yields the same result).
+<!--and
+ = 2 - 1 -  (N-2)*(N-1)*N*(3*N-5)/24 +  (N-1)*N*(N^2-3*N+4)/4
+  = (3*N^4 - 10*N^3 + 21*N^2 - 14*N + 24)/24
+using the second E formula, which agrees.
+-->
+For N=0,1,2,3,4,5,6,7,8,9 these yield
+F=1,1,2,6,18,46,101,197,351,583
+which I verify are correct for N=0,1,2,3 at least.
+[Incidentally F=1,1,2,6
+would agree with the cubic formula
+(N+1)(2N<sup>2</sup>-5N+6)/6
+for N=0,1,2,3
+but not with any quadratic and would continue
+F=1,1,2,6,15,31,56,92,141,205,...
+but this of course is wrong when N&ge;4.]
+</p>
+
+<center>
+If N&ge;2 then <b>Q(N,3)</b> = (N-2)(N-1)N(3N-1)/12 + 2
+</center><p>
+generically.  
+The following demonstration does not make it clear it also is maximum.
+Proof:
+(You will need to understand the preceding derivation of R(N,2) since
+we now are going to go a bit quickly for those who haven't understood that.)
+On the sphere at infinity, we want to know the number of faces in
+arrangement got from
+the H=(N-1)N/2 point-pair-bisector great-circles.
+There are (N-2)(N-1)N/3 vertices where 3 circles coincide.
+There are (N-3)(N-2)(N-1)N/4 vertices where 2 coincide.
+Each circle has 2(N-2) vertices on it at which 3 circles coincide,
+plus (N-2)(N-3)  vertices on it at which 2 circles coincide,
+for (N-2)(N-1) in all on each circle.
+Hence we have a planar graph drawn on the sphere at infinity with
+V=(N-2)(N-1)N/3+(N-3)(N-2)(N-1)N/4=(N-2)(N-1)N(3N-5)/12
+vertices and
+E=(N-2)(N-1)<sup>2</sup>N/2
+edges.
+Hence the number of faces F is
+</P><center>
+F = 2-V+E = 2 - [(N-2)(N-1)N/3+(N-3)(N-2)(N-1)N/4] + (N-2)(N-1)<sup>2</sup>N/2
+= (N-2)(N-1)N(3N-1)/12 + 2.
+</center><p>
+This yields
+F=2,2,2,6,24,72,172,352,646,1094
+for
+N=0,1,2,3,4,5,6,7,8,9.
+Those F-numbers are wrong for N=0 and N=1 (then really F=1)
+because Euler's formula V-E+F=2 is not applicable when V=E=0.
+</p>
+
+<h3> Some easy upper bounds, valid in all dimensions D&ge;1 </h3>
+
+<center>
+R(N,D) &le; A(H,D),
+&nbsp;
+Q(N,D) &le; A<sub>&infin;</sub>(H,D) = 2 A(H-1,D-1)
+&nbsp; where &nbsp;
+H = (N-1)N/2.
+</center><p>
+We shall see later that these upper bounds are asymptotically tight
+when N&rarr;&infin; with D&ge;1 fixed, since the exact Q(N,D) and R(N,D) formulas
+also are polynomials in N, of the same degree, and with the same leading term.
+</p>
+
+<a name="fundrecur"></a> 
+<h3> Proof of the fundamental recurrences </h3>
+
+<p>
+We'll first prove them for <b>generic</b> point sets.
+If you add an (N+1)st candidate-point, then N new
+candidate-pair-bisecting hyperplanes spring into being.  On each,
+there is a (D-1)-dimensional arrangement arising from the old N
+candidates, <i>but</i> the N candidates need not lie on that
+(D-1)-dimensional hyperplane, they lie in D-space.  This "but,"
+however, generically does not affect either cell counts, or
+infinite-cell counts, as you can see from a perturbation argument
+considering moving those N candidate-points
+from on that (D-1)-dimensional hyperplane,
+to being a little off it in D-space.
+So on each of these hyperplanes, the old N candidates generically
+split that (D-1)-space into R(N,D-1) cells with Q(N,D-1) of them being
+infinite cells.
+</p><p>
+Furthermore, of these N new hyperplanes, each two of them intersect in
+a (D-2)-dimensional flat, which nowhere intersects the interior of any
+cell of the old (original N candidates) partitioning of D-space.  That
+is because, if it did at some point X, then
+X would be equidistant from (say) candidates N+1 &amp; 1, and simultaneously from
+candidates N+1 &amp; 2, but not equidistant from candidates J &amp; K for any
+0&lt;J&lt;K&le;N.  But actually, a diagram drawn in the 2-dimensional plane
+(circumcenter of triangle 1, 2, N+1; see left part of <i>figure</i> above)
+shows that equidistance from 1 &amp; 2 is then forced.
+</p><p>
+This "nowhere intersects cell interiors" 
+property causes each of these N new hyperplanes to
+split <i>different</i> cells only &ndash; my point is the different hyperplanes
+do not interfere with
+each other, so we can just sum their counts of split cells!
+Hence voila: we have proven these <b>recurrences</b>: if N&ge;2 then
+</p><center>
+   R(N+1,D) = R(N,D) + N&middot;R(N,D-1)  &nbsp;&nbsp; and &nbsp;&nbsp; Q(N+1,D) = Q(N,D) + N&middot;Q(N,D-1),
+</center><p>
+the rightmost terms arising from the cell-splittings by the N new hyperplanes,
+and the left terms on the right hand sides being from the old
+situation with only N candidates.
+</p><p>
+These recurrences, plus the known values of R(N,D) and Q(N,D) when N&le;2 or D=1,
+are all one needs to completely solve both the R(N,D) and Q(N,D) problems
+in all dimensions.
+</p><p>
+The above has been a simplification and generalization of Cover 1967's Q-argument.
+We now note that the same proof also proves the recurrences for the <b>maximum</b>
+problem versions. To see that, first of all the base cases R(N,D)=Q(N,D)=N! if N&ge;D+1, 
+and R(N,1)=2 and Q(N,1)=(N-1)N/2 are maximal &ndash; the first since N!
+is the most orderings there could be, the second we already proved.
+And now our inductive recurrence is maximal because
+the most we could hope for is that the cell-splitting counts for all N new hyperplanes 
+sum (which they do) and that on each we have a maximal-cell-count (D-1)-dimensional diagram.
+This is true by induction on D, using a slight redefinition of all our problems throughout,
+in which we allow our N candidate-points, but <i>not</i> the voter,
+to lie in a higher dimensional space.
+<b>Q.E.D.</b>
+</p>
+
+<h3> The remaining formulas in dimensions D&le;5 </h3>
+
+<p>
+The fundamental recurrences allow one to induct formulas for R(N,D) and Q(N,D) for each
+D successively.  We continue up to D=5:
+</p><center>
+<b>R(N,3)</b> = 
+(N<sup>6</sup>-7N<sup>5</sup>+23N<sup>4</sup>-37N<sup>3</sup>+48N<sup>2</sup>-28N+48) / 48
+<br>
+= 1 + (N-1)N
+(N<sup>4</sup>-6N<sup>3</sup>+17N<sup>2</sup>-20N+28) / 48.
+</center>
+<center>
+If N&ge;2 then &nbsp;
+<b>Q(N,4)</b> =  (N-1) N (N<sup>4</sup>-6N<sup>3</sup>+11N<sup>2</sup>-6N+24) / 24.
+</center>
+<center>
+<b>R(N,4)</b> = 
+(15N<sup>8</sup>-180N<sup>7</sup>+950N<sup>6</sup>-2688N<sup>5</sup>+4775N<sup>4</sup>-5340N<sup>3</sup>+5780N<sup>2</sup>-3312N+5760) / 5760
+<br>
+= 1 + (N-1)N
+(15N<sup>6</sup>-165N<sup>5</sup>+785N<sup>4</sup>-1903N<sup>3</sup>+2872N<sup>2</sup>-2468N+3312) / 5760.
+</center>
+<center>
+If N&ge;2 then &nbsp;
+<b>Q(N,5)</b> =  
+(15N<sup>8</sup>+60N<sup>7</sup>-10N<sup>6</sup>-288N<sup>5</sup>+455N<sup>4</sup>+3540N<sup>3</sup>+5300N<sup>2</sup>+2448N+5760) / 2880
+<br>
+= (N+2)(N+1)N (15N<sup>5</sup>+15N<sup>4</sup>-85N<sup>3</sup>-63N<sup>2</sup>+814N+1224) / 2880 + 2.
+</center>
+<center>
+<b>R(N,5)</b> =
+(3N<sup>10</sup>-55N<sup>9</sup>+440N<sup>8</sup>-1958N<sup>7</sup>+5367N<sup>6</sup>-9431N<sup>5</sup>+11670N<sup>4</sup>-10732N<sup>3</sup>+11320N<sup>2</sup>-6624N+11520) / 11520
+<br>
+= 1 + (N-1)N
+(3N<sup>8</sup>-52N<sup>7</sup>+388N<sup>6</sup>-1570N<sup>5</sup>+3797N<sup>4</sup>-5634N<sup>3</sup>+6036N<sup>2</sup>-4696N+6624)
+/ 11520.
+</center>
+<p>
+If one performs the same induction worrying only about the <b>leading term</b>, then
+we see that
+</p><center>
+R(N,D) is a polynomial(N) with degree=2D and leading term N<sup>2D</sup>2<sup>-D</sup>/D!.
+</center>
+<center>
+Q(N,D) is a polynomial(N) with degree=2D-2 and leading term N<sup>2D-2</sup>2<sup>2-D</sup>/(D-1)!.
+</center>
+
+<h3> Probabilistic and "coin flipping" interpretations </h3>
+
+<p>
+|StirlingS1(N,K)|/N!
+is the probability that a random permutation of N items has
+exactly K cycles.
+Also, after independently
+tossing N-1 coins with head-probabilities
+1/2, 1/3, ..., 1/N,
+then
+|StirlingS1(N,K)|/N!
+is the probability that 
+exactly K-1 heads arise.
+Equivalently, if we toss N coins with head-probabilities
+1, 1/2, 1/3, ..., 1/N,
+then
+|StirlingS1(N,K)|/N!
+is the probability that 
+exactly K heads arise.
+<!--
+Example: 
+StirlingS1(5,3)=35=
+((1/2)*((1/3)*(3/4)*(4/5)+(1/4)*(2/3)*(4/5)+(1/5)*(2/3)*(3/4)) + (1/3)*((1/4)*(1/2)*(4/5)+(1/5)*(1/2)*(3/4)) + (1/4)*(1/5)*(1/2)*(2/3))*120
+Confirmed by computer coincrap.c
+-->
+</p><p>
+The probability 
+R(N,D)/N!
+that a random N-permutation arises as a distance order,
+equals the probability that there are &ge;N-D heads 
+(equivalently &le;D tails)
+in N independent flips of coins having
+individual probabilities of heads 
+1, 1/2, 1/3, 1/4, ..., 1/N.
+<!--Confirmed by computer coincrap.c-->
+Also, it equals
+the probability that a random permutation of N items has
+&ge;N-D cycles.
+</p><p>
+The probability 
+Q(N,D)/N!
+that a random N-permutation arises as a directional order,
+equals the probability that there are &ge;N-1-D heads 
+(equivalently &le;D-1 tails)
+in N-2 independent flips of coins having
+heads-probabilities
+1/3, 1/4, 1/5, ..., 1/N.
+<!--Confirmed by computer coincrap.c-->
+Also, it equals
+the probability that a random permutation of N items has
+&ge;N+1-D cycles <i>and</i> that this number of cycles has the same parity
+(odd or even) as N+1-D.
+</p><p>
+All these statements are easy consequences of staring at the generating function and/or
+Stirling-number-sum identities,
+and Cover 1967 had already noticed some version of one of the ones for Q(N,D).
+</p>
+
+<h3> Zaslavsky's theorem </h3>
+
+<p>
+When D&ge;3 or 4, our preceding low dimensional solution
+methods which relied on Euler's polyhedral formula, stop working. This is because Euler's
+theorem stops existing, or anyhow loses power, in higher dimensions.
+</p><p>
+One could solve the problem for any D by using
+<a href="http://www.math.binghamton.edu/zaslav/">Zaslavsky</a>'s 
+1975 theorem for counting cells in an arrangement of
+H=(N-1)N/2 hyperplanes in D-space.  
+This method is more difficult than using the fundamental recurrence.  
+But let us briefly consider it anyhow.
+The difficulty is that our H hyperplanes are
+<i>not</i> generic, hence the generic counting formula we called A(H,D), cannot be used
+(although it is valid if all we want is to find upper bounds).
+Zaslavsky's theorem will, at least in principle 
+(the details could, in practice, sometimes be too hard to deal with)
+count the cells in any arrangement of hyperplanes whose
+"poset structure" is understood.
+</p><p>
+<b>In what way are our H hyperplanes non-generic?</b>
+The "circumcenter" of a triangle, is the intersection of the
+perpendicular bisectors of its 3 sides.
+More generally the circumcenter of a D-dimensional simplex 
+(which has D+1 corners) is the unique intersection of the
+perpendicular bisectors of its (D+1)D/2 sides.
+In our set of H hyperplanes
+we therefore get concurrences of (D+1)D/2 hyperplanes at common points
+(namely, the circumcenter-points of any subset of D+1 of our candidate-points)
+which is way more than
+the concurrences, of only D hyperplanes, that are the most that ever
+happen for a generic hyperplane set.  Furthermore, we have for example
+when D=3, that often 3 hyperplanes concur on a common line.
+</p><p>
+<b>What is the "poset structure" of a set of H hyperplanes?</b>
+Let L denote the set of subsets of our hyperplane set, having non-empty intersection.
+(Sometimes L is called "the intersection <a href="http://en.wikipedia.org/wiki/Lattice_(order)">lattice</a>" 
+although I do not like to employ the word "lattice" in this way; I think it was a 
+poor name-choice.)
+These subsets enjoy a <i>partial order</i> under the set-inclusion operation &subseteq;.
+For example, if hyperplanes 1,2,3,4 all intersect at at least one common point,
+then {1,2,3,4}&isin;L, and hence {1,2,4}&isin;L also. And {1,2,4}&subseteq;{1,2,3,4}.
+A "poset" is a set having a partial order defined on it, 
+so L partially ordered via &subseteq;
+is a poset, called "the poset structure of our hyperplane set."
+</p><p>
+<small>
+Thomas Zaslavsky commented
+"There is reason to order the intersection subspaces oppositely to
+how you do it, i.e., the <i>reverse</i> of set containment."
+Actually, I did not say "which direction" I intended the order to be in &ndash;
+although the reader might naturally guess that the &subseteq; and usual &le;
+symbols should point the same way &ndash; and this directionality does not actually matter
+for my purposes in the sense 
+that our definition of the M&ouml;bius function is unaffected by it.
+Zaslavsky's direction-preference, therefore, is motivated by issues that do
+not matter for our purposes here.
+</small>
+</p><p>
+<b>What is the M&ouml;bius function &mu;(x,y)?</b>
+When x&isin;L and y&isin;L then 
+&mu;(x,y) is the unique function
+obeying
+</p><center>
+&mu;(x,y)=0 unless x&subseteq;y; &nbsp; and if x&subseteq;y then &nbsp;
+&sum;<sub>x&subseteq;z&subseteq;y</sub>&mu;(x,z) = (1 if x=y, otherwise 0).
+</center><p>
+One can compute the M&ouml;bius function 
+from these equations (regarding them as recurrences) by starting from &mu;(x,x)=1
+and using
+</p><center>
+&mu;(x,y) = -&sum;<sub>x&subseteq;z&subset;y</sub>&mu;(x,z).
+</center><p>
+<b>What is "Zaslavsky's theorem"?</b>
+It states:
+The number of regions into which D-space is split by the arrangement of hyperplanes
+can be found by summing the absolute values of 
+M&ouml;bius function values for the corresponding L:
+</p><center>
+&sum;<sub>x&isin;L</sub> |&mu;(&emptyset;,x)|.
+</center><p>
+Here &emptyset; denotes the empty set, which we regard as an honorary member of L.
+</p><p>
+<b>Example:</b>
+The formula we gave previously for A(H,D) then follows immediately 
+once you work out that &sum;|&mu;(&emptyset;,x)|=H!/[(H-K)!K!]
+where the sum is over x that are sets of exactly K hyperplanes where 0&le;K&le;D.
+(If K&ge;D+1 then x&notin;L.)
+</p><p>
+<b>What about counting only the <i>infinite</i> cells in a hyperplane arrangement?</b>
+There is a variant Zaslavsky theorem for this purpose.
+It uses L<sub>&infin;</sub>, the "unbounded intersection lattice,"
+instead of L, e.g. see Ehrenborg, Readdy, Slone 2009.
+</p><p>
+For us, the most important realization from Zaslavsky's theorem is
+</p><center>
+"Generic" cell-counts exist.
+because for determining them, only the poset-structure of the arrangement matters.
+</center>
+
+<h3> The lack of geometric magic in the world </h3>
+
+<p>
+It is mildly magical that the (D+1)D/2 point-pair-bisector hyperplanes of
+D+1 points in D-space, all concur (at the circumcenter of the simplex).
+One might wonder whether, given N generic points in D-space, there could 
+be any further magic.  Maybe a "bipyramid" yields some additional hyperplane concurrence,
+in some dimension &ndash; or something?
+</p><p>
+Well, that does not happen:  <b>Geometric fact:</b> 
+For N generic points in D-space, there is nowhere
+where more than D of their point-pair-bisector hyperplanes concur, except for
+the already-known concurrences arising from simplex circumcenters.
+</p><p>
+This is because, if even a single such extra concurrence-point existed in 
+any dimension anywhere, it
+would via Zaslavsky's theorem alter the generic value of some Q(N,D).  
+Which we know does not happen.
+</p>
+
+<a name="asysect"></a>
+<h3> Asymptotics </h3>
+
+<p>
+We've seen that when D&ge;N-1, then R(N,D)=Q(N,D)=N!, but
+when D&le;N-2,  then R(N,D)&lt;N! and Q(N,D)&lt;N!.
+</p><p>
+<b>Question:</b>
+How large does D have to become to cause R(N,D) and Q(N,D) to
+reach the same order as N! &nbsp;?
+</p><center>
+<b>Answer:</b> &nbsp;
+D &ge; N-O(logN).
+</center><p>
+This is related (via Stirling number sum identities)
+to various classical facts.   The expected number E(C) of
+cycles in a random permutation of N items, is exactly 
+</p><center>
+E(C) = H<sub>N</sub> = 1+1/2+1/3+...+1/N &asymp; ln(N)+&gamma;+O(N<sup>-1</sup>)
+</center><p>
+because the expected number of cycles of length &le;m equals
+H<sub>m</sub> if 1&le;m&le;N.  Another, even easier, proof arises
+from the coin-flipping interpretation, which also shows
+</p><center>
+Variance(C) =
+&sum;<sub>1&le;j&le;N</sub>(1-j<sup>-1</sup>) / j
+= H<sub>N</sub> - &pi;<sup>2</sup>/6 + O(N<sup>-1</sup>).
+</center><p>
+"Goncharov's theorem" states that
+in the limit N&rarr;&infin;, the probability distribution of C, namely
+prob(C)=|StirlingS1(N,C)|/N!, tends to a 
+<b>normal distribution</b> with this mean and variance.
+Goncharov 1944's own derivation was brutal, but his result
+actually can be proven trivially
+from our coin flipping interpretation
+using the <a href="http://en.wikipedia.org/wiki/Lindeberg's_condition">Lindeberg</a>
+form of the central limit theorem from statistics.
+</p><p>
+That proves the result.  
+But we also note that those all correspond to certain identities for StirlingS1 numbers,
+e.g. EQs 6.14 &amp; 6.28 in the manuscript of Gould &amp; Quaintance.
+Also, the following two identities were stated without proof by
+<a href="https://terrytao.wordpress.com/tag/stirling-numbers-of-the-first-kind/">Terence Tao</a>
+(they should be provable using the automated techniques of Kauers 2007):
+E(2<sup>C</sup>)=N+1
+and indeed for any fixed integer M&ge;1 we have
+E(M<sup>C</sup>)=(N+M-1)!/[N!(M-1)!];
+these seem not yet present in the Gould-Quaintance compilation.
+Louchard and the papers he cites
+go considerably beyond this result, finding StirlingS1(N,K) asymptotics  for 
+K near both ends of the interval [0,N].
+<!--
+A proof strategy for Tao is induction on N to prove the one about 2<sup>C</sup>
+(or about  M<sup>C</sup> for any fixed M)
+using the fundamental recurrence?
+-->
+</p><p>
+<b>Question:</b>
+What if N and D grow proportionally (like D&asymp;cN for some constant c with 0&lt;c&lt;1)
+when N&rarr;&infin;?  
+</p><p>
+<b>Answer:</b> &nbsp;
+Then R(N,D), Q(N,D-1)/2 and |StirlingS1(N,N-D)|
+all are bounded between two expressions of the form k<sup>D</sup>D!
+where the k's with 0&lt;k depend upon c and
+the difference between the two k's may be made arbitarily small.
+These claims may be proven, for example, by
+showing a lower bound by simply counting the number of permutations of N items
+having N-D cycles, all cycles having as nearly equal cardinalities as possible;
+and an upper bound in a similar way also using subexponential upper bounds
+on the number of partitions of N.
+I then conjectured, more precisely, that these all 
+simultaneously ought to be asymptotic to
+</p><center>
+m D<sup>j</sup> k<sup>D</sup> D!
+</center><p>
+for appropriate constants m,j,k which depend upon c; I found the formulas:
+<!-- for the case of |StirlingS1(N, N-D)|  but all 3 problems have same j,k,m -->
+</p><center>
+ j = -1,
+&nbsp;&nbsp;
+  k   = [L/(1-c)]<sup>1/c</sup> (1-c) / [(L+c-1)c] &gt; 1,
+&nbsp;&nbsp;
+ 0 &lt; 2&pi;m = [c/(L-1)]<sup>1/2</sup> &lt; 1
+&nbsp;&nbsp;
+where
+&nbsp;&nbsp;
+  L = -LambertW<sub>-1</sub>(  (c-1)e<sup>c-1</sup> ) &gt; 1
+</center><p>
+where the "-1" subscript denotes the 
+<i>lower branch</i> of the 
+<a href="http://en.wikipedia.org/wiki/Lambert_W_function">Lambert W</a> function.
+<!-- for c=0.1, 0.2, ..., 0.9, 1.0 we get
+k = 344.819, 80.0394, 32.8258, 16.9117, 9.82163, 6.11557, 3.96365, 2.6136, 1.70627, 1.0
+plot (-LambertW[-1,(x/10-1.0)*Exp[x/10-1]]/(1-x/10))^(10/x)*(1-x/10)/((-LambertW[-1,(x/10-1)*Exp[x/10-1]]+x/10-1)*x/10) from x=7 to 10
+-->
+Actually since j=-1 we may state these formulas in the slightly simpler form
+</p><center>
+ Q(N,D-1)/2 &nbsp;&sim;&nbsp; R(N,D) &nbsp;&sim;&nbsp; |StirlingS1(N,N-D)|  
+&nbsp;&sim;&nbsp; m k<sup>D</sup> (D-1)!.
+</center>
+<p>
+I did not carefully check either the
+complicated algebra or that the manipulations I performed genuinely are a proof.
+<!-- tail bounds... making sure all the neglected stuff really is of lower order... -->
+Nevertheless, numerical checks suggested these j,k,m formulas all are correct:
+</p><ul><li>
+With   c=0.1 we find
+L&asymp;1.10714650294425,  
+k&asymp;344.818640511284,  
+m&asymp;0.15375566682
+whereupon taking N=990, D=99=cN, N-D=891, we find
+<nobr>(D-1)!k<sup>D</sup>m&asymp;2.4137&times;10<sup>404</sup></nobr>
+which is 1.0017 times greater than the exact absolute value of
+<nobr>StirlingS1(990, 891)&asymp;-2.40959&times;10<sup>404</sup>.</nobr>
+</li><li>
+With c=0.5 we find
+L&asymp;1.75643120862617,
+k&asymp;9.82162992913651, 
+m&asymp;0.129395869881879
+whereupon taking N=600, <nobr>D=N-D=300=cN</nobr>, we find
+<nobr>(D-1)!k<sup>D</sup>m&asymp;5.96585&times;10<sup>908</sup></nobr>
+which now is within a factor 1.001 of the exact
+<nobr>StirlingS1(600,300)=5.96049&times;10<sup>908</sup>.</nobr>
+</li><li>
+Finally with c=0.9 we find
+L&asymp;3.71495042708753,
+k&asymp;1.70626857427758,
+m&asymp;0.09163479957745,
+whereupon taking N=1000, D=900=cN, N-D=100, we find
+<nobr>(D-1)!k<sup>D</sup>m&asymp;4.78572&times;10<sup>2474</sup></nobr>
+which is off by about a factor 1.003 versus the exact 
+<nobr>StirlingS1(1000,100)=4.771093&times;10<sup>2474</sup>.</nobr>
+<!--
+If we instead take N=3000, D=2700=cN, N-D=300, we find
+(D-1)!k<sup>D</sup>m&asymp;1.821807&times;10<sup>8716</sup>
+which is very close to the exact
+StirlingS1(3000,300)=1.819945&times;10<sup>8716</sup>.
+-->
+</li></ul>
+<!--
+Abs[StirlingS1[2*N,N]] for N=1,2,3,4,5,6,7,8,9,10
+= 1, 11, 225, 6769, 269325, 13339535, 790943153, 54631129553, 4308105301929, 381922055502195
+http://oeis.org/A187646
+Asymptotic: a(n) ~ (2*n/(e*z*(1-z)))^n*sqrt((1-z)/(2*Pi*n*(2z-1))), 
+where z=0.715331862959... is a root of the equation z=2*(z-1)*log(1-z). 
+[Vaclav Kotesovec, May 30 2011]
+
+Abs[StirlingS1[3*N,N]] for N=1,2,3,4,5,6,7,8,9,10
+= 2, 274, 118124, 105258076, 159721605680, 369012649234384, 1206647803780373360,
+5304713715525445812976, 30180059720580991603896800, 215760462268683520394805979744
+http://oeis.org/A237993
+a(n) ~ n^(2*n) * c^(3*n) * 3^(5*n) / (sqrt(6*Pi*(c-1)*n) * exp(2*n) * (3*c-1)^(2*n)), 
+where c = -LambertW(-1,-exp(-1/3)/3) = 2.237147027773716818...
+Vaclav Kotesovec, May 20 2014
+-->
+<p>
+This asymptotic formula for Stirling numbers was not
+mentioned in the <i>NIST Digital Library</i> as of 2014, nor in Temme 1993.  
+However, I found certain special cases of this formula stated in the
+<a href="http://oeis.org/">The On-Line Encyclopedia of Integer Sequences</a>, for example
+sequences <a href="http://oeis.org/A187646">A187646</a>
+&amp; <a href="http://oeis.org/A237993">A237993</a>, ascribed to
+Vaclav Kotesovec, May of 2011 &amp; 2014 respectively.
+And then some googling found that Kotesovec stated in passing
+(without any indication of proof) asymptotic approximations
+for both StirlingS1 and StirlingS2 numbers,
+which appear (according to numerical checks)
+to be essentially equivalent to mine here, in the midst of a 2013 manuscript
+he'd posted on his web page.
+After email enquiry, Kotesovec explained that his StirlingS1 formulas were derived from
+Good 1961 and his StirlingS2 formulas from Timashev 1998, neither of which had been cited by the 
+NIST <i>digital library</i>!  Good's method of derivation (saddlepoint
+method via the log-based generating function), and his result,
+both are essentially equivalent to mine. 
+Good indeed explains how to obtain higher-order correction terms.
+Also deriving essentially the same result:
+Knessl &amp; Keller 1991, and Moser &amp; Wyman 1958.
+The latter claimed that their
+|StirlingS1(N,N-D)| asymptotic
+should be valid when (N-D)/ln(N)&rarr;&infin; with D&gt;N<sup>P</sup>
+for any fixed power P with 0&lt;P&lt;1,
+which note is a wider domain of validity
+than my demand (also stated by Good and Knessl) that 
+c be fixed with 0&lt;c&lt;1.
+Moser &amp; Wyman 
+also gave |StirlingS1(N,N-D)|&sim;Binomial(N,D)([N-D]/2)<sup>D</sup>
+when D=o(&radic;N) and N&rarr;&infin;;
+and 
+|StirlingS1(N,K)|&sim;(&gamma;+lnN)<sup>K-1</sup>/(K-1)!
+when N&rarr;&infin; with K=o(lnN) where
+&gamma;=0.57721...
+These all leave only the domain where 
+D/ln(N) remains bounded between two positive numbers while
+N&rarr;&infin; uncovered. 
+But this missing domain is more than handled by Goncharov's theorem.
+</p>
+<!--
+Good indeed explains how to get a series of lower order correction terms;
+our StirlingS1 formula is equivalent to Good's dominant term?
+-->
+
+
+
+
+<h3> Similar asymptotics for Stirling numbers of the 2nd kind, and Binomial coefficients </h3>
+
+<p>
+These results are not directly relevant to our topic, but since we are here,
+we might as well also provide asymptotic formulae for these too.
+StirlingS2(N,M) is the number of partitions of N distinguishable items into exactly M
+nonempty sets.  Special values:
+StirlingS2(N,0)=0, 
+StirlingS2(N,1)=StirlingS2(N,N)=1, 
+StirlingS2(N,2)=2<sup>N-1</sup>-1,
+StirlingS2(N,N-1)=(N-1)N/2.
+Recurrence:
+</p><center>
+StirlingS2(N,K)=K&middot;StirlingS2(N-1,K)+StirlingS2(N-1,K-1).
+</center><p>
+One may show directly from Temme 1993 EQs 2.6, 2.8, 2.9,  and 2.10
+using n=N=D/c, m=N-D, 
+t<sub>0</sub>=c/(1-c) and
+<nobr>x<sub>0</sub>=(1-c)<sup>-1</sup>+LambertW(-e<sup>-1/(1-c)</sup>/[1-c])</nobr>
+in his notation, that
+</p><center>
+StirlingS2(N, N-D) 
+&sim;
+j k<sup>D</sup> (D-1)!
+&nbsp;&nbsp;
+when N&rarr;&infin; with D=cN where c is constant with 0&lt;c&lt;1
+</center>
+<p>
+where now the formulas for j and k are
+</p><center>
+k = (1-c)<sup>2-1/c</sup> L<sup>1-1/c</sup> / [c-(1-c)cL] &gt; 0,
+&nbsp;&nbsp;&nbsp;
+2&pi;j = [c/(1-c)]<sup>1/2</sup> (1-L)<sup>-1/2</sup> &gt; 0,
+&nbsp;&nbsp;&nbsp;
+0 &lt; L = -LambertW(e<sup>1/(c-1)</sup>/(c-1)) &lt; 1.
+</center><p>
+This is essentially equivalent to Temme's result about StirlingS2
+albeit considerably
+nicer because Temme gave this result in an 
+unappetizing unsimplified form, distributed over several pages.
+It indeed should be valid when min{N,N-D,D}&rarr;&infin;.
+Here are some numerical checks with N=450:
+</p><table bgcolor="pink">
+<tr bgcolor="aqua"><th>c</th><th>L</th><th>k</th><th>j</th><th>StirlingS2(N,N-D)</th><th>Asymptotic approx.</th></tr>
+<tr><td>
+1/2</td><td>0.4063757399599599</td><td>6.176554609483478</td><td>0.2065686023262526</td><td>9.560859&times;10<sup>607</sup></td><td>9.570756&times;10<sup>607</sup>
+</td></tr><tr><td>
+1/5</td><td>0.7857872456211834</td><td>68.97204236871833</td><td>0.1719362590580462</td><td>8.566370&times;10<sup>300</sup></td><td>8.582988&times;10<sup>300</sup>
+</td></tr><tr><td>
+4/5</td><td>0.0348857682557237</td><td>0.8710863262541348</td><td>0.324011755656619</td><td>9.461435&times;10<sup>740</sup></td><td>9.473654&times;10<sup>740</sup>
+</td></tr>
+</table><p>
+Also of interest are the numbers STS(N,K)=&sum;<sub>1&le;j&le;K</sub>StirlingS2(N,j)
+giving the number of ways to partition N distinguishable items into  M <i>or fewer</i>
+nonempty sets. These obey those same asymptotics as StirlingS2. Special values include
+STS(N,0)=0, STS(N,1)=1, STS(N,2)=2<sup>N-1</sup>,
+STS(N,N)=<a href="http://en.wikipedia.org/wiki/Bell_number">BellNumber</a>(N). Recurrence:
+</p><center>
+<!-- Derivation:
+StirlingS2(N,K)=K*StirlingS2(N-1,K)+StirlingS2(N-1,K-1).  
+STS(N,K)-STS(N,K-1) = K*STS(N-1,K)-K*STS(N-1,K-1) + STS(N-1,K-1)-STS(N-1,K-2).
+STS(N,K) = STS(N,K-1) + K*STS(N-1,K) - (K-1)*STS(N-1,K-1) - STS(N-1,K-2).
+-->
+STS(N,K) = STS(N,K-1) + K&middot;STS(N-1,K) - (K-1)&middot;STS(N-1,K-1) - STS(N-1,K-2).
+</center><p>
+We also mention that
+<a href="http://en.wikipedia.org/wiki/Stirling's_approximation">Stirling's formula</a>
+easily shows the asymptotic
+</p><center>
+Binomial(N, D) 
+&sim;
+([(1-c)/c]<sup>c</sup>/[1-c])<sup>N</sup> [2&pi;c(1-c)N]<sup>-1/2</sup>
+&nbsp;&nbsp;
+when min{N,D,N-D}&rarr;&infin; with D=cN.
+</center>
+
+<!--
+t<sub>0</sub>=c/(1-c) and
+x<sub>0</sub>=(1-c)<sup>-1</sup>+LambertW(-e<sup>-1/(1-c)</sup>/[1-c]).
+c=1/2:   D! * (2*pi*D*sqrt(z-1))^(-1) * (4/(z*(2-z)))^D  -->
+
+<h3> What was that LambertW function? </h3>
+
+<p>
+LambertW(x) is the solution W of We<sup>W</sup>=x.
+If x&lt;-1/e&asymp;-0.3678794 no real solution exists.
+If 0&le;x a real solution does exist, and it is unique, positive, and increasing.
+If -1/e&lt;x&lt;0 then there are <i>two</i> real solutions;
+the unique solution W with -1&lt;W&lt;0
+(which is a smooth continuation of the solution for x&ge;0),
+and the other solution which obeys W&lt;-1.
+This "lower branch" is denoted
+LambertW<sub>-1</sub>(x).
+Special values include  
+LambertW(-1/e)=LambertW<sub>-1</sub>(-1/e)=-1,
+LambertW(0)=0,
+LambertW(e)=1.
+If x&ge;-1/e the following algorithm 
+</p><pre>
+ if(x &lt; 3.5){
+    if(x &lt; -0.2114){ W &larr; (5.43656&middot;(x+1/e))<sup>1/2</sup> - 1; }
+    else{ W &larr; x/e; }
+  }else{ W &larr; ln(x); E &larr; ln(W); W &larr; W-E+E/W; }
+</pre><p>
+outputs an approximation W to LambertW(x) which is good enough
+both to have uniformly bounded relative and additive errors, and (if used as a starting guess)
+to assure global convergence of the <b>iteration</b>
+</p><center>
+ E &larr; exp(W);   &Delta; &larr; (x-WE) / (E+WE);   W &larr; W+&Delta;;.
+</center><p>
+(On my computer at most 6 iterations are required to reach full machine precision.)
+If -1/e&le;x&lt;0 then the following algorithm
+</p><pre>
+  if(x &lt; -0.283){ W &larr; -(5.43656&middot;(x+1/e))<sup>1/2</sup> - 1; }
+  else{ W &larr; ln(-x); E &larr; ln(-W); W &larr; W-E+E/W; }
+</pre><p>
+outputs an approximation W to LambertW<sub>-1</sub>(x) which is good enough
+both to have uniformly bounded relative and additive errors, and again
+to assure global convergence of that iteration.
+</p>
+<!-- 
+0 < adderr < 0.25, peak at x = -0.283.
+min(-sqrt(5.43656*(x+1/e))-1, ln(-x)-ln(-ln(-x))+ln(-ln(-x))/ln(-x))
+-->
+
+<h3> Algorithmic complexity </h3>
+
+<p>
+The fundamental recurrences make it trivial to compute a <b>table</b>
+of the R(N,D) and Q(N,D) functions (laid out like my tables 
+<a href="#thetabs">above</a>) 
+in O(1) arithmetic operations per table entry;
+the tables can be filled in row-by-row, column-by-column, or by successive /-diagonals.
+</p><p>
+But suppose that we want, not the entire table, but rather only a <b>single /-diagonal</b>
+of it.   By using our previous <a href="#niftyident">nifty</a> generating function identities,
+multiplying the terms in the fashion of a balanced binary tree, and using
+FFT-based fast polynomial-multiplication algorithms,
+it is possible to compute 
+Q(N,1), Q(N,2), ..., Q(N,D) 
+or
+R(N,0), R(N,1), R(N,2), ..., R(N,D) 
+(combined)
+in 
+<nobr>O(D+N(logN)<sup>2</sup>)</nobr>
+arithmetic operations and storage for O(N) numbers. 
+Further, if we only keep track of powers&le;D of <i>t</i> in the generating functions
+(regarded as formal power series in t) throughout this process,
+then it takes only
+<nobr>O(N(logN)(logD))</nobr>
+arithmetics and storage for O(D) numbers. 
+<!--
+first logD stages: N numbers become N numbers now in chunks of D, N*logN*logD ops.
+log(N/D) more stages: reduce to D numbers, N*logD ops.
+Total: N*logD*logN ops.
+-->
+All these same algorithmic bounds also hold for Stirling numbers of the first and second kinds,
+which is a fact that ought to be in all the textbooks, but isn't.
+It also is possible to compute StirlingS1(n,K) for all n=0..N simulataneously
+using the log-based generating function with powers&le;N only, 
+and StirlingS2(n,K) similarly using the exp-based generating function (EQ 26.8.12 in the NIST
+<i>digital library</i>), in O(NlogNlogK) arithmetic operations.
+These op-counts eventually are much smaller than order DN,
+which is the number of arithmetics the naive method based on
+the fundamental recurrences would consume.
+And now suppose we want only a <b>single row</b> of the Q- or R-table.  We claim
+it is possible to compute the first T entries of row D of the table in 
+<nobr>O(TlogD+D<sup>2</sup>)</nobr>
+arithmetic operations while storing O(D) numbers.
+[Compute the first 2D+1 entries of the row by the fundamental recurrence in O(D<sup>2</sup>)
+arithmetics and O(D) numbers storage, then Newton-interpolate by a polynomial(N), then
+employ algorithms for "fast multipoint polynomial evaluation" on arithmetic progressions, see 
+Bostan &amp; Schost 2005.]
+Now because either N&le;D+1, in which case R(N,D)=Q(N,D)=N! is computable in N
+arithmetic operations, or 
+<nobr>D+2&le;N&le;(D/logD)<sup>2</sup></nobr>,
+in which case
+use the D(logN)(logD) algorithm, or
+<nobr>N&ge;(D/logD)<sup>2</sup></nobr>
+in which case use the fundamental recurrence, Newton-interpolation, 
+then evaluate the polynomial(N) at one single N,
+we find:
+</p><center>
+Any <b>single value</b> R(N,D) or Q(N,D) may be computed in 
+<nobr>O(min{N(logN)(logD), D<sup>2</sup>})</nobr>
+arithmetic operations while storing O(D)
+numbers.
+</center>
+
+<h3> Questions </h3>
+
+<p>
+Are our algorithmic complexity bounds best possible?
+Obtain better understanding of the asymptotics of R(N,D) and Q(N,D).
+</p>
+
+<h3> Acknowledgments </h3>
+<p>
+David W. Wilson suggested the problems and found Q(N,2).
+Tom Rokicki found Q(N,2), which also was basically shown in chapter 2 of
+the 1987 book by Edelsbrunner
+under the name "circular sequences."
+J.P. Grossman found Q(N,3).  Rokicki &amp; Grossman could be regarded as having
+worked independently from me, so we confirm each other's results.
+Eric Michael Samansky, while an undergrad at Haverford College
+(as of 2014 he is an associate professor at Nova Southeastern Univ.)
+wrote a highly readable
+<a href="ZaslavskyTheorem.pdf">exposition of Zaslavsky's theorem</a>
+which I've leaned on heavily.
+It uses the notion of "M&ouml;bius functions of posets"
+which is explained in chapter 26 of the 1978 book
+by Nijenhuis &amp; Wilf.
+Richard P. Stanley pointed out Good &amp; Tideman 1977, then Tideman pointed out
+Zaslavsky 2002.
+Finally Zaslavsky sent me some comments.  One of his best was:
+</p><blockquote>
+The Stirling numbers s(n,k) arise naturally in this problem for the
+following reason: the intersection poset (ordered my way) consists of
+the lower D+1 levels of the lattice of partitions of the set of
+candidates.  That is what my proof brings to the fore and it fully
+explains the Stirling number formula (to me, anyhow).
+</blockquote><p>
+After I discovered the Stirlng number asymptotic formulas given here, I thought they
+were new since not mentioned in the NIST <i>digital library</i>.   We've explained how
+Vaclav Kotesovec pointed me toward finding out that they were not new.  Actually, I still
+have not seen asymptotic formulae as simple as mine anywhere(?), but they evidently are equivalent
+to formulae discovered previously by others and expressed in more complicated ways.
+</p>
+
+
+<h3> Relevant References </h3>
+
+<!--
+Alfred V. Aho, Kenneth Steiglitz, Jeffrey D. Ullman:
+Evaluating polynomials at fixed sets of points, SIAM J. Comput. 4,4 (1975) 533-539.
+geometric sequences, and some others,but not arithmetic sequnces. -->
+<p>
+Richard Arratia &amp; Simon Tavare:
+<a href="http://projecteuclid.org/euclid.aop/1176989707">The 
+cycle structure of random permutations</a>, Annals Probab. 20,3 (1992) 1567-1591.
+</p><p>
+Joseph F. Bennett:
+<a href="http://link.springer.com/article/10.1007/BF02296304#page-1#page-1">Determination
+of the number of independent parameters of a score matrix from
+the examination of rank orders</a>, Psychometrika  21,4 (1956) 383-393.
+</p><p>
+L.J. Billera, R. Ehrenborg, M. Readdy:
+The c-2d-index of oriented matroids, J. Combin. Theory Ser. A 80 (1997) 79-105.
+</p><p>
+Dario Bini &amp; Victor Pan:
+Polynomial and Matrix Computations, Vol 1: Fundamental Algorithms, Birkhauser, Boston 1994.
+</p><p>
+W.E. Bleick &amp; Peter C.C. Wang: 
+<a href="http://www.ams.org/journals/proc/1974-042-02/S0002-9939-1974-0330867-1/">
+Asymptotics of Stirling numbers of the 2nd kind</a>, 
+Proc. Amer. Math'l. Soc. 42,2 (Feb. 1974) 575-580.
+<a href="http://www.ams.org/journals/proc/1975-048-02/S0002-9939-1975-0401490-6/">Erratum</a>: 
+48,2 (1975) 518.
+They used the saddle point method on the exp-based generating function to find
+an asymptotic expression for StirlingS2(N,K) which works excellently for
+<i>all</i> K with 2&le;K&le;N-1.  
+This expression (including two subleading terms)
+is their EQ21 on page 579 
+(but <i>correct</i> it by changing the sign
+preceding the last fraction in the bracket from + to <b>&ndash;</b>!)
+using (N+1)/K=u/(1-e<sup>-u</sup>)=e<sup>u</sup>G
+so that u=t+LambertW(-e<sup>-t</sup>t) with t=(N+1)/K.
+Note that t&gt;1 and t-1&lt;u&lt;t and G&gt;0.
+The leading term of this is
+</p><center>
+StirlingS2(N,K) &sim; 
+(N!/K!) (e<sup>u</sup>-1)<sup>K</sup> u<sup>-N</sup> [2&pi;(1-G)(N+1)]<sup>-1/2</sup>.
+</center><p>
+A.Borodin &amp; R.Moenck:
+Fast modular transforms, Journal of Computer &amp; System Sciences 8 (1974) 366-386.
+</p><p>
+Alin Bostan &amp; Eric Schost:
+<a href="http://www.sciencedirect.com/science/article/pii/S0885064X05000026">
+Polynomial evaluation and interpolation on special sets of points</a>,
+J. Complexity 21,4 (Aug. 2005) 420-446.
+</p><p>
+E. Rodney Canfield:
+On the location of the maximum Stirling number(s) of the second kind.
+Studies Appl. Math. 59,1 (1978) 83-93.
+</p><p>
+Thomas M. Cover:
+<a href="http://www-isl.stanford.edu/~cover/papers/paper7.pdf">The
+number of linearly inducible orderings of points in d-space</a>, 
+SIAM J. Applied Maths. 15,2 (March 1967) 434-439.
+</p><p>
+Priyavrat Deshpande:
+<a href="http://arxiv.org/abs/1111.1251">
+On a Generalization of Zaslavsky's Theorem for Hyperplane Arrangements</a>,
+Annals of Combinatorics 18,1 (March 2014) 35-55.
+</p><p>
+Herbert Edelsbrunner: Algorithms in combinatorial geometry, Springer 1987.
+</p><p>
+Richard Ehrenborg, Margaret Readdy, Michael Slone:
+<a href="http://arxiv.org/abs/0810.0295">Affine and toric hyperplane arrangements</a>,
+Discrete &amp; Computational Geometry 41,4 (2009) 481-512.
+</p><p>
+Pal Erd&ouml;s:
+<a href="">On a conjetcure of Hammersley</a>,
+J. London Math'l Soc. 28 (1953) 232-236.
+<!--
+</p><p>
+Pal Erd&ouml;s &amp; Joseph Lehner:
+<a href="https://www.renyi.hu/~p_erdos/1941-04.pdf">
+The distribution of the number of summands in the partitions of a positive integer</a>,
+Duke Math. J. 8,2 (1941) 335-345.
+Finds the exact limit distribution function of #summands.
+Also does it for the distinct-part problem and odd-parts equivalent problem.
+At the end they ask: what about pk(n) asymptotic formula resembling 
+Hardy-Littlewood-Ramanujan-Rademacher? As an open question.
+-->
+</p><p>
+Irving John Good:
+<a href="http://projecteuclid.org/euclid.aoms/1177705156">
+An Asymptotic Formula for the Differences of the Powers at Zero</a>,
+Annals of Mathematical Statistics 32,1 (1961) 249-256.
+[Asymptotics of Stirling numbers of the first kind in &sect;4.]
+</p><p>
+V.Goncharov: Du domaine d'analyse combinatoire,
+Bull. Acad. Sci. USSR Ser. Math. 8 (1944) 3-48. [Russian with French summary.]
+</p><p>
+I.J. Good &amp; T.N. Tideman: 
+<a href="http://www.sciencedirect.com/science/article/pii/0097316577900772">Stirling
+Numbers and a Geometric Structure from
+Voting Theory</a>, J. Combinatorial Theory A 23,1 (1977) 34-45
+</p><p>
+Henry W. Gould:
+<a href="http://epubs.siam.org/doi/pdf/10.1137/0126050">
+A Note on the Number of Linearly Inducible Orderings of Points in d-Space</a>, 
+SIAM Journal on Applied Mathematics 26,3 (1974) 528-530.
+</p><p>
+Henry Gould &amp; Jocelyn Quaintance:
+are supposedly writing a book about Stirling Number identities, which 
+to be published by World Scientific in 2015.
+Their online file <a href="http://www.math.wvu.edu/~gould/Vol.7.PDF">
+http://www.math.wvu.edu/~gould/Vol.7.PDF</a> will be part of it.
+</p><p>
+Branko Gr&uuml;nbaum: Convex Polytopes, 
+Wiley Interscience (Pure and Applied Mathematics #16), New York, 1967.
+</p><p>
+L.H. Harper: 
+<a href="http://projecteuclid.org/euclid.aoms/1177698956">Stirling 
+Behavior is Asymptotically Normal</a>,
+Annals Math'l. Statist. 38,2 (1967) 410-414.
+<!--
+StirlingS2(n,k)/BellNumber(n) for large n approaches a normal distribution with
+mean=sum( stirling2(n,k)*k, k, 0, n ) / belln(n);
+var=sum( stirling2(n,k)*(k-mean)^2, k, 0, n ) / belln(n);
+mean(0,1,2,3,4,5,6,7,8,9) = 0, 1, 3/2, 2, 37/15, 151/52, 674/203, 3263/877, 3263/1380, 94828/21147
+var(0..8) = 0, 0, 1/4, 2/5, 116/225, 1691/2704, 30082/41209, 637190/769129, 585233/634800
+but mean and var are not known in close form?
+-->
+</p><p>
+Manuel Kauers:
+<a href="http://www.risc.uni-linz.ac.at/people/mkauers/publications/kauers07n.pdf">
+Summation algorithms for Stirling number identities</a>,
+J. Symbolic Computation 42,10 (2007) 948-970,
+</p><p>
+Charles Knessl &amp; Joseph B. Keller:
+Stirling number asymptotics from recursion equations using the ray method,
+Studies in Appl. Math. 84 (1991) 43-56.
+</p><p>
+Vaclav Kotesovec:
+<a href="http://members.chello.cz/kotesovec/math_articles/kotesovec_interesting_asymptotic_formulas.pdf">Interesting asymptotic formulas for binomial sums</a>,
+manuscipt published on his web page, dated June 2013.
+</p><p>
+Elliott H. Lieb:
+<a href="">
+Concavity properties and a generating function for Stirling numbers</a>,
+J. Combinatorial Theory 5 (1968) 203-206.
+Shows both kinds of (unsigned) Stirling numbers are "strongly logarithmically concave" that is
+StirlingS2(N,K)<sup>2</sup>&gt;StirlingS2(N,K-1)&middot;StirlingS2(N,K+1)
+for 2&le;K&le;N-1.   This implies both kinds of Stirling numbers are "unimodal," i.e. have
+a unique maximum (except perhaps it could be bi-unique, i.e. is co-equally maximized at
+two consecutive Ks) as a functions of K.
+Lieb did not realize it, but his 
+result actually was a <i>rediscovery</i> of a remark published by J.M.Hammersley in 1951.
+Erd&ouml;s 1953, following up on Hammersley,
+further showed the |StirlingS1| maximum is genuinely unique (and occurs
+at either K=1+&lfloor;ln(N-1)&rfloor; or K=&lfloor;ln(N-1)&rfloor; for all N&ge;198)
+for all N&ge;3.  Indeed, all the StirlingS1(N,K) for a given N are <i>distinct</i>
+for each N&gt;10<sup>8</sup> and more strongly
+(which Erd&ouml;s claimed without giving his proof)
+for each N&ge;5000.   With computers it ought to be possible to examine all the cases
+below 5000 too, thus compeltely settling the problem.
+<!--Erd(n,s)=S1(N,K)  where N-1=n, N-K=s, N=n+1, K=1+n-s.
+ck(n) := block (
+  z : 0;
+  for k : 1 thru n do (
+    y : stirling1(n,k),
+    if y=z then return (k)
+    else z : y
+  )
+  return (0)
+)
+but far better is to use recurrence.  Need extended exponent range.
+-->
+</p><p>
+Guy Louchard:
+<a href="http://www.ulb.ac.be/di/mcs/louchard/louchard.papers/stirp.pdf">Asymptotics 
+of the Stirling numbers of the first kind revisited: A saddle point approach</a>,
+Discrete Mathematics &amp; Theoretical Computer Science 12,2 (2010) 167-184.
+</p><p>
+Joseph Malkevitch:
+<a href="http://www.ams.org/samplings/feature-column/fcarc-eulers-formula">Euler's Polyhedral Formula</a>,
+introductory essay at Amer. Math. Society's web site.
+</p><p>
+Leo Moser &amp; Max Wyman: 
+Asymptotic development of the Stirling numbers of the first kind,
+J.London Math'l. Soc. 33 (1958) 133-146.
+</p><p>
+Leo Moser &amp; Max Wyman: 
+<a href="http://projecteuclid.org/euclid.dmj/1077467775">Stirling numbers of the second kind</a>, 
+Duke Math. J. 25,1 (1958) 29-43.
+</p><p>
+Albert Nijenhuis &amp; Herbert S. Wilf:
+Combinatorial algorithms, Academic Press 2nd ed 1978.
+</p><p>
+NIST <a href="http://dlmf.nist.gov/">digital library of mathematical functions</a>,
+&sect;<a href="http://dlmf.nist.gov/26.8">26.7</a> covers Bell numbers,
+&sect;<a href="http://dlmf.nist.gov/26.8">26.8</a> Stirling numbers,
+and
+&sect;<a href="http://dlmf.nist.gov/4.13">4.13</a> the LambertW function.
+</p><p>
+Peter Orlik &amp; Hiroaki Terao:
+Arrangements of Hyperplanes,
+Grundlehren der mathematischen Wissenschaften 300, Springer-Verlag, Berlin/New York, 1992.
+QA167.O75.
+</p><p>
+L.A.Shepp &amp; S.P.Lloyd:
+<a href="http://stat.wharton.upenn.edu/~shepp/publications/12.pdf">Ordered cycle lengths
+in a random permutation</a>, 
+Trans. Amer. Math. Soc. 121,2 (1966) 340-357.
+</p><p>
+Richard P. Stanley:
+<a href="http://www.cis.upenn.edu/~cis610/sp06stanley.pdf">
+An Introduction to Hyperplane Arrangements</a>, 109 pages of notes
+published pp. 389-496 in <em><a
+href="http://www.ams.org/bookstore?fn=20&arg1=mathcomb&item=PCMS-13">Geometric
+Combinatorics</em></a> (Ezra Miller, Victor Reiner, and Bernd Sturmfels, eds.),
+IAS/Park City Mathematics Series, vol. 13, American Mathematical
+Society, Providence, RI, 2007.
+<a href="RSerrata.pdf">Errata</a> (pdf file, version of 28 January
+2009, applying to the Park City published version; most of the errors found by
+Steven Sam).  Library of congress catalog number QA167.G459.
+</p><p>
+Nico M. Temme: 
+<a href="http://oai.cwi.nl/oai/asset/2304/2304A.pdf">Asymptotic
+estimates of Stirling numbers</a>, Stud. Appl. Math. 89,3 (1993) 233-243.
+</p><p>
+A.N. Timashev: 
+<a href="http://www.mathnet.ru/eng/dm440">On asymptotic expansions
+of Stirling numbers of the first and second kinds</a>,
+Diskretnaya Matematika 10,3 (1998) 148-159 [in Russian]
+= Discrete Mathematics and Applications 8,5 (1998) 533-544 [English translation].
+<!--[Asymptotics of Stirling numbers of second kind].-->
+</p><p>
+Horst Wegner:
+An Almost Accurate Location of the Maximum Stirling Number(s) of the Second Kind,
+Results in Maths 61, 3-4 (June 2012) 231-243.
+<!--
+For any n>=3: solve 
+ (r + 1/2 - 1/(12r) - log(r+1)/(2r)) log(r+1) = n
+for r.
+Then: S2(n,k) is maximized when floor(k-a/n)<=k<=floor(r+b/n)
+for certain positive constants a,b.  This plus results of
+  http://www.math.uwaterloo.ca/~gdkemkes/stirlingfinalu.pdf
+strongly suggests the max is unique except in
+a finite set of cases.  Possibly only n=2.
+-->
+</p><p>
+Herbert S. Wilf:
+The asymptotic behavior of the Stirling numbers of the first kind (note),
+J. Combinatorial Theory A 64,12 (1993) 344-349.
+</p><p>
+Thomas Zaslavsky: 
+Facing up to arrangements: face-count formulas for partitions of space 
+by hyperplanes, Memoirs Amer. Math. Soc. 1,1 (1975) Number 154. 
+</p><p>
+Thomas Zaslavsky: 
+<a href="http://www.sciencedirect.com/science/article/pii/0001870877900767">A 
+combinatorial analysis of topological dissections</a>, 
+Advances in Maths. 25,3 (1977) 267-285.
+Also briefly summarized in
+<a href="http://www.ams.org/journals/bull/1975-81-05/S0002-9904-1975-13885-7/home.html">
+Counting the faces of cut-up spaces</a>,
+Bulletin Amer. Math. Soc. 81 (1975) 916-918.
+</p><p>
+Thomas Zaslavsky: 
+Extremal arrangements of hyperplanes, pp. 69-87 in Discrete Geometry 
+and Convexity (New York, 1982) = volume 440 of Annals New York Academy of Sciences 1985. 
+</p><p>
+Thomas Zaslavsky: 
+<a href="http://www.math.binghamton.edu/zaslav/Tpapers/pds.postpub.pdf">Perpendicular
+Dissections of Space</a>,
+Discrete &amp; Computational Geometry 27,3 (January 2002) 303-351.
+</p>
+
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+
+<!--
+Sum[Abs[StirlingS1[N,N-k]],{k,0,D}]
+
+Sum[Abs[StirlingS1[N+3,N+3-k]],{k,0,N}]
+N=1: 7    yes 7
+N=2: 46   yes 46
+N=3: 326  not 386
+N=4: 2556
+
+Sum[Abs[StirlingS1[N+2,N+2-k]],{k,0,N}]
+N=1: 4    yes 4
+N=2: 18   yes 18
+N=3: 96   not 106
+N=4: 600
+N=5: 4320
+
+Sum[Abs[StirlingS1[N+1,N+1-k]],{k,0,N}]
+N=1: 2  yes 2
+N=2: 6  yes 6
+N=3: 24 yes 24
+N=4: 120
+N=5: 720 
+
+Sum[Abs[StirlingS1[N,N-k]],{k,0,3}] for N=3,4,5,6,7,8,9,10,11,12,13
+fit polynomial to 1,1,2,6,24,96,326,932,2311,5119,10366,19526,34662,58566
+R(N,3)=(N^6-7*N^5+23*N^4-37*N^3+48*N^2-28*N+48)/48
+A(H,3) differs by a poly of degree=5.
+
+Sum[Abs[StirlingS1[N,N-k]],{k,0,4}] for N=4,5,6,7,8,9,10,11,12,13,14,15
+fit polynomial to 1,1,2,6,24,120,600,2556,9080,27568,73639,177299,392085,808029,1569387,2898183
+R(N,4)=(15*N^8-180*N^7+950*N^6-2688*N^5+4775*N^4-5340*N^3+5780*N^2-3312*N+5760)/5760
+Sum[Binomial[N*(N-1)/2,k],{k,0,4}]
+A(H,4)=(384 - 112 N + 156 N^2 - 84 N^3 + 33 N^4 + 8 N^5 + 2 N^6 - 4 N^7 + N^8)/384
+differing by a poly of degree=7.
+
+Sum[Abs[StirlingS1[N,N-k]],{k,0,5}] for N=5,6,7,8,9,10,11,12,13,14,15,16,17
+fit polynomial to 1,1,2,6,24,120,720,4320,22212,94852,342964,1079354,3029643,7734663,18239040,40210458,83683203,165678771
+R(N,5)=(3*N^10-55*N^9+440*N^8-1958*N^7+5367*N^6-9431*N^5+11670*N^4-10732*N^3+11320*N^2-6624*N+11520)/11520
+Sum[Binomial[N*(N-1)/2,k],{k,0,5}]
+A(H,5)=(3840-1504*N+1544*N^2-180*N^3+330*N^4-261*N^5+45*N^6+30*N^7-5*N^9+N^10)/3840
+differing by a poly of degree=9.
+
+http://oeis.org/A007820
+StirlingS2[2n, n] =asymp=
+(4*n/(e*z*(2-z)))^n/sqrt(2*Pi*n*(z-1)), 
+where z=1.59362426... 
+is a root of the equation exp(z)*(2-z)=2. - Vaclav Kotesovec, May 30 2011
+
+StirlingS2[3*n, n] = http://oeis.org/A217913
+
+If D=c*N,  0<c<1 constant, N to infinity, then
+StirlingS2[N, N-D] =asymp= D! * (2*pi*D*sqrt(L-1))^(-1) * (4/(L*(2-L)))^D 
+When c=1/2:
+L=1.59362426... is a root of the equation exp(L)*(2-L)=2.
+L=LambertW[-2*Exp[-2]]+2=1.593624260040040092323041875875160241789002424818859364999504
+k=4/(L*(2-L))
+when c=1/3: k=18.51
+when c=1/4: k=38.15
+when c=1/5: k=64.72
+More generally:
+L=1/(1-c) + LambertW[-Exp[-1/(1-c)]/(1-c)]
+which for c=1/2, 1/3, 1/4, 1/5 is
+1.59362, 0.874217, 0.60586, 0.464213.
+
+
+Temme EQ 2.6, 2.8, 2.9, 2.10:
+StirlingS2(n,m) = Exp[A] * m^(n-m) * Binomial[n,m] * f(t0)
+m=n-D
+n-m=D
+k = (1-c)/c^2 *  (1-c)^(1-1/c) * exp(A)
+
+= (1-c)^D * (2/c)^D * ((1/c-1)^(1-1/c))^D * D^D * (e^(1/c-1))^D * (D^(1-1/c))^D
+A = phi(x0) - m*t0 + (n-m)*ln(t0)
+phi(x) = -n*ln(x) + m*ln(exp(x)-1) = m*t - (m-n)*ln(t) + A 
+phi'(x) = -n/x + m*exp(x)/(exp(x)-1)
+phi'(x0)=0
+L=x0=LambertW(-exp(-n/m)*n/m)+n/m
+f(t) = m*(t-t0) / (x*phi'(x))
+f(t0) = sqrt( t0 / ((1+t0)*(x0-t0)) ))
+t0 = (n-m)/m = D/m
+A = phi(x0) - D + D*ln(D/m)
+A = -n*ln(L) + m*ln(exp(L)-1) - D + D*ln(c/(1-c))
+exp(A) = L^(-D/c) * ((exp(L)-1)^(1/c-1))^D * e^(-D) * (c/(1-c))^D 
+k = (1/c) *  (1-c)^(1-1/c) * e^(-1) * L^(-1/c) * (exp(L)-1)^(1/c-1)
+
+J.B. Keller and C. Knessl:
+Partition asymptotics from recursion equations, 
+SIAM J. Appl. Maths. 50,2 (1990) 323-338.
+
+S2(n,m) = 2^(m-n) * n^(2*(n-m)) / (n-m)! * [1+O(n^(-1/3)]
+
+EM Wright: Solution of equation ze^-a, BAMS 65 (1959) 89-93.
+
+L Moser &amp; M Wyman: Asymptotic formula for Bell numbers, 
+Trans Math Soc Canada 49 (1955) 49-53.
+Let L=LambertW(n).  Then if I copied it right
+BellNumber(n) =asymp= (L+1)<sup>-1/2</sup> exp( n [L+L<sup>-1</sup>-1] - 1 ) 
+[1 - L<sup>2</sup>(2L<sup>2</sup>+7L+10)/(24n(L+1)<sup>3</sup>)]
+A supposedly better reuslt is by:
+G.Szekeres &amp; F.E.Binet: 
+On Borel fields over finite sets, Ann. Math. Statist. 28 (1957) 494-498.
+
+Edward A Bender:
+Central and local limit theorems applied to asymptotic enumeration
+Journal of Combinatorial Theory, Series A
+Volume 15, Issue 1, July 1973, Pages 91–111
+Asymptotic normality: general purpose thm.
+Application 3.4: StirlingS2(n,k) with mean=n/ln4, stddev=n*sqrt(1-ln2)/ln4.   ??
+     That is wrong.  mean=n/ln(n) and variance=n/ln(n)^2 really according to p.11 bottom of
+       http://arxiv.org/pdf/1308.6803.pdf
+   wikipedia says the max occurs at k=n/ln(n)+lower order terms.
+   That is shown as theorem 4 of 
+   B.C. Rennie, A.J. Dobson:    On stirling numbers of the second kind,
+   Journal of Combinatorial Theory 7,2 (Sept 1969) 116-121.
+   Also is shown in 
+   VV Menon: On the Maximum of Stirling Numbers of the Second Kind,
+   JCT A 15 (1973) 11-24.
+   Menon falsely claims the max is unique as shown by Dobson & Rennie+Dobson.  
+     Actually it could still be bi-unique.
+   Menon claims Harper showed the max is asymptotic to n/ln(n).
+   Menon thm3.1 gives  better estimate whose leading term is  n/LambertW(n).
+   At the max, StirlingS2(n,k)=exp(n*(LambertW(n)-1))/sqrt(2*pi)  approximately
+      (Menon gives better version).
+Application 3.5: Euler numbers (n-perms with k ascents): mean=n/2, var=1/12 ?
+Application 5.1: StirlingS1(n,k) with mean=ln(1+n), var=ln(1+n)-n/(1+n)
+  and claims he gets Moser-Wymen asympttiic over a somewhat large domain of validity.
+Application 5.4: StirlingS2(n,k): EQ5.9 gives an asymptotic formula valid if k/n=c
+for fixed c with 0<c<1. Attributes this asymptotic to P.S.Laplace
+Theorie Analytique des Probabilites, Vol. 1 (1820) perhaps about p. 162?.
+-->

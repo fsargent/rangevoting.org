@@ -1,0 +1,353 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Phragm&eacute;n's proportional representation multiwinner voting method
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Phragm&eacute;n's proportional representation multiwinner voting method </H2>
+
+<p><small>
+Warren D. Smith. Nov 2015.  
+</small>
+
+<p>
+Once upon a time, in 2004, I invented what seemed to be a nice new
+proportional representation multiwinner voting method, which I called
+"reweighted range voting" (<a href="RRV.html">RRV</a>).
+But what I did not know was, the same basic idea had already been invented in 1895 (albeit for
+<a href="Approval.html">approval</a>-style, rather than 
+<a href="RangeVoting.html">rating</a>-style, ballots, and only in the "d'Hondt" case)
+by Thorvald N. Thiele (1838-1910) chief astronomer at
+the University of Copenhagen.  His paper was not exactly well known in
+the non-Danish speaking voting theory world, but nowadays you can read it online, 
+thanks to the joys of 
+"google scanned books":
+</p><blockquote>
+Thorvald N. Thiele:
+<a href="https://books.google.com/books?id=oAMXAAAAYAAJ&pg=PA415&lpg=PA415&dq=Thiele+Om+flerfoldsvalg&source=bl&ots=_AFoEKMdA8&sig=IcJya-OQrToFYzVtLW1mnCXQqy0&hl=en&sa=X&ved=0ahUKEwii5be_6J_JAhVIjz4KHW6KDLwQ6AEIKjAD#v=onepage&q=Thiele%20Om%20flerfoldsvalg&f=false#v=onepage&q=Thiele Om flerfoldsvalg&f=false">Om
+flerfoldsvalg</a> [On multiple election],
+Oversigt over Det Kongelige danske videnskabernes selskabs forhandlinger
+=
+Bulletin de L'Acad&eacute;mie royale des sciences et des lettres de Danemark,
+Copenhague Kongelige Danske Videnskabernes Selskab 
+= 
+Royal Danish Academy of Sciences and Letters 3,4  (1895-6) 415-441.
+</blockquote><p>
+Thiele was a mathematician of some lasting repute; he invented 
+<a href="http://mathworld.wolfram.com/ThielesInterpolationFormula.html">Thiele's rational-function interpolation formula</a>
+employing continued fractions.
+But then a Swedish mathematician,
+Lars Edvard Phragm&eacute;n (1863-1937), stepped into the fray.
+Phragmen was a professor of mathematics at Stockholm university 1892-1904,
+and later became an
+insurance company executive, e.g. was president of national life insurance co 
+1908-1930.
+Phragm&eacute;n is nowadays remembered for the
+<a href="https://en.wikipedia.org/wiki/Phragm%C3%A9n%E2%80%93Lindel%C3%B6f_principle">Phragm&eacute;n-Lindel&ouml;f</a>
+<a href="http://www.ams.org/journals/tran/1937-041-01/S0002-9947-1937-1501888-X/S0002-9947-1937-1501888-X.pdf">principle</a>
+in complex analysis.
+Phragm&eacute;n was particularly noted (or feared) for his ability to find flaws
+in the work of others.
+</p><blockquote>
+Lars Edvard Phragm&eacute;n: 
+<a href="https://rangevoting.org/Phragm&eacute;nVoting1899.pdf">Till
+fr&aring;gan om en proportionell valmetod</a>
+[On the Question of a
+Proportional Election Method], Statsvetenskaplig Tidskrift 2,2 (1899) 87-95.
+Phragm&eacute;n's method was first described in "Proportionella val" [Proportional
+Elections], Svenska sp&ouml;rsma&#770;l 25 (1895) Stockholm.
+</blockquote><p>
+And, sure enough,  Phragm&eacute;n found some interesting flaws (or anyway, worrying
+features) of Thiele's method.  Further criticism of Thiele was by
+</p><blockquote>
+Nore B. Tenow: 
+Felaktigheter i de Thieleska valmetoderna [problems with Thiele's methods],
+Statsvetenskaplig Tidskrift [Swedish state scientific journal published by
+Fahlbeckska Foundation of Political Science in Lund] (1912) 145-165.
+<!-- Nore Brandes Tenow (1890-1972)?? -->
+</blockquote><p>
+And then Phragm&eacute;n proposed his own voting method, which also could be
+proved to enjoy proportional representation, but seemed not to suffer from those flaws.
+Both methods, among others, then were reviewed and criticized by the economist
+Gustav Cassel (1866-1945) in a book length 1903 Swedish government report
+titled <i>Proportionella val</i>.
+<!-- 
+Lars Edvard Phragm&eacute;n (1863-1937), a Swedish mathematician.
+Thorvald Thiele (1838-1910), professor of astronomy at Copenhagen
+University. In his method, the value of a ballot is 1/n for the nth
+candidate elected that the ballot elects. The ballot is not preferential.
+The method is intended to be a generalization of d'Hondt's rule.
+Phragm&eacute;n gives the reference "Om flerfoldsvalg" [On multiple election],
+Overs. over d. K. Danske Vidensk. Selskabs Forh. 1895.
+Gustav Cassel 1903 criticizes?
+Olli Salmi 2002? digs these all up.
+https://groups.yahoo.com/neo/groups/election-methods-list/conversations/topics/10276
+-->
+</p><p>
+Phragm&eacute;n describes his method on page 88. Unfortunately, his description is
+pretty incomprehensible 
+even if you do read Swedish.  
+Here is my version of his
+description, which I've translated into English then reworded heavily to cause it to 
+make sense and employ modern terminology.
+</p><ol><li>
+<!--
+Alla namn som förefinnas på samma röstsedel, betraktas
+såsom lika berättigade. Namnens ordningsföljd inom röstsedeln spelar
+alltså ingen roll.
+--
+All candidates on the same ballot are
+equal in the sense that altering the order of their names on the ballot
+does not matter.
+-->
+The ballots are 
+"<a href="Approval.html">approval</a> style" i.e. each ballot lists the <i>set</i>
+of candidates that voter "approves."
+</li><li>
+Later on, we shall associate a "cost" with each ballot.
+(Phragm&eacute;n used the Swedish word "belastning." Other people often
+prefer to translate this into the English word "load" rather than my "cost.")
+All ballots initially have cost=0.
+</li><li>
+<!--
+Sedan röstsedlarna äro inlämnade, sker valförrättningen
+i den ordning, att den första platsen besättes först, därefter i ordning
+den andra, den tredje, o. s. v
+-->
+Seats are elected sequentially.  Now perform steps 4-6 until all seats are filled:
+</li><li>
+<!--
+För att afgöra hvilken kandidat som bör erhålla en
+viss plats, belastas på försök, för hvarje särskild kandidat, de röstsedlar som
+innehålla hans namn utöfver redan befintlig belastning på ett sådant sätt att
+1:0 deras totalbelastning ökas med tillsammans en belastningsenhet,
+och att
+2:0 alla dessa röstsedlars totalbelastningar blifva sins emellan lika.
+Den kandidat, för hvilken hvarje enskild röstsedels totalbelastning blir
+minst, förklaras vald på den ifrågavarande platsen, och den motsvarande
+belastningen fixeras och bibehålles under fortsättningen af valförrättningen.
+-->
+As soon as any candidate is elected, the N ballots that approved him
+have 1/N added to each of their costs.
+(Note: at any moment, the sum of all the ballot costs, equals the number of seats filled so far.
+This fact can help with checking one's calculations.)
+</li><a name="pecstep"></a><li>
+[This step is really peculiar, and perhaps things would be better if it were omitted.]
+Immediately after a candidate is elected, we then <i>redistribute</i> the costs among his
+approvers, to make their ballots each have equal costs.  
+</li><li>
+The candidate who wins the next seat is the one
+whose N supporters' ballots will have the <i>least average cost</i>.
+(So, for example, the <i>first</i> winner is simply the most-approved candidate,
+because if he is approved by N voters the average cost per approving-ballot is 1/N,
+which is minimal because N is maximal.)
+</li></ol>
+<p>
+<b>Phragm&eacute;n's election example on page 90:</b>
+</p><pre>
+         approved
+#voters  canddts
+  1034   ABC
+   519   PQR
+    90   ABQ
+    47   APQ
+</pre><p>
+<b>A</b> wins the first seat since he is approved by the most voters, 1171;
+hence those approving him have the least average cost, 1/1171.
+We now give those 1171 ballots each cost=1/1171 and continue:
+</p><pre>
+         approved  summed
+#voters  canddts   cost
+  1034   ABC     1034/1171
+   519   PQR         0
+    90   ABQ      90/1171
+    47   APQ      47/1171
+</pre>
+<b>Q</b> wins the second seat because his 656 supporters have the lowest total cost.
+Because:
+If Q is elected, his 
+<nobr>656=519+90+47</nobr>
+supporters would have average cost
+<nobr>(1+(90+47)/1171)/656=327/192044&asymp;0.00170273.</nobr>
+If instead B were elected, his 
+<nobr>1124=1034+90</nobr>
+supporters would have slightly greater
+average cost
+<nobr>(1+1124/1171)/1124=2295/1316204&asymp;0.00174365.</nobr>
+Therefore Q wins.  We now add 1/656 to the costs on each of his supporters' ballots:
+</p><pre>
+         approved  summed
+#voters  canddts   cost
+  1034   ABC      1034/1171
+   519   PQR       519/656
+    90   ABQ   90/1171+90/656
+    47   APQ   47/1171+47/656
+</pre><p>
+and then we <i>redistribute</i> those costs so that 
+each Q-approving ballot has cost=327/192044:
+</p><pre>
+         approved  summed
+#voters  canddts   cost
+  1034   ABC      1034/1171
+   519   PQR   519&times;327/192044
+    90   ABQ   90&times;327/192044
+    47   APQ   47&times;327/192044
+</pre><p>
+Now <b>B</b> wins the third seat.
+That is because his 1124=1034+90 approvers will have least average cost
+<nobr>(1+1034/1171+90&times;327/192044)/1124=195525/107928728&asymp;0.00181161.</nobr>
+P does not win, because his <nobr>566=519+47</nobr>
+approvers would have had greater average cost
+<nobr>(1+519&times;327/192044+47&times;327/192044)/566=188563/54348452&asymp;0.00346952.</nobr>
+</p><p>
+If we had <i>not</i> redistributed according to rule 5, then <b>B</b> still would have 
+won the third seat, because his
+1124=1034+90 approvers still would have had least average cost
+<nobr>(1+1034/1171+90/1171+90/656)/1124=805455/431714912&asymp;0.00186571.</nobr>
+P would not have won,
+because his <nobr>566=519+47</nobr>
+approvers would have had greater average cost
+<nobr>(1+519/656+57/1171+47/656)/566=734177/217393808&asymp;0.00337718.</nobr>
+</p><p>
+<b>Proportionality theorem:</b>
+Actually, Phragm&eacute;n did not state one.  But it is the same as the 
+<a href="RRV.html">RRV</a> proportionality theorem, and it holds regardless of whether
+we use or omit Phragm&eacute;n's peculiar rule 5.
+</p><p>
+RRV and Phragm&eacute;n behave almost exactly the same if all voters are 
+"total racists" i.e. always approve candidates of their own "color"
+and never approve those with different color &ndash; in that case both Phragm&eacute;n and RRV
+guarantee the color
+composition of the parliament will duplicate that of the voters 
+(up to small round-to-integer errors, and provided enough
+candidates of each color run; obviously there cannot be 3 Red winners if only 2 Reds run).
+</p><p>
+The <i>differences</i> between Phragm&eacute;n and RRV behaviors only arise 
+when the voters are <i>not</i> all "extreme racists."
+</p><p>
+One difference is as follows.  Suppose
+there is some universally-approved candidate A.  He, of course, wins the first seat.
+We now proceed to elect further seats.  With Phragm&eacute;n (and this is true whether or
+not we include the peculiar rule 5), the entire subsequent
+process proceeds in the same manner as if A had not existed.
+But with <a href="RRV.html">RRV</a>, the further seat-elections B,C,D,... 
+can (and often will) be <i>altered</i> (starting with C) as a consequence of A's existence.
+</p><p>
+So if the voters behave as "total racists" about all 
+candidates <i>except</i> for universally-approved candidates, then 
+Phragm&eacute;n (with or without rule 5) will yield color-proportionality in all the seats
+<i>not</i> occupied by universally-approved candidates.
+But <a href="RRV.html">RRV</a> usually will fail to deliver that kind of proportionality.
+</p><p>
+In this kind of example, which method behaves better &ndash; 
+Phragm&eacute;n or RRV?  That depends on your view about the universally-approved candidates U.
+If you regard U as "uncolored" then 
+Phragm&eacute;n will elect a parliament whose color-composition duplicates that of the electorate.
+If, on the other hand, we regard U as "multicolored," then RRV
+will elect a parliament whose color-composition duplicates that of the electorate, <i>provided</i>
+we get to choose the "internal color composition" of U <i>after</i> the election and do it
+in just the right way (there will always be a suitable way).
+But Phragm&eacute;n also enjoys this latter property.
+Therefore 
+Phragm&eacute;n seems superior to RRV  for proportional approval-style voting in situations involving
+<i>both</i> universally-approved candidates and "racism."  (Actually a more accurate word than
+"racism" for describing what is going on here, might be "partisanship.")
+</p><p>
+Indeed, we can go further.  Suppose there is some "gray" candidate who
+is approved by fraction X of all voters, <i>regardless</i> of their color.
+(E.g, each voter independently flips a coin with bias X, to decide whether to approve him.)
+With Phragm&eacute;n (either with or without the peculiar redistribution rule 5)
+if there <i>only</i> are gray candidates (possibly each with different grayness levels X)
+and colored candidates, then 
+the parliament seats occupied by non-gray candidates automatically will have color composition
+that duplicates the electorates'.
+</p><p>
+And we can go even further.
+Suppose a "blue &amp; red" candidate exists, who is approved by fraction X of
+blue voters, and by same-fraction X of the red voters, but is not approved by any other color (green etc)
+of voter.  Then the relative proportion of seats occupied by pure-blue and pure-red candidates,
+will duplicate the blue and red fractions of the electorate, regardless of how many
+"blue &amp; red" candidates get elected.
+</p><p>
+So Phragm&eacute;n really enjoys a quite sophisticated kind of proportionality.
+</p>
+<!--
+<h3>
+Adding Scoring
+</h3>
+<p>
+Can we now invent a version of 
+Phragm&eacute;n 
+intended for <a href="RangeVoting,html">score voting</a> style numerical-ratings-ballots instead
+of <a href="Approval,html">approval</a> style ballots?  
+The answer is yes.  We simply <i>replace</i> a ballot which rates the C candidates with scores
+</p><center>
+S<sub>1</sub>&ge;S<sub>2</sub>&ge;S<sub>3</sub>&ge;...&ge;S<sub>C</sub>
+</center><p>
+by these C weighted approval ballots 
+</p><pre>
+(1,1,1,...,1,1) with weight S<sub>C</sub>
+(1,1,1,...,1,0) with weight S<sub>C-1</sub>-S<sub>C</sub>
+    ...
+(1,1,0,...,0,0) with weight S<sub>2</sub>-S<sub>3</sub>
+(1,0,0,...,0,0) with weight S<sub>1</sub>-S<sub>2</sub>
+</pre><p>
+and then use Phragm&eacute;n's approval-based method.
+</p><p>
+Note: the candidates were ordered by decreasing scores on the ballot under consideration.
+That assures that all the weights come out positive.  
+For example the score ballot (9,5,3) would be replaced by
+</p><center>
+3&times;(1,1,1) + 2&times;(1,1,0) + 4&times;(1,1,1).
+</center><p>
+This "replacement of score ballots with weighted approval ballots" idea was invented 
+by Toby Pereira.
+</p>
+-->
+<p>
+However, Phragmen's method is not perfect. It suffers "non-monotonic" phenomena:
+</p><p>
+Anti-Phragmen election example by Jan Lanke (mentioned in an unpublished book by Svante Janson):
+2 seats to fill, 44 votes:
+<p><center>
+  15 A&amp;B, 12 B&amp;X, 14 C&amp;Y, 3 Z&amp;W.
+</center><p>
+The first seat goes to A and the second to C.
+Suppose now that the three voters who approved  Z&amp;W change to instead vote
+A&amp;C. One might think that both A and C have been strengthened, and that
+it everything should proceed at least as happily for them after the change.
+But now, paradoxically, A&amp;B win.
+</p>
+<!--
+E[dvard] Phragmén, Sur une méthode nouvelle pour réaliser, dans
+les élections, la représentation proportionelle des partis. Öfversigt av
+Kongl. Vetenskaps-Akademiens Förhandlingar 1894, N:o 3, Stockholm,
+133-137.
+[297] E[dvard] Phragmén, Proportionella val. En valteknisk studie. Svenska
+spörsmål 25, Lars Hökersbergs förlag, Stockholm, 1895.
+[298] E[dvard] Phragmén, Till frågan om en proportionell valmetod.
+Statsvetenskaplig Tidskrift 2 (1899), nr 2, 297-305. 
+http://cts.lub.lu.se/ojs/index.php/st/article/view/1949
+</p><p>
+Toby Pereira (2016):
+2 to elect:
+n voters: AB
+n voters: AC
+In this election, Ebert's method would elect BC. Phragmen would elect AB.
+-->
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

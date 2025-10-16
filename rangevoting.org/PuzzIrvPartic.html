@@ -1,0 +1,415 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org -- answer to puzzle 55
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to Puzzle #55: How often is voting honestly worse than not voting with Instant Runoff Voting? </H2>
+
+<p><b>Puzzle:</b><br>
+In IRV, voting honestly 
+can be worse (for a set of co-feeling voters) than not voting at all.
+<ol type="a">
+<li>
+Find a concrete example of that.
+</li><li>
+In the <a href="RandElect.html">random elections model</a>,
+with 3-candidate V-voter elections (V&rarr;&infin;) 
+show that the <i>likelihood</i> of that
+is 16.2%.
+More precisely, this is the chance that a random IRV election will be a situation in which
+adding some extra number of voters of some common type (such as "A>B>C") will cause the winner
+to get worse from their point of view.
+(Also show it is 7.292% in the <a href="Glossary.html#Dirichlet">Dirichlet model</a>.)
+</li><li>
+In the limit of a large number C of candidates, what happens to
+this likelihood?
+</li><li>
+In a random 3-candidate IRV election as above but now
+restricting attention to the <i>subset</i> of such
+elections in which the IRV and plurality
+voting winners <i>differ</i>,
+what is the likelihood?  If we (further) restrict to the (contained) subset
+in which for some constant K with 0&lt;K&lt;1 (for example K=99%, but the precise
+value is irrelevant) the second-placer gets &le;K times as many top-rank votes
+as the first-placer, and the third-placer gets
+&le;K times as many top-rank votes as the second-placer,
+and the IRV and plurality winners differ, then show the probability of
+a maximum participation failure tends to 100% in the V&rarr;&infin; limit.
+</li><li>
+In contrast, with both Approval and Range voting, voting honestly 
+is <i>never</i> worse 
+than not voting at all.
+</li>
+<!-- <li>
+And what is the chance
+with 3-candidate V-voter elections (V&rarr;&infin;) 
+that a random IRV election will be a situation in which
+<i>deleting</i> some number of voters of some common type
+will cause the winner
+to get <i>better</i> from their point of view?
+</li> -->
+</ol>
+</p>
+
+
+<p><b>Answer (a,b):</b>
+<ul>
+<li>
+If A was the winner, then adding A>B>C voters cannot (with IRV) cause A to stop winning.
+</li><li>
+If C was the winner, then adding A>B>C voters cannot make things worse &ndash; from these voters'
+point of view, the worst is already happening.
+</li><li>
+So the only way this can happen is if B was the winner and adding some number <i>t</i> of
+A>B>C voters causes C to win.  This can happen in only one way:
+A (which used to be eliminated in the first round) now survives the first round
+(in which B now is eliminated) only to lose to C in the final round.
+</li></ul>
+</p>
+<p>
+For this to happen, we need (using 3-letter variable names) that
+<center>
+ABC+ACB&lt;BAC+BCA&lt;CAB+CBA,
+&nbsp;
+ABC+BAC+BCA&gt;ACB+CAB+CBA,
+&nbsp;
+ABC+ACB+t&gt;BAC+BCA,
+&nbsp;
+BCA+CAB+CBA&gt;BAC+ABC+ACB+t.
+</center>
+for some <i>t</i>&gt;0.
+</p>
+<p><small>
+The first says A is eliminated (but after the <i>t</i> extra A>B>C votes are added, B is);
+the second says B wins over C after that;
+the third says B is eliminated after the <i>t</i> extras are added;
+the fourth says C then wins.
+</small></p>
+<p>
+This simplifies to
+<center>
+ABC+ACB&lt;BAC+BCA&lt;CAB+CBA,
+&nbsp;
+ABC+BAC+BCA&gt;ACB+CAB+CBA,
+&nbsp;
+CAB+CBA&gt;2&middot;BAC.
+</center>
+We now can find a <b>concrete election</b> by maximizing the minimum "safety margin" of
+satisfaction of all of the inequalities above &ndash; subject to constraining
+the number of voters of each type to be nonnegative and making
+the total number of voters be 18 &ndash; and the result (found by "linear programming") is
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 8 </td>
+<td>  C>A>B </td>
+</tr>
+<tr>
+<td> 4 </td>
+<td> A>B>C </td>
+</tr>
+<tr>
+<td> 3 </td>
+<td> B>C>A </td>
+</tr>
+<tr>
+<td> 3 </td>
+<td> B>A>C </td>
+</tr>
+</table>
+
+<p>
+Here A is eliminated in first IRV round, then <b>B wins</b> 10:8 over C.
+But if we add 3 more A>B>C voters, then B is eliminated in the first
+round, whereupon <b>C wins</b> 11:10 over A.
+These 3 voters would have been "better off staying home" and not voting.
+</p>
+
+<p>
+<i>Six times</i> the probability of all the simplified inequalities being satisfied, if 
+ABC, ACB, BAC, BCA, CAB, and CBA are independent standard normal random deviates,
+is found, by performing 200 million Monte Carlo experiments, to be
+<center>
+P = 0.1622 &plusmn; 0.0001.
+</center>
+</p>
+<p><small>
+The justification for the multiplication by 3!=6 is that we need to consider all possible
+ways to permute the names of the 3 candidates, i.e. we want to count the probability
+we get a paradox if the added-voter-type is A>B>C <i>and</i> the probability if it is B>A>C,
+<i>and</i> the probability if it is A>C>B, etc, where
+note that all these events are <i>disjoint</i>
+(due to the first pair
+in each of our sets of inequalities) hence it really is exactly justified 
+to multiply by 6.  (We also remark that
+it is also possible to express P in closed form in terms of "Schl&auml;fli functions.")
+</small></p>
+
+<p>
+This calculation confirms independently (at least, its three most significant digits...)
+a claimed high-precision computation of 16.230% by 
+</p>
+<blockquote>
+D.Lepelley &amp; V.Merlin: 
+Scoring run-off paradoxes for variable electorates,
+Economic Theory 17 (2001) 53-80.
+</blockquote>
+<p>
+I.e. the likelihood of a "participation failure" in an IRV 3-candidate election &ndash;
+a situation where it is possible by adding co-feeling honest voters to make
+the election result worsen from their point of view &ndash; is <b>16.2%.</b>
+</p>
+
+<p>
+If we instead make
+ABC, ACB, BAC, BCA, CAB, and CBA be independent standard <i>exponential</i>
+deviates, then we get the "Dirichlet model" rather than the "random election model"
+and we find <b>(7.36&plusmn;0.07)%</b>.
+Lepelley &amp; Merlin found the exact value <b>7/96=7.291<u>666</u>%.</b>
+</p>
+
+<p><b>More Lepelley-Merlin results:</b>
+Lepelley &amp; Merlin also examined other runoff systems besides IRV
+(such as Nanson-Baldwin),
+other kinds of paradoxes, and allowing finite numbers of voters.
+</p>
+<p>
+Another kind of paradox is the "reverse form" of the participation failure we just examined
+(L&amp;M call it the "abstention paradox") in which, if some set of
+voters in an election <i>abstain</i>
+from voting, that would improve the election result in their view.x
+For IRV in the random election model, L&amp;M find the probability of that is <b>5.583%</b>,
+while under the Dirichlet model it is 35/648&asymp;<b>5.401%</b>.
+</p><p>
+Further, they find for the <i>combined</i> probability of an IRV "no-show paradox"
+(i.e. the probability an IRV election exhibits either the forward or reverse form, or both
+simultaneously)
+<b>21.813%</b> under the 
+random election model, 
+while under the Dirichlet model it is 131/152&asymp;<b>11.3715%</b>.
+</p>
+<p>
+For the <b>Nanson-Baldwin voting system</b> (repeated elimination of the Borda loser)
+instead of IRV, they find 5.022% probability of forward and also 5.022%
+probability of reverse paradox under the random election model,
+which become about 3.4% and 2.4% respectively under the Dirichlet model.
+</p>
+
+<!--
+<p>
+To answer the final question, redefine ABC+t to be ABC and simplify
+<center>
+ABC+ACB-t&lt;BAC+BCA&lt;CAB+CBA,
+&nbsp;
+ABC+BAC+BCA&gt;ACB+CAB+CBA+t,
+&nbsp;
+ABC+ACB&gt;BAC+BCA,
+&nbsp;
+BCA+CAB+CBA&gt;BAC+ABC+ACB.
+</center>
+to become
+<center>
+BAC+BCA&lt;CAB+CBA,
+&nbsp;
+2&middot;BAC+2&middot;BCA&gt;2&middot;ACB+CAB+CBA,
+&nbsp;
+ABC+ACB&gt;BAC+BCA,
+&nbsp;
+BCA+CAB+CBA&gt;BAC+ABC+ACB.
+</center>
+Again perform Monte Carlo experiments and multiply by 6...  find
+<center>
+P = (5.60 &plusmn; 0.01)%.
+</center>
+
+Pseudocode for Dirichlet runs:
+randomize();
+for NNL from 1 to 5 do
+  N := 6 * 10^NNL;
+  ns := 0;
+  for t from 1 to N do
+    ABC := -log(0.000000000001*rand());
+    ACB := -log(0.000000000001*rand());
+    BAC := -log(0.000000000001*rand());
+    BCA := -log(0.000000000001*rand());
+    CAB := -log(0.000000000001*rand());
+    CBA := -log(0.000000000001*rand());
+    if( ABC+ACB<BAC+BCA and BAC+BCA<CAB+CBA and
+        ABC+BAC+BCA>ACB+CAB+CBA and CAB+CBA>2*BAC ) then
+       ns := ns+1;
+    fi;
+ od;
+ print("N=", N, " and noshowparadd=", ns, "for percent=", 600.0*ns/N, 
+    " errbar=", 600.0*sqrt(ns+0.00001)/N);
+od;
+                "N=", 60000, " and noshowparadd=", 750, "for percent=", 7.5
+ "N=", 60000, " and noshowparadd=", 755, "for percent=", 7.550000000, " errbar=", 0.2747726351
+ "N=", 200000, " and noshowparadd=", 2410, "for percent=", 7.230000000, " errbar=", 0.1472752528
+"N=", 600000, " and noshowparadd=", 7362, "for percent=", 7.362000000, " errbar=", 0.08580209796
+
+
+overall: 750+755+2410+7362=11277 out of 920000 for 7.355+-0.069 percent.
+
+Random Election Model runs:
+randomize();
+for NNL from 1 to 5 do
+  N := 2 * 10^NNL;
+  ns := 0;
+  for t from 1 to N do
+    ABC :=  stats[random, normald]();
+    ACB :=  stats[random, normald]();
+    BAC :=  stats[random, normald]();
+    BCA :=  stats[random, normald]();
+    CAB :=  stats[random, normald]();
+    CBA :=  stats[random, normald]();
+    if( ABC+ACB<BAC+BCA and BAC+BCA<CAB+CBA and
+        ABC+BAC+BCA>ACB+CAB+CBA and CAB+CBA>2*BAC ) then
+       ns := ns+1;
+    fi;
+ od;
+ print("N=", N, " and noshowparadd=", ns, "for percent=", 600.0*ns/N, 
+    " errbar=", 600.0*sqrt(ns+0.00001)/N);
+od;
+                "N=", 6000, " and noshowparadd=", 167, "for percent=", 16.70000000
+               "N=", 60000, " and noshowparadd=", 1617, "for percent=", 16.17000000
+-->
+
+<p><b>Answer (c):</b>
+When C increases, this likelihood P is nondecreasing because the same scenarios
+as before still work on the final C-1 candidates remaining after the first is
+eliminated by IRV.   This nondecreasingness forces P(C) to tend to
+a positive constant <i>limit</i> as C&rarr;&infin;.
+</p><P>
+<b>Open Question:</b>
+What is that constant?
+</p>
+<p>
+Here is an argument (which is not a proof, but I find it pretty convincing)
+that, in the random election model with #voters V&rarr;&infin;
+in the limit of a large number C of candidates,
+the probability approaches 100% that we get a "participation failure"
+scenario.  (Also, that the probability we get one for a random voter type,
+should tend to a positive constant.)
+</p><p>
+We have seen already that with C=3 candidates, this probability is 
+approximately 16.2%.
+</p><p>
+Consider the C candidates in order of elimination by the IRV procedure.
+Suppose we add a new set of K identical
+voters all with some random voter-type (from the C! possible types).
+Initially, with high probability (from central limit theorem...) each voter type has about
+V/C!&plusmn;&radic;(V/C!) representatives.
+</p><p>
+If K exceeds (1/C!)&radic;(V/C!) or so, then it typically will be enough
+to alter the elimination order both for the candidate the new votes rank top,
+and for order-V other candidates it ranks somewhat below top, all directly &ndash; and then
+via indirect effects after those candidates fail to be eliminated
+and others receive transferred votes, more candidates will be affected; these
+indirect effects ought to swamp the direct ones eventually.
+The net effect should be a vast randomizing effect totally
+scrambling the elimination order from then on.
+Since a "random" candidate then will win, this will be a participation failure scenario
+if it was "worse" in the new-voter-type's view than the old winner.
+That ought to happen with some constant probability for a
+random voter type.  So the chance it will happen for <i>some</i> voter-type should
+approach 1 as C&rarr;&infin;.
+</p>
+<p>
+<b>(d)</b>
+An analysis
+by Depankar Ray &ndash; actually valid in a considerably more 
+general probabilistic setting than ours &ndash;
+<blockquote><small>
+Depankar Ray:
+On the practical possibility of a "no show paradox" under the single transferable vote,
+Math'l Social Sciences 11,2 (1986) 183-189.
+</small></blockquote>
+concluded that "Maximal" Participation Failure 
+("maximal" means these voters, by voting the current winner top
+make him lose, or by voting a current loser bottom make
+him win)
+should occur exactly 
+<a href="IRVpartic.html#depankar">50% of the time</a>
+in <i>3</i>-candidate elections in which the IRV and plurality winners differ.
+<!--   this is BOGUS!!!:
+For <i>our</i> problem version, the chance is exactly 3/4=75%.
+<b>Proof:</b>
+Call the candidates A, B, and C in decreasing order of number of
+top-rank votes received.
+Since the IRV winner (by the condition) is not A, it must be B,
+and B must win due to vote-transfers from C (who is eliminated in IRV round#1).
+Now.  We claim, with probability&rarr;7/8 in the V&rarr;&infin; limit,
+that an extra set of new "C>B>A" voters, by voting, will worsen the 
+election winner by now causing A to win the IRV election.
+Specifically, we add just enough of these new voters to bring C's top-rank
+vote count above B's. That is the situation.  Let us now analyse it.
+</p><p>
+In this situation, B is eliminated in IRV round#1 causing the final
+round to be A versus C.  Let A's margin over B
+in top-rank votes be X  (and this is the same, except for a single vote which
+is asymptoticaly irrelevant, as A's margin over C).   Now  denote the A-versus-C margin
+in vote <i>transfers</i> by Y.
+Then these extra votes hurt (i.e. caused A to win) if and only if
+X+Y&gt;0 conditioned on X&gt;0 where both X and Y are independent identical random
+normal variates.  (The central limit theorem justifies that assumption
+in the V&rarr;&infin; limit.)
+Drawing this graphically in the XY plane, we see this is a 75% chance:
+</p>
+<img src="ThreeQuartDiag.png">
+<p>
+<b>Q.E.D.</b>
+-->
+</p><p>
+In elections with very large numbers of voters and
+candidates these two winners differ asymptotically
+<a href="RandElect.html#irvthms">100% of the time</a> so if Ray's analysis were valid 
+in this limit (which it isn't; it only applies to the 3-candidate case) 
+we'd get 50% probability asymptotically of a participation failure.
+</p><p>
+Finally, an important remark which Depankar Ray also did not notice, is this:
+</p>
+<blockquote>
+<i>In 3-candidate  elections in which
+<ol>
+<li> The IRV and plurality winners differ. </li>
+<li> Each candidate gets at least some constant fraction fewer
+top-preference votes than the preceding one </li>
+<li> All votes are i.i.d. random (all 6 types equally likely) subject to the 
+preceding two conditions </li>
+</ol>
+the probability of a maximum participation failure is 100% (in the large #voters limit).</i>
+</blockquote>
+<p>
+[The proof of this theorem is trivial.]
+</p><p>
+This kind of IRV election is very common in practice, which 
+explains why participation failure seems to be very common in IRV elections in 
+practice, c.f.
+<a href="Ireland1990.html">Ireland</a>
+and
+<a href="Aus07.html">Australia</a>.
+</p>
+
+<!--
+ Scoring Run-Off Paradoxes for Variable Electorates
+ Dominique Lepelley and Vincent Merlin
+ Economic Theory, Vol. 17, No. 1 (Jan., 2001), pp. 53-80 
+http://www.jstor.org/pss/25055362
+-->
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+
+

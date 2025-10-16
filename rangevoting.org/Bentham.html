@@ -1,0 +1,218 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Bentham, Bayes, Bernoulli, et al.
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Jeremy Bentham, Thomas Bayes, Daniel Bernoulli, John Von Neumann, and some of the early
+history of utility theory
+</H2>
+<p><small>
+(<a href="WhyUtilExists.html">Deny utility exists?</a>)</small></p>
+<h2> Utilitarianism </h3>
+<p>
+The writers who introduced the concept of &quot;<a href="UtilFoundns.html">utility</a>&quot; were
+Jeremy Bentham (1748-1832), Thomas Bayes (1702-1761), and Daniel Bernoulli  (1700-1782).
+<p>
+<b>Jeremy Bentham</b>,
+in his 1781 book
+<a href="BenthamPML.html">Principles of Morals and Legislation</a> (still in print),
+introduced the concept of "utility."
+He believed that utility in terms of pleasure and pain could be measured
+numerically on a scale unique up to an affine transformation.  It also
+could be estimated by considering intensity, duration, and degree of certainty
+of pleasure or pain.
+One could use it and arithmetic to
+make interpersonal comparisons and to aggregate
+individual utilities into a social utility.
+The philosophy of "utilitarianism" &ndash;
+"the greatest happiness principle" &ndash; was invented by Bentham and
+has been very influential.
+Bentham wanted to deduce all moral and legal principles
+from this underlying principle plus logic, arithmetic,
+and experimental evidence.
+</p>
+<p>
+<b>How to make social policy decisions:</b>
+For example (Bentham said),
+a legislator deciding how to vote on some proposed law should
+assess (perhaps with the aid of experiments)
+how much happiness or pain it would lead to for each individual, add these all
+up to get a social utility, and then vote the way that would
+maximize social utility.
+</p>
+<p>
+Important writers often described as Bentham's followers include
+William Godwin 1756-1836,
+John Austin 1790-1859,
+James Mill 1773-1836,
+John Stuart Mill 1806-1873,
+Herbert Spencer 1820-1903,
+Bertrand Russell 1872-1970*,
+John Von Neumann 1903-1957,
+John C. <a href="WeymarkThmStatement.html">Harsanyi</a> 1920-2000*,
+and
+Peter Singer 1946- (the *s denote Nobel laureates).
+Other philosophical or social movements which trace some of their
+ideas to Bentham and
+the utilitarians include "social Darwinists," "libertarians," and
+"animal rights."
+</p><p>
+In mathematics and probability theory, the concept of "utility" is
+central to the "Bayesian" school, started by <b>Thomas Bayes</b>
+and now by far the most important
+framework in which to view statistics.
+<b>Daniel Bernoulli</b> also invented the notion of "utility" as a concept
+in probability theory and gambling <i>distinct</i>
+from "money."
+Bernoulli had  arguments something like this to prove utility and money were not the same
+thing:
+</p>
+<table cellspacing="10"> 
+<tr><td>
+<table border="1" cellpadding="5" cellspacing="0">
+<caption>
+<b>Allais "paradox":</b>
+Given the choice between A and B, most people choose A.
+(By means of a large number of experiments of this
+ilk one could try to determine more precisely the curve expressing the
+relationship between utility and money.)
+</caption>
+<tr>
+<td colspan="2" align="center"><b>Gamble A</b></td>
+<td colspan="2" align="center"><b>Gamble B</b></td>
+</tr>
+<tr>
+<td><b>Winnings</b></td>
+<td><b>Chance</b></td>
+<td><b>Winnings</b></td>
+<td><b>Chance</b></td>
+</tr>
+<tr>
+<td bgcolor="#EEEEDD" rowspan="3" valign="top">$1 million</td>
+<td bgcolor="#EEEEDD" rowspan="3" valign="top">100%</td>
+<td bgcolor="#EEEEDD">$1 million</td>
+<td bgcolor="#EEEEDD">89%</td>
+</tr>
+<tr>
+<td bgcolor="#EEDDDD">Nothing</td>
+<td bgcolor="#EEDDDD">1%</td>
+</tr>
+<tr>
+<td bgcolor="#DDEEDD">$5 million</td>
+<td bgcolor="#DDEEDD">10%</td>
+</tr>
+</table>
+</td><td>
+<p>
+<b>Bernoulli's (more dramatic) example:</b>
+You are offered two choices.  
+<ol type="A">
+<li> I give you $1000. 
+</li><li>
+You flip a fair coin.  If your first N coin flips all are heads, then I give you
+$2<sup>N</sup>/N.  (If the first flip is tails, you get nothing.)
+</li>
+</ol>
+Most people choose (A) even though with (B) you get an <i>infinite</i>
+expected amount of money.
+<small>
+Your expected winnings are
+&frac12; &sum;<sub>1&le;N&le;&infin;</sub> 1/N=&infin;
+because Prob(exactly N heads)=2<sup>-N-1</sup>,
+and winnings(N) = 2<sup>N</sup>/N if N&ge;1.
+</small>
+<br><br>
+These examples prove "utility" is different from "money."  
+</p>
+</td></tr>
+</table>
+<p>
+This framework was married to economics in Von Neumann and Morgenstern's
+book
+<a href="http://press.princeton.edu/titles/7802.html">Theory of Games
+and Economic Behavior</a> (1944 &amp; 1947).
+This book made the important point that &ndash; although some authors
+had tried to
+replace "cardinal" (numerical) utilities with mere "ordinals" (non-numerical,
+defined only by preference relations), <i>this was useless if one were trying to
+<a href="Mill.html">make decisions in the presence of random events</a> or play "games of
+incomplete information."</i>  
+(Also, ordinals run into problems with "<a href="CondorcetCycles.html#naivemaj">cycles</a>.")
+The 1947 edition also presented the first 
+<a href="UtilFoundns.html">axiomatic development</a> of utility.
+</p>
+<p>
+Bentham's decision-making procedure, note, is extremely similar to
+<a href="RangeVoting.html">range voting</a>.
+But oddly enough (as far as I can tell from, e.g, examining the book
+Leslie Stephen:
+<i>The English Utilitarians</i>, vols
+<a href="GutenbergLSEU1.html">I</a>,
+<a href="GutenbergLSEU2.html">II</a>,
+<a href="stephenEU3.html">III</a>, 1900),
+Bentham 
+appears never to have actually thought of range voting.
+<small>
+(Later note: Professor Claude Hillinger points out that Harsanyi <i>did</i>
+think of range voting, or something very similar, in the 1950s,
+and made the point it evaded <a href="ArrowThm.html">Arrow's theorem</a>.
+Online text of yet another book:
+<a href="GutenbergJSMU.html">Utilitarianism</a> by John Stuart Mill 1879.)
+</small>
+</p>
+<p>
+By applying his procedure,
+Bentham deduced:
+<ul>
+<li>
+homosexuality
+should be legal (previously a crime called "sodomy"),
+</li><li>
+and so should the practice of loaning money with "interest"
+(previously a crime called "usury");
+</li><li>
+women and men should have equal political rights;
+</li><li>
+democracy was a good idea (and even
+people who were not rich should be permitted to vote);
+</li><li>
+slaves should be emancipated
+(gradually).
+</li>
+</ul>
+In all of these, Bentham's views eventually won out,
+although for the most part only after (mostly very far after)
+his death &ndash; and in some areas of the world and some religious groups
+these views are still not accepted, even today.
+A reform Bentham actually
+substantially succeeded in getting rolling during his lifetime was
+getting rid of
+mandated draconian punishments for minor crimes (such as the death
+penalty for over 200
+crimes &ndash; including a child stealing twopence from a house &ndash;
+mandated flogging of women, etc.).
+Bentham indeed played a substantial part in writing
+the initial laws of many countries, including Australia and Portugal.
+</p>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

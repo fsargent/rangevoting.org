@@ -1,0 +1,451 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org -- Brief personal survey of cake cutting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H2> A brief personal survey of "fair cake division" mathematics </H2>
+<p><small>Warren D. Smith, Oct. 2016 </small></p>
+
+<blockquote>
+A compromise is the art of dividing a cake in such a way that
+everyone believes he has the biggest piece. &ndash;
+<a href="https://en.wikipedia.org/wiki/Ludwig_Erhard">Ludwig Erhard</a> (1897-1977;
+Erhard was Chancellor of the Federal Republic of Germany 1963-1966).
+</blockquote>
+
+<p>
+<b>2-player problem:</b>
+Suppose you have a cake and two obnoxious children who want to eat it.
+</p><p>
+<b>1-cut solution:</b>
+A well known way to cut a cake into two pieces that assures that each person gets at least half of
+the value of the cake (where the two players may value different cake-parts differently, e.g.
+one likes chocolate and another likes cherries) is the "cut and choose" protocol
+where player A cuts the cake and then player B chooses his piece.
+</p><p>
+<b>3-player problem:</b>
+Can we devise a similar protocol for <i>three</i> cake-eating players assuring each
+will regard his/her piece as containing at least as much value as either one
+of the others?
+</p><p><b>
+5-cut solution (John L. Selfridge &amp; John H. Conway in about 1960):
+</b>
+<ol>
+<li>
+Amy cuts the cake into what she regards as equal thirds.  (2 cuts.)
+</li><li>
+Bob trims (what he regards as) the biggest piece, to create (what he regards as)
+a two-way tie for largest.  (1 cut.)  The trimming is set aside. 
+</li><li>
+Cal picks a piece, then Bob, then Amy, with the asterisk that 
+Bob must take the trimmed piece if Cal didn't.
+Call the person who took the trimmed piece T, 
+and the other (of Bob and Cal) N. 
+</li><li>
+At this point, no player envies any other &ndash; but the trimming still has not
+been divided.
+</li><li>
+To deal with the trimming, N cuts it into what he thinks are thirds.  (2 cuts)
+</li><li>
+The players pick pieces in this order: T, Amy, N.   (In all, 5=2+1+2 cuts.)
+</ol>
+The key observation that makes this work is that 
+when it comes to the trimmings, Amy has an "irrevocable advantage" over T:
+Amy cannot "envy" T even if T gets <i>all</i> the trimmings. 
+Thus Amy can pick after T so that the method ends in a finite number of steps.
+</p>
+</p><p>
+<b>N-player problem:</b>
+Can we devise a similar protocol for <i>N</i> cake-eating players assuring each
+will regard his/her piece as containing at least as much value as anybody else's?
+</p><p>
+<b>To learn more</b>
+about such fair cake-cutting protocols, read the enjoyable book
+<center>
+Alan Taylor &amp; Steven J. Brams: <i>Fair division: From Cake-Cutting to
+Dispute Resolution,</i> Cambridge University Press 1996.
+</center><p>
+Here and in their earlier
+[S.J.Brams &amp; A.D.Taylor: Amer. Math'l. Monthly 102,1 (Jan. 1995) 9-18]
+they show that a finite number of steps suffice for <i>any</i> number N
+of players, <i>but</i> if N&gt;3 then the number of steps required by their methods
+may not be a function of N <i>alone</i> &ndash; it may <i>also</i> depend on the 
+structure of the cake
+(but it will always be finite for any particular N and any particular cake).
+</p><p>
+Another book on this is
+<center>
+Jack Robertson &amp; William Webb: 
+<i>Cake-Cutting Algorithms: Be Fair If You Can</i>, A.K. Peters 1998.
+</center><p>
+Robertson and Webb invented procedures whereby each player would actually get a piece
+strictly <i>better</i> (in his own estimation) than anybody else's, provided
+that such a division exists (which happens if and only if the players'
+cake-valuing measures are linearly independent).
+</p><p>
+<b>A standard 1-dimensional setting for the problem:</b>
+Robertson and Webb also pointed out (more or less)
+that the cake, without loss of generality, can be regarded
+as the standard unit length <i>line-segment</i> [0,1] &ndash;
+since we can bijectively map this to any higher-dimensional 
+compact set using a space-filling curve
+&ndash;
+and then we may demand each "cut" be the <i>removal of a single point</i> from 
+(disconnecting) that
+line segment.  In this standard 1-dimensional setting
+we can enquire what the minimum number
+of needed cuts are, for N-player envy-free cake division.
+</p><p>
+<b>If the "envy-free" requirement is dropped,</b> i.e. we merely want to devise a 
+<b>"proportional"</b> protocol
+assuring that every player feels he has at least 1/N of the cake (measured by his own measure,
+where there are N players), then the problem is easy to solve for any N:
+</p><p>
+<b>"Last-diminisher" protocol of Banach &amp; Knaster (&asymp;1940):</b>
+Have player 1 cut the cake into two, player 2 chooses a piece,
+players 3,...,N successively then diminish
+that piece (or not), and the "last diminisher" is forced to take the piece
+he last diminished.  Then that player is eliminated and the rest of the cake is
+re-assembled, at which point we solve the problem again, but now with only N-1 players.
+(When we reach N=2, the usual cut-and-choose protocol is employed.)
+That process uses at most
+(N-1)N/2 &nbsp; 
+cuts.
+</p><p>
+<b>Even-Paz optimal protocol:</b>
+[Shimon Even &amp; Azaria Paz: 
+A note on cake-cutting, Discrete Applied Mathematics 7 (1984) 285-296]
+showed how to speed that up to
+<nobr>&le;2(N+1)(L-2.125)+7.08233</nobr> cuts, where L=log<sub>2</sub>(N), for all N&ge;4:
+</p><ol>
+<li>
+If N is odd, then apply the above "last diminisher" procedure 
+to eliminate
+one of the players and thus decrement N.  (That took at most N-1 cuts.)
+We now may assume N is even.
+</li><li>
+Each player is asked to cut the cake into two pieces that he considers of equal value. 
+(1 cut per player, hence N in all.)
+</li><li>
+The algorithm sorts the N cuts into increasing order and cuts the cake 
+at anyplace between the two bimedians, if N is even).
+E.g, if there are N=4 players who cut at x=0.1, x=0.2, x=0.4 and x=0.5, 
+then the algorithm cuts the cake at x=0.3.
+(This is 1 additional cut, which strictly speaking is not needed since it is permissible
+to use one of the two bimedians itself.)
+</li><li>
+The algorithm assigns to each of the two halves 
+the N/2
+players &ndash; those
+whose cut lies inside that half. 
+E.g, the players who cut at x=0.1 and x=0.2 are assigned to the western half 
+and the other two to the eastern half. 
+</li><li>
+Each half is divided recursively among the N/2 players assigned to it.
+</li></ol>
+<p>
+If the Even-Paz protocol requires F(N) cuts, then evidently 
+F(1)=0, F(2)=1, and special methods are 
+known
+[William A. Webb:
+<a href="http://www.sciencedirect.com/science/article/pii/S0166218X96000327">How
+to cut a cake fairly using a minimal number of cuts</a>,
+Discrete Applied Maths 74,2 (April 1997) 183-190]
+showing
+F(3)&le;3, F(4)&le;4, F(5)&le;6, and F(6)&le;8 (Webb shows these are best possible
+for each N&le;5); and from then onward 
+we may apply the recurrences
+that if N&ge;3 is odd then F(N)&le;N-1+F(N-1),
+while if N&ge;3 is even then F(N)&le;N+2F(N/2).
+I find the resulting upper bound on F(N) is upper bounded by
+2(N+1)(L-2.125)+7.08233
+where L=log<sub>2</sub>(N) for all N&ge;4.
+<!--
+F(1)=0
+F(3)=3
+F(7)=18=12+2*3=18
+F(15)=28+2*18=64
+F(31)=60+2*64=188
+F(63)=124+2*188=500
+F(2^k-1)=4*(2^(k-1)-1)+2*F(2^(k-1)-1)
+-->
+<p>
+[Gerhard J. Woeginger &amp; Jiri Sgall:
+<a href="http://www.sciencedirect.com/science/article/pii/S1572528606000958">On
+the complexity of cake cutting</a>, Discrete Optimization 4,2 (2007) 213-220]
+then showed the Even-Paz protocol's O(NlogN) bound was (up to the constant factor in the "O")
+best-possible for any protocol guaranteeing proportionality and whose cake
+pieces (in the standard 1D model) always were <i>connected</i>.
+Even &amp; Paz's protocol obeys this connectedness demand.
+But see also
+Sgall &amp; Woeginger: 
+An approximation scheme for cake division with a linear number of cuts, Combinatorica, 27,2 (2007)
+205-211.
+And then 
+[Jeff Edmonds &amp; Kirk Pruhs: 
+<a href="lbprop.pdf">Cake cutting really is not a piece of cake</a>,
+ACM Transactions on Algorithms 7,4 (Sept. 2011) 1-12]
+showed the Woeginger-Sgall &Omega;(NlogN) lower bound
+worked even (i) for protocols merely
+guaranteeing "approximate fairness" and (ii) <i>not</i> anymore demanding the 
+cake-pieces be connected sets.  Thus the <b>proportional cake-cutting problem</b>
+is quite well solved, in the sense that known upper and lower bounds on the number of
+cuts needed, match to within a small constant factor.
+</p>
+<p>
+<b>As of 2014, the following question remained open:</b>
+For which N is there a cut-and-choose N-player <b>envy-free</b> cake cutting protocol that 
+runs in at most some <i>function of N</i> steps <i>regardless</i> of
+the structure of the cake?  (Indeed, nobody knew 
+any 4-player envy-free cake-cutting protocol
+that ends after at most a fixed number of steps.)
+</p><p>
+<b>Allegedly solved (2015-2016)!</b>
+In an impressive theoretical breakthrough, 
+Haris Aziz &amp; Simon Mackenzie:
+<a href="https://arxiv.org/abs/1604.03655">
+A Discrete and Bounded Envy-Free Cake Cutting Protocol for Any Number of Agents
+</a> (2016)
+claimed to find such a protocol for every N.
+However it remains totally
+impractical at least as far as their worst-case guarantee is
+concerned, since they found the astonishingly huge bound
+</p><center>
+F(N) &le; N<sup>N<sup>N<sup>N<sup>N<sup>N</sup></sup></sup></sup></sup>
+</center><p>
+on the number of "cake cuts" made during their protocol.   It's really
+amazing if this
+really is approximately the best answer.   Even with N=2 this bound on F(2) has over 
+6&times;10<sup>19727</sup>
+decimal digits.
+(That is far too many digits even to write down this number fitting it
+within the observable universe!)
+</p><p>
+There is a rumor that  Aziz &amp;  Mackenzie  think they know how
+to reduce their upper bound to F(N)&le;N<sup>N<sup>N</sup></sup>.
+Even if that rumor is true, though, this improved bound remains insanely impractical,
+e.g. it would show F(4)&le;2<sup>512</sup> and F(5)&le;5<sup>3125</sup>
+which both are far more cuts than the number of atoms in
+any cake (even if the "cake" were the entire observable universe).
+</p><p>
+But for the special case N=4,  Aziz &amp; Mackenzie in 2015
+<a href="https://arxiv.org/abs/1508.05143">found</a> 
+a special protocol requiring at most 203 cuts.
+</p><p>
+<b>Lower bounds for envy-free N-player cake cutting:</b>
+[Ariel D. Procaccia: Thou Shalt Covet Thy Neighbor's Cake,
+Proceedings of the
+21st International Joint Conference on Artificial Intelligence (IJCAI 2009) 239-244;
+Cake-cutting, not just child's play, Commun. of the ACM 56,7 (2013) 78-87]
+showed an &Omega;(N<sup>2</sup>) lower bound for envy-free N-player cake-cutting,
+which note is greater than the Woeginger-Sgall-Edmonds &Omega;(NlogN) lower and
+Even-Paz O(NlogN) upper bounds for
+merely-proportional cake-cutting but still is <i>vastly</i> below the 
+Aziz-Mackenzie alleged upper bound.
+</p><p>
+I point out, however, that there is good reason to 
+believe, at least under the 
+Woeginger-Sgall "all pieces must be connected" demand,
+that at least about (2N)<sup>N-2</sup>
+cuts are needed to achieve even approximate envy-freeness.
+My "reason" consists of two ingredients:
+</p><ol><li>
+The <a href="https://en.wikipedia.org/wiki/Simmons%E2%80%93Su_protocols">
+Simmons-Su connection</a> was the observation by Forest <b>Simmons</b> in 1980 that
+the N-player 1-dimensional cake-cutting problem (with connected-pieces constraint)
+could trivially be rewritten 
+as a problem of finding a fixpoint of a selfmap of an (N-1)-dimensional simplex.
+<blockquote>
+"Brouwer's fixpoint theorem" says that such a point always exists, which
+was Simmons's proof that an envy-free cake cutting meeting
+the connected-pieces demand <i>always exists</i> for every N and every cake,
+provided each of the N players values the cake with their own nonsingular
+positive measure. (More precisely, any cake-subset valued positively by any player,
+is valued positively by every other.) And to read a beautiful proof of 
+Brouwer's fixpoint theorem, see chapter 21 of Martin Aigner &amp; G&uuml;nter M. Ziegler: 
+<i>Proofs from the book</i>, Springer, which also shows (basically) that an 
+&epsilon;-approximately-envy-free
+cake cutting may be found, arising from an 
+&epsilon;-approximate fixpoint, in 
+&epsilon;<sup>2-N</sup> steps if N&ge;3.
+</blockquote>
+</li><li>
+The fact that finding a Brouwer fixpoint (for any N players'
+given polynomial-time cake-valuing
+functions) is a 
+<a href="https://en.wikipedia.org/wiki/PPAD_(complexity)">PPAD-complete</a>
+problem, which therefore conjecturally is impossible to solve
+faster than 
+about &epsilon;<sup>2-N</sup> steps to &epsilon; approximation, and 
+<i>exactly</i>-envy-free cake-cutting presumably 
+is as least as hard as the &epsilon;-approximate problem with &epsilon;=(2N)<sup>-1</sup>
+with possibly-harder-than-polynomial-time cake-valuing functions.
+</li></ol>
+<p>
+I doubt that relaxing the all-pieces-connected demand makes it any easier (and it seems likely this
+can be proven by an extension of the PPAD-completeness proof).
+Proving any superpolynomial lower bound won't be possible until fundamental barriers
+in computational complexity are overcome.
+</p><p>
+Later note: my same observations about the Simmons-Su connection
+and PPAD-completeness 
+were already made by
+[Xiaotie Deng, Qi Qi, Amin Saberi:
+<a href="https://arxiv.org/abs/0907.1334">
+Algorithmic Solutions for Envy-Free Cake Cutting</a>,
+Operations Research 60,6 (2012) 1461-1476].
+</p>
+<p>
+<b>N-player exactly-envy-free cake-cutting status as of 2016:</b> 
+</p>
+<blockquote>
+ F(1)=0, <br>
+ F(2)=1 ["cut and choose"], <br>
+ F(3)&le;5 [Selfridge &amp; Conway, probably best possible],  <br>
+ F(4)&le;203 [Aziz &amp; Mackenzie 2015],  <br>
+and
+F(N) is bounded by the "tower of six N's" function for every N&ge;1
+[Aziz &amp; Mackenzie 2016].
+According to a rumor, that upper bound <i>might</i>
+improve to a mere N<sup>N<sup>N</sup></sup> or so.  
+I conjecture a lower bound behaving something like (2N)<sup>N-2</sup>.
+</blockquote>
+<p>
+<b><i>Approximately</i> envy-free cake cutting:</b>
+<a href="https://arxiv.org/abs/1604.03655">Aziz &amp; Mackenzie</a>
+also showed 
+"that an envy-free <i>partial</i> allocation can be computed in N<sup>N+1</sup>
+steps such that each agent gets a connected piece that gives the
+agent at least 1/(3N)
+of the value of the whole cake (by her own value-measure)."
+</p><p>
+If we do that L times (each time allocating the unallocated part of the cake left
+over from previous iterations), then the unallocated part
+of the cake will have value&le;[1-1/(3N)]<sup>L</sup> of the value of
+the whole cake (by any player's reckoning).  This is exponentially small, e.g.
+if L&ge;3Nk then the unallocated cake's value will be &le;exp(-k)
+of the value of the whole cake.  Hence, for example, even if the cake were the entire 
+Earth, using L&ge;357N would assure that the unallocated part (if somebody's measure
+were "mass") would be well below the mass of 1 atom.  Even if the cake were the entire
+observable universe, using L&ge;646N would assure that the unallocated part 
+(if somebody's measure
+were "mass") would be below the mass of each presently-known elementary particle.
+Further, keep in mind that real-life obnoxious children are incapable of cutting
+a cake <i>exactly</i> in half.  They probably cannot even achieve 1% accuracy.
+In view of that, for all practical purposes <i>exactly</i> envy-free protocols are pointless.
+Any protocol capable of achieving accuracy &epsilon; with work proportional
+to |log(&epsilon;)| is good enough.  The method we just described assures
+all envies&le;&epsilon; in
+&le;3N<sup>N+2</sup>|ln&epsilon;|
+steps.  This is of the same order &ndash; up to factors
+of form polynomial(N)&times;SimpleExponential(N) &ndash;
+as the putative lower bound
+(from the Simmons-Su connection and PPAD-completeness)
+on N-player envy&le;&epsilon; cake division, i.e. likely is approaching best
+possible efficiency.
+</p><p>
+Even this is, however, highly impractical.
+For example, suppose the number of players is N=47, and we 
+want &epsilon;=0.001 accuracy about the envy-freeness.
+Well, that would require &gt;10<sup>80</sup> steps, which happens to 
+approximate the number of protons in the observable universe.
+</p><p>
+But there is reason to believe it is impossible to do much better.
+</p><p>
+<b>The "societally best" envy-free cake-cutting?</b>
+S.J.Brams in correspondence was unhappy with the above.  First of all, the cake
+is going to be cut into an absurdly enormous number of pieces.  But aside from
+that, the cake-division it produces is likely to be <b>"improvable"</b>
+in the sense that some rival division would also be envy-free, but would
+be regarded by every player as just as good for them, or better
+(with at least one considering it better).  A <b>societally best</b>
+envy-free cake division will mean one maximizing the sum of the
+personal values, to each player, of their cake-pieces.
+</p><p>
+<b>Fact:</b> societally-best envy-free cake divisions are unimprovable.
+</p><p>
+<b>Fact:</b> If the number of players is 2, then
+the societally-best envy-free cake division is essentially unique.
+Here by "essentially" I mean that there may be some subset S of the cake, not
+wholy owned by any one player, such that
+both players regard S as having <i>constant</i>
+value-density (albeit the two player's
+constants might differ).  Hence as far as the two players
+are concerned, <i>any</i> way to divide S into two parts giving fraction F
+to the first and fraction 1-F to the second player is equivalent to any other.
+The cake division will, however, uniquely divide the rest (non-S) of
+the cake.
+</p><p>
+Societally-best envy-free cake divisions always exist
+for any number N&ge;1 of players.
+The <b>question</b> is how to find them (or approximate them) &ndash; or as an easier problem,
+how to find or approximate unimprovable envy-free cake divisions.
+</p><p>
+<b>Impossibility Theorem (W.D.Smith 2016):</b>
+No protocol in the "cut, value, and choose" model is capable of guaranteeing
+an unimprovable envy-free cake division, nor even one
+the players agree is not improvable by more than &epsilon;,
+not even if the number of players is N=2 and &epsilon;=0.166.
+</p><p>
+<b>Proof:</b>
+Let the "cake" be the unit square 0&le;X&le;1, 0&le;Y&le;1 in the XY plane.
+Let the two players have utility-density functions 2X and 2Y.
+The unique optimum (societally best) cake-division is to cut
+the cake along the diagonal line X=Y.  This causes each player to
+get 2/3 of the cake (in her own reckoning).
+However, suppose every time
+the protocol asks the players to cut anything the players always cut along
+a perpendicular line (of form X+Y=C for some C the player chooses for
+that occasion).  The players certainly are allowed to behave this way
+in our model. If they do, then the cake division that results, although it can be
+(and with a valid protocol will be) envy-free, will always be improvable,
+and indeed because of mirror symmetry (about the mirror-line X=Y)
+each player will necessarily regard themselves as getting exactly 1/2 of
+the cake.
+<b>Q.E.D.</b>
+</p>
+<p>
+In view of this impossibility theorem, we can only hope
+to achieve societally-best or unimprovable envy-free cake-cuttings 
+(even &epsilon;-approximately) in some <i>extension</i> of
+the "cut, value, and choose" model.  Here is a suggested possible extended model:
+</p><p>
+<b>Extension:</b> 
+The protocol can specify <i>two</i> players A and B, and a cake-piece, and demand
+that they divide that piece in what would be the societally-optimal manner if all other
+players besides A and B were ignored.
+</p><p>
+<b>Further Extension:</b> 
+The protocol can specify two players A and B, and positive integers X, Y,
+and a cake-piece, and demand
+that A &amp; B divide that piece in what would be the societally-optimal manner if all other
+players besides A and B were ignored and if player A got X copies of her piece while
+B got Y copies of his.
+</p><p>
+<b>Question:</b> In these extended models, do protocols exist which assure 
+delivering N-player cake divisions in which all envies are &le;&epsilon;
+and all improvabilities are &le;&epsilon;?
+</p><p>
+I conjecture the answer is "yes" and have a protocol that I believe works.
+Essentially, it divides up the cake into (what
+all players agree are) small pieces, and then has all players value all pieces,
+and then uses "integer programming" to deal out the pieces
+to the players in the manner minimizing the maximum &epsilon;.
+It looks fairly clear this can be made to work
+if all the measures are smooth enough; the difficulty
+for anybody trying to prove or disprove this will be to make their argument work in
+a wholy-abstract setting involving arbitrary nonsingular measures which might be
+based on, e.g, nowhere-differentiable functions or value-densities which
+can go infinite.
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzle page</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

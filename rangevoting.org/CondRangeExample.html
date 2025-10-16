@@ -1,0 +1,192 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Condorcet vs Range Voting example, and third inequivalent definition
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> An example of a range voting election in which CC (classic Condorcet) is disobeyed
+but WC (<a href="CondDQ.html">modified</a> Condorcet property) is obeyed </H2>
+
+<p>
+The three voters are Amy, Bob, and Cal, and the 4 candidates are A,B,C,D, and
+we use 0-9 range voting:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> Voter </th>
+<th> score for A </th>
+<th> for B </th>
+<th> for C </th>
+<th> for D </th>
+</tr>
+<tr>
+<td align="center"> Amy </td>
+<td align="center"> 9 </td>
+<td align="center"> 1 </td>
+<td align="center"> 0 </td>
+<td align="center"> 0 </td>
+</tr>
+<tr>
+<td align="center"> Bob </td>
+<td align="center"> 0 </td>
+<td align="center"> 0 </td>
+<td align="center"> 3 </td>
+<td align="center"> 9 </td>
+</tr>
+<tr>
+<td align="center"> Cal </td>
+<td align="center"> 3 </td>
+<td align="center"> 9 </td>
+<td align="center"> 5 </td>
+<td align="center"> 0 </td>
+</tr>
+<tr bgcolor="#ffaa00">
+<td align="center"> Totals </td>
+<td align="center"> <b>12</b> </td>
+<td align="center"> 10 </td>
+<td align="center"> 8 </td>
+<td align="center"> 9 </td>
+</tr>
+</table>
+
+<p>
+A is the winner.  Now if we omit candidates B and D, then sure enough
+A is still the range voting winner, confirming
+the WC property.  But the traditional-condorcet property CC fails since
+C would be the
+winner then (using &lt; and &gt; counting), not A.
+</P>
+
+<p>
+The two definitions CC and WC  are the same <i>if</i> the voting method <i>only</i>
+takes notice of the &lt; and &gt; counts
+<i>and</i> reduces to majority vote in the 2-candidate case &ndash;
+but range voting is not such a method.
+</p>
+
+<a name="sc">
+<H3>
+But what if I think the range voters would have <i>rescaled</i> their votes for A and
+C if B &amp; D dropped out?  Wouldn't that be more realistic, thus proving that
+CC is a more important property than WC?
+</H3>
+
+<p>
+Indeed.  If that is the way you feel
+&ndash; you want voters to be able
+to change their votes to make them "more powerful" when candidates get removed &ndash;
+then what you really want is yet another
+(a <i>third!</I>) kind of "Condorcet" definition, which we shall call "SC."
+(It is inequivalent to the other two.)
+</p>
+
+<blockquote>
+<b>STRATEGIC CONDORCET (SC for short)</b>:
+Start with some voters and candidates, voters supplying the votes
+they consider maximally powerfully beneficial for themselves in view of
+whatever (zero, partial, or complete) knowledge they have about the other voters.
+An "SC-winner" is a candidate X, who when 
+<ol>
+<li>
+all candidates besides X and Y 
+are removed, and 
+</li><li>
+the voters then, in the new X versus Y two-candidate election, get to
+re-choose their votes in a way they would in these new circumstances
+consider maximally powerfully beneficial for themselves, 
+</li><li>
+using these new two-candidate 
+votes and the same voting system, X always wins versus Y no matter who Y is.
+</li>
+</ol>
+A voting method is SC (or "S-Condorcet") if it always elects an SC-winner 
+(in the original starting circumstances) if and when one exists.
+</blockquote>
+
+<p>
+Now.  Does range voting obey SC?  
+Actually, <i>yes</i> it does, provided we agree to regard 
+a "maximally powerfully beneficial" range vote
+as one with all scores maxxed-out or minned-out
+to 9 or 0 (in <a href="rangeVapp.html">approval</a> style) and provided
+we demand all such votes in 2-candidate pairwise (reduced) elections
+must <i>agree</i> with those in the full election.
+However, <i>no</i> it does not, if the second proviso (more realistically) is removed.
+</p>
+
+<p>
+What about other voting methods like <a href="SchulzeComplic.html">Schulze Beatpaths</a>
+&ndash;
+i.e. voting methods that the traditional-Condorcet gang regard as traditional 
+Condorcet methods?
+Do they obey SC?   <i>No!!</i>
+</p>
+
+<p>
+<b>Theorem:</b>
+<i>None</i> of them satisfy SC even in 3-candidate elections!  
+</p>
+
+<p>
+<b>Proof sketch:</b>
+That is because, elsewhere in the CRV pages
+(e.g. see
+<a href="VenzkePf.html">here</a>,
+<a href="VenzkeFBC3.html">here</a>,
+and 
+<a href="VenzSimp.html">here</a>), we have proven
+that every Condorcet method based on ballots that are rank orderings of the candidates
+(with or without permitting equalities), exhibits "favorite betrayal" scenarios
+in 3-candidate elections, in which the strategically best vote is to lie
+by dishonestly ranking your favorite below top, causing some "lesser evil"
+candidate L to become the Condorcet winner.
+In such a scenario, L would <i>lose</i> versus some other candidate Y in
+a <i>head-to-head</i> election, because L would not really have been a Condorcet winner
+with honest voting (and with voters allowed to change their votes in
+the reduced L versus Y election, they'd <i>now</i> vote honestly so L would lose to some Y).
+</p>
+
+<p>
+<b>Remark:</b>
+Incidentally, it has often been falsely claimed that Condorcet methods, while vulnerable to strategy in
+cyclic situations in which no Condorcet winner existed, are not vulnerable when one does exist.
+Here's a <a href="CondStratProb.html">counterexample</a>.
+</p>
+
+<H3> Conclusion </H3>
+
+<p> So, traditional Condorcetists &ndash; be careful if you try to claim 
+your favorite method obeys Condorcet's property, 
+but <a href="RangeVoting.html">range voting</a> does not!
+Because it isn't that simple!  
+</p>
+<p>
+The truth is there are three ways to generalize
+the definition of "Condorcet" to apply to voting systems that include range voting: WC, CC, and SC.
+Range Voting obeys WC but not CC.  (Also not SC unless you are very generous about it
+and cheat a bit.)
+Traditional Condorcet systems obey CC, WC in cases where a WC-winner exists
+(but it does not always exist, whereas with range voting a WC-winner always does exist),
+and not SC.
+This fuller comparison, therefore, does not favor traditional Condorcet over Range
+Voting.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

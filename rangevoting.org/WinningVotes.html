@@ -1,0 +1,690 @@
+<html>
+<head>
+<title>
+RangeVoting.org - "Winning votes" versus "margins"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>  "Winning votes" versus "margins" &ndash; two kinds of Condorcet voting</H2>
+
+<p>(<a href="#conclusion">skip to conclusion</a>)</p>
+
+<H3> What they are </H3>
+
+<p>
+In "Condorcet voting methods" in which "equal rankings are permitted in votes,"
+there are two natural ways to reckon the "strength"
+of a "pairwise victory":
+margins and winning votes.
+</p>
+
+<p>
+<b>Margins:</b>
+The "margin" of A over B is the number of votes saying A>B, 
+minus the number saying B>A.
+</p>
+
+<p>
+<b>Winning votes:</b>
+If more votes say A>B than B>A, then A wins that pairwise contest, and the number
+of "winning votes" is precisely the number of votes saying A>B.  Otherwise it is zero.
+</p>
+
+<p>
+The distinction between these two concepts may sound minor, but it can have some
+profound consequences.
+</p>
+
+<H3> Effect on a "favorite betrayal" scenario </H3>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<caption> Original scenario (honest votes) </caption>
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+   9
+</td>
+<td align="center">
+B>C>A
+</td>
+</tr>
+<tr>
+<td align="center">
+    6
+<td align="center">
+C>A>B
+</td>
+</tr>
+<tr>
+<td align="center">
+    5
+<td align="center">
+A>B>C
+</td>
+</tr>
+</table>
+
+<p>
+Here is a typical election scenario involving
+a <a href="CondorcetCycles.html">Condorcet cycle</a>.
+In this situation almost every election method declares <b>B</b> the winner.
+(Every candidate is defeated pairwise by one other, e.g. B is defeated by A.
+But since this is the <i>weakest</i> such defeat, B has the strongest claim
+to win.) 
+</p>
+<p>
+But the six C>A>B voters are strategically motivated to change their
+vote to the dishonest A>C>B, "betraying" their true favorite C in order
+to make their "lesser evil" A win.  They could
+also try changing it to the less-dishonest
+A=C>B, which still leaves C ranked co-equal top and hence does not really betray C,
+but which still aims to boost support for their lesser evil A to make A win.
+Let us consider the consequences of these two strategic moves.
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="#ccffcc">
+<caption> Strategic vote change fully-betraying C </caption>
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+    9
+</td>
+<td align="center">
+B>C>A
+</td>
+</tr>
+<tr>
+<td align="center">
+    6
+<td align="center">
+A>C>B
+</td>
+</tr>
+<tr>
+<td align="center">
+    5
+<td align="center">
+A>B>C
+</td>
+</tr>
+</table>
+
+<p>
+In this situation, the tallies are
+</p>
+
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="#ccffcc">
+<tr>
+<th> Pairwise </th>
+<th> winning votes </th>
+<th> margins </th>
+</tr>
+<tr>
+<td align="center">A>B</td><td align="center">11</td><td align="center">11-9=<b>2</b></td>
+</tr>
+<tr>
+<td align="center">B>C</td><td align="center">14</td><td align="center">14-6=<b>8</b></td>
+</tr>
+<td align="center">A>C</td><td align="center">11</td><td align="center">11-9=<b>2</b></td>
+</tr>
+<tr>
+</table>
+
+<p>
+So that A indeed now wins using either margins or winning votes &ndash;
+the betrayal worked.
+With the other strategic choice,
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="#ccccff">
+<caption> Strategic vote change partly-betraying C </caption>
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+    9
+</td>
+<td align="center">
+B>C>A
+</td>
+</tr>
+<tr>
+<td align="center">
+    6
+<td align="center">
+C=A>B
+</td>
+</tr>
+<tr>
+<td align="center">
+    5
+<td align="center">
+A>B>C
+</td>
+</tr>
+</table>
+
+<p>
+The tallies are
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="#ccccff">
+<caption> Strategic vote change partly-betraying C </caption>
+<tr>
+<th> Pairwise </th>
+<th> winning votes </th>
+<th> margins </th>
+</tr>
+<tr>
+<td align="center">A>B</td><td align="center">11</td><td align="center">11-9=<b>3</b></td>
+</tr>
+<tr>
+<td align="center">B>C</td><td align="center">14</td><td align="center">14-6=<b>8</b></td>
+</tr>
+<td align="center">C>A</td><td align="center">9</td><td align="center">9-5=<b>4</b></td>
+</tr>
+<tr>
+</table>
+
+<p>
+so that there is still a <a href="CondorcetCycles.html">Condorcet cycle</a>.
+In this situation reckoned by <i>winning votes</i> C>A is the weakest defeat, so
+now <b>A</b> wins.  But reckoned by <i>margins</i> A>B is the weakest defeat,
+so that <b>B</b> remains the winner.
+</p>
+
+<p>
+In other words, this less-dishonest form of strategic voting, <i>not</i> fully-betraying C,
+<i>worked</i> to elect the lesser evil A with winning-votes, but <i>failed</i>
+to change the winner with margins.
+<p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr>
+<th>  </th>
+<th> Winning Votes </th>
+<th> Margins </th>
+</tr>
+<tr>
+<th>
+Full betrayal
+</th>
+<td>
+ works
+</td>
+<td>
+ works
+</td>
+</tr>
+<tr>
+<th>
+Partial betrayal
+</th>
+<td>
+ works
+</td>
+<td>
+ <i>fails</i>
+</td>
+</tr>
+</table>
+
+<p>
+What is the moral?
+One moral is that with margins-based Condorcet voting, voters are motivated to fully-betray their
+favorites that are "third party candidates" with little chance to win.
+That could lead ultimately to two-party domination caused by third parties dying out.
+But with winning-votes, voters can often get away with a mere partial betrayal,
+which causes the third party candidate C still to have a significant number
+of top-rank votes, which hopefully causes third parties <i>not</i> to die out,
+<i>avoiding</i> degeneration into locked-in two-party domination.
+</p>
+
+<p>
+However, winning-votes does <i>not</i> succeed in fully avoiding situations in which
+full-strength betrayal is the only strategic move that works.  
+(<a href="VenzSimp.html">Example</a>.) It just makes
+them rarer.  Specifically, in the <a href="IRVStratPf.html">random elections model</a>
+in 3-candidate scenarios, i.e. where all 12 honest-vote types
+A>B>C, A>C>B, B>A>C, B>C>A, C>A>B, C>B>A, A=B>C, A=C>B, B>A=C, B=C>A, C>A=B, C>B=A
+are equally likely,
+situations where full-favorite-betrayal is the only strategic
+move that works, arise 74% of the time with margins, which is
+reduced to 67% with winning votes, in both cases
+<i>when</i> (and only when) there is a Condorcet cycle.
+And a Condorcet cycle happens in about one election in 19 in this model.
+(See <a href="PuzzlePage.html">puzzles 7 and 8</a>.)
+</p>
+
+<p>
+Therefore, it would appear that winning votes has a slight advantage over margins
+as far as avoiding <a href="FBCsurvey.html">favorite betrayal</a> is concerned.
+</p>
+
+<a name="Laatu"></a>
+<H3> But winning votes has some disadvantages </H3>
+
+<p>
+But before you rush to abandon "margins" and adopt the more subtle "winning votes" (wv)
+approach, you should take into account that wv also has some disadvantages.
+</p> 
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+   1000
+</td>
+<td align="center">
+A>B 
+</td>
+</tr>
+<tr>
+<td align="center">
+1000
+<td align="center">
+C>D
+</td>
+</tr>
+</table>
+
+<p>
+Consider this 2000-voter election by Juho Laatu (note, the candidates unmentioned in
+the votes are regarded as ranked coequal last, that is "A>B" is really "A>B>C=D").
+There are two parties whose supporters rank only their own  
+candidates (and leave others into to the default shared-last position).  
+Winning votes seems to think that all candidates are about equal since  
+one additional vote can make any one of the four candidates win (e.g.  
+one additional "D>B" vote makes D the winner). Margins seems to think that A and C are  
+the strongest candidates since some 500 additional votes are needed to  
+make B or D win. 
+</p>
+
+<p>
+Laatu justifiably considers winning votes to act in a rather dubious way here!
+</p>
+
+<!-- 
+But before you (now) rush to abandon winning votes in favor of margins,
+consider this 100-voter election by Kevin Venzke:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> Their Vote as expressed </th>
+<th> Their Vote in full (as implied) </th>
+</tr>
+<tr>
+<td align="center">
+49
+</td>
+<td align="center">
+A 
+</td>
+<td align="center">
+A > B = C
+</td>
+</tr>
+<tr>
+<td align="center">
+27
+<td align="center">
+C > B
+</td>
+<td align="center">
+C > B > A
+</td>
+</tr>
+<tr>
+<td align="center">
+24
+<td align="center">
+B 
+</td>
+<td align="center">
+B > A = C
+</td>
+</tr>
+</table>
+
+<p>
+In this (<a href="CondorcetCycles.html">cyclic</a>) situation,
+<a href="rangeVirv">IRV</a> 
+and Condorcet(margins) both elect A,
+but Condorcet(winning votes) elects B.
+Venzke prefers the latter since he
+considers it "unintuitive to overrule the only contest (C versus B)
+in which everyone unanimously expressed
+their opinion."
+</p>
+-->
+
+<p>
+<b>Remark:</b>
+It has been pointed out that "margins" is equivalent to count each "A=B"
+vote as equivalent to half A>B and half B>A.
+In other words, with winning-votes
+Condorcet, voters could get the effect of having margins Condorcet by
+flipping a coin whenever they planned to express an equality.
+</p>
+
+<a name="DH3"></a>
+<H3> Effect on the DH3 scenario </H3>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<caption> A simple DH3 scenario (honest votes). The notation "X,Y"
+means a <i>mixture</i> of X>Y and Y>X votes whose composition is not 
+immediately known.
+ </caption>
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+   37
+</td>
+<td align="center">
+ C>A,B>D
+</td>
+</tr>
+<tr>
+<td align="center">
+    32
+<td align="center">
+  A>B,C>D
+</td>
+</tr>
+<tr>
+<td align="center">
+    31
+<td align="center">
+   B>A,C>D
+</td>
+</tr>
+</table>
+
+<p>
+In the 100-voter
+election above, there are three main rivals A, B, and C, as well as a "dark horse" D
+who is unanimously agreed to be the worst candidate.
+(There could also be additional dark horses, but for simplicity we consider the case where
+there is only one.)
+In this situation, we shall suppose it is not clear to the voters which is
+larger, 32 or 31, and it also
+is not completely clear which (X>Y or Y>X) is larger in the
+"X,Y" mixtures.
+</p>
+
+<p>
+Now it depends on the mixtures, but  if (e.g.) they are reasonably near equal, then
+<b>C</b> is going to be the
+Condorcet winner
+here (and C is definitely the <a href="Plurality.html">plurality</a> winner).
+</p>
+
+<p>
+Now. What do the A- and B-voters think?  They think: "C is probably going to
+win.  We don't like that.  But suppose we artificially score D above C..."
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="#ccffcc">
+<caption>  DH3 scenario with strategic votes by the A- and B-voters.
+ </caption>
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+   37
+</td>
+<td align="center">
+ C>A,B>D
+</td>
+</tr>
+<tr>
+<td align="center">
+    32
+<td align="center">
+  A>D>B,C
+</td>
+</tr>
+<tr>
+<td align="center">
+    31
+<td align="center">
+   B>D>A,C
+</td>
+</tr>
+</table>
+
+<p>
+Then the pairwise tallies are going to be:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="#ccffcc">
+<tr>
+</tr>
+<tr>
+<td>Definitely</td><td>A,B > D > C </td>
+</tr>
+<tr>
+<td>Probably</td><td>C > A,B </td>
+</tr>
+</table>
+
+<p>
+In which case we (probably) have a Condorcet cycle scenario.
+(It is actually two 3-cycles which share the common DC arc.)
+The weakest defeats in these cycles are C>A,B  which means,
+under both all the most-commonly-used
+Condorcet rules (since they all are equivalent
+in the 3-cycle case) and Borda,
+that one of {A,B} is going to be the winner.
+</p>
+<p>
+I verified that A wins
+in the 50-50 mixture case 
+under <a href="RankedPairs.html">Tideman ranked pairs</a>,
+<a href="SchulzeComplic.html">Schulze beatpaths</a>, 
+and basic Condorcet by using
+<a href="http://www.ericgorr.net/condorcet/">Eric Gorr's Condorcet calculator</a>
+using this input
+</p>
+<table bgcolor="#ccffcc">
+<tr><td>
+<pre>
+37:C>A>B>D
+37:C>B>A>D
+32:A>D>B>C
+32:A>D>C>B
+31:B>D>A>C
+31:B>D>C>A
+</pre>
+</td><tr>
+</table>
+
+<p>
+In other words, this strategic move <i>worked</i>;
+in the original situation C won, but by this strategic burial-move, the A- and B-
+voters converted the situation to one in which either A or B would win.
+(But note under <a href="rangeVirv.html">IRV</a> 
+and of course <a href="Plurality.html">plurality</a> voting, 
+it didn't work &ndash; C still wins.)
+</p>
+
+<p>
+The trouble is, the C-voters here are not going to be willing to sit still and take that.
+They've been deprived of their deserved victory.  They feel the need to fight back
+with the same exaggerating method:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="#ccccff">
+<caption>  DH3 scenario with strategic votes by all voters.
+ </caption>
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+   37
+</td>
+<td align="center">
+ C>D>A,B
+</td>
+</tr>
+<tr>
+<td align="center">
+    32
+<td align="center">
+  A>D>B,C
+</td>
+</tr>
+<tr>
+<td align="center">
+    31
+<td align="center">
+   B>D>A,C
+</td>
+</tr>
+</table>
+
+<p>
+Then the pairwise tallies are going to be:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="#ccccff">
+<tr>
+</tr>
+<tr>
+<td>Definitely</td><td>D > C,A,B </td>
+</tr>
+</table>
+
+<p>
+and D  &ndash; the candidate unanimously agreed to be worst &ndash;
+now is the clear Condorcet and Borda 
+winner &ndash; a disaster for everybody!
+(But note that with plurality, <a href="rangeVirv.html">IRV</a>, 
+<a href="RangeVoting.html">range</a>, or 
+<a href="AppExec.html">approval</a> voting, C still wins.  Those
+voting systems are immune to the DH3 pathology.)
+</p>
+
+<p>
+The DH3 pathology is a tremendous problem for all Condorcet methods and the Borda method.
+But now let us consider what happens if we allow <i>equalities</i> in the Condorcet votes.
+Then the A- and B-voters have the option of trying a less-dishonest form of 
+strategic voting:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="#ccffcc">
+<caption>  DH3 scenario with strategic vote "truncation" by the A- and B-voters.
+ </caption>
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+   37
+</td>
+<td align="center">
+ C>A,B>D
+</td>
+</tr>
+<tr>
+<td align="center">
+    32
+<td align="center">
+  A>D=B=C
+</td>
+</tr>
+<tr>
+<td align="center">
+    31
+<td align="center">
+   B>D=A=C
+</td>
+</tr>
+</table>
+
+<p>
+Then the pairwise tallies are going to be:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="#ccffcc">
+<tr>
+</tr>
+<tr>
+<td>Definitely</td><td>C > A,B > D </td>
+</tr>
+</table>
+
+<p>
+And C still wins.  
+(And note: C wins <i>no matter what</i> the "A,B" mixture of A>B, A=B, and B>A votes is,
+and no matter what Condorcet variant you use: winning votes, margins; Schulze, 
+Tideman ranked pairs,
+or basic.)
+So what is the moral?  The moral is that this lesser form of 
+strategic dishonesty <i>did not work</i> for the A- and B-voters.  Those
+voters will therefore still go for <i>full</i> dishonesty, pretending D>C and
+not merely that D=C, because that works.  In other words, <i>neither margins, nor winning votes,
+cures the DH3 pathology</i>.  
+The DH3 pathology hurts <i>every</i> form of Condorcet voting.
+</p>
+
+<p>
+<a href="WVmore.html">Answers to questions about this</a>.
+&nbsp;&nbsp;
+<a href="DH3utilcalc.html">Utility calculation about strategizing/not choice</a>.
+</p>
+
+<a name="conclusion"></a>
+<H3> Conclusion </H3>
+
+<p>
+"Margins" and "winning votes" are two ways to handle Condorcet voting methods in
+which equalities in votes are allowed.   
+Neither succeeds in avoiding the horrific
+<a href="DH3.html">DH3 pathology</a>.  
+Although winning votes is better than margins for avoiding
+the <a href="FBCsurvey.html">favorite betrayal</a> pathology, it does 
+<a href="VenzSimp.html">not</a>
+completely succeed, and winning votes causes some strange and dubious voting-system
+behavior which margins avoids.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

@@ -1,0 +1,865 @@
+<html>
+<head>
+<title>
+RangeVoting.org -  Review of Tideman's book 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2>
+Review of T.N.Tideman's book: <i>Collective decisions and Voting</i>,
+Ashgate 2006.
+</h2>
+<p><small>Review by Warren D. Smith.  This review was responded to by Tideman in email,
+and he had some good responses, so the review has been modified to note them.
+</small></p>
+
+<p>
+Tideman kindly sent me a free copy of his book.
+This is an important book both because it summarizes a lifetime of thinking about 
+collective decisions and voting, and also because on some topics it 
+offers the best available discussion.
+However:
+</p>
+<ol>
+<li>
+As a mathematician, I often find the style annoyingly wordy, non-concise, and/or
+imprecise.
+</li><li>
+Its treatment often is idiosyncratic rather than comprehensive.
+</li><li>
+Sometimes I view the book's treatment as flawed and/or  missing out on some important 
+not-covered development which may even obsolete the book's treatment.
+</li></ol>
+<p>
+This review will unabashedly reflect my personal points of view and mention 
+a variety of ways
+the <a href="">RangeVoting.org</a> website goes beyond Tideman's book.
+</p>
+<h2> Social Utility &ndash; chapters 1-3 </h2>
+<p>
+Although one often thinks of "voting" as synonymous with "collective decision making,"
+Tideman begins by arguing that there are other important ways to make collective
+decisions.  There is 
+<ol>
+<li>
+true (unanimous) consensus, 
+</li><li>
+false (non-unanimous) consensus,
+</li><li>
+trading or monetary compensation schemes, 
+</li><li>
+and extortionary procedures
+</li></ol>
+and these can all be either deterministic or randomized.
+If one agrees with (according to Tideman's recounting) Pareto that the utilities
+possessed by two human beings are incomparable, then <i>only</i> unanimous consensus
+decisions can be definitively regarded as socially good.
+</p>
+<p>
+Most people, however, regard that Pareto viewpoint as asinine and  regard some
+kind of cross-human summable utility function as existing (at least approximately).  
+[For axiomatic developments see <a href="PuzzlePage.html#p36">puzzles 36-39</a>
+and 
+<a href="UtilFoundns.html">this</a> and
+<a href="OmoUtil.html">this</a>.]
+If so, it becomes
+possible to speak of the "socially best" collective decision, which maximizes
+the utility-sum over all members of society.  
+"Utility" does not even occur in Tideman's index, but he does 
+discuss the "social welfare function" pages 27-31.  He says 
+that Hicks and Kaldor in 1939 identified "maximizing
+"social utility" with "maximizing aggregate value 
+measured in money" or "maximizing physical productivity = aggregate real income."
+But this, Tideman observes, has numerous problems.
+</p>
+<p>
+Here, in my view, 
+Tideman was groping toward the "<a href="BayRegDum.html">Bayesian regret</a>" 
+framework
+for evaluating and comparing social choice procedures, but he never got there and this whole
+framework is nowhere discussed in his book.  (A large number of criteria, some
+more and some less precise versus muddled, are discussed in, e.g, his chapter 6 &amp; 12
+instead.)
+A severe price will be paid for
+that omission.
+</p>
+<h2> Voting methods  &ndash; chapters 7-11 &amp; 13 </h2>
+<p>
+<b>Ch.8:</b>
+Tideman notes at great length that "majority rule" is the unique voting procedure
+for a 2-candidate election, satisfying certain axiom sets.
+</p>
+<p>
+<b>Ch.9:</b>
+Tideman notes that <a href="CondorcetCycles.html">Condorcet cycles</a>
+can exist in rank-order voting methods &ndash;
+although he does not note that such cycles cannot exist in voting systems
+like range voting based on numerical ratings instead of rank-orderings.
+He has a rather annoying non-concise and informal
+discussion of <a href="BlackSingle.html">Black's 1948 singlepeakedness theorem</a>,
+which states that if the voters have singlepeaked (increasing then decreasing) 
+utility functions for candidates located along a line, then Condorcet cycles cannot occur.
+Furthermore, any candidate located in a certain subinterval of the line
+(containing the median voter) will be a Condorcet winner.
+</p>
+<p>
+Black's is a 1-dimensional theorem.
+I have recently proved the following <b>version that is valid in all dimensions:</b>
+Suppose each voter has a utility function which is a decreasing function of distance
+in some Euclidean space in which all voters and candidates are located.
+Suppose the voters are distributed within that space according to a probability density
+which is <i>centrally symmetric</i> about some centerpoint and decreasing along rays
+from the centerpoint.
+Then (in the limit of a large number of voters and ignoring exact ties) 
+a Condorcet winner will always exist (and cycles cannot exist),
+and it is always the candidate whose distance to the centerpoint is least.
+</p>
+<p>
+Tideman then asks (and this is new and important) what is the frequency in real-life 
+ranked-ballot elections,
+of (a) lack of a Condorcet winner and (b) intransitive social orderings?
+Tideman assiduously collected <a href="TidemanData.html">87 real-world elections</a>.
+In 61 of them, a transitive ordering existed, and in the other 26, a unique "best" ordering
+"closest to being transitive" existed.
+(It is possible for that ordering to be non-unique, but that fortunately did not occur.)
+Based on this, Tideman then constructed a statistical model whose aim was to generate
+pairwise-victory-margins matrices for <i>pseudo</i>-real-life elections.
+If I understand it right, the model is: each entry of the
+upper triangle of the
+pairwise-victory-margins matrix is an independently sampled random variable of
+beta type, and the parameters of all the beta distributions are functions
+of the coordinates of that entry in the matrix, where those functions
+are got by a 4-parameter fit of a certain peculiar ansatz to
+Tideman's election data (page 113).
+Tideman then uses this model to estimate the answers to (a) and (b),
+finding, e.g. that the probability that a Condorcet winner exists is 99.0%
+in 3-candidate &infin;-voter elections, but 76.7% in
+30-candidate  &infin;-voter elections.
+However in the latter class of elections, the probability that no cycle
+exists <i>anywhere</i> is 3&times;10<sup>-9</sup>.
+</p>
+<p>
+However, it should be noted that in <i>legislative votes</i> (which are
+a different kind of "election" which Tideman did not have in his dataset)
+<a href="CondorcetCycles.html">Condorcet cycles</a>
+are <i>far</i> more common that this.  The whole reason that
+"poison pills" (unfortunately-common legislative tactic) work, is the intentional
+creation of a Condorcet cycle.  
+<small>(Tideman points out he has some mention of that pp.99-100.)</small>
+</p>
+<p>
+<b>Ch.10 &amp; 11:</b>
+cover the Arrow and Gibbard-Satterthwaite impossibility theorems,
+and omit a great deal of interesting sidelights.
+And, again, these theorems could be viewed as a good reason to prefer rating-based 
+over ranking-based
+voting rules, but again, that is an idea Tideman neglects to notice.
+</p>
+<h2> Criteria for evaluating social choice procedures &ndash; chapters 4-5 &amp; 12 </h2>
+<p>
+Tideman gives a long list of criteria, most of them simply and
+precisely mathematically definable, but
+some not, for comparing voting systems.  I sometimes find his names for these
+criteria to be poorly chosen and in disagreement with the practice of other authors.
+The simple &amp; precise ones are:
+<dl>
+<dt>
+<b>"Consistency" criteria</b> (a misnomer, in my view; a better name would have been
+"goes-with-majority criteria"; I consider these criteria not to be about <i>self</i>-consistency
+of a voting method, but rather about agreement with externally imposed notions of
+how it ought to behave)
+which include 
+<dt>
+<dd>
+<ol>
+<li>
+Majority winner should be elected (if exists).
+</li><li>
+"Mutual Majority" and "Smith set" and "Schwartz set"; some member should be elected
+(if set exists and nonempty)
+</li><li>
+Condorcet winner
+should be elected (if exists).
+</li><li>
+Condorcet loser (if exists)
+should <i>not</i> be elected.
+</li>
+</ol>
+I regard all of these criteria as wrong-headed.  That is, in a perfect world,
+if 90% of voters honestly prefer A by intensity 0.001, whereas 10% prefer B with intensity 999,
+then I claim it is B who ideally should be elected, all
+of these so-called consistency criteria notwithstanding!
+</dd>
+<dt>
+<b>"Responsiveness" criteria</b>
+which include 
+</dt>
+<dd>
+<ol>
+<li>
+If X moves up in a vote, and keeps doing so in various votes sequentially, eventually
+a state should be reached in which X wins.
+</li><li>
+Ties are breakable to make any tied-victor win (if suitable extra votes are appended)
+</li>
+</ol>
+I agree all of these are desirable.
+</dd>
+<dt>
+<b>"Stability" criteria</b> (But I consider <i>these</i> to be about self-consistency!)
+which include 
+</dt>
+<dd>
+<ol>
+<li>
+Monotonicity: If X moves up in a vote then X should not stop winning (or more generally
+if we consider probabilistic voting methods, "X's winning chances should not decrease").
+</li><li>
+If X wins in district A and wins in district B, then in the combined
+A&cup;B country, X still should win.
+</li><li>
+Clone independence.
+</li>
+</ol>
+I agree all of these are desirable.  I would also <b>add</b> "non-negative responsiveness":
+If new votes are added with X top, 
+X should not stop winning; if new votes are added with X bottom,
+X should not start winning.
+</dd>
+</dl>
+<p>
+Notably <i>missing</i> from Tideman's precise &amp; simple criteria
+are <i>any</i> dealing with <i>strategic voting</i>.  For example, the following
+have been suggested:
+<dl>
+<dt><b>Strategy-related criteria:</b></dt>  <a name="zihc"></a>
+<ol>
+<li>
+Favorite betrayal criterion: 
+Voters should have no incentive to vote their honest-favorite below top.
+</li><li>
+Majority-defense criterion:
+If X is honest-top-choice of a majority of voters, then those voters should
+have a way to vote strategically (and without ranking X below anybody), that forces X's election.
+</li><li>
+Pairwise majority-defense criterion:
+If X is honestly preferred over Y by a majority of voters, then those voters should
+have a way to vote strategically, that prevents Y's election (and without any
+of them voting Y above a more-preferred candidate; or in a stronger version, not voting Y
+<i>equal</i> to a more-preferred candidate either).
+</li><li>
+Indifference:
+it should be possible to express "no opinion" about a candidate or candidate-pair
+in your vote in which case it is as though you did not vote at all
+(Another possibility, which is <i>not</i> the same, 
+is to express the <i>opinion</i> that two
+candidates are equal.)
+</li><li>
+Semi-honesty criterion:
+Voters should have a way to maximize their expected utility without ever misordering
+a candidate pair (i.e. without ever voting B>A when honestly they think A>B)
+</li><li>
+Semi-honesty criterion in 3-candidate incomplete-info elections:
+Voters should have a way to maximize their expected utility without ever misordering
+a candidate pair (voting B>A when honestly they think A>B) in 3-candidate elections, even if
+there is imperfect information about how the other voters voted.
+</li><li>
+Zero-info honesty criterion:  
+If all the other voters vote randomly independently (all votes equally likely)                     
+then it should be strategically optimal for you to cast an honest vote.
+</li>
+</ol>
+</dl>
+<dd>
+The lack of precise strategic-criteria is a major flaw in Tideman's treatment.
+He instead lumps all of his strategic eggs into one basket
+&ndash; a single number he calls "strategy resistance"
+which he obtains in a very complicated &ndash; but unfortunately flawed &ndash; way.
+</dd>
+</dl>
+<p>
+Tideman notes certain implications among his criteria on page 163 &ndash; but
+unfortunately there are many other such implications in the literature, which Tideman
+appears unaware of.
+</p>
+Among the <b>imprecisely defined criteria</b> (each a rating by Tideman on an 0-10
+subjective scale) are
+<ol>
+<li>
+Lucidity (ease of describing the voting method)
+</li><li>
+Ease of use of the voting method
+</li><li>
+Computational cost of use of the voting method
+</li><li>
+"Resistance to strategy"
+</li>
+</ol>
+The first three of these
+imprecise notions could, in fact, be precisely formalized and made objective
+if we had a precise underlying computational model.  (Also, one could use
+data on human-voter-error rates, or psychological tests,
+to assess understandability.)
+But Tideman doesn't.
+It should also be <a href="IrvNonAdd.html">noted</a>
+that some voting methods cannot be counted "in parallel,"
+at least in certain computational models.  Tideman ignores parallelizability.
+Tideman also ignores security issues.
+</p>
+<p>
+<H2>Tideman's "strategy resistance" measure is flawed</H2> 
+<p>
+This is a magic way of assigning any voting method a number from 0 to 10
+with greater numbers being "better."
+It incorporates statistics from 87 real ranked-ballot elections.
+Unfortunately I must criticize this as very flawed.
+It probably is a somewhat better measure 
+of voting-system quality than a random number &ndash;
+but not by much.
+<p>
+My suspicions of this number were first stimulated when I observed that, 
+according to Tideman's measure,
+the "strategy resistances" of Plurality, Range, and Approval voting were 6.3, 4.0, and 3.9
+respectively (table p.237) where larger numbers are better.  These three numbers
+are ordered exactly oppositely to what I would expect based on, e.g,
+the fact that Approval was the <i>only</i>
+voting method in that table explicitly <i>designed</i> to be strategy-resistant (albeit
+Tideman's measure, insanely,
+gives it the <i>worst</i>
+strategy-resistance score of all the 25 voting methods in table 13.1!)
+</p>
+<p>
+One reason underlying that is the following.  Consider a 9-way plurality election
+such as the 2000 US Presidential election contested by
+Gore, Bush, Browne, Nader, Hagelin, Moorehead, Phillips, McReynolds, and Buchanan.  
+In this race, it is known from NES polls that over 90% of the Nader- and 
+Buchanan-favoring voters, 
+<a href="Burden.pdf">actually</a> strategically 
+voted for somebody else (generally, Bush or Gore).
+So strategic voting was tremendous, as it is in every US presidential election.
+<i>But Tideman's measure would not count this as strategic voting
+at all!</i>  Specifically, if different-feeling voters (say Nader>Gore>Bush voters,
+Moorehead>Gore>Bush voters, and Nader>Gore>Moorehead>Bush voters) adopt
+a common strategy (voting "Gore") that is not counted as strategic voting
+in Tideman's reckoning.  And if the strategy does not affect the election winner, it similarly
+does not count (even if the voters do it in vast multitudes).  
+</p><p>
+Tideman assesses strategy post-mortem,
+i.e. his voter-cofeeling-sets are asked "in view of the way the election went, and the 
+exactly known number
+of voters who feel the same as you that exist,
+would you prefer now [in collusion with them]
+to change your votes (all in some identical way) to thus-alter
+the election result?"  In reality, though, voters must make (and do make)
+strategic decisions <i>before</i> the election, and thus with incomplete information,
+and they necessarily do it highly independently of everybody else.
+This easily can alter the "number of strategic votes" by a factor of order 100.
+</p><p>
+Tideman considers it more-resistant if larger 
+numbers of co-feeling voters (out of the given fixed total number of voters) need to collude 
+to affect the election &ndash; but there is reason to doubt that is relevant 
+in large elections
+(since in reality, explicit collusions of the necessary size essentially
+never happen &ndash; voters all make
+decisions highly independently, perhaps with the aid of propaganda/advice from parties or
+the media &ndash; in which case size makes little or no difference).
+</p><p>
+More generally, if, in some election, some voters are going
+to vote strategically, then probably other kinds of voters also will, and
+those strategies will tend to <i>interact</i>
+and to reinforce one another and/or cancel each other
+out.  All that is ignored by Tideman's measure &ndash; it is only interested in the
+effects of (and possibility of) a <i>single</i> kind of voter-feeling type
+somehow finding each other and collaborating to alter the election in the <i>absence</i>
+of anybody else strategizing.  (In reality, none of that happens.)
+</p><p>
+All that is totally unrealistic.  But it gets worse.
+Some strategies affect the election in minor ways, some in major ways.
+(For example, if the result is "the candidate <i>unanimously agreed to
+be worst</i> is elected," as in the <a href="DH3.html">DH3 pathology</a>, that is a <i>major</i>
+effect.)
+But Tideman ignores all that &ndash; for him, all changes have equal weight!
+<br>
+<small>[Tideman in email remarks
+"for my strategy
+calculation, there is no way that a candidate ranked last by all voters could
+be elected strategically."   This does not affect my point above, and indicates yet
+another flaw in Tideman's measure, since this can happen in real life, and Tideman's
+measure acts as though it cannot.]</small>
+</p><p>
+Also, in, for example, Borda and Instant Runoff (IRV, which Tideman calls the "alternative vote"),
+and Schulze-beatpaths (with minmax as tiebreak)
+voting &ndash; even following Tideman's rules of post-mortem only &amp; consider one co-feeling
+and co-voting and colluding voter subset only &ndash; there is another problem: the 
+<a href="PuzzlePage.html#p40">best strategy</a>
+can be for that group to <i>split</i> into two <i>differently voting</i>
+subsets, thus accomplishing an election-altering feat that they could not accomplish
+by altering their votes all in the same manner.
+(And political parties have arranged such strategies in the past by distributing 
+pre-randomized [in the right proportions] "how to vote" cards to their supporters &ndash;
+an example was discussed in Lakeman's book.)
+</p>
+<p>
+Tideman's measure ignores that too (with the net effect of discriminating in favor of
+those systems but against Range Voting,
+in which such splitting is never strategically necessary).
+<br>
+<small>[Tideman in email points out,
+however, that <i>he</i> was aware of the possibility of 2-pronged strategy, see p.235,
+just his strategy-resistance measure was not.]</small>
+</p><p>
+As our final shot, we note that the idea of comparing 50 voting methods based on 
+87 real elections, seems dubious.  It is like fitting a 50-parameter curve model
+to 87 datapoints.  Are 87 real elections (which by the way are
+treated as having consisted of "honest" votes, when in fact they were undoubtably 
+strategic using strategies designed for the particular voting method in them)
+really enough for good coverage of the full set of election-pathology behaviors?
+I doubt it.
+(Indeed, Tideman himself reckoned 3-candidate elections with a Condorcet cycle would
+only occur 1% of the time.)
+If we had <i>50,000</i>
+real elections and truly honest votes, <i>then</i> this effort would start to
+look plausibly useful.  (Tideman, however, counter-argues that he really is using the 87
+to construct a model of voter behavior, and then using this model to compare
+voting methods, and <i>that</i> is statistically legitimate &ndash; or at least more so
+than making such a statistical model <i>not</i> based on real data.  
+Perhaps.  
+The question of statistical legitimacy is not analysed by Tideman or anybody else.
+It could have been partially examined by a "cross-validation" study, e.g. comparing
+what would have happened if only
+random subsets of the 87 elections had been used. 
+No such study was done.
+<small> Tideman also responds there are not really 50 
+voting methods, there are only 25 in his summary table,
+which he regards as falling into only 11 classes.  
+He asks: Is it legitimate to judge 11 weather-models
+based on their performance on 87 storms?
+But again I emphasize, only by some sort of cross-validation study can we assess
+statistical legitimacy; not by waving our hands about weather models.   It might
+be legitimate, it might not, and how much error there is, is not at all obvious.</small>)
+</p>
+<p>
+<small>[Tideman also responds that he believes his strategy calculations 
+<i>were</i> flawed but mainly <i>not</i> for the 
+reasons I indicate; instead he believes it is since most of
+his 87 underlying elections were conducted using STV in which
+strategy is difficult, and they were mostly multiwinner not single-winner, elections.
+If he were re-doing it, Tideman says he wishes he could get a broader sample of 
+real single-winner ranked-ballot elections including some in which strategy was
+more important.]</small>
+<p>
+Tideman's measure considers range and approval voting to be the two worst.
+<i>But</i>, there are two provable senses 
+<a href="PleasantSurprise.html">1</a> &amp;
+<a href="AppCW.html">2</a>
+in which these systems enjoy very pleasant &ndash; many would
+even say "optimum" &ndash; behavior in the presence of (certain reasonable kinds of)
+strategic voters. And the Gibbard-Satterthwaite dishonesty theorem does not apply
+to these systems (uniquely, of those in Tideman's list), see 
+<a href="WarrenSmithPages/homepage/works.html">paper #97 here</a>.
+These strategy-resistance facts are unmatched by any other voting system mentioned by Tideman
+and give important senses in which these voting systems are not the worst, but
+arguably the <i>best</i>, of those Tideman lists, about strategy resistance.
+</p>
+<H2>So what are the best voting methods?</H2>
+<p>
+Tideman's chapter 13 is one of the book's best in the sense that it offers
+an extensive survey (one of
+the best, if not the best, yet published) of different voting methods
+and their properties, with proofs.  (However, there are not enough
+references to previously published such surveys.)
+If you read through all of those, you'll learn a lot.
+</p>
+<p>
+But I <a href="PropDiatribe.html">disparage</a>
+the entire idea (dating back to Arrow)
+of comparing voting methods using their logical "properties" or "criteria."
+I have no objection to &ndash; in fact encourage &ndash;
+understanding voting system properties; it is just that in the absence
+of <i>quantitative</I> frequency and severity information, purely <i>qual</i>itative
+properties are nearly useless for comparing two methods.
+That is why I advocate the
+<a href="BayRegDum.html">Bayesian Regret</a> 
+framework, which is quantitative and automatable, not qualitative and non-automatable.
+</p>
+<p>
+However Tideman leaves BR unaddressed and follows the older school.  
+According to his property-satisfaction table, plurality voting and
+approval voting are the best methods (both satisfying every property except
+"universal domain" [and with a tiny amount of fudging, arguably that too]).  Oddly, Tideman
+gives Plurality top scores for "lucidity," and "ease of use"
+(despite the fact that Approval voting &ndash;
+which is just Plurality with the "overvotes are illegal"
+rule discarded &ndash; is simpler to describe and to use)!
+And since on top of that Tideman considers Plurality
+far more "resistant to strategy" than Approval,
+it must be better.
+</p>
+<p>
+Not!
+</p>
+<p>
+Well, <i>of course</i>, approval is a better voting method than plurality.
+I don't think any serious student besides Tideman has ever disputed that proposition.
+(Actually, Tideman doesn't dispute it either: in email 
+"Actually, I agree that approval is better than plurality... [and basically say so on p.240]."
+Tideman points out he views the properties merely as <i>input</i> to his judgment process, but 
+that process is not a mere count, but rather is more mysterious!  Problem with that is, then it is 
+just Tideman's <i>subjective</i> opinion at the end of the day!)
+</p><P>
+And of course Tideman himself doesn't think plurality is the best in spite of the fact
+his comparison techniques "proved" it to be the best.  Obviously, then,
+what he's really shown is that his comparison techniques are inadequate...
+<!-- Furthermore, I think it is plain that the two-ballot (plurality with top-2 runoff)
+system is better than plain plurality (aside from the fact that it requires 2 rounds)
+despite the fact that is is clearly inferior to purlity on Tideman's properties. -->
+</p>
+<p>
+This should have rung a warning bell to Tideman. He knew Approval was superior to
+Plurality voting. He knew the properties he considered did not say so.  Therefore he should
+have realized more properties needed to be added to his set.  Ditto about strategy-resistance:
+Tideman knew (or should have!) that
+Approval has superior strategy-resistance to plurality, but his measure said the
+opposite.
+Again, that should have been a warning bell telling him his strategy-resistance measure was flawed
+or at least by itself inadequate.
+</p><p>
+Anyhow, now that we have cast enough doubt on all of Tideman's conclusions &ndash;
+what are they?
+On the basis of a combination of
+property satisfactions and his highly flawed strategy-resistance score, Tideman concludes
+that the best voting methods appear to be these 5:
+<dl>
+<dt><b>Simpson-Kramer Maximin:</b></dt>
+<dd>
+if a Condorcet (beats-all) winner exists, elect him. Otherwise
+the winner is the candidate whose strongest-pairwise-defeat is the weakest.
+</dd>
+<dt><b>Tideman's Ranked Pairs Condorcet method:</b></dt>
+<dd>
+We find the candidate pair AB with the largest pairwise margin of
+victory and "lock it in" by drawing an arrow from A to B.
+We proceed through all victories in decreasing-magnitude order,
+"locking them in" if so doing does not create a directed cycle in the
+directed graph we are drawing. The root of the resulting
+directed-graph (the only candidate
+with no arrows pointing to him)
+then is the winner.
+</dd>
+<dt><b>Markus Schulze's beatpath Condorcet method:</b></dt>
+<dd>
+A "beatpath" from A to B is a chain of pairwise victories
+"A beats X beats Y beats Z ... beats B."
+The "strength" of the beatpath (like the strength of a chain being
+the strength of its weakest link) is the least-convincing victory in
+the chain. S(AB) denotes the maximum strength of all AB beatpaths.
+Schulze proves that a candidate W must exist such that
+S(WX)&ge;S(XW) for all X.
+If that W is unique (and it generically will be), it wins, otherwise there is a tiebreaking
+scheme among those W.
+</dd>
+<dt><b>Smith+IRV:</b></dt>
+<dd>
+Have the voters rank the candidates. Find the smallest set of
+candidates such that everyone inside the set beats everyone outside in
+head-to-head comparisons (the Smith set). If the Smith set has only
+one candidate in it, he or she is the winner. If the Smith set has
+more than one candidate in it, then eliminate all candidates not in
+the Smith set and the candidate in the Smith set with the
+fewest first-place votes. With the remaining candidates, continue as
+if you were starting the count of an IRV election in which these were
+the only candidates.
+</dd>
+<dt><b>Schwartz+IRV:</b></dt>
+<dd> Similar.
+</dd>
+</dl>
+<p>
+Tideman, e.g (on p.240), brands plain IRV as "unsupportable" (provided it is "feasible" to 
+construct a pairwise-table,
+which it is) on the grounds that it is dominated by other methods in terms of its
+(precise and imprecise) properties.
+<p>
+Of these five, Tideman appears to prefer the last three, especially (partly
+on simplicity-of-description grounds) Smith+IRV.
+Tideman remarks (slightly paraphrased):
+<blockquote>
+The ranked pairs rule and the Schulze method are noticeably more
+susceptible to strategy than IRV. What gives IRV its greater
+resistance to strategy is the fact that it eliminates options based on
+first-place votes rather than paired comparisons. Strategants cannot
+reduce the number of first-place votes of a leading option that they
+are seeking to defeat. This suggests that, to create rules that
+satisfy as many non-qualitative criteria as the ranked pairs rule and
+the Schulze method, while also having as much resistance to strategy
+as IRV, one might begin by eliminating all options that are not in the
+Smith set or the GOCHA set, and then eliminate the option with the
+fewest first-place votes.
+</blockquote>
+</p>
+<a name="WBSIRV"></a>
+<p>
+But Chris Benham has pointed out [following Douglas R. Woodall:
+<i>Monotonicity of single seat preferential election rules</i>,
+Discrete Applied Maths. 77,1 (1997) 81-98]
+that Tideman's Smith+IRV rule appears to be inferior to the following closely related 
+(and actually simpler) rule:
+<dl>
+<dt>
+<b>Woodall (&amp; Benham's) inequivalent Smith+IRV-type voting method (WBSIRV):</b>
+</dt>
+<dd>
+<font color="#ff0000">
+Proceed by successively eliminating
+the candidates with the fewest top-rank votes (just as in IRV)
+except that before each IRV elimination, check to see if
+there is a single candidate X
+with no (among remaining candidates) pairwise losses. 
+As soon as such an X appears, elect X.
+</font>
+</dd>
+</dl>
+<p>
+On what basis can we claim that
+WBSIRV appears superior?
+Well,  WBSIRV appears to be easier to describe and
+appears to obey the same set of Tideman's properties.
+And it also obeys these two properties that Tideman's Smith+IRV method fails:
+"mono-append" and
+"mono-add-plump."
+We demonstrate both property failures in one example:
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" rules="rows">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr> 
+<td> 10 </td>
+<td> A>B>C>D </td>
+</tr>
+<tr> 
+<td> 6 </td>
+<td> B>C>D>A </td>
+</tr>
+<tr>
+<td> 2 </td>
+<td> C </td>
+</tr>
+<tr>
+<td> 5 </td>
+<td> D>C>A>B </td>
+</tr>
+</table>
+<p>
+All the candidates are in the Smith set (which Woodall calls the "top tier"), 
+and the IRV winner is <b>A</b>.  
+But if you add two extra ballots that plump for A (i.e. vote for A and leave the rest unranked;
+unranked candidates being regarded as ranked coequal bottom)
+or which append A to the two C ballots, then the top tier becomes {A,B,C}, 
+and (when you dutifully
+delete D from all the ballots before applying IRV) then <b>C</b> wins. 
+</p>
+<p>
+So, at least based on Tideman's properties and its improved simplicity of description
+(and provided the WBSIRV modification does not
+injure the method's "strategy resistance") 
+Woodall's WBSIRV modification seems clearly superior
+to Tideman's "best" method.
+</p>
+<H2> Hey! What about Range Voting? </H2>
+<a href="RangeVoting.html">Range voting</a>
+is the only common system Tideman considers that allows voters to express
+<a href="SmittyExp.html">intensity of preference</a>.
+But Tideman does not mention
+that as a criterion.
+Range voting obeys <i>all</i> the criteria listed above, including the
+strategy-related ones not considered by Tideman (except for the last &ndash; zero-info honesty)
+<i>except</I> 
+for Tideman's "consistency" criteria (which as I said I believe are actually
+<i>not</i> ideally desirable).  Thus Range Voting  should really get the highest score
+of any of Tideman's voting methods, based on these properties, in my view.  
+Tideman's flawed strategy-resistance
+measure discriminates unfairly against range voting, as we have already 
+discussed.  As a result of all these facts, I believe range voting ought to get a considerably
+higher score than Tideman awards to it.
+</p><p>
+The main <i>defects</i>
+of Range Voting are its failure of zero-info honesty (which approval voting,
+arguably, obeys, and definitely 
+Borda does, and presumably so do most IRV-like and Condorcet methods, although
+nobody has ever proved these latter); and the fact that in range voting one political class of
+voters can gain a large advantage over an opposed political class if the first class employs
+strategy while the second does not.  (If both are honest, or
+if both are strategic, or presumably if both are mixed honest+strategic in the same
+proportions, then both Tideman and I agree Range Voting works well.
+The problems arise when the mixtures differ.)  It is unclear to me that whether 
+this "different-mixture" scenario
+will ever actually exist in large elections (and if it does, one might presume this
+phenomenon would self-correct with time because it is extremely easy to recognize and correct
+for it?).  Therefore, it is unclear to me we should take it seriously.
+</p><p>
+I definitely consider unrealistic: 
+the worry  
+that just one colluding and exactly co-feeling voter group will devise a strategy both
+in the absence
+of any strategy from rival groups, and in perfect knowledge of 
+everybody else's vote (both assumptions
+underlie Tideman's measure).
+</p>
+<p><b>Chapter 14: Continuum candidate-sets</b>
+<br>
+Here Tideman gets original and considers voting where the "candidates" actually are
+a continuum-infinite set.
+However, much remains to be desired.  Suppose we are voting for the best location for
+the capital of our country.  All voters vote for the
+location where they live on the shore of a circular lake (voters
+roughly equiangularly distributed along the waterfront).
+Result (with Tideman's voting  methods): The capital should be underwater in the center
+of the lake.
+Hence I might suggest a more expressive kind of vote than "name a single point."
+</p>
+<small>
+<p>
+Also, Tideman did not mention, but should have, than many of his methods
+are "convex programming" problems and hence algorithmically efficient.
+</p><P>
+Were we to make the capital be the point with minimum sum of <i>p</i>th-powers of
+<i>overland</i> distances to the vote-points, then we'd get the same result
+as Tideman's position-average in waterless cases if p=2, and we'd get a convex-programming
+problem in cases where the land was simply-connected and p&ge;1.
+</p>
+</small>
+
+<p><b>Chapter 15: <a href="PropRep.html">Proportional representation</a></b>
+<br>
+Tideman discusses the usual party-list and reweighted-STV (single transferable vote) systems
+that are in wide use, as well as getting into some subtle STV design issues and little-known
+STV variants, some invented by him.  
+(Some other ideas are also mentioned that are not currently in use in governments,
+such as congressmen with continuously variable voting-weights in the legislature,
+depending on their voter-support; this could enable a finer degree of "proportionality.")
+This is probably the best available published discussion in terms of both technical
+content and historical details, but it is not easy
+to follow.  It would have been easier to follow if Tideman had employed
+formal algorithm descriptions as opposed to
+just English prose (the same is true of other parts of the book too).
+</p><p>
+But in my opinion reweighted-STV type voting is almost completely obsoleted now by my own
+<a href="RRV.html">reweighted range voting</a>
+(RRV) and perhaps <a href="Asset.html">Asset Voting</a>.
+(Tideman was unaware of these systems, which seem both simpler than and better 
+than all STV-type systems.)  But I think the whole area of multiwinner voting systems remains 
+very much in its infancy.
+</p>
+<p>
+
+</p>
+<p><b>Chapter 16</b>
+<br>
+In this chapter, Tideman discusses the very interesting <a href="CTT.html">topics</a>
+of Edward Clarke's
+"demand revealing (economic) process" [which can be used for voting, as was first pointed
+out by Tideman himself]
+and Earl Thompson's "insurance" mechanism.  Again this is one of the best published
+treatments, but again it is a complicated topic and a more formal treatment might have helped.
+The Clarke idea is that votes are monetary bids.  
+Election outcomes with more money bid for them, win.
+In the event that certain election outcomes happen, each voter may then be required to pay
+some or all of her bid ("Clarke taxes").   The ingenious point is that the payment
+formula is cleverly contrived in such a way that voters have no economic incentive to lie
+in their vote &ndash; they rationally should bid the true economic value, to them, of
+that election outcome happening.  If everybody does so,
+the best outcome for all of society, is chosen.
+Furthermore, in large elections, Clarke tax payments are rare and on average are very small.
+</p><p>
+But unfortunately, all that only happens in an ideal world &ndash; in practice certain problems
+undercut these ideal properties.  One of them is multi-voter collusions that 
+allow "gaming the system."    Others (little discussed by Tideman)
+might include corruption, transfer costs, and severe distortion of tiny incentives by
+much larger effects that are supposed to be "negligible."
+</p><p>
+For some reason I do not understand, Tideman prefers to handle N-candidate elections
+by means of bids about every <i>pair</i> of candidates.   If candidate A wins (thanks to your
+vote=bid) instead of candidate B, then you pay an amount generated by formula from your
+AB-pair bid.  There are two problems with this: 
+</p>
+<ol>
+<li>
+There are (N-1)N/2 candidate-pairs,
+so if N is large, each voter has to specify a huge amount of information;
+</li><li>
+There can be "Condorcet cycles" preventing determining a winner, although Tideman thinks
+that in practice these will be rare.
+</li>
+</ol>
+<p>
+I do not understand why the voters cannot simply cast N, not (N-1)N/2, bids,
+one for each candidate X, expressing that voter's opinion of X's monetary-worth, and then
+base her payment on the difference between her A- and B-bids.  This eliminates both of
+the above problems.  
+<br>
+<small>[Later note: Tideman in email to me has provided some justification for his stance on this.
+Both pairwise quadratic-info and linear-info Clarke-schemes are possible and both 
+arguably have advantages over the other.  The reasoning is somewhat subtle and involved
+for why one might prefer the quadratic scheme, hence will not be discussed here, but I now
+agree with Tideman it
+may have merit.]
+</small>
+</p><p>
+The second important idea is "Thompson insurance."
+This idea is that voters could buy "insurance" to protect them
+against unfavorable election outcomes.  Furthermore, the election outcome could
+be <i>decided</i> by the amount of insurance purchased (to minimize payouts, maximize
+profits for the insurance agency,
+and minimize societal harm &ndash; all of which are equivalent).  
+All this depends on somehow knowing "fair odds"
+about election outcomes (on which to base all insurance decisions and prices).
+</p><p>
+A possible mechanism for that is the market mechanism often used by bookies.
+That is, initially, odds are quoted by the bookie.  Bets are placed.  If
+in the collective judgment of bettors, the odds are unfair, then the bets will
+be substantially in one direction.  The bookie can then re-adjust his quoted odds in
+such as way as to avoid monetary loss.  This (done iteratively) 
+automatically <i>causes</i> the odds to become fair
+(if the market is rational and informed enough).
+Essentially, the bettors then are not betting
+against the bookie, but against each other.
+Again, Tideman proposes handling elections with more than two candidates, in peculiar ways.
+I do not understand why they cannot, more simply, just
+be handled in the same way that bookies handle bets on
+horse races with more than two horses.
+</p>
+<p>
+An important question is whether (and how) Thompson insurance and Clarke bid-based elections
+should be <i>combined</I>.
+Tideman makes the interesting point that Thompson insurance 
+alone would offer voters no incentive to make <i>moral</i> judgements (only financial ones)
+and hence some amount of Clarking seems necessary.  But what should be the <i>exact</i> recipe
+for combining the two?  Tideman is not clearly saying; and there are worries that,
+e.g. combining the two will allow/encourage speculators to try to manipulate the
+Clarke election to win Thompson bets, etc.   I would like to have seen a formal analysis
+of that, but none is provided either here or anywhere in the literature.
+</p>
+<p><b>The Index</b>
+<br>
+Is not very good.  I tried to look up several topics which I knew were in the
+book since I'd read them; but failed to find them via the index.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

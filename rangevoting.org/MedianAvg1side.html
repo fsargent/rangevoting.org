@@ -1,0 +1,269 @@
+<html>
+<head>
+<title>
+RangeVoting.org - The resistance of Average- and Median-based range voting to "1-sided strategy"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2> 
+Median-based range voting is "twice as resistant to 1-sided strategy" as average-based
+</h2>
+
+<p>
+Jameson Quinn suggested the following 
+1-parameter model about "one-sided strategy" in voting.
+Warren D. Smith then
+(April 2011)
+worked out the consequences of Quinn's model in closed form,
+finding a surprisingly elegantly simple result.
+</p><p>
+<small>We had previously 
+<a href="MedianVrange.html#side1">examined</a> only the special 
+("unbiased," "honestly close election") case P=0 
+of this model.
+That special case turns out to behave unlike the P&gt;0 cases.
+When P&gt;0 we here argue median-based range voting is "twice as resistant to 1-sided strategy"
+as average-based.
+But when P=0 we previously had argued average-based range voting looked to have
+better resistance to 1-sided strategy than median-based!
+(Obviously, the P=0 special case is the most important point of this parameter space,
+but it seems dubious it should outweigh the whole rest of it.)
+</small>
+</p><p>
+<b>The model:</b>
+Two candidates named "Gore" and "Bush."
+Large number of voters.
+Initially, each voter has honest score for each candidate that is an independent
+random-uniform real number in the real interval
+[0,1].   <i>But</i> now <i>reverse</i> a fraction P
+of the Bush&gt;Gore votes, by applying the map x&rarr;1-x to its scores x.
+The result is a set of "honest" votes which, in net, favor Gore.
+These votes are described by a single parameter P with 0&le;P&le;1;
+the greater P is, the more pro-Gore the voters honestly are.
+</p><p>
+That situation will be our starting point.  It has 100% honest voting.
+We will now consider the effect of pro-Bush 1-sided strategy.
+</p><p>
+This model implies there are a fraction (1-P)/2 Bush&gt;Gore, 
+and (1+P)/2 Gore&gt;Bush, 
+honest voters.
+The Gore&gt;Bush voters have a triangular probability density of Gore scores:
+ProbDensity(x)=2x, with mean score 2/3 for Gore and mean=1/3 for Bush.
+The Bush&gt;Gore voters have the same triangular probability density of Bush scores
+and mean score 2/3 for Bush and mean=1/3 for Gore.
+</p><p>
+Now suppose a fraction F, 0&le;F&le;1, of the Bush&gt;Gore 
+voters <b>strategically exaggerate</b> to
+Bush=1, Gore=0.  We'll assume there is no counterstrategy by the
+Gore&gt;Bush voters &ndash; they just stay honest.
+</p>
+<p>
+<b><u>THEOREM:</u></b>
+In the above model with any P with 0&lt;P&lt;1, Gore wins with honest voting;
+but Bush wins with 1-sided exaggeration exactly when the fraction F of Bush&gt;Gore voters
+who exaggerate obeys F&gt;P/(1-P)  for average-based <a href="RangeVoting.html">range</a>
+voting, and F&gt;2P/(1-P) for
+median-based range voting.  If P&gt;1/2 and P&gt;1/3 respectively, then
+Gore wins despite any amount of pro-Bush exaggeration.
+<a href="Approval.html">Approval</a> voting (since it 'forces exaggeration') is entirely
+immune to 1-sided strategy, i.e. with it Gore wins, period.
+</p>
+<p>
+<b><u>PROOF:</u></b>
+We first shall derive <b>formulas</b> for Bush &amp; Gore's post-exaggeration
+median and average scores.  (The pre-exaggeration  results also will arise
+from our same formulas  by taking F=0.)
+Note that there are three kinds A,B,C of voters, present in proportions
+</p><center>
+     (1-P)F/2 : (1-F)(1-P)/2 : (1+P)/2     &nbsp; &nbsp;  &nbsp; [which sum to 1],
+</center><p>
+who respectively rate  Gore=0, Gore=honest, and Gore=honest. 
+The type B&cup;C voters (combined set) have a trapezoidal probability density of scores
+with the two trapezoid leg-heights being (1-F)(1-P) and (1+P),
+up to a constant multiplicative 
+scaling factor you need to choose to make the total probability-mass be 1, i.e. "normalized,"
+at the Gore=0 and Gore=1 sides respectively.
+Gore's <b>median</b> score is then <i>m</i> where
+</p><center>
+(1-P)F/2 + (1-[1-P]F/2)&int;<sub>0&lt;x&lt;m</sub>[(1-F)(1-P)+(2P+[1-P]F)x]dx
+<big>/</big>
+&int;<sub>0&lt;x&lt;1</sub>[(1-F)(1-P)+(2P+[1-P]F)x]dx
+= 
+1/2.
+</center>
+<!-- 
+(1-P)*F/2 + (1-(1-P)*F/2) * int( ((1-F)*(1-P)+(2*P+(1-P)*F)*x), x=0..m) /
+ int( ((1-F)*(1-P)+(2*P+(1-P)*F)*x), x=0..1 );
+-->
+<p>
+This simplifies to
+</p><center>
+(P+[1-P]F/2)m<sup>2</sup>
++ (1-F)(1-P)m
++ (1-P)F/2
+= 1/2
+</center><p>
+a quadratic equation whose solution m is
+</p><center>
+<b>GoreMedian</b>
+= 
+([F-1][1-P] + ([P+F]P+1-F)<sup>1/2</sup>) / ([1-P]F+2P).
+</center></p>
+Similarly Bush's median score is computed by noting the type-A,B,C
+voters rate Bush=1, Bush=honest, and Bush=honest.
+The type B&cup;C voters (combined set) have a trapezoidal probability density of scores
+with the two trapezoid leg-heights being  (1+P)  and  (1-F)(1-P) 
+(up to a constant multiplicative normalization factor)
+at the Bush=0 and Bush=1 sides respectively.  We find analogously
+</p><center>
+0 + (1-[1-P]F/2)&int;<sub>0&lt;x&lt;m</sub>[(1+P)-(2P+[1-P]F)x]dx
+<big>/</big>
+&int;<sub>0&lt;x&lt;1</sub>[(1+P)-(2P+[1-P]F)x]dx
+= 
+1/2.
+</center>
+<!-- 
+0 + (1-(1-P)*F/2) * int( (1+P - (2*P+(1-P)*F)*x), x=0..m) /
+ int( (1+P - (2*P+(1-P)*F)*x), x=0..1 );
+-->
+<p>
+This simplifies to
+</p><center>
+- ([1-P]F/2+P)m<sup>2</sup>
++ (1+P)m
+= 1/2
+</center><p>
+a quadratic equation with solution
+</p><center>
+<b>BushMedian</B>
+= 
+([1+P] - ([P+F]P+1-F)<sup>1/2</sup>) / ([1-P]F+2P).
+</center>
+</p>
+Meanwhile, Gore's <b>average</b> score is
+</p><center>
+  0 + (1-[1-P]F/2)&int;<sub>0&lt;x&lt;1</sub>[(1-F)(1-P)+(2P+[1-P]F)x]xdx
+<big>/</big>
+&int;<sub>0&lt;x&lt;1</sub>[(1-F)(1-P)+(2P+[1-P]F)x]dx
+</center>
+<!-- 
+0 + (1-(1-P)*F/2) * int( ((1-F)*(1-P)+(2*P+(1-P)*F)*x)*x, x=0..1) /
+ int( ((1-F)*(1-P)+(2*P+(1-P)*F)*x), x=0..1 );
+-->
+<p>
+(note the integrals in the denominators
+are there merely to provide the right normalization-constant
+for the trapezoidal probability density).  This simplifies to
+</p><center>
+<b>GoreAverage</b> =  1/2 - (1-P)F/6 + P/6 = (3+P+F-FP)/6.
+</center><p>
+Finally, Bush's average score is
+</p><center>
+(1-P)F/2 + (1-[1-P]F/2)&int;<sub>0&lt;x&lt;1</sub>[(1+P)-(2P+[1-P]F)x]xdx
+<big>/</big>
+&int;<sub>0&lt;x&lt;1</sub>[(1+P)-(2P+[1-P]F)x]dx
+</center>
+<!-- 
+(1-P)*F/2 + (1-(1-P)*F/2) * int( (1+P - (2*P+(1-P)*F)*x)*x, x=0..1) /
+ int( (1+P - (2*P+(1-P)*F)*x), x=0..1 );
+-->
+<p>
+which simplifies to
+</p><center>
+<b>BushAverage</b> = (3-P+F-FP)/6
+</center><p>
+Now we ask: <b>what fraction F of Bush&gt;Gore voters need to exaggerate in order
+to make Bush win?</b>
+With <b>averages</b>, the answer is got by solving BushAverage=GoreAverage for F, with the 
+very simple result
+<!--
+solve( 3-P+F-F*P = 3 + P + F*P - F, F );
+-->
+</p><center>
+F<sub>ExaggNeeded(Avg)</sub> = P / (1-P).
+</center><p>
+Note that if P&gt;1/2 then 
+average-based range voting becomes <i>immune</i> to strategy:
+no amount of exaggeration will
+suffice to make Bush win.
+I.e. this model yields such immunity when
+the honest ratio of Gore&gt;Bush to Bush&gt;Gore voters exceeds 3:1.
+</p><p>
+With <b>medians</b>, the answer is got by solving BushMedian=GoreMedian for F, with the 
+amazingly simple result
+<!--
+solve( 
+((1+P) - ((P+F)*P+1-F)^(1/2)) / ((1-P)*F+2*P)
+=
+((F-1)*(1-P) + ((P+F)*P+1-F)^(1/2)) / ((1-P)*F+2*P),
+F );
+-->
+</p><center>
+F<sub>ExaggNeeded(Med)</sub> = 2P / (1-P).
+</center><p>
+Note that median-based range is thus <b>exactly twice as resistant</B> to 1-sided strategy as
+average-based range, in this model, in the sense that exactly twice as many exaggerators
+are needed to make Bush win (<i>regardless</i> of P for 0&lt;P&lt;1).
+</p><p>
+Median-based range voting becomes immune to strategy in this model when 
+P&gt;1/3, i.e. when the honest ratio of Gore&gt;Bush to Bush&gt;Gore voters exceeds 2:1.
+</p><p>
+Finally, for approval voting, the votes are "already exaggerated" 
+to the endpoints of the allowed score range, so further exaggeration has no effect.
+Hence if Gore wins, he wins.
+
+<!--
+Now if we solve the "crossover" equation
+</p><center>
+ GoreMedian = GoreAverage
+</center><p>
+i.e. solve
+</p>
+--
+( (F-1)*(1-P) + ((P+F)*P+1-F)^(1/2) ) / ((1-P)*F+2*P) = (3+P+F*P-F)/6
+--
+<center>
+([F-1][1-P] + ([P+F]P+1-F)<sup>1/2</sup>) / ([1-P]F+2P) = (3+P-F+FP)/6
+-- 
+P=0.0:     F=0.464
+P=0.05:    F=0.612
+P=0.1:     F=0.751
+P=0.15:    F=0.895
+P=0.1848:  F=1.00002
+P=0.2:     F=1.048 oops
+--
+</center><p>
+for F, we find that there is only one real solution with 0&le;F&le;1,
+which grows from F<sub>cross</sub>&asymp;0.4641
+when P=0 up toward 
+F<sub>cross</sub>=1 when P&asymp;0.1848, and then stops existing.
+</p>
+In other words,
+median is less distorted than average when 0&lt;F&lt;F<sub>cross</sub>
+but average is less distorted when F<sub>cross</sub>&lt;F&le;1.
+The two are equally affected when either F=0 or F=F<sub>cross</sub>.
+If P&ge;0.1848 then 
+F<sub>cross</sub> does not exist, in which case median is always
+less distorted by 1-sided strategy, than average.
+-->
+</p>
+<p>
+Q.E.D.
+</p>
+
+
+<br>
+<a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

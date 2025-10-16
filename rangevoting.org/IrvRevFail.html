@@ -1,0 +1,182 @@
+<html>
+<head>
+<title>
+RangeVoting.org - IRV contradicts itself (best is worst?) and other disasters
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> IRV (Instant Runoff Voting) contradicts itself (best is worst?) and other disasters  </H2>
+
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr bgcolor="#ffaa00">
+<td align="center"> 9 </td>
+<td align="center"> B>C>A </td>
+</tr>
+<tr> 
+<td align="center"> 8 </td>
+<td align="center"> A>B>C </td>
+</tr>
+<tr> 
+<td align="center"> 7 </td>
+<td align="center"> C>A>B </td>
+</tr>
+</table>
+
+<p>
+In this 24-voter <a href="rangeVirv.html">IRV</a> election,
+<b>A wins</b> after the IRV process eliminates C.
+But now
+suppose every voter <i>reverses</i> her preference order (i.e. they are now
+attempting to choose the worst candidate rather than the best).
+In that case  <b>A</b> <i>still</i> wins after B is eliminated.
+I.e. <i>IRV contradicts itself</i>; IRV's unambiguously
+"best" candidate A is here
+the same as its "worst"!  (Such embarrassing <b>winner=loser reversal failures</b> are, however,
+never exhibited in 
+<a href="RangeVoting.html">range</a>, 
+<a href="Approval.html">approval</a>,
+ Borda, 
+<a href="RankedPairs.html">Tideman Ranked Pairs</a>,
+or Schulze beatpath voting,
+all of which are logically self-consistent in this respect.)
+<!-- <A href="LoseAll.html">Plurality</a> voting can exhibit one form of reversal failure but
+not another. -->
+</p>
+<p>
+This failure is really just a mere symptom of the 
+<a href="IrvLogicBogus.html">flawed logic</a>
+underlying IRV.
+</p>
+<p>
+This example also illustrates a bizarre kind of strategic voting.  Suppose
+3 of the B>C>A voters reverse their votes to A>C>B.
+In that case B is eliminated whereupon <b>C</b> wins 13-to-11 over A.
+Incredibly, the reversal's raising of A from bottom-to-<i>top</i>
+in their vote caused A to <i>lose</i> &ndash;
+and voting maximally dishonestly as though they were suicidally
+trying to elect the <i>worst</i>
+candidate, was actually optimal strategy that
+caused the election result to <i>improve</i> from their point of view.
+(And that pathology happened in <a href="Peru06.html">Peru 2006</a>.)
+</p>
+<p>
+Finally, this election also illustrates a "no show paradox":
+If those three B>C>A voters had simply <i>refused to vote</i>,
+then C would have won, an improvement in their view.   Different way of saying the same thing:
+these three voters' decision to cast an honest A-<i>last</i> vote
+caused A to <i>win</i>. (Amazing, but true.)
+</p>
+
+<ul>
+<li>
+<a href="IrvRFfreq.html">How common is this?</a>
+</li><li>
+(One form of) Reversal failure also arises with
+<a href="LoseAll.html">plurality</a> voting.
+</li><li>
+The Ivars Peterson 
+<a href="http://www.sciencenews.org/articles/20031018/mathtrek.asp">
+piece</a> about "reversal failure" in <i>Science News</i>  (10/18/2003)
+points out that <a href="rangeVborda.html">Borda Voting</a>
+can never suffer such a failure, but unfortunately failed
+to observe that Range Voting <i>also</i> cannot.
+</ul>
+
+
+<h3> Even more insane kind of IRV "reversal" problem (by Stephen H. Unger) </h3>
+
+<table cellspacing="20">
+<tr><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 5 </td>
+<td align="center"> B>C>D>A </td>
+</tr>
+<tr> 
+<td align="center"> 4 </td>
+<td align="center">  C>D>A>B </td>
+</tr>
+<tr> 
+<td align="center"> 3 </td>
+<td align="center"> A>B>D>C </td>
+</tr>
+<tr> 
+<td align="center"> 2 </td>
+<td align="center">  D>A>B>C </td>
+</tr>
+</table>
+</td><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 5 </td>
+<td align="center"> A>D>C>B </td>
+</tr>
+<tr> 
+<td align="center"> 4 </td>
+<td align="center">  B>A>D>C </td>
+</tr>
+<tr> 
+<td align="center"> 3 </td>
+<td align="center"> C>D>B>A </td>
+</tr>
+<tr> 
+<td align="center"> 2 </td>
+<td align="center">  C>B>A>D </td>
+</tr>
+</table>
+</td></tr>
+</table>
+
+<p>
+In the 14-voter 4-candidate IRV election on the left, the <b>winner is A</b>
+while the <b>last-place finisher is D</b> (knocked out in round 1).
+</p><p>
+However, if all ballots are reversed so that every voter expresses exactly the 
+<i>opposite</i> opinion on everything, then
+we get the election at right.  
+You might think that now D would win and A finish last.
+Wrong &ndash; that would be sane.   What the IRV system delivers is instead the psychotic
+result that A <i>still</i> wins, while D <i>still</i> finishes last.
+</p>
+<a name="nomajwinner"></a>
+<hr>
+<p>
+These examples also nicely lay to rest the silly <b>myth</b>
+that IRV "always elects true-majority winners."
+If you believe that myth, then you must believe that the true-majority
+choice of the best candidate, is the same as the true-majority choice of the worst candidate.
+We recommend not believing that myth.
+</p>
+
+
+<br>
+<p><a href="SaariRevFail.html">Family of reversal-failure example elections by Saari &amp;
+Barney</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

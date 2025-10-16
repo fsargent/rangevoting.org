@@ -1,0 +1,1792 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Monetized Score Voting 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Monetized Score Voting </H1>
+
+<p><small>
+Warren D. Smith, June 2013. &nbsp;
+<tt>warren.wds</tt> <i>at</i> <tt>gmail.com</tt>.
+</small></p>
+<p>
+<b>Abstract.</b> 
+In C-candidate 1-winner <a href="RangeVoting.html">range voting</a>,
+each voter assigns each candidate
+a numerical score from a prespecified fixed range, as her ballot. 
+Greatest average score wins.
+We now explore <i>monetizing</i> this, i.e. each voter must <i>pay money</i> to vote,
+the cost being 
+<nobr>M(U<sub>Winner</sub>-U<sub>2ndPlace</sub>)</nobr>
+where U<sub>k</sub> is the score that voter's ballot gave to candidate k.
+We investigate several possible formulas for the magic price function M(z).
+Currently the best seems to be 
+M(z)=(&kappa;/2)z<sup>2</sup>/(1-z<sup>2</sup>)
+where &kappa; is a tunable positive constant and the score range is the real interval [0,1].
+Most of our proposed price functions are designed so that, assuming each voter
+believes certain oversimplified probability 
+models of the behavior of the other voters, then her unique 
+max-believed-expected-profit voting strategy is to <i>honestly</i> state the dollar-value
+(to her) of each candidate as her score for them on her ballot.  If every voter
+acts that way then the candidate with the greatest summed honest dollar value to
+all voters, will win.  In contrast, with ordinary
+moneyless range voting, voters usually are motivated to distort their honest scores.
+</p><p>
+Unfortunately, monetized range voting has serious <i>problems</i>, including:
+</p><ol type="i"><li>
+the payment and expected profit amounts in contemporary USA elections would
+be tiny (typically between 0.01 and 5 cents) for each voter, 
+</li><li>
+hence the discreteness of contemporary
+money would destroy the whole justification for monetized score voting
+even for voters solely motivated by money,
+</li><li>
+other effects (both economic and non-economic) also
+swamp these tiny amounts of money by factors&gt;100
+and dominate the picture, rendering all the mathematics
+almost irrelevant,
+</li><li>
+many of the systems "self-invalidate",
+</li><li>
+"money" and "utility" differ [albeit it is possible to correct for that
+to some extent],
+</li><li>
+this would be unconstitutional for use in governmental elections
+in the USA under the 14th and 24th amendments.
+</li></ol>
+<p>
+As a result <i>none</i> of our max-expected-profit-based
+monetized systems can be recommended for any (or almost any) governmental use.
+But (a) it remains conceivable there might be a valid use in some kinds of <i>corporate</i> votes,
+and (b) if the monetization is not based on the max-expected-profit theorem as motivation, but
+instead merely aimed at the different and weaker goal of discouraging
+strategic <i>exaggeration</i> by plain range voters, that might work well in practice
+using the above price formula; (c) one can also consider schemes based on pseudo-money
+which is only usable for voting and not for other purposes.
+</p><p>
+Previous work was atrocious.
+J.K.Goeree &amp; J.Zhang proposed, then E.G.Weyl further examined, the C=2 candidate special case
+of one of our systems (which Weyl called "quadratic vote buying") but did not see our
+generalization to permit C&gt;2.  Even as such we demonstrate
+that the papers G, Z, and W published on the internet are seriously flawed.  In particular,
+our proof of the max-believed-expected-profit
+theorem which underlies this, appears to be
+the first correct theorem statement and proof, even in
+their special case, as we demonstrate by providing counterexamples and refutations of
+G, Z, and W's previous theorem stating+proving attempts. Also there was a stunning absence
+of real-world numbers in the Weyl paper. The present paper appears to
+obsolete and/or overturn all that previous work,
+for both theoretical and practical purposes.
+</p>
+
+<h3>Table of Contents </h3>
+
+<ol>
+<li><a href="#s1"> The voting systems </a></li>
+<li><a href="#s2"> The purpose of monetization is to encourage/improve voter honesty </a></li>
+<li><a href="#s3">Illustrative example where monetized system could produce better societal results</a></li>
+<li><a href="#s4"> The probabilistic models (in the C=2 candidate case)</a></li>
+<li><a href="#s5"> C&ge;2 candidates </a></li>
+<li><a href="#moneydisc"> Failed numerical sanity checks  </a></li>
+<li><a href="#uslaw"> The law </a></li>
+<li><a href="#s8"> Huge motivation to cheat </a></li>
+<li><a href="#s9"> Comparison with present-day (2013) major USA elections </a></li>
+<li><a href="#utilshannon"> Utility&ne;Money; and "Shannonizing" to repair that problem </a></li>
+<li><a href="#s11"> <font color="red">Conclusion</font> </a></li>
+<li><a href="#s12"> Tragicomic previous work </a></li>
+<li><a href="#s13"> Honesty-Inspiring Economic "mechanisms" more generally </a></li>
+<li><a href="#s14"> Late-breaking news (added Oct. 2014)</h3>
+<li><a href="#s15"> References </h3>
+</ol>
+
+<a name="s1"></a>
+<h3>1. The voting systems </h3>
+
+<p>
+"Monetized score voting" refers to a new family of single-winner C-candidate voting 
+methods (C&ge;2) in which each voter's "ballot" is an assignment of a numerical score
+within some fixed permitted range, to each candidate.   
+(We shall consider continuum real numbers as scores; rational
+numbers would also seem fine.) The candidate
+with greatest average score wins.  So far, what we have described is just plain
+<a href="RangeVoting.html">range voting</a>.
+</p><p>
+The new "monetization" rule would be that voters have to <i>pay money</i> to vote.
+Specifically, there is a publicly known formula which, given any ballot, will compute
+its dollar cost:
+</p><center>
+Cost 
+= 
+M(U<sub>1</sub>-U<sub>2</sub>)
+</center><p>
+where U<sub>k</sub> is the score the ballot gave to candidate k;
+the winning candidate is 1,
+the candidate with the second-greatest average score is 2;
+and M(z) is a smooth nonnegative-valued function (increasing when its input is positive)
+specified by the voting system (see table below).
+The voter must submit that amount of money with her ballot.
+Since actually the price is <i>contingent</i> upon who wins and who places second
+(which is not known when voting),
+in practice the voter would need to submit the maximum <i>worst case</i> price &ndash;
+then be partially refunded later if the election outcome turned out not to be
+the one maximizing her payment.
+(Call this "pre-payment" and "refund" with the net effect being just "payment.")
+But to simplify the discussion we mostly shall pretend
+the voter pays the correct amount just once because both she and the 
+vote-taker magically predict the
+election outcome, so no refund is needed.
+In this paper we also mostly shall pretend that "money" is an infinitely divisible real quantity 
+although actually at present in the USA, money is an integer number of "cents."
+But money-discreteness issues would really matter and will be discussed in 
+<a href="#moneydisc">&sect;6</a>.
+After the election is over, the collected monies could (most simply) either be appropriated 
+by the government, or 
+<i>redistributed</i>
+in nearly equal parts to all voters according to the following scheme:
+if there are V voters, each voter's payment is split into V-1 equal parts
+each to be paid to the V-1 <i>other</i> voters.  
+Equivalently, if T is the total money collected,
+then each voter would receive post-election payment <nobr>(T-P)/(V-1)</nobr>
+where P is whatever amount that voter paid to vote.   
+</p>
+<table align="center" bgcolor="pink" cellspacing="5">
+<tr bgcolor="yellow"><th>System</th><th>Score range</th>
+<th><nobr>M(u)</nobr></th>
+<th><nobr>M<sup>-1</sup>(x)</nobr></th>
+<th>Properties of M(u)</th>
+</tr>
+
+<tr>
+<td>Honest Utility Voting</td>
+<td align="center">[-&infin;, +&infin;]</td>
+<td align="center">0 (no payments)</td>
+<td align="center">&ndash;</td>
+<td align="center">&ndash;</td>
+</tr>
+
+<tr>
+<td>Plain range voting</td>
+<td align="center">[0, 1]</td>
+<td align="center">0 (no payments)</td>
+<td align="center">&ndash;</td>
+<td align="center">&ndash;</td>
+</tr>
+
+<tr>
+<td>Quadratic money voting</td>
+<td align="center">[-&infin;, +&infin;]</td>
+<td align="center">(&kappa;/2) u<sup>2</sup></td>
+<td align="center">(2/&kappa;)<sup>1/2</sup> x<sup>1/2</sup></td>
+<td align="center">
+Increasing for u&gt;0, concave-&cup; for all real u,
+unbounded above.
+</td>
+</tr>
+
+<tr>
+<td>Tanh-based money voting*</td>
+<td align="center">[-&infin;, +&infin;]</td>
+<td align="center">
+[tanh(&kappa;u)+1] u - <br> &kappa;<sup>-1</sup> ln([exp(2&kappa;u)+1]/2) 
+</td>
+<td align="center">
+?
+</td>
+<td align="center">
+Increasing for u&gt;0;
+concave-&cup; 
+when |u|&lt;0.77170&kappa;<sup>-1</sup>;
+<br>
+asymptotes to ln(2)&kappa;<sup>-1</sup>&asymp;0.69315&kappa;<sup>-1</sup>
+when u&rarr;+&infin;.
+</td>
+</tr>
+
+<tr>
+<td>Erf-based money voting*</td>
+<td align="center">[-&infin;, +&infin;]</td>
+<td align="center">
+2(&kappa;&pi;)<sup>-1</sup>[1-exp(-&pi;&kappa;<sup>2</sup>u<sup>2</sup>/4)]
+</td>
+<td align="center">
+<nobr> 
+(2/&kappa;)ln(1-c&pi;x/2)<sup>1/2</sup> </nobr>
+</td>
+<td align="center">
+Increasing for u&gt;0;
+concave-&cup; when |u|&lt;(2/&pi;)<sup>1/2</sup>&kappa;<sup>-1</sup>
+<br>
+where
+(2/&pi;)<sup>1/2</sup>&kappa;<sup>-1</sup>&asymp;0.79788&kappa;<sup>-1</sup>;
+<br>
+asymptotes to (2/&pi;)&kappa;<sup>-1</sup>&asymp;0.63662&kappa;<sup>-1</sup>
+when u&rarr;+&infin;.
+</td>
+</tr>
+
+<tr>
+<td>Procrustean money voting</td>
+<td align="center">[0, K]</td>
+<td align="center">(&kappa;/2)u<sup>2</sup>/(K<sup>2</sup>-u<sup>2</sup>)</td>
+<td align="center">[2x/(&kappa;+2x)]<sup>1/2</sup>K</td>
+<td align="center">
+Increasing for 0&lt;u&lt;K, concave-&cup; for all u with |u|&lt;K,
+unbounded above.
+</td>
+</tr>
+
+</table>
+
+<p>
+Some of the formulas in the table involve <b>tunable <i>positive</i> constants &kappa;, K</b>,
+which need to be chosen semi-empirically for best performance and whose optimal values
+might differ in different elections (perhaps rather unpredictably and dramatically),
+or because of inflation altering the value of a dollar.
+The <b>asterisks *</b> indicate systems known to be
+<a href="#selfinval">self-invalidating</a> (a concept we'll explain later); 
+quadratic money voting also seems
+self-invalidating albeit in a different (and perhaps weaker and less-convincing) sense.
+</p><p>
+Note that all proposed nonzero M(u) functions are
+<b>asymptotic when u&rarr;0</b>,
+namely M(u)=[u<sup>2</sup>&plusmn;O(u<sup>4</sup>)]&kappa;/2.
+Also, they obey <b>even symmetry</b> M(u)=M(-u) even though this is not immediately obvious
+in the tanh case. 
+(In the preceding sentence, and
+in various places later in the paper, we make claims without providing the details,
+which is because verifying the claim is at the level of a homework exercise for
+students in a calculus-1 class.)
+But they differ at nonzero u.
+In particular,
+for tanh- and erf-based money voting, M(u) asymptotes to the constant  values
+&kappa;<sup>-1</sup>ln2 and 2&kappa;<sup>-1</sup>/&pi;
+when u&rarr;+&infin;,
+which is very different from the unbounded behavior 
+of u<sup>2</sup> for quadratic 
+money voting.  In other words, in tanh- and erf-based systems, it never costs more than
+than a constant dollar price to vote, no matter how absurdly extremely large
+your ballot's |score|-values are;
+while with the quadratic system the price
+can be unboundedly great.
+With the procrustean system, any attempt to make two scores differ by &ge;K would
+require an infinite money pre-payment and hence is forbidden.
+</p><p>
+Also note that all proposed M(u) functions obey <b>M(0)=0</b> and the nonzero ones 
+are strictly <b>increasing</b> functions of |u|.
+</p>
+
+
+<a name="s2"></a>
+<h3>2. The purpose of monetization is to encourage/improve voter honesty </h3>
+
+<p>
+<b>Honest utility voting</b>
+would be the perfect voting system if each voter provided
+her "honest utility" (on some common scale of units) for each candidate's election, as
+her score for that candidate.  Then the candidate with the greatest summed utility for
+all of society would be elected &ndash; the 
+<a href="OmoUtil.html">best</a> possible outcome.
+</p><p>
+But unfortunately, there are no common agreed-upon units for utility
+&ndash; and even if there were then
+a single dishonest voter could, by providing enormous bogus scores, throw the election.
+Thus honest utility voting would be ridiculous and useless 
+for most or all applications with human voters, although
+it might still retain interest for voters who are, e.g, robots.
+</p><p>
+<b>Plain range voting</b> prevents the use of enormous scores by restricting them
+to the real interval [0,1].  
+(Any <a href="RateScaleResearch.html">other</a>
+real interval of finite nonzero width could be used instead, but mathematically
+all are equivalent to [0,1].)
+This stops huge exaggerations by dishonest voters, but also stops the voting system from
+being "perfect."  Indeed, in most realistic situations strategic voters would
+want to award all-extreme scores (0 and 1 only, not u with 0&lt;u&lt;1) to all candidates,
+in which case range voting would degenerate to <a href="Approval.html">approval voting</a>
+(in which each voter "approves" or "disapproves" each candidate; most-approved wins).
+This would reduce range voting's quality.
+However 
+<ol type="a">
+<li>
+There are <a href="RVstrat1.html">situations</a>
+in which approval-style range voting is known to be
+strategically non-optimal, and 
+</li><li>
+It is fairly clear from 
+numerous range-style <a href="RangePolls.html">polls</a> plus simulated-election exit-poll 
+<a href="France2007.html">studies</a> of real human voters, 
+that most humans do <i>not</i> range-vote in approval-style. 
+</li><li>
+Indeed, they often do not even utilize the full score-range,
+thus intentionally weakening their ballot.
+</li></ol>
+<p>
+Facts (b) and (c) massively and blatantly
+contradict and refute what one might call the "naive economist's theory of the world,"
+i.e. that voters aim to maximize their expected utility (or expected profit).
+Other observed facts about voting (e.g. the 
+<a href="MedianVrange.html#twoparty">behavior</a> 
+of about 85% of Australian IRV voters)
+even more enormously contradict that theory &ndash; most obviously the very fact that voters
+vote <i>at all.</i>  It is massively economically irrational for typical voters
+to vote in the present-day USA for (say) President, because the expected benefit
+(chance of altering election times dollar value to that voter of doing so)
+is <i>tremendously</i> smaller than the cost (in wasted time, transport costs, etc)
+of doing so.  About 10<sup>8</sup> voters, 
+apparently including a large fraction of professional economists,
+perform this refutation every election day, but the latter cover their eyes and 
+devote great effort to ignoring this.
+</p><p>
+<b>Monetized score voting</b> is an attempt to overcome 
+those real and/or perceived defects of plain range and honest utility voting.
+For example, in procrustean money voting, 
+approval-style voters would have to pay an <i>infinite</i> price.
+Highly-exaggerating dishonest voters would tend to pay larger prices
+than honest ones.  This would encourage honesty.
+</p><p>
+Indeed,  the <b>point of the particular cost formulas</b> we have proposed
+is that they, in certain oversimplified approximate models which we shall explain,
+<b>cause the max-monetary-profit voting strategy to be "honesty."</b>
+That is, the election of each candidate would cause some benefit or 
+loss to each voter, which 
+she quantifies in dollars.   The voter also experiences money-gain or loss
+due to the imposed costs of voting.  The sum of both these is her "profit."
+This profit is a <i>random variable</i> in the view of a voter who cannot perfectly predict
+how all the other voters will vote.   If the voter adopts certain simple 
+probabilistic models of
+the other-voter score-totals, and votes in such a way as to maximize her <i>expected</i>
+profit, then we shall prove that the max-profit voting strategy is to
+honestly state each candidate's money value (to her)
+as her score for that candidate.
+That in turn would cause the "best" candidate &ndash; with maximum 
+summed-over-voters money value &ndash; to be elected.
+</p>
+
+<a name="s3"></a>
+<h3>3. Illustrative example where monetized system could produce better societal results</h3>
+
+<p>
+A classic (if perhaps over-simplified and
+over-dramatized) example is the "kill the Jews" vote where the choices are
+</p>
+<ol type="A">
+<li>
+Kill the Jews and steal their money, using it to reduce taxes for
+non-Jews.
+</li><li>
+The Jews (who are a minority) live.
+</li><li>
+(Possibly other choices too.)
+</li></ol>
+<p>
+Votes of this nature illustrating the "tyranny of the majority" 
+arise all the time, although
+fortunately usually in less-dramatic forms.
+</p><p>
+Almost every A-versus-B voting system ever proposed would kill the Jews
+with honest voting ("honest" meaning voters' personal
+economic assessments are honestly reported as votes).
+This would be bad.   The underlying problem is "votes" and 
+"utility" are not the same thing.
+</p><p>
+Plain range voting (unlike almost every other voting system out there)
+could permit the Jews to live <i>provided</i> enough non-Jews
+"honestly" self-weakened their votes by using a small score difference between A and B,
+while meanwhile the Jews honestly voted with large score difference.
+(Actual score voting poll data suggests such behaviors do happen to a substantial extent,
+although it would be better to do experiments intentionally investigating this.)
+</p><p>
+With monetized voting systems, Jews would be motivated to provide large money-difference 
+values as their votes.  If these values were 10&times; those provided by the non-Jews
+(costing, under the quadratic system, 100&times; as much per voter),
+then the Jews would live (with the quadratic system) even if only a 10% minority.
+"Utility" and "money<sup>1/2</sup>" 
+also are unequal, but in this case they approximate
+each other well enough to improve the situation.
+</p><p>
+If, further, we throw in a certain amount of self-weakening and/or altruistic "irrational"
+voting behavior too,
+then maybe only a 5% minority of Jews still could live.  
+But, note that if the Jews were a small-enough or poor-enough
+minority then <i>none</i> of the monetized
+systems could save them from "economically rational" voters, whereas, with plain range voting
+with actual humans exhibiting actual human voting behaviors, they still might be able to live
+even in the limit of approaching 0% Jewish minority.
+</p><p><small>
+<b>Nasty example:</b>
+In particular in the quadratic system, consider a single Jew whose total wealth is 100, versus
+N&gt;1 non-Jews.   The single Jew votes his entire wealth 100.  The non-Jews see the
+election as worth 100/N money to each of them, and therefore each vote 100/N, with costs
+5000&kappa;/N<sup>-2</sup>.    The vote then is an exact tie.
+Note for large N, the quadratic system actually
+here made it <i>less</i> costly to kill the Jew than if the 1/N-votes had simply each cost 1/N.
+</small></p><p>
+My point is, it is certainly possible to conceive of situations in which 
+monetized voting systems of the sort we are discussing, could outperform
+traditional moneyless ones, although that is not guaranteed always to happen.
+Furthermore, Goeree &amp; Zhang did a pseudo-election experiment
+we shall discuss <a href="https://rangevoting.org/s12">later</a> demonstrating that
+exactly this kind of monetized "rescue from tyranny of majority" really did happen
+in an artificially created scenario.
+</p>
+
+<a name="s4"></a>
+<h3>4. The probabilistic models (in the C=2 candidate case)</h3>
+
+<p>
+For simplicity in this section we shall assume there are only two candidates "a" and "b";
+the voter we are considering prefers "a"; and the amount of her preference is D
+dollars.
+</p><p>
+<b>Simplest model:</b>
+Suppose a voter believes that the probability that her ballot's scores 
+U<sub>a</sub>
+and
+U<sub>b</sub>
+for candidates a and b
+will <i>alter</i> the election result 
+(versus if she had not voted)
+is
+</p><center>
+Prob(alter) &asymp; &kappa; |U<sub>a</sub>-U<sub>b</sub>|
+</center><p>
+for some small positive number &kappa;
+which depends only on how the <i>other</i> voters behave.
+Further, we shall later assume that every voter has this same model involving the same
+numerical value of &kappa;.
+Under this model our voter's expected profit (versus not voting) would be
+</p><center>
+E(Profit) 
+=
+&kappa;D&middot;(U<sub>a</sub>-U<sub>b</sub>)
+- M(U<sub>a</sub>-U<sub>b</sub>),
+</center><p>
+which under quadratic money voting would be
+</p><center>
+E(Profit) 
+=
+&kappa;D&middot;(U<sub>a</sub>-U<sub>b</sub>)
+- (&kappa;/2) (U<sub>a</sub>-U<sub>b</sub>)<sup>2</sup>.
+</center><p>
+(If there is post-election 
+<a href="#s1">redistribution</a> of the collected monies, then
+our voter's profit will be altered by an additive amount which depends solely on
+the payments of the <i>other</i> voters, i.e. is unaffected by her own actions.
+Thus this possibility does not affect her optimal strategic decision making.)
+Then, our voter's uniquely best strategy (maximizing expected profit) is then
+to choose <nobr>U<sub>a</sub>-U<sub>b</sub>=D.</nobr>
+This is because the unique maximum of the function &kappa;D&Delta;-(&kappa;/2)&Delta;<sup>2</sup>
+of &Delta; is located at  &Delta;=D.
+[And the <i>value</i> of the maximum is (&kappa;/2)&Delta;<sup>2</sup>, which here
+happens to exactly equal the
+price of casting the ballot.]
+</p><p>
+In other words, our voter's unique expected-profit-maximizing voting strategy is to provide
+scores
+U<sub>a</sub>
+and
+U<sub>b</sub>
+constituting an <b>honest assessment</b> of
+the money-values of the two candidates, for her.
+If every voter acts that way the result is that the candidate with the <i>maximum money
+value (summed over all voters) is elected.</i>
+</p><p>
+Unfortunately what we really want in an "optimal" voting system is not "maximum money value" 
+but rather "maximum utility," and money and utility are not 
+the same thing (although economists often act as though they are).
+That will be discussed in <a href="#utilshannon">&sect;10</a>, 
+but for now we'll just act as though money=utility.
+</p><p>
+<b>The most obvious flaw in the simple model:</b>
+The model would be correct if the difference between the two candidates' score-totals
+(before our voter acted)
+were a real random variable <i>uniformly</i> distributed within 
+an interval of width 1/&kappa;.
+That is clearly not going to be exactly correct in real life... and even if it were,
+it would become incorrect once we hit the ends of the interval.   That is,
+it could be correct that our voter by saying 
+U<sub>a</sub>-U<sub>b</sub>=&Delta; 
+on her ballot, alters the election with probability=&kappa;,
+and by instead using 2&Delta; obtains probability=2&kappa;,
+by using 3&Delta; obtains probability=3&kappa;,
+etc, but eventually &kappa;+&kappa;+...+&kappa; will exceed 1, 
+at which point clearly this model 
+must break down.
+The model will be approximately valid in the sense that
+<i>every</i> smooth probability density locally, 
+near any generic support point, is approximately uniform &ndash;
+but this approximation clearly <i>is</i> only
+an approximation, and for "richer" voters (who are willing to pay more money to to get a
+higher-impact vote) the approximation is worse than for "poorer" voters.
+</p><p>
+<b>The tanh model:</b>
+A less-bad approximate model is as follows.
+Each voter believes that the probability that her ballot's scores 
+U<sub>a</sub>
+and
+U<sub>b</sub>
+for candidates a and b
+will alter the election result 
+(versus not voting)
+is
+</p><center>
+Prob(alter) &asymp; tanh( &kappa; |U<sub>a</sub>-U<sub>b</sub>| )
+</center><p>
+for some small positive number &kappa;
+which depends only on how the other voters behave.
+Note that 
+<nobr>tanh(z)=z-z<sup>3</sup>/3+O(z<sup>5</sup>)</nobr>
+when 
+<nobr>|z|&rarr;0,</nobr>
+but the tanh(z) function asymptotes  when z&rarr;&plusmn;&infin; to
+tanh(z)&rarr;&plusmn;1 with the approaches to &plusmn;1 being exponential.
+This behavior is at least qualitatively correct, whereas the original simple model was
+obviously incorrect in this respect.
+</p><p>
+Under the tanh model our voter's believed expected profit (versus not voting) would be
+</p><center>
+E(Profit) 
+=
+D tanh( &kappa;&middot;[U<sub>a</sub>-U<sub>b</sub>] )
+- M(U<sub>a</sub>-U<sub>b</sub>),
+</center><p>
+using the tanh-based money voting formula for M(&Delta;).
+Then, our voter's uniquely best strategy (maximizing expected profit) is then
+to choose <nobr>U<sub>a</sub>-U<sub>b</sub>=D.</nobr>
+This is because I have cleverly designed the M(&Delta;) function so that
+the unique maximum of the function 
+</p><center>
+D tanh(&kappa;&Delta;) - M(&Delta;)
+</center><p>
+is located at 
+&Delta; = D.
+(This corresponds to the unique zero of its derivative.  The derivative also
+approaches 0 when &Delta;&rarr;&infin; but that corresponds to a local <i>min</i>imum.)
+Again, the profit motive inspires voters to provide honest dollar-value assessments
+as their votes, which if every voter behaves that way
+causes the maximum-dollar-value candidate to be elected.
+<!--
+Derivation:
+unique max of
+D tanh(c y) - M(y)
+is where
+D*c*sech(c*y)^2 = M'(y) 
+and if we demand this max be y=k*D then
+D*c*sech(c*k*D)^2 = M'(k*D) 
+which means with k=1 we want
+M(D) = (2*D) * (1-1/(exp(2*c*D)+1) - ln([exp(2*c*D)+1]/2) / c
+= D * (tanh(c*D)+1) - ln([exp(2*c*D)+1]/2) / c
+this is an increasing fn of D&gt;0 as proven by its 1st deriv 
+positive for all real D&gt;0, if c&gt;0.
+The second deriv has the same sign as (1-2*c*D)*c.
+-->
+</p><p>
+</p><p>
+<b>The erf model:</b>
+An alternative less-bad approximate model is this.
+Each voter assumes/believes that the probability that her ballot's scores 
+U<sub>a</sub>
+and
+U<sub>b</sub>
+for candidates a and b
+will alter the election result 
+(versus not voting)
+is
+</p><center>
+Prob(alter) &asymp; erf( 2<sup>-1</sup>&pi;<sup>1/2</sup>&kappa; |U<sub>a</sub>-U<sub>b</sub>| )
+</center><p>
+for some small positive number &kappa;
+which depends only on how the other voters behave.
+Note that 
+erf(2<sup>-1</sup>&pi;<sup>1/2</sup>z)=z-&pi;z<sup>3</sup>/12+O(z<sup>5</sup>) 
+when z&rarr;0,
+but the erf(z) function asymptotes  when z&rarr;&plusmn;&infin; to
+erf(z)&rarr;&plusmn;1 with the approaches to &plusmn;1 ultimately 
+being faster than exponential.
+</p><p>
+Under the erf model our voter's expected profit (versus not voting) would be
+</p><center>
+E(Profit) 
+=
+D erf( 2<sup>-1</sup>&pi;<sup>1/2</sup>&kappa;&middot;[U<sub>a</sub>-U<sub>b</sub>] )
+- M(U<sub>a</sub>-U<sub>b</sub>),
+</center><p>
+using the erf-based money voting formula for M(&Delta;).
+Then, our voter's uniquely best strategy (maximizing expected profit) is then
+to choose <nobr>U<sub>a</sub>-U<sub>b</sub>=D.</nobr>
+This is because I have cleverly designed the M(&Delta;) function so that
+the unique maximum of the function 
+</p><center>
+D erf(2<sup>-1</sup>&pi;<sup>1/2</sup>&kappa;&Delta;) - M(&Delta;)
+</center><p>
+is located at 
+&Delta; = D.
+(This corresponds to the unique zero of its derivative.  The derivative also
+approaches 0 when &Delta;&rarr;&infin; but that corresponds to a local <i>min</i>imum.)
+<!--
+Derivation:
+unique max of
+D erf(pi^(1/2) * 2^(-1) * c * y) - M(y)
+is where
+2*pi^(-1/2) * D * c exp(-c^2 * y^2) = M'(y) 
+and if we demand this max be y=k*D then
+2*pi^(-1/2) * D * c * exp(-c^2 * y^2) = M'(k*D) 
+which means with k=1 we want
+M(D) = 2/(c*pi) *  [1 - exp(-pi * c^2 * D^2 / 4)]
+this is an increasing fn of D&gt;0 as proven by its 1st deriv 
+positive for all real D&gt;0, if c&gt;0.
+The second deriv has the same sign as (1-2*c*k*D)*c.
+-->
+</p><p>
+Again, the profit motive inspires voters to provide honest dollar-value assessments
+as their votes, which if every voter behaves that way
+causes the maximum-dollar-value candidate to be elected.
+</p>
+<a name="selfinval"></a>
+<p>
+<b>Self-invalidation:</b>
+However, both the tanh and erf models, even though "obviously better" than the simple
+model underlying quadratic voting, are "self-invalidating."
+That is,
+due to the "bounded price" properties of the M(u) functions that these models
+yield, rich-enough voters are happy to submit enormous "dollar values" for
+the candidates.  Under the model they then believe
+they are essentially certain of altering the election, but know
+this will only cost them a bounded amount of money.
+If enough voters behave that way, then the election becomes an absurd "who can
+name the biggest number?" game,
+plus the whole <i>underlying probability-model is invalidated.</i>
+</p><p> 
+In contrast, the quadratic M(u) from the simple model seems better behaved
+and might avoid self-invalidation.
+There are, however, arguments that it may <i>also</i> self-invalidate:
+</p><ol><li>
+Suppose the election is for the position of "dictator."   
+Doctor Evil arranges for some voters to vote enormous "dollar values"
+for Doctor Evil, who is duly elected.  Once elected, Doctor Evil can 
+repay the enormous debts his supporters racked up, by redefining/printing "money,"
+then repaying them from government coffers.
+</li><li>
+Suppose that (continuing the last few decades' historical trend in the USA),
+wealth disparity continues to increase, eventually approaching the point
+where a country contains one ultra-rich person (the "lord")
+while everybody else (the "serfs") has zero wealth.
+Historically, situations of that ilk have happened.
+In that case, the only person who can vote is the lord, who then
+"democratically" elects himself, achieving economically-reckoned "optimality."
+</li><li>
+The preceding two pathologies actually happen with any monetized system at all in which
+a voter with enough wealth achieves "dictator" status (i.e. ability to control the
+election result by himself).
+</li><li>
+The very fact (which we already pointed out) that the underlying probabilistic-belief 
+that voters must have, is <i>self contradictory</i>, seems to constitute a self-invalidation
+of the quadratic system.  Indeed, it was clear the tanh and/or erf systems were superior,
+<i>but</i> they self-invalidated, which constitutes by "transitivity" a self-invalidation of
+the quadratic system too.
+</li>
+</ol>
+<p>
+Given that, it might be of interest to go in the opposite direction,
+which is the idea of <b>procrustean money voting</b>.
+In this system, a rich man <i>cannot</i> achieve unboundedly 
+great voting power via unboundedly great wealth.
+Hence the procrustean system largely loses the alleged advantage of the quadratic system
+of obtaining the "economically-best" result for all of society
+(which entails giving the rich much more voting power), but still retains the advantage
+of discouraging exaggerated approval-style range voting and encouraging
+more "honest" such ballots.  That alone could be a very substantial advantage because
+honest range voting is <a href="BayRegsFig.html">known</a>
+to be greatly superior to approval voting.
+</p><p>
+The quadratic system is a limiting special case of the procrustean system
+and by adjusting the tunable parameters &kappa;,K
+we effectively can make that approximation
+better or worse.
+</p>
+<a name="aparth"></a>
+<p>
+However, before getting too thrilled with the procrustean system, the reader 
+would be wise to consider the following <b>apartheid scenario:</b>
+</p><ol start="5">
+<li>
+Suppose there are two kinds of voters: "blacks" and "whites" 
+(for simplicity assume these two types are equipopulous and
+all whites are identical and all blacks identical). 
+Due to racist policies the blacks are an economic underclass, the
+whites are richer.   Voting on the question of "shall we keep the blacks getting
+&le;20% of the pie?" both blacks and whites honestly have the same financial
+amount at stake, but the blacks do not have that amount. 
+So the whites can always win the vote with honest quadratic vote buying.
+(The payments due are then the same from all and there is essentially no redistribution &ndash;
+or in the government-appropriates-monies version of course the whites get most of
+the benefits the government then spends that money on.)
+</li></ol>
+<p>
+This is <b>realistic:</b>
+The US state of Georgia initiated a poll tax in 1871, and made it cumulative in 1877 
+(requiring citizens to pay all back taxes before being permitted to vote). 
+Every former confederate state followed its lead by 1904. 
+Although these taxes of $1-$2 per year may seem small, 
+they were beyond the reach of many poor black (and white) sharecroppers. 
+Kousser 1974 (pp. 67-68) estimated that
+Georgia's poll tax probably reduced overall turnout by 16-28%, and cut
+black turnout in half.  That poll tax is rather like a simplified version of
+monetized voting in which only two fixed bid levels are permitted, one 
+of which is "zero."
+</p>
+<!-- http://www.umich.edu/~lawrace/disenfranchise1.htm -->
+<p>
+This problem would seem to arise for <i>every</i> nontrivial monetized voting system,
+which is probably why the USA enacted the 24th amendment.
+</p>
+
+<a name="s5"></a>
+<h3>5. C&ge;2 candidates </h3>
+<p>
+Really, all dollar values need only be specified by each voter up to an overall
+additive shift, because only the dollar-value <i>differences</i> among the 
+candidates matter in all of these systems.
+The voter in particular must consider the dollar value of replacing the winning
+candidate 1 by each possible rival r=2,3,...,C.
+Now assume that every voter believes in the <b>"3-way ties unlikely" model:</b>
+"The probability that a voter will be able to
+alter the relative ranking of candidate 1 versus candidate r, is if r&ge;3
+<i>negligibly tiny</i> compared to the probability she will be able to alter 1-versus-2."
+(Where candidates 1 and 2 are whoever 
+will finish first and second.)
+We have now proven:
+</p><p>
+<b>MAX-BELIEVED-EXPECTED-PROFIT THEOREM:</b>
+Assuming the voters all believe in the 3-way ties unlikely model 
+(plus whichever is appropriate among our previous models), and
+assuming that the voters can never
+predict with 100% certainty in advance who will (or will not) win and come second,
+then the quadratic, tanh, and erf
+systems we have proposed each are "optimal" in the sense that
+the unique max-believed-expected-profit voting 
+strategy in a C-candidate election (C&ge;2)
+is to honestly state your dollar values for <i>all</i> candidates.
+And if all voters adopt that behavior, the max-summed-dollar-value
+candidate will win.
+</p><p>
+This is the first correctly stated and proven theorem of this kind,
+because (as we shall <a href="#s12">later</a> demonstrate), 
+the preceding papers which tried
+to produce such theorems, failed.  However, they did have the right idea.
+</p>
+
+<a name="moneydisc"></a>
+<h3>6. Failed numerical sanity checks  </h3>
+
+<p>
+As simple sanity checks, let's perform some
+arithmetic using some fairly realistic numbers.
+</p><p>
+<b>Contemporary USA presidential election:</b>
+Suppose there are V=10<sup>8</sup> voters 
+and the typical voter is affected about D=$1000 worth by who wins.
+Suppose the chance said voter's ballot will be able to swing the election is 1/50000.
+</p><p>
+Then the max-expected profit voting strategy (we shall use the
+formula for quadratic money voting, which as we said is asymptotically
+the same as all our other money-voting systems in the small-|u| limit)
+is to honestly state that the top two presidential candidates differ in value by $1000.
+The chance of this altering the election being 1/50000
+means that the parameter &kappa; ought to be
+&kappa;&asymp;1/50000000=0.00000002
+with money measured in units of dollars, or 
+&kappa;=0.000002 
+if we instead measure money in cents.
+</p><p>
+In that case using the quadratic system, the voter would expect to <b>profit</b>
+(&kappa;/2)D<sup>2</sup>
+thanks to her $1000 vote,
+which with our numbers is <b>1 cent.</b>
+She also would need to <b>pay 1 cent</b> to be allowed to cast this vote.
+On the bright side, these are enjoyably tiny, meaning the voting process itself would 
+not distort the economy much, etc.
+But unfortunately:
+</p><p>
+One cent is <i>not</i> enough profit to motivate an economically-rational
+voter to vote at all, considering wasted time, transit costs, money-motion 
+paperwork costs, etc, which exceed this profit by at least a factor 100.
+In view of this, any arguments that our voters will act "economically rationally"
+are massively refuted before she even reaches the voting booth.
+These amounts also are <i>tiny</i> compared to other distortionary effects such as "altruism"
+(which are, in fact, the biggest reason the vast majority of voters presently vote;
+e.g. 71% of Americans say they "feel guilty when they don't vote,"
+Bittle &amp; Rochkind 2009).
+In short, the whole idea that this kind of economics is going to inspire voter honesty
+is pretty absurd because the economic motivations seem tiny and "lost in the noise"
+compared to other economic and non-economic (but very real) influences.
+</p><p>
+For example, suppose typical voters decided to live 
+large by paying a full dollar (50&times; larger).
+This would <i>enormously</i> distort the election.
+</p><p>
+But it gets worse!  That 1 cent payment obviously is coming up against the
+<b>discreteness of money</b> in a serious manner.   This <i>also</i> invalidates the 
+whole system until/unless money becomes granulated in units around 
+1000&times; smaller than today's.  And suppose voters were interested in paying <b>0.49 cents</b>
+hoping that would be rounded down to <i>zero</i>.
+Again, that would be an <i>enormous</i> distortion of the election.
+</p><p>
+Similar arithmetic, reaching similar conclusions, can be done (and I did it) for
+<a href="CTT.html">Clarke-Tideman-Tullock voting</a>.  The conclusion is
+that these kinds of monetized voting systems are best used in smaller elections
+and are inherently stupid for something like USA presidential election.
+</p><p>
+<b>Statehouse race:</b>
+In my state (New York), a state assemblyman 
+race typically involves 40000 voters, with incumbents usually winning by large
+margins (often running unopposed) due to massive gerrymandering, 
+which makes the outcomes about 98%
+predictable a year in advance.  This in turn means the chance your vote can swing
+the election is about 1/10000.
+There are 150 assemblymen.
+A typical voter in one such race might consider the race's outcome worth $10.
+From that we compute that &kappa;&asymp;1/100000 with money measured in dollars.
+Therefore typical expected profits and payments (with honest dollar evaluations used as votes)
+to a typical voter would be of order <b>0.0005 cents</b>.
+Monetized voting here is even stupider.
+</p><p>
+<b>Town highway supervisor race:</b>
+My town has a historically high level of corruption, and 
+the highway supervisor controls a large budget, about $70 million.
+The highway supervisor race typically involves 23000 voters,
+which is about 8% turnout (300000 registered voters).   
+Each might honestly assess the race result as worth about $23 (i.e. $7 million swing,
+which assuming 300000 registered voters is $23 per voter)
+although usually the assessment is highly noisy since most voters do not know
+much about highway supervisor candidates.   This race is actually competitive fairly often,
+so let's optimistically say the chance one vote 
+could alter the election is 1/230 (even though actually
+a tied or near-tied race, such that one vote could alter it, has never
+happened in the history of the town, just like no any individual vote in any
+US house, senate, or president race has ever affected the outcome in all history up to 2013).
+This would suggest &kappa;&asymp;0.00019 with money measured in dollars.
+In that case using the quadratic system, the voter would expect to <b>profit</b>
+(&kappa;/2)D<sup>2</sup>
+thanks to her $23 vote,
+which with our numbers is <b>5 cents.</b>
+She also would need to <b>pay 5 cents</b> to be allowed to cast this vote.
+In this election, monetized voting makes more sense than the preceding two examples,
+but it still is pretty absurd.
+</p><p>
+A corrupt <b>mafia</b> contractor with $1 million at stake in this election would
+(by honestly voting that amount) have the same power as 43478 of
+our $23-each voters (but remember there are actually only 23000 of them)
+even if 100% of them were voting against him!
+However, he would be charged $95000000, i.e. 95 times $1000000,
+to cast this vote (which remember, was for him an honest vote) so the plan of
+honestly voting would not make any sense for him.
+Also, the whole point of the method &ndash;
+encouraging honest dollar assessments as votes &ndash; here has failed.
+How can this be?  
+The reason is that the "uniform distribution"
+approximate probability model underlying quadratic voting has broken down.
+This failure of the underlying mathematical justification, however, has the good effect
+in the present case of stopping the mafia don from singlehandedly swinging the election.
+</p><p>
+But being mafia, plus also not an idiot, he instead probably would arrange for, say,
+50 henchmen to vote D=$1000 each instead, thus buying the same effect
+as a unified bloc of 2174 typical $23 voters.  That would almost certainly be enough to
+throw the election in a competitive race, which would seem a big indictment of 
+quadratic monetized voting &ndash; it made the election more corrupt, more complicated,
+and worse than a plain moneyless simple majority vote.
+Each of these henchmen
+would be charged (&kappa;/2)D<sup>2</sup>=$95
+to vote, costing the mafia don a mere $4750 in all.
+(And more realistically our mafia don probably could get 500 voters [not merely 50]
+to each vote $100 with the same election swinging effect as the 50 at 1/10 the
+cost to him, or he could get a bit more certainty by having them each vote $200...)
+</p><p>
+Most of the <b>judgeship races</b> I am offerred the opportunity to vote in
+might behave similarly to the Highway Supervisor example.
+</p><p>
+<b>So in summary</b>, quadratic money voting would be worse than simple majority vote
+in essentially all the kinds of elections I currently vote in.
+Hence it is not a good idea for governmental elections in general.
+</p><p>
+Comparatively small elections (by USA government standards),
+with unusually large amounts of
+money at stake, would seem the most hopeful
+ones for both the present and
+Clarke-Tideman-Tullock monetized systems, but even then they
+are highly dubious.
+This in turn suggests that <i>corporate</i>, not governmental, votes might be the best place
+for either kind of monetized system, plus that would have the advantage 
+of being constitutional (and similar conclusions were reached for
+<a href="CTT.html">Clarke-Tideman-Tullock voting</a>).
+</p>
+
+<a name="uslaw"></a>
+<h3>7. The law </h3>
+
+<p>
+Monetized voting systems 
+<a href="SupremeCt.html#polltax">appear</a> to be unconstitutional in the USA
+under the 14th and 24th amendments (about equal protection and poll tax).
+</p>
+
+<a name="s8"></a>
+<h3>8. Huge motivation to cheat </h3>
+
+<p>
+A "fat cat" rich voter (with &kappa;=1 and the quadratic system for simplicity)
+would be foolish to spend $1000000 to buy a mere 1000 votes, when he could instead
+purchase 500&times; more votes for the same money by paying 1000000 voters
+$2 each for them each to make a $1 vote (they keep the other $1).
+</p><p>
+In theory this would be prevented by the "secret ballot" and/or prosecution risks,
+but in reality
+those have been circumvented many times in <a href="PresFraud.html#truman">massive</a>
+manners in the past (contrary to Weyl's statement in his &sect;4.4 that
+"de-merger into two individuals... is probably all that is feasible in most cases"),
+and with modern technology such as cell phones that send real time video,
+might be easily defeated today in new ways.  
+The motivation might increase with monetized
+voting systems, and if so the corruption might increase, which actually might make things
+worse.
+</p>
+
+<a name="s9"></a>
+<h3>9. Comparison with present-day (2013) major USA elections </h3>
+<p>
+It can be argued that USA elections today <i>already</i> work like
+Goeree/Zhang and Weyl's "quadratic vote buying" (which is the C=2 special case of
+our "quadratic money voting").
+First their QVB systems were
+only for binary elections &ndash; USA elections right now almost always
+effectively involve no third choices... check.
+</p><p>
+People right now attempt to "buy" votes using political dollar contributions.
+If you donate N dollars, that effectively buys some function f(N)
+votes, and the plot
+of f(N) looks qualitatively similar to the plot of &radic;N.
+I.e. if a typical USA voter hears some putrid political commercial
+10 times, I doubt that influences her 10 times as much as hearing it once.
+I think the factor is considerably below 10.
+So the plot of f(N) has a concave-down character resembling squareroot.   
+And just hearing
+one initial ad can have a lot of effect, especially if it contains
+new information, i.e.
+<i>initial</i> money seems to have a much larger, even huge, effect, just like
+the squareroot function
+has a vertical asymptote at 0.
+</p><p>
+In QVB rich voters are motivated to cheat by voting through paid proxies.  Similarly
+in the USA today, the Koch brothers and similar enormous political donors
+continually try to hide
+their monetary donations through a multiplicity of front groups,
+with disguised sources, 
+"astroturfed" fake-grassroots organizations,
+and money-laundering groups like "Crossroads GPS."
+</p><p>
+So the two systems &ndash; QVB and present-day USA elections &ndash;
+actually are very similar.  Enjoy "optimality."
+</p>
+
+<a name="utilshannon"></a>
+<h3>10. Utility&ne;Money; and "Shannonizing" to repair that problem </h3>
+
+<p>
+Another issue is the (experimentally massively supported)
+fact that "utility" and "money" are not the same.
+Claude <a href=""NIA" (non-election of irrelevant 
+alternatives). ">Shannon</a> once proposed that a better approximation was 
+<b>utility=log(wealth)</b>,
+but this clearly still is not quite right &ndash; a still better approximation might
+be that 
+utility=&tau;<sub>1</sub>log(debts)+&tau;<sub>2</sub>log(assets)+&tau;<sub>3</sub>log(|assets|+|debts|),
+where
+&tau;<sub>1</sub>,
+&tau;<sub>2</sub>,
+&tau;<sub>3</sub>
+are suitable positive constants.
+But that still is not right, e.g. omits knowledge of cliff-edge effects when your
+wealth falls below survival threshold.
+And further, utility also depends on things other than money.
+</p><p>
+Anyhow, if we just use Shannon's simple approximation, now with the correct
+goal of making the election-winner maximize summed-<i>utility</i> instead of summed money,
+then we would (to good approximation) obtain the monetized voting systems above
+<i>except</i> that 
+</p><ol><li>
+"The election winner" would no longer be 
+"the candidate with the greatest summed score"
+but rather <b>"the one with the greatest <i>weighted</i>-sum of scores"</b>
+where voter v's ballot is weighted by (W<sub>v</sub>)<sup>-1</sup>
+where W<sub>v</sub> is voter v's wealth.
+</li><li>
+Thus the "constant" &kappa; would become wealth-dependent (proportional to 1/W for voter
+with wealth=W).
+</li></ol>
+</p><p>
+Unfortunately, if this were done, then voters would need to state their wealth on
+their ballots, causing "voting" to become "as complicated as doing your taxes,"
+ruining ballot privacy, 
+plus subjecting us to new kinds of voting fraud... requiring detection and prosecution...
+which all would be a <b>nightmare.</b>
+That all would be totally unrealistic and unacceptable in most practical applications.
+</p><p>
+Fortunately, 
+we can achieve something similar without requiring voters to state their wealth,
+as follows.  Assume/approximate a voter's "wealth" as proportional to
+the max-min candidate dollar difference that voter states on her ballot.
+If so, then the ballot would (via the 1/W weighting) effectively automatically
+become rescaled in such a way that 
+<b>every ballot had the <i>same</i> max-min score difference.</b>
+</p><p>
+Furthermore, given that those modifications were made, it then would become
+strategically foolish for any voter to "admit"
+they were wealthy by scoring candidates with huge dollar amounts &ndash;
+they'd get the same voting power by "pretending to be poor," but pay less.
+Farewell to inherently incentivized voter honesty.
+</p><p>
+Thus, "Shannonizing" our voting systems would cause them in yet another sense to 
+"self-invalidate."  Given that every voter would be motivated to hide their wealth
+in a Shannonized monetized system designed to incentivize the election of the
+max-summed-Shannon-utility candidate, we might as well <i>force</i> all ballots to
+live within a restricted score range and use a price function M(z) <i>not</i>
+depending on voter-wealth.
+</p><p>
+Thus the net effect of "Shannonizing" to repair the utility&ne;money flaw,
+and then repairing the resulting self-invalidation effect of wealth-hiding voters,
+would effectively bring us
+<i>back</i> to something like plain (no money) range voting or the procrustean system
+(even if the original system had unbounded score range)!!
+</p><p>
+We now have come <b>full circle:</b>  the improvement of plain range voting by monetization
+has, after still further improvements, led us back to plain range voting
+(or perhaps the procrustean money-voting system)!
+But the exercise has been educational.  For example, those economists who wanted
+monetized voting schemes and disparaged plain range voting, now might
+want to reconsider.
+</p>
+
+<a name="s11"></a>
+<h3>11. Conclusion </h3>
+<p>
+All the monetized schemes in this paper based on the max-believed-expected-profit theorem,
+would work <a href="#moneydisc">badly</a> in USA governmental elections
+(even ignoring unconstitutionality).
+There might be a valid niche for some corporate votes.
+</p><p>
+We recommend plain range voting, or if we insist on a monetized system then use
+the procrustean one with &kappa; and K chosen <i>not</i> to motivate honest dollar assessments 
+as ballot-scores via the max-believed-expected-profit theorem,
+but rather with the goal of discouraging strategically-exaggerated/distorted range voting 
+(e.g. <a href="Approval.html">approval</a>-style voting).
+</p><p>
+The quadratic, tanh, and erf-based monetized systems all invalidate themselves and/or
+do so when we attempt to use Shannon's 
+utility&asymp;log(wealth)
+approximation to repair the money&ne;utility flaw in the original logic.
+As a result, the procrustean monetization method is the only one
+(from our original table)
+which remains standing.
+</p>
+
+<a name="s12"></a>
+<h3>12. Tragicomic previous work </h3>
+
+<p>
+This all started for me when the popular press article Posner 2013
+was brought to my attention.  Although ostensibly about a public bicycle rental scheme
+in New York City, it contained the following remarkable quote
+</p><blockquote>
+Recently, however, an economist at the University of Chicago named Glen Weyl has 
+developed an ingenious new mechanism that is simpler and more robust, and could 
+help a city decide whether to introduce bike sharing. He calls it Quadratic Vote Buying...
+</blockquote>
+<p>
+and then the QVB scheme is described and discussed.
+The scheme Weyl proposes is equivalent to
+our "quadratic money voting" if we restrict attention to the special case C=2.
+As Weyl described it, his system was unusable if C&gt;2.
+</p><p>
+However, it appears the Posner quote was <i>false</i>, invalidating the main claim in his
+article.  Specifically, the inventor was not Weyl 2013,
+but rather Goeree &amp; Zhang 2012.  I am saying this since Weyl cites G&amp;Z, but 
+G&amp;Z do not cite Weyl; also G&amp;Z was dated earlier by about 1 year.
+(See also <a href="#hznote">below</a> about Hylland &amp; Zeckhauser 1980.)
+</p><p>
+Goeree &amp; Zhang (also)
+defined the QVB system (and also demanded C=2, and also had no 
+proposal for handling utility&ne;money),
+and allegedly proved two theorems ("propositions")
+about it, and organized an pseudo-election
+experiment with 250 human voters to validate the concept.
+</p><p>
+Unfortunately, <b>both of Goeree and Zhang's theorems are wrong</b>,
+as we shall demonstrate by counterexample to their Proposition 1, and by
+finding at least 2 errors in their "proof" of Proposition 2.
+Further, we'll explain why 
+their <b>experiment</b> is much less meaningful (or different-meaning)
+than the naive reader might imagine.
+</p><p>
+I should point out that the Goeree &amp; Zhang 
+(as well as Weyl) used undefined terms galore in their
+theorem statements, as well as probably many unstated assumptions &ndash;
+both of which are absolutely unacceptable behavior.  If you do that, then
+you do not have a "theorem."
+But as a result, perhaps some G+Z defender
+could argue that really their theorems are rescue-able.   This
+is true in the sense that we have demonstrated such things already here, and now in 
+a rigorous fashion!  But here is my contention.
+If I produce a counterexample to your "theorem" or "proof,"
+then you say "with extra assumptions etc, the counterexample will no longer work,"
+then I produce another counterexample to the repaired theorem,
+then you add still more assumptions and wording changes, etc, etc
+(this is in fact exactly what was happening in my emails with Weyl),
+then that is not "science," but rather "a waste of time."  I am quite angry about
+all this behavior by G&amp;Z and by Weyl.
+"Science" is falsifiable.  A "scientist" makes
+well-defined and falsifiable statements 
+(except that "theorems" ought never to be falsifiable!).
+They didn't.  Given that <i>all</i> theorems/proofs in their article are wrong, I
+regard G&amp;Z's paper as an embarrassment.  However, nevertheless it has value
+since they <i>did</i> invent an interesting and at least somewhat meritorious main idea
+(albeit largely obsoleted by the present discussion).
+So they had a good idea &ndash; the problem was their execution was atrocious.
+</p><p>
+Weyl's 2013 paper may be even worse.
+It was 57 pages long.
+Near the start was the rather remarkable quote
+"many of the results are conjectural" accompanied by the claim that hopefully
+proofs of everything will be added later within 6 months or so (presumably increasing the length to
+about 100 pages?).  I've never seen that behavior in any paper before.
+This is not to say that Weyl's paper lacks
+mathematics; on the contrary it is packed full of it.
+Unfortunately as we shall explain there is a <b>foundational error on page 7
+which invalidates essentially the entire paper</b> and renders most of
+those mathematical manipulations and claims irrelevant.
+When I pointed this out to Weyl by email, he then made 
+various (all false and sometimes self-contradictory) 
+claims about why the error was not really an error,
+could be repaired, was inconsequential, etc. 
+As far as I can tell (mid-June 2013) he still refuses to admit it 
+is anything more than a minor typo.  
+But I still claim he was wrong.  This is a <i>major</i> foundational error and would force 
+virtually the <i>entire</i> paper 
+to be  rewritten and redone quite differently to have any notable claim for
+relevance and correctness.
+</p><p>
+Another remarkable quote early in Weyl's paper was:
+</p><blockquote>
+While I show that QVB is in some sense uniquely limit-efficient, my goal is <i>not</i>, 
+as in many mechanism design papers, to argue that QVB is exactly optimal or perfectly 
+robust under a well-defined but relatively narrow set of assumptions or criteria. 
+Instead it is to persuade you that, unlike other proposals economists have made 
+(Subsection 6.6), QVB has the robustness and simplicity necessary to be a practical 
+alternative to voting that is superior in many settings.
+</blockquote><p>
+While I agree with the goal (and non-goal) expressed in that quote, the fact is that 
+vast bulk of the immense amount of argumentation in Weyl's paper <i>was</i>
+about trying
+"to argue that QVB is exactly optimal or perfectly 
+robust under a well-defined but relatively narrow set of assumptions or criteria."
+</p><p>
+But it gets worse.
+I also pointed out the <a href="#moneydisc">money-discreteness</a> 
+and "tiny utilities dwarfed by the noise" (and constitutional/legal issues)
+to Weyl &ndash; and the fact that real voters are 
+<a href="MedianVrange.html#twoparty">nowhere near</a> to
+being "rational economic animals"
+&ndash; he claimed those were
+nonsense and some secret analysis he had that he'd left out of his 
+57-page paper (which never mentions any of those issues) shows that &ndash;
+plus human voters merely "overestimate their pivotality density" and aside from that are 
+rational economic animals (which is garbage refuted by overwhelming experimental evidence from
+range and Australian instant runoff voters).
+</p><p>
+<b>In summary</b>, <i>every</i> scientific paper and popular press description I found about
+QVB was  massively wrong and misleading.   So one reason I wrote the present page was
+so that I could actually say something correct.  Another was that I have extended
+their ideas considerably and reached different conclusions.
+</p><p>
+<u><b>The gory details of the massacre:</b></u>
+We begin with <b>Posner.</b>
+A key ingredient of journalism ethics is "full disclosure" of conflicts of interest, defined as
+</p><blockquote>
+The disclosure of any connection between a reporter (or publisher) 
+and the subject of an article that may bias the article.
+</blockquote>
+</p>
+As the 
+<a href="SPJethicsCode.pdf">Society of Professional Journalists Code of Ethics (2013)</a>
+puts it, journalists should "avoid conflicts of interest, real or perceived" and
+"disclose unavoidable conflicts."
+The naive reader of Posner's <i>Slate</i> piece would have thought Posner was just a reporter
+describing a great new politico-economic scientific invention by (the totally 
+unconnected person) Weyl.
+But actually, Posner was <i>not</i> "just a reporter." 
+He was a law professor at University of Chicago,
+the same institution Weyl worked for, i.e. was a faculty colleague of his.
+And not only that, he was a very close colleague.  Posner had in fact coauthored at
+least 7 prior papers, op-eds, etc with Weyl, plus was working with him on at least one paper 
+<i>about this very quadratic vote buying topic</i>.
+This is approximately the most extreme conflict of interest imaginable.
+</p><p>
+(I, in fact, <i>was</i> such a naively-trusting reader for
+about a week before I caught on, and despite having email exchanges with Weyl during this period,
+in which he never mentioned his relationship with Posner.)
+As two random examples of how to behave unethically:
+</p><ol><li>
+Glenn Beck repeatedly used his one-hour weekday
+Fox News forum to encourage viewers to buy gold (even noting that, 
+during one of his broadcasts, the price of gold rose $50/oz). If Beck's  
+had been independent thought and research, then Beck 
+would have been acting as an honest ethical journalist.
+But Beck happened to be a <i>paid spokesman</i> for the gold vendor 
+Goldline International, a fact he rarely if ever disclosed while doing this.
+</li><li>
+Economist John R. Lott Jr. (also once employed by Univ. of Chicago, same department as Weyl), 
+author of
+the interesting albeit controversial book <i>More guns less crime</i>, was often praised on the 
+internet by "Mary Rosh," a former student of Lott's.
+E.g. Rosh wrote one review of Lott's book.
+She not only praised Lott's
+academic writing, but also called him "the best professor I ever had."
+The only problem was that Mary Rosh did not exist, and was a fake persona created
+by Lott himself.
+</li></ol>
+<p>
+As two random examples of how to behave ethically:
+</p><ol><li>
+Joan Connell, writing an article "Alterman's arrest" for 
+<i>The Nation</i> (18 June 2007) about the
+arrest of fellow journalist Eric Alterman at a political debate in New Hampshire,
+stated early in the piece 
+"(full disclosure: I was [Alterman]'s editor at MSNBC.com from 1997 to 2003)"
+and in its first line described him as
+"<i>Nation</i> columnist Eric Alterman."
+</li><li>
+Economist and NY Times columnist 
+Paul Krugman, writing in NYT (24 Jan. 2001) about Energy Deregulation, wrote in
+paragraph #3
+"Full disclosure: Before this newspaper's conflict-of-interest rules required me to resign, 
+I served on an Enron advisory board that turns out to have been a hatchery for future Bush 
+administration officials. (What was I doing there? Beats me.) I can't say that I got to know Mr. Lay 
+well, but I presume that he is an honorable man..."
+But Andrew Sullivan (also a prominent journalist)  attacked Krugman's disclosure as
+ethically inadequate because it did not 
+reveal <i>how much</i> Enron had paid him, which
+(Sullivan claimed) was $50000.
+Krugman later defended himself by noting 
+that since his standard fee for giving a lunch lecture was $20000
+plus travel and boarding expenses,
+his payments from Enron were small by comparison.
+(For comparison, the median income among full-time-employed US women during 2001 
+was $29215.)
+</li></ol>
+<p>
+You can decide for yourself where on this continuum Posner's behavior fell.
+My personal judgment is he should have stated all
+those facts about his relationship with Weyl in paragraph #1, 
+and anything less was unethical; 
+and the icing on the cake was that Posner's article mentioned
+neither "Goeree" nor "Zhang," 
+who appear to be the <i>real</i> inventors of the QVB concept,
+contrary to the quote I repeated above.
+I have no objection to Posner writing puff pieces 
+praising the economic work of himself and his friends;
+but say so up front.  I object to such pieces <i>disguised</i> as independent 
+reporting about bicycle rental schemes.
+</p><p>
+We now move on to <b>Goeree &amp; Zhang.</b>
+The good news is,  G&amp;Z's paper contains two theorems.  The bad news is, 
+each theorem uses undefined terms, I have a counterexample to theorem 1, 
+and I have found at  least two reasons the proof of theorem 2 is wrong.
+</p><p>
+G&amp;Z's Proposition 1:
+"For any symmetric value distribution, the fraction of the total surplus 
+realized by majority voting falls from 1 when the size of the electorate is one to
+lim<sub>n&rarr;&infin;</sub> W<sub>voting</sub>/W<sub>optimal</sub> = E(|v|)/&radic;E(v<sup>2</sup>)
+which is less than 1 (for non-degenerate distributions) by Jensen's inequality. The total 
+surplus loss W<sub>voting</sub>-W<sub>optimal</sub> diverges in the limit."
+</p><p>
+Problems:
+What is "symmetric"? What is "value distribution"?  What is "total surplus"?
+What is "W<sub>optimal</sub>"? What is "non-degenerate"?   
+They never define any of these.   There is a reason theorems only should contain defined words
+and explicitly stated assumptions.  What if I produce a counterexample to their theorem? Will they then say
+"wasn't really a counterexample since (moving definitions and unstated assumptions)"?
+That would not be science.  "Science" is falsifiable.
+</p><p>
+But anyhow, one counterexample to theorem 1 is:
+  N voters. Throw N dice and flip 1 coin (all independent,
+identically distributed, and fair).
+If coin=heads, then every voter has value in {1,2,3,4,5,6} where the Mth
+voter's value arises from dice-roll M.    (Here positive values mean "pro" vote.)
+If coin=tails, then instead every voter has value in {-1,-2,...,-6} similarly.
+This is a symmetric and nondegenerate value distribution.
+In the limit, the majority vote will 100% of time elect
+an outcome favored by all.
+Hence the "less than 1" conclusion of theorem is false.
+Q.E.D.
+</p><p>
+Next, we move on to their only other
+</p><p>
+"Proposition 2. The bidding mechanism is budget balanced and individually rational. For large
+electorates, truthful bidding constitutes a Bayes-Nash equilibrium and
+lim<sub>n&rarr;&infin;</sub> W<sub>bidding</sub>/W<sub>optimal</sub>=1.
+Furthermore, voters of (almost) all types are better off under bidding compared to voting."
+</p><p>
+Problems:
+what are "individually rational," "Bayes-Nash equilibrium," and "almost"
+and "types"?  Again these are not defined in the paper.   
+Again: Using undefined terms in theorem statements is simply
+unacceptable behavior.
+But this proposition actually has a proof provided, unlike prop. 1!
+Hooray. Unfortunately the proof is bogus:
+</p><blockquote>
+QUOTE FROM PROOF:
+Since G(0)=1/2 [probability of election outcome is 50-50 if voter buys zero votes]
+voter i's payoff when she bids zero is equal to the rebate, which is non-negative, so the
+bidding mechanism is individually rational. 
+END QUOTE.
+</blockquote><p>
+No. First of all, G(0)=1/2 is not stated as an assumption plus seems false, i.e. is contradicted by 
+<a href="NonVoters.html">96% of major USA elections</a>. 
+Second, even if we assume it, then I do not understand why
+the fact that a voter's "payoff is non-negative if voter bids zero (i.e. does not vote)"
+logically forces "the bidding mechanism is individually rational. "  
+</p><p>
+Huh??  I mean, essentially <i>every</i> bidding mechanism ever conceived of,
+no matter how rational/not, satisfies <i>that</i>.   So what?
+</p><p>
+Their next sentence is
+"Moreover, for a large electorate, the central limit theorem implies that..."
+which is also wrong in the sense the central limit theorem is not applicable at all
+unless further (never-stated) assumptions are true.   I have no idea whether they
+knew that, or what &ndash; but I will say this: it is unacceptable to leave major
+assumptions out of the theorem statement.
+</p><p>
+So:  both theorems in this Goeree-Zhang paper are (1) refuted, and/or (2) unproven
+and in both cases the theorem statement itself is simply unacceptable.
+</p><p>
+Having dispatched the theory in this paper, we now enquire about
+their <i>experiment</i>.   In this experiment,
+they set up artificial binary election scenarios involving 
+pre-determined and pre-designed
+money payoffs to 250 real voters (depending on the election result; 
+20 preliminary followed by 20
+further elections).
+The scenario was set up so that the voters, in net, would lose money
+if they employed naive simple majority vote.  However by using quadratic vote buying the
+voters with larger amounts to gain could express that fact in their ballots and
+thus could hope to overcome the "tyranny of the majority."
+By means of preliminary elections the voters got used to using the bidding mechanism
+and apparently learned, to at least some extent, to exploit it.
+This worked:   G&amp;Z claim that with 99% statistical confidence, QVB delivered
+more money to the voters than simple majority voting.
+</p><p>
+I.e. that experimentally proved the system works.
+</p><p>
+The problem with that:  The most obvious presumed or suspected flaw in QVB
+involves what happens when the voters are highly financially unequal.  I.e. 
+about 1.4 million USA citizens went bankrupt in the year 2012, and media
+estimates of the number of
+homeless ones ranged from about 300,000 to 3 million.
+Meanwhile other USA citizens are multibillionaires, e.g. Bill Gates, believed
+as of 2013 to be the richest person in the world with $73 billion.
+In contrast, G&amp;Z's 250 experimental subjects all were near equal in life status
+(students at University of Z&uuml;rich and ETH)
+and I doubt included even a single homeless person or multimillionaire (anyhow if
+they did, their paper did not say so).
+G&amp;Z artificially restricted all vote-scores to lie within a set of
+10 specified dollar values, with all others forbidden.
+</p><p>
+In the event all voters are thus made near-equal, then instead what the experiment addresses is 
+not really the QVB system, but rather something more resembling our "procrustean system."
+While I'm happy they've experimentally validated my (probably improved) idea, 
+the problem was the lack of verification of their idea.
+</p><p>
+Finally, we consider the 57-page tome by <b>Weyl.</b>
+On page 7 it says
+</p><blockquote>
+QUOTE:
+the normal distribution (to which the sum of the values of all but one individual 
+converges by the central limit theorem) is well-approximated about its peak 
+by a uniform distribution when the number of individuals, and thus the variance of the 
+distribution, grows large. If such a linear-in-value equilibrium 
+exists for one such quadratic payment
+scheme, it should exist for any, as the multiplier applied to value to generate votes may be 
+"undone" by individuals rescaling the number of votes they purchase linearly. 
+Thus one should expect an asymptotically linear and thus efficient equilibrium to exist.
+END QUOTE.
+</blockquote><p>
+Weyl's cavalier 1-sentence 
+claim about "the central limit theorem" (CLT)
+is (1) utterly wrong
+and unjustified, and (2) foundational for his paper (a huge amount, certainly over
+half, of the paper rests on this 1 sentence).
+</p><p>
+A counterexample 
+is if the "value distribution" were that the Jth voter has value &plusmn;1/J
+with the &plusmn; signs arising from independent fair coin tosses.
+The random variable &sum;<sub>1&le;J&le;N</sub>&plusmn;J<sup>-1</sup>
+is <i>not</i> normally distributed 
+including in the limit where the number N of individuals (summands) tends
+to infinity.
+The usual central limit theorem requires summands to be identically and independently
+distributed.  Of course in the real world of voters, it is absolutely absurd to 
+pretend the voters are identical (in fact Weyl's entire point is that they are not)
+and also it seems rather absurd to claim independence, for example the votes/opinions
+of husbands and wives seem probably dependently distributed, and if any voter sees polls
+about the other voters, she is likely to react (another kind of dependence) probably in
+a manner which destroys normality.
+Of course, as Weyl pointed out to me in email, 
+there are fancier kinds of central limit theorems, but <i>that is irrelevant</i> 
+because the counterexample
+I just gave involves a limit distribution that is <i>not</i> normal
+(which, incidentally, was studied by Rice 1973); hence
+it applies to every possible kind of CLT, that ever existed or ever can exist.
+(Also, while I used the power "-1" for simplicity in the counterexample, 
+any power &lt;&ndash;&frac12; would work.)
+</p><p>
+Is this kind of counterexample a mere "mathematician's monster" or is 
+it plausibly economically/politically realistic?
+The latter.   "Power law" like wealth distributions in 
+which poor citizens are much more common that rich ones,
+and where, e.g. the "top 20% richest own 80% of the total wealth in a country"
+are often seen.
+(Other numbers such as 90-10, and 95-5 have been claimed in different countries 
+or different times; in the 2011 USA the top 20% were estimated to own 84%.
+The 2001 Survey of Consumer Finances found
+the top 1%, next 6.5%, and next 42.5% of USA households 
+each owned about an equal share &ndash; about 32% &ndash; of all the wealth; 
+these equalities would be consistent with the hypothesis that the Jth
+wealthiest household's wealth is proportional to J<sup>-0.63</sup> albeit
+it is inconsistent with the bottom 50% owning 4% of the wealth.)
+<!-- the 4% should have been 23%. -->
+And indeed a real live economic model <i>predicting</i> this 
+kind of power law behavior was published by
+Bouchaud &amp; Mezard 2000.  
+In addition to situations like my counterexample being inside published economic models,
+we now shall show it also resembles actual reality.
+</p>
+<blockquote>
+<b>The "Forbes 400" list</b> of the 400 richest Americans, year 2012.
+(The top 400 super-richest continued to grow in wealth and pull away from the rest of America and
+the merely rich, with only 2 members of the 400 losing wealth versus in 2011.  
+Much of their gains were driven by
+the top three &ndash; Gates, Buffett, and L.Ellison &ndash; alone.)
+Names with asterisks (*) are rich primarily because they inherited it (not that this matters
+for the present purposes).
+The formula in the final column fits the rank to within a factor of 1.64, or 
+equivalently the Jth-richest person in 2012 USA had 
+wealth <nobr><b>W&asymp;$9.5&times;10<sup>10</sup>J<sup>-0.73</sup></b></nobr>
+accurate to within a factor of 1.44 for 
+1&le;J&le;400.  If this were extrapolated to J=3&times;10<sup>8</sup>
+it would predict W&asymp;$61578 which is certainly an overestimate
+(32.5% of USA families had net worth &le;zero in the year 2010 according to Federal Reserve 
+survey data, and one-third of USA citizens do not pay their bills on time
+according to a 2012 National Foundation for Credit Counseling survey)
+<!-- http://www.americanprogress.org/issues/economy/news/2012/08/15/11993/middle-class-economic-security-declines-as-wealth-concentration-increases/ 
+http://www.americanprogress.org/issues/economy/news/2012/08/15/11993/middle-class-economic-security-declines-as-wealth-concentration-increases/
+-->
+suggesting the truest power is not -0.73, but closer to -1 exactly as in my counterexample.
+</blockquote>
+<table bgcolor="aqua" align="center" cellspacing="5">
+<tr bgcolor="yellow"><th>Rank</th><th>Name</th><th>Net Worth $W</th>
+<th>(9.5&times;10<sup>10</sup>/W)<sup>1.37</sup></th></tr>
+
+<tr><td>1</td><td>Bill Gates</td><td>66 billion</td><td>1.64</td></tr>
+<tr><td>2</td><td>Warren Buffett</td><td>46 billion</td><td>2.70</td></tr>
+<tr><td>4</td><td>Charles Koch*</td><td>31 billion</td><td>4.64</td></tr>
+<tr><td>8</td><td>Alice Walton*</td><td>26.3 billion</td><td>5.81</td></tr>
+<tr><td>16</td><td>Forest Mars Jr.*</td><td>17 billion</td><td>10.6</td></tr>
+<tr><td>32</td><td>Anne Cox Chambers*</td><td>10.7 billion</td><td>19.9</td></tr>
+<tr><td>64</td><td>"Richard LeFrak &amp; family"*</td><td>5.2 billion</td><td>53.5</td></tr>
+<tr><td>128</td><td>Ron Burkle</td><td>3.1 billion</td><td>109</td></tr>
+<tr><td>256</td><td>Daniel Gilbert</td><td>1.9 billion</td><td>213</td></tr>
+<tr><td>512</td><td>?</td><td>about 700 million?</td><td>835</td></tr>
+<tr><td>8192</td><td>?</td><td>about 100 million?</td><td>12008</td></tr>
+<!--
+<tr><td>20 million</td><td>??</td><td>about 1 million</td><td>100K</td></tr>
+-->
+</table>
+<p>
+What we are really interested in for our present purposes is more like "disposable wealth"
+or "politically-affected wealth"
+than "wealth" &ndash; e.g. "how much would you be willing to spend to buy votes?"
+and "how much will political election results affect your wealth?"
+&ndash; which are not quite what was modeled nor have they ever been measured.
+I am highly certain that a goodly fraction of registered voters (if polled on this question) 
+would say they were not willing 
+to pay <i>any</i> money to buy votes (the majority of USA citizens do not vote now
+even for free), in which case the contention (which Weyl
+made in email to me) that these amounts were bounded below by a positive constant,
+is refuted.  Weyl also contended the Bouchard-Mezard model "had no variance" which meant it
+was absurd (I think they'd disagree...) and also contended he was an expert on
+wealth distribution and that the real wealth distribution is nowhere near posing any
+problem for CLT (refuted by above data) etc.
+<small>
+Indeed Weyl then had a long list of other bogus arguments he sent me one by one in emails, 
+which I refuted by return mail 
+each time only to receive a new one (some contradicted previous ones, too) &ndash;
+but I'll spare the reader.  I told Weyl he needed to discard dependence on the
+CLT entirely and outlined how to do so, but he vehemently denied this, which is why I did
+it here.  Normality perhaps could be justified experimentally after long experience but
+seems beyond hope of mathematical proof under realistic assumptions, 
+or anyhow if there can be such a proof, Weyl's 57-page paper
+clearly had no idea whatever how to produce it. I also have no idea how to produce it
+(although I do know how to produce more counterexamples to various attempts).
+</small>
+</p>
+
+<a name="s13"></a>
+<h3>13. Honesty-Inspiring Economic "mechanisms" more generally </h3>
+
+<p>
+More generally, economists have been busily awarding each other Nobel prizes for decades
+for inventing Honesty-Inspiring Economic/Financial "Mechanisms."
+One of the earliest and most famous was the
+<a href="http://en.wikipedia.org/wiki/Vickrey_auction">Vickrey Second-Price Auction</a>, 
+published in 1961.
+</p><p>
+But, oddly enough, in spite of the praise economists 
+have heaped upon each other for these inventions, the
+rest of the world has been remarkably uninterested in actually using them.
+For example, the Vickrey auction has rarely been used 
+in spite of seeming one of the simplest and most-practical of them all, and in spite of the 
+fact that auctions happen every day, and in spite of it being over 50 years old
+and awarded a Nobel prize.
+(Indeed the main users, to the limited extent Vickrey auctions have been used up to 2013,
+seem to be in the internet/tech community, not the financial community, despite
+the latter having a much greater number of economics degrees.)
+In many cases, these mechanisms suffer severe 
+problems in the real world which the economists
+awarding the Nobels mainly studiously ignored
+[Rothkopf 2007].   (Incidentally, the computer scientists who figured out how
+to satisfy the Vickrey auction's anti-fraud, verification and secrecy demands 
+via advanced cryptography in my opinion did <i>far</i> more difficult work than
+Vickrey, indeed I doubt Vickrey even could have understood it, but got no Nobel
+since the economists did not regard them as "one of us.")
+</p><p>
+The present voting-with-money example (as well as the older
+<a href="CTT.html">Clarke-Tideman-Tullock voting</a> which had many of the same problems)
+is yet another episode (worse than usual) of that recurring bad soap opera.
+It might be interesting to review the mechanisms area to see which ones really do have
+practical interest, why the failures failed, and what lessons we should draw from this.
+</p><p>
+One possible idea would be to monetize, not highest-average-wins range voting
+but rather the "greatest <b>median</b> score wins" system.   As a concrete proposal to consider
+(I am not saying I advocate this):
+</p><ol>
+<li>
+Each voter as her ballot assigns a non-negative dollar amount to each candidate X ("how much
+it is worth to me for X to win election").
+</li><li>
+The candidate W with the greatest median value wins.
+</li><li>
+All voters who rated W above median, now <i>pay</i> some amount.  
+One payment scheme is: the amount is W's median value.
+An alternative payment scheme which presumably would obtain more revenue is: 
+each such voter pays the amount bid by the voter immediately below
+her's in sorted-by-W-bid increasing order. 
+</li></ol>
+<p>
+This scheme has the disadvantage that it elects the "wrong" person (economists presumably
+would contend the candidate with the greatest <i>summed</i> money value, not
+the greatest <i>median</i>, should win).  
+Also, it still would seem to succumb to the <a href="#aparth">apartheid example</a>.
+</p><p>
+However, on the plus side, it would appear to incentivize 
+<i>honest</i> dollar-assessments as votes, which might overall outperform 
+a "better" voting system contaminated by many dishonest votes
+(or we could at least hope this).  
+Also, the payment amounts involved would be far larger than the ridiculously small ones
+arising in our quadratic-money-voting <a href="#moneydisc">examples</a>, now causing
+an actual relation to reality and real incentives for voter honesty.
+The reason this is possible is this scheme does <i>not</i> fall into the straightjacket
+of the systems we described in the Abstract, i.e. the price you pay does <i>not</i>
+depend solely on your ballot and who wins, but <i>also</i> depends on the behaviors of
+the other voters.
+</p><p>
+But unfortunately, the whole appearance that this method "incentivizes honest voting"
+is <i>false</i> in this sense: 
+a voter could argue "my chance of affecting the election outcome is small, but my expected payment 
+(with honest voting) is large, therefore, a better strategy for me is not to vote at all."
+This failed design experience suggests the following (admittedly vaguely worded)
+</p><a name="monetfails"></a><p>
+<b>IMPOSSIBILITY CONJECTURE FOR MONETIZATION:</b>
+There is no reasonable way to monetize any reasonable voting method for large elections,
+in such a way as to incentivize honest voting more than every other kind, and/or
+to ensure election of the optimal winner if all voters behave economically rationally.
+</p><p>
+PROOF SKETCH:
+In any reasonable election method with a large number of voters, any
+single voter's chance of affecting the outcome, is tiny.
+That implies that (for almost all voters)
+her expected profit from voting optimally (versus not voting at all,
+or voting sub-optimally) is tiny.  That implies that either
+</p><ol type="a"><li>
+The monetization must impose profit/loss |amount|s far larger than the 
+expected utilities for voting,
+</li><li>
+Or they must be comparable or smaller.
+</li></ol>
+<p>
+If (b) then it is economically irrational for typical voters to vote at all,
+the profit motive will be swamped by other economic and non-economic effects, etc.
+If (a) with large possible losses 
+then voting becomes financially risky and poor voters will be motivated to avoid
+that risk by not voting.  Also if the whole idea of monetization is to encourage voter honesty,
+then there always is a trade-off faced by voters of being strategic to increase
+election-altering chances and thus get more expected profit, versus costs imposed
+by the monetized voting system which counteract that.  It appears inherently
+impossible to make optimizing this trade-off always incentivize honest voting,
+unless the imposed costs are of the same order of magnitude as the voter's
+expected profit without monetization.
+<br>END OF PROOF SKETCH.
+</p><p>
+That was, of course, nowhere near being a genuine proof and the 
+words "reasonable" and "honest" were not defined (and for a fully general voting system, seem
+hard to define).  Nevertheless this obstacle seems difficult to overcome.
+</p><p>
+A possible way to solidify this impossibility conjecture
+would be to argue that for any voting system based
+on a ratings-style ballot and involving a price function of that ballot alone, then
+(within reasonable probability models)
+systems like the ones discussed in the present paper are mathematically forced;
+and then finally prove they then must always encounter
+at least one of the problems we've discussed.
+</p><p>
+Another idea was A.Casella et al's 
+<a href="http://en.wikipedia.org/wiki/Storable_Votes">storable votes</a>.
+This would probably be a logistical nightmare if used over
+long time periods involving many elections, plus seems to be fixing something that is not broken.
+Also both this and the median-based 
+proposal might fall victim to initiatives worded 
+basically to try to bribe a minority to vote some special interest some advantage.
+<small>(I thank Jameson Quinn, Tracy Goodwin, and A.u-R. Lomax for these points.)</small>
+</p><p>
+But anyhow, in <i>multi</i>winner elections 
+(which are <a href="PropRep.html">common</a>
+in many countries, although not the USA) one could imagine 
+"storable votes" of some ilk as <i>pseudo-money</i> just usable in that one (multi)election.
+Every voter could be given the same amount of pseudo-money at the start of the election
+(since it would not be real money, rich voters would have no advantage) 
+and then honesty-encouraging "mechanisms" could be used.
+In this way, objections about paying real money to vote would vanish, and so would
+objections about the "logistical nightmare" of storing votes between elections.  
+And indeed, an extremely practical multiwinner 
+voting system of the resulting kind was already proposed (by me, among others):
+&quot;<a href="Asset.html">asset voting</a>.&quot;
+</p>
+
+<a name="s14"></a>
+<h3> 14. Late-breaking news about earlier works (this section added Oct. 2014) </h3>
+
+<a name="hznote"></a>
+<p>
+It turns out the quadratic vote buying idea was due <i>neither</i> to Weyl 2013
+nor to Goeree &amp; Zhang 2012... in the sense that it had been described in an
+unpublished, but nevertheless fairly well known, 
+<a href="HylZeck1980.pdf">paper</a> by 
+Hylland &amp; Zeckhauser 1980!  (Weyl was born in 1985.)
+I thank Nicolaus Tideman for pointing this out to me; these were not cited
+by Goeree/Zhang.
+</p><p>
+Also, I note that in a 
+<a href="https://groups.google.com/forum/#!topic/electionscience/8dcPok2W1Gs#!topic/electionscience/8dcPok2W1Gs">2010 post</a>
+to the Center for Election Science, I already had put forward the possible idea of vote-buying
+using "pseudo-money" whose "value" would arise from its usefulness for future voting.
+That is, in a <i>multi</i>winner election scheme, your vote would cost you
+some amount of pseudo-money, and the more it cost, the less you would have left to affect
+further winners.   This idea has the potential to overcome several of the
+objections to the vote-with-money schemes we've discussed here 
+vis-a-vis single-winner elections only.
+</p>
+
+<a name="s15"></a>
+<h3>15. References </h3>
+
+<p>
+Scott Bittle &amp; Jonathan Rochkind:
+<a href="Voters-Experiences-in-2008_0.pdf">Voters' Experiences
+in 2008 and the Future of Engagement</a>,
+<i>Public Agenda</i> Report, 15 January 2009.
+</p><p>
+Jean-Philippe Bouchaud &amp; Marc Mezard:
+<a href="http://arxiv.org/abs/cond-mat/0002374">
+Wealth condensation in a simple model of economy</a>,
+Physica A 282 (2000) 536-545.
+</p><p>
+Alessandra Casella:
+Storable Votes: Protecting the Minority Voice, Oxford University Press 2011.
+</p><p>
+Jacob K. Goeree &amp; Jingjing Zhang:
+<a href="GoereeZhangMar2013.pdf">Electoral Engineering, one man, one bid</a>,
+there are at least three versions of this  paper on the internet, dated
+9 July 2012, 27 August 2012, and 18 March 2013.
+(I'm told this paper was presented at some conference, but if so I do not know the details.)
+</p><p>
+Aanund Hylland &amp; Richard Zeckhauser:
+<a href="HylZeck1980.pdf">A mechanism for selecting public goods
+when preferences must be elicited</a>,
+unpublished paper, Harvard, 1980.
+A 1979 version of this paper was discussed in &sect;8.3 of Dennis C. Mueller: 
+<a href="http://www.amazon.com/Public-Choice-III-Dennis-Mueller/dp/0521894751">Public choice III</a>,
+Cambridge University Press 2003,
+as well as at the web page
+<a href="http://www.accuratedemocracy.com/q_hz.htm">
+http://www.accuratedemocracy.com/q_hz.htm</a> dated "1996-2013" 
+written by Robert Loring.
+</p><p>
+J. Morgan Kousser:
+The shaping of Southern politics: 
+suffrage restriction and the establishment of the one-party South, 1880-1910,
+Yale University Press, New Haven 1974.
+</p><p>
+<!--
+http://www.slate.com/articles/news_and_politics/view_from_chicago/2013/06/new_york_s_bike_share_try_quadratic_vote_buying_to_figure_out_if_people.html
+-->
+Eric A. Posner:
+<a href="PosnerSlateVoteBuy.html">The Good Way to Buy Votes</a>,
+<small>
+Did New Yorkers really want bike sharing? The city should have tried 
+Quadratic Vote Buying to figure that out. </small>
+<i>Slate</i>, 5 June 2013.
+</p><p>
+Stephen O. Rice:
+Distribution of &sum;a<sub>n</sub>/n, 
+a<sub>n</sub> randomly equal to &plusmn;1,
+Bell System Tech. J. 52,7 (Sept. 1973) 1097-1103.
+</p><p>
+Michael H. Rothkopf:
+<a href="rothkopf_article.pdf">Thirteen Reasons 
+Why the Vickrey-Clarke-Groves Process Is Not Practical</a>,
+Operations Research 55,2 (March-April 2007) 191-197.
+</p><p>
+E. Glen Weyl:
+<a href="Weyl-SSRN-id2003531.pdf">Quadratic Vote Buying</a>,
+Social Science Research Network paper 2003531, dated
+1 April 2013.
+</p>
+
+
+<br>
+<p><a href="BogusBeeQV.html">More bilge from Weyl: he publishes false claims honeybees use quadratic voting</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

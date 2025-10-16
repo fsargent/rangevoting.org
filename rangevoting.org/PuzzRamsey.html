@@ -1,0 +1,420 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - Answer to puzzle #27
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Partial Answer to Puzzle #27: A Ramsey-like quantity </H2>
+
+<p><small>by Warren D. Smith with extra contributions/improvements by Geoff Exoo</small></p>
+<p>(<a href="RangeVoting.html">Return to main page</a>)</p>
+
+<p>
+<b>
+Puzzle #27 &ndash; A quantity like the "Ramsey numbers" but defined for
+directed rather than undirected graphs.</b>
+Let R(n) denote the smallest number Q such that every 
+tournament with &ge;Q players
+(i.e, complete directed graph on &ge;Q nodes) 
+contains an acyclic n-player subtournament.
+Re-expressed in voting-theory language:
+R(n) is the smallest number Q of candidates in a ranked-ballot election,
+such that it is guaranteed that at least one subset 
+containing at least n of those candidates can be unambiguously 
+ranked in relation to one another!
+Find values of R(n),  upper and lower bounds,  and asymptotic behavior.
+In particular, prove that R(n) grows exponentially with n.
+</p>
+
+<p>
+<b>Answer:</b>
+This is a difficult problem.  The table gives the best upper and lower bounds I know:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> n </th>
+<td> 0 </td>
+<td> 1 </td>
+<td> 2 </td>
+<td> 3 </td>
+<td> 4 </td>
+<td> 5 </td>
+<td> 6 </td>
+<td> 7 </td>
+<td> 8 </td>
+<td> 9 </td>
+</tr>
+<tr>
+<th> R(n) </th>
+<td> 0 </td>
+<td> 1 </td>
+<td> 2 </td>
+<td> 4 </td>
+<td> 8 </td>
+<td> 14 </td>
+<td> 28</td>
+<td> 32-54 </td>
+<td> 48-108 </td>
+<td> 84-216 </td>
+</tr>
+<tr  bgcolor="aqua">
+<th> n </th>
+<td> 10 </td>
+<td> 11 </td>
+<td> 12 </td>
+<td> 13 </td>
+<td> 14 </td>
+<td> 15 </td>
+<td> 16 </td>
+<td> 17 </td>
+<td> 18 </td>
+<td> 19 </td>
+</tr>
+<tr bgcolor="aqua">
+<th> R(n) </th>
+<td> 108-432 </td>
+<td> 112-864 </td>
+<td> 200-1728 </td>
+<td> 272-3456 </td>
+<td> 368-6912 </td>
+<td> 444-13824 </td>
+<td> 620-27648 </td>
+<td> 660-55296 </td>
+<td> 972-110592 </td>
+<td> 1260-221184 </td>
+</tr>
+</table>
+
+<p>
+<b>Obviously:</b>
+R(n)&ge;n.
+</p>
+<p>
+<b>Increasingness:</b>
+R(n)&ge;R(n-1)
+<br>
+because the n-player acyclic tournament contains an (n-1)-player one.
+</p>
+<p>
+<b>Slightly less obviously:</b>
+R(n)&ge;R(n-1)+2 &nbsp; for &nbsp; n&ge;3
+<br>
+because add two new vertices A,B
+to a tournament without acyclic (n-1)-node subtournaments,
+(A is "above" everybody, B is "below," except that B beats A)
+to get one without acyclic n-noders.
+</p>
+
+<p>
+<b>An upper bound:</b>
+R(n)&le;2R(n-1)
+<br>
+because: among the R=R(n) players, find a player with the most-extreme
+maximum or minimum score (whichever is furthest
+from the mean).  Then an n-player acyclic subtournament consists of that player
+(whom we suppose wlog has <i>max</i>imum score) plus the largest
+acyclic subsubtournament among all the players he beat &ndash;
+and there must be at least ceiling((R-1)/2) of them.
+</p>
+<p>This also may be proven (albeit less constructively) in a divide-and-conquer manner.
+An immediate consequence of R(7)&le;54 is an exponential upper bound 
+<center>
+R(n) &le; 54&middot;2<sup>n-7</sup> &nbsp; for &nbsp; n&ge;7.
+</center>
+</p>
+
+<p>
+<b>A lower bound:</b>
+Consider a <i>random</i> V-player tournament (each game result determined by
+a coin flip).  The expected number of n-player acyclic subtournaments, is
+E=2<sup>(1-n)n/2</sup>(V-n+1)(V-n+2)...(V-1)V.
+If V is too small, then E&lt;1, in which case there must exist <i>some</i> tournament
+below or equal to the expectation, i.e. having <i>zero</i> n-player acyclic subtournaments.
+Hence R(n) must be greater than any such V.  In other words, we have demonstrated the
+lower bound 
+<center>
+(R-n+1)(R-n+2)...(R-1)R &ge; 2<sup>(n-1)n/2</sup>
+</center>
+on R(n).  This may be slightly weakened (this may be justified
+by considering the concave-down nature of the logarithm function)
+to the simpler form
+<center>
+R(n) &ge; (n-1)/2 + 2<sup>(n-1)/2</sup> &nbsp; for &nbsp; n&ge;1.
+</center>
+</p>
+
+<p>
+<b>Improvement I:</b>
+By using "improved randomness" we can
+improve the first lower bound above by
+a multiplicative factor asymptotic to &radic;2.
+</p>
+
+<p>
+<b>Improvement II:</b>
+What works a further factor of &radic;2
+better is to use the <i>Lovasz Local Lemma</i>,
+(LLL), one convenient form of which (R.L.Graham, B.L.Rothschild, J.Spencer: <i>Ramsey Theory</i>,
+Wiley 1980, p.77 &amp; 80)
+is this:  Suppose you have some events 
+A<sub>1</sub>,
+A<sub>2</sub>,...,
+A<sub>q</sub>
+with dependency graph &Gamma; whose maximum valency is &Delta;.
+If  e&middot;Prob(A<sub>j</sub>)&lt;1/(&Delta;+1)
+for all j, 1&le;j&le;q, where e=2.71828...,
+then
+<center>
+Prob(all of the A<sub>j</sub> are simultaneously false) &gt; 0.
+</center>
+</p>
+<p>
+<b>Theorem:</b>
+For any constant C&gt;1 we have
+<center>
+C&middot;R(n) &gt; 2<sup>(n+1)/2</sup> &nbsp; for all sufficiently large n.
+</center>
+</p>
+<p>
+<b>Proof:</b>
+Again use the random tournament on R nodes.
+Index the n-node subsets from 1 to q=(R choose n).
+Let A<sub>j</sub> be the event that that subset is an acyclic subtournament.
+A<sub>i</sub> is independent of
+A<sub>j</sub> unless
+the two subsets share &ge;2 nodes.
+So the maximum valency of the dependency graph is
+<center>
+&Delta; 
+= 
+&sum;<sub>2&le;j&le;n-1</sub> (n choose j)(R-j choose n-j) 
+&le; 
+(n choose 2)(R choose n-2)
+&le; 
+(n choose 2)R<sup>n-2</sup>/(n-2)!
+</center>
+Now the Lovasz local lemma (together with trivial bounds on binomial coefficients)
+is used to see that the theorem is valid:
+if R were below
+the theorem's lower bound by a factor of C, then the LLL would be applicable 
+&ndash; when n&rarr;&infin; 
+the condition for applicability is (up to lower order terms
+we ignore, and we have used Stirling's approximation)
+<center>
+R<sup>n-2</sup> (n<sup>4</sup>/2) 2<sup>-(n-1)n/2</sup> &lt; e<sup>-1</sup>
+</center>
+which is indeed true for all sufficiently large n if C is any constant with C>1 &ndash;
+causing the probability
+that there is no n-node acyclic subtournament to be positive, meaning
+some R-vertex tournament would exist without an
+n-node acyclic subtournament, which would be a contradiction.
+Q.E.D.
+</p>
+
+<p>
+<b>Gap:</b>
+Unfortunately there is, when n&rarr;&infin;, a huge gap between our
+lower and upper bounds on R(n).  (Both grow exponentially, but with different growth factors.
+The upper bound is asymptotically roughly the <i>square</i> of the lower bound.)
+The lower bound, is however,  <i>effectively</i> true 
+in the sense that tournaments with a factor C more vertices than our lower bounds on R(n),
+<i>usually</i> contain acyclic n-node subtournaments, with exceptional tournaments
+(if any) being
+exponentially (in C) rare.
+</p>
+
+<p>
+<b>Better lower bounds for small n:</b>
+can be obtained by construction and examination of specific tournaments.
+The "examination" part has been done exhaustively by computer for all the n&ge;7
+in the table below.
+Particularly important are the "QRgraph(P)" tournaments also found in the answer to
+<a href="PuzzDG.html">puzzle 21</a>: these have P players and player i beats player j if
+i-j is a nonzero square in the finite field with P elements (and P is a prime power
+of the form 4k-1).
+The computer has a particularly easy time examining these, because, since they have
+an "arc-transitive automorphism group," the computer may assume wlog that
+the arc 0&rarr;1 is exactly the top two players in the acyclic subtournament.
+One also tends to suspect that such highly-symmetric tournaments will result in
+large lower bounds on R(n) because, due to their symmetry, "every arc is the same,"
+and hence the construction, intuitively speaking, "has no exploitable weak spots."
+<small>For the same reason, the <i>undirected</i> QRgraph(P) for prime-power P of form 4k+1
+often yield good lower bounds on <i>un</i>directed graph Ramsey numbers.</small>
+</p>
+<p>
+Another interesting highly symmetric kind of tournament is FRgraph(P,M).
+These have P players and player i beats player j if
+i-j is either a nonzero fourth power, or one times M, 
+in the finite field with P elements, where P is a prime power
+such that a genuine noncontradictory tournament is generated.
+(This construction works for P of the form 8k+5.)
+</p>
+<p>
+My computer
+performed exhaustive examinations of QRgraph(P) for all prime P 
+of form 4k-1 with P&le;600 plus some additional P up to 700;
+of FRgraph(P,M) for all prime P of form 8k+5 and all M with P&le;200;
+and of 99 random circulant tournaments mod P for each odd P&le;121.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#eeffee">
+<tr>
+<th> n </th>
+<th> R(n)&ge; </th>
+<th> The tournament that shows it </th>
+</tr>
+<tr><td> 3 </td><td> 4 </td><td>
+The 3-cycle &ndash; also known as QRgraph(3).
+</td></tr>
+<tr><td> 4 </td><td> 8 </td><td>
+QRgraph(7), i.e. the circulant digraph mod 7 with increments {1,2,4}.
+This is the unique 7-node tournament demonstrating R(4)&ge;8.
+(Also, deleting one node gives the unique 6-node tournament free of 
+acyclic 4-node subtournaments [Sanchez-Flores 1998 P2.1].)
+</td></tr>
+<tr><td> 5 </td><td> 14 </td><td>
+FRgraph(13,2), i.e. the circulant digraph mod 13 with increments {1,3,9,2,6,5}.
+One inextensible 4-node acyclic subtournament is (0,1,2,3), but
+there also are others, e.g. (0,1,3,6), and you need to examine
+every one to verify inextensibility in all cases.
+This is the unique 13-node tournament demonstrating R(5)&ge;14.
+(Also, deleting one node gives the unique 12-node tournament free of 
+acyclic 5-node subtournaments [Sanchez-Flores 1998 Thm 3.4].)
+</td></tr>
+<tr><td> 6 </td><td> 28 </td><td>
+QRgraph(27), which has this <a href="Tourn27.html">adjacency matrix</a>.
+This is 
+the <i>unique</i> 27-node tournament free of 
+acyclic 6-node subtournaments [Sanchez-Flores 1994].
+(Also, deleting one node gives the unique 26-node tournament free of 
+acyclic 6-node subtournaments [Sanchez-Flores 1998 Thm 4.3].
+One might speculate based on 27=3<sup>3</sup> this that the non-circulant QRgraphs
+QRgraph(243=3<sup>5</sup>) and QRgraph(343=7<sup>3</sup>) 
+also might be spectacularly good, but in fact neither
+leads to a record bound.)
+</td></tr>
+<tr><td> 7 </td><td> 29 </td><td>
+FRgraph(29,2), i.e. the circulant digraph mod 29 with increments
+{1,2,3,7,11,14,16,17,19,20,21,23,24,25}.
+One inextensible 6-node acyclic subtournament is (0,1,2,25,21,3).
+</td></tr>
+<tr><td> 7 </td><td> 30 </td><td>
+By adding two nodes to QRgraph(27).
+</td></tr>
+<tr><td> 7 </td><td> 32 </td><td>
+Cyclic graph mod 31 with increments {2,3,6,10,11,13,15,17,19,22,23,24,26,27,30}.
+One inextensible 6-node acyclic subtournament is (0,2,13,24,15,26).
+This is interesting because it outperforms QRgraph(31), which contains
+acyclic 7-vertex subtournaments.  [Sanchez-Flores 1998 claims our example
+here is unique up to isomorphism among circulant tournaments.]
+</td></tr>
+<tr><td> 8 </td><td> 48 </td><td>
+QRgraph(47)=FRgraph(47,2), i.e. increments 
+{1,2,3,4,6,7,8,9,12,14,16,17,18,21,24,25,27,28,32,34,36,37,42} mod 47. 
+One inextensible 7-node acyclic subtournament is (0,1,3,9,37,17,4).
+[Sanchez-Flores 1998 claims our example
+here is unique up to isomorphism among circulant tournaments; and based on
+an exhaustive search of all circulant tournaments with &le;55 nodes, this
+appears to be the unique largest circulant tournament free of 8-node
+acyclic subtournaments.]
+</td></tr>
+<tr><td> 9 </td><td> 84 </td><td>
+QRgraph(83)=FRgraph(83,3), i.e. increments 
+{0,1,3,4,7,9,10,11,12,16,17,21,23,25,26,27,28,29,30,31,33,36,37,38,40,41,
+44,48,49,51,59,61,63,64,65,68,69,70,75,77,78,81} mod 83.
+One inextensible 8-node acyclic subtournament is (0,1,4,29,65,30,11,41).
+</td></tr>
+<tr><td> 10 </td><td> 108 </td><td>
+QRgraph(107).
+One inextensible 9-node acyclic subtournament is (0,1,4,34,14,37,53,48,90).
+</td></tr>
+<tr><td> 11 </td><td> 110 </td><td>
+By adding two nodes to QRgraph(107).
+</td></tr>
+<tr><td> 11 </td><td> 112 </td><td>
+Shown by
+<a href="Exoo111.txt">this tournament</a>
+found by Geoff Exoo using Cayley directed graph from nonAbelian group of order 3*37=111.
+</td></tr>
+<tr><td> 12 </td><td> 200 </td><td>
+QRgraph(199).
+One inextensible 11-node acyclic subtournament is (0,1,2,51,91,64,52,53,116,104,117).
+</td></tr>
+<tr><td> 13 </td><td> 272 </td><td>
+QRgraph(271).
+One inextensible 12-node acyclic subtournament is 
+(0,1,2,63,11,79,140,36,177,64,80,81).
+</td></tr>
+<tr><td> 14 </td><td> 368 </td><td>
+QRgraph(367).
+One inextensible 13-node acyclic subtournament is 
+(0,1,2,15,33,214,324,51,74,106,9,64,16).
+</td></tr>
+<tr><td> 15 </td><td> 444 </td><td>
+QRgraph(443).
+One inextensible 14-node acyclic subtournament is 
+(0,1,4,107,169,371,221,237,272,423,42,351,145,360).
+</td></tr>
+<tr><td> 16 </td><td> 588 </td><td>
+QRgraph(587) [suboptimal].
+One inextensible 15-node acyclic subtournament is 
+(0,1,10,26,195,189,211,262,511,574,220,290,205,457,279).
+</td></tr>
+</td></tr>
+<tr><td> 16 </td><td> 620 </td><td>
+QRgraph(619).
+One inextensible 15-node acyclic subtournament is 
+(0,1,5,36,187,564,25,125,226,232,166,431,356,211,436).
+</td></tr>
+<tr><td> 17 </td><td> 660 </td><td>
+QRgraph(659).
+Computed by Geoff Exoo; also Sanchez-Flores 1998 table 2.
+</td></tr>
+<tr><td> 18 </td><td> 972 </td><td>
+QRgraph(971).
+Computed by Geoff Exoo; also Sanchez-Flores 1998 table 2.
+</td></tr>
+<tr><td> 19 </td><td> 1260 </td><td>
+QRgraph(1259).
+Computed by Geoff Exoo.
+</td></tr>
+</table>
+
+<p>
+<b>Previous work:</b>
+All our tournaments here with &le;28 nodes were constructed by (and what is more impressive,
+proven optimal, i.e. the lower bound on R they yield is also an upper bound) by
+E.T.Parker &amp; K.B.Reid: 
+Disproof of a conjecture of Erd&ouml;s and Moser on Tournaments, 
+J.Combinatorial Theory 9 (1970) 225-238,
+and then that work was redone in a simpler fashion by
+V.Neumann-Lara: A short proof of a theorem of Reid and Parker on Tournaments,
+Graphs &amp; Combinatorics 10 (1994) 363-366
+and
+A. Sanchez-Florez: 
+On tournaments and their largest transitive subtournaments, 
+Graphs &amp; Combinatorics 10 (1994) 367-376.
+Later Sanchez-Flores wrote
+"On tournaments and their largest transitive subtournaments", Graphs &amp; Combinatorics
+14 (1998) 181-200, which seems to include the latest and greatest results
+and gives independent confirmation of many of our &amp; Exoo's computations here.
+Parker and Reid also showed the upper bound R(7)&le;55, which
+[Sanchez-Flores 1998 Thm 4.7] improved to R(7)&le;54,
+from which all our other upper bounds on R(n) for n&ge;7 follow.
+</p>
+<p>
+Our lower bound on R(n) in the theorem appears to be new and asymptotically stronger
+than previous results.  However the underlying LLL technique inside its
+proof was previously known (comes from some combination of P.Erd&ouml;s, L.Lovasz, and 
+J.Spencer).
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

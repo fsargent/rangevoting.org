@@ -1,0 +1,791 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Simmons Smith Proofs
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+A proof that range voting
+satisfies certain criteria that <i>no</i> 
+ranked-ballot voting method can satisfy
+</H2>
+
+<p>
+<small>
+For a formal scientific paper that does the same stuff as this web page,
+see paper #98 <a href="WarrenSmithPages/homepage/works.html">here</a>.
+<br><a href="RangeVoting.html">Return to main page</a>
+</small>
+</p>
+
+<p>
+We begin with some proofs that (essentially)
+range voting satisfies both AFB ("avoids favorite betrayal")
+and ICC ("immune to candidate cloning") but that no voting method based on rank-order
+ballots can satisfy both.  Later we give a long list of theorems, each of
+which exhibits an interesting set of
+criteria which no voting method based on rank-order
+ballots can satisfy &ndash; but in each case, range voting satisfies them all.
+In <i>some</i> of these theorems (which we shall note),
+rank-equalities are permitted in the rank-order ballots.
+</p>
+<pre>
+Warren D. Smith's proof that (for pure rank ballots) ICC & AFB incompatible (essentially):
+
+<b>Theorem:</b>
+These four criteria, for a voting system which inputs pure-rank-order-ballots and
+outputs the name of a winner (or a set of co-equal winners to be chosen among by random
+tiebreak), are incompatible:
+a1. AFB = avoids favorite betrayal
+a2. ICC = immune to candidate cloning
+a3. no vetoer = There does not exist a voter who can single-handedly prevent a candidate
+    of her choice from winning, regardless of how the other voters vote.
+a4. neutrality = symmetry under candidate renaming = permuting the candidate names 
+   on the ballot rankings permutes their winning probabilities in the same way.
+
+<b>Equivalent Theorem:</b>
+These six criteria, for a single-winner voting system based on
+pure-rank-order-ballots, are incompatible:
+a1. AFB = avoids favorite betrayal
+a2. ICC = immune to candidate cloning
+a3. reduces to simple majority vote in 2-candidate case.
+   As we shall discuss below, due to Campbell-Kelly 2003 this criterion can be replaced by
+   the demand that a "vetoer" does not exist (i.e. no voter exists, who can singlehandedly
+   prevent any candidate X he chooses from winning, regardless of all the other votes)
+   and the demand that the system be deterministic (chance is not employed except where 
+   required by symmetry, i.e in the case of true ties; or, better, we can regard any system
+   obeying a5 as being 100% deterministic but simply outputting tied-winner <i>sets</i>; this 
+   interpretation is also ok), and the demand it be based on rank-order ballots.  
+   And this replacement is desirable since you get a stronger theorem.
+   But leaving a3 as is, is convenient for the purposes of the proof below.
+a4. neutrality = symmetry under candidate renaming = permuting the candidate names 
+   on the ballot rankings permutes their winning probabilities in the same way
+a5. method is deterministic aside from tiebreaks which (if any) are random 
+    [this axiom can be subsumed into the definition of "voting system".  
+     It is simplest, but is not actually necessary, for the tiebreaking to give
+     equally likely win probabilities to all co-winners; it actually will suffice
+     for us if the probabilities are fixed and positive for each co-winner in each scenario.]
+a6. adding a new candidate to the election whom all voters unanimously rank unique-bottom, 
+does not change the winner.
+    Actually, a6 can be dropped too if we are using Campbell-Kelly 2003 to replace a3 
+with "no vetoer."  That is because we shall only use a6 in a 3-candidate situation with an
+odd number of voters where removal of the always-ranked-last candidate yields 2-candidate
+simple majority vote; and those situations were already covered by the CK 2003 theorem.
+
+<b>Notes about criterion 3 (simple majority rule in 2-candidate case):</b>
+   Actually, this is a consequence of determinism, neutrality,
+   anonymity and positive responsiveness [voting for A top breaks an A-containing perfect 
+   tie in favor of A, plus monotonicity] and hence really is NOT NEEDED per se 
+   [thanks to Forest Simmons for pointing that out]
+May's theorem on 2-candidate elections:
+A group decision function meets 1, 2, and 3 below
+if and only if it is the simple majority method:
+    1* It is symmetric under permuting the voters. (anonymity)
+    2* Reversing each preference reverses the group preference. (neutrality)
+    3* If the group decision was 0 or 1 and a voter raises a vote from -1 to 0 or 1 
+       or from 0 to 1, then the group decision is 1. (positive responsiveness)
+[Kenneth O. May: A set of independent necessary and sufficient conditions for simple 
+majority decision,  Econometrica 20,4 (1952) 680-684.
+Mark Fey: <a href="FeyMay.pdf">May's theorem with an infinite population</a>, 
+Social Choice and Welfare 23,2 (2004) 275-293.
+T.N.Tideman: A majority-rule characterization with multiple extensions,
+Social Choice & Welfare 3 (1986) 12-30.]
+  Also, even better, simple majority rule in 2-candidate case
+  is a consequence of AFB (actually strategyproofness, but this is the same as AFB in <!--oh???-->
+  the 2-candidate rank-equality-forbidden case with odd#voters, and "odd" is the only parity
+   we shall need) and non-dictatorship (which is implied by the nonexistence of a vetoer)
+   and determinism:
+[Donald E. Campbell & Jerry S.Kelly: 
+<a href="CampbellKelly2003.pdf">A strategy-proofness characterization of majority rule<a>,
+Economic Theory 22 (2003) 557-568]
+   Both the May and Campbell-Kelly results above have versions that work even if equal rankings 
+are allowed in ballots, incidentally.
+   Also, majority-rule is a consequence of Neutrality, Anonymity, Pareto criterion (if all voters 
+   say A>B then B cannot win), odd number of voters,
+   and Independence of Irrelevant Alternatives
+[E.S.Maskin: Majority rule, social welfare functions, and game forms. In: K.Basu,
+P.K.Pattanaik, K.Suzumura (eds.) Choice, welfare, and development. Oxford Clarendon Press 1995]
+   a result which was improved by
+[D.E. Campbell & J.S. Kelly: A simple characterization of majority rule, 
+Economic Theory 15,3 (2000) 689-700].
+   Two more characterizations, both of which strike me as somewhat silly, are
+[G.Asan & M.R.Sanver: 
+<a href="http://www.sciencedirect.com/science/article/B6V84-44XK6WF-1/2/b04ce3256585bfb823d7c93ce367955c">Another characterization of the majority rule</a>, 
+Economics Letters 75,3 (2002) 409-413.]
+[G.J.Woeginger: A new characterization of the majority rule, Economics Letters 81,1 (2003) 89-94.]
+In particular, the Asan-Sanver result actually seems a trivial corollary of the far stronger 
+Smith+Young theorem we'll mention later which was proved over 20 years previously. A&amp;S say
+  Neutrality, Anonymity, Pareto (if all voters say A>B or A=B with at least some saying A>B, 
+  then B cannot win), and a partition-consistency property (if both subdistricts say A wins or ties
+  with at least one saying A wins, then A wins in the combined country).
+
+<b>More careful definitions of criteria 1 & 2:</b>
+<b>Clone immunity</b> for the purposes of this proof (and it also is
+I think common usage) is this.
+  If clones of C are added to the election, that does not affect the
+winner (except perhaps up to replacement of the winner by a clone).
+Here "clones" have to be contiguous in all rank-orders (for rank-order
+voting systems). There can be slight preferences among the clones
+e.g. some voter prefers C4>C1>C2>C3
+but these preferences are assumed to have FAR SMALLER strength than
+C versus a non-clone of C, e.g. far smaller strength than any
+comparisons like D>C or C>G or (for that matter) A>B.
+Therefore range voters will always vote clones almost-equal, to within
+&epsilon;, say, where we will allow ourselves to take the limit &epsilon;&rarr;0.
+  That is the definition used in Tideman's book, and he invented
+the whole clone-immunity concept.
+  Under this definition range voting is clone-immune, and
+so is Schulze-beatpath voting, and so is IRV, but plurality
+and Copeland and approval voting are not clone-immune
+(and Tideman's book agrees with all these statements).
+[Mike Ossipoff with elegant wording:
+"A clone-set is a set of candidates between whom no one has voted any
+other candidate(s)."]
+
+<b>(Weak) Favorite betrayal:</b>
+AFB is the criterion that it is never strategically forced
+for any voter to rank his true favorite, strictly below topmost.
+(A "strategically forced" move means, if you don't make that move,
+the election result comes out worse, in terms of expected utility,
+from your point of view.)
+  Really this all depends on the candidate-utility numbers for that
+voter, which is something I (badly) did not fully explain in the proof below.
+To fill in the gaps, one should point out at various places how to construct utility
+numbers to make it clear that voter-betrayal decisions were indeed
+strategically forced, otherwise the utility would be worse.  But dreaming up appropriate
+utility numbers for the voter in question, is usually a triviality.
+
+<b>Notes about the strategy the proof shall use:</b> 
+The proof will work by demonstrating that, if a single-winner voting system based on
+pure-rank-order-ballots satisfying axioms 1-6 did exist, then we could deduce a logical
+contradiction.  
+
+If any of these properties 1-6 are violated in <i>any</i> election situation, 
+then they are violated by that voting system, period; and we are done.
+
+In the proof, a lot of little election situations will be considered,
+and if in any one of those situations, there is an ICC violation
+<i>or</i> an AFB violation (with some utility values and some way to alter
+some vote to betray), then game over and proof done.
+
+We are allowed to use the assumption there is no useful
+way to betray a favorite, or use the assumption ICC is true, or any other axiom,
+to create new election situations and to deduce the winners in those
+new situations.  (If those deductions were wrong, the proof
+would be complete because a contradiction would have been found.)
+Then in these new situations, we can aim to complete the proof by
+finding some other contradiction.
+
+Incidentally, if we alter election 1 to get election 2 and
+make deductions about elections 1 and 2 using made-up utility values
+and reasoning about favorite-betrayal, then 
+it is <i>not necessary</i> that the utility values in
+the two elections be consistent.  That is because the voting system
+acts based solely on the votes and works in ignorance of honest utility values.
+
+<b>Proof of the Equivalent Theorem:</b>
+(We've already discussed why, by results of previous authors, the two theorems are equivalent.)
+The proof will work by demonstrating that, if a single-winner voting system based on
+pure-rank-order-ballots satisfying axioms 1-6 did exist, then we could deduce a logical
+contradiction.  So suppose such a system existed.
+Consider these 3 votes:
+A>B>C
+C>A>B
+B>C>A.
+By symmetry axiom 4 this is a perfect 3-way tie with win probabilities 1/3, 1/3, 1/3.
+However we shall argue under axioms 1-3 that A must win, which is a
+contradiction that establishes the proof.
+[Really, we shall go through all the 7 possible winners ABC-tie, BC, AC, AB, and A, B, C 
+proving none of these 7 possibiities are allowed by our axioms, which is the sought
+contradiction.  However, we focus on the two cases ABC and A because they
+remain after the other 5 cases are eliminated, and then we can prove "both are true"
+which is the requisite contradiction that establishes the proof.]  So:
+If A does not win, then B or C does (or some sort of tie; we'll consider the cases below).
+
+If B wins (or if AB tie), then the C>A>B voter would betray C to vote A>C>B getting
+A>B>C
+A>C>B
+B>C>A
+and then {B,C} is a clone set and hence by axioms 2 and 3 then A must win
+and hence the betrayal worked and hence we get a contradiction with axiom 1.
+(In slo-mo that is: the votes are really A>BC, A>BC, BC>A in a 2-candidate election,
+which A wins by axiom 3, and when we clone BC into two candidates B and C,
+A still must win by axiom 2.)
+This betrayal would be a utility improvement from the point of view of that
+voter if her vote really is "C>A>>B", i.e. if her utility for B is
+greater than her average utility for {A,B,C}.
+To see that this betrayal was strategically forced, we also have to
+note that the alternate dishonest vote (which is not a C-betrayal) C>B>A,
+would not work since B still would win [here's how we know that:
+A>B>C
+C>B>A
+B>C>A
+now {B,C} is a clone set, so by axioms 2 and 3 we know B or C must win;
+but winner here must be B and not C (and not BC tie) because if it were C 
+or BC tie then the A>B>>C-voter could betray: B>C>A causing 
+B>C>A
+C>B>A
+B>C>A
+in which case B must win by axiom 6.]
+
+If C wins, or if BC tie, or if ABC tie, or if AC tie,
+then the A>B>C-voter (whom for this purpose we assume feels A>B>>C)
+can betray A to vote B>A>C getting
+B>A>C
+C>A>B
+B>C>A
+whereupon {A,C} is a clone set and hence by axioms 2 and 3 then B must win
+and hence the betrayal worked (assuming this voter had utilities such that
+B was valued above the mean utility of A,B,C)
+and hence we get a contradiction with axiom 1.
+[The alternate dishonest vote which is not an A-betrayal, A>C>B, would not work since
+C still would win when
+A>C>B
+C>A>B
+B>C>A
+because {A,C} is a winning clone set
+and if A wins (or AC tie) then B>C>>A voter betrays: C>A>B to 
+make C win
+A>C>B
+C>A>B
+C>A>B
+by axiom 6.]
+<b>Q.E.D.</b>
+
+<b>Remark 1.</b>
+This theorem is not claiming the 6 criteria are good or bad (although they happen to
+all sound pretty good to me), and not claiming anybody necessarily should accept or 
+reject them.  It simply is claiming that it is logically unachievable to satisfy all of
+them at once by a rank-order voting system.
+But (normalized) range voting does satisfy all of them at once.
+[It is very nice when you can prove <i>every</i> voting system cannot do
+something - even voting systems nobody has ever invented yet.]
+
+<b>Remark 2.</b>
+Antiplurality voting obeys all 6 axioms except for #2 (and #6).
+You can make a version of antiplurality voting that obeys #6 by
+making a last-place-vote count -1, a second-last-vote count -&epsilon;,
+a third-last-vote count -&epsilon;&sup2;, etc in the limit &epsilon;&rarr;0+,
+highest score wins.
+
+I think there are also an infinite number of
+other rank-ballot systems avoiding favorite-betrayal,
+e.g. weighted positional systems depending on the
+last C-2 rankings only, where C is the number of candidates.
+
+Approval Voting obeys  all 6 axioms except for #2 (provided we are sufficiently generous
+about axioms 3 and 6; there is no doubt these are satisfied "in practice").
+
+<b>Remark 3.</b>
+Schulze beatpaths voting obeys all 6 axioms except for #1.
+So does Instant Runoff Voting (at least if we are sufficiently generous about the 
+random-tiebreaking axiom 5).
+
+<b>Remark 4.</b>
+Chris Benham suggests the proof might be less confusing (fewer worries about ties etc.)
+if we modify the initial example to replace the three voters with three identically voting 
+equal-sized large factions and then adding one fickle bullet-voter.
+33: A>B>C
+33: C>A>B
+33: B>C>A
+ 1: ? (A or B or C)
+In this modified version of "Election 1", we could assume some perturbed symmetry axiom
+that the lone truncator must determine the winner.  This should lead to a slightly different
+theorem statement with a somewhat simpler proof.
+
+<b>Remark 5.</b>
+Range voting obeys all 6 axioms if all range votes are
+"normalized" so voters (obeying the recommendations for voting on the
+ front page) always give the best candidate the top
+score and the worst the bottom score in a 2-candidate election
+[i.e. in practice with voters who are not idiots].
+But with possible-idiot voters, range fails axiom #3 (which does not bother me).
+<b>CAVEAT:</b> with <i>automatic</i> normalization <i>after</i> the votes are cast,
+range voting violates axiom 6.    
+Thanks to Markus Schulze for pointing that out.  That's embarrassing if our goal is to
+find a set of criteria range voting obeys but rank-ballot methods fail.
+Here are some ways to stop being embarrassed:
+FIX #1: We can either trust range voters
+not to be idiots in 2-candidate elections (to make axiom 3 hold), or we may,
+e.g. rephrase axiom 6 as
+  6'. adding a new candidate to the election whom all voters unanimously rank &epsilon; below 
+  their previous bottommost does not change the winner in the limit &epsilon;&rarr;0+.
+FIX #2 (the one we used in the "Theorem" at top): 
+we can discard axiom 3 by use of characterizations of simple majority rule
+as described at top (e.g. Campbell-Kelly), then we are free to use unnormalized range voting
+without having to "trust" voters not to be stupid.  This fix is excellent since discarding
+axioms is always a fine thing.  Note that then we do not even need to assume anonymity in
+the Theorem, aside from (with Campbell-Kelly) a requirement of non-dictatorship.
+
+Then we have indeed proven a sense in which range is superior to EVERY pure-rank-ballot voting
+method, and using two of the most important voting criteria AFB and ICC.
+
+<b>Remaining Open question:</b>
+what happens if we permit rank order votes to have EQUALITIES in them?
+Are ICC and AFB still incompatible or do they become compatible?
+I.e. I do not presently know if this theorem can be extended to permit equalities in 
+vote-rankings.
+
+(I thank Forest W. Simmons for inspiring me to work on this some more.)
+Warren D Smith
+
+</pre>
+
+<h2>Simmons' proof</h2>
+<p>
+A day or 2 later, Forest W. Simmons came with his own 
+proof of (his own version of) my same theorem.  His theorem also gives a nice set of
+criteria range voting satisfies but rank-order methods cannot.
+Here it is [repost from EM with a few edits by WDS to improve clarity]:
+</p>
+
+<pre>
+Here's a slightly simpler approach for a slightly weaker result. 
+<b>I shall show</b> that (in the case of pure ordinal ballots) you cannot 
+have all three of 
+Monotonicity, Clone Independence, Pareto, and the Strong FBC.
+
+To be very careful we explicitly list the <b>assumptions</b>:
+
+1. Strictly ranked ordinal ballots.
+2. Neutrality (permuting the candidate names on the ballot rankings 
+permutes their winning probabilities in the same way.)
+3. Anonymity (Permuting the ballots does not affect the outcome.  [WDS: did not need this.])
+4. Determinism (Chance is not employed except where required by 
+symmetry, i.e in the case of true ties.)
+5. Monotonicity - if a voter interchanges two adjacent candidates in her rank order
+(converting A>B to B>A, say) that cannot reduce A's winning chances.
+      [WDS's proof did not need to assume this]
+6. Majority wins when there are only two candidates.  (Actually, this 
+property is a consequence of properties one through five above.  
+[WDS: Or of property 8, determinism, and non-dictatorship, by Campbell-Kelly 2003.  Also,
+axioms 1-5 need to be supplemented with positve responsiveness, i.e. voting A top
+will actually make A win if it was an exact A-involving tie, in May's theorem, BUT
+ties cannot occur with an odd number of voters, which is the only parity we shall need, so this
+supplementation is not necessary for us.]  But we mention it explicitly for convenience.)
+<!-- 7. Pareto (An alternative X that is ranked lower than Y on every ballot must be have zero 
+probability of winning.) -->
+7. ICC.  The probabilities assigned by the method to members of a clone 
+set must add up to the probability that the method would give to a 
+single alternative replacing the clone set on each ballot.
+8. Strong FBC.  To each strategy that allows a faction to achieve a 
+certain expected level of utility, there is another strategy that 
+allows that faction to rank favorite over all other candidates without 
+sacrificing that expected level of utility.
+
+<b>The proof:</b>
+Suppose that we have three voters with ranked preferences of
+
+1 A>B>>C
+1 B>>C>A
+1 C>>A>B
+
+Their nearest expression in the pure ordinal ballots of our method 
+would be
+
+1 A>B>C
+1 B>C>A
+1 C>A>B .
+
+Properties one thru four demand that each alternative be given equal 
+probability P(A)=P(B)=P(C)= (1/3) .
+
+The A>B>C voter's expectation is below their utility of their 
+compromise B, while the other two voters' compromises have less utility 
+than their expected utilities.
+
+So a sure win by B would be an improvement for the first two voters.
+
+The first voter can accomplish this unilaterally by burying favorite:
+
+1 B>C>A
+1 B>C>A
+1 C>A>B
+
+Properties 6, and 7 (applied to the clone set {C, A}) make B the 
+winner with 100 percent probability under our method with this ballot 
+set.
+
+Now property 8 says the first voter can do as well without moving A downward from the top.  
+With that constraint all she can do is 
+switch B and C:
+
+1 A>C>B
+1 B>C>A
+1 C>A>B
+
+For future reference we will call this ballot set S.
+
+Here the {A,C} clone set has a majority over B, so by property 6, all 
+of the probability goes to {A,C}. And since there is no symmetry that 
+would require chance, either A or C gets 100 percent of the probability 
+by our axiom of determinism.
+
+We know that C is not the one with 100 percent probability because the 
+FBC guarantees that our result will be no worse than B.
+
+So our method gives the win to A, given this ballot set.
+
+Now here's the tricky part:
+
+We change this last ballot set S into the following one S' by two 
+different means: (1) raising A over C on the middle ballot. OR
+(2) swapping A with C on every ballot and then swapping the first and 
+last ballot.
+
+1 A>C>B
+1 B>A>C
+1 C>A>B
+
+Monotonicity ensures that A is still the winner, since all we did was 
+raise A relative to C on one ballot (at least from the first point of 
+view).
+
+But from the point of view of the second way of getting from S to S', 
+neutrality and anonymity require that the win switch from A to C.
+
+This contradiction shows that the stated conditions are incompatible. 
+<b>Q.E.D.</b>
+</pre>
+
+<!--
+<h2>Joint Simmons+Smith proof if we allow rank-equalities:</h2>
+<p>
+Our proofs above were justifiably criticized because they do not apply to the
+case of rank-order voting <i>with rank-equalities permitted</i> in ballots.
+We think we now know how to extend the proofs to cover this case too.
+Here are the details:
+</p>
+<pre>
+First of all, we have to define carefully just what ICC (immunity to candidate cloning)
+means when we allow rank-equalities in ballots.
+
+The Quantitative ICC (QICC) shall mean
+
+A single-winner voting method (deterministic or not) satisfies the 
+QICC iff the win-probabilities assigned by the method to the members of a clone set add 
+up to the probability that the method would give to a single alternative
+replacing the clone set.
+
+"Clones" of A have to be adjacent in rank-orderings and there can be arbitrary slight
+preferences among the clones (or the clones can be rated exactly equal), but we demand
+these interclone preferences always be far less intense than any real preference was
+(pre-cloning).  (To be precise, we consider the limit epislon&rarr;0+ where the strengths
+of preferences are held fixed except interclone preference strentghs are proportional to &epsilon;.)
+So for example, the ballot A>B>C can be, after cloning B, be
+replaced by A>B3>B1=B4>B2>C.  
+If A=B1>B2 resulted from B1 and B2 be clones of B, then the original uncloned-B
+ballot must have been A=B and could not have been A&lt;B or A>B.
+Can the ballot A=B>C can be replaced by B1>A>B2=B4>B3>C?
+It is an interesting issue whether to permit that kind of "clone split-up," but we shall 
+not require any such in our proof below, so we dodge this issue.  But anyway the answer
+is that clone-split-ups cannot be allowed if we also demand a3 below,
+since if they were then the single 
+vote A=B with 50-50 win probability split, would be replaced by B1>A>B2
+with 100% probability that B1 wins (by considering the clone set {A,B2}), 
+violating QICC.  Also, for the same reason
+if we clone B when A=B then we must demand that A=B1>B2 or B1>B2=A or B1=B2=A
+and refuse to permit B1>B2>A and A>B1>B2 or A>B1=B2 or B1=B2>A, otherwise again 
+there would be an immediate QICC violation for a single-ballot election.
+
+Now we are ready to state the theorem and proof (which, amazingly, turns out to be 
+the shortest proof yet):
+
+THEOREM:
+No single-winner voting method based on rank-order ballots with equalities permitted,
+can simultaneously satisfy all the following properties:
+a1. AFB = avoids favorite betrayal
+a2. ICC = immune to candidate cloning
+a3. reduces to simple majority vote in 2-candidate case (with random 50-50 tiebreak).
+a4. neutrality = symmetry under candidate renaming = permuting the candidate names
+   on the ballot rankings permutes their winning probabilities in the same way
+(And again a3 should be replaceable by "no-vetoer"
+since by Campbell-Kelly 2003 it should follow from that and a1?
+I'm not sure - have to check C-K still works if rank-equalities are permitted
+and here we are allowing an even number of voters, another hurdle.
+But I know May 1952 still works and it would allow
+replacing a3 with monotonicity, anonymity,
+and positive-responsiveness axioms in the 2-candidate case.)
+
+Proof:
+Consider the following 4-ballot set:
+A>B>C
+C>B>A
+A=B>C
+C=B>A
+By neutrality and QICC considering the clone set {A,B}
+we have 
+Prob(C wins) = Prob(A or B wins) = Prob(A) + Prob(B)
+and by ditto but instead considering the clone set {B,C}
+Prob(A wins) = Prob(B or C wins) = Prob(B) + Prob(C)
+and  of course
+Prob(A)+Prob(B)+Prob(C) = 100%
+and these three equations have the unique solution
+Prob(A wins) = 50% = Prob(C wins),   Prob(B wins) = 0%.
+
+Now suppose the third voter betrays her favorite B (call this resulting ballot set "T"):
+A>B>C
+C>B>A
+A>B>C
+C=B>A
+now {B,C} is clone set and hence Prob(A wins)=Prob(B or C wins).
+But if now Prob(B wins)>0, and
+since still Prob(A wins)=Prob(B or C wins) by QICC with clone set {B,C},
+this represents a net utility-improvement for our honest A=B>C voter, i.e.
+constitutes an AFB violation since the betrayal then
+paid off.  But since we are assuming AFB, still A=50%, B=0%, C=50%.
+[To justify this fully, we also need to show any nonbetrayal vote would not have worked,
+but that is a triviality since every alternative to the honest A=B>C vote, betrays
+somebody (either A or B), except for A=B=C.  With A=B=C we get
+A>B>C
+C>B>A
+A=B=C
+C=B>A
+and then we know by ICC with the clone set {B,C}, plus a3,
+that either B or C must win.
+But by ICC with the clone set {A,B} we know Prob(C wins)=Prob(A or B wins).
+Therefore 
+Prob(C wins)=50%,  Prob(B wins)=50%,  Prob(A wins)=0%
+which is identical-utility from that A=B>C voter's point of view, i.e. this
+nonbetrayal did not pay in any way.]
+
+But in T, we have that {A,B} is a clone set so Prob(C wins)&lt;Prob(A or B wins).
+That contradicts our proof that Prob(A wins) = 50% = Prob(C wins),   Prob(B wins) = 0%.
+This contradiction shows that 
+QICC, AFB, neutrality, and majority winner in the 2-candidate case,
+are logically incompatible in rank order voting systems with
+rank-equalities allowed.
+Q.E.D.
+</pre>
+
+-->
+
+<h2> What if rank-equalities are allowed in ballots? A partial result </h2>
+
+<p>
+Then, I am presently unable to settle the question of whether AFB and ICC are incompatible.
+However, I <i>can</i> prove ICC is incompatible with an <i>inequivalent version</i> 
+of AFB (which I do not preferentially endorse) call it AFB':
+<blockquote>
+AFB' = "Raising favorite to top rank must not decrease expected utility."
+</blockquote>
+AFB' is easier to work with than AFB, but I regard it as of less interest.
+AFB'&rArr;AFB but the reverse implication does not hold.
+Here are the details:
+<pre>
+<b>Theorem:</b>
+AFB', ICC, neutrality, the assumption that in a perfect 3-way tie you break ties
+randomly with all tiers getting nonzero win probabilities,
+and finally,  reduction to simple majority vote in the 2-candidate case (which
+assumption again can be replaced by simpler ones),
+are logically incompatible in any single-winner election method based on rank-order 
+ballots with rank-equalities permitted.
+
+<b>Proof:</b>
+Begin with the election
+3       A=B>C
+3       C=A>B
+3       B=C>A
+2       A>C>B
+2       B>A>C
+2       C>B>A
+By symmetry this is a perfect 3-way tie.
+Now suppose the three A=B>C voters all betray their co-favorite B to get
+3       A>B>C
+3       C=A>B
+3       B=C>A
+2       A>C>B
+2       B>A>C
+2       C>B>A
+and then the B>A>C voters (regarded as B>A>>C),
+all betray their solo favorite B, to get
+3       A>B>C
+3       A=C>B
+3       B=C>A
+2       A>C>B
+2       A>B>C
+2       C>B>A
+and finally the A=C>B voters betray their co-favorite C to get
+3       A>B>C *
+3       A>C>B *
+3       B=C>A
+2       A>C>B
+2       A>B>C *
+2       C>B>A
+where the *s indicate dishonest votes.
+A wins in this scenario with 100% probability
+(by ICC and 2-candidate majority using the clone set {B,C}).
+So the net effect of these 3+2+3=8 betrayal decisions, was to cause a
+result all 8 of the betrayer-voters prefer.  The betrayals worked.
+
+Now consider these 8 betrayers changing their votes to the betrayal-vote
+one by one.  At the start-end of the 8-betrayal chain, ABC tie. At the
+finish-end, A wins (a result all betrayer-types prefer).  
+So at some point in the chain, there must have 
+been a beneficial (to that betrayer) election-result-change.
+
+This proves a <i>single</i> betrayal must work in <i>some</i> election situation.
+However...  it remains possible that some non-betraying dishonest vote
+also works.  But with the weakened definition AFB' of AFB
+that is not an issue.
+<b>Q.E.D.</b>
+</pre>
+
+<h2> Some remarks by Forest Simmons on the preceding theorem+proof  </h2>
+
+<p>
+Ingenious!
+That settles it for practical purposes, because voters are not
+sophisticated enough to take advantage of AFB when AFB' fails.
+[WDS: I am not as happy as Forest.  But we shall let him continue...]
+</p>
+<p>
+AFB says that you can remain loyal to favorite if you are clever
+enough.  AFB' says that remaining loyal to favorite will never mess
+things up, even if you are not too clever. And that's what people want.
+</p>
+<p>
+Roughly speaking the two main reasons that people are interested in
+replacing Plurality with something else are 
+<ol><li>
+the "vote splitting" problem and
+</li><li>
+the "lesser evil" problem.
+</li></ol>
+Crudely speaking, ICC encapsulates the vote splitting problem and AFB the lesser evil
+problem and this all shows that you can't cure both problems using a ranked-ballot
+(with or without equalities permitted) voting method, but you <i>can</i> have your
+cake and eat it too with range voting.
+</p>
+<p>
+Finally I note that the faction sizes 3,3,3,2,2,2
+could more simply have been 2,2,2,1,1,1 because 2+2+1
+is greater than half of 2+2+2+1+1+1.
+</p>
+
+<h2> Are there other property-sets range voting satisfies 
+but no rank-order method can all-satisfy? </h2>
+<p>
+Yes.
+The property-sets mentioned above are particularly appealing because AFB and ICC
+seem very important properties to make democracy work.  But other property sets also
+work and may have some appeal.
+</p>
+
+<pre>
+<b>Theorem.</b>
+These five properties are incompatible in a single-winner voting system based on 
+pure-rank-order ballots:
+1. partition-consistency.  (That is, if X wins in district 1 and in district 2, then X must win
+in the combined 2-district country.)
+2. AFB
+3. "responsiveness at top" - raising a candidate from second-top to top in your vote
+(by swapping those two positions) in some election situations actually helps him.
+4. anonymity 
+5. neutrality
+
+<b>Proof sketch.</b>
+The hard part was done by 
+[John H. Smith: Aggregation of preferences with variable electorate,
+Econometrica 41,6 (1973) 1027-1041.
+H. Peyton Young: Social choice scoring functions,
+SIAM J. Appl. Math. 28,4 (1975) 824-838.]
+These authors independently showed that any rank-ballot system obeying axioms 1, 4, and 5 
+had to be a "composition of weighted positional systems."
+But then that is readily seen to be incompatible with properties 2 and 3
+(e.g. by considering a suitable cyclic-tie situation).
+<b>Q.E.D.</b>
+
+<b>Theorem.</b>
+These four properties are incompatible in a single-winner voting system based on 
+pure-rank-order ballots:
+1. three-candidate semi-honesty.  (That is, in a 3-candidate election, it is never
+strategically forced to dishonestly vote as though X>Y when your honest view is Y>X.)
+2. determinism.
+3. no dictator.
+4. unanimously top-ranked candidate must win.
+
+<b>Proof sketch.</b>
+This is an immediate consequence of the 
+<a href="GibbSat.html">Gibbard-Satterthwaite</a> strategyproofness theorem.
+<b>Q.E.D.</b>
+
+<b>Theorem.</b>
+These three properties are incompatible in a single-winner voting system based on 
+pure-rank-order ballots:
+1. no dictator.
+2. If every voter prefers A to B then so does the group.  (This implicitly assumes
+the voting system outputs not only a winner but also a rank-order of all finishers.
+You can get a rank order even from a system without one by ranking the winner first,
+then delete that candidate from all ballots and ask who would have won then - rank
+him "second" - and so on.)
+3. "independence of irrelevant alternatives":
+The relative positions of A and B in the group ranking depend on their relative positions 
+in the individual rankings, but do not depend on the individual rankings of any 
+"irrelevant alternative," i.e. other candidate, C; to word it more precisely,
+we shall demand that if C is deleted from all ballots, then whether A finishes
+ahead of or behind B, is unaffected.
+
+<b>Proof sketch.</b>
+This is an immediate consequence of <a href="ArrowThm.html">K.Arrow's impossibility theorem</a>.
+<b>Q.E.D.</b>
+
+<b>Note.</b>
+Range voting obeys all the properties in all of the above theorems (at least if simple majority in
+the 2-candidate case is dealt with appropriately, cf. remark 5 above).  Thus each one demonstrates 
+a way in which range voting is superior to all rank-ballot voting methods.
+</pre>
+
+<p>
+<b>Another theorem:</b>
+Every single-winner voting system based on rank-order ballots 
+(with equalities either forbidden or permitted &ndash; both work) 
+must suffer from at least one of 
+the following paradoxes:
+<ol>
+<li>
+No-Show Paradox: A voter is better off (in the sense the election result improves from 
+her point of view) by not voting than voting honestly.
+</li><li>
+Condorcet failure: A "beats-all winner" candidate X (who defeats all opponents Y
+in elections based on the given votes <i>but</i> with all candidates besides X and Y removed)
+still loses the election.
+</li><li>
+District partitioning paradox: A candidate wins in every district, but loses the general election.
+</li><li>
+More-is-less Paradox (monotonicity failure): 
+If the winner had been ranked higher by some voters, another candidate would have won.
+</li></ol>
+
+<p>
+<b>Proof:</b>
+This claim was made in
+P.C.Fishburn &amp; S.J.Brams: Paradoxes of Preferential Voting,
+Mathematics Magazine 56, 4 (Sept. 1983) 207-214.
+Actually, just criteria 1 and 2 <i>alone</i> are incompatible, and that is true whether or
+not rank-equalities are permitted; a proof, due to Markus Schulze and really dating back to Herve Moulin, 
+is found in my paper #79
+<a href="WarrenSmithPages/homepage/works.html">here</a> or
+on this <a href="CondPF.html">page</a>.
+<b>Q.E.D.</b>
+</p><p>
+Range voting, however, avoids all of these paradoxes (at least, <i>as they are worded here</i>).
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

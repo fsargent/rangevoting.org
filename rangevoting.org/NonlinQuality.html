@@ -1,0 +1,2625 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Optimal proportional representation
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> "Optimal proportional representation" multiwinner voting systems II:
+The two classes and the "holy grail" </H2>
+
+<p><small>
+Warren D. Smith. Nov 2015. 
+</small></p>
+<p><b>Abstract.</b>
+One way to design a multiwinner voting system is to define a
+"quality function" Q which examines the votes, voters,
+candidates, and winner-set, and outputs a <i>number</i>.
+Then the "optimum voting system" would simply be to choose the winner-set
+<i>maximizing</i> Q.
+(Actually, we here sometimes will find it more convenient to <i>min</i>imize Q in which case it
+would better be called a "penalty function.")
+The <a href="QualityMulti.html">previous</a> paper had defined an infinite number
+of quality functions whose maximization could be shown to automatically yield 
+"proportional representation" (PR).
+We now investigate further.  We find there are <i>two</i> natural classes of PR-yielding
+quality functions.  The previous paper's class were all (what I will now call) <i>linear</i>
+and they yield PR when a certain function inside of them has <i>logarithmic</i> nature,
+such as the <a href="http://mathworld.wolfram.com/DigammaFunction.html">digamma</a>
+function &Psi;(x).  The second class, which I will now call <i>nonlinear</i>,
+yields PR when a certain other 
+function inside of it behaves like the <i>reciprocation</i> function
+1/x.  The voting systems arising via extremizing these two classes of quality function
+correspond respectively to two rival <i>philosophies</i> of PR, dating to 
+T.N.<a href="https://en.wikipedia.org/wiki/Thorvald_N._Thiele">Thiele</a>
+and L.E.<a href="https://en.wikipedia.org/wiki/Lars_Edvard_Phragm%C3%A9n">Phragmen</a>
+in 1895.  
+</p><p>
+The good news is that via nonlinearity
+we can force a <i>stronger</i> kind of PR (wanted by Toby Pereira):
+in elections involving only "maximally-racist 
+<a href="#colordefuse">colored</a>" voters and candidates, <i>plus</i>
+"commonly rated uncolored candidates," the <i>colored part</i> of the parliament should
+automatically duplicate the color-composition of the electorate.  
+The bad news is that the price we pay
+for that is failure of "monotonicity" &ndash; and the benefits of strong PR seem not worth
+that heavy a price! The
+<a href="QualityMulti.html">previous</a> paper's "linear" quality functions failed to
+achieve strong PR but did provide monotonicity.
+No voting system based on a continuous smooth 
+quality function and obeying both strong PR and monotonicity (the "holy grail"), 
+is currently known.
+If the Phragmen and Thiele
+philosophies are too irreconciliable, then the holy grail could not exist.
+The holy grail existence problem seems to us to be the most important 
+theoretical <a href="QualityMulti.html#openprob">open question</a> in this field.
+</p><p>
+If the holy grail does not exist, the question becomes: what is
+the best multiwinner voting system we can devise, which comes as close to the holy grail 
+as possible?  At the <a href="#holygrail">end</a> of the paper, we propose an answer.   
+</p>
+
+<h3> Table of contents </h3>
+<ol><li>
+<a href="#qualdefn">Definition of our quality functions Q</a>
+</li><li>
+<a href="#propreprecip">Proportional representation and the reciprocation and logarithm functions</a>
+</li><li>
+<a href="#pt"> Kotze-Pereira transform</a>
+</li><li>
+<a href="#tcex">Two concrete example voting systems "PerPhrag" and "PerEbert." </a>
+</li><li>
+<a href="#coinflip">The "coin flip transform": another interesting 
+proportionality-preserving transform</a>
+</li><li>
+<a href="#shiftsec">Connection between reciprocation "shift" and different 
+(e.g. Sainte-Lagu&euml; &amp; d'Hondt) proportionality tunings</a>
+</li><li>
+<a href="#embar">Some elections which embarrass those two (and the previous paper's) systems</a>
+</li><li>
+<a href="#debate">The debate between Phragmen and Thiele</a>
+</li><li>
+<a href="#complem">Complementarity between Phragmen and Thiele</a>
+</li><li>
+<a href="#hybrid">"Optimum hybrid" Thiele+Phragmen quality functions </a>
+</li><li>
+<a href="#backconv">Background knowledge about 
+convex hulls and undominated points in the plane</a>
+</li><li>
+<a href="#holygrail">The closest we perhaps can come to the Holy Grail</a>
+</li><li>
+<a href="#refs">References</a>
+</li></ol>
+
+
+<a name="qualdefn"></a>
+<h3> Definition of our quality functions Q </h3>
+<p>
+Let C=#candidates, V=#voters, W=#winners, 0&lt;W&lt;C, and
+in most real-world applications C&ll;V.
+Let <b>S<sub>v,c</sub></b> be the real-valued <b>score</b> given by voter v to candidate c
+on her ballot. 
+Let T<sub>c</sub>=&sum;<sub>1&le;v&le;V</sub>S<sub>v,c</sub>
+be candidate c's summed score.
+Then here is a <b>simple class of quality measures Q:</b>
+</p><center>
+  Q = 
+&sum;<sub>1&le;v&le;V</sub>
+ L{ &sum;<sub>1&le;j&le;W</sub>
+ S<sub>v,winner[j]</sub> R(T<sub>winner[j]</sub>) }
+</center><p>
+where L{z} and R(v) are real-valued functions of real argument
+specified by the voting system designer.
+</p><p>
+I am calling these quality measures "nonlinear" if R(v) is a nonconstant function.  
+[The reason for this name is that
+if R were just a constant, then the inner sum would be a linear function of the scores 
+S<sub>v,c</sub>. I had called the resulting quality functions "linear" in the 
+<a href="QualityMulti.html">previous</a> paper.
+In making this name I have abused terminology slightly, because it would have been
+more technically correct to call them
+nonlinear if R(v) is nonconstant <i>and</i> L(u)
+is nonlinear.  <i>Truly</i>-linear quality functions cannot yield PR.]
+<!-- Would elect 100% republicans if 51% of the voters republican. -->
+</p><p>
+We shall sometimes want to <i>min</i>imize Q, in which case it is better termed a "penalty"
+function rather than a "quality" function.
+</p>
+
+<a name="propreprecip"></a>
+<h3> Proportional representation and the reciprocation and logarithm functions </h3>
+<p>
+Let us enquire when these systems
+will yield <a href="PropRep.html">proportional representation</a> (PR).
+</p><p>
+The most basic kind of PR is the demand that if all voters and candidates are "colored" and
+if the voters are "maximally racist" &ndash; i.e. they always score 
+candidates 1 when the same color as the voter, and 0 otherwise &ndash; then,
+provided enough candidates of each color are available, the elected parliament
+will have the <i>same color-composition as the electorate</i> (up to small
+errors forced by demanding electing integer numbers of candidates, and provided enough
+candidates of each color run &ndash; obviously it is not possible to elect 5 Reds if only 2 run).
+</p><p>
+Let X<sub>j</sub> be the number of color-j voters, and W<sub>j</sub> the number of color-j
+winners.
+So if we ignore integrality, PR means that W<sub>j</sub> will be proportional to X<sub>j</sub> 
+when
+<nobr>Q=&sum;<sub>colors j</sub>X<sub>j</sub>L{W<sub>j</sub>R(X<sub>j</sub>)}</nobr>
+ is extremized subject to the constraint  &sum;<sub>colors j</sub>W<sub>j</sub>=W.
+</p><p>
+If we assume the functions L{z} and R(v) are smooth,
+then by the 
+"method of <a href="http://mathworld.wolfram.com/LagrangeMultiplier.html">Lagrange multipliers</a>"
+our simple Q will be extremized by choice of 
+the W<sub>j</sub> subject to that constraint, when
+all the
+</p><center>
+X<sub>j</sub> R(X<sub>j</sub>) L'{ W<sub>j</sub> R(X<sub>j</sub>) }
+&nbsp;&nbsp; are equal, i.e. when this quantity does not depend on j.
+</center><p>
+We now shall see that there are remarkable advantages got by either making R(v)=1/v be
+the <i>reciprocation</i> function or L{z}=log(z) be
+a <i>logarithm</i> function (but not both simultaneously).
+</p><p>
+Throughout the rest of this section we shall assume
+that L and R are smooth and ignore issues of integrality.
+</p><p>
+<b>Reciprocation&rArr;PR Theorem:</b>
+If 
+L{z} is either always strictly concave-&cup; or always strictly concave-&cap;,
+and
+R(v)=1/v,
+then the above basic-PR 
+condition will automatically be satisfied at, and only at, any local extremum of 
+our simple quality functions Q.
+</p><p>
+<b>Proof:</b> it then is just
+</p><center>
+L'{ W<sub>j</sub> R(X<sub>j</sub>) }
+&nbsp;&nbsp; all are equal,
+</center><p>
+which if W<sub>j</sub>/X<sub>j</sub>=K
+is a constant is just
+<nobr>L'{K}</nobr> which obviously is independent of j.
+And since if  
+W<sub>j</sub>/X<sub>j</sub> <i>non</i>constant (non-PR) then
+L'{W<sub>j</sub>/X<sub>j</sub>} will, due to 
+the concavity or convexity of L, and hence constant sign of L'', 
+necessarily assume differing values.
+<b>Q.E.D.</b>
+</p><p>
+It is quite remarkable that by making R(v)=1/v we obtain PR pretty much <i>regardless</i> 
+of L.  
+Note that for concave-&cup; L{z} the voting method needs to <i>min</i>imize Q,
+whereas for concave-&cap;
+L{z} it needs to <i>max</i>imize Q.
+</p><a name="shiftrecip"></a><p>
+<b><i>Shifted</i> reciprocation:</b>
+R(x)=1/(x+&Delta;) where &Delta; is any positive constant, can also
+be used with then a slightly altered definition of "proportionality."
+Presumably -1 &lt &Delta; &lt; 2V/W  would be approximately the range of interest
+where V is the number of voters, W is the number of winners, and we assume the
+scores on ballots lie within the real interval [0,1].
+</p><p>
+Incidentally, Jameson Quinn independently 
+thought of the same (or, at least, I think it is the same)
+idea I am calling a "shift" &Delta;, except that he labeled it with the more imaginative
+name "ghost voters."   We'll explore this more <a href="#shiftsec">later</a>.
+</p><p>
+On the other hand, if we do <i>not</i> employ the reciprocation function, 
+then
+</p><p>
+<b>Logarithm&rArr;PR Theorem:</b>
+If 
+vR(v) is either always increasing or always decreasing,
+and L{z}=log(z)
+is a logarithm function,
+then our basic-PR condition
+will automatically be satisfied at, and only at, any local extremum of 
+our simple quality functions Q.
+</p><p>
+<b>Proof:</b> the basic PR condition is satisfied if
+L{z} obeys the differential equation
+</p><center>
+v R(v) L'{ K v R(v) } = constant
+</center><p>
+if K is a constant.  Letting x=vR(v), this differential equation has solution
+</p><center>
+L{x} = Z ln(x)
+</center><p>
+where Z is a constant.   
+But the basic-PR condition will in general be violated if L does not
+obey that differential equation.
+<b>Q.E.D.</b>
+</p><p>
+These two theorems hold under mutually exclusive assumptions.
+The <a href="QualityMulti.html">previous</a> paper had <i>already</i> analysed
+the simplest logarithm
+case [when R(v)=constant], finding that when issues of integrality were also considered,
+that the logarithm function was better replaced by "psi functions," which
+are not quite the same as logarithms, albeit they still are
+asymptotically logarithmic 
+[<nobr>ln(x)-x<sup>-1</sup>&lt;&Psi;(x)&lt;ln(x)-(2x)<sup>-1</sup></nobr>
+for all x&gt;0].
+So <i>for the rest of the present paper let us focus on the 
+reciprocation case R(v)=1/v.</i>
+</p><p>
+<b>Note re approximate functions.</b>
+I said that L(z) functions that are "log-like" or R(v) that
+"behave like" the reciprocation function 1/v
+could be made to yield PR.  What does this mean more precisely?  
+If L(z) approximates ln(z) in the sense that F(z+&delta;)=ln(z) for some |&delta;|
+upperbounded by a constant, then that suffices to yield PR (at the continuum optimum)
+with within &plusmn;constant
+additive error in the number of seats of any given color 
+[at least in the simplest case R(v)=constant].
+For example the 
+<a href="http://mathworld.wolfram.com/DigammaFunction.html">digamma</a> function 
+&Psi;(z) enjoys this ln-approximation property for all z&gt;0.
+Similarly if R(x+&delta;)=1/x
+for some |&delta;|
+upperbounded by a constant number of
+"<a href="https://en.wikipedia.org/wiki/Hare_quota">Hare quotas</a>" V/W, 
+then that again suffices to yield PR 
+at the continuum optimum
+to within &plusmn;constant
+additive error in the number of seats of any given color [at least when L(z)=z<sup>&mu;</sup>
+for any fixed &mu;&gt;0 with &mu;&ne;1].
+</p><p>
+<b>Scale invariance theorem:</b>
+If all scores for all candidates on all ballots are scaled by some overall positive factor K,
+the "extremize Q" voting methods with R(v)=1/v
+ will return the same winner-sets, and relative ordering among
+potential winner-sets, regardless of K.
+</p><p>
+<b>Proof:</b> with R(v)=1/v the quality function Q depends solely on the <i>ratios</i>
+S<sub>v,c</sub>/T<sub>c</sub>, which are unaltered by changing K. 
+<b>Q.E.D.</b>
+</p><p>
+Meanwhile the systems arising from L{z}=log(z) 
+generally will <i>not</i> enjoy scale invariance.
+</p>
+<a name="strongPRthm"></a>
+<p>
+<b>Stronger kind of proportionality:</b>
+If all voters are "colored,"  but candidates can be either colored or uncolored;
+and each voter awards any colored candidate score 1 if the voter 
+and candidate colors agree, otherwise 0; and each voter awards
+each uncolored candidate a score that is
+a function solely of the name of that candidate and not on the voter; then the
+"extremize Q" voting methods arising from R(v)=1/v will elect a parliament
+whose color composition (<i>ignoring</i> the uncolored MPs) duplicates the electorate's.
+</p><p>
+<b>Proof:</b> under our modeling assumptions
+the inner sum in the <a href="#qualdefn">definition</a>
+of our simple quality function 
+will be additively offset by some amount <i>not depending</i> on the W<sub>j</sub>,
+but instead only on the scores for the uncolored candidates (which by assumption also are
+voter-independent). 
+Since our proof of the Reciprocation Theorem 
+does not care about L{z} provided L''{z} has constant sign,
+these additive offsets do not matter.
+Specifically the Lagrange mutiplier condition for extremizing Q is that
+</p><center>
+L'{ W<sub>j</sub> R(X<sub>j</sub>) + ConstantOffset }
+&nbsp;&nbsp; all be equal,
+</center><p>
+which if W<sub>j</sub>/X<sub>j</sub>=K
+is a constant is just
+<nobr>L'{K+ConstantOffset}</nobr> 
+which obviously is independent of j.
+<b>Q.E.D.</b>
+</p><p>
+Meanwhile the systems arising from L{z}=log(z) generally will <i>not</i> enjoy 
+this stronger kind of proportionality.
+</p><a name="nonmonothm"></a><p>
+<b>Failure of monotonicity:</b>
+If L{z} is either always strictly concave-&cup; or always strictly concave-&cap;,
+and
+R(v)=1/v,
+then there will always exist election examples in which Q is "nonmonotonic" meaning
+that if some one voter Y infinitesimally alters her score for some one candidate X
+&ndash; in which case the Q values for X-omitting parliaments will be unaltered, but
+the <nobr>X-containing</nobr> parliaments' Q-values will in general change &ndash; this
+change will in some cases be in the "wrong direction."
+</p><p>
+<b>Proof sketch.</b>
+I won't state a full proof, but it is not difficult to see. 
+If, say,
+L always increases then the  term involving S<sub>YX</sub> increases when 
+S<sub>YX</sub> does (good), but all the other terms involving T<sub>X</sub> decrease (bad).
+If L'' has constant sign then the
+decrease can be made to outweigh the increase by devising voter Y and all the other (non-Y)
+voters appropriately.  (There also are other cases, but the reasoning is analogous.)
+</p><p>
+Incidentally, the 
+"<a href="#shiftrecip">ghost voters</a>" idea 
+<a href="#embar">cannot</a> save us from nonmonotonicity
+in general, although there are specific election situations in which it can.
+</p><p>
+In contrast,
+the <a href="QualityMulti.html">previous</a> paper's
+"linear" quality functions
+had automatically, and obviously, yielded monotonic voting systems.
+</p>
+
+
+<a name="pt"></a>
+<h3>Kotze-Pereira transform</h3>
+<p>
+The <a href="QualityMulti.html">previous</a> paper had shown the
+usefulness of the "Kotze-Pereira transform."
+We repeat its definition:
+<i>Replace</i> any ballot which rates the C candidates with scores
+</p><center>
+S<sub>1</sub>&ge;S<sub>2</sub>&ge;S<sub>3</sub>&ge;...&ge;S<sub>C</sub>
+</center><p>
+by these C weighted <a href="Approval.html">approval</a> 
+(meaning with {0,1}-scores only) ballots 
+</p><table align="center">
+<tr><td>(1,1,1,...,1,1)</td><td> &nbsp;&nbsp; with weight &nbsp;&nbsp;  S<sub>C</sub></td></tr>
+<tr><td>(1,1,1,...,1,0)</td><td> &nbsp;&nbsp; with weight &nbsp;&nbsp;  S<sub>C-1</sub>-S<sub>C</sub></td></tr>
+<tr><td align="middle">    ...   </td><td></td></tr>
+<tr><td>(1,1,0,...,0,0)</td><td> &nbsp;&nbsp; with weight &nbsp;&nbsp;  S<sub>2</sub>-S<sub>3</sub></td></tr>
+<tr><td>(1,0,0,...,0,0)</td><td> &nbsp;&nbsp; with weight &nbsp;&nbsp;  S<sub>1</sub>-S<sub>2</sub></td></tr>
+</table><p>
+Note: the candidates were ordered by decreasing scores on the ballot under consideration.
+That assures that all the weights come out positive.  
+For example, the score ballot (9,5,3) in a three-candidate election would be replaced by
+</p><center>
+3&times;(1,1,1) + 2&times;(1,1,0) + 4&times;(1,0,0).
+</center><p>
+This "replacement of score ballots with weighted approval ballots" idea was invented 
+by Toby Pereira.  A "ballot with weight w" is to be 
+interpreted the same as "w voters cast that ballot."
+This transform converts a voting method into a different voting method.
+</p><p>
+<b>"PR stays PR" Theorem.</b>
+If the original method obeys basic proportionality, then the 
+Pereira-transformed one will too.
+</p><P>
+<b>Proof:</b>
+Because
+the transform does not change anything
+for "maximally racist" voters, since they <i>already</i> had voted in
+"all 1s and 0s" scoring style.
+<b>Q.E.D.</b>
+</p><p>
+If we apply the Kotze-Pereira transform to the "extremize Q" multiwinner voting method above,
+the result is as follows.
+</p><p>
+Let c[j,v] denote the candidate c, among the W winning c only,
+such that s<sub>v,c</sub> is the j<sup>th</sup> greatest.
+Also for convenience let c[W+1,v]=C+1 and S<sub>v,C+1</sub>&equiv;0.
+Then choose the W-winner set which extremizes this <b>new quality function</b>
+</p><a name="newpertranfn"></a><center>
+  Q = 
+&sum;<sub>1&le;v&le;V</sub>
+&sum;<sub>1&le;j&le;W</sub> (S<sub>v,c[j,v]</sub>-S<sub>v,c[j+1,v]</sub>) L{ 
+  j R(T<sub>c[j,v]</sub>) }.
+</center><p>
+<b>Single-winner case is plain <a href="https://rangevoting.org/RangeVoting,html">score voting</a> Theorem.</b>
+These new Pereira-transformed methods reduce in the single-winner case (W=1) to plain
+<a href="https://rangevoting.org/RangeVoting,html">score voting</a>.  This is because when W=1 we have
+</p><center>
+  Q(c) = 
+&sum;<sub>1&le;v&le;V</sub>
+S<sub>v,c</sub> L{ R(T<sub>c</sub>) }
+=
+T<sub>c</sub> L{ R(T<sub>c</sub>) }
+</center><p>
+which is a function purely of candidate-c's summed score T<sub>c</sub>.
+<i>Extremizing</i> Q by choice of the winner c is therefore the same thing
+as plain score voting,
+i.e. choosing the winner with maximum T<sub>c</sub>,
+provided either
+</p><ul><li>
+ vL{R(v)}  is an increasing function of v, and we maximize Q, or
+</li><li>
+ vL{R(v)}  is a decreasing function of v, and we minimize Q.
+</li></ul><p>
+Meanwhile, the original voting method (before <a href="#pt">Kotze-Pereira transform</a>) 
+would in the single-winner case elect the candidate c extremizing
+</p><center>
+  Q(c) = 
+&sum;<sub>1&le;v&le;V</sub>
+L{ S<sub>v,c</sub> R(T<sub>c</sub>) }
+</center><p>
+which usually would <i>not</i> be the same thing as 
+extremizing T<sub>c</sub>.
+(And the 
+<a href="QualityMulti.html">previous</a> paper's "psi voting" is <i>not</i>
+identical to score voting in the single winner case, albeit it is
+equivalent to score voting under a morphism of the scores, and "harmonic voting"
+does reduce to score voting in the W=1 case.)
+</p><p>
+<b>Scale Invariance Invariance Theorem.</b>
+The <a href="#pt">Kotze-Pereira transforms</a> of the Q-extremizing R(v)=1/v scale-invariant voting systems
+still are scale invariant <i>provided</i> that 
+when z is scaled by a constant factor,
+L{z} changes by another constant scaling factor. 
+I.e. if L{z}=z<sup>&mu;</sup> is a fixed power of z, with &mu;&ne;1.
+</p><p>
+<b>Proof.</b>
+Scale invariance is obvious from the formula stated for the 
+<a href="#newpertranfn">new</a> transformed qulaity function; the reason for our
+demand &mu;&ne;1 is so that L(z) will be strictly 
+concave-&cup; or concave=&cap; everywhere
+for all z&gt;0.
+<b>Q.E.D.</b>
+</p><p>
+<b>PR with an uncolored universally top rated candidate Theorem.</b>
+If all voters are "colored,"  all candidates are either colored or uncolored;
+and each voter awards any colored candidate score 1 if the voter 
+and candidate colors agree, otherwise 0; and each voter awards
+each uncolored candidate the top score 1;
+then our
+"extremize Q" voting methods arising from R(v)=1/v will elect a parliament
+whose color composition (ignoring the uncolored MPs) duplicates the electorate's;
+and this is true either before or after a <a href="#pt">Kotze-Pereira transform</a>.
+</p><p>
+<b>Proof:</b>
+Because all votes are approval-style already, the 
+<a href="#pt">Kotze-Pereira transform</a>
+has no effect.
+And then this theorem is just a special case of the already-proven
+"stronger <a href="#strongPRthm">kind</a> of proportionality"
+displayed by 
+"extremize Q" voting methods arising from R(v)=1/v.
+<b>Q.E.D.</b>
+</p><a name="perSPRthm"></a><p>
+<b>PR with an uncolored commonly rated candidate Theorem.</b>
+If all voters are "colored,"  all candidates are either colored or uncolored;
+and each voter awards any colored candidate score 1 if the voter 
+and candidate colors agree, otherwise 0; and each voter awards
+each uncolored candidate a score depending only on the candidate and not on the voter;
+then our
+"extremize Q" voting methods arising from R(v)=1/v will elect a parliament
+whose color composition (ignoring the uncolored MPs) duplicates the electorate's;
+and this is true either before or after a <a href="#pt">Kotze-Pereira transform</a>.
+</p><p>
+<b>Proof:</b>
+The "before" is the previous "stronger kind of proportionality" 
+<a href="#strongPRthm">theorem</a>.
+The "after" claim arises as follows.  A candidate with common rating K is
+Pereira-transformed to common rating 1 (ballots weighted K) and common rating 0
+(ballots weighted 1-K).  More precisely:
+after transform, all ballots are <a href="https://rangevoting.org/Aproval.html">approval</a>
+style, and the only kinds of ballots
+are those 
+approving the candidates of one color only, plus some subset of the uncoloreds.
+And each color-class approves and disapproves each uncolored in fixed percentages
+depending only on the uncolored candidate.
+Let U be the set of uncolored candidates who win.
+Referring back to the
+<a href="#qualdefn">definition</a>
+of our quality function, we again see by essentially the same argument about "constant offsets"
+as in our proof
+of the previous <a href="#strongPRthm">strong PR theorem</a> that the
+colored part of the parliament will necessarily exhibit PR when Q is extremized.
+(There actually will be several different
+constant offsets if there are several uncolored winners, but this
+does not matter.)
+<b>Q.E.D.</b>
+</p><a name="perelex"></a><p>
+<b>Major flaw in our R(v)=1/v systems before Kotze-Pereira transform:</b>
+Consider the following score ballots in a 20-voter, 6-candidate, 2-winner election
+</p><pre>
+   10 voters:    A=1, B=1, C=1, D=0, E=0.2, F=0.2
+   10 voters:    A=1, B=1, C=0, D=1, E=0.2, F=0.2
+</pre><p>
+All the following election results would have equal "best quality"
+as perceived by these systems:
+AB, CD, EF. 
+This is despite our clear perception &ndash; which the 
+<a href="QualityMulti.html">previous</a> paper's systems agree with &ndash;
+that AB is the uniquely best winner-duo.
+This election example was proposed by Toby Pereira.   
+</p>
+
+<a name="tcex"></a>
+<h3> Two concrete example voting systems "PerPhrag" and "PerEbert." </h3>
+<!--
+Max Q:  u L(1/u)   increases, and  L is concave-cap
+Min Q:  u L(1/u)   decreases, and  L is concave-cup
+
+Max Q: If L(v)=v^(-P), then u^(1-P) increases if P<1 and L must be concave-cap hence (1-P)P>0
+hence 0 < &mu; < 1.   Try &mu; = 1/2.
+
+Min Q: If L(v)=v^(-P), then u^(1-P) decreases if P>1 and L must be concave-cup hence P>1.
+Try P=2.
+-->
+<p>
+Let R(v)=1/v and L{z}=z<sup>&mu;</sup> where the power &mu; is a constant.
+</p><ol type="I"><li>
+("PerPhrag.")
+Maximize Q in the 
+<a href="#pt">Kotze-Pereira transform</a>
+of a voting system with 0&lt;&mu;&lt;1, the simplest example
+being &mu;=1/2.
+</li><li>
+("PerEbert.")
+Minimize Q in the 
+<a href="#pt">Kotze-Pereira transform</a>
+of a voting system with &mu;&gt;1, the simplest example
+being &mu;=2.
+</li></ol>
+<p>
+Both these systems should enjoy proportionally (even in the 
+<a href="#strongPRthm">strong</a> 
+kind where commonly-rated candidates exist), scale invariance, and
+in the single-winner case W=1 reduce to plain
+<a href="https://rangevoting.org/RangeVoting,html">score voting</a>. 
+</p><p>
+Here, to hopefully make these systems clearer, is a simple <b>worked election example.</b>
+Let the candidates be named A,B,C,D.  Let the votes be
+</p><pre>
+    <b><u>#voters</u>          <u>Their vote</u></b>
+      51           A=1, B=1, C=1, D=0
+      49           A=0, B=0, C=0, D=1
+</pre>
+<p>
+With system I, using squareroot, we have on this example
+<nobr>Q<sub>ABC</sub>=51(3/51)<sup>1/2</sup>&asymp;12.369</nobr>
+and
+<nobr>Q<sub>ABD</sub>=49(1/49)<sup>1/2</sup>+51(2/51)<sup>1/2</sup>&asymp;17.0995.</nobr>
+Hence ABD wins since with system I we are <i>max</i>imizing Q.
+</p><p>
+With system II we have
+<nobr>Q<sub>ABC</sub>=51(3/51)<sup>2</sup>&asymp;0.176471</nobr>
+and
+<nobr>Q<sub>ABD</sub>=49(2/51+1/49)<sup>2</sup>=0.174195.</nobr>
+Hence ABD wins because for II we are <i>min</i>imizing Q.
+</p>
+<a name="ebertvarremark"></a>
+<p>
+<b>Remark (Ebert &amp; Variance):</b>
+The reason for naming system II "PerEbert" is that 
+Toby <i>Per</i>erira invented the
+<a href="#pt">Kotze-Pereira transform</a>,
+while Bjarke Dahl Ebert, in a 2003 internet
+<a href="https://groups.yahoo.com/neo/groups/election-methods-list/conversations/messages/12468">post</a>, 
+invented the idea 
+of electing the parliament that minimizes (in his terminology)
+the "sum of squared loads."   To explain that:
+in a multiwinner election based on <a href="Approval.html">approval</a>-style 
+ballots, each MP who is elected with A approvals, is regarded as imposing a "load" of
+1/A on each voter who approved him &ndash; i.e. total load 1, equidistributed among
+all A of his supporters.  The "total load" on voter v then is 
+<nobr>load(v)=&sum;<sub>w</sub> 1/A<sub>w</sub></nobr>
+where the sum is over all winning candidates w whom voter v approved, and
+A<sub>w</sub> is the total number of approvals enjoyed by w.
+Then Ebert's election method is to elect the parliament (from among all possible
+candidate-subsets of the correct cardinality) that <i>minimizes</i> the
+sum of squared loads, &sum;<sub>v</sub> load(v)<sup>2</sup>.
+</p><p>
+And this is the special case of our cost function when &mu;=2.
+We now point our that the power &mu;=2 enjoys one especially nice property that no other
+&mu; (&ne;2) enjoys:
+By using the well known &nbsp; <nobr>variance + mean<sup>2</sup> = meansquare</nobr> &nbsp;
+identity in statistics
+</p><blockquote>
+This actually is a disguised form of the 
+<a href ="http://www.cut-the-knot.org/pythagoras/">Pythagorean</a> theorem; 
+a more general version of it is called the 
+<a href="https://en.wikipedia.org/wiki/Parallel_axis_theorem">Huygens-Steiner theorem</a>,
+and another generalization pointed out by Adam Goucher is that
+<center>
+E(|X - E(X)|<sup>2</sup> + |Y - E(Y)|<sup>2</sup>) + |E(X) - E(Y)|<sup>2</sup> 
+= 
+E(|X - Y|<sup>2</sup>)
+<!-- proof:
+expand (X-E)^2 + (Y-F)^2 + (E-F)^2 - (X-Y)^2
+2 F^2-2 F Y-2 E F+2 X Y-2 E X+2 E^2
+then get 0 in expectation if X,Y independent so E(X*Y)=E*F.
+-->
+</center>
+where X and Y are arbitrary independent
+random variables on an arbitrary inner product space
+and E is the "expectation" operator.
+Our &nbsp; <nobr>variance + mean<sup>2</sup> = meansquare</nobr> &nbsp;
+identity is the special case Y&equiv;0 of Goucher.
+Goucher's identity may be proven by expanding both sides.
+</blockquote><p>
+Ebert's cost function may be rewritten as
+</p><center>
+V<sup>-1</sup>&sum;<sub>1&le;v&le;V</sub> load(v)<sup>2</sup> =
+mean<sup>2</sup> + variance
+</center><p>
+where the mean load, among the loads carried by each of the V voters, is
+</p><center>
+mean 
+= V<sup>-1</sup> &sum;<sub>1&le;v&le;V</sub>load(v) 
+= V<sup>-1</sup> &sum;<sub>winners w</sub>1 
+= (number of seats in parliament) / V
+</center><p>
+while the variance among the loads
+carried by each voter, is
+</p><center>
+variance
+= V<sup>-1</sup>&sum;<sub>1&le;v&le;V</sub>[load(v)-mean]<sup>2</sup>.
+</center><p>
+And if the number of voters V and the number of seats in parliament are <i>fixed</i>, 
+this tells us that 
+<i>minimizing Ebert's "sum of squared loads" cost-function (which is the same 
+as our own cost function in the special case &mu;=2) is equivalent to minimizing
+the <u>variance</u> among the loads carried by each voter.</i>
+</p><p>
+And this in turn makes it clear why minimizing Ebert's cost function
+strives to <i>equalize</i> all voter-loads, thus seeking the ideal of
+"proportional representation."  (In a racist-voting scenario, each voter having an equal load
+would correspond to perfect PR.)
+</p><p>
+<b>Remark (Rather weak rationale for the name "PerPhrag"):</b>
+I named this after Toby <i>Per</i>eira and
+Lars Edvard <i>Phrag</i>m&eacute;n,
+since the voting method first applies the 
+<a href="#pt">Kotze-Pereira transform</a>
+to the original <a href="https://rangevoting.org/Rangevorting.org">score</a>-style ballots 
+to convert them to a set of
+weighted 
+<a href="Approval.html">approval</a>-type ballots,
+and then elects the parliament maximizing our quality function based on the power &mu;=1/2.
+The latter bears some mild resemblance to ideas advanced by
+Phragm&eacute;n in 1895. 
+Actually Phragm&eacute;n never actually suggested this, nor even the idea
+of optimizing <i>any</i> quality function, but I needed to have some name, so I chose "PerPhrag."
+</p>
+
+<a name="coinflip"></a>
+<h3>The "coin flip transform": another interesting proportionality-preserving transform </h3>
+<p>
+In this section we'll point out that 
+the voting methods from the preceding section, when the power &mu; is an <i>integer</i>
+with &mu;&ge;2 (for example the "PerEbert" system with &mu;=2), 
+obey an interesting new proportionality property.  
+This whole section may be skipped in the sense that its result is not used by the 
+rest of the paper.
+Consider, for approval-style ballots, the following
+<b>coin-flip approval transform (CFAT)</b>.  
+For any ballot approving A candidates, transform it to 2<sup>A</sup>
+weighted ballots, each approving a different subset of those A.
+The weights arise by tossing a b-biased coin to decide whether to approve each candidate.
+That is, the weight for a ballot approving some particular Z among the A
+candidates, will be 
+</p><center>
+Binomial(A,Z) (&frac12;+b)<sup>Z</sup> (&frac12;-b)<sup>A-Z</sup>
+</center><p>
+where <nobr>|b|&lt;&frac12;</nobr> and <nobr>Binomial(x,y)=x!/([x-y]!y!).</nobr>
+The new (weighted) ballot set arising from this transform of course is inequivalent to the old.
+</p><p>
+The whole coin-flip approval transform idea was invented by Toby Pereira in the unbiased-coin
+case b=0.
+</p><p>
+Let party k run C<sub>k</sub> candidates 
+and have V<sub>k</sub> voters and get W<sub>k</sub> winners.
+Suppose each voter approves her party's candidates and disapproves all rival
+party's.
+The "sum of squared loads" PerEbert quality function (with &mu;=2)
+for the party-k winners and party-k voters is
+(without the CFAT)
+</p><center>
+   V<sub>k</sub> 
+  (W<sub>k</sub>/V<sub>k</sub>)<sup>2</sup> = W<sub>k</sub><sup>2</sup>/V<sub>k</sub>.
+</center><p>
+The reason this yields PR is that if we minimize
+</p><center>
+   &sum;<sub>k</sub>  W<sub>k</sub><sup>2</sup> / V<sub>k</sub>
+</center><p>
+by choice of the W<sub>k</sub> subject to 
+&sum;<sub>k</sub> W<sub>k</sub> = W = total #seats being held fixed,
+then the answer (by method of Lagrange multipliers) is
+</p><center>
+   W<sub>k</sub> / V<sub>k</sub> = independent of k
+</center><p>
+i.e, proportionality.
+The sum of squared loads for each party-k winner among party-k voters
+is (now with the CFAT)
+</p><center>
+   2<sup>-W<sub>k</sub></sup>
+  V<sub>k</sub>  [&sum;<sub>0&le;j&le;W<sub>k</sub></sub>
+     Binomial(W<sub>k</sub>,j) (j/V<sub>k</sub>)<sup>2</sup> 
+   (&frac12;+b)<sup>j</sup> (&frac12;-b)<sup>W<sub>k</sub>-j</sup>]
+</center><p>
+This binomial sum may be evaluated in closed form 
+(by, e.g. automated methods described in the Petkovsek-Wilf-Zeilberger book,
+and by the commercial software <i>Mathematica</i>):
+<!-- (&frac12;+b)<sup>j</sup> (&frac12;-b)<sup>W<sub>k</sub>-j</sup> -->
+</p><center>
+   &sum;<sub>0&le;j&le;W</sub>
+ Binomial(W,j) j<sup>2</sup> (&frac12;+b)<sup>j</sup> (&frac12;-b)<sup>W-j</sup>
+<b>=</b> (&frac12;+b)  ([&frac12;+b]W+&frac12;-b) W
+<b>=</b> (&frac12;+b)<sup>2</sup>  (W+[&frac12;-b]/[1+2b])<sup>2</sup> 
+  - (b-&frac12;)<sup>2</sup>/4 
+</center><p>
+For any fixed b with <nobr>b&gt;-&frac12;</nobr>, the right hand sides
+are a <i>quadratic</i> function
+of W.  And that means the PerEbert election method
+still would yield PR, even after the CFA transform, in the sense that
+minimizing
+</p><center>
+   &sum;<sub>k</sub>  quadratic(W<sub>k</sub>) / V<sub>k</sub>
+</center><p>
+by choice of the W<sub>k</sub> subject to &sum;<sub>k</sub>W<sub>k</sub>=W
+being held fixed, yields (by the method of Lagrange multipliers) 
+</p><center>
+   linear(W<sub>k</sub>) / V<sub>k</sub> = independent of k
+</center><p>
+where the linear is the derivative of the quadratic.
+This is a form of proportionality, albeit with the party seat-counts W<sub>k</sub>
+each shifted by some additive constant.
+E.g, in the unbiased coin case b=0, the shift is half a seat, i.e. this
+proportionality would ask that
+&frac12;+W<sub>k</sub>,
+rather than  W<sub>k</sub>,  be proportional to V<sub>k</sub>.
+(And this half-shift would convert PerEbert from 
+"Sainte-Lagu&euml; to d'Hondt style proportionality,"
+roughly speaking, as was first pointed out semi-empirically by Toby Pereira.)
+For general bias b the shift instead is <nobr>(&frac12;-b)/(1+2b).</nobr>
+</p><p>
+That argument had employed a closed-form sum arising from the power &mu;=2,
+i.e. the "PerEbert" voting method.  However, the sum
+</p><center>
+   &sum;<sub>0&le;j&le;W</sub>
+ Binomial(W,j) j<sup>&mu;</sup> (&frac12;+b)<sup>j</sup> (&frac12;-b)<sup>W-j</sup>
+</center><p>
+actually can be done in closed form for <i>any</i> fixed integer &mu;&ge;0, which tells
+us that <i>all</i> the corresponding voting methods arising from integer powers &mu;&ge;2,
+could be proven to enjoy a theorem that the CFAT does not affect their claim
+to provide "basic proportional representation" &ndash; aside from effects like our "additive shift"
+which cause bounded additive errors in each party's seat counts.
+</p><p>
+This all is an <i>interesting</i> fact.  It may or may not be a <i>useful</i> fact.
+</p><a name="leastsqthm"></a><p>
+<b>Closer connection to Sainte-Lagu&euml;:</b>
+The PerEbert (&mu;=2) method with shift &Delta;=0 
+actually is <i>exactly</i> the same in "racist voting" basic-PR election scenarions,
+as the Sainte-Lagu&euml; party-list
+voting method, or equivalently Webster's apportionment method.
+(See the book by Balinski &amp; Young for more about those.)
+This is because of a theorem
+stated without proof on page 964 of Owens 1921
+about how "method W" (Webster) globally minimizes the "total injustice" (equivalent to
+minimizing the PerEbert cost function).
+This theorem also had independently been found (with a proof!) by
+Andre Sainte-Lagu&euml; in 1910,
+and was stated with a different proof on pages 103-104 of
+the book by Balinski &amp; Young 1982.
+Further investigation suggested the following is a (new) 
+</p><p>
+<b>Least Squares Theorem:</b>
+Consider this party-list voting method: if party k gets V<sub>k</sub> votes,
+then award it W<sub>k</sub>=&lceil;V<sub>k</sub>Q-d&rceil; seats,
+where the offset d with 0&le;d&le;1 is a pre-specified constant
+and where Q&gt;0 is chosen so that the total number W=&sum;<sub>k</sub>W<sub>k</sub> of seats 
+equals the desired value. 
+(The case d=&frac12; is the Webster=Sainte-Lagu&euml; method; if
+d=0+ it is the method of Adams; and if d=1- it is Jefferson=d'Hondt.
+See Balinski/Young 1982 for further discussion of all these classical methods.)
+Then: the seat-counts
+W<sub>k</sub> automatically will globally minimize
+&sum;<sub>k</sub> (W<sub>k</sub>+d-&frac12;)<sup>2</sup>/V<sub>k</sub>
+over all possible tuples of nonnegative integers 
+W<sub>k</sub> summing to W.
+</p><p>
+This is the 
+Sainte-Lagu&euml;/Owens theorem in the case d=&frac12;, but for other d it is new. 
+I <a href="Apportion.html">had</a> already proven this theorem in 2007 as a consequence of
+Lemma 7.1 (p.117), lemma 6.1 (p.94) and theorem 6.1 (p.95) in the
+book by  Grilli di Cortona et al 1999, except that at the time I was not completely sure
+that I believed those claims in that book.   
+Hence in 2016 I subjected the present theorem to extensive computer checking.
+It failed to find any counterexample.   I then realized that 
+the simpler and older arguments in Sainte-Lagu&euml; 1910 and 
+in p.103-104 of Balinski/Young 1982 
+both straightforwardly generalize to prove the present theorem.
+(Both pertained only to the case d=&frac12;, but one simply goes through
+their same arguments redoing them for arbitrary d.)
+In the meantime Toby Pereira in 2016 also re-invented a proof very
+similar to the one in Balinski/Young (albeit Pereira only concerned himself
+with the d'Hondt case d&rarr;1).
+Sainte-Lagu&euml;'s argument is based on electing candidates one at a time
+as described in wikipedia's
+<a href="https://en.wikipedia.org/wiki/Sainte-Lagu%C3%AB_method">description</a> of
+his voting method; then arguing that each additional seat-filling increases the 
+cost function by the least possible amount.
+(No matter when you stop, the resulting parliament is optimal for whatever seat-count it has.
+Incidentally, our "Ebert cost function" in the racist-voter-behavior subcase
+has also been called the 
+"Sainte-Lagu&euml; disproportionality index," e.g. by Gallagher 1991 who ends up recommending
+Sainte-Lagu&euml; over various other PR notions, as also does Benoit 2000.)
+The Balinski/Young and Pereira arguments are
+based on considering <i>pairs</i> of political parties.  Any parliament other than
+the ones generated by our party-list voting method, is argued to contain some pair
+of parties such that the cost function is reducible by transferring seats
+from one party to the other.
+</p><p>
+Was Sainte-Lagu&euml;'s original "proof" in 1910 adequate?
+A possible problem is that his argument was
+"greedy."  Each successive seat addition considered <i>by itself</i> is optimal, but
+is is conceivable that the cost function might be reducible by making
+some non-greedy seat-additions in the hope that later additions
+could enjoy smaller costs.   Well, Sainte-Lagu&euml; did not discuss this issue
+directly, but the cost-change formula he gave
+makes it clear this difficulty cannot happen.
+</p><p>
+Were the party-pair-based "proofs" by Balinski/Young 1982 (also thought of by
+Pereira in 2016), adequate?  Also yes.
+We want to argue that any interparty transfer of seats will increase the cost function.
+I.e. consider two subsets of parties A and B, and we move seats from A into B.
+To show this, go through the parties in A one by one.
+We claim the cost formula is such that: 
+Each seat transfer from the first A-party will increase the cost function.
+Then each seat transfer from the second A-party will increase the cost function.
+Then each seat transfer from the third A-party will  increase the cost function.
+... And so on inductively.  
+So the net effect of all transfers in succession is to increase the cost function.
+<b>Q.E.D.</b>
+</p><p>
+It follows from the Least Squares Theorem that the CFA transform of 
+the PerEbert (&mu;=2) method with shift &Delta;=0 
+actually <i>exactly</i> yields d'Hondt proportionality in 
+"racist voting" situations if fair coins (b=0) are used.
+More generally, if bias-b coins are used, then it <i>exactly</i> yields
+proportionality of the sort in this theorem with offset
+d=&frac12;+(&frac12;-b)/(1+2b).
+</p>
+
+<a name="shiftsec"></a>
+<h3>
+Connection between reciprocation "shift" and different (e.g. 
+<a href="https://en.wikipedia.org/wiki/Sainte-Lagu%C3%AB_method">Sainte-Lagu&euml;</a>
+&amp;
+<a href="https://en.wikipedia.org/wiki/D%27Hondt_method">d'Hondt</a>)
+proportionality tunings
+</h3>
+
+<p> 
+For the PerEbert voting method based on power &mu;,
+using "shift" &Delta;,
+the Q formula is
+</p><center>
+  Q = 
+&sum;<sub>1&le;v&le;V</sub>
+ { &sum;<sub>1&le;j&le;W</sub>
+ S<sub>v,winner[j]</sub> / (&Delta;+T<sub>winner[j]</sub>) }<sup>&mu;</sup>.
+</center><p>
+Let us now explore the nature of the proportionality delivered by the resulting voting system.
+Consider a "racist voting" situation where
+party k runs C<sub>k</sub> candidates 
+and has V<sub>k</sub> voters and gets W<sub>k</sub> winners.
+Then
+</p><center>
+  Q = &sum;<sub>k</sub>
+{ W<sub>k</sub>/(&Delta;+V<sub>k</sub>) }<sup>&mu;</sup> V<sub>k</sub>.
+</center><p>
+Extremizing Q
+by choice of the W<sub>k</sub> subject to &sum;<sub>k</sub>W<sub>k</sub>=W
+being held fixed, yields (by the method of Lagrange multipliers) 
+</p><center>
+ (W<sub>k</sub>)<sup>&mu;-1</sup> V<sub>k</sub>
+&nbsp;&nbsp; proportional to &nbsp;&nbsp;
+(&Delta;+V<sub>k</sub>)<sup>&mu;</sup>.
+</center><p>
+Equivalently
+</p><center>
+W<sub>k</sub>
+&nbsp;&nbsp; proportional to &nbsp;&nbsp;
+(V<sub>k</sub>)<sup>-1/(&mu;-1)</sup>
+(&Delta;+V<sub>k</sub>)<sup>&mu;/(&mu;-1)</sup>.
+</center><p>
+If we expand the right hand side in a series in powers of &Delta;, then
+neglect all but the leading two terms, we find
+</p><center>
+W<sub>k</sub>
+&nbsp;&nbsp; proportional to &nbsp;&nbsp;
+V<sub>k</sub> + &Delta; &mu;/(&mu;-1) + ...
+</center><p>
+Since the proportionality constant is W/V, this equivalently may be written
+</p><center>
+W<sub>k</sub>
+- (W/V) &Delta; &mu;/(&mu;-1) 
+&nbsp;&nbsp; proportional to &nbsp;&nbsp;
+V<sub>k</sub> + ...
+</center><p>
+This makes it clear that &Delta; of the same order as V/W
+will yield additive alterations in each party's seat-counts, of order 1 seat.
+Due to the neglected terms (indicated by "...") in the series, these
+alterations do not correspond <i>exactly</i> to
+previous notions of proportionality such as d'Hondt.
+But they do correspond <i>approximately</i> in a limit where each party has a large number
+of seats and voters.
+</p><p>
+Specifically, &Delta;=0 
+should yield the closest correspondence to Sainte-Lagu&euml;,
+while 
+<nobr>&Delta;=(&frac12;)(W/V)(&mu;<sup>-1</sup>-1)</nobr>
+should yield the closest correspondence to d'Hondt.
+</p>
+
+<a name="embar"></a>
+<h3>Some elections which embarrass those two (and the previous paper's) systems</h3>
+<p>
+<b>Pereira's earlier election <a href="#perelex">example</b></a>
+is converted by the
+<a href="#pt">Kotze-Pereira transform</a>
+to these ballots
+</p><pre>
+    8 voters:    A=1, B=1, C=1, D=0, E=0, F=0
+    8 voters:    A=1, B=1, C=0, D=1, E=0, F=0
+    2 voters:    A=1, B=1, C=1, D=0, E=1, F=1
+    2 voters:    A=1, B=1, C=0, D=1, E=1, F=1
+</pre><p>
+whereupon with the PerPhrag method I (&mu;=1/2) we find 
+<nobr>Q<sub>AB</sub>=20/&radic;10=2&radic;10=Q<sub>CD</sub>,</nobr>
+<nobr>Q<sub>EF</sub>=4/&radic;2=2&radic;2.</nobr>
+</p><p>
+With the PerEbert method II (&mu;=2) we find
+<nobr>Q<sub>AB</sub>=20/10<sup>2</sup>=0.2=Q<sub>CD</sub>,</nobr>
+<nobr>Q<sub>EF</sub>=4/2<sup>2</sup>+0=1.</nobr>
+</p><p>
+So both the PerPhrag and PerEbert election methods judge <b>AB and CD coequally best.</b>
+Although it is good that (thanks to the 
+<a href="#pt">Kotze-Pereira</a> transformation)
+they now recognize that either is superior to EF,
+this remains a highly <b>unsatisfactory result</b> since it seems obvious that AB
+should be uniquely best.
+The ultimate source of the problem here is the 
+<a href="#nonmonothm">nonmonotonicity theorem</a>.
+</p><p>
+If we had employed &Delta; "<a href="#shiftrecip">ghost voters</a>,"
+then we would have found
+with  PerPhrag
+<nobr>Q<sub>AB</sub>=20/(10+&Delta;)<sup>1/2</sup>=Q<sub>CD</sub>,</nobr>
+<nobr>Q<sub>EF</sub>=4/(2+&Delta;)<sup>1/2</sup>.</nobr>
+In other words, adding &Delta; ghost voters is not capable of salvaging this situation
+with PerPhrag, for any &Delta;&ge;-1.66. <!-- Delta < -5/3 makes it worse. -->
+</p><p>
+Meanwhile with PerEbert,
+<nobr>Q<sub>AB</sub>=20/(10+&Delta;)<sup>2</sup>=Q<sub>CD</sub>,</nobr>
+<nobr>Q<sub>EF</sub>=4/(2+&Delta;)<sup>2</sup>+0.</nobr>
+Here, adding &Delta; ghost voters not only fail to salvage this situation,
+they actually,  for any &Delta;&gt;2&radic;5&asymp;4.472,  make it <i>worse</i>,
+because then EF becomes the unique winning parliament!
+</p>
+<!--
+<p>
+<b>Andy Jennings</b> then made this problem even more explicit by devising the following
+18-voter 2-winner 3-candidate example:
+</p>
+<pre>
+(Each column of the matrix is one <a href="Approval.html">approval</a>-style 
+ballot concerning candidates A,B,C.)
+A: 111111111100000000
+B: 000000000011111111
+C: 100000000011111111
+</pre>
+Should C's support from one A voter hurt him or help him?  
+These calculations show that with method II (&mu;=2) it hurts him and hence (insanely)
+B is the second winner:
+</p><p>
+<nobr>
+Q<sub>AC</sub>=9(1/10)<sup>2</sup>+(1/9+1/10)<sup>2</sup>+8(1/8)<sup>2</sup>&asymp;0.259568
+</nobr>
+and
+<nobr>
+<b>Q<sub>AB</sub></b>=10(1/10)<sup>2</sup>+8(1/8)<sup>2</sup>=<b>0.225</b>.
+</nobr>
+</p><p>
+Indeed, this pathology occurs for any power &mu;&gt;1, not just &mu;=2.
+But with method I with &mu;=&frac12;
+(or indeed any power &mu; with 0&lt;&mu;&lt;1), 
+we do not experience the problem and AC (sanely) wins:
+<nobr>
+<b>Q<sub>AC</sub></b>=9(1/10)<sup>1/2</sup>+(1/9+1/10)<sup>1/2</sup>+8(1/8)<sup>1/2</sup>&asymp;<b>6.1339</b>
+</nobr>
+and
+<nobr>
+Q<sub>AB</sub>=10(1/10)<sup>1/2</sup>+8(1/8)<sup>1/2</sup>&asymp;5.9907.
+</nobr>
+</p>-->
+<a name="ebertnonmono"></a>
+<p>
+We can make this problem even more explicit by devising the following 
+<b>19-voter 2-winner 3-candidate nonmonotone election example:</b>
+</p>
+<pre>
+(Each column of the matrix is one <a href="Approval.html">approval</a>-style 
+ballot concerning candidates A,B,C.)
+        A: 1111111111000000000
+        B: 0000000001111111111
+        C: 0000000000111111111
+</pre>
+<p>
+Then with the PerPhrag method I (&mu;=&frac12;) we have
+<nobr>
+Q<sub>AB</sub>=9(1/10)<sup>1/2</sup>+(1/10+1/10)<sup>1/2</sup>+9(1/10)<sup>1/2</sup>&asymp;6.1393
+</nobr>
+and
+<nobr>
+<b>Q<sub>AC</sub></b>=10(1/10)<sup>1/2</sup>+9(1/9)<sup>1/2</sup>&asymp;<b>6.1623</b>
+</nobr>
+so that AC, insanely, beats AB in order to maximize Q.
+Indeed, this pathology arises for any power &mu; with 0&lt;&mu;&lt;1, not just &mu;=&frac12;.
+(And with &mu;=&frac12;, adding &Delta; 
+<a href="#shiftrecip">ghost voters</a>
+fails to salvage this situation for any &Delta;&gt;-4.7.)
+<!-- Delta < -90/19 does salvage. -->
+</p><p>
+Meanwhile the PerEbert method II (&mu;=2) with the same election example finds
+<nobr>
+Q<sub>AB</sub>=9(1/10)<sup>2</sup>+(1/10+1/10)<sup>2</sup>+9(1/10)<sup>2</sup>=0.22
+</nobr>
+and
+<nobr>
+<b>Q<sub>AC</sub></b>=10(1/10)<sup>2</sup>+9(1/9)<sup>2</sup>&asymp;<b>0.21111</b>
+</nobr>
+so that (remembering with method II we are <i>min</i>imizing Q), again
+AC, insanely, beats AB.  And again, this pathology happens with any power
+&mu;&gt;1, not merely &mu;=2.
+(And with &mu;=2, adding &Delta; 
+<a href="#shiftrecip">ghost voters</a>
+fails to salvage this situation for any &Delta;&gt;-2.5.)
+<!-- -9.464 < Delta < -2.536  salvages. -->
+</p>
+
+<a name="debate"></a>
+<h3> The debate between Phragmen and Thiele </h3>
+<p>
+Our "reciprocal-based" class of nonlinear quality function corresponds to a philosophy
+of PR tracing to L.E.<a href="Phragmen.html">Phragmen</a> (1863-1937)
+in 1895, while the "logarithmic-based" class of "linear" quality function in the 
+<a href="QualityMulti.html">previous</a> paper traces back to
+a rival philosophy of PR due to 
+T.N.<a href="https://en.wikipedia.org/wiki/Thorvald_N._Thiele">Thiele</a> 
+(1838-1910)
+in the same year.
+Both were Scandinavian mathematicans who were undoubtably stimulated to investigate 
+the mathematics of Proportional Representation because the Scandinavian countries
+were involved in adopting PR systems of parliamentary government during that era.
+</p><p>
+Those authors did not have any "quality" function and they were not optimizing anything.
+Their publications were in Scandinavian-language journals and remained largely unnoticed
+outside of Scandinavia for nearly a century.  They
+did not explicitly state theorems, which also did not help.
+They both had in mind "approval style" ballots, although it might be that
+they had in mind demanding that the total number of approved candidates must equal W,
+the number of seats, which is an artificial restriction as far as the modern view
+(Brams &amp; Fishburn 1983) of Approval Voting is concerned.
+(I do not think they explicitly said that, but all their examples did this.)
+</p><p>
+Nevertheless, in cases where all voters have
+all scores for all candidates in the 2-element set {0,1},
+and where only "maximially racist" color-based voting happens (i.e. voters and candidates are
+colored; voters score colored candidates 1 if same color, but 0 if different color; we
+also permit uncolored candidates who are universally scored 1) our Q-optimizing
+systems <i>correspond</i> to 
+<a href="Phragmen.html">Phragmen</a>'s 
+(whether or not his "peculiar" <a href="Phragmen.html#pecstep">step 5</a> is omitted)  and 
+<a href="RRV.html">Thiele</a>'s systems! 
+
+</p><p>
+We can illuminate the debate between Phragmen and Thiele's philosophies
+with a few election examples:
+</p><p>
+<b>Example 1.</b>
+Fractions R and B of Red and Blue voters, respectively.
+Let &epsilon;&gt;0 be arbitrarily small.
+If R=3/5+&epsilon; and B=2/5-&epsilon;, (or if R=2/3-&epsilon; and B=1/3+&epsilon;), U is a
+universally-approved candidate,
+and 3 winners, then
+</p><ul><li>
+ With weak PR (Thiele method) winners are U,R,R.
+</li><li>
+ With strong PR (Phragmen method) winners are U,R,B.
+</li></ul><p>
+Which is "right"?
+</p><p>
+Well, both parliaments provide some Red and some Blue representation.
+The Thiele parliament has 1 candidate the Blues approve, and 3 the Reds approve.
+The Phragmen parliament has 2 candidates the Blues approve, and 2 the
+Reds approve.
+Both parliaments can be regarded as providing "perfect" PR if U is assumed to
+have just the right internal color composition.  In the Phragmen case with
+<nobr>R=2/3-&epsilon;</nobr>, we need U to be almost entirely red to make that work, but
+with Thiele U will need to be almost entirely blue to make it work.
+</p><p>
+There always exists a way to cook up an "internal color composition" for the U's in elections
+of the above ilk, to make Thiele perfectly proportional, or to make Phragmen 
+perfectly proportional (whichever is desired).
+</p><p>
+<b>Example 2 (More dramatic, albeit less realistic).</b>
+Begin by electing 300 universally-approved 
+uncolored candidates  UUUU...UUU.
+Then, let's say the Red and Blue voters are in 2:1 ratio.
+The next 300 winners using Thiele  will all be Red.  So if it is a 600-member parliament
+Thiele will give us 300 U's and 300 Reds.
+</p><p>
+But with Phragmen the next 300 winners will be 200 Reds and 100 Blues,
+for 300 U, 200 Red, 100 Blue in all.
+</p><p>
+With both parliaments we can argue that both Reds and Blues are represented:
+</p><ul><li>
+Thiele:  300 MPs approved by Blues, 600 MPs approved by Reds, 600 MPs total.  
+Note the exact 2:1 Red:Blue approvalness ratio.
+If V voters, the total number of voter-MP approval relationships is 
+500V.
+</li><li>
+Phragmen: 500 approved by Reds, 400 approved by Blues, 600 total.
+Note exact 2:1 ratio (200:100) of Red to Blue MPs when we ignore
+the 300 uncolored MPs.
+If V voters, the total number of approvals is  
+466.667V, not as good.
+</li></ul>
+<p>
+Which parliament is better?
+</p><p>
+If we assume the U's toss fair coins to vote, 
+then it is as though the R:B ratio in the Thiele parliament
+were 3:1 (not 2:1) which is somewhat disproportional, on any totally racist vote.  
+However, the Phragmen parliament would
+by the same argument be effectively 7:5 not 2:1, also disproportional on such a vote.
+</p><p>
+If you actually 
+wanted proportionality in this sense you'd want something "midway between Phragmen &amp; Thiele"
+with, say, 300 U's, 250 Reds, 50 Blues.   (Actually, here "midway" really does mean
+the arithmetic mean of the seat counts.)
+</p><p>
+On a vote for which the only 3/4 the Reds vote YES, and all Blues vote NO, so that the vote
+within the electorate would be tied...  the Phragmen parliament would reach a 300-300
+exact tie (up to noise caused by the finiteness of the number of coin flips).
+Meanwhile the Thiele parliament would vote 375:225
+in the same model.
+So at least in this silly coins model, Phragmen seems better in the sense that binary 
+votes will yield the <i>same</i> decision (up to small statistical noise) in both the Parliament
+and in a nationwide referendum.
+<i>But</i> that might not
+be because Phragmen really is better, but rather because that model is unrealistic
+&ndash; not to 
+mention the whole model of colored and universally-rated candidates only, 
+also is unrealistic.
+</p><p>
+It also seems worrying that the U's in the Thiele parliament will continually
+be having to deal with Red colleagues but no Blues.  
+This may give them a too-biased outlook.
+</p><p>
+On the other hand, maybe we should trust the U's.  They are universally-approved, they must be 
+great and wise.  In that case, the U's will not just be fair coins
+&ndash; they actually will be smart &ndash; and 
+they'll always carry the day
+unless 100% of the Thiele Reds are against them.   
+Hence, either of the two parliaments will be excellent.
+</p><p>
+My conclusion is: it is hard to be sure which is better, but 100% Thiele seems suspect
+to me, i.e. at least some Phragmen seems wanted.
+</p><p>
+<b>Anti-Thiele argument by Toby Pereira:</b>
+I see Thiele a bit like this: 
+Three people share a house and two prefer apples and one prefers oranges. 
+One of the apple-preferrers does the shopping and buys three pieces of fruit. 
+But instead of buying two apples and an orange, he buys three apples. 
+Why? Because they all have tap water available to them already and he took this into 
+account in the proportional calculations. And his reasoning was that the larger faction 
+(of two) should have twice as much as the smaller faction (of one) when everything is 
+taken into account, not just the variables. Taken to its logical conclusion, 
+Thiele-thinking would always award the largest faction everything because there is 
+so much that we all share &ndash; air, water, public areas, etc!
+</p><p>
+<b>Thiele defense:</b>
+The trouble with this is, politicians are not like tap water and oranges.
+That reasoning would make sense if politicians were "wholy owned" by the Blues,
+just as Peter wholy-eats an apple.  But even the most partisan politicians
+in Canada do a lot of work to help Joe Average constituent whose
+political leanings
+they do not even know.   At least, so I am told.
+</p><p>
+<b>Anti-Phragmen argument by Warren D. Smith:</b>
+Taken to its limits, Phragmen-thinking would say, once the 50% Reds
+elected a red MP, and the 50% Blues elected a blue MP, there was no
+benefit whatever to replacing
+the red MP by somebody approved by the entire populace!
+</p><p>
+<b>Is "strong PR" even a good idea?</b>
+Most people seem to think so, but some dispute that.  
+For example in a PR parliament with 12 Reds and 4 Blues;
+if 12 universally-approved candidates come, then (a critic argues) the
+resulting strong-PR parliament with 12 Univ, 3 Red, 1 Blue would in practice
+be Bluer than the electorate.  Understanding whether that is true requires
+knowing how the Univs would vote on Red-vs-Blue issues. That might become clear after 100
+years of record keeping after some strong PR electoral system finally is enacted;
+but isn't clear to me now.  
+</p><p>
+As an approximation to universal approval, we can consider the historical
+behavior of some of the biggest landslide winners in history. For US presidents,
+these were:
+</p><center>
+ G.Washington, J.Monroe, A.Lincoln(1864), W.G.Harding, F.D.Roosevelt,
+L.B.Johnson(1964), R.M.Nixon(1972), R.Reagan.
+</center>
+How did they vote on contentious "red vs blue" issues?   
+It looks to me like
+there either weren't any such issues (Washington), or they found miraculous ways to
+dodge those issues, "talk out of both sides of their mouth" about them 
+(Harding, FDR), and/or
+keep them out of the limelight
+(including in the case of Reagan resorting to outright lying and cloak
+&amp; dagger secret illegal activities), <i>or</i> they came down on one side or
+other eventually (usually or always the most popular side).  This quick look
+has not been enough to convince me of anything much.
+</p><p>
+<b>Joint tentative conclusion:</b>
+We probably have to trade away some degree of proportionality for monotonicity.
+</p>
+<a name="complem"></a>
+<h3> Complementarity between Phragmen and Thiele </h3>
+<p>
+If you thought some of the non-monotonic election examples above
+"clearly prove" the superiority of
+the previous paper's voting methods (and what we have branded
+"Thiele's PR philosophy") over Phragmen/Ebert, then consider this
+</p><p>
+<b>Anti-Thiele election example by Toby Pereira:</b>
+W=20M seats to elect. V=5N voters.
+</p>
+<table bgcolor="pink">
+<tr bgcolor="yellow"><th>Faction</th><th>#voters</th><th>Approved candidates</th></tr>
+<tr><td>A</td><td>2N</td><td>U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>10M</sub>; A<sub>1</sub>, A<sub>2</sub>,  ...</td></tr> 
+<tr><td>B</td><td>2N</td><td>U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>10M</sub>; B<sub>1</sub>, B<sub>2</sub>,  ...</td></tr> 
+<tr><td>C</td><td>N</td><td>C<sub>1</sub>, C<sub>2</sub>,  ...</td></tr> 
+</table>
+<p>
+Pereira considers 
+the optimum election-winner set to be
+</p><center>
+U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>10M</sub>,
+A<sub>1</sub>, A<sub>2</sub>, ..., A<sub>3M</sub>,
+B<sub>1</sub>, B<sub>2</sub>, ..., B<sub>3M</sub>,
+C<sub>1</sub>, C<sub>2</sub>, ..., C<sub>4M</sub>.
+</center><p>
+<!-- 
+Qpsi = 4*digamma(13+1/2)+digamma(4+1/2) = 11.64965 
+Qpsi = 4*digamma(13+1)+digamma(4+1)     = 11.91779
+Qphr = 2*sqrt(10/4+3/2)+2*sqrt(10/4+3/2)+sqrt(4/1) = 10 >
+Qphr = 2*sqrt(10/4+2/2)+2*sqrt(10/4+2/2)+sqrt(6/1) = 9.9328
+global max of Qphr = 2*sqrt(10/4+x/2)+2*sqrt(10/4+x/2)+sqrt((10-2*x)/1)  is at x=3
+Qebe = 2*(10/4+3/2)^2+2*(10/4+3/2)^2+(4/1)^2 = 80 <
+Qebe = 2*(10/4+2/2)^2+2*(10/4+2/2)^2+(6/1)^2 = 85
+global min of Qebe = 2*(10/4+x/2)^2+2*(10/4+x/2)^2+((10-2*x)/1)^2  is at x=3
+-->
+For any M&ge;1, PerPhrag and PerEbert both would elect this as their winning candidate set,
+essentially because x=3M is the global extremum (max if &mu;&gt;1, min if 0&lt;&mu;&lt;1) of
+</p><center>
+2N&middot;(10M/4+x/2)<sup>&mu;</sup>
++ 2N&middot;(10M/4+x/2)<sup>&mu;</sup>
++ N&middot;(10M-2x)<sup>&mu;</sup>
+</center><p>
+for any fixed &mu;&gt;0 with &mu;&ne;1.
+<i>But</i> when M=1, Thiele (such as the
+<a href="QualityMulti.html">previous</a> paper's
+"Psi voting" or "harmonic voting" with any &Delta;
+obeying -2&lt;&Delta;&lt;+2.9)
+instead prefers to elect (and I have verified that
+when &frac12;&le;&Delta;&le;1 they actually do elect) the inferior winner-set
+</p><center>
+U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>10</sub>,
+A<sub>1</sub>, A<sub>2</sub>, 
+B<sub>1</sub>, B<sub>2</sub>, 
+C<sub>1</sub>, C<sub>2</sub>, ..., C<sub>6</sub>,
+</center>
+<!-- 
+Qpsi = 4*digamma(12+1/2)+digamma(6+1/2) = 11.73369 >
+Qpsi = 2*digamma(13+1/2)+2*digamma(12+1/2)+digamma(5+1/2)= 11.71188
+Qpsi = 2*digamma(12+1/2)+2*digamma(11+1/2)+digamma(7+1/2)= 11.71363 and
+Qpsi = 2*digamma(11+1/2)+2*digamma(11+1/2)+digamma(8+1/2)= 11.67305
+
+Qpsi = 4*digamma(12+1)+digamma(6+1)     = 11.97676 > 
+Qpsi = 2*digamma(13+1)+2*digamma(12+1)+digamma(5+1)= 11.9639 and
+Qpsi = 2*digamma(12+1)+2*digamma(11+1)+digamma(7+1)= 11.95395 and
+Qpsi = 2*digamma(11+1)+2*digamma(11+1)+digamma(8+1)= 11.91129
+
+maximize 4*digamma(10+x+1/2)+digamma((10-2*x)+1/2):   x=2.00414
+maximize 4*digamma(10+x+1)+digamma((10-2*x)+1):       x=2.10394
+-->
+<p>
+and, in the limit M&rarr;&infin;, Thiele elects
+</p><center>
+U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>10M</sub>,
+A<sub>1</sub>, ..., A<sub>2M</sub>, 
+B<sub>1</sub>, ..., B<sub>2M</sub>, 
+C<sub>1</sub>, C<sub>2</sub>, ..., C<sub>6M</sub>
+</center><p>
+essentially because the global maximum of
+</p><center>
+2N&middot;ln(10M+x)
++ 2N&middot;ln(10M+x)
++ N&middot;ln(10M-2x)
+</center><p>
+is at x=2M.
+</p><p>
+We can, however, construct an <b>anti-Phragmen and anti-Ebert example</b> in the same spirit:
+<br>
+W=4M seats to elect. V=4N voters.
+</p>
+<table bgcolor="orange">
+<tr bgcolor="yellow"><th>Faction</th><th>#voters</th><th>Approved candidates</th></tr>
+<tr><td>A</td><td>N</td><td>A<sub>1</sub>, A<sub>2</sub>,  ...</td></tr> 
+<tr><td>B</td><td>N</td><td>B<sub>1</sub>, B<sub>2</sub>,  ...</td></tr> 
+<tr><td>AB</td><td>N</td><td>A<sub>1</sub>, A<sub>2</sub>,  ...; B<sub>1</sub>, B<sub>2</sub>,  ...</td></tr> 
+<tr><td>C</td><td>3N</td><td>C<sub>1</sub>, C<sub>2</sub>,  ...</td></tr> 
+</table>
+<p>
+Arguably the best winner-set is
+</p><center>
+A<sub>1</sub>, A<sub>2</sub>, ..., A<sub>M</sub>,
+B<sub>1</sub>, B<sub>2</sub>, ..., B<sub>M</sub>,
+C<sub>1</sub>, C<sub>2</sub>, ..., C<sub>2M</sub>
+</center><p>
+which Thiele (both in the limit of large M, and when M=1 with &frac12;&le;&Delta;&le;1) 
+indeed elects.
+<!-- maximize ln(x)+ln(x)+ln(2*x)+3*ln(1-2*x):  x=1/4=0.25 
+maximize digamma(x+1/2)+digamma(x+1/2)+digamma(2*x+1/2)+3*digamma(1-2*x+1/2): x=0.219063
+maximize digamma(x+1)+digamma(x+1)+digamma(2*x+1)+3*digamma(1-2*x+1):         x=0.163068
+-->
+But PerEbert (&mu;=2)
+for large M will elect only 16M/17 A's and 16M/17 B's
+<!-- minimize (x/2)^2+(x/2)^2+(x/2+x/2)^2+3*((1-2*x)/3)^2:  x=4/17=0.235294  -->
+while PerPhrag
+(&mu;=&frac12;)
+for large M will elect &kappa;M A's and &kappa;M B's,
+where <nobr>&kappa;&rarr;(38+24&radic;2)/73&asymp;0.985495.</nobr>
+<!-- maximize sqrt(x/2)+sqrt(x/2)+sqrt(x/2+x/2)+3*sqrt((1-2*x)/3):   
+x=19/146+(6/73)sqrt(2)=0.246374 -->
+</p><p>
+These examples demonstrate that with Thiele, a faction can be artificially
+rewarded for supporting all-approved candidates; while with PerPhrag &amp; PerEbert,
+the "opposite" effect can happen.  
+Those two examples actially were fairly special; 
+in general, <i>neither</i> Thiele, PerPhrag, or PerEbert deliver
+"ideal proportionality" in elections of these kinds.  An election example proving that point 
+(V=6N voters and W=816M winners) is
+</p>
+<table bgcolor="lightblue">
+<tr bgcolor="pink"><th>Faction</th><th>#voters</th><th>Approved candidates</th></tr>
+<tr><td>A</td><td>N</td><td>U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>102M</sub>;
+A<sub>1</sub>, A<sub>2</sub>, A<sub>3</sub>,  ...</td></tr> 
+<tr><td>B</td><td>N</td><td>U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>102M</sub>;
+B<sub>1</sub>, B<sub>2</sub>, B<sub>3</sub>,  ...</td></tr> 
+<tr><td>C</td><td>N</td><td>U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>102M</sub>;
+C<sub>1</sub>, C<sub>2</sub>, C<sub>3</sub>,  ...</td></tr> 
+<tr><td>D</td><td>N</td><td>D<sub>1</sub>, D<sub>2</sub>, D<sub>3</sub>,  ...</td></tr> 
+<tr><td>D</td><td>N</td><td>D<sub>1</sub>, D<sub>2</sub>, D<sub>3</sub>,  ...;
+E<sub>1</sub>, E<sub>2</sub>, E<sub>3</sub>,  ...</td></tr> 
+<tr><td>E</td><td>N</td><td>E<sub>1</sub>, E<sub>2</sub>, E<sub>3</sub>,  ...</td></tr> 
+</table><p>
+In this election 
+all three methods (Thiele, PerEbert, and PerPhrag)
+will elect a different number of MPs from the (U,A,B,C) party than from the
+(D,E) party.
+</p><p>
+By abuse of notation let U denote the number of type-U winners, A the number of
+type-A winners, etc.  Arguably the best parliament would U=A=B=C=102M, D=E=204M
+(816M seats total) for 1:1 seat ratio.   To make things simple let's consider
+the large-M limit where such things as "ghost voter" and "&Delta;" adjustments to
+the PerPhrag, PerEbert, and Thiele methods become irrelevant.
+With Thiele, we get  A=B=C=68M, U=102M, D=E=255M for 3:5 seat ratio.
+With PerEbert, we get   A=B=C=110M, U=102M, D=E=192M  for  9:8   seat ratio.
+With PerPhrag, we get   A=B=C=xM, U=102M, D=E=yM   where
+</p><center>
+   x = (12206-3264&radic;2)/73,   &nbsp;   y = (7752+4896&radic;2)/73
+</center><p>
+for &nbsp;   6 : 3+&radic;8   &nbsp;   seat ratio.
+Note Thiele's disproportionality here is <i>oppositely</i> directed to PerPhrag and PerEbert's
+disproportionalities.
+Which brings us to the main point of this section.
+</p><p>
+<b>Complementarity claim:</b>
+In any election of the below form &ndash; involving "two parties" 
+each with "two-faction internal structure," the distortions away from
+"ideal proportionality" (if any) caused by Thiele, always have <i>opposite sign</i>
+versus those caused by PerEbert and PerPhrag.
+</p><table bgcolor="yellow">
+<tr bgcolor="pink"><th>party</th><th>#voters</th><th>Approved Candidates</th></tr>
+<tr><td>1</td><td>X<sub>1</sub></td>
+<td>U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>M</sub>; A's, B's</td></tr>
+<tr><td>1</td><td>Y<sub>1</sub></td>
+<td>U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>M</sub>; A's</td></tr>
+<tr><td>1</td><td>Z<sub>1</sub></td>
+<td>U<sub>1</sub>, U<sub>2</sub>, ..., U<sub>M</sub>; B's</td></tr>
+
+<tr><td>2</td><td>X<sub>2</sub></td>
+<td>V<sub>1</sub>, V<sub>2</sub>, ..., V<sub>N</sub>; C's, D's</td></tr>
+<tr><td>2</td><td>Y<sub>2</sub></td>
+<td>V<sub>1</sub>, V<sub>2</sub>, ..., V<sub>N</sub>; C's</td></tr>
+<tr><td>2</td><td>Z<sub>2</sub></td>
+<td>V<sub>1</sub>, V<sub>2</sub>, ..., V<sub>N</sub>; D's</td></tr>
+</table>
+<p>
+This election has
+V=X<sub>1</sub>+Y<sub>1</sub>+Z<sub>1</sub>+X<sub>2</sub>+Y<sub>2</sub>+Z<sub>2</sub>
+voters. There are W&gt;N+M seats to elect.
+There are two "parties"; party 1 supports the U's, A's, and/or B's,
+while party 2 supports the V's, C's, and/or D's.
+The "ideal seat ratio" is 
+X<sub>1</sub>+Y<sub>1</sub>+Z<sub>1</sub>:X<sub>2</sub>+Y<sub>2</sub>+Z<sub>2</sub>.
+</p><p>
+A fairly precise statement of the claim, then,
+is that the number of seats awarded to the two parties
+by Thiele (meaning the voting methods maximizing our quality functions
+based on logarithmic functions), if it differs from the ideal ratio by errors greater
+than those forced by integer roundoffs (or if we use versions allowing noninteger seat counts,
+which is easy to do if we restrict ourselves to these-structure elections only), 
+does so in the <i>opposite direction</i> than
+the seat counts awarded by either PerPhrag or PerEbert (which are based on extremizing our
+quality or penalty functions arising from reciprocation functions).
+</p><p>
+The complementarity claim 
+presumably could be <i>proven</i> analytically.  I have not, which is why I called it
+a "claim" rather than a "theorem."  But I have confirmed the claim
+by a <i>computer exploration</i> of approximately 10<sup>15</sup> different elections of this form,
+using the "ln(x)" function for Thiele and the unshifted "1/x" function for PerPhrag and PerEbert.
+This computer exploration actually is a proof to within a small error bound (a few percent).
+</p><p>
+Complementarity tells us that <i>any</i> election of the above form will be treated "ideally" by
+a voting system that maximizes a <b>linear combination (with <i>positive</i> coefficients)</b>
+of the Thiele and PerPhrag quality functions &ndash; a "hybrid."
+Unfortunately no one fixed linear combination will do; as the examples that began this 
+section showed,
+the hybrid appropriate for any particular election can range anywhere 
+between 100% Thiele and 100% PerPhrag.  
+That suggests the idea of considering <i>all</i> 
+linear combinations with positive coefficients of these two quality functions
+(call them X and Y) and considering only parliaments lying on the
+"top right subchain" of the 
+<a href="https://en.wikipedia.org/wiki/Convex_hull">convex hull</a>
+in the XY plane, i.e. the ones maximizing at least one such linear combination.
+We'll examine this idea in the next two sections.
+</p><p>
+Warning: if the number of 
+2-faction-substructure parties were made larger, e.g. 4 parties, then in general <i>no</i> 
+linear combination of PerPhrag, PerEbert, and Thiele would be capable of 
+delivering ideal party-proportionality.
+(Essentially because: a linear system with more unknowns that equations, 
+generically has no solution.)
+So it is clear that our ideas are inadequate for delivering 
+"ideal proportional representation behavior" in complicated general situations involving 
+both parties and subfactions.  
+(Further, it currently is unclear whether any voting method could do that.)
+However, they <i>are</i> adequate for the kind of simplistic
+"colors with maximal racism" scenarios in our previous proportionality theorems.
+The furthest we've so far been able to push beyond that, is to two-party two-subfaction scenarios,
+using this convex hull idea.
+</p>
+
+
+<a name="hybrid"></a>
+<h3> "Optimum Hybrid" Thiele+Phragmen quality functions: A first look </h3>
+<p>
+<b>First idea:</b>
+Employ as the quality function, (1-K) times the psi-quality function from the 
+<a href="QualityMulti.html">previous</a> paper (Thiele philosophy; enjoys monotonicity
+but fails the strong-PR conditions there called CRC and SFC)
+<i>plus</i> K times the present paper's type-I ("PerPhrag") quality function with &mu;=1/2
+(Phragmen philosophy; enjoys some strong PR properties but
+fails monotonicity) and <i>tune</i> the parameter K within the domain 0&le;K&le;1
+to get the "best" election system.
+</p><p>
+What is "best"?  I do not know, but one possible answer would be to maximize K
+(as a function of the number V of voters and W of winners)
+subject to the demand that the resulting quality-maximizing voting system still enjoy monotonicity.
+In other words, we take as much "Phragmen-ness" as we can get without being forced to sacrifice 
+system monotonicity.  
+</p><p>
+<b>We shall now investigate</b> a slightly altered version of that idea.
+(This section's whole investigation should be regarded as "experimental mathematics"; we are
+going to see what happens when we try this idea, then try to learn from it.)
+</p><p>
+Let 
+V=#voters,
+C=#candidates, 
+W=#winners, 
+0&lt;W&lt;C, and S<sub>v,c</sub>
+be the score in the real interval [0,1] given to candidate c by voter v.
+(I'll actually only consider approval-style votes throughout,
+i.e. all scores are 0 and 1 only.)
+T<sub>c</sub> = &sum;<sub>voters v</sub> S<sub>v,c</sub> = candidate c's total score.
+</p><p>
+Here is our <b>hybrid quality function:</b>
+</p><center>
+H = HybridQuality = Q - K(V,W)  P
+</center><p>
+where
+</p><center>
+Q = &sum;<sub>voters v</sub> &Psi;( &frac12; + &sum;<sub>winners w</sub> S<sub>v,w</sub> ),
+<br>
+P = &sum;<sub>voters v</sub> [&sum;<sub>winners w</sub> S<sub>v,w</sub>/(Z+T<sub>w</sub>)]<sup>2</sup>.
+</center><p>
+Note Q is the psi-based quality function from the
+<a href="QualityMulti.html">previous</a> paper whose maximization yields
+"Thiele" proportional representation.
+P is the "sum of squared loads" penalty function whose
+minimization yields "<a href="Phragmen.html">Phragmen</a>/Ebert" PR, 
+albeit I have used a shift by
+the constant Z to slightly redefine these concepts.  (Imagine Z=&frac12;.
+Using a positive Z avoids worries about dividing by 0.)
+</p><p>
+I am going to chose K(V,W)&gt;0 to be as large as I can, thus getting
+"the most possible Phragmen-ness," subject to the constraint that the
+resulting "maximize H" voting method does not embarrass itself on
+2-winner election examples of the following kind:
+</p><pre>
+   canddtA: 11111111111111111111111000000000000000
+   canddtB: 00000000000000000001111111111111111111
+</pre><p>
+where there are V columns, the number of 1s in the first row is A, the number in
+the second row is B, and the overlap is therefore A+B-V.  Thus we have in all:
+</p><pre>
+  V-B voters who approve {A}.
+  A+B-V      who approve {A,B}.
+  V-A        who approve {B}.
+</pre><p>
+That was for 0&le;A+B&le;V.  If however A+B&le;V the picture instead is
+</p><pre>
+   canddtA: 11111111111111111111100000000000000000
+   canddtB: 00000000000000000000000111111111111111
+</pre><p>
+where there are V columns, the number of 1s in the first row is A, the number in
+the second row is B. Then have in all:
+</p><pre>
+  A voters who approve {A}.
+  V-A-B    who approve nobody.
+  B        who approve {B}.
+</pre><p>
+I want the voting method "not to embarrass itself" in the following
+"monotonic" sense:
+If canddtB were to get one additional approval, then the voting method
+should always elect him in preference versus the old canddtB.
+This property will be demanded for every 3-tuple of integers (A,B,V)
+with <nobr>0&le;min(A,B)&le;max(A,B)&lt;V.</nobr>
+</p><p>
+If we may assume "narcissism," i.e. that
+each candidate gets at least one approval, then we instead demand it merely for 
+every 3-tuple of integers (A,B,V)
+with <nobr>1&le;min(A,B)&le;max(A,B)&lt;Y.</nobr>
+</p><p>
+Then
+</p><center>
+Q = (V-B)&Psi;(3/2) + (A+B-V)&Psi;(5/2) + (V-A)&Psi;(3/2)    &nbsp; if &nbsp;  0&le;V&le;A+B,
+<br>
+P = (V-B)/(A+Z)<sup>2</sup> + (A+B-V)(1/(A+Z)+1/(B+Z))<sup>2</sup> + (V-A)/(B+Z)<sup>2</sup>    &nbsp; if &nbsp; 0&le;V&le;A+B,
+<br>
+Q = A&Psi;(3/2) + (V-A-B)&Psi;(1/2) + B&Psi;(3/2)    &nbsp; if &nbsp;  A+B&le;V,
+<br>
+P = A/(A+Z)<sup>2</sup> + (V-A-B)&middot;0 + B/(B+Z)<sup>2</sup>    &nbsp; if &nbsp; A+B&le;V,
+<br>
+H<sub>new</sub> - H<sub>old</sub> = 
+(2/3) - K&middot;[Z(B<sup>2</sup>-2A(2B+1)+4BV+B+2V)+Z<sup>2</sup>(2(2B+V+1)-A)+(B+1)B(2V-3A)+3Z<sup>3</sup>] / [(A+Z)(B+Z)<sup>2</sup>(B+Z+1)<sup>2</sup>]
+if 0&le;V&le;A+B,
+<br>
+H<sub>new</sub> - H<sub>old</sub> = 
+2 + K&middot;[B/(B+Z)<sup>2</sup>-(B+1)/(B+Z+1)<sup>2</sup>]
+if A+B&le;V.
+</center>
+<!--
+check:
+(Y-B)/(A+Z)<sup>2</sup>+(A+B-Y)*(1/(A+Z)+1/(B+Z))<sup>2</sup>+(Y-A)/(B+Z)<sup>2</sup>-(Y-B-1)/(A+Z)<sup>2</sup>-(A+B+1-Y)*(1/(A+Z)+1/(B+Z+1))<sup>2</sup>-(Y-A)/(B+1+Z)<sup>2</sup>
+simplifies to
+(-Z*(-2*A*(2*B+1)+B<sup>2</sup>+4*B*Y+B+2*Y)+Z<sup>2</sup>*(A-2*(2*B+Y+1))+B*(B+1)*(3*A-2*Y)-3*Z<sup>3</sup>)/((A+Z)*(B+Z)<sup>2</sup>*(B+Z+1)<sup>2</sup>)
+= -(Z*(B<sup>2</sup>-2*A*(2*B+1)+4*B*Y+B+2*Y)+Z<sup>2</sup>*(2*(2*B+Y+1)-A)+B*(B+1)*(2*Y-3*A)+3*Z<sup>3</sup>) / ((A+Z)*(B+Z)<sup>2</sup>*(B+Z+1)<sup>2</sup>)
+
+check:
+A/(A+Z)<sup>2</sup> + (Y-A-B)*0 + B/(B+Z)<sup>2</sup> - (A/(A+Z)<sup>2</sup> + (Y-A-B-1)*0 + (B+1)/(B+1+Z)<sup>2</sup>)
+simplifies to
+B/(B+Z)<sup>2</sup>-(B+1)/(B+Z+1)<sup>2</sup>
+
+check:
+(Y-B-1)*digamma(3/2)+(A+B+1-Y)*digamma(5/2)+(Y-A)*digamma(3/2)-((Y-B)*digamma(3/2)+(A+B-Y)*digamma(5/2)+(Y-A)*digamma(3/2))
+simplifies to 2/3.
+
+check:
+A*digamma(3/2)+(Y-A-B-1)*digamma(1/2)+(B+1)*digamma(3/2)-(A*digamma(3/2)+(Y-A-B)*digamma(1/2)+B*digamma(3/2))
+simplifies to 2.
+
+check:
+(19-10)/(10+0)<sup>2</sup> + (10+10-19)*(1/(10+0)+1/(10+0))<sup>2</sup> + (19-10)/(10+0)<sup>2</sup> = 11/50 = 0.22
+(19-9)/(10+0)<sup>2</sup> + (10+9-19)*(1/(10+0)<sup>2</sup>+1/(9+0)<sup>2</sup>) + (19-10)/(9+0)<sup>2</sup> = 19/90 = 0.2111111
+-->
+<p>
+So if we demand H<sub>new</sub>&gt;H<sub>old</sub> then clearly K=0 will work, since 2/3&gt;0 and 2&gt;0.
+Also clearly we can make K slightly greater than 0 because the coefficient of
+K is bounded.
+Solving for K we find
+</p><center>
+K = (2/3) &middot; [(A+Z)(B+Z)<sup>2</sup>(B+Z+1)<sup>2</sup>] / 
+[Z(B<sup>2</sup>-2A(2B+1)+4BV+B+2V)+Z<sup>2</sup>(2(2B+V+1)-A)+(B+1)B(2V-3A)+3Z<sup>3</sup>] 
+&nbsp; if &nbsp; 0&le;V&le;A+B
+<br>
+K = -2 / [B/(B+Z)<sup>2</sup>-(B+1)/(B+Z+1)<sup>2</sup>]   &nbsp; if &nbsp;   A+B&ge;V
+</center><p>
+and we must maximize those K over 
+all integer A&ge;1, B&ge;1, V&ge;1 (assuming "narcissism," otherwise over all 
+A&ge;0, B&ge;0, V&ge;0)  such that K&gt;0.
+</p><p>
+Here are the results, found by using a computer to minimize K (when positive)
+over all suitable integer A,B in [0,500] and V in [0,1000].
+All floating point K values have been rounded downward:
+</p>
+<small>
+<table cellpadding="15"><tr><td>
+<table cellspacing="5">
+<caption>
+With 100-fold narcissism (A&ge;100, B&ge;100, V&ge;100, the crux A,B,V are stated):
+</caption>
+<tr><th>Z</th><th>K<sub>MaxAllowed</sub></th><th>A</th><th>B</th><th>V</th></tr>
+<tr><td>-0.5</td><td>6731.225301852</td><td>100</td><td>102</td><td>202</td></tr>
+<tr><td>0.0</td><td>6733.333333333</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>0.5</td><td>6733.826813405</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>1.0</td><td>6735.281865778</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>1.5</td><td>6737.662040819</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>2.0</td><td>6740.932942469</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>2.5</td><td>6745.062085627</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>3.0</td><td>6750.018765257</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>3.5</td><td>6755.773936112</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>4.0</td><td>6762.300102075</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>4.5</td><td>6769.571214241</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>5.0</td><td>6777.562576938</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>5.5</td><td>6786.250760981</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>6.0</td><td>6795.613523507</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>6.5</td><td>6805.629733834</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>7.0</td><td>6816.279304800</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>7.5</td><td>6827.543129136</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>8.0</td><td>6839.403020432</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>8.5</td><td>6851.841658323</td><td>100</td><td>100</td><td>200</td></tr>
+<tr><td>9.0</td><td>6864.842537545</td><td>100</td><td>100</td><td>200</td></tr>
+</table>
+</td><td>
+<table cellspacing="5">
+<caption>
+With 10-fold narcissism (A&ge;10, B&ge;10, V&ge;10, the crux A,B,V are stated):
+</caption>
+<tr><th>Z</th><th>K<sub>MaxAllowed</sub></th><th>A</th><th>B</th><th>V</th></tr>
+<tr><td>-0.5</td><td>71.647106457</td><td>10</td><td>12</td><td>22</td></tr>
+<tr><td>0.0</td><td>73.333333333</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>0.5</td><td>73.778937381</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>1.0</td><td>74.941935483</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>1.5</td><td>76.640009272</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>2.0</td><td>78.757281553</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>2.5</td><td>81.216577540</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>3.0</td><td>83.964512040</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>3.5</td><td>86.962978723</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>4.0</td><td>90.184049079</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>4.5</td><td>93.606787120</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>5.0</td><td>97.215189873</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>5.5</td><td>100.996815286</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>6.0</td><td>104.941843971</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>6.5</td><td>109.042422756</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>7.0</td><td>113.292196007</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>7.5</td><td>117.685964912</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>8.0</td><td>122.219435736</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>8.5</td><td>126.889031078</td><td>10</td><td>10</td><td>20</td></tr>
+<tr><td>9.0</td><td>131.691746466</td><td>10</td><td>10</td><td>20</td></tr>
+</table>
+</td><td>
+<table cellspacing="5">
+<caption>
+With narcissism (A&ge;1, B&ge;1, V&ge;1, the crux A,B,V are stated):
+</caption>
+<tr><th>Z</th><th>K<sub>MaxAllowed</sub></th><th>A</th><th>B</th><th>V</th></tr>
+<tr><td>-0.5</td><td>0.559701492</td><td>1</td><td>2</td><td>3</td></tr>
+<tr><td>0.0</td><td>1.333333333</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>0.5</td><td>1.630434782</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>1.0</td><td>2.181818181</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>1.5</td><td>2.875586854</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>2.0</td><td>3.692307692</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>2.5</td><td>4.625874125</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>3.0</td><td>5.673758865</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>3.5</td><td>6.834728033</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>4.0</td><td>8.108108108</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>4.5</td><td>9.493500464</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>5.0</td><td>10.990654205</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>5.5</td><td>12.599403578</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>6.0</td><td>14.319634703</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>6.5</td><td>16.151266766</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>7.0</td><td>18.094240837</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>7.5</td><td>20.148512939</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>8.0</td><td>22.314049586</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>8.5</td><td>24.590824837</td><td>1</td><td>1</td><td>2</td></tr>
+<tr><td>9.0</td><td>26.978818283</td><td>1</td><td>1</td><td>2</td></tr>
+</table>
+</td><td>
+<table cellspacing="5">
+<caption>
+Without narcissism (A&ge;0, B&ge;0, V&ge;0, the crux A,B,V are stated):
+</caption>
+<tr><th>Z</th><th>K<sub>MaxAllowed</sub></th><th>A</th><th>B</th><th>V</th></tr>
+<tr><td>-0.5</td><td>0.055555555</td><td>1</td><td>0</td><td>1</td></tr>
+<tr><td>0.0</td><td align="middle">0</td><td>0</td><td>1</td><td>1</td></tr>
+<tr><td>0.5</td><td>0.214285714</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>1.0</td><td>0.533333333</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>1.5</td><td>0.961538461</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>2.0</td><td>1.499999999</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>2.5</td><td>2.149122807</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>3.0</td><td>2.909090909</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>3.5</td><td>3.779999999</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>4.0</td><td>4.761904761</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>4.5</td><td>5.854838709</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>5.0</td><td>7.058823529</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>5.5</td><td>8.373873873</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>6.0</td><td>9.800000000</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>6.5</td><td>11.337209302</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>7.0</td><td>12.985507246</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>7.5</td><td>14.744897959</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>8.0</td><td>16.615384615</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>8.5</td><td>18.596969696</td><td>0</td><td>0</td><td>0</td></tr>
+<tr><td>9.0</td><td>20.689655172</td><td>0</td><td>0</td><td>0</td></tr>
+</table>
+</td></tr>
+</table>
+</small>
+<p>
+<b>Observations.</b>
+Using, say, the 1-fold narcissism result with Z=0.5, we would get 
+<nobr>H=Q-1.63P</nobr> as our hybrid quality function.
+This would be rather ridiculous for the following reason. 
+The reader has probably noticed that elections in the real world, tend to
+have a <i>large</i> number V of voters.  
+In Canada's year-2015 election, there were about 52000
+voters per MP.  
+In the USA in 2012, there were about 300000 voters per congressman.
+If the number of candidates is held fixed,
+our penalty function P tends to scale proportionally to 1/V, while Q 
+tends to scale proportionally to V.  Hence, 1.63P is usually
+going to be <i>tiny</i> (&le;10<sup>-9</sup>) by comparison to Q.  
+It is almost pointless to include it!
+But if we try to include more P, such as 1.64P, then we give up monotonicity!
+</p><p>
+But the numbers in the table suggest a way to escape that trap.
+Observe that the more narcissism we allow ourselves to assume, the
+more P we can safely mix into the hybrid:  
+<nobr>K<sub>MaxAllowed</sub></nobr> appears to
+grow roughly as 0.7&times;narcissism<sup>2</sup>.
+And in a W-winner election, it is not unreasonable to make a rule that 
+</p><blockquote>
+If a candidate's summed score is below 0.25/(W+1) 
+times the maximum-score achieved by any candidate, then he is not allowed
+to win a seat!
+</blockquote><p>
+Once we simply discard all candidates failing this criterion from the election, then
+we've immediately got an effectively huge amount of narcissism, which would allow
+us to employ  
+<nobr>K&asymp;0.04V<sup>2</sup>/(W+1)<sup>2</sup>.</nobr>
+This is a considerable improvement; with W+1&asymp;10 we would have K&middot;P
+of the same order as 0.0004Q.  
+That still seems tiny, but it is at least 5 orders of magnitude bigger than
+originally.
+And the same kind of "narcissistic" effects can also be forced artificially by
+use of the 
+<a href="#shiftrecip"><i>shifted</i> reciprocation</a>
+function in the definition of the PerPhrag quality function ("ghost voters"), with
+a shift of order V/W instead of 0.
+</p>
+
+<a name="backconv"></a>
+<h3> Background knowledge about 
+<a href="https://en.wikipedia.org/wiki/Convex_hull">convex hulls</a>
+and undominated points in the plane </h3>
+
+<p>
+Our preceding "optimum hybrid quality function" idea involved hybrids H which were
+<i>linear combinations</i> of a Thiele-like and Phragmen-like quality function.
+If we consider <i>all</i> possible linear combinations, and extremize them, then the
+resulting parliaments will lie on a two-dimensional <i>convex hull</i>.
+The purpose of this section is to survey some facts about such hulls, mainly focusing on
+the fact that they have remarkably <i>small</i> cardinality,
+and that this cardinality is accurately <i>predictable</i> with high confidence.
+</p>
+<img src="UndomPoints.png" width="25%" align="right">
+<p>
+A given point (X,Y) among a set S of points in the (x,y) plane 
+is said to be "undominated" if the closed 
+infinite axis-parallel rectangle with lower-left corner (X,Y), is 
+empty of other points in S.
+</p>
+<p>
+It is a common observation that for N random points in the plane, the number that lie
+on the convex hull, and the number that are undominated, 
+both usually are very small in comparison to N.
+</p>
+<p>
+This is not just an "observation."  It is,
+in a number of concrete probability models, a "theorem."
+</p><table>
+<tr><td>
+<img src="BivarNormal50Kconvhull.png" width="98%">
+</td><td>
+<img src="UnifCircle1000.png" width="98%">
+<td></tr></table>
+<p>
+<b>Golin's Undominated Points Theorem.</b>
+If N points are independently
+drawn from a uniform distribution within a convex body &Omega; in the plane,
+then the expected number
+of undominated points is bounded between two positive constants times 
+<nobr>A&radic;N+BlnN+o(lnN)</nobr>
+where A and B are nonnegative constants
+which depend on the shape and orientation of &Omega;. (If, and only if,
+&Omega; has an "upper right corner," i.e. a point which dominates
+every other point in &Omega;, then A=0. 
+If, further, this is a "pointy upper right corner" i.e.
+has uniquely maximal X- and uniquely maximal Y-coordinate simultaneously, then B=0
+[Golin 1993].
+<!--
+Indeed, for each p&ge;0 the p<sup>th</sup> moment is 
+bounded between two positive constants times 
+either N<sup>p/2</sup> or is O(logN)<sup>p</sup> [Golin 1993, Devroye 1983],
+-->
+Indeed, the number of undominated points is asymptotically normally distributed
+[Bai et al 2001] with mean and variance of equal orders.
+</p><p>
+<b>Examples:</b>
+If &Omega; is the axis-parallel square than A=0 and B=1.
+If we rotate that square by angle R with 0&lt;R&lt;&pi;/2, then
+A=[&pi;sin(2R)/2]<sup>1/2</sup>
+which is maximized when R=&pi;/4 whereupon A=(&pi;/2)<sup>1/2</sup>&asymp;1.2533.
+If &Omega; is a circle (or axis-oriented ellipse)
+then A=&Gamma;(3/4)<sup>2</sup>&pi;<sup>-1/2</sup>&asymp;0.8472.
+<!--
+integrate sqrt(sin(2*r)) for r=0..pi/2 = sqrt(2/pi) Gamma(3/4)^2 = 1.19814
+-->
+</p><p>
+<b>Bentley et al's Undominated Points Theorem.</b>
+If N points (X,Y) are drawn by sampling the X's from one density and the Y's
+from another (all samplings independent) then
+the expected number of undominated points is asymptotic to
+lnN.  In fact, it <i>exactly</i>
+equals the Nth harmonic number &sum;<sub>1&le;k&le;N</sub>k<sup>-1</sup>
+[Bentley et al 1978 &amp; 1993].
+Further,
+I can show the exact variance is
+&sum;<sub>1&le;k&le;N</sub>k<sup>-1</sup>-k<sup>-2</sup>
+which also is asymptotic to lnN,
+and that the number of undominated points is asymptotically normally distributed with 
+that mean and variance.
+</p><blockquote>
+<b>Proofs:</b>
+If c(N,k) denotes an unsigned  
+<a href="https://en.wikipedia.org/wiki/Stirling_numbers_of_the_first_kind">Stirling number 
+of the first kind</a>,
+then it is known that the expected number of "left to right maxima" in a random permutation of
+{1,2,3,...,N} is 
+<nobr>
+&sum;<sub>1&le;k&le;N</sub>C(N,k)k/N!=H<sub>N</sub>&equiv;&sum;<sub>1&le;k&le;N</sub>k<sup>-1</sup>.
+</nobr>
+The variance 
+<nobr>
+&sum;<sub>1&le;k&le;N</sub>C(N,k)[k-H<sub>N</sub>]<sup>2</sup>/N!
+</nobr>
+then is determinable once one also knows the identities
+<center>
+&sum;<sub>1&le;k&le;N</sub> C(N,k)k<sup>2</sup>/N!
+=
+[&sum;<sub>1&le;k&le;N</sub>k<sup>-1</sup>]<sup>2</sup>
++
+[&sum;<sub>1&le;k&le;N</sub>k<sup>-1</sup>]
+-
+[&sum;<sub>1&le;k&le;N</sub>k<sup>-2</sup>]
+</center>
+and
+<nobr>
+&sum;<sub>1&le;k&le;N</sub>C(N,k)=N! .
+</nobr>
+</blockquote>
+<!--
+sum Abs(StirlingS1(N,k))*k/N!  for k=0..N = HarmonicNumber(N)
+7381/2520 = HarmonicNumber(10)
+sum Abs(StirlingS1(N,k))*(k-HarmonicNumber(N))^2/N! for k=1..N for N=10
+1  0
+2  1/4=1/2^2
+3  17/36=17/6^2
+4  95/144=95/12^2
+5  2951/3600=2951/60^2
+6  3541/3600=3541/60^2
+7  190699/176400=190699/176400=190699/420^2
+8  839971/705600=839971/840^2
+9  8186939/6350400=8186939/2520^2
+10 350339/254016=350339/504^2 = 1.3792005
+100 3.55239
+0.944*ln(N) ??
+
+sum |StirlingS1(N,k)|*k^2/N! for k=1..N = 2*StirlS1(N+1, 3) + HarmonicNumber(N)
+=  Harm(N)^2 - Harm2(N) + Harm(N)
+causing
+variance = Harm(N) - Harm2(N)
+variance = (Harm(N)^2 + Harm2(N)) - Harm(N)^2 
+variance =asymp= Harm2(N).
+
+N=4  Harm=1+1/2+1/3+1/4=25/12   Harm2=1+1/2^2+1/3^2+1/4^2=205/144  var=95/155
+var(5)=2951/3600
+-->
+</p><p>
+<b>Examples:</b>
+If the probability density is circularly symmetric bivariate normal,
+or is exp(-x-y) in the positive quadrant, or is uniform in an axis-oriented rectangle,
+then the mean and variance of the number of undominated points both will be
+asymptotic to lnN.
+</p>
+<img src="SquareDiamond.png" width="25%" align="right">
+<p>
+<b>Remark.</b>
+If instead of X and Y being "independent" they are "<i>positively</i> correlated"
+then one intuitively expects the number of undominated points to be <i>smaller</i>
+than lnN.  In particular, "uniform in the unit square" becomes distorted by imposing
+any positive correlation to "uniform within a diamond-shaped polygon"
+which by Golin's results has expected number of undominated points
+upperbounded by a <i>constant.</i>
+</p><p>
+<b>Warning.</b>
+The following constructs a
+uniformly bounded probability density in the XY plane
+that is unimodal on lines, such that if 
+N(logN)<sup>2</sup> points are sampled independently from it,
+then the expected number
+of undominated points is of order&ge;N.
+Consider the infinite width=1 rectangle bounded by the 3 lines
+X+Y=0, X+Y=1, and X=Y and containing (9, -8.5).
+The probability density is 0 outside this rectangle, but inside it
+is given by  CZ<sup>-1</sup>(lnZ)<sup>-2</sup>
+where z=X-Y+9  and C&gt;0 is an appropriate
+normalization constant.   Those who want the number of undominated points to be much
+smaller than N, will have to hope this kind of example does not arise in their 
+applications.
+</p><p>
+<b>Convex hull size Theorems.</b>
+Let N points be sampled independently from the probability densities in the plane
+tabulated below.  Then in the limit N&rarr;&infin;, the number of those points
+that are vertices of the convex hull, will be asymptotically normally distributed with mean
+&mu; and variance &sigma;&sup2;
+tabulated.  If the density is symmetric under negations of either of the coordinates, then
+the mean number of <i>undominated</i> convex hull vertices will equal &mu;/4+1
+(and its variance presumably should be about &le;&sigma;&sup2;/4, though I do not claim to 
+have proven this).  The exception is the degenerate density in the final row,
+which of course will have exactly one undominated point.
+</p>
+<a name="convhulltab"></a>
+<table>
+<tr bgcolor="pink">
+<th>Line</th>
+<th>Density</th><th>Asymptotic Mean</th><th>Asymptotic Variance</th><th>Source</th></tr>
+<tr><td>1</td><td>Bivariate normal</td><td>c(lnN)<sup>1/2</sup>, c=(8&pi;)<sup>1/2</sup>&asymp;5.013</td>
+<td>k(lnN)<sup>1/2</sup>, 0&lt;k&lt;6.73</td>
+<td>Hueter 1994 &amp; 1999, theorems 1.1 and 1</td></tr>
+<tr><td>2</td><td>Uniform in ellipse</td>
+<td>cN<sup>1/3</sup>, c=(16/3)<sup>1/3</sup>&pi;<sup>2/3</sup>&Gamma;(5/3)&asymp;3.383</td>
+<td>kN<sup>1/3</sup>, k=[16&pi;<sup>2</sup>&Gamma;(2/3)<sup>-3</sup>-57]c/27&asymp;0.8269</td>
+<td>Finch &amp; Hueter 2004</td></tr>
+<tr><td>3</td><td>Uniform inside convex r-gon, r&ge;3</td>
+<td>(2/3)r&middot;lnN</td>
+<td>(10/27)r&middot;lnN</td>
+<td>Groeneboom 1988, EQs 1.1 &amp; 1.2</td></tr>
+<tr><td>4</td><td>Radially sym'c, tail behavior like exp(-r<sup>k</sup>)
+for constant k&gt;0</td>
+<td>bounded between two positive constants times (lnN)<sup>1/2</sup></td>
+<td>bounded between two positive constants times (lnN)<sup>1/2</sup></td>
+<td>Consequence of Dwyer 1991, Hueter 1999</td></tr>
+<tr><td>5</td><td>Radially sym'c, tail behavior like <nobr>r<sup>-k</sup></nobr>
+for constant k&gt;2</td>
+<td>bounded between two positive constants</td>
+<td>(*, see text)</td>
+<td>Theorem 1 of Dwyer 1991</td></tr>
+<tr><td>6</td><td>Radially sym'c density, non-increasing for all r&gt;R,
+with prob(r&gt;R)&gt;0</td>
+<td>O(N<sup>1/3</sup>)</td>
+<td></td>
+<td>Consequence of Carnal 1970 known to Devroye 1991</td></tr>
+<tr><td>7</td><td>On a line-segment of positive slope</td>
+<td>2</td>
+<td>0</td>
+<td>trivial</td></tr>
+</table>
+<p>
+The techniques for proving theorems of this kind were invented by Renyi &amp; Sulanke 1963-1968,
+Carnal 1970, and Groeneboom 1988,
+but some of the computations were tricky and required later authors 
+and/or corrections,
+and as far as I know the variance-constant in the case of the bivariate normal density still
+is not explicitly known but has merely been confined between two bounds.
+Vu 2006 and Pardon 2011 showed that
+N points sampled from the uniform density inside a convex plane region &Omega;
+had a convex hull whose number of vertices was asymptotically normally distributed 
+when N&rarr;&infin;,
+and with the variance and mean being equal to within to positive constant factors.
+Furthermore from Reitzner 2005 we know that 
+when &Omega; has smooth boundary these grow asymptotically
+proportionally to N<sup>1/3</sup>.
+</p><p>
+Many of the table entries are understood in general fixed dimensions d&ge;2, 
+but we here only discuss d=2.  For example, Dwyer's "bounded between two positive constants"
+finding for radially-symmetric densities with power-law tails is valid in any dimension d&ge;2.
+See also Buchta 2013 for <i>exact</i> formulas for the mean and variance of 
+the convex hull cardinality of N random uniform points in a triangle.
+</p><p>
+About the table entry labeled "*", we can prove this variance (and indeed, any higher 
+moment as well) also
+is "bounded between two positive constants" for one particular such density &ndash;
+namely, the one got by 
+<a href="https://en.wikipedia.org/wiki/Stereographic_projection">stereographic projection</a>
+of the uniform density
+on the surface if a sphere, onto the plane.
+(The tail behavior of this has k=4.)  That is because the convex hull polyhedron for
+N points on the sphere, is mapped (Brown 1979)
+to the 
+<a href="">Delaunay triangulation</a> of the 
+stereographically projected points.
+The 2-dimensional convex hull then corresponds the the outer polygon of this
+<a href="https://en.wikipedia.org/wiki/Delaunay_triangulation">Delaunay triangulation</a>,
+which corresponds to the neighbors on the spherical hull of a special extra point
+artifically placed at its North pole.  
+In the limit N&rarr;&infin; results by Miles about random point Voronoi
+diagrams then can be applied to prove the claim.  (Also, for those intimidated by
+the full power of Miles, the following graph G is a supergraph of the Delaunay
+triangulation:
+join two points A,B by an edge if at least one of the two semicircles
+with diameter A,B is empty.
+It is easy to use this graph to prove boundedness of the mean and the variance of
+any vertex in G if the other points arise from a Poisson process in the plane.)
+</p><p>
+<b>Conjecture:</b>
+Let P(X,Y) be any fixed probability density in the plane that is 
+(1) upperbounded by a constant and 
+(2) unimodal on lines.  
+Then if N points are sampled independently from
+that density, their convex hull will have O(N<sup>1/3</sup>) corners
+in expectation.
+</p><p>
+For the political application next section it seems likely that
+the growth will be of order (lnN)<sup>1/2</sup> or slower, where N is the number
+of possible parliaments, because lines 1,4,5,7 of the 
+<a href="#convhulltab">table</a>
+seem the models most similar to it.
+</p><p>
+<b>Algorithmic remark.</b>
+By using
+<a href="https://en.wikipedia.org/wiki/Splay_tree">splay trees</a> 
+(standard data structure) to keep
+track of the current
+list of undominated points ordered by Y-coordinate,
+it is possible to compute the 
+undominated among a set of N points in the plane
+in <a href="https://en.wikipedia.org/wiki/Online_algorithm">online</a>
+fashion, in O(logU) steps per new point, where U is the current
+number of undominated points.  The memory needs are O(U) words of memory.
+The same is true for the convex hull &ndash; we can compute the
+convex hull of a set of N points in the plane
+in online fashion, in O(logH) steps per new point, where H is the current
+number of convex hull vertices.  The memory needs are O(H) words of memory.
+(But for this purpose the splay tree instead uses clockwise angular
+ordering round the hull as viewed from some interior point.)
+</p>
+
+<a name="holygrail"></a>
+<h3> The closest we perhaps can come to the Holy Grail </h3>
+
+<p>
+What I've been calling the "holy grail" would be a
+multiwinner voting method with these properties:
+</p><p>
+1. C candidates, W winners, V voters, 0&lt;W&lt;C, usually V very large.
+</p><p>
+2. Ballots are of ratings type, meaning each voter rates each candidate on
+a fixed numerical scale such as the real interval [0,1] with 1=good, 0=bad.
+(Of course
+some other fixed scale such as {0,1,2,3,4,5,6,7,8,9} 
+could be used after trivial modifications.)
+</p><p>
+3. Optimizing.  That is, for each possible W-candidate set of
+potential winners ("parliament") there exists a "quality function" Q of
+the ballots and winner-set; and Q is continuous and smooth function
+of the ballots; and the elected parliament is the one that maximizes Q.
+</p><p>
+4. Monotone.  That is, if a voter increases her rating of candidate X, then
+that increases Q for all X-containing parliaments, and leaves Q unaltered for
+all X-omitting parliaments.
+</p><a name="colordefuse"></a><p>
+5. Partyless. No parties explicitly involved; candidates only.
+I regard PR voting systems which nowhere involve "parties" in their rules, as superior.
+(E.g. they treat unaffiliated candidates fairly, and do not
+self-destruct if parties do not exist or do not "work the way they are supposed to.")
+Our systems provide "color" proportionality where "color" could be parties, but also
+might be (literally) skin color, or gender, or taxes, or war, or anything that voters happen
+to care about in that election.
+</p><p>
+6. Fair.  That is, invariant under permuting voters;
+if candidate-names permuted, then all results same after
+appropriate name-permutations.
+</p><p>
+7. Proportional.  If all voters and candidates "colored,"
+and all voters behave in "maximally racist" fashion, then the
+color-composition of the parliament automatically 
+will be same as that of the voters.  (Up to unavoidable limitations
+caused by integer roundoff demands, e.g. to within &plusmn;constant
+number of seats; and provided enough candidates of each color run.)
+</p><p>
+8. Strongly proportional.  If in addition to the scenario in (7), there
+also are uncolored candidates whose ratings do not depend on the voter 
+but only on the candidate, then the uncolored-portion of the parliament automatically will be
+same color-composition as that of the voters.
+</p><p>
+9. <a href="NESD.html">NESD</a> property.  
+If all voters as their first step identify the two leading parties,
+rate all candidates from one of them 1 and rate all candidates from the other 0, 
+then as second step somehow select all their other ratings for the minor-party candidates...
+that behavior should NOT force 2-party domination.
+</p><p>
+10. Computationally near-maximally efficient.  That is, it is possible to compute
+Q-values with work of order V steps per potential-parliament.  The total number
+of potential parliaments will be  C!/[W!(C-W)!]   which can be enormous but
+the 
+<a href="QualityMulti.html">previous</a> paper gave
+NP-completeness arguments indicating that it is hopeless to get a good
+PR voting method which does not examine a similarly huge number 
+of potential parliaments, so that does not bother me.   You need brute force to guarantee doing
+a good job electing a PR parliament.  This is an unavoidable fact of life.  
+<i>But</i> if the work per parliament is large,
+(e.g. exceeds order V, such as VW) that <i>is</i> bothering.
+</p><p>
+11. Scale invariant.  
+If all scores multiplied by a positive constant, then everything is unaffected.
+</p><p>
+12. Naturally reduces in the single-winner case W=1 to plain 
+<a href="RangeVoting.html">score voting</a>.
+</p><p>
+The problem with goals 1-12 was, it appears (although nobody has proven or disproven it) 
+that somehow there is a conflict between demands 8 (strong PR) and 4 (monotonicity)
+&ndash; you cannot have both.
+</p><p>
+The following voting method is designed  to be "as close to the holy grail" as possible
+under that impossibility conjecture.
+</p><p>
+Here are three possible quality measures ("Q") not just one.  Call them Thiel, Ebert, and Phrag.
+</p><center>
+<b>Thiel</b> = 
+&sum;<sub>voters v</sub>
+&sum;<sub>1&le;j&le;W</sub>
+(j<sup>th</sup> greatest score among winners on voter v's ballot) / (2j-1).
+<br>
+<b>Ebert</b> =
+Sum of squares of the V "loads" assumed by the voters.   Where
+<br>
+  Load for voter v = &sum;<sub>winners w</sub> (score for winner w from voter v) 
+/ (K+T<sub>w</sub>) 
+<br>
+where T<sub>c</sub> denotes candidate c's total score (i.e. score summed over all voters)
+and K is a tunable constant which probably should lie between -1 and +2V/W.
+(Minimizing Ebert is <a href="#ebertvarremark">equivalent</a> if W&gt;1 to minimizing the
+<i>variance</i> among the loads, albeit if W=1 we need the original definition.)
+<br>
+<b>Phrag</b> = Sum of squareroots of the V "loads" assumed by the voters.
+</center><p>
+(Note two competing "philosophies of PR" were invented by 
+the Scandinavian mathematicians
+L.E.Phragmen and T.N.Thiele in 1895, and 
+although they were not aware of it, the two quality functions "Phrag" and "Thiel" 
+enact their philosophies via maximization.  
+<i>Min</i>imizing the Ebert function also enacts the Phragmen philosophy
+albeit is more related to ideas suggested by Bjarke Dahl 
+<a href="PRintLinprog.html">Ebert</a> in 2003 than Phragmen himself.)
+</p><ul><li>
+If we elected the parliament with <i>max</i>imum Thiel, that assures PR as in (7).
+</li><li>
+If we elected the parliament with <i>min</i>imum Ebert, 
+or <i>max</i>imum Phrag, that assures strong PR as 
+in (8) but it would fail monotonicity (4).  
+</li><li>
+All conditions besides (4) and (8) are obeyed by both, <i>except</i>:
+<ol type="i"><li>
+ in the case of Thiel (10) is obeyed only if 2<sup>C</sup>&lt;V, otherwise computationally slow.
+(The "<a href="#pt">Kotze-Pereira transform</a>" trick is the key algorithmic idea which makes it fast 
+if 2<sup>C</sup>&lt;V;
+specifically the Thiel quality function is essentially
+the <a href="#pt">Kotze-Pereira transform</a> of my "Psi" quality function
+from  
+the <a href="QualityMulti.html">previous</a> paper,
+which also called this the "Harmonic" quality function.)
+</li><li>
+For Ebert and Phrag, condition (12) would fail, but if we instead use 
+the "<a href="#pt">Kotze-Pereira transform</a>" 
+of Ebert or Phrag &ndash; call that PerEbert and PerPhrag &ndash; 
+then it is <a href="#perSPRthm">salvaged</a>.
+For that to be computationally efficient we again need 2<sup>C</sup>&lt;V.
+</li></ol>
+</li></ul>
+<p> 
+Canadian riding election 
+<a href="CanadaSeatsVotes.html#mostcanddts">statistics</a>
+indicate this 2<sup>C</sup>&lt;V 
+condition has historically been
+valid at least during 1990-2015.  Incidentally, also note that if C=O(logV) then
+the entire voting method we shall describe runs in polynomial time.
+</p><p>
+Also note that if we are outside the polytime regime, e.g. since C!/[W!(C-W)!] is too large, 
+then multiwinner optimizing elections were probably inherently 
+immensely 
+<a href="QualityMulti.html#stratvote">vulnerable</a>
+to strategic voting anyhow and hence not worth doing.
+</p><p>
+The compromise I suggest is as follows.
+</p><ol><li>
+ View all potential parliaments as points in an XY plane with X=PerPhrag
+and Y=Thiel.   (Or X=<b>&ndash;</b>PerEbert, note the minus sign.)
+</li><li>
+ Find the convex hull polygon of those points, and consider only the chain
+on that polygon's boundary from the max-Thiel to the max-Phrag parliament
+(basically the upper-right quarter of the boundary...  more precisely the part visible from both 
++&infin; along the X axis, and from +&infin; along the Y-axis) and discard the rest.
+I claim this will be a very small set of parliaments and the work to find
+them is tiny compared to the work you had to do anyway to compute all 
+the X and Y values; and simultaneously the memory consumption needs can be kept tiny.
+Call the ones on that chain the "good" parliaments.
+<img src="ParlConvHull.png">
+<blockquote><small>
+One way to compute the "upper right chain" of the
+convex hull in "online" fashion is as follows. 
+Begin with the convex hull of the first three parliaments
+(a triangle).  Represent the ordered list of boundary vertices using a 
+<a href="https://en.wikipedia.org/wiki/Splay_tree">splay tree</a> standard data structure.
+For each new parliament, compute X and Y, locate (X,Y) within
+the approprate angular wedge from the point labeled "O" in the diagram; if it lies inside
+the hull do nothing, but if outside then insert the new parliament into the splay tree
+as a new convex hull vertex and then walk clockwise and counterclockwise along the hull,
+deleting all vertices "visible" from the new one.
+Each such update will consume time O(logH) per new parliament, and the memory space
+usage will be O(H) words of memory, if the hull-chain has H vertices.
+Considering it takes time of order V to compute X and Y for a new parliament (incrementally)
+and that V is large while H is expected to be small 
+(and small with arbitrarily
+high confidence, based on the asymptotic normality theorems and variance bounds) 
+this hull update work should be negligible by comparison to the work needed to compute the
+X's and Y's anyhow.
+</small></blockquote>
+</li>
+<li>
+ Elect the good parliament with the most PerPhrag that you can, under the demand
+that monotonicity work.  By "demanding monotonicity work" for a given parliament P,
+I mean the following.  Consider altering P by replacing one member M by 
+another candidate M' to reach parliament P'.  Consider the difference
+</p><center>
+ PerPhrag(P) - PerPhrag(P').
+</center><p>
+If this difference is a decreasing function of some voter v's score for M, or
+an increasing function of her score for M' &ndash; for any M, M', v, or score value &ndash;
+then P is "nonmonotone."  I claim the work involved in performing
+all these checks for all possible M, M', v, and scores, is tiny by comparison
+to the work you had to do anyway to compute all the X and Y values.
+<blockquote><small>
+Specifically, 
+via "backwards algorithmic differentiation"
+(Baydin et al 2015)
+it is known that we can compute all partial derivatives of any multivariate function-formula
+simultaneously 
+in time and memory space linear in the number of steps required to compute that function alone.
+Each is a bounded-degree rational or algebraic function of any particular score by itself
+(regarding the others as constants), and
+hence finding all maxima or minima of each derivative with respect to that score
+is doable rapidly.  Actually it probably would be better and clearer to
+do all the differentiations and so forth by hand before programming this, but
+I'm just saying that known general-purpose reuslts about differentiation guarantee
+computational efficiency.
+</small></blockquote>       
+</li><li>
+ I claim there always will exist a winning parliament by this criterion, since
+even if all else fails. the max-Thiel parliament still will work.
+</li></ol><p>
+So that's the voting method.   One must admit it is complicated to describe.   Likely too
+complicated to "sell."
+</p><p>
+And yet, speaking as a mathematician who's burrowed into this problem, 
+I somehow think it is beautiful.  For everything, there is a purpose.   
+For every disaster, there is something that averts it.  
+(And there is larger underlying theory behind many of its ingredients.)
+</p>
+<h3> Further work to do </h3>
+<p>
+The major <b>open problem</b> is to prove the impossibility of (really) achieving the 
+"holy grail,"
+if so showing the present scheme is the best that can be hoped for.  It also would be 
+good to computer-program the present method and experiment with it, since experiments
+have an annoying tendency to shoot down the grandest of theories.
+</p><p>
+<b>Update:</b>
+Pereira, Simmons, and Smith in a joint <a href="HolyGrailPR.html">paper</a>
+will show that Holy Grail PR voting methods
+do exist!
+</p>
+
+<a name="refs"></a>
+<h3> References </h3>
+<p>
+Zhi-Dong Bai,
+Hsien-Kuei Hwang,
+Wen-Qi Liang,
+Tsung-Hsi Tsai:
+Limit Theorems for the Number of Maxima in Random Samples from Planar Regions,
+Electronic J. Probability 6,3 (2001) 1-41
+</p>
+<!--
+On the Variance of Random Polygons
+Imre Barany and William Steiger
+https://www.cs.rutgers.edu/~steiger/ccfin.pdf
+-->
+<p>
+Michel L. Balinski &amp; H. Peyton Young:
+<a href="http://www.amazon.com/Fair-Representation-Meeting-Ideal-Vote/dp/081570111X">Fair
+representation: Meeting the Ideal of One Man, One Vote</a>,
+Yale Univ. Press 1982.
+Also there was a second edition from
+<a href="http://www.brookings.edu/research/books/2001/fair-representation">Brookings</a>
+Institution Press 2001.
+JF1075.U6B3.
+</p><p>
+Atilim Gunes Baydin, Barak A. Pearlmutter, Alexey Andreyevich Radul, Jeffrey Mark Siskind:
+<a href="http://arxiv.org/abs/1502.05767">Automatic 
+differentiation in machine learning: a survey</a>,
+arXiv:1502.05767, 2015.
+</p><p>
+Kenneth Benoit:
+<a href="PA84-381-388.pdf">Which Electoral Formula Is the Most
+Proportional? A New Look with New Evidence</a>, Political Analysis 8,4 (2000) 381-388.
+</p><p>
+J.L. Bentley, H.T. Kung, M. Schkolnick, C.D. Thompson:
+<a href="http://www.eecs.harvard.edu/~htk/publication/1978-jacm-bentley-kung-schkolnick-thompson.pdf">
+On the average number of maxima in
+a set of vectors and applications</a>,
+J. of the Association for Computing Machinery 25, 4 (October 1978) 536-543.
+</p><p>
+Jon L. Bentley, Kenneth L. Clarkson, David B. Levine:
+Fast Linear Expected-Time Algorithms for
+Computing Maxima and Convex Hulls,
+Algorithmica 9,2 (1993) 168-183.
+</p><p>
+Steven J. Brams &amp; Peter C. Fishburn: Approval Voting, Birkhauser, Boston 1983.
+</p><p>
+Kevin Q. Brown:
+Voronoi Diagrams from Convex Hulls,
+Information Proc. Letters 9,5 (Dec. 1979) 223-228. 
+</p><p>
+Christian Buchta:
+Exact formulae for variance of functionals of convex hulls,
+Advances Applied Probab. 45 (2013) 917-924.
+<!--
+N points uniform in triangle.
+Mean #vertices of CH = 1/3 + (2/3)*HarmonicNumber(N)
+Variance =
+(10/27)*HarmNum(N) + (4/9)*Harm2(N) - 28/27 + (4/9)/(N+1)
+-->
+</p><p>
+Henri Carnal: Die konvexe H&uuml;lle von N rotationssymmetrisch
+verteilten Punkten,
+Zeitschrift f&uuml;r Wahrscheinlichkeitstheorie und Verwandte Gebiete 15,2 (1970) 168-176.
+</p><p>
+Kenneth L. Clarkson &amp; Peter W. Shor:
+Applications of Random Sampling in Computational Geometry, II,
+Discrete &amp; Computational Geometry 4,5 (Oct. 1989) 387-421.
+</p><p>
+Luc Devroye:
+<a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.111.4785&rep=rep1&type=pdf">On
+the oscillation of the expected number of extreme points of a convex set</a>,
+Statistics &amp; Probability Letters 11,4 (April 1991)  281-286.
+</p><p>
+Luc Devroye: Moment Inequalities for Random Variables 
+in Computational Geometry, Computing 30  (1983) 111-119. 
+</p><p>
+Rex A. Dwyer:
+Convex hulls of samples from spherically symmetric distributions,
+Discrete Appl. Maths 31,2 (1991) 113-132.
+</p><p>
+Steven Finch &amp; Irene Hueter:
+Random convex hulls: a variance revisited,
+Advances in Applied Probability 36,4 (2004) 981-986.
+<!--N points uniform within a circular disk.
+#convex hull is asymptotically normally distributed in limit of large N
+with
+    expect=c*N^(1/3)   and   var=k*N^(1/3),
+where now c, k both known (Thm 1):
+c = (2&pi;)<sup>2/3</sup> (2/3)<sup>1/3</sup> &Gamma;(5/3) &asymp; 3.383229
+= 0.5384576135 * 2*pi
+k = [16&pi;<sup>2</sup>&Gamma;(2/3)<sup>-3</sup>-57]c/27 &asymp; 0.8268856
+= 0.1316029298 * 2*pi 
+-->
+</p><p>
+Michael Gallagher: 
+<a href="https://www.tcd.ie/Political_Science/staff/michael_gallagher/ElectoralStudies1991.pdf">
+Proportionality, disproportionality, and electoral systems</a>,
+Electoral studies 10,1 (1991) 33-51.
+</p><p>
+Mordecai J. Golin:  
+<a href="https://www.cse.ust.hk/~golin/pubs/p352-golin.pdf">How many maxima can there be?</a>
+Computational Geometry 2,6 (1993) 335-353.
+</p><p>
+Pietro Grilli di Cortona, Cecilia Manzi, Aline Pennisi, Federica Ricca, and Bruno Simeone:
+Evaluation and Optimization of Electoral Systems, 
+SIAM Monographs on Discrete Mathematics and Its Applications, Philadelphia, 1999.
+JF1001.E93.
+</p><p>
+Piet Groeneboom: 
+Limit theorems for convex hulls, Probab. Theory Relat. Fields 79 (1988) 327-368.
+<!--
+N points uniform within a convex r-gon in the plane (fixed r&ge;3):
+#convex hull is asymptotically normally distributed in limit of large N
+   with   mean = (2/3)*r*ln(N)  EQ1.1    and   var = (10/27)*r*ln(N)  EQ1.2
+The mean was known to Renyi &amp; Sulanke.
+This all also (re)stated in this abstract:
+   https://projecteuclid.org/euclid.aap/1339878714
+-->
+</p><p>
+Irene Hueter:
+<a href="http://www.ams.org/journals/tran/1999-351-11/S0002-9947-99-02499-X/home.html">
+The convex hull of a normal sample</a>,
+Adv. Applied Probab. 26,4 (Dec. 1994) 855-875. MR96g:60018.
+<!-- Theorem 1.1:
+N points from bivariate normal density.  When N&rarr;&infin;
+The # points on the convex hull asymptotically becomes normally distributed with
+Expectation = sqrt(8*pi*lnN).    Known to Renyi &amp; Sulanke.
+Variance = Ksqrt(lnN)
+where 0&lt;K&le;6.73.
+-->
+</p><p>
+Irene Hueter:
+<a href="http://www.ams.org/journals/tran/1999-351-11/S0002-9947-99-02499-X/home.html">
+Limit theorems for the convex hull of random points in higher dimensions</a>,
+Trans. Amer. Math. Soc. 351,11 (1999) 4337-4363.
+<!-- Thm 1 proves variance has same order as expectation in large N limit for N normal points
+in fixed dimension d, i.e. proves K&gt;0 not merely K&ge;0. -->
+<!--
+</p><p>
+Bruno Masse:
+On the variance of the number of extreme points of a random convex hull,
+Statistics &amp; Probability Letters
+Volume 44, Issue 2, 15 August 1999, Pages 123-130
+By an appropriate choice of the underlying distribution,
+the variance of the number of extreme points of the convex hull of n i.i.d. 
+random points in the plane can be infinitely often as close to n^2 as 
+we want (as n grows to infinity).
+--
+</p><p>
+Avraham A. Melkman:
+On-line Construction of the Convex Hull of a Simple Polyline,
+Information Processing Letters 25 (1987) 11-12.
+-->
+</p><p>
+Roger E. Miles:
+Multidimensional perspectives on sterology,
+Journal of Microscopy 95 part 2 (April 1972) 181-195.
+</p><p>
+Roger E. Miles:
+Poisson flats in Euclidean spaces,
+I:  Adv. Appl. Probab. 1,2 (1969) 211-237;
+II: Adv. Appl. Probab. 3,1 (1971) 1-43;
+III: apparently never appeared???
+<br>
+Roger E. Miles: A synopsis of 'Poisson flats in Euclidean spaces,'
+pp.202-227
+in E.F.Harding &amp; D.G.Kendall (eds.) <i>Stochastic Geometry</i>, Wiley 1974.
+QA273.5.S72
+</p><p>
+Frederick W. Owens:
+On the Apportionment of Representatives,
+Quarterly Pub. Amer. Statist. Assoc. 17,136 (Dec. 1921) 958-968.
+</p><p>
+John V. Pardon: <a href="https://projecteuclid.org/download/pdfview_1/euclid.aop/1300281727">
+Central limit theorems for random polygons
+in an arbitrary convex set</a>,
+Annals of Probability 39,3 (2011) 881-893.
+</p><p>
+Marko Petkovsek, Herbert Wilf, Doron Zeilberger: 
+<a href="https://www.math.upenn.edu/~wilf/AeqB.html">A=B</a>,
+A.K. Peters 1996.
+</p><p>
+Lars Edvard Phragm&eacute;n: 
+<a href="https://rangevoting.org/Phragm&eacute;nVoting1899.pdf">Till
+fr&aring;gan om en proportionell valmetod</a>
+[On the Question of a
+Proportional Election Method], Statsvetenskaplig Tidskrift 2,2 (1899) 87-95.
+Phragm&eacute;n's method was first described in "Proportionella val" [Proportional
+Elections], Svenska sp&ouml;rsma&#770;l 25 (1895) Stockholm.
+</p><p>
+Matthias Reitzner:
+Central limit theorems for random polytopes, Probab. Theory Related Fields 133 (2005) 483-507.
+</p><p>
+A.Renyi &amp; R.Sulanke:
+&Uuml;ber die konvexe H&uuml;lle von N zuf&auml;llig gew&auml;hlten Punkten,
+I: Zeitschrift f&uuml;r Wahrscheinlichkeitstheorie und Verwandte Gebiete 2 (1963) 75-84,
+II; 3 (1964) 138-147,
+III: 9 (1968) 146-157.
+</p><p>
+Andre Sainte-Lagu&euml;:
+La Representation proportionelle et la merthode des moindres carres,
+Comptes Rendus Hebdomadaires des Seances de'Academie des Sciences  151 (1910) 377-378.
+French&rarr;English translation "Proportional representation and the method of least squares"
+in appendix 2 (pp. 241-242) of Arend Lijphart and Robert W. Gibberd:
+Thresholds and payoffs in list systems of 
+Proportional Representation, European J. Political Research 5,3 (1977) 219-244.
+</p><p>
+<!--
+T.Schreiber &amp; J.E.Yukich:
+<a href="https://projecteuclid.org/euclid.aop/1196268683">Variance asymptotics and
+central limit theorems for generalized growth processes
+with applications to convex hulls and maximal points</a>,
+Ann. Probab. 36,1 (2008) 363-396.
+---
+Timothy L. Snyder &amp; J. Michael Steele:
+<a href="http://stat.wharton.upenn.edu/~steele/Papers/PDF/CHoRW.pdf">Convex
+hulls of random walks</a>,
+Proc. Amer. Math'l Soc. 117,4 (April 1993) 1165-1173
+</p><p>
+-->
+Thorvald N. Thiele:
+<a href="https://books.google.com/books?id=oAMXAAAAYAAJ&pg=PA415&lpg=PA415&dq=Thiele+Om+flerfoldsvalg&source=bl&ots=_AFoEKMdA8&sig=IcJya-OQrToFYzVtLW1mnCXQqy0&hl=en&sa=X&ved=0ahUKEwii5be_6J_JAhVIjz4KHW6KDLwQ6AEIKjAD#v=onepage&q=Thiele%20Om%20flerfoldsvalg&f=false#v=onepage&q=Thiele Om flerfoldsvalg&f=false">Om
+flerfoldsvalg</a> [On multiple election],
+Oversigt over Det Kongelige danske videnskabernes selskabs forhandlinger
+=
+Bulletin de L'Acad&eacute;mie royale des sciences et des lettres de Danemark,
+Copenhague Kongelige Danske Videnskabernes Selskab 
+= 
+Royal Danish Academy of Sciences and Letters 3,4  (1895) 415-441.
+</p><p>
+Van Vu:
+Central limit theorems for random polytopes in
+a smooth convex set,
+Advances in Maths 207 (2006) 221-243.
+</p><p>
+Douglas R. Woodall:                         
+<a href="WoodallVotSystProperties1994.html">
+Properties of Preferential Election Rules</a>, Voting Matters 3,4 (Dec. 1994).
+There also was a later paper by Woodall with considerable overlap with this one:
+<a href="Woodall97.pdf">Monotonicity of single-seat preferential election rules</a>, 
+Discrete Applied Mathematics 77 (1997) 81-98.      
+</p>
+<!-- Randomized incremental convex hull algorithms:
+ J.-D. Boissonnat and M. Yvinec. Algorithmic Geometry. Cambridge University Press 1998.
+M. de Berg, M. Kreveld, M. Overmars, and O. Schwarzkopf. Computational Geometry: Algorithms
+and Applications. Springer, 1997 sec 11.2.
+R. Motwani and P. Raghavan. Randomized Algorithms. Cambridge University Press, 1995.
+K. Mulmuley. Computational Geometry. Prentice Hall, 1994  sec 3.2
+
+Kenneth L. Clarkson and Peter W. Shor:
+Applications of Random Sampling in Computational Geometry, II
+Discrete & Computational Geometry 4,5 (Oct. 1989) 387-421
+https://www.cs.duke.edu/courses/spring07/cps296.2/papers/clarkson-shor.pdf
+N*logH expected time will compute the H-vertex convex hull of N points in 3-space,
+maintains a conflict graph which takes order N words of memory.
+D.G.Kirkpatrick and R.Seidel: The ultimate planar convex hull algorithm?
+SIAM Journal on Computing 15 (1986) 287-299.
+had obtained a deterministic algorithm for planar convex
+hulls with the same time bound.
+If instead of maintaining a conflct graph I simply compute
+for each new point, a CH face it is outside of, then if I can do that in O(logH) time,
+then I update in O(logH+#zapped) time, 
+then the Clarkson-Shor analysis will show the total expected time is
+O(N*logH).  But my way the space usage is O(H) not order N.
+WAIT!! Really? I mean, the convex hull could have order N points on it, until
+you add 4 outer points which then are the only ones.  In which case NlogN time
+not Nlog4 time.  Well, they have a way to quickly eliminate internal points in O(1)
+expected work per elimination. which probably keeps working until the point set has same
+order as the cardinality of the convex hull.  But that is a multipass algorithm
+and seems to need a lot of storage.  So cannot use it, need to be satsified with
+O(NlogN) or O(Nlog(Hmax))-time algorithm.
+
+CHEN, W.-M., HWANG, H.-K. and TSAI, T.-H. (2003). Efficient maxima finding algorithms
+for random planar samples. Discrete Math. Theor. Comput. Sci. 6 107-122. MR2011337
+https://hal.inria.fr/hal-00958994/document
+-->
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

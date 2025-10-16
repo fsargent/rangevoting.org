@@ -1,0 +1,54 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Ignoring your votes (Executive Summary)
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Ignoring your votes  (Executive Summary) </H2>
+
+<p>
+Nobody likes to be ignored.
+But in 
+<a href="rangeVirv.html">Instant Runoff Voting</a>,
+a correct algorithm that computes the winner always ignores (i.e. never looks at)
+asymptotically 100% of
+the entries in the rank-order votes.
+Indeed, always, the algorithm looks at a fraction &le;F of the VC entries
+(in a V-voter, C-candidate election) where
+<center>
+ F &le; (1+1/3+1/4+&hellip;+1/C) / C.
+</center>
+This upper bound tends to 0% when C is made large.
+</p>
+<p>
+In contrast, with <a href="RangeVoting.html">range</a>, 
+<a href="Approval.html">approval</a>, Borda, plurality, and Condorcet voting,
+no correct algorithm can always avoid looking at 100% (or nearly) of the entries
+in the votes.  (However, it certainly can <i>sometimes</i> avoid it, e.g. if the first 51%
+of the votes examined are all for Lincoln, then with plurality voting we'd know the winner
+without needing to examine the remaining 49%.)
+</p>
+<p>
+IRV voters have to ask themselves why they are being asked to fill out a rather large ballot
+of rank orderings when in fact almost everything they write will always be ignored.
+</p>
+
+
+<br>
+<p><a href="Ignoring.html">The details</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

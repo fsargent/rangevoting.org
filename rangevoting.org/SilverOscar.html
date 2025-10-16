@@ -1,0 +1,340 @@
+
+<html>
+<head>
+<title>
+RangeVoting.org - Nate Silver discusses OSCAR voting system; was Toy Story 3 robbed in 2011? 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Nate Silver discusses OSCAR voting system; was <i>Toy Story 3</i> robbed in 2011? </H2>
+
+<p><small>
+The following by Warren D. Smith is based on, and includes excerpts from,
+Nate Silver's <i>New York Times</i>  24 January 2011
+<a href="http://carpetbagger.blogs.nytimes.com/2011/01/24/critics-love-the-social-network-will-the-academy-defriend-it/">blog</a> 
+on the  voting methods used to award OSCAR film academy awards.
+</small></p><p>
+Silver's piece was pointed out by professional Instant Runoff Voting 
+(<a href="rangeVirv.html">IRV</a>) propagandist
+Rob Richie in a published Huffington Post
+piece 2013-01-11, who described Silver's analysis as "fascinating." 
+But as usual, Richie completely forgot to mention that Silver's
+analysis exposed considerable <i>problems</i> with the
+OSCAR awards' IRV system, and indeed IRV appears to have 
+<a href="#ratingtab">robbed</a>
+<i>Toy Story 3</i> of what should
+have been a historic victory as the first ever best picture award for an animated film.
+We'll give the details and explain 7 problems with IRV as they arise one by one
+during Silver's analysis.
+<!--
+http://www.huffingtonpost.com/rob-richie/instant-runoff-voting-oscars_b_815567.html
+-->
+</p><hr><p>
+Silver (although he does not realize he is doing so) compares the current OSCAR final-round
+voting system, based on <a href="rangeVirv.html">instant runoff</a>,
+versus the 
+<a href="RangeVoting.html">score voting</a> 
+system used by
+<a href="http://www.metacritic.com/">Metacritic.com</a>
+and 
+<a href="http://http://www.rottentomatoes.com/">rottentomatoes.com</a>'s
+"tomato meter."
+These and other things like the 
+<a href="http://www.imdb.com">Internet Movie Database</a>
+and
+<a href="http://movies.yahoo.com/">Yahoo movies</a>
+work by averaging ratings from large numbers of ordinary people, and/or professional or
+amateur film critics.
+</p><p>
+Silver constructs a slightly artificial scenario with these 10 films
+as contenders: 
+<i>The Social Network</i>,
+<i>Black Swan</i>,
+<i>The Fighter</i>,
+<i>Inception</i>,
+<i>The King's Speech</i>,
+<i>The Kids Are All Right</i>,
+<i>True Grit</i>,
+<i>Toy Story 3</i>,
+<i>Blue Valentine</i>,
+and <i>Winter's Bone</i>.
+</p>
+<blockquote><small>
+Silver actually predicted those 90% right &ndash; the actual nominees in 2011 were
+the same except that 
+<i>Blue Valentine</i>
+was replaced by
+the survival story <i>127 Hours</i>.
+</small></blockquote>
+<p>
+<b>IRV Problem #1:</b>
+Silver then observes that not all the critics reviewed all the movies.
+("You think the Academy's voters have seen all of them either?" he asks.)
+This problem is trivial for <a href="RangeVoting.html">score voting</a> 
+to handle; MetaCritic simply averages the scores it gets.
+But as Silver observes, it is not so easily handled by other voting systems
+like instant runoff (IRV), the system the OSCARs currently (2012; probably foolishly) uses.
+Silver handles that by "restricting the analysis to those critics who reviewed at least 
+half of them &ndash; this leaves us with a 40-person panel &ndash;
+assigning a lukewarm score of 65 (on 0-100 scale)
+to any movies that the critic bypassed."
+</p><p>
+It is rather sad that we need to begin by throwing out and/or faking
+a lot of our data-set (vote set).
+I daresay Silver as a statistics professional absolutely
+<i>hates</i> to discard data
+when he does not really have to.
+But that is an example of the price you pay for having a stupid voting system.
+</p><p>
+<b>IRV Problem #2:</b>
+Silver then observes that there is "yet another problem:
+it was quite common for one or more of the critic's choices to have gotten the same score."
+Again, that is no problem at all for <a href="RangeVoting.html">score voting</a>.
+But, again, for stupid voting systems like 
+instant runoff, this is <i>illegal</i> and hence a major problem.
+Silver "solves" this problem by
+"drawing lots" (i.e. random tie-breaking imposed by Silver).
+Again, it is sad to alter the vote-set, i.e. data-set, but he does so
+because he is forced to by the stupid voting system.
+</p><p>
+So now, Silver has 40 "voters" and for each has artificially constructed a 10-film
+preference order ballot from their movie reviews <i>plus</i> (unfortunately)
+both random tie-breaking and fake-score-insertion, 
+altering and editing those votes to make them
+legal for the stupid OSCAR instant runoff process.
+(These changes were considerable. Silver gives as an example J.R.Jones' ballot
+which involved 5 artificial random tie breaks plus 2 fake scores among
+the 10 films!)
+</p><p>
+Silver now runs that instant runoff process.
+As a result, the films get <b>eliminated</b> one by one in this order:
+<ol><li>
+<i>True Grit</i>. 
+<b>IRV Problem #3:</b>
+Silver comments that even though <i>TG</i> was the first to be eliminated 
+by the instant runoff process, it was 
+"rated considerably better on average than movies
+like <i>Inception</i> and <i>Black Swan</i>."
+This would seem to be unfair, and as Silver points out, the source of the problem is
+that IRV's elimination decision is based solely on how many critics rated <i>TG</i>
+(or <i>Inception</i>, or whatever) <i>top</i>, utterly <i>ignoring and discarding</i>
+the fact that lots of voters rated <i>TG</i> above <i>Inception</i> (or not) with neither top.
+A major problem with IRV is the fact that it ignores a large part of (in fact in
+theoretical <a href="IgnoreExec.html">models</a>, 
+asymptotically <i>100%</i> of!) the information expressed
+by voters on their ballots.
+Silver indeed notes that a film that was <i>everybody's</i> second choice would
+be eliminated instantly by IRV, even though it is probably the best film, and this
+was very [nearly] "the situation that <i>True Grit</i> found itself in."
+</li><li>
+<i>The Fighter</i>
+</li><li>
+<i>Inception</i>
+</li><li>
+<i>Blue Valentine</i>
+</li><li>
+<b>IRV Problem #4:</b>
+At this point, Silver complains, we have an exact 2-way tie between
+<i>Black Swan</i> and <i>Kids Are All Right</i> for which to eliminate next.
+With <a href="Rangevoting.html">score voting</a> such ties are much less of
+a problem since they arise much less frequently (especially if using ratings on 0-100 scale
+and full vote set without a lot of voters discarded).  With IRV, ties are quite 
+<a href="TieRisk.html">common</a>
+because there are many rounds, each of which could be tied, and the votes each are 2-valued
+for each round, not 101-valued.  That is why IRV is one of the worst voting systems
+from the point of view of tie risk.  Silver solves the problem in this case by 
+breaking the tie using average score, i.e.
+<a href="Rangevoting.html">score voting</a>, thus implicitly endorsing it (even though Silver
+actually never mentions the explicit words "score voting" is his article).
+Thus, eliminated is <i>Black Swan</i>.
+</li><li>
+<i>The Kids Are All Right</i>
+</li><li>
+<i>Winter's Bone</i>
+</li><li>
+At this point, the three remaining contenders are 
+<i>Social Network</i> (17 voters),
+<i>The King's Speech</i> (12),
+and
+<i>Toy Story 3</i> (11=fewest, hence eliminated).
+</li><li>
+Finally
+<i>Social Network</i> wins with 23 versus
+<i>King's Speech</i> (17).
+</li></ol>
+<p>
+<b>IRV Problem #5:</b>
+Complexity. Note how complicated the above process was, as compared to simply
+picking greatest average score as the winner as in score voting.
+</p><p>
+Silver notes that this winner in his pseudo-election was "no surprise" because
+<i>Social Network</i> had in fact just won the
+<a href="http://www.vh1.com/shows/events/critics_choice/_2011/">Critic's choice award</a>
+and the highest metacritic  score using <a href="RangeVoting.html">score voting</a>.
+Silver therefore prognosticated that <i>Social Network</i> would win the 2011 OSCAR
+best picture award.
+</p><p>
+He was wrong: the <b>official winner</b> was <i>The King's Speech.</i>
+Comparing with score voting (now using rating data from Feb. 2013 to gain extra benefits 
+from hindsight):
+</p>
+<a name="ratingtab"></a>
+<table bgcolor="Yellow">
+<tr bgcolor="aqua"><th>Film</th><td>IMDB users</td><td>Metacritic</td>
+<td>TomatoMeter</td><td>Avg tomato critic/user</td><td>Yahoo movies</td></tr>
+<tr><th>King's Speech</th><td>8.2</td><td>88</td><td>94</td><td>8.6, <b>4.3</b></td>
+<td><b>4.5</b> stars</td><!--<td>87/745</td>-->
+</tr>
+<tr><th>Social Network</th><td>7.9</td><td><b>95</b></td><td>96</td><td><b>9.0</b>, 4.2</td>
+<td>4.0 stars</td><!--<td>96/2923</td>-->
+</tr>
+<tr><th>Toy Story 3</th><td><b>8.5</b></td><td>92</td><td><b>99</b></td><td>8.8, <b>4.3</b></td>
+<td><b>4.5</b> stars</td><!--td>79/802</td>-->
+</tr>
+<tr><th>Winter's Bone</th><td>7.3</td><td>90</td><td>94</td><td>8.3, 3.7</td>
+<td>4.0 stars</td><!--<td>93/135</td>-->
+</tr>
+<tr><th>The Kids are All Right</th><td>7.9</td><td>86</td><td>93</td><td>7.8, 3.6</td>
+<td>3.5 stars</td><!--<td>58/248</td> moviefone.com-->
+</tr>
+</table>
+<!-- True grit: 7.8  80  96  8.4, 4.1  4.0-->
+<blockquote><small>
+<b>Notes on the table:</b>
+Typical IMDb ratings based on 260,000 raters each; typical tomatos based on 170,000;
+typical yahoos based on 21,000.  These counts suggest that statistical "noise" in an IMDb rating
+(as a percentage of that rating) should be about &plusmn;0.3% or less, which is 
+below the roundoff error. Thus the IMDb rating of 
+<i>King's Speech</i> should really be "8.2&plusmn;0.02" which is below the error &plusmn;0.05
+due to IMDb rounding it off to one decimal place.
+"TomatoMeter" combines the scores of "approved critics." "Avg tomato critic/user" 
+gives two numbers: average critic score then average user score.
+(Moviefone.com also provides user-ratings but
+presently typically only based on 1000 raters hence we ignore them.)
+<!--
+IMDb: KS 238K, TSN 266K TS3 271K
+Tomato:  103K 131K 286K
+Yahoo: 4.4K  4.4K 12.5K
+Movfone: 745 2923 802
+-->
+</small></blockquote>
+<p>
+So although <i>King's Speech</i> was a defensible choice as 2011 OSCAR winner
+versus <i>Social Network</i> (although <i>SN</i> perhaps was a slightly better choice)
+there is a major problem:
+</p><blockquote>
+<b>IRV Problem #6</b> &ndash;
+it looks like <i>Toy Story 3</i> was the best choice
+(based on the data above)!
+</blockquote><p>
+Assuming that <i>Toy Story 3</i> really was the best choice, why was it robbed by the IRV
+voting system (which made it finish only third in Silver's simulation)? One possible
+explanation would be that the vote among the final three could have been something like this:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 11 </td>
+<td align="center"> Toy > King > Social </td>
+</tr>
+<tr>
+<td align="center"> 12 </td>
+<td align="center">  King > Toy > Social  </td>
+</tr>
+<tr>
+<td align="center"> 17 </td>
+<td align="center">  Social > Toy > King   </td>
+</tr>
+</table>
+
+<p>
+<b>IRV Problem #7:</b> 
+In this artificial scenario
+(which perhaps was basically what happened &ndash; we do not know because the Academy keeps
+its votes secret), 
+the IRV system eliminates <i>Toy</i> whereupon
+<i>King</i> wins by 23=11+12 versus 17 for <i>Social</i>.
+(As in fact happened, i.e. <i>King</i> really did win, although in Silver's 
+incorrect forecast
+the final <i>King</i> vs <i>Social</i> votes were reversed, it was 23-17 the other way.)
+But note, in this scenario, that <i>Toy</i> would overwhelmingly win a head-to-head
+vote versus <i>King</i> by 28-12, and would also have won 
+a head-to-head vote versus <i>Social</i> by 23-17.
+(It might be more realistic to alter the votes in this scenario a bit, e.g.
+change "12 and 17" to "14 and 15" and make the 11 <i>Toy</i>-top voters
+split their second choices among <i>King</i> and <i>Social</i>,
+but neither would alter anything important.)
+So if this were what actually happened, then we would have to conclude that the
+Academy's poor IRV voting system
+<b>robbed</b> <i>Toy Story 3</i> of its deserved victory.
+</p><p>
+That would have been historic as
+the first time ever that an animated film won best picture. 
+And based on the amalgamated
+opinion of hundreds of thousands of raters plus about 100 critics,
+it appears to have deserved it! &nbsp;
+Note in the <a href="#ratingtab">data</a>
+table, <i>Toy Story 3</i> equalled or beat <i>King's Speech</i> according
+to every single rating method for every single rater-group, plus also was the
+top-grossing picture of 2010.
+</p><p>
+<b>Whodunit?</b>
+It is now fairly clear <i>Toy Story 3</i> was robbed.  But what to blame this on
+is not clear (especially since the Academy keeps its votes secret).
+The obvious possible culprits are
+</p><ol><li>
+Their IRV <i>voting system</i>;
+</li><li>
+<i>Statistical noise</i>
+due to the fact the Academy has 5783 voting members as of 2012, which is much smaller than the
+number of raters (of order 1 million) who contributed to the numerical movie-quality ratings
+tabulated above.  This would be expected to alter each side's total in 
+a 50-50 two-choice vote by &plusmn;38 votes worth of "noise" typically, i.e.
+&plusmn;1.3% as a percentage of the vote being altered.
+This is large enough, and <i>Toy Story 3</i>'s superiority versus <i>King's Speech</i> 
+small enough, to make it conceivable that this was the culprit.
+</li><li>
+<i>Sample bias</i> because the Academy's members simply are a different kind of people than 
+"IMDb raters" or "professional film critics."  E.g. are they, for some reason, more biased
+against animated films than the general public or film critics?
+The only previous nominations of an animated film for best picture were
+<i>Beauty and the Beast</i> in 1991 (but it then
+lost to the non-animated <i>Silence of the Lambs</i>
+in a decision wholy supported by IMDb and tomato raters and critics)
+<!--
+IMDb: BB=8.0/?? SL=8.7/88
+tomato: BB=3.7,92; SL=4.0,95
+yahoo: B=4.0, SL=4.0
+-->
+and <i>Up</i> in 2009
+(which lost to the non-animated <i>Hurt Locker</i>
+in a decision that metacritic and tomato raters supported but tomato critics and IMDb raters
+both dispute).  So I see no convincing 
+evidence the Academy is biased against animated films 
+(at least, once they've achieved nomination).
+<!--
+IMDb: HL=7.7/94 up=8.3/88
+tomato: HL=3.9,97; up=3.5,98
+yahoo: HL=4.0, up=4.0
+-->
+</li></ol>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

@@ -1,0 +1,368 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Press page explaining Rivest-Smith secure voting protocols
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2> 
+<a href="http://people.csail.mit.edu/rivest/">Rivest</a>
+&amp; 
+<a href="WarrenSmithPages/homepage/works.html">Smith</a>
+invent revolutionary secure voting protocols </h2>
+
+<p><small>
+Detailed Press Release &ndash; 
+the <a href="">Center for Range Voting</a> &ndash; 19 July 2007
+(see also <a href="RivSmiPRem.html">shorter plaintext press release</a> with more contact info)
+</small></p>
+<p>
+Vote-buying and election <a href="FraudHist.html">fraud</a> 
+have happened for over 100 years.
+</p>
+<table border="1">
+<caption>
+The two usual bad ways to respond to that.
+</caption>
+<tr bgcolor="#ffdddd">
+<th>"Australian"
+<i>secret ballot</i> (introduced &asymp;1880)
+</th>
+<th>
+Post each vote next to voter's name on huge public list
+</th>
+</tr>
+<tr bgcolor="#ddddff">
+<td align="center">
+Prevents vote-buying and coercion
+</td>
+<td align="center">
+Makes election integrity &amp; correctness (or lack) clear.
+</td>
+</tr>
+<tr bgcolor="#ddffdd">
+<td align="center">
+<i>But</i> 
+makes it very hard to prove (or disprove) vote-alteration fraud
+</td>
+<td align="center">
+<i>But</i> 
+makes vote-buying and coercion easy
+</td>
+</tr>
+</table>
+<p>
+<b>The question:</b> can we <i>both</i> prevent fraud <i>and</i> prevent vote-buying &amp; coercion
+&ndash;  having cake and eating it too?
+</p>
+
+<h3> 1987-2007: The cryptographers find out how </h3>
+<p>
+The net answer from a community
+of about 20 cryptography and computational-complexity experts from 
+several countries over the last 20 years is
+<i>yes</i>.
+<i>But</i>
+only with complicated cryptography algorithms, and with
+each voter needing a personal <i>trusted</i> "digital assistant" in order to be able to
+cast a vote.  So: dubious political &amp; technical realism.
+</p>
+<p><small>
+One of the best such schemes is the "homomorphic encryption"
+approach advocated by <a href="http://www.win.tue.nl/~berry/">Berry Schoenmakers</a> 
+at TU Eindhoven (Netherlands).
+</small></p>
+
+<h3> 2007: Breakthrough: Secure, Private, Verifiable, Simple, Low-tech voting </h3>
+<p>
+Rivest &amp; Smith found a way to have it all.
+Their new voting protocols are almost obvious in retrospect;
+they could have been discovered 100 years ago and are incredibly simple &ndash; explainable
+to children.  They don't need computers and don't need cryptography.
+</p>
+<p>
+<b>Even better,</b> the Rivest-Smith security protocols
+can handle a <b>wide variety of vote-totaling systems.</b>
+<small>
+The US public is most familiar with <a href="Plurality.html">Plurality</a> voting
+where your vote is "name one candidate then shut up."  (Most-named candidate wins.)
+Unfortunately this is a poor system:
+<ol>
+<li>
+The candidate regarded as <i>worst</i> by a huge majority of voters
+can <a href="LoseAll.html">easily</a> 
+win the election;
+</li><li>
+Voting for your favorite candidate can be a huge
+strategic <a href="MistakeMe.html">mistake</a>;
+</li><li>
+Plurality voters express the <i>least</i> amount of information
+they possibly could in their vote, defeating the purpose 
+of voting as an information-gathering process;
+</li><li>
+Over time plurality voting countries <a href="Duverger.html">evolve</a> into 
+<a href="Strangle.html">two-party domination</a> so that voters have minimum choice,
+defeating the whole goal of democracy.
+</li>
+</ol>
+</p>
+<p>
+But political scientists have known for over 200 years that
+better vote-totaling systems exist.  One of the simplest is
+<a href="Approval.html">Approval voting</a> where your vote is "mark <i>all</i> the candidates
+you 'approve'."  (Most-approved wins.)  This actually is <a href="JKBB.html">simpler</a> 
+than plurality voting because there is no special rule against "overvoting."
+(Little-known fact:
+the USA's <a href="EarlyUS.html">first four</a> presidential
+elections employed a variant of approval voting.  The 
+<a href="SovietApp.html">Soviets</a> also tried it.)
+Probably the <a href="UniqBest.html">best</a>
+simple voting system &ndash; cf. the <a href="OlympCover.html">Olympics</a> &ndash;
+is  <a href="SmithWM.html">Range Voting</a> where your vote is "provide a score
+for every candidate on a fixed scale (e.g. 0-to-9)." (Highest average score wins.)
+In this system, voting 9 for your honest favorite is <i>never</I> a strategic mistake,
+so voters provide <i>more-honest</i> information, and they also provide far <i>more</i>
+information.
+</p><P>
+More information + more honest information = better election winners = better world.
+</p>
+</small>
+
+<h3> R&amp;S's three protocols &ndash; ThreeBallot, VAV, and Twin &ndash; <font color="red">what they are and how they work</font> </h3>
+
+<p>
+Rivest &amp; Smith's
+<a href="WarrenSmithPages/homepage/tb8.pdf">paper</a> 
+introduces three different antifraud
+voting protocols: "ThreeBallot", "VAV," and "Twin."
+(At <a href="http://www.usenix.org/events/evt07/cfp/">EVT 07 conference</a>,
+Sheraton in Boston, evening of 6 August 2007.)
+</p>
+
+<p>
+<b>VAV</b> (<i>v</i>ote-<i>a</i>ntivote-<i>v</i>ote):
+<ol>
+<li>
+Each voter casts <i>three</i> ballots: a <i>vote</i>, an <i>antivote</i>, and a second 
+<i>vote</i>.  For example, to vote for Bush, a voter could vote for both Bush and Gore,
+while also antivoting for Gore.  (The antivote must be the same as one
+of her votes, and cancels it.  Ballot triples disobeying this property are immediately rejected.)
+</li>
+<li>
+The voter than takes home, as her <i>receipt</i>, a copy of <i>one</i> of the these three
+ballots.  It is crucial that the <i>voter  chooses</i> which one to copy and take home,
+and that her choice is <i>secret</i> &ndash; a government machine gives her
+the chosen signed certified receipt but <i>does not remember</i> it.
+</li>
+<li>
+Finally, the government posts
+all the ballots &ndash; 3N in all, if there are N voters &ndash; 
+on a <i>Public Bulletin Board</i> on the
+internet, along with a list of the voters' names and addresses
+(but not saying which voters cast which votes).
+</li>
+</ol>
+<p>
+What is so good about this?
+</p>
+<ol type="a">
+<li>
+Any voter can <i>check</i> that the vote recorded on her official receipt number 576388321
+is on that bulletin board (by looking up 576388321).  If it is absent or disagrees, she
+has official certified proof that there was election fraud.  (The other two parts of
+her vote are posted with <i>other</i> ID numbers on the bulletin board, and the voter
+cannot prove to anybody what her other two numbers are, since she has no receipts for them.)
+</li>
+<li>
+Anybody can <i>total</i> the votes (since all are posted publicly) to verify the right winner won.
+</li>
+<li>
+If anybody corruptly <i>deletes</i> or <i>alters</i> a lot of
+ballots, then (since nobody knows which third of the 
+ballots are copied) they will with overwhelming probability delete/alter a lot of ballots
+that have receipts. So the fraud will be immediately visible.
+</li>
+<li>
+If anybody corruptly <i>adds</i> a lot of
+ballots, then there will be more than 3N.
+So the fraud will be immediately visible.
+</li>
+<li>
+If anybody corruptly <i>adds</i> a lot of
+fake voters too, then some fraction of the published  voter name-address pairs
+will be fake.  (If trying for a 1% fraud, then 1% will be fake.)  This is easily checked
+by, e.g, reporters who will find one fake voter per 100 random people they check.
+Note that detecting this kind of <i>nationwide</i> fraud is thus within the reach of
+a <i>single</i> checker. 
+</li>
+<li>
+If anybody tries to <i>buy</i> (or coerce) your vote for (say) Gore,
+then you can show them your Gore-receipt and ask for your money, while still
+<i>actually</i> voting for Bush (or for anybody else).  The receipt has absolutely no
+relation to how you really voted.  (Anybody willing to pay for
+that "proof" is very easily parted
+from their money...)
+</li>
+</ol>
+
+<p>
+<b>ThreeBallot</b> is related to VAV and designed to be even simpler <i>if</i> voters
+are using <a href="RangeVoting.html">range</a> 
+or <a href="Approval.html">approval voting</a>.  To "approve" Clinton
+a voter approves
+him twice and disapproves him once; to "disapprove" Bush you disapprove twice and 
+approve once.  This also permits "write-in" candidates.
+</p>
+
+<p>
+<b>Too complicated?</b> 
+We can just give voters who find this too complicated the <i>option</i>
+of voting in the old-fashioned "OneBallot" style.  
+(Total number of ballots cast is 3A+B where A is number of ThreeBallot voters and B
+is number of old-style voters.)
+Upon mixing in the OneBallots with the ThreeBallot ballots in the same box,
+the OneBallots &ndash; almost magically &ndash; become <i>protected</i> against fraud
+because fraudsters do not know which are the protected ThreeBallots and which are the
+fraudable OneBallots, so they can't afford to alter either.
+This "mix-in compatibility" property allows "easy upgrade" from insecure to secure voting.
+</p>
+
+<p>
+<b>Twin</b> is
+the simplest of Rivest &amp; Smith's  schemes.
+With Twin, voters do not need to make <i>three</i> ballots to
+vote once &ndash; they only need to make <i>one</i> and drop it in a ballot box as usual.
+Each voter after the initial 10 gets as a take-home receipt, a <i>copy</i> of
+a randomly chosen ballot in the box that was cast by a <i>previous</i> voter.
+Then all ballots are posted on a public bulletin board as usual.
+</P>
+<p><small>
+(An elegant "circular"
+twist suggested by <a href="http://home.gwu.edu/~poste/">Stefan Popoveniuc</a>
+is that the first 10 voters must be <i>election workers</i>, and at 
+the <i>end</i> of the day,
+after the last voter, they each get a take-home receipt too, again a copy of a random ballot
+in the box. That way everybody gets exactly one receipt.)
+</small></p>
+</p>
+<p>
+The security properties of Twin are the same as VAV, except that voters now check
+<i>somebody else's</i> receipt (which is also the reason that the receipt has absolutely no
+relation to <i>your</i> vote and hence is not useful for a vote-buyer or coercer).
+</p>
+<h3> Machines </h3>
+<p>
+In all three schemes, certain simple machines 
+are needed at polling places
+that <i>check</i> that the voter is submitting a valid (rule-obeying) vote,
+that make receipt-copies, and/or that randomly sample from a box of ballots.
+The tasks these machines perform are, however, simple and
+performable <i>without</i> computers, purely <i>mechanically</i>.
+(Mechanical no-computer adders, copiers, and random lottery-sampling machines all have
+been widely manufactured and used in the past.)
+It is important that these machines be simple and transparent in their operation, so
+everybody can plainly see they are doing what they are supposed to;
+and we also want it to be plain they do <i>not</i> contain
+a computer or sophisticated electronics, because 
+then the machines could "cheat."
+For example they could "remember" which of the three VAV
+ballots the voters chose to copy 
+and which not; a
+fraudster armed with that information could then safely alter the uncopied ballots.
+(For the same reason, it is important that no spy devices such as cameras are allowed in
+the voting booth.)
+</p>
+<p>
+It is interesting that Rivest &amp; Smith's work actually indicates that computers are <i>bad</i>
+for security.  However, it is OK to use computers in all stages of the process <i>after</i>
+the voters have had their ballots validity-checked and they've gotten their take-home receipts,
+because any hacking or cheating by the computers would then be detectable.
+</p>
+
+<h3> Conclusion </h3>
+
+<p>
+These are very simple schemes which solve a problem open for over 100 years.
+Subject to certain
+assumptions about what the checking machines do, etc, they can be proven to
+make fraud detectable, allow each voter to <i>verify</i> her vote
+was counted correctly (unlike now where that is purely a matter of trust),
+keep votes private, and make vote-buying and coercion impossible.
+</p>
+
+<h3> For more details </h3>
+<p>
+Please read the  <a href="WarrenSmithPages/homepage/tb8.pdf">paper-pdf</a>.
+(Also contains nice <i>pictures</i>.  Also 
+<a href="RivSmiTB.html">html version</a>
+and 
+<a href="RivSmiTBadd.html">addendum</a>.)
+<b><a href="RivSmiPRfollow.html">Follow-up stories</a>.</b>
+<a href="EFraudKenya2007.html">Kenya</a>.
+Late-breaking <b><a href="KuestersRS.html">attacks</a></B> on RS schemes.
+</p>
+
+<h3> About the inventors </h3>
+
+<p>
+<a href="http://people.csail.mit.edu/rivest/">Ronald L. Rivest</a>
+is most famous for being the "R" in the 
+<a href="http://en.wikipedia.org/wiki/RSA">RSA cryptosystem</a>.
+This was the first practicible "public key" cryptosystem in which you can <i>publish</i>
+the method of writing secret messages to you, and even an eavesdropper who knows the entire
+encrypted message, and has full knowledge of the encryption procedure, still cannot
+feasibly decrypt the message (but you can).
+This 1977 invention revolutionized cryptography and later became an essential ingredient in
+all cryptographic secure-voting schemes.
+In 2002, Rivest was awarded the
+<a href="http://en.wikipedia.org/wiki/Turing_Award">Turing Award</a>, the highest
+award in computer science, for RSA.
+He is a professor at <a href="http://www.mit.edu/">MIT</a>.
+</p><P>
+<a href="WarrenSmithPages/homepage/works.html">Warren D. Smith</a>
+got his PhD in Applied Math from Princeton in 1988 and worked in a variety
+of research jobs including at AT&amp;T Bell Labs
+and NEC Research Institute  (both now defunct).
+Smith is the  developer of 
+cryptographic voting protocols that
+hold the
+current records for security properties, and he's also performed the most
+computer simulation comparisons of vote-totaling methods.
+In 2005 he, with Colorado Electrical Engineer <a href="voldir/Directory.html">Jan Kok</a>, founded
+the
+<a href="">Center for Range Voting, </a>.
+</p>
+
+<h3> <a href="RivSmiPRem.html#contacts">Contact Info</a> </h3>
+
+<P>
+Dr. Warren D. Smith &nbsp;&nbsp;
+   631-675-6128  &nbsp;&nbsp;  warren.wds AT gmail.com &nbsp;&nbsp;  (prefer email)
+</p>
+<p>
+<small>
+<a href="http://www.usenix.org/events/evt07/cfp/">EVT 07</a>
+stands for
+"Electronic Voting Technology 2007."
+</small> 
+&nbsp;&nbsp;
+<small>
+<a href="RivSmiAnswers.html">Answers to <i>NY Times</i> reader questions</a>
+</small> 
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

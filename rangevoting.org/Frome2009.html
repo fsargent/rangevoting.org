@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Frome Australia 2009 IRV election
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> The Frome Australia IRV by-election of 17 January 2009 </H1>
+<H2> Demonstrates some IRV election pathologies such as "non-monotonicity" </h2>
+<p><small>By 
+<a href="WarrenSmithPages/homepage/works.html">Warren D. Smith</a>,
+March 2011.
+</small></p>
+<p>
+The election was triggered by the resignation of former Premier and state Liberal MHA Rob Kerin.
+(The seat had been retained by the Liberals in the 2006 state election by a 3.4%
+margin, and in the 2002 election by 11.5%.
+<a href="http://www.google.com/url?sa=D&q=http://en.wikipedia.org/wiki/Frome_state_by-election,_2009">Wikipedia</a> page on this election.
+Note Frome is a constituency of <i>South</I> Australia, i.e. not a <i>federal</i> house seat
+for <i>full</i> Australia, which is a point the original version of this wikipedia article
+confused its readers, i.e. me, about.)
+Instant Runoff Voting (<a href="rangeVirv.html">IRV</a>) 
+was employed, as is usual in Australian House elections.
+</p>
+ <table cellspacing="3" bgcolor="yellow"><caption>
+<b>Top-preference counts:</b>
+</caption>
+<tr><th><u><u>Candidate</u></th><th><u>Votes</u></th><th><u>Other comments</u></th></tr>
+<tr><td>
+  Terry <b>Boylan</b> (Liber)    </td><td>7576    </td><td>Police officer.</td></tr>
+<tr><td>
+  John Rohde (Labor)      </td><td>5041   </td><td> Postal worker.</td></tr>
+<tr><td>
+  Geoff Brock (Indpt)     </td><td>4557  </td><td>  Mayor of Port Pirie.  
+<!--Supported by Independent Senator Nick Xenophon.-->
+</td></tr>
+<tr><td>
+  Neville Wilson (NatSA)  </td><td>1267  </td><td>  Deputy Mayor of Port Pirie Regional Council.</td></tr>
+<tr><td>
+  Joy O'Brien (Green)      </td><td>734  </td><td>  Former librarian and Burnside councillor.</td></tr>
+<tr><td>
+  Peter Fitzpatrick(OneNat)   </td><td>134  </td><td>  Small business contractor.</td></tr>
+</table>
+<p>
+By the <b>4th IRV round</b> it was reduced to 3 candidates:
+</p>
+ <table cellspacing="3" bgcolor="yellow">
+<tr><th><u><u>Candidate</u></th><th><u>Votes</u></th></tr>
+<tr><td>  <b>Boylan</b> (Liber) </td><td>8215</td></tr>
+<tr><td>  Rohde (Labor)  </td><td>5532</td></tr>
+<tr><td>  Brock (Indpt)  </td><td>5562</td></tr>
+</table>
+<p>
+whereupon Rohde was eliminated and <b>Brock</b> won the seat in
+the <b>5th and final IRV round</b> [which is the "2CP" (two candidate preferred) vote
+in the terminology of the Australian Election Commission (AEC)]:
+</p>
+ <table cellspacing="3" bgcolor="yellow">
+<tr><th><u><u>Candidate</u></th><th><u>Votes</u></th></tr>
+<tr><td>  <b>Brock</b> (Indpt)  </td><td>9987</td></tr>
+<tr><td>  Boylan (Liber) </td><td>9322</td></tr>
+</table>
+
+<h3> An extra chunk of data</h3>
+
+<p>
+In Australian elections, the AEC usually refuses to provide 
+enough data to enable anybody to reconstruct the
+ballots or to prove the existence of various IRV election phenomena.
+<i>However</i>, in this particular election, the data the AEC published was
+enough to provide 100% certainty that 
+this election was <a href="Monotone.html">non-monotone</a>.
+The key extra sliver of AEC data was the "two party preferred" pairwise vote
+</p>
+ <table cellspacing="3" bgcolor="yellow">
+<tr><th><u><u>Candidate</u></th><th><u>Votes</u></th></tr>
+<tr><td>  <b>Boylan</b> (Liber) </td><td>9976</td></tr>
+<tr><td>  Rohde (Labor)  </td><td>9333</td></tr>
+</table>
+<p>
+telling us how many IRV voters ranked Boylan above Rohde (or the reverse),
+ignoring the other 4 candidates.
+</p>
+
+<h3> <a href="Monotone.html">Non-monotonicity</a> </h3>
+<p>
+If X 
+</p><center>
+... &gt; Boylan &gt; ... &gt; Rohde &gt; ... &gt; Brock &gt; ...
+</center><p>
+voters (for any X with 31&le;X&le;321) had demoted Boylan to anywhere below Rohde
+(most simply, all the way to last place):
+</p><center>
+... &gt; Rohde &gt; ... &gt; Brock &gt; ... &gt; Boylan
+</center><p>
+then it would have been Brock who was eliminated.
+Then  <b>Boylan</b>
+would have won in the final round, which would have been
+</p>
+ <table cellspacing="3" bgcolor="yellow">
+<tr><th><u><u>Candidate</u></th><th><u>Votes</u></th></tr>
+<tr><td>  <b>Boylan</b> (Liber) </td><td>9976-X</td></tr>
+<tr><td>  Rohde (Labor)  </td><td>9333+X</td></tr>
+</table>
+<p>
+In other words: <i>Boylan would have won if he got fewer votes. Unfortunately
+for him, he got too many votes, and therefore lost.  
+</i></p>
+To say that again:
+<i>Voters who honestly ranked Boylan
+top, were strategically foolish.  If 31-to-321 of them had ranked him bottom, that
+would have made Boylan win.</i>
+</p><p>
+That's the <a href="IrvParadoxProbabilities.html">paradox</a>
+of non-monotonicity.  One of Instant Runoff Voting's flaws is
+that it can exhibit non-monotonicity
+(as this election shows).   The other main kind of non-monotonicity (there are two main types)
+was exhibited in another
+IRV election (held in the same year, 2009) to choose the Mayor of
+<a href="Burlington.html">Burlington</a> Vermont, USA.  
+</p>
+ <table cellspacing="3" bgcolor="yellow">
+<tr><th><u>Frome 2009:</u> Boylan loses since had too many votes</th>
+<th><u>Burlington 2009:</u> Kiss wins because had too few votes</th></tr>
+<tr><td>If 100 Boylan voters had dishonestly or strategically voted him as "worst,"
+that would have made Boylan win (but as it was, Brock won because Boylan got too many votes).
+</td><td>
+If 800 Wright voters had dishonestly or strategically instead voted for Kiss,
+that would have made Kiss lose (and Montroll win; as it was, Kiss won because
+he got too few votes).
+</td><tr></table>
+
+<h3> A no-show paradox </h3>
+<p>
+If 200 new
+&nbsp;&nbsp;
+ Rohde&gt;...&gt;Boylan 
+&nbsp;&nbsp;
+voters had magically appeared...  that would have made 
+Boylan win.   So those voters were very wise not to vote.
+</p>
+
+<h3> Other paradoxes? </h3>
+<p>
+There may have been other paradoxes too, but because the AEC only provided <i>partial</i>
+election data, I cannot tell.
+</p>
+
+
+<h3> Sources for our data </h3>
+<ul><li>
+ "2009 Frome by-election results: State Electoral Office".
+Seo.sa.gov.au. 
+<br>
+<a href="http://www.seo.sa.gov.au/byelection2009/results.php">http://www.seo.sa.gov.au/byelection2009/results.php</a>.
+Retrieved 28 July 2010.
+</li><li>
+ "2009 Frome By-election: ABC Elections". Abc.net.au. 2 February 2009. 
+<br>
+<a href="http://www.abc.net.au/elections/sa/2009/frome/">
+http://www.abc.net.au/elections/sa/2009/frome/</a>. Retrieved 28 July 2010.
+</li></ul>
+
+</p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

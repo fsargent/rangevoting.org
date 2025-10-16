@@ -1,0 +1,91 @@
+<html>
+<head>
+<title>
+RangeVoting.org - all Condorcet methods suffer from "favorite betrayal" (proof with no ties)
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H2> A salvage idea that failed &ndash;
+Condorcet with 
+"candidate-equalities permitted in votes" <i>still</i> exhibits
+"favorite betrayal" and hence presumably
+leads to 2-party domination. </H2>
+
+<p>
+Here is an 11-voter 3-candidate election
+example proving that Condorcet schemes with ranking-equalities allowed
+suffer from favorite-betrayal, and that is true whether you use "winning-votes"
+or "margins" &ndash; doesn't matter &ndash; same example kills both:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<caption> C wins </caption>
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr> 
+<td> 2 </td>
+<td> A>B>C </td>
+</tr>
+<tr> 
+<td> 3 </td>
+<td> C>A>B </td>
+</tr>
+<tr> 
+<td> 4 </td>
+<td> C=B>A </td>
+</tr>
+<tr bgcolor="aqua"> 
+<td> 2 </td>
+<td> A>B>C </td>
+</tr>
+</table>
+
+<p>
+Defeats are A>B by 7:4, B>C by 4:3, and C>A by 7:4. 
+There is an A>B>C>A cycle in which B>C is the weakest defeat
+(measured by either winning votes or by margins), so that <b>C is elected</b>.
+</p>
+<p>
+Notice that the two A>B>C voters shown in blue on the bottom line
+can turn the "lesser evil" B into the Condorcet Winner by "betraying" their
+favorite
+"third party" candidate A and
+voting B>A>C or B>A=C or B>C>A.  
+</p>
+<p>
+However, changing their vote instead to
+A=B>C or A>B=C or A=C>B or A>C>B or A>B>C or B=C>A or A=B=C
+(or C>B>A or C>A>B or C>A=B)
+does not suffice: then C still uniquely wins in all cases.
+Hence favorite-betrayal of A was strategically necessary.
+</p>
+<p>
+All this is true <i>regardless</i> of whether you use "margins" or "winning votes."
+However I have cheated a bit by assuming the Condorcet method is such that it elects the candidate
+with the weakest defeat in a 3-cycle.
+</p>
+
+<p>
+You may also
+see <a href="IncentToExagg.html">the other example with ranking-equalities forbidden</a>
+and Venzke's <a href="VenzkePf.html">original careful proof</a> (which doesn't cheat).
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

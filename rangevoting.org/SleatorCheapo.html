@@ -1,0 +1,134 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Sleator's "cheapo" plan for semi-secure voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Sleator's "cheapo" plan for semi-secure voting </H2>
+
+<p><small>By Danny Sleator with Warren Smith.</small></p>
+
+<p>
+CMU professor and  computer scientist <a href="http://www.cs.cmu.edu/~sleator">Danny Sleator</a>
+objected that the <a href="RivSmiPRshort.html">Rivest/Smith ThreeBallot, VAV</a>, 
+and similar secure voting
+plans, although
+about as simple as could possibly be hoped for, 
+still were either just too complicated or too great a change in current
+procedures, to easily gain acceptance.
+To overcome that, Sleator invented the following, which I call in his honor, the
+"cheapo" plan.  It is simpler and easier, at the cost of providing somewhat less security.
+</p>
+
+<H3> The plan </H3>
+
+<p>
+We use a normal
+optical scan ballot, except that each ballot has a serial
+number on it.  When I'm about to vote, with probability say
+p&asymp;1%, I'm selected to be a "receipt voter."  Otherwise I'm a
+regular voter.  If I'm a regular voter, I just mark my
+ballot, check it with the machine, and put it in the ballot
+box.  If I'm a receipt voter, then the machine issues me a
+duplicate copy of my ballot which I take home with me.
+</p>
+<p>
+Then, just like the 
+<a href="RivSmiPRshort.html">ThreeBallot</a>
+system, all ballots are posted on a web
+site, along with the corresponding serial number.  The
+voters who get receipts can check that their vote has been
+properly posted.  Any large scale fraud would be provably detected
+because it would have
+overwhelming probability of modifying many of the receipt
+votes.  It's of course essential that nobody know which
+voters (or which serial numbers) got receipts.
+</p>
+<p>
+<b>Slight security hole:</b>
+The receipt voter could sell his vote.  But the incentive is
+pretty small, since I'll only get a receipt with such a
+small probability.  You should probably know whether or not
+you're going to get a receipt immediately before you vote.  So vote
+buying can only affect a maximum of 1% of the voters.
+</p>
+
+<H2> Criticisms </H2>
+
+<p>
+<b>1.
+The value p&asymp;1%</b> may be
+too small.  If the government decides to cheat and move the election by 1%
+to swing it, then the total number of voters who are proveably defrauded=1%*1%,
+the total number of voters who are provably defrauded <i>and</i>
+protest=1%*1%*1%, which is 1 in a million.
+That might not be high enough.
+(The government could just round up the few protestors and 
+shoot them, at that point.)  Perhaps a better value is p&asymp;10%.
+(Sleator's point is, whatever is the <i>best</i> value of p, must be better than
+the current system which has p=0.)
+</p>
+
+<p>
+<b>2.
+Bundling</b> multiple races onto one ballot is a big mistake because
+then a giant number of patterns are possible on that ballot, allowing
+the voter to sell his (<i>un</i>copied) vote to a bidder who specifies
+the full pattern and looks on the bulletin board later
+to be sure it got posted.
+This remark rather hurts Sleator's original intent of staying as close
+as possible to current procedures.
+</p>
+
+<p><b>Sleator responds to this bundling criticism:</b>
+Suppose we fix it this way.  Each race (or
+each candidate in the case of range voting) on each ballot
+has its own serial number.  The presentation on the web site
+is totally unbundled.  However, for simplicity to the
+receipt voter, the whole thing is copied and left bundled.
+This should work fine.
+</p>
+
+<p>
+The thing I haven't really figured out cleanly is how to
+make sure that the pollworkers don't end up knowing which
+ballots were copied and which weren't.  Maybe everybody gets
+a folded up piece of paper when they leave.  The receipt
+voters get a copy.  Everybody else gets garbage.  The
+instructions on the outside of the paper says "Open this
+when you get home.  If it's a receipt, check it against the
+web site, otherwise just throw it out."
+</p>
+
+<p>
+<b>3.
+Collusive attacks</b> 
+were discussed in the 
+<a href="Rivest3B.html#collusive">old 3ballot full details</a>
+page.
+Sleator's cheapo scheme is vulnerable to them too
+(although by adjusting the value of <i>p</i> we can hope to get the optimal tradeoff
+between vulnerability to vote-buying and vulnerability
+to collusive attacks).
+It is possible to use the same fixes we recommend there to defend against
+those attacks, also here, but that makes it more
+complicated, which goes against Sleator's game plan of keeping everything maximally simple.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

@@ -1,0 +1,366 @@
+
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle 102 - Probability Condorcet Winner exists
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Puzzle #102: Probability Condorcet Winner exists
+</H2>
+
+<p><b>Puzzle:</b><br>
+In the <a href="RandElect.html">random election model</a> (also called the "impartial culture")
+</p>
+<ol type="a">
+<li>
+Find an <i>exact</i> formula, expressed as a 1-dimensional integral, for the probability P(N)
+that a 
+&quot;<a href="CondorcetCycles.html">Condorcet Winner</a>&quot;
+(i.e. a candidate who pairwise-defeats all the others by majority-vote)
+exists
+in a V-voter N-candidate election in the V&rarr;&infin; limit.
+[Hint: it will help immensely to have solved <a href="PuzzlePage.html#p99">puzzle #99</a>
+first.]
+</li><li>
+Then find a simpler <i>asymptotic</i> 
+formula, valid when N&rarr;&infin;, not involving any integrals.
+</li><li>
+Your formula should prove that the probability that a Condorcet Winner exists is less than
+N<sup>-0.99</sup>
+for all sufficiently large N.
+Prove this is <i>also</I> true in the 
+<a href="Glossary.html#Dirichlet">Dirichlet model</a>.
+</li></ol>
+
+<h2> Answers </h2>
+<p><small>By Warren D. Smith, January 2009</small>
+
+<h3> Exact Formula for P(N) </h3>
+<p>
+<b>a.</b>
+Consulting the <a href="PuzzPairMat.html">answer to puzzle #99</a>,
+we find that candidate A defeats rival B if 
+X<sub>AA</sub>&gt;X<sub>BB</sub>+X<sub>AB</sub>
+where all three quantities
+X<sub>AA</sub>,
+X<sub>BB</sub>, and
+X<sub>AB</sub>
+are independent standard normal 
+random deviates (mean=0, variance=1).
+We can equivalently regard 
+X<sub>BB</sub>+X<sub>AB</sub>
+just as a single 
+normal 
+random deviate with mean=0 and variance=2.
+Hence A defeats <i>all</i>
+N-1 rivals if 
+2<sup>-1/2</sup>X<sub>AA</sub>
+is greater than the <i>maximum</i> among N-1 
+independent 
+standard normal 
+random deviates.
+Letting 
+F'(u)=(2&pi;)<sup>-1/2</sup>exp(-u<sup>2</sup>/2)
+be the <b>standard normal density</b> and
+F(u)=[1+erf(2<sup>-1/2</sup>u)]/2
+be its CDF (i.e. integral),
+we obtain the incredibly simple formula
+</p><center>
+Prob(A is the Condorcet Winner) =
+&int;<sub>-&infin;&lt;u&lt;&infin;</sub> F(2<sup>-1/2</sup>u)<sup>N-1</sup>F'(u)du.
+</center><p>
+To get the probability <i>any</i> Condorcet winner exists, we simply multiply by the number N of 
+candidates.
+(That is valid by symmetry &ndash; all candidates are the same &ndash;
+and the fact there cannot be more than one Condorcet Winner so these probabilities
+are summable since they are for disjoint events.)  <b>Result:</b>
+</p>
+<center>
+<table  bgcolor="lightgreen">
+<tr><td>
+<b>P(N) &nbsp; = &nbsp;</b>
+Prob(Condorcet Winner Exists among N candidates) &nbsp; = &nbsp;
+N&int;<sub>-&infin;&lt;u&lt;&infin;</sub> F(2<sup>-1/2</sup>u)<sup>N-1</sup>F'(u)du
+</td></tr>
+</table>
+</center>
+<p>
+Using this formula we find  
+</p><center>
+P(1)=P(2)=1, 
+P(3)&asymp;91.2260172%,
+P(4)&asymp;82.4520344%,
+P(5)&asymp;74.8688265%,
+P(6)&asymp;68.4763934%,
+P(7)&asymp;63.0816461%,
+P(8)&asymp;58.4914955%,
+P(9)&asymp;54.5473641%
+</center><p>
+which each agree with <a href="RandElect.html">computations</a> by other authors by other methods
+to all decimal places stated.
+<!--MAPLE
+Fp := (u) -> 1/sqrt(2*Pi) * exp(-u*u/2);
+F := (u) -> (1 + erf(u/sqrt(2)))/2;
+ig := (N,u) ->  F(u/sqrt(2))^(N-1) * Fp(u);
+P := (N) -> N*int( ig(N,u), u = -infinity .. infinity );
+Pa := (N,A,B) -> N*int( ig(N,u), u = A .. B );
+PeakLoc := (N) -> (N-1)/(2*sqrt(Pi))  * exp( -LambertW((N-1)^2/(8*Pi))/2 );
+LnPeakHeight := (N) ->  
+ 1/2*ln(2)-1/2*ln(Pi)+ln((1/2+1/2*erf(1/2*(N-1)*2\                                                
+ ^(1/2)/((N-1)^2/LambertW(1/8*(N-1)^2/Pi))^(1/2)))^
+ N/(1+erf(1/2*(N-1)*2^(1/2)/((N-1)^2/LambertW(1/8*(N-1)^2/Pi))^(1/2))))-LambertW(1/8*(N-1)^2/Pi);
+PeakWidth := (N,A) -> 
+2^(1/2)*Pi^(1/2)*((1+erf(1/2*A))^2/(A*exp(-1/4*A^2)*Pi^(1/2)*N-A*exp(-1/4*A^2)*Pi^(1/2)*erf(1/2*A)
+-2*exp(-1/2*A^2)+2*exp(-1/2*A^2)*N+2*Pi+2*Pi*erf(1/2*A)^2+4*Pi*erf(1/2*A)-A*exp(-1/4*A^2)*Pi^(1/2)
++A*exp(-1/4*A^2)*Pi^(1/2)*N*erf(1/2*A)))^(1/2);
+# PeakWidth(N, PeakLoc(N))  behaves like 1/sqrt(2*ln(N)) asymptotically.
+Pest := (N) -> 4.810230564*sqrt(ln(N))/N;
+Pe2 := (N) -> N * ig(N, PeakLoc(N)) * PeakWidth(N, PeakLoc(N)) * sqrt(2*Pi);
+-->
+Note that
+</p><center>
+1-P(3) = [1-P(4)]/2 = [3arcsec(3)-&pi;]/(2&pi;) &asymp; 0.087739828045910905
+</center><p>
+is sometimes called "Gilbaud's number" since G.Th.Gilbaud stated it in a  footnote in 1952.
+Continuing on 
+(using numerical integration which ought to be accurate to all decimal places stated)
+we find
+</p><center>
+P(10)&asymp;51.125186%, &nbsp;&nbsp;
+P(100)&asymp;8.8136522%, &nbsp;&nbsp;
+P(1000)&asymp;1.1480128%, &nbsp;&nbsp;
+P(10000)&asymp;0.1365%, &nbsp;&nbsp;
+P(10<sup>5</sup>)&asymp;0.01554%, &nbsp;&nbsp;
+P(10<sup>6</sup>)&asymp;0.001723%.
+</center><p>
+It is trivial to see from our formula that P(N)&rarr;0 as N&rarr;&infin;.
+Robert M. May claimed, in a paper rife with errors and lacking in details
+[Some mathematical remarks on the paradox of voting, Behavioral Science 16 (1971) 143-151]
+that
+</p><center>
+P(N) &sim; [8&pi;lnN]<sup>1/2</sup>/N 
+</center><p>
+in the N&rarr;&infin; limit.  May's formula predicts
+</p>
+</p><center>
+P(10)&sim;76.07%, &nbsp;&nbsp;
+P(100)&sim;10.758%, &nbsp;&nbsp;
+P(1000)&sim;1.3176%, &nbsp;&nbsp; <!--int from 3 to 5.22 yields 1.14%-->
+P(10000)&sim;0.1521%, &nbsp;&nbsp;
+P(10<sup>5</sup>)&sim;0.01701%, &nbsp;&nbsp;
+P(10<sup>6</sup>)&sim;0.001863%.
+</center>
+<p>
+This numerical evidence seems at least somewhat
+compatible with the hypothesis May's formula has relative error of order 1/lnN,
+so he probably did not get it hugely wrong.   Still, we now shall derive our own
+formula and find May got the right behavior but wrong constant factor.
+</p>
+<h3> Asymptotic behavior of P(N) </h3>
+<p>
+<b>b.</b>
+We now
+derive our own formula for the asymptotics of P(N) in a much simpler way  than May by
+examining our integral and noting the integrand is everywhere positive
+and has a "peak" which almost all of the mass lies
+close to.  In the large-N limit this peak is asymptotically Gaussian and the integrand
+is exponentially small when N is large if we are &ge;&epsilon;&gt;0
+away from the peak.
+The strategy is to evaluate the location, height, and width of the peak to
+estimate the value of the integral using the usual formula for integrating a Gaussian peak.
+Unfortunately the details are rather messy, but still appear to be
+far simpler than May's (full and
+unstated) derivation.
+</p><p>
+Using the fact
+[Abramowitz &amp; Stegun: Handbook of Mathematical Functions, eq 26.2.12] that
+</p><center>
+1-F(x) &sim; F'(x)/x &middot; 
+[1 - x<sup>-2</sup> + 3x<sup>-4</sup> - 15x<sup>-6</sup> + 105x<sup>-8</sup> -...]
+</center><p>
+when x&rarr;+&infin;,
+our integrand is then
+</p><center>
+(2&pi;)<sup>-1/2</sup>
+[1 - u<sup>-1</sup>&pi;<sup>-1/2</sup>exp(-u<sup>2</sup>/4) 
+(1 - 2u<sup>-2</sup> + 2<sup>2</sup>3u<sup>-4</sup> - 2<sup>3</sup>15u<sup>-6</sup> +...)
+]<sup>N-1</sup>
+exp(-u<sup>2</sup>/2) du
+</center><p>
+for large positive u (which is the only part of the integral that matters; the rest has
+exponentially small effect).  We will not actually need the asymptotic series; merely its 
+first term will suffice.
+The u which maximizes this integrand &ndash; the location of the "peak" &ndash;
+is approximately the same as the u which maximizes
+</p><center>
+ (N-1)u<sup>-1</sup>&pi;<sup>-1/2</sup>exp(-u<sup>2</sup>/4)
++ u<sup>2</sup>/2
++ ln(2&pi;)/2
+</center><p>
+(which is essentially just the negated integrand's logarithm, up to 
+relatively neglectible terms)
+i.e. the u which solves
+</p><center>
+u = &pi;<sup>-1/2</sup>(N-1)[2<sup>-1</sup>+u<sup>-2</sup>]exp(-u<sup>2</sup>/4)
+</center><p>
+i.e. approximately the same (up to relatively neglectible terms) as the u which solves
+</p><center>
+2 &pi;<sup>1/2</sup> u = (N-1) exp(-u<sup>2</sup>/4)
+</center><p>
+i.e.
+</p><center>
+u<sub>peak</sub> 
+&asymp;
+ApproxPeakLocation(N) 
+=
+&pi;<sup>-1/2</sup>(N-1)/2 &middot; exp( -W((N-1)<sup>2</sup>/(8&pi;))/2 )
+</center><p>
+where the "Lambert W function" W(x) is defined by exp(W)W=x.
+[R.M.Corless, G.H.Gonnet, D.E.G.Hare, D.J.Jeffrey, D.E.Knuth:
+On The Lambert W Function, Advances in Computational Mathematics 5 (1996) 329-359.]
+This formula for the location of the maximum seems accurate to about 1 part in 300 (or
+better) when N&ge;100.
+</p>
+<table bgcolor="yellow">
+<caption>
+Actual vs Approximate peak locations.
+</caption>
+<tr><th><u>N</u></th><th><u>Actual Peak Locn</u></th><th><u>Approx Peak Locn</u></th></tr>
+<tr><td>10</td><td>1.57</td><td>1.4744</td></tr>
+<tr><td>100</td><td>2.9990</td><td>2.9896</td></tr>
+<tr><td>1000</td><td>4.1130</td><td>4.1121</td></tr>
+<tr><td>10000</td><td>5.0</td><td>5.0315</td></tr>
+<tr><td>10<sup>5</sup></td><td>5.8</td><td>5.8258</td></tr>
+<tr><td>10<sup>6</sup></td><td>6.5</td><td> 6.5339</td></tr>
+</table>
+<p>
+Those who dislike the Lambert W function and prefer more pedestrian functions
+can use the fact that W(x)&sim;ln(x)-lnln(x)+o(1) when x&rarr;+&infin; to find
+</p><center>
+u<sub>peak</sub> 
+ &nbsp; &asymp;  &nbsp;
+2<sup>1/2</sup>
+[2ln(N-1)-ln(8&pi;)]<sup>1/2</sup> + o(1)
+ &nbsp; &sim; &nbsp;
+2(lnN)<sup>1/2</sup>
+</center><p>
+but these are much less accurate and I do not recommend them.
+</p><p>
+Via complicated but straightforward algebraic manipulations fortunately made easy using
+the MAPLE symbolic algebra system, one
+may now show that the <i>width</i> of the peak
+(that is, [-1/D]<sup>1/2</sup> where D is the second derivative of the logarithm of the integrand
+evaluated at the peak location; this for a Gaussian is just its
+"standard deviation") is asymptotic to
+[2lnN]<sup>-1/2</sup> for large N.
+And the <i>height</i> of the peak
+(that is, the maximum value of the integrand) is asymptotic to
+8e<sup>-2</sup>(2&pi;)<sup>1/2</sup>N<sup>-2</sup>lnN.
+</p><p>
+The usual formula for the integral of a Gaussian with height H and width W is
+&int;Hexp(-u<sup>2</sup>/(2W<sup>2</sup>))du=(2&pi;)<sup>1/2</sup>HW.
+Upon using this 
+[and remembering that the whole integral needs to be multiplied by N to get P(N)], 
+we find as our <b>asymptotic estimate</b>
+</p><center>
+<b>P(N)  &nbsp; &sim; &nbsp;</b>
+2<sup>1/2</sup>8&pi;e<sup>-2</sup> (lnN)<sup>1/2</sup>/N
+</center><p>
+This agrees with May's estimate <i>except</I> for the constant factor.
+May's constant factor is 
+<nobr>
+(8&pi;)<sup>1/2</sup>&asymp;5.01326
+</nobr>
+whereas ours is 
+<nobr>
+2<sup>1/2</sup>8&pi;e<sup>-2</sup>&asymp;4.81023.
+</nobr>
+</p><p>
+This formula predicts
+</p><center>
+P(10)&sim;72.99%, &nbsp;&nbsp;
+P(100)&sim;10.323%, &nbsp;&nbsp;
+P(1000)&sim;1.2643%, &nbsp;&nbsp; 
+P(10000)&sim;0.1460%, &nbsp;&nbsp;
+P(10<sup>5</sup>)&sim;0.01632%, &nbsp;&nbsp;
+P(10<sup>6</sup>)&sim;0.001788%.
+</center><p>
+In every case our formula is closer to the truth than May's formula.
+Anybody sufficiently determined should be able (using our same "saddlepoint method"
+to analyse our integral)
+to compute a series of 
+successively-smaller-order correction terms  to get even more asymptotic accuracy,
+see e.g. 
+[C.M.Bender &amp; S.A.Orszag: Advanced Mathematical Methods for Scientists and Engineers,
+McGraw-Hill 1978, reprinted Springer 1999].
+</p>
+<p>
+One more-accurate formula is simply to <i>use</i> our highly-accurate formula 
+(above, involving the Lambert W function) for ApproxPeakLocation(N); i.e. we
+define
+</p><center>
+Hgt(A) = F(2<sup>-1/2</sup>A)<sup>N-1</sup>F'(A)
+</center><p>
+and
+</p><center>
+Wid(A) 
+= 
+[-(d<sup>2</sup>/dA<sup>2</sup>) ln Hgt(A)]<sup>-1/2</sup>
+=<br>=
+[(N-1)F'(A)<sup>2</sup>F'(A/&radic;2)<sup>2</sup>
+- (N-1)F'(A)<sup>2</sup>F''(A/&radic;2)F(A/&radic;2)
+- 2F'(A)F'''(A)F(A/&radic;2)<sup>2</sup>
++ 2F''(A)<sup>2</sup>F(A/&radic;2)<sup>2</sup>]<sup>-1/2</sup>
+&nbsp; 2<sup>1/2</sup> F'(A/&radic;2)F(A)
+</center><p>
+and then
+</p><center>
+<b>P(N) &nbsp; &asymp; &nbsp; </b>
+(2&pi;)<sup>1/2</sup> N Hgt(ApproxPeakLocation(N)) Wid(ApproxPeakLocation(N)). 
+</center><p>
+This more-accurate formula predicts
+</p><center>
+P(1)&sim;100%, &nbsp;&nbsp;
+P(2)&sim;97.6613%, &nbsp;&nbsp;
+P(3)&sim;87.3804%, &nbsp;&nbsp;
+P(4)&sim;78.4376%, &nbsp;&nbsp;
+P(5)&sim;71.1734%, &nbsp;&nbsp;
+P(6)&sim;65.1984%, &nbsp;&nbsp;
+P(7)&sim;60.1948%, <br>
+P(10)&sim;49.086%, &nbsp;&nbsp;
+P(100)&sim;8.610%, &nbsp;&nbsp;
+P(1000)&sim;1.1195%, &nbsp;&nbsp; 
+P(10000)&sim;0.1327%, &nbsp;&nbsp;
+P(10<sup>5</sup>)&sim;0.01507%, &nbsp;&nbsp;
+P(10<sup>6</sup>)&sim;0.001669%.
+</center><p>
+This indeed is more accurate than our preceding formula 
+(which in turn was more accurate than May)
+in every case.
+Since it is accurate to &le;5%
+relative |error|
+for all the tabulated N,
+presumably it has &le;5% relative |error| for every N&ge;1.
+</p>
+<p>
+<b>c.</b>
+This theorem 
+(that the probability that a Condorcet Winner exists is less than
+N<sup>-0.99</sup>
+for all sufficiently large N in
+the <a href="Glossary.html#Dirichlet">Dirichlet model</a>)
+is proved as "theorem 2" in 
+Anthony Quas:
+Anomalous outcomes in preferential voting (<a href="QuasPaper23.pdf">pdf</a>),
+Stochastics &amp; Dynamics 4,1 (2004) 95-105.
+</p>
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+

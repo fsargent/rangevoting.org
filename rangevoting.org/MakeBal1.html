@@ -1,0 +1,84 @@
+<html>
+<head>
+<title>
+RangeVoting.org &ndash; create range ballot for your own single-winner election
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2>
+Create  range ballot for your own single-winner election (step 1)
+</h2>
+
+<p>
+This tool will create a reasonably nice looking typeset
+range ballot for you, for any range election you want.
+It will look something <a href="RVsampleBal.html">like this</a>.
+Note: when the final ballot is produced, you can <i>resize</i> your browser
+window to taste (you may need to hit the "refresh" button).
+You can also go "back" and change font sizes, voter instructions,
+candidate names (or whatever else) to taste.
+You can then print &amp; xerox it to run a manual range election.
+</p>
+
+<p>
+<a href="ExcuseForNoHack.html">Why we do not also have a computerized election
+administrator</a>
+</p>
+
+<hr>
+	<form method="post" action="https://rangevoting.org/cgi-bin/makemakestep2">
+
+<table bgcolor="#ffffdc" cellpadding="5">
+<tr>
+
+<td>
+<p>
+How many digits in a score (1, 2, or 3)? 
+Note: One-digit scores (0,1,2,3,4,5,6,7,8,9 &amp; X) are the easiest to total manually
+and lead to the fewest entry-errors.  Two-digit scores (0-99 &amp; XX) lead to
+more accuracy, and three-digit scores (0-999 &amp; XXX) to even more.
+<br>
+<select id="digits" name="digits">
+ <option value="1">one digit</option>
+ <option value="2" selected>two digits</option>
+ <option value="3">three digits</option>
+</select>
+</p>
+</td>
+
+<td>
+<p>
+How many voter-options (number of candidates: 1 to 99)? 
+Note: although
+there are reasons you might want to have a 1-candidate or 2-candidate range election,
+we primarily expect range voting will be used for elections with at least 3 candidates.
+<br>
+<input type="text" name="numcands" id="numcands" size="2" maxlength="2" value="3"><br>
+</p>
+</td>
+
+</tr>
+<tr>
+<td colspan="2">
+ <p><input type="submit" value="Move on to next step"> &nbsp;&nbsp; <input type="reset"></p>
+</td>
+</tr>
+</table>
+</form>
+
+<hr>
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

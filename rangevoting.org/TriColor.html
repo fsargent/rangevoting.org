@@ -1,0 +1,78 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Tricolor scheme
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Tricolor scheme </H2>
+
+<p>
+There is a cute (admittedly disgustingly cute) way to check the validity of approval ballots
+in Rivest's 3ballot secure voting scheme.  I'm the inventor
+and I call it "tricolor."
+</p>
+
+<p>
+The ballots have punch-outs where voters punch a hole.  
+(<small>Hanging chads? Sue me.</small>)
+</p>
+<p>
+We have 3  colors of translucent sheets.
+</p>
+<p>
+The point I'm aiming for, is, if you punched exactly 1 or 2 holes (i.e. exactly
+the "valid ways to vote" in Rivest's 3ballot scheme for making approval voting secure) then
+stack the 3 ballots on top of each other, then
+</p>
+<ol type="a">
+<li>
+Not 3 holes: since obvious no hole goes all the way through all 3 layers.
+(Holes could be detected by sticking rods through, electrical contact, etc.)
+</li><li>
+Not 0 holes since then would be too dark to see through (each
+translucent blocks one primary color, all three block all)
+</li><li>
+1 or 2 holes (valid): permits light to shine through &ndash; perfect.
+</li></ol>
+<p>
+Making sheets chiral shape prevents misorienting before stacking.
+The point is, this tricolor invention makes the check so trivial no machine is needed
+(or a trivial machine).
+<small>[We admit there are useability issues for colorblind voters.]</small>
+</p>
+
+<p>
+Now (time to get even cleverer), about the copy:
+Remember, you've got 3 ballots, red-, blue-, and green-blocking.
+You want to copy exactly one, where <i>you</i> (the voter) choose which.
+Let's say you chose RED.
+Stack on top of each other, and shine a monochromatic RED light through onto
+photosensitive copying stuff which senses
+light but is colorblind.
+Result: the red-blocking ballot gets copied.   Other ballots ignored.
+Machine does not know which color you chose (if its sensors really are
+colorblind, that is).  
+It sucks all 3 of your ballots in as it copies
+and checks,
+and spits out the copy.  (If check says no good, then all 3 ballots
+visibly destroyed in front of you and no copy comes.)
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

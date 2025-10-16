@@ -1,0 +1,187 @@
+<html>
+<head>
+<title>
+RangeVoting.org - IRV favors "extremists" over "centrists"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>  IRV (<a href="rangeVirv.html">Instant Runoff Voting</a>) 
+favors "extremists" over "centrists"  </H2>
+
+<p>
+<small>
+Incidentally: you can also see <a href="IRVraceMinorities.html">this evidence</a> that IRV
+hurts racial minorities (as compared with plain plurality voting).  I have no idea whether
+that  phenomenon is related to the one we shall describe here.
+</small>
+</p>
+
+<h3> Cool graphics: scenarios in 2-dimensional "issue space"  </h3>
+<p>
+For each of the pictures below, there are <b>14 candidates</b>
+(small <b>circles</b>).
+Each pixel represents an election.
+The blue pixels are the region where the blue candidate <i><b>wins</b> an election</i> for voters
+distributed <a href="Normal2Ddensity.jpg">2D-normally</a>
+centered at that pixel (and similarly for other colors).
+</p>
+
+<p><small>
+Each normal distribution is rotationally symmetric with
+&sigma;<sub>x</sub>=&sigma;<sub>y</sub>=70, and each picture is 200x200 pixels.
+This distribution was chosen for simplicity. Results would be qualitatively the same for any reasonable alternative distribution of voters.
+</small></p>
+
+<p><small>
+In each picture, the coordinates of the 14 candidates 
+were chosen <b>randomly</b> from the 150&times;150 centered 
+subsquare.  They are simply the first 112 random numbers output by my random generator.
+Pictures produced by <a href="IEVS/IEVS.c">IEVS 3.24</a>.
+</small></p>
+
+<p><small>The idea behind these pictures is that candidates and voters are distributed in a 2-dimensional 
+"issue space" (in reality there are many more dimensions, most of which are not controversial) and voters prefer candidates whose stances on the two issues are close to their own, e.g. closer in
+Euclidean distance.  There is no need to label the axes and the length units are arbitrary
+(and moving 1 pixel away horizontally or vertically implies distance=1).
+</small></p>
+
+<p>
+Voters prefer candidates closer to them.
+All voters vote honestly.
+The pictures in the <b>top row</b> are the hypothetical <b>optimum</b> voting system, which always
+elects the best possible candidate
+for society (maximizing summed utility, utility being a decreasing function of 
+voter-candidate distance).  They look quite sensible; the purple candidate-circle 
+is sitting in the middle of a purple-win region, and similarly for other colors, 
+i.e. if the voters lie nearest the purple candidate, they tend to elect him.  That makes sense.
+The corresponding pictures in the <b>bottom row</b>, which look a good deal crazier,
+are <b>IRV</b> (Instant Runoff Voting).
+</p>
+<img src="best270.bmp" alt="best270.bmp">
+<img src="best370.bmp" alt="best370.bmp">
+<img src="best470.bmp" alt="best470.bmp">
+<img src="best570.bmp" alt="best570.bmp">
+<br>
+<img src="irv270.bmp" alt="irv270.bmp">
+<img src="irv370.bmp" alt="irv370.bmp">
+<img src="irv470.bmp" alt="irv470.bmp">
+<img src="irv570.bmp" alt="irv570.bmp">
+<p>
+Observations:
+</p>
+<ol>
+<li>
+With IRV <b>usually only about 7 of the 14 candidates can ever win.</b>  The other 7 are
+"zeroed out" and can never win, even when they are exactly located at the center of 
+the voter distribution.
+</li><li>
+<b>The 7 favored candidates are usually the 7 "extremists."  The 7 "centrists"
+(located nearest the center of the picture) tend to be the ones IRV zeros out.</b>
+The "extremist" win-regions grow into, invade, and take over "centrist territory."
+<br> &nbsp;&nbsp;&nbsp;
+(In contrast, any candidate would be the optimum winner if the voters were centered at his 
+location, so with optimum system, nobody can ever be "zeroed out.")
+</li><li>
+IRV also exhibits some other strange phenomena.  In several cases, a candidate has a 
+<i>disconnected</i> win-region, for example the yellow region in the leftmost picture.
+(Why is that yellow "island" there in the middle of the olive-green "sea"?  The
+yellow candidate is nowhere near.  Surely the three candidates that actually <i>are</i>
+located on the island ought to win there?  But no &ndash; IRV never permits any of them to win.)
+There are also several other "islands" and split win-regions in these pictures.
+</li><li>
+In this particular kind of 2D scenario (it may be proven)
+<b>Condorcet</b> voting systems with honest voters
+always produce the optimum diagram (top row), 
+<a href="Glossary.html">Condorcet winners</a> always exist,
+and <a href="CondorcetCycles.html">Condocet cycles</a> are impossible. 
+Thus every pixel where the IRV color
+disagrees with the Condorcet color is an example of a situation in which IRV refuses to
+elect a "beats-all winner" who would defeat every opponent head-to-head.
+Some IRV-defenders have contended that such behavior is very rare.  
+As you can see, that is not so; it can be quite common &ndash; it happens
+for roughly 1/4 of the pixels
+in each IRV picture.  
+You are looking at about 40,000 examples of this "very rare"
+behavior.
+</li><li>
+Why the "random dot" regions?  Each pixel in these diagrams was computed
+from a <i>random sample</i> of
+&asymp;5000 voters from each normal distribution.  In some regions of the diagrams,
+the elections are "tough calls," i.e involve near-ties, hence in those regions we
+get "random dots."  If we were to instruct the computer to work harder and use, say, 
+a million voters per pixel,
+then that randomness would largely vanish and the boundaries of all regions would become crisp
+line segments.   However, that brings us to our point.  
+Compared to most voting systems, IRV is very vulnerable to tied 
+and near-tie elections, which is why a noticeable fraction of some of the  IRV pictures
+are random-dotty.  (Think of each random-dot region yielding a chad-counting and recounting,
+lawsuit and court battle over who really should have won that election.)
+In contrast, at least in this kind of 2D scenario, Condorcet voting
+systems and range voting are comparatively invulnerable to tied and near-tie elections
+and their diagrams yield crisp boundaries and almost no stray dots, even with only 5000 voters
+per pixel.
+</li>
+</ol>
+
+<h3> 1-dimensional scenarios </h3>
+<p>
+Some people have objected that they consider politics to be largely "one dimensional" 
+from "left" to "right," not two dimensional.  The below pictures were created in the same
+way as the above ones except there are 5, not 14, candidates and the candidates are random
+points in a 150&times;15 rectangle (i.e. almost a straight line), 
+not a 150&times;150 square.  Again the top row in each group
+shows the best winner, and the bottom row shows what IRV yields.
+</p>
+<img src="best1D2.bmp" alt="best1D2.bmp">
+<img src="best1D3.bmp" alt="best1D3.bmp">
+<img src="best1D4.bmp" alt="best1D4.bmp">
+<img src="best1D5.bmp" alt="best1D5.bmp">
+<br>
+<img src="irv1D2.bmp" alt="irv1D2.bmp">
+<img src="irv1D3.bmp" alt="irv1D3.bmp">
+<img src="irv1D4.bmp" alt="irv1D4.bmp">
+<img src="irv1D5.bmp" alt="irv1D5.bmp">
+<p>
+And here are some more:
+</p>
+<img src="best1D6.bmp" alt="best1D6.bmp">
+<img src="best1D7.bmp" alt="best1D7.bmp">
+<img src="best1D8.bmp" alt="best1D8.bmp">
+<img src="best1D9.bmp" alt="best1D9.bmp">
+<br>
+<img src="irv1D6.bmp" alt="irv1D6.bmp">
+<img src="irv1D7.bmp" alt="irv1D7.bmp">
+<img src="irv1D8.bmp" alt="irv1D8.bmp">
+<img src="irv1D9.bmp" alt="irv1D9.bmp">
+</p>
+<p>
+Again, IRV often "zeros out" candidates
+&ndash; although not as often as in the 2D scenarios above; 10% of them are zeroed
+in the 1D scenarios here, versus about 50% in the 2D scenarios.  
+And when it does so, the victims again tend to be "centrists."  
+Again, random-dottiness and weird-shaped (including apparently
+disconnected) regions are common with IRV.
+(Actually, more than 10%
+are zeroed out <i>if</i> you only look at the region of the pictures near the centerline;
+that view also engenders more "tough-call" elections.)
+</p>
+
+<br>
+<p><a href="IEVS/Pictures.html">Similar pictures for many other voting systems</a>
+(e.g. Approval voting has a pro-centrist bias, the opposite of IRV's pro-extremist bias).
+</P>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

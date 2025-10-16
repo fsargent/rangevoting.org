@@ -1,0 +1,168 @@
+<html>
+<head>
+<title>
+RangeVoting.org -  range voting optimal strategy theorem
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> 
+Range voting  optimal strategy theorem
+</H2>
+
+<p>
+<small>
+By Warren D. Smith, April 2009.
+</small>
+</p>
+
+<p>
+I am not sure who first noticed the theorem that with a large number of other voters, all
+of whom vote randomly (hence all candidates equally likely to win), your strategically-best
+approval vote is to approve those candidates whose utility exceeds T, and disapprove
+the others, and your
+best choice of that threshold T is the <i>arithmetic mean</i> utility (for you) of
+all the candidates.
+</P>
+<p>
+One proof is 
+<a href="RVstrat3.html#meanbasedthreshopt">here</a> and other people have
+also sent me proofs of it including Ivan Ryan and John C. Lawrence.
+</p>
+<p>
+We shall now prove a more general theorem.  
+Incidentally, these theorems apply to
+<a href="RangeVoting.html">range voting</a> 
+where "approving" means scoring a 
+candidate with the maximum allowed score and "disapproving"
+with the minimum.
+</P>
+
+<hr>
+<p>
+The <font color="red">model</font>:
+<ul>
+<li> There are N candidates
+</li><li>
+The chance that A and B are tied for lead (or differ by &le;1 vote) among other voters
+in such a way that your vote can decide the election, is P(A)&middot;P(B)
+[or is merely <i>proportional</i> to this]
+</li><li>
+Your utility for candidate X is U(X).
+</li><li>
+You vote approval-style with threshold T, that is approve candidates
+with utility U if U&gt;T and disapprove those with U&lt;T.
+</li></ul>
+<p>
+What is your strategically-best choice of T (maximizing expected utility for
+you)?
+</p>
+<p>
+<b>THEOREM:</b>
+In the above <font color="red">model</font>, your strategically-best approval threshold T is
+</p><center>
+T &nbsp; = &nbsp;  &sum;<sub>X</sub> P(X)U(X) / &sum;<sub>Y</sub> P(Y) &nbsp; = &nbsp;  "expected utility of winner."
+</center><p>
+[Actually, if we sort the U() values into increasing order,
+then <i>any</i> T-value between the two U() values surrounding and immediately adjacent
+to this formula's value will do; all T in that real interval all are effectively equivalent.]
+</p><p>
+The 
+<a href="RVstrat3.html#meanbasedthreshopt">old theorem</a> had been
+just the special case of this when all the P(X) values
+happened to be equal, i.e. all candidates equally likely to win.
+The new theorem allows
+arbitrary relative likelihoods of victory (which can be highly non-uniform) so
+it seems much more generally applicable.
+</p>
+<b>Proof:</b>
+If you increase T from
+below to above U(C), the effect on your expected utility E, which is
+equal to [or merely proportional to; 
+this does not matter, and the proportionality factor P(C) which
+will arise in the &Delta;E formula also similarly does not matter]
+</p><center>
+E &nbsp; = &nbsp;  &sum;<sub>A,B with U(A)>T and U(B)&lt;T</sub> P(A) P(B) [U(A)-U(B)]
+</center>
+<p>
+is
+</p>
+<center>
+&Delta;E &nbsp; = &nbsp;  P(C) &middot; { 
+&sum;<sub>A with U(A)>T</sub> P(A) [U(A)-U(C)] 
+<br>
+&ndash; &sum;<sub>B with U(B)&lt;T</sub> P(B) [U(C)-U(B)]
+} &nbsp; = &nbsp; 
+<br>
+&nbsp; = &nbsp;  P(C) &middot; &sum;<sub>X</sub> P(X) [U(X)-U(C)]
+</center>
+<p>
+Note that if U(C) were equal to the "weighted mean utility," that is if
+</p><center>
+U(C) &nbsp; = &nbsp;  &sum;<sub>X</sub> P(X)U(X) / &sum;<sub>Y</sub> P(Y)
+</center><p>
+then 
+&Delta;E = 0.
+If however U(C)&lt;WtdMean, then E is nonmaximum and increases if T is increased 
+(since &Delta;E&gt;0).
+On the other hand U(C)&gt;WtdMean where
+now U(C)&lt;T,
+then E would also be nonmaximum since it would similarly
+increase if T were decreased from
+above to below U(C).
+</p><p>
+Therefore the condition for E being maximum is that the threshold T be equal to
+the weighted mean utility. 
+<br>
+<b>Q.E.D.</b>
+</p>
+<small>
+<p>
+<b>Credit:</b>
+The weighted mean utility theorem, and related results, for 
+<a href="Approval.html">Approval Voting</a>
+traces back to Hoffman, Merrill, and Brams and Fishburn in the late 1970s and early 1980s.  
+See Brams &amp; Fishburn's book <i>Approval Voting</I> pages 74-88, also
+Appendix C of S.Merrill's book <i>Making Multicandidate Elections More Democratic</i>.
+</p>
+<p>
+<b>More generality still:</b>
+If the probability that A and B are tied-for-lead instead is P<sub>AB</sub> which is now <i>not</i>
+required to be equal to P(A)P(B) [this latter expression is what would happen if the two component
+probabilities were <i>independent</i>] then finding the optimal range-vote is, essentially,
+the problem of maximizing
+</p>
+<center>
+&sum;<sub>A&ne;B</sub> P<sub>AB</sub>[U(A)-U(B)][V(A)-V(B)]
+</center>
+<p>
+by choice of the N-vector V subject to the N constraints 0&le;V(X)&le;1.
+This is a "linear programming problem."  It therefore is soluble in time polynomial
+in the number of bits in the input.  
+Note that the optimum is always achieved by an "approval style"
+vote in which every V(X)=0 or 1 &ndash; but
+<a href="RVstrat2.html">not</a> necessarily by an "honest" approval-style vote.
+By going to even-more-general models (e.g. where <i>three</I>-way near-ties can happen
+with non-negligible probability) one 
+<a href="RVstrat1.html">can</a> generate examples in which
+all approval-style range votes are non-optimal so you need a genuine range-style vote.
+</p>
+</small>
+
+
+<hr>
+<p><a href="PleasantSurprise.html">Connection</a> to Ossipoff's "pleasant surprise" 
+optimality theorem.</p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

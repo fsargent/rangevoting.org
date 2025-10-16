@@ -1,0 +1,309 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org -- answer to puzzle ??
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to Puzzle #??: Arithmetic with normal random deviates </H2>
+
+<p><b>Puzzle:</b><br>
+Let X and Y be two independent "normal" random deviates with mean
+and standard deviation 
+&mu;<sub>X</sub> and &sigma;<sub>X</sub>,
+and
+&mu;<sub>Y</sub> and &sigma;<sub>Y</sub>,
+respectively.
+</p><ol type="A">
+<li>
+If you <i>add</i> the two (X+Y) the result is also an exactly-normal
+deviate with mean
+&mu;<sub>X</sub>+&mu;<sub>Y</sub>
+and
+standard deviation
+[(&sigma;<sub>X</sub>)<sup>2</sup>+(&sigma;<sub>Y</sub>)<sup>2</sup>]<sup>1/2</sup>.
+</li><li>
+If you <i>subtract</i> the two (X-Y) the result is also an exactly-normal
+deviate with mean
+&mu;<sub>X</sub>-&mu;<sub>Y</sub>
+and
+standard deviation
+[(&sigma;<sub>X</sub>)<sup>2</sup>+(&sigma;<sub>Y</sub>)<sup>2</sup>]<sup>1/2</sup>.
+</li><li>
+If you <i>multiply</i> the two (X&middot;Y)
+then you do <i>not</i> get an exactly-normal deviate unless
+&sigma;<sub>X</sub>&sigma;<sub>Y</sub>=0.  However, if
+&sigma;<sub>X</sub>&lt;&lt;&mu;<sub>X</sub> and
+&sigma;<sub>Y</sub>&lt;&lt;&mu;<sub>Y</sub> then
+you do get an <i>approximately</i> normal deviate.
+Show its mean is exactly
+&mu;<sub>X</sub>&mu;<sub>Y</sub>
+while its
+standard deviation is exactly
+<center>
+[(&sigma;<sub>X</sub>&mu;<sub>Y</sub>)<sup>2</sup>
++ (&sigma;<sub>Y</sub>&mu;<sub>X</sub>)<sup>2</sup>
++ (&sigma;<sub>X</sub>&sigma;<sub>Y</sub>)<sup>2</sup>]<sup>1/2</sup>.
+</center>
+</li><li>
+If you <i>divide</i> the two (X/Y) then you do <i>not</i> get an exactly-normal deviate unless
+&sigma;<sub>Y</sub>=0 and &mu;<sub>Y</sub>&ne;0.  However, if
+&sigma;<sub>X</sub>&lt;&lt;&mu;<sub>X</sub> and
+&sigma;<sub>Y</sub>&lt;&lt;&mu;<sub>Y</sub> then
+you do get an <i>approximately</i> normal deviate.
+Show its mean is approximately
+[1+(&sigma;<sub>Y</sub>/&mu;<sub>Y</sub>)<sup>2</sup>]&mu;<sub>X</sub>/&mu;<sub>Y</sub>
+and indeed it is given asymptotically 
+by any truncation of the infinite series
+<center>
+[1
++ &delta;<sup>2</sup>
++ 3&middot;&delta;<sup>4</sup>
++ 3&middot;5&middot;&delta;<sup>6</sup>
++ 3&middot;5&middot;7&middot;&delta;<sup>8</sup>
++ 3&middot;5&middot;7&middot;9&middot;&delta;<sup>10</sup>
++ ...]&mu;<sub>X</sub>/&mu;<sub>Y</sub>,
+&nbsp;&nbsp;
+&delta; = &sigma;<sub>Y</sub>/&mu;<sub>Y</sub> &rarr; 0
+</center>
+(although this series diverges if &delta;&ne;0).
+Meanwhile its
+standard deviation is approximately
+<center>
+(1/&mu;<sub>Y</sub>)[(&sigma;<sub>X</sub>)<sup>2</sup>
++ (&sigma;<sub>Y</sub>&mu;<sub>X</sub>)<sup>2</sup>
++ (&sigma;<sub>X</sub>&sigma;<sub>Y</sub>)<sup>2</sup>]<sup>1/2</sup>.
+</center>
+and indeed its square (i.e. variance) is
+given asymptotically by any truncation of the also-divergent series
+<center>
+(&sigma;<sub>X</sub>/&mu;<sub>Y</sub>)<sup>2</sup>
++
+(&mu;<sub>Y</sub>)<sup>-2</sup>
+[(&sigma;<sub>X</sub>)<sup>2</sup> + (&mu;<sub>X</sub>)<sup>2</sup>]
+[&delta;<sup>2</sup>
++ 9&delta;<sup>4</sup>
++ 75&delta;<sup>6</sup>
++ 735&delta;<sup>8</sup>
++ 8505&delta;<sup>10</sup> +...]
+</center>
+</li><li>
+How many terms of these asymptotic series should be used, and approximately 
+what |error| will you then get?
+</li><li>
+If f(z) is some generic analytic function, then argue f(X) will 
+(in the limit when &sigma;=&sigma;<sub>X</sub> is made small while
+&mu;=&mu;<sub>X</sub> is held fixed)
+be approximately normal with mean
+<center>
+&mu;<sub>f</sub> = 
+f(&mu;)
++ [2<sup>-1</sup>/1!] f''(&mu;) &sigma;<sup>2</sup> 
++ [2<sup>-2</sup>/2!] f<sup>(4)</sup>(&mu;) &sigma;<sup>4</sup> 
++ [2<sup>-3</sup>/3!] f<sup>(6)</sup>(&mu;) &sigma;<sup>6</sup> 
++ ...
+</center>
+This series can converge, for nice-enough f(z), in which case it yields an exact result.
+But it also can diverge for all &sigma;&ne;0
+in which case it is only an asymptotic series.
+The mean square is
+<center>
+&mu;<sub>(f&sup2;)</sub> = 
+f(&mu;)<sup>2</sup>
++ [2<sup>-1</sup>/1!] (f&sup2;)''(&mu;) &sigma;<sup>2</sup> 
++ [2<sup>-2</sup>/2!] (f&sup2;)<sup>(4)</sup>(&mu;) &sigma;<sup>4</sup> 
++ [2<sup>-3</sup>/3!] (f&sup2;)<sup>(6)</sup>(&mu;) &sigma;<sup>6</sup> 
++ ...
+</center>
+and then the variance of f(X) is
+&mu;<sub>(f&sup2;)</sub>&ndash;(&mu;<sub>f</sub>)<sup>2</sup>.
+</li><li>
+What is (10&plusmn;1)/(5&plusmn;1)?
+</li></ol>
+<p>
+These formulas are extremely useful for working with statistics
+(meaning "numbers equipped with 1&sigma; error bars").  
+Surprisingly, the multiplication, division, and f formulas
+do not seem to be given by statistics books.
+</p>
+
+<h2>Answer</h2>
+<p><small>By Warren D. Smith Sept 2009</small>
+</p><p>
+<b>A</b> and <b>B</b> are well known.
+The formulas for the mean arise from linearity of expectations.
+The formulas for the variance then also arise from linearity of expectations combined
+with independence.
+The underlying reason X+Y is exactly normally distributed (ditto X-Y) 
+is that (i) the Fourier transform of a Gaussian is a Gaussian
+and (ii) the product of two Gaussians is a Gaussian.
+</p>
+<p>
+For part <b>C</b>, 
+the formula for the mean arises from
+</p><center>
+&mu;<sub>XY</sub>
+=
+&int;&int; 
+F((z-&mu;<sub>X</sub>)/&sigma;<sub>X</sub>)/&sigma;<sub>X</sub>
+F((q-&mu;<sub>Y</sub>)/&sigma;<sub>Y</sub>)/&sigma;<sub>Y</sub>
+z q dz dq
+=
+&mu;<sub>X</sub>&mu;<sub>Y</sub>
+</center><p>
+[with integration over the whole of the zq plane, and with
+F(z)=(2&pi;)<sup>-1/2</sup>exp(-z<sup>2</sup>/2)]
+whereupon
+the formula for standard deviation may be verified by computing
+</p><center>
+(&sigma;<sub>XY</sub>)<sup>2</sup>
+=
+&int;&int; 
+F((z-&mu;<sub>X</sub>)/&sigma;<sub>X</sub>)/&sigma;<sub>X</sub>
+F((q-&mu;<sub>Y</sub>)/&sigma;<sub>Y</sub>)/&sigma;<sub>Y</sub>
+(zq - &mu;<sub>A</sub>&mu;<sub>B</sub>)<sup>2</sup> dz dq
+=
+(&sigma;<sub>X</sub>&mu;<sub>Y</sub>)<sup>2</sup>
++ (&sigma;<sub>Y</sub>&mu;<sub>X</sub>)<sup>2</sup>
++ (&sigma;<sub>X</sub>&sigma;<sub>Y</sub>)<sup>2</sup>.
+</center><p>
+For part <b>D</b> regard &mu;<sub>Y</sub>/Y as approximately normal 
+then apply part C's
+multiplication formula.
+</p><p>
+The fact that 1/(1+&delta;)=1-&delta;+&delta;<sup>2</sup>-&delta;<sup>3</sup>+...
+is used to deal with small relative deviations &delta; off mean (and we pretend the
+"lower tail of Y is cut off," i.e. that the
+chance of a deviation of the same order as Y's mean, or larger, is neglectible &ndash;
+otherwise the standard deviation of X/Y would, in fact, be <i>infinite</i>).
+</p><p>
+This technique plus the fact that
+&int;<sub>-&infin;&lt;s&lt;&infin;</sub>F(s)s<sup>2n</sup>ds=1&middot;3&middot;5&middot;&middot;&middot;(2n-1)
+if n&ge;1
+allows us to see that the mean of 1/Z, where Z is a normal deviate
+with mean=1 and standard deviation &sigma;&lt;&lt;1, is given asymptotically 
+when &delta;&rarr;0+ by any truncation of 
+</p><center>
+1
++ &delta;<sup>2</sup>
++ 3&middot;&delta;<sup>4</sup>
++ 3&middot;5&middot;&delta;<sup>6</sup>
++ 3&middot;5&middot;7&middot;&delta;<sup>8</sup>
++ 3&middot;5&middot;7&middot;9&middot;&delta;<sup>10</sup>
++ ...
+</center><p>
+Meanwhile, using the fact that
+</p><center>
+[&delta;-&delta;<sup>2</sup>+&delta;<sup>3</sup>-&delta;<sup>4</sup>+...]<sup>2</sup> 
+= [&delta;/(1-&delta;)]<sup>2</sup> = 
+&delta;<sup>2</sup>
++ 2&delta;<sup>3</sup>
++ 3&delta;<sup>4</sup>
++ 4&delta;<sup>5</sup> 
++ ...
+</center><p>
+we find that the variance of 1/Z is
+given asymptotically by
+any truncation of 
+</p><center>
+&delta;<sup>2</sup>
++ 9&delta;<sup>4</sup>
++ 75&delta;<sup>6</sup>
++ 735&delta;<sup>8</sup>
++ 8505&delta;<sup>10</sup> 
++ 114345&delta;<sup>12</sup>
++ ...
++ 3&middot;5&middot;7&middot;9&middot;&middot;&middot;(2n-3)&middot;(2n-1)<sup>2</sup>&delta;<sup>2n</sup> 
++...
+</center>
+<p>
+<b>E.</b>
+I recommend (following a common recommendation)
+summing these series up to the term of least absolute value, then stopping
+(or stopping earlier, if the term is small enough that you're satisfied).
+The first neglected |term| will then presumably be about the same as the additive error.
+For each of the &delta;-power series above 
+we'd keep about &delta;<sup>-2</sup>/2 terms.
+This (as a result of "Stirling's formula," essentially)
+would yield least |term| roughly  
+(&delta;/r)<sup>c+1/&delta;&sup2;</sup> where r=&radic;e=1.6487...
+and c=O(1) is a constant you can choose to optimize performance of the estimate.  
+(Different c's for different series.)
+</p><p>
+<b>F.</b>
+Same technique as in part D but employing the Taylor series of f(z) about z=&mu;.
+The odd-power terms in the series integrate to zero due to odd symmetry.
+When you multiply an even term f<sup>(2n)</sup>(&mu;)/(2n)!
+times the normal-moment-factor 
+1&middot;3&middot;5&middot;&middot;&middot;(2n-1)&middot;&sigma;<sup>2n</sup>
+you get 
+2<sup>-n</sup>/n! f<sup>(2n)</sup>(&mu;) &sigma;<sup>2n</sup>.
+That explains the first series.  
+The second series is the same series but based on f(z)<sup>2</sup>
+not f(z).
+If f(z)=exp(z) or cos(z) then both series converge for all &sigma;; but as we saw in part D,
+if f(z)=1/z then we get divergence for all &sigma;&ne;0.
+[And the fact that mean<sup>2</sup>+variance=meansquare
+for a probability distribution, is just Pythagoras's theorem, integrated.]
+</p><p>
+<b>G.</b>
+2.0925&plusmn;0.540.
+&nbsp;&nbsp;
+[Using &delta;=0.2 and &delta;<sup>2</sup>=0.04 and truncating as in part E.]
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+
+<!--
+int(piecewise(csgn(conjugate(siA)^2) = 1,1/2*exp(-1/2*(q^2-2*q*muB+muB^2)/siB^2)*muA^2*(q-muB)^2*2
+^(1/2)*csgn(conjugate(siA))*siA/Pi^(1/2)+1/2*exp(-1/2*(q^2-2*q*muB+muB^2)/siB^2)/Pi^(1/2)*q^2*2^(1
+/2)*csgn(conjugate(siA))*siA^3,infinity),q = -infinity .. infinity)
+
+S := (muA, siA, muB, siB) ->
+piecewise(siB = RootOf(_Z^2-RootOf(csgn(_Z)-1),label = _L3),muA^2*siA*csgn(RootOf(_Z^2-RootOf(csgn
+(_Z)-1),label = _L3))*RootOf(csgn(_Z)-1)*RootOf(_Z^2-RootOf(csgn(_Z)-1),label = _L3),infinity)+
+piecewise(siB = RootOf(_Z^2-RootOf(csgn(_Z)-1),label = _L4),siA^3*csgn(RootOf(_Z^2-RootOf(csgn(_Z)
+-1),label = _L4))*RootOf(_Z^2-RootOf(csgn(_Z)-1),label = _L4)*(muB^2+RootOf(csgn(_Z)-1)),infinity);
+
+F := (x) -> exp(-x^2 / 2 ) / sqrt(2*Pi);
+
+assume(siA, positive);
+assume(siB, positive);
+int(int( F((z-muA)/siA)/siA * F((q-muB)/siB)/siB * (z*q-muA*muB)^2, 
+z=-infinity..infinity), q=-infinity..infinity);
+
+int(int( F((z-muA)/siA)/siA * F((q-muB)/siB)/siB * (z*q),
+z=-infinity..infinity), q=-infinity..infinity);
+
+What is the nth derivative of f(x)^2?
+n=0:   f(x)^2
+n=1:  2 f f'
+n=2:  2 f'^2 + 2 f f''
+n=3:  6 f' f'' + 2 f f'''
+n=4:  6 f''^2 + 8 f' f''' + 2 f f''''
+
+           1
+        0    2
+       0   2  2
+      0 0   6   2
+     0 0   6   8  2
+    0 0 0   20  10 2 
+   0 0 0 20  30  12 2
+  0 0 0 0 70  42  14 2
+ 0 0 0 0 70 112  56 16 2
+0 0 0 0 0 252 168 72 18 2
+
+
+and note the following:
+(i) the rightmost diagonal is 1,2,2,2,...
+(ii) leftmost diagonal is 1,0,0,0,...
+(iii) every number is the sum of the two above it, EXCEPT,
+if walking NorthWest 2 hops leads to a zero, then the number instead
+is the sum of 2 TIMES the number NorthWest of it and the number NorthEast.
+-->

@@ -1,0 +1,61 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org -- answer to puzzle ??
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to Puzzle #??: "Bootstrap" in statistics </H2>
+
+<p><b>Puzzle</b><br>
+In the <a href="http://en.wikipedia.org/wiki/Bootstrapping_(statistics)">bootstrap</a>
+approach to statistics, you acquire some data set consisting of, say, N items of data,
+and you want to compute some function F of the data. Your N-item sample is of course
+extracted from a much larger universe, and whatever function you compute, will
+only approximate the true all-universe value. One wants to understand how bad
+that approximation is.  The question is: what is the probability 
+distribution describing your post-data-analysis ignorance about F?
+One "bootstrapping" approach to answer that is to compute
+F on a ton on random M-element random subsets of your N-item sample, 
+then declare/hope that this empirical
+distribution is a good approximation to your ignorance about the unknown real one.
+<br>
+<b>Question:</b> What is the best choice of M?
+</p>
+
+<h3> An Answer </h3>
+
+<p>
+Suppose this is something like a pre-election poll and F is 
+"the percentages of Kennedy, Nixon, and Wallace voters."
+The number of Kennedy (or whoever) voters in your N-person random sample
+can be regarded to good approximation as a 
+<a href="http://en.wikipedia.org/wiki/Poisson_distribution">Poisson</a>
+random variable with mean=variance=vN
+for some unknown constant v (which we would like to know) with 0&lt;v&lt;1.
+The naive approximation of v is simply v&asymp;K/N,
+where K is the number K of Kennedy voters in our sample.
+If we take an M-person random subset of our sample, then the mean number of Kennedyists in the
+subset will be MK/N, and the variance will be (1-K/N)MK/N.
+Thus the ratio of (standard deviation)/(mean) originally was 
+(vN)<sup>-1/2</sup> 
+in the whole N-person sample, 
+but in a random subset will be
+[(N-K)/(KM)]<sup>1/2</sup>.
+These two ratios are <i>equal</i> &ndash; which, I suppose, means the 
+bootstrapped distribution is least distorted versus
+the correct one &ndash; if, and only if,
+M=(N-K)vN/K&asymp;N-K.  
+This suggests that for the purpose of analysing a poll in a C-candidate race
+(assuming this is genuinely a C-way race, i.e.
+all C of the candidates are approximately equally popular)
+it is best to use M&asymp;(1-1/C)N.
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

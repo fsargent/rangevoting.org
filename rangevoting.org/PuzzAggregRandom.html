@@ -1,0 +1,159 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle 95:  The "random YN model"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H2>
+Puzzle #95: The "random YN model" 
+</H2>
+
+<p><b>Puzzle:</b><br>
+The "YN-model" answers to the <a href="PuzzAggreg.html">previous</a>
+puzzle have been attacked as 
+not very relevant to real life.  That is, the election examples constructed to
+demonstrate that, e.g. Plurality voting can elect the worst winner NNNN,
+are (speculate the critics) unlikely to arise.
+To address that, now consider <i>random</i> voters.   That is, every possible
+issue-stance (from among the 2<sup>m</sup>)
+is equally likely and we pick some large number V (far exceeding 2<sup>m</sup>)
+of such random voters. We than <i>canonize</i> them by reversing the signs
+of some of the issues so that for each issue considered alone, "Y" is the majority winner.
+(This canonical-renaming is purely for convenience and has no genuine effect.)
+</p>
+<ol type="a">
+<li>
+"Honest" range voting (defined in previous puzzle) always elects the best candidate YYY...YY.
+</li><li>
+Show that, with honest plurality voting, a "bad" candidate (over 50% "N"s in his name)
+will be elected with chance greater than some absolute positive constant C.  
+(And what is C?)
+</li><li>
+Show that, with honest approval voting where voters approve the top F-fraction of
+the candidates (for any fixed F with 0&le;F&lt;50%) a "bad" candidate (over 50% "N"s in his name)
+will be elected with chance greater than C.
+</li><li>
+Show the same thing for Borda voting.
+</li><li>
+<i>STILL OPEN:</i>
+What about with Condorcet, Coombs, and IRV voting?
+</li></ol>
+
+
+<hr>
+<h3> Answers </h3>
+
+<p>
+Warning: We only give sketchy answers, which really should be redone more rigorously.
+</p>
+
+<p><b>a.</b>
+Same answer as preceding puzzle.
+</p>
+<p><b>b.</b>
+Two useful lemmas:<br>
+<b>(i)</b> each issue for each voter (after the canonical renaming)
+can be regarded as a slightly Y-biased coin toss
+and all issues involve independent coins.
+The bias is slight because we have postulated that the number V of voters
+far exceeds 2<sup>m</sup>; in this limit the bias tends to zero.
+Specifically each bias (as a number between 0 and &frac12;) typically
+is proportional to (2<sup>m</sup>/V)<sup>1/2</sup>.
+<br>
+<b>(ii)</b> using extreme-value statistics 
+[E.J.Gumbel: Statistics of Extremes. Columbia University Press 1958],
+<!--
+J.Picklands: Statistical inference using extreme order statistics, 
+Annals of Statistics 3 (1975) 119-131.-->
+the <i>gap</i> between the most-popular and second-most popular
+vote-counts (which typically has order 
+2<sup>-3m/2</sup>V<sup>1/2</sup>
+or less, times log terms)
+is almost certainly <i>tiny</i> when m&rarr;&infin; compared to the minimum
+margin (of order V<sup>1/2</sup>/m typically)
+by which each issue
+wins over its negation.
+<br><br>
+So consider the most numerous kind of voter before the canonical renaming.  
+It is almost <i>irrelevant what it is</i>
+in the sense that if enough of that voter-type were obliterated to make it
+become <i>second</i>-most popular, then the
+<i>same</i> canonical renaming would happen, with probability&rarr;1 in the 
+large-V/2<sup>m</sup> and large-m
+limits. 
+Indeed, you could even obliterate votes for the winner while 
+adding votes for <i>any</i> desired
+loser L &ndash; enough to make L win &ndash; and the canonization would still be
+(almost certainly) unaffected.
+Hence in this m&rarr;&infin; limit C&rarr;1/2.    Therefore for m finite, 0&lt;C&le;1/2.
+</p>
+<p><b>c.</b>
+With approval voting, with any fixed F with 0&le;F&lt;50%, 
+the fraction of candidates approved by any given voter is exponentially(m) tiny and there are 
+exponentially(m) many  candidates no two of whom are approved by the same voter.
+To see the former, simply use the properties of the binomial distribution.
+To see the latter,
+use a "binary error correcting code with wordlength m bits and Hamming distance&ge;Fm"
+as the set of candidates; then standard existence results, such as the "Gilbert-Varshamov bound,"
+for such codes show that "linear" ones exist 
+which have exponential(m) large cardinality.
+Then the same argument we just gave for plurality voting will show that
+who the most-approved among the codeword-candidates is, is almost irrelevant; even
+if enough of its approvers were obliterated to bring it
+into second place (or even if we made an <i>arbitrary</i>
+codeword-candidate win), the canonization would almost certainly not change.
+</p><p>
+Now to consider the <i>full</i> set of all 2<sup>m</sup> candidates, note the above argument was
+also true for any "coset" of that linear code.   There are an exponential(m)
+number of such cosets but even for the one containing the overall approval-vote
+winner, the argument still works even if weakened by any log-of-exponential (i.e.
+polynomial in m) factor, which is the sort of factor that happens in extreme-value
+statistics.
+</p>
+<p><b>d.</b>
+With Borda, the typical winning margin (in Borda score) between the top and second
+candidates T and S, will be of order 
+2<sup>-m/2</sup>V<sup>1/2</sup>
+which again is 
+almost certainly <i>tiny</i> when m&rarr;&infin; compared to the minimum
+margin (of order V<sup>1/2</sup>/m typically)
+by which each issue
+wins over its negation.
+So if we add just enough random voters who each prefer S&gt;T to change the Borda winner,
+that almost certainly will not be enough to change any issue-majority and hence
+the canonization will remain unchanged.  
+(Indeed, even if "S" is not the second-placer, but in fact an <i>arbitrary</i>
+candidate, this should still be true with probability&rarr;1.  Each random S&gt;T vote
+we add alters the Borda margin by an additive amount of order 2<sup>m</sup>.)
+In other words, 
+the identity of the Borda winner becomes independent
+of the issue-majorities in the large-m limit and hence a &ge;50% "bad" winner
+again should be elected with probability&rarr;1/2.
+</p>
+<p><b>e.</b>
+I do not know the answer.  Computer simulations should shed light.
+I conjecture that all these voting methods will elect "bad" candidates
+with probability&ge;C (for some positive constant C)
+in the large-V followed by large-m limit.
+<br><br>
+One can argue (again using the same technique)
+that the pairwise victory (or defeat) of candidate A versus B
+again becomes independent of the issue majorities in the large-m limit.
+This leads me to conjecture that in this limit (with high probability) no Condorcet "beats all"
+winner will <i>exist</i>.
+In that case the question, for any given Condorcet voting method, would rest on the behavior
+of its "fallback" procedure  employed when no beats-all winner exists.
+I conjecture the Simpson-Kramer "min-max" procedure and Black (Borda as fallback)
+procedures both should yield winners
+independent
+of the issue-majorities in the large-m limit.
+</p>
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

@@ -1,0 +1,113 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle 34
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to Puzzle #34: How much ignoring does IRV do? </H2>
+
+<p>
+<b>Puzzle:</b>
+It has often been noted that 
+<a href="rangeVirv.html">Instant Runoff Voting (IRV)</a>
+ignores a large portion of a large number of the votes.
+In this puzzle, we shall prove a theorem showing,
+quantitatively, that IRV <i>always</i> ignores <i>asymptotically all</i>
+the information in the votes.
+Suppose there are V voters and C candidates.
+<br>
+<b>A. Prove</b>
+that IRV <i>never</i> examines more than a fraction 
+(H<sub>C</sub>-1/2)/C
+of the CV "cell entries" inside the votes,
+where H<sub>n</sub>=1+1/2+1/3+1/4+...+1/n is the <i>n</i>th "harmonic number."
+When C=10, this fraction is 6121/25200&asymp;24%,
+when C=20, it is 15%, and when C&rarr;&infin; it goes to 0.
+<br>
+<b>B. Prove</b>
+that IRV usually will not elect Condorcet winners (even when Condorcet Winners exist)
+in the random election model in the limit C&rarr;&infin; with V fixed,
+nor in any limit V,C&rarr;&infin; with C&ge;V<sup>0.51</sup>.
+</p>
+
+<p>
+<b>Solution A:</b>
+Here is an IRV-winner-determining algorithm.
+At the beginning we shall suppose
+our computer has, already in its memory, the V rank-order votes
+(each an array of C numbers, for example if C=5 and the array contains
+"4,0,1,3,2" that means that voter top-ranks candidate 4, second-ranks candidate 0,
+third-ranks candidate 1, fourth-ranks candidate 3, and last-ranks candidate 2).
+The algorithm maintains C linked lists containing the voters whose current top-preference
+is candidate K, for each K&isin;{1,2,...,C}, and maintains knowledge of the
+cardinalities of each of those lists.
+It also maintains a list and array indicating
+the as-yet uneliminated ("still there") candidates.
+Each voter has a "finger" which initially is pointing at the candidate she top-ranks.
+During the first IRV round, we construct all these lists in O(V+C) steps
+while examining the top-rank vote of every voter (V array-cell-examinations).
+Then during that and each subsequent IRV round, we 
+<ol>
+<li>
+Eliminate the still-there candidate with the fewest top-rank votes (say it is candidate K)
+</li><li>
+Go through the list L<sub>K</sub> of voters top-ranking K, for each "advancing the
+finger" though her preference list until it hits a still-there candidate (say candidate Q),
+and then removing that voter from list K and inserting it into list Q.
+Note that in the Rth round, L<sub>K</sub> contains &le;V/(C+1-R) voters,
+each finger moves at most R hops, and the total motion 
+(over all C-1 rounds) of any finger is at most C-1 hops.
+</li>
+</ol>
+Note also that each "voter" can be regarded as moving its <i>own</i> finger without <i>ever</i>
+needing to notify the "central bookkeeper" about where its finger is, how many hops it made,
+or what eliminated candidates it hopped over.  That stuff all is irrelevant
+to determining the identity of the IRV winner. It
+merely notifies central about the candidate its finger lands on when it stops hopping.
+So the total number of <i>cell-examinations</i> made by the central algorithm is
+thus 
+&le;(1 + 1/3 + 1/4 + 1/5 + ... + 1/[C-1] + 1/C)V = (H<sub>C</sub> - 1/2)V.
+</p>
+<p>
+<i>But</i> if you <i>also</i>
+count the cells that are "hopped over," then the algorithm can be forced
+to examine almost all of the VC cell-entries for C large, e.g. see
+<a href="IRVamp.html#bad">this example</a>.  That is, however, unlikely.
+If each voter just provides a random ordering of the candidates as her vote, then
+each voter ultimately hops until she reaches one of the two final-round
+candidates, then stops; this is in expectation about C/3 hops.  So typically
+with random voters, a fraction &asymp;1/3 of the vote-cells are examined 
+assuming we also count hopped-over cells as "examined."
+</p>
+
+<p>
+<small>Based on an insight by Vincent Conitzer and Tuomas Sandholm.</small>
+</p>
+<p>
+<b>Solution B (sketch):</b>
+one needs to show that the "noise" from the unexamined cell-entries probably far exceeds
+the "signal" from the examined subset. 
+And it's indeed <a href="RandElect.html#cwirv">experimentally seen</a> to happen.
+</p><p>
+Even without any calculation,
+it ought to be plain that &ge;2/3 of the vote-cells IRV leaves unexamined
+will usually outweigh the
+&le;1/3 of them &ndash; or 0% of them &ndash; it examines, as far as determining the 
+Condorcet winner is concerned.  For example, if we were doing simple majority
+vote in a  2-candidate election in which 
+there were a large number of votes each a perfect coin flip, 
+then examining the first third of the votes would
+yield an incorrect winner arctan(&radic;2)/&pi;&asymp;30.4% of the time.
+In our case we are examining only at most one-ninth of the pairwise comparisons.
+So with a large number C of candidates we can expect the IRV-examined cells to yield
+a large number of incorrect conclusions about pairwise winners.
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Example where IRV leads to  worse result than plain plurality voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Example where IRV leads to worse election result than plain plurality voting </H2>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 30 </td>
+<td align="center"> A>B>C>D </td>
+</tr>
+<tr>
+<td align="center"> 26 </td>
+<td align="center">   B>A>C>D  </td>
+</tr>
+<tr>
+<td align="center"> 24 </td>
+<td align="center">  C>A>D>B   </td>
+</tr>
+<tr>
+<td align="center"> 10 </td>
+<td align="center">  D>B>A>C   </td>
+</tr>
+<tr>
+<td align="center"> 10 </td>
+<td align="center"> D>C>A>B   </td>
+</tr>
+</table>
+
+<p>
+In this 100-voter 4-candidate election by Toby Pereira
+(candidates named A,B,C,D)
+the winner under IRV (instant runoff voting) is
+<b>B</b>:
+</p>
+<blockquote>
+Round #1: A(30) - B(26) - C(24) - <b>D(20)</b> eliminated
+<br>Round #2: <b>A(30)</b> eliminated - B(36) - C(34)
+<br>Round #3: B(66) - <b>C(34)</b> eliminated
+<br><b>Winner: B.</b>
+</blockquote>
+<p>
+However <b>A</b> seems a superior choice:
+</p><p>
+&bull;  &nbsp;
+A is the winner under plain <a href="Plurality.html">plurality</a>
+voting, with 30 votes, beating B(26), C(24), and D(20).
+</p><p>
+&bull;  &nbsp;
+More strongly, A gets the most top-rankings with 30, <i>and</i> 
+the most {top &amp; second} with 80 (and hence A also is the "Bucklin winner"),
+<i>and</i> the most {top &amp; second &amp; third} with 100.
+I.e, no matter at what ranking you draw a "line,"
+A enjoys the most rankings above that line (and the fewest below it).
+</p><p>
+&bull;  &nbsp;
+Also A beats <i>every</i> rival pairwise by landslide supermajorities, e.g.
+</P>
+<blockquote>
+<b>A beats B</b> 64-36 (meaning 66 voters rank A above B versus only 34 who rank B above A);
+<b>A beats C</b> 66-34;
+<b>A beats D</b> 80-20.
+</blockquote>
+<p>
+Incidentally, Howard Dean
+[Vermont Governor 1991-2003,
+once the frontrunning USA presidential candidate in 2004,
+chair of Democratic Party 2005-2009, founder of Democracy For America]
+at the end of his
+7 Oct. 2016 <a href="DeanOpEdNYT2016.html">op-ed</a> for the <i>New York Times</i>
+claimed IRV was the "best [way] to uphold majority rule."  Sorry Howard:
+If A beats every rival by landslide supermajorities, but IRV demands that A lose, then
+IRV does <b><i>not</i> "uphold majority rule."</b>
+</p><p>
+&bull;  &nbsp;
+A also wins under the Borda count system,
+with score 210 versus B(158), C(148), and D(84).
+</p><p>
+&bull;  &nbsp;
+Also A would win using <a href="RangeVoting.html">score</a> 
+voting with top-ranked candidates getting score W,
+second-ranked getting score X, 
+third-ranked getting score Y,
+and last-ranked getting score Z,
+for <i>any</i> W&ge;X&ge;Y&ge;Z,
+not all equal.
+</p><p>
+In this election, if S dropped out of the
+race, then A would win, for S=B, or S=C (but not S=D).
+In other words C is a "<b>spoiler</b>," meaning that 
+by the act of running, C prevented A from winning, "spoiling" it for A.
+(Don't ever let anybody tell you that Instant Runoff prevents the "spoiler effect."
+For example Dean in that same op-ed falsely said
+"major parties don't have to fear being 'spoiled'." 
+Sorry: if A were a major party candidate,
+then he'd be spoiled with IRV, so he <i>would</i> need to "fear" that.)
+</p><p>
+IRV also does not prevent "<b>wasted votes</b>" (no matter how many times 
+somebody says it does, e.g. again Dean falsely implied this in his op-ed) &ndash;
+as we see because the 24 votes for C were assuredly wasted
+since they caused their most-hated candidate B to win.  
+Those voters of course would have preferred A to
+win &ndash; and they futilely said so in their votes &ndash; but the very act of them
+voting caused A to lose &ndash; if they either had not voted or
+if they had appropriately lied in their vote, then A would have won.
+</p>
+
+<p><a href="IRVworsePlur.html">More realistic(?) election example by Goldman</a></p>
+<p><a href="FreqIRVworsePlur.html">How often does this happen?</a></p>
+<p><a href=" IrvParadoxProbabilities.html">Comprehensive table of how often various IRV pathologies happen</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

@@ -1,0 +1,215 @@
+<html>
+<head>
+<title>
+RangeVoting.org
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to Puzzle #2: election with 6 different winners in 6 different voting systems </H2>
+
+<p><b>Puzzle:</b>
+Find an example election in which 
+Approval Voting,
+Borda Voting,
+Plurality Voting,
+Plurality Voting with Top-Two Runoff,
+Instant Runoff Voting,
+and Condorcet methods,
+all return different unique-winners.
+Election examples with fewer voters and voter-types
+are preferred as "more elegant."
+</p>
+
+<p><b>Solution</b> <small> by Warren D. Smith by making several improvements
+on a  suboptimal solution 
+by Joe Malkevitch</small>:
+</p>
+
+<table bgcolor="yellow" cellpadding="5" border="1">
+<tr><th>#voters</th><th>Their Vote</th></tr>
+<tr><td> 4 </td><td> <font color="red">A</font>>D>E>C>B>F </td></tr>
+<tr><td> 3 </td><td> <font color="red">B>E>D>F</font>>C>A </td></tr>
+<tr><td> 2 </td><td> <font color="red">C>B>E>D>F</font>>A </td></tr>
+<tr><td> 1 </td><td> <font color="red">D>C>F</font>>A>E>B </td></tr>
+<tr><td> 1 </td><td> <font color="red">F</font>>C>E>D>B>A </td></tr>
+</table>
+
+<p>
+11 voters, 5 voter-types, and 6 candidates (A,B,C,D,E, and F) in total.
+</p>
+<p>
+<b>Plurality:</b> A wins (most top-rank votes with 4).
+<br>
+<b>Plurality+Runoff among top two:</b> B wins over A in the runoff, 6-to-5.
+<br>
+<b>IRV:</b> C wins
+(eliminate E, D, F, and B in that order &ndash; it does not matter in which way you break the
+DF tie &ndash; then C beats A in the final round by 7 to 4).
+IRV repeatedly zaps the candidate with fewest
+top-rank votes, then the remaining one wins.
+<!-- Note, when F is eliminated, there
+is a tie between F and C which we assume is broken in favor of C because
+all the F-voters have C as their second choice at that point, whereas the C-voters
+rank F near last place.  (If 
+you are morally opposed to this tie-breaking gimmick, then a 19-voter solution with
+7,5,4,2,1 in the #voters column does the job.) -->
+<br>
+<b>Borda:</b> D wins.   
+(D's Borda score is 16+9+4+5+2=36 versus E with 12+12+6+1+3=34 and 
+with lower scores for A, B, C, and F.)
+<br>
+<b>Condorcet:</b> E wins.  (Since E pairwise-beats each other candidate, e.g. beating
+A 6:5, B 6:5, C 7:4, D 6:5, and F 9:2.)
+<br>
+<b><a href="rangeVapp.html">Approval</a> Voting:</b> 
+If all the red candidates are approved, then F wins.
+</p>
+
+<p>
+And with 0-99 Range Voting, it would in fact be possible to make <i>any</i> of the 6 
+candidates win,
+depending on how the voters chose the scores compatibly with the orderings above.
+</p>
+
+<p><b>Optimality:</b>
+Obviously, 6 candidates is minimum possible in order to get 6 different winners.
+We now shall <b>prove</b> that 11 voters also is minimum possible, and so is 5 voter types.
+First, in order to have an untied plurality winner A, he must
+have more votes (here 4) than any other.  Then the plur+runoff winner
+B, in order also to be untied, must have more votes (here 3) than any other besides A.
+Finally, the IRV winner C must, after benefitting from any vote transfers,
+have more top-rank votes than B, i.e. must have at least 4 votes.
+Hence there must be at least 4+3+4=11 voters if A has 4 votes, merely in order
+to get distinct and untied Plurality, Plur+runoff, and IRV winners.
+(Actually, 4+2+3 might also have been possible, except that it isn't, see below.)
+On the other hand, if A had only 3 or 2 or 1 votes, then 4+3+4=11 would become 3+2+3=8
+or 2+1+2=5 or 1+0+1=2 voters.  
+<!-- The 1+0+1=2 case is not possible since there would be an AB tie in the runoff. -->
+<br>
+But C in order to be the IRV winner
+cannot be eliminated, so C must have more top-rank votes than somebody at every round,
+but less than B at the first round.
+That means the top-rank votes for C,D,E,F must be distributed like 2,1,1,0 in the 4+3+4=11 case
+(as they are), or like 1,0,0,0 in the 3+2+3=8 or 4+2+3 or 
+other cases (which will not work since these cannot sum to at least 3 or 2 as they must).
+<br>
+Hence 11 is the minimum possible number of voters.
+<br>
+Finally, the above argument has also shown as a side effect that
+5 is the minimum possible number of voter types.  Note that this optimality proof
+did not even have to <i>mention</i> Borda, Condorcet, or Approval.
+<b>Q.E.D.</b>
+</p>
+
+<h3> Addendum </h3>
+
+<p>
+Carl Bialik, the "Numbers Guy" at the <i>Wall Street Journal</I>, asked me
+in Feb. 2009:
+</p>
+<blockquote>
+Can you think of an example of a set of ballots with six candidates in
+which each candidate wins under exactly one of the following systems?
+<ul>
+<li>Range voting (mean)
+</li><li>Range voting (median)
+</li><li>Borda Count
+</li><li>Condorcet
+</li><li>Instant runoff
+</li><li>Plurality
+</li>
+</ul>
+</blockquote>
+<p>
+The same example-election we gave above also works to solve Bialik's problem if we choose
+the range-voting scores as follows (this is for 0-99 range voting; 
+<small>it might also be possible
+to accomplish Bialik's goal using 0-9, i.e "single digit," range voting, 
+but I have not looked into that</small>):
+</p>
+
+<table bgcolor="yellow" cellpadding="5" border="1">
+<tr><th>#voters</th><th>Their Vote</th></tr>
+<tr><td> 4 </td><td> <font color="red">A99</font>>D4>E3>C2>B1>F0 </td></tr>
+<tr><td> 3 </td><td> <font color="red">B99>E67>D66>F65</font>>C1>A0 </td></tr>
+<tr><td> 1 </td><td> <font color="red">C99>B98>E67>D66>F65</font>>A0 </td></tr>
+<tr><td> 1 </td><td> <font color="red">C99>B98>E53>D52>F51</font>>A0 </td></tr>
+<tr><td> 1 </td><td> <font color="red">D99>C98>F65</font>>A2>E1>B0 </td></tr>
+<tr><td> 1 </td><td> <font color="red">F99</font>>C4>E3>D2>B1>A0 </td></tr>
+</table>
+
+<p>
+In this election, B wins using mean-based range voting,
+with a mean score of 45.27 (beating F with 43.18 and D with 39.45)
+but F wins using median-based range voting (F's median score is  65, beating
+D with 52).  Note the candidates range-scored above 50 are the approved ones.
+</p>
+
+<h3> Bialik's 8-winner solution (Feb. 2009) </h3>
+
+<p>
+Bialik modified our original solution in a different way
+[using 0-20 range voting and/or rank-order voting systems]
+to make it have
+<i>eight</i> different winners under the 8 voting systems, 
+counting range-mean and range-median as
+the two other kinds of winners. It's below.
+Same six winners for the six systems described at top, 
+<i>plus</i> g wins on
+range-mean, 
+h on range-median.
+</P>
+<p>
+He noted:
+Use same approvals as in the old example, and make g and h not approved
+on the first two ballot sets (so each disapproved by seven, so they don't win
+approval voting).   That is, in the below table of scores, 
+the <font color="red"><u>underlined</u></font> votes are "approved."
+</p>
+
+<pre>
+<b>#voters  a       b       c       d       e       f       g       h</b>
+4        <font color="red"><u>18</u></font>      4       5       17      15      0       13      14
+3        0       <font color="red"><u>14</u></font>      5       <font color="red"><u>11</u></font>      <font color="red"><u>12</u></font>      <font color="red"><u>10</u></font>      8       9
+2        0       <font color="red"><u>12</u></font>      <font color="red"><u>20</u></font>      <font color="red"><u>10</u></font>      <font color="red"><u>11</u></font>      <font color="red"><u>9</u></font>       <font color="red"><u>18</u></font>      <font color="red"><u>19</u></font>
+1        2       0       <font color="red"><u>12</u></font>      <font color="red"><u>17</u></font>      1       <font color="red"><u>11</u></font>      <font color="red"><u>16</u></font>      3
+1        0       1       4       2       3       <font color="red"><u>16</u></font>      <font color="red"><u>15</u></font>      5
+</pre>
+<!-- http://userfs.cec.wustl.edu/~rhl1/rbvote/calc.html -->
+<p>
+As rank-order ballots (omitting the numerical scores) this is:
+</b>
+<pre>
+4: <font color="red">a</font>&gt;d&gt;e&gt;h&gt;g&gt;c&gt;b&gt;f
+3: <font color="red">b&gt;e&gt;d&gt;f</font>&gt;h&gt;g&gt;c&gt;a
+2: <font color="red">c&gt;h&gt;g&gt;b&gt;e&gt;d&gt;f</font>&gt;a
+1: <font color="red">d&gt;g&gt;c&gt;f</font>&gt;h&gt;a&gt;e&gt;b
+1: <font color="red">f&gt;g</font>&gt;h&gt;c&gt;e&gt;d&gt;b&gt;a
+</pre>
+
+<p>
+<b>Verification of winners:</b><br>
+Plurality: a has four first-place votes, more than any rival.<br>
+Top-2-runoff: b (The top 2 in the first round are a and b; then b is 
+preferred by three of the four voters who ranked other candidates first, so beats a, 6-5.)<br>
+IRV: c (after e,g,h, then d and f, then b, then a eliminated)<br>
+Borda: d (with Borda score 52, followed by e in second place with Borda score 48)<br>
+Condorcet: e is a beats-all winner (beats a, b, and d by 6:5 majorities each; 
+beats others by larger majorities)<br>
+Approval: f (with 7 approvals; d is next with 6)<br>
+Range-mean: g with ColumnSum=70 beating d(57) and h(50).<br>
+Range-median: h with median=14 beating g(13), e(12), d(11).<br>
+<!--g13 h14 e12 d11 c5 b4 a0-->
+</p>
+<p>
+Bialik's election then
+was printed in his <i>Wall Street Journal</i>  column (page A9, on 6 Feb 2009)
+except unfortunately with some misprints.
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

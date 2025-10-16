@@ -1,0 +1,331 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle 112 - Probabilities Voting Methods "vulnerable to strategy"  
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Puzzle #112: Probabilities voting methods "vulnerable to strategy"
+</H2>
+
+<p><b>Puzzle:</b><br>
+A single-winner election with honest voters and some given voting method will be called
+"vulnerable to strategy" if there exist some subset of the voters, who, by changing 
+their votes, could cause the winner to change to somebody else whom that subset (unanimously) 
+prefers.
+[This subset is <i>not</i> required to consist of identical voters; their honest 
+and/or strategic votes both are allowed to be multi-element sets.]
+This puzzle investigates the probability that an election is vulnerable to strategy, in
+the <a href="RandElect.html">random election model</a> (also called the "impartial culture")
+with V&rarr;&infin; voters.
+</p>
+<ol type="a">
+<li>
+In 2-candidate simple-majority elections, show every election is invulnerable to strategy.
+Hence in the rest of this problem assume the number N of candidates is fixed with N&ge;3.
+</li><li>
+For plain <a href="Plurality.html">plurality</a>, <a href="rangeVborda.html">Borda</a>, 
+and indeed <i>every</I> nontrivial <a href="WtPositnl.html">weighted positional</a> method,
+show that the strategy-vulnerability probability&rarr;1.
+</li><li>
+Also show this for "Coombs elimination" (whose rules are: the candidate with the greatest number 
+of last-place rankings is repeatedly eliminated until only one remains &ndash; the winner).
+</li><li>
+Show for <a href="Approval.html">approval</a> voting where the honest voters approve the 
+top-F-fraction of the N candidates, for any fixed F with 1/N&le;F&le;1-1/N, that the 
+strategy-vulnerability probability&rarr;1.
+</li><li>
+Show for range voting the strategy-vulnerability probability&rarr;1.
+</li><li>
+Show for <a href="MedianVrange.html">median-based</a> range voting the 
+strategy-vulnerability probability&rarr;1.
+(This is despite the theorem by Balinski &amp; Laraki that median-based range voting is
+"optimum" in terms of <i>their</i> definition of "vulnerability to strategy.")
+</li><li>
+Argue that for most Condorcet methods (including Nanson-Baldwin, Schulze-beatpaths,
+and least-reversal "basic" Condorcet), the strategy-vulnerability probability&rarr;1.
+</li><li>
+<i>However</i>, show for Instant Runoff Voting (<a href="rangeVirv.html">IRV</a>),
+and also for the following two Condorcet methods which somewhat resemble IRV in their workings:
+<a href="TidemanRev.html#WBSIRV">WBS-IRV</a>
+and
+<a href="BtrIrv.html">BTR-IRV</a>, 
+that the strategy-vulnerability probability goes to a <i>constant</I> depending on N,
+and for each N with 3&le;N&lt;&infin; the constant is strictly positive
+(and also is below 1 if N=3, and presumably below 1 for every fixed N with 3&le;N&lt;&infin;).
+[Incidentally, note: plain IRV is <i>not</i> a Condorcet method.]
+However, for IRV the constant goes to 1 when N&rarr;&infin;.
+</li><li>
+Find upper and lower bounds and/or estimates, for these constants.
+Note by this measure, IRV is "superior" to Borda, Approval, Plurality, and most Condorcet methods;
+can you argue that WBS-IRV and/or BTR-IRV in turn are "superior" to IRV?
+</li><li>
+Further, argue that for a <i>very wide class</i> of voting methods (seemingly including all 
+"reasonable" ones), the liminf probability of vulnerability to strategy exceeds some positive 
+constant.
+</li><li>
+<i>But</i>: 
+<a href="PuzzJGA.html#JGAcrit">criticize</a> our definition of "vulnerable to strategy" 
+and indeed criticize the <i>whole idea</i> of comparing voting methods based on the "probability
+in the random election model of vulnerability to strategy" as misleading.
+Find some <a href="PuzzJGA.html#theex">examples</a>
+of (also reasonable-sounding) alternate definitions/models
+in which some of the above results become quite different.
+</li></ol>
+
+<h2> Answers (some intentionally sketchy)</h2>
+<p><small>By Warren D. Smith, Feb 2009; inspired by James Green-Armytage
+(whom I will abbreviate "J.G-A.")</small>
+
+<p>
+<b>a:</b> is obvious...  voting dishonestly plainly could hurt you but cannot help.
+</p>
+<p>
+<b>b,c,d,e,f,g:</b> The "NES," i.e. "Naive Exaggeration Strategy," suffices to see these
+claims in view of standard properties of the normal distibution, and central
+limit theorem.  Specifically, NES(X) means that the voters who prefer X&gt;W
+change their vote by demoting W to last-ranked and promoting X to top-ranked, and 
+otherwise leaving their ballots unaltered. Here W is the honest-votes winner.
+"NES" means NES(X) with whichever X causes it to work 
+(i.e. succeed in changing the winner from W to X)
+if any X works.  If no X&ne;W works we say NES "failed."
+It is not hard to argue NES(X) will work with probability&rarr;1 in all of these
+voting methods (for at least one X).
+</p>
+<p>
+I don't want to give full details but will sketch a few cases.
+With plurality voting, all the N candidates have vote totals V/N
+<i>equal</i> to within relative error &plusmn;&epsilon; for any fixed
+&epsilon;&gt;0 (with probability&rarr;1 when V&rarr;&infin; with N held fixed) 
+and then NES(X) strategy will cause X to win
+(for any X&ne;W) with probability&rarr;1.
+</p><p>
+With AntiPlurality and Coombs voting, NES(X) strategy will cause X to win 
+(with probability&rarr;1) <i>provided</i> X is
+the candidate who would have won if all ballots ranking W bottom, magically vanished.
+</p><p>
+For median-based range voting, all N medians will be equal to within &plusmn;&epsilon;
+for any fixed
+&epsilon;&gt;0 (with probability&rarr;1 when V&rarr;&infin; with N held fixed).
+NES(X) strategy will raise X's and lower W's median by amounts of order 1/(N-1),
+which of course is much greater than arbitrarily small &epsilon;
+(with probability&rarr;1 when V&rarr;&infin; with N held fixed).
+</p><p>
+An argument about strategy in Schulze-beatpaths voting may be found in my 
+<a href="ROEstrat.html">paper</a>.
+</p><p>
+<b>h,i:</b> 
+One reason 
+the strategy vulnerability probability goes to 1 when N&rarr;&infin; for IRV is
+the Quas-Smith theorem <a href="Monotone.html#manycand">here</a>.
+</p><p>
+The "NES," i.e. "Naive Exaggeration Strategy" suffices to prove lower
+bounds above 0 on strategy-vulnerability probability, but now does not yield 100%.
+Specifically we find for IRV that
+the election is (with probability&rarr;1) vulnerable to NES(X) strategy if 
+X defeats W pairwise with honest votes, i.e. NES works <i>if
+W is not a Condorcet winner.</i>  (But if W was a Condorcet winner, then with
+probability&rarr;1
+W will defeat X
+in the final IRV round.)
+This happens (and does not happen) both with some nonzero constant probabilities when N=3.
+(And also when N=4,5,6,... but different constants for each value of N; see
+<A href="PuzzlePage.html#p102">puzzle 102</a>
+for their values and the fact that when N&rarr;&infin; the probability&rarr;1 that
+no Condorcet winner exists.)
+</p><p>
+For WBS-IRV and BTR-IRV:
+the election is (with probability&rarr;1) vulnerable to NES(X) strategy if 
+X defeats W pairwise with honest votes, i.e. NES works if
+W had not been a Condorcet winner.  
+NES(X) strategy may stop W from being a Condorcet winner
+even though it had been one with honest votes; but in that case X will not be a Condorcet Winner
+after NES(X) strategy (since it still loses pairwise to W) and hence X
+may or may not win
+the new election (it won't if W survives to the final round).   Hence the limit 
+strategy-vulnerability probabilities of BTR-IRV and WBS-IRV are <i>lower bounded</i> by their limit
+values for plain IRV, thus proving the "superiority" (or at least equality)
+of WBS-IRV and/or BTR-IRV over plain IRV.
+</p><p>
+The fact that limit-values exist is a consequence of the 
+abstract theory of Schl&auml;fli functions which indeed in 
+principle allows expressing them (at least for small N) in closed form.
+The fact that they are bounded above 0 has
+already been discussed.  Indeed, the upper bound on the <i>in</i>vulnerability probability
+for IRV is precisely the product
+of P(N), i.e. the probability that a Condorcet winner exists among N candidates
+(computed in <a href="PuzzCondProb.html">this puzzle</a>), 
+times the conditional probability the IRV and Condorcet winners agree conditioned
+on the CW existing &ndash; which has been evaluated numerically
+in <a href="RandElect.html#cwirv">table 14 here</a>.
+The result is:
+</p>
+<center>
+lim<sub>V&rarr;&infin;</sub>prob(IRV <i>not</i> vuln to NES strategy) =
+100%, 88%, 77%, 67%, 60%, 54%, 49%, 44%
+<br>
+for 2,3,4,5,6,7,8,9 candidates respectively, accurate to about &plusmn;1%.
+</center>
+<p>
+James Green-Armytage claims, using a new mathematical-programming formulation 
+(building on 1980s work of J.R.Chamberlin) and a
+computer, to have computed
+the probability, in 999-voter random elections, that <i>any</I> voter subset can use
+<i>any</i> strategy to change the IRV winner in a way that they (unanimously) consider to be
+an improvement.   (Note, this is <i>not</i> just the NES subclass of strategies, it's
+<i>all</I> strategies.)
+He computed IRV's vulnerability-to-strategy probabilities as
+16%, 33%, and 49% for the 3, 4 and
+5-candidate cases, respectively. 
+[And these indeed are greater than our NES-based lower bounds 12%, 23%, 33%,
+as they should be, and indeed appear to be rising toward 100%, as the theorem says they must.]
+</p><p>
+It would be interesting to know what J.G-A.'s computer says about WBS-IRV and BTR-IRV???
+</p><p>
+<small>
+<b>Remark:</b>
+It seems if you want an elimination method to have good chances of
+immunity to NES-type strategy, then eliminations must be based on
+<i>top-rank</i> votes only; if they also involve any other rank, then you get
+vulnerability to NES with probability&rarr;100%. So IRV and
+methods like it such as WBS-IRV seem singled out by
+this criterion.
+</small>
+</p>
+<p>
+To upperbound 
+the vulnerable-to-strategy limit-probabilities below 1, 
+we need to find a positive-probability subclass of elections which are immune to
+strategy.   I can do that for IRV 3-candidate elections as follows.
+We showed vulnerability to NES strategy 12% of the time.  The only other kind
+of strategy one could imagine in a 3-candidate election would be in
+<a href="Monotone.html">non-monotone</a> IRV elections &ndash; but these are
+only 14.7% of random-model elections. Hence we get vulnerability to <i>any</I> strategy at most
+28% of the time (28=14.7+12+safety margin) for IRV 3-candidate elections. 
+[Note this also is obeyed
+by J.G-A's numerical finding of 16%.]
+One could also use an analogous approach to prove lower bounds below 1 for various other election
+methods such as WBS-IRV and BTR-IRV (and also perhaps for N=4 or N=5 candidates too).
+</p>
+<p>
+<small>
+J.G-A. also notes that "most other methods" (besides IRV) 
+exhibit strategy-vulnerability
+chances near 100%.  This computer result also confirms our theoretical results.
+</small>
+<p>
+<b>j:</b>
+One may also show positive lower bounds on the 
+vulnerable-to-strategy limit-probabilities from
+the quantitative <a href="GibbSat.html">Gibbard</a>-Satterthwaite theorem by
+Ehud Friedgut, Gil Kalai, and Noam Nisan 2008
+<a href="mani-focs.pdf">(pdf of their paper)</a>;
+this works for a very wide class of election methods.
+</p>
+<a name="JGAcrit"></a>
+<p>
+<b>k: Criticism of the "vulnerability to strategy" probability as a yardstick for 
+comparing voting systems:</b> 
+What matters to civilization
+is <i>not</i> the probability that some voter-subset <i>could</i> strategize;
+what matters is the <i>expected utility-decrease</i> caused by the <i>net</I> effect of
+<i>all</i> strategic behaviors undertaken by all classes of voters.  Some of these
+strategic moves will reinforce, whereas others will "cancel out."
+Certainly it is utterly unrealistic to pretend the pessimal voter subset colludes based on
+perfect information about the noncolluders &ndash;
+while all other voters (not in that subset) forswear all strategy!  And it is also
+utterly ludicrous to pretend all strategy-caused winner-changes are "equally bad!"
+</p><p>
+(In short, the right yardstick for measuring vulnerability to strategy, as well
+as lots of other things too, instead is <a href="BayRegDum.html">Bayesian Regret</a>.)
+</p><p>
+Also the "random election model" itself is subject to criticism since it is not
+very realistic.
+</p>
+<p>
+If strategic voters have to act on <i>imperfect</I> information, the situation also
+changes.  For one thing, they might try a strategy which <i>fails</I> 
+to work out for them, but still causes damage &ndash; and such damage ought to be counted,
+not ignored.
+</P>
+<a name="theex"></a>
+<p>
+<b>Example I (Range superior to IRV under a different definition of "vulnerability to strategy"):
+</b>
+I have argued elsewhere that if <i>all</i>  the voters know is that
+"in IRV elections third party candidates are historically very unlikely to win"
+(and as of 2009 this has historically been true in every IRV country, e.g. as of 2009
+Australia  has zero third-party members in
+its IRV-elected house)
+then they would seem justified in "favorite betrayal" for
+third-party
+candidates <i>100%</I> of the time!
+The argument is that that candidate is very unlikely
+(well below 1%) to be able to win 
+(regardless of how they strategize), in which case such betrayals cost nothing.
+However, random-model IRV elections in about 20% of 3-candidate cases have the
+property that the votes for the 3rd-party candidate top, cause the "greater evil" to win
+(if they'd betrayed him, the lesser evil would have won).
+In that case the betrayal gains the voter something.
+</p><p>
+So in this <i>other</I> sense, IRV elections have 100% probability of "vulnerability
+to strategy"
+whereas range-voting elections are entirely immune to favorite-betrayal!
+</p>
+<p>
+<b>Example II (Condorcet superior to IRV under a different 
+probability model &ndash; 1D politics):</b>
+In a different model, namely "one dimensional politics (singlepeaked utility
+functions for candidates lying along a line)
+3-candidate elections" IRV is fairly likely to fail to elect a centrist
+Condorcet winner &ndash; indeed 
+<a href="IrvPathologySurvey.html#1D">here</a>
+is a model in which this failure-probability is 1/3 &ndash;
+and in
+every such situation is "vulnerable to strategy" because the losing
+extremist-faction
+can betray their favorite to elect the centrist.
+</p><P>
+But meanwhile for Condorcet methods:
+a Condorcet winner always exists in 1D politics in this model, neglecting ties
+(<a href="BlackSingle.html">Duncan Black's singlepeakedness theorem</a>) 
+and Condorcet methods are always <i>in</i>vulnerable to strategy 
+in 3-candidate 1D-politics elections.
+</p><p>
+<small>
+<b>Proof sketch:</b>
+If the CW is the centrist, then if either extremist faction strategically buries
+the centrist, it'd make the wrong extremist win or cause no change.
+If the CW is an extremist, then he automatically is a majority-top winner
+and so if the centrist faction artificially buries him 
+(the other extremist faction already is ranking him bottom)
+it won't matter. <b>Q.E.D.</b>
+</small>
+</p>
+<p>
+So Condorcet methods are actually <i>optimal</i> within this puzzle's 
+"vulnerability to strategy" definition &ndash; <i>zero</I> probability of
+"vulnerability to strategy" &ndash;
+in 3-candidate 1D-politics elections, while IRV is nonoptimal!  
+That's exactly the opposite of JGA's conclusion in
+a different probabilistic model.
+</p>
+<p>
+<b>Example III (Range superior to IRV under a different model &ndash; 1D politics &ndash; and 
+a different definition):</b>
+As we saw <a href="AppCW.html">here</a> range voting with strategic voters will tend to 
+yield honest-voter Condorcet winners (and do so more often than IRV).  Hence 
+in the 1D politics model in example II, we could argue range voting too is "superior" to
+IRV.
+</p>
+
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+

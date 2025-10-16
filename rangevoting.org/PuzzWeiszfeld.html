@@ -1,0 +1,144 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle ??? - The point with least sum of distances
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Puzzle #??: The point with least sum of distances
+</H2>
+
+<p>
+Given N&ge;2 point-sites in a Euclidean space, suppose we wish to find the point
+X (which is not necessarily a site) whose sum of distances to the N sites
+[call it F(X)], is minimal.
+</P>
+<ol type="a">
+<li>
+Show that F(X) is a continuous concave-&cup; function.
+</li><li>
+If the sites 
+all lie on a line, then show
+the optimal X is the median site (in order along the line) if N is odd,
+or anywhere between the two bi-medians, if N is even.   Hence the point X
+we seek is a multi-dimensional generalization of the concept of "median."
+</li><li>
+Assume from now on that the sites do <i>not</i>
+all lie on a line. Show F(X) is <i>strictly</i>
+concave-&cup; and hence has a <i>unique</i> minimum.
+</li><li>
+Suppose that we start from any point X which is not one of the N sites,
+and compute (as our new X)
+the weighted mean of the N sites, where the weight for site <i>k</i>
+is chosen to be proportional to
+1/dist(X, s<sub>k</sub>) and of course the proportionality constant is chosen 
+so that the weights sum to 1.
+Prove that this decreases F(X) unless X is already at the optimum location, in which case 
+it leaves X unaltered.
+</li><li>
+In the preceding question, what goes wrong if the old X is located exactly at a site?
+How can we avoid this difficulty?
+</li></ol>
+
+<h2> Answers </h2>
+<p><b>a.</b>
+The "distance to a site" function is continuous and concave-&cup;, and since
+any sum of concave-&cup; functions is
+concave-&cup;, we conclude F(X) is.
+Obviously, F(X)&rarr;&infin; when |X|&rarr;&infin;.
+Therefore, F(X) has a global minimum.
+</p>
+
+<p><b>b.</b> 
+If there are more sites on one side of X, moving X in that direction will decrease F(X).
+</p>
+
+<p><b>c.</b>
+The only lines on which the "distance to a site" function is not <i>strictly</i>
+concave-&cup; is
+along lines through the site.  So if the sites do not all lie on a line then 
+F(X) will be strictly concave-&cup; on every line.
+</p>
+
+<p><b>d.</b>
+Using the preceding <a href="PuzzMeanSumSquares.html">puzzle</a>,
+we see that the new X (call it Q) uniquely
+minimizes the weighted sum of <i>squared</i> distances to the sites.
+Let s<sub>k</sub> denote site <i>k</i> and let w<sub>k</sub> denote its weight
+(which is proportional to its reciprocated distance to X).
+Hence
+</p><center>
+&sum;<sub>1&le;k&le;N</sub> w<sub>k</sub> |Q-s<sub>k</sub>|<sup>2</sup>
+&le;
+&sum;<sub>1&le;k&le;N</sub> w<sub>k</sub> |X-s<sub>k</sub>|<sup>2</sup> 
+</center><p>
+with equality if and only if Q=X. Hence
+</p><center>
+&sum;<sub>1&le;k&le;N</sub> |Q-s<sub>k</sub>|<sup>2</sup> / |X-s<sub>k</sub>|
+&le;
+F(X).
+</center><p>
+Now note the identity
+</p><center>
+|Q-s<sub>k</sub>|<sup>2</sup>
+=
+{(|Q-s<sub>k</sub>| - |X-s<sub>k</sub>|) + |X-s<sub>k</sub>|}<sup>2</sup>
+=
+(|Q-s<sub>k</sub>| - |X-s<sub>k</sub>|)<sup>2</sup>
++ |X-s<sub>k</sub>|<sup>2</sup> + 
+2(|Q-s<sub>k</sub>| - |X-s<sub>k</sub>|)&middot;|X-s<sub>k</sub>|.
+</center><p>
+Applying this identity and simplifying the result a bit, we find
+</p><center>
+2 F(Q) + 
+&sum;<sub>1&le;k&le;N</sub> (|X-s<sub>k</sub>| - |Q-s<sub>k</sub>|)<sup>2</sup> / |X-s<sub>k</sub>|
+&le;
+2 F(X).
+</center><p>
+Because any weighted sum of squares (if the weights are positive) is positive
+(unless it is zero, which occurs only if each and every square is 0)
+we conclude
+</p><center>
+F(Q) &le; F(X)
+&nbsp;&nbsp; with equality only if Q=X.
+</center><p>
+This "descent" result was first published by Endre Weiszfeld
+(whose name later changed to Andrew Vazsonyi) in 1937.
+</p>
+<p><b>e.</b>
+If X lies at a site, the weight of that site would be infinite (division by zero)
+hence our X-updating formula would be inapplicable.
+This actually is a symptom of 
+a difficulty with this iteration &ndash; it is possible for it to "get stuck"
+very near a site for an arbitrarily large number of iterations time before it finally departs.
+</p><p>
+One way to avoid that difficulty is to start the Weiszfeld
+iteration at someplace better than the best site.  
+The iteration will never be able to land on a site from then onward, due to the descent property.
+The "best site" means B=s<sub>k</sub> such that the <i>k</i>th row
+of the distance matrix has minimum sum.  Applying a Weiszfeld iteration starting
+from B but only considering the N-1 <i>other</i> sites, yields a point W.
+It is easy to see that the direction from B to W is the
+steepest descent direction for F(X) at X=B,
+unless B is already optimum.
+Hence somewhere on the line segment BW, is a better point than B (if any exists).
+Indeed a point on this line segment lying arbitrarily close to B will do, 
+unless B already is optimum.  Hence a way to find a better-than-B point is to
+start at W, and repeatedly halve your distance to B 
+(staying on the line segment BW) until
+the point is found.
+</p>
+<p>
+The optimum point X is known as the Fermat-Steiner-Torricelli-Weber point (or
+some subset of these names).
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+

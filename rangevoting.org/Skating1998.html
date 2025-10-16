@@ -1,0 +1,481 @@
+<html>
+<head>
+<title>
+RangeVoting.org - On the BOM and OBO skating scoring systems
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2> The BOM and OBO skating scoring systems, embarrassing "flip-flops,"
+and the heretofore largely unknown greatest available dataset of important
+real-world Condorcet elections  </h2>
+
+<p>
+The ISU (International Skater's Union) used to use a scoring system called "BOM"
+for allocating gold, silver, and bronze medals.  This 
+<a href="OlympBonaly.html">resulted</a> in a highly embarrassing
+(for them) problem in the 1995 World Figure Skating Championships:
+After they had finished all their skating, and all the judges had published
+their scores for all their skates,
+the USA's Nicole Bobek was in second place and France's Surya Bonaly in third.
+But then the 14-year-old phenom Michelle Kwan skated surprisingly well (but not well enough
+to get a medal).  As a result of <i>Kwan's</i> skate, <i>Bobek and Bonaly switched places!</i>
+</p>
+<p>
+This crazy voting-system pathology became known as "the great flip-flop."  
+Bonaly got silver, Bobek got bronze, and voting-theorist 
+<a href="ArrowThm.html">Kenneth Arrow</a>
+got a Nobel.
+</p>
+<p>
+After another amazing last-minute medal flip-flop
+happened at the 1997 European men's championships, the ISU had had enough.
+Its head Ottavio Cinquanta rolled out a new scoring system called "OBO" in 1998, 
+promising "if you are in front of me, then you will stay in front of me!"
+But that claim was false.  And anybody familiar with 
+<a href="ArrowThm.html">Arrow's impossibility theorem</a> could have 
+told him instantly that it had
+to be false.
+</p>
+<p>
+But the deeper and more important question is <i>how</i> false?  
+E.g. perhaps OBO yields <i>fewer</i> flip-flops
+although not zero.
+</p>
+
+<h3> Sandra Loosemore </h3>
+<p>
+A lot of light was cast on that in 1998 
+by PhD computer programmer and
+skating expert <a href="http://www.frogsonice.com/skateweb/obo/">Sandra J. Loosemore</a>.
+(Hackers know Loosemore as the author of the
+<i>Gnu C Library Reference Manual</i>, while skaters
+know her as the founder of "SkateWeb" and webmaster of the World Skating Federation.)
+</p>
+<p>
+She ran the <a href="SkateData1998.txt">scores</a> from the
+1998 World Junior, European and World Championships, plus the 1998 Olympics,
+through a computer program she'd written to do OBO scoring, finding <i>numerous</i>
+flip-flop examples.
+Under OBO they would have occurred in
+<ul>
+<li>
+7 of 14 competition segments at the Juniors, 
+</li><li>
+3 of 10 at the Europeans,
+</li><li>
+8 of 14 at the Worlds (involving 12 sets of flips),
+and 
+</li><li>
+4 of 10 at the Olympics!
+</li></ul>
+In all that was 22 flip-exhibiting competition segments (involving 28 "flips") out of 48 
+total segments!
+</p><p>
+Of course, the ISU then ignored all Loosemore's examples, and
+adopted OBO anyway.
+</p><p>
+Since the embarrassment then continued, 
+in 2003 Cinquanta
+decided on a new "fix" of the scoring problems &ndash; the numerical scores of
+skaters by judges 
+were to be <I>secret</I> so that nobody would know how any judge had scored any skater.
+That inspired a fan protest at the 2003 Worlds in which Cinquanta was personally 
+jeered by the audience.
+</p><p>
+Then in 2004 the ISU adopted an even-crazier system
+in which some judges were <i>randomly</i> chosen to be <i>ignored</i>!
+As a result, the final placing could and often did depend on the random number generator.
+In the 2006 worlds, according to an analysis by statistics professor
+John W. Emerson in
+<i>Chance</i>  20,2 (2007), Petrova and Tikhonov got the bronze because of the 3 
+randomly-chosen eliminated judges &ndash; 
+with the full 12-judge panel, they would have got silver.
+In the European Women's Championships Short Program, 
+<i>every</i> one of the top 5 skaters' final rankings, 
+except
+for the Gold medalist Irene Slutskaya, was determined by chance, i.e. would have
+changed with different randomness to <i>any</i> desired value.
+</p>
+<p>
+I personally would recommend the simple <a href="OlympBonaly.html#trim">trimmed mean</a>
+voting system for use
+in judging skating (diving, gymnastics) events.  It is far simpler than either
+BOM and OBO, it uses the judges' numerical scores instead of 
+ignoring them, and it truly abolishes
+"flip flops."
+</p>
+
+<h2> What are BOM and OBO, and how do "flip-flops" happen exactly? </h2>
+
+<p>
+How do these "flip flops" occur, exactly?
+We now present an example found by Loosemore inside the 
+skating-score data from   the men's short program
+at the 1998 Olympics.
+In the actual competition, these were 11th through 16th 
+placing skaters in the field of 29.  To save space we shall only list these
+6 skaters and their scores and pairwise tables (rather than the whole 29,
+which would need an enormous 29&times;29 table).
+</p>
+<P>
+Here are their marks, listed in their skate (chronological) order:
+</p>
+<br>
+
+<b>Michael Shmerkin</b>
+<BR><table><tr><td>4.7</td><td>5.2</td><td>5.1</td><td>4.7</td><td>4.9</td><td>4.9</td><td>4.9</td><td>4.7</td><td>5.1</td></tr>
+<tr><td>5.0</td><td>5.4</td><td>5.4</td><td>5.0</td><td>5.2</td><td>5.3</td><td>5.2</td><td>5.2</td><td>5.2</td></tr></table>
+
+<br><b>Michael Weiss</b>
+<BR><table><tr><td>4.6</td><td>5.1</td><td>4.9</td><td>4.8</td><td>4.8</td><td>5.0</td><td>4.9</td><td>4.6</td><td>5.0</td></tr>
+<tr><td>5.0</td><td>5.6</td><td>5.5</td><td>5.3</td><td>5.3</td><td>5.4</td><td>5.4</td><td>5.3</td><td>5.3</td></tr></table>
+
+<br><b>Szabolcs Vidrai</b>
+<BR><table><tr><td>5.0</td><td>5.0</td><td>5.2</td><td>5.1</td><td>5.1</td><td>5.2</td><td>5.1</td><td>5.2</td><td>5.2</td></tr>
+<tr><td>4.8</td><td>4.9</td><td>5.1</td><td>5.0</td><td>5.1</td><td>5.1</td><td>5.1</td><td>4.9</td><td>5.0</td></tr></table>
+
+<br><b>Yamato Tamura</b>
+<BR><table><tr><td>4.9</td><td>5.0</td><td>4.8</td><td>5.0</td><td>5.0</td><td>5.0</td><td>5.0</td><td>5.0</td><td>5.1</td></tr>
+<tr><td>5.2</td><td>5.2</td><td>5.3</td><td>5.0</td><td>5.2</td><td>5.0</td><td>5.1</td><td>4.8</td><td>5.3</td></tr></table>
+
+<br><b>Igor Pashkevitch</b>
+<BR><table><tr><td>4.6</td><td>4.8</td><td>4.9</td><td>4.5</td><td>4.9</td><td>4.9</td><td>4.7</td><td>4.5</td><td>4.8</td></tr>
+<tr><td>5.6</td><td>5.4</td><td>5.7</td><td>5.1</td><td>5.5</td><td>5.6</td><td>5.3</td><td>5.2</td><td>5.4</td></tr></table>
+
+<br><b>Viacheslav Zagorodniuk</b>
+<BR><table><tr><td>4.7</td><td>5.0</td><td>4.7</td><td>4.8</td><td>4.7</td><td>4.7</td><td>4.4</td><td>4.7</td><td>4.7</td></tr>
+<tr><td>5.5</td><td>5.8</td><td>5.5</td><td>5.5</td><td>5.3</td><td>5.6</td><td>5.3</td><td>5.1</td><td>5.5</td></tr></table>
+
+<P>
+The <b>BOM</b> scoring system is as follows.
+<ol>
+<li>
+Based on that judge's numerical scores, number the 
+skaters 1,2,3... from best to worst.
+Note that from then onward the old BOM (as well as the new OBO)
+system both <i>ignore</I> the actual numerical scores (such as "5.9") got by
+each skater, and only consider their <i>ordinal rankings</i> &ndash; e.g. if a judge
+scores Shmerkin 5.9 and Weiss 2.1, that counts the same as a judge who scores Shmerkin 2.5
+and Weiss 2.4.  
+</li><li>
+Find the best ranking X for which the skater has a majority of judges ranking him X or better.
+</li><li>
+Each skater's X-values are
+used to produce the overall placements of the skaters.
+This usually results in a large number of ties.
+</li><li>
+To break the ties, we use the majority size
+for that skater (e.g. a 7-judge majority saying CLINTON is rank 2-or-better,
+beats a 6-judge majority saying BUSH is rank 2-or-better).
+</li><li>
+But that still 
+usually results in lots of ties.
+So we then use the "total ordinals" of
+the judges in that majority.
+The total ordinal is the same thing as what voting theorists call the
+&quot;<a href="rangeVborda.html">Borda score</a>,&quot;
+<i>except</i> that only the ranks awarded by judges in that skater's majority
+are summed.  (E.g. if a 5-judge majority ranks CLINTON rank 6 or below, 
+say their 5 ranks for CLINTON are 3,6,3,2,1, then CLINTON's total ordinal would be
+3+6+3+2+1=15.)  Smaller total ordinals are better.
+</li><li>
+Ties can still happen, and if they do then BOM leaves them unbroken.
+</li></ol>
+
+<h3> "Flip-flops" under the old BOM scoring system </h3>
+
+<P>
+Here are the BOM rankings computed via the above procedure
+after each skate in our example.
+Each row in the results table shows the ordinals from the 9 judges, followed by the 
+majority size and place as well as (in parentheses) the total-ordinal
+tie-breaker when needed.
+For example, in the first row, Shmerkin has a 5-judge majority ranking him #1 
+(out of two skaters so far).   
+After three skates Vidrai, Shmerkin, and Weiss would be tied except that the total-ordinal 
+tiebreaker step ranks Vidrai first.
+We list the skaters in rank order after each new skate,
+e.g. after three skaters Vidrai is in first place, Weiss in second, and Shmerkin is third.
+</p>
+(Scores ranged from 0 to 6 in theory, but from 4.4 to 5.8 in practice for these skaters.)
+<br>
+<br>
+<b>After two skaters:</b>
+<br><table><tr><td>1. Michael Shmerkin</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td><td>2</td><td>1</td><td>1</td><td>-- 5/1</td></tr>
+<tr><td>2. Michael Weiss</td><td>2</td><td>1</td><td>2</td><td>1</td><td>2</td><td>1</td><td>1</td><td>2</td><td>2</td><td>-- 9/2</td></tr></table>
+
+<br><b>After three skaters</b>
+<br><table><tr><td>1. Szabolcs Vidrai</td><td>1</td><td>3</td><td>3</td><td>1</td><td>1</td><td>2</td><td>2</td><td>1</td><td>3</td><td>-- 6/2 (8)</td></tr>
+<tr><td>2. Michael Weiss</td><td>3</td><td>1</td><td>2</td><td>2</td><td>3</td><td>1</td><td>1</td><td>3</td><td>2</td><td>-- 6/2 (9)</td></tr>
+<tr><td>3. Michael Shmerkin</td><td>2</td><td>2</td><td>1</td><td>3</td><td>2</td><td>3</td><td>3</td><td>2</td><td>1</td><td> -- 6/2 (10)</td></tr></table>
+
+<br><b>After four skaters</b>
+<br><table><tr><td>1. Szabolcs Vidrai</td><td>2</td><td>4</td><td>3</td><td>1</td><td>1</td><td>2</td><td>2</td><td>1</td><td>4</td><td>-- 6/2</td></tr>
+<tr><td>2. Michael Weiss</td><td>4</td><td>1</td><td>2</td><td>2</td><td>4</td><td>1</td><td>1</td><td>3</td><td>3</td><td>-- 5/2</td></tr>
+<tr><td>3. Michael Shmerkin</td><td>3</td><td>2</td><td>1</td><td>4</td><td>3</td><td>3</td><td>4</td><td>2</td><td>2</td><td>-- 7/3</td></tr>
+<tr><td>4. Yamato Tamura</td><td>1</td><td>3</td><td>4</td><td>3</td><td>2</td><td>4</td><td>3</td><td>4</td><td>1</td><td>-- 6/3</td></tr></table>
+
+<br><b>After five skaters</b>
+
+<br><table><tr><td>1. Michael Weiss</td><td>5</td><td>1</td><td>3</td><td>2</td><td>5</td><td>2</td><td>1</td><td>3</td><td>3</td><td>-- 7/3</td></tr>
+<tr><td>2. Szabolcs Vidrai</td><td>3</td><td>5</td><td>4</td><td>1</td><td>2</td><td>3</td><td>2</td><td>1</td><td>4</td><td>-- 6/3 (12)</td></tr>
+<tr><td>3. Yamato Tamura</td><td>2</td><td>3</td><td>5</td><td>3</td><td>3</td><td>5</td><td>3</td><td>4</td><td>1</td><td>-- 6/3 (15)</td></tr>
+<tr><td>4. Michael Shmerkin</td><td>4</td><td>2</td><td>2</td><td>4</td><td>4</td><td>4</td><td>4</td><td>2</td><td>2</td><td>-- 9/4</td></tr>
+<tr><td>5. Igor Pashkevitch</td><td>1</td><td>4</td><td>1</td><td>5</td><td>1</td><td>1</td><td>5</td><td>5</td><td>5</td><td>-- 5/4</td></tr></table>
+
+<br><b>After six skaters</b>
+
+<br><table><tr><td>1. Michael Weiss</td><td>6</td><td>2</td><td>3</td><td>3</td><td>5</td><td>2</td><td>1</td><td>3</td><td>3</td><td>-- 7/3</td></tr>
+<tr><td>2. Szabolcs Vidrai</td><td>4</td><td>6</td><td>4</td><td>2</td><td>2</td><td>3</td><td>2</td><td>1</td><td>4</td><td>-- 5/3</td></tr>
+<tr><td>3. Yamato Tamura</td><td>3</td><td>4</td><td>6</td><td>4</td><td>3</td><td>6</td><td>3</td><td>4</td><td>1</td><td>-- 7/4</td></tr>
+<tr><td>4. Michael Shmerkin</td><td>5</td><td>3</td><td>2</td><td>5</td><td>4</td><td>5</td><td>4</td><td>2</td><td>2</td><td>-- 6/4</td></tr>
+<tr><td>5. Igor Pashkevitch</td><td>2</td><td>5</td><td>1</td><td>6</td><td>1</td><td>1</td><td>5</td><td>6</td><td>5</td><td>-- 7/5</td></tr>
+<tr><td>6. Viacheslav Zagorodniuk</td><td>1</td><td>1</td><td>5</td><td>1</td><td>6</td><td>4</td><td>6</td><td>5</td><td>6</td><td>-- 6/5</td></tr></table>
+
+<P><i>
+Notice how, although Shmerkin was initially ahead of Weiss and later Tamura, 
+that reversed as more competitors were marked. 
+This is exactly the kind of embarrassing BOM "flip-flop" that the new OBO
+scoring system  supposedly was designed to eliminate.
+</i>
+</p>
+<h3> Introduction to the new OBO system </h3>
+
+<P>
+Under the new OBO scoring system, the scoring is computed using a square table the 
+size of the number of competitors &ndash;
+in this case a 6&times;6 table since there are 6 skaters. 
+Each competitor is compared <i>pairwise</i> 
+(or "one-by-one," hence "OBO") to all the others to fill this table.
+</p>
+<P>
+In each comparison we
+note how many "votes" each skater received from the judges,
+counting it as a (pairwise) "win" for the skater who got the most votes. 
+Then, looking across each skater's row on the scoring sheet, 
+we count the <i>total number</i> of "wins" and use it to rank the skaters overall.
+Then the total number of "votes" (this is called "JiF" for "judges in favor")
+is used as a tie-breaker.
+</p>
+<p>
+<small>
+<b>Note for voting theorists:</b> 
+using as a skater's score, his total number of pairwise wins,
+is called the "Copeland" system in the voting literature; and the "JiF" score is
+called "Borda score" in the voting literature.  OBO is thus Copeland with
+Borda used as a tiebreaking method.
+Plain Copeland is generally regarded as unusable because
+it yields too many ties.
+</small>
+</p>
+<P>
+OBO does not change in any way the rules the judges 
+use to assign marks to a skater's performance; 
+it only affects how the marks are combined to produce the overall competition result. 
+So, it is possible to use the same  competition data
+(same marks, same skate order)
+to illustrate what the results would have been under the old BOM
+or new OBO (or any other rank-order-based) system.
+</p>
+Again to save space we only
+state the final 6-by-6 table (and all of the
+separate worksheets for comparing the marks from each judge for 
+each pair of skaters in the table have
+been omitted).
+The entries in this table show the ratio 
+of "wins" to the number of "votes" in each pairwise 
+comparison.  
+So for example, Smerkin got one "win" over Weiss, based on the fact 5 of the 9
+judges
+said Shmerkin outperformed Weiss.
+</p>
+<br>
+<table><tr><td><b>Skater</b></td><td><b>Shmerkin</b></td><td><b>Weiss</b></td><td><b>Vidrai</b></td><td><b>Tamura</b></td><td><b>Paskevitch</b></td><td><b>Zagorodniuk</b></td><tr>
+<tr><td>Shmerkin</td><td>--</td><td>1/5</td><td>0/3</td><td>0/4</td><td>1/5</td><td>1/5</td></tr>
+<tr><td>Weiss</td><td>0/4</td><td>--</td><td>1/5</td><td>1/6</td><td>1/5</td><td>1/6</td></tr>
+<tr><td>Vidrai</td><td>1/6</td><td>0/4</td><td>--</td><td>1/6</td><td>0/4</td><td>1/6</td></tr>
+<tr><td>Tamura</td><td>1/5</td><td>0/3</td><td>0/3</td><td>--</td><td>1/5</td><td>0/4</td></tr>
+<tr><td>Pashkevitch</td><td>0/4</td><td>0/4</td><td>1/5</td><td>0/4</td><td>--</td><td>1/5</td></tr>
+<tr><td>Zagorodniuk</td><td>0/4</td><td>0/3</td><td>0/3</td><td>1/5</td><td>0/4</td><td>--</td></tr>
+</table>
+
+<P>
+This, of course, only represents a small subset of the 
+competitors involved in the actual event. 
+Scoring the complete 29-skater competition
+via OBO would require a 29&times;29 table with 406=29&middot;28/2
+total pairings &ndash; each of which 
+requires an additional worksheet to compare marks from the 9 judges, for 407
+pieces of paper in all.
+</p>
+<P>
+Loosemore (who prefers BOM over OBO) says 
+the old BOM system would require only a single 29&times;9 worksheet &ndash;
+less cumbersome.   
+</p>
+
+<h3> Even more "flip-flops" under the new OBO scoring system! </h3>
+
+<P>
+Here are the skate-by-skate updates of the standings under OBO:
+</p>
+<br><b>After two skaters</b>
+
+<br><table><tr><td><b>Skater</b></td><td><b>Wins</b></td><td><b>Votes</b></td></tr>
+<tr><td>1. Shmerkin</td><td>1</td><td>5</td></tr>
+<tr><td>2. Weiss</td><td>0</td><td>4</td></tr></table>
+
+<br><b>After three skaters</b>
+
+<br><table><tr><td><b>Skater</b></td><td><b>Wins</b></td><td><b>Votes</b></td></tr>
+<tr><td>1. Vidrai</td><td>1</td><td>10</td></tr>
+<tr><td>2. Weiss</td><td>1</td><td>9</td></tr>
+<tr><td>3. Shmerkin</td><td>1</td><td>8</td></tr></table>
+
+<br><b>After four skaters</b>
+
+<br><table><tr><td><b>Skater</b></td><td><b>Wins</b></td><td><b>Votes</b></td></tr>
+<tr><td>1. Vidrai</td><td>2</td><td>16</td></tr>
+<tr><td>2. Weiss</td><td>2</td><td>15</td></tr>
+<tr><td>3. Shmerkin</td><td>1</td><td>12</td></tr>
+<tr><td>4. Tamura</td><td>1</td><td>11</td></tr></table>
+
+<br><b>After five skaters</a></b>
+
+<br><table><tr><td><b>Skater</b></td><td><b>Wins</b></td><td><b>Votes</b></td></tr>
+<tr><td>1. Weiss</td><td>3</td><td>20</td></tr>
+<tr><td>2. Vidrai</td><td>2</td><td>20</td></tr>
+<tr><td>3. Shmerkin</td><td>2</td><td>17</td></tr>
+<tr><td>4. Tamura</td><td>2</td><td>16</td></tr>
+<tr><td>5. Pashkevitch</td><td>1</td><td>17</td></tr></table>
+
+<br><b>After six skaters</a></b>
+
+<br><table><tr><td><b>Skater</b></td><td><b>Wins</b></td><td><b>Votes</b></td></tr>
+<tr><td>1. Weiss</td><td>4</td><td>26</td></tr>
+<tr><td>2. Vidrai</td><td>3</td><td>26</td></tr>
+<tr><td>3. Shmerkin</td><td>3</td><td>22</td></tr>
+<tr><td>4. Pashkevitch</td><td>2</td><td>22</td></tr>
+<tr><td>5. Tamura</td><td>2</td><td>20</td></tr>
+<tr><td>6. Zagorodniuk</td><td>1</td><td>19</td></tr></table>
+
+<P>
+What happened to cause a flip-flop in the standings? Not only was there the same situation as
+under the old system &ndash;
+with Shmerkin dropping behind Weiss and Vidrai after initially holding the lead
+&ndash; but now OBO generates an <em>additional</em> flip-flop
+when Zagorodniuk's marks caused Pashkevitch and Tamura to swap places!
+</p>
+<P>
+Looking closely at the table of pairwise comparisons, 
+the problem is that the "who-beats-who" relationships between skaters form complicated 
+<a href="CondorcetCycles.html">Condorcet cycles</a>.
+There is no possible way to rank this group of six skaters without going 
+against at least one of the "pairwise wins."  
+And
+going against any "win" will (if the skate order is improvident)
+cause the relative placements 
+of the two skaters concerned to flip-flop.
+</p>
+<a name="manycycle"></a>
+<P>
+Indeed, a little thought shows that OBO flip-flops are <i>only</i> possible in the presence
+of a Condorcet cycle: 
+because if we had a strict linear order of all skaters, then all the Copeland scores
+would be distinct, no "tiebreaking" would be needed, and the order would stay fixed 
+as more skaters entered the picture.
+From this we conclude that <i>at least 22 Condorcet cycles were present in
+the 48 year-1998 skating-events Loosemore examined</i>.
+</p>
+<P>
+Such flip-flops are not unique to the old
+BOM and new OBO systems. 
+Mathematicians have 
+<a href="ArrowThm.html">proven</a>
+that <i>any</i> scoring system based on rank-order votes will produce similar "flip-flops."
+</p>
+<p>
+You also can see   <a href="CondPF.html">this other proof</a>
+of a different theorem, showing as an immediate consequence that
+the OBO system will exhibit "no show paradoxes" in which a judge, by honestly
+ordering the skaters,
+will cause a worse gold-medalist (in her view) to be chosen 
+than if that judge had refused to
+score anybody.  Indeed an honest judge's  ranking of X <i>worst</i> can 
+be the direct cause of X winning gold, and a honest 
+judge's  ranking with X <i>best</i> can
+be the direct cause of X failing to win gold.
+</p>
+
+<h2> What does this tell voting theorists? </h2>
+
+<p>
+Most voting theorists have been unaware that any "Condoret voting system"
+had ever been used in an important real-life application.
+Recently <a href="Debian2003.html">Debian Linux</a> to elect its leader,
+and Wikipedia in some adminstrative votes,
+have adopted Schulze-beatpaths Condorcet voting.
+But the OBO voting system had <i>already</i> been
+used to judge at least 100 top-notch skating events
+and it is Condorcet 
+(i.e. a <a href="Glossary.html#condmeths">Condorcet winner</a>,
+whenever one exists, will always win gold).
+</p>
+<p>
+So we have, in these skating events,
+a treasure-trove of real data about Condorcet elections, 
+presently in quantity far exceeding
+all other
+known Condorcet elections.
+</p>
+<p>
+Meanwhile BOM is,
+to a good approximation, the same thing as <a href="MedianVrange.html">median-<i>rank</i></a>
+voting with a Borda-like tiebreaker added, which is also of interest since
+median-score-based <i>range</i> voting (which is not the same thing, but is related)
+was proposed by 
+<a href="BalinskiL.html">Balinski &amp; Laraki</a>, then attacked compared to
+ordinary mean-based range voting by 
+ <a href="MedianVrange.html">Smith et al</a>,
+all in complete ignorance of the fact that median-<i>rank</i> voting
+already been in wide use by skaters and then abandoned as a failure.
+</p>
+<p>
+How well did BOM and OBO perform?
+In my view, OBO has been an embarrassing failure for the skating world. 
+(And BOM also failed, not only in my view, but in the view of the International Skating Union.)
+BOM and OBO both are far too complicated and both yielded and continue to yield
+huge numbers of
+embarrassing "flip-flops," each of which is a public relations disaster.
+(As I said, I personally would 
+recommend the simple <a href="OlympBonaly.html#trim">trimmed mean</a>
+voting system instead, which is similar to <a href="RangeVoting.html">range voting</a>
+except based on trimmed mean rather than mean.)
+</p><p>
+But it would be better if more skating <a href="TidemanData.html">data</a>
+were acquired and analysed to
+estimate the real-world frequencies of "no-show paradoxes," 
+"Condorcet cycles,"
+and other pathologies.  
+That remains to be done.
+</p>
+
+<hr>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

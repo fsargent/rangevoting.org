@@ -1,0 +1,360 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Debian elections case study
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> The Debian leader elections (especially 2003) </H1>
+
+<p><small>This page written 2005.</small></p>
+
+<H2> Why Debian elections are currently  uniquely important real-world data </H2>
+<p>
+Very few elections have both
+<ol>
+<li>
+been conducted using rank-order preference ballots
+</li>
+<li>
+all the data (i.e. <i>all votes</i>) are publicly available on the internet
+</li>
+<li>
+the election was both large, consequential, and real.
+</li>
+</ol>
+</p>
+
+<p>
+So when we get such rare and treasured data &ndash; gold! &ndash; it is
+advisable to pay attention to it.
+The <i>Debian Linux Developers</i> hold annual such elections.
+Indeed, these may be the <i>only</i> elections in the entire
+world with all these properties.
+<small>(Yes, there are plenty of ranked-ballot elections
+held all the time, in, e.g. Australia, but the vote set is never, or certainly very rarely, made
+available on the internet.
+That may be an intentional plan intended to prevent anyone from noticing
+bad properties of their voting system or election.  
+Later note: that was written in 2004.  The situation now is somewhat better since
+I know of about 10 IRV elections whose full data has been put on the internet, albeit
+in such a horrible format I could not bring myself to analyse them. With time more may 
+appear, and I would appreciate anybody taking the effort to convert them to a more reasonable 
+data format.  Debian already was reasonable.)</small>
+</p>
+
+<p>
+These are pretty serious elections.
+The voters really care who wins, they have pre-election
+intercandidate debates transcribed and published worldwide
+via the internet, and the votes are conducted electronically via a special software 
+vote-by-internet system.
+</p>
+
+<p>
+In the 7 Debian-leader elections held so far, all 7 have featured a 
+<a href="Glossary.html">Condorcet Winner</a>, who (by the laws of Debian) was therefore the 
+election winner.  (Also, every election method based on starting with the "Smith set"
+of candidates that pairwise dominate all non-Smith-set candidates, then applying
+some other election method within the Smith set, would in these 7 cases yield
+the same winner since the Smith set in all 7 cases was a singleton.)
+However, it is also possible for us to consider who would have been the winner
+under different election systems but with the same votes.  That is possible because
+in all the Debian elections after 2000 (i.e. 5 so far), the full vote dataset is
+publicly available. 
+</p>
+
+<p>
+Rob Lanphier recently developed a beautiful piece of software called "ElectoWidget" for
+carrying out elections using a variety of possible voting systems.  We converted the 2001-2005
+Debian vote sets into ElectoWidget format and ran it.  The results in full beautiful detail
+are here:
+<a href="http://wikitest.electorama.com/wiki/index?title=Election:2001_DPL">2001</a>,
+<a href="http://wikitest.electorama.com/wiki/index?title=Election:2002_DPL">2002</a>,
+<a href="http://wikitest.electorama.com/wiki/index?title=Election:2003_DPL">2003</a>,
+<a href="http://wikitest.electorama.com/wiki/index?title=Election:2004_DPL">2004</a>,
+<a href="http://wikitest.electorama.com/wiki/index?title=Election:2005_DPL">2005</a>.
+</p>
+
+<p>
+Our goal here is to summarize the highlights of these results.
+</p>
+
+<H2> How we converted the data to allow range and approval voting </H2>
+<p>
+Before we start, we need to mention a format issue.
+Range Voting wants the candidates to get <i>scores</i>, whereas Debian originally
+only asked voters for
+candidate <i>orderings</i> (with equalities allowed in the orderings).  
+And Approval Voting and DMC Voting want candidates
+to be <i>approved</i> or disapproved</i>.
+</p>
+
+<p>So, we had to fake it.  Here's the conversion recipe we used:
+</p>
+<ul><li>  All unranked candidates were un-approved and pre-converted to coequal bottom rank.
+</li><li>  A range of -N to +N was used in an N-candidate election (where <b>NOTA</b> is
+included in the value N of the count).
+</li><li>  <b>NOTA</b> ("None Of The Above," a pseudo-candidate who also was available in
+all the Debian elections) always received a score of 0, if ranked.
+</li><li>  All candidates above <b>NOTA</b> were given a score of (N-DebianRanking),
+causing the top ranked candidate to get N, the second N-1, and so on, in an
+N-candidate election.
+</li><li>  All candidates below <b>NOTA</b> were given a score of (NOTArank-DebianRanking)
+or the minimum allowed score. 
+Thus a candidate one slot below <b>NOTA</b> was given -1, two slots below -2, etc.
+</li><li>  <b>NOTA</b> and all candidates ranked equal or below <b>NOTA</b> 
+are un-approved; candidates ranked above <b>NOTA</b>
+are approved.
+</li></ul>
+
+<p>
+We then proceeded with the election.
+</p>
+
+<H2> Highlights (and lowlights) of the 2001-2005 Debian elections </H2>
+<dl>
+<dt>
+<b>
+<a href="http://www.us.debian.org/vote/2000/vote_0007">1999:</a></b> 4 candidates+NOTA (None Of The Above); <b>Wichert Akkerman</b> won.
+</dt>
+<dd>
+  208 valid votes.
+</dd>
+<dt>
+<b><a href="http://www.us.debian.org/vote/2000/vote_0007">2000:</a></b> 
+4 candidates+NOTA; <b>Wichert Akkerman</b> won.
+</dt>
+<dd>
+ 216 valid votes.
+Debian did not make the full vote dataset available for
+the 1999-2000 elections so we are unable to say more.
+</dd>
+<dt>
+<b><a href="http://www.debian.org/vote/2001/vote_0001">2001:</a></b> 
+4 candidates+NOTA; <b>Ben <b>Collins</b></b> won.
+</dt>
+<dd>
+311 valid votes.  If this election is done via either IRV or plurality
+instead, <b>Collins</b> still wins, but
+there is a near-tie &ndash; a one-vote difference in round 1 &ndash;
+between <b>Kumria</b> and <b>NOTA</b> which could have delayed the IRV election
+(although fortunately in this particular election 
+the outcome of that tie cannot matter, so that delay is avoidable).
+All methods agreed <b>Collins</b> won, except that
+Approval voting said <b>Bdale Garbee</b> won.
+</dd>
+<dt>
+<b><a href="http://www.us.debian.org/vote/2002/vote_0001">2002:</a></b>
+3 candidates+NOTA; <b>Bdale Garbee</b> won.
+</dt>
+<dd>
+   475 successful voters. 509 valid votes (plus 122 rejected as invalid). 
+N.b: Debian allowed voters to vote
+more than once, but only their last vote counts.
+(All methods agreed on the winner.)
+</dd>
+<dt>
+<b><a href="http://www.debian.org/vote/2003/vote_0001">2003:</a></b>
+4 candidates+NOTA; <b>Martin Michlmayr</b> won.
+</dt>
+<dd>
+488 successful voters; 510 accepted votes (plus 200 rejected).
+This was the  hardest one of these 7 elections  to call;
+in all the other elections 2001-2005 all of the following methods all
+agreed on the winner: Schulze-beatpaths, Plurality, IRV, DMC, Simpson-Kramer-minmax-margins, 
+minmax-wv, Copeland, Range-Voting, Approval-Voting, 
+and every Condorcet method.  But in this election,
+these methods called it for Michlmayr, Robinson, Robinson, Michlmayr,
+Michlmayr, Michlmayr, Michlmayr, Garbee*, Garbee*, and Michlmayr respectively.
+<small>(The asterisk is that range and approval voting are
+not really applicable since these ballots
+were not originally cast as range ballots; this is with our standard scheme
+for conversion of these ballots into range form, which can only approximate what
+the voters would have done.  Range and Approval then also get
+a different winner in 2005, and Approval gives Garbee the win in 2001.)</small>
+<ul>
+<li>
+   Total votes tallied=488, which is 58.6% of all possible votes, according
+   to Debian. </li><li>
+    The fact that 200 votes were rejected as invalid versus 510 accepted as valid,
+   even after 5 years of experience and the best software developers in the world voting 
+   and programming, strikes me as very strong evidence that Debian's Schulze
+   beatpaths voting system is just too complicated. It perhaps also proves that IRV voting
+   is also just too invalid-vote-genic.
+<br>
+A closer look:
+According to Debian (and correcting some Debian typos)
+of 710 ballots, 533 passed "SIG" check, meaning 177 were
+non-"SIG" and hence rejected.  All these passed "LDAP" check.
+Then 23 "bad ballots" were rejected, 
+leaving 510 valid votes.
+Of these, some were votes cast more than once by the same voter,
+in which case the earlier edtions were discarded; the final tally was of 488
+votes, one per successful voter.  (There may also have been, indeed probably were,
+many "unsuccessful" voters who were unable to cast a valid vote.)
+200/710 is a 28% rejection
+rate, which is enormous.  23/533 is a 4.3% rejection rate, which is
+also quite large by USA standards.  However, a single persistent re-voter could
+have caused this high rejection rate (a phenomenon which could not happen in USA elections)
+so perhaps this means nothing.
+I do not know what "SIG" and "LDAP" and "Bad Ballot" mean.
+</li><li>
+    Although <b>Michlmayr</b> was the Condorcet Winner, he only won pairwise versus <b>Garbee</b>
+   by 4 votes (228 versus 224), hence <b>Michlmayr</b> was close to not being a CW.</li><li>
+    <b>Branden Robinson</b> had the most top-rank votes (158 sole-top votes out of 453 ballots 
+   cast with somebody sole-top) and hence presumably was the Plurality winner.  <b>Robinson</b>
+   was also the <a href="rangeVirv.html">Instant Runoff Voting (IRV)</a>
+   winner <i>provided</i> ballots with duplicate rankings are truncated
+   as soon as the duplicate occurs, as the <a href="http://www.fairvote.org">CVD</a> 
+   recommends, and in general using precisely the IRV rules which the CVD recommends.</li><li>
+    There seemed to be a preference toward <b>Michlmayr</b> among <b>Garbee</b>
+voters, and vice versa. 
+   This helps explain why <b>Branden Robinson</b> lost, despite the most first-place votes.</li><li>
+    However, this also means the <b>Robinson</b>-supporters could have prevented </b>Michlmayr</b>
+   from being a Condorcet Winner, by agreeing among themselves to rate 
+<b>Garbee</b>><b>Michlmayr</b>
+   a few percent more often.  In that case <b>Garbee</b>
+would have been the Condorcet Winner.
+   It thus is conceivable that <b>Garbee</b>
+really "should" have won, but was prevented from doing
+   so as a result of misfired strategic voting by the <b>Robinson</b> (or <b>Zadka</b>) supporters aiming
+   to prevent one or the other from being a Condorcet Winner.</li><li>
+    Rob Lanphier points out that if this single vote<br>
+<center>
+      <b>Garbee</b> > <b>Michlmayr</b> > <b>Robinson</b> > <b>Zadka</b> > <b>NOTA</b>
+</center>
+   were eliminated from the picture, then <b>Michlmayr</b> would have won the IRV election
+   (despite the fact that this voter actually ranked <b>Michlmayr</b> above <b>Robinson</b>)!
+   In other words, this IRV election hinged on a single vote, and
+   exhibited a "no show paradox" &ndash; that voter would have been "better off" by
+   "not showing up"!</li><li>
+    Rob Lanphier also points out that if this other single vote
+<center>
+      <b>Michlmayr</b> > <b>Garbee</b> > <b>Robinson</b> > <b>Zadka</b> > <b>NOTA</b>
+</center>
+   instead were eliminated from the picture, then <b>Garbee</b> would have won the IRV election
+   (despite the fact that this voter actually ranked <b>Garbee</b> above <b>Robinson</b>)!
+   In other words, this IRV election <i>also</i> hinged on a different single vote, making it,
+   in some sense, a 3-way near-tie as far as IRV is concerned &ndash; and there also
+   exhibited a "no show paradox" &ndash; this voter too would have been "better off" by
+   "not showing up"!  Both of these votes also exhibit severe "non-monotonicity," i.e.
+   in both cases raising "<b>Robinson</b>" to top rank in these votes actually would
+   have caused <b>Robinson</b> to <i>lose</i> the IRV election!
+</li>
+<li>
+Ties and near-ties are very common in IRV elections because there is
+an opportunity for one every single round.  (This election features an exact 146-146 tie
+between <b>Garbee</b> and <b>Michlmayr</b> in round 3.)  In Range Voting ties are inherently
+far less common.  It is also possible that, if this election had been held using
+0-99 range voting, then voters would have used their (new) ability to express different
+intensities of preference in such a way as to say, e.g. that they preferred <b>Garbee</b>
+over <b>Robinson</b> by <i>more</i> than they prefered <b>Michlmayr</b> over <b>Garbee</b>.  It is possible
+that the range voters, by acting in this manner, would have yielded a clear victory
+for somebody.  We will never really know that since range-style votes were never collected.
+But with our standard scheme for converting the ballots to range-style and
+approval-style ballots, 
+<b>Garbee</b> came out the clear winner.
+The Condorcet method Debian actually used would not have changed its winner
+unless at least 4 (and probably 5) votes changed, so, at least in this
+particular instance, it was less manipulable and less subject to "tie-crises" than IRV,
+where everything hung on single votes.
+With Range (-5 to +5 scale, NOTA=0), the totals were
+<b>Garbee</b>=1776,
+<b>Michlmayr</b>=1672,
+<b>Robinson</b>=1560,
+<b>NOTA</b>=0,
+<b>Zadka</b>=332, so that at least about 8 range votes
+would have needed to change to
+alter the winner. Thus range, in this case, was considerably less manipulable 
+and yielded a clearer victory.  This suggests range was more-arguably
+correct (at least with our
+ballots) so that the truest
+winner was <b>Garbee</b>.
+</li>
+</ul>
+</dd>
+<dt>
+<b><a href="http://www.us.debian.org/vote/2004/vote_001">2004:</a></b>
+3 candidates+NOTA; <b>Martin Michlmayr</b> won.
+</dt>
+<dd>
+   482 successful voters. 506 accepted votes (plus 52 rejected).  All methods agree.
+</dd>
+<dt>
+<b><a href="http://www.us.debian.org/vote/2005/vote_001">2005:</a></b>
+6 candidates+NOTA; <b>Branden Robinson</b> won.
+</dt>
+<dd>
+   504 successful voters. 531 accepted votes (plus 69 rejected).
+All methods agree <b>Robinson</b> won, <i>except</i> range and approval voting say
+<b>Anthony Towns</b>
+won (with our standard method for converting the ballots into range ballots).
+The range victory was very narrow, with <b>Towns</b> getting a total range vote of
+1975 versus <b>Matthew Garrett</b> caming in a close second with 1969.  However,
+<b>Robinson</b> with 1903 
+was far in <i>third</i> place.
+Altering only a few votes could 
+change the range-winner  to <b>Garrett</b>, but a fairly large number of votes would need
+to change to give the victory back to <b>Robinson</b>.
+<b>Robinson</b> was the Condorcet winner, with his closest matchup being against <b>Towns</b>,
+whom he beat pairwise 245 to 222, i.e.  12 votes would need to change
+to alter Debian's Condorcet winner. 
+Approval again gave <b>Towns</b> the win with 389 approvals and <b>Garrett</b>
+second with 382, with <b>Robinson</b> coming in <i>third</i> with 375.  Thus at least 14
+approval votes (and probably a good deal more) would have needed to change to
+move the approval-victory from Towns back to Robinson.
+All this suggests that perhaps
+Towns was the clearest winner, in which case
+again range was more-right than the other methods.
+</dd>
+</dl>
+
+<H2> Real-world lessons learned from this real-world data </H2>
+
+<p>
+IRV came out looking very bad in the Debian 2001-2005 elections
+&ndash; in these, the only 5 elections with full data available,
+IRV encountered a horrible nightmare in 2003 with just about everything horrible
+that could happen, actually happening &ndash; <i>and</i> in 2001 IRV also suffered a 1-off
+near-tie which (fortunately) did not result in a nightmare in this case, but 
+certainly represented a "close shave."
+</p>
+
+<p>
+At least with our standard scheme for converting the Debian ballots to range ballots,
+<i>range and approval voting</i>
+both gave <i>different winners</i> in both 2003 and 2005 than every other 
+method we tried.  (And in 2001, Approval's winner differed from Range's.)
+<i>If</i> those converted ballots had really been what the Debian voters intended, then
+I think there would be a good case that all those other methods gave the <i>wrong winners</i>
+in both those years.  This demonstrates the fact that <i>intensity of 
+preference</i> information
+really does matter.  Often.  In real life. 
+</p>
+
+<p>
+All the other methods all entirely disregard intensity information;  only
+range takes it into account.  That seems to indicate range is quite superior
+in practice to all the other methods &ndash; would it really be best 
+if, say, Towns and Robinson
+were each preferred over the other by about 250 voters, but with Towns always preferred
+by a <i>lot</i> and Robinson by a little, for Robinson still to win?
+</p>
+
+<br>
+<p><a href="Peru06.html">Peru election of 2006</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

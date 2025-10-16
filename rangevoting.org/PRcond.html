@@ -1,0 +1,104 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Example where Condorcet very opposed to PR-STV
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> PR-STV can fail to elect landslide beats-all winners </H2>
+<H3> Greatly outperformed by Reweighted Range Voting (<a href="RRV.html">RRV</a>) in such cases </h3>
+
+<p>
+Let the candidates be
+A,B,C,D,E,F and suppose
+rank-order voting (Hare/Droop STV-PR system) is used to
+elect the top 5. Assume there are 100 voters in all.
+</P>
+<table bgcolor="yellow" cellspacing="2" cellspacing="2">
+<tr><th>#voters</th><th>their rank-order vote</th></tr>
+<tr><td>17</td><td>B>A>C>D>E>F</td></tr>
+<tr><td>17</td><td>C>A>D>E>F>B</td></tr>
+<tr><td>17</td><td>D>A>E>F>B>C</td></tr>
+<tr><td>17</td><td>E>A>F>B>C>D</td></tr>
+<tr><td>17</td><td>F>A>B>C>D>E</td></tr>
+<tr><td>15</td><td>A>B>C>D>E>F</td></tr>
+</table>
+<p>
+In this example, <b>A</b> is preferred versus every rival
+(such as B) by a <b>huge 83-to-17 majority</b>, far larger than
+the greatest landslide in US presidential election history.
+So if it were a head-to-head A versus B race
+(or A versus anybody else),
+A would win huge.
+</p><p>
+<I>However</i>, the Hare/Droop PR-STV system used in, e.g. Ireland, Australia,
+and for nominations for many OSCAR cinema awards,
+will eliminate A in round 1.
+In other words the 5 worst candidates B,C,D,E,F are the
+5 winners
+but not A who would seem fairly clearly to be the
+best.   This is even though we are <i>trying</i> to make it <i>maximally</I> 
+easy to win by having 5 winners out of 6 candidates &ndash; <i>still</i>
+the hugely-favored A loses!
+</p><p>
+Why does this happen? Two ways to look at it:
+</P>
+<ol>
+<li>
+PR-STV ignores a lot of what a lot of the voters say.  For example, the fact 85 voters
+ranked A second, is <i>ignored</i> by PR-STV.   It <i>solicits</i> full rankings from the voters, 
+thus giving them the deceptive impression it cares what they say about non-top-ranked
+candidates.  But in this election, it doesn't.  It never even looks at them.
+</li><li>
+The desire to elect a <i>good</i> winner can <i>conflict</i> with the desire for
+<i>proportional representation.</i>  There are 5 "factions" here, each 
+"well-represented" by B,C,D,E,F (the thinking goes).  PR-STV considers it
+irrelevant whether everybody 
+else besides their loyalists hates B,C,D,E, and F.
+</li></ol>
+</p><p>
+This election also serves as a good example where <a href="RRV.html">RRV</a>
+(reweighted range voting) could behave significantly better than PR-STV.
+RRV would almost-certainly elect A as the first winner, in this scenario.
+I find it hard to believe that the virtues of "balancing the badness"
+by fully-satisfying PR-STV's notions of "proportionality,"
+here are worth the cost to society of eliminating the clearly-best candidate.
+</p><p>
+In the example at top, many of the details do not matter. For example
+</p>
+<table bgcolor="yellow" cellspacing="2" cellspacing="2">
+<tr><th>#voters</th><th>their rank-order vote</th></tr>
+<tr><td>17</td><td>B>A>xxx</td></tr>
+<tr><td>17</td><td>C>A>xxx</td></tr>
+<tr><td>17</td><td>D>A>xxx</td></tr>
+<tr><td>17</td><td>E>A>xxx</td></tr>
+<tr><td>17</td><td>F>A>xxx</td></tr>
+<tr><td>15</td><td>A>xxx</td></tr>
+</table>
+<p>
+where xxx means "it does not matter how the rest are ordered"
+also works to demonstrate the same pathology.
+</p>
+<p>
+We should also note that this pathology is not merely hypothetical.  It appears to have occurred
+in various <a href="OscarPapers.html">OSCAR</a> votes in which superb movies, flagged by
+the judgment of history as among the  best of all time, failed even to get <i>nominated</i>
+for "best picture" that year!
+</p>
+<br>
+<p><a href="STVPRunger.html">Another STV-PR election analysed by Steve Unger</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

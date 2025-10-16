@@ -1,0 +1,75 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - Answer to puzzle ?? - Median and Average and Noise in Both
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to puzzle ?? - Median and Average and Noise in Both? </H2>
+
+<p><b>Puzzle</b><br>
+Given N scorers who each randomly independently choose a score from the uniform distribution
+on the real interval [0,1], show:
+</p>
+<ol type="a">
+<li>
+The mean score is 0.5.
+</li><li>
+The median score is 0.5.
+</li><li>
+The root-mean-square "noise" in the mean score, is &nbsp;  (12N)<sup>-1/2</sup>.
+</li><li>
+The root-mean-square "noise" in the median score, is 
+&nbsp; (8+4N)<sup>-1/2</sup>
+&nbsp;  if N is odd.  In other words, median is noisier than mean for each N&gt;1
+(both are the same if N=1).
+</li></ol>
+
+<h2> Answers</h2>
+
+<p>
+<b>a.</b>
+N&int;<sub>0&lt;x&lt;1</sub> x = N/2, then divide by N.
+</p>
+<p>
+<b>b.</b>
+Reflection symmetry shows median has to be at 0.5.
+</p>
+<p>
+<b>c.</b>
+N<sup>-1</sup> &int;<sub>0&lt;x&lt;1</sub> (x-0.5)<sup>2</sup>dx = 1/(12N).
+</p>
+<p>
+<b>d.</b>
+The probability density the median lies at m is proportional to
+&nbsp; m<sup>H</sup>(1-m)<sup>H</sup> &nbsp; if &nbsp; N=2H+1.
+The mean location of the median is then
+</p><center>
+&int;<sub>0&lt;m&lt;1</sub>m<sup>H</sup>(1-m)<sup>H</sup>mdm 
+<big>/</big>
+&int;<sub>0&lt;m&lt;1</sub>m<sup>H</sup>(1-m)<sup>H</sup>dm
+= 1/2
+</center><p>
+confirming answer (b).
+The mean squared noise in the median is
+</p><center>
+&int;<sub>0&lt;m&lt;1</sub>m<sup>H</sup>(1-m)<sup>H</sup>(m-1/2)<sup>2</sup>dm 
+<big>/</big>
+&int;<sub>0&lt;m&lt;1</sub>m<sup>H</sup>(1-m)<sup>H</sup>dm
+= (1/4) / (3+2H). 
+</center><p>
+[All the integrals are Euler beta-function integrals.]
+This is
+</p><center>
+&lang;Noise<sup>2</sup>&rang;
+=  1/(8+4N).
+</center>
+
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

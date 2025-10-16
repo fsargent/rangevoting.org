@@ -1,0 +1,593 @@
+<html>
+<head>
+<title>
+RangeVoting.org - "Borda count" system
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>Why Range Voting is better than Borda Voting</H2>
+
+<p>
+<a href="#Summary">(Skip to conclusions)</a> &nbsp;
+<a href="BordaExec.html">(Executive summary)</a>
+</p>
+
+<p>
+<b>1. What they are.</b>
+<i>Range voting</i>: In an N-candidate election, each vote
+is an N-tuple of numbers each in the range 0 to 99.
+The Kth number in the tuple is a "score" for candidate K.
+You take the average of all the Kth entries to find
+the average score for candidate K.  The candidate
+with the highest average score wins.
+(Voters are allowed to leave an entry <i>blank</i> to denote
+"don't know anything about that candidate."  Blank entries
+not incorporated into average.)
+</p>
+
+<p>
+<i>Borda</i>: Each vote is an ordering of the N candidates
+from best to worst.  (Voters are <i>not</i> allowed to omit a
+candidate they know nothing about, and are <i>not</i> allowed
+to regard two candidates as <i>equal</i>.)
+The top ranked candidate gets a score of N-1, the bottom ranked 0,
+and more generally the Kth-ranked gets a score of N-K.
+All scores are summed and the candidate with the highest
+total score wins.
+</p>
+
+<p>
+Range and Borda voting are actually very similar as far as their advantages are concerned,
+but differ a lot with respect to Borda's disadvantages.
+(One way to see it: the only difference between 
+Borda and RV is that RV lets you <i>choose</i> what point assignments you'll give 
+to the candidates; while Borda sometimes makes the choice for you.
+That makes RV more democratic, expressive,  and responsive 
+than Borda.)
+</p>
+
+<a name="bossbulb"></a>
+<p>
+<b>2. Strategic Borda Voting.</b>
+The biggest problem with Borda is that it reacts very badly to "strategic voting."
+</p>
+
+<p>
+I remember one time when I worked for NEC Research Institute and we had to vote to decide
+who, among about a dozen candidates, to hire.  There were several camps, each favoring a 
+different candidate who excelled in one way or another.  There were also many mediocre 
+candidates &ndash; nonentities &ndash; whom nobody particularly wanted.  Arguments grew impassioned.
+</p>
+
+<p>
+So then our boss, who definitely was several watts shy of being the brightest 
+bulb in the box, said "we have to be fair about this. Let's vote."  
+And he right then (apparently) independently reinvented the Borda count
+system and told us all to provide our Borda votes (preference orderings) &ndash; by
+secret ballot of course, since he'd read in some managerial
+handbook that secret ballots were better.  Then he'd add them up.
+<font size="-1">There were one or two attendees who immediately
+objected that "strategic voting" would
+foul that up.  My boss, of course, wasn't going to listen to a bunch of whining nerds
+about that.</font>
+</p>
+
+<p>
+Well, of course, since everybody there was an arrogant pushy scientist, everybody
+quickly figured out that the thing to do was to rank your favorite first,
+then artificially rank all of his perceived major rivals artificially last.
+Finally, by the rules of the Borda system, the non-entities had to be ranked
+somewhere in the middle.  (Of course, you <i>could</i> honestly rank all the top candidates
+top, but that would be like having one-tenth of a strategic vote, unacceptably weak.
+Nobody could afford to be that stupid and ineffectual.  Plus, there was no public
+embarrassment about submitting lies in your ballot, since everybody's ballot was secret.)
+Then, my boss made a great show of closing his eyes and shuffling all the ballots... 
+then opened them and added them up... and golly... that was odd... the 
+most-favored candidates all seemed to be ones that had been dismissed as
+nonentities before... they must have a good deal more support than he'd 
+realized...  hmm... the result-order really seems quite illogical and random... 
+but after all, this clearly IS the most fair possible voting system, so we have to
+concede that Mr. Putz really is the truly most-favored candidate, unexpected though
+he may be... ok, meeting over, thanks for all your input, folks.
+</p>
+
+<p>
+NEC Research Institute eventually collapsed and nearly all its scientists were fired.
+This particular meeting, in its small way, was one contribution to its downfall.
+(The parent company NEC still survives, thanks to a bailout by the Japanese government.)
+</p>
+
+<a name="DH3ex"></a>
+<pre>
+   AS A PICTURE:  if the 3 good candidates are A,B,C then the strategic votes are:
+    A > nonentities > B > C      (cast by about 1/3 of the voters)
+    B > nonentities > C > A      (cast by about 1/3 of the voters)
+    C > nonentities > A > B      (cast by about 1/3 of the voters)
+   ----------------------------------------------------------------
+    total:  A,B, and C each get an average score of about N/3, 
+       whereas the nonentities get, on average, a score of about N/2.
+       So a nonentity always wins and the 3 good candidates always
+       are ranked below average.  In this kind of scenario Borda actually
+       performs worse than plurality voting.
+</pre>
+
+<p>
+Incidentally, this "<a href="DH3.html">DH3 pathology</a>" 
+is both very serious (near-pessimal candidate
+elected) and very common (occurs whenever  there are 3 comparable rivals) and it 
+happens not only under Borda voting, but under all the commonly-touted
+voting systems of "Condorcet type."
+This severe reaction to strategic voting seems a very good reason to discard
+all Condorcet-type voting methods!
+</p>
+
+<p> <a name="Barbera"></a>
+<small>
+<b>Here's another related anecdote about Borda, related by Steve Eppley:</b>
+(Salvador Barbera told this story during his course on strategy-proofness at 
+Caltech several years ago, and insisted it was a true story.) 
+Once upon a 
+time at a major university in Europe, the economics department was 
+hiring a new colleague. There were 4 applicants: One was a world-class 
+macroeconomist, one was a world-class microeconomist. The other two were 
+mediocre, one clearly better than the other. When it came time to select 
+one by voting using Borda, about half the department preferred the 
+macroeconomist, with the microeconomist as their second favorite. The 
+rest of the department preferred the microeconomist, with the 
+macroeconomist as their second favorite. They each had a pretty good 
+understanding of each other's sincere preferences, and thus expected the 
+election would be close. You can guess what happened: When they voted, 
+each voter raised the two mediocre candidates over his/her second 
+favorite, hoping to manipulate the outcome if the Borda count was close. 
+As a result, one of the mediocre candidates was voted everyone's second 
+choice and had the largest Borda count.
+</small>
+</p>
+
+<p>
+<b>
+3. Contrast this with Strategic Range Voting.
+</b>
+Strategic voting also hurts us in the range system, but not nearly as much.  For example,
+in the scenario above, nobody would feel strategically forced to middle-rank the nonentities, 
+and in fact, they would, quite honestly, rank them last.  Hence, all the votes would
+consist of 99s and 0s for the good candidates, and 0s for the nonentities.
+(The 0s for the good candidates would be dishonest strategic attempts to hurt
+rivals.)  Despite this strategic dishonesty, one of the 3 good candidates
+would still necessarily win.
+</p>
+
+<p>
+<b>
+4. Voter Expressivity &ndash; and What if the voters actually are honest?
+</b>
+Well,  they can be more honest and more expressive with range voting than with 
+Borda voting, so we would expect better results.
+</p>
+
+<p>
+In range voting, voters can express the idea that they think 2 candidates are <i>equal</i>.
+In Borda, they cannot. 
+</p>
+
+<p>
+Range voters can express the idea they are <i>ignorant</i> about a candidate and want to leave the
+task of rating him to other, hopefully more knowledgeable voters.  In Borda, they
+can't choose to do that.  
+</p>
+
+<p>
+Borda voters who decide, in a 3-candidate election, to rank A top and B bottom,
+then have no choice about C &ndash; they have to middle-rank him and can in no way express
+their opinion of C.   In range voting, they can.
+</p>
+
+<p>
+If you think  A>B>C>D>E,  undoubtably some of your preferences are more <i>intense</i>
+than others.    Range voters can <a href="SmittyExp.html">express</a> that.  Borda voters cannot.
+</p>
+
+<p>
+Surveys show that a lot of voters want to just vote for one candidate, plurality-style.
+In range voting they can do that by voting (99, 0, 0, 0, 0, 0).
+With Borda, they can't do it.
+<font size="-1">
+[Asterisk: Borda with ballot "truncation" 
+would allow plurality-style voting, which also goes some way to allowing expression
+of ignorance about some candidates, albeit only a downward-biased sort of ignorance.
+But permitting this kind of Borda voting gives up various beautiful mathematical properties
+discussed in Donald G. Saari's books...]
+</font>
+</p>
+
+<p>
+<b>
+5. Strategy and 2-Party Domination.
+</b>
+Most will, in an election like Bush v Gore v Nader 2000,
+exaggerate their good and bad opinions of Bush and Gore by artificially ranking
+them first and last, even if they truly feel Nader is best or worst.
+They will do this in order to give their vote the "maximum possible impact"
+so it is not "wasted".  (If they voted Nader top, then their vote would only
+have <i>half</i> the impact they get by exaggerating Gore versus Bush.
+They can't afford to waste half their vote like that because their opponents
+aren't going to be that stupid.)
+Once they make this decision, with Borda,  Nader automatically
+has to go in the middle slot, they have no choice about him.  If all
+voters behave this way, then automatically the winner will be either
+Bush or Gore.  Nader can <i>never</i> win a 3-candidate
+Borda election with this kind of strategic voters.
+(Unless it is an exact 3-way tie and the tie-break goes Nader's way,
+which'll never happen in reality. Note: Nader <i>can</i> win this kind of election if there
+are <i>more</i> than 3 candidates.)
+</p>
+
+<p>
+In view of this, third parties would be silly to push Borda.  They should advocate range.
+</p>
+
+<p>
+Analogously, in range voting, if the voters exaggerate and give Gore=99 and Bush=0 
+(or the reverse) in order to get maximum impact and not waste their vote, then 
+they are still free to give Nader 99 or 0 or anything in between.
+Consequently, it would still be <i>entirely possible</i> for Nader to win with range,
+and without need of any kind of tie.  (For example, if 51% of the voters rated Bush=99 and
+Gore=0, and 49% rated Bush=0 and Gore=99, and 60% of the voters rated Nader&gt;90,
+then Nader would win easily with range voting.)
+</p>
+
+<p>
+Think this kind of strategic thinking won't matter much?  Wrong.
+The "National Election Study" showed that in 2000, among voters who honestly liked
+Nader better than every other candidate, fewer than 1 in 10 actually voted
+for Nader.  That was because of precisely this sort of strategic ploy &ndash; these
+voters did not wish to "waste their vote" and wanted "maximum impact"
+so they pretended either Bush or Gore was their favorite. (Same thing happened
+with voters whose true favorite was Buchanan.)  In short, strategy
+has an enormous impact in the real world, and over 90% of real
+voters act strategically and not honestly, given the chance.
+[Another, different sort, of example where strategic voting
+is known to have had a huge impact, was described on p.65 of 
+<a href="RVPapers.html">Lakeman &amp; Lambert's book</a>:
+a 1950 Gallup poll showed 38% of British voters wanted to vote Liberal but
+only 9% did.]
+That is exactly why third parties always die out and the USA is
+stuck with 2-party domination.
+</p>
+
+
+<p>
+<b>6. And what about with more than 3 candidates? Chaos. </b>
+In plausible
+many-candidate situations, with optimal voter strategy, the Borda winner becomes almost random. 
+(Not "2-party domination," rather, "utter chaos.") 
+Range is "Borda done right" by
+giving the voter flexibility.  
+Borda's bizarre reactions to strategic voting
+can actually arguably make it a worse voting system even than plurality (e.g. plurality
+handles the 
+<a href="DH3.html">DH3 pathology</a> without difficulty).
+</p>
+
+<a name="kiribati"></a>
+<p>
+<b>
+7. Think this kind of chaos wouldn't happen in real governmental elections?
+</b>
+Wrong.  In fact, it is even worse than we said:
+A lessened form of the <a href="DH3.html">DH3 pathology</a>
+can occur with only <i>two</i> strong candidates &ndash; if
+they are close to being tied under strategic voting, 
+then the most strategically-above-average among the mediocrities will win.
+(See <a href="#Barbera">Barbera's anecdote</a> above for an example.)
+The Pacific Island
+Republic of Kiribati (pop. 60,000; formerly the Gilbert Islands)
+is, as far as we know, the only government which has adopted Borda voting.
+<font size="-1">
+[Nauru uses its own, different, weighted positional voting system, which seems to work
+better than Borda.]
+</font>
+It immediately suffered from exactly this kind
+of problem as the two "most popular" candidates were eliminated and two dark horses
+who did not campaign and were not recognized as serious contenders were nearly elected
+[<a href="FunnyElections.html#kiri91">See</a> p.368 of
+Benjamin Reilly:
+<a href="ReillySCSS.pdf">Social Choice in the South Seas: Electoral Innovation 
+and the Borda Count in the
+Pacific Island Countries</a>,
+Int'l Political Science Review 23,4 (2002) 355-372.
+<small>
+Steve Eppley says it is important to point out here
+that the Kiribati Borda election in this paper
+was not a public election; it was a nomination vote (something like a "primary" in the USA) 
+in which the voters were the national parliament.</small>]
+It <a href="http://www.electionworld.org/kiribati.htm">appears<a/>
+that Kiribati then <i>abandoned</i> the Borda system and
+went back to the (often superior for strategic voters) plurality system and
+now has 2-party domination.
+<!-- christmas island -->
+</p>
+
+<a name="clones"></a>
+<p>
+<b>8. Clones.</b>
+Suppose several near-identical "clone" candidates run.
+Under plurality voting: they split the vote and all lose.
+Under Borda voting (basically): with enough clones, one is assured victory!
+</p>
+
+<p>
+Just to be sure you follow that, let's examine this in detail.
+</P>
+
+<table cellpadding="19">
+<tr>
+<td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow"
+<caption>
+Obviously, Mush wins this one.
+</caption>
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 51 </td>
+<td> Mush </td>
+</tr>
+<tr>
+<td> 49 </td>
+<td> Bore </td>
+</tr>
+</table>
+</td>
+<td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow"
+<caption>
+But now, if Bore has numerous clones (call them Bore<sub>1</sub>,
+Bore<sub>2</sub>, and Bore<sub>3</sub> in decreasing order of attractiveness)
+then the Borda vote would give Bore<sub>1</sub> an easy victory:
+</caption>
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 51 </td>
+<td> Mush &gt; Bore<sub>1</sub> &gt; Bore<sub>2</sub> &gt; Bore<sub>3</sub> </td>
+</tr>
+<tr>
+<td> 49 </td>
+<td> Bore<sub>1</sub> &gt; Bore<sub>2</sub> &gt; Bore<sub>3</sub> &gt; Mush </td>
+</tr>
+<tr bgcolor="#ffdc00">
+<td> (totals) </td>
+<td>
+Mush=153, <i>Bore<sub>1</sub>=249</i>, Bore<sub>2</sub>=149, Bore<sub>3</sub>=49.
+</td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<p>
+Cloning the Bores gives them a huge advantage!   The Boring party can just arrange to
+have a lot of Bores enter the race, and game over!  Totally Boring!
+Of course, the Mushites could try to defeat that by intentionally lying in their
+votes by ranking the
+Bores in the opposite of their true order, to try to cancel out
+the Borites and make Mush win.  
+But this strategy causes them to be massively dishonest in
+their votes and risk not only a Bore-victory, but in fact a victory
+by the <i>worst</i> of the bores!  (Which would in fact happen if the Borons
+<i>counter</i>strategized by <i>also</i> being dishonest in their Bore-orderings!)
+This is all crazy!
+</p>
+
+<p>
+And it gets crazier.  The Mushites, knowing this, would probably try to fight back by
+also nominating their own clones, say
+Mush<sub>1</sub>, Mush<sub>2</sub>, Mush<sub>3</sub>, and Mush<sub>4</sub>, 
+so with more clones that the Bores, they'd win.
+But then the Bores could sponsor some more clones 
+Bore<sub>4</sub>, Bore<sub>5</sub>, Bore<sub>6</sub>.
+And so on.  The war of the clone armies.  It would make no sense whatever.  It would
+be all about which side had the gall to generate the most ridiculously huge set of clones,
+and have virtually nothing to do with what the voters actually wanted.
+</p>
+
+<p>
+Now compare the situation with Range voting.
+Aaaah.  Much better:
+clones don't matter, election result not affected.  Can't manipulate
+the election by creating or abolishing clones.
+</p>
+
+<p>
+Which would you prefer?
+</p>
+
+<a name="JohnsonEx"></a>
+<p>
+<b>9. Removing an "irrelevant loser" candidate.</b>
+In case that was too abstract for you, consider this related
+simple Borda example by Paul Johnson,
+involving 4 candidates and 7 voters.  Start looking at the situation on the left.
+</p>
+
+<table cellpadding="19">
+<tr>
+<td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow"
+<caption>
+Johnson's Borda example.
+The winner is <b>C</b> with 13 Borda votes. (Losers: B=12, A=11, and D=6.)
+</caption>
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 3 </td>
+<td> A>B>C>D </td>
+</tr>
+<tr>
+<td> 2 </td>
+<td> B>C>D>A </td>
+</tr>
+<tr>
+<td> 2 </td>
+<td> C>D>A>B </td>
+</tr>
+</table>
+</td>
+<td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow"
+<caption>
+Johnson's Borda example (after D eliminated).
+The winner is now <b>A</b> with 8 Borda votes. (Losers: B=7 &amp; C=6.)
+</caption>
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 3 </td>
+<td> A>B>C </td>
+</tr>
+<tr>
+<td> 2 </td>
+<td> B>C>A </td>
+</tr>
+<tr>
+<td> 2 </td>
+<td> C>A>B </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+<p>
+Now suppose it is discovered that the far-last-place loser 
+D &ndash; top-ranked by nobody &ndash; was a criminal and a non-citizen and hence was not
+eligible to <i>be</i> a candidate.  (<font size="-1">Actually, felons
+are not allowed to <i>vote</i>
+in, e.g, 2005 Florida, but it is legal for them to <i>hold office</i>.  
+But never mind that.</font>)  Fine.  
+Eliminate D from the election, do everything over again
+with the same orderings of A,B,C in all votes.  Surely we will
+get the same winner as before, right?  Wrong!  The result
+of the Borda election now is completely <i>reversed</i>!
+</p>
+
+<p>
+(In contrast, with range voting, eliminating some non-winner candidate from all votes
+never changes the election result.  <small>Also note in Johnson's example that 
+if the winner C drops out, that reverses A-versus-B.</small>)
+</p>
+
+<p>
+<b>
+10. One-party domination:
+</b>
+One interesting consequence of Borda's "teaming" effect above (that a party,
+by running many clones, increases its chances of victory)
+is that Borda can lead over time to one-party domination.  (Sort of like
+two-party domination, but even less fun.)
+Here's an observation of that by Tim Hull.
+<blockquote>
+I'm [a student] at the University of Michigan, and we use a variant of the
+Borda count for our elections where you get as many votes as open seats.
+Slates of candidates typically contest elections as "parties", and most
+discussion of elections revolves around these parties.
+<br>
+Anyway, the system as-is works better than at-large plurality, but it still
+leaves much to be desired.  The biggest problem with the current system is
+that the largest party slate always wins a disproportionately high number of
+seats &ndash; so large, in fact, that competition has generally withered away.
+</blockquote>
+</p>
+
+<b>
+11. Bayesian regret (For Statistics Nerds):
+</b>
+Extensive computer simulations of millions of artificial "elections"
+by W.D.Smith show that range voting is the <i>best</i> single-winner voting
+system, among a large number compared by him (including Borda, Plurality, IRV,
+Condorcet, Eigenvector, etc.) in terms of a statistical yardstick called 
+<a href="BayRegDum.html">Bayesian regret</a>.
+This is true regardless of whether the voters act honestly or strategically, whether
+the number of candidates is 3,4, or 5, whether the number of voters is 5 or 200,
+whether various levels of "voter ignorance" are introduced, and finally
+regardless of which of several randomized "utility generators" are
+used to generate election scenarios.
+</p>
+
+<p>
+Smith's papers on voting systems are available 
+<a href="WarrenSmithPages/homepage/works.html">here</a>
+as #56, 59, 76, 77, 78, 79, 80...
+</p>
+
+<p>
+<b>12. Voting machines.
+</b>
+You can't run Borda elections on plurality voting machines.
+(No way for plurality machines to detect illegal Borda ballots, for example.)
+You <a href="VotMach.html">can</a> run range elections
+on any plurality voting machine, without modification, right now.
+</p>
+
+<p>
+<b>
+13. "Write-in" candidates.
+</b>
+There seems no way, or no pleasant way, to allow voting for "write-in" candidates 
+in Borda elections.
+</p>
+
+<hr>
+<a name="Summary"></a>
+<p>
+<b>14. Summary.
+</b>
+Isn't the purpose of voting to provide information about your opinions?
+Why would you want to have a system (Borda) that forces you to express less information,
+when you can have one (Range) that permits you to express more?
+</p>
+
+<p>
+If you think 2-party domination is a bad thing and would like to see a greater
+diversity of parties and more voter choice,  then why would you want Borda (in which, with 
+strategically-exaggerating voters in a 3-candidate election, 3rd parties 
+have no chance) when you could have Range?
+</p>
+
+<p>
+And why would you want a system (Borda) that we know reacts very badly to strategic voters,
+often giving a below-average candidate the victory and often exhibiting "chaotic" behavior &ndash;
+including in the only actual government (Kiribati) where it has been used?
+</p>
+
+<p>
+(Duh!)  You want range voting.  Forget Borda voting.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

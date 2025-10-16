@@ -1,0 +1,1176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml2/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+<head><style type="text/css"><!--
+#wl_disclaimer {
+  position: absolute;
+  left: 2% ;
+  bottom: 10px;
+  border: dashed 1px #929292;
+  background-color: #EEEEEE;
+  text-align: center;
+  padding: 1px;
+  width: 96%;
+  z-index: 99;
+  }
+body > div#wl_disclaimer { position: fixed; }
+--></style>
+<!--[if IE]>
+  <style type="text/css">
+    div#wl_disclaimer {
+      top: expression( ( 0 - wl_disclaimer.offsetHeight + ( document.documentElement.clientHeight ? document.documentElement.clientHeight : document.body.clientHeight ) + ( ignoreMe = document.documentElement.scrollTop ? document.documentElement.scrollTop : document.body.scrollTop ) ) + 'px' );
+    }
+  </style>
+<![endif]-->
+<script language="JavaScript" type="text/javascript">
+  function wl_close_disclaimer() {
+    document.getElementById('wl_disclaimer').style.display = 'none';
+  }
+</script>
+<meta http-equiv="Content-Type" content="text/html; charset=iso-8859-1"><base href="http://rangevoting.org/RVeasyT.html">
+<title>
+RangeVoting.org - centro para los Votar-con-números (CRV) - página delantera
+</title>
+<meta name="description" content="Voting reform advocacy and educational organization."></meta>
+<meta name="keywords" content="gerrymandering, voting, technology, corruption, government, 
+voting systems, election methods, democracy, score voting,
+voting machines, third party, libertarian, green, republican, democrat, socialist,
+approval, range, condorcet, borda, IRV, Iowa"></meta>
+
+<html>
+<head>
+<style type="text/css">
+body {
+min-width: 736px;
+background: white;
+color: #1b1b1b;
+padding: 10px;
+margin: 0px;
+font-family: arial,sans-serif;
+}
+
+a {
+border: 1px;
+color: #00d;
+text-decoration: none}
+
+a:visited {
+color: #5f0e00;
+text-decoration: none}
+
+a:hover {
+background: #d19a3b; /*f66*/
+color: #000}
+
+div#linkbarcontainer1 {
+float: right;
+z-index: 97;
+clear: left;
+width: 100%;
+background:#fefefe;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px}
+
+div#linkbarcontainer2 {
+float: right;
+padding-left: 10px; /*make smaller or larger? activates 2 safari bugs*/
+z-index: 97;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px}
+
+div#lmenucontainer {
+float:left; 
+width: 150px;
+margin-top: 0px;
+}
+
+div#headline {
+margin-left: 40px;
+margin-right: 35px;
+margin-bottom: 67px;
+margin-top: 0px;
+clear: both;
+padding-left: 0px;
+text-align: center}
+
+div#search {
+margin-top: 10px;
+margin-right: 1px;
+margin-left: 5px;
+margin-bottom: 2px;
+border: 1px black solid;
+float: right;
+width: 290px; /*adjusted to the pixel to prevent a safari bug*/
+z-index: 0;
+background-color: #FD0;
+padding: 2px;
+text-align: left }
+
+div#main {
+/*width: 100%;*/
+margin-top: 0.7em; /*28px;*/
+margin-left: 159px;}
+
+/*<span>THIS HERE</span> elements inside hyperlinks in main normally are invisible:*/
+div#main a span {display:none;} 
+
+/*but appear on hover:*/
+div#main a:hover span {display:block;
+position:relative; 
+margin-top:-21px; 
+background:#d5d5ff;
+z-index:100}
+
+div#footer {
+margin-top: 132px;
+margin-left: 140px;
+margin-right: 140px;
+font-size: 8px;
+font-weight: bold;
+text-align: center }
+
+/*CSSplay horizontal flyout menu.  
+We are mostly only going to use 1 menu level, not multiple.  But do use multiple some places.
+[DL-based menus are easier to style and do, but do not lend themselves to multiple levels, so no.]
+Fails in IE5mac, Works in Safari1.3.2, IE5.5, IE6, IE7, Firefox, Opera, Mozilla and Netscape:*/
+/* style the outer div to give it width: */
+.Hmenu {
+width:560; /*140*4, need more if more than 4 items in row*/
+height:30px;
+float: right;
+text-align: center;
+}
+/* remove all bullets, borders and padding from default list styling: */
+.Hmenu ul {
+padding:0;
+margin:0;
+list-style-type:none;
+}
+.Hmenu ul ul {
+width:140px;
+}
+/* float list to make it horizontal and relative position so can control dropdown menu position: */
+.Hmenu li {
+float:left;
+width:140px;
+position:relative;
+}
+/* style the links for top level: */
+.Hmenu a, .Hmenu a:visited {
+display:block;
+font-size:13px;
+text-decoration:none; 
+color:#000; /*text color black=000*/
+width:129px; /*150-11*/
+height:30px; 
+border:1px solid #fff; 
+border-width:1px 1px 0 0; 
+background:#88b0d7; /*this is brighter blue; drab olive= d4d8bd*/
+padding-left:10px; 
+line-height:29px;
+}
+/* a hack so that IE5.5 faulty box model is corrected: */
+* html .Hmenu a, * html .Hmenu a:visited {
+width:140px;
+}
+/* style the second level background: */
+.Hmenu ul ul a.drop, .Hmenu ul ul a.drop:visited {background:#949e7c;}
+/* style the second level hover: */
+.Hmenu ul ul a.drop:hover {background:#d19a3b;}
+.Hmenu ul ul :hover > a.drop {background:#d19a3b;}
+/* style the third level background */
+.Hmenu ul ul ul a, .Hmenu ul ul ul a:visited {background:#88b0d7;}
+/* style the third level hover */
+.Hmenu ul ul ul a:hover{background:#d19a3b;}
+.Hmenu ul ul ul :hover > a {background:#d19a3b;}
+/* style the table so that it takes no part in the layout - required for IE to work: */
+.Hmenu table {border-collapse:collapse; border:0; position:absolute; left:0; top:-1px;}
+/*in above line, use top for dropdown, bottom for flyup.*/
+/* hide the sub levels and give them absolute position so they take up no room: */
+.Hmenu ul ul {
+visibility:hidden;
+position:absolute;
+top:31px; /*change to bottom for flyup, top for dropdown*/
+left:0; 
+width:140px;
+}
+* html .Hmenu ul ul {bottom:30px;}
+/* position third level flyout Hmenu: */
+.Hmenu ul ul ul{
+left:140px; 
+top:0; /*change to bottom for flyup, top for dropdown*/
+width:140px;
+}
+/* position third level flyout Hmenu for left flyout: */
+.Hmenu ul ul ul.left {left:-140px;}
+/* style second level links: */
+.Hmenu ul ul a, .Hmenu ul ul a:visited {
+background:#88b0d7; /*drab olive*/
+color:#000; /*text color black=000*/
+height:auto; 
+line-height:1em; 
+padding:5px 10px; 
+width:119px
+/* yet another hack for IE5.5: */
+}
+* html .Hmenu ul ul a{width:140px;}
+/* style the top level hover: */
+.Hmenu a:hover, .Hmenu ul ul a:hover{
+color:#000;
+background:#d19a3b;
+}
+.Hmenu :hover > a, .Hmenu ul ul :hover > a {
+color:#000;
+background:#d19a3b;
+}
+/* make the second level visible when hover on first level list OR link: */
+.Hmenu ul :hover ul{
+visibility:visible;
+height:auto;
+}
+/* keep the third level hidden when hover on first level list OR link: */
+.Hmenu ul :hover ul ul{display:none;}
+/* keep the fourth level hidden when hover on second level list OR link: */
+.Hmenu ul :hover ul :hover ul ul{display:none;}
+/* make the third level visible when hover over second level list OR link: */
+.Hmenu ul :hover ul :hover ul{ 
+display:block;
+bottom:0;
+}
+/* make the fourth level visible when hover over third level list OR link */
+.Hmenu ul :hover ul :hover ul :hover ul { 
+display:block;
+bottom:0;
+}
+
+/*CSSplay vertical flyout menu.  Useful to know: « is << » is >>
+We are only going to use 1 menu level, not multiple.    Fails in IE5mac.
+Works in Safari1.3.2, IE5.5, IE6, IE7, Firefox, Opera, Mozilla and Netscape:*/
+.Vmenu {
+z-index:99; /*above all*/
+font-size:13px;
+float:left; /*right for leftward-flyout right-located menu; left for reverse.*/
+}
+
+/* remove all the bullets, borders and padding from the default list styling */
+.Vmenu ul {
+padding:0;
+margin:0;
+list-style-type:none;
+width:150px;
+}
+/* hack for IE5.5 */
+* html .Vmenu ul {margin-left:-16px; ma\rgin-left:0;}
+/* position relative so that you can position the sub levels */
+.Vmenu li {
+position:relative;
+background:#88b0d7; /*#d6d5c3; drab olive;  bluer #d6d5ff*/
+height:26px;   /*Vmenu item height*/
+}
+
+/* get rid of the table (shove underneath) */
+.Vmenu table {position:absolute; border-collapse:collapse; top:0; left:0; z-index:98; font-size:1em;}
+
+/* style the links */
+.Vmenu a, .Vmenu a:visited {
+display:block; 
+text-decoration:none;
+height:25px;
+line-height:25px;
+width:149px;
+color:#000; /*black links*/
+text-indent:5px;
+border:1px solid #fff; /*white border round Vmenu items*/
+border-width:0 1px 1px 0;
+}
+/* hack for IE5.5 */
+* html .Vmenu a, * html .Vmenu a:visited {background:#88b0d7; width:150px; w\idth:149px;}
+/* style the link hover */
+* html .Vmenu a:hover {color:#000; background:#d19a3b;}
+
+.Vmenu :hover > a{
+color:#000; /*on hover text goes white if fff, black if 000*/
+background:#d19a3b; /*and background goes bright-red (was darker 949e7c was harsher f33)*/
+}
+
+/* hide the sub levels and give them absolute position so they take no room */
+.Vmenu ul ul {
+visibility:hidden;
+position:absolute;
+top:0;
+left:150px;   /*make -150px for left-flyout, +150px for rightward-flyout*/
+}
+/* make the second level visible when hover on first level list OR link */
+.Vmenu ul :hover ul{visibility:visible;}
+/* keep the third level hidden when you hover on first level list OR link */
+.Vmenu ul :hover ul ul{visibility:hidden;}
+/* keep the fourth level hidden when you hover on second level list OR link */
+.Vmenu ul :hover ul :hover ul ul{visibility:hidden;}
+/* make the third level visible when you hover over second level list OR link */
+.Vmenu ul :hover ul :hover ul{visibility:visible;}
+/* make the fourth level visible when you hover over third level list OR link */
+.Vmenu ul :hover ul :hover ul :hover ul {visibility:visible;}
+</style>
+
+<!--[if IE 7]>
+<style type="text/css">
+.Vmenu li {float:left;}
+</style>
+<![endif]-->
+</head>
+<body onload="changeQt()"><div id="wl_disclaimer">
+  <table width="100%" cellpadding="0" cellspacing="1">
+    <tr>
+      <td align="center" style="margin: 0px;font: normal 11px verdana,arial,sans-serif;color: #000000;background-color: #EEEEEE;">Esta es una traducci&oacute;n por computadora de la p&aacute;gina web original. Se suministra como informaci&oacute;n general y no debe considerarse completa ni exacta.</td>
+      <td width="13" valign="top" style="background-color: #EEEEEE;"><img src="http://www1.worldlingo.com/images/close_disclaimer.gif" height="13" width="13" alt="Close Disclaimer" title="Close Disclaimer" style="cursor: pointer" onclick="wl_close_disclaimer()"/></td>
+    </tr>
+
+  </table>
+</div>
+
+<div id="headline">
+<table border="0" cellpadding="0" align="left">
+<tr>
+<th rowspan="2"><font size="+4"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=rangevoting.org" title="Página principal de los Votar-Con-Números en inglés - casero" style="color: black">RangeVoting.org</a></font></th>
+<td width="5"></td>
+<th><span style="color: #122985">El centro para los Votar-con-números (CRV)</span></th>
+</tr>
+<tr>
+<td width="5"></td>
+<th><span style="color: #a60a00">ALCANCE LA DEMOCRACIA GENUINA</span></th>
+
+</tr>
+</table>
+</div>
+
+<div id="linkbarcontainer1">
+<div class="Hmenu">
+<ul>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FHowToImprove.html" title="Cómo mejorar Web pages de CRV">Mejore</a>
+</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FMotPlusMenu.html" title="¿La actual página complicó también? Intente esto en lugar de otro">Página simplificada</a>
+</li>
+<li>
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2Fvoldir%2FVolunteer.html" title="Complete una forma para ensamblar CRV de modo que poder saber sobre sus habilidades y poder entrarle en contacto con y hacer que usted nos ayude.">Ensamble</a>
+</li>
+
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FDonate.html" title="Cómo donar el dinero a CRV">Done</a>
+</li>
+</ul>
+<!--<a href="RV-TB.html" title="Your browser too old to handle present web page? Try this">Old browsers</a>-->
+</div>
+</div>
+
+<div id="linkbarcontainer2">
+<div class="Hmenu">
+<ul>
+<li><a class="drop" href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FHowToTranslate.html" title="La ayuda traduce por favor las páginas de CRV a otras idiomas.  Chasque este acoplamiento para ver cómo y consiga ligado a todas nuestras traducciones hasta ahora.">Otras idiomas<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FARABIC%2FRangeVoting.html">Árabe</a></li>
+
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FCHINESE-SIMP%2FRangeVoting.html">Chino-simp</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPORTUGUESE%2FRangeVoting.html">Portugueses&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+<ul>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPORTUGUESE%2FRangeVoting.html">Front Page</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPORTUGUESE%2FSmithWM.html">1 introducción de la página</a></li>
+</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FRUSSIAN%2FRangeVoting.html">Ruso</a></li>
+
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FSPANISH%2FRangeVoting.html">Español</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FHowToTranslate.html"><b>Cómo traducir</b></a></li>
+</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="drop" href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FComboEndorse2.html" title="Complete una forma aquí para endosar cualquier subconjunto de varias declaraciones endorseable.  No puede cambiar el mundo sin bastantes endosantes.">Endose<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAboutEndorse.html" style="margin-left: 0px; margin-right: 0px">Sobre endosar</a></li>
+
+</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="drop" href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FWaysToHelp.html">Ayuda CRV<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FWaysToHelp.html">Maneras de ayudar a CRV</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FHowToImprove">Mejore las páginas de CRV</a></li>
+        </ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+
+</li>
+<li><a class="drop" href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fgroups.yahoo.com%2Fgroup%2FRangeVoting" title="Lea y/o ensamble el tablón de anuncios de los Votar-Con-Números">Discuta<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAboutBlog.html">Sobre blog</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fgroups.yahoo.com%2Fgroup%2FRangeVoting">Vaya al blog de YahooGroup</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fgroups-beta.google.com%2Fgroup%2Frangevoting">Google-Grupo de RV</a></li>
+        </ul>
+
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+</ul>
+</div>
+</div>
+
+<div id="lmenucontainer">
+<div class="Vmenu">
+<ul>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fwww.govote.org%2F%3Ft1%3D86"><small>REGISTRO</small> al voto</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FRVPapers.html">Bibliografía</a></li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAboutUs.html">Sobre nosotros&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAboutUs.html">CRV</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAboutCofounders.html">Co-fundadores</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fgroups.yahoo.com%2Fgroup%2FRangeVoting%2Flinks">Acoplamientos/noticias&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fgroups.yahoo.com%2Fgroup%2FRangeVoting%2Flinks" title="Lista sobre de 300 acoplamientos útiles">Acoplamientos</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2Fnews.html" title="noticias actuales RangeVoting-relacionadas">Noticias</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<!-- <li><a href="http://groups.yahoo.com/group/RangeVoting/cal">Calendar</a></li> -->
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FFaq.html" title="Preguntas con frecuencia hechas">FAQ&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FFaq.html">FAQ</a></li>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FSmithWM.html">Introducción rápida de RV</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FMDLecture.html">2 conferencias de la universidad</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FContactUs.html">Éntrenos en contacto con&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FContactUs.html">Entrar en contacto con CRV</a></li>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2Fvoldir%2FDirectory.html">Directorio</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPrivacyPolicy.html">Política de aislamiento</a></li>
+<li style="background-color: #e8c9cd"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FComboEndorse2.html" title="Agregue por favor su endoso también">Endosos</a></li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2Fquickdemo%2FPresRadio.html" title="Participe en una elección de gama-votación">Versión parcial de programa del intento&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+    <ul>
+    <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2Fquickdemo%2FPresBallot.html">Cuentas inscritas</a></li>
+
+    <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2Fquickdemo%2FPresRadio.html">Pluralidad-tipo máquina</a></li>
+    <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2Fpresdemo%2FPresBallot.html">42 manera los mejores E.E.U.U. Prez</a></li>
+    <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fzohopolls.com%2Fus%2Fpres" title="encuesta de los votar-con-números de Zohopolls.com para el presidente de los 2008 E.E.U.U.; inténtela">Zohopolls los E.E.U.U. Prez 2008</a></li>
+    </ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FMakeBal1.html" title="Cree e imprima hacia fuera poseen la balota de papel para el uso en propia elección">Cree la balota</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2Frvinvit" title="El email personalizado invita para poblar">Invite a Newbies</a></li>
+
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FActionNews.html" title="Las acciones actuales CRV quisieran que usted ayudara a lograr">Noticias de la acción</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FGlossary.html" title="Definiciones de términos votar-relacionados">Glosario</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBallInit.html" title="Iniciativa posible de la balota para su estado">Iniciativa de la balota</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPPPP.html" title="Tablón posible de la plataforma para su partido político">Tablón de la plataforma</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FSoundFiles.html">Archivos audio/visuales</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FNewspaperP.html">Artículos publicados</a></li>
+<li style="background-color: black; height: 1.3em; color: white">Si usted es:</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForReps.html" title="Cómo RV beneficiará a republicanos">¿Republicano?</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForDems.html" title="Cómo RV beneficiará a demócratas">¿Demócrata?</a></li>
+
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FInOffice.html" title="Cómo RV beneficiará a políticos ya en oficina">¿En oficina?</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForLibs.html" title="En su base filosófica, RV es un sistema de votación inmenso libertarian">¿Libertarian?</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForGreens.html" title="La necesidad RV o ellos de los verdes morirá">¿Partido verde?</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForConst.html" title="Const. El partido necesita RV o morirá">¿Constitutionalist?</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForSocial.html" title="RV esencial para la supervivencia del partido socialista y de su visión">¿Socialista?</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForIndep.html" title="¿Un tercero de todos los votantes de los E.E.U.U. es unaffiliated - conjeture son qué por ciento de políticos?">¿Unaffiliated?</a></li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FDuverger.html" title="La pluralidad de la ley de Duverger y IRV conducen a la dominación de 2 partidos">¿Terceros? »<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FDuverger.html">Ley de Duverger</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAusIRV.html">Experiencia de IRV</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FTPHist.html">Historia triste del 3ro picosegundo</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPsEl04.html">Los 2004 E.E.U.U. Prez Electn</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FNurseryEffect.html" title="los votar-con-números deben ser mucho más amistosos al crecimiento de terceros pequeños que, e.g. votación de la aprobación">Efecto del cuarto de niños</a></li>
+	</ul>
+
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FNaderRV.html">¿Ralph Nader?</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForIowan.html">¿Iowan?</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForMaths.html">¿Matemático?</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FNonVoters.html" title="¿Pregúntese siempre porqué el séquito del votante es tan bajo en los E.E.U.U.?">¿No-votante?</a></li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FMedia.html">¿Medios? »<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FMedia.html">Papel de</a></li>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FMediaLapdogs.html">Lapdogs</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBibVt.html" title="La biblia tiene algunas cosas interesantes a decir sobre la votación, por esos el querer mirar">¿Bíblico?</a></li>
+<li style="background-color: black; height: 1.3em; color: white">Porqué bests de RV:</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBordaExec.html">¿Cuenta de Borda? »<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBordaExec.html">Resumen</a></li>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVborda.html">Detalles</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVirv.html" title="Votación inmediata de la salida">¿Sistema de IRV? »<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FIrvExec.html">Resumen</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVirv.html">Detalles</a></li>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FIrvtalk.html">Mitos y mentiras re</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FTarrIrv.html" style="letter-spacing:-0.5px">Da el dominatn de 2 partidos</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FNoIrv.html">Absurdo para las terceres personas</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FKISSirv.html">terceres personas (más simples)</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPeru06.html">Perú 2006</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FTwoAndAHalf.html">½ 2 - el canddt defecto-piensa</a></li>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FIRVpartic.html">Efecto del ruiner de Nader con&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+<ul>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FIRVcs.html">Segundo efecto del ruiner</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FIRV1519.html">Tercer efecto del ruiner</a></li>
+</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FHonestRunoff.html">Contra salida retrasada</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FIRV3.html">Bastardized top-3 IRV</a></li>
+
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBtrIrv.html" title="" Bottom Two Ranks" IRV">¿BTR-IRV?</a></li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAppExec.html">¿Sistema de la aprobación? »<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAppExec.html">Resumen</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVapp.html">Detalles</a></li>
+
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FCondorcetExec.html">¿Condorcet? »<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FCondorcetExec.html">Resumen</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVcond.html">Detalles</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FDH3.html">Patología DH3</a></li>
+
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FCondDQ.html">Sutilezas Definitional</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAppCW.html">Clase de RV de <i>es</i></a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVcumulative.html">Acumulativo</a></li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FFusion.html">¿Fusión? »<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FFusion.html">Fusión</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPropRep.html">Reprsnttn proporcional</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li style="background-color: black; height: 2.45em; color: white">Porqué es la unificación detrás de Votar-Con-Números</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForcedSumm.html" title="Hay razones que el resto de los métodos de votación nunca han ganado un equilibrio en los 200 años pasados de la historia de los E.E.U.U. y de Reino Unido">Forzado. »<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FForcedSumm.html">Resumen</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FOtherSyst.html">Detalles</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li style="background-color: black; height: 1.3em; color: white">Sobre:</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FConstVt.html">¿Constitucionalidad? »<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FConstitExec.html">Resumen</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FConstVt.html">Detalles</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FComplexity.html" title="¿Los votar-con-números se complican también?">¿Complejidad?</a></li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FConsensusSumm.html" title="¿Cuál (si cualquier cosa) es el consenso de expertos académicos en métodos de votación?">Consenso&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FConsensusSumm.html">Resumen</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FConsensus.html">Detalles</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FVMSumm.html" title="Asombrosamente, los votar-con-números no requieren las máquinas de votación nuevas">Máquinas de votación&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FVMSumm.html">Resumen</a></li>
+
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FVotMach.html">Detalles</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FVotSystMap.html">Máquina-tipo mapa de los E.E.U.U.</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2Fkokidea.txt">Math'l transforma</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FManyChoices.html" title="Una crítica algo ridícula de votar-con-números">¿Demasiadas opciones?</a></li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FRivestSumm.html" title="Método revolutionarily-simple de Rivest para conseguir elecciones comprobables con todo de la secreto-balota; la votación de la gama y de la aprobación se satisface perfectamente para ella">Votos comprobables&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FRivestSumm.html">Resumen</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FRivest3B.html">Detalles</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FSleatorCheapo.html">Plan de Cheapo de Sleator</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBoffoRecipe.html">Recetas solamente</a></li>
+	</ul>
+
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FNurseryEffect.html" title="los votar-con-números deben ser mucho más amistosos al crecimiento de terceros pequeños que, e.g. votación de la aprobación">Efecto del cuarto de niños&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FNurserySumm.html">Resumen</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FNurseryEffect.html">Detalles</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FDH3.html" title="Un defecto severo en muchos sistemas de votación de la alinear-orden tales como Condorcet y Borda">Patología DH3&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FDH3Summ.html">Resumen</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FDH3.html">Detalles</a></li>
+        <li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FWinningVotes.html#DH3#DH3">Condorcet (wv/margin)</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+
+</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBackSlide.html" title="Razones históricas de la reincidir a sistemas de votación peores; porqué no debe RV">¿Reincidencia?</a></li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FFunnyElections.html">elecciones de la Incorrecto-manera&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FFunnyElections.html">Con historia</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FFunnyElections.html#summ#summ">Salto a la conclusión</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+
+</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FWorldProblems.html">Problemas del mundo&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FWorldProblems.html">Efecto sobre Chomsky</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FNewOrleansBudget.html">Efecto de New Orleans</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li class="sub"><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FLivesSaved.html">Vidas ahorradas&#8221;<!--[if IE 7]><!--></a><!--<![endif]-->
+
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+	<ul>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FLivesSaved.html">Los #Lives RV ahorrarán</a></li>
+	<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBaileyNum.html">Estimaciones económicas</a></li>
+	</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPuzzlePage.html" title="Contesta a disponible a los miembros de CRV">¿Rompecabezas?</a></li>
+<li><a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FMiscelStuff.html">Misceláneo</a></li>
+
+</ul>
+</div>
+</div>
+
+<div id="main">
+
+<div id="search">
+<form action="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fsearch.freefind.com%2Ffind.html&wl_method=GET" method="POST" accept-charset="utf-8">
+<table cellpadding="0" style="width: 100%; padding: 2px">
+<tr>
+<td style="width: 20%"><nobr><small>Búsqueda CRV:</small></nobr></td>
+<td style="text-align: center">
+<input type="hidden" name="id" value="78874049">
+<input type="hidden" name="pageid" value="r">
+<input type="hidden" name="mode" value="ALL">
+<input type="hidden" name="n" value="0">
+
+<input type="hidden" name="_charset_" value="">
+<input type="hidden" name="bcd" value="÷">
+<input type="text" name="query" style="width: 98%; text-align: left">
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<!-- <h2>Voting-With-Numbers</h2> -->
+
+<p>
+<font color="white">.</font><br>
+Si usted intentaba diseñar <i>el peor</i> método al voto:
+
+<ul>
+<li>
+Usted forzaría a votantes decir <i>el más pequeño</i> cantidad - nombran a solamente un 
+candidato, y no dicen nada sobre otros uces de los, y 
+dicen que nada sobre de cuánto gozan
+ o ellos tienen aversión cualesquiera de ellos.
+</li><li>
+Usted  <i>remunere</i> votantes para <i>no</i> votación por el candidato a que realmente desean.
+</li><li>
+Usted haría que funciona, en un cierto plazo, a fin de disminuir su número
+ de opciones a <i>mínimo</i> número
+ posible - solamente 2 (o 1).
+
+</li><li>
+Finalmente, usted haría allí para ser un método fácil para invalidar las balotas (&#8220;plural que vota&#8221;) -
+ para simplificar las vidas de los fraudsters.
+</li></ul>
+
+<table align="right" cellpadding="10"><tr><td align="center">
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2Fquickdemo%2FPresRadio.html" title="tabla del tecleo para la versión parcial de programa de RV" style="color: black">
+<table bgcolor="#ffffe0" style="border: 4px solid black" cellspacing="0" cellpadding="3" frame="border" border="1">
+<tr>
+<th>Candidato</th>
+<th colspan="100">Su voto</th>
+</tr>
+
+<tr>
+
+<td><nobr>EISENHOWER, Dwight D.</nobr></td>
+
+<td colspan="60" bgcolor="#0000ff"></td>
+<td colspan="39" bgcolor="#ffffbb"></td>
+<td align="center">60</td>
+</tr>
+
+<tr>
+<td><nobr>HARDING, Warren G.</nobr></td>
+<td colspan="5" bgcolor="#0000ff"></td>
+<td colspan="94" bgcolor="#ffffbb"></td>
+<td align="center">5</td>
+</tr>
+
+<tr>
+<td><nobr>RASPUTIN, Grigori</nobr></td>
+
+<!-- doesn't like colspan=0 -->
+<td colspan="99" bgcolor="#ffffbb"></td>
+<td align="center">0</td>
+</tr>
+
+<tr>
+<td><nobr>CHIRAC, Jacques</nobr></td>
+<td colspan="25" bgcolor="#0000ff"></td>
+<td colspan="74" bgcolor="#ffffbb"></td>
+<td align="center">25</td>
+
+</tr>
+
+<tr>
+<td><nobr>LINCOLN, Abraham</nobr></td>
+
+<td colspan="99" bgcolor="#0000ff"></td>
+<!-- doesn't like colspan=0 -->
+<td align="center">99</td>
+</tr>
+
+<tr>
+<td><nobr>PEROT, H. Ross</nobr></td>
+<td colspan="9" bgcolor="#dc143c"></td>
+<td colspan="9" bgcolor="#ffffff"></td>
+
+<td colspan="9" bgcolor="#dc143c"></td>
+<td colspan="9" bgcolor="#ffffff"></td>
+<td colspan="9" bgcolor="#dc143c"></td>
+<td colspan="9" bgcolor="#ffffff"></td>
+<td colspan="9" bgcolor="#dc143c"></td>
+<td colspan="9" bgcolor="#ffffff"></td>
+
+<td colspan="9" bgcolor="#dc143c"></td>
+<td colspan="9" bgcolor="#ffffff"></td>
+<td colspan="9" bgcolor="#dc143c"></td>
+<td align="center">X</td>
+</tr>
+
+<tr>
+<td><nobr>ROOSEVELT, Franklin D.</nobr></td>
+
+<td colspan="50" bgcolor="#0000ff"></td>
+<td colspan="49" bgcolor="#ffffbb"></td>
+<td align="center">50</td>
+</tr>
+
+<tr>
+
+<td><nobr>WASHINGTON, George</nobr></td>
+<td colspan="75" bgcolor="#0000ff"></td>
+<td colspan="24" bgcolor="#ffffbb"></td>
+<td align="center">75</td>
+</tr>
+
+</table>
+
+</a>
+</td></tr><tr><td align="center">
+<b>FIGURA</b> ilustra un hipotético <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBallotPict.html" title="Cuadros de balotas">balota</a> en<br> 
+pantalla de visualización de una máquina de los votar-con-números.
+</td></tr></table>
+
+¡Pero que está nuestro votar-sistema hoy!
+</p><p>
+Hay una manera mejor: <b>votar-con-números</b>.
+
+</p><p>
+Usted tiene todos los votar-con-números vistos en
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FOlympCover.html" title="Los votar-con-números de las aplicaciones de las Olimpiadas&#8230;">Olimpiadas</a>.
+Los jueces dan mérito-números a los competidores,  
+después el vencedor es el quién tiene el promedio topmost.
+Semejantemente, en una elección, los votantes dan números a los candidatos,
+ después el vencedor es el candidato que tiene el promedio topmost.
+</p><p>
+los Votar-con-números permiten que los votantes expresen sus opiniones sobre cualquier subconjunto
+ de los candidatos (no sólo uno).
+Elimina estas patologías: 
+&#8220;<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FGlossary.html#spoiler#spoiler">ruiner</a>, &#8220;
+y &#8220;voto perdido&#8221; y &#8220;candidato-reprodúzcase.&#8220;
+Es tan simple, eso que funcionará en todas las máquinas de hoy para votar.
+
+<table align="right"><tr><td valign="center" align="center">
+
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FRExample.html">Ejemplos<span>
+<table cellpadding="3" cellspacing="0" border="1" bgcolor="#d5d5ff">
+<tr>
+<td align="center">
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FRExample.html" title="Elección numérica trabajada de los Votar-Con-Números del ejemplo">Ejemplo</a>
+</td>
+<td align="center">
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FValedictorian.html" title="Historia de cómo la academia alcanzó consenso en los votar-con-números para los valedictorians que elegían">Valedictorians</a> 
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fzohopolls.com%2Fus%2Fpres" title="encuesta de los votar-con-números de Zohopolls.com para el presidente de los 2008 E.E.U.U.; inténtela">Encuesta de RV para <b>Presidente de los E.E.U.U.</b> 2008</a>
+
+</td>
+</tr>
+</table>
+</span></a>
+</td></tr></table>
+
+<p><nobr><big><b>Cómo funcionan los votar-con-números:</b></big></nobr>
+
+<!--
+      
+<nobr>
+<a href="RExample.html" title="Worked numerical example Voting-With-Numbers election">Example</a>
+ 
+<a href="Valedictorian.html" title="History of how academia reached consensus on voting-with-numbers for choosing valedictorians">Valedictorians</a> 
+ 
+<a href="http://zohopolls.com/us/pres" title="Zohopolls.com voting-with-numbers poll for 2008 US president; try it">RV poll for <b>US President</b> 2008</a>
+</nobr>
+-->
+</p>
+
+<ol type="a">
+<li> 
+Cada uno <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FMeaningOfVote.html" title="Un qué &#8220;voto&#8221; es">voto</a> 
+
+consiste en: un número dentro de un cierto intervalo (por ejemplo
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FWhy99.html" title="Otras gamas tales como 0-10 también son posibles y no insistimos en 0-99.  El acoplamiento explica porqué 0-99 es una buena opción y cómo utilizar otras gamas.">0 a 99</a>)
+ para cada candidato.
+Más simple es 0 a 9 (los &#8220;votar-con-números del solo-dígito&#8221;).
+Los votantes pueden también escribir
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBlanks.html" title="Cómo los espacios en blanco trabajan, porqué son necesarios y una buena idea.">&#8220;X&#8221;</a> 
+o  
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBlanks.html" title="Cómo los espacios en blanco trabajan, porqué son necesarios y una buena idea.">"<small>NO-OPINION</small>"</a> 
+si no tienen ninguna opinión
+ sobre un candidato.
+los X-votos no afectan el promedio de ese candidato.
+</li><li>
+<table border="1" cellspacing="0" cellpadding="1" bgcolor="#ffffbb" align="right">
+<tr><td bgcolor="#ffffe0"> Andrews </td>
+
+<td>0
+</td><td>1
+</td><td>2
+</td><td>3
+</td><td>4
+</td><td>5
+</td><td>6
+</td><td>7
+</td><td>8
+</td><td bgcolor="aqua">9
+</td><td>NO-OPINION
+</td></tr>
+<tr><td bgcolor="#ffffe0"> Benson </td>
+<td bgcolor="aqua">0
+</td><td>1
+
+</td><td>2
+</td><td>3
+</td><td>4
+</td><td>5
+</td><td>6
+</td><td>7
+</td><td>8
+</td><td>9
+</td><td>NO-OPINION
+</td></tr>
+<tr><td bgcolor="#ffffe0"> Carey </td>
+<td>0
+</td><td>1
+</td><td>2
+</td><td bgcolor="aqua">3
+
+</td><td>4
+</td><td>5
+</td><td>6
+</td><td>7
+</td><td>8
+</td><td>9
+</td><td>NO-OPINION</td></tr>
+<tr><td bgcolor="#ffffe0"> Davis </td>
+<td>0
+</td><td>1
+</td><td>2
+</td><td>3
+</td><td>4
+</td><td>5
+
+</td><td>6
+</td><td>7
+</td><td>8
+</td><td bgcolor="aqua">9
+</td><td>NO-OPINION</td></tr>
+<tr><td bgcolor="#ffffe0"> Elbert </td>
+<td>0
+</td><td>1
+</td><td>2
+</td><td>3
+</td><td>4
+</td><td>5
+</td><td>6
+</td><td>7
+
+</td><td>8
+</td><td>9
+</td><td bgcolor="aqua">NO-OPINION</td> </tr>
+</table>
+
+Por ejemplo,
+ &#8220;Andrews=9, Benson=0, Carey=3, Davis=9, Elbert=X&#8221; podría ser su voto
+ en una elección de los votar-con-números, donde 9 medios lo más mejor posible y los medios de X &#8220;<small>NO-OPINION</small>.&#8220;
+</li><li>
+El ganador es
+ el candidato con el topmost  
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAveraging.html" title="Características de hacer un promedio">promedio</a>... excepto
+
+</li><li>
+Eliminamos a candidatos que no tienen a
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FRuleD.html" title="Porqué esta regla del &#8220;quorum&#8221; está aquí">quorum</a>;  
+el total de un candidato victorioso debe estar por lo menos  
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FWhyHalf.html" title="Análisis razonado detrás de &#8220;medio&#8221;">50%</a> de la suma de cualquier
+ candidato.
+Esto previene a candidatos que triunfan si tienen pocos votos numéricos (y muchos &#8220;X " s).
+</li>
+</ol>
+
+<p><nobr><big><b>Objetivos de CRV:</b></big></nobr></p>
+
+<ol>
+<li>
+Educa el público sobre las ventajas de votar-con-números,
+ y las desventajas comparativas de otros sistemas
+ (especialmente de los E.E.U.U. los pobres de hoy embarrassingly 
+
+&#8220;<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPlurality.html" title="Pluralidad - cuáles es y porqué es malo">pluralidad</a>&#8220; 
+sistema),
+</li>
+<li>
+Cabildea para él.
+</li>
+<li>
+Pero CRV también apoya la investigación en (y es el tratar imparcial) todos los votar-sistemas.
+De hecho, CRV, para algunos objetivos,  
+<i>abogados</i> <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAdvocatedSystems.html" title="Otros votar-sistemas que pueden ser buenos en las circunstancias derechas">otros sistemas</a>. 
+CRV es independiente.
+</li>
+</ol>
+
+<p>
+
+Para aprender más:   
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FCurrentMissions.html" title="Actuales metas de la organización">Misiones actuales</a>, de más largo plazo
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FStratSumm.html" title=" El resumen de la estrategia para conseguir Votar-Con-Números decretó">plan estratégico</a>, y
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FIowaSumm.html" title="Porqué las primarias de Iowa son un lugar excelente para decretar votar-con-números">Proyecto de Iowa 08</a>.
+</p>
+
+<h2>Virtudes de Votar-Con-Números</h2>
+<ol>
+<li>
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FMeaningOfVote.html" title="¿Cuál es un &#8220;voto&#8221;?">
+<small>EXPRESIVO</small>:</a> 
+
+Usted da la información alrededor <i>todos</i> candidatos, y no alrededor de solamente uno.
+</li><li>
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FSmittyExp.html" title="Ejemplo que ilustra cómo la mayoría de los métodos de votación pueden ser cluseless sin el acceso a la información cuantitativa en votos"><small>CUANTITATIVO</small>:</a> 
+Su voto dice que más que &#8220;usted prefiera a candidato A sobre B&#8221;; también dice cerca <i>cuánto.</i>
+</li><li>
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FHonestyExec.html" title="Explica un sentido exacto en el cual los votar-con-números &#8220;animen la honradez del votante&#8221; mejor que cada sistema posible de la alinear-orden-balota; ofrece los datos que demuestran el impacto enorme de la votante-falta de honradez"><small>INSPIRA LA HONRADEZ, NO ESTRATEGIA</small>:</a> 
+
+Su número para el candidato C es inaplicable a la batalla entre A contra el B. 
+Por lo tanto, usted puede dar su opinión honesta sobre C 
+sin temer &#8220;perdiendo su voto&#8221; y sin lastimar el A.
+Usted nunca tiene un incentivo a
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FFBCsurvey.html" title="Examen de los votar-sistemas que evitan la &#8220;traición preferida&#8221;">traicione</a>
+su candidato preferido
+ dando un número más grande a un candidato peor.
+(Esto se parece un criterio obvio y fácil, pero
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FIncentToExagg.html" title="Ejemplo simple donde la favorito-traición paga en casi todos los votar-sistemas">muy pocos otros
+ votar-sistemas lo obedecen</a>!)
+ La importancia más pequeña de &#8220;convencer a votantes que usted puede triunfar&#8221;
+ (en contraste con el &#8220;convencimiento de ellos que usted es el mejor&#8221;)
+ puede disminuir la importancia de  
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FRL2parties.html" title="Explica porqué el defecto de la favorito-traición de votar-sistemas crea una necesidad inmensa de corromper el dinero">dinero</a>.
+
+</li><li>
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FCandCloning.html" title="Sobre &#8220;hermanar&#8221;"><small>ES INAFECTADO POR CANDIDATE TWINNING</small>:</a> 
+Considere la situación donde A tiene &#8220;gemelos&#8221; A<sub>2</sub> y A<sub>3</sub>.
+En el viejo 
+&#8220;<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPlurality.html" title="Pluralidad - cuáles es y porqué es malo">pluralidad-votación</a>el &#8220;sistema, los tríos &#8220;partió el voto&#8221; y pierde.
+En 
+
+&#8220;<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVborda.html" title="Votación de Borda: cuáles es y porqué es malo (peor probablemente uniforme que pluralidad)">Votación de Borda</a>el &#8220;sistema,  
+un partido político asegura la victoria simplemente trayendo a bastantes gemelos.
+En cambio, en votar-con-números, A no se daña y no se ayuda.
+Hay no <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FEnmity.html">enemistad</a> entre los candidatos semejantes.
+</li><li>
+<small>TERMINA
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FStrangle.html" title="Hechos sobre dominio en los E.E.U.U. - es incluso peor que usted piensa">DOMINIO</a> 
+DE <!--SELF-REINFORCING-->
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FDuverger.html" title="Ley de Duverger de la dominación de 2 partidos">DOMINACIÓN 2-PARTY</a> 
+LOS VOTANTES TENDRÁN TAN MÁS OPCIONES</small>:
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPlurality.html">Pluralidad</a>  y 
+
+&#8220;<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVirv.html" title="IRV (salida inmediata que vota) - cuál es, porqué es malo.  Es un mito común que IRV soluciona el &#8220;ruiner&#8221; y &#8220;perdido voto&#8221; los problemas la ley de ese underly Duverger de la dominación de 2 partidos.  Pero realmente y todavía no conduce a la dominación de 2 partidos">Salida inmediata</a>  Votación "
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FTarrIrvSumm.html" title="Ejemplo que ilustra el ruiner y fenómenos perdidos de los votos debajo de IRV">producción</a> dominación de 2 partidos. 
+&#8220;<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVapp.html">votar-con-aprobaciones</a>&#8220; 
+es mejores que esos sistemas porque
+ permite que los votantes voten por <i>todos</i> los candidatos a que aprueban - sin
+ la pena inherente para aprobar a un candidato de un 3rd-party.
+Pero los votar-con-números son mejores, puesto que rinde experimental
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPsEl04.html" title="Vea que qué habría sucedido en la elección presidencial de los E.E.U.U. 2004 había sido sostenido con la gama o las votar-con-aprobaciones.  Diferencias enormes">ayuda mucho mayor</a> para 3rd-parties 
+que &#8220;votar-con-aprobaciones.&#8220;
+
+Teniendo <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FMoreAltParties.html" title="¿Es teniendo más partidos una buena cosa?">más</a> 
+los partidos deben también disminuir la importancia 
+de <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FGerryExamples.html" title="Gerrymandering - cuáles es, cómo es severo es, y curación simple, el &#8220;algoritmo más corto del splitline&#8221;">el gerrymandering</a>,
+ y agrande
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FNonVoters.html">entusiasmo y séquito</a>.
+<!-- decrease  <a href="NonVoters.html" title="Data showing immense predictability and rigged nature of US elections; also data on voter turnout">predictability below 98%</a>, 
+-->
+</li><li>
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FVMSumm.html" title="Usted puede ser que piense que las máquinas de votación diseñadas para las elecciones de la pluralidad no pueden manejar &#8220;obviamente&#8221; votar-con-números.  Pero, non-obviously, ellos poder, y a menudo absolutamente agradable también.  Esto hace la conmutación a RV fácil y sin dolor"><small>VOTING-MACHINES DE HOY PUEDE DIGERIR VOTING-WITH-NUMBERS:</small></a>
+Pero eso no es verdad para
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVirv.html" title="IRV no se puede dirigir por muchas máquinas de pluralidad-votación">&#8220;Salida inmediata&#8221;</a>
+y
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FrangeVcond.html" title="Los votar-sistemas de Condorcet no se pueden manejar por muchas máquinas de pluralidad-votación">Condorcet</a>.
+
+</li><li>
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FAppCW.html" title="Mucho &#8220;Condorcet&#8221; aboga Votar-Con-Números desfavorecidos porque RV es capaz de elegir a más votantes de A aunque prefiere B (si el A-preferrers da a A cuentas más altas).  Es decir RV puede evitar de elegir a &#8220;ganadores de Condorcet.&#8221;  ¡Pero aquí demostramos un teorema asombrosamente simple que, bajo asunciones razonables sobre comportamiento del votante, RV siempre elija los ganadores de Condorcet, y de hecho las produciremos en la práctica probablemente más confiablemente que los métodos &#8220;oficiales&#8221; de Condorcet!  Discusión encima."><small>LOS TRIUNFOS DEL CANDIDATO DE &#8220;DEFEATS-ALL&#8221;:</small></a> 
+Un derrota-todo candidato es uno quién derrotaría a cada otro candidato en
+ razas del hombre-contra-hombre.
+Counterintuitively, en muchos votar-sistemas &#8220;derrota a todos los&#8221; candidatos  <i>no</i>
+prevalezca siempre.
+(De hecho, sistema de hoy <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FLoseAll.html">poder</a> elija fácilmente &#8220;pierden a todo el&#8221; candidato.)
+ Pero en votar-con-números (bajo ciertas asunciones sobre
+ comportamiento estratégico del votante)
+ el derrota-todo candidato triunfa siempre.
+
+</li><li>
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPleasantSurprise.html" title="El sorprender y una característica simple del optimality de votar-con-números.">
+<small>MAXIMIZA SORPRESA AGRADABLE:</small></a> 
+Un votante &#8220;está sorprendido agradablemente&#8221; cuando el vencedor de la elección es mejor
+ que ella esperó.  Es un teorema que los votar-con-números (bajo ciertas asunciones sobre
+ comportamiento estratégico del votante) maximizan el número de votantes agradablemente sorprendidos.
+</li><li>
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FSPRates.html" title="Los datos sobre desperdicios de la balota clasifican bajo diversos votar-sistemas.  " Instant Runoff" leads to a lot more voter errors and spoiled ballots than plurality-voting - but range and voting-with-approvals may actually decrease spoilage - suggesting that worries about the 'complexity' of voting-with-numbers are misguided"><small>MENOS</small></a> "<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FSpoilExec.html" title="Cómo la balota &#8220;desperdicios&#8221; es utilizada como herramienta por los manipulantes de la elección"><small>BALOTAS ESTROPEADAS</small></a>&#8220;
+y <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FLessFraud.html" title="Hay razón de creer que los votar-con-números reducirán la manipulación y el fraude de la elección"><small>MENOS FRAUDE</small>:</a>
+
+En <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FPlurality.html">pluralidad</a>- la votación,  
+un &#8220;sábalo que cuelga accidental&#8221; o el voto plural, pueden destruir su voto.
+Con votar-con-números, causas de un &#8220;sábalo que cuelga&#8221;
+ solamente <i>parte</i> de su voto que se desechará
+ (convertido a &#8220;ninguna opinión&#8221;),
+ y con el resto - sus opiniones sobre todos los otros candidatos -
+ todavía operacionales.  No hay problema sobre &#8220;votos plurales,&#8221; porque expresa opiniones
+ alrededor <i>todos</i> los candidatos son <i>idea</i>; no hay &#8220;manera ilegal&#8221; de marcar una balota.
+los Votar-con-números también disminuyen riesgo de <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FTieRisk.html" title="La elección ata y cercano-ata - una pesadilla eso " Instant Runoff" makes much more likely, but voting-with-numbers makes less likely."><small>IGUALDADES</small></a>.
+
+</li><li>
+<small>USANDO CRITERIOS CIENTÍFICOS, VOTING-WITH-NUMBERS ES  
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FUniqBest.html">LO MÁS MEJOR posible</a> SISTEMA:</small>
+Para los matemáticos...
+los votar-con-números tienen el más bajo  
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBayRegDum.html" title="Explica el pesar Bayesian, que es el criterio objetivo derecho para comparar (y medir la calidad de) votar-sistemas del solo-ganador"><small>TRISTEZA BAYESIAN</small></a>
+entre todos los métodos comunes de la elección del solo-ganador.
+(Que fue descubierto de las simulaciones de computadora masivas
+ para las 720 combinaciones intentadas del siguiente:
+numere V de votantes y N de candidatos con V>N>2, de varias clases de &#8220;generadores para uso general&#8221;,
+ de varias cantidades de &#8220;ignorancia del votante,&#8221; y con &#8220;los votantes honestos&#8221; o &#8220;estratégicos&#8221;.)
+
+</li><li>
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FUniqBest.html#HugePos#HugePos" title="Quantitative estimates of impact">
+<small>IMPACTO POSITIVO ENORME</small>:</a> La &#8220;democracia&#8221; 
+mejoró la monarquía y el feudalism.
+Podemos expresar esa mejora como número usando
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FBayRegDum.html">Tristeza Bayesian</a>
+criterio y el asumir, E.g, ese estos sistemas nondemocratic
+ mejoró a &#8220;vencedor al azar.Las &#8220;
+medidas en este mismo criterio sugieren
+ eso para cambiar la pluralidad-votación a los votar-con-números,
+ causarían por lo menos disminuir tanto adicional de la tristeza.
+</li><li>
+<small>LA NATURALEZA UTILIZA VOTING-WITH-NUMBERS:</small>
+
+<a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FApisMellifera.html">Abejas</a>
+& <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Frangevoting.org%2FLAlbipennis.html">hormigas</a>
+han tenido <i>trillones</i> of elections over the last 20-50 million years
+to make decisions about
+hive relocation.
+Under severe evolutionary pressure, they invented... voting-with-numbers!
+</li>
+</ol>
+
+</div>
+
+<div id="footer">Styling by
+ <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fbrokenladder.com%2F">Clay SHENTRUP</a>,
+ <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fwww.math.temple.edu%2F%7Ewds%2Fhomepage%2Fworks.html">Warren D. SMITH</a>,
+ <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=http%3A%2F%2Fen.wikipedia.org%2Fwiki%2FK._Eric_Drexler">K.Eric DREXLER</a>,
+ and
+ <a href="http://www1.worldlingo.com/wl/services/SH0gfCf2o9dO46MvtTVRhzHfL93loPf5u/translation?wl_srclang=EN&wl_trglang=es&wl_rurl=http%3A%2F%2Frangevoting.org%2FRVeasyT.html&wl_url=cssplay.co.uk">CSSplay</a>.
+
+</div>
+
+</body>
+</html>

@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Approval yields Condorcet winners in practice
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H2> Strategic Range (Approval) voting yields (under reasonable assumptions) a Condorcet winner whenever one exists </H2>
+
+<blockquote><small>
+<b>Note on authorship:</b> This result was 
+<a href="CondAppConflict.html">discovered</a> by Warren D. Smith &amp; published on
+these web pages in August 2006.  We in 2011 found
+out that essentially the same discovery had been made independently by Jean-Francois
+<a href="http://www.google.com/url?sa=D&q=http://sites.google.com/site/jflaslierhomepage/Home/JFL-Research">Laslier</a> in Paris and 
+<a href="stratapproval4.pdf">published</a> in an 
+online economics-paper-archive,
+in December 2006.  Laslier's analysis also is interesting and quite different from ours.
+Then in 2021 Adrien Faure pointed out to me that it already had been stated in Laurent Mann's PhD thesis at Ecole Polytechnique in Palaiseau 1995.
+</small></blockquote>
+<p>
+A "Condorcet Winner" is a candidate who would beat any opponent in a simple majority vote
+(2-man race).
+Unfortunately there are cyclic <a href="IncentToExagg.html">election examples</a> where
+no Condorcet Winner exists.  But when one <i>does</i> exist, it seems difficult 
+(<a href="CondCoursera.html">but</a> <a href="FishburnAntiC.html">possible</a>!)
+to dispute that
+he ought to be the election winner.   And so, much fear and gnashing of teeth
+arose from the <a href="CondAppConflict.html">realization</a> that the 
+<a href="AppExec.html">Approval Voting</a>
+system (and hence the Range Voting system) could fail to elect a Condorcet Winner.
+</p>
+
+<p>
+But we shall now see that, <i>in practice</i> under reasonable assumptions about the strategic
+behavior of approval voters, 
+<a href="AppExec.html">Approval</a>
+elections will choose Condorcet winners whenever they exist, and in fact (counterintuitively!),
+plausibly will do so <i>better</i> in practice than "official" Condorcet 
+voting methods!  
+(<small>See also <a href="PuzzlePage.html#p61">puzzle #61</a> for 
+another reason that
+might be so.</small>)
+</p>
+
+<blockquote>
+And because strategic range voters generally vote approval-style, the same would
+be true of <a href="RangeVoting.html">range voting</a> elections with strategic voters.
+In other words, to the extent range voters are <i>strategic</i> they will elect 
+Condorcet winners; whereas to the extent they are <i>honest</i>,
+range voting should perform <a href="rangeVcond.html#slaves">better</a> than Condorcet.
+Even if you don't quite buy all that, we think you still will agree that
+in practice, one should expect no great advantage for Condorcet methods over the
+simpler range voting system.
+</blockquote>
+
+<p><b>
+The reasonable assumption:
+</b>
+Approval voters act according to the
+following strategy: they order the candidates from best-to-worst,
+then select a "threshold" T, and they approve the candidates above T.
+They choose T to cause their vote to have the most impact.
+</p>
+
+<p><b>
+The claim:
+</b>
+Let N&ge;2.
+There <i>does not exist</i> an N-candidate tie-free election 
+in which the Approval (A) and Condorcet (C) winners differ, <i>provided</i>
+that, if they were going to differ (A&ne;C) that all the approval voters would
+place their threshold T strategically under the assumption the winner was going
+to be either A or C, i.e. would place T somewhere between them.
+</p>
+<p>
+<b>Proof:</b>
+Assume for a contradiction that A&ne;C.  Then the approval voters
+will strategically place their thresholds
+between C and A.
+But that will cause C to be approved more times than A is approved (since C, being
+the Condorcet winner, is preferred over A by a majority).  Hence the claim A
+was the Approval winner and A&ne;C, leads to a contradiction.  Hence either A=C
+or there is no Condorcet winner C.
+<b>Q.E.D.</b>
+</p>
+
+<!-- M.Ossipoff says something like the following is noted in
+RG Niemi & WH Riker: The Choice of Voting Systems,
+Scientific Amer. 234,6 (June 1976) 21-27.
+perhaps already pointed out this theorem or something like it?? 
+I vaguely recall that myself but do not have a copy of that now: -->
+
+<p>
+<b>Remark:</b>
+Actually, essentially the same argument might seem to
+show that Condorcet winners (when they exist),
+will be elected by strategic voters not only under Range and Approval voting, but
+in fact under a large variety of voting systems.  
+When we  <a href="ReasAssump.html">investigate</a> that, though,
+we find that the argument works <i>better</i> for range than for the three
+most-common alternative voting systems.
+<small>
+That analysis
+<a href="ReasAssump.html">subpage</a>
+tries to gain more understanding of
+exactly which
+voting systems work and under exactly which assumptions about
+strategic voter behavior &ndash; and exactly how "reasonable" are those assumptions? &ndash;
+and exactly what are the experimental numbers?
+</small>
+</p><p>
+Anyhow, 
+definitely Range and Approval with our "strategic thresholding" voter-behavior, work.
+</p>
+
+<H2> Conclusions (some counterintuitive)  </H2>
+<p>
+In view of this fact, it seems that much of the so-called "conflict"
+between the Approval and Condorcet "philosophies," is illusory.
+</p>
+<p>
+We now see that approval voting <i>always will</i> elect the
+Condorcet Winner C (if C exists) provided merely that the voters
+consider it <i>likely</i> that both C and whoever (A) the putative non-C approval winner
+might be, might be elected &ndash; and hence vote strategically
+about C versus A.
+</p>
+<p>
+So we see that for practical purposes, Approval <i>is</i> a Condorcet method!
+</p>
+<p>
+Indeed &ndash; counterintuitively &ndash; it might actually be that
+Approval Voting is <i>more</i> likely to elect the Condorcet Winner in practice,
+than Condorcet methods!  (Indeed,  <a href="StratHonMix.html">experiments</a>
+indicate that
+happens.)
+</p>
+<p>
+Why? 
+Because in approval voting it is quite rare that strategically voting 
+dishonestly,
+is wise. (And when it is wise, it is even 
+<a href="RVstrat2.html">rarer</a>
+that people will actually realize it and do it.)
+In other words, with Approval, people will tend to honestly order the candidates, and
+the only strategic decision they'll make is where to locate their approval
+"threshold."
+</p>
+<p>
+In contrast, with Condorcet methods with rank-order ballots, it seems a lot more
+<a href="IncentToExagg.html">common</a>
+to see a way to be usefully strategic-dishonest in your vote. 
+(See also <a href="PuzzlePage.html#p62">puzzle #62</a>.)
+In other words, I suspect
+it will be comparatively common that voters will dishonestly misorder their preferences
+to, e.g. try to elect <a href="IRVStratPf.html">lesser evils</a>.
+</p>
+<p>
+In that case, it might well be that Condorcet rank-order ballot systems will do
+something
+silly (like <a href="DH3Summ.html">not electing</a>
+whoever should have been the Condorcet Winner with
+honest votes, such as in <a href="CondStratProb.html">this example</a>)
+more commonly than Approval will in practice fail to elect the Condorcet Winner.
+</p>
+<p>
+In that case, for practical purposes Approval will be a better Condorcet method than
+actual "official" Condorcet methods!
+</p>
+<p>
+I really think this is actually quite likely, it is not just some unlikely theoretical
+speculation. 
+And if so, it is quite a remarkable counterintuitive conclusion.
+</p>
+
+<br>
+<p><a href="CondAppConflict.html">A different discussion of the same phenomenon</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

@@ -1,0 +1,51 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Expressiveness of different kinds of ballots
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Expressiveness of different kinds of ballots </h2>
+
+<p>
+Let N be the number of candidates.
+</p>
+<table>
+<tr bgcolor="pink"><th>Ballot type</th><th># of legal votes</th>
+<th>N=3</th><th>N=5</th><th>N=10</th><th>N=20</th></tr>
+<tr><td><a href="Plurality.html">Plurality</a> (pick one)</td><td align="center">N</td>
+<td>3</td><td>5</td><td>10</td><td>20</td></tr>
+<tr><td>Vote for or against one</td><td align="center">2N</td>
+<td>6</td><td>10</td><td>20</td><td>40</td></tr>
+<tr><td><a href="https://rangevoting.org/Apprival.html">Approval</a></td><td align="center">2<sup>N</sup></td>
+<td>8</td><td>32</td><td>1024</td><td>1048576</td></tr>
+<tr><td>Rank-order top K only</td><td align="center">N!/(N-K)!</td>
+<td>6 (if K=3)</td><td>60</td><td>720</td><td>6840</td></tr>
+<tr><td>Full rank-ordering</td><td align="center">N!</td>
+<td>6</td><td>120</td><td>3628800</td><td>2.43&times;10<sup>18</sup></td></tr>
+<tr><td>Full rank-ordering with arbitrary truncation allowed</td><td align="center"><nobr>&lfloor;N!(e-1)&rfloor;-1</nobr></td>
+<td>9</td><td>205</td><td>6235300</td><td>4.18&times;10<sup>18</sup></td></tr>
+<tr><td>Rank-ordering with equalities allowed</td><td align="center">
+<nobr>&sum;<sub>k&ge;0</sub>k<sup>N</sup>/2<sup>k+1</sup></nobr></td>
+<td>13</td><td>541</td><td>102247563</td><td>2.68&times;10<sup>21</sup></td></tr>
+<tr><td><a href="RangeVoting.html">Score</a> (L levels)</td><td align="center">L<sup>N</sup></td>
+<td>1000 (if L=10)</td><td>100000</td><td>10000000000</td><td>10<sup>20</sup></td></tr>
+</table>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

@@ -1,0 +1,193 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Range Voting for Condorcetists
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Range Voting for Condorcetists </H2>
+
+<p>
+<b>1.</b> 
+We argue that if the voters are all maximally honest, then range voting 
+outperforms Condorcet voting methods.
+</p>
+<blockquote>
+<small>
+The classic over-simplified and
+over-dramatized example is the "kill the Jews" vote where the choices are
+<ol type="A">
+<li>
+Kill the Jews and steal their money, using it to reduce taxes for
+non-Jews.
+</li><li>
+The Jews (who are a minority) live.
+</li><li>
+(Possibly other choices too.)
+</li></ol>
+With honest Condorcet voting (by which I mean, honestly indicating the
+choice that is best solely for that voter, no matter how slightly),
+A wins.
+<br>
+But with honest range voting if the voters honestly express weak preference for A
+but strong preference for B 
+(because the voters who benefit from reduced taxes wish to indicate honestly 
+that is a small gain for them, while the Jews who die, wish honestly to indicate 
+that is a large loss for them), B can win. 
+B is better for society overall.
+<br>
+This example illustrates the fact that, <i>if</i> there is enough voter
+honesty, range can deliver superior results than any other of
+the usual voting method proposals.   No other commonly-proposed voting method can avoid
+the "tyranny of the majority" problem.
+(Although this example was
+over-dramatized and over-simplified, scenarios like it do arise
+all the time, e.g. as of 2009 the "Swiss minaret ban" and various referendums on banning "gay marriage" 
+might be abstractly comparable.)   
+<a href="BayRegDum.html">Bayesian Regret</a> simulation data backs this all up
+by giving experimental proof Range yields superior results with honest voters.
+</small>
+</blockquote>
+<p>
+<b>2.</b>
+On the other hand, if the voters strategize, then
+Range voting actually elects <a href="Glossary.html#condwin">Condorcet winners</a>
+<i>more often</i> than 
+Condorcet methods.  In other words, by exactly the yardstick Condorcet-supporters want,
+range voting is superior to Condorcet methods!
+</p>
+<p>
+<b>Q.</b> How can this be?  I thought the whole point of Condorcet voting
+methods was that they <i>always</I>
+elect a  Condorcet winner (whenever one exists)?!?
+</p>
+<p>
+<b>A.</b> Yes, but not if the voters are strategic (i.e. dishonest).
+</p>
+<p>
+<b>The model</b> we shall examine is the following:
+</p>
+<ol>
+<li>
+We suppose honest voters elect candidate C who is (perhaps) a
+Condorcet winner.
+</li><li>
+But that was just a pre-election poll, not the real election!
+</li><li>
+Now in the real election, the voters are assumed to strategize. Those
+voters who are anti-C will therefore &quot;<a href="CondStratProb.html">bury</a>&quot;
+C because (clearly,
+as was just proven to them by the pre-election poll) honestly voting
+is not good enough strategically for their purposes.
+(Pro-C voters can try to counter by artificially raising C to top.)
+Consequently, in the real election it sometimes will happen that C
+will not be elected, even when C is the honest-votes Condorcet
+winner, and even if we employ a Condorcet vote-counting method. 
+How often does this happen? That is what computer simulations can tell us.
+</li>
+</ol>
+<p>
+We can also do the same computer experiment with both the pre-election
+polls and real election being held with some <i>other</i> voting system. 
+We <a href="ReasAssump.html">tried</a>
+plurality, range, approval, and IRV. In the real election,
+we assume the voters exaggerate maximally on A and B &ndash; where A and B are the
+top-two finishers in the pre-election poll &ndash; as a strategic move to maximize the 
+impact of their vote.
+</p>
+<p>
+It can be <a href="AppCW.html">proven</a> that in this model, Approval and Range voters
+will always elect the Condorcet Winner (CW) [whenever a CW exists] <i>if</i>
+the CW was one of the top-two finishers in the pre-election poll (and also sometimes
+even if it was not).
+We can, by computer, determine how often these things happen.
+</p>
+<p>
+The result of the simulation study is 
+that <a href="RangeVoting.html">range voting</a> leads to a probability
+somewhere between <b>94% and 100%</b> of electing a Condorcet winner in the real
+election (assuming 3-to-9 candidates run, and 
+<a href="Glossary.html#REM">random election model</a>,
+and restricting attention to elections in which a CW exists).
+</p><P>
+Plurality, IRV, and approval, however, all lead to substantially
+lesser CW-election probabilities: <b>64 to 96%</b>
+depending on number-of-candidates (3 to 9) and election method, and always less than for
+range voting.
+</p><p>
+If you are a Condorcet fan, this range result ought to be highly
+satisfactory to you. 
+<small>
+Frankly it seems like if you get a result this
+close to your desires &ndash; 94% to 100% &ndash; you ought to quit whining!
+</small>
+</p><p>
+But ok, you might not be completely satisfied and might still want to
+get that additional 0-6% of potentially-available Condorcet winners.
+</p><p>
+So therefore, you might say "let's use a Condorcet method!".
+However, the <a href="StratHonMix.html">computer simulations</a>
+show that, in this same model,
+all the Condorcet methods tried (and I tried a lot of them)
+actually yield substantially <i>smaller</i> chance of electing a Condorcet
+winner, than range voting.
+</p><p>
+Which leads you, as a Condorcet advocate, into difficulty.
+Why are you advocating a <i>more complicated</i> voting method that is <I>less</i>
+likely to lead to what you want (electing Condorcet winner)?
+</p><p>
+So then how are you going to escape from this quandary? Possible choices:
+</p>
+<ol type="a">
+<li>
+Cover your eyes, say you have a headache, and refuse to accept
+or notice it.
+</li><li>
+Say that voters will not actually be strategic. They will be
+honest. But in that case range voting is better than Condorcet
+voting as we already saw (#1 at top).
+</li><li>
+Say that voters in the <i>pre-election poll</i> will not be honest, they
+will be strategic. But the <a href="StratHonMix.html">simulations</a>
+indicate that range, even with
+50-50 mix of honest+strategic voters in the pre-election poll,
+still leads to higher probability of electing a CW, than does
+Condorcet even if Condorcet enjoys 100% honest voters in the
+pre-election poll.
+<br><br>
+And even if in the pre-election poll the range voters are 100%
+strategic, i.e. they are approval voters &ndash; the same simulations
+<!-- /StratHonMix.html see 2nd table
+Approvval2Runoff line... -->
+indicate we get about 50%
+more Condorcet winners than Condorcet methods yield,
+even if the latter enjoy 100% voter honesty in the pre-election poll!
+(And this all in in a sim-scenario intentionally chosen to try to make
+range look bad!)
+</li><li>
+Decide you should <a href="Endorse.html">SUPPORT RANGE
+VOTING</a> since it experimentally leads to more Condorcet winners and is simpler than
+Condorcet voting. 
+The former means range is better by the very
+measure you, as a Condorcet advocate, claim most-matters. 
+The latter means range is
+more-adoptable and hence more likely to actually happen.
+</li><ol>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

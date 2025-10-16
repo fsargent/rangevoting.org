@@ -1,0 +1,594 @@
+
+<html>
+<head>
+<title>
+RangeVoting.org - Honeybees use range voting!
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H1> Voting: The wisdom of bees </H1>
+
+<p>
+(<a href="RangeVoting.html">Return to main page</a>) &nbsp;
+(<a href="ApisMExec.html">Executive Summary</a>) &nbsp;
+(<a href="Bonobos.html">Bonobos</a>)
+</p>
+
+<blockquote>
+<i>Go to the bee, thou poet;
+consider her ways, and be wise.</i> <br>&nbsp;&nbsp;
+ &ndash; George Bernard Shaw, <u>Man and Superman</u>, 1903.
+</blockquote>
+<blockquote>
+<i>...these homeless insects do something truly amazing; they hold a democratic debate
+to choose their new home.</i>
+ &ndash; Thomas Dyer Seeley, <u>Honeybee democracy</u>, 2010.
+</blockquote>
+
+<p>
+Honeybees (<i>Apis Mellifera</i> <a href="ApisM.jpg">jpg</a>)
+have been "voting" in single-winner "elections"
+for 20-50 million years.
+They've held far more elections than humans, for a lot longer,
+and to decide something that mattered to each bee voter a lot more than 
+most election winners matter to most human voters:  
+where should we locate our new nest?
+</p>
+<p>
+With computers we can easily run millions of simulated
+elections, but even that number is dwarfed 
+by the number of elections that bees have experienced, which exceeds
+<i>hundreds of trillions</i>.
+</p>
+
+<p>
+So it behooves us to ask: what election method do bees use?
+</p>
+
+<H3> Bee election performance &ndash; how good are they?  </H3>
+
+<p>
+Each spring, about half the inhabitants of each beehive leave with their queen
+to start a new hive, in a swarm usually containing between 2000 and 20000 bees.
+The most important decision they need to make is: where to build that new hive?
+<small>
+The penalty for choosing poorly is large:
+they'll die next winter, get eaten by a predator, be unable
+to raise as many larvae, need to do more work
+over the next year and thus suffer a large disadvantage relative to wiser bees, etc.
+</small>
+</p><p>
+They usually find about 20 different options within about 100 square kilometers,
+and about <b>90%</b> of the time, the bee swarm succeeds in selecting
+(what appears to entomologists to be) the <b>best</b> one.
+Occasionally, however, they select a sub-optimal choice or even fail to reach
+a decision. 
+The latter is very bad since there is only one queen &ndash; who cannot be
+divided in two!
+<small>
+Details:
+Lindauer in observing 19 swarms reported 2 that failed to reach a decision.
+In the first, the swarm split in two, each trying to get the queen to go to its choice;
+but after it became clear this attempt failed, the swarm rejoined and recommenced
+negotations, which after two more days resulted in an agreement.  In the second
+instance, the swarm had still failed to find an attractive housing option 
+even after 14 days, at which point it ran out of stored food and inclement 
+weather approached.  It then, apparently as a fallback option,
+decided to construct the new nest in <i>open air</i> right then and there,
+contrary to the usual policy of nesting in natural hollows.  Open air nesting usually
+leads to the death of the hive in the winter, but in this location the winters were mild enough
+to make survival probable.
+</small>
+</p>
+
+<p>
+So bees, while not perfect decision makers, are quite good.
+To provide a little perspective, consider the 
+"<a href="Plurality.html">plurality</a> voting method"
+that is the most commonly used system in human single-winner elections.
+</p>
+<p>
+My <a href="RandElect.html">computer simulations</a>
+show that 1283 plurality-voters, given 10 choices, 
+(each voter regarding each choice as worth a fixed standard-normal-random-number 
+"dollar amount," all randoms generated independently before the experiment begins) 
+will succeed in choosing the best choice (maximum sum of dollar values) <b>32%</b> of the time.
+While 32% is better than just making a random guess (10%), it's
+far worse performance than bees.  If the simulated-humans instead employ
+"<a href="AppExec.html">approval</a> voting" (approving choices with
+value greater than midway between the best and worst available)
+then they get the best choice 54% of the time &ndash; better,
+but still far worse than bees.
+If the humans use 0-100 "<a href="RangeVoting.html">range voting</a>" 
+(scoring the best choice 100, the worst 0,
+and the rest linearly interpolated) then it's 79%.
+That is at least <i>approaching</i> bee-like decision-making quality.
+</p>
+<p>
+We humans like to think we are far smarter than bees.
+We've developed calculus and written language.
+Human brains weigh about a million times more than a bee brain.
+(The <i>combined</i> brain-masses of all the bees in a large swarm 
+might add up to a few percent of the mass of a human brain.)
+<!-- bee brain is less than 1% of bee body mass. But more than 0.1%.
+Total body mass of large bee colony
+might be as much as 10 kg, for a total bee-brain mass of 10-100 grams.
+Human brain weighs about 1.5kg.
+The whole hive (bodies+home) can mass as much as 250 lb = 100 kg. -->
+
+So <i>why can't we make collective decisions as well as tiny buzzing flower-suckers??</i>
+Several reasons:
+</p>
+
+<dl>
+<dt>
+<b>It's the voting system, stupid:</b>
+</dt>
+<dd>
+Entomologists now understand quite a lot about the voting system that bees use,
+and it is a lot better than plurality voting (and also better
+than approval voting).  [In fact, we are going to see below for the first time
+that it basically is range voting!]
+</dd>
+<dt>
+<b>Honesty:</b>
+</dt>
+<dd>
+Bees have little or no motivation to be dishonest by "strategically exaggerating"
+in their votes, or "not voting for my true favorite because that would risk wasting my vote."
+In those respects, humans are a little "too clever."
+But the explanation it isn't that simple because dishonesty was
+not the reason for our poor performance in this computer simulation,
+since the simulated humans voted completely honestly &ndash;
+the main reason there was different voting systems.  
+However, honesty does <i>something</i> to do with it:
+If the humans had simply honestly reported their dollar values then we could 
+select the best choice (in terms of total dollar value)
+100% of the time.  
+While that might initially sound like a great idea, unfortunately even a <i>single</i>
+dishonest human could then report some enormous "dollar values" and throw the election,
+so that system would be unacceptable (plus most decisions do not <i>have</i>
+exactly measurable "dollar values" in some common agreed units such as "dollars"
+anyway).  So we need to restrict the votes to some fixed <i>range</i> to prevent
+one fanatical human from singlehandedly throwing the election, and then humans
+often will use the maximum for one candidate and the minimum for another in order
+not to "waste their vote," in which case already there is some "dishonest exaggeration"
+in the mix which cannot be avoided.  That is not so terrible because (a) even if
+every human voter exaggerates every range vote to the max, we would then just
+have approval voting, which is still a good deal better than the plurality system,
+and (b) experimentally, most human range voters do not do that.
+</dd>
+<dt>
+<b>(Somewhat Speculative):</b>
+</dt>
+<dd>
+It is known that only 5% or fewer of the bees are "scout bees" that actually find and examine
+the candidate nest-sites.  Conceivably, only bees that are
+above-average in scouting and judging ability, do the scouting.
+<small>
+Lindauer reported that the scout bees are precisely the ones that had been
+experienced foragers in their previous careers.
+</small>
+As H.D.Thoreau complained in an 1838 journal entry, 
+"[when humans make a collective decision]
+the mass never comes up to the standard
+of its best member, but on the contrary 
+degrades itself to a level with the lowest."
+(<small>
+Richard Nixon put it a little differently to John Erlichman [1971 white house tapes]:
+"You gotta remember the smartest thing the Congress did was to limit the number of voters...
+Out of three and a half to four million people,
+200,000 voted.  And that was true for a helluva 
+long time, and the republic would never have survived if all the 
+dummies had voted along with the intelligent people."
+</small>)
+If only the <i>best</i> decision-making bees become scouts (because bees can somehow assess
+their own abilities and do so honestly) then that human defect is avoided.
+</dd>
+<dt>
+<b>A few apologetic remarks about this computer simulation 
+versus reality:</b>
+</dt>
+<dd>
+The computer simulation described above was primarily
+designed to be "simple and reproducible"
+rather than "realistic."  Making good collective decisions about 
+<i>independent</i>-random-valued options often is
+harder than if the randomness is significantly <i>correlated</i>,
+a fact which made the simulated humans "look worse" relative to bees.
+But on the other hand: there usually are more bees than 1283, more
+candidate nest-sites than 10, and very imperfect knowledge of "dollar"-values by
+the bee voters (typically only 22% of the bee-scouts actually examine more than one
+nest site, and only 5% of the bees are scouts)
+i.e. in all these respects the bees usually have a harder decision-making job
+than the one faced by our simulated humans.
+</dd>
+</dl>
+
+<H3> The method the bees use </H3>
+
+<p>
+<b>1.</b>
+Most of the bees in the swarm find a branch to hang from in an energy-conserving
+"beard" formation (<a href="BeeSwarm.jpg">jpg</a>), then sit there.
+</p>
+
+<p>
+<b>2.</b>
+About 5% or fewer of the bees go scouting.  If they find one or more candidate nest sites,
+they (after carefully inspecting the site for a duration of around 1 hour)
+return to the swarm and "report" (via "dancing" using a kind of sign language)
+both (a) where the best one they found is, and (b) how good they think it is.  Better sites
+get more repetitions of the dance, executed with more vigor.
+<small>
+Dances for housing reports appear to use the same sign-language as dances for food-location
+reporting, <i>but</i> the housing-related dances are much longer, lasting minutes to hours,
+versus seconds to a few minutes for food-location dances.
+</small>
+</p>
+
+<p>
+<b>3.</b>
+Some bees who wish to be scouts observe these reports and fly out
+to check the alleged sites for themselves (as well as, perhaps,
+doing their own exploring).  Also, some bees who already have been scouts
+can choose to re-explore their own sites or the sites advertised by others.
+In all cases they report back as before, <i>but</i> bees re-exploring their
+old favorites, then re-advertise them with successively fewer dance repetitions
+each time, and once they reach zero, they "reset" themselves to an unbiased state.
+</p>
+
+<p>
+<b>4.</b>
+So after some time has elapsed, multiple "camps" of bee scouts emerge, each camp advertising
+different potential nest sites.
+</p>
+
+<p>
+<b>Comment:</b>
+So far, what we have described is a vote-casting process
+very much like range voting with <a href="Blanks.html">X</a>'s
+(intentional blanks): the scout bees cast <i>numerical</i>  votes for
+each candidate nest site, with higher numbers (indicated by longer and more vigorous
+dancing) being better, and X's being cast for sites that scout has not examined.
+(And these numbers indeed lie within some <i>range</i>, since there is some upper limit to
+how long and vigorously a bee can dance.)
+But, this is only the vote <i>casting</i> 
+part &ndash;  we have not yet described how these
+votes get <i>combined</i> to obtain an election winner.
+In range voting, the combining process is numerical <i>averaging</i>.
+But is averaging beyond bee mental capacity?  
+Averaging involves counting,  addition, and division; and then you have
+to pick the winner with the <i>greatest</i> average, which involves understanding which numbers
+are greater and lesser; and then, even assuming some bee manages to do all that,
+the result has to be <i>communicated</i> to all the other bees, and they have to do
+this <i>reliably</i>, i.e. must be sure such
+communication is for real and not from some mentally-deranged bee who made a calculational 
+or informational-transmitting error.
+All that is pretty difficult to do.
+So what do the bees do? 
+</p>
+
+<p>
+<b>5.</b>
+The bees do indeed use an ingenious process which effectively <i>does</i>
+allow them to reach a consensus on the site with highest-average-vote &ndash; but
+which avoids any need for them to do arithmetic and is highly robust
+to occasional mentally-defective bees!!
+The process works something like compound interest in finance:
+if two bank accounts get different rates of compound interest, then,
+thanks to the miracle of exponential growth,
+the one with the larger interest rate eventually becomes hugely larger
+(even if it initially was much smaller).
+The  bee-scouts for the best nesting site dance longer and more vigorously
+for it.  The chance a new scout is going to check out a site, is
+N times bigger
+if there is N times more dancing for it going on.
+That means the <i>interest rate</i>, i.e. the exponential multiplication factor, i.e. the
+average number-of-new-scouts generated by seeing the dance of one old scout,
+is the largest for the best nest site.   Even though the number of dancers for site
+A may initially be considerably smaller than the number dancing for site B,
+if A induces longer dances, i.e. higher exponential growth rate, then ultimately
+the scouts dancing for A will hugely overwhelm the number dancing for B.
+And note that it is precisely the <i>average</i> total dance-length 
+among all the dancers for a site, that is 
+(perhaps up to some monotonic transformation function <i>f</i>)
+its exponential growth rate.
+So we get exactly the range-voting effect (at least if we wait long enough):
+the site with the highest average score 
+<small>(or highest average <i>f</i>(score) value
+for some monotonic increasing  function <i>f</i> &ndash; this <i>f</i>-possibility does not
+affect the winner)</small>, eventually totally dominates.
+(This also has the good side-effect
+of causing the best candidate sites to get examined by the most 
+scouts, increasing accuracy and sanity.)
+</p>
+
+<p>
+<b>6.</b>
+The bees' process for determining the highest average score
+is not completely perfect for several reasons. 
+First, although <i>eventually</i> the highest compound interest rate wins, the bees cannot
+wait forever.   The swarm only is willing to sit around for at most about 2 weeks.
+A late-discovered but better site might not have enough time for its higher growth
+rate to win versus some older discovery of a worse (but still pretty good) nest site.
+Second, if two sites very close in
+quality are discovered at about the same time, then their growth rates
+might  balance exactly enough to prevent consensus.
+Third, there is a certain amount of "random noise" involved.
+Humans using exact arithmetic need not suffer from these imperfections and hence 
+(in these respects anyhow) could be superior to bees.
+</p>
+
+<p>
+<b>7.</b>
+The bees even have their own version of the CRV's notoriously kludgy 
+"safety" <a href="RuleD.html">rule d</a>.
+As discovered by Kirk <a href="VischerBeesPic.jpg">Visscher</a>, 
+the bees refuse to terminate an election until 
+a "quorum" of at least 10-15 scout bees have explored a site, because otherwise (we presume)
+the quality of each site-evaluation would be too low.
+<small>
+Quote: "We suggest that the quorum size is a parameter of the bees' decision-making
+process that has been tuned by natural selection to provide an optimal balance between
+speed (favored by a small quorum) and accuracy (favored by a large quorum)."
+</small>
+</p>
+
+
+<p><b>The Point:</b>
+In the &infin;-time limit, the "bank account" with the greatest "interest rate"
+wins, no matter who was richest at the beginning of the process.  The 
+interest (i.e. recruitment, i.e. faction-growth) rate in bee-elections
+is by design/definition <i>proportional</I> to its range-vote score. 
+</p><p> 
+&there4; The range-voting winner is the faction which eventually dominates.
+</P>
+<p>
+*(However, the bees do not <i>have</I> infinite time 
+&ndash; only willing to wait about 1 week
+&ndash; and also since 
+only a finite number of bees, 
+there is <i>statistical noise</I>.  These non-idealities
+could cause some other winner, if unlucky.)
+</p>
+
+<p><small><b>Bees only vote for one candidate?</b>
+Only about 22% of the bee-scouts actually score more than one nest-candidate-site.
+(And if they visit several sites during the same exploration trip, they only report on the best.)
+This is fully legitimate range-voting with blanks &ndash; it is just peculiar in that most
+of the bee-voters' scores <i>are</i> blanks.
+However, note that a bee <i>can</i> (and sometimes does)
+score more than one nest site.  It simply dances for
+both, at different times.   Bees can dance for site A for a while, then explore site B
+on a new trip, then dance for it (perhaps reporting a higher or lower score).
+What matters is its net dancing for each.  If the fact that 80% of the bees only 
+dance for a single site bothers you, then 
+<ol type="a">
+<li>
+Compare to internet movie-review and cooking-recipe sites &ndash; most voters 
+do not review the vast majority of movies and recipes (i.e. vote "blank") but nevertheless
+the rating system works pretty well;
+</li><li>
+You can reassure yourself that the opposite extreme 
+is favored by the
+<a href="LAlbipennis.html">ants</a>.
+</li></ol>
+</small>
+</p>
+
+<H3> Summary </H3>
+
+<p>
+The bees' decision-making process can be interpreted almost exactly
+as "range voting with intentional blanks."
+They perform "averaging and choosing the greatest" by a rather peculiar (to humans)
+algorithm, but that is what it does.
+In my opinion, this is a very strong indication, from 20-50 million years
+of Darwinian evolutionary experimentation &ndash; bees with worse decision-making algorithms
+die out because they suffer a large disadvantage versus better bees &ndash; that
+<a href="RangeVoting.html">range voting</a> is a good idea.
+</p>
+<p>
+It seems unlikely there was a practical way bees could have used 
+<a href="rangeVborda.html">Borda</a>,
+or <a href="rangeVcond.html">Condorcet</a>, or
+<a href="rangeVirv.html">Instant Runoff</a> voting.
+They certainly could have used plurality (with or without top-two runoff),
+or approval voting, or the simplified "123" form of
+IRV advocated by <a href="http://www.fairvote.org">fairvote.org</a> for use
+in San Francisco (that is, voters indicate only their top <i>three</I> choices in order,
+and then the usual IRV procedure is used), or a similar 123-simplification of Borda 
+or <a href="Glossary.html">Coombs</a>
+ &ndash;
+but those methods would have been far inferior.
+</p>
+
+<p>
+<a href="MoreInsects.html">More about social insects and their evolution</a>.
+<small>(Optimum tax rates <a href="AnimalTaxes.html">deducible from animal behavior</a>?)</small>
+</p>
+
+<H3> Further reading </H3>
+
+<blockquote>
+This whole investigation is described in more detail in my 
+paper #96 <a href="http://www.math.temple.edu/~wds/homepage/works.html">here</a>.
+To learn about bee voting and decision making, you can also see
+</blockquote>
+
+<p>
+Martin Lindauer:
+Communication among social bees,
+Harvard University Press (Cambridge 1971);
+Harvard books in biology #2.
+Lindauer's masterwork is <i>Schwarmbienen &amp; Wohnungssuche</i>, pp.263-324 in 
+Zeitschrift f&uuml;r vergleichended Physiologie 37 (1955).
+This now is available
+in English (see "supplement" titled
+"House hunting by honeybee swarms" to P.K.Visscher:
+<a href="http://www.annualreviews.org/doi/full/10.1146/annurev.ento.51.110104.151025">
+Group decision making in nest site selection among social insects</a>,
+Annual Rev. Entomology 52 (2007) 255-275.
+</p>
+<p>
+Mary R. Myerscough:
+Dancing for a decision: a matrix model for nest-site choice by honeybees,
+Proc. Royal Soc. London B 270 (2003) 577-582.
+</p>
+<p>
+Thomas D. Seeley, P. Kirk Visscher, Kevin M. Passino:
+Group Decision Making in Honey Bee Swarms,
+American Scientist 94 (May-June 2006) 220-229.
+</p>
+<p>
+Thomas D. Seeley &amp;  P. Kirk Visscher:
+Quorum sensing during nest-site selection by honey bee swarms,
+Behavioral Ecology and Sociobiology 56 (2004) 594-601.
+<a href="http://bees.ucr.edu/reprints/bes56.pdf">http://bees.ucr.edu/reprints/bes56.pdf</a>
+</p>
+
+
+<blockquote>
+To learn about bee fossils and bee evolution, e.g. the fact that various
+species of social bees have been
+around for at least 40-45 million years &ndash; actually there is a 
+<a href="BeeAge.html">dispute about that</a> &ndash; see the book
+<i>Evolution of the Insects</i>
+by
+David Grimaldi
+(American Museum of Natural History, New York) and
+Michael S. Engel
+(University of Kansas),
+Cambridge University Press 2005,
+and Engel's papers:
+</blockquote>
+
+<p>
+Michael S. Engel:  
+Fossil honey bees and evolution in the genus Apis (Hymenoptera: Apidae),
+Apidologie 29,3 (1998) 265-281.
+</p><p>
+Michael S. Engel:  
+Monophyly and extensive extinction of advanced eusocial bees: insights
+from an unexpected Eocene diversity,
+Proceedings  National Academy of Sciences USA 98,4 (2001) 1661-1664.
+</p><p>
+Michael S. Engel:  
+A monograph of the Baltic
+amber bees and evolution of the Apoidea (Hymenoptera),
+Bulletin of the American Museum of Natural History 259 (2001) 1-192.
+<a href="Engel192bees.pdf">(pdf)</a>
+</p><p>
+Michael S. Engel:  
+A New Interpretation of the Oldest Fossil Bee (Hymenoptera: Apidae),
+American Museum Novitates 3296 (25 Aoril 2006) 11 pages. 
+<a href="EngelOldestBee.pdf">(pdf)</a>
+<!-- A Giant Honey Bee from the Middle Miocene of Japan (Hymenoptera: Apidae),
+American Museum Novitates 3504 (12 January 2006) 12 pages. -->
+</p>
+
+<H3> Bee researcher (Cornell professor) 
+<a href="http://www.nbb.cornell.edu/neurobio/department/Faculty/seeley/seeley.html">Thomas Dyer Seeley</a> 
+speaks </H3>
+
+<blockquote>
+Dear Dr. Smith.
+Thank you for bringing Range Voting to my attention.  It seems
+extremely sensible, and I would like to endorse it. &ndash; Thomas D. Seeley, 17 July 2006.
+</blockquote>
+
+<h3>Supplemental notes:</h3>
+</p>
+<ol><li>
+Several years after this page and his above endorsement
+appeared, Seeley published an excellent book
+<b>Honeybee Democracy</b> (Princeton University Press 2010). <a href="https://www.youtube.com/watch?v=JnnjY823e-w">An excellent talk given by Seely on the subject is also available on YouTube</a>.
+</li><li>
+The <b>dance language</b> of bees was first decoded by Karl von Frisch (1886-1982)
+and described in his book <i>The Dancing Bees</i> (Methuen, London 1954).
+Their methods of "democracy" were decoded mainly by his student Martin Lindauer
+(1918-2008).  Lindauer's studies were redone with modern video and computer image processing
+technology by Seeley and collaborators; this included discovering
+the "streaker" technique that "role model"
+bees use to guide the swarm to its new nest location after the election has ended.
+</li><li>
+Honeybees are a keystone species with extreme economic/ecological <b>importance</b> &ndash; if they
+were to vanish it would make many food crops far more expensive, perhaps to the point
+where it would become infeasible to grow them and they would become extinct.
+See J.B.Free: <i>Insect pollination of crops</i>, Academic Press London 1993.
+</li><li>
+After USA President Ronald Reagan and Secretary of State
+Alexander Haig accused Russia of using secret
+biochemical warfare called <b>yellow rain</b> in places such 
+as Laos, Seeley suggested &ndash; and this was soon confirmed by a team
+led by Harvard biologist Matthew S. Meselson (1930- ) &ndash; that the yellow rain actually was 
+just naturally-occurring
+bee poop!  This would have been a great embarrassment for Reagan and Haig, except that
+they never admitted their mistake, nor did the <i>Wall Street Journal</i> editorial page, which 
+continued to denounce this dastardly
+"warfare" for over a decade; meanwhile Reagan made up a new
+and even more fun set of lies about
+the Russians distributing exploding toys to Afghan children, etc.
+</li><a name="simpmaj"></a><li>
+One <b>criticism</b>
+of range voting has been that it, if used for a <b>two-candidate</b> election,
+can yield a different result than a simple majority vote.  
+Since no voting reformer particularly is interested in changing 
+the voting system in the 2-candidate 
+case &ndash; it is only for (&ge;3)-candidate elections that they consider voting system reform 
+important &ndash; this criticism does not matter much.  But as a matter of <i>principle</i>
+it is interesting to enquire which is a better decision procedure 
+for 2-candidate elections:
+range voting or simple majority vote? 
+With strategic voting the two are equivalent, but with "honest voting" (whatever that means)
+they could differ whereupon range voting presumably(?) is superior.
+The honeybees can help us with this question.
+Note that they <i>always</i> employ range voting, and never employ simple
+majority vote, even in 2-candidate elections
+(and even in 1-candidate "elections")!   That is because the bees <i>do not know</i> ahead of time
+how many candidate nest sites there will be.    (Since their "nomination" and "election"
+are merged and overlap in time.)  So they are forced to use the same voting method no matter
+how many candidates appear.  
+</li><li>
+It is probably safe to say that honeybees have
+conducted at least a trillion 2-candidate elections via range voting.
+Estimate about 1% of bee-elections
+involve exactly 2 candidates.  Assume/guess, in the 2-candidate case, that 
+<i>either</i> simple-majority rule, or range voting, is
+a superior decision procedure by a margin of 10%.  In that case, any bee subspecies which,
+whenever it noticed there were exactly 2 candidates, switched off range voting and 
+turned on simple-majority vote, would enjoy a relative advantage (or disadvantage) of 0.001
+on average.
+Given that bee-evolution has been able to invent a considerably
+more sophisticated democratic procedure
+than simple majority rule, it seems safe to say that it would have been able to
+invent this refinement, were it worth it.
+This 0.001 average
+advantage, amplified over 40 million years of evolution, would be 1.001<sup>40000000</sup>,
+which is <i>enormous</i>.  Indeed, even a mere 40 <i>thousand</i> years of evolution
+would yield a selection factor 1.001<sup>40000</sup>&asymp;2.3&times;10<sup>17</sup>.
+It seems safe to say, then, that the method the bees use,
+range voting <i>without</i> switching to simple-majority in the 2-candidate case, is 
+best by test. The criticism is refuted.
+</li></ol>
+
+<br>
+<p>
+<a href="BogusBeeQV.html">Refutation of bogus claims by Sutherland &amp; Weyl about honeybees using "quadratic voting"</a>
+</p><p>
+<a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

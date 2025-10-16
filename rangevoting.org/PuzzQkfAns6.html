@@ -1,0 +1,131 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Puzzle #6: Probabilities of dice comparisons
+</H2>
+
+<p>
+<b>
+Puzzle:
+</b>
+Suppose there are 4 dice: Blue, Green, Red, and White.
+These dice have different numbers than usual printed on their faces.
+After observing a long sequence of experiments rolling pairs of these dice,
+you conclude that
+<ul>
+<li>
+When both are rolled simultaneously, the blue die gives a higher number than the green die
+2/3 of the time.
+</li>
+<li>
+When both are rolled simultaneously, the green die gives a higher number than the red die
+2/3 of the time.
+</li>
+<li>
+When both are rolled simultaneously, the red die gives a higher number than the white die
+2/3 of the time.
+</li>
+</ul>
+You are now asked to consider rolling the blue and white dice simultaneously.
+What can you conclude about the probability P that the blue die will
+produce a higher value than the white one?  (Is P>50%?)
+</p>
+
+<p>
+<b>
+Answer:
+</b>
+We <i>cannot</i> conclude P>50%.
+In fact, P can be as small as 1/3 (i.e. 33.33%) and as large as 100%!
+A set of dice that yield a Blue>Green>Red>White>Blue "probability cycle"
+(where "A>B" means "rolling A will produce a higher roll than B with probability 2/3")
+is given in the <i>top</i> row of this table.
+</p>
+
+<table border="2" cellpadding="3" align="center">
+<caption>
+How to construct dice.
+</caption>
+<tr> 
+<th bgcolor="aqua">blue</th>
+<th bgcolor="green">green</t>
+<th bgcolor="red">red</th>
+<th bgcolor="white">white</th>
+</tr>
+<tr> 
+<td bgcolor="aqua">004444</td>
+<td bgcolor="green">333333</td>
+<td bgcolor="red">222266</td>
+<td bgcolor="white">111555</td>
+</tr>
+<tr> 
+<td bgcolor="aqua">446666</td>
+<td bgcolor="green">555555</td>
+<td bgcolor="red">222266</td>
+<td bgcolor="white">111333</td>
+</tr>
+</table>
+
+<p>
+However, if the numbers painted on each die's 6 faces instead are those given
+in the <i>bottom</i> row of the table, then Blue>Green>Red>White
+and the Blue die will beat the White die 100% of the time.
+</p>
+
+<p>
+The fact that 1/3 and 100% both are best possible bounds is obvious for 100%,
+and not-so-obvious for 1/3 &ndash;  but proven by
+S.Trybula: On the paradox of N real variables, Zastos. Matem. (Applied) 8 (1965) 143-154
+and also independently by Z.Usiskin: Max-min probabilities in voting paradoxes, 
+Annals of Math'l Statistics 35,2 (1964) 857-862.
+Usiskin indeed showed that with 2K "dice" (i.e. independent probability distributions
+over the reals), the maximin intransitivity probability P(2K)
+was bounded by 
+<nobr>(3K-1)/(4K)&le;P(2K)&le;3/4,</nobr> and 
+<nobr>P(3)=(&radic;5-1)/2=0.61803...</nobr>
+(recognize the "golden ratio"?) and 
+P(4)=2/3.
+</p>
+<p>
+The exact maximum possible intransitivity probabilities P(n) for n=2, n=3, and n=4 dice,
+namely P(2)=1/2,
+P(3)=(&radic;5-1)/2,
+and P(4)=2/3, all meet the following upper bound claimed by
+[Ilya I. Bogdanov: Intransitive Roulette,
+Mathematical education, ser. 3, no. 14 (2010) 240-255;
+this journal and this paper both are in Russian].
+</p><center>
+P(n) &le; 1 - (1/4) sec(&pi;/[n+2])<sup>2</sup> = 1 - 1/[2+2cos(2&pi;/[n+2])] &lt; 3/4.
+</center><p>
+Since my Russian is poor (actually, nonexistent)
+I am not sure whether Bogdanov is claiming the "&le;" is
+tight for all n.
+</p>
+<p><small>
+<b>Other references:</b><br>
+Colin R. Blyth: Some Probability Paradoxes in Choice from Among Random Alternatives,
+J.American Statistical Association 67, 338 (June 1972) 366-373<br>
+R.P. Savage Jr: The Paradox of Nontransitive Dice,
+American Mathematical Monthly 101,5 (May 1994) 429-436.<br>
+H.Steinhaus &amp; S.Trybula: On a paradox in applied probability, 
+Bull. Acad. Polo. Sei. 7 (1959) 67-69.
+<br>
+<!--S.Trybula: On the Paradox of Three Random Variables, Polska Akademia Nauk.
+Instytut Matematyczny. Zastoso- wania Matematyki, 5
+-->
+</small>
+</p>
+
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

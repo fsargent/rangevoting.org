@@ -1,0 +1,183 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle ??? - Good voting systems incentivizing voter to reveal her utilities
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Puzzle #??: <i>Good</i> voting systems incentivizing voter to reveal honest utilities
+</H2>
+
+<p>
+Let X be any (pre-specified) single-winner voting system which inputs votes and outputs a
+winner, a second-place finisher, and a third-place finisher; and let &epsilon;&gt;0 be
+any arbitrarily-small positive real number.
+Construct a single-winner voting system (which includes randomness)
+with the following properties.
+</p>
+<dl>
+<dt><b>Includes range-style sub-ballot:</b></dt><dd>
+Each ballot includes a continuum <a href="RangeVoting.html">range-voting</a> type ballot, i.e.
+on which the voter scores each candidate between 0 (bad) and 1 (good);
+<i>plus</i> additional information (you will need to describe what), to be provided by the voter.
+</dd><dt><b>Elects X's winner, second choice, or third choice:</b></td><dd>
+The winner with your voting method, will always be either the method-X winner, or
+its second-place finisher, or its third place finisher.
+</dd><dt><b>Only &epsilon; worse than voting method X:</b></td><dd>
+Your voting method's
+<a href="BayRegDum.html">Bayesian Regret (BR)</a>
+will be within &epsilon; of the BR of voting method X
+since the election winner with your method, will be the same as X's election winner 
+with probability&ge;1-&epsilon;.  Further, the only way your election winner can differ
+from X's winner is when a majority of the voters sincerely prefers some "lottery" L
+over that winner (and, in such cases, they will get L).
+</dd><dt><b>Incentivizes honest scores:</b></td><dd>
+Strategic voters (as well as honest ones) will always provide
+<i>all-sincere scores</i> (positive-slope linear functions of their true utilities for
+the candidates) on their range-style sub-ballot.   
+Any dishonest scoring (or omitted scores)
+is, strategically speaking, strictly suboptimal.
+</dd><dt><b>Majoritarian if X is:</b></td><dd>
+If X is a majoritarian voting method, here
+meaning one in which a voter-majority can always force
+their common-favorite candidate to be elected, then your voting method will also be
+majoritarian.
+</dd></dl>
+<p>
+Please also criticize your solution and expound upon its practical limitations.
+</p>
+
+<h2> In other words </h2>
+
+<p>
+This scheme will convert any member X of a wide class of voting systems into
+a voting system in which voting honestly is the (generally uniquely)
+best voting strategy, thus essentially
+<i>totally evading</i>
+the <a href="GibbSat.html">Gibbard-Satterthwaite</a> impossibility theorem,
+probably the single most important theorem in voting theory!!
+</p><p>
+The catch is, each ballot will now have two parts, (i) the "be honest here"
+part and (ii) the other part.  A smart voter will indeed be honest in part (i), but the problem 
+is that the winner is determined by both parts, not just by part (i), of the ballots.
+</P>
+
+<h2> Answers </h2>
+<p><small>
+The main idea behind this solution is due to Forest Simmons, 19 Nov 2009.
+(For a quite different utility-reading method, which seems of less practical value, see
+<a href="PuzzlePage.html#p104">puzzle #104</a>.)
+However we've also incorporated
+contributions by Jobst Heitzig, Jameson Quinn, and Warren D. Smith.
+</small></p>
+
+<p>
+The <b>rules</b> of our new voting method (which is <i>not</i> 
+voting method X, but is derived from X)
+are as follows.
+</p>
+<ol>
+<li>
+Each voter supplies <i>two</i> ballots: the "range-style sub-ballot"
+(scoring each candidate with a real number in [0,1])
+and an "X-style sub-ballot" (obeying the rules for voting system X).
+</li><li>
+From the X-style sub-ballots, determine who the winner A, the
+second-placer B, and the third-placer C would have been using voting method X.
+</li><li>
+Let L denote the following lottery:
+With probability p, the winner is C; otherwise it is B.
+Here p is the fraction of X-style sub-ballots which express a clear preference for C over B.
+</li><li>
+If at least half of all range-style sub-ballots score A greater than
+the expected rating for L, that is if &nbsp;&nbsp;
+<nobr>score<sub>&eta;</sub>(A)&gt;p&middot;score<sub>&eta;</sub>(C)+(1-p)&middot;score<sub>&eta;</sub>(B)</nobr>
+&nbsp;&nbsp;
+is satisfied by at least half of all ballots &eta;, then elect A and stop.
+</li><li>
+Randomly-uniformly select a real number q with 0&lt;q&lt;1.  If q&gt;&epsilon; then
+elect A and stop.
+</li><li>
+Randomly select an X-style ballot (all equally likely).  If it expresses 
+a clear preference for C over B, elect C; otherwise elect B.
+Stop.
+</li></ol>
+
+<h4>Why this works</h4>
+
+<p>
+We use as a <b>lemma</b> the known fact that in 2-choice simple-majority elections, honest voting
+is the optimal strategy; 
+and if there is uncertainty about the other votes, it is the <i>uniquely</i> 
+optimal strategy.
+</p><ul>
+<li>
+If any voter dishonestly scores any candidate on her range-style sub-ballot, she risks
+voting wrong in the simple-majority 2-choice election in the rules step 4.
+Because p and the identities of B and C are unpredictable, only honest scoring is risk-free.
+And note these scores are not used for any purpose <i>other</i> than this vote in step 4.
+</li><li>
+Clearly only A, B, or C can win.
+</li><li>
+Because of step 5 in the rules, A will win with probability&ge;1-&epsilon;.
+</li><li>
+If X is majoritarian and the voter-majority votes on their X-style sub-ballots in such a way as
+to force their common-favorite A to win; and also scores A maximum and
+everybody else minimum on their range-style
+sub-ballots; that forces A to win.
+</li></ul>
+
+<h4>Comments</h4>
+<p>
+This has assumed that voting a sincere range-style ballot is "free" 
+&ndash;
+that it doesn't cost time or "cognitive energy," either for candidate research or for evaluation.
+</p><p>
+Of course, in a large democracy, voting at all would scarcely ever be selfishly rational if it 
+weren't free, and people still vote. So that assumption can't be too wrong. 
+Still, I think we'd need &epsilon;&gt;0.001
+to motivate sufficient voters to be sufficiently careful with their range voting.
+</p><p>
+Also, note that to the extent anybody extracts and publishes useful data from the 
+honest range totals, we unfortunately add strategic incentives to that vote. 
+(We were pretending "strategic voters" were solely interested in who won.   Trouble is,
+they might also be interested in influencing who gets the "moral victory" of winning
+the unofficial "honest vote.")
+For instance, 
+if I vote strategically on the X-style sub-ballot, I may choose to vote the same strategy 
+on the "honest" range-style sub-ballot to inflate the published "sincere score" 
+of my candidate, even though this risks sacrificing my chance to favorably-change 
+the real winner.
+</p><p>
+Finally, note that, presuming we're
+electing some sort of official who has given term of office, 
+this system could, instead of using randomness, 
+<i>split</i> the term of office between two candidates. A relatively-short deterministic
+term in office for
+the "backup" candidate elected using the honest-range-backed choice-between-lotteries may 
+motivate voters to vote well on the range ballot, better than a small <i>chance</i>
+that the backup wins, with the probabilistic system. 
+It may also be more manifestly "fair," because it is nonrandom.
+</p><p>
+If &epsilon;&ge;1 then step 5 can be erased.
+</p><p>
+If X happens (also) to be range voting, then we get a <b>double range voting</b> election-method
+where each ballot consists of one "sincere" and one "strategic" 
+<a href="RangeVoting.html">range-voting</a>-style ballot. 
+Observe that this voting method (and some of the others described here) all evade the 
+<a href="GibbSat.html">Gibbard-Satterthwaite</a> impossibility theorem, i.e. 
+"accomplishing the impossible."
+This double range voting method
+with &epsilon;=1 will in practice (in terms of the winners it generates)
+very much resemble "range + (later) top-2-runoff," which is pretty good.
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+

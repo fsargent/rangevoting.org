@@ -1,0 +1,458 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 strict //EN">
+<html>
+<head>
+<title>
+Voting matters, Issue 1: pp 7-11
+</title>
+</head>
+<body>
+<B>Up:</B> <A HREF="https://rangevoting.org/INDEX.HTM"> Issue 1 </A>
+<B>Next:</B> <A HREF="https://rangevoting.org/P3.HTM"> Paper 3 </A>
+<B>Previous:</B> <A HREF="https://rangevoting.org/P1.HTM"> Paper 1 </A>
+<BR><P>
+<H1>Voting matters - Issue 1, March 1994</h1>
+
+
+<H2>A New Approach to the Single Transferable Vote</h2>
+
+<h3>Paper II: The problem of non-transferable votes</h3>
+
+<h4>B L Meek, Computer Unit, Queen Elizabeth College, London</h4>
+
+<p>Brian Meek is now at King's College London.
+
+<p>
+<i>The original version of this paper was dated 21 March 1968 and was
+published in French in Math&eacute;matiques et Sciences Humaines No 29, pp
+33-39, 1970. This note, and note 8 in its present form, have been added in
+this reprint.</i>
+
+<h3>Abstract</h3>
+The feedback counting method used for Single Transferable Vote elections,
+developed in an earlier paper, is extended to cover situations in which
+there are non-transferable votes. It is shown that present counting methods,
+on the other hand, may not satisfy the condition that the number of wasted
+votes be kept to a minimum in such situations. The extension of the method
+to permit voters to give equal preferences to candidates is also described.
+
+<h3>1. Introduction</h3>
+In an earlier paper<a href="#r1">[1]</a> (hereafter referred to as Paper
+I) the Single Transferable Vote (STV) system of voting was considered from
+the point of view of certain conditions, the main one being that as far as
+possible the opinions of all voters are taken equally into account; it was
+shown that present STV counting methods do not satisfy this condition. A
+'feedback' counting mechanism was suggested which would overcome this
+problem. In Paper I, however, we confined ourselves only to the cases where,
+whenever a vote is rescrutinised for transfer, a next preference is always
+given. In this paper we shall show how the feedback method can be extended
+to cope with situations where no such preference is available. We shall here
+adopt the reverse procedure to Paper I; we shall consider the application of
+the feedback mechanism to these cases first, and only then discuss present
+counting methods in the light of the conditions.
+
+<h3>2. Rules for vote-casting</h3>
+Even within the same voting system major differences can be made simply by
+changing the rules governing what constitutes a valid ballot. For example,
+in a multiple-vacancy election by simple majority where each voter has one
+independent vote for each vacancy, the result can be totally different if
+the voter is forced to use all of his votes (in effect to vote against his
+favourite candidates) instead of using only some.<a href="#r2">[2]</a>  In
+STV the equivalent requirement would be that all candidates should be listed
+in preference order. However, in the simple-majority case distortions can
+arise in that some votes may not be genuine, having only been added in order
+to make up the correct number; in STV a voter may only wish to express his
+preferences for a few candidates, being indifferent to the remainder. Normal
+STV practice is in fact to accept as valid any ballot showing a unique first
+preference; thereafter the voter may, optionally, give further preferences
+for as many or as few of the remaining candidates as he wishes. In STV the
+feedback mechanism could be applied as it stands simply by declaring as
+invalid any votes which do not give preferences for all candidates or
+(relaxing this somewhat) declaring invalid during the progress of the count
+any vote encountered for which a next preference is required but not
+available, and then restarting the count. However, it would clearly be more
+satisfactory not to impose additional restrictions on the voter if this can
+be avoided.
+
+<h3>3. Extension of the feedback method</h3>
+We recall here the two principles of the feedback mechanism stated in Paper
+I:
+<ul>
+
+<li><b>Principle 1.</b> If a candidate is eliminated, all ballots are
+treated <i>as if that candidate had never stood</i>.
+ 
+<li><b>Principle 2.</b> If a candidate has achieved the quota, he retains a
+fixed proportion of every vote received, and transfers the remainder to the
+next <i>non-eliminated</i> candidate, the retained total equalling the
+quota.
+
+</ul>
+
+Since transfers are only made from eliminated or elected candidates,
+non-transferability only arises when all the marked candidates are
+eliminated or elected. The simplest case to consider is that when all the
+marked candidates are eliminated. By Principle 1, such a ballot has to be
+treated as if those candidates had never stood; and hence as if the ballot
+is invalid. This implies that the total <i>T</i> of valid ballots is
+reduced; this in turn implies that, on the elimination of any candidate, if
+non-transferable ballots occur the feedback should include the recalculation
+of the quota, using the reduced value of <i>T</i>.
+
+<p>
+The case of a ballot with marked candidates who are elected is less
+straightforward. Suppose an elected candidate C receives a total <i>x</i> of
+votes with no further preferences marked on them (any marked eliminated
+candidates can, by Principle 1, be ignored). By Principle 2, C must pass on
+a fixed proportion <i>p</i> of these, as all other, votes and retain the
+rest as part of his quota. The difficulty arises because it is not clear to
+whom these votes should be transferred.
+
+<p>
+If the difficulty were to be avoided by increasing the proportion
+transferred of votes for which a next preference is marked, to enable all
+<i>x</i> votes to be retained by C, this would clearly reintroduce
+inequities of the kind Principle 2 was designed to eliminate. Not to
+transfer the proportion at all would mean leaving C with more than the quota
+(see also section 4). The two possible ways of strictly obeying Principle 2
+are
+
+<ul>
+<li>(a) to divide the otherwise non-transferable proportion equally between
+the remaining (i.e. unmarked and uneliminated) candidates; or
+
+<li>(b) to subtract this quantity from the total <i>T</i> of votes cast, and
+recalculate the quota with the new value.
+</ul>
+
+Method (a) is based on the view that the voter regards the unmarked
+candidates as of equal merit, which is why he has not given preferences. The
+second method is based on the view that the voter's action is a partial
+abstention; he has not sufficient knowledge of these candidates to judge
+between them, and prefers to leave the choice to the other voters. It should
+be noted that the two methods are not equivalent; in the first the totals of
+the unmarked candidates, in particular the non-eliminated ones, are raised
+equally, whereas in the second the quota increases the proportions
+transferred from the elected candidates, and the increase in the votes of
+non-elected candidates will vary according to these values.
+
+For the moment we shall resolve the (apparent) dilemma by making the
+(apparently) arbitrary decision to adopt the second method. The <i>prima
+facie</i> case for this is that in general some unmarked candidates will be
+elected candidates, and hence the adoption of the first method will in any
+case involve the recalculation of the quota. However, the real justification
+will appear in section 6, when it will be shown that the dilemma need not,
+in fact, exist at all.
+
+<h3>4. Current STV practice</h3>
+Current STV procedure in dealing with non-transferable votes involves
+different rules in different circumstances. The main rules are
+
+<ol>
+<li> If a vote is not transferable from an eliminated candidate, it is set
+aside; such votes play no further part in the count.
+
+<li> If the number of votes non-transferable from an elected candidate is
+not greater than the quota, those votes are included in the quota and only
+the transferable votes determine the distribution of the surplus. If the
+number is greater than the quota, then the transferable votes are
+transferred (at unreduced value), the difference between the
+non-transferable votes and the quota increasing the non-transferable total.
+
+</ol>
+
+In Paper I we considered STV from the point of view of three conditions.
+Condition (C) we shall discuss later; the others were
+
+<ul>
+<li>(A) The number of wasted votes in an election (i.e. which do not
+contribute to the election of any candidate) is kept to a minimum.
+
+<li>(B) As far as possible the opinions of each voter are taken equally into
+account.
+
+</ul>
+
+It is clear at once that, when there are non-transferable votes, condition
+(B) cannot be satisfied even by the feedback counting method unless
+recalculation of the quota is included, for otherwise candidates at a later
+stage of the count, when a number of non-transferable votes have
+accumulated, need less that the original quota to be elected. Indeed, if as
+many as <i>q</i> votes become non-transferable, it is impossible for the
+last elected candidate to achieve a full quota.
+
+We saw in Paper I that condition (A) is satisfied when there are no
+non-transferable votes. When votes do become non-transferable these have to
+be added to the 'wasted' total <i>W</i>, and the formula in Paper I becomes
+
+<p>
+<i>W</i> &lt;= <i>T</i>/(<i>S</i> + 1) + <i>T</i>0
+
+<p>
+where <i>T</i>0 is the non-transferable total. However, this is derived from
+a quota calculated on the total <i>T</i> and not on the total available vote
+<i>T</i> ' = <i>T</i> - <i>T</i>0. Thus with recalculation of the quota we
+have
+
+<p>
+<i>W</i> ' &lt; <i>T</i> '/(<i>S</i> + 1) + <i>T</i>0 = <i>W</i> - <i>T</i>0
+/(<i>S</i> + 1) &lt; <i>W</i>
+
+<p>
+i.e. condition (A) is violated unless the quota is recalculated<a href="#r3">[3]</a>.
+
+<p>
+It is clear that rule (ii) above is an attempt to satisfy condition (A), but
+it only does so at the cost of violating condition (B);  for example,  if  a 
+candidate E is elected with <i>q</i> + <i>x</i> votes, <i>q</i> of which are
+non-transferable, the <i>x</i> remaining votes will be transferred at
+unreduced value to the next preference even though their earlier preference
+for E has been satisfied. Further, the present rule that votes cannot be
+transferred to an elected candidate (see Paper I) means that both by rule
+(i) and by rule (ii) many whole votes may be declared completely
+non-transferable, thus swelling <i>T</i>0 and <i>W</i> above, whereas the
+feedback method allows each vote to count partly for the elected candidates
+marked and only a fraction becomes non-transferable.
+
+<p>
+Thus, on two grounds, current STV counting methods violate condition (A). It
+could perhaps be argued that the feedback method cannot satisfy condition
+(A) unless method (a) rather than method (b) of section 3 is used when
+dealing with unmarked candidates. We shall discuss this point in section 6.
+
+<h3>5. Recalculating the quota</h3>
+
+It can be seen that in recalculating the quota and having to apply it in
+retrospect to candidates already elected, the same difficulties occur as in
+the simple feedback situation, without non-transferable votes, described in
+Paper I. We consider first the case of an elected candidate. If some of his
+votes are non-transferable, the appropriate proportion is subtracted from
+the total vote, and the quota recalculated. the reduction in the quota makes
+more of the elected candidate's votes surplus, which increases the
+proportion for transfer; this increases the non-transferable proportion to
+be subtracted from the total, which further reduces the quota, and so on.
+The equations to be solved are
+
+<p>
+<i>q</i> = [(<i>T</i> - <i>p</i>1<i>&times;t</i>10)/(<i>S</i> + 1) + 1]  .....(Equation:1)
+
+<p>
+<i>t</i>1(1 - <i>p</i>1) = <i>q</i>  ............(Equation:2)
+
+<p>
+where, as in Paper I, <i>S</i> is the number of vacancies, <i>T</i> is the
+total votes (now ignoring any which mark only eliminated candidates),
+<i>t</i>1 the total for the elected candidate, <i>p</i>1 the proportion he
+transfers, <i>t</i>10 the total vote for the candidate not transferable to
+others, and <i>q</i> is the quota.
+
+<p> 
+These two equations can be solved easily for <i>p</i>1 and <i>q</i> by
+equating the expressions for <i>q</i>; however, if there is more than one
+elected candidate the iterative method of finding the <i>p</i>i, described
+in Paper I, will be needed, and it is convenient to discuss the extension of
+the iterative process to include the recalculation of the quota in terms of
+the simplest case, above. Equation (1) with <i>p</i>1 = 0 gives the original
+value of <i>q</i>. Equation (2) then gives a first value of <i>p</i>1 &gt;
+0. Substitution of this value in (1) gives a new value of <i>q</i> smaller
+than before; use of the new <i>q</i> in (2) gives a larger <i>p</i>1, and so
+on. Thus we have a monotone increasing sequence of values for <i>p</i>1,
+bounded above by 1, and a monotone decreasing sequence of values of <i>q</i>
+bounded below by 0; these sequences must therefore tend to limits which are
+the solutions to the equations. The convergence rate is satisfactory; simple
+analysis shows that the errors are multiplied in each cycle by a factor
+which is at most 1/(<i>S</i> + 1).
+
+<p>
+The process is extended to the case of <i>n</i> elected candidates by adding to the equations in Paper I the equation
+
+<p>
+<i>q</i> = [<i>T</i>n/(<i>S</i> + 1) + 1]
+
+<p>
+which must be evaluated for <i>q</i> first in each iterative cycle.   
+<i>T</i>n = <i>T</i>n(<i>p</i>1,<i>p</i>2,....,<i>p</i>n) is the total
+available for transfer in each case; for <i>n</i> = 1, 2, 3 it is given by
+
+<p>
+<i>T</i>1 = <i>T</i> - <i>p</i>1<i>&times;t</i>10
+
+<p>
+<i>T</i>2 = <i>T</i> - {<i>p</i>1<i>&times;t</i>10 + <i>p</i>2<i>&times;t</i>20 + <i>p</i>1<i>&times;p</i>2(<i>t</i>120 + <i>t</i>210)}
+
+<p>
+<i>T</i>3 = <i>T</i> - {S1 <i>pi&times;ti</i>0 + S2 <i>pi&times;pj&times;tij</i>0 +
+S3 <i>p</i>1&times;<i>p</i>2<i>&times;p</i>3&times;<i>t</i>(123)0}
+
+<p>
+In these formulae <i>tij</i>...<i>k</i>0 is the total transferable from
+candidate <i>i</i> to candidate <i>j,</i> to ..., to candidate <i>k</i> but
+not further; S1 denotes summing over <i>i</i>;  S2  denotes summing over all
+<i>i</i>, <i>j</i>, <i>i</i> /= <i>j</i>;  S3 denotes summing over all
+permutations of (123).
+
+<p>
+The reader will easily derive equivalent formulae for higher values of
+<i>n</i>; putting <i>pn</i> = 0 in the expression for <i>T</i><i>n</i> gives
+the expression for <i>T</i><i>n</i>-1.
+
+<h3>6. Equal preferences</h3>
+
+In section 2 we discussed briefly the effect of different validity rules on
+otherwise identical voting systems. The usual STV counting procedures depend
+on the existence at each stage of a unique next preference, the only
+deviation allowed being, as we have seen, that the absence of further
+preferences does not make the vote as a whole invalid. It is standard
+practice to accept as valid a vote with a unique first preference, and to
+accept further preferences provided one and only one is marked at each
+stage; if no, or more than one, next preference is given at any point, all
+markings at and past this point are ignored.
+
+<p>
+For the simplest form of STV counting, involving the physical transfer of
+ballot papers from pile to pile, the need for a unique next preference is
+obvious. However, with the feedback method such a restriction is no longer
+necessary, and indeed it is not necessary even with Senate Rules counting. A
+vote can be marked A1, B1, C2, ... with A and B as equal first preferences
+and credited at 0.5 each to A and B. If A is elected or eliminated the 0.5
+is transferred at reduced or full value to the next preference &mdash; which
+of course is B and not C. In effect, such a vote is equivalent to two normal
+STV votes, of value 0.5 each, marked A,B,C... and B,A,C... respectively.
+Similarly, if A, B, C are all marked equal first, this is equivalent to 6 (=
+3!) votes of value 1/6 each, marked A,B,C...; A,C,B...; B,A,C...; B,C,A...;
+C,A,B...; and C,B,A... . It is easy to see that this can be extended to
+equal preferences at any stage, and that <i>K</i> equal preferences
+correspond to <i>K</i>! possible orderings of the candidates concerned, each
+sharing 1/<i>K</i>! of the value at that stage.
+
+<p>
+Such an extension of the validity rules enables us to resolve the dilemma
+between the methods (a) and (b) in section 3 of dealing with
+non-transferable votes. A voter who, at a certain stage, wishes his vote, if
+transferred, to be shared equally between the remaining candidates, can
+simply mark those candidates as equal (i.e. last) preferences. Thus the
+dilemma does not after all exist; both of the methods can be used, and the
+voter himself can determine which is to be used for his own ballot by the
+way that he marks it; failure to rank a candidate indicates a genuine
+(partial) abstention.
+
+<p>
+This extension of the validity rules also enables condition (C) of Paper I
+to be satisfied more closely. The condition was:
+
+<ul>
+<li>(C) There is no incentive for a voter to vote in any way other than
+according to his actual preference.
+</ul>
+
+Here we are interpreting this condition in a particular way not discussed in
+Paper I: the STV voting rules not merely encourage but force a voter to vote
+other than according to his preference in the restricted sense that, e.g. if
+he rates two candidates as equal first he is not allowed to vote
+accordingly, but must assign a preference order between them which may well
+be arbitrary. In view of the importance of first preferences in STV, this is
+undesirable. A voter is similarly forced to make an unreal ordering of
+candidates to which he is indifferent if, for example, he has listed his
+real preferences but wishes to give the lowest ranking to a candidate he
+particularly dislikes. This kind of voting is very common.
+
+<p>
+Permitting equal preferences thus gives much greater flexibility to the
+voter to express his ordering of the candidates, and is thus a desirable
+reform whether the feedback method is used for counting or the Senate Rules
+retained.<a href="#r4">[4]</a>
+
+<h3>7. Concluding remarks</h3>
+
+Two distinct problems arise in the development of a voting system; the
+information with regard to the choices which is required from each voter,
+and the way in which this information is to be processed to arrive at "the
+social choice".
+
+<p>
+The first problem is mainly outside the scope of these papers, but has been
+touched on in the last section. It is a basic assumption of STV that the
+individual preference orderings of each voter is sufficient information<a
+href="#r5">[5]</a> to obtain the social ordering, and the voting rule
+extensions described above follow naturally from this principle, and indeed
+bring STV more closely into line, in a certain sense, with the work of
+Arrow.<a href="#r6">[6]</a>
+
+<p>
+The possible development of (preferential, transferable) voting systems
+which use further relevant information is the subject of continuing
+work.<a href="#r8">[8]</a>
+
+<p>
+The second problem is the classical problem of decision theory. Assuming the
+basic STV structure, these papers have shown that the feedback method of
+counting is needed to satisfy the declared aims of STV as a decision-making
+procedure more consistently.
+
+<p>
+This improvement can be made without causing any more difficulty to the
+voter, and allows the counting procedure to be described by two simple
+principles instead of by a collection of rules, some of which are rules of
+thumb.
+
+<p>
+The disadvantage of the method is the need for many repetitive calculations,
+which for reasons of sheer practicality rules it out for manual counting
+except when the numbers of vacancies, candidates and votes are small.
+However, as pointed out in Paper I, an STV count is already a sufficiently
+tedious process for it to be worthwhile to use a computer, and the additions
+to the feedback method described in this paper would be simple to add to the
+computer program.
+
+<p>
+As E G Cluff has pointed out,<a href="#r7">[7]</a> one advantage of
+election automation is that one is not restricted in the choice of voting
+system to what is practically feasible in a manual count. The feedback
+method can lead to different results from the Senate Rules in non-trivial
+cases, and is therefore a choice to be considered when the automation of STV
+elections is being implemented.
+
+<h3>References and notes</h3>
+<ol>
+<li> <a name="r1"><a href="https://rangevoting.org/p1.htm">B L Meek</a>, A new approach to the
+Single Transferable Vote I: Equality of treatment of voters and a feedback
+mechanism for vote counting, Math&eacute;matiques et Sciences Humaines No
+25, pp 13-23, 1969.</a>
+
+<li> <a name="r2">It can in fact lead to the defeat of a candidate who is
+first choice of a majority of the electorate. It is depressing to note that
+a public election in England was held under precisely these rules as
+recently as 1964.</a>
+
+<li> <a name="r3">This kind of inequity can be found most often in elections
+with large numbers of candidates and vacancies - e.g. for society committees
+- and can lead to disillusion with STV as a voting system which has little
+relation to its merits or demerits.</a>
+
+<li> <a name="r4">The possibility of a voter sharing his first preference
+other than equally between a number of candidates would take us too far
+afield, into the realm of multiple transferable voting systems - the subject
+of continuing work on more general preferential voting systems. In STV the
+task of the voter is in comparison a straightforward one, in some ways made
+easier by allowing equal preferences.</a>
+
+<li> <a name="r5">And, indeed, necessary information!</a>
+
+<li> <a name="r6">K Arrow, Social choice and individual values, 2nd edn,
+Wiley 1962. For what is meant by "in a certain sense" see Paper I.</a>
+
+<li> <a name="r7">See B L Meek, Electronic voting by 1975?, Data Systems
+July 1967, p 12.</a>
+
+<li> <a name="r8">See also note 4. This further work was later published (in
+English) as: B L Meek, A transferable voting system including intensity of
+preference, Math&eacute;matiques et Sciences Humaines No 50, pp23-29,
+1975.</a>
+
+</ol>
+
+<hr>
+<B>Up:</B> <A HREF="https://rangevoting.org/INDEX.HTM"> Issue 1 </A>
+<B>Next:</B> <A HREF="https://rangevoting.org/P3.HTM"> Paper 3 </A>
+<B>Previous:</B> <A HREF="https://rangevoting.org/P1.HTM"> Paper 1 </A>
+</body>
+</html>

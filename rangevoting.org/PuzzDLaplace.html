@@ -1,0 +1,277 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle 117 - Bayes-Laplace-Dirichlet law and "soft quorum"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to puzzle #117 &ndash; Bayes-Laplace-Dirichlet law &amp;  "soft quorum" </H2>
+
+<p><b>Puzzle</b><br>
+Suppose there is some binary quantity B (i.e. yes=1 or no=0, for example "do you think there
+should be a $5/gallon gasoline tax?").
+You ask a random sample of S&ge;0 people for their values of B, and the result is that
+Y say "yes" 
+while N say "no" 
+where Y+N=S.
+</p>
+<ol type="a">
+<li>
+Given this data: what is the Bayesian estimate of the probability P
+that a random person says "yes"?
+</li><li>
+And what is the variance in this estimate?
+</li><li>
+How can a similar formula be used to make range voting have a "soft quorum"?
+</li></ol>
+
+
+<h3> Answer a
+[Th.Bayes (1702-1761), P.S.Laplace (1749-1827) &amp; J.P.G.L.Dirichlet (1805-1859)]: 
+</h3>
+
+<p>
+If we assume <!--the parameter-->
+P has a "prior" distribution <i>uniform</i> on the real interval [0,1],
+then the Bayesian estimate of the expectation value of P
+(conditioned on the Y yesses, N noes data) is
+</p>
+<center>
+Expect<sub>uniform prior</sub>(P | data) 
+&nbsp;
+=
+&nbsp;
+&int;<sub>0&lt;u&lt;1</sub> u &middot; u<sup>Y</sup> &middot; (1-u)<sup>N</sup> du
+<font size="+3">/</font>
+&int;<sub>0&lt;u&lt;1</sub> u<sup>Y</sup> &middot; (1-u)<sup>N</sup> du
+</center>
+<p>
+Since both the integrals are 
+<a href="http://en.wikipedia.org/wiki/Beta_function">Euler Beta functions</a>
+they can be done immediately via Euler's formula
+</p>
+<center>
+&int;<sub>0&lt;u&lt;1</sub> u<sup>A-1</sup> &middot; (1-u)<sup>B-1</sup> du
+&nbsp;
+=
+&nbsp;
+&Gamma;(A) &Gamma;(B) / &Gamma;(A+B).
+</center>
+<p>
+Bayes recognized the answer was the above ratio of integrals but I doubt
+he was aware of Euler's formula [due to Leonhard Euler (1707-1783)] 
+in which case he was not 
+able to actually
+<i>do</i> the integrals.  But Dirichlet was aware of it and thus reached the
+final result, which (after algebraic simplification) is
+</p>
+<center>
+Expect<sub>uniform prior</sub>(P | data) 
+&nbsp;
+=
+&nbsp;
+(Y+1)/(Y+N+2) 
+=
+(Y+1)/(S+2).
+</center>
+<p>
+Note that this is <i>not</i> quite the same as the naive formula P=Y/S,
+although it becomes the same in the limit where S is very large.
+One indication that the Bayes-Laplace-Dirichlet formula is superior to the naive one is 
+how it handles the no-data case Y=N=S=0.   
+</p><p>
+You may also enjoy the case Y=S=1, N=0 where Laplace says Expect(P)=2/3
+as opposed to the naive 1.
+Obviously, it does not make sense, given a single datapoint "yes," to conclude
+that every other human being is also going to answer yes so that our best estimate of humanity's
+response is "1.000."   We feel from our prior knowledge about human behavior that some people will
+probably say "no."  Getting a single "yes" datapoint is not enough to cause us to throw all our prior
+knowledge about human behavior into the garbage.  The Bayes-Laplace-Dirichlet formula is 
+a way to smoothly, and in a principled way, reduce the relative amount of prior knowledge we  incorporate
+into our estimate, as more real data becomes available.
+</p><p>
+Incidentally, if instead of using a uniform prior, we had employed a 
+<a href="http://en.wikipedia.org/wiki/Beta_distribution">Beta(&alpha;,&beta;) distribution</a>
+[which has mean <nobr>&alpha;/(&alpha;+&beta;)</nobr>]
+as our prior, then we would get this more general formula:
+</p>
+<center>
+Expect<sub>Beta(&alpha;,&beta;) prior</sub>(P | data) 
+&nbsp;
+=
+&nbsp;
+(Y+&alpha;)/(Y+N+&alpha;+&beta;) 
+</center>
+<p>
+and the old formula merely arises as the <i>special case</i> &alpha;=&beta;=1.
+Call this the "generalized" 
+Bayes-Laplace-Dirichlet formula.
+</p>
+<p>
+<i>Note</i>
+that the generalized Bayes-Laplace-Dirichlet formula is the <i>same</i> as the naive P=Y/S
+formula <i>except</i> that an extra &alpha; "yesses" and &beta; "noes"
+are artificially adjoined to the set of S real votes.
+</p>
+
+<h3> Answer b: the variance </h3>
+
+<p>
+We can similarly compute the variance (and the standard deviation is its square-root):
+</p>
+<center>
+Variance<sub>Beta(&alpha;,&beta;) prior</sub>(P | data)  
+= 
+[(Y+&alpha;+1) (N+&beta;+1) - 1]
+<font size="+2">/</font>
+[Y + N + &alpha; + &beta;]<sup>2</sup>
+</center>
+<p>
+In the large-S limit this becomes just Variance&rarr;YN/S<sup>2</sup>.
+</p>
+
+<h3>
+c: Application to "quorum" for range voting (this was explained to us by
+Andy McKenzie on 27 June 2008):
+</h3>
+The Internet Movie Database (<a href="http://www.imdb.com">IMDb</a>)
+uses a formula of generalized-BLD form to handle range voting for rating movies.
+(Specifically, their formula reduces in the "approval voting" case to
+the Bayes-Laplace-Dirichlet law <i>but</i> with a constant number of artificial yes and no votes
+introduced <i>before</i> any real votes are solicited.)
+The IMDb formula is this:
+</p>
+<center>
+Candidate's "Output Rating"
+&nbsp;
+=
+&nbsp;
+(RV + CQ)/(V + Q)
+</center>
+<p>
+where
+<br>R = The average (mean) score of this candidate as rated by the V voters
+<br>V = Total number of voters
+<br>Q = Constant "quorum" number of voters
+<br>C = Some constant score somewhere in the score-range
+(IMDb uses the mean score of <i>all</i> IMDb movies,
+currently 6.7 on an 0-10 scale.)
+</p><p>
+Then (if we were running a range voting election using the IMDb system) 
+the candidate with the greatest output 
+rating would win.  
+<i>
+This is just like ordinary range voting, except that 
+an extra Q "artificial votes" 
+(all with artificial-vote mean-rating C)
+are inserted for each candidate before the V real voters speak.
+</i>
+</p>
+<p>
+<b>Special cases:</b>
+<ol>
+<li>
+If Q=2 and C=midrange then this 
+is just our original Bayes-Laplace-Dirichlet uniform-prior formula.
+</li><li>
+If C=0 and Q&rarr;&infin; then this reduces to sum-based (not average-based) range voting:
+candidate with highest summed-score wins.
+</li><li>
+If Q=0 then this reduces to average-based range voting.
+</li><li>
+So with finite positive C and Q the IMDb scheme is a compromise between average- and sum-based
+range voting.
+</li></ol>
+<p>
+In the special case C=0 (which, if the allowed-score-range is from 0 to some positive value,
+maximally disfavors candidates that few voters rate)
+the formula would <b>simplify</b> to
+</p>
+<center>
+Candidate's "Output Rating"
+&nbsp;
+=
+&nbsp;
+RV/(V + Q).
+</center>
+<p>
+Then a good choice (for elections purposes) for Q might be one-fourth
+of the maximum number of voters who genuinely-rate any candidate?
+</p>
+
+<h3> Advantages of simplified 
+B.L.D. formula for use with range voting for "quorum" purposes </h3>
+<p>
+<ol>
+<li><b>
+The formula is <u><i>simply explained</i></u> as follows:
+"use ordinary range voting &ndash; highest average rating wins &ndash; <i>except</i> we give
+Q artificial 'zero' ratings to each candidate before the real voting begins."
+</b>
+<small>
+Also, even if C isn't zero, you can still explain it as "artificially adding Q
+ballots which rate all candidates at C."
+</small>
+</li><li>
+If there are few votes, the B.L.D. formula tries to use the data most effectively to
+deduce the best statistical estimate of the "true" mean score for a candidate.
+</li><li>
+The B.L.D. formula can also be used to "downgrade" little-known
+candidates who got rated by few voters.
+<br>
+This prevents the nightmare scenario where Hitler gets elected just by himself and a few friends,
+while 99.99% of the voters do not rate him since they never heard of him.  
+The idea of "quorums"
+is you need to be rated by at least Q voters to win.
+Lesser-known candidates could theoretically benefit from a bias that the few people who have heard of them 
+tend to favor them abnormally much &ndash; although in practice they usually suffer much more
+from the bias that a substantial fraction of the people
+who have never heard of them automatically give them 0s rather than 
+<a href="Blanks.html"><small>NO OPINION</small></a> scores
+as a "safety measure."
+<br>
+<b>The appropriate value of Q</b>
+to remove the former type of bias, is Q&asymp;the typical number of
+fanatical supporters than anybody running for that kind of seat can secretly muster.
+The appropriate value of C to reduce the latter type of bias is C&asymp;the average rating of
+all candidates.
+</li><li>
+Depending which parameters are inserted into the formula it 
+can accomplish either or both purposes 2&amp;3.
+</li><li>
+Our formula does not exhibit a sudden "hard brick wall" cutoff in which those
+rated by fewer voters than the quorum can never win.  
+[Incidentally, <a href="ApisMellifera.html">honeybees</a> employ a hard-quorum 
+type range-voting scheme.]
+Such sudden
+cutoffs could be tempting targets for those trying to "game the system"
+or those trying to criticize the voting system.   Instead with B.L.D. the downgrading is
+"continuous" and the quorum is "soft."   A candidate rated by few voters might
+still be able to win <i>if</i> 
+his opponents have low-enough ratings.
+</li><li>
+If all candidates are rated by the same number of voters, 
+then our formula becomes equivalent to ordinary range voting &ndash;
+candidate with greatest average rating wins.   
+</li></ol>
+
+<p>
+On the other hand, a disadvantage of the IMDb scheme that it adds 2 new 'dials' (C &amp; Q)
+that can be turned.
+There would be an incentive for widely known candidates to argue for
+making Q as large as possible (or that C should be zero) in order to
+hurt candidates who aren't as widely known.
+</p>
+
+<p>
+<small>
+Ivan Ryan and Andy McKenzie helped W.D.Smith to create this page.
+</small>
+</p>
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

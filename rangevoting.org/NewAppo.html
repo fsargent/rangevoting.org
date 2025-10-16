@@ -1,0 +1,672 @@
+<html>
+<head>
+<title>
+RangeVoting.org - New Apportionment Method  
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>  New and Superior Apportionment Method  </H2>
+
+<p><small>By Warren D. Smith, January 2007</small></p>
+<p>
+Let P<sub>k</sub> be the (known) population of state k, and let S<sub>k</sub> be
+its number of congressmen, where the total number
+S=&sum;<sub>k</sub>S<sub>k</sub> 
+of congressmen is fixed by US law to be 
+S=435.
+</p><p>
+The question is: what should the S<sub>k</sub> be?  The difficulty is that they have to
+be <i>integers</i>.
+</p><p>
+The new method we propose is very simple.
+Choose a number Q&gt;0, traditionally called "the divisor," so that the total number of
+seats S will come out correct, and let
+</p><center>
+S<sub>k</sub> = &lceil;P<sub>k</sub>/Q - d&rceil;;
+</center><p>
+where d is a constant that had been chosen ahead of time.  There are two ways to choose d.
+First, we can choose it
+to yield the best retrospective performance (least "bias") over past US history.
+Second, we can instead choose d based on a purely theoretical analysis,
+which yields the following formula:
+</p><center>
+d = (1/K) ln( K/[1-exp(-K)] ), &nbsp;&nbsp;&nbsp; where &nbsp;&nbsp; K = #states/#seats.
+</center><p>
+With the USA's K=50/435=10/87=0.11494252873...
+we get d=0.495211255149063832...
+For application to "party list" <a href="PropRep.html">PR</a> voting systems, instead K=#parties/#seats,
+and with typical values #parties=20 and #seats=300 we would get d=0.49722.
+In the limit K&rarr;0<sup>+</sup> we would get d=1/2 (Webster), 
+and in the opposite limit K&rarr;1 we would get d=1-ln(e-1)&asymp;0.458675.
+</p>
+
+<H3> 1. Why the new method is superior to all previous ones </H3>
+
+<p>
+First of all, the classic apportionment methods of Webster, Adams, and Jefferson
+are merely special cases of our new method, with d=&frac12;, d=0+, and d=1- respectively.
+If we choose the <i>optimal</i> value of d, then we must get a method at least as good as these
+(by whatever performance measure we are optimizing).
+Because Balinski &amp; Young's book concluded Webster (and in some ways Jefferson) were
+the best methods among the ones they knew (and <a href="BishopSim.html">computer simulations</a>
+by Dan Bishop and myself
+also came to that same conclusion), the new method is at least as good as all previous
+to the extent you buy Balinski &amp; Young.
+</p>
+<p>
+Second, because the new method is a "divisor method" it enjoys all the properties 
+that, B&amp;Y proved, divisor methods (and <i>only</i> divisor methods) always enjoy:
+"House monotonicity," "population-pair monotonicity," and freedom from the "new state paradox."
+</p>
+<p><small>
+The Hamilton/Vinton method fails all three kinds of monotonicity.
+The Balinski-Young method fails two of them but obeys "House monotonicity" and
+both it and Hamilton/Vinton  obey the "quota criterion" that the number of seats a state
+is awarded differs by at most 1 from its ideal value. [All divisor methods fail the 
+quota criterion in suitable situations; and indeed the quota and 
+population-pair-monotonicity criteria are logically incompatible.]
+</small>
+</p>
+<p>
+Third, <a href="BishopSim.html">computer simulations</a> by Dan Bishop's computer program
+(as well as an upcoming more powerful program of my own) found superior new-record behavior
+for the new method (using the theoretical model's d)
+over all previous divisor methods both in terms of several bias
+measures, and in terms of making "quota violations" get rarer.
+(Note: this computer finding was not merely a trivial and expected consequence of
+our derivation below, because the bias measures the computer evaluated were not the
+same as the one nulled out by our derivation, and also because the computer examined
+other probabilistic models.)
+</p>
+<p>
+Fourth, both our computer simulations and US history
+agree that Webster is slightly biased
+in favor of the large-population states,
+i.e. it tends to give them slightly more than their
+ideal (but noninteger) fair share of congressmen.  
+(And Adams is heavily biased in favor of small states,
+and Jefferson is heavily biased in favor of large ones.)
+The new method with d=0.495 perturbs Webster in the right direction to get rid of that bias,
+or alternatively our theoretical model that outputs d=0.495 may be regarded as having
+<i>predicted</i> Webster's bias.
+</p>
+
+<H3> 2. The theoretical model and derivation </H3>
+
+<p>
+As our starting point, we shall assume the state populations are
+independent identically distributed <i>exponential</i> random variables,
+i.e. with density &nbsp;&nbsp;&nbsp;
+<nobr>C exp(-xC) dx</nobr>   &nbsp;&nbsp;&nbsp;
+on  x>0,  for some constant C>0 whose
+value will not matter or anyhow will be derivable from census data, see below.  
+(We shall discuss <a href="#Sec6">later</a>
+why, among all simplistic models, only exponential densities
+make sense.  Attempts to use, e.g,  uniform densities in intervals, will be
+argued to be senseless.)
+In that case, the states whose "quotas" (the traditional word for "ideal [albeit 
+perhaps noninteger] seat-count") lie
+between two given consecutive integers n and n+1, will have probability density for
+those quotas given by  &nbsp;
+<nobr>K' exp(-xK)</nobr> &nbsp;
+for  n&lt;x&lt;n+1  for some constants K' and K
+where K is independent of both x and n.  
+Indeed, K is given by the formula K=#states/#seats, because this and only
+this formula, causes the expectation value of x to come out right &ndash; to 1/K.
+</p>
+<small>
+<p>
+That is: the probability density proportional to exp(-xK)dx is postulated to hold
+for state populations measured in units of one ideal seat's worth of population.  
+In that case, the expectation value of x, which is 1/K, must equal 
+#seats/#states, i.e. the correct average number of seats a state gets.
+</p><p>
+In other words:
+<ol>
+<li>
+The average population of a state (measured in units of 1 ideal seat)
+is  #seats/#states.
+</li><li>
+This is set equal to the expected value of the population probability density.
+</li>
+</ol>
+It <i>also</i> is possible to regard our
+K=#states/#seats formula as a "maximum likelihood statistical estimator."
+That is, the "likelihood" of the m state
+populations x<sub>1</sub>, x<sub>2</sub>, &hellip;, x<sub>m</sub>
+is &prod;<sub>1&le;j&le;m</sub>Kexp(-Kx<sub>j</sub>) so that
+<center>
+LogLikelihood = m&middot;ln(K)
+- K&sum;<sub>1&le;j&le;m</sub>x<sub>j</sub>
+= m&middot;ln(K)
+- K&middot;m&middot;mean(x<sub>1</sub>, x<sub>2</sub>, &hellip;, x<sub>m</sub>),
+</center>
+and maximizing the LogLikelihood by choice of K, we have
+<center>
+m/K = m&middot;meanx
+</center>
+which is the same as our old formula K=1/meanx 
+(where as usual state populations are measured in units of one ideal seat's worth)
+which we had got in a less-hifalutin way by just matching means.
+</p></small><p>
+Now suppose we wish to choose a threshhold y,  n&lt;y&lt;n+1, so that,
+if these states have quota>y, their seat-count is rounded up to n+1,
+otherwise down to n; and <i>we wish to choose y so that the
+net expected additive effect of the rounding is zero</i>, i.e. so that
+the rounding is <i>unbiased</i>.
+The formula that determines y is then
+</p><center>
+  &int;<sub>n&le;x&le;y</sub>   (x-n)   exp(-x K) dx -
+  &int;<sub>y&le;x&le;n+1</sub> (n+1-x) exp(-x K) dx = 0
+</center>
+which simplifies to
+<center>
+  K exp(-Ky) + exp(-Kn-K) = exp(-Kn)
+</center>
+whose solution is
+<center>
+  y = n + (1/K) ln( K/[1-exp(-K)] ).
+</center><p>
+It is very interesting and pleasant that this formula  for y-n is <i>independent</i> of n.
+This new apportionment method is (by its derivation) unbiased in
+our probabilistic model not only for all states en masse in the sense that neither 
+large nor small states have any systematic advantage, but also, more strongly, is unbiased 
+for <i>each</i> state-subset
+in each quota-interval [n, n+1] in the sense 
+the expected additive adjustment of the number of seats caused by rounding is zero.
+In the K&rarr;0+ limit it reduces to the Webster formula y=n+&frac12;,
+and in the K&rarr;&infin; limit it reduces to the Adams formula y=n+0;
+for intermediate K it provides intermediate formulae.
+</p>
+<p>
+Our simple apportionment proposal does not provide a <b>1-seat minimum</b>; 
+it will award small-enough states zero seats.
+If you want to have a 1-seat minimum, then the <i>first</i> rounding point y (between 0 and 1)
+needs to be replaced by  y=0.  The <i>other</i> rounding points y then are
+still given by the usual formula   y=n+d,  for n=1,2,3,...  but now with a different value of d.
+Again you can choose d to optimize historical performance, or in the same theoretical model
+we have the exact formula
+</p><center>
+  d = [ ln(K) - ln(exp(K)-1) + ln(1/(1-K)) ]/K
+</center><p>
+which when K=50/435 yields d&asymp;0.557504703.
+[Note this formula only is valid when 0&lt;K&lt;1.]
+This formula was derived by solving for y to zero 
+</p><center>
+&int;<sub>0&le;x&le;1</sub> (1-x) exp(-xK) dx
++
+&sum;<sub>1&le;n&le;&infin;</sub> [
+&int;<sub>y&le;x&le;n+1</sub> 
+(n+1-x) exp(-xK) dX
+-
+&int;<sub>n&le;x&le;y</sub> 
+(x-n) exp(-xK) dx ].
+</center><p>
+The resulting apportionment method
+then is only  unbiased
+for all states en masse (albeit if K&gt;1 then unbias is unachievable)
+and <i>not</i> for each state-subset
+in each quota-interval [n, n+1]  individually.
+<!-- K&rarr;0+ limit yields d=1-;  K&rarr;&infin; limit yields d=-1+; -->
+</p>
+
+<H3> 3. Alternative (less simple) theoretical models, goals, and results </H3>
+
+<p>
+It is also possible to start from other underlying simplistic probabilistic models besides
+i.i.d. exponential state-population densities.  I shall argue soon that these other models
+make less sense, but disregarding that, one can proceed anyway and see what formulas result.
+Also, we can work toward different goals than zeroing the expected additive 
+adjustment to the quota (caused by rounding-to-integer);
+we instead could, e.g, zero the expected additive adjustment to the <i>log</i>
+of the quota.  We have worked out several examples, some of which will be given here.
+They all yield rather more complicated formulas, which unfortunately always depend on n:
+</p>
+<p>
+<b>1.</b>
+If we aim to null out the expected additive adjustment in a state's
+log(#seats) by choice of y, then solving
+<center>
+&int;<sub>n&le;x&le;y</sub> [ln(x)-ln(n)] exp(-xK) dx -
+&int;<sub>y&le;x&le;n+1</sub> [ln(n+1)-ln(x)] exp(-xK) dx = 0
+</center>
+yields
+<center>
+   y = (1/K)  ln( ln(1+1/n) / [Ei<sub>1</sub>(Kn)-Ei<sub>1</sub>(Kn+K)] )
+</center>
+which in the K&rarr;0+ limit reduces to y&rarr;1/ln(1+1/n),
+[whose asymptotic behavior for large n is 
+y=n+&frac12;-1/(12n)+1/(24n&sup2;)-19/(720n&sup3;) + O(n<sup>-4</sup>)]
+which is close to, but not the same as,
+the Huntington-Hill formula   y=&radic;((n+1)n).
+<!-- Specifically, the new formula in the limit with K and n large is  
+y-n = 1/2 - 1/(12n) + 1/(24n^2) -...
+while the HH formula is in the large-n limit
+y-n = 1/2 - 1/(8n)  + 1/(16n^2) -...  -->
+This new formula is a little more favoring to large states than
+Huntington-Hill
+(which is good because both computer simulations and historical evidence indicate
+HH is biased in favor of small states)
+and like HH it automatically naturally provides a
+1-seat minimum.  (Our simpler proposal does not provide a 1-seat minimum, albeit
+one could be artificially imposed and then our simpler proposal would still be valid
+and unbiased if used with a <i>different</i> value of the magic constant d &ndash;
+albeit now only  unbiased
+for all states en masse and <i>not</i> for each state-subset
+in each quota-interval [n, n+1].)
+</p>
+<p>
+Here the "exponential integrals" Ei<sub>m</sub>(z) for m=1,2,3,...
+are defined in the halfplane Re(z)>0 by
+<center>
+Ei<sub>m</sub>(z) = &int;<sub>1&le;u&lt;&infin;</sub> exp(-u z) u<sup>-m</sup> du.
+</center>
+</p>
+<p>
+<!-- In the limit K&rarr;0+ the formula for y simplifies to
+<center>
+y = 1 / ln(1 + 1/n).
+</center>
+-->
+
+<p>
+<b>2.</b>
+If we aim to null out the expected additive adjustment in a state's seat count, <i>divided</i> by
+the state's population, then we ask for y so that
+<center>
+&int;<sub>A&le;x&le;y</sub> (1-A/x) exp(-Kx) dx  =    
+&int;<sub>y&le;x&le;B</sub> (B/x-1) exp(-Kx) dx  
+</center>
+then we get a nasty transcendental
+equation involving "exponential integrals" (higher transcendental functions)
+to solve numerically for y.  Specifically the equation is
+<center>
+(A-B) K Ei<sub>1</sub>(Ky) + 
+exp(-KA) - exp(-KB) - AK Ei<sub>1</sub>(AK) + BK Ei<sub>1</sub>(BK) = 0.
+</center>
+Here again we assume A and B are consecutive integers A=n, B=n+1,
+and as usual K=#states/#seats
+to make the exponential density have the right expectation value.
+There is no close-form solution to that, but in the limit K&rarr;0+, the equation
+simplifies to
+<center>
+y-A - A ln(y/A) = B ln(B/y) + y-B;
+</center>
+with solution
+<center>
+y = (1/e) B<sup>B</sup>/A<sup>A</sup>,
+</center>
+a nice formula first written down by Michael Ossipoff (and please use
+lim<sub>A&rarr;0+</sub>A<sup>A</sup>=1).  
+Ossipoff called this formula the "bias-free method."
+In this formula, Euler's constant "e" (&asymp;2.71828) plays a very nice role.
+The point is that A and B are consecutive integers A=n, B=n+1
+and the limit behavior as n&rarr;&infin; of
+<center>
+(n+1)<sup>n+1</sup>/n<sup>n</sup>
+</center>
+is 
+<center>
+ [n + 1/2 - 1/(24n) + 1/(48n&sup2;) - 73/(5760n&sup3;) + O(n<sup>-4</sup>)] e
+</center>
+So the e is exactly what we need to make the Ossipoff breakpoint y tend to the
+Webster breakpoint y=n+&frac12;.
+</p>
+
+<p>
+<b>3.</b>
+If we aim to null out the expected additive adjustment in a state's population/seats
+ratio (i.e. in its "district size"), then we ask for y so that
+<center>
+&int;<sub>A&le;x&le;y</sub> (x/A-1)exp(-Kx) dx  =    
+&int;<sub>y&le;x&le;B</sub> (1-x/B)exp(-Kx) dx  
+</center>
+then we get that y solves this equation (which needs to be solved numerically or
+in terms of the "Lambert W function"):
+<center>
+B exp(-KA) - A exp(-KB) + (A-B) exp(-Ky) (1+Ky) = 0
+</center>
+Here again we shall assume A and B are consecutive integers A=n, B=n+1,
+and as usual K=#states/#seats
+to make the exponential density have the right expectation value.
+There is no close-form solution to that, but in the limit K&rarr;0+, the equation
+simplifies to
+<center>
+B exp(-KA) - A exp(-KB) + (A-B) (1-Ky) (1+Ky) = O(K<sup>2</sup>)
+<!-- B*exp(-K*A) - A*exp(-K*B) + (A-B)* exp(-K*y) * (1+K*y)  -->
+</center>
+with limit-solution (using the fact B-A=1; this solution actually then solves
+the original exact equation even with O(K<sup>3</sup>) as the right hand side)
+<center>
+y = &radic;(AB),
+</center>
+which is the Huntington-Hill apportionment method!
+And note
+<center>
+y = ([n+1]n)<sup>1/2</sup> = n + 1/2 - 1/(8n) + 1/(16n&sup2;) - O(n<sup>-3</sup>)
+</center>
+</p>
+
+<p>
+<b>4.</b>
+If we aim to null out the expected additive adjustment in a state's population/seats
+ratio (i.e. in its "district size") <i>times</i> its population, then we ask for y so that
+<center>
+&int;<sub>A&le;x&le;y</sub> x(x/A-1)exp(-Kx) dx  =    
+&int;<sub>y&le;x&le;B</sub> x(1-x/B)exp(-Kx) dx  
+</center>
+then we get that y solves this equation (which needs to be solved numerically):
+<center>
+2Bexp(-KA) - 2Aexp(-KB)
++ BAK[exp(-KA)-exp(-KB)]
++ 2(A-B)exp(-Ky)
++ 2(A-B)exp(-Ky)Ky
++ (A-B)exp(-Ky)(Ky)<sup>2</sup>
+= 0
+</center>
+Here again we shall assume A and B are consecutive integers A=n, B=n+1,
+and as usual K=#states/#seats
+to make the exponential density have the right expectation value.
+There is no close-form solution to that, but in the limit K&rarr;0+, the equation
+simplifies to
+<center>
+(B+A)BA - 2 y<sup>3</sup> = O(K<sup>4</sup>)
+</center>
+with solution
+<center>
+y = (AB[B+A]/2)<sup>1/3</sup>,
+</center>
+which is the geometric mean of A, B, and their arithmetic mean and thus in a sense is
+intermediate between the Webster and Huntington-Hill methods.  Its asymptotics are
+<center>
+y = [n(n+1)(n+&frac12;)]<sup>1/3</sup> = n + 1/2 - 1/(12n) + 1/(24n&sup2;) - 1/(36n&sup3;) 
++ O(n<sup>-4</sup>).
+</center>
+which agrees with a previous asymptotic series (for alternative method 1)
+up to the n<sup>-2</sup> term
+but disagrees at the n<sup>-3</sup> term.
+</p>
+
+<p>
+<b>5.</b>
+If we aim to null out the expected additive adjustment in a state's
+log(#seats) <i>times its population</i> by choice of y, then 
+<center>
+&int;<sub>A&le;x&le;y</sub> [ln(x)-ln(A)] x exp(-xK) dx -
+&int;<sub>y&le;x&le;B</sub> [ln(B)-ln(x)] x exp(-xK) dx = 0
+</center>
+yields the equation (which needs to be solved numerically for y)
+<center>
+ln(A) yK exp(-yK) - ln(B) yK exp(-yK)
++ ln(A) exp(-yK) - ln(B) exp(-yK)
++ Ei<sub>1</sub>(AK) - Ei<sub>1</sub>(BK) 
++ exp(-AK) - exp(-BK)
+= 0 .
+</center>
+In the K&rarr;0+ limit [if we replace the 0 by O(K<sup>3</sup>) and solve for y,
+and use the assumption that B-A=1 to simplify the result], this is
+<center>
+y = ((B+A)/[2ln(B/A)])<sup>1/2</sup> = [(n+&frac12;)/ln(1+1/n)]<sup>1/2</sup>
+</center>
+if B=n+1 and A=n.
+This expression for y, for n&ge;0, always lies between n and n+&frac12; and
+approaches the former when n&rarr;0+ and the latter when n&rarr;&infin;.
+Indeed its asymptotic behavior when n&rarr;&infin; is
+<center>
+ n + 1/2 - 1/(24n) + 1/(48n&sup2;) - 9/(640n&sup3;) + O(n<sup>-4</sup>)
+</center>
+which agrees with a previous asymptotic series (for Ossipoff's formula)
+up to the n<sup>-2</sup> term
+but disagrees at the n<sup>-3</sup> term.
+</p>
+
+<p>
+<b>6.</b>
+If we aim to null out the expected additive adjustment in a state's seat count, <i>divided</i> by
+the <i>square root</i> of the state's population, then we ask for y so that
+<center>
+&int;<sub>A&le;x&le;y</sub> [(x)<sup>1/2</sup>-(A/x)<sup>1/2</sup>] exp(-xK) dx -
+&int;<sub>y&le;x&le;B</sub> [(B/x)<sup>1/2</sup>-(x)<sup>1/2</sup>] exp(-xK) dx = 0.
+</center>
+This yields the equation (which needs to be solved numerically for y)
+<center>
+BK erf(&radic;K &radic;y)
+-AK erf(&radic;K &radic;y)
++(AK/&pi;)<sup>1/2</sup>exp(-AK)
+-(BK/&pi;)<sup>1/2</sup>exp(-BK)
+<br>
++erf(&radic;K &radic;B)/2
+-erf(&radic;K &radic;A)/2
++AK erf(&radic;K &radic;A)
+-BK erf(&radic;K &radic;B)
+=0.
+</center>
+In the limit K&rarr;0+ and using the fact that B=A+1, this simplifies to
+<center>
+y = (4/9) (B<sup>3/2</sup>-A<sup>3/2</sup>)<sup>2</sup>
+</center>
+which when A=n and B=n+1 becomes
+<center>
+y = n + 1/2 - 1/(48n) + 1/(96n&sup2;) - 7/(1152n&sup3;) + O(n<sup>-4</sup>)
+</center>
+in the n&rarr;&infin; limit. 
+</p>
+
+<H3> 4. Which one is the most "morally right"? Smith: Alternative method #2. </H3>
+<p>
+At the present moment it seems to me that alternative method #2
+is the most "morally right" 
+in terms of its underlying theoretical model/goals.
+However, that is merely my subjective impression.
+Here is my reasoning:
+</p>
+<p>
+That method aims to null out the "bias" which (for that method) is defined
+as the expected  |additive change|
+in the number of seats a state has (caused by the round to integer) divided
+by state population.
+Why is this "morally right"?  Well, it seems that the unfairness, for an
+individual person in  state k, of having X times as many congressmen than he ideally
+should, is
+<center>
+  |X-1|/P<sub>k</sub>
+</center>
+At first I thought that X=1/10 should be equally unfair as X=10 and hence was
+considering using unfairness formulas involving |log(X)|.
+However, I later thought X=10, X=100, etc keeps getting more and more unfair
+proportionally roughly to X, while X decreasing X=0.1, X=0.01 etc does not get much
+more unfair, and when X=0 it is essentially the same badness as X=0.1, whereas
+X=100 really is about 10 times worse than X=10.
+</p><p>
+Now we have to weight this unfairness per person, by the number of people in the state,
+which means we multiply by P<sub>k</sub>
+thus cancelling out the denominator
+to get |X-1|.
+</p><p>
+But that is exactly what the derivation of the method nulled out, because
+|X-1|   is  proportional to the |additive change| in the number of seats,
+divided by state population.
+</p>
+
+<H3> 5. Which one is "morally best"? Ossipoff: the original method is most moral
+(as well as being the simplest) </H3>
+
+<p>
+But Mike Ossipoff is (justifiably) dubious of my "quantified morality" above and currently thinks
+the <i>original</i> method is the morally best of those here. He argues against me:
+</p>
+<blockquote>
+You said it was about unfairness per person, 
+which justified dividing by population. But unfairness sometimes isn't something that 
+has to be divided among its recipients. When we're unfair to a state, all of 
+its residents get all of the unfairness, and they don't have to divide it 
+up...
+Equal representation expectation per person &ndash; shouldn't that be the goal for all of 
+us? The original method can be derived from that goal.
+</blockquote>
+
+<p>
+It is also possible to take a compromise path "midway between" the Ossipoff and Smith
+views (i.e. if Ossipoff divides by 1 and Smith by x, then the compromise is
+to divide by &radic;x), and the result of that would be alternative method #6.
+More generally one could consider division by an arbitrary power x<sup>&mu;</sup> of x, 
+whereupon
+the resulting integrals would be expressible in terms of incomplete gamma functions.
+</p>
+
+<a name="Sec6"></a>
+<H3> 6. Why only <i>exponential</i> deviates make sense as an underlying simplistic
+statistical model </H3>
+
+<p>
+There are many reasons for that, well known to mathematicians and statisticians and
+associated with such names as Dirichlet, Poisson, and Shannon.
+We shall explore them incompletely.
+</p>
+
+<p>
+First, there is the observation of Dirichlet. Suppose you want to split up a
+country's total population P into N state-populations P<sub>k</sub>, k=1,...,N
+(N fixed), so that &sum;<sub>k=1..N</sub>P<sub>k</sub>=P
+and P<sub>k</sub>&ge;0.
+This set is an (N-1)-dimensional "simplex" in N-dimensional space.  The goal of choosing
+a point randomly from this set (and <i>uniformly</i> so that
+equal N-1-dimensional areas are equally likely)
+can be attained by choosing each state population to be an i.i.d. exponential random deviate,
+and then normalizing the N state populations so that their sum comes out right
+(to the desired value P).
+In this process, <i>only</i> exponential random variates work. Every other 1-dimensional
+density function does not work.
+</p>
+<p>
+Second, there is the observation of Poisson. 
+Suppose you wish to drop N points randomly and uniformly
+in the interval [0,N/K] of the real line, where N&rarr;&infin;.
+This is a model of "density-K random points."
+Then what is the probability density for the <i>gap</i> between two consecutive points?
+The answer is that it is exponential: Kexp(-xK) dx.
+Indeed, it is not even necessary to take the limit N&rarr;&infin;; we can make a very 
+similar statement about each <i>finite</i> N.
+By that we mean that the following algorithm 
+will generate N 
+random <i>uniform in [0,1]</i>
+numbers X<sub>1..N</sub>, <i>in sorted order</i> without actually performing a sort:
+</p>
+<pre>
+s = 0;
+for k=1 to N do
+   s = s + ExponentialRandomDeviate;
+   X<sub>k</sub> = s;
+end loop;
+s = s + ExponentialRandomDeviate;
+for k=1 to N do
+   X<sub>k</sub> = X<sub>k</sub> / s;
+end loop;
+</pre>
+<p>
+Our point is, that the gaps between the consecutive X<sub>k</sub> (including the initial
+gap from 0 to X<sub>1</sub> and the final one from X<sub>N</sub> to 1) generated
+in this way are i.i.d. exponential random deviates, aside from the rescaling at the end.
+</p>
+<p>
+We also can get exponentials from a discrete model.  Suppose we consider all the possible
+ways of placing  P indistinguishable balls into N distinguishable
+boxes.  How many are there?
+The answer is  (P+N-1)!/[(N-1)!P!].   Now if all these configurations are considered
+equally likely, then
+in a limit where P&rarr;&infin; and N&rarr;&infin;
+with the average number P/N of balls per box held fixed, what is the probability distribution
+for the number of balls in one particular box?  The answer is it tends to a (now discrete)
+exponential distribution on the non-negative integers, with mean P/N.
+</p>
+<p>
+In both of the cases above, what is going on is we are splitting a total population (modeled
+as "indistinguishable balls" or "the real interval [0,N/K]" into N "state" populations
+subject only to the constraints that they be nonnegative and have the correct sum,
+and we are finding the state populations (in a limit) are exponentially distributed.
+Because in the USA P=3&times;10<sup>8</sup> is large, and N=50 is fairly large,
+the asymptotic limits are fairly well satisfied in practice, albeit the assumption the state
+boundaries are drawn to split up the population  "randomly" is of course nonsense (but
+if you are going to make a simplistic probabilistic model, this is the one).
+</p>
+<p>
+Third, and finally, there is Claude Shannon.  The 
+probability density function on the positive real axis with given mean 1/K
+and <i>maximum entropy</i> is the exponential density Kexp(-KX)dx (and similarly
+the discrete exponential has maximum entropy on the nonnegative integers with specified mean).
+Maximum entropy is a formal and quantitative version of Occam's razor.  That is,
+this is the "simplest" assumption about a non-negative random variable with a mean,
+i.e. the assumption which "assumes the least."
+</p>
+
+<H3> 7. Open questions </H3>
+
+<p>
+Can we now devise some pairwise optimality theorem or global optimality theorem
+that these methods obey?
+(See  <a href="Apportion.html">/Apportion.html</a>
+for such theorems
+concerning the classic apportionment methods as well as an introduction to them generally.)
+</p>
+
+<H3> 8. Sources </H3>
+<p>
+The following should be useful references both for terminology and for previous results
+and for related history (mostly US):
+<p>
+M.L. Balinski &amp; H. Peyton Young:
+<a href="http://www.brookings.edu/press/books/fair_representation.htm">
+Fair Representation: Meeting the Ideal of One Person, One Vote (2nd edition)</a>,
+Brookings Institution Press 2001.  Young also wrote a more accessible
+<a href="pb88.html">essay</a>
+summarizing his thoughts for the layman.
+</p><p>
+Lawrence R. Ernst: 
+Apportionment methods for the House of Representatives and Court Challenges,
+Management Science 40,10 (Oct. 1994) 1207-1227.
+</p><p>
+Warren D. Smith:  <a href="Apportion.html">Introduction to Apportionment methods</a> web page.
+</p>
+<p>
+The sorted random points without sorting algorithm is
+from:
+</p>
+<p>
+J.Bentley & J.Saxe: Generating Sorted Lists of Random Numbers,
+ACM Trans. Math'l. Software 6,3 (1980) 359-364.
+</p>
+<p>
+For standard results on probability distributions see
+the 5-volume set by
+N.L.Johnson &amp; S.Kotz (now with N. Balakrishnan and Adrienne W. Kemp in recent editions)
+J.Wiley &amp; Sons;
+for combinatorics
+R.P.Stanley: Enumerative Combinatorics, (Brooks Wadsworth, Cole),
+and for information theory and maximum entropy theory,
+T.M. Cover &amp; J.A. Thomas: Elements of Information Theory, Wiley 1991.
+<p>
+I would also like to <b>acknowledge</b> Dan Bishop and Michael Ossipoff.
+Bishop programmed a computer apportionment simulator, and Ossipoff came up with the idea of
+trying to seek an unbiased apportionment method, although his execution of
+that idea was poor due to incorrect mathematical manipulations and/or confusing expositions
+(and Ossipoff also did not appreciate
+the desirability of the exponential density as an underlying model).  
+The present work can be viewed as simply carrying out Ossipoff's idea, but now with correct
+execution and a better underlying model.
+</p>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

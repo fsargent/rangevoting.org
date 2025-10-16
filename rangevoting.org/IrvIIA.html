@@ -1,0 +1,210 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Examples to demonstrate IRV failure of "irrelevant alternatives"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> 
+Examples to demonstrate IRV failure of "irrelevant alternatives"
+</H2>
+
+<!--
+<p><small> Example by Steve Eppley: </small></p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+35
+</td>
+<td align="center">
+X>Y>Z
+</td>
+</tr>
+<tr>
+<td align="center">
+10
+</td>
+<td align="center">
+Y>X>Z
+</td>
+</tr>
+<tr>
+<td align="center">
+10
+</td>
+<td align="center">
+Y>Z>X
+</td>
+</tr>
+<tr>
+<td align="center">
+45
+</td>
+<td align="center">
+Z>Y>X
+</td>
+</tr>
+</table>
+
+ maximize( s, {
+ c+d >= s+a+b,
+ a+b+c >= s+d,
+ b+c+s <= d,
+ b+c+s <= a,
+ c+d >= s+a+b, 
+ a+b+c+d=100,
+ a>=0, b>=0, c>=0, d>=0} );
+-->
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+40
+</td>
+<td align="center">
+X>Y>Z
+</td>
+</tr>
+<!--<tr>
+<td align="center">
+10
+</td>
+<td align="center">
+Y>X>Z
+</td>
+</tr>
+-->
+<tr>
+<td align="center">
+20
+</td>
+<td align="center">
+Y>Z>X
+</td>
+</tr>
+<tr>
+<td align="center">
+40
+</td>
+<td align="center">
+Z>Y>X
+</td>
+</tr>
+</table>
+
+<p>
+A majority of the voters (20+40) rank X strictly bottom, so X should 
+be an "irrelevant loser."
+But with Instant Runoff Voting (IRV), it isn't.
+IRV elects Y if X does not compete but elects Z if X 
+does compete.
+This (essentially) actually happened in <a href="LizVwiz.html">Louisiana 1991</a>.
+</p>
+
+<p>
+<small>
+There are many other examples, but this is
+designed to illustrate that this can happen even if a majority of voters 
+rank the loser dead <i>last</i>. E.g.
+</p>
+
+<ul>
+<li><a href="IncentToExagg.html"> (B wins, but if C drops out then A wins)</a></li>
+<li><a href="IRVpartic.html"> (B wins, but if N drops out then G wins)</a></li>
+<li><a href="IRVcs.html"> (Bush wins; if Nader drops out Gore wins)</a></li>
+<li><a href="IrvRevFail.html"> (A wins; if C drops out A wins; if B drops out C wins)</a></li>
+</ul>
+</small>
+
+<p>
+One can go further by creating artificial elections in which, e.g. 
+H is ranked dead last by 99.9% of the voters, but plays a very important role.
+(With instant runoff voting: If H runs, then Z wins.  If H drops out, then A wins.)
+</p>
+
+<!--<p><small> Example by Warren D. Smith: </small></p>-->
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr> 
+<td align="center"> 1000 </td>
+<td align="center"> Z>...>H </td>
+
+</tr>
+<tr> 
+<td align="center"> 512 </td>
+<td align="center"> P>A>...>H </td>
+</tr>
+<tr> 
+<td align="center"> 256 </td>
+<td align="center"> Q>A>...>H </td>
+</tr>
+
+<tr> 
+<td align="center"> 128 </td>
+<td align="center"> R>A >...>H</td>
+</tr>
+<tr> 
+<td align="center"> 64 </td>
+<td align="center"> S>A>...>H </td>
+</tr>
+<tr> 
+
+<td align="center"> 32 </td>
+<td align="center"> T>A>...>H </td>
+</tr>
+<tr> 
+<td align="center"> 16 </td>
+<td align="center"> U>A>...>H </td>
+</tr>
+<tr> 
+<td align="center"> 8 </td>
+
+<td align="center"> V>A>...>H </td>
+</tr>
+<tr> 
+<td align="center"> 4 </td>
+<td align="center"> W>A>...>H </td>
+</tr>
+<tr> 
+<td align="center"> 2 </td>
+<td align="center"> X>A>...>H </td>
+
+</tr>
+<tr> 
+<td align="center"> 1 </td>
+<td align="center"> Y>A>...>H </td>
+</tr>
+<tr> 
+<td align="center"> 2 </td>
+<td align="center"> H>A </td>
+</tr>
+
+</table>
+<p><a href="rangeVborda.html#JohnsonEx">Similar example but for <i>Borda</i> voting</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

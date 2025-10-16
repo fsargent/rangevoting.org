@@ -1,0 +1,85 @@
+<html>
+<head>
+<title>
+RangeVoting.org - IRV example where voting for somebody makes him lose, while voting against him makes him win
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> IRV example where voting for somebody makes him lose, while voting against him makes him win </H2>
+
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff00">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+5
+<td>
+A>C>B
+</td>
+</tr>
+<tr>
+<td align="center">
+6
+<td>
+C>A>B
+</td>
+</tr>
+<tr>
+<td align="center">
+4
+<td>
+B>A>C
+</td>
+</tr>
+<tr bgcolor="pink">
+<td align="center">
+2
+<td>
+C>B>A
+</td>
+</tr>
+</table>
+
+<p>
+In this 17-voter election, <b>A</b> is both the IRV 
+(<a href="rangeVirv.html">Instant Runoff Voting</a>)
+and the Condorcet winner.
+<small>(Pairwise victories: A beats B 11-6; A beats C 9-8.)</small>
+</p>
+<p>
+If the C>B>A voters in the bottom row decide to "betray their favorite" C
+by voting B>C>A instead, then IRV elects that very favorite <b>C</b>!
+<small>(A is eliminated then C wins 11-to-6 over B.)</small>
+That, from the point of view of these voters, was a huge improvement, 
+i.e. the favorite-betrayal worked to get the best winner for them instead of the worst.  
+And this shows how actually honestly voting for your favorite, in
+IRV, can hurt both you and that favorite maximally, whereas voting against him can make him win,
+helping you and him maximally.
+Indeed even voting <i>maximally</i> against him 
+(i.e. if the C>B>A voters had voted B>A>C)  here makes him win. 
+(Just voting for him doesn't work!)
+</p>
+
+<p>
+This IRV phenomenon is truly an example of the mirror world.
+Voters in this situation would feel they've been transported into a backwards universe.
+<!-- were made of antimatter. -->
+</p>
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

@@ -1,0 +1,310 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Mathematical Foundations of Utility
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> 
+Axiomatic treatments of utility from
+von Neumann &amp; Morgenstern onward
+</H2>
+
+<p><small>by Warren D. Smith March 2007, with some stimulation by Jobst Heitzig.
+See also some <a href="Bentham.html">utility-history</a>.</small></p>
+
+<p>
+<b>Notation:</b>
+If a and b are events,
+let "a&supe;b" mean "in the view of any fixed individual: a is preferable to b,
+or that individual does not care which of a or b happen."
+We write a&sim;b ("the individual is indifferent about whether a or b happens")
+to mean "a&supe;b and b&supe;a."
+We write a&sup;b to mean "a&supe;b and not a&sim;b."
+Let "p<b>?</b>A:B" mean
+"a lottery causing A to happen with probability p and B with probability 1-p."
+Then here are some interesting possible axioms which &supe; could satisfy.
+<dl>
+<dt><b>Totality Axiom:</b></dt>
+<dd>
+For all events a,b either a&supe;b, or b&supe;a, or both, i.e. a&sim;b.
+</dd>
+
+<dt><b>Continuity Axiom:</b></dt>
+<dd>
+<!-- Archimedean:
+For all a,b,c: if  b&supe;c,  there exists some p>0 such that  (p?a:b)&supe;c. -->
+If A&sup;B and B&sup;C then B &sim; p?A:C for at least one p with 0&lt;p&lt;1.
+</dd>
+
+<dt><b>Dominance (via convexity) Axiom:</b></dt>
+<dd>
+For all p with 0&lt;p&lt;1:
+<ul>
+<li>
+If A&supe;B and A&sup;C, then A &supe; p?B:C.
+</li><li>
+If B&supe;A and C&sup;A, then p?B:C &supe; A.
+</li><li>
+If A&sim;B and A&sim;C then A &sim; p?B:C.
+</li></ul>
+</dd>
+
+<dt><b>Transitivity Axiom:</b></dt>
+<dd>
+<!-- If a&supe;b and b&supe;c then a&supe;c.  
+But this can be replaced with the weaker: -->
+If a&sim;b and b&sim;c then a&sim;c.
+</dd>
+
+<dt><b>Herstein-Milnor Lottery Axiom:</b></dt>
+<dd>
+<!--  this version is stronger than Herstein-Milnor:
+For any events a,b,c:
+a&supe;b if and only if
+for any p with 0&le;p&le;1,
+(p?a:c)&supe;(p?b:c). -->
+If A&sim;B then 
+&frac12;?A:C &sim;&frac12;?B:C.
+</dd>
+</dl>
+<p>
+Here are some theorems.
+</p>
+<p><b>Existence Theorem for monotonic utility function (P.C.Fishburn 1983):</b>
+Totality, Continuity, Dominance, and Transitivity imply that there exists
+a real-valued function u() so A&supe;B &hArr; u(A)&ge;u(B),
+where u( p?A:B ) is a continuous increasing function of p when 0&le;p&le;1 if A&sup;B
+(and is constant in p if A&sim;B).
+</p>
+<p><b>Existence Theorem for linear utilities (J.von Neumann &amp; O.Morgenstern 1947):</b>
+Totality, Continuity, Dominance, and Herstein-Milnor imply that
+there exists a "utility function"  u  which assigns to each lottery  L
+a real number  u(L)  with the following three properties:
+</p>
+<dl>
+<dt><b>Strict monotonicity (MonT):</b><dt>
+<dd>
+     u(a) &ge; u(b)  if and only if  a&supe;b.
+</dd>
+<dt><b>Lottery utilities are expected utilities (Lin):</b></dt>
+<dd>
+     u(p?a:b) = p&middot;u(a) + (1-p)&middot;u(b).
+</dd>
+<dt><b>Uniqueness up to transformations of scale (AffUniq):</b></dt>
+<dd>
+    For any two functions u, v  that both satisfy the preceding two properties,
+    there are real numbers  r,s  such that  v = r + s&middot;u.
+</dd>
+</dl>
+<p>
+These are essentially the properties economists usually take for
+granted when speaking about individual "utility." 
+</p>
+<p>
+This second theorem is a standard starting point.
+What do we think of it?  Some (not I, but apparently some) would dispute the
+Continuity axiom.  E.g. to paraphrase a dispute on the subject:
+<blockquote>
+<b>Anti-Continuist:</b> Any probability p>0 that my child dies (no matter
+how small p is),
+is worse than me losing 1 penny of money.  Therefore the
+Continuity axiom is false.
+<br>
+<b>Continuist:</b> I know you are lying, because I know
+you bent down to pick up a penny
+and therefore stopped watching your child for 30 milliseconds.  
+Also, you are not
+presently tossing pennies over your child's head to protect her against incoming
+meteorites.
+</blockquote>
+<p>
+<small>If (essentially) we discard the continuity
+axiom, then it still is possible to prove analogues of the Theorem but which 
+involve utility values in Nelson's "non-standard" reals (the field extension that arises by including an
+"infinitesimal" quantity  &epsilon;).</small>
+</p><p>
+Some (not I, but perhaps some) also might dispute the Totality axiom.
+</p>
+<p>
+The axiom that people seem to be the most willing to discard is the
+Lottery Axiom since, e.g, they regard uncertainty as
+somehow bad.  Fishburn in 1983 brilliantly considered the consequences of that and
+proved the following therem:
+</p>
+<p><b>Theorem of nonlinear utilities (Fishburn 1983):</b>
+Totality, Continuity, Dominance, 
+and the "Symmetry Axiom" below &hArr; there exists a skew-symmetric
+bilinear functional SSBF on 2-tuples of lotteries such that  A&supe;B &hArr; SSBF(A,B)&ge;0
+and that SSBF() is unique up to "similarity transformation."
+[Skew-symmetry means SSBF(A,B) = -SSBF(B,A) and bilinearity means
+SSBF(p?A:B, C) = p&middot;SSBF(A,C) + (1-p)&middot;SSBF(B,C)
+and 
+SSBF(C, p?A:B) = p&middot;SSBF(C,A) + (1-p)&middot;SSBF(C,B).]
+</p>
+
+<p>
+<b>Fishburn's Symmetry Axiom:</b><br>
+If A&supe;B, B&supe;C, A&supe;C, and B &sim; &frac12;?A:C, then
+p?A:C &sim; &frac12;?A:B &hArr; p?C:A &sim; &frac12;?C:B.
+</p>
+
+<p>
+You are warned that these skew-symmetric bilinear nonlinear utility functionals
+can be rather strange and hard to use.  
+(They allow intransitive
+preference "cycles" and generally disobey the Herstein-Milnor axiom.
+Quick sanity check: have you, personally, ever felt that A was better 
+than B was better than C which in turn was better than A for three options A,B,C?)
+Almost nobody besides Fishburn ever has used it.
+Also, anybody disputing the Herstein-Milnor Lottery axiom
+would quite plausibly dispute Fishburn's symmetry axiom too.
+Finally, it is important to keep in mind that
+Fishburn's utilities are the <i>same thing</i> as ordinary utilities if we are
+talking about deterministic events. 
+<!-- For elections in which the chance of a random tiebreak is neglectible...??? --> 
+</p>
+
+<h3> Sources </h3>
+<ol>
+<li>
+Peter C. Fishburn: Nontransitive measurable utility, J. Math'l Psychology 26 (1982) 31-67.
+</li><li>
+Peter C. Fishburn: Transitive measurable utility, J. Economic Theory 31 (1983) 293-317.
+</li><li>
+I.N.Herstein &amp; J.Milnor: 
+An axiomatic approach to measurable utility, Econometrica 21,2 (1953) 291-297.
+</li><li>
+Niels Erik Jensen: An Introduction to Bernoullian Utility Theory: I. Utility Functions,
+Swedish Journal of Economics 69,3 (1967) 163-183. 
+</li><li>
+J. von Neumann &amp; O.Morgenstern:
+Theory of Games and Economic Behavior (Princeton Univ. Press);
+Axiomatic treatement of  utility in pages 13-31 and appendix 617-632 or
+so (page numbers may depend on your edition, and only present in editions after 1947).
+</li>
+</ol>
+
+<a name="harsanyi"></a>
+<h2> Harsanyi's argument "Social Utility" is the average of individual utilities </h2>
+
+<p>
+Let u<sub>k</sub>(e) denote the utility (according to individual k) of
+an event e.
+We want to investigate how to aggregate the individual utilities into
+a "social utility" saying "how good e is for all of society."
+For what reason should we claim that social utility
+is just the <i>average</i> of individual utilities?
+</p>
+<p>
+J.C.Harsanyi, in a 2-page article involving no mathematics whatever
+[J.Political Economy 61,5 (1953) 434-435],
+came up with the following nice idea:
+"Optimizing social welfare" means 
+"picking the state of the world all individuals
+would prefer if they were in a state of uncertainty about their
+identity." 
+I.e. if you are equally likely to be anybody, then your
+expected utility is the summed utility in the world divided by the
+number of people in it &ndash; i.e. average utility.
+Then by the linear-lottery property (Lin) of
+von Neumann utility, it follows that social utility is averaging.
+</p>
+<p>
+Actually, Harsanyi nowhere connected to von Neumann's axiomatic development, but
+he should have because it connects beautifully.
+Indeed, Harsanyi's paper can justifiably
+be criticized as the work of a mathematical idiot, because
+he also neglected to note the key point that 
+<i>von Neumann utility is only unique up to, and only defined up to, scaling</i>.
+The whole idea of averaging individual von Neumann utilities, then, can <i>only</i>
+even be talked about at all if all individuals somehow have uniquified their utility
+functions by adopting a common scale.  
+</p>
+<p>
+One way to do that would be to <i>assume</i> the existence of two magical special events,
+which everybody can be assumed to view as having the same utility-difference,
+e.g.
+</p>
+<ol>
+<li>
+The world is destroyed by a sudden giant explosion,
+</li><li>
+Everybody is magically transplanted into identical bodies in identical pleasant
+situations on a new planet that magically appears.
+</li></ol>
+
+<small>
+<p>
+And for a yet another
+approach to proving utility is additive starting from a set of axioms, see
+[Uzi Segal: Let's agree all dictators are equally bad,
+Journal of the Political Economy 108,3 (June 2000) 569-589].
+Segal basically uses the approach we just outlined, except for a sleight of hand where
+he uses his "dictator indifference" axiom to play the role of our "two magical events" to
+set up a common scale.  Anyhow, I for one do not agree that
+"all dictators are equally bad"; it appears to me that some have been good.
+</p>
+</small>
+
+
+<h2> Social utility = averaging via new approaches not depending on lotteries </h2>
+<p>
+Some would dispute the axioms underlying all that.
+For example, some might dispute the Lottery axiom:
+<blockquote>
+<b>Objector:</b>
+A lottery awarding a million dollars to A with probability 1/2 and to B with
+probability 1/2, is <i>better</i> than just giving A the money or just giving B
+the money because it is more "fair" and I also value fairness.
+</blockquote>
+Or in the other direction, many investors argue
+the lottery is <i>worse</i> than the deterministic award
+because we are "risk averse" and regard uncertainty itself as a bad thing.
+</p><p>
+If Herstein-Milnor Lottery axiom is discarded,  
+linearity (Lin) fails whereupon many social utility
+aggregation methods become permitted besides just averaging.
+</p><p>
+Fortunately, there are also other axiom sets (by Warren D. Smith)
+which also yield the "averaging=social aggregation" (or one can say "summing" in place
+of "averaging" since the two yield equivalent preferences) correspondence
+but via reasoning that <i>never involves probabilities</i> and lotteries:
+See puzzles 36 and 37 <a href="PuzzlePage.html#p36">here</a>.
+</p>
+</p><p>
+But these still do not really settle the matter because
+there also is room for people to dispute some of <i>those</i> axioms,
+as is discussed in puzzle 38.
+The question of which axioms about "social goodness" to accept,
+is probably not something that can be settled by mathematics.
+Still, I think every reasonable person would agree that
+all these axioms are <i>usually</i> at least <i>approximately</i> true.
+</p>
+
+<h2> Social utility = averaging &ndash; yet another approach via "unexploitability" and "Darwinian evolution" </h2>
+
+<p>
+See <a href="OmoUtil.html">this</a> by Warren D. Smith 
+(with help from Steve Omohundro, Marcus Pivato,
+and building on works of others including Harsanyi).
+</p>
+
+
+<br>
+<p><a href="Bentham.html">About the history of utility concepts</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

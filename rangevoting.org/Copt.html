@@ -1,0 +1,171 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Six simple voting system optimality theorems
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Six simple voting system optimality theorems </H2>
+
+<p>
+<!-- This page was inspred by a question by gwolfe. -->
+All of these theorems show how one or
+another single-winner voting method can be regarded as the "optimum" single-winner
+voting method under some particular (perhaps somewhat artificial) quality measure.
+All have very easy (usually trivial) proofs, but I nevertheless 
+think they have some interest.
+</p>
+
+<hr>
+
+<p>
+<b>Quality measure A:</b>
+let A be the probability, after some election system elects W, that
+a random voter ranked W top.
+Supposely the greater this probability is, the "better" the voting system.
+</p>
+
+<p>
+<b>Theorem A:</b>
+The voting system which maximizes A, is the <a href="Plurality.html">Plurality</a> voting system.
+</p>
+
+<hr>
+
+<p>
+<b>Quality measure B:</b>
+let B be the probability, after some election system elects W, that
+a random candidate R (R&ne;W) would be preferable to W in the view of a randomly chosen voter V
+(based on the ballots
+as cast).   Supposedly, the smaller this probability is, the "better" the voting system.
+</p>
+
+<p>
+<b>Theorem B:</b>
+The voting system which minimizes B, is the <a href="rangeVborda.html">Borda</a> voting system.
+</p>
+
+<hr>
+
+<p>
+<b>Quality measure C:</b>
+let C be the probability, after some election method elects W, that
+a random candidate R (R&ne;W) would beat W in a head-to-head simple
+majority voting contest (again based on the ballots
+as cast).   Again, supposedly, the smaller this probability is, the "better" the voting system.
+</p>
+
+<p>
+<b>Theorem C:</b>
+The voting system which minimizes C, is the <b>Copeland</b> voting system:
+voters supply rank orders of the candidates as their votes, we compute the pairwise table of who
+beat who pairwise (ties count &frac12; point, victories count 1 point), and the candidate
+with the most points wins.
+</p>
+
+<hr>
+
+<p>
+<b>Quality measure D:</b>
+let D be the probability, after some election method elects W, that
+a random voter would "approve" or "consent to" W (again based on the ballots
+as cast).   
+Supposedly, the greater this probability is,  the "better" the voting system.
+</p>
+
+<p>
+<b>Theorem D:</b>
+The voting system which maximizes D, is the <a href="Approval.html">Approval</a> voting system.
+</p>
+
+<hr>
+
+<p>
+<b>Quality measure E:</b>
+let E be the probability, after some election method elects W, that
+a random voter who generates a random number R uniformly in the allowed-score-range,
+had scored R above W.
+(Supposedly, the smaller this probability is,  the "better" the voting system.)
+</p>
+
+<p>
+<b>Theorem E:</b>
+The voting system which minimizes E, is the <a href="RangeVoting.html">Range Voting</a> system.
+</p>
+
+<hr>
+
+<p>
+<b>Quality measure F:</b>
+Suppose every voter has an opinion about who is the better candidate in any candidate-pair
+and says it in her vote.
+But suppose, due to
+random mental or writing mistakes by voters, that
+each one of those opinions is <i>wrong</i> with (independent) probabilities
+&epsilon;>0 (in the limit &epsilon;&rarr;0+), 
+Let F be the probability that the election winner W would win a head-to-head contest
+against <i>every</i> opponent (based on the cast ballots 
+<i>but</i> with all the mistakes <i>corrected</i>).
+(Supposedly, the greater this probability,  the "better" the voting system.)
+</p>
+
+<p>
+<b>Theorem F:</b>
+The voting system which maximizes F, is the "Condorcet least-reversal system" in which the minimum
+number of pairwise-comparisons are reversed so that some candidate now pairwise-beats every other.
+</p>
+
+<hr>
+
+<p>
+<b>Remark:</b>
+Although all have their intuitive appeal,
+we do not believe either quality measure A, B, C, D, E  or F
+is the right measure to use when 
+comparing voting systems.
+<a href="BayRegDum.html">Bayesian Regret</a> is.
+</p>
+
+<p>
+Note that the weasel words "based on the ballots as cast" mean "as opposed to what
+the voters truly feel"
+(which might be different due to strategic voting).  In that sense, all of these theorems 
+are only about honest voting.
+</p>
+
+<p>
+<b>Proofs:</b>
+The proofs all are trivial.  These theorems really are just an immediate
+consequence of the definitions of these voting systems.  However &ndash; since some people
+don't think it is so obvious &ndash;
+we shall provide a proof for theorem B (since it is the hardest).
+</p>
+<p>
+The probability that a voter will rank a random candidate R above W, is proportional to
+the number of candidates she ranked above W on her ballot, which is just 
+her rank of W minus 1.  (E.g. if she ranked W top, i.e. 1st, then 1-1=0, 
+correctly giving zero probability she ranked a random candidate above W.)
+The probability that a <i>random</i> voter will do this, thus is proportional to
+the <i>average</i>
+rank-minus-one of W on all ballots.  But this is precisely N-1-S where S is W's
+average Borda score and N is the number of candidates.  So minimizing this probability
+is precisely equivalent to maximizing Borda score, i.e. to using the 
+Borda voting system to choose the winner. 
+Q.E.D.
+</p>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

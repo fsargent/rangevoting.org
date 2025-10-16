@@ -1,0 +1,720 @@
+<html>
+<head>
+<title>
+RangeVoting.org - How many candidates should a voter approve? 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> How many candidates should a voter approve? </H2>
+<!-- <h3> A mathematical fantasy </h3> -->
+<p>
+<small>Warren D. Smith, Oct.2022.</small>
+</p>
+
+<p><b>Table of contents:</b></p>
+<ol><li>
+<a href="#SecOptThresh"> The optimum threshold is: Approve candidates better than "expected utility of winner." </a></li><li>
+<a href="#CrudeModels"> How many will "random voters" approve, how often? Answers in some crude models where all C candidates are
+   a priori equally likely to win </a></li><li>
+<a href="#NormalUtilsModel"> Random normal utilities: A model not solvable via Janson theorem </a></li><li>
+<a href="#NoHopers"> What if all C candidates are <i>not</i> a priori equally likely to win &ndash; many are "no-hopers"? </a></li><li>
+<a href="#PascalEulerAnalogy"> How alike are Pascal's and Euler's triangles? </a></li><li>
+<a href="#Refs"> Further References </a>
+</li></ol>
+  
+<p>
+The rules of &quot;<a href="approval.html">Approval voting</a>&quot;
+are: each vote is the <i>set</i> of candidates that voter
+approves.  The most-approved candidate wins.
+</p><p>
+Suppose there are C candidates (2&le;C).
+Most voters act as follows to decide what approval-ballot to cast.
+</p><ol><li>
+They choose a <b>threshhold</b>.
+</li><li>
+They approve all the candidates they consider better than that threshold, and
+disapprove all the others.
+</li></ol>
+<p>
+Or, essentially equivalently, they choose a <b>number</b> A, then
+approve the best A, disapproving the remaining C-A candidates.
+</p><p>
+Voters of this kind face only one <b>QUESTION</b>:
+<i>What</i> should my personal threshold be? Or equivalently: <i>how many</i> candidates should I approve?
+The answer:
+</p>
+<a name="SecOptThresh"></a><h3> 1. The optimum threshold is: Approve candidates better than "expected utility of winner." </h3>
+<p>
+Example: Suppose there are C=7 candidates, and you think the chances are
+</p><ul><li>
+P<sub>Nix</sub>=55% that Nixon will win, 
+</li><li>
+P<sub>Rea</sub>=30% that Reagan will win,
+</li><li> 
+P<sub>Car</sub>=15% that Carter will win,
+</li><li>
+with the other 4 candidates having negligible winning chances.
+</li></ul><p>
+And suppose your personal utilities for them are 
+U<sub>Nix</sub>=-600,
+U<sub>Rea</sub>=+300,
+U<sub>Car</sub>=+100.
+Then your estimate of your expected utility of the winner is
+</p><center>
+ExpectedUtil 
+= 
+U<sub>Nix</sub>P<sub>Nix</sub>+U<sub>Rea</sub>P<sub>Rea</sub>+U<sub>Car</sub>P<sub>Car</sub>
+<br> 
+= 
+-600&times;0.55 + 300&times;0.30 + 100&times;0.15
+=
+-225.
+</center><p>
+So in this circumstance you'd approve everybody better than "-225."
+In particular you'd approve both Reagan and Carter, but disapprove Nixon.
+</p><p>
+<b>Why is that strategy optimal in a <i>large</i> somewhat-random election?</b>
+Because then your vote is helping candidates better than your expected winner-value to win, and only them.  
+If your vote does not alter the winner, then you get your expectation.  In the (unlikely
+in a large election) event that it <i>does</i> alter the winner, then you've <i>guaranteed</i> getting
+a winner <i>better</i> than your prior expectation.
+Because the election is large and the zillions of other voters act somewhat randomly, you
+cannot predict or control which candidate you are going to help and which one you are going to hurt &ndash;
+and most likely your vote will have no effect; and if it does have an effect, then it will (with overwhelming likeliness) 
+hurt only <i>one</i> candidate and help only one.
+Which ones? That is controlled by the randomness, not by you.
+The only thing you can control is which <i>set</i> of candidates you want to help win, and 
+you can make sure to help one better than expectation, guaranteeing your vote causes (in expectation) an improvement.
+The fact that any other choice of threshold would sacrifice some expected utility comes from this 
+</p><p>
+<b><a href="RVstrat7.html">LEMMA</a>:</b>
+For any set of numbers U<sub>1</sub>, U<sub>2</sub>, U<sub>3</sub>, ..., U<sub>C</sub>
+not all equal, and any set of probabilities
+{P<sub>1</sub>, P<sub>2</sub>, ..., P<sub>C</sub>} summing to 1,
+we maximize
+&sum;<sub>k&in;S</sub> &sum;<sub>j&notin;S</sub> (U<sub>k</sub>-U<sub>j</sub>) P<sub>j</sub> P<sub>k</sub>
+by choosing the set S to be the indices k of those U<sub>k</sub> that are <i>above expectation</i>,
+the expectation being E=&sum;<sub>1&le;j&le;C</sub> U<sub>j</sub>P<sub>j</sub>.
+</p><p>
+<b>Remarks.</b>
+Note that your optimum choice of threshold <i>depends</i> on how you think the <i>other</i> voters are going to act,
+and <i>not</i> solely on your own opinions of the C candidates.  If you thought Nixon, Reagan, and Carter had no chance to win
+because the zillion other voters were all going to approve Roosevelt, Eisenhower, and Bush instead, then your
+personal approval threshold might be quite different.
+</p>
+
+<a name="CrudeModels"></a><h3> 2. How many will "random voters" approve, how often? Answers in some crude models where all C candidates are
+a priori equally likely to win. </h3>
+<p><b>Why do we care?</b>
+We want to be able to compare theoretical predictions for how often voters will approve-3, approve-1, or whatever, versus
+data from real-world approval-voting elections.  If the predictions disagree greatly with reality, then
+we'll know something is wrong.
+</p><p>
+<b>Plan.</b>
+We are going to examine a goodly number of simplistic models of what a "random voter" 
+is in a C-candidate election. Each model shall assume
+there are a huge (essentially infinite) number of such voters voting;
+and in each model it will be equally likely, a priori, that any one of the  candidates will win.
+We shall exactly solve (except in one case our solution will be only approximate) each model to determine the 
+exact probability distribution of the number A of candidates such a voter would approve.
+</p><p>
+It will turn out in the end that there is a massive "unification" &ndash; almost <i>all</i> our
+solutions turn out to be corollaries of just one master theorem, which I'll call the GENERALIZED JANSON THEOREM.
+Furthermore, most of our models will predict that the usual number of approvals per ballot will be a bit less than C/2,
+because the distributions we get, although all different, tend to feature a single peak centered at about C/2 or
+a bit less.
+</p><p>
+<b>I: 2-valued utilities from coin tosses: thresholding strategy  &rArr; "honest" voting.</b>
+Suppose a "random voter's" opinions are determined by tossing C fair coins. 
+The utility of the
+<i>K</i>th candidate to that voter then is "high" if the 
+<i>K</i>th coin came up "heads," and "low" otherwise
+(for two particular values "high" and "low" associated with that voter, it
+does not matter what they are, just that they exist and low&lt;high).
+</p><p>
+In that case, each 
+threshholding-strategy voter is going to approve
+all her highs and disapprove all her lows, and she will not care what the other zillion voters think,
+i.e. she will "vote honestly"!
+<!--Let us agree to
+ignore voter who approve-all or diapprove-=all since thoe voter have no effect on the wlection,
+and know ahead of time they will have no effect, plus they just do not care who wins, so they don't bother to vote??
+
+S.J.Brams & P.C.Fishburn: Approval Voting, Birkhauser Boston 1983 p30 thm4
+say sincere approval for "trichotomous voters" whose utilities lie in a (&le;3)-element set.
+-->
+</p><p>
+And then, in a C-candidate election, the chance a random voter will approve exactly A out of the C
+candidates (0&le;A&le;C) is
+proportional to the (<i>A+1</i>)th entry, in the row containing exactly C+1 numbers,
+of "<b>Pascal's triangle</b>" of 
+"<a href="http://en.wikipedia.org/wiki/Binomial_coefficient">binomial coefficients</a>:"
+</p><pre>
+                            1                                                                                                                                                                                  
+                         1     1                                                                                                                                                                               
+                       1    2    1                                                                                                                                                                             
+                     1    3   3    1                                                                                                                                                                           
+                   1   4    6    4   1                                                                                                                                                                         
+                 1   5   10   10   5   1                                                                                                                                                                       
+               1   6   15  20   15   6   1                                                                                                                                                                     
+             1   7  21   35   35   21  7   1
+           1   8  28   56  70   56   28  8   1
+         1   9  36  84  126  126   84  36  9   1                                                                                                                                                               
+       1  10  45 120  210  252  210  120 45  10  1                                                                                                                                                             
+     1  11  55 165  330 462  462  330  165 55  11  1
+</pre><p>
+More entries Z of this triangle may be generated from the two (X and Y) immediately
+above it using the stencil
+</p><pre>
+              X   Y
+                Z
+</pre><p>
+where Z=X+Y.  For example 35=20+15.
+The <i>R</i>th row sums to 2<sup>R-1</sup>, for example 1+4+6+4+1=16=2<sup>4</sup>.
+</p><a name="Aster"></a><p>
+<b>Asterisk:</b>
+In the cases A=0 and A=C of no- and all-approval, actually our voter literally does not care
+how she votes, so in practice she probably would not bother voting at all, in which case the
+first and last entries (both 1) in each row of Pascal's triangle would, for our purposes, never
+be used so that 1&le;A&le;C-1 always.
+</p><p>
+<b>Some known facts about binomial coefficients.</b>
+There is a formula for the <i>K</i>th entry in the <i>R</i>th row: &nbsp;
+<nobr>(R-1)! (K-1)!<sup>-1</sup> (R-K)!<sup>-1</sup>.</nobr> &nbsp;
+The entries in the <i>R</i>th row arise from the coefficients of powers
+of x in the full-expansion of (1+x)<sup>R-1</sup>, for example
+<nobr>(1+x)<sup>4</sup>=1x<sup>4</sup>+4x<sup>3</sup>+6x<sup>2</sup>+4x+1.</nobr>
+The full expansion  into a double power series of
+<nobr>(1-X-Y)<sup>-1</sup></nobr>
+has coefficient of X<sup>a</sup>Y<sup>b</sup>
+equal to the <i>(a+1)</i>th number in the <i>(a+b+1)</i>th row
+of Pascal's triangle.
+</p><p>
+<b>II: Wrongly thresholding based on distribution-mean not your personal expectation:</b>
+Now consider a different kind of "random voter."
+She samples C random numbers independently from some particular
+<a href="https://en.wikipedia.org/wiki/Even_and_odd_functions">even-symmetric</a>
+density 
+(for example a "<a href="http://en.wikipedia.org/wiki/Normal_distribution">normal</a>"
+or "<a href="http://en.wikipedia.org/wiki/Continuous_uniform_distribution">uniform</a>" density) &ndash;
+it does not matter which, and different voters could use different densities.
+The <i>K</i>th random number is her utility for the <i>K</i>th candidate.
+Assume a huge number of such voters.
+Then she approves the candidates she considers better than the central value of her density i.e. its distribution-mean.
+</p><p>
+Note, this is not really the optimum strategy, because the center of her distribution only <i>usually approximately</i>
+coincides with the expected value (to her) of the winner.  But it resembles the optimum strategy.
+</p><p>
+This kind of voter again is going to approve A of the C candidates
+with chance proportional to the (<i>A+1</i>)th entry, in the row containing exactly C+1 numbers,
+of Pascal's triangle; and there will be the same <a href="#Aster">asterisk</a>
+as before about the A=0 and A=C cases.
+</p><p>
+<b>III: 3-valued utilities from "throin" tosses: again thresholding strategy  &rArr; "semi-honest" voting.</b>
+Now suppose each "random voter" tosses C fair three-sided coins, aka "throins." Her
+utility for the <i>K</i>th candidate is high, medium, or low depending on the <i>K</i>th throin.
+(For three particular values "high," "medium," and "low" associated with that voter, it
+does not matter what they are, all we need is that they exist and low&lt;medium&lt;high.)
+</p><p>
+In that case, each 
+threshholding-strategy voter is going to approve
+all her highs, disapprove all her lows, 
+and <i>either</i> disapprove all, or approve all, the mediums &ndash; depending on whether
+she believes the expected value of the winner determined by the
+other zillion voters is above, or below, "medium."
+I.e, she will "vote honestly"!
+</p><p>
+If all the zillion other voters also employ the same methodology then there will be a 50-50 chance of
+all-disapprove or all-approve on her mediums.  
+Due to the same <a href="#Aster">asterisk</a>
+as before about the A=0 and A=C cases, let us assume 1&le;A&le;C-1.
+Then the chance of approving exactly A of the C candidates will be proportional to this (integer-valued) formula:
+&nbsp;
+<nobr>
+ C! (C-A)!<sup>-1</sup> A!<sup>-1</sup> (2<sup>A-1</sup>+2<sup>C-A-1</sup>) 
+</nobr>
+<!-- Table[Binomial[9, k] (2^(k - 1) + 2^(9 - k - 1)), {k, 1, 9-1}] -->
+</p><pre>
+                                     4
+                                  9      9
+                              20     24    20
+                          45     60     60     45  
+                      102    150    160    150   102 
+                   231   378    420    420    378   231 
+                520   952   1120   1120   1120   952   520
+             1161  2376 3024    3024  3024   3024  2376   1161
+          2570  5850 8160   8400   8064   8400  8160   5850  2570
+      5643  14190 21780 23760  22176  22176  23760 21780  14190  5643
+   12300 33924 57200 67320  63360 59136  63360  67320  57200  33924 12300
+</pre><p>
+The sum of the entries in the <i>(N-1)</i>th row equals 3<sup>N</sup>-2<sup>N</sup>-1.
+</p><p>
+<b>IV: <i>Exact</i> solution for thresholding voters whose utilities are random-<i>uniform</i> numbers.</b>
+Now consider yet another kind of "random voter."
+She samples C random numbers independently from a <i>uniform</i> density.
+The <i>K</i>th random number is her utility for the <i>K</i>th candidate.
+(For example they each could be random real numbers between 0 and 1, albeit the endpoints
+do not need to be 0 and 1 and could depend upon the voter.  
+E.g, we also could allow voters who
+first pick their favorite candidate F and their most-hated candidate H, then 
+generate the utilities for the C-2 other candidates by sampling uniform random numbers in the interval
+with endpoints U<sub>H</sub> and  U<sub>F</sub>.)
+</p><p>
+Assume a huge number ("infinity") of such voters.
+Our voter therefore assumes (correctly) that all C candidates are equally likely, a priori, to win.
+Hence she approves the candidates she considers better than the <i>average</i> of her C random numbers.
+And note, this really is optimum strategy.
+</p><a name="EulerTri"></a><p>
+Such voters approve A of the C candidates, 1&le;A&le;C-1,
+with chance proportional to the <i>A</i>th entry, in the row containing exactly C-1 numbers,
+of <b>Euler's triangle</b>:
+</p><pre>
+                                1
+                           1         1
+                        1       4        1
+                     1      11       11     1
+                  1     26      66       26    1
+               1     57     302     302      57   1
+            1    120   1191    2416     1191    120   1
+         1    247   4293   15619    15619   4293    247  1
+      1   502   14608  88234  156190   88234   14608   502  1
+   1  1013  47840  455192 1310354  1310354  455192 47840  1013 1
+</pre><p>
+More entries Z may be generated from the two (X and Y) immediately above it using the stencil
+</p><pre>
+              X   Y
+                Z
+</pre><p>
+where Z=aX+bY where Y and Z lie on the <i>b</i>th / diagonal (counting starting at the topmost /)
+while X and Z lie on the <i>a</i>th \ diagonal (counting starting at the topmost \).
+For example 4293=3&times;1191+6&times;120 because the rightmost 1191 and 4293 lie on the 3rd \ diagonal
+while 120 and 4293 lie on the 6th / diagonal.
+The Rth row contains R numbers and sums to R!, for example 1+26+66+26+1=120=5!.
+</p><p>
+Example: the chance a random voter will approve A=6 out of C=9 candidates is 4293/8!=4293/40320=477/4480.
+</p><p>
+<b>Some known facts about Eulerian numbers.</b>
+There is a formula for the <i>K</i>th entry in the <i>R</i>th row: 
+</p><center>
+&sum;<sub>0&le;j&le;K</sub> (-1)<sup>j</sup> (R+1)! j!<sup>-1</sup> (R+1-j)!<sup>-1</sup> (R-j)<sup>R</sup>.
+</center><p>
+The entries in the <i>R</i>th row of the Euler triangle arise from the coefficients of powers
+of x in the full expansion of 
+&nbsp; <nobr>(1-x)<sup>R+1</sup>&sum;<sub>j&ge;0</sub>(j+1)<sup>R</sup>x<sup>j</sup>.</nobr> &nbsp;
+For example, &nbsp;
+(1-x)<sup>8</sup>&sum;<sub>j&ge;0</sub>(j+1)<sup>7</sup>x<sup>j</sup> =
+1x<sup>6</sup>+120x<sup>5</sup>+1191x<sup>4</sup>+2416x<sup>3</sup>+1191x<sup>2</sup>+120x+1.
+</p><p>
+The full expansion into a double power series of
+&nbsp; <nobr>(T-1)/[T-exp([T-1]U]</nobr> &nbsp;
+has coefficient of U<sup>a</sup>T<sup>b</sup>
+equal to the <i>(b+1)</i>th number in the <i>a</i>th row
+of Euler's triangle, <i>divided</i> by a!.
+This double generating function is due to L.Euler.
+</p>
+<!--
+<p>
+The full expansion into a triple power series of
+</p><center>
+(XYT)<sup>-1</sup> ln( [Xe<sup>YT</sup>)-Ye<sup>XT</sup>] / [X-Y] )
+</center><p>
+--
+Series[ Log[(X - Y)/(X Exp[Y] - Y Exp[X])]/(X Y) , {X,0,6} ]
+
+typical term
+(X^7 (630 - 630 E^(8 Y) + 5040 E^(7 Y) Y - 15120 E^(6 Y) Y^2 + 21000 E^(5 Y) Y^3 - 13440 E^(4 Y) Y^4 + 3402 E^(3 Y) Y^5 - 224 E^(2 Y) Y^6 + E^Y Y^7))/(5040 Y^9) 
+
+now series(Y): typical terms:
+- (1093 X^7 Y^3)/237600    Euler=183624
+- (125468459 X^7 Y^5)/7264857600   Euler=non-integer
+--
+has coefficient of T<sup>R</sup>X<sup>a</sup>Y<sup>b</sup>
+equal to the <i>(a+1)</i>th number in the <i>R</i>th row
+of Euler's triangle, <i>divided</i> by R!.
+Here automatically a+b=R-1.
+This triple generating function is due to Kevin S. Brown;
+https://www.mathpages.com/home/kmath012/kmath012.htm
+if we set T=1 it becomes a new double generating function.
+UNFORTUNATELY SEEMS WRONG. -->
+</p><p>
+This whole solution arises from
+</p><p>
+<b>DOMINIQUE FOATA'S 1977 THEOREM ABOUT EULERIAN NUMBERS:</b>
+If C&ge;1 random numbers are sampled independently from a uniform density on a real interval, then (C-1)! times the chance
+that exactly A of them exceed their mean, equals the <i>A</i>th number on the row of the Euler triangle containing C-1 numbers.
+</p><p>
+This is proven in section 2 of Foata's paper
+"Distributions eul&eacute;riennes et mahoniennes sur le groupe des permutations"
+(in French), pp.27-49 in <i>Higher Combinatorics</i> [Berlin 1977, M.Aigner, editor], Boston, Dordrecht, 1977.
+(This paper also was published translated into Russian; and it also contains a 1-page appendix 
+"Eulerian Partitions of a Unit Hypercube" in English by Richard P. Stanley.)
+</p><p>
+Before unearthing Foata's theorem, I had conjectured it based on (i) approximate computer output, plus (ii) I knew all the probabilities
+had to be <i>rational</i> numbers, which appeared to become (and actually do become, in view of Foata's theorem) <i>integers</i>
+when multiplied by (C-1)!.  But I could not see a proof.  I then consulted Svante Janson, an expert on Eulerian numbers,
+who did find a proof.  
+(It's impressive how simple the proof ended up being, considering how
+complicated our proof-ideas were when Janson &amp; I started working on it.)
+Janson's proof method actually yields results which both improve over Foata's, and
+which "unify" all our model-solutions so far, and which yield additional exactly-solvable models.
+</p><p>
+<b>GENERALIZED SVANTE JANSON THEOREM (2022) ABOUT EULERIAN NUMBERS:</b>
+Sample C-1 random numbers &Delta;<sub>2</sub>, &Delta;<sub>3</sub>, ..., &Delta;<sub>C</sub>
+independently from <i>any</i> fixed density &rho;(z) on reals z&gt;0.
+Certain kinds of dependence also are permissible:
+we can sample the &Delta;<sub>j</sub> <i>subject to a constraint</i> of
+the form "the sum of all the  &Delta;<sub>j</sub> is demanded to equal S" for
+any particular value S you want; and also "sum" could be replaced by "product," or any other "symmetric function";
+and the demand "equal S" could be replaced by "lie between S<sub>1</sub> and S<sub>2</sub>"
+for any particular values S<sub>1</sub> and S<sub>2</sub> you want.
+</p><p>
+Then generate C utility values U<sub>1</sub>, U<sub>2</sub>, U<sub>3</sub>, ..., U<sub>C</sub>,
+sorted into increasing order, from the &Delta;<sub>j</sub>'s as follows: 
+(i) pick U<sub>1</sub> arbitrarily, 
+(ii) for j=2 to C let U<sub>j</sub>=U<sub>j-1</sub>+&Delta;<sub>j</sub>,
+(iii) randomly permute the U's with all C! permutations equally likely.
+In other words, the &Delta;<sub>j</sub> are the <i>gaps</i> between the sorted U's.
+Then the chance exactly
+A of the U<sub>j</sub>'s exceed their mean, 
+<i>equals</i> the chance that the maximum value of K with 0&le;K&le;C-2 such that
+</p><center>
+&sum;<sub>1&le;j&le;K</sub> j&Delta;<sub>j+1</sub>
+&lt;
+&sum;<sub>1&le;j&le;C-K-1</sub> j&Delta;<sub>j+K+1</sub>. 
+</center><p>
+is K<sub>max</sub>=A-1.
+(Also, of course Janson's theorem would remain valid if
+the word "exceed" were replaced by its opposite "are less than.")
+</p><p>
+<b>PROOF:</b>
+Wlog assume U<sub>1</sub>=0 and that we are using "are less than" and that the U's are sorted.
+Then U<sub>j</sub>=&sum;<sub>2&le;k&le;j</sub> &Delta;<sub>k</sub>. 
+Let M equal the mean U<sub>j</sub>, hence
+</p><center>
+CM = &sum;<sub>2&le;j&le;C</sub> (C+1-j)&Delta;<sub>j</sub>.
+</center><p>
+The chance exactly A of the  U<sub>j</sub> (which necessarily are j=1,2,3,...,A) are less than M
+equals the chance exactly A of the CU<sub>j</sub> are less than CM,
+which occurs if and only if A is maximal such that
+</p><center>
+C &sum;<sub>2&le;j&le;A</sub> &Delta;<sub>j</sub>
+&lt;
+&sum;<sub>2&le;j&le;C</sub> (C+1-j)&Delta;<sub>j</sub>
+</center><p>
+If we cancel out summands occuring on both sides of this inequality we see that happens if and only if 
+if A is maximal such that 
+<a name="StarEq"></a>
+</p><center>
+&sum;<sub>2&le;j&le;A</sub> (j-1)&Delta;<sub>j</sub>
+&lt;
+&sum;<sub>A+1&le;j&le;C</sub> (C+1-j)&Delta;<sub>j</sub>.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<b>(*)</b>
+</center><p>
+Since all the &Delta;<sub>j</sub> are identically distributed and independent 
+(more precisely: "exchangeable," aka "rearrangeable"),
+the chance of that <i>equals</i> the chance that
+the maximum value of K with 0&le;K&le;C-2 such that
+</p><center>
+&sum;<sub>1&le;j&le;K</sub> j&Delta;<sub>j+1</sub>
+&lt;
+&sum;<sub>1&le;j&le;C-K-1</sub> j&Delta;<sub>j+K+1</sub>. 
+</center><p>
+equals A-1.
+<b>Q.E.D.</b>
+</p><p>
+<b>COROLLARIES (SPECIAL CASES) OF GENERALIZED JANSON THEOREM:</b>
+</p><p>
+Foata's theorem is the special case of Janson that arises when
+&rho;(z) happens to be an
+<a href="http://en.wikipedia.org/wiki/Exponential_distribution">exponential</a>
+density, e.g. &rho;(z)=e<sup>-z</sup> (which is what matters if the
+U's come from a uniform density) because of the following
+known result due to PIERRE-SIMON LAPLACE and JOHN RIORDAN
+(re-proven by Richard P. Stanley in his appendix in Foata 1977):
+<!-- that the chance of
+this equals the <i>A</i>th number on the row of the Euler triangle containing C-1 numbers,
+divided by <nobr>(C-1)!.</nobr>  -->
+</p><p>
+<b>(SEVERAL VERSIONS OF) LAPLACE/RIORDAN/STANLEY THEOREM:</b>
+</p>
+<ol type="a"><li>
+The N-dimensional volume of the subset
+K-1&le;&sum;<sub>1&le;j&le;N</sub> X<sub>j</sub>&le;K
+of the N-dimensional hypercube 0&le;X<sub>j</sub>&le;1
+equals the <i>K</i>th entry in the row containing
+exactly N numbers of the Euler triangle, divided by N!.
+</li><li>
+If N random numbers are sampled independently from the uniform density on (0,1),
+then if K is an integer, then N! times the chance that their sum S obeys K-1&le;S&le;K 
+exactly equals the <i>K</i>th entry in the row containing
+exactly N numbers of the Euler triangle.
+</li><li>
+If N-1 random numbers &Delta;<sub>j</sub> are sampled independently from an exponential density, 
+then if K is an integer, then N! times the chance that the maximum K such that
+<nobr>
+&sum;<sub>1&le;j&le;K-1</sub> j&Delta;<sub>j</sub>
+&lt;
+&sum;<sub>1&le;j&le;N-K-1</sub> j&Delta;<sub>K+j</sub>
+</nobr>
+is A, exactly equals the <i>A</i>th entry in the row containing
+exactly N numbers of the Euler triangle.
+</li><li>
+The number of permutations of {1,2,3,..., N} is N!, and the number of
+those containing exactly K "rises" 
+[for example if N=7 the permutation (3,2,7,5,1,4,6) contains K=3 rises namely 2&rarr;7, 1&rarr;4, and 4&rarr;6]
+equals the <i>K</i>th entry in the row of the Euler triangle containing N-1 numbers.
+(Necessarily 1&le;K&le;N-1.)  
+<a href="https://en.wikipedia.org/wiki/Eulerian_number">Wikipedia</a> uses this
+as their definition of the Euler triangle.
+</li></ol>
+<p>
+But there are other nice Janson corollaries:
+<p><ol><li>
+In the limit case where &rho;(z) is <i>unimodal</i> with all its mass concentrated near <b>one sharp peak</b>
+(z<sub>peak</sub>&gt;0), then
+each voter is going to approve exactly <nobr>A=&lfloor;C/2&rfloor;</nobr>
+of the C candidates, with negligible chance to approve any other A.
+</li><li>
+In particular, suppose &rho; is <b>normal</b> with mean=1 and variance=&sigma;<sup>2</sup>, i.e.  
+<nobr>
+&rho;(z)=(2&pi;)<sup>-1/2</sup>&sigma;<sup>-1</sup>exp(-[z-1]<sup>2</sup>&sigma;<sup>-2</sup>/2).
+</nobr>
+This is not really allowed because this density is not entirely supported on the <i>positive</i> reals (z&gt;0);
+but it comes arbitrarily close to that desire if &sigma;<sup>2</sup>&ll;1.
+We now shall use the LEMMA
+that the sum of two independent normal devate with means 
+&mu;<sub>1</sub> and &mu;<sub>2</sub>
+and corresponding standard deviations
+&sigma;<sub>1</sub> and &sigma;<sub>2</sub>
+is normally distributed with 
+mean=&mu;<sub>1</sub>+&mu;<sub>2</sub>
+and  standard deviation=[(&sigma;<sub>1</sub>)<sup>2</sup>+(&sigma;<sub>2</sub>)<sup>2</sup>]<sup>1/2</sup>;
+and the LEMMAS that &nbsp;
+&sum;<sub>1&le;j&le;n</sub> 1 = n, &nbsp;
+&sum;<sub>1&le;j&le;n</sub> j = (n+1)n/2, &nbsp;
+&sum;<sub>1&le;j&le;n</sub> j<sup>2</sup> = (2n+1)(n+1)n/6. &nbsp;
+<!-- Also:  &sum;<sub>1&le;j&le;n</sub> j<sup>3</sup> = (n+1)<sup>2</sup>n<sup>2</sup>/4. &nbsp; -->
+Then the left hand side of (<a href="#StarEq">*</a>) is a normal deviate with
+mean=(A-1)A/2 
+and
+variance=(2A-1)(A-1)A&sigma;<sup>2</sup>/6.
+The same is true for the right hand side after replace all "A" by "C-A+1."
+Hence the chance our voter approves exactly A among the C candidates equals the chance that a
+standard normal (mean=0, variance=1) deviate exceeds 
+<center>
+(3/2)<sup>1/2</sup> [(C-A)(C-A+1)-(A-1)A] [(2A-1)(A-1)A+(2C-2A+1)(C-A)(C-A+1)]<sup>-1/2</sup> &sigma;<sup>-1</sup>.
+</center>
+</li><li>
+If &rho;(z) is <i>bimodal</i> with all its mass concentrated in <b>two sharp peaks</b>, say one located at z=0 and the other at z=1,
+and if we impose the <i>constraint</i> that the sum of the &Delta;<sub>j</sub> must approximate 1 (e.g. lie between 0.5 and 1.5), then we get
+the Pascal triangle case (I).  If it instead must approximate 2 we get the "throin" case (III).
+(In both cases with the "<a href="#Aster">asterisk</a>" that neither A=0 nor A=C
+are permitted.)
+</li><li>
+Suppose &rho; is the standard <a href="http://en.wikipedia.org/wiki/Levy_distribution">Levy density</a>, meaning
+<nobr>&rho;(z)=&pi;<sup>-1/2</sup>exp(-z<sup>-1</sup>)z<sup>-3/2</sup></nobr>
+for z&gt;0.
+Random deviates z with this density 
+may be gotten by generating normal deviates N with mean=0 and variance=1,
+then computing z=2N<sup>-2</sup>.
+We shall use the LEMMA 
+that the weighted sum 
+c<sub>1</sub>L<sub>1</sub>+c<sub>2</sub>L<sub>2</sub>
+of two independent Levy deviates 
+L<sub>1</sub> and L<sub>2</sub>
+also is Levy-distributed, with scale factor
+<nobr>[(c<sub>1</sub>)<sup>1/2</sup>+(c<sub>2</sub>)<sup>1/2</sup>]<sup>2</sup>.</nobr>
+Then the left hand side of (<a href="#StarEq">*</a>) is a scaled Levy deviate with
+scaling factor
+<nobr>F(K)<sup>2</sup></nobr> where
+<nobr>F(K)&equiv;&sum;<sub>1&le;j&le;K</sub> j<sup>1/2</sup>,</nobr>
+while the right hand side 
+is a scaled Levy deviate with
+scaling factor <nobr>F(C-K-1)<sup>2</sup>.</nobr>
+<br> &nbsp;&nbsp;&nbsp;
+RECHECK THIS??:
+By back-transforming the Levys L into absolute values of
+0-centered-normal deviates N=L<sup>-1/2</sup>,
+then thinking in "polar coordinates,"
+we can see that in this model the chance that an A obeying 1&le;A&le;K (all these A's combined) among C are approved,
+obeys the very nice formula
+<nobr>(2/&pi;)arctan( F(K) / F(C-K-1) )</nobr>.  
+</li></ol>
+<p>
+I daresay more corollaries also could be obtained.
+<!--
+And we can get a nice (new??) formula for Eulerian numbers as a 2D definite integral
+involving gamma densities... WRONG since not a sum of exponential variable, but rathre a WEIGHTED sum...
+advantage of non-oscillatory integrand, usual methods should yield asymptotic expansion...
+  -->
+</p>
+
+<a name="NormalUtilsModel"></a><h3> 3. Random normal utilities: A model not solvable via Janson theorem </h3>
+<p>
+We now consider yet another kind of "random voter."
+She samples C random numbers independently from a <i>normal</i> density.
+The <i>K</i>th random number is her utility for the <i>K</i>th candidate.
+</p><p>
+The probability that she will approve exactly A among the C candidates, i.e
+the chance that exactly A among C random normal deviates exceeds their mean,
+is (C-1)!<sup>-1</sup> times the <i>A</i>th entry in the row containing C-1 numbers, of the following table:
+</p>
+<pre>
+                                        1
+                                   1         1
+                            1.0529   3.8942   1.0529
+                         1.1742  10.8259  10.8259  1.1742
+                    1.3839  26.7798  63.6726  26.7798  1.3839
+                 1.717   63.375  294.908  294.908  63.375  1.717
+             2.23   148.09  1207.95  2323.45  1207.95  148.09  2.23
+          3.04  347.16  4623.9  15185.9  15185.9  4623.9  347.16  3.04
+       4.298 823.3  17046.4  88568   149996    88568  17046.4  823.3 4.298
+</pre>
+<p>
+I do not know any easy way to generate the entries in the above triangular array.
+(They should be expressible in closed form as a linear combination of Schl&auml;fli functions, but that's not easy.)
+My values should be accurate except for small errors in their last decimal place.
+The reason  I have scaled the Rth row (note R=C-1)
+so that its sum equals R! is to permit easy comparison versus
+<a href="#EulerTri">Euler's triangle</a>
+(which arises using
+sampling from a <i>uniform</i> instead of <i>normal</i> density).
+</p><p>
+For any <i>even-symmetric</I> density we always get a <i>bilaterally symmetric</i>
+triangle of probabilities, which is enough to show that if C=3 then the chances of A=1 and A=2 are
+exactly equal (to &frac12;).
+</p>
+
+<a name="NoHopers"></a><h3> 4. What if all C candidates are <i>not</i> a priori equally likely to win &ndash; many are "no-hopers"? </h3>
+<p>
+Usually in real elections the voters <i>both</i> 
+(i) act randomly and independently of each other,
+but also, very importantly,
+(ii) share a goodly amount of common thinking.
+So far, we only modeled part (i).
+Part (ii) typically causes a certain subset of candidates (the "<b>no-hopers</b>") to be viewed, by almost all voters,
+as having no chance to win.  Only the remaining, often much smaller, subset of candidates have hope to win ("<b>hopers</b>").
+In that case, we can approximately predict that the voters will act as though all the hopers have approximately
+equal winning chances, thus applying our previous models <i>but</i> with a smaller value of C,
+namely
+C<sub>hope</sub>, the number of hopers.  Voters who regard the no-hopers as all being worse
+won't approve any of them; but voters who regard some of the no-hopers as better than the expected winner-value 
+among the hopers, will approve those no-hopers too.  Every voter will approve at least 1, and disapprove at
+least one, of the hopers.  Hence the usual number of hoper-approvals on a ballot is predicted to be
+between 1 and C<sub>hope</sub>-1, and usually averaging a bit less than
+C<sub>hope</sub>/2.
+</p><p>
+And actually, of course, usually some hopers have more hope than others,
+which presumably leads to further diminution of the effective value of C.
+</p>
+
+<a name="PascalEulerAnalogy"></a><h3> 5. How alike are Pascal's and Euler's triangles? </h3>
+<p>
+Both are 1-bordered bilaterally symmetric triangular arrays of positive integers, and
+both arise as (different) special cases of the generalized-Janson theorem.  
+And that theorem
+allows us to readily devise simple homotopies
+which "morph" Pascal triangle &harr; Euler triangle.
+</p><p>
+It is easy to see from the central limit theorem
+that the R binomial coefficients forming the <i>R</i>th row of
+the Pascal triangle, regarded as the bar heights in a histogram (all bar widths=1),
+approach a "normal distribution" with variance=R/4.
+And the Laplace/Riordan/Stanley theorem similarly shows that
+the R Eulerian numbers forming the <i>R</i>th row of
+the Euler triangle, regarded as the bar heights in a histogram,
+also approach a "normal distribution," but with the smaller variance=R/12.
+</p><p>
+Another set of analogous facts about the Pascal and Euler triangles
+are mentioned by
+Meng Li &amp; Ron Goldman
+in their paper:
+<a href="http://www.ncbi.nlm.nih.gov/pmc/articles/PMC7098577/">
+Limits of Sums for Binomial and Eulerian Numbers and their Associated Distributions</a>,
+Discrete Maths. 343,7 (July 2020) #111870.
+</p><p>  
+So the two triangles seem in many ways quite analogous.
+</p><p>
+But Kevin S. Brown claimed that there is more going on here than a mere "analogy"!
+He discovered that the following &infin;&times;&infin; array of numbers exhibits <i>both</i>
+Pascal's binomial coefficients, and the Eulerian numbers, as <b>one unified entity</b>
+obeying 
+X=(c+1)Z-(r+2)Y
+on stencils
+</p><pre>
+          Y X 
+            Z
+</pre><p>
+where X and Z both lie in column c of the array (adjacently) while X and Y
+both lie in row r (adjacently), with c&ge;-2 and -&infin;&lt;r&lt;+&infin;.
+</p><pre>
+   c=-2 c=-1 c=0 c=1 c=2   c=3    c=4     c=5       c=6        c=7        c=8         c=9
+r=-8  0   0   1  120 4293 88234 1310354 15724248 162512286 1505621508 12843262863 102776998928 
+r=-7  0   0   1  57  1191 15619 156190  1310354   9738114   66318474   423281535   2571742175
+r=-6  0   0   1  26  302   2416  15619   88234     455192    2203488    10187685   45533450
+r=-5  0   0   1  11   66   302   1191    4293       14608     47840      152637     478271 
+r=-4  0   0   1   4   11    26    57     120         247       502        1013       2036  
+r=-3  1   1   1   1   1     1     1       1           1         1          1          1
+r=-2  1   0   0   0   0     0     0       0           0         0          0          0
+r=-1 -1   1   0   0   0     0     0       0           0         0          0          0
+r=0   0   0   1   0   0     0     0       0           0         0          0          0
+r=+1  0   0   1   1   0     0     0       0           0         0          0          0
+r=+2  0   0   1   2   1     0     0       0           0         0          0          0
+r=+3  0   0   1   3   3     1     0       0           0         0          0          0
+r=+4  0   0   1   4   6     4     1       0           0         0          0          0
+r=+5  0   0   1   5   10   10     5       1           0         0          0          0
+r=+6  0   0   1   6   15   20    15       6           1         0          0          0
+r=+7  0   0   1   7   21   35    35      21           7         1          0          0
+r=+8  0   0   1   8   28   56    70      56          28         8          1          0
+r=+9  0   0   1   9   36   84    126     126         84        36          9          1
+</pre><p>
+For example 102776998928=10&times;2571742175+6&times;12843262863,
+7=7&times;28-9&times;21, 
+35=5&times;70-9&times;35,
+0=0+0,
+0=1-1,
+1=(c+1)0+1,
+0=0-(r+2)0
+etc.
+All entries arise from (repeatedly applying) the stencil-relation
+starting with, e.g, the r=0 row and c=-1 column.  
+(Or from any other row and column.)
+If desired, one may also extend the array to arbitrarily negative c 
+(even though our picture stops at c=-2) but then 
+will be forced to include rational <i>non</i>integer entries.
+</p><p>
+This engenders the suspicion that there is some sort of "duality" lurking
+between the binomial coefficients and Eulerian numbers, and that many (most?)
+"binomial identities" may be converted to "dual forms" involving Eulerian numbers, 
+and vice versa.
+As of 2022, that entire idea remains almost unexplored.
+</p>
+
+<a name="Refs"></a><h3> 6. Further References </h3>
+
+<p>
+Dominique Foata:
+<a href="Foata117EulerUlam.pdf">Eulerian Polynomials: from Euler's Time to the Present</a>, 
+Invited address at the 10-th Annual Ulam Colloquium, University of Florida, 18 February 2008. 
+Published pp. 253-273 in "The Legacy of Alladi Ramakrishnan in the Mathematical Sciences" 
+(K. Alladi, J.R. Klauder, C.R. Rao, eds.)
+Springer, New York Dordrecht Heidelberg London, 2010.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

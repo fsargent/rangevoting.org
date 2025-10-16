@@ -1,0 +1,164 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Condorcet methods seem to yield 2-party domination even with "winning votes" modification
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> 
+A salvage idea that failed &ndash;
+Kevin Venzke points out that 
+&quot;<a href="WinningVotes.html">winning votes<a>&quot;  Condorcet with 
+"candidate-equalities permitted in votes" <i>still</i> looks
+like it leads to 2-party domination. 
+(<a href="VenzSimp.html">Simpler unified proof</a>)
+</H2>
+
+<p>
+Consider this
+100-voter election
+involving one third-party candidate A and two major-party candidates B and C.
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<caption> C wins. </caption>
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr> 
+<td> 8% </td>
+<td> B>C>A </td>
+</tr>
+<tr> 
+<td> 29% </td>
+<td> C=B>A </td>
+</tr>
+<tr> 
+<td> 31% </td>
+<td> C>A>B </td>
+</tr>
+<tr bgcolor="#fff5f5"> 
+<td> 32% </td>
+<td> A>B>C </td>
+</tr>
+</table>
+
+<p>
+[Defeats are A>B by 63:37, B>C by 40:31, and C>A by 68:32.
+There is an A>B>C>A cycle in which B>C is the weakest defeat, so that
+C is elected.]
+</p>
+
+<p>
+Consider what happens if 18 of the 32 A>B>C
+voters in the last line change their vote.
+They turn B into the Condorcet Winner
+by voting
+B>A>C or B>A=C or B>C>A, 
+but not by voting 
+A=B>C or A>B=C or A=C>B or A>C>B or A>B>C or B=C>A or A=B=C.
+</p>
+
+<p>
+The <b>moral</b> of this example is that <b>exaggeration pays</b>:
+these 18 voters are able to make their preferred major-party candidate
+B win over his archrival C <i>only</i> by dishonestly 
+pretending B was their unique strict favorite, "betraying" their 
+true favorite third-party candidate A.
+(Merely moving B up to co-equal with their
+favorite A would not do the job.)
+This kind of strategic exaggeration
+is precisely the sort of behavior that leads to 
+<a href="Duverger.html">two-party domination</a>.
+</p>
+
+<p>
+This example refutes the plausibility of the idea that using
+"`winning-votes' not `margins' with
+candidate-equalities permitted in votes"
+should save Condorcet methods from 2-party domination.
+</p>
+
+<p>
+<font size="-1">
+This page is a simplification of an example that
+Kevin Venzke gave in an 
+<a href="http://wiki.electorama.com/wiki/Election-methods_mailing_list">electorama</a> 
+web post in May 2005.
+</font>
+</p>
+
+<hr>
+
+<H3> Details </H3>
+
+<p>
+You can confirm all the above claims
+(with
+"Tideman Ranked Pairs Condorcet system 
+based on `winning-votes' not `margins' with
+candidate-equalities permitted in votes")
+by feeding the
+following input to
+<a href="http://www.ericgorr.net/condorcet/">Eric Gorr's Condorcet voting calculator</a>
+(select
+"Ranked Pairs (Deterministic #1-Winning Votes)"
+and "tell me some things"):
+</p>
+
+<pre>
+14:A>B>C
+8:B>C>A
+31:C>A>B
+29:C=B>A
+18:B>A>C or B>A=C or B>C>A
+(B wins solo in all 3 of these cases)
+</pre>
+
+<p>and</p>
+
+<pre>
+14:A>B>C
+8:B>C>A
+31:C>A>B
+29:C=B>A
+18:A>B>C or A=B>C or A>B=C or A=C>B or A>C>B or B=C>A or A=B=C
+(C wins solo in all 14 of these cases)
+</pre>
+
+<p>
+For example, it reports (for the original input votes in the table at top):
+<br><br>
+<table  bgcolor="#cccccc" border=2><tr><td>Option</td><td align=center>A</td><td align=center>B</td><td align=center>C</td></tr><tr><td align=center>A</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#FFFFCC">63</td><td style="background-color:#CCCCFF">32</td></tr><tr><td align=center>B</td><td style="background-color:#CCCCFF">37</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#FFFFCC">40</td></tr><tr><td align=center>C</td><td style="background-color:#FFFFCC">68</td><td style="background-color:#CCCCFF">31</td><td style="background-color:#CCCCCC">0</td></tr></table>
+<br>The defeats matrix was:<br>
+<table  bgcolor="#cccccc" border=2><tr><td>Option</td><td align=center>A</td><td align=center>B</td><td align=center>C</td></tr><tr><td align=center>A</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#FFFFCC">63</td><td style="background-color:#CCCCFF">0</td></tr><tr><td align=center>B</td><td style="background-color:#CCCCFF">0</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#FFFFCC">40</td></tr><tr><td align=center>C</td><td style="background-color:#FFFFCC">68</td><td style="background-color:#CCCCFF">0</td><td style="background-color:#CCCCCC">0</td></tr></table>
+Now Keeping: C defeats A
+<br>
+Now Keeping: A defeats B
+<br>
+C wins solo.
+</p>
+
+<p>
+This same example also shows that Schulze(wv), Tideman(wv), Eppley-MAM(wv), 
+River, and Condorcet-MinMax(wv)
+all fail weak FBC even with only three candidates.
+No ties are involved in this example anywhere.
+</p>
+
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

@@ -1,0 +1,270 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Evil "Vote Counting" Programs
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>  Evil "Vote Counting" Programs </H2>
+
+<p>
+If only all code for voting machines were open source, then cheating evil 
+vote-counting programs would be impossible.  Right?
+</p><p>
+To find out, Daniel Horn funded a programming contest in 2009.  Here are 3 vote-counting
+programs in the "C" language.  The first is the allegedly-correct program by Horn
+himself, intended simply as a baseline to show the contestants what their programs ought to do.  
+(Actually, Horn's program isn't really correct... how many problems with it do you see?)
+</p></p><table bgcolor="#FFFFAA"><tr><td><pre>
+/**** Daniel Horn's   Vote Counter Demo Program in C language.
+Rules: Contest entry programs must be written in C, C++ or D (with gcc backend, on x86), 
+and must compile with gcc-2.95.3 (debian stable x86), gcc-3.3.x (debian unstable, x86) or 
+gcc-3.4 (debian stable x86), or it may compile on gcc-3.1 or gcc-3.3 on Mac OS X. 
+Your program may not reference libraries outside of the standard C library (or phobos for D).
+    Your program must input a string of characters. 
+Characters that result in isspace() returning true are blank or ballots with pregnant chads 
+and will not be counted.
+Character 'K' (capital only) counts as a vote for Kerry,
+Character 'B' (capital only) counts as a vote for Bush
+Character 'N' (capital only) counts as a vote for Nader
+Other characters are tallied in the 'Other' column.
+   The output must have the candidate's last name (or Other for votes not belonging to 
+the candidate) a colon, a space, then a count, and a newline for each candidate in 
+the order listed above.
+******/
+#include &lt;stdio.h&gt;
+#include &lt;ctype.h&gt;
+
+int main(){
+  int Input;
+  unsigned long total=0;
+  unsigned long Tally[256]={0}; 
+  while( (Input=getchar())!=EOF ){
+    unsigned char Vote=Input;
+    if( !isspace(Vote) ){
+      Tally[Input] += 1;
+      total += 1;
+    }
+  }
+  printf("Kerry %d\n",Tally['K']);
+  printf("Bush %d\n",Tally['B']);
+  printf("Nader %d\n",Tally['N']);
+  printf("Other %d\n",total-Tally['K']-Tally['B']-Tally['N']);
+  return 0;
+}
+</pre></td></tr></table><p>
+Next is a program by Paul A. Parkanzky.
+On November 1 the votes are counted correctly. 
+On November 2 the total is correct, <i>but</i>
+one candidate magically obtains extra votes at another's expense...:
+</p><table bgcolor="#AAFFAA"><tr><td><pre>
+/*** Author: Paul A. Parkanzky (firstname.lastname@gmail.com)
+ * "I am committed to helping Ohio deliver its electoral 
+ *                       votes to the president next year"
+ *     -- Walden W. O'Dell (CEO of Diebold, Inc)
+ * 
+ * Works with gcc3.2 on x86 SuSE, gcc3.3 on x86 Gentoo and gcc3.2 on x86 Redhat.
+ * Does not work with gcc2.95 on x86 NetBSD or sparc FreeBSD. 
+ * I haven't tried it on any other compiler/OS combinations.  ****/
+#include&lt;stdio.h&gt;
+#include&lt;ctype.h&gt;
+#include&lt;time.h&gt;
+
+void printResults(unsigned int *);
+void paperTrail(char *);
+char *getDay();
+
+int main(){
+unsigned int Tally[4] = {0};
+unsigned char Other;
+unsigned char Nader;
+unsigned char Bush;
+unsigned char Kerry;
+char LogMesg[11] = {0};
+int Input;
+char *day;
+day = getDay();
+
+Bush = 0;
+Kerry = 1;
+Nader = 2;
+Other = 3; 
+
+while((Input=getchar())!=EOF){
+unsigned char Vote=Input;
+
+/* Log to paper receipt */
+sprintf (LogMesg,"LOG VOTE: November %s %c\n",day,Vote);
+paperTrail(LogMesg);
+
+/* Add 1 */
+if (!isspace(Vote)){
+switch (Vote) {
+case 'B':
+Tally[Bush]++;
+break;
+case 'K':
+Tally[Kerry]++;
+break;
+case 'N':
+Tally[Nader]++;
+break;
+default:
+Tally[Other]++;
+break;
+}}}
+
+printResults(Tally);
+return 0;
+}
+
+/*** This gets a day string for the paper trail log message.
+ * ("first","second","third" or "ith")   ***/
+char *getDay(){
+char *retVal;
+time_t now_time;
+struct tm *now;
+now_time = time(NULL);
+now = localtime(&now_time);
+        if (now-&gt;tm_mday == 1) {
+                retVal = "first";
+        } else if (now-&gt;tm_mday == 2) { 
+                retVal = "second";      
+        } else if (now-&gt;tm_mday  == 3) {
+                retVal = "third";
+        } else {
+                retVal = (char *)malloc(7);
+                sprintf(retVal,"%ith",now-&gt;tm_mday);
+        }
+return retVal;
+}
+
+/**** Print the results: ****/
+void printResults(unsigned int *Tally) {
+unsigned char Bush = 0;
+unsigned char Kerry = 1;
+unsigned char Nader = 2;
+unsigned char Other = 3;
+printf("Kerry: %d\n",Tally[Kerry]);
+printf("Bush: %d\n",Tally[Bush]);
+printf("Nader: %d\n",Tally[Nader]);
+printf("Other: %d\n",Tally[Other]);
+}
+
+/***  This will print a log of the vote to a paper receipt when 
+ * the supporting hardware is added.  ****/
+void paperTrail(char *mesg){
+/* Log to paper trail for extra legitimacy! */
+}
+</pre></td></tr></table>
+<p>
+And here is one by Michal Zalewski.  Guess what it does?
+</p><table bgcolor="#AAFFFF"><tr><td><pre>
+/* ------------------------------------ 
+ * Bullet-Proof Extensible Vote Counter
+ * ------------------------------------
+ *
+ * In response to Daniel Horn's abominable, sick and twisted idea of running
+ * a contest for programs that skew election results, I decided to counter 
+ * his efforts by providing this program that not only counts votes perfectly
+ * well, but also goes great lengths to verify data integrity in case of 
+ * unforseen flaws or tampering attempts.
+ *    I did not rely on his proposed vote counting framework, noting that
+ * first and foremost, it could be already backdoored, and second, that
+ * it does not scale well.
+ *   -- Michal Zalewski  *******/
+
+#include &lt;stdio.h&gt;
+#include &lt;stdlib.h&gt;
+#include &lt;ctype.h&gt;
+#include &lt;limits.h&gt;
+
+/* Error reporting macro */
+#define fatal(x) do { fprintf(stderr,"ERROR: %s\n",x); exit(1); } while (0)
+
+#define CHECK_INTERVAL10     /* How often to check database? */
+#define VOTE_LIMIT      300000000    /* Maximum number of votes possible */
+
+
+/* Candidates and vote count. Can be extended and modified at will.
+   The last entry should be NULL, reserved for "other". */
+struct candidate { char* name; unsigned int votes; } tally[] = {
+  { "Bush" , 0 },
+  { "Kerry", 0 },
+  { "Nader", 0 },
+  {  NULL  , 0 }
+};
+
+/* Total vote count - used to validate individual vote counts. */
+unsigned int total = 0;
+
+/* Display all results, including the trailing NULL ("other"). */
+void show_results(void) {
+  struct candidate* t = tally;
+  do printf("%-8s : %u\n", t-&gt;name ? t-&gt;name : "Other", t-&gt;votes);
+    while ((t++)-&gt;name);
+}
+
+/* Safely count vote. Every CHECK_INTERVAL votes, run a database integrity
+   check to detect corrupted vote counts or candidate names; otherwise,
+   just count the vote. */
+#define VOTE_AND_CHECK(v) do { \
+    if (!(total % CHECK_INTERVAL)) { \
+      struct candidate* t = tally; \
+      unsigned int cur_tot = 0; \
+      /* Verify that votes add up to the right count... */ \
+      do cur_tot += t-&gt;votes; while ((t++)-&gt;name); \
+      if (cur_tot != total) fatal("Vote count tampering!"); \
+      /* Go back through entries and verify every name... */ \
+      t--; \
+      while ((--t) != tally) \
+        if (!t-&gt;name || !isupper(*t-&gt;name)) fatal("Candidate tampering!"); \
+      /* Count vote, checking for erratic numbers */ \
+      if ((v)++ &gt;= VOTE_LIMIT) fatal("Too many voters!"); \
+    } else (v)++; \
+    total++; \
+  } while (0)
+
+/* Add one vote for candidate whose initial is given by c. If no
+   matching candidate found, account as "other". */
+void process_vote(unsigned char c) {
+  struct candidate* t = tally;
+  while (t-&gt;name) {
+    if (t-&gt;name[0] == c) { 
+      VOTE_AND_CHECK(t-&gt;votes); 
+      return; 
+    }
+    t++;
+  }
+  VOTE_AND_CHECK(t-&gt;votes);
+}
+
+
+/* Run the elections! */
+int main(int argc,char** argv) {
+  int c;
+  /* Read and process votes */
+  while ((c=getchar()) != EOF) 
+    if (!isspace(c)) process_vote(c);
+  /* And the winner is... */
+  show_results();
+  return 0;
+}
+</pre></td></tr></table>
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

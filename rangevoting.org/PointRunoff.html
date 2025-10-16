@@ -1,0 +1,431 @@
+<html>
+<head>
+<title>
+RangeVoting.org - "Point Runoff systems"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> 
+Theorems about "Point Runoff" single-winner voting systems
+</H2>
+
+<p>
+A "point runoff" voting system is one in which the votes are 
+rank-orderings of the candidates,
+and we repeatedly eliminate
+the candidate with the lowest "score" where score is any
+<a href="WtPositnl.html">weighted positional</a>
+system &ndash; i.e. in the 3-candidate case,
+you get 1 point for
+being first ranked, 0 points for being last-ranked,
+and <i>t</i> points for being middle-ranked for some 0&le;t&le;1.
+</p>
+
+<p>
+Important special cases:
+When t=0 the point-score runoff system 
+becomes <a href="rangeVirv.html">&quot;Instant Runoff&quot; Voting (IRV)</a>, 
+when t=1 it becomes <a href="Glossary.html#coombs">Coombs's system</a>,
+and when t=&frac12; it is the Nanson-Baldwin system.
+</p>
+
+<p>
+In this web page we show that every point runoff system,
+in the 3-candidate case, automatically
+</p>
+<ul>
+<li>
+Disobeys "monotonicity"
+</li>
+<li>
+Disobeys "participation"
+</li>
+<li>
+Exhibits <a href="FBCsurvey.html">favorite betrayal</a>
+</li>
+<li>
+Violates "consistency when you partition the country into districts."
+</li>
+</ul>
+
+
+
+<h3> Theorem 1: every "point runoff" system is non-monotonic </h3>
+
+<p>
+This theorem is one of several good results in
+<blockquote>
+John H. Smith:
+Aggregation of Preferences with Variable Electorate,
+Econometrica 41,6 (Nov. 1973) 1027-1041.
+</blockquote>
+Here's J.H.Smith's proof.
+He considers this 37-voter 3-candidate election:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr><th> #voters </th><th> their vote </th></tr>
+<tr><td> 10 </td><td> A>B>C  </td></tr>
+<tr><td> 9  </td><td> B>C>A  </td></tr>
+<tr><td> 8  </td><td> C>A>B  </td></tr>
+<tr><td> 4  </td><td> A>C>B  </td></tr>
+<tr bgcolor="pink"><td> 3  </td><td> B>A>C   </td></tr>
+<tr bgcolor="pink"><td> 3  </td><td> C>B>A   </td></tr>
+</table>
+
+<p>
+He argues that in any runoff system,
+C is eliminated then <b>A wins</b>.
+(Scores: A=14+11t, B=12+13t, C=11+13t.)
+Now suppose the pink votes are changed
+CBA&rarr;CAB
+and
+BAC&rarr;ABC;
+both these changes are
+in A's favor.
+Then in the new election
+B is eliminated and <b>C wins</b>. 
+(New scores:
+A=17+11t, B=9+13t, C=11+13t.)
+Now consider
+these 6 changes one by one.
+The first one that stops A from
+winning is a change of a single vote, in A's favor, which stops A from winning.
+That proves non-monotonicity.
+<br>
+<b>Q.E.D.</b>
+</p>
+
+<p>
+More generally, we can "iterate" essentially <i>any</i> voting system E to repeatedly
+eliminate the loser.  Call the resulting system "E<sup>&infin;</sup>." 
+Durand argued that <i>every</i> such rank-order voting system 
+E<sup>&infin;</sup>
+automatically
+must disobey "strict monotonicity" assuming the "input" system E obeyed
+it and was "symmetric" (neutral and anonymous):
+</p>
+
+<blockquote>
+Sylvain H. Durand:
+A note on monotonocity in iterated choice functions,
+Social Choice &amp; Welfare 18 (2001) 129-134.
+</blockquote>
+
+<p>
+Durand simplified the argument very far.
+Monotonicity means making an adjacent interchange in one vote favoring X, cannot lessen
+X's winning chances.
+"Strict"
+monotonocity means making an adjacent interchange in one vote favoring X must <i>increase</i>
+X's winning chances if the situation before the change was a symmetry-forced perfect tie
+with X a co-winner.
+</p>
+
+<p>
+<b>Durand's Proof:</b>
+In scenario 1 below
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr><th> #voters </th><th> their vote </th></tr>
+<tr><td> 1  </td><td> A>B>C  </td></tr>
+<tr><td> 1  </td><td> A>C>B  </td></tr>
+</table>
+
+<p>
+one can quickly see (from "unanimity," a property derivable from our assumptions)
+that both E and E<sup>&infin;</sup> must elect A winner in this scenario.
+Now consider changing the first vote to "B>A>C" to get scenario 2:
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr><th> #voters </th><th> their vote </th></tr>
+<tr><td> 1  </td><td> B>A>C  </td></tr>
+<tr><td> 1  </td><td> A>C>B  </td></tr>
+</table>
+<p>
+This change is favorable to B.
+C cannot be scenario 2's winner since A is unanimously ranked ahead of C.
+So the new winner must be A, B, or an AB tie.
+If it is B or an AB tie, then changing the second vote to "A>B>C"
+(another B-favoring change) 
+would by strict monotonicity result in B winning outright
+which contradicts the requirement from symmetry that this altered scenario 2
+must yield an AB tie.
+So therefore A must still be the outright winner of the E-election (or
+using <i>any</i> strict-monotonic election system) in scenario 2.
+Therefore in E<sup>&infin;</sup>, A is not the one eliminated.  Either B or C must
+be eliminated.  Either way, we get (after the elimination) a scenario of the form
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr><th> #voters </th><th> their vote </th></tr>
+<tr><td> 1  </td><td> X>A  </td></tr>
+<tr><td> 1  </td><td> A>X  </td></tr>
+</table>
+<p>
+which by symmetry must yield an AB (or AC) tie.  
+But if E<sup>&infin;</sup> were strict monotonic then we just argued that
+its winner would have to be A outright in scenario 2.  This is a contradiction which
+proves 
+E<sup>&infin;</sup> cannot be strict monotonic.
+<br>
+<b>Q.E.D.</b>
+</p>
+
+<h3> Theorem 2: every "point runoff" system exhibits "no show paradoxes" </h3>
+
+<p>
+This result was proven by Warren D. Smith (no relation to John H. Smith) in 2007.
+Here is the proof.
+</p>
+
+<p>
+<b>THEOREM (Warren D. Smith 2007)</b>
+Every point-runoff single-winner voting system
+exhibits "no show
+paradoxes" in which a set of co-feeling voters, by casting an honest A-last
+vote, cause A
+to win, whereas if they had abstained from voting, a better winner (in their
+view) would
+have won. 
+Further, such a paradox exists with 3 candidates and &le;11 voters.
+</p>
+
+<p><b>PROOF.</b>
+Consider this 3-candidate 9-voter election:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr><th> #voters </th><th> their vote </th></tr>
+<tr><td> 1  </td><td> A>B>C </td></tr>
+<tr><td> 3  </td><td> A>C>B </td></tr>
+<tr><td> 3  </td><td> B>A>C </td></tr>
+<tr><td> 2  </td><td> C>B>A </td></tr>
+</table>
+
+<p>
+In every point-score runoff system including <a href="rangeVirv.html">IRV</a>
+and <a href="Glossary.html#coombs">Coombs</a>, 
+C is eliminated, then <b>B wins</b> 5:4 over A.
+That is because the scores are: A=4+3t &gt; B=3+3t &gt; C=2+3t.
+</p>
+<p>
+Now add 2 extra C&gt;B&gt;A votes.
+In the new election B is eliminated and then <b>A wins</b> by 7:4 over C.
+</p>
+<p>
+Thus, adding these 2 honest votes with A ranked last caused A to win.
+Those voters would have been better off "not showing up."
+<br>
+<b>Q.E.D.</b>
+</p>
+
+<h3> Theorem 3: every "point runoff" system exhibits "favorite betrayal" </h3>
+
+<p>
+<b>
+THEOREM (Warren D. Smith 2007)
+</b>
+Every point-runoff single winner voting system 
+fails 3-candidate favorite betrayal, i.e. exhibits
+3-candidate elections in which it is strategically better for a certain voter to
+"betray her favorite" than to cast any vote ranking her favorite honestly top.
+</p>
+
+<p>
+<b>
+PROOF.
+</b>
+Let us first prove the theorem under the assumption that 0&lt;t&lt;1.
+Consider this 3-candidate 3-voter election:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr><th> #voters </th><th> their vote </th></tr>
+<tr><td> 1  </td><td> B>C>A </td></tr>
+<tr><td> 1  </td><td> C>A>B </td></tr>
+<tr><td> 1  </td><td> A>B>C </td></tr>
+</table>
+
+<p>
+The scores are A=B=C=1+t.
+This is a <b>perfect 3-way tie</b>.
+If an A>B>C voter decides to betray her favorite A by instead voting B>A>C then the scores are
+B=2 &gt; C=1+t &gt; A=2t, 
+hence A is eliminated and <b>B wins</b> 2:1 over C, a result this
+voter (whom we may assume is really "A>B>>C") prefers versus the
+perfect 3-way tie.
+</p>
+<p>
+Changing to the only other vote that does not betray A, namely A>C>B,
+causes scores A=1+t, B=1, C=1+2t so that B is eliminated whereupon
+<b>C wins</b>. This is a worse result (in fact the worst possible result) in the view
+of that voter.  Hence betraying A was strategically forced.
+</p>
+<p>
+The theorem is now proved when 0&lt;t&lt;1. What about t=0 and t=1?
+</p>
+<p>
+When t=0 we have Instant Runoff Voting
+(the candidate with the fewest first-place
+votes is eliminated).
+Numerous
+IRV 3-candidate favorite-betrayal examples are already known, e.g.
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr><th> #voters </th><th> their vote </th></tr>
+<tr><td> 8  </td><td> B>C>A </td></tr>
+<tr><td> 6  </td><td> C>A>B </td></tr>
+<tr><td> 5  </td><td> A>B>C </td></tr>
+</table>
+
+<p>
+In the above IRV election, <b>B wins</b> but
+if the six C>A>B voters insincerely switch to A>C>B ("betraying their favorite" C) then
+the "lesser evil" <b>A</b> becomes the winner,
+which in their view is a better election result.  
+Only favorite-betrayal votes work.
+</p>
+
+<p>
+The final case is when t=1.
+Then we have Coombs's voting system
+(the candidate with the most last-place
+votes is eliminated).
+Coombs exhibits favorite
+betrayal
+in this 3-candidate example:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr><th> #voters </th><th> their vote </th></tr>
+<tr><td> 9  </td><td> B>C>A </td></tr>
+<tr><td> 6  </td><td> C>A>B </td></tr>
+<tr><td> 8  </td><td> A>B>C </td></tr>
+</table>
+
+<p>
+A is eliminated (most last-place votes). Then <b>B wins</b> over C by 17:5.
+Suppose you-both ("you both" meaning 2 new co-feeling voters &ndash; you and your spouse)
+hate B.
+</p><p>
+If you-both vote honestly C>A>B
+then that does not alter the election &ndash; B still wins.
+</p><p>
+If you-both vote dishonestly A>B>C, maximally betraying your favorite C,
+then C is eliminated whereupon <b>A</b> beats B by 15:9.
+(The more-dishonest B>A>C has the same effect, i.e. also works.)
+</p><p>
+If you-both decide not to betray your favorite C, then you must vote
+either C>A>B or C>B>A (or one of each).
+Either way, A is eliminated and then
+your most-hated <b>B wins</b> over C by a huge margin. 
+</p>
+<p>
+So betraying C is strategically forced.
+<br>
+<b>Q.E.D.</b>
+</p>
+
+
+<h3> Theorem 4: every "point runoff" system is inconsistent for partitioning into districts </h3>
+
+<p>
+That is, there is an election 
+situation in which X wins in district I, and X wins in district II,
+but Y wins in the combined country.
+(<a href="IrvNonAdd.html">IRV example</a> of that.)
+</p>
+
+<p>
+This also was proved (actually he proves a much stronger theorem &ndash; 
+a complete characterization of rank-order voting systems that obey district partitioning 
+consistency)
+by J.H. Smith in the article we cited at top.  Essentially the same theorem was
+also proved independently by
+<blockquote>
+H.P.Young &amp; A. Levenglick:
+A consistent extension of Condorcet's election principle,
+SIAM J. Applied Math. 35,2 (1978) 285-300.
+</blockquote>
+</p>
+
+<h3> 
+Missing: which "point runoff" systems obey <a href="CandCloning.html">clone immunity</a>? 
+</h3>
+
+<p>
+If you answer this one, let me know and we'll post it here &ndash;
+warren.wds AT gmail.com.
+It's trickier because to fully settle this question you also will need to consider elections
+with more than 3 candidates.   The question can be settled halfway with only
+3-candidate elections (see below) and we conjecture we know the full answer (also below).
+</p>
+
+<p>
+<b>Partial Answer (under construction): If t&gt;&frac12; then vulnerable to clones</b>
+In this situation, B beats A by 2 votes:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+    2N
+</td>
+<td align="center">
+A>B
+</td>
+</tr>
+<tr bgcolor="#ccffcc">
+<td align="center">
+    2N+2
+<td align="center">
+B>A
+</td>
+</table>
+
+<p>
+Clone A into two clones A<sub>1</sub>
+and A<sub>2</sub>.  Every A-voter prefers both A-clones over B,
+and every B voter prefers B over both A-clones, and half of
+(each kind of) voter
+prefers A<sub>1</sub> over A<sub>2</sub>,
+the other half prefer  A<sub>2</sub> over A<sub>1</sub>. 
+The scores that result are
+A<sub>1</sub> = N+2Nt+t,
+A<sub>2</sub> = N+2Nt+t,
+and
+B = 2N+2.
+In other words (taking N sufficiently large) cloning
+A converts B's win into a loss (since B is eliminated in the first round)
+for each t&gt;&frac12;.
+</p>
+
+<p>
+<b>Conjecture:</b>
+If there are at least 3 distinct weights, then vulnerable to clones.
+Even with only two weights, I conjecture  vulnerability to clones <i>except</i>
+for Instant Runoff Voting which is immune to clones (has only two distinct weights; t=0).
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

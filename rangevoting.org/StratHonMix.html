@@ -1,0 +1,327 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Range voting with mixtures of honest and strategic voters
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Range voting with <i>mixtures</i> of honest and strategic voters </H1>
+<p>(<a href="ExecStratHonMix.html">Executive summary</a>)</p>
+<p>
+It was conjectured by Range-doubters that
+range, while it works well with 100% honest voters,
+and also well with 100% strategic voters, might <i>not</i> work so well
+with a mixture of the two. The problem would be
+if (say) more Bush than Gore voters were strategic, leading
+to a huge advantage for Bush.
+</p><p>
+In the computer simulation experiments below we employed a 50-50 honest-strategic voter mix 
+(a composition that seems approximately realistic
+based on our polling studies) in which each voter chose whether to be honest or
+strategic by flipping a coin.
+Note: it then is entirely possible in each election
+for Bush (or Gore) to get more
+strategic voters, and since the number of voters in each election
+below was only 61 (not huge) such an imbalance was in fact highly
+probable and typical and must have hurtfully
+impacted range's Bayesian regret numbers.
+</p><p>
+As Kevin Venzke put it:
+<blockquote>
+If I don't want to assume that voters will courteously
+vote sincerely (even when this limits their power to affect the results),
+then I wouldn't use Range, as the result will be rather randomly skewed
+based on who chose to exaggerate and who didn't.
+</blockquote>
+</p><p>
+So &ndash; what happens? 
+Answer: <i>despite</i> these circumstances, Range still
+kicks the butt of all the other &asymp;50 voting methods available
+in our computer sim package  <a href="IEVS/IEVS.c">IEVS 2.53</a>, 
+getting the lowest <a href="BayRegDum.html">Bayesian regret</a> scores.
+In particular, Range is superior to Approval voting (in which all voters
+are "forced" by the rules to be strategic, even if they want to be honest),
+i.e. what Venzke called "random skewing" actually helped, not hurt.
+<p>
+Here is a typical run trying 29999 elections:
+</p>
+<pre>
+</pre>
+<table bgcolor="#ffffcc" cellpadding="2" border="1">
+<caption>
+Honfrac=0.50, NumVoters=61, NumCands=5, NumElections=29999, IgnoranceAmplitude=0.001000
+</caption>
+<tr>
+<th>Voting Method</th>
+<th>Regret</th>
+<th>#Agreements with (true-utility-based) <a href="Glossary.html#condwin">Condorcet Winner</a>
+(when CW exists)</th>
+</tr>
+<tr><td>SociallyBest   </td><td>              0</td><td>          13612</td></tr>
+<tr><td>Range2Runoff   </td><td>       0.15947</td><td>          17187</td></tr>
+<tr><td>Range        </td><td>          0.16379</td><td>          13279</td></tr>
+<tr><td>Approval2Runoff     </td><td>       0.17343</td><td>          16770</td></tr>
+<tr><td>Range3            </td><td>    0.17353</td><td>          12901</td></tr>
+<tr><td>TopMedianRating</td><td>        0.2012</td><td>          12472</td></tr>
+<tr><td>MCA               </td><td>    0.20512</td><td>          12574</td></tr>
+<tr><td>Approval         </td><td>      0.20512</td><td>          12574</td></tr>
+<tr><td>HeitzigDFC     </td><td>       0.20903</td><td>          14123</td></tr>
+<tr><td>Sinkhorn       </td><td>       0.29385</td><td>          12088</td></tr>
+<tr><td>Borda        </td><td>          0.29652</td><td>          12066</td></tr>
+<tr><td>KeenerEig       </td><td>        0.301</td><td>          12027</td></tr>
+<tr><td bgcolor="aqua">CondorcetApproval</td><td>     0.30741</td><td>          11615</td></tr>
+<tr><td bgcolor="aqua">MDDA            </td><td>      0.30741</td><td>          11615</td></tr>
+<tr><td>BramsSanverPrAV   </td><td>    0.31307</td><td>          11764</td></tr>
+<tr><td bgcolor="aqua">Black        </td><td>         0.33593</td><td>          11615</td></tr>
+<tr><td bgcolor="aqua">CondorcetLR       </td><td>    0.36118</td><td>          11615</td></tr>
+<tr><td bgcolor="aqua">HeitzigRiver      </td><td>    0.36169</td><td>          11615</td></tr>
+<tr><td bgcolor="aqua">SchulzeBeatpaths</td><td>      0.36242</td><td>          11615</td></tr>
+<tr><td>...         </td><td>  ...</td><td>   ... </td></tr>
+<tr><td>AntiPlurality   </td><td>      0.66083</td><td>           6278</td></tr>
+<tr><td>RandomBallot </td><td>         0.86788</td><td>           4789</td></tr>
+<tr><td>Hay            </td><td>       0.94342</td><td>           4068</td></tr>
+<tr><td>RandomWinner   </td><td>              1</td><td>           3655</td></tr>
+<tr><td>SociallyWorst  </td><td>         1.9943</td><td>             31</td></tr>
+</table>
+<p>
+and now, just to make things ultra-clear, let's do a run with <i>13-voter</i> elections
+just to make range <i>really</i> suffer heavily from this effect:
+<br>
+<br>
+<table bgcolor="#ccffcc" cellpadding="2" border="1">
+<caption>
+Honfrac=0.50 (or 1.00), NumVoters=13, NumCands=6, NumElections=29999, IgnoranceAmplitude=0.001000
+<br>
+ErrorBar for RandomWinner's regret=&plusmn;0.0048;
+This (experimentally always?) upperbounds the error bar for every other regret.
+</caption>
+<tr>
+<th>Voting Method</th>
+<th>Regret (50-50)</th>
+<th>Regret (100% honest)</th>
+<th>#Agreements with (true-utility-based)<br> Condorcet Winner (when CW exists)</th>
+</tr>
+<tr><td>SociallyBest   </td><td>              0</td><td>              0</td><td>          12653</td></tr>
+<tr><td>Range2Runoff   </td><td>       0.14785</td><td>        0.1206</td><td>          15574</td></tr>
+<tr><td>Range        </td><td>          0.16329</td><td>          0.04802</td><td>          11796</td></tr>
+<tr><td>Approval2Runoff     </td><td>       0.16795</td><td>       0.15796</td><td>          15054</td></tr>
+<tr><td>Range3            </td><td>    0.17322</td><td>   0.098206</td><td>          11439</td></tr>
+<tr><td>HeitzigDFC     </td><td>       0.19874</td><td>       0.18676</td><td>          12857</td></tr>
+<tr><td>MCA               </td><td>    0.20012</td><td>    0.17836</td><td>          11491</td></tr>
+<tr><td>Approval         </td><td>        0.215</td><td>      0.18983</td><td>          10997</td></tr>
+<tr><td>TopMedianRating</td><td>       0.23625</td><td>       0.15327</td><td>          11012</td></tr>
+<tr><td>ContinCumul       </td><td>    0.26115</td><td>   0.071422</td><td>          10327</td></tr>
+<tr><td>Sinkhorn       </td><td>       0.27859</td><td>      0.093701</td><td>          10806</td></tr>
+<tr><td>Borda        </td><td>          0.28234</td><td>         0.093768</td><td>          10821</td></tr>
+<tr><td>KeenerEig       </td><td>      0.28989</td><td>     0.094234</td><td>          10790</td></tr>
+<tr><td bgcolor="aqua">CondorcetApproval</td><td>     0.30501</td><td>     0.13742</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">MDDA            </td><td>      0.30501</td><td></td><td>          10342</td></tr>
+<tr><td>BramsSanverPrAV   </td><td>    0.31801</td><td>    0.14148</td><td>          10410</td></tr>
+<tr><td bgcolor="aqua">Black        </td><td>         0.32771</td><td>         0.11277</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">UncAAO        </td><td></td><td>       0.13306</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">CondorcetLR       </td><td>    0.35602</td><td>    0.13781</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">Copeland      </td><td>         0.3589</td><td>        0.15425</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">IterCopeland      </td><td>    0.35969</td><td>    0.15421</td><td>          10342</td></tr>
+<tr><td>ArrowRaynaud   </td><td>       0.36433</td><td>       0.15143</td><td>          10318</td></tr>
+<tr><td bgcolor="aqua">HeitzigRiver      </td><td>    0.36691</td><td>    0.15187</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">TidemanRankedPairs</td><td>    0.36774</td><td>     0.1521</td><td>          10342</td></tr>
+<tr><td>Bucklin       </td><td>         0.3683</td><td>        0.20312</td><td>           9744</td></tr>
+<tr><td bgcolor="aqua">SimmonsCond   </td><td>        0.36861</td><td>        0.15447</td><td>          10342</td></tr>
+<tr><td>Coombs            </td><td>     0.3738</td><td>    0.18881</td><td>           9792</td></tr>
+<tr><td bgcolor="aqua">SimpsonKramer   </td><td>      0.37449</td><td>      0.15981</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">SchulzeBeatpaths</td><td>      0.37452</td><td>      0.15792</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">SmithIRV        </td><td>       0.3806</td><td>      0.17825</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">NansonBaldwin</td><td>         0.38295</td><td>         0.17252</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">RaynaudElim    </td><td>       0.38709</td><td>        0.1821</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">UncoveredSet    </td><td>      0.39004</td><td>      0.19653</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">BTRIRV       </td><td>         0.39549</td><td>         0.16867</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">SmithSet        </td><td>       0.41488</td><td>       0.23681</td><td>          10342</td></tr>
+<tr><td bgcolor="aqua">SchwartzSet      </td><td>      0.41508</td><td>      0.23808</td><td>          10342</td></tr>
+<tr><td>VtForAgainst   </td><td>       0.41726</td><td>       0.20101</td><td>           8940</td></tr>
+<tr><td>ArmytagePCSchulze</td><td>     0.42209</td><td>     0.12331</td><td>           8926</td></tr>
+<tr><td bgcolor="aqua">DMC          </td><td>         0.42409</td><td>         0.18731</td><td>          10342</td></tr>
+<tr><td>LoMedianRank   </td><td>       0.43065</td><td>        0.2893</td><td>           8850</td></tr>
+<tr><td>HeismanTrophy  </td><td>       0.43908</td><td>       0.14424</td><td>           8931</td></tr>
+<tr><td>Top2Runoff   </td><td>         0.49909</td><td>         0.23604</td><td>           8823</td></tr>
+<tr><td>IRV          </td><td>          0.50115</td><td>          0.21684</td><td>           8387</td></tr>
+<tr><td>BaseballMVP    </td><td>       0.50532</td><td>       0.14569</td><td>           8094</td></tr>
+<tr><td>Top3IRV           </td><td>    0.53124</td><td>    0.23683</td><td>           7842</td></tr>
+<tr><td>PlurIR         </td><td>       0.53726</td><td></td><td>           7717</td></tr>
+<tr><td>Dabagh       </td><td>         0.55227</td><td></td><td>           7497</td></tr>
+<tr><td>Nauru        </td><td>         0.55258</td><td></td><td>           7519</td></tr>
+<tr><td>RandomPair   </td><td>         0.62973</td><td>         0.62733</td><td>           4932</td></tr>
+<tr><td>VenzkeDisqPlur  </td><td>      0.63942</td><td></td><td>           6385</td></tr>
+<tr><td>Plurality     </td><td>         0.64371</td><td>         0.33137</td><td>           6357</td></tr>
+<tr><td>AntiPlurality   </td><td>      0.67998</td><td>      0.45963</td><td>           4953</td></tr>
+<tr><td>RandomBallot </td><td>         0.72014</td><td>         0.72305</td><td>           5185</td></tr>
+<tr><td>Hay            </td><td>       0.89489</td><td>       0.91057</td><td>           3484</td></tr>
+<tr><td>RandomWinner   </td><td>              1</td><td>              1</td><td>           2930</td></tr>
+<tr><td>SociallyWorst  </td><td>         2.0024</td><td>         2.0098</td><td>              6</td></tr>
+</table>
+
+<p>
+So... the range-doubters look to be just wrong.
+</p><p>
+Note that Range Voting is at the top of the heap 
+(lowest <a href="BayRegDum.html">Bayesian regret</a>) in
+both these tables, <i>except</i> for 
+<ol type="a">
+<li>
+the "socially best" fake method 
+(magically choose optimum winner) which has zero regret, 
+</li><li>
+the 
+Range+Top2-Runoff method, which actually does better than plain range voting in these
+two simulations (albeit in the first one its advantage is statistically insignificant).   
+That is because range voting can indeed be distorted by strategic voters;
+adding a top2-runoff after the range voting election, can partially correct for
+that because in a 2-candidate runoff,
+even strategic voters will always be honest.  
+Range2Runoff tends to improve slightly over
+plain Range (up to 10-30% regret reduction)
+when 75% or more of the voters are strategic. But when 75% or more
+of the voters are honest, plain range is better than Range2Runoff
+by a lot (up to &asymp;3 times smaller regret).  In view of that, plain Range still appears to
+be the best method overall.  
+</li></ol>
+No other method of those listed here
+(aside from Range2Runoff
+and trivial Range variants)
+is capable of bettering Range's Bayesian regret by a statistically significant margin
+under any simulation parameters so far tried.
+</p>
+<h3> Range is more Condorcet than Condorcet methods! </h3>
+
+<p>
+Also note that Range and its variants
+(Range2Runoff, Approval2Runoff) 
+in these simulations with 50% honest voters
+actually yield the true-utility-based Condorcet winner <i>more often</i> than any 
+other method, <i>including</i> "Condorcet methods" shown
+<font color="aqua">colored</font>.  That counterintuitive
+conclusion was <a href="AppCW.html">forecast</a>
+in a different model of strategic voting than the one simulated here.
+(The one here involves voters who believe a priori that
+candidate k+1 is far less likely to win
+than candidate k, and act accordingly to maximize their vote's impact.)
+This is a very strong reason <i>not</i> to prefer Condorcet voting methods over range &ndash;
+with a 50-50 mix of strategic and honest voters, range actually
+does their own job better than they do!
+</p>
+
+<p><b>Caveats:</b><small>
+IEVS 2.53 is still an early version and does not contain a lot of voter strategies and utility
+generators planned for later IEVS versions and which had been in my old (1999-2000) simulator.
+In particular, all rank-order voting methods shown here <i>are</i> strict
+rank-order, i.e. with rank-equalities forbidden in ballots.  It has been suggested that
+variant-methods in which rank-equalities are permitted &ndash; especially Condorcet
+methods based on the &quot;<a href="WinningVotes.html">winning votes</a>&quot; concept &ndash;
+would handle strategic voters better.  That is probably true.  If wv-condorcet strategy were
+the same as approval-voting (and it <a href="VenzkePf.html">definitely</a> is
+<a href="VenzSimp.html">not</a>, but that might be a semi-decent approximate view)
+then in fact range and wv-Condorcet methods would all exhibit
+<i>identical</i> Bayesian Regrets with 100% strategic voters, and presumably considerably 
+closer-than-here-shown
+BRs for a 50-50 mix, although I would expect Range still would have better (i.e. smaller) BRs.
+Also, in that case, range might no longer be better than Condorcet methods for the purpose
+of generating honest-voter Condorcet winners in the presence of strategic voters.
+All this, however, has to be regarded as speculation until more advanced 
+<a href="IEVS/IEVS.c">IEVS</a> versions appear that are capable of handling equalities in 
+rank-order votes.
+</small>
+</p>
+
+<h2> What if IRV &amp; Condorcet voters are honest more often than range voters? </h2>
+<p>
+This objection was raised by one of our critics.  We respond 
+<ol type="a">
+<li>
+Where is any evidence for that?
+</li><li>
+Suppose it is so.  Suppose Condorcet and IRV voters really are little paragons
+of total honesty &ndash; angels &ndash; while exactly 50% of the range voters
+are nasty strategic
+exaggerators out to hurt the poor little innocent honest ones (other 50%).
+Fine.
+<br>
+To cast light on this we reran the simulation in the green table
+with <a href="IEVS/IEVS.c">IEVS 3.24</a> this time for 100% honest voters.  (See the <i>second</I> regret column.)
+What happened?
+As you can see,
+the Condorcet methods yield regrets between
+0.1127 and 0.1331 (for Black's Condorcet method and UncAAO respectively, which are the
+two best Condorcet methods in this run) 
+and 0.1783 and 0.1821 (for SmithIRV and Raynaud
+respectively, which are the two worst Condorcet methods in this run).
+And IRV delivered regret=0.2168.
+(Error bars are &plusmn;0.005 or less.)
+Meanwhile range with a mix of 50% honest and 50% strategic voters yielded regret
+0.1633, while range+top2runoff yielded 0.1479.
+<br>
+In other words, even then, and even in the situation in the green table designed to <i>maximally</i>
+make range voting look bad due to Venzke's "random skewing" effect, range and range+top2runoff <i>still</i>
+outperform IRV and perform comparably to Condorcet methods even when the latter two have
+angels as voters!  (But we suggest to you that, sadly, Condorcet and IRV voters  will not actually be angels
+who vote 100% honestly.)
+</li>
+</ol>
+<p>
+Any questions?
+</p>
+
+<h2> <i>Why</i> were the range-doubters wrong? </h2>
+<p>
+Two possible ways to look at it:
+</p>
+<ol>
+<li>
+Range indeed is hurt when honest voters are replaced by strategic ones, but
+not enough to kick it out of first place (and/or the other methods
+are hurt by strategic voting too, enough to keep them out of first).
+</li>
+<li>
+The idea that the horrible Bush voters will gain a huge advantage over Gore voters if
+there are a larger number of Bush than Gore voters who are strategic,
+perhaps is the wrong way to look at it.   Perhaps a better way to look at it is:
+there are two voter populations: strategic and honest. The strategic ones use 
+<a href="Approval.html">approval voting</a>.  (<small>Fine point: strategic and honest approval voting 
+are <a href="RVstrat2.html">not</a>
+<i>exactly</i> the same thing.  They differ slightly.</small>)
+The honest ones use
+<a href="RangeVoting.html">range voting</a>.  Then you add up all the votes.
+Sure, with only 61 voters (or especially with only 13 voters!), the strategic voter
+set will generally be imbalanced and include more Gore than Bush supporters (or the reverse)
+&ndash; but so what?  Approval voting is a pretty good voting system (and it is even better if
+some honest range votes are added on). So the results will be pretty good.  Meanwhile
+non-range systems like Condorcet, IRV, etc, all will have to deal with the <i>same</i> typical
+imbalances.  The net result is range ends up doing better than them in terms
+of <a href="BayRegDum.html">Bayesian Regret</a>, which is exactly what these computer
+simulations of thousands of elections show.  (We also have many, many, more
+such simulations, far too many to put on this page.  This is just one typical
+results-table example, got from the <a href="RandElect.html">random-normal elections model</a>.
+They all behave this way.  And you can download IEVS and run it
+yourself in different models.)   The fact is, fear of the strategic imbalance "bugaboo"
+simply is not justified by the evidence once we go beyond intuitive worries
+about "fairness" and actually try the experiments.
+</li>
+</ol>
+
+
+<br>
+<p><a href="ShExpRes.html">Another set of computer sims</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

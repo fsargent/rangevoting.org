@@ -1,0 +1,170 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Simmons trapezoid example of Condorcet Cycle
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<a name="start"></a>
+<H1> Simmons trapezoid example of Condorcet Cycle </H1>
+<p><small> By Forest Simmons Dec 2009.</small><br>
+
+<p>
+Consider an 
+election to determine which of four towns A,B,C,D
+should host the next harvest festival.
+</p>
+<img src="SimmonsGeomCyc4.png">
+<p>
+The respective town coordinates (in miles East and North of town B)
+and populations are:
+</p>
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="aqua">
+<tr>
+<th> Town </th>
+<th> Coordinates </th>
+<th> Population </th>
+<th> Euclidean<br>Distances to<br>A&nbsp;&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;D </th>
+<th> "Taxicab"<br>Distances to<br>A&nbsp;&nbsp;&nbsp;&nbsp;B&nbsp;&nbsp;&nbsp;&nbsp;C&nbsp;&nbsp;&nbsp;&nbsp;D </th>
+</tr>
+<tr>
+<td align="center">A</td><td align="center">(0, 2)</td><td align="center">40</td>
+<td>0&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;&radic;5&nbsp;&nbsp;&nbsp;&nbsp;4</td>
+<td>0&nbsp;&nbsp;&nbsp;&nbsp;2&nbsp;&nbsp;&nbsp;&nbsp;3&nbsp;&nbsp;&nbsp;&nbsp;4</td>
+</tr>
+<tr>
+<td align="center">B<td align="center">(0, 0)</td><td align="center">20</td>
+<td>2&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;&radic;20</td>
+<td>2&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;6</td>
+</tr>
+<tr>
+<td align="center">C<td align="center">(1, 0)</td><td align="center">20</td>
+<td>&radic;5&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;&radic;13</td>
+<td>3&nbsp;&nbsp;&nbsp;&nbsp;1&nbsp;&nbsp;&nbsp;&nbsp;0&nbsp;&nbsp;&nbsp;&nbsp;5</td>
+</tr>
+<tr>
+<td align="center">D<td align="center">(4, 2)</td><td align="center">20</td>
+<td>4&nbsp;&nbsp;&nbsp;&radic;20&nbsp;&nbsp;&nbsp;&radic;13&nbsp;&nbsp;&nbsp;0</td>
+<td>4&nbsp;&nbsp;&nbsp;&nbsp;6&nbsp;&nbsp;&nbsp;&nbsp;5&nbsp;&nbsp;&nbsp;&nbsp;0</td>
+</tr>
+</table>
+
+<!--
+<p>
+The pairwise distances between the towns are:
+</P>
+<pre>
+        A          B             C    
+B       2
+C       &radic;5         1
+D       4          &radic;20          &radic;13
+</pre>
+
+<p>
+The pairwise TAXICAB L1 distances between the towns are:
+</P>
+<pre>
+        A          B             C    
+B       2
+C       3          1
+D       4          6             5
+</pre>
+-->
+<p>
+Assuming voters prefer towns closer to them, the ballots are:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+40
+</td>
+<td align="center">
+A>B>C>D
+</td>
+</tr>
+<tr>
+<td align="center">
+20
+<td align="center">
+B>C>A>D
+</td>
+</tr>
+<tr>
+<td align="center">
+20
+<td align="center">
+C>B>A>D
+</td>
+</tr>
+<tr>
+<td align="center">
+20
+<td align="center">
+D>C>A>B
+</td>
+</tr>
+</table>
+
+<p>
+This makes D a "Condorcet loser"
+and creates the <a href="CondorcetCycles.html">cycle</a>
+A beats B beats C beats A, 60 to 40 in every case.
+</p>
+<p>
+<b>Remarks:</b>
+<br><b>1.</b>
+Note that the 
+<a href="CondorcetCycles.html#PoundstoneCycPic">Poundstone example</a>
+has the candidate sites offset from the centers of support.  It turns 
+out that this is inevitable in a three-candidate example, i.e. 
+if the respective supports are centered and 
+concentrated around the three respective candidates (and preferences respect distances)
+then there can be no Condoret Cycle.
+</p><p>
+So my four-candidate geometrical example of a Condorcet cycle is minimal if you 
+require the supporters 
+to be concentrated around the candidate positions.
+(And divide our town populations by 20 to get <i>really</i> minimal about it.)
+</p><p>
+<b>2.</b>
+This example has "wiggle room," i.e. the town distances,
+coordinates, and 
+populations can be perturbed arbitrarily 
+without affecting our conclusions, as long as 
+the perturbations are not too large.
+<br>
+&nbsp;&nbsp;&nbsp; Note the example no longer works if "taxicab" (L<sub>1</sub>)
+distances are employed instead of Euclidean (L<sub>2</sub>) distances.
+However it will work with taxicab distances if, before we start, we
+rotate the picture 44 degrees anticlockwise.
+</p><p>
+<b>3.</b>
+Personally I think it is pretty obvious A would be the best site.
+However, no voting method based purely on the pairwise preference counts
+&ndash; indeed, no method based purely on the 100  <i>rank-orderings</i> of the candidates by the voters
+&ndash;
+can possibly work to produce a preference for A over B or C.
+Only a voting method like <a href="RangeVoting.html">range voting</a> which also knows
+about <i>strengths</i> of preferences, could hope to do that.
+</p>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

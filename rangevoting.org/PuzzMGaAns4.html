@@ -1,0 +1,733 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to Puzzle #4: Probability of non-monotonic IRV elections </H2>
+
+<p><b>Puzzle:</b>
+Consider 17 voters electing one winner from 3 candidates using 
+<a href="rangeVirv.html">IRV (Instant Runoff)</a> voting.  
+(Each vote is a preference ordering among the three candidates; 
+the candidate with the fewest top-rank votes is eliminated repeatedly until only 
+one &ndash; the winner &ndash; remains.)
+Among all the possible elections of this sort: what fraction have the 
+unhappy "non-monotonic" property
+that the winner would have lost to some loser L,
+if only some subset of identically-voting voters had 
+changed their top-rankings <i>away</i>
+from L?  
+(Disallow elections involving ties.)
+</p>
+
+<p><b>Extra credit:</b>
+What happens if the number of voters ("17") instead is allowed to tend to infinity?
+</p>
+
+<p><b>Monte Carlo (Approximate) Solution:</b>
+There are 6<sup>17</sup>=16,926,659,444,736
+possible elections.
+When I examined a random sample of 10,000,000 of them with a
+computer, I found that
+</p>
+<ul>
+<li>
+2,801,322 of them were won by candidate "<b>C</b>" with no ties whatever (not even "ties
+for second place").  <!-- 15.9% tied. -->
+</li>
+<li>
+Of these, 7255 <i>would</i> have been won by "B" (with no ties whatever)
+if some of the "B>A>C" voters had changed their vote to "A>B>C,"
+and of the rest, 7029 would have been won by "A"  (with no ties whatever)
+if some of the "A>B>C" voters had changed their vote to "B>A>C."
+<br>
+The 7255 all were of the form
+<!-- out of 744 it arose 137 times for x=y=4 and f=2, g=3;
+and 493 times if one includes all x,y with x+y=8 and x=2,3,4,...,8 with f=2 and g=3 -->
+shown in the lefthand two columns of the table below
+with
+x+y=8, f+g=5, x&ge;2, g&ge;3.
+In all cases changing two B>A>C votes to A>B>C causes B to become the unique winner,
+whereas previously it was C.
+(The 7029 were similarly of the form shown in the righthand two columns of the table
+and for them changing two A>B>C votes to B>A>C shifts the win from C to A; note
+that these new scenarios all are <i>disjoint</i> from the old ones.)
+
+<!--
+<table bgcolor="yellow" cellpadding="5" border="1">
+<caption> 
+Non-monotonic IRV election scenarios.  Choose x,y,f,g so that
+x+y=8, f+g=5, x&ge;2, g&ge;3.
+</caption>
+<tr><th> #voters </th><th> Their Vote </th><th> # </th><th> # </th></tr>
+<tr><td> f </td><td> C>A>B </td><td> 1 </td><td> 0 </td><td> 1 </td></tr>
+<tr><td> g </td><td> C>B>A </td><td> 4 </td><td> 5 </td><td> 1 </td></tr>
+<tr><td> x </td><td> B>A>C </td><td> x </td><td> x </td><td> 1 </td></tr>
+<tr><td> y </td><td> B>C>A </td><td> y </td><td> y </td><td> 1 </td></tr>
+<tr><td> 0 </td><td> A>B>C </td><td> 0 </td><td> 0 </td><td> 1 </td></tr>
+<tr><td> 4 </td><td> A>C>B </td><td> 4 </td><td> 4 </td><td> 1 </td></tr>
+<tr bgcolor="aqua"><td> 493 </td><td> A>C>B </td><td> 218 </td><td> 33 </td></tr>
+</table>
+-->
+
+<table bgcolor="yellow" cellpadding="5" border="1" align="center">
+<caption> 
+Non-monotonic IRV election scenarios.  Choose x,y,f,g so that
+x+y=8, f+g=5, x&ge;2, g&ge;3.
+</caption>
+<tr><th> #voters </th><th> Their Vote </th><th> #voters </th></tr>
+<tr align="center"><td> f </td><td> C>A>B </td><td> g </td></tr>
+<tr align="center"><td> g </td><td> C>B>A </td><td> f </td></tr>
+<tr align="center"><td> x </td><td> B>A>C </td><td> 0 </td></tr>
+<tr align="center"><td> y </td><td> B>C>A </td><td> 4 </td></tr>
+<tr align="center"><td> 0 </td><td> A>B>C </td><td> y </td></tr>
+<tr align="center"><td> 4 </td><td> A>C>B </td><td> x </td></tr>
+</table>
+
+That adds up to a total of 7255+7029=14284
+non-monotonic totally-untied elections out
+of 2,801,322, which fractionally is 
+<i>1 non-monotone election out of 196.1&plusmn;1.6 totally-untied IRV elections</i>.
+</li>
+</ul>
+
+<p>
+<!-- It is also possible for C to win, but then if some B>A>C voters change their vote to
+A>B>C (and/or to A>C>B)
+then C <i>stops</i> winning and B wins.  -->
+A real life example of this 
+was the <a href="Ireland1990.html">Ireland 1990 Presidential election</a> with
+A=Currie, B=Lenihan, C=Robinson:
+</p>
+
+<table bgcolor="yellow" cellpadding="5" border="1" align="center">
+<caption> 
+Simplest nonmonotonic scenario of Ireland 1990 type. 17 voters.
+</caption>
+<tr><th> #voters (before; C wins) </th><th> Their Vote </th><th> #voters (after B gives A 2 votes; B wins) </th></tr>
+<tr align="center"><td> 5 </td><td> C>B>A </td><td> 5 </td></tr>
+<tr align="center"><td> 0 </td><td> A>B>C </td><td> 2 </td></tr>
+<tr align="center"><td> 4 </td><td> A>C>B </td><td> 4 </td></tr>
+<tr align="center"><td> 8 </td><td> B>A>C </td><td> 6 </td></tr>
+</table>
+
+<p><b>Exact Solution:</b>
+<ul>
+<li>
+With additional work it is possible to compute the <i>exact</i>
+non-monotone election fraction.  First, one needs to realize that the scenarios
+in the table are the only possibilities.  Now, we find a sequence of better and better rigorous
+lower bounds culminating in the exact answer.
+First, a simple and rigorous (although weak) lower bound may be got by merely considering
+just the two most frequent 
+cases in the table,
+namely x=y=4, f=2, g=3, which experimentally occurred 2597 times in all.
+This scenario alone represents 
+<center>
+2 &times; 17!/(4! &middot; 4! &middot; 2! &middot; 3!  &middot; 0!  &middot; 4!)
+=
+2 &times; 2,144,142,000
+</center>
+non-monotonic elections.  The number of IRV elections clearly-won by C
+is no more than one-third of the total number 6<sup>17</sup> of elections.
+Dividing these two numbers, we find the <b>theorem</b> that 
+<i>at least 1 non-monotone 17-voter 3-candidate IRV election
+occurs per 1316 clearly-won IRV elections</i>.
+</li>
+<li>
+A better lower bound may be got by counting <i>all</i> the scenarios in the table,
+which is
+<center>
+2 &sum;<sub>2&le;x&le;8</sub>
+&sum;<sub>3&le;g&le;5</sub> &nbsp;
+17!/[x! (8-x)! g!  (5-g)!  0!  4!] &nbsp; = &nbsp; 2 &times; 12,105,213,120.
+</center>
+<!-- 2 * Sum[ Sum[ 17! / (x! * (8-x)! * (5-g)! * g! * 0! * 4!), {x, 2, 8} ], {g, 3, 5} ] -->
+That improves the lower bound theorem to <i>1 in 234</i>.
+</li>
+<li>
+Finally, the only way a tie can occur with 17 voters is in the <i>first</i>
+round (since the second and 
+final round is a 2-candidate contest with an odd number of voters).
+That can happen in
+<center>
+3 
+&sum;<sub>0&le;x&le;5</sub>
+&sum;<sub>0&le;y&le;x</sub>
+&sum;<sub>0&le;z&le;x</sub>
+&sum;<sub>0&le;q&le;17-2x</sub>
+17!/[y! (x-y)! z! (x-z)! q! (17-2x-q)!] &nbsp; = &nbsp;  2,699,297,685,504
+</center>
+<!--  
+3 * Sum[ Sum[ Sum[ Sum[ 
+17! / (y! * (x-y)! * z! * (x-z)! * q! * (17-2x-q)!) , 
+{q, 0, 17-2*x} ], {z, 0, x} ], {y, 0, x} ], {x, 0, 5} ]
+= 2699297685504
+-->
+ways.  Hence the number of tie-free C-wins elections is exactly
+<center>
+(6<sup>17</sup> - 2,699,297,685,504) / 3 = 4,742,453,919,744
+</center>
+so, dividing by 2&times;12,105,213,120,
+we find in conclusion:
+</li>
+</ul>
+<p><b>Theorem:</b> 
+<i>
+the fraction of
+tie-free 17-voter 3-candidate IRV elections
+that are non-monotonic (and strictly so, i.e. the revised election still is tie-free, and
+with no election even having a tie for second-place), 
+is exactly 1,236,235 in 242,159,616, i.e. approximately one election in 195.9.
+</i>
+</p>
+
+<p>
+<b>Some more Monte Carlo data:</b>
+As a matter of interest,
+let's redo our Monte Carlo experiment but now with <b>239</b> voters instead of 17.
+Then there are 6<sup>239</sup>
+possible elections.
+When I examined a random sample of 500,000 of them with a
+computer, I found that
+</p>
+<ul>
+<li>
+158,325 of them were won by candidate "C" with no ties whatever.
+</li>
+<li>
+Of these, 2705 would have been won by "A" (with no ties whatever)
+if some of the "A>B>C" voters had changed their vote to "B>A>C,"
+and of the rest, 2680 would have been won by "B"  (with no ties whatever)
+if some of the "B>A>C" voters had changed their vote to "A>B>C."
+That adds up to a total of 5385 non-monotonic totally-untied elections out
+of 158,325, which fractionally is 
+<center>
+<i>1 non-monotone election out of 29.4&plusmn;0.6 totally-untied IRV elections</i>.
+</center>
+</li>
+</ul>
+
+<p>
+Indeed, letting P<sub>V</sub> denote the strict-non-monotonicity probability in a V-voter
+election, Monte Carlo experiments find
+</p>
+
+<table bgcolor="yellow" cellpadding="5" border="1" align="center">
+<caption>
+Non-monotonicity probabilities P<sub>V</sub> with various numbers V of voters.
+</caption>
+<tr bgcolor="aqua"><th> V </th><th> P<sub>V</sub> </th></tr>
+<tr><td> 17 </td><td> 1/(195.9 &plusmn; 1.5) </td></tr>
+<tr><td> 23 </td><td> 1/(110.5 &plusmn; 2.1) </td></tr>
+<tr><td> 29 </td><td> 1/(82.2 &plusmn; 1.4) </td></tr>
+<tr><td> 35 </td><td> 1/(70.2 &plusmn; 1.1) </td></tr>
+<tr><td> 41 </td><td> 1/(60.0 &plusmn; 0.9) </td></tr>
+<tr><td> 47 </td><td> 1/(53.5 &plusmn; 0.7) </td></tr>
+<tr><td> 53 </td><td> 1/(50.9 &plusmn; 0.7) </td></tr>
+<tr><td> 59 </td><td> 1/(47.9 &plusmn; 0.7) </td></tr>
+<tr><td> 65 </td><td> 1/(46.4 &plusmn; 0.6) </td></tr>
+<tr><td> 119 </td><td> 1/(36.1 &plusmn; 1.2) </td></tr>
+<tr><td> 239 </td><td> 1/(29.3 &plusmn; 0.6) </td></tr>
+<tr><td> 479 </td><td> 1/(26.3 &plusmn; 0.5) </td></tr>
+<tr><td> 959 </td><td> 1/(23.1 &plusmn; 0.6) </td></tr>
+</table>
+
+<p>
+so apparently lim<sub>V &rarr; &infin;</sub> P<sub>V</sub> &asymp; 1/21.
+</p>
+
+<p><b>Exact solution in the V&rarr;&infin; limit:</b>
+With our last breath of oxygen we tackle the V&rarr;&infin; limit <i>exactly</i>.
+We sketch a proof that
+<b>Theorem:</b> <i>P<sub>&infin;</sub>
+exists and is positive and is expressed
+thus in closed form as a ratio of 6-dimensional Gaussian integrals:
+<center>
+P<sub>&infin;</sub>
+=
+&int;<sub>&Psi;</sub>
+exp(-S<sup>2</sup>-T<sup>2</sup>-U<sup>2</sup>-W<sup>2</sup>-X<sup>2</sup>-Y<sup>2</sup>)
+dSdTdUdWdXdY
+<font size="+2">/</font>
+&int;<sub>&Psi;&cap;&Omega;</sub>
+exp(-S<sup>2</sup>-T<sup>2</sup>-U<sup>2</sup>-W<sup>2</sup>-X<sup>2</sup>-Y<sup>2</sup>)
+dSdTdUdWdXdY
+</center>
+where
+&Psi; is the (polytopal) subset of 6-space where
+X+Y&lt;U+W, X+Y&lt;S+T, and U+W+X&lt;S+T+Y
+and &Omega; 
+is the (polytopal) subset of 6-space where
+S+T&lt;U+W  and 
+max{S+T-X-Y, 0}&lt;min{U+W-S-T, (T+U+W-S-X-Y)/2}.
+Numerically
+(by Monte Carlo numerical integration) this is
+<center>
+P<sub>&infin;</sub> &asymp; 0.04945&plusmn;0.00002 &asymp; 1/(20.22&plusmn;0.01) .
+</center>
+</i>
+</p>
+
+<p>
+To see that, let S,T,U,W,X,Y be i.i.d. Gaussian random variables with large mean
+compared to their standard deviation giving the numbers of each type of votes:
+</p>
+
+<table bgcolor="yellow" cellpadding="5" border="1" align="center">
+<tr><th> #voters </th><th> Their Vote </th></tr>
+<tr align="center"><td> S </td><td> C>A>B </td></tr>
+<tr align="center"><td> T </td><td> C>B>A </td></tr>
+<tr align="center"><td> U </td><td> B>A>C </td></tr>
+<tr align="center"><td> W </td><td> B>C>A </td></tr>
+<tr align="center"><td> X </td><td> A>B>C </td></tr>
+<tr align="center"><td> Y </td><td> A>C>B </td></tr>
+</table>
+
+<p>
+Then &Psi; is the
+set of elections in which A is eliminated in the first round and then C wins the final round 
+over B.
+And &Psi;&cap;&Omega; is the
+set of elections in which, additionally,
+B is ahead of C in the
+first round, but some number Z exists with 
+<center>
+max{S+T-X-Y, 0} &lt; Z &lt; min{U+W-S-T, (T+U+W-S-X-Y)/2}
+</center>
+such that if Z voters change their votes from "B>A>C" to
+"A>B>C," then B wins.  (Due to the central limit theorem
+our Gaussian approximations are valid in the V&rarr;&infin; limit,
+and tied elections are neglectible in this limit.)
+</p>
+
+<p>
+It is possible to re-express these integrals and hence P<sub>&infin;</sub> 
+in terms of "<b>Schl&auml;fli functions</b>"
+(volumes of nonEuclidean 5-simplices).  That is because we can do
+the radial integration thus reducing our 6-dimensional integrals
+to integrals over nonEuclidean polytopes drawn on
+the 5-dimensional surface of a 6-dimensional sphere, where these
+integrals merely express nonEuclidean volumes since the integrand is a constant.
+Then, these
+polytopes may be subdivided into Schl&auml;fli-type "orthoscheme" simplices,
+i.e. whose volumes are Schl&auml;fli functions.
+By the theory of these functions, they may
+be re-expressed as merely 2-dimensional integrals instead of 5D;
+and they also should be re-expressible in terms of certain polylogarithms.
+That would allow evaluating 
+P<sub>&infin;</sub> to a very large number of decimal places.
+At first it seems quite remarkable how an innocent-seeming problem from voting gives rise
+to &ndash; of all things &ndash; Schl&auml;fli functions!
+But you should now realize that this is actually commonplace and that many similar problems
+in voting will also be solvable in essentially the same way.
+<a href="IRVStratPf.html">Here</a> is another (simpler) example.
+</p>
+
+<p><b>Further simplifications:</b>
+Change variables to
+F=X+Y,
+G=Y-X,
+H=S+T,
+L=T-S,
+M=U+W
+(which all still are Gaussian random variables and all 5 of which are i.i.d.),
+then
+<center>
+P<sub>&infin;</sub>
+=
+&int;<sub>&Psi;</sub>
+exp(-F<sup>2</sup>-G<sup>2</sup>-H<sup>2</sup>-L<sup>2</sup>-M<sup>2</sup>)
+dFdGdHdLdM
+<font size="+2">/</font>
+&int;<sub>&Psi;&cap;&Omega;</sub>
+exp(-F<sup>2</sup>-G<sup>2</sup>-H<sup>2</sup>-L<sup>2</sup>-M<sup>2</sup>)
+dFdGdHdLdM
+</center>
+&Psi; is the (polytopal) subset of 4-space (5-space if you include L) where
+F&lt;M, F&lt;H, and M&lt;H+G
+and &Omega; 
+is the (polytopal) subset of 5-space (4-space if you do not include G) where
+H&lt;M  and 
+max{H-F, 0}&lt;min{M-H, (L+M-F)/2}.
+This has reduced it to a ratio of two <i>five</i>-dimensional Gaussian integrals
+(instead of 6D) allowing us more simply to employ Schl&auml;fli functions
+that are volumes of nonEuclidean 4-dimensional simplices.
+That by the theory of Schl&auml;fli functions 
+means we can express everything
+merely in terms of <i>first</i> order polylogarithmic functions, i.e.
+<i>single</I> integrals whose integrands involve only functions found
+in freshman calculus textbooks.  This would allow anybody sufficiently determined
+to compute
+P<sub>&infin;</sub>
+to hundreds of decimals of accuracy.
+(<i>I</i>, however, am <i>not</i> going to do that at least until somebody writes
+software to evaluate nonEuclidean 4-polytope volumes.)
+</p>
+
+<p>
+<b>Schl&auml;fli Function.</b>
+Let me explain just enough about Schl&auml;fli functions so that you can see how to do
+this.
+<b>Schl&auml;fli's theorem</b> is that in any  process during which an n-dimensional
+nonEuclidean polytope smoothly expands from a point, the volume V of
+that polytope obeys
+<center>
+&plusmn;(n-1) dV =  &sum;<sub>F</sub> Vol<sub>n-2</sub>(F) d&theta;<sub>F</sub>
+</center>
+where the &plusmn; sign is the same as the curvature of the nonEuclidean space
+(+ for spherical, - for hyperbolic)
+and where the sum is over the (n-2)-dimensional faces F of the polytope and
+&theta<sub>F</sub> is the dihedral angle there.  
+</p>
+<p>
+For example, with n=2, suppose we want to know the 2-volume, i.e. area,
+of a triangle drawn on the surface of the unit-radius sphere.
+Expand our triangle (at all stages having a triangle drawn on
+thepshere using geodesoc arcs) from a point.  The (n-2)-dimensional faces,
+i.e. 0-dimensional vertices, are just the corners of that triangle and the 
+&theta;<sub>F</sub> are its angles.  Initially for a tiny triangle, the angles sum to 
+&pi; since the sphere is locally flat.  But as we expand the triangle to become,
+say, the one  with all three angles right-angles (i.e. the triangle that the
+octant x&ge;0, y&ge;0, z&ge;0 cuts out of the unit sphere) the angles sum
+to <i>more</i> than &pi;.  Integrating dV over time to get the total area V, we
+see the well known theorem that <i>the area of a spherical triangle with
+angles &alpha;, &beta;, &gamma;
+is just |&alpha;+&beta;+&gamma;-&pi;|.
+</i>
+In particular, our octant-triangle has angle sum 3&pi;/2
+so its area is &pi;/2 which is exactly correct: one-eighth
+of the total surface area 4&pi;
+of the unit-sphere.
+</p>
+<p>
+For our next example, take n=3:
+imagine a <i>tetrahedron</i>
+(always drawn on the 3-dimensional "surface" of a unit-radius sphere
+in 4 dimensional space) expanding continuously from a point.  The "(n-2)-dimensional faces"
+are just the six 1-dimensional <i>edges</i> of the tetrahedron and the &theta;<sub>F</sub>
+are the <i>dihedral (paper-folding) angles</i> that
+the 2-dimensional faces touching that edge make at that edge.
+The Vol<sub>n-2</sub>(F)'s are just the <i>edge lengths</i>.
+As our tetrahedron expands towards its final size, its dihedral angles change
+and hence its nonEuclidean volume changes.  We just integrate the dV over time
+to find the final volume.  (Note in <i>Euclidean</i> geometry the dihedral angles
+would <i>not</i> change during the expansion.)  
+</p>
+<p>
+For our voting problem here we instead are concerned with
+<i>4-dimensional</i> polytope volumes.  The 2-faces are triangles (or anyhow polygons) whose
+2-volumes, i.e. areas, may be found by adding up their bend-angles and 
+subtracting the result from 2&pi;.  Thus we have an integral of the Schl&auml;fli
+volume-differential dV and the integration
+d<i>time</i> is just a 1-dimensional definite integration problem.
+Hence <i>the 4-volume of any 4-dimensional polytope drawn on the surface of a unit-radius
+sphere in 5-dimensional space may be written as a 1-dimensional 
+definite integral.</i>
+</p>
+
+<!-- 
+The normals to the faces of these polytopes are
+FGHLM
+-0001
+-0100
+0110-
+0010-
+-020-
+0010-
+-0011
+-02--
+The cosines of the dihedral angles of these polytopes are
+.5, .5, .5, 0, 0, 2/sqrt6, 0,
+1/sqrt6, .5, 3/sqrt12, ... 3/sqrt(14), ...
+so I do not think anything nice is going to happen...
+-->
+
+<H3> But wait &ndash; there's more! </H3>
+
+<p>
+The above reckoning was all only for
+<i>one kind</i> of nonomonotonic IRV election: in which
+some candidate C wins, but if some A>B>C voters change their vote to B>A>C, then A wins.
+</p><p>
+While that was the only kind permitted by the wording of the problem,
+there is also another kind of nonmonotonicity, which also can happen even in 17-voter 
+elections!
+</p><p>
+It is also possible for C to win, but then if some A>C>B voters change their vote to
+C>A>B (and/or to C>B>A)
+then C <i>stops</i> winning and B wins.  
+(An example, pointed out by William Poundstone,
+was the <a href="LizVwiz.html">Louisiana 1991 Governor election</a> with
+A=Duke, B=Roemer, C=Edwards.)
+</p>
+<!-- 
+with(simplex):
+maximize(s, { 
+ CAB+CBA >= s+BAC+BCA,
+ ABC+ACB >= s+BAC+BCA,
+ CAB+CBA+BCA >= s+ABC+ACB+BAC, #note this as side effect causes C>A
+#BAC+BCA+CBA >= s+CAB+ABC+ACB, #optionally additionally, no cycle C>A>B>C.  
+ CAB+CBA >= s+ABC+ACB, #optionally additionally, C is plurality winner too
+ 0 <= x,
+ x <= ACB,
+ ABC+ACB-x+s <= BAC+BCA,
+ ABC+BCA+BAC >= s+CAB+CBA+ACB-x+x,  #note this as side effect causes B>C
+ ABC>=0, ACB>=0, BAC>=0, BCA>=0, CAB>=0,CBA>=0,
+ ABC+ACB+BAC+BCA+CAB+CBA=21 } );
+ {CBA = 0, ACB = 2, BCA = 3, CAB = 6, ABC = 4, x = 2, BAC = 2, s = 1}
+ {ACB = 2, BCA = 3, ABC = 4, x = 2, BAC = 2, s = 1, CBA = 4, CAB = 2}  #no cycle
+ {ACB = 2, BCA = 3, x = 2, s = 1, CBA = 5, CAB = 3, ABC = 5, BAC = 3} #no cyc & C=IRV&Plur winr
+ {ACB = 2, BCA = 3, x = 2, s = 1, ABC = 5, BAC = 3, CBA = 0, CAB = 8} #C=IRV&Plur winner
+
+-->
+
+<table bgcolor="yellow" cellpadding="5" border="1" align="center">
+<caption>
+Simplest scenario of Louisiana 1991 type. 17 voters.
+</caption>
+<tr><th> #voters (before; C wins) </th><th> Their Vote </th><th> #voters (after A gives C 2 votes; B wins) </th></tr>
+<tr align="center"><td> 6 </td><td> C>A>B </td><td> 8 </td></tr>
+<tr align="center"><td> 2 </td><td> B>A>C </td><td> 2 </td></tr>
+<tr align="center"><td> 3 </td><td> B>C>A </td><td> 3 </td></tr>
+<tr align="center"><td> 4 </td><td> A>B>C </td><td> 4 </td></tr>
+<tr align="center"><td> 2 </td><td> A>C>B </td><td> 0 </td></tr>
+</table>
+
+<br>
+
+<table bgcolor="#bbffbb" cellpadding="5" border="1" align="center">
+<caption> 
+Simplest scenario of Louisiana 1991 type where C is originally both the IRV and plurality winner.
+21 voters.
+</caption>
+<tr><th> #voters (before; C wins) </th><th> Their Vote </th><th> #voters (after A gives C 2 votes; B wins) </th></tr>
+<tr align="center"><td> 8 </td><td> C>A>B </td><td> 10 </td></tr>
+<tr align="center"><td> 3 </td><td> B>A>C </td><td> 3 </td></tr>
+<tr align="center"><td> 3 </td><td> B>C>A </td><td> 3 </td></tr>
+<tr align="center"><td> 5 </td><td> A>B>C </td><td> 5 </td></tr>
+<tr align="center"><td> 2 </td><td> A>C>B </td><td> 0 </td></tr>
+</table>
+
+<!--
+with(simplex):
+ maximize(  s, {
+ ABC+ACB >= BAC+BCA+s,  #A wins plur election over B  so B elimd
+ CAB+CBA >= BAC+BCA+s,  #C wins plur election over B  so B elimd
+ CAB+CBA >= ABC+ACB+s,  #C wins plur election over A
+ ACB >= x,
+ BCA+BAC >= ABC+ACB-x+s,  #after change of x Avotes to C, B comes 2nd in plur, A elimd
+ CAB+CBA+x >= ABC+ACB-x+s,  #after change of x Avotes to C, B comes 2nd in plur, A elimd
+ BAC+BCA+ABC >= s+CAB+CBA+ACB-x+x,   #B wins the new IRV election
+ CAB+CBA+BCA >= s+ABC+ACB+BAC,   #C wins the old IRV election
+ ABC >= 0, BAC >= 0, ACB >= 0, BCA >= 0, CAB >= 0, CBA >= 0,
+ ABC+ACB+BAC+BCA+CAB+CBA = 100 });
+  {}
+
+<table bgcolor="yellow" cellpadding="5" border="1" align="center">
+<caption> 
+Simplest scenario of Louisiana 1991 type where C is originally both the IRV and plurality winner.
+</caption>
+<tr><th> #voters (before; C wins) </th><th> Their Vote </th><th> #voters (after; B wins) </th></tr>
+<tr align="center"><td> 8 </td><td> C>A>B </td><td> 10 </td></tr>
+<tr align="center"><td> 0 </td><td> C>B>A </td><td> 0 </td></tr>
+<tr align="center"><td> 3 </td><td> B>A>C </td><td> 3 </td></tr>
+<tr align="center"><td> 3 </td><td> B>C>A </td><td> 3 </td></tr>
+<tr align="center"><td> 5 </td><td> A>B>C </td><td> 5 </td></tr>
+<tr align="center"><td> 2 </td><td> A>C>B </td><td> 0 </td></tr>
+</table>
+
+ maximize(  s, {
+ ABC+ACB >= BAC+BCA+s,  #A wins plur election over B  so B elimd
+ CAB+CBA >= BAC+BCA+s,  #C wins plur election over B  so B elimd
+ ACB >= x,
+ BCA+BAC >= ABC+ACB-x+s,  #after change of x Avotes to C, B comes 2nd in plur, A elimd
+ CAB+CBA+x >= ABC+ACB-x+s,  #after change of x Avotes to C, B comes 2nd in plur, A elimd
+ BAC+BCA+ABC >= s+CAB+CBA+ACB-x+x,   #B wins the new IRV election
+ CAB+CBA+BCA >= s+ABC+ACB+BAC,   #C wins the old IRV election
+ ABC >= 0, BAC >= 0, ACB >= 0, BCA >= 0, CAB >= 0, CBA >= 0,
+ ABC+ACB+BAC+BCA+CAB+CBA = 100 });
+               {}
+
+<table bgcolor="yellow" cellpadding="5" border="1" align="center">
+<caption> 
+Simplest scenario of Louisiana 1991 type.
+</caption>
+<tr><th> #voters (before; C wins) </th><th> Their Vote </th><th> #voters (after; B wins) </th></tr>
+<tr align="center"><td> 6 </td><td> C>A>B </td><td> 8 </td></tr>
+<tr align="center"><td> 0 </td><td> C>B>A </td><td> 0 </td></tr>
+<tr align="center"><td> 2 </td><td> B>A>C </td><td> 2 </td></tr>
+<tr align="center"><td> 3 </td><td> B>C>A </td><td> 3 </td></tr>
+<tr align="center"><td> 5 </td><td> A>B>C </td><td> 5 </td></tr>
+<tr align="center"><td> 2 </td><td> A>C>B </td><td> 0 </td></tr>
+</table>
+-->
+
+<!--
+with(simplex):
+ maximize(  s, {
+ ABC+ACB >= BAC+BCA+s,  #A wins plur election over B
+ CAB+CBA >= BAC+BCA+s,  #C wins plur election over B
+ CBA+CAB >= s+ACB+ABC,   #optional C is plur-winner condition
+ ABC >= x,
+ x+BAC+BCA >= s+CAB+CBA,  #after change of x Avotes to B, B comes 2nd in plur, C elimd
+ ABC+ACB-x >= s+CAB+CBA,  #after change of x Avotes to B, B comes 2nd in plur, C elimd
+ ABC+ACB+CAB >= s+BAC+BCA+CBA+x,   #A wins the new IRV election; side effect A>B
+ CAB+CBA+BCA >= s+ABC+ACB+BAC,   #C wins the old IRV election; side effect C>A
+# CBA+CAB+ACB >= s+BCA+BAC+ABC,   #optional extra no-cycle (A>B>C>A prevented) condition
+ ABC >= 0, BAC >= 0, ACB >= 0, BCA >= 0, CAB >= 0, CBA >= 0,
+ ABC+ACB+BAC+BCA+CAB+CBA = 6 });
+       {ACB = 0, CBA = 0, BAC = 0, BCA = 4, ABC = 8, CAB = 5, s = 1, x = 2}
+       {CBA = 0, BAC = 0, ACB = 4, ABC = 4, CAB = 5, BCA = 4, x = 2, s = 1}  #no cycle
+       {CBA = 0, x = 0, s = 0, ACB = 1, ABC = 1, CAB = 2, BAC = 1, BCA = 1}  #no cyc & C=plurwinr
+       {CBA = 0, x = 0, s = 0, CAB = 2, BAC = 1, BCA = 1, ACB = 0, ABC = 2}  #C is plur winner
+
+<table bgcolor="yellow" cellpadding="5" border="1" align="center">
+<caption> 
+Simplest nonmonotonic scenario of Ireland 1990 type.
+</caption>
+<tr><th> #voters (before; C wins) </th><th> Their Vote </th><th> #voters (after; A wins) </th></tr>
+<tr align="center"><td> 5 </td><td> C>A>B </td><td> 5 </td></tr>
+<tr align="center"><td> 0 </td><td> C>B>A </td><td> 0 </td></tr>
+<tr align="center"><td> 0 </td><td> B>A>C </td><td> 2 </td></tr>
+<tr align="center"><td> 4 </td><td> B>C>A </td><td> 4 </td></tr>
+<tr align="center"><td> 8 </td><td> A>B>C </td><td> 6 </td></tr>
+<tr align="center"><td> 0 </td><td> A>C>B </td><td> 0 </td></tr>
+</table>
+-->
+
+<p>
+Adding in these new kinds of scenario would, of course, increase the counts.
+<!--But in the 17-voter case, only by a very tiny amount since this exampel is unique.  
+Maybe by a lot in the infinite voter case, though.-->
+By how much?
+</p>
+
+<p>
+Call the (old) kind of non-monotonicity, which we showed occurs
+1/(20.22&plusmn;0.01) of the time in the large #voters limit, 
+"loser now wins" non-monotonicity.
+The new kind is "winner now loses" non-monotonicity.
+A quick Monte-Carlo experiment 
+indicates
+it occurs 1/(8.2&plusmn;0.07) of the time in the same limit.
+The <b>total</b> is 
+<b>1/(5.83&plusmn;0.07)</b>
+of the time.
+</p>
+
+<!-- MAPLE
+with(stats):
+for NNL from 2 to 6 do
+NN := 6*10^NNL;
+ct := 0;
+for i from 1 to NN do
+   ABC := stats[random, normald](1) + 10;
+   ACB := stats[random, normald](1) + 10;
+   BAC := stats[random, normald](1) + 10;
+   BCA := stats[random, normald](1) + 10;
+   CAB := stats[random, normald](1) + 10;
+   CBA := stats[random, normald](1) + 10;
+   x := ACB:
+   if (x>0 and
+ CAB+CBA > BAC+BCA and   #B elimd in original election
+ ABC+ACB > BAC+BCA and   #B elimd in original election
+ CAB+CBA+BCA > ABC+ACB+BAC and   #C wins original IRV election
+ ABC+ACB-x < BAC+BCA and    #after x votes moved from A to C then A elimd
+ ABC+BCA+BAC > CAB+CBA+ACB   #at which point B wins the new IRV election
+   ) then
+     ct := ct+1:
+   fi;
+od;
+print(ct, " out of ", NN, " winner now loses LA-style CAB nonmonos.");
+od;
+
+New debugged with 10 offset:
+                  12, " out of ", 600, " winner now loses LA-style CAB nonmonos."
+                 126, " out of ", 6000, " winner now loses LA-style CAB nonmonos."
+                1279, " out of ", 60000, " winner now loses LA-style CAB nonmonos."
+               12133, " out of ", 600000, " winner now loses LA-style CAB nonmonos."
+totl (12.20 +- 0.10)%
+-->
+
+
+<H3> References </H3>
+<p>
+Kazuhiko Aomoto:
+Analytic structure of Schl&auml;fli function,
+Nagoya Math. J.  68 (1977) 1-16.
+</p>
+
+<p>
+H.S.M. Coxeter:
+The functions of Schl&auml;fli and Lobatschefsky,
+Quarterly Journal of of Mathematics (Oxford) 6 (1935) 13-29;
+reprinted in his
+<i>Twelve Geometric Essays</i>, Southern Illinois University Press 1968.
+</p>
+
+<p>
+H. Kneser: Der Simplexinhalt in der nichteuklidischen Geometrie, Deutsche Math. 1 (1936) 337-340.
+</p>
+
+<p>
+L. Lewin: Polylogarithms and Associated Functions, New York: North-Holland, 1981.
+</p>
+
+<p>
+John Milnor:
+The Schl&auml;fli
+differential equality, 
+in John Milnor Collected Papers Volume 1, Geometry, 
+281-295, Publish or Perish, Inc., Houston and Texas, 1994. 
+
+<p>
+Jun Murakami and Masakazu Yano:
+<a href="http://www.f.waseda.jp/murakami/papers/tetrahedronrev3.pdf">On 
+the volume of a hyperbolic and spherical tetrahedron</a>,
+Commun. Analytic Geometry 13,2 (2005) 379-400.
+(I found this on 
+<a href="http://www.f.waseda.jp/murakami/">Murakami's web page</a>.)
+See also 
+<a href="http://arxiv.org/abs/math/0402087">this</a>,
+<a href="http://arxiv.org/abs/math/0309187">this</a>,
+and
+<a href="http://arxiv.org/abs/math/0309216">this</a>.
+</p>
+
+<p>
+<a href="IRVStratPf.html">Similar analysis but about "favorite betrayal"
+rather than "non-monotonicity."</a>
+</p>
+
+<p>
+<a href="Monotone.html">Web page about IRV non-monotonicity.</a>
+</p>
+
+<p><b><strike>Open</strike> Solved! question:</b>
+What happens (in the infinite-voter case) if the number C of candidates tends
+to infinity?  What then is the probability of IRV monotonicity failure?
+</p>
+<p>
+Old answer: I do not know, but suspect it tends to 100%.
+(My "basis" for that belief is it is probably 0% or 100% and it ought to increase
+with C, hence is not 0%.)
+</p>
+<p>
+New answer: proved by the Quas-Smith theorem <a href="Monotone.html">here</a>.
+</p>
+<!--
+D. A. Derevnin and A. D. Mednykh:
+A formula for the volume of a hyperbolic tetrahedron,
+Russian Math. Surveys 60,2 (2005) 346-348. -->
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+

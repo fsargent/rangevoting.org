@@ -1,0 +1,485 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Peru 2006 election - a failure of runoff
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h1> The 2006 election in Peru: </h1>
+<h3> Thwarted-majority, non-monotonicity, and "no-show" pathologies </h3>
+
+<p>
+<a href="Peru06Exec.html">(Executive summary)</a>
+</p>
+
+<p>
+This election is an apparent real-world example of the <i>failure</i>
+of the plurality+runoff
+system and presumably also of the <a href="rangeVirv.html">IRV </a> (instant runoff) system.
+The actual election was plurality with a second runoff election among the top two if
+nobody got a majority (over 50%) in the first election.
+[Voting is mandatory in Peru; you are fined if you don't.]
+But the delayed and instant runoff systems happen to be <i>mathematically equivalent</i>
+if the voters are consistent between rounds and
+if there are &le;3 candidates.
+</p>
+<p>
+Actually there were 20 candidates but 
+it is <i>approximately</i> true there were only three since candidates 4-20 got a lot
+fewer votes than the top three.
+Instant and delayed runoff, in this case, therefore were <i>approximately</i> equivalent
+(and exactly equivalent if the voters for candidates 4-20 felt the same about
+candidates 1-3 relative to each other, as the 1-3 voters felt).
+</p>
+
+<p>
+Pre-election polls consistently showed that
+<i>one candidate (Flores) was pairwise-preferred over each of the other
+two frontrunners</i>.  Specifically, pollees asked about a head-to-head contest
+(hypothetical second round)
+indicated they preferred Flores&gt;Humala by about a 55-to-45 margin,
+and Humala&gt;Garcia,
+by a slight margin (or some sources instead had Garcia&gt;Humala by a slight margin, 
+e.g. from the <a href="http://www.miami.com/mld/miamiherald/14305460.htm">Miami Herald</a>
+of 10 Apr 2006:
+"Pre-election polls had shown that Flores would be favored over Humala to replace
+outgoing President Alejandro Toledo, who cannot succeed himself. But Garcia
+had little or no advantage against Humala in the pre-election polls.")
+<!-- Leftist leading Round 1 of vote in Peru
+BY TYLER BRIDGES
+tbridges@MiamiHerald.com
+Mon, Apr. 10, 2006
+-->
+The last polls before the
+election, by 
+<a  href="http://www.cpi.com.pe/">Compania Peruana de Estudios de Mercado y Opinion Publica S.A.C. (CPI)</a> on 27-31 March
+and independently by
+Apoyo (see <i>El Comercio</i> 2 de abril del 2006) both
+showed that Flores would win a runoff against either Humala
+(55.1%-44.9%) or Garcia by a whopping
+58.5%-41.5% based on 3896 people polled by CPI,
+and (55-45 and 58-42) based on those polled by Apoyo.
+Also
+Conecta, UL, PUCP, UAP, and UNI also, in their last polls before the election,  <i>all</i>
+found Lourdes Flores would have beaten or tied both of the others head-to-head,
+making in total <i>7 independently-done
+polls all reaching this same conclusion</i> during March 2006.
+<br>
+<small>
+(<a href="http://en.wikipedia.org/wiki/Opinion_polling_for_the_Peruvian_national_election%2C_2006">Wikipedia article surveying such polls, see table about "Hypothetical Runoff"</a>)
+(<a href="PeruPolls06.html">local copy</a>)
+</small>
+</p>
+<p>
+<small>
+And this would be compatible with the
+official vote table below if, e.g,
+those voters who voted for candidates 4-20 tended to prefer Lourdes Flores;
+<!-- http://stopthedrugwar.org/chronicle/431/humala.shtml 
+  http://weblogs.elearning.ubc.ca/peru/archives/025141.php
+New York Times:
+Flores, who topped polls only months ago, has played up her potential role 
+as Peru's first female leader in a country where women are perceived as more honest.
+Herald Sun News:http://www.heraldsun.news.com.au/common/story_page/0,5478,18836025%255E1702,00.html
+Pre-election polls showed Mr Humala would face a tight runoff against Mr Garcia. 
+If Mr Humala 
+were to face Ms Flores, the polls suggested she would win.
+-->
+it also would be compatible with it provided that, to quote the
+<a href="http://www.stratfor.com/products/premium/read_article.php?id=264623">Stratfor.com</a>
+analysis,
+"in a Flores-Humala contest, Flores would likely win a larger share of Garcia's
+supporters 
+than Garcia would gain among Flores' supporters."
+</small>
+<p>
+
+<p>
+<i>But</i>, Flores was eliminated in the first round!
+</p>
+
+<H3> Details </H3>
+<p>
+In the 9 April election,
+no single presidential ticket obtained more than half of the total valid votes,
+causing a runoff election (held 4 June 2006) between the two candidates with
+the most votes &ndash;
+Ollanta Humala and Alan Garcia.
+Garcia grabbed the second runoff spot by only a thin margin over
+Lourdes Flores, causing her to concede defeat only reluctantly.
+(E.g, her margin of defeat was 8 times smaller than the number of "invalid ballots.")
+Then in the runoff,
+Humala conceded defeat to
+Garcia when, with 77% of votes counted,
+he found himself behind 45.5% to 55.5%.
+(Although mathematically, victory was still possible
+at that point, Humala evidently felt his chances were microscopic.
+In my opinion, however, this concession decision by Humala was extremely unwise, because
+as the table of final results shows, the final score moved very substantially away from
+55.5-45.5, i.e. a <i>far</i> greater motion than any statistical analysis that assumed the 
+initial count was a random subsample of the final count, could
+consider probable.  Even though by the official tally Humala did indeed lose,
+the probability of such a huge motion under the random subsample
+assumption is <i>well</i> below 0.0000000000000001.)
+</p>
+
+<table bgcolor="yellow">
+<tr  bgcolor="aqua">
+<th></th>
+<th align="left" valign="top">Candidates - Parties</th>
+<th align="center">Votes 1st round</th>
+<th align="center">% of valid votes</th>
+<th align="center">Votes 2nd round</th>
+<th align="center">% of valid votes</th>
+</tr>
+<tr bgcolor="#ffff7e"><td>1</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Ollanta_Humala" title="Ollanta Humala">Ollanta Humala Tasso</a> - <a href="http://en.wikipedia.org/wiki/Union_for_Peru" title="Union for Peru">Union for Peru</a> </td>
+<td valign="top" align="right" bgcolor="pink">3758258</td>
+<td valign="top" align="right" bgcolor="pink">30.616</td>
+<td valign="top" align="right">6270080</td>
+<td valign="top" align="right">47.375</td>
+</tr> 
+<tr bgcolor="#ffff7e"><td>2</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Alan_Garc%C3%ADa">Alan Garcia Perez</a> - <a href="http://en.wikipedia.org/wiki/American_Popular_Revolutionary_Alliance">Peruvian Aprista Party</a> </td>
+<td valign="top" align="right" bgcolor="pink">2985858</td>
+<td valign="top" align="right" bgcolor="pink">24.324</td>
+<td valign="top" align="right" bgcolor="pink">6965017</td>
+<td valign="top" align="right" bgcolor="pink"><b>52.625</b></td>
+</tr>
+<tr bgcolor="#ffff7e"><td>3</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Lourdes_Flores" title="Lourdes Flores">Lourdes Flores Nano</a> - <a href="http://en.wikipedia.org/wiki/National_Unity_%28Peru%29" title="National Unity (Peru)">National Unity</a> </td>
+<td valign="top" align="right">2923280</td>
+<td valign="top" align="right">23.814</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>4</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Martha_Ch%C3%A1vez" title="Martha Chávez">Martha Chavez Cossio</a> - <a href="http://en.wikipedia.org/wiki/Alliance_for_the_Future_%28Peru%29" title="Alliance for the Future (Peru)">Alliance for the Future</a> </td>
+<td valign="top" align="right">912420</td>
+<td valign="top" align="right">7.433</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>5</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Valent%C3%ADn_Paniagua"">Valentin Paniagua Corazao</a> - <a href="http://en.wikipedia.org/wiki/Center_Front" title="Center Front">Center Front</a> </td>
+<td valign="top" align="right">706156</td>
+<td valign="top" align="right">5.753</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>6</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Humberto_Lay_Sun" title="Humberto Lay Sun">Humberto Lay Sun</a> - <a href="http://en.wikipedia.org/wiki/National_Restoration" title="National Restoration">National Restoration</a> </td>
+<td valign="top" align="right">537564</td>
+<td valign="top" align="right">4.379</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>7</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Susana_Villar%C3%A1n">Susana Villaran</a> - <a href="http://en.wikipedia.org/wiki/Concertaci%C3%B3n_Descentralista" title="Concertación Descentralista">Decentralist Concertation</a> </td>
+<td valign="top" align="right">76105</td>
+<td valign="top" align="right">0.620</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>8</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Jaime_Salinas" title="Jaime Salinas">Jaime Salinas</a> - <a href="http://en.wikipedia.org/wiki/Justicia_Nacional" title="Justicia Nacional">National Justice</a> </td>
+<td valign="top" align="right">65636</td>
+<td valign="top" align="right">0.535</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>9</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Javier_Diez_Canseco" title="Javier Diez Canseco">Javier Diez Canseco</a> - <a href="http://en.wikipedia.org/wiki/Socialist_Party_of_Peru" title="Socialist Party of Peru">Socialist Party</a> </td>
+<td valign="top" align="right">60955</td>
+<td valign="top" align="right">0.497</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>10</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Natale_Amprimo" title="Natale Amprimo">Natale Amprimo</a> - <a href="http://en.wikipedia.org/wiki/Alliance_for_Progress_%28Peru%29" title="Alliance for Progress (Peru)">Alliance for Progress</a> </td>
+<td valign="top" align="right">49332</td>
+<td valign="top" align="right">0.402</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>11</td>
+<td align="left" valign="top"><a href="http://en.wikipedia.org/wiki/Pedro_Koechlin_Von_Stein" title="Pedro Koechlin Von Stein">Pedro Koechlin Von Stein</a> - <a href="http://en.wikipedia.org/wiki/With_Force_Peru" title="With Force Peru">With Force Peru</a> </td>
+<td valign="top" align="right">38212</td>
+<td valign="top" align="right">0.311</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>12</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Alberto_Moreno" title="Alberto Moreno">Alberto Moreno</a> - <a href="http://en.wikipedia.org/wiki/New_Left_Movement_%28Peru%29" title="New Left Movement (Peru)">New Left Movement</a> </td>
+<td valign="top" align="right">33918</td>
+<td valign="top" align="right">0.276</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>13</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Alberto_Borea" title="Alberto Borea">Alberto Borea</a> - <a href="http://en.wikipedia.org/wiki/Democratic_Force" title="Democratic Force">Democratic Force</a> </td>
+<td valign="top" align="right">24584</td>
+<td valign="top" align="right">0.200</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>14</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Ulises_Humala" title="Ulises Humala">Ulises Humala</a> - <a href="http://en.wikipedia.org/wiki/Avanza_Pa%C3%ADs" title="Avanza País">Go On Country</a> </td>
+<td valign="top" align="right">24518</td>
+<td valign="top" align="right">0.200</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>15</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Ciro_G%C3%A1lvez">Ciro Galvez</a> - <a href="http://en.wikipedia.org/wiki/Andean_Renaissance" title="Andean Renaissance">Andean Renaissance</a> </td>
+<td valign="top" align="right">22892</td>
+<td valign="top" align="right">0.186</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>16</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Javier_Espinoza" title="Javier Espinoza">Javier Espinoza</a> - <a href="http://en.wikipedia.org/wiki/Progresemos_Per%C3%BA" title="Progresemos Perú">Let's Make Progress Peru</a> </td>
+<td valign="top" align="right">13965</td>
+<td valign="top" align="right">0.114</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>17</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Jos%C3%A9_Card%C3%B3_Guarderas">Jose Cardo Guarderas</a> - <a href="http://en.wikipedia.org/wiki/Democratic_Reconstruction">Democ'c Reconstruction</a> </td>
+<td valign="top" align="right">11925</td>
+<td valign="top" align="right">0.097</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>18</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/%C3%81ntero_Asto">Antero Asto</a> - <a href="http://en.wikipedia.org/wiki/Resurgimiento_Peruano">Peruvian Resurgence</a> </td>
+<td valign="top" align="right">10857</td>
+<td valign="top" align="right">0.088</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>19</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Ricardo_Wong" title="Ricardo Wong">Ricardo Wong</a> - <a href="http://en.wikipedia.org/wiki/And_It%27s_Called_Peru" title="And It's Called Peru">And It's Called Peru</a> </td>
+<td valign="top" align="right">10539</td>
+<td valign="top" align="right">0.086</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr><td>20</td>
+<td align="left" valign="top"> <a href="http://en.wikipedia.org/wiki/Luis_Guerrero" title="Luis Guerrero">Luis Guerrero</a> - <a href="http://en.wikipedia.org/wiki/Per%C3%BA_Ahora" title="Perú Ahora">Peru Now</a> </td>
+<td valign="top" align="right">8410</td>
+<td valign="top" align="right">0.069</td>
+<td valign="top" align="right">-</td>
+<td valign="top" align="right">-</td>
+</tr>
+<tr bgcolor="aqua">
+<td align="left" colspan="2">Total valid (Turnout: 1st Round 88.7% Runoff 87.7%)</td>
+<td width="75" align="center" ><b>12275384</b></td>
+<td width="30" align="center" ><b>100</b></td>
+<td width="75" align="center" ><b>13235097</b></td>
+<td width="30" align="center" ><b>100</b></td>
+</tr>
+<tr><td></td>
+<td align="left" valign="top">Blank</td>
+<td valign="top" align="right">1737045</td>
+<td valign="top" align="right">11.872</td>
+<td valign="top" align="right">157863</td>
+<td valign="top" align="right">1.091</td>
+</tr>
+<tr><td></td>
+<td align="left" valign="top">Invalid</td>
+<td valign="top" align="right">619574</td>
+<td valign="top" align="right">4.234</td>
+<td valign="top" align="right">1075089</td>
+<td valign="top" align="right">7.431</td>
+</tr>
+<tr bgcolor="pink">
+<td align="center" colspan="7"><b>2006 Peru Election.  &nbsp; Source:</b>  Peru
+<a href="http://www.elecciones2006.onpe.gob.pe/">National Office of Electoral Processes</a>.</td>
+</tr>
+</table>
+
+<a name="anal">
+<H3> Analysis </H3>
+
+<p>
+How could it be that the candidate pairwise-preferred over all others could lose &ndash; 
+indeed lose in the <i>first</i> IRV voting round?!?
+This can easily happen (and in Peru 2006, apparently did) as follows.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr> 
+<td align="center"> 35 </td>
+<td> Left>Center>Right </td>
+</tr>
+<tr> 
+<td align="center"> 14 </td>
+<td> Center>Left>Right </td>
+</tr>
+<tr> 
+<td align="center"> 17 </td>
+<td> Center>Right>Left </td>
+</tr>
+<tr> 
+<td align="center"> 34 </td>
+<td> Right>Center>Left </td>
+</tr>
+</table>
+
+<p>
+In this 3-candidate 100-voter example IRV election by Jan Kok,
+"Center" is eliminated in the <i>first</i> round,
+and then, under the rules of the Instant (or delayed) Runoff System, Right ends up
+with 34+17=51 ballots (a majority) to beat Left and win.
+This happens even though the electorate prefers Center>Left by 65-to-35
+and prefers Center>Right by 66-to-34, i.e. in both cases by nearly a 2-to-1 margin!
+</p>
+
+<p>
+So don't believe IRV advocates who claim that they have never heard of any real 
+IRV election in which 
+pathologies occur, because that sort of thing is "incredibly rare."
+Nonsense.
+<small> 
+<b>Caveat:</b> Greg Dennis points out (correctly) that we do not really know IRV would not have elected
+Flores in Peru, because the 21% of the voters for candidates 4-20 might conceivably
+have voted differently about the top 3 than the other 79% of the voters &ndash;
+and differently-enough that they would have caused Flores to be the IRV winner.
+</small>
+</p>
+
+<p>
+The simplest scenario of this type is
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr> 
+<td align="center"> 2 </td>
+<td> C>A>B </td>
+</tr>
+<tr> 
+<td align="center"> 2 </td>
+<td> B>A>C </td>
+</tr>
+<tr> 
+<td align="center"> 1 </td>
+<td> A>B>C  </td>
+</tr>
+</table>
+<p>
+in which A is the <a href="Glossary.html">Condorcet winner</a>
+but is eliminated in the first <a href="rangeVirv.html">Instant Runoff Voting (IRV)</a>
+round.
+
+<H3> Did this affect the candidates' strategies? </H3>
+
+<p>
+You bet it did!
+As the election approached,
+Garcia and Humala both realized Flores was the one Peru wanted, and both realized 
+the only way for them to win was to eliminate her in the first round &ndash; precisely the
+way that it happened.  They then
+both ran anti-Flores negative ads designed to try to make that
+happen.
+</p>
+
+<p>
+<small>
+IRV advocates sometimes claim that IRV will reduce "negative campaigning."
+We do not know if that claim is true.  But we know it wasn't true in Peru 2006!
+</small></p>
+
+<H3> Would this affect voters' strategies? </H3>
+
+<p>
+Yes!
+In this kind of scenario, if the Humala voters knew what was going to happen
+(and preferred Flores as the lesser evil over Garcia)
+then they would have been better off dishonestly ranking <i>Flores</i> top
+and <i>betraying</i> their true favorite Humala.
+That betrayal (in the runoff or <a href="rangeVirv.html">IRV</a>
+systems) would then cause Flores to win
+over the hated Garcia.
+</p>
+
+<p>
+<small>
+Further, if we were (and Peru was) using <i>two round</i> runoff not "instant" runoff,
+then this works even better:
+the Humala voters could have just ranked Flores dishonestly top in the
+<i>first</I> round.  That way, they are totally protected:  if Humala makes it
+to the second round, they can always vote Humala in that round and still have 
+their chance to elect him, whereas if not, then they are happy because Flores will
+not allow Garcia to win.
+</small>
+</p>
+
+<p>
+So don't ever believe IRV advocates when they tell you that IRV solves the "spoiler"
+problem and allows every voter to vote their honest favorite top without fear this will
+"waste their vote" causing the "greater evil" to win.
+Range voting solves that problem; IRV doesn't.  Somebody ought
+to tell <a href="CobbIRVWrong.html">David Cobb</a> that.
+</p>
+
+<H3> Peru 2006 also exhibited "<a href="Monotone.html">nonmonotonicity</a>" </H3>
+
+<p>
+"Humala>Flores>Garcia" voters would have been better off dishonestly
+voting their favorite Humala "worst"
+(i.e. "Flores>Garcia>Humala") because that would have improved the election result for them,
+making Flores win.
+</p>
+<p>
+But it gets crazier: there is in fact a severe form of "nonmonotonicity."
+Suppose they'd actually not only voted their true-favorite as "worst," but <i>also</i>
+they'd voted their truly-most-hated Garcia artificially "best"!
+I.e: "Garcia>Flores>Humala."
+If just 63000 had done that (apparently trying to help Garcia)
+that act of voting for Garcia would have <i>stopped</I> Garcia from winning
+and made Flores win.
+</p><P>
+This maximally-dishonest vote ought to (if things acted logically) 
+be a suicidal move influencing
+things in the worst possible way.  But it isn't &ndash; it's a good strategy which
+improves the election result, while voting honestly is a bad strategy.
+</p>
+
+<H3> Peru 2006 also exhibited "participation failure," a.k.a. "no-show paradox" </H3>
+
+<p>
+"Humala>Flores>Garcia" voters would have been better off if
+about 60000 did not vote at all.
+</p>
+
+<p>
+<small>
+I thank Jan Kok and Rob LeGrand for  pointing this all out; and Rob LeGrand's brother
+who was living in Peru at the time.
+</small>
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

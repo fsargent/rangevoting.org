@@ -1,0 +1,910 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Computer results about the "victimization" criticism of Range Voting vs Approval
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2> When are Honest Range Voters victimized by Strategic ones? </h2>
+
+<p>
+It has been suggested to us
+(we <a href="rangeVapp.html">do not agree</a>, but the case can be made)
+that <a href="Approval.html">approval voting</a>
+is a superior voting system to 
+<a href="Approval.html">range voting</a>.
+<small>
+Well first of all, Approval is simpler.  However, we are here focusing not on
+simplicity but on <i>inherent</i> voting system <i>quality</i>.
+</small>
+Why?  Because honest range voters can be "victimized" by strategic ones who "exaggerate"
+their opinions to get more power, ranking candidates artificially 0 or 99 rather than
+honest scores like 23.  In contrast, with approval, to a rough approximation
+(<small>but <a href="RVstrat2.html">only</a> approximately since honest and strategic approval
+voting are <i>not</i> exactly the same thing</small>), all voters are "forced"
+to be strategic, approximately getting rid of this inequality.  So that is
+why approval is supposed to be better.
+</p>
+<p>
+There are many responses to that criticism of range voting. 
+We won't discuss them fully here.
+We'll only focus on a few.
+The <b>"moral" response</b> is the honest range voters were not "victimized" because
+they <i>voluntarily chose</i> not to exaggerate in order to help society, or because they did not
+consider it worth it, or for whatever reason.
+(The exaggeration strategy is so obvious that few if any voters would be too stupid to
+conceive of it, so it was a full-knowledge, voluntary choice.)  
+Or (another flavor) those voters shouldn't complain because evidently their
+feelings that candidate A was better than B were not very intense if
+they voted A=51, B=50, so they didn't exactly suffer catastrophically from B's victory.
+</p>
+<p>
+But some critics are unhappy with that response.
+E.g. maybe it isn't as "obvious" as I think.
+</p>
+The <b>"happier society" response</b>
+is that this "victimization" does not matter,
+because, <i>society-wide</i>, everybody, on average, ends up happier with range voting,
+even though the strategic-voter group can end up relatively happier
+than the honest-voting group.  That's because the good effect on decision quality
+that range voting gets from having better-quality information, is enough to outweigh
+any bad effects of this sort.
+We will demonstrate that is true, by computer
+simulation below.
+</p>
+<p>
+But some attackers feel that response is inadequate.
+They vaguely feel that society being happier is not good enough. They also want "fairness."
+They feel a system which allows the tactically stupid, or more honest and less strategic
+voters, to suffer a relative disadvantage, is bad.  Of course, such voters
+suffer such a relative disadvantage in essentially <a href="GibbSat.html">every</a>
+voting system, but our critics are vaguely unsatisfied with that response too, feeling
+that somehow range voting is worse in this respect than some other systems.
+</p>
+<p>
+That leads us to the <b>"not really victimized"</b> response.
+Again we fire up our computer election simulators.
+This time, we evaluate the social utility of the election results we get from
+range and approval voting <i>not</i> for all society, but instead <i>only</i> for
+the honest-voter subset of society.  The point is to see whether and when the
+honest voters really are victimized by the combination of range-voting rules
+plus nasty exaggerator voters.
+They are victimized if their average utility is made worse by range voting rules
+than it would have been under approval voting rules.
+</p>
+<p>
+Our computer sims find that it depends how many strategic voters there are
+and how many honest ones there are.  (Our simulation simplistically assumes
+that all the voters
+are either 100% honest or 100% maximally-exaggerating.)
+"Victimization" in this relative sense indeed does occur, but only if the fraction
+of strategic voters is sufficiently large.  (You can see from our tables below just how large.)
+In other words, the "not really victimized" defense is often, but not always, valid.
+But remember, even in the region where victimization does occur, society overall is 
+still better off.
+</p>
+
+<h2> The "happier society" response </h2>
+
+<p><small> 
+(Also you can see our
+<a href="StratHonMix.html">other computer sims</a>.)
+</small></p>
+
+<p>
+Below table shows summed utility difference (util for range minus util for approval)
+summed for <i>all</i> the voters when the first <i>t</i> voters strategize (rest honest),
+for 100-voter elections with 2 to 10 candidates.
+All utilities of candidates for voters are independent standard normal random deviates
+(the <a href="RandElect.html">simplest possible</a> utility generator, 
+not claimed to be especially politically realistic, but we doubt that matters much for
+the present purposes).
+Each data point is based on 350000 elections, which is not infinity, so we get some noise.
+Note that <i>every</i> table entry is <i>positive</i>, indicating range is a superior
+voting system to approval from the point of view of <i>society-wide</i> utility
+(i.e. averaged over all voters, i.e. <i>both</i> the honest and strategic ones) at <i>all</i>
+simulation parameters here.  
+The exceptions to that statement are the 2-candidate column and
+100% strategic row.
+In the 2-candidate case honest <a href="Glossary.html#normalized">normalized</a>
+range votes and approval votes
+are the same thing ("normalized" means rescaled so each voter's favorite candidate is
+scored MAX possible while her most-hated candidate scored MIN possible),
+and in the 100% strategic case range and approval also are the
+same thing at least as far as this simulation is concerned &ndash;
+so the first  column and last row, shown pink,
+consist entirely of zero-centered random noise.  They are only useful
+as a "noise-level gauge."
+</p>
+
+<table cellspacing="2" cellpadding="2" bgcolor="#eeffdd">
+<tr><th>%strat</th> <th colspan="9">Number of candidates</th></tr>
+<tr><th>voters</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+<tr><td> 0% </td><td bgcolor="pink"> 0.014 </td>
+<td>  0.338 </td>
+<td>  0.880 </td>
+<td>  1.311 </td>
+<td>  1.608 </td>
+<td>  1.858 </td>
+<td>  2.089 </td>
+<td>  2.272 </td>
+<td>  2.411 </td>
+</tr>
+<tr><td> 5% </td><td bgcolor="pink"> -0.016 </td>
+<td>  0.337 </td>
+<td>  0.840 </td>
+<td>  1.177 </td>
+<td>  1.427 </td>
+<td>  1.672 </td>
+<td>  1.834 </td>
+<td>  1.984 </td>
+<td>  2.132 </td>
+</tr>
+<tr><td> 10% </td><td bgcolor="pink">  0.023 </td>
+<td>  0.312 </td>
+<td>  0.774 </td>
+<td>  1.063 </td>
+<td>  1.332 </td>
+<td>  1.491 </td>
+<td>  1.617 </td>
+<td>  1.721 </td>
+<td>  1.849 </td>
+</tr>
+<tr><td> 15% </td><td bgcolor="pink"> -0.024 </td>
+<td>  0.282 </td>
+<td>  0.716 </td>
+<td>  0.997 </td>
+<td>  1.155 </td>
+<td>  1.369 </td>
+<td>  1.444 </td>
+<td>  1.513 </td>
+<td>  1.617 </td>
+</tr>
+<tr><td> 20% </td><td bgcolor="pink"> -0.013 </td>
+<td>  0.238 </td>
+<td>  0.651 </td>
+<td>  0.895 </td>
+<td>  1.063 </td>
+<td>  1.208 </td>
+<td>  1.291 </td>
+<td>  1.369 </td>
+<td>  1.423 </td>
+</tr>
+<tr><td> 25% </td><td bgcolor="pink">  0.015 </td>
+<td>  0.231 </td>
+<td>  0.582 </td>
+<td>  0.792 </td>
+<td>  0.970 </td>
+<td>  1.069 </td>
+<td>  1.116 </td>
+<td>  1.221 </td>
+<td>  1.230 </td>
+</tr>
+<tr><td> 30% </td><td bgcolor="pink"> 0.027 </td>
+<td>  0.225 </td>
+<td>  0.536 </td>
+<td>  0.712 </td>
+<td>  0.853 </td>
+<td>  0.984 </td>
+<td>  1.010 </td>
+<td>  1.040 </td>
+<td>  1.070 </td>
+</tr>
+<tr><td> 35% </td><td bgcolor="pink"> 0.020 </td>
+<td>  0.209 </td>
+<td>  0.479 </td>
+<td>  0.641 </td>
+<td>  0.758 </td>
+<td>  0.826 </td>
+<td>  0.883 </td>
+<td>  0.912 </td>
+<td>  0.909 </td>
+</tr>
+<tr><td> 40% </td><td bgcolor="pink"> 0.004 </td>
+<td>  0.168 </td>
+<td>  0.447 </td>
+<td>  0.600 </td>
+<td>  0.692 </td>
+<td>  0.748 </td>
+<td>  0.750 </td>
+<td>  0.820 </td>
+<td>  0.772 </td>
+</tr>
+<tr><td> 45% </td><td bgcolor="pink"> -0.012 </td>
+<td>  0.184 </td>
+<td>  0.416 </td>
+<td>  0.532 </td>
+<td>  0.599 </td>
+<td>  0.651 </td>
+<td>  0.670 </td>
+<td>  0.677 </td>
+<td>  0.667 </td>
+</tr>
+<tr><td> 50% </td><td bgcolor="pink"> -0.006 </td>
+<td>  0.174 </td>
+<td>  0.341 </td>
+<td>  0.463 </td>
+<td>  0.539 </td>
+<td>  0.575 </td>
+<td>  0.547 </td>
+<td>  0.572 </td>
+<td>  0.587 </td>
+</tr>
+<tr><td> 55% </td><td bgcolor="pink"> -0.000 </td>
+<td>  0.162 </td>
+<td>  0.309 </td>
+<td>  0.394 </td>
+<td>  0.489 </td>
+<td>  0.449 </td>
+<td>  0.471 </td>
+<td>  0.517 </td>
+<td>  0.513 </td>
+</tr>
+<tr><td> 60% </td><td bgcolor="pink"> 0.006 </td>
+<td>  0.107 </td>
+<td>  0.284 </td>
+<td>  0.344 </td>
+<td>  0.394 </td>
+<td>  0.420 </td>
+<td>  0.394 </td>
+<td>  0.389 </td>
+<td>  0.412 </td>
+</tr>
+<tr><td> 65% </td><td bgcolor="pink"> -0.008 </td>
+<td>  0.117 </td>
+<td>  0.252 </td>
+<td>  0.275 </td>
+<td>  0.330 </td>
+<td>  0.335 </td>
+<td>  0.356 </td>
+<td>  0.327 </td>
+<td>  0.331 </td>
+</tr>
+<tr><td> 70% </td><td bgcolor="pink"> 0.023 </td>
+<td>  0.100 </td>
+<td>  0.160 </td>
+<td>  0.263 </td>
+<td>  0.252 </td>
+<td>  0.267 </td>
+<td>  0.307 </td>
+<td>  0.338 </td>
+<td>  0.250 </td>
+</tr>
+<tr><td> 75% </td><td bgcolor="pink">  -0.029 </td>
+<td>  0.072 </td>
+<td>  0.136 </td>
+<td>  0.212 </td>
+<td>  0.270 </td>
+<td>  0.237 </td>
+<td>  0.212 </td>
+<td>  0.247 </td>
+<td>  0.207 </td>
+</tr>
+<tr><td> 80% </td><td bgcolor="pink"> 0.009 </td>
+<td>  0.047 </td>
+<td>  0.144 </td>
+<td>  0.193 </td>
+<td>  0.187 </td>
+<td>  0.190 </td>
+<td>  0.175 </td>
+<td>  0.201 </td>
+<td>  0.161 </td>
+</tr>
+<tr><td> 85% </td><td bgcolor="pink">  -0.018 </td>
+<td>  0.063 </td>
+<td>  0.082 </td>
+<td>  0.122 </td>
+<td>  0.125 </td>
+<td>  0.160 </td>
+<td>  0.156 </td>
+<td>  0.101 </td>
+<td>  0.127 </td>
+</tr>
+<tr><td> 90% </td><td bgcolor="pink"> 0.006 </td>
+<td>  0.016 </td>
+<td>  0.091 </td>
+<td>  0.077 </td>
+<td>  0.085 </td>
+<td>  0.094 </td>
+<td>  0.096 </td>
+<td>  0.108 </td>
+<td>  0.089 </td>
+</tr>
+<tr><td> 95% </td><td bgcolor="pink">  -0.005 </td>
+<td>  0.025 </td>
+<td>  0.050 </td>
+<td>  0.053 </td>
+<td>  0.055 </td>
+<td>  0.037 </td>
+<td>  0.085 </td>
+<td>  0.036 </td>
+<td>  0.061 </td>
+</tr>
+<tr><td> 100% </td><td bgcolor="pink"> 0.048 </td>
+<td bgcolor="pink"> 0.009 </td>
+<td bgcolor="pink"> -0.011 </td>
+<td bgcolor="pink"> -0.014 </td>
+<td bgcolor="pink"> 0.016 </td>
+<td bgcolor="pink"> 0.039 </td>
+<td bgcolor="pink"> 0.004 </td>
+<td bgcolor="pink"> -0.016 </td>
+<td bgcolor="pink"> -0.013 </td>
+</tr>
+</table>
+
+
+<p>
+In summary, up to a small amount of
+statistical noise that should go away if we devote enough computer time to this,
+the "happier society" response seems completely valid.
+</p>
+
+<h2> The "not really victimized" response </h2>
+<p>
+Below table shows summed utility difference (util for approval minus util for range)
+for the <i>100-t</i> honest normalized-range-voters 
+<i>only</i> (the other <i>t</i> are strategic),
+for 100-voter elections with 2 to 10 candidates.
+The "strategic" voters are using mean-candidate-utility
+as an approval-theshhold, because that is the 
+<a href="RVstrat3.html">best strategy we know of</a> for 100-voter elections.
+Each data point is based on 350000 elections,
+which is not infinity so we get some noise.
+Nevertheless the noise is small enough that the <i>boundary</i> (shown <b>bold</b>) between the
+honest-voters-prefer-range and
+honest-voters-prefer-approval regions is now becoming visible.
+(The former region has negative entries, the latter positive.)
+There <i>isn't</i> any boundary in the 2-candidate case, though.
+That's because in the 2-candidate case, honest normalized range voters and approval voters
+are the same thing.  So the 2-candidate column, shown pink, is just entirely random noise equally
+likely to be positive or negative.  The limit as we approach 100% strategic voters
+(last row) would also be random noise.
+</p>
+<p>
+We find that with mostly honest voters, range is better than approval (for the honest voters)
+utility-wise.   That's not surprising since range seems obviously a 
+better voting system than approval if there is a lot of voter honesty.
+Then as we increase the strategic-voter percentage, at some point this
+flips, and now the honest voters prefer approval over range so that they
+do not get "victimized" by the
+strategic voters.  That also makes sense.  
+</p>
+<p>
+Note that a substantial region of this table is negative
+(i.e. range better in everybody's view).
+That fact would have to be the basis for any "not really victimized" defense.
+It appears this defense has some, albeit not a huge amount of, validity;
+and it has more validity if there are 3 or 4 candidates, than if there are 10.
+</p>
+
+<table cellspacing="2" cellpadding="2" bgcolor="#ddffee">
+<tr><th>%strat</th> <th colspan="9">Number of candidates</th></tr>
+<tr><th>voters</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+<tr><td> 0% </td><td bgcolor="pink"> -0.043 </td>
+<td bgcolor="yellow"> -0.328 </td>
+<td bgcolor="yellow"> -0.903 </td>
+<td bgcolor="yellow"> -1.290 </td>
+<td bgcolor="yellow"> -1.649 </td>
+<td bgcolor="yellow"> -1.902 </td>
+<td bgcolor="yellow"> -2.092 </td>
+<td bgcolor="yellow"> -2.242 </td>
+<td bgcolor="yellow"> -2.405 </td>
+</tr>
+<tr><td> 5% </td><td bgcolor="pink"> -0.034 </td>
+<td bgcolor="yellow"> -0.327 </td>
+<td bgcolor="yellow"> -0.710 </td>
+<td bgcolor="yellow"> -1.059 </td>
+<td bgcolor="yellow"> -1.238 </td>
+<td bgcolor="yellow"> -1.440 </td>
+<td bgcolor="yellow"> -1.571 </td>
+<td bgcolor="yellow"> -1.662 </td>
+<td bgcolor="yellow"> -1.765 </td>
+</tr>
+<tr><td> 10% </td><td bgcolor="pink"> -0.008 </td>
+<td bgcolor="yellow"> -0.229 </td>
+<td bgcolor="yellow"> -0.568 </td>
+<td bgcolor="yellow"> -0.823 </td>
+<td bgcolor="yellow"> -0.961 </td>
+<td bgcolor="yellow"> -1.072 </td>
+<td bgcolor="yellow"> -1.125 </td>
+<td bgcolor="yellow"> -1.209 </td>
+<td bgcolor="yellow"> -1.213 </td>
+</tr>
+<tr><td> 15% </td><td bgcolor="pink"> 0.021 </td>
+<td bgcolor="yellow"> -0.189 </td>
+<td bgcolor="yellow"> -0.461 </td>
+<td bgcolor="yellow"> -0.609 </td>
+<td bgcolor="yellow"> -0.707 </td>
+<td bgcolor="yellow"> -0.738 </td>
+<td bgcolor="yellow"> -0.758 </td>
+<td bgcolor="yellow"> -0.795 </td>
+<td bgcolor="yellow"> -0.772 </td>
+</tr>
+<tr><td> 20% </td><td bgcolor="pink"> -0.015 </td>
+<td bgcolor="yellow"> -0.181 </td>
+<td bgcolor="yellow"> -0.363 </td>
+<td bgcolor="yellow"> -0.441 </td>
+<td bgcolor="yellow"> -0.466 </td>
+<td bgcolor="yellow"> -0.490 </td>
+<td bgcolor="yellow"> -0.460 </td>
+<td bgcolor="yellow"> -0.422 </td>
+<td bgcolor="yellow"> -0.390 </td>
+</tr>
+<tr><td> 25% </td><td bgcolor="pink"> 0.015 </td>
+<td bgcolor="yellow"> -0.108 </td>
+<td bgcolor="yellow"> -0.262 </td>
+<td bgcolor="yellow"> -0.293 </td>
+<td bgcolor="yellow"> -0.267 </td>
+<td bgcolor="yellow"> -0.229 </td>
+<td bgcolor="yellow"> -0.213 </td>
+<td bgcolor="#88ff88"> <b>-0.145</b> </td>
+<td bgcolor="#88ff88"> <b>-0.122</b> </td>
+</tr>
+<tr><td> 30% </td><td bgcolor="pink"> -0.018 </td>
+<td bgcolor="yellow"> -0.111 </td>
+<td bgcolor="yellow"> -0.153 </td>
+<td bgcolor="yellow"> -0.149 </td>
+<td bgcolor="yellow"> -0.109 </td>
+<td bgcolor="#88ff88"> <b>-0.032</b> </td>
+<td bgcolor="#88ff88"> <b>0.013</b> </td>
+<td bgcolor="#88ff88"> <b>0.099</b> </td>
+<td bgcolor="#88ff88"> <b>0.170</b> </td>
+</tr>
+<tr><td> 35% </td><td bgcolor="pink"> 0.021 </td>
+<td bgcolor="yellow"> -0.053 </td>
+<td bgcolor="yellow"> -0.068 </td>
+<td bgcolor="#88ff88"> <b>-0.033</b> </td>
+<td bgcolor="#88ff88"> <b>0.013</b> </td>
+<td> 0.080 </td>
+<td> 0.167 </td>
+<td> 0.273 </td>
+<td> 0.372 </td>
+</tr>
+<tr><td> 40% </td><td bgcolor="pink"> 0.031 </td>
+<td bgcolor="#88ff88"> <b>-0.024</b> </td>
+<td bgcolor="#88ff88"> <b>-0.030</b> </td>
+<td bgcolor="#88ff88"> <b>0.012</b> </td>
+<td> 0.125 </td>
+<td> 0.205 </td>
+<td> 0.320 </td>
+<td> 0.397 </td>
+<td> 0.515 </td>
+</tr>
+<tr><td> 45% </td><td bgcolor="pink"> 0.009 </td>
+<td bgcolor="#88ff88"> <b>0.012</b> </td>
+<td bgcolor="#88ff88"> <b>0.038</b> </td>
+<td> 0.071 </td>
+<td> 0.221 </td>
+<td> 0.276 </td>
+<td> 0.411 </td>
+<td> 0.501 </td>
+<td> 0.618 </td>
+</tr>
+<tr><td> 50% </td><td bgcolor="pink"> -0.015 </td>
+<td bgcolor="#88ff88"> <b>0.001</b> </td>
+<td> 0.061 </td>
+<td> 0.153 </td>
+<td> 0.264 </td>
+<td> 0.371 </td>
+<td> 0.487 </td>
+<td> 0.593 </td>
+<td> 0.655 </td>
+</tr>
+<tr><td> 55% </td><td bgcolor="pink"> 0.016 </td>
+<td> 0.083 </td>
+<td> 0.071 </td>
+<td> 0.213 </td>
+<td> 0.326 </td>
+<td> 0.423 </td>
+<td> 0.537 </td>
+<td> 0.612 </td>
+<td> 0.716 </td>
+</tr>
+<tr><td> 60% </td><td bgcolor="pink"> -0.017 </td>
+<td> 0.049 </td>
+<td> 0.128 </td>
+<td> 0.247 </td>
+<td> 0.311 </td>
+<td> 0.466 </td>
+<td> 0.552 </td>
+<td> 0.661 </td>
+<td> 0.736 </td>
+</tr>
+<tr><td> 65% </td><td bgcolor="pink"> 0.013 </td>
+<td> 0.027 </td>
+<td> 0.124 </td>
+<td> 0.235 </td>
+<td> 0.346 </td>
+<td> 0.453 </td>
+<td> 0.532 </td>
+<td> 0.611 </td>
+<td> 0.707 </td>
+</tr>
+<tr><td> 70% </td><td bgcolor="pink"> 0.007 </td>
+<td> 0.058 </td>
+<td> 0.115 </td>
+<td> 0.240 </td>
+<td> 0.339 </td>
+<td> 0.429 </td>
+<td> 0.525 </td>
+<td> 0.598 </td>
+<td> 0.652 </td>
+</tr>
+<tr><td> 75% </td><td bgcolor="pink"> -0.007 </td>
+<td> 0.043 </td>
+<td> 0.121 </td>
+<td> 0.204 </td>
+<td> 0.315 </td>
+<td> 0.384 </td>
+<td> 0.460 </td>
+<td> 0.561 </td>
+<td> 0.606 </td>
+</tr>
+<tr><td> 80% </td><td bgcolor="pink"> 0.006 </td>
+<td> 0.048 </td>
+<td> 0.137 </td>
+<td> 0.188 </td>
+<td> 0.265 </td>
+<td> 0.356 </td>
+<td> 0.415 </td>
+<td> 0.473 </td>
+<td> 0.525 </td>
+</tr>
+<tr><td> 85% </td><td bgcolor="pink"> -0.018 </td>
+<td> 0.027 </td>
+<td> 0.105 </td>
+<td> 0.178 </td>
+<td> 0.224 </td>
+<td> 0.276 </td>
+<td> 0.332 </td>
+<td> 0.386 </td>
+<td> 0.419 </td>
+</tr>
+<tr><td> 90% </td><td bgcolor="pink"> -0.000 </td>
+<td> 0.032 </td>
+<td> 0.067 </td>
+<td> 0.118 </td>
+<td> 0.159 </td>
+<td> 0.207 </td>
+<td> 0.239 </td>
+<td> 0.247 </td>
+<td> 0.292 </td>
+</tr>
+<tr><td> 95% </td><td bgcolor="pink"> -0.011 </td>
+<td> 0.017 </td>
+<td> 0.039 </td>
+<td> 0.067 </td>
+<td> 0.086 </td>
+<td> 0.101 </td>
+<td> 0.118 </td>
+<td> 0.148 </td>
+<td> 0.149 </td>
+</tr>
+<tr><td> 100% </td><td bgcolor="pink"> ****** </td>
+<td bgcolor="pink"> ****** </td>
+<td bgcolor="pink"> ****** </td>
+<td bgcolor="pink"> ****** </td>
+<td bgcolor="pink"> ****** </td>
+<td bgcolor="pink"> ****** </td>
+<td bgcolor="pink"> ****** </td>
+<td bgcolor="pink"> ****** </td>
+<td bgcolor="pink"> ****** </td>
+</tr>
+</table>
+
+<h2> What is the incentive to be strategic rather than honest? </h2>
+
+<p>
+Below table shows difference in average utility 
+(AvgUtil for strategists minus AvgUtil for honest voters)
+when the first <i>t</i> voters strategize (remaining <i>100-t</i> voters honest),
+for 100-voter elections with 2 to 10 candidates.
+Each data point based on 1500000 elections.  
+The "strategic" voters are using mean-candidate-utility as an approval-theshold.
+The more positive the table entry, the more incentive an honest voter has to strategize.
+The 2-candidate column again is pure noise since strategic and honest voting then are
+the same thing, so is only useful as a "noise-level gauge."
+</p>
+<p>
+These results indicate that
+you have the most incentive to strategize if there are few strategic voters
+and many candidates.  In practice we expect there will be effectively fewer
+candidates than there actually are (since many will be "no hopers") in which case
+the incentive to strategize will be reduced.
+</p>
+<p>
+<small>
+We thank raphfrk both for suggesting this experiment and for
+donating the computer time.
+</small>
+</p>
+
+<table cellspacing="2" cellpadding="2" bgcolor="#ffeedd">
+<tr><th>%strat</th> <th colspan="9">Number of candidates</th></tr>
+<tr><th>voters</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>8</th><th>9</th><th>10</th></tr>
+<tr><td> 5% </td><td bgcolor="pink"> 0.000 </td>
+<td> 0.003 </td>
+<td> 0.011 </td>
+<td> 0.018 </td>
+<td> 0.025 </td>
+<td> 0.032 </td>
+<td> 0.038 </td>
+<td> 0.045 </td>
+<td> 0.050 </td>
+</tr>
+<tr><td> 10% </td><td bgcolor="pink"> -0.000 </td>
+<td> 0.004 </td>
+<td> 0.010 </td>
+<td> 0.018 </td>
+<td> 0.024 </td>
+<td> 0.031 </td>
+<td> 0.037 </td>
+<td> 0.043 </td>
+<td> 0.048 </td>
+</tr>
+<tr><td> 15% </td><td bgcolor="pink"> -0.000 </td>
+<td> 0.004 </td>
+<td> 0.010 </td>
+<td> 0.018 </td>
+<td> 0.024 </td>
+<td> 0.030 </td>
+<td> 0.036 </td>
+<td> 0.042 </td>
+<td> 0.047 </td>
+</tr>
+<tr><td> 20% </td><td bgcolor="pink"> -0.000 </td>
+<td> 0.004 </td>
+<td> 0.010 </td>
+<td> 0.017 </td>
+<td> 0.023 </td>
+<td> 0.029 </td>
+<td> 0.035 </td>
+<td> 0.040 </td>
+<td> 0.045 </td>
+</tr>
+<tr><td> 25% </td><td bgcolor="pink"> 0.000 </td>
+<td> 0.004 </td>
+<td> 0.010 </td>
+<td> 0.017 </td>
+<td> 0.023 </td>
+<td> 0.029 </td>
+<td> 0.034 </td>
+<td> 0.040 </td>
+<td> 0.044 </td>
+</tr>
+<tr><td> 30% </td><td bgcolor="pink"> 0.000 </td>
+<td> 0.004 </td>
+<td> 0.010 </td>
+<td> 0.016 </td>
+<td> 0.023 </td>
+<td> 0.028 </td>
+<td> 0.034 </td>
+<td> 0.039 </td>
+<td> 0.043 </td>
+</tr>
+<tr><td> 35% </td><td bgcolor="pink"> 0.000 </td>
+<td> 0.004 </td>
+<td> 0.010 </td>
+<td> 0.017 </td>
+<td> 0.022 </td>
+<td> 0.027 </td>
+<td> 0.033 </td>
+<td> 0.037 </td>
+<td> 0.042 </td>
+</tr>
+<tr><td> 40% </td><td bgcolor="pink"> -0.000 </td>
+<td> 0.004 </td>
+<td> 0.010 </td>
+<td> 0.016 </td>
+<td> 0.022 </td>
+<td> 0.027 </td>
+<td> 0.032 </td>
+<td> 0.037 </td>
+<td> 0.041 </td>
+</tr>
+<tr><td> 45% </td><td bgcolor="pink"> -0.000 </td>
+<td> 0.004 </td>
+<td> 0.010 </td>
+<td> 0.016 </td>
+<td> 0.022 </td>
+<td> 0.027 </td>
+<td> 0.031 </td>
+<td> 0.036 </td>
+<td> 0.040 </td>
+</tr>
+<tr><td> 50% </td><td bgcolor="pink"> 0.000 </td>
+<td> 0.004 </td>
+<td> 0.010 </td>
+<td> 0.015 </td>
+<td> 0.022 </td>
+<td> 0.026 </td>
+<td> 0.031 </td>
+<td> 0.035 </td>
+<td> 0.039 </td>
+</tr>
+<tr><td> 55% </td><td bgcolor="pink"> 0.000 </td>
+<td> 0.004 </td>
+<td> 0.009 </td>
+<td> 0.015 </td>
+<td> 0.021 </td>
+<td> 0.026 </td>
+<td> 0.030 </td>
+<td> 0.035 </td>
+<td> 0.038 </td>
+</tr>
+<tr><td> 60% </td><td bgcolor="pink"> -0.000 </td>
+<td> 0.004 </td>
+<td> 0.009 </td>
+<td> 0.015 </td>
+<td> 0.020 </td>
+<td> 0.025 </td>
+<td> 0.030 </td>
+<td> 0.034 </td>
+<td> 0.037 </td>
+</tr>
+<tr><td> 65% </td><td bgcolor="pink"> -0.000 </td>
+<td> 0.004 </td>
+<td> 0.009 </td>
+<td> 0.015 </td>
+<td> 0.020 </td>
+<td> 0.025 </td>
+<td> 0.029 </td>
+<td> 0.033 </td>
+<td> 0.037 </td>
+</tr>
+<tr><td> 70% </td><td bgcolor="pink"> 0.000 </td>
+<td> 0.004 </td>
+<td> 0.009 </td>
+<td> 0.015 </td>
+<td> 0.020 </td>
+<td> 0.025 </td>
+<td> 0.029 </td>
+<td> 0.033 </td>
+<td> 0.036 </td>
+</tr>
+<tr><td> 75% </td><td bgcolor="pink"> 0.000 </td>
+<td> 0.003 </td>
+<td> 0.009 </td>
+<td> 0.015 </td>
+<td> 0.020 </td>
+<td> 0.024 </td>
+<td> 0.028 </td>
+<td> 0.032 </td>
+<td> 0.035 </td>
+</tr>
+<tr><td> 80% </td><td bgcolor="pink"> -0.000 </td>
+<td> 0.004 </td>
+<td> 0.009 </td>
+<td> 0.014 </td>
+<td> 0.020 </td>
+<td> 0.024 </td>
+<td> 0.028 </td>
+<td> 0.032 </td>
+<td> 0.035 </td>
+</tr>
+<tr><td> 85% </td><td bgcolor="pink"> 0.000 </td>
+<td> 0.003 </td>
+<td> 0.009 </td>
+<td> 0.014 </td>
+<td> 0.019 </td>
+<td> 0.023 </td>
+<td> 0.027 </td>
+<td> 0.031 </td>
+<td> 0.034 </td>
+</tr>
+<tr><td> 90% </td><td bgcolor="pink"> -0.000 </td>
+<td> 0.003 </td>
+<td> 0.009 </td>
+<td> 0.014 </td>
+<td> 0.019 </td>
+
+<td> 0.023 </td>
+<td> 0.026 </td>
+<td> 0.030 </td>
+<td> 0.033 </td>
+</tr>
+<tr><td> 95% </td><td bgcolor="pink"> -0.001 </td>
+<td> 0.004 </td>
+<td> 0.009 </td>
+<td> 0.014 </td>
+<td> 0.019 </td>
+<td> 0.023 </td>
+<td> 0.027 </td>
+<td> 0.030 </td>
+<td> 0.033 </td>
+</tr>
+</table>
+
+
+<h2> The simulation program </h2>
+<p>
+You can download the <a href="shenhack.c">entire code</a>.
+</p>
+
+<!--
+<p>
+The core of the C code that computed these tables is below.
+</p>
+<pre>
+for(t=0; t&le;100; t+=STEPME){/*t = # of approval-type (i.e. strategic) voters, out of 100 in all*/
+    for(NUMCANDS=MINNUMCANDS; NUMCANDS&le;MAXNUMCANDS; NUMCANDS++){
+    for(ALLAPP=0; ALLAPP&le;1; ALLAPP++){ /*1 if ALL voters approval-type; 0 if only the strat ones*/
+      UtilForApprovalers = 0.0;
+      UtilForHonests = 0.0;
+      for(i=0; i&lt;NUMEL; i++){  /*averaging the results of NUMEL elections*/
+        for(k=0; k&lt;NUMCANDS; k++){ Tot[k] = 0.0; } /*start election with zero vote-totals*/
+        for(j=0; j&lt;100; j++){  /* there are 100 voters in all */
+          mx = -9999999.9;
+          mn =  9999999.9;
+          av = 0.0;
+          for(k=0; k&lt;NUMCANDS; k++){ /* Generate utility of canddt k for voter j */
+            x = RandNormal();
+            assert(0 &le; j);         assert(j &lt; 100);
+            assert(0 &le; k);         assert(k &lt; NUMCANDS);
+            U[j][k] = x;
+            if(x &gt; mx)      mx=x;
+            if(x &lt; mn) mn=x;
+            av += x;
+          }
+          av /= NUMCANDS;
+          diff = mx-mn;
+          for(k=0; k&lt;NUMCANDS; k++){  /*cast vote j; voters j with j&lt;t are strategic*/
+            assert(0 &le; j);         assert(j &lt; 100);
+            assert(0 &le; k);         assert(k &lt; NUMCANDS);
+            x = U[j][k];
+            if(j&lt;t || ALLAPP==1) V[j][k] = (x&lt;av)?0:1;   /*approval vote*/
+            else                 V[j][k] = (x-mn)/diff;  /*normalized range vote*/
+            Tot[k] += V[j][k];
+          }
+        }/*end for(j) */
+        mx =  -9999999.9;
+        winner = -1;
+        for(k=0; k&lt;NUMCANDS; k++){  /*find winner*/
+          assert(0 &le; k);           assert(k &lt; NUMCANDS);
+          if(Tot[k] &gt; mx){ mx = Tot[k]; winner=k; }
+        }
+        assert(winner &ge; 0);    assert(winner &lt; NUMCANDS);
+        sum = 0.0;
+        for(j=t; j&lt;100; j++){  /* util-sum for honest voters only */
+          assert(0 &le; j);           assert(j &lt; 100);
+          sum += U[j][winner];
+        }
+        UtilForHonests += sum;
+      }/* end for(i) */
+      UtilForHonests /= NUMEL;
+      /*      printf("Strat%%=%d    UtilForHonests=%.3f   ALLAPP=%d\n",
+      **      t, UtilForHonests, ALLAPP); */
+      if(ALLAPP==0)  old = UtilForHonests;
+      else{
+        if(NUMCANDS==MINNUMCANDS) printf("&lt;tr&gt;&lt;td&gt; %d%% &lt;/td&gt;", t);
+        printf("&lt;td&gt; %.3f &lt;/td&gt;\n", UtilForHonests-old);
+        if(NUMCANDS==MAXNUMCANDS){
+          printf("&lt;/tr&gt;\n" );
+          fflush(stdout);
+        }
+      }
+    }/* end for(ALLAPP) */
+    }/* end for(NUMCANDS) */
+  }/* end for(t) */
+
+  printf("&lt;/table&gt;\n");
+}
+</pre>
+-->
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

@@ -1,0 +1,375 @@
+<html>
+<head>
+<title>
+RangeVoting.org - theory of optimal voting strategy
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Examples in which best Range Voting strategy is "dishonest" approval-style </H2>
+
+<H3> Generalities about range voting strategy </H3>
+
+<p>
+<b>Theorem 1.</b>
+It is <i>never</i> strategically forced to give X less than the maximum possible score,
+if X is your true favorite (or one of your true favorite) candidates.
+</p>
+
+<p>
+<b>Proof.</b>
+Increasing X's score will not change the winner (except if it changes to X).
+&nbsp Q.E.D.
+</p>
+
+<p>
+<b>Theorem 2.</b>
+It is <i>never</i> strategically forced to misorder X>Y if you truly regard Y>X, in your
+range vote, <i>if</i> there are 3-or-fewer candidates.
+(Put another way: If you honestly feel Alice>Bob, there is never any motivation to vote 
+as though Bob>Alice.)
+</p>
+
+<b>Proof.</b>
+
+Call the three candidates X, Y, and Z.
+By the preceding result we can assume wlog your favorite and most-hated candidates
+are respectively  given the maximum- and minimum-allowed vote-scores.
+It then is not possible for you to vote
+X&gt;Y if you honestly think U<sub>Y</sub>&gt;U<sub>X</sub>.
+<br>
+Q.E.D.
+</p>
+
+<p>
+<b>Theorem 3.</b>
+If you know all the other voters' votes (or just know their totals)
+then there is always a strategically best
+vote for you to cast, which is "honest" in the sense
+that it never misorders X>Y if you truly regard Y>X.
+</p>
+
+<b>Proof.</b>
+Determine the best (in your view) candidate that your vote is capable of electing.
+Suppose his name is "X."  Then vote maximum for X and every better candidate and minimum
+for all candidates worse than X.
+<br>
+Q.E.D.
+</p>
+
+<p>
+But if there are <i>4</i> candidates, and you <i>don't</i> have complete information
+about the other votes, then we shall see via either of two examples, that dishonesty
+can be strategically forced.
+</p>
+
+<hr>
+
+<H3> First example: correlation (highly ellipsoidal Gaussian) </H3>
+
+<p>
+There are two liberals L<sub>1</sub>,L<sub>2</sub> and two conservatives
+C<sub>1</sub>,C<sub>2</sub> running. You are pretty sure that L<sub>1</sub>,L<sub>2</sub> will
+get a near-equal number of the other people's votes, ditto for C<sub>1</sub>,C<sub>2</sub>,
+but don't know whether the liberals or conservatives will be
+ahead. <small>(This kind of situation can be modeled with a highly
+ellipsoidal Gaussian distribution being returned by
+a pre-election poll in which the correlation and covariance matrices are published, not
+just the estimated means.
+We admit that the sort of pre-election polls we have seen in newspapers and television never
+do publish covariance information, so this is somewhat unrealistic. However, this scenario
+as a whole nevertheless is tolerably realistically plausible.
+For example it could arise thus: 
+L<sub>1</sub> &amp; L<sub>2</sub> are regarded by all voters other than you as identical;
+C<sub>1</sub> &amp; C<sub>2</sub> are regarded by all voters other than you as identical;
+the country's voters are 50% liberal and 50% conservative;
+rain will occur on election day, thus lowering turnout, but it is not known
+whether it will rain on the liberal or conservative part of the country.)</small>
+Then your best strategy is to
+vote in the style
+<center>
+L<sub>1</sub>=1, &nbsp;L<sub>2</sub>=0, &nbsp;C<sub>1</sub>=1, &nbsp;C<sub>2</sub>=0
+</center>
+even if you prefer both L's over both C's (or
+both C's over both L's). (We assume you slightly prefer the candidates
+with smaller subscripts, i.e. your true preferences are
+L<sub>1</sub>&gt;L<sub>2</sub>&gt;C<sub>1</sub>&gt;C<sub>2</sub>.)
+</p>
+
+<p>
+<small>This example also can be generalized to
+2N candidates falling into N ultra-correlated pairs.
+It apparently originally traces to S.J.Brams.</small>
+</p>
+
+<blockquote>
+<b>Simpler explanation [by Damien Sullivan]</b><br>
+The liberal set and the conservative set have roughly equal
+chances of winning, and within each set the two candidates are expected
+to have nearly equal votes.  One votes for C<sub>1</sub> to have influence in the
+case of the conservatives winning, and one votes L<sub>1</sub> but not L<sub>2</sub> to have
+preferred influence in the case of the liberals winning.  The
+probability of vote-totals obeying
+<nobr>L<sub>2</sub> &gt; C<sub>1</sub> &gt; L<sub>1</sub></nobr> is expected to be much
+lower than 
+for
+<nobr>(L<sub>1</sub>, L<sub>2</sub>) &gt; (C<sub>1</sub>, C<sub>2</sub>)</nobr> 
+or <nobr>(C<sub>1</sub>, C<sub>2</sub>) &gt; (L<sub>1</sub>, L<sub>2</sub>)</nobr>
+because of the strong correlations.
+So if 
+<nobr>L<sub>2</sub> &gt; C<sub>1</sub></nobr>, 
+it is highly likely that also <nobr>L<sub>1</sub> &gt; C<sub>1</sub></nobr>, 
+hence the 0 vote for L<sub>2</sub>.
+<br><br>
+Or another way: L<sub>1</sub> is your favorite, so you naturally vote for him;
+C<sub>2</sub> is your most-hated so you naturally vote against him.
+It is much more likely in this case that the front-runners will be L<sub>1</sub> and
+L<sub>2</sub> (so don't vote for L<sub>2</sub>, per your preference) 
+or (with equal chance) C<sub>1</sub>
+and C<sub>2</sub> (so vote for C<sub>1</sub>, ditto) than any other pairs.
+<br><br>
+The optimum vote here will bring you about twice as much utility as
+more obvious/honest votes like L<sub>1</sub>=L<sub>2</sub>=C<sub>1</sub>=1,
+C<sub>2</sub>=0, since you have about twice as much chance to swing
+the election.
+</blockquote>
+
+<hr>
+
+<H3> Second example: no correlations (exactly spherical Gaussian) </H3>
+<p>
+Let the 4 candidates be A,B,C,D.
+Let the pre-election poll results say the vote totals (mean of the Gaussian) are
+A=100, B=80, C=70, D=10, (well more precisely, proportional to these; the totals are these
+times a number of order V) say,
+so A appears most likely to win, then B, then C, then D.
+We assume these 4 vote totals are samples from a spherically symmetric
+4-dimensional Gaussian, i.e. with no correlations or anticorrelations
+among candidates. (It is easier to make one of our examples if
+correlations are assumed &ndash; as we just saw &ndash;
+but our point here is they are not needed.)
+There are V voters where we assume V=large (we work in this <i>limit</i>) and the
+Gaussian has mean of order V and stddev of order &radic;V.
+Let your true utilities be: 
+<center>
+U<sub>A</sub>=0, &nbsp; U<sub>B</sub>=20, &nbsp; U<sub>C</sub>=HUGE, &nbsp; U<sub>D</sub>=25.
+</center>
+Here HUGE denotes some sufficiently large constant. I originally had in mind
+U<sub>C</sub>=70
+but perhaps that was too generous (Larry Shepp once told me my problem was I
+confused the word "generous" with the word "stupid") so let us leave it
+unspecified.
+</p>
+
+<p>
+<b>Theorem 4.</b>
+The unique strategic range vote, which
+maximizes your expected election-result-utility, is (A,B,C,D)=(0,1,1,0),
+which is dishonest for B and D.
+</p>
+
+<p>
+<b>Proof sketch.</b>
+The top-two pair is AB &ndash; most likely to be tied for lead &ndash; other ties are
+exponentially less likely when V=large &ndash; so we give A=0 and B=1
+in the vote to give us maximum chance to favorably break an AB tie.
+(Since U<sub>B</sub>&gt;U<sub>A</sub>.)
+</p>
+<p>
+Now AC is the next pair (second most likely to tie for the lead, but in the
+V=large limit, it is way exponentally less likely to be AC than it is
+to be AB; but AC is exponentially more likely than any other non-singleton set) so give C=1
+to make C win over A in a situation where AC tied for lead and B and D's
+winning chances may be neglected. (Since U<sub>C</sub>&gt;U<sub>A</sub>.)
+</p>
+<p>
+Finally among sets involving D tied for the lead, the most likely to result in
+a lead-tie is A,B,C,D 4-way near-tie near 260/4=65 each. That is because
+any other location in the 4-space having D maximal has a larger sum-of-squares
+distance from (100,80,70,10) and hence is exponentially less likely
+in the V=large limit.
+</p>
+<p>
+Now even if you don't believe the 4-way-near-tie business, fine.
+More precisely, all I want you to believe, and all you need to believe, is it is going
+to come down to either a DC, DB, or DA battle (conditioned on the assumption
+that
+D is involved in the lead-tie) with some fixed positive 
+conditional probabilities for each,
+not
+necessarily 1/3, 1/3, 1/3, in the V=large limit. Call these probabilities
+P<sub>A</sub>, P<sub>B</sub>, P<sub>C</sub>.
+Basically what happens is as you move away from the magic
+(65,65,65,65) point, but preserving the assumed fact that D=maximal:
+as soon as you go a distance of order 1, i.e. order 1 vote worth,
+that causes a factor of order e<sup>order1</sup> falloff in probability. Hence
+when V=large there is negligible probability (conditioned on D leading or co-leading)
+that we are more than a distance of order (logV)/V away from the magic 65,65,65,65 
+point.
+You can see that using
+the formula defining the Gaussian
+(which we assume is still valid out here in the tail, perhaps
+somewhat unrealistically, but it is ok since we took the whole Gaussian model
+as an <i>assumption</i>, and anyhow I think it would be valid <i>enough</i> even 
+out here in the tail, even 
+without such an assumption)
+using stddev of order &radic;V and distance-to-center of order V.
+That is the underlying reason for the positive 
+P<sub>A</sub>, P<sub>B</sub>, P<sub>C</sub> existing.
+<small>You may here worry that perhaps a <i>3-way</i> or 4-way tie could be important,
+in which case the strategically best vote 
+<a href="RVstrat1.html#examples">might not even be approval-style at all</a>.
+However, if we agree in this example to make our spherical Gaussian have
+<i>variance</i> which is a sufficiently large constant or larger, 
+then the conditional probability of
+a more-than-2-way tie can be made arbitrarily small, so this is not a worry.
+Arbitrarily large variances arise in practice if, e.g, the votes are postulated to come in blocs
+of order 1000 highly correlated votes.
+Also, a different reason why the optimum vote here must be approval-style, regardless
+of worries about 3-way near-ties, is given in
+the second proof in the preface-part of <a href="RVstrat1.html">this</a>.
+</small>
+</p>
+<p>
+So in this final case where we assume D has a chance (which is an assumption
+needed to make it worth voting about D at all)
+we should vote D=0 provided that
+25 = U<sub>D</sub> < P<sub>A</sub>U<sub>A</sub> + P<sub>B</sub>U<sub>B</sub> + P<sub>C</sub>U<sub>C</sub>
+which by making U<sub>C</sub>=HUGE huge enough (since the values of P<sub>A</sub>,P<sub>B</sub>,P<sub>C</sub> exist
+and do not depend on U<sub>A</sub>,U<sub>B</sub>,U<sub>C</sub>), always happens.
+So we must vote D=0.
+</p>
+<p>
+Q.E.D.
+</p>
+
+<blockquote>
+<b>Sullivan-style simpler explanation:</b><br>
+You vote for C because it is your favorite and you always
+vote for the favorite, and vote for B because it is your preferred
+front-runner and the A-B contest is most likely to matter; so far this
+is just standard range/approval strategic voting.
+<br><br>
+If D has a chance to win,
+that means the pre-election
+polls were totally wrong (to allow D to get up about even with the top among
+A,B,C despite predictions).   
+If they were that wrong,
+then we cannot trust them and need to assume
+D will be about even with A, and with B, and with C, i.e. all three scenarios 
+occur with roughly equal chances.  (We do not need to assume <i>exactly</I> equal chances.)
+If so then what matters is the fact that D is worse than the average utility for those 3,
+so you get more expected utility if you vote against D and hope for a random winner
+among {A,B,C}.
+<br><br>
+(This "we cannot trust them" argument was intuitive rather than rigorous, but it can be made
+rigorous under a certain normal-distribution model about how the pre-election polls err.)
+</blockquote>
+<p>
+<small>I first devised this example and methodology in 1999 or 2000
+albeit I did it rather badly and messily then and we
+probably want to avert our eyes. -WDS
+</small>
+</p>
+
+<p>
+The thinking in this example actually can be generalized to provide a way to
+determine your strategically optimum range-vote in <i>any</i> Gaussian-model
+scenario in the V=large limit.
+</p>
+
+<p>
+But Mike Ossipoff comments:
+I want to re-emphasize that, although in extremely unlikely examples,
+reversing a preference can be optimal in Approval, one should never vote
+someone over one's favorite. One should always vote for one's favorite in
+Approval or Range voting. 
+No exceptions.
+</p>
+<p>
+One author familiar with the subject said that the kind of probability
+knowledge that would be needed to make preference-reversal optimal in
+Approval is so rare that such situations can be disregarded.
+</p>
+<p>
+And (WDS further comments) even with such knowledge... these situations
+still are (empirically)
+quite rare.  And even when they do occur they usually have a small probability of 
+changing the winner, hence do not matter much.  My computer simulations with
+4- and 5-candidate elections indicated an expected social-utility change due to
+true-strategic voting versus "honest approval" (threshold strategy)
+voting of order 1 part in 1000.
+</p>
+
+<hr>
+<H3> How frequent is this? </H3>
+
+<p>
+We explain how to get one crude estimate via computer simulation (and do it).
+The "naive zero info strategy" (NZIS) for range voting is, you approve the
+candidates with above-average utility (using unweighted average).
+Observe that this always produces a "semi-honest" vote.
+</p><p>
+The "moving average strategy" (MVAS), which is less-naive, is this.  There
+is some pre-election perception that X&gt;Y&gt;Z&gt;... where here X,Y,Z denote
+candidates and "&gt;" denotes
+"has much greater chance to win than."
+</p><p>
+You (the voter) go through the candidates in that order X,Y,Z,...
+for each one approving or disapproving depending on whether its
+utility is greater or less than the average of the <i>preceding</i>
+candidates (except: for the first two X,Y, you approve the better and
+disapprove the worse). This can produce a vote different than 
+NZIS, and which can be dishonestly misordered.  The key word here is
+"preceding."
+</p><p>
+We now describe a simple computer simulation.  Fix a number C&ge;2 of candidates.
+Generate a random voter by assigning random i.i.d. normal "personal utilities" U<sub>k</sub>
+to each of the C candidates k.  Find out for what percentage of
+such voters the MVAS produces a dishonestly-ordered vote &ndash; i.e.
+featuring two candidates P,Q for which the voter honestly thinks 
+U<sub>P</sub>&gt;U<sub>Q</sub>
+but approves Q while disapproving P.
+</p><p>
+Here are the results.
+Each datapoint is based on 2<sup>22</sup> to 2<sup>33</sup> Monte Carlo experiments:
+</p><table bgcolor="orange">
+<tr bgcolor="pink"><th>C</th><th>% who misorder</th></tr>
+<tr><td align="center">2</td><td align="center">0</td></tr>
+<tr><td align="center">3</td><td align="center">0</td></tr>
+<tr><td align="center">4</td><td align="center">2.9248</td></tr> <!-- 16/547 is ratapprox -->
+<tr><td align="center">5</td><td align="center">7.2795</td></tr> <!-- 19/261 is ratapprox -->
+<tr><td align="center">6</td><td align="center">12.115</td></tr>
+<tr><td align="center">7</td><td align="center">16.96</td></tr>
+<tr><td align="center">8</td><td align="center">21.58</td></tr>
+<tr><td align="center">9</td><td align="center">25.90</td></tr>
+<tr><td align="center">10</td><td align="center">29.87</td></tr>
+<tr><td align="center">20</td><td align="center">55.53</td></tr>
+<tr><td align="center">50</td><td align="center">81.1</td></tr>
+<tr><td align="center">100</td><td align="center">92.3</td></tr>
+<tr><td align="center">200</td><td align="center">97.7</td></tr>
+<tr><td align="center">500</td><td align="center">99.75</td></tr>
+<tr><td align="center">1000</td><td align="center">99.97</td></tr>
+</table>
+
+
+<p>
+<small>
+I thank Rob LeGrand for stimulating correspondence.
+</small>
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

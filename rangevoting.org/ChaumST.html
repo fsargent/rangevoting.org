@@ -1,0 +1,177 @@
+<html>
+<head>
+<title>
+RangeVoting.org &ndash; Chaum "Scantegrity" concept
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2 align="center"> 
+Chaum's "<a href="http://www.scantegrity.org">Scantegrity</a>" secure-voting concept
+</H2>
+
+<p>
+In 2007, David Chaum introduced an interesting new way to achieve secure voting.
+We are going to explain his core
+concept but omit the precise details.
+That is partly because we are not sure (and maybe even Chaum himself is not sure &ndash;
+we doubt his concept has reached its final form)
+what is the best way to handle those details and what the ultimate limits
+of this concept are.
+</p>
+
+<p>
+We suppose there are N voters.
+Chaum's idea is that the government needs, essentially, to create (and publish for all to see)
+a "zero knowledge proof"
+that it did the vote-counting correctly.  
+Here is that proof.
+</p<p>
+Make two columns each containing N sealed envelopes.
+There will actually be four N-entry columns:
+</p>
+
+<ol>
+<li> 
+the N voters (names &amp; addresses &amp; "ID numbers" publicly posted).
+</li><li>
+lefthand column of envelopes.
+</li><li>
+righthand column of envelopes.
+</li><li>
+The N votes (publicly posted; anybody can total).
+</li></ol>
+
+<p>
+Initially, all envelopes are sealed shut and their contents are invisible.
+(The "envelopes" could be physical containers, or also could be implemented with crypto
+techniques.) All four columns are laid out publicly visible:
+</p>
+
+<table bgcolor="lightyellow" cellspacing="5">
+<caption> 
+Publicly viewable proof election is counted correctly
+</caption>
+<tr bgcolor="pink">
+<th>voters</th>
+<th>left envelopes</th>
+<th>right envelopes</th>
+<th>votes</th>
+</tr>
+<tr><td>voter1</td><td>Left Env1</td><td>Right Env1</td><td>Vote1</td></tr>
+<tr><td>voter2</td><td>Left Env2</td><td>Right Env2</td><td>Vote2</td></tr>
+<tr><td align="center">...</td><td align="center">...</td><td align="center">...</td><td align="center">...</td></tr>
+<tr><td>voterN</td><td>Left EnvN</td><td>Right EnvN</td><td>VoteN</td></tr>
+</table>
+
+<p>
+The <i>k</i>th envelope in the left column, is associated with voter <i>k</i>.
+</p><p>
+The two columns of envelopes (and the votes)
+all are randomly ordered (and nobody knows the order)
+with respect to each other, preserving vote privacy.
+</p><p>
+<b>Suspicious voter #i can check</b> that her vote seems ok in
+envelope #i in the left column, by demanding the envelope be opened.
+The contents of envelope #i do not reveal her vote
+but do reveal her ID number
+(which the voter has a receipt of and/or which could be publicly
+posted in column 1 under her name). If there had been fraud,
+this number probably would have been wrong.
+Also, opening envelope reveals a <i>pointer</i> to j,
+the number of the corresponding envelope in
+the right column.  <i>This</i> envelope <i>does</i> contain voter's vote.
+</p><p>
+<b>We could even allow a protesting voter</b> to insist on opening the second
+envelope too, which verifies her vote was correctly counted
+but breaks her privacy.  (Chaum also has additional tricks to try to preserve voter privacy 
+even then, but we won't discuss.)
+The second envelope contains the vote and a <i>pointer</i> to k,
+the number of the corresponding vote in
+the rightmost column, but does <i>not</i> contain the voter's name or ID number.
+</p><p>
+After protest rounds ended and protests resolved, we verify
+the election:
+Scrutineers randomly flip coins
+to choose half of the lefthand column of envelopes and open them
+in public view.
+</p><p>
+Then, all the envelopes in the righthand column which are <i>not</i>
+pointed to by the opened lefthand envelopes, are opened in public view.
+</p><p>
+We then verify all the left-envelopes that were opened, genuinely
+correspond to the exact voter in column 1 by checking ID numbers
+match. (Or scream fraud.)
+</p><p>
+We then verify all the right-envelopes that were opened,
+genuinely correspond to the exact vote they point to in column 4.
+(Or scream fraud.)
+</p><p>
+Finally, we note that every opened left-envelope genuinely
+corresponds (via pointer)
+to exactly one right-envelope and vice-versa. (Or scream fraud.)
+</p><p>
+Now <i>if there were more than a constant number of
+votes worth of cheating</i>
+(i.e. vote-altering or bogus pointers)
+then with overwhelming probability, at least
+one of these checks would have failed.
+(The probability you can fraud 10 votes without detection, is 1/1024.)
+</p><p>
+Also note that since no 2-envelope <i>chain</i> is opened, we never break
+voter privacy and hence votes cannot be sold.
+</p><p>
+The key question in Chaum's scheme is:
+how does the government <i>create</i> those magic secret envelope correspondences in 
+the first place?  In such a way we all can be confident no cheating happened?
+There are many approaches to try to do that. I'm not sure
+which is best and I'm not going to discuss them here.  
+(Chaum himself has a scheme based on ballots with tear-off parts and 
+preprinting creates the correspondences...  but I see no reason that is the only way to do
+it, and in fact it has some disadvantages such as worries about corrupt printers.)
+</p>
+<hr>
+<p>
+Advantages of Chaum scheme:
+</p>
+<ul>
+<li> Works with any voting system (provided votes not "uniquifiable")
+</li><li> Easy for voters. Just vote normally.
+</li><li> No particularly magic trusted machines seem needed like with Rivest-Smith
+schemes.
+</li><li> Can be done either with crypto or without crypto.
+</li><li> Pretty simple and easy to explain core idea (not as simple
+as Rivest-Smith, but pretty simple).
+</li><li> Like Rivest-Smith, you can estimate the magnitude of fraud, not 
+just lamely say "it existed" or "not".
+</li></ul>
+<p>
+Disadvantages(?):
+</p>
+<ul>
+<li> Rivest-Smith had "mix in" easy-upgrade property allowing gradual
+transition from insecure to secure voting with "contagious
+protection" of the old-style votes. I do not
+see a comparably nice property for Chaum - which may kill its
+viability in USA practice since it'll never get adopted.
+</li><li> With Chaum, the government maybe <i>can</i> break voter privacy en masse
+by opening all envelopes. Can we stop that? What is the status?
+Not totally clear to me yet...
+</li><li> With Rivest-Smith, there are ways (although it does not
+work as well as we'd like) to try to track down fraudsters.
+It isn't just "there was fraud, we have to die now." It is
+"we can actually try to track down whodunit and punish them."
+That is important. Chaum does not seem to have that ability
+at all(?).
+</li>
+</ul>
+<p>
+However, it is early days. It may be these Chaum "disadvantages"
+can be overcome. Maybe you can be the one to do that.
+It's definitely an interesting and promising approach.
+</p>
+
+
+
+</body>
+</html>

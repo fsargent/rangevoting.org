@@ -1,0 +1,135 @@
+<html>
+<head>
+<title>
+RangeVoting.org - why Schulze's beatpath method
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Schulze's beatpath voting method </H1>
+
+<p>
+<small>
+This is a short explanation,  written by Markus Schulze &amp; Warren Smith, of
+why Schulze invented his <a href="SchulzeComplic.html">beatpath voting method</a>.
+It mentions some of its non-obvious theoretical properties.
+</small>
+</p>
+
+<p>
+The <b>Condorcet "Least Reversal" (CLR)</b>
+method (often thought to be the method Condorcet himself had
+in mind) minimizes the number of "overruled voters."  That is, if there is
+a "Condorcet Winner" candidate who pairwise-beats every opponent, he wins.
+Otherwise, reverse the minimimum possible number of voter pair-relation opinions
+in order to cause a Condorcet Winner to exist, then declare him the winner.
+</p>
+<p>
+A related idea, which many people consider the best Condorcet method, is
+the <b>Simpson-Kramer MinMax method</b>.
+It selects as winner the candidate with the smallest worst-pairwise-defeat.
+</p>
+Unfortunately, both CLR and Simpson-Kramer MinMax
+have some deficiencies.  One of the most embarrassing is that they both
+can elect a Condorcet <i>loser</i> who loses pairwise to every candidate. 
+I.e. these methods are not self-consistent:  the candidate they regard as "unambiguously the best"
+can be the same as the one they regard as "unambiguously the worst."
+(This is a severe type of <b>reversal symmetry failure</b>.)
+Also, both MinMax and CLR
+violate
+<a href="CandCloning.html">clone-immunity</a>
+and
+<b>majority for solid coalitions</b> (that is: if every member of some subset S of
+the candidates is preferred by a voter-majority
+over every member of the complement set, then a member of S should win).
+</p>
+<p>
+It is possible to fix both the "elects loser" and 
+majority-for-solid-coalitions problems in a rather ugly way
+by prefacing MinMax or CLR with restriction to
+the "Smith set."  That is, you first find the smallest candidate subset S
+such that each member in S is preferred by a voter-majority
+over every member of the complement set, then you eliminate all candidates not in S,
+then you apply MinMax or CLR to the remaining candidates.  Call these <b>Smith-prefaced</b> methods
+Smith//CLR and Smith//MinMax.
+</p>
+<p>
+<a href="RankedPairs.html">Tideman's Ranked Pairs</a> method was the only single-winner election
+method known in 1997 that satisfies Condorcet, monotonicity, clone-immunity,
+majority for solid coalitions, and reversal symmetry.
+However, frequently the Tideman Ranked Pairs winner
+has a very strong worst pairwise defeat.
+</p>
+<p>
+Therefore, my aim was to find a method that satisfies Condorcet,
+monotonicity, clone-immunity, majority for solid coalitions,
+and reversal symmetry, <i>and</i> that tends to produce winners with weak worst
+pairwise defeats (compared to the worst pairwise defeat of the winner
+of Tideman's Ranked Pairs method).
+</p>
+<p>
+Thorough computer calculations by Norman Petry and Jobst Heitzig have shown
+<ol>
+<li>
+That the Schulze-beatpaths winner is almost always identical to the
+Smith//MinMax winner &ndash;
+more evidence of this is in 
+<a href="Wright_Barry.pdf">Wright's 2009 PhD thesis (pdf)</a>
+which finds on pages 67-70 that 
+the Schulze and MinMax winners are identical
+in N-candidate elections with these probabilities:
+<table bgcolor="pink" cellpadding="5">
+<tr><td>N=3</td><td>N=4</td><td>N=5</td><td>N=6</td><td>N=7</td><tr>
+<tr><td>100%</td><td>99.7%</td><td>99.2%</td><td>99.1%</td><td>98.9%</td><tr>
+</table>
+</li><li>
+That the worst pairwise defeat of
+the Schulze winner is almost always as weak or weaker than the worst pairwise
+defeat of the winner of most other methods (except, of course, for
+the MinMax and Smith//MinMax methods).
+</li>
+</ol>
+<!-- See here:
+http://lists.electorama.com/pipermail/election-methods-electorama.com/2000-November/004540.html
+http://lists.electorama.com/pipermail/election-methods-electorama.com/2004-May/012801.html
+-->
+<p>
+The reason for this is that the MinMax method and the Schulze method
+can be rewritten (it is true, but not obvious, that these rewritings are valid)
+in ways that make it clear they both are based on very similar concepts:
+</p>
+<dl>
+<dt>
+<b>MinMax method: </b>
+</dt>
+<dd>
+Eliminate successively the weakest pairwise defeat
+until there is a candidate whose defeats have all been eliminated.
+</dd>
+<dt>
+<b>Schulze beatpaths: </b>
+</dt>
+<dd>
+Eliminate successively the weakest pairwise defeat
+that can be eliminated such that the remaining defeats still contain
+an arborescence. 
+The winner is that candidate whose defeats have all
+been eliminated.
+</dd>
+</dl>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

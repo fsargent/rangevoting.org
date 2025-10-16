@@ -1,0 +1,2005 @@
+<html>
+<head>
+<title>
+RangeVoting.org &ndash; Rivest-Smith paper "Three Voting Protocols"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1 align="center"> Three Voting Protocols: ThreeBallot, VAV, and Twin
+</H1>
+
+<blockquote>
+<a href="http://theory.csail.mit.edu/ rivest">Ronald L. Rivest</a>
+        <tt>rivest AT mit.edu</tt><br>
+        Computer Science and Artificial Intelligence Laboratory<br>
+     Massachusetts Institute of Technology, Cambridge, MA 02139<br>
+<br>
+        <a href="WarrenSmithPages/homepage/works.html">Warren D. Smith</a>
+        <tt>warren.wds AT gmail.com</tt><br>
+        <a href="">Center for Range Voting</a>,
+
+<br>
+June 2007 &ndash; <a href="RivSmiTBadd.html">(addenda here)</a>
+</blockquote>
+
+<hr>
+<h3>Abstract</h3>
+<p>
+We present three new paper-based voting methods with interesting
+security properties. Our goal is to achieve the same security
+properties as recently proposed cryptographic voting protocols, but
+using only paper ballots and no cryptography.  From a security
+viewpoint we get reasonably close, particularly for short ballots.
+However, our proposals should probably be considered as more
+"academic" than "practical."
+</p><p>
+In these proposals, not only can each voter verify that her vote is
+recorded as intended, but she gets a "receipt"  she can take
+home that can be used later to verify that her vote is actually
+included in the final tally.  But her receipt does not allow her
+to prove to anyone else how she voted.  All ballots cast are scanned
+and published in plaintext on a "public bulletin board" (web site), so anyone may
+correctly compute the election result.
+</p><p>
+In ThreeBallot, each voter casts <i>three</i> paper ballots, with
+certain restrictions on how they may be filled out.
+These paper ballots are of course "voter-verifiable."
+</p><p>
+A voter receives a copy of <i>one</i> of her ballots as her
+"receipt", which she may take home.  Only the voter knows which
+ballot she copied for her receipt.  The voter is unable to use her
+receipt to prove how she voted or to sell her vote, as the receipt
+doesn't reveal how she voted.
+</p><p>
+A voter can check that the web site contains a ballot matching her
+receipt.  Deletion or modification of ballots is thus detectable; so
+the integrity of the election is verifiable.
+</p><p>
+VAV is like ThreeBallot, except that the ballot-marking rules are
+different: one ballot may "cancel" another (VAV =
+Vote/Anti-Vote/Vote).
+VAV is better suited to &ndash; i.e. yields better security properties for &ndash;
+Plurality and preference (Borda, Condorcet, IRV) voting, while ThreeBallot is
+better suited for Approval and Range voting.
+</p><p>
+Finally, we introduce "Floating Receipts," wherein
+voters may take home a copy of <i>another voter's</i> ballot (but she doesn't
+know whose).  Floating Receipts are well-tuned to the
+security requirements of ThreeBallot-like schemes, and we examine
+protocols for achieving them.
+</p><p>
+Our final voting system, Twin, is based almost entirely on Floating
+Receipts.  Each voter casts a single ballot and takes home a single
+receipt.  Twin is quite simple and close to being practical.
+</p>
+<hr>
+
+<h3>1. Introduction</h3>
+<p>
+Designing secure voting systems is tough, since the constraints are
+apparently contradictory.  In particular, the requirement for voter
+privacy (no one should know how Alice voted, even if Alice wants them
+to know) seems to contradict verifiability (how can Alice verify that
+her vote was counted as she intended?).
+</p><p>
+The proposals presented here are an attempt to satisfy these constraints
+<i>without</i> cryptography.  We get pretty close.
+</p><p>
+As in the cryptographic proposals, the proposals presented here use a
+"public bulletin board" (PBB) &ndash; a public web site where election
+officials post copies (but now in plaintext) of all of the cast
+ballots and a separate list of the names of the voters who voted.  (Some states
+might post voter ID's rather than voter names.)
+</p><p>
+ThreeBallot, VAV, and Twin provide a nice level of end-to-end
+verifiability&mdash;the voter gets assurance that her vote was cast as
+intended and counted as cast, and that election officials haven't
+tampered with the collection of ballots counted.
+</p><p>
+<h3>Background on voting</h3>
+
+The following
+books <a href="#bib">Saltman06,Gumbel05</a>,
+reports <a href="#bib">Brennan06</a>,
+theses <a href="#bib">Adida06</a>,
+articles <a href="#bib">RandellRy06</a>,
+and
+web sites
+<blockquote>
+Douglas W. Jones:
+               <a href="http://www.cs.iowa.edu/ jones/voting/">Voting and Elections</a>,
+Ronald L. Rivest:
+      <a href="http://people.csail.mit.edu/rivest/voting">Voting resources page</a>,
+      <a href="http://www.vote.caltech.edu">CalTech/MIT Voting Technology Project</a>,
+      <a href="http://accurate-voting.org">ACCURATE</a>,
+      <a href="http://www.eac.gov">Election Assistance Commission</a>
+</blockquote>
+are recommended.
+</p>
+
+<h3>Some important single-winner
+voting systems <a href="#bib">LevinNa95,Nurmi87</a></h3>
+<a name="sec:votmeth"</a>
+
+<p>
+Our protocols have different levels of compatibility
+with some of the important single-winner voting systems.
+So we summarize the latter here.
+</p>
+
+<table bgcolor="pink" align="center" cellpadding="2">
+<tr><th>
+Plurality</th><td>
+Your vote is the name of one candidate. Most-named candidate wins.
+</td></tr><tr><th>
+Approval voting <a href="#bib">BramsFi83</a></th><td>
+Your vote is the set of candidates you "approve."
+Most-approved candidate wins.
+</td></tr><tr><th>
+Borda voting <a href="#bib">Saari94</a></th><td>
+Your vote is a rank-ordering of the <i>C</i> candidates.
+A candidate receives <i>C-K</i> points for being ranked <i>K</i>th on
+a ballot.  Candidate with the greatest point total ("Borda count") wins.
+</td></tr><tr><th>
+Condorcet systems</th><td>
+Votes are rank-orderings.
+If a "Condorcet winner" candidate exists that is preferred pairwise
+over each opponent by a majority of the ballots, then he wins.
+Otherwise, there are a number of inequivalent techniques that have
+been suggested
+to determine a winner, and it shall not matter to us which one, provided
+it depends only on the <i>C &times; C</i> matrix of pairwise counts.
+</td></tr><tr><th>
+"Instant runoff" (IRV)</th><td>
+Votes are rank-orderings.
+The candidate top-ranked on the fewest ballots
+is eliminated (from the election, and from all ballots),
+reducing it to a <i>(C-1)</i>-candidate election, and the process continues
+until only one candidate remains &ndash; the winner.
+</td></tr><tr><th>
+Range Voting</th><td> 
+Your vote for each candidate is an integer
+ in some fixed range (e.g. <i>0&hellip; 9</i> for "single digit
+range voting").
+The candidate with the greatest total score wins.
+Approval voting is just range voting
+with integer range <i>[0,1]</i>.
+<small>The <a href="">Center For Range Voting</a></small>
+</td></tr>
+</table>
+
+</p><p>
+Our secure-voting protocols do the following jobs.
+ThreeBallot is intended to handle approval and range voting.
+VAV and Twin can handle <i>any</i> 
+voting system,
+including ones we have not
+described such as multiwinner Hare/Droop reweighted STV.
+</p>
+
+<h3>2. ThreeBallot</h3>
+
+<p>
+We now describe ThreeBallot in more detail.  (An earlier version
+of ThreeBallot was posted <a href="#bib">Rivest06</a> in 2006; it contains some
+variations and discussion not included here for lack of space, but unfortunately also
+some flaws.)
+</p>
+
+<h3>Voting in ThreeBallot</h3>
+
+<h3>Checking In at the Poll Site</h3>
+
+<p>
+The voter receives a
+paper "multi-ballot" to vote with.
+A multi-ballot
+consists of three paper ballots, printed on separate sheets.
+(They could be printed on a single sheet, with perforations
+for later separation, but this introduces some unnecessary
+security concerns, so we do not recommend this approach.)
+</p><p>
+We imagine that the poll-site has a bin of pre-printed blank
+ballots, and that the voter randomly selects three
+to form her multi-ballot.
+</p>
+
+<h3>The Multi-Ballot</h3>
+
+<p>
+ThreeBallot is perhaps most easily viewed as an extension of
+"mark-sense" ("optical scan" or "opscan")
+systems <a href="#bib">JonesOptical</a>.
+</p><p>
+Each ballot in the multiballot is an identical complete ballot;
+think of it as a standard opscan ballot with the addition of
+a unique coded ballot ID on the bottom of each ballot.  See
+Figure <a href="#fig:appMBabcd">&sect;</a>.  The upper voting region lists candidate
+names with matching op-scan bubbles that can be filled in (marked).
+</p><p>
+Each ballot ID is different from other ballot ID's on the multi-ballot
+or elsewhere.  The ballot ID's on a multi-ballot are thus unrelated,
+random (but unique) ballot ID's.
+</p><p>
+The ballot ID might also be a long random string of symbols or some other unique
+identifier.  For now, we assume that
+coded ballot ID's are pre-printed on the ballots, but we'll see there can be
+security advantages to having ballot ID's added later instead by
+the voter or by the "checker" (see <a href="#sec:checker">&sect;</a>).
+</p>
+
+
+<table bgcolor="pink" cellpadding="2" border="2" align="center">
+<tr>
+<td>
+<table>
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td align="center">Abe</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Bob</td><td align="center">&Omicron;</td></tr>
+<tr><td align="center">Cal</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Dik</td><td align="center">&Omicron;</td></tr>
+<tr><td colspan="2" align="center"><small>^&^$867*&$></small></td></tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td align="center">Abe</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Bob</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Cal</td><td align="center">&Omicron;</td></tr>
+<tr><td align="center">Dik</td><td align="center">&Omicron;</td></tr>
+<tr><td colspan="2" align="center"><small>(&$^8$&(#7a></small></td></tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td align="center">Abe</td><td align="center">&Omicron;</td></tr>
+<tr><td align="center">Bob</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Cal</td><td align="center">&Omicron;</td></tr>
+<tr><td align="center">Dik</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td colspan="2" align="center"><small>874()&$0*@!~</small></td></tr>
+</table>
+</td>
+</tr>
+<caption>
+<a name="fig:appMBabcd"</a>
+In this <i>Approval-voting</i>  multiballot,
+the ThreeBallot voter is approving Abe and Bob
+while disapproving Cal and Dik.
+Note coded ballot IDs at bottom.
+</caption>
+</table>
+
+<br>
+
+<table bgcolor="pink" cellpadding="2" border="2" align="center">
+<tr>
+<td>
+<table>
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td colspan="2" align="left"><small><i>President</i></small></td></tr>
+<tr><td align="center">Jo</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Horror</td><td align="center">&Omicron;</td></tr>
+<tr><br></tr>
+<tr><td colspan="2" align="left"><small><i>Senate</i></small></td></tr>
+<tr><td align="center">Wu</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Yuk</td><td align="center">&Omicron;</td></tr>
+<tr><br></tr>
+<tr><td colspan="2" align="center"><small>^&^$867*&$></small></td></tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td colspan="2" align="left"><small><i>President</i></small></td></tr>
+<tr><td align="center">Jo</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Horror</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><br></tr>
+<tr><td colspan="2" align="left"><small><i>Senate</i></small></td></tr>
+<tr><td align="center">Wu</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Yuk</td><td align="center">&Omicron;</td></tr>
+<tr><br></tr>
+<tr><td colspan="2" align="center"><small>(&$^8$&(#7a></small></td></tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td colspan="2" align="left"><small><i>President</i></small></td></tr>
+<tr><td align="center">Jo</td><td align="center">&Omicron;</td></tr>
+<tr><td align="center">Horror</td><td align="center">&Omicron;</td></tr>
+<tr><br></tr>
+<tr><td colspan="2" align="left"><small><i>Senate</i></small></td></tr>
+<tr><td align="center">Wu</td><td align="center">&Omicron;</td></tr>
+<tr><td align="center">Yuk</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><br></tr>
+<tr><td colspan="2" align="center"><small>874()&$0*@!~</small></td></tr>
+</table>
+</td>
+</tr>
+<caption>
+<a name="fig:Bund2"</a>
+A multiballot bundling two races (President and Senator).
+This ThreeBallot voter is plurality-voting for Jo for President
+and Wu for Senator. (There are many other equivalent ballots.)
+</caption>
+</table>
+
+
+<h3>Filling Out The Multi-Ballot</h3>
+
+<p>
+For simplicity, we assume for now that we are using <i>approval
+voting</i>, the simplest form of voting, where the voter merely indicates
+for each candidate whether or not she
+approves of that candidate (see
+<a href="#bib">BramsFi83</a>).
+<small>
+For expository
+convenience, the voters will be female and everybody else male.
+</small>
+This is like ordinary plurality voting except that voters may approve
+of more than one candidate in a race.
+Figure <a href="#fig:appMBabcd">&sect;</a> gives an example of a filled-out
+multi-ballot.
+</p><p>
+We will call a filled-in bubble a <i>mark</i>  (for a
+candidate).
+</p><p>
+The voter is given the following instructions for filling out the
+multi-ballot.
+</p><p>
+
+<ul>
+<li> You have three ballots; you will be casting all three.
+      Proceed candidate by candidate through the multi-ballot.  Each
+      candidate has three "bubbles," one on each ballot.
+</li><li> To vote <b>for</b> (approve) a candidate, fill
+      in any <i>two</i>, but <u>exactly two</u>, of the bubbles for that
+      candidate.
+</li><li> To vote <b>against</b> (disapprove) a candidate
+      fill in any <i>one</i>, but <u>exactly one</u>, of the
+      bubbles for that candidate.
+</li><li> Your ballot <i>will not be accepted</i> if any
+      candidate has no bubbles filled or has three bubbles filled.
+</li><li> You may vote <b>for</b> (approve) any number of
+candidates, including none of them or all of them.
+</li>
+</ul>
+
+<h3>Checking the Filled-Out Multi-Ballot</h3>
+<a name="sec:checker"</a>
+
+<p>
+When a voter has marked her choices, she inserts her multi-ballot
+(i.e, her three ballots) into a "checker machine," to check the
+validity of her multi-ballot.  The checker might be in the voting
+booth, or somewhere in the middle of the voting area.
+</p><p>
+The checker checks that the voter has made exactly one or two marks
+for each candidate (these are "row-constraints").
+</p><p>
+If the multi-ballot is invalid, the checker beeps, indicates where
+the errors are, and gives the ballots back.
+</p>
+
+<h3>Getting a Ballot Copy as a "Receipt"</h3>
+
+<p>
+If the multi-ballot is OK, the checker beeps (nicely),
+and asks the voter to choose <i>one</i> of the three ballots
+(which should be visible under glass),
+e.g. by pushing button "1," "2," or "3."
+The machine then makes a
+<i>copy</i> of the selected one and gives it to the voter as her
+take-home "receipt".  It is important that the voter chooses
+<i>secretly</i> and <i>arbitrarily</i> which ballot to copy.
+Which button she pushed should be known only to her and <i>not</i>
+"remembered" by the machine.  The machine, indeed, should be
+"dumb" and not capable of remembering anything about the ballots.
+This receipt should be
+printed on different paper so it looks different than her original
+ballots, and it should be difficult to alter or forge.
+The security of the receipt could be enhanced even further
+by "certifying" it by printing on it a "digital signature"
+that could have only come from an official, government voting machine.
+</p><p>
+The voter should check that her receipt indeed matches its corresponding ballot.
+</p>
+
+<h3>Casting Three Ballots</h3>
+
+<p>
+The machine now drops all three original ballots into the ballot box,
+in view of the voter.
+It ensures that the voter either cast
+all three ballots, or none.
+</p><p>
+The ballot box has the usual property that it scrambles the ballot
+order, destroying any indication of which triple of ballots originally
+went together, and what order ballots were cast in.
+</p><p>
+The voter then signs her name on her entry on
+the registration list to indicate that she voted&mdash;in such a
+way that
+her three ballots <i>only</i> enter the ballot box, and she
+<i>only</i> gets her receipt,  if and when she signs her name off on that list.
+</p><p>
+
+<h3>Going Home</h3>
+
+<p>
+The voter takes her receipt, and goes home.
+(See <a href="#sec:FloatingReceipts">&sect;</a> for a possible
+extension to "Floating Receipts", where the voter will
+take home a copy of some other voter's ballot instead of her own.)
+</p>
+
+ <a name="sec:postbals"</a>
+<h3>Posting the Ballots</h3>
+
+<p>
+At the end of election day, all cast ballots are
+scanned and published on the PBB. (Cast ballots should
+<i>not</i> be scanned and posted as they are cast, but
+only at the end of election day.)
+</p><p>
+Here scanning produces a "compact" representation of the voter's
+choices that just records the marks present and the ballot IDs.  A
+pixel-level scan is <i>not</i> used because a voter might mark the margin of
+the ballot so she could identify her ballot image later.
+</p><p>
+The election officials also separately post a list of the names of all
+voters who voted.
+</p>
+
+<h3>Checking the Integrity of the PBB</h3>
+
+<p>
+Once home, a voter may check that her receipt matches a ballot posted
+on the PBB.  We note that ballot ID's are coded to make
+them difficult to remember at the poll-site; but they can be coded
+with symbol strings that are still easy to type into a web site.
+(She could also give her receipt, or a copy of it, to
+someone else, to check for her, if she doesn't have a convenient way
+or is too busy to access the PBB herself.  <a href="#bib">Adida06</a>
+discusses helper organizations.  The helper organization should
+wait until election day is over and all ballots are posted before
+looking at the receipts received, so that it can not gain any
+possible statistical information on the voting trends during the day.)
+</p><p>
+If the PBB doesn't contain a matching ballot, she takes her
+receipt to an election official within two days and files a protest.
+The election official may examine the voter's receipt to determine its
+authenticity, and may authorize a rescan of the cast paper ballots.
+</p>
+
+<h3>Tallying and Announcing the Winners</h3>
+
+<p>
+The ballots can be tallied by anyone, since they are publicly posted
+in plaintext on the PBB.  No decryption is needed.
+</p><p>
+The winners can be announced.
+</p><p>
+Each voter has marked once or twice for each candidate;
+the checker has enforced this.
+</p><p>
+So each candidate's tally will be "as usual," except that each total
+is inflated by the number <i>n</i> of voters.  The election outcome is the
+same.  For example, if candidates <i>A</i>, <i>B</i>, and <i>C</i> would ordinarily
+have received <i>a</i>, <i>b</i>, and <i>c</i> votes, respectively, then with
+ThreeBallot the final tallies will be <i>n+a</i>, <i>n+b</i>, and <i>n+c</i>; the
+true vote totals are obtained by subtracting <i>n</i> from the total number
+of marks for each candidate.
+</p>
+
+
+<table bgcolor="pink" cellpadding="2" border="2" align="center">
+<tr>
+<td>
+<table>
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td align="center">Xerxes</td><td>9</td></tr>
+<tr><td align="center">Yu</td><td>5</td></tr>
+<tr><td align="center">Zippy</td><td>4</td></tr>
+<tr><br></tr>
+<tr><td colspan="2" align="center"><small>^&^$867*&$></small></td></tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td align="center">Xerxes</td><td>0</td></tr>
+<tr><td align="center">Yu</td><td>9</td></tr>
+<tr><td align="center">Zippy</td><td>1</td></tr>
+<tr><br></tr>
+<tr><td colspan="2" align="center"><small>(&$^8$&(#7a></small></td></tr>
+</table>
+</td>
+<td>
+<table>
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td align="center">Xerxes</td><td>0</td></tr>
+<tr><td align="center">Yu</td><td>4</td></tr>
+<tr><td align="center">Zippy</td><td>5</td></tr>
+<tr><br></tr>
+<tr><td colspan="2" align="center"><small>874()&$0*@!~</small></td></tr>
+</table>
+</td>
+</tr>
+<caption>
+<a name="fig:RVmb"</a>
+This single-digit <i>range voting</i> multi-ballot rates
+Xerxes=0 (worst),  Yu=9 (best),  and  Zippy=1
+(just above worst) (these are total scores minus 9).
+</caption>
+</table>
+
+
+<h3>What about range voting?</h3>
+
+<p>
+For a Range rather than Approval voting election:
+same procedure
+works, except for these changes.
+Suppose the allowed scores are <i>{0,1,2,&hellip;,R}</i>,
+where, e.g. <i>R=9</i> for single-digit range voting.
+Instead of marking (or not) a bubble to indicate approval
+or disapproval of that candidate the voter fills in a slot with a <i>number</i>
+in <i>{0,1,2,&hellip;,R}</i>
+(or by marking one of <i>R+1</i> bubbles).
+The candidate constraints are that the sum <i>S</i> of
+the candidate's three scores satisfy <i>R &le; S &le; 2R</i>. The checker enforces this.
+To give Perot score  <i>P</i>, <i>0 &le; P &le; R</i>, she
+should make sure <i>S = R+P</i>.
+See Figure <a href="#fig:RVmb">&sect;</a>.
+</p><p>
+This completes our description of the operation of the ThreeBallot
+voting system for Approval and Range voting.
+</p>
+
+<h3>Security Assumptions &amp; Mechanisms</h3>
+<p>
+ThreeBallot has some unique concerns among voting systems,
+since the voter has as a receipt a copy of part of her vote, in
+plaintext, and all ballots cast are available in plaintext on the PBB.
+</p><p>
+Without some additional assumptions or mechanisms, the voter
+privacy of ThreeBallot can be attacked, as noted below.  We
+now propose one assumption and one mechanism.
+</p><p>
+The <b>Short Ballot Assumption</b> (SBA) assumes that the ballot is
+short&mdash;there are many more voters in an election than ways to fill
+out an individual ballot&mdash;i.e., there are only a few races and only a
+few candidates in each race.  That is, if the ballot has <i>C</i> candidates
+total, then (for approval voting)
+the number <i>2<sup>C</sup></i> of voting patterns
+must be much smaller than the number of voters.
+Depending on the voting system used,
+the SBA may be more or less reasonable; for example
+a rank-order voting system with <i>C</i> candidates has
+<i>C!</i> possible voting patterns, which may easily exceed the
+number of voters.
+See Table <a href="#fig:sba">&sect;</a>.
+It is reasonable to assume under the SBA that
+each possible ballot is likely to be cast by several voters.
+The security of all three of our secure voting protocols depends
+on the SBA.
+</p>
+
+<table align="center" bgcolor="pink">
+<tr><th>system</th><th>#patterns</th><//tr>
+<tr>
+<td>Approval      </td><td><i>2<sup>C</sup></i> but only 2 if debundled 
+</td></tr><tr><td>
+1-digit Range</td><td><i>10<sup>C</sup></i> but only 10 debundled 
+</td></tr><tr><td>
+2-digit Range</td><td><i>100<sup>C</sup></i> but 100 debundled 
+</td></tr><tr><td>
+Borda, Cndrct, IRV</td><td align="center"><i>C!</i> 
+</td></tr><tr><td>
+Plurality       </td><td><i>C</i> (VAV) but <i>2<sup>C</sup></i> (ThreeBallot) 
+</td></tr>
+<caption>
+<a name="fig:sba"</a>
+Pattern-counts in different voting systems.
+</caption>
+</table>
+
+<p>
+An important related idea is <i>debundling</i> &ndash; separating
+different races, or even different candidates in the same race
+onto separate
+ballots, so that the SBA holds for each ballot.
+</p><p>
+With Approval and Range voting, the voter provides
+a <i>rating</i> for each candidate &ndash; "approve"/"disapprove,"
+or a numerical score in, say, <i>[0,9]</i>.
+Her rating for Xerxes is <i>independent</i> of her rating for Yu.
+So in these voting systems it is <i>unnecessary</i>
+and indeed <i>unnatural</i>
+to force her
+to rate all the candidates in a race on the
+same ballot.
+With Range and Approval voting,
+ballots can be debundled all the way down to <i>single candidates</i> if
+desired, thus guaranteeing that the SBA holds.
+</p><p>
+However, for Plurality,
+all candidates <i>must</i> be on the same ballot, because votes
+for the different candidates are <i>dependent</i> &mdash;if you
+vote for Xerxes, you may not vote for Yu.
+A plurality race with many candidates may have to violate SBA.
+(Well, you can have a multi-page ballot with separate
+coded ID on each one, as long as they are checked simultaneously.
+Long candidate lists cause problems for many voting systems.)
+</p><p>
+There is a clear SBA/bundling trade-off.
+Debundling would have been essential to achieve SBA
+for approval or range voting for
+the 2006 Congo presidential election,
+which had <i>C=33</i> candidates.
+But VAV (see <a href="#sec:vav">&sect;</a>) <i>could</i> handle Plurality for this
+election with no debundling; VAV can also
+handle rank-order ballot elections when
+<i>C!</i> is well below the number of voters.
+In many cases no debundling may be needed.
+</p>
+
+<p>
+"<b>Floating Receipts</b>"
+is a new security mechanism introduced in this paper
+(see <a href="#sec:FloatingReceipts">&sect;</a>), wherein a voter may bring home a
+receipt that is a copy of <i>some other</i> voter's ballot, and/or
+extra copies of receipts could be "floating" around in unknown hands.
+That can provide additional helpful layers of anonymity or security.
+</p><p>
+Twin depends on floating receipts, while VAV and ThreeBallot
+do not, <i>but</i> one can <i>add</i> floating receipts as an
+<i>extra security feature</i> to either, so that
+these protocols become secure even against
+a wide class of <i>collusive</i> attacks
+(<a href="#sec:collusiveattacks">&sect;</a>).
+For simplicity we describe ThreeBallot and VAV
+without such collusion-protection, then will describe ways to add it
+in <a href="#sec:FloatingReceipts">&sect;</a>.
+</p>
+
+<h3>ThreeBallot Security &mdash; Integrity</h3>
+
+<p>
+The two main voting system security requirements are
+integrity of election results and voter privacy.
+We begin with integrity.
+</p><p>
+The voter can check that
+<ul>
+<li> a ballot matching her receipt is posted
+      on the PBB in the list of cast ballots (using
+      the coded ID as the lookup key),
+</li><li> the total number of ballots on the PBB
+       is three times the number of voters
+       who voted (the list of
+       voters who actually voted is also
+       published on the PBB).
+</li>
+</ul>
+
+</p><p>
+The first check has no analogue in most current voting systems.
+We'll see these
+checks allow detection of several kinds of fraud.
+Of course, one has to ensure that the new security mechanisms
+can't themselves be easily attacked.
+</p
+
+ <a name="sec:addingbals"</a>
+<h3>Adding Ballots can be Detected</h3>
+
+<p>
+An adversary can't add ballots to the PBB without putting more voter
+names on the PBB, which makes the fraud detectable.
+(Grandma, did you really vote? Weren't you sick that day?)
+On this issue of ballot stuffing, ThreeBallot is little different
+from other voting systems; the best defense is public oversight
+of voter check-in process and the posting of lists of voters who
+voted.
+</p>
+
+<h3>Modifying or Deleting Ballots can be Detected</h3>
+
+<p>
+An adversary can't delete or modify any posted ballots, without
+risking a voter protesting that her receipt matches no ballot
+on the PBB.  (The PBB has no ballot with the same ID,
+or shows one with different marks.)
+</p><p>
+Of course, an adversary might risk modifying just a few ballots,
+hoping to avoid detection since only <i>1/3</i> of the ballots are protected.
+It's key that <i>nobody knows which</i> <i>1/3</i>, which assures that any
+large-scale fraud would get detected
+with even a low level of vigilance by voters or their proxies.
+(The actual chance of detecting such fraud can be computed
+with the usual sort of "auditing math" <a href="#bib">AslamPoRi07</a>.)
+<blockquote><small> <a name="foot:refodds"</a>
+E.g.: to detect a <i>fixed</i> level of fraud (e.g. 6%)
+with significant probability (e.g. 95%), only a <i>fixed</i> number of voters
+(in this case 50) need to check, no matter how large the electorate.
+</small></blockquote> 
+</p><p>
+Since attacks by adding, modifying, or deleting ballots are
+detectable, voters can have confidence in the correctness of the final
+tally.
+</p>
+
+<a name="sec:no-voter-coercion"</a>
+<h3>No Voter Coercion or Vote Selling</h3>
+
+<p>
+A design goal of the ThreeBallot system is that the voter should not
+be able to sell her vote, since her receipt doesn't provide reliable
+information on how she voted.
+</p><p>
+Note how ThreeBallot follows the philosophy of "vote by rows, cast by
+columns"&mdash;viewing each candidate's votes as in a given row, but the ballots
+are columns.  Each ballot by itself (and thus the receipt that the
+voter takes home) contains no information about
+whether the voter approved or disapproved any given candidate.
+</p><p>
+No matter whom she votes for, her receipt can have any possible
+pattern of marks.
+<!-- (There are <i>2<sup>r</sup></i> such patterns if the ballot has
+<i>r</i> candidates: from completely empty to completely filled.) -->
+Moreover, the
+voter has complete control over what pattern is
+shown on her receipt.
+</p><p>
+A coercer can pay the voter to come back with a receipt showing some
+particular pattern of marks, and the voter can do so, <i>without
+affecting her ability to vote in any way she chooses</i>.  She can put
+the coercer's desired pattern of marks in ballot 1, and then fill in
+ballots 2 and 3 to express her desired voting preference
+and "outvote" ballot 1 as necessary.  She then copies
+ballot 1 as her receipt to give the coercer.
+</p>
+
+<a name="sec:three-pattern"</a>
+<h3>The "Three-Pattern" Attack</h3>
+
+<p>
+There is another attack with which a coercer may attempt
+to buy votes or influence a voter's voting behavior.
+</p><p>
+In this "three-pattern" attack, the adversary pays the voter to vote
+according to <i>pre-specified patterns in each of her three
+ballots</i>.  That is, the adversary isn't paying for the voter's "net
+vote," but paying for her to create her net vote in a <i>specific
+pattern of three individual ballots</i>.  If the adversary doesn't see
+<i>all three</i> pre-specified ballots posted on the PBB, the voter
+doesn't get paid (or is punished).
+</p><p>
+The attack fails if the Short Ballot Assumption holds, since each
+possible ballot pattern is likely to occur, many times.
+</p>
+
+<h3>Recounts and Audits</h3>
+
+<p>
+Because the ballots are paper, it is possible to rescan and recount
+them in that form.  A recount of some precincts might be mandated by
+state law, particularly for close elections.  Or, a recount might be
+required if enough voters credibly claim that their receipts aren't
+represented correctly or at all on the PBB.
+</p>
+
+<h3>Detecting Malicious Voters</h3>
+
+<p>
+The receipt may need some additional authentication
+(cf. &sect;5.3 of <a href="#bib">Adida06</a>) to prevent voters from
+maliciously claiming that their (fabricated) receipt doesn't match any
+ballot on the PBB.  This authentication could be a seal
+or sticker on the receipt, or (better) an unforgeable digital signature
+for {the vote on the receipt, the election-name ("2008 Presidential"), and
+the ballot ID}.
+</p><p>
+It is OK for the voter to let an
+official sign her receipt as an officially approved
+receipt, since voter privacy isn't threatened.  However the digital-signing
+machine must <i>not remember</i> the ballot ID.
+This worrisome requirement can be avoided by not revealing the ID to the signer
+and not including it as part of the signed bit-string.
+In that case the digital signature would protect only the vote while
+the ballot ID would be protected by
+old-fashioned paper-and-ink anti\-forgery technology.
+</p>
+
+<h3>Attacking the Checker</h3>
+
+<p>
+The checker needs to be tested carefully.  A maliciously modified
+checker could, e.g. allow some voters, by violating the row-constraints,
+to effectively have <i>three</i> votes!
+</p><p>
+Note that such illegal voting patterns can't be detected later, since
+the row-constraint can't be re-tested once the multi-ballot is split
+up.  (Of course, in some cases you may be able to tell that such an
+attack has been mounted: e.g., if a candidate ends up with more than
+<i>2n</i> marks.)
+</p><p>
+Thus, we see that there is some dependency of the correctness of
+the election outcome on the correctness of the checker (assuming that
+some voters would exploit an opportunity afforded by a defective
+checker).
+</p><p>
+On the other hand, the candidate conditions are exceptionally simple to
+check, and a simple hard-wired row-constraint checker may be
+sufficiently trustable that one can have confidence in its correct
+operation on election day.
+</p><p>
+One may compare this situation with other forms of VVPR
+(voter-verified paper records), such as DRE-VVPAT or ordinary opscan.
+ThreeBallot is like them in that the voter can directly verify her own
+paper ballot, to ensure that her intent has been
+captured correctly on paper.
+As with other VVPR methods we must worry about
+"casting multiple votes," and "ballot box stuffing."
+But ThreeBallot has an additional risk: that
+a corrupt checker would allow some voters to
+cast a "heavier" vote than others.
+But ThreeBallot
+allows voters to detect modification of the collection of cast
+ballots, whereas other VVPR schemes don't even attempt this.  On
+balance ThreeBallot addresses better the more serious threats.
+</p><p>
+To compare this situation with that for cryptographic voting
+schemes:  A bad checker in ThreeBallot might allow a voter to cast an
+invalid multi-ballot; cryptographic schemes either make such invalid
+voting impossible or require the voter to post with her vote a proof
+that her (encrypted) ballot is valid.
+</p><p>
+John Kelsey noted that a maliciously
+modified checker, since it knows which ballot is being copied as a
+receipt, might be able to encode this information on the ballots
+themselves (say by using a bit of steganography); a correspondingly corrupted scanner
+would then know which ballots it could scan incorrectly.  This sort of
+mischievous behavior also needs to be prevented, by design of the
+checker, or by other controls.
+</p>
+
+<a name="sec:payingforreceipts"</a>
+<a name="sec:collusiveattacks"</a>
+<h3>Paying for Receipts</h3>
+
+<p>
+The adversary may be able to buy voters' receipts as they leave,
+<i>and</i> then be able to manipulate the contents of the PBB.
+(This is a "collusive attack," <a href="#sec:floatr">&sect;</a> since the vote-buyer and the PBB
+staff must collude for it to work.)
+</p><p>
+Knowing that the voter has given up her ability to contest PBB
+corruption, the adversary alters the PBB copy of her
+corresponding ballot.
+</p><p>
+Voters should thus be cautioned not to casually discard or give away
+(the only copy of) their
+receipts.  If she uses a "helper organization" (e.g. the
+ACLU) as a proxy to check PBB integrity, the voter
+might give the helper organization a <i>copy</i> of her receipt,
+rather than the original.
+(The receipt might be signed at the poll
+site with a bar-coded digital signature,
+so a copy is as "authentic" as the original here.)
+</p><p>
+There should also be strong safeguards on PBB modification for
+a "layered defense."
+Current voting systems rely for their
+security <i>entirely</i> on such safeguards, so ThreeBallot can't help
+but be an improvement.
+</p><p>
+This attack works for many cryptographic schemes in the literature;
+the only prior countermeasures we know of are by 
+&sect;5.4 of <a href="#bib">RyanPe05</a>, who suggest both voter education
+and having election officials keeping additional copies of the
+receipts at the polling site, and &sect;5.2 of <a href="#bib">KarlofSaWa05</a>,
+who suggest voter education.
+</p>
+
+<h3>Chain Voting</h3>
+
+<p>
+In the <i>chain voting</i> <a href="#bib">JonesChain</a> attack on paper-based
+voting systems, a buyer hands a voter a pre-marked ballot.
+She casts it as "her" vote, then gives the blank ballot she should
+have used to the vote-buyer
+(receiving payment and allowing the cycle to begin anew).
+The usual remedy ensures that a voter
+casts the ballot she was given.
+Ballots have tear-off stubs.  When the voter first
+picks up a blank ballot, a random number (e.g. from dice) is
+written on the stub and recorded under that voter's name on a list;
+when she casts her ballot the stub number is checked,
+and the stub torn off and visibly destroyed.
+Poll procedures
+<!-- % (e.g. "purple fingers") -->
+ensure voters cannot leave then re-enter the polls with ballots.
+</p>
+
+<h3>Voter Privacy in ThreeBallot</h3>
+
+<p>
+We now turn to the second main security requirement:
+maintaining voter privacy.
+</p><p>
+The first of Professor Michael Shamos's "Commandments" <a href="#bib">Shamos93</a>
+on voting is:
+</p>
+
+<blockquote>
+<i>Thou shalt keep each voter's choices an inviolable secret.</i>
+</blockquote>
+
+<p>
+A voter should not be able to violate her own privacy, even if she
+wishes: she should be unable to convince anyone else that she voted in
+a particular way. Otherwise she could sell her vote.  (This is why we
+strongly favor pollsite voting, with its enforced voter isolation
+during voting, over remote voting schemes such vote-by-mail,
+vote-by-phone, or vote-by-Internet.)
+</p><p>
+What could the voter show an adversary
+to persuade the adversary of how she voted?  Three
+sorts of evidence are available:
+<ul>
+<li> physical evidence she brings away from the
+      the voting session (such as her voting receipt),
+</li><li> other evidence the voter may bring away from the
+  voting session (such as ballot ID's she may have
+      memorized or photographed), and
+</li><li> the cast ballots on the PBB.
+</li></ul>
+
+<h3>Can Receipt violate Voter Privacy?</h3>
+
+<p>
+Can the voter violate her own privacy using her receipt?
+</p><p>
+Nothing prevents a voter from voting
+entirely honestly on her first ballot.
+If she then copies that first ballot for her
+receipt, it indicates exactly how her votes will be tallied.
+</p><p>
+But this receipt is at best a "reminder" of how she voted, not a
+proof that will convince anyone else as to how she voted.  She is
+unable to intentionally violate her own privacy by showing someone
+else her receipt.  (We have already argued, in
+<a href="#sec:no-voter-coercion">&sect;</a>, that a voter's receipt, by
+itself, bears no information about how a voter voted.  So it cannot
+violate voter privacy.)
+</p>
+
+<h3>Can the Receipt be linked with its other two ballots?</h3>
+
+<p>
+No one should be able to reliably and convincingly link together the
+three ballots on the PBB that constitute an original cast
+multi-ballot.  Otherwise, the voter's privacy is at risk.
+</p><p>
+If the multi-ballot were to be printed on a single sheet of paper
+(e.g., with perforations), then there would be a risk that the printer
+could remember which triples of ballot ID's were valid.
+(Some cryptographic voting schemes, such as Pr&ecirc;t &agrave;
+Voter <a href="#bib">RyanPe05</a> also have have security vulnerabilities at the
+ballot printers.)
+However, with
+our recommended procedure of having the voter randomly select three
+ballots from a bin to constitute her multiballot, this isn't a problem.
+</p>
+
+ <a name="sec:identify"</a>
+<h3>Risk Voter can identify her Multi-Ballot</h3>
+
+<p>
+The voter should not be able to record or remember the ballot ID
+numbers of her three ballots.
+(Voters should not be allowed to take photos of their multi-ballot!
+Cell-phones, video cameras etc. must be prohibited!)
+</p><p>
+We have five approaches for this:
+<!-- with different simplicity/security tradeoffs -->
+<br>
+<b>1.</b> Printing ballot ID's in a coded way, using
+      punctuation and other symbols.
+      Advantages: (a) simple. (b) hard for the voter to
+      remember.  Unfortunately it's easy for a voter to copy manually.
+<!-- It might help if the information-carrying symbols were
+ scattered within some fixed "decoy" symbols, so that
+ memorizing only (say) the first few symbols would be
+ unlikely be helpful in identifying the ballot. -->
+<b>2.</b> Barcode. Somewhat harder to copy,
+   but also harder to read later when looking the ballot up on the PBB.
+<br>
+<b>3.</b>
+ID's could be under "scratch-off."
+That's more secure, but precludes cheap and
+common printing equipment.
+<br>
+<b>4.</b>
+Ballot ID's could be printed using
+"visual cryptography" <a href="#bib">NaorSh94</a>;
+with this approach ballot IDs by themselves are just
+"random dots" which convey no information whatever.
+The voter is given the plastic overlay that allows her
+to read the ballot ID only <i>after</i> she receives her receipt.
+Almost impossible to copy or remember
+without a (incriminating)
+camera or overlay.
+<br>
+<b>5.</b>
+(The "Shamos checker".)
+Michael Shamos suggested the following nifty approach, which
+prevents the voter from ever seeing the ballot IDs of the
+two ballots not copied:
+<ul>
+<li> All multi-ballots are initially identical and contain
+      no ballot ID's.
+</li><li> When the checker determines that a multi-ballot is OK,
+      it prints three randomly generated ballot ID's
+      on the three ballots, but retains the ballots for now.
+</li><li> The voter selects which ballot she wants copied
+      for her receipt.
+</li><li> The checker spits out both the selected ballot and a
+      copy of it (her receipt), and puts the other two ballots
+      into a holding bin.
+</li><li> She checks that the receipt and the selected ballot match.
+      If so, she puts the selected ballot into the ballot box and
+      presses the "Done" button on the checker, which empties the
+      holding bin (containing her other two ballots) into
+      the ballot box, in such a way that
+      she never sees their ballot ID's.
+      If not, she pushes the "I got a bad receipt" button
+      on the checker (which now empties the holding bin
+      with her other two ballots into a spoiled ballot bucket),
+      complains to a pollworker by showing her ballot and unequal
+      receipt, and votes again.
+</li></ul>
+The "Shamos checker" keeps the voter from ever seeing
+the ballot ID's of her other two ballots, so we don't
+need to worry about her memorizing or photographing
+them.  It also complies with state laws (like
+California's) that require all blank ballots to be
+identical.  We note that if its "random" number generator
+is deterministic or defective, voter privacy might be compromised.
+</p>
+
+<h3>Risk of Copying</h3>
+
+<p>
+It is better not to let the voter use a generic copying machine to
+make her receipt, lest she make a copy of all three ballots.
+</p><p>
+The procedures we've suggested are designed to ensure that the voter only
+gets a copy of one of her three ballots, and can't copy her other
+ballots or their ID's.
+</p>
+
+<h3>Reconstruction Attack</h3>
+
+<p>
+In a "reconstruction" attack the adversary examines all possible
+triples of ballots from the PBB, and determines which of
+them form legal ThreeBallot ballots.
+</p><p>
+The information gained may, in some cases, be
+sufficient to determine how an individual voter
+voted, when taken together with either the ballot ID
+available on the voter's receipt, or if that voter made an agreement beforehand
+(like the three-pattern attack).
+</p><p>
+Under the Short Ballot Assumption, there will be many ways to piece
+ballots together, and the adversary gains insufficient information to
+combine triples of ballots to infer the voter's vote.
+</p><p>
+Strauss <a href="#bib">Strauss06B</a> provides some empirical evidence on the
+effectiveness of reconstruction attacks for various sized ballots,
+as do Jones et al. <a href="#bib">JonesJuBe06,BeloteJoJu06</a>.
+Also see Cichon et al. <a href="#bib">CichonKuWe07</a> for some careful analysis of how
+short a ballot needs to be to provide voter privacy in ThreeBallot.
+</p>
+
+<h3>Early publication "threat"</h3>
+
+<p>
+Some critics have worried that PBB posts or "leaks" could reveal
+information about our vote totals (say, halfway through the election) "early";
+while with full-cryptographic voting protocols, supposedly that couldn't happen.
+The simplest approach is not to publish the PBB until polls
+close, as in <a href="#sec:postbals">&sect;</a>.
+</p><p>
+But one of us (WDS) feels this really is not a security issue at all; it is a voting method issue.
+After all, exit polls will defeat <i>any</i> security measures (and restricting exit poll
+publication would be unconstitutional, cause more problems than it would solve,
+and would not prevent "secret" exit polls whose results were
+revealed only to the right people in private).
+WDS feels the real problem is mainly that the Plurality voting method
+(<a href="#sec:votmeth">&sect;</a>) is highly vulnerable to insincere "strategic voting,"
+whereas, e.g, in Approval and Range voting
+strategic decisions based on
+early returns have less importance.
+</p>
+
+<h3>ThreeBallot Usability</h3>
+
+<h3>For Voters</h3>
+
+<p>
+The ThreeBallot voting process is more complex than current
+conventional voting systems, so the impact on usability must be
+considered. An interesting preliminary field study <a href="#bib">JonesJuBe06</a>
+indicates that ThreeBallot has significant usability issues.
+</p><p>
+Of course, the main method for making sure that
+the voting system works well for voters is voter
+education.  Although ThreeBallot is new, it is
+nonetheless quite workable, and a little voter education
+may make its operation clear for many or most voters.
+</p><p>
+However, if a voter makes a mistake, the process of
+recasting a ballot is not so simple.  (Well, it's
+like opscan: you need to start over with a clean
+ballot.)
+</p><p>
+Voters who have difficulty with filling out a ThreeBallot multiballot
+could be given simplified instructions (e.g. always fill in the
+bubbles for a candidate from left to right).
+</p><p>
+Probably the best approach is to merely let voters who have undue
+difficulty with ThreeBallot use conventional ("OneBallot") methods,
+since you can "mix" OneBallot and ThreeBallot ballots together
+(<a href="#sec:mixing3ballotwith1ballot">&sect;</a>).
+</p><p>
+Still, any increase in the voting complexity
+will cause additional voter confusion and problems, so there
+is certainly a potential price to be paid, in terms of usability,
+for the security benefits of ThreeBallot.
+</p>
+
+
+<h3>For Election Officials &amp; Workers</h3>
+
+<p>
+ThreeBallot causes extra work for pollworkers, since the
+number of paper ballots cast that need to be handled is now three
+times as large as with conventional ("OneBallot") voting.
+Furthermore ThreeBallot may encourage inefficient use of the ballot
+page as compared to traditional opscan layouts, requiring
+even more ballot pages.
+</p><p>
+The benefit that compensates for
+this extra work and extra usability problems for voters,
+is, of course, a higher degree of confidence in the integrity
+of the voting process and election results.
+</p>
+
+<h3>Variations and Improvements</h3>
+
+<p>
+We have presented and discussed the main architectural components of a
+ThreeBallot voting scheme: vote-by-candidates (rows) but
+cast-by-columns, take a column copy home as a receipt, and post all
+ballots on a PBB.  We now review further variations and
+extensions.
+</p>
+
+<a name="sec:mixing3ballotwith1ballot"</a>
+<h3>Mixing One- with ThreeBallot</h3>
+
+<p>
+A conventional opscan voting system might be called OneBallot&mdash;each
+voter votes just once and can't take away a copy of her vote cast,
+whereas with ThreeBallot the voter casts three ballots, and takes away
+a copy of (an arbitrarily and secretly chosen) one.
+</p><p>
+You can actually mix these two systems.  A OneBallot voter can toss
+her ballot in the same ballot box that a ThreeBallot voter places her
+three in.  The PBB should indicate for each <i>voter</i> whether she
+is a OneBallot voter or a ThreeBallot voter, so that anyone may check
+that the PBB contains the correct number of ballots, but it should not be possible to tell
+by examination of a <i>ballot</i> which type it was.
+</p><p>
+This provides a transitional path from OneBallot to ThreeBallot
+voting, as voters can choose which system to use.
+Our systems are compatible so counting is the same.
+</p><p>
+A nice feature of mixing the two systems is that the OneBallots
+are <i>protected</i> by being in the same ballot box as
+ThreeBallots, since an adversary will hesitate to corrupt
+any ballots as they might be ThreeBallots which
+voters have retained copies of.  (OneBallots must be valid in
+the usual sense, e.g, for plurality voting, without overvotes or undervotes.
+But a ThreeBallot might also be valid that way, so an adversary would be
+prevented from deleting or modifying just OneBallot ballots.
+Anyhow, with approval voting all ballots are valid.)
+</p>
+
+<h3>Write-In Votes</h3>
+
+<p>
+ThreeBallot Range and Approval voting trivially permit "write-in"
+votes <i>if</i> voter-ratings of write-in candidates are handled
+debundled on <i>separate</i> ballots.  (If they were bundled on the
+same ballot as the regular candidates, voters could attempt to
+identify their ballots by writing-in unique "candidate" names.
+Cf. <a href="#bib">KiayiasYu04</a>.)  Range voting with high-precision scores also
+has to be forbidden for the same reason
+(insist on single-digit range voting).
+<!--  RLR &ndash; I think this footnote is just too confusing for this version of our paper. -->
+<blockquote><small>Albeit in principle it could be
+handled by a further level of debundling &ndash; down below single
+candidates into single <i>digits</i> of large numbers.</small></blockquote>
+</p><p>
+Our schemes for plurality and rank-order voting systems unfortunately
+cannot handle write-in candidates.
+</p>
+
+<a name="sec:vote-counting"</a>
+<h3>Other Vote-Counting Methods</h3>
+
+<p>
+As we have seen, ThreeBallot works fine for "approval" voting.
+</p><p>
+Although we prefer to handle plurality voting with VAV
+(<a href="#sec:vav">&sect;</a>), ThreeBallot can do it too;
+we add "race constraints"
+to the "row-constraints" already discussed;
+each race constraint permits the voter to approve at most
+one candidate per race.  This makes the checker more
+complicated (it now must know which candidates are
+in the same race), but otherwise not much changes.
+(We note that an individual ballot might be part of a legal
+threeballot, yet now look like an illegal overvote; that is OK.)
+</p><p>
+ThreeBallot does not work at all for ranked preference voting systems
+such as Borda, IRV, %(instant runoff voting),
+or Condorcet.
+Our VAV protocol (<a href="#sec:vav">&sect;</a>) does.
+</p>
+
+<h3>ThreeBallot &ndash; Summary</h3>
+
+<p>
+Cryptographic techniques can also provide all of
+the security properties of ThreeBallot, and more.
+See
+Chaum <a href="#bib">Chaum04</a>,
+Chaum et al. <a href="#bib">ChaumRySc04</a>,
+Ryan et al. <a href="#bib">RyanSc06,RyanPe05</a>,
+Karloff et al. <a href="#bib">KarlofSaWa05</a>,
+Smith <a href="#bib">Smith05, SmithV1, SmithV2</a>,
+and Adida <a href="#bib">Adida06</a>
+for presentations and discussions of cryptographic
+voting methods.
+</p><p>
+However, ThreeBallot achieves almost as good
+security properties, without cryptography.
+</p><p>
+We note for the record that we have nothing against cryptographic
+voting methods&mdash;they are very appealing, although a bit complex.
+</p><p>
+That's why this paper's goal is to see to what extent the security properties
+of cryptographic schemes can be
+achieved in a "low-tech" manner, without cryptography.
+</p><p>
+What happens after our protocols prove there was fraud?
+Election systems need
+a more graceful way to recover from errors than merely declaring failure;
+we somehow need to insert <i>accountability</i> and <i>corrective feedback.</i>
+Our protocols, while imperfect in that respect, seem as good, and
+in some ways superior, to present-day paper balloting.
+The potential for "superiority"
+is since in our schemes with <i>preprinted ballot IDs</i>, we can set up a
+chain of custody
+for all ballots within ballot-number intervals.
+E.g, there will be records saying "Joe Schnoz obtained custody of ballots
+#785400-823100 at 6pm on 30 September."
+Now suppose some cast ballots vanished or were altered,
+or fake voters voted (on stolen blank ballots).
+Then we <i>know</i> exactly who was supposed to have custody of the ballots
+with those numbers and when, so we can try to assign blame and stop the corruption.
+</p><p>
+Recovery from some errors (e.g. too many ballots on the PBB) can be
+problematic.
+Rescanning the cast paper ballots may suffice to fix many problems.
+ThreeBallot is really just a paper ballot scheme, with the usual
+issues and remedies, except that voters cast three ballots constructed
+in a novel manner, and have a new protocol for checking that at least
+one of their ballots is counted in the final ballot box.
+</p><p>
+ThreeBallot also has pedagogic value as a "stepping stone"
+when explaining cryptographic voting protocols, as it strives to
+achieve similar properties with simpler methods.
+</p><p>
+Note that the voter is getting not only verification that her vote is
+"cast as intended" (as with most VVPAT or paper-trail systems), but
+also getting evidence that her vote is actually affecting the final
+tally as it should.
+</p><p>
+So, the ThreeBallot voting system seems to give a nice level of
+end-to-end verifiability with "plausible" (but not great) user
+interface, without cryptography.
+</p>
+
+<table bgcolor="pink" cellpadding="2" border="2" align="center">
+<tr>
+<td>
+<table cellpadding="1">
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td colspan="2" align="center"><font size="+3">V</font></td></tr>
+<tr><td align="center">Xerxes</td><td align="center">&Omicron;</td></tr>
+<tr><td align="center">Yu</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Zippy</td><td align="center">&Omicron;</td></tr>
+<tr><td colspan="2" align="center"><small>^&^$867*&$></small></td></tr>
+</table>
+</td>
+<td>
+<table cellpadding="1">
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td colspan="2" align="center"><font size="+3">A</font></td></tr>
+<tr><td align="center">Xerxes</td><td align="center">&Omicron;</td></tr>
+<tr><td align="center">Yu</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Zippy</td><td align="center">&Omicron;</td></tr>
+<tr><td colspan="2" align="center"><small>(&$^8$&(#7a></small></td></tr>
+</table>
+</td>
+<td>
+<table cellpadding="1">
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td colspan="2" align="center"><font size="+3">V</font></td></tr>
+<tr><td align="center">Xerxes</td><td align="center"><font size="+4">&bull;</font></td></tr>
+<tr><td align="center">Yu</td><td align="center">&Omicron;</td></tr>
+<tr><td align="center">Zippy</td><td align="center">&Omicron;</td></tr>
+
+<tr><td colspan="2" align="center"><small>874()&$0*@!~</small></td></tr>
+</table>
+</td>
+</tr>
+<caption>
+ <a name="fig:PlvavMB"</a>
+In this <i>Plurality-voting</i> multiballot,
+the VAV voter is voting for Xerxes.
+She here has chosen to make her <i>first two</i>
+ballots be the vote-antivote pair, and her <i>last</i>
+ballot is her real vote.
+</caption>
+</table>
+
+
+<a name="sec:vav"</a>
+<h3>3. VAV</h3> 
+
+<p>
+VAV stands for "Vote / Anti-Vote / Vote".
+</p><p>
+The VAV scheme is similar to ThreeBallot: each voter casts three
+ballots.
+</p><p>
+In VAV each ballot is pre-marked as either a "Vote" (positive, marked
+"V"), or an "Anti-Vote" (negative, marked "A").
+The voter casts one two Votes and one Anti-Vote, and we demand that
+one of the Votes exactly cancels the Anti-Vote (it is identical except for
+the A/V indicators).  See Figure <a href="#fig:PlvavMB">&sect;</a>.
+</p><p>
+She takes home as her receipt a copy of any one of her three ballots,
+just as in ThreeBallot.
+</p><p>
+VAV can support <i>any</i> kind of voting system.
+</p>
+
+<table bgcolor="pink" cellpadding="2" border="2" align="center">
+<tr>
+<td>
+<table cellpadding="1">
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td colspan="2" align="center"><font size="+3">V</font></td></tr>
+<tr><td align="center">Xerxes</td><td>1</td></tr>
+<tr><td align="center">Yu</td><td>2</td></tr>
+<tr><td align="center">Zippy</td><td>3</td></tr>
+<tr><td colspan="2" align="center"><small>^&^$867*&$></small></td></tr>
+</table>
+</td>
+<td>
+<table cellpadding="1">
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td colspan="2" align="center"><font size="+3">A</font></td></tr>
+<tr><td align="center">Xerxes</td><td>2</td></tr>
+<tr><td align="center">Yu</td><td>1</td></tr>
+<tr><td align="center">Zippy</td><td>3</td></tr>
+<tr><td colspan="2" align="center"><small>(&$^8$&(#7a></small></td></tr>
+</table>
+</td>
+<td>
+<table cellpadding="1">
+<tr><td colspan="2" align="center"><small>BALLOT</small></td></tr>
+<tr><td colspan="2" align="center"><font size="+3">V</font></td></tr>
+<tr><td align="center">Xerxes</td><td>2</td></tr>
+<tr><td align="center">Yu</td><td>1</td></tr>
+<tr><td align="center">Zippy</td><td>3</td></tr>
+<tr><td colspan="2" align="center"><small>874()&$0*@!~</small></td></tr>
+</table>
+</td>
+</tr>
+<caption>
+<a name="fig:RankMB"</a>
+In this <i>Borda</i>, <i>Condorcet</i>, or <i>IRV</i> multiballot,
+the VAV voter is ranking Xerxes top, Yu second,
+and Zippy bottom.   She here has chosen to make her <i>last two</i>
+ballots be the vote-antivote pair, and her <i>first</i>
+ballot is her real vote.
+</caption>
+</table>
+
+<p>
+It is important that each ballot be <i>pre-labeled</i> as "V" or "A" and that
+the talliers explicitly
+eliminate  each  A-antivote and a matching V-vote
+before tallying.
+(One could imagine a VAV-like scheme without explicit VAV labeling, and
+while that would work for Condorcet and Borda
+<blockquote><small>This was noted by Michael A. Rouse;
+you reverse order for the anti-vote.</small></blockquote>
+voting, it doesn't work for IRV.)
+</p><p>
+
+<!-- 
+% RLR: didn't seem worth the space of this figure for this point (it's not
+% even our scheme!
+%
+% figure <a href="#tab:irvmeetsvav">&sect;</a>
+% shows that it could not handle instant runoff voting.)
+%
+% \begin{figure}
+% <center>
+% \begin{tabular}{c | c}
+% \#voters & their vote <br>
+% \hline
+% 6 & $A>B>C$ <br>
+% 4 & $C>B>A$ <br>
+% 3 & $B>C>A$ <br>
+% \hline
+% \end{tabular}
+% </center>
+% \caption{\small <a name="tab:irvmeetsvav"</a>
+% C wins this IRV election.  But if the 4 $C>B>A$ ballots
+% were regarded as anti-votes of 4 of the 6 $A>B>C$ ballots and
+% these 8 votes were eliminated before counting, then B would win.
+% } %end caption
+% \end{figure}
+% \end{comment}
+-->
+
+The only concern is that each Vote shouldn't contain too much
+information &ndash; that would allow the voter to cast a  ballot highly likely to be unique,
+thus allowing her to sell her vote to a buyer who can verify its
+presence on the PBB.
+Thus, we are again
+assuming a version of the Short Ballot Assumption (SBA).
+The reason that VAV is superior to ThreeBallot for <i>plurality</i> voting,
+is that with VAV in a <i>C</i>-candidate race, the number of possible ballot-patterns is <i>C</i>
+&ndash; small, easily permitting satisfaction of the SBA &ndash;
+whereas with ThreeBallot it would have been <i>2<sup>C</sup></i>
+&ndash; large, often forcing violation
+of the SBA.
+</p><p>
+
+<!--
+%Charlie Strauss <a href="#bib">Strauss</a>
+%invented &ndash; and successfully implemented! &ndash; a "reconstruction attack" against
+%ThreeBallot plurality voting. Strauss's goal was to reconstruct all the ballot-triples
+%by "piecing together the jigsaw puzzle," at which point vote-privacy and immunity
+%to coercion would be
+%severely compromised.  For experimental investigation of
+%the limits of that attack, see <a href="#bib">Kuty???</a>.
+%Since the lifeblood of all attacks of this ilk is
+%<i>information-rich</i> ballots, they all fail
+%against VAV given the Short Ballot Assumption.
+-->
+
+VAV and OneBallot voting can also be mixed as in <a href="#sec:mixing3ballotwith1ballot">&sect;</a>
+(the OneBallots are all "V").
+</p>
+
+<a name="sec:FloatingReceipts"</a>
+<h3>4. Floating Receipts</h3>  
+
+<p>
+"Floating Receipts" is a simple and powerful security-enhancing idea.
+How can it help?
+ThreeBallot and VAV, as we have described them, can unfortunately be
+vulnerable to <i>collusive attacks</i>
+(e.g. modifying the PBB after obtaining some receipts)
+as described in <a href="#sec:collusiveattacks">&sect;</a>.
+</p><p>
+The method proposed here ("floating receipts") addresses
+these concerns by having voters
+<i>take home copies of receipts other than their own.</i>
+Essentially, there is a big bin of receipts, and voters first make
+a copy (to take home) of one receipt already in the bin (leaving
+the original in the bin), then %randomly
+toss their own original receipt into the bin.  This method has the following
+properties:
+<p align="left"> <b>Anonymity:</b> No one knows which voter
+cast the ballot corresponding to a given receipt copy with any
+useful probability.
+</p>
+<p align="left"> <b>Exchange:</b> No voter takes home a copy of
+her own receipt.
+</p>
+<p align="left"> <b>Coverage:</b> A constant fraction of the original
+receipts are copied, with high probability (and there is no way for anybody to know what that subset is).
+</p>
+<p align="left"> <b>Collusion-Resistance:</b> An adversary has no
+efficient method for confidently obtaining <i>all</i>  the copies of
+a given receipt.
+</p>
+<p>
+The Exchange property fights any attacks wherein an adversary
+pays for receipts of a given form.  Collusion-Resistance fights
+attacks where the adversary collects <i>all</i> copies of
+a given receipt, so as to evade PBB manipulation detection.
+Coverage ensures that any significant PBB manipulation has
+a good probability of being detected.   And Anonymity is useful
+for use in voting schemes (like "Twin" below) that would otherwise
+not have anonymity.
+</p><p>
+Voters traditionally have been anonymous "going into" the voting
+process (submitting ballots).
+Floating receipts now provide a new layer of anonymization
+"coming out" (taking home receipt copies).
+</p><p>
+Note that to check the integrity of the PBB,
+the voter only needs to bring home a copy of <i>some</i> cast
+ballot.  We admit she would have more motivation
+to check her <i>own</i>
+<!-- % <blockquote><small>
+% We also have ways (omitted in this short paper) to modify VAV to <i>both}
+% incorporate floating-receipt collusion protection
+% <i>and} allow voters to verify their own votes.}
+-->
+ballot, but assume that many voters will check anyway.
+<!--
+%%% RLR 6/14: what are we talking about above?
+
+% RLR: The following example adds nothing over what was already in
+% RLR: the section on "paying for receipts", and in addition might
+% RLR: offend some people unnecessarily.
+% For example, consider this disturbing "Bible meeting attack."
+% Christian voters at their Bible meeting are urged to hand in their
+% receipts to their pastor (who represents an election-protection watchdog group)
+% for "safe keeping."
+% But, unknown to both the voters and pastor, this "watchdog" group is
+% really part of a conspiracy to elect Evil.
+% The conspirators
+% <ol>
+% <li>
+% record the ballot IDs in their collection,
+% </li><li>
+% get corrupt talliers to alter all the corresponding ballots which vote "against" Evil
+% so they now vote "for" Evil,
+% </li><li>
+% burn their anti-Evil receipts so that this fraud is now unproveable. (They can, however,
+% still act like a legitimate watchdog organization to detect frauds <i>against}
+% Evil.)
+% </li></ol>
+-->
+
+<a name="sec:floatr"</a>
+<h3>Making "floating receipts"</h3>   
+
+<p>
+There are many ways of implementing floating receipts; we
+now elaborate the approach sketched above.
+<blockquote><small>The
+method here, though developed independently, can be
+also usefully be viewed as an extension of the earlier "Farnel" protocol
+(see A.J. Devegili <a href="#bib">Devegili01,AraujoCuWiTa06</a>) to handle
+ballot receipts rather than ballots themselves; in the Farnel protocol
+no take-home receipts were envisioned.</small></blockquote>
+</p><p>
+Let <i>T</i> be a constant (e.g. <i>T=20</i>), significantly
+less than the number of voters,
+such that <i>1/T</i> is a "small" probability.
+There is an initially empty "bin" (receipt reservoir).  %no longer fixed size 2T.
+</p><p>
+Each voter begins our "floating receipt" protocol having cast her
+ballots, and having the receipt.  So far everything is as in ThreeBallot or VAV
+but we now consider adding an additional Floating Receipts layer of defense.
+
+<p align="left"> <b>[Phase I]</b>
+The first <i>T</i> voters put their original receipts in the bin, and receive
+nothing to take home.
+</p>
+<!--% (But see Phase III.)-->
+
+<p align="left"> <b>[Phase II]</b>
+After that every voter:
+(a) gets a <i>copy</i> 
+to take home of a receipt chosen randomly from the bin
+(the original is returned to the bin),
+and then
+(b) deposits her own original receipt into the bin.
+The take-home receipt copies are certified as authentic as the
+voter leaves, with a notary-like stamp or
+a digital signature (as long as the signing device doesn't record what
+it sees).  When the voter leaves she might also be required to sign the
+registration book to certify that she has voted.
+</p><p>
+After the polls close, the final contents of the bin may be
+discarded or published in some manner
+<blockquote><small>We could also add an optional <b>Phase III</b>
+in which the first <i>T</i> voters <i>return</i>  
+to the polls at the end of the day and collect "delayed"
+receipts as in <b>IIa</b> &ndash; or we might only demand phase III for voting machines
+on which <i>&lt; 2T</i> voters voted (i.e. precisely those seen ex post facto to have
+violated our assumption that <i>T</i>
+was small compared to the number of voters).</small></blockquote>
+according to the preferences of the election officials,
+or perhaps given to an election-monitoring organization&mdash;these receipts could also be checked against
+the PBB.
+</p><p>
+The voter may use her receipt copy to check
+the PBB integrity and, if necessary, file a protest.
+</p><p>
+Clearly, no voter gets a copy of her own receipt to take home; she
+only gets copies of receipts from randomly chosen
+previous voters. That is, our "floating receipt" protocol
+satisfies both the <i>Anonymity</i>  and  <i>Exchange</i>  properties.
+The protocol also satisfies the <i>Coverage</i>  property, since, e.g,
+each of the first half of the deposited receipts has probability at least
+<i>1- &prod<sub>n+1&le;n&le;2n</sub>(1-1/m) = 1/2</i> 
+of being selected at least once for copying.
+And it satisfies <i>Collusion-Resistance</i>  since it is not clear from a receipt copy
+when the corresponding original receipt was deposited, and any voter since
+the original deposit might also have a copy of that receipt.
+</p><p>
+We note that even if <i>all</i> voters conspire to sell their votes, there is
+no way to prove how any one of them voted, even if they all
+reveal the receipt copies they brought home.
+</p><p>
+Floating receipts are quite powerful; in the next section we examine
+a voting system based almost entirely on the use of floating receipts.
+</p>
+
+<a name="sec:twin"</a>
+<h3>5. "Twin"&mdash;a simple OneBallot voting protocol</h3>   
+
+<p>
+Twin is a remarkably simple voting system
+based almost entirely on the power of floating receipts.
+It works for <i>any</i>  voting system
+given the SBA.
+Basically, it simply employs the floating receipts scheme last section
+combined with <i>One</i>Ballot voting:
+</p><p>
+Each voter simply marks a ballot
+and puts it in a bin, receiving a copy of a random previously-cast ballot
+from that bin as her take-home receipt.
+(Ballots have ID numbers hidden under scratch-off. 
+A checking machine can check that the marking is valid and the scratch-off remains
+unscratched, and only if so is the ballot placed in the bin; the
+scratch-off is automatically removed as it enters.
+The bin can be transparent enough so that everybody can see this all is happening, although
+not transparent enough to permit voters to read their ballot's ID number.
+Only voters later than the <i>T</i>th receive take-home receipts,
+although an optional "phase III" can be added as
+in <a href="#sec:floatr">&sect;</a>.)
+<blockquote><small>Juho Laatu and D.D.K.Sleator also emailed us some
+related proposals.</small></blockquote>
+The receipts can have notary-stamps or digital signatures added when they are
+given to the voter.
+<blockquote><small>
+Watchdog groups, or anybody with a
+computer, could provide publicly-usable digital-signature verifiers everywhere.</small></blockquote>
+At the end of the day,
+all the ballots in the bin,
+and a list of all voter names and
+addresses, are posted on the PBB.
+</p><p>
+Twin is simple; the voter need not do any arithmetic, nor worry about strange consistency
+conditions for multiple ballots.
+You can't sell your vote because your receipt is a copy of somebody else's ballot.
+Talliers can't manipulate the PBB without risking detection,
+since there is a certified copy of
+most ballots
+somewhere and they don't know which ones and who has the copies.
+Talliers can't add or delete ballots (cf. <a href="#sec:addingbals">&sect;</a>).
+"Dumpster-diving" or other methods to collect discarded receipts, followed
+by cheating to alter the corresponding PBB ballots, are <i>unsafe</i>  for
+cheaters because the collusion-resistance property of floating receipts.
+<!-- Twin and OneBallot voting can again be mixed as in 
+<a href="#sec:bmixing3ballotwith1ballot">&sect;</a>. -->
+</p><p>
+One worry with Twin
+is that since voters cannot verify their <i>own</i> ballots,
+a small political party may feel that only a tiny fraction of its
+ballots are verified by loyal party members.  But a major party may well
+be motivated to prevent fraud against a minor party in cases where it alters an election,
+and voter education should stress
+that voters should check whatever receipt they
+were given, as part of their civic duty.
+</p>
+
+<h3>6. Conclusion</h3>
+<p>
+Our new voting system, ThreeBallot, allows
+voters to verify that their votes are cast as intended, and
+to check that their vote is included in the final
+tally.  All cast ballots are published, tampering
+with votes can be detected, and vote-privacy seems unbreachable,
+given SBA.
+</p><p>
+This is the first time such end-to-end verifiability has been obtained
+<i>without</i>  the use of cryptographic techniques.
+Indeed the use of powerful
+computerized DRE machines with our protocols is actually <i>bad</i> 
+because those computers might be, e.g, remembering things, such as ballot-triples,
+which would destroy our security.   We require <i>simple</i>  and <i>manifestly
+un-powerful</i>  machines.
+<blockquote><small> <a name="foot:computerscanbeok"</a>
+However, <i>after</i>  the ballots have been cast and checked
+and the voters have gotten their receipts,
+from <i>then onward</i>  everything could be computerized, and it would not matter if
+those computers perhaps were penetrated, in the sense that anything they did wrong or fraudulently
+would be detectable.
+</small></blockquote>
+The principles employed
+by ThreeBallot are simple and easy to understand.
+</p><p>
+VAV increases ThreeBallot's applicability
+to handle <i>all</i> voting systems, and in some cases
+enlarges the set of elections for which the Short Ballot
+Assumption reasonably holds.
+</p><p>
+The notion of Floating Receipts is new here, and greatly
+strengthens the security properties of ThreeBallot and VAV.
+</p><p>
+Twin is a remarkably simple voting system, based almost
+entirely on Floating Receipts.  It has practical
+potential.
+<blockquote><small>(ThreeBallot,
+VAV, and Twin are hereby placed in the public domain&mdash;We are not
+filing for any patents on this approach, and we encourage others who
+work on extensions, improvements, or variations of this approach to
+act similarly.  Our democracy is too important&hellip; )</small></blockquote>
+</p><p>
+All three systems can be "mixed" with ordinary OneBallot voting
+as in <a href="#sec:mixing3ballotwith1ballot">&sect;</a>; this exerts a protective effect on
+the ordinary ballots and provides an "easy upgrade path."
+</p>
+
+
+<h3>7. Acknowledgments</h3>
+
+<p>
+<small>
+We thank Ben Adida, Andrew Appel, Jessy Baker, Alan Bawden,
+David Chaum, Ronald Crane, Chris Crutchfield, Kathy Dopp, John Kelsey,
+Jan Kok, Juho Laatu,
+Silvio Micali, Peter Neumann, Ben Riva, Alex Rivest,
+Michael A. Rouse,
+Julie Shamos,
+Michael Shamos, Emily Shen,
+Clay Shentrup,
+Daniel D.K. Sleator,
+Charlie Strauss,
+Jeroen van de Graaf,
+and
+Dan Wallach
+for feedback and comments.  (But errors are ours.)
+</small>
+</p><p>
+
+<a name="bib"></a>
+<h3>8. References</h3>
+
+<small>
+<p>Brennan06<br>
+Brennan Center 
+ The machinery of democracy: Protecting elections in an electronic
+  world.
+ Technical report, Brennan Center for Justice, 2006.
+   <a href="http://www.brennancenter.org/programs/dem_vr_hava_machineryofdemocracy.html">http://www.brennancenter.org/programs/dem_vr_hava_machineryofdemocracy.html</a>.
+
+
+</p><p>Adida06<br>
+Ben Adida.
+ <i>Advances in Cryptographic Voting Systems</i>.
+ PhD thesis, MIT Department of EECS}, August 2006.
+   <a href="http://crypto.csail.mit.edu/~cis/theses/adida-phd.pdf">http://crypto.csail.mit.edu/~cis/theses/adida-phd.pdf</a>.
+
+</p><p>AraujoCuWiTa06<br>
+R. Ara&uacute;jo, R. Cust&oacute;dio, A. Wiesmaier, and T. Takagi.
+ An electronic scheme for the Farnel paper-based voting protocol.
+ In <i>ACNS'06</i>, 2006.
+   <a href="http://www.cdc.informatik.tu-darmstadt.de/~rsa/papers/eFarnel-ACNS2006.pdf">http://www.cdc.informatik.tu-darmstadt.de/~rsa/papers/eFarnel-ACNS2006.pdf</a>.
+
+</p><p>AraujoRJ07<br>
+Roberto Ara\'ujo, Ricardo Cust&oacute;dio, and Jeroen van de Graaf.
+A Verifiable Voting Protocol based on Farnel,
+IAVoSS Workshop On Trustworthy Elections (WOTE2007), Ottawa, Canada June 2007.
+
+</p><p>AslamPoRi07<br>
+Javed A. Aslam, Raluca A. Popa, and Ronald L. Rivest.
+ Estimating the size and confidence of a statistical audit, 2007.
+ To appear in Proceedings EVT07 (Boston, MA).
+
+</p><p>BeloteJoJu06<br>
+Greg Belote, Harvey Jones, and Jason Juang.
+ ThreeBallot analysis.
+ Term paper presentation for MIT class 6.857 Fall 2006. 
+  <a href="http://theory.csail.mit.edu/classes/6.857/projects/threeBallotPresentation.pdf">http://theory.csail.mit.edu/classes/6.857/projects/threeBallotPresentation.pdf</a>.
+
+</p><p>BramsFi83<br>
+S. Brams and P. Fishburn.
+ <i>Approval Voting</i>.
+ Birkhauser, 1983.
+
+</p><p>Chaum04<br>
+David Chaum.
+ Secret ballot receipts: True voter-verifiable elections.
+ <i>IEEE J. Security and Privacy</i>, pages 38-47, Jan/Feb 2004.
+
+</p><p>ChaumRySc04<br>
+David Chaum, Peter Y. A. Ryan, and Steve A. Schneider.
+ A practical, voter-verifiable election scheme.
+ Technical Report CS-TR-880, University of Newcastle upon Tyne School
+  of Computing Science, December 2004.
+  <a href="http://www.cs.ncl.ac.uk/research/pubs/trs/papers/880.pdf">http://www.cs.ncl.ac.uk/research/pubs/trs/papers/880.pdf</a>.
+
+</p><p>CichonKuWe07<br>
+Jacek Cichon, Miroslaw Kutylowski, and Bogdan Weglorz.
+ Anonymity of the ThreeBallot voting protocol, 2007.
+ Available from authors.
+
+</p><p>Devegili01<br>
+A. J. Devegili.
+ Farnel: Uma proposta de protocolo criptogr&aacute;fico para
+  vota&ccedil;&atilde;o digital (in portuguese).
+ Master's thesis, Curso de P&oacute;s-Gradua&ccedil;&atilde;o em Ci&ecirc;ncia da
+  Computa&ccedil;&atilde;o da Universidade Federal de Santa Catarina,
+  Florian&oacute;polis, Santa Catarina, Brasil, 2001.
+
+</p><p>Gumbel05<br>
+Andrew Gumbel.
+ <i>Steal This Vote</i>.
+ Nation Books, 2005.
+
+</p><p>JonesOptical<br>
+Douglas W. Jones.
+ Counting mark-sense ballots: Relating technology, law, and common
+  sense, 2002 (rev. 2003).
+ <a href="http://www.cs.uiowa.edu/~jones/voting/optical/">http://www.cs.uiowa.edu/~jones/voting/optical/</a>.
+
+</p><p>JonesChain</br>
+Douglas W. Jones.
+ Chain voting, August 26, 2005.
+  <a href="http://vote.nist.gov/threats/papers/ChainVoting.pdf">http://vote.nist.gov/threats/papers/ChainVoting.pdf</a>.
+
+</p><p>JonesJuBe06</br>
+Harvey Jones, Jason Juang, and Greg Belote.
+ Threeballot in the field, Fall 2006.
+ Term paper for MIT course 6.857. 
+  <a href="http://theory.csail.mit.edu/classes/6.857/projects/threeBallotPaper.pdf">http://theory.csail.mit.edu/classes/6.857/projects/threeBallotPaper.pdf</a>.
+}.
+
+</p><p>KarlofSaWa05<br>
+Chris Karlof, Naveen Sastry, and David Wagner.
+ Cryptographic voting protocols: A system perspective.
+ In <i>Proceedings 14th USENIX Security Symposium</i>, August 2005.
+   <a href="http://www.cs.berkeley.edu/~nks/papers/cryptovoting-usenix05.pdf">http://www.cs.berkeley.edu/~nks/papers/cryptovoting-usenix05.pdf</a>.
+
+</p><p>KiayiasYu04<br>
+A. Kiayias and M. Yung.
+ The vector-ballot e-voting approach.
+ In Tsang and Wei, editors, <i>Proc. Financial Cryptography</i>, volume
+  LNCS 3110, pages 72-89. Springer, 2004.
+
+</p><p>LevinNa95<br>
+J. Levin and B. Nalebuff.
+ An introduction to vote-counting schemes.
+ <i>J. Economic Perspectives (special issue on voting systems)</i>,
+  9(1):3-26, 1995.
+
+</p><p>NaorSh94<br>
+Moni Naor and Adi Shamir.
+ Visual cryptography.
+ In <i>Proc. Eurocrypt '94</i>, volume LNCS 950, pages 1-12. Springer,
+  1994.
+
+</p><p>Nurmi87<br>
+Hannu J. Nurmi.
+ <i>Comparing Voting Systems</i>.
+ Kluwer, 1987.
+
+</p><p>RandellRy06<br>
+Brian Randell and Peter Y. A. Ryan.
+ Voting technologies and trust.
+ <i>IEEE Security and Privacy</i>, 4(5):50-56, September/October
+  2006.
+
+</p><p>Rivest06<br>
+Ronald L. Rivest.
+ The ThreeBallot voting system, October 1 2006.
+  <a href="http://theory.csail.mit.edu/~rivest/Rivest-TheThreeBallotVotingSystem.pdf">http://theory.csail.mit.edu/~rivest/Rivest-TheThreeBallotVotingSystem.pdf</a>.
+
+</p><p>RyanPe05<br>
+Peter Y. A. Ryan and Thea Peacock.
+ Pr&ecirc;t &agrave; Voter: A system perspective.
+ Technical Report CS-TR-929, University of Newcastle upon Tyne School
+  of Computing Science, September 2005.
+  <a href="http://www.cs.ncl.ac.uk/research/pubs/trs/papers/929.pdf">http://www.cs.ncl.ac.uk/research/pubs/trs/papers/929.pdf</a>.
+
+</p><p>RyanSc06<br>
+Peter Y. A. Ryan and Steve A. Schneider.
+ Pr&ecirc;t &agrave; Voter with re-encryption mixes.
+ Technical Report CS-TR-956, University of Newcastle upon Tyne School
+  of Computing Science, April 2006.
+  <a href="http://www.cs.ncl.ac.uk/research/pubs/trs/papers/956.pdf">http://www.cs.ncl.ac.uk/research/pubs/trs/papers/956.pdf</a>.
+
+</p><p>Saari94<br>
+D. G. Saari.
+ <i>Geometry of Voting</i>.
+ Springer, 1994.
+
+</p><p>Saltman06<br>
+Roy G. Saltman.
+ <i>The History and Politics of Voting Technology: In Quest of
+  Integrity and Public Confidence</i>.
+ Palgrave Macmillan, 2006.
+
+</p><p>Shamos93<br>
+Michael Ian Shamos.
+ Electronic voting &ndash; evaluating the threat, March 1993.
+ Presented at Third Conference on Computers, Freedom, and Privacy
+  (Burlingame, California).
+  <a href="http://www.cpsr.org/prevsite/conferences/cfp93/shamos.html">http://www.cpsr.org/prevsite/conferences/cfp93/shamos.html</a>.
+
+</p><p>SmithV2<br>
+Warren D. Smith.
+ Cryptographic election protocols for reweighted range voting \&
+  reweighted transferable vote voting.
+ \#90 at: <a href="/WarrenSmithPages/homepage/works.html">/WarrenSmithPages/homepage/works.html</a>.
+
+</p><p>SmithV1<br>
+Warren D. Smith.
+ New cryptographic voting scheme with best-known theoretical
+  properties.
+ Presented at FEE Milan 2005 and \#89 at:
+  <a href="/WarrenSmithPages/homepage/works.html">/WarrenSmithPages/homepage/works.html</a>.
+
+</p><p>Smith05<br>
+Warren D. Smith.
+ Cryptography meets voting, September 10 2005.
+ \#80 at: <a href="/WarrenSmithPages/homepage/works.html">/WarrenSmithPages/homepage/works.html</a>.
+
+</p><p>Strauss06B<br>
+Charlie E. M. Strauss.
+ A critical review of the triple ballot voting system, part 2:
+  Cracking the triple ballot encryption, Oct. 8 2006.
+ Draft V1.5. 
+  <a href="http://www.cs.princeton.edu/~appel/voting/Strauss-ThreeBallotCritique2v1.5.pdf">http://www.cs.princeton.edu/~appel/voting/Strauss-ThreeBallotCritique2v1.5.pdf</a>.
+</p>
+<hr>
+<p>
+We apologize for the sometimes poor conversion of this document into HTML web page format.
+The two may not exactly correspond.  Also, some browsers may have bugs in, e.g. rendering
+embedded tables, causing actually correct HTML to be rendered incorrectly, and
+some pdf entities simply have no HTML equivalent at present.
+</p>
+</small>
+
+
+</body>
+</html>

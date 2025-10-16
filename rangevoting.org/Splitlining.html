@@ -1,0 +1,419 @@
+<html>
+<head>
+<title>
+RangeVoting.org -  The shortest splitline algorithm and variants
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> The shortest splitline algorithm &ndash; and variants</H1>
+
+<p>Warren D. Smith, March 2018.</p>
+
+The <a href="SplitLR.html">original</a>
+shortest splitline algorithm was invented,
+and put on this web site,  by Warren D. Smith (me),
+in the early 2000s.  Its goal was to partition a state (2D region) into N
+equipopulous districts in a simple, unique, and aesthetically pleasing manner.
+Later, several other people invented variants of the original algorithm,
+which have various advantages and disadvantages.
+</p>
+
+<h3> 1. Original algorithm (Formal recursive definition) </h3>
+
+<pre>
+ShortestSplitLine( State, N ){
+  If N=1 then output entire state as the district (and halt);
+  A = floor(N/2);
+  B = ceiling(N/2);
+  find shortest splitline resulting in A:B pop ratio (breaking ties,
+                     if any, as described in notes);
+  Use it to split the state into the two HemiStates SA and SB;
+  ShortestSplitLine( SB, B );
+  ShortestSplitLine( SA, A );
+}
+</pre>
+<p><b>Notes:</b></p>
+<ol><li>
+ Since the Earth is round, when we say "line" we more precisely mean
+"great circle."  If there is an exact length-tie for "shortest" then break that tie by using
+the line closest to North-South orientation, and if it's still a tie, then use the Westernmost of
+the tied dividing lines.
+</li><li>
+ If the state is convex, then a line will always split it into exactly two pieces
+(each itself convex).  However, for nonconvex states, a line could split it into more than
+two connected pieces e.g. by "cutting off several bumps."  (We expect that will occur 
+rarely, but it is certainly mathematically possible.)  In either case the splitline's 
+"length" is distance between the two furthest-apart points of the line that both lie
+within the region being split.
+</li><li>
+ If anybody's residence is split in two by one of the splitlines (which would happen,
+albeit very rarely) then they could automatically be declared to lie in
+the most-western (or if line is EW, then northern) of the two districts.
+An alternative idea would be to permit
+such voters to choose which district they want to be in.
+</li></ol>
+<p><b>Example:</b></p>
+<pre>
+Want N=7 districts.
+Split at top level:   7 = 4+3.
+Split at 2nd level:   7 = (2+2) + (1+2).
+Split at 3rd level:   7 = ((1+1) + (1+1)) + ((1) + (1+1)).
+result: 7 districts, all exactly equipopulous.
+</pre>
+The picture shows Louisiana thus-districted using the 
+shortest splitline algorithm using year-2000 census data.
+(More US states collected at <a href="SplitLR.html">/SplitLR.html</a>.)
+</p><img alt="Louisiana using 2000 census data, shortest splitline algorithm"
+src="SSHR/la_final.png" />
+
+
+
+<h3> 2. Roy Minet's "shortest paths" 
+<a href="MinetGerryOpEd.html">variant</a> (2017) </h3>
+
+<p>
+Rather than using the "shortest split<i>line</i>," 
+<a href="http://RoyMinet.org">Minet</a> 
+suggests using "the shortest <i>path</i>
+which follows census-block boundaries" to split the state.
+</p><p>
+<b>Inexactness.</b>
+If this is done, then A:B exact integer ratio population splits
+will usually be <i>impossible</i>, so we would have to
+accept slightly-inexact population splits.  
+So there really would need to be kludgy
+extra new rules about just what is acceptable/not
+and what is the "best" split each time ("best" would somehow incorporate both the desire to
+keep the splitline short, <i>and</i> the desire to keep the
+ratio-error small). 
+</p><p>
+<b>Polynomial time.</b>
+Known polynomial time-algorithms can compute every A&harr;B shortest path for
+all pairs of vertices (A,B) of the census-block map.  Therefore
+Minet's variant still is polytime computable.
+</p><p>
+<b>Manipulability.</b>
+Unfortunately, a corrupt Census department (or whoever draws the map of
+"census blocks"), could easily manipulate Minet into gerrymandering.
+Design the blocks to have wiggly boundaries, or smooth boundaries, in different places. 
+This will "steer" the splitting-process into using the smooth parts only.
+The resulting districts then will be gerrymandered pretty much exactly the way the
+manipulator wanted.
+</p><p>
+Also, even if the census blocks all were
+axis-parallel rectangles on a flat Earth, a corrupt census department still
+can gerrymander the hell out of Minet's shortest-path variant,
+since
+<pre>
+   --------------------------------------------------------------------
+   |           |     |          |         |          |       |        |
+   --------------------------------------------------------------------
+   |      |                |          |         |        |       |
+   --------------------------------------------------------------------
+   |           |       |        |           |       |       |         |
+   --------------------------------------------------------------------
+   |     |         |       |          |         |       |        |
+   --------------------------------------------------------------------
+   |           |     |          |         |          |       |        |
+   --------------------------------------------------------------------
+   |      |                |          |         |        |       |
+   --------------------------------------------------------------------
+</pre>
+is going want to cut horizontally and <i>not</i> vertically &ndash; or I could design
+it to inspire the other way if I wanted &ndash; whichever way I want wherever I want.
+This seems very bad indeed, because it suggests
+that even natural-sounding laws about what census-blocks had to be like, 
+would be inadequate to prevent this problem.
+</p><p>
+In contrast, the original line-based splitline algorithm,
+as well as the Yorav-Raphael and Langstraat variants below
+(if their input is the set of locations of all the people)
+simply are not manipulable.
+</p><p>
+This <b>manipulation-risk is quite worrying</b> since in 2018, President Donald J. Trump
+made several different apparent attempts to manipulate the upcoming 2020 census
+in favor of the Republican Party:
+</p><ol>
+<li>
+Tried to appoint Thomas L. Brunell,
+author of the book
+<a href="https://www.amazon.com/Redistricting-Representation-Competitive-Elections-Controversies/dp/0415964539#customerReviews#customerReviews">
+Redistricting and Representation: Why Competitive
+Elections are Bad for America</a>,
+as the de facto director of the census.
+Brunell had been a paid "expert witness" testifying in favor of the outrageous
+gerrymander of N.Carolina 
+which (despite his efforts) 
+was ruled unconstitutional by the 4th circuit court in 2018.
+</li><li>
+Added a question to the census form asking if the person was a US citizen.
+</li><li>
+The Trump administration's 2018
+budget request for the Census Bureau was just 7% above
+its 2017 level. The bureau typically requires &ndash; and receives &ndash; a
+huge bump in funding as the decennial approaches, since it must hire
+tens of thousands of people and open dozens of field offices nationwide.
+</li></ol>
+<p>
+The problem with (1) was Brunell had 
+little or no prior experience either managing large organizations or in
+federal statistics.  And his "brilliant discovery" underlying his book &ndash;
+that people were happier with their congressman in noncompetitive districts  
+&ndash; is rather absurd.  <i>Obviously</i>, by <i>definition</i>, 
+more people are happier with a congressman they elect by landslide 80-20 margin,
+than one elected 51-49.  So if we gerrymander two districts electing congressmen A and B,
+so that district #1 becomes almost entirely A-supporters, and district #2 becomes
+almost entirely B-supporters, then voila, we get "more happiness" of people
+with "their" congressman.  But so what?  This was an accounting trick.
+The actual congress is
+the same (A &amp; B) in both cases and gerrymandering has not been an "improvement"
+as reckoned by the trick, but rather a "worsening" as reckoned by reality.
+(By that reasoning all democracy should be terminated!)
+</p><p>
+The actually-important question is whether the resulting governments will make
+their people happier in the long term.  
+There is plenty of evidence that nondemocratic governments, overall, do not.
+</p><p>
+The problem with (2) was that this question was felt likely to scare noncitizens
+into hiding and not sending in their census forms.
+This scare-risk was felt likely to damage the census's accuracy to an extent outweighing
+the benefits from greater citizenship-understanding.
+(Note: the census, by constitutional demand, must count <i>both</i> citizens and noncitizens,
+although only citizens can vote.)
+Although the Census usually field-tests proposed question-changes to estimate effects,
+in this case the decision was made (by Trump's Commerce Secretary Wilbur Ross) <i>without</i>
+any such testing.
+A January 2018 
+<a href="https://democrats-oversight.house.gov/sites/democrats.oversight.house.gov/files/documents/DOJ%20census%20ques%20request-Former%20Directors%20ltr%20to%20Ross.pdf">letter</a>
+signed by six former directors of the census
+</p><blockquote>
+[Vincent P.Barabba(1973-1976;1979-1981),
+Martha Farnsworth Riche(1994-1998),
+Kenneth Prewitt(1998-2001),
+Steven H.Murdock(2008-2009),
+Robert M.Groves(2009-2012),
+John Thompson(2013-2017)] 
+</blockquote><p>
+warned the Trump administration against this move, but was ignored.
+Further, the places suspected to be richest in noncitizens during 2018 were suspected
+to correlate well with places richest in Democratic voters.
+If so, this effect would systematically
+reduce the number of Democratic and increase the number
+of Republican congressmen.
+</p>
+
+<h3> 3.Noam Yorav-Raphael's "min-variance splitline" algorithm (April 2016) </h3>
+
+<p>
+Instead of splitting the population into an A:B ratio using the <i>shortest</i> splitline,
+use the line minimizing the summed <i>variance</i> of the resulting two populations
+(viewed as sets of points in Euclidean 3-space).  Another possibility would
+be to minimize 
+A&middot;variance<sub>1</sub>+B&middot;variance<sub>2</sub>.
+</p><p><b>Extra simplicity:</b>
+With Yorav-Raphael's variant, we pretty much no longer need to think about "lengths" and geometry at
+all.  A "district" is now best regarded as the <i>set</i> of its people.
+We never need any initial "boundary curve" for a state &ndash; all we ever need
+to know is the set of locations of its inhabitants, a "point cloud."
+</p><p>
+Personally I find this extra simplicity very appealing.  
+</p>
+
+
+<h3> 4.Brian Langstraat's "Horizontal-vertical only" variant (June 2016) </h3>
+
+<p>
+Instead of splitting the population into an A:B ratio using the <i>shortest</i> splitline,
+with all lines (more precisely, geodesic arcs) being permitted,
+<i>demand</i> the splitline must be either a meridian or line of constant latitude (i.e,
+more precisely, "arc of a circle lying in a plane parallel to the equator"). 
+So on a <a href="https://en.wikipedia.org/wiki/Mercator_projection">Mercator</a>
+projection map, Langstraat allows only vertical or horizontal lines.
+</p><p><b>Advantages:</b>
+Since there are fewer allowed splitlines to consider, the algorithms can be 
+faster and simpler.
+The districts all now are <i>rectangles</i> if drawn on a Mercator projection, or 
+<a href="https://en.wikipedia.org/wiki/Lambert_cylindrical_equal-area_projection">Lambert</a>
+cylindrical-orthogonal projection, or actually <i>any</i> cylindrical projection, map.
+Langstraat remarks "It's hip to be square."
+In contrast, with original or Yorav-Raphael,
+the districts would be arbitrary polygons drawn on the sphere with geodesic-arcs as edges
+(which are straight line segments on 
+<a href="https://en.wikipedia.org/wiki/Gnomonic_projection">gnomonic</a>
+projection maps).  These could be 
+triangles, quadrilaterals, pentagons, or hexagons, ..., although
+quadrilaterals seem the most common and having &gt;6 sides is rare.
+</p><p><b>Mathematical Disadvantages:</b>
+Lines of latitude are <i>not</i> geodesic arcs, i.e. not shortest paths.
+We live on a sphere, not on a Mercator projection flat map.
+And Langstraat's algorithm now is <i>not</i> invariant under arbitrary rotations of that sphere.
+All those are mathematically somewhat unnatural.
+</p><p>
+The "unnaturalness" would cause, e.g, Langstraat to 
+district <a href="https://en.wikipedia.org/wiki/Long_Island">Long Island</a>
+substantially differently if it were re-oriented with its long direction pointing Northeast
+rather than East.
+(Presumably the performance would be substantially worse for the SW-NE orientation.)
+In contrast, original splitline and Yorav-Raphael would be unaffected by any such
+reorientation.
+</p><p><b>Real-world advantages:</b>
+Although Langstraat might seem somewhat stupid if it tried to draw
+districts near the North pole,
+it just so happens that almost nobody lives near the North and South poles.
+And many US state (and some international)
+boundaries just happen to have been defined with lines-of-latitude
+and/or meridian-arcs.  And lines of latitude just happen to coincide pretty well with
+with temperature, and meridians with time zones, both of which humans find
+pretty important.
+And there is a long historical tradition
+of making Mercator projection (and cylindrical-orthogonal projection) maps.
+And Long Island happens to be oriented pretty close to West&rarr;East (more precisely,
+it is rotated about 16&deg; anticlockwise from that).
+And a lot of commercial picture-displaying devices have square-grids of pixels.
+While most of these facts are somewhat accidental,
+Langstraat's algorithm coexists very happily with them.
+</p><p><b>How are street-grids oriented in cities?</b>
+The table shows the approximate orientation of the grid in degrees anticlockwise from a 
+horizontal/vertical grid.  (Cities like Berlin, London, Sao Paolo, Beijing, and Paris 
+which do not really <i>have</i> rectangular grids at all, are omitted from the table.)
+There are a goodly number of cities with exactly NS/EW oriented grids, but
+there also are many at other random angles, plus it appears to be popular to
+orient the grid just a few degrees away from NS/EW.
+</p>
+<table>
+<tr bgcolor="pink"><th>City</th><th>Angle</th><th>&nbsp;City</th><th>Angle</th><th>&nbsp;City</th><th>Angle</th></tr>
+<tr><td>Manhattan</td><td>65</td><td>Mexico City</td><td>65</td><td>Boston</td><td>68</td></tr>
+<tr><td>Los Angeles</td><td>0</td><td>Lima</td><td>56</td><td>Melbourne</td><td>76</td></tr>
+<tr><td>Chicago</td><td>0</td><td>San Francisco</td><td>4</td><td>Portland</td><td>89</td></tr>
+<tr><td>Richmond</td><td>various</td><td>Omaha</td><td>87</td><td>Miami</td><td>87</td></tr>
+<tr><td>Orlando</td><td>0</td><td>Xi'an</td><td>0</td><td>Sacramento</td><td>87</td></tr>
+<tr><td>Minneapolis</td><td>0</td><td>Savannah</td><td>75</td><td>Tucson</td><td>0</td></tr>
+<tr><td>Philadelphia</td><td>77</td><td>Houston</td><td>0</td><td>Washington</td><td>87</td></tr>
+<tr><td>Toronto</td><td>14</td><td>Vancouver</td><td>88</td><td>Turin</td><td>64</td></tr>
+<tr><td>Adelaide</td><td>3</td><td>Glasglow</td><td>various</td><td>Barcelona</td><td>50</td></tr>
+<tr>
+</table>
+
+<h3> 5.Optimizing versions </h3>
+<p>
+Suppose instead of splitting the state's population into A:B ratio
+with integer A,B and 1&le;A&le;B&le;A+1 and A+B=N each time
+(original version),
+we instead split it into integer A:B ratio
+with 1&le;A&le;B&le;A+K and A+B=N.
+Here K originally was 1, forcing best-balanced splits during the intermediate
+stages of the algorithm.  If we allowed K to be larger,
+such as 2 or 3, that would allow somewhat less-balanced splits.
+</p><p>
+This also would stop the map from being unique.  With K=1, splitlining produced
+a single unique map.  With K&ge;2, it produces <i>many</i> maps,
+but that is not a problem because 
+we can winnow the set of maps down to a unique <i>best</i> one by 
+choosing the "best" among them.  "Best" could mean, e.g, "with least total cutlength."
+With any clear definition of best, we still get a unique best 
+member of the bevy of maps, at the end of the process.
+</p><p>
+How many maps do we get?  
+The answer is that the number of maps is always upper bounded by N<sup>&beta;</sup>
+where the exponent &beta; is given by the formula &beta;=log<sub>2</sub>(K).
+<!-- F(N) <= F(N/2) * K,  F(1)=1, solution  F(N)<=N^Q where Q=log_2(K). -->
+</p><p>
+This is a quite feasibly small number of maps to consider, so this
+optimization is entirely feasible for a computer to do if, say, K&le;4
+(then &le;N<sup>2</sup> maps).  
+For any fixed K&ge;1 we still have a polytime algorithm.
+</p><p>
+This optimizing has the potential to dodge occasional problems with
+plain splitlining maps such as thin-sliver districts. Just so long as at least one
+of the bevy of &asymp;N<sup>&beta;</sup> maps is free of the problem, 
+we probably now avoid it.
+</p>
+
+<h3> 6.Hybrids </h3>
+<p>
+If desired,
+Langstraat's and Yorav-Raphael's variants could be combined.
+(It also would be possible to combine Minet's and Yorav-Raphael's variants.)
+And the optimization idea can be combined with any of them.
+<!--And <i>if</i> we ever made a law demanding that census blocks be Mercator-rectangles,
+then there would be a very natural Minet-Langstraat hybrid.-->
+</p>
+
+<h3> 7.Theoretical runtimes </h3>
+<p>
+Let P be number of distinct people-locations
+(each person's location is input), and
+N be the number of districts to output.
+Let S be the number of boundary segments
+describing the shape of the state ("polygon with polygonal holes").
+For "point-cloud only" algorithm variants, no shape information is needed and S is uninvolved
+in runtime and memory bounds.
+For all algorithms the memory-words requirement is O(P+N), or, 
+for shape-info-using ones, O(P+N+S).
+</p><p>
+Let InvAck(x) denote the (extremely slow-growing) 
+<a href="http://xlinux.nist.gov/dads/HTML/inverseAckermann.html">inverse</a>
+of the (extremely fast-growing)
+<a href="http://xlinux.nist.gov/dads/HTML/ackermann.html">Ackermann</a>
+function.
+</p><p>
+Let Halve(m) denote the maximum possible number of combinatorially-distinct
+<a href="HalvingLinesDey.html">halving lines</a> for a set of 2m points in
+the plane.  (A "halving line" is a line that splits the 2m points into two
+subsets of cardinalities m and m.)  Tamal Dey proved in 1997
+that Halve(m)=O(m<sup>4/3</sup>).
+Erd&ouml;s, Strauss, Lovasz, and Simonovits conjectured in 1973 that Halve(m)=m<sup>1+o(1)</sup>.
+</p>
+<table>
+<tr bgcolor="pink"><th>Variant</th><th>Worst-case runtime bounds</th></tr>
+<tr><td>Langstraat+Yorav-Raphael hybrid</td><td>O(PlogN)</td></tr>
+<tr><td>Langstraat</td><td>O(N S + P logN) &nbsp; and &nbsp; O([N+S]logS + P logN)</td></tr>
+<tr><td>Yorav-Raphael</td><td>O([P + Halve(P) InvAck(P)] logN)</td></tr>
+<tr><td>Original splitline</td><td>O(SlogS + [P + Halve(P+S) (InvAck(P+S) + logS)] logN)</td></tr>
+</table>
+<p>
+The lines of the table are listed best (i.e. fastest &amp; simplest algorithms) first.
+All the runtime bounds are "slightly superlinear," i.e. the runtime is upper
+bounded by Q<sup>1+o(Q)</sup> where Q=P+S+N (assuming Erd&ouml;s et al's conjecture holds).  
+However, note: For the first line
+of the table, it is easy to see the claimed runtime bound,  and easy to write
+a program that accomplishes it.  
+In contrast, for all the others, it requires great skill and
+cleverness to construct any algorithm obeying any Q<sup>1+o(Q)</sup> worst-case runtime bound.
+</p><p>
+For "optimizing" versions, multiply any runtime bound (from any table line) by O(N<sup>&beta;</sup>).
+[This still is "slightly superlinear" provided that (now) N is regarded as smaller than any power of P.]
+</p>
+
+<h3> Which variant is the best? </h3>
+
+<p>
+I would like to see a 
+pictorial comparison of the original versus Yorav-Raphael's, Langstraat's etc
+variants in action for a large number of states or countries.
+Right now, in the absence of any such large computation,
+I do not feel enough confidence to say.  
+The original variant remains arguably the simplest,
+simple enough to explain to kindergartners 
+(although Langstraat might counter-argue that his
+is the simplest);
+and even if it is not the best, 
+it definitely is good enough for immediate practical use.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

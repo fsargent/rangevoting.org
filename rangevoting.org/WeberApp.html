@@ -1,0 +1,593 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 3.2//EN">
+<HTML>
+<HEAD>
+   <TITLE>Approval Voting</TITLE>
+   <META NAME="Author" CONTENT="Robert J. Weber">
+   <META NAME="Description" CONTENT="Paper from special voting theory volume of J. Econ. Perspectives.">
+   <META NAME="KeyWords" CONTENT="approval voting, voting rules, elections, voting theory">
+</HEAD>
+<BODY TEXT="#000000" BGCOLOR="#E3EEEC" LINK="#FF0000" VLINK="#800080" ALINK="#0000FF">
+
+<CENTER><H3>Approval Voting</H3></CENTER>
+
+<H4>Introduction</H4>
+
+<P>In 1770, Jean-Charles de Borda raised objection to the opinion, then
+generally held, that &quot;in an election by ballot the plurality of voices
+indicates the will of the electors.&quot; He argued that this opinion,
+&quot;true in the case where the election is conducted between two candidates
+only, may lead to error in all other cases.&quot; He provided an example
+in which several candidates espousing similar positions might split the
+votes of the majority, permitting an opposing minority candidate to receive
+a plurality of votes and win the election. History has borne out Borda's
+concern. For example, in the 1912 U.S. presidential election, Roosevelt
+and Taft (former and incumbent Republican presidents) split a majority
+of the popular vote, allowing Wilson to win.</P>
+
+<P>To address this problem, Borda proposed &quot;election by order of merit,&quot;
+now known as Borda's rule. Under this method, each voter ranks the candidates
+in order, and each candidate is awarded a number of votes (from that voter)
+equal to the number of other candidates ranked below him; the candidate
+receiving the greatest total number of votes wins the election. However,
+Borda presented no argument that his proposal was the only method which
+would &quot;solve&quot; the perceived problem.</P>
+
+<P>In the state of New York in 1970, a seat in the U.S. Senate was at stake.
+The Democratic and Liberal-Republican nominees split the liberal vote,
+and the Conservative candidate was elected with only 39 percent of the
+vote. The following year, in a mayoral election in Ithaca, New York, the
+Democratic nominee drew 29.1 percent of the vote and edged out the Republican
+nominee, who drew 28.9 percent; an independent Democratic candidate received
+10.2 percent, and two independent Republican candidates received a combined
+total of 31.8 percent. This author, then a graduate student at Cornell
+(and a supporter of losing candidates in both elections), was prompted
+by these two results to propose an alternative to the plurality rule called
+&quot;approval voting.&quot;</P>
+
+<P>The idea is a simple one: Each voter is allowed to cast a single vote
+for each of as many candidates as he or she wishes -- that is, the voter
+votes for all candidates of whom the voter &quot;approves.&quot; The candidate
+receiving the greatest total number of votes is declared the winner.</P>
+
+<P>A particular attraction of this method was that most voting machines
+require no special modification for approval voting to be implemented.
+In most jurisdictions, there are elections where voters choose several
+candidates from a longer list: perhaps multiple judgeships in a single
+district, or seats on public commissions. In such elections, the machines
+can be set to impose an upper bound on the number of single votes a voter
+can cast; for example, if there were only three seats on a commission,
+the voter could cast single votes for at most three candidates. By setting
+the upper bound equal to the total number of candidates in the race, approval
+votes could easily be cast and tallied.</P>
+
+<P>From the start, approval voting appeared to be an idea whose time had
+come. Fishburn and Gehrlein had independently analyzed the results of the
+1968 U.S. Presidential race, in which George Wallace ran as a third-party
+candidate, using much the same idea. In the mid-1970s, Brams studied properties
+of a voting system under which voters could cast either a single positive,
+or a single negative, vote: In the three-candidate case, this system is
+equivalent to approval voting (since casting approval votes for two candidates
+has the same effect on relative vote totals as casting a negative vote
+for the third).</P>
+
+<P>Brams became an apostle of approval voting. Through a book (Brams and
+Fishburn, 1983) and a number of public presentations, he built support
+for the idea. Today, professional organizations such as the Institute of
+Management Sciences, the IEEE, the Mathematical Association of America,
+and the American Statistical Association, with total membership in excess
+of 400,000, use approval voting to elect their officers.</P>
+
+<P>In the former Soviet Union, many elections involved the presentation
+of a list of candidates to the voters, and voters were allowed only to
+cross names off the list: this system is equivalent to allowing the casting
+of approval votes (for the candidates not crossed off). A bill permitting
+the use of approval voting in public elections has been passed by the North
+Dakota Senate, and in 1991 Oregon conducted a public referendum involving
+five alternatives using approval voting. Clearly, approval voting is a
+viable and practical alternative to the plurality rule.</P>
+
+<H4>How Voters Vote</H4>
+
+<P>The political arena is complex. Parties form, merge, split, and dissolve.
+Individual candidates stake out positions, sometimes as a matter of principle,
+and sometimes to increase their chances of being elected. Voters at some
+times have little information, and at other times are inundated with poll
+results and political advertising. The voting system in use can affect
+all of these dimensions of complexity. The following sections will discuss
+some of the effects of approval voting, and offer comparisons with plurality
+rule and Borda's rule. This section will set a general stage for a broader
+discussion of the ultimate choice problem facing individual voters.</P>
+
+<P>Assume that there are k candidates, numbered 1,&nbsp;2,&nbsp;...,&nbsp;k.
+A scoring rule for an election is a collection of vote-sets, where each
+vote-set consists of k numbers. A voter selects a vote-set, and assigns
+the numbers within that set to the candidates. The candidate assigned the
+greatest total across all voters wins the election. Plurality rule offers
+to each voter a single vote-set, {1,&nbsp;0,&nbsp;...,&nbsp;0}. Borda's
+rule also offers a single vote-set, {k-1,&nbsp;k-2,&nbsp;...,&nbsp;0}.
+Approval voting offers a collection of vote-sets, {1,&nbsp;0,&nbsp;...,&nbsp;0},
+{1,&nbsp;1,&nbsp;0,&nbsp;...,&nbsp;0}, ..., {1,&nbsp;1, ..., 1,&nbsp;0}.</P>
+
+<P>Each voter can be assumed to hold two relevant pieces of information.
+First, the voter have personal preferences over the possible outcomes of
+the election<SUP><A HREF="#Endnote 1">1</A></SUP>: We will assume that
+voters are expected utility maximizers. In addition, the voters will hold
+subjective beliefs about the relative likelihood that any particular choice
+of voting action will change the result of the election in some way. We
+represent these beliefs by assuming that each voter holds in his mind a
+set of &quot;close-race&quot; probabilities; p<SUB>ij</SUB> will indicate
+the probability, given that the election is a near-tie between <I>some</I>
+two candidates, that the near-tie will be between candidates i and j.<SUP><A HREF="#Endnote 2">2</A></SUP>
+In this case, a voter's decision problem is to maximize his expected utility
+payoff, based on the utility that voter would receive from various candidates
+being elected, the probability that a close race will occur, and the chance
+that a change in voting will tip the race. </P>
+
+<P>Where do the perceptions of the close-race probabilities come from?
+We will consider two cases in the following sections. In one case, each
+voter will be assumed to have no specific knowledge concerning the intended
+voting behavior of the others. We represent this by taking all of the close-race
+probabilities to be equal.<SUP><A HREF="#Endnote 3">3</A></SUP> Voters
+who select their vote vectors in accordance with the resulting objective
+function are said to be voting &quot;sincerely,&quot; since they choose
+based on their own preferences, without direct strategic consideration
+of the voting intentions of others. Under the plurality rule, sincere voters
+vote for their most-preferred candidate. Under Borda's rule, sincere voters
+assign the highest number of votes to their most-preferred candidate, second-highest
+to the second-most-preferred, and so on. Under approval voting, sincere
+voters cast their approval votes for all candidates who are &quot;above
+average&quot; in the field.</P>
+
+<P>However, most modern elections of public officials take place in settings
+where pre-election polls are conducted, and the results are published.
+In such a case, the perceived close-race probabilities can differ across
+the various candidate pairs. As a result, voters may not select their most-preferred
+if that candidate is perceived to have little chance of being in a close
+race for victory.</P>
+
+<P>Indeed, under plurality rule, any candidate other than the voter's least-preferred
+could potentially draw the vote, depending on which close contests are
+considered most likely.<SUP><A HREF="#Endnote 4">4</A> </SUP>Under Borda's
+rule, even the least-preferred candidate might draw a positive number of
+votes. Consider a three-candidate race, and a voter who would derive utilities
+(u<SUB>1</SUB>,&nbsp;u<SUB>2</SUB>,&nbsp;u<SUB>3</SUB>)&nbsp;= (10,&nbsp;5,&nbsp;0)
+from the election of each of the three candidates respectively. If the
+close-race probabilities are perceived to be (p<SUB>12</SUB>,&nbsp;p<SUB>13</SUB>,&nbsp;p<SUB>23</SUB>)&nbsp;=
+(0.7,&nbsp;0.2,&nbsp;0.1), then the high likelihood of a close race involving
+the first two candidates will lead the voter to cast two votes for the
+first and none for the second, &quot;discarding&quot; his middle vote on
+the third (i.e., the prospective ranking of candidate&nbsp;3&nbsp;(-2.5)
+exceeds that of candidate&nbsp;2&nbsp;(-3.0), and the voter will cast
+the vote vector (2,&nbsp;0,&nbsp;1)).</P>
+
+<P>Under approval voting, a voter will cast approval votes for all candidates
+with positive prospective rankings, and will not vote for any candidate
+with a negative ranking. It is an easy exercise to show that, in any race,
+a voter will have a positive prospective ranking for his most-preferred
+candidate, and a negative ranking for his least-preferred. So, in a three-candidate
+race, the voter will either vote for his most-preferred candidate alone,
+or for the two candidates who are both preferred to the third.</P>
+
+<P>In races involving more than three candidates, it is possible to construct
+close-race probabilities which will lead to non-monotonicity in a voter's
+casting of approval votes. For example, if a voter assigns any utilities
+u<SUB>1&nbsp;</SUB>&gt;&nbsp;u<SUB>2&nbsp;</SUB>&gt;&nbsp;u<SUB>3&nbsp;</SUB>&gt;&nbsp;u<SUB>4</SUB>
+to the election of each of four candidates respectively, and perceives
+the close-race probabilities to be (p<SUB>12</SUB>,&nbsp;p<SUB>13</SUB>,&nbsp;p<SUB>14</SUB>,&nbsp;p<SUB>23</SUB>,&nbsp;p<SUB>24</SUB>,&nbsp;p<SUB>34</SUB>)&nbsp;=
+(0.5,&nbsp;0,&nbsp;0,&nbsp;0,&nbsp;0,&nbsp;0.5), then he will prefer to
+vote for candidates 1 and 3, but not for candidates 2 and 4. Note, however,
+that the close-race perceptions indicate that 2 is relatively more likely
+to be in a close race with 1 than with 4, while 3 is relatively more likely
+to be in a close race with 4 than with 1.</P>
+
+<P>If we make the not-unreasonable assumption that for all candidates i,
+j, k, and l, p<SUB>ik</SUB>/p<SUB>jk&nbsp;</SUB>=&nbsp;p<SUB>il</SUB>/p<SUB>jl</SUB>
+(i.e., that the relative chances of i or j being in contention with any
+other candidate are the same for all other candidates), then a voter will
+only cast an approval vote for a particular candidate if he also casts
+approval votes for all candidates preferred to that one.<SUP><A HREF="#Endnote 5">5</A></SUP>
+Under this assumption, approval voting poses to voters a particularly simple 
+strategic choice problem: All a voter must decide is where to draw the line 
+between preferred candidates (who receive approval votes) and not-so-preferred 
+candidates (who don't).</P>
+
+<H4>Sincere Comparisons</H4>
+
+<P>One use of voting systems is to select from among a number of alternatives,
+in settings where the voters have little access to information concerning
+either the preferences of the other voters or the intended voting behavior
+of the others. In these settings a voter can be presumed to vote sincerely,
+since the lack of information about other voters means there is no basis
+for voting in some clever strategic way. A typical example of such a setting
+would be the election of an officer for a professional society. A nominating
+committee selects a group of candidates, all of whom are considered eminently
+qualified for the post. The list of nominees is presented to the society's
+membership, and individuals form their preferences based on a wide variety
+of personal factors.</P>
+
+<P>In this setting, the goal of the election is to select a candidate who
+well-represents the preferences of the voters. To choose among alternative
+voting systems, it is necessary to specify how the &quot;representativeness&quot;
+of the selected candidate will be measured. Take a specific voter. Prior
+to presentation of the list of nominees, the voter will not know what the
+structure of his preferences will be like; for example, he will not know
+whether he will like some of the nominees, and dislike others, or will
+like them all, but slightly prefer some over the others. The voter would
+most prefer (and would be best served by) the use of a voting system which
+maximizes the expected utility to himself of the eventually-elected candidate.</P>
+
+<P>Consider an election involving only two candidates, in which just over
+half of the voters slightly prefer the first of the two candidates, while
+the rest strongly prefer the second.<SUP><A HREF="#Endnote 6">6</A></SUP>
+In this situation, a nominal voter, not knowing in advance of the election 
+whether he will be one of the voters with slight or strong preferences, 
+would like to see in place a voting system which would lead to the election 
+of the second candidate (the one strongly preferred by the minority).</P>
+
+<P>It is possible to construct voting systems with this property. For example,
+each voter could be given a limited number of votes to use in a series
+of elections. Or voting could be made costly. Under either of these systems,
+voters with only slight preferences in a particular election might choose
+to abstain. In effect, both systems force the voters to make budget-allocation
+decisions across multiple elections.</P>
+
+<P>However, if we wish to use a voting system for a single election, under
+which the actions of the voters have no carry-over effect, then we must
+accept the fact that the candidate slightly preferred by the majority will
+win (when each voter, at the time of the election, votes in his own best
+interest).</P>
+
+<P>We will restrict our further attention to single elections. Assume that
+the utilities of the nominated candidates to each voter are independent,
+identically-distributed draws from a fixed probability distribution. Before
+the presentation of the list of nominees, a voter would most prefer the
+use of a voting system which captures his eventual intensity of preference
+by selecting the candidate with maximal mean utility across the electorate
+(since the voter does not know, before the nominees are announced, which
+position he will hold in the electorate). </P>
+
+<P>Although the earlier discussion shows that no such voting system can
+be constructed, it can still be useful to consider such a voting system
+as a benchmark for comparison. In this spirit, let B represent the expected
+utility of the selected candidate to a voter, did such a voting system
+exist. Let A be the expected utility to a voter of the elected candidate
+under some particular voting system, when all voters vote sincerely. And
+let C be the expected utility of a randomly-selected candidate to a voter.
+Then a measure of the &quot;effectiveness&quot; of the voting system in
+representing the preferences of the voters is (A-C)/(B-C). The difference
+between A and C represents the gain from using the voting system over choosing
+a candidate randomly. The difference between B and C represents the maximum
+possible gain from any voting system over random selection. Thus, the ratio
+offers a measure of what share of the ideal gain is captured by a particular
+voting system.</P>
+
+<P>Weber (1977) explored this measure of effectiveness in some detail.
+Here, we cite several results for the case in which the underlying distribution
+of the utilities of the candidates to the voters is uniform, and the electorate
+is large.</P>
+
+<P>For two-candidate elections, all voting systems are essentially equivalent,
+and have an effectiveness of <IMG SRC="https://rangevoting.org/radical.gif" WIDTH=12 HEIGHT=22>6/3&nbsp;=&nbsp;81.65
+percent. For three-candidate elections, the plurality rule has an effectiveness
+of 75 percent, Borda's rule has an effectiveness of <IMG SRC="https://rangevoting.org/radical.gif"" WIDTH=12 HEIGHT=22>3/2&nbsp;=&nbsp;86.6
+percent, and approval voting has an effectiveness of 87.5 percent: Approval
+voting is the most effective of these three commonly-discussed voting systems
+in the three-candidate case.</P>
+
+<P>Of course, there's more to this story. Other voting systems are even
+more effective in the three-candidate case. The best known result is for
+the voting system which allows voters to cast 4 votes for one candidate,
+either 3 or 1 votes for another, and 0 votes for the third; this system
+has an effectiveness of <IMG SRC="radical.gif"" WIDTH=12 HEIGHT=22>13/4&nbsp;=&nbsp;90.14
+percent. In the k-candidate case, the effectiveness of the plurality
+rule is <IMG SRC="https://rangevoting.org/radical.gif"" WIDTH=12 HEIGHT=22>(3k)/(k+1), and the effectiveness
+of Borda's rule is <IMG SRC="radical.gif"" WIDTH=12 HEIGHT=22>(k/(k+1)). In other
+words, as the number of candidates becomes large, the plurality rule is
+little better than random selection of a winner, while Borda's rule approaches
+100 percent effectiveness. However, the effectiveness of approval voting
+is not known for k&nbsp;&gt;&nbsp;3.</P>
+
+<H4>Strategic Comparisons</H4>
+
+<P>In many political settings, voters have access to substantial information,
+typically gleaned from public opinion polls, concerning the expressed preferences
+and voting intentions of others. This information can affect each voter's
+perception of the relative chances of the various candidates being in contention
+for victory, which in turn can affect the how voters cast their ballots.
+</P>
+
+<P>Just as prices both summarize consumer demand and generate that same
+demand in a competitive equilibrium, so one might expect that, after a
+series of polls are reported, voters might eventually hold perceptions
+of the candidate's relative chances of contending for victory which both
+summarize the electorate's voting intentions, and generate vote totals
+which justify the voters' perceptions. From this perspective, Myerson and
+Weber&nbsp;(1993) developed the notion of a &quot;voting equilibrium.&quot;
+A voting equilibrium arises in an &quot;electoral situation&quot; consisting
+of a set of candidates, a distribution of voters (indicating the proportions
+of the electorate holding different types of preferences), and a voting
+rule. The equilibrium itself consists of a set of relative probabilities
+of the election ending in a close race between any pair of candidates,
+and a specification of voting behavior for the various types of voters.
+At equilibrium, each voter is specified to vote in a manner which maximizes
+that voter's expected utility from the outcome of the election (given the
+perceived close-race probabilities), and the close-race probabilities are
+consistent with the candidate vote totals resulting from the specified
+behavior.</P>
+
+<P>After proving that voting equilibria exist in every electoral situation,
+Myerson and Weber&nbsp;(1993) determine the equilibria under the plurality
+rule, Borda's rule, and approval voting for a particular situation meant
+to represent the type of historical situations discussed early in this
+paper. Specifically, the situation has three candidates (1, 2, and&nbsp;3),
+and three types of voters (A, B, and&nbsp;C). The utilities (u<SUB>1</SUB>,&nbsp;u<SUB>2</SUB>,&nbsp;u<SUB>3</SUB>)
+derived by a voter of any type from the election of any of the candidates
+is given in Table 1. Notice that voters A and B together make up a majority
+of the electorate, and prefer either 1 or 2. However, they could quite
+possible split the vote, and hand the election to 3.</P>
+
+<CENTER><P><B>Table 1:</B> <B>Utilities Derived by a Voter</B></P></CENTER>
+
+<TABLE BORDER=2 ALIGN="CENTER">
+<TR>
+<TD WIDTH=320>
+<CENTER>voter type</CENTER>
+</TD>
+
+<TD WIDTH=320>
+<CENTER>utility vector</CENTER>
+</TD>
+
+<TD WIDTH=320>
+<CENTER>proportion of population</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH=320>
+<CENTER>A</CENTER>
+</TD>
+
+<TD WIDTH=320>
+<CENTER>(10, 9, 0)</CENTER>
+</TD>
+
+<TD WIDTH=320>
+<CENTER>30%</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH=320>
+<CENTER>B</CENTER>
+</TD>
+
+<TD WIDTH=320>
+<CENTER>(9, 10, 0)</CENTER>
+</TD>
+
+<TD WIDTH=320>
+<CENTER>30%</CENTER>
+</TD>
+</TR>
+
+<TR>
+<TD WIDTH=320>
+<CENTER>C</CENTER>
+</TD>
+
+<TD WIDTH=320>
+<CENTER>(0, 0, 10)</CENTER>
+</TD>
+
+<TD WIDTH=320>
+<CENTER>40%</CENTER>
+</TD>
+</TR>
+</TABLE>
+
+<P>Under plurality rule, three voting equilibria exist. At one, all of
+the type-A and type-B voters cast their votes for candidate 1, and all
+of the type-C voters vote for candidate 3. The likelihood of candidates
+1 and 3 being in a close race for victory is perceived by the voters to
+be much greater than the chance of any other pair of candidates being in
+a close race, and, since candidates 1 and 3 are the two highest vote-getters,
+the voters' perceptions are justified by the outcome. A similar equilibrium
+exists, wherein the type-A and type-B voters all vote for candidate&nbsp;2.</P>
+
+<P>However, there is a third voting equilibrium, at which all voters of
+each type vote for their most-favored candidate, and candidate 3 wins the
+election. The voters correctly perceive that close races between candidates
+1 and 3, and between candidates 2 and 3, are of comparable likelihood and
+are much more likely than a close race between candidates 1 and 2 (the
+two lowest vote-getters), and these perceptions justify the voters' actions.
+This equilibrium appears to correspond to the outcome of the historical
+elections cited earlier.</P>
+
+<P>Under Borda's rule, a family of voting equilibria exist. At all of these
+equilibria, all three candidates are expected to draw roughly equal vote
+totals, but a close race between candidates 1 and 2 is perceived by the
+voters to be somewhat more likely than between candidate 3 and either 1
+or 2 (indeed, the first close race is perceived to be precisely 28 times
+as likely as each of the other two). At equilibrium, each voter casts his
+2-vote for his most-favored candidate. However, some type-A or type-B voters
+give the 1-vote to their second-most-favored candidate, while others give
+the 1-vote to candidate 3. (The close-race perceptions justify this behavior
+by making the type-A and type-B voters indifferent between casting the
+1-vote for either of the two less-favored candidates.)</P>
+
+<P>Under approval voting, three voting equilibria exist. Two of the equilibria
+are similar in outcome to the first two under the plurality rule. One of
+candidates 1 or 2 draws approval votes from all of the type-A and type-B
+voters, the other draws approval votes only from the voters who most prefer
+him, and the type-C voters vote only for candidate 3. Since candidate 3
+finishes with the second-highest vote total, the only justified perceptions
+are that a close race involving him and the likely winner are much more
+likely than any other close race. Yet, if some other close race were to
+develop, it is perceived to be much more likely to involve candidates 1
+and 2 (the first- and third-place finishers) than candidate 3 and the third-place
+finisher. These perceptions in turn justify the voters' actions.</P>
+
+<P>The third voting equilibrium resembles that found under Borda's rule.
+One-third of the type-A and type-B voters vote for both candidates
+1 and 2, while everyone else votes only for his most-favored candidate.
+All three candidates are expected to draw roughly equal vote totals, but
+a close race between 1 and 2 is perceived to be 9&nbsp;times as likely
+as the close races between one of them and candidate 3. (These perceptions
+make type-A and type-B voters indifferent between single- and double-voting.)
+</P>
+
+<P>What can be made of all this? Only under approval voting do all of the
+equilibria involve every voter casting a ballot on which the votes for
+each candidate decrease monotonically with the utility derived by the voter
+from each candidate's election.</P>
+
+<P>Approval voting is the only voting system among the three studied under
+which there <I>are</I> equilibria at which one of the first two candidates
+is the only likely winner, and at the same time there <I>aren't</I> any
+equilibria in which candidate 3 is the only likely winner. Borda's rule
+fails to have the first of these properties, and the plurality rule fails
+to have the second.</P>
+
+<P>Under both plurality rule and approval voting, there remains room for
+the candidates to engage in political activities which seek to influence
+voter perceptions of their &quot;viability,&quot; in order to lead to a
+particular equilibrium outcome. Much computational work remains to be done
+to provide a more-complete picture of how the sets of voting equilibria
+under these voting rules, and others, vary with the demographics of the
+electorate.</P>
+
+<H4>Candidate Positioning</H4>
+
+<P>One oft-cited claim is that the plurality rule induces candidates to
+take moderate positions. A typical justification for this claim comes from
+a variety of &quot;median-voter&quot; theorems. For example, in two-candidate
+races where the voters are distributed along a single dimension (in terms
+of the most-preferred position of each voter on a single issue), then the
+more-extreme candidate can increase his vote total by moving his stand
+closer to the median position; at equilibrium, both candidates will take
+this median position.</P>
+
+<P>However, when three or more candidates are in the running, things change
+considerably. If two candidates, positioned at opposite ends of the political
+spectrum, are perceived to be the only candidates likely to be in contention
+for victory, then under the plurality rule voters will ignore more moderate
+candidates (that is, they will choose not to waste their votes), and instead
+will vote for their more-preferred of the two extremists. If motion towards
+the center by either extremist would lead supporters to expect all others
+to shift their votes to a more moderate candidate (rejecting the extremist
+as untrue to his ideals), then it is in fact rational for all of them to
+so; the extremist then suffers from changing his position, and prefers
+to remain at the extreme.</P>
+
+<P>Cox&nbsp;(1985) argued that under approval voting, if the candidates
+are free to choose their positions in a three-candidate race, then at least
+one will choose the median position, and will be expected to win the election.
+Subsequently, Myerson and Weber&nbsp;(1993) proposed a formal definition
+of a &quot;positional equilibrium.&quot; Such an equilibrium specifies
+positions for the candidates, and a voting equilibrium for the resulting
+electoral situation. Furthermore, for each candidate likely to contend
+for victory in the voting equilibrium, a shift in position will result
+in a new situation with either a voting equilibrium in which that candidate
+loses, or a voting equilibrium in which the set of likely winners is increased.
+Finally, for each candidate unlikely to contend for victory, a shift in
+position will not make that candidate a likely winner. Under this definition,
+they are able to generalize Cox's result to elections involving any number
+of candidates. They show that in an election involving any number of candidates,
+at any positional equilibrium, at least one candidate will take the median
+position, and the likely winner of the election will be a candidate at
+that median position.</P>
+
+<H4>Prospects</H4>
+
+<P>Approval voting is a practical and attractive alternative to the commonly-used
+plurality rule. Under plausible assumptions concerning the voters' perceptions
+of the relative chances of various pairs of candidates being in contention
+for victory, it never forces a voter to forgo voting for a more-preferred
+candidate in order to vote for a less-preferred candidate who is considered
+more likely to be in contention for victory. In the absence of polling
+data, when voters can be assumed to vote sincerely, it is more effective
+(in the three-candidate case) than either the plurality rule or Borda's
+rule in leading to an election outcome which well-represents the preferences
+of the electorate. In the classical three-candidate setting in which two
+similar candidates share the support of a majority of the voters, and a
+candidate preferred only by a minority of the electorate might win under
+the plurality rule, approval voting will not (at equilibrium) ever have
+the minority candidate emerge as the clear victor. Finally, the use of
+approval voting encourages candidates to take moderate positions.</P>
+
+<P>Approval voting has been tried in a number of settings, and has proven
+to be successful, at least in the sense that it continues to be used. Given
+the well-known potential problems associated with use of the plurality
+rule when more than two candidates run for a single office, it seems inevitable
+that the use of approval voting will continue to spread.</P>
+
+<H4>Endnotes</H4>
+
+<P><A NAME="Endnote 1"></A>1. We focus our attention on elections in which
+a single candidate must be elected. Our representation of voter preferences
+includes the tacit assumption that the voters care only about who wins,
+and not about the relative sizes of the candidates' vote totals.</P>
+
+<P><A NAME="Endnote 2"></A>2. More precisely, we assume that the probability
+that a change of <B>dv</B>&nbsp;=&nbsp;v<SUB>i</SUB>-v<SUB>j</SUB>&nbsp;&gt;&nbsp;0
+in the relative vote totals of candidates i and j will change the winner
+of the election from candidate j to candidate i is perceived to vary linearly
+in <B>dv</B>, and that the close-race probabilities are a common rescaling
+of the constants of proportionality. With these assumptions, a voter's
+decision problem is to choose the vote vector v&nbsp;=&nbsp;(v<SUB>1</SUB>,
+v<SUB>2</SUB>, ..., v<SUB>k</SUB>) which maximizes <IMG SRC="https://rangevoting.org/payoffs1.gif" HEIGHT=29 WIDTH=171 ALIGN=ABSCENTER VALIGN=BASELINE>this
+expression simplifies to a constant multiple of <IMG SRC="https://rangevoting.org/payoffs2.gif" HEIGHT=29 WIDTH=150 ALIGN=ABSCENTER></P>
+
+<P><A NAME="Endnote 3"></A>3. In the terms used in the previous note, the
+objective function then simplifies to a constant multiple of <IMG SRC="https://rangevoting.org/payoffs3.gif" HEIGHT=29 WIDTH=95 ALIGN=ABSCENTER>where
+<IMG SRC="https://rangevoting.org/payoffs4.gif" HEIGHT=29 WIDTH=90 ALIGN=ABSCENTER>&nbsp;is the
+mean of the utilities of all candidates to the voter. </P>
+
+<P><A NAME="Endnote 4"></A>4. A voter's &quot;prospective ranking&quot;
+of candidate i is <IMG SRC="https://rangevoting.org/payoffs5.gif" HEIGHT=29 WIDTH=106 ALIGN=ABSCENTER>Under
+the plurality rule, a (strategic) voter will vote for the candidate with
+the greatest prospective ranking. </P>
+
+<P><A NAME="Endnote 5"></A>5. Indeed, this monotonicity property characterizes
+approval voting.</P>
+
+<P><A NAME="Endnote 6"></A>6. It is important to note that strength-of-preference
+as used here does not refer to interpersonal comparisons of utility. Rather,
+voters in the first group have a less-strong preference for one candidate
+over the other in this election than they might in other elections. </P>
+
+<H4>Bibliography</H4>
+
+<P>Borda, Jean-Charles de. 1781. <I>M&eacute;moires sur les &Eacute;lections
+au Scrutin</I>. Paris: Histoire de l'Academie Royale des Sciences. </P>
+
+<P>Brams, Steven J. and Peter&nbsp;C.&nbsp;Fishburn. 1978. &quot;Approval
+Voting.&quot; <I>American Political Science Review</I>. 72:113-134.
+</P>
+
+<P>Brams, Steven J. and Peter&nbsp;C.&nbsp;Fishburn. 1983. <I>Approval
+Voting</I>. Birkhauser-Boston.</P>
+
+<P>Cox, Gary W. 1985. &quot;Electoral Equilibrium under Approval Voting.&quot;
+<I>American Journal of Political Science</I>. 29:112-118. </P>
+
+<P>Merrill, Samuel III. 1988. <I>Making Multicandidate Elections More Democratic</I>.
+Princeton University Press.</P>
+
+<P>Myerson, Roger B. and Robert J. Weber. 1993. &quot;A Theory of Voting
+Equilibria.&quot; <I>American Political Science Review</I>. 87:102-114.</P>
+
+<P>Weber, Robert J. 1977. &quot;Comparison of Voting Systems.&quot; Cowles
+Foundation Discussion Paper No.&nbsp;498. Yale University. </P>
+
+<P>
+<HR WIDTH="100%"></P>
+
+<P>Robert J. Weber<BR>
+J.L. Kellogg Graduate School of Management</P>
+
+<ADDRESS>rjweber@northwestern.edu</ADDRESS>
+
+</BODY>
+</HTML>

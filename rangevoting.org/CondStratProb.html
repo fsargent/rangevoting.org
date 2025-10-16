@@ -1,0 +1,246 @@
+<html>
+<head>
+<title>
+RangeVoting.org - How Condorcet voting can fail to elect Condorcet Winner
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> With strategic voters,
+Condorcet voting can fail to elect Condorcet Winner </H2>
+
+<p>
+<b>A myth about Condorcet voting:</b>
+Although Condorcet is
+vulnerable to strategic
+voting, it supposedly is only vulnerable in cycle situations with no Condorcet
+winner.
+</p>
+<p>
+<b>The bust:</b>
+In fact it is vulnerable in situations with an honest Condorcet winner
+too:
+Let there be 3 candidates A,B,C (or there could be more D,E,...; it'll
+still work).
+Suppose C is the honest-voter Condorcet winner, with slight pairwise victories over
+A,B,...; and A has large pairwise victories over everybody but C.
+The A-voters instead of honestly voting A>C>B>... strategically vote A>B>...>C.
+This causes C no longer to be the Condorcet winner. 
+In fact C now loses pairwise (by moderate margins) to every candidate except A.
+And A now wins pairwise over every candidate except C, who
+beats A by slight margin.
+Now A is the winner under all these popular Condorcet
+methods (plus more too, if you arrange it right):
+Schulze beatpaths, Tideman ranked pairs,
+basic Condorcet, Simpson-Kramer minmax.
+</p>
+<p>
+<b>Conclusion:</b>
+Strategic Condorcet voters can fail to elect a Condorcet winner.
+Strategic range or approval voters will, however, elect an
+honest-voter Condorcet winner
+under certain (in practice highly reasonable) assumptions, as is proven by
+<a href="AppCW.html">this theorem</a>.
+</p>
+
+<H2> But... with <i>counter</i>strategy... </H2>
+
+<p>
+If the other voters "catch on" to the strategic action
+and realize it is coming down to an A vs. C battle,
+then they can also alter their votes to try to maximally impact that 
+battle by always ranking A and C top and bottom (or the reverse)
+regardless of their honest rankings of A, C, and everybody else.
+If all voters do that, <i>then</i> C (if it truly is an honest-voter Condorcet winner)
+again will win.  If C is <i>not</i> an honest-voter Condorcet winner,
+then still either A or C will then always win.
+However, observe that the voters had to pay a heavy price in dishonesty to
+do that.  With <a href="RangeVoting.html">range voting</a>, voters
+who wish to rank A and C top and bottom are <i>not</i> thereby
+prevented from ranking their truly favorite and truly most-hated candidates
+top and bottom;  range voting thus permits somebody other than A or C to win.
+</p>
+
+<hr>
+
+<h2> Details </h2>
+
+<p>
+Some readers have insisted this was not obvious enough, they could not conceive of this
+kind of phenomenon, etc, hence they require a fully-worked out
+random-looking numerical example.  (I personally thought it <i>was</i> obvious,
+but "the reader is always right.")
+So here is a set of 21 ballots for 4 candidates:
+</p>
+
+<table bgcolor="yellow">
+<tr bgcolor="#ffcccc"><th>#voters</th><th>Their vote</th></tr>
+<tr><td>6</td><td>A>C>B>D</td></tr>
+<tr><td>2</td><td>B>C>A>D</td></tr>
+<tr><td>3</td><td>B>A>C>D</td></tr>
+<tr><td>2</td><td>C>D>A>B</td></tr>
+<tr><td>2</td><td>C>B>A>D</td></tr>
+<tr><td>5</td><td>D>C>A>B</td></tr>
+<tr><td>1</td><td>D>A>C>B</td></tr>
+</table>
+
+<p>
+The defeats-margins matrix is:
+</p>
+
+<table  bgcolor="#cccccc" border="2">
+<tr><td>Option</td><td align="center">A</td><td align="center">B</td><td align="center">C</td><td align="center">D</td></tr><tr><td align="center">A</td><td bgcolor="#CCCCCC">0</td><td bgcolor="#CCFF88">14</td><td bgcolor="#FF8888">10</td><td bgcolor="#CCFF88">13</td></tr><tr><td align="center">B</td><td bgcolor="#FF8888">7</td><td bgcolor="#CCCCCC">0</td><td bgcolor="#FF8888">5</td><td bgcolor="#CCFF88">13</td></tr><tr><td align="center">C</td><td bgcolor="#CCFF88">11</td><td bgcolor="#CCFF88">16</td><td bgcolor="#CCCCCC">0</td><td bgcolor="#CCFF88">15</td></tr><tr><td align="center">D</td><td bgcolor="#FF8888">8</td><td bgcolor="#FF8888">8</td><td bgcolor="#FF8888">6</td><td bgcolor="#CCCCCC">0</td></tr></table>
+
+<p>
+<b>C wins</b> (with every Condorcet voting system) because C has
+a victory pairwise versus each rival, indicated by the all-green row.
+</p>
+
+<p>
+Now <b>A</b>'s 6 supporters naturally are not happy about that.
+What can they do to make their man win?
+There is one, and basically only one, 
+change to their "A>C>B>D" vote they can make which causes A
+to win. 
+That is to "bury" C with "A>B>D>C."  
+(Well, the alternate burials A>D>B>C and A>D>C>B
+also work in this example, but they both are at-least-as-dishonest votes
+and anyway still count as burying C.)
+If they do this, we get
+</p>
+
+<table bgcolor="yellow">
+<tr bgcolor="#ffcccc"><th>#voters</th><th>Their vote</th></tr>
+<tr><td>6</td><td bgcolor="#8888ff">A>B>D>C</td></tr>
+<tr><td>2</td><td>B>C>A>D</td></tr>
+<tr><td>3</td><td>B>A>C>D</td></tr>
+<tr><td>2</td><td>C>D>A>B</td></tr>
+<tr><td>2</td><td>C>B>A>D</td></tr>
+<tr><td>5</td><td>D>C>A>B</td></tr>
+<tr><td>1</td><td>D>A>C>B</td></tr>
+</table>
+
+<p>
+whereupon <b>A wins</b> using every one of these Condorcet methods:
+Tideman ranked pairs,
+Basic Condorcet,
+Simpson-Kramer min-max,
+and 
+Schulze beatpaths. (Success!)
+The new defeats matrix is
+</p>
+
+<table  bgcolor="#cccccc" border="2">
+<tr><td>Option</td><td align="center">A</td><td align="center">B</td><td align="center">C</td><td align="center">D</td></tr><tr><td align="center">A</td><td bgcolor="#CCCCCC">0</td><td bgcolor="#CCFF88">14</td><td bgcolor="#FF8888">10</td><td bgcolor="#CCFF88">13</td></tr><tr><td align="center">B</td><td bgcolor="#FF8888">7</td><td bgcolor="#CCCCCC">0</td><td bgcolor="#CCFF88">11</td><td bgcolor="#CCFF88">13</td></tr><tr><td align="center">C</td><td bgcolor="#CCFF88">11</td><td bgcolor="#FF8888">10</td><td bgcolor="#CCCCCC">0</td><td bgcolor="#FF8888">9</td></tr><tr><td align="center">D</td><td bgcolor="#FF8888">8</td><td bgcolor="#FF8888">8</td><td bgcolor="#CCFF88">12</td><td bgcolor="#CCCCCC">0</td></tr></table>
+
+<hr>
+
+<h2> How common is this? </h2>
+<a name="estim"></a>
+<p>
+Some people think maybe it is very rare for Condorcet methods to suffer from this problem.
+But there are <a href="CondBurial.html">theorems</a> to the contrary.
+Here we shall work out a crude estimate for the rarity.
+</p>
+<p>
+We shall look at the
+(admittedly simplified versus reality, but at least it is clearly defined
+and not biased) <a href="RandElect.html">random elections model</a>.
+In this model, each voter
+casts a random vote chosen uniformly independently from among all possible
+votes.  (E.g, with 4 candidates, there are 4!=24 possible votes. Each voter chooses one
+by flipping a dodecahedral die and a coin.)  
+</p><P>
+Equivalent interpretation:
+"All V-voter elections are considered equally likely" where
+an "election" means a table saying, for each voter, how they voted.
+(That is what I mean by "unbiased."  Clearly I cannot be inserting any evil personal biases
+favoring one particular kind of elections, because <i>all</i> elections are equally likely.)
+We assume a <i>large</i> number V&rarr;&infin; of voters.
+</p>
+<p>
+In this model, it is known that
+a "Condorcet winner" candidate C exists (in 4-candidate elections)
+with probability 
+<a href="RandElect.html">82.452%</a>.
+</p>
+<p>
+<b>ESTIMATE:</b>
+With the "Tideman ranked pairs" Condorcet method, with
+probability&asymp;45% (or more) in the V&rarr;&infin; limit,
+some voter-type whose vote was "X>C>the others"  
+(for some X, where C is the honest-voting Condorcet winner),
+can force victory for X (assuming all the other voter-types stay with their
+honest votes) by strategically changing their vote to "bury" C, like this "X>others>C."
+</p>
+<p>
+<b>DERIVATION:</b>
+Restricted to the three non-C candidates, there is somebody who would
+win (since ties have probability&rarr;0).  Call that somebody X.
+This strategic move by the X>C>others voters
+will, with probability&rarr;100% (which follows from standard
+Gaussian statistics), cause C to become pairwise-defeated by every candidate except X,
+and always by the 2 largest pairwise margins.
+</p>
+<p>
+Thanks to this strategic move, we now have a situation in which X would
+win if C were omitted from the race, and in which C loses to every rival but X
+by the hugest two margins.  With Tideman's Condorcet
+method, C's defeats are "locked in"
+first.  Now X will win if either of the one or two X>somebody defeats
+is large enough to get locked in before the C>X defeat.
+That happens with probability&asymp;2/3 because there are 6 possible orderings
+of these 3 defeats by severity, and only 2 of those orderings stop
+X from winning &ndash; or in the case where X only defeats one of his 
+non-C rivals we get probability&asymp;1/2.  So on average say 58%.
+(This is really cheating because the orderings are 
+not equally likely because X and C are not random candidates, etc.  
+So this argument is only approximate, which is why we call it an "estimate" not a "theorem."
+One could do a computer Monte-Carlo measurement to overcome that objection and thus get
+the exact probability to within 0.01%.  One can also see <a href="CondBurial.html">this</a>
+for genuine theorems.)
+Finally, 0.8245&times;0.58&asymp;45%.
+<b>Q.E.D.</b>
+</p>
+<p>
+<b>Conclusion:</b>
+This whole "burial strategy works" phenomenon seems <i>very</i> common.
+In the random elections model using Tideman ranked pairs, it happens at least 
+about 45% of the time.
+With many other Condorcet methods and other probabilistic models,
+your mileage may differ, but it ought still to be quite common.
+</p><p>
+<small>
+If you want a precise conjecture: I suspect <i>every</i> commonly-accepted Condorcet method
+will exhibit "burial strategy works" over 30% of the time in random elections 
+with 4 candidates and #voters&rarr;&infin;; and with some number more than 4 candidates,
+I believe burial will work even more often.
+In the <a href="Glossary.html#Dirichlet">Dirichlet model</a>, 
+I suspect again we will have &gt;30% occurrence rates
+provided the number of candidates is right.
+<br><br>
+Also, if we were to add in the chances that some voter-class could cause the election result to
+<i>impove</i> in their view (despite not necessarily electing their favorite) by
+burying the winner, then the estimate "45%" would rise, and if there were the right number of
+candidates, it'd rise by a <i>lot</i>.
+</small>
+</p>
+
+
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

@@ -1,0 +1,284 @@
+<html>
+<head>
+<title>
+RangeVoting.org - "Top-3-only" bastardized IRV
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> "Top-3-only" bastardized IRV </H2>
+
+<p>
+In this system, advocated by fairvote.org for use in Oakland and San Francisco,
+voters rank their top three choices in order as their vote.  Then the election
+proceeds like <a href="rangeVirv.html">Instant Runoff Voting</a> from then on.
+</p>
+
+<p>
+Unfortunately, this "top three" restriction makes the voting system considerably worse 
+even than regular "rank all candidates" IRV.  It suffers all of IRV's flaws plus
+more flaws.  (Its only advantage is slightly greater simplicity.)  We do not recommend it.
+</p>
+
+
+<p>
+We'll now demonstrate a few flaws top-3-IRV suffers from, that ordinary IRV does not suffer from
+(or not as much).  Also, you can follow this link to see that such flaws 
+occur <a href=" IrvExhaustionSF.html">VERY COMMONLY in REAL LIFE</a>,
+and this link to see a 2010 legal brief (pdf) arguing Top-3-only IRV is
+<a href="Plaintiff-SF-RCV-Prelim-Inj.pdf">unconstitutional</a>. 
+(This argument is not due to us, and not necessarily endorsed by us.)
+</p>
+
+<hr>
+<p>
+<b>Example:</b>
+suppose there are 5 Whigs and 3 Tories running.  
+53% of the voters are Whigs and rank their favorite three among the five Whigs 1-2-3.  
+(Which three, depends on the voter and, let us suppose, seems random.)
+The remaining 47% of the voters are Tories and rank the three Tories 1-2-3. 
+Result: A <i>Tory</i> wins even though a clear majority of both
+the voters and candidates are Whigs!!
+And not only that, but the Whig voter-majority has <i>zero</i> input into the
+question of <i>which</i> Tory it will be!
+(Ordinary IRV exhibits neither problem.)
+</p>
+<hr>
+<p>
+<b>Also,</b>
+contrary to IRV-for-Oakland propaganda that the top-3-IRV system elects a "majority winner"
+&ndash; well we just showed that was false, but now we'll show it is false in more ways &ndash;
+(which they billed as an improvement over plurality voting where it is easily possible
+for no candidate to get a majority, for example a 30, 33, 37 three-way split)
+in fact it <i>still</i>  is entirely possible for 
+<i>no</i> candidate to <i>ever</i> get a majority over any other.  E.g.
+in this 1000-voter 7-candidate election (candidate names A,B,C,D,E,F,G)
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 139 </td>
+<td align="center">  A > B > D </td>
+</tr>
+<tr>
+<td align="center"> 141 </td>
+<td align="center">  C > D > F   </td>
+</tr>
+<tr>
+<td align="center"> 142 </td>
+<td align="center">  D > E > G   </td>
+</tr>
+<tr>
+<td align="center"> 143 </td>
+<td align="center">  B > C > E  </td>
+</tr>
+<tr>
+<td align="center"> 144 </td>
+<td align="center">  E > F > A   </td>
+</tr>
+<tr>
+<td align="center"> 145 </td>
+<td align="center">  F > G > B   </td>
+</tr>
+<tr>
+<td align="center"> 146 </td>
+<td align="center">  G > A > C   </td>
+</tr>
+</table>
+
+<p>
+using top-3-only IRV, the elections proceed as follows.
+We eliminate
+first A, 
+then C, 
+then E, 
+then G, 
+then B,
+then F,
+at which point we suppose <b>D must be the winner</b> since D is the only candidate left.
+However, only 422 of the 1000 voters voted for D, well <i>below a majority</i>
+(which would be 501).
+Furthermore, 
+let us consider all 6 pairwise D-versus-somebody matchups:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> D vs who? </th>
+<th> What voters said about it </th>
+</tr>
+<tr>
+<td> D versus A </td>
+<td align="center"> 429 say A>D, 283 say D>A, 288 say nothing </td>
+</tr>
+<tr>
+<td> D versus B </td>
+<td align="center"> 427 say B>D, 283 say D>B, 290 say nothing </td>
+</tr>
+<tr>
+<td> D versus C </td>
+<td align="center"> 430 say C>D, 281 say D>C, 289 say nothing </td>
+</tr>
+<tr bgcolor="#ffdddd">
+<td> D versus E </td>
+<td align="center"> 287 say E>D, 422 say D>E, 291 say nothing </td>
+</tr>
+<tr bgcolor="#ffdddd">
+<td> D versus F </td>
+<td align="center"> 289 say F>D, 422 say D>F, 289 say nothing </td>
+</tr>
+<tr bgcolor="#ffdddd">
+<td> D versus G </td>
+<td align="center"> 291 say G>D, 422 say D>G, 287 say nothing </td>
+</tr>
+</table>
+
+<!-- Gorr calculator input
+139:A>B>D
+141:C>D>F
+142:D>E>G
+143:B>C>E
+144:E>F>A
+145:F>G>B
+146:G>A>C
+-->
+
+<p>
+In the first 3 of the 6 cases, the other candidate beat D by a plurality,
+while in the last 3, D beat the other by a plurality (albeit a smaller one).
+But <i>no</i> candidate beat <i>any</i> other candidate by a majority.
+</p>
+
+<hr>
+
+<p><b>Here's the same example all over again</b> but with the numbers
+altered so we can make a different point  (there are still 7 candidates
+and 1000 voters):
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 107 </td>
+<td align="center">  A > B > D </td>
+</tr>
+<tr>
+<td align="center"> 109 </td>
+<td align="center">  C > D > F   </td>
+</tr>
+<tr>
+<td align="center"> 110 </td>
+<td align="center">  D > E > G   </td>
+</tr>
+<tr>
+<td align="center"> 111 </td>
+<td align="center">  B > C > E  </td>
+</tr>
+<tr>
+<td align="center"> 162 </td>
+<td align="center">  E > F > A   </td>
+</tr>
+<tr>
+<td align="center"> 163 </td>
+<td align="center">  F > G > B   </td>
+</tr>
+<tr>
+<td align="center"> 238 </td>
+<td align="center">  G > A > C   </td>
+</tr>
+</table>
+
+<p>
+using top-3-only IRV, the elections proceed as follows.
+We eliminate
+first A, 
+then C, 
+then E, 
+then B, 
+then G,
+then F,
+at which point we suppose <b>D must be the winner</b> since D is the only candidate left.
+However, only 326 of the 1000 voters voted for D in either 1st, 2nd, or 3rd place, 
+well <i>below a majority</i>
+(which would be 501).
+Furthermore, 
+let us consider all 6 pairwise D-versus-somebody matchups:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> D vs who? </th>
+<th> What voters said about it </th>
+</tr>
+<tr>
+<td> D versus A </td>
+<td align="center"> 507 say A>D, 219 say D>A, 274 say nothing </td>
+</tr>
+<tr>
+<td> D versus B </td>
+<td align="center"> 381 say B>D, 219 say D>B, 400 say nothing </td>
+</tr>
+<tr>
+<td> D versus C </td>
+<td align="center"> 458 say C>D, 217 say D>C, 325 say nothing </td>
+</tr>
+<tr>
+<td> D versus E </td>
+<td align="center"> 273 say E>D, 326 say D>E, 401 say nothing </td>
+</tr>
+<tr>
+<td> D versus F </td>
+<td align="center"> 325 say F>D, 326 say D>F, 349 say nothing </td>
+</tr>
+<tr>
+<td> D versus G </td>
+<td align="center"> 401 say G>D, 326 say D>G, 273 say nothing </td>
+</tr>
+</table>
+
+<!-- Gorr calculator input
+107:A>B>D
+109:C>D>F
+110:D>E>G
+111:B>C>E
+162:E>F>A
+163:F>G>B
+238:G>A>C
+-->
+
+<p>
+Now <b>D still wins</b> under top-3-choices-IRV
+despite the fact that D would lose pairwise to A,B,C, and G
+(more pairwise losses than every candidate except E, which also has 4 pairwise
+losses but not as severe losses as D)
+and despite the fact that now there <i>are</i> 6 genuine majority-defeats
+(A over B, C, and D; and G over A,B, and C), none of which favor D.
+</p>
+<p>
+G would appear to be the best choice based on these
+votes (beats every candidate except F pairwise; more pairwise victories than any
+other candidate; highest number of top-ranking supporters by far), but it is not IRV's choice.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

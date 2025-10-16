@@ -1,0 +1,199 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Richie "Core support" Notion 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> An IRV example refuting Richie's "Core support" theory </H2>
+
+<p><small>by Clay Shentrup &amp; Warren Smith
+(See also simpler <a href="CoreSuppPocket.html">pocket-sized example</a>
+and 
+<a href="IRVpereira.html">Pereira's example</a> where IRV does worse than plain plurality voting)
+</small></p>
+
+<p>
+Rob Richie, evangelist for the Instant Runoff Voting
+(<a href="rangeVirv.html">IRV</a>) movement, 
+excuses the fact that IRV can fail to elect a Condorcet ("beats all") winner, 
+citing scenarios where the Condorcet winner didn't have many first-place votes.  
+Richie calls the first place votes "core support." 
+<small>
+That's somewhat arbitrary, because order tells us essentially nothing
+about intensity.  
+For instance, you could hate or love all 4 candidates, or love 2 and hate 2 
+&ndash; and still have the same ordered preferences.  
+So what's so special about first place support?  
+Nothing really, but Richie believes otherwise.
+</small>
+</p><p>
+In any case, here is an <b>anti-Richie example</b>
+with 28 voters and 4 candidates where 
+<ol type="a">
+<li>
+The Condorcet "beats-all" winner C does not win with IRV, 
+</li><li>
+the IRV winner M gets less "core support" than C.
+</li>
+</ol>
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td>  10 </td>
+<td> G > C > P > M </td>
+</tr>
+<tr>
+<td>  3 </td>
+<td> C > G > P > M </td>
+</tr>
+<tr>
+<td>  5</td>
+<td> C > P > M > G </td>
+</tr>
+<tr>
+<td>  6 </td>
+<td> M > P > C > G </td>
+</tr>
+<tr>
+<td>  4 </td>
+<td> P > M > C > G </td>
+</tr>
+</table>
+
+<p>
+<b>C</b> is the clear "Condorcet winner,"
+meaning he is preferred by a landslide majority over
+<i>all</i> his individual rivals.
+C is preferred over G, P, and M all by an 18-10 margin.
+</p><p>
+But...  <b>M</b> wins this election if we use Instant Runoff Voting (IRV), 
+even though he <i>also</i> has less "core support" (6 voters) than C with 8.
+<br>
+<b>More craziness:</b>
+<ol type="a">
+<li>
+P is preferred to M by 22 of the 28 voters, yet he's the first candidate IRV eliminates.
+</li><li>
+G <i>also</i> has more "core support" (10) than M's 6.
+</li><li>
+So M either loses pairwise to, or has 
+less core support than (or both) <i>every</i> rival,
+but <i>still</i> IRV elects M!
+</li><li>
+Indeed, M  pairwise-defeats <i>only</i> G (and by the smallest possible margin 15-13 too)
+and is defeated by every other candidate (by large margins &ndash; at least 18-10).
+</li><li>
+Also, if G drops out, C wins.  G is effectively a spoiler.  So much
+for the "no spoilers in IRV" myth.
+</li><li>
+Also, if C drops out, P wins.  So C is a spoiler too!
+</li><li>
+And if the first group of voters were to
+strategically top-rank C (or bottom-rank G), then C would win, and they'd have their
+second choice instead of their last choice.  So much for the myth that
+with IRV, your best voting strategy is an honest ranking.
+For these voters G is a "spoiler" &ndash; by voting for C these voters made their
+favorite G and their
+second-choice C <i>both</i> lose.  They would have been better off "betraying their favorite."
+</li><li>
+Similarly if the <i>middle</i> group of voters were to strategically rank C in last place, then
+P would win, and they'd have their second choice instead of their third.
+So for these voters, C is a "spoiler" &ndash; by voting for C these voters made their 
+favorite C and their
+second-choice P <i>both</i> lose.  
+They too would have been better off "betraying their favorite."
+</li><li>
+Suppose three of the voters in the first 
+group decided "To hell with this crazy election system.  We aren't going to vote."
+With those 3 votes removed, C wins, which is an improvement in their view
+(second instead of last choice).  These voters were better off <i>not voting</i>!
+Their votes ranking M bottom <i>caused</i> M's victory!
+</li>
+</ol>
+</p>
+<p>
+It's amazing how much crazy IRV behavior occurs in this single example,
+but this is by <a href="CompleteIdioticIRV.html">no means</a> the craziest.
+</p>
+
+<h3> Why does IRV do that? </h3>
+
+<p>
+In this example, 18 voters say C>M while 10 say M>C.  The reason IRV nevertheless makes M win, 
+is that IRV <i>ignores</i> 10 of the C>M votes, and only looks at 
+8 of them.   Those 8 are not enough to overcome the 10 M>C votes.
+</p>
+<p>
+Also e.g, 22 voters say P>M while 6 say M>P.
+The reason IRV nevertheless makes M win, 
+is that IRV <i>ignores</i> 18 of the P>M votes, and only looks at 
+4 of them.   Those 4 are not enough to overcome the 6 M>P votes.
+</p>
+<p>
+It is about ignoring the preferences of some voters, while counting others.
+</p>
+
+
+<h3> Need more insanity? </h3>
+
+<p>
+The example above was intended to be "realistic," perhaps somewhat resembling 
+the situation
+in the (now evolving) 2008 US presidential race with G="Green", M=McCain, C=Edwards,
+and P=Paul.  But if you are willing to drop realism and construct artificial
+election scenarios, then 
+<a href="IRVamp.html#bad">this</a>
+demonstrates how to 
+construct arbitrarily-severe election examples of this kind,
+where, e.g, the IRV winner (our M)
+loses pairwise to the Condorcet winner (our C) by an enormous (100:1)
+margin, and also M has less core support by an enormous (100:1) margin, and also
+M is ranked bottommost or second-worst by 75% of the voters, and also
+M is below average in the eyes of 99.9% of the voters, and also M would
+lose a head-to-head race with every opponent but one by at least a 75-25 landslide,
+and also M has less core support
+than that one exception by a 100:1 margin, 
+and also C would beat every opponent pairwise,
+and also C's pairwise victories would 
+be a 75-25 or larger landslide in every case but one
+(where C still wins, but not by a landslide)...
+but still IRV insists on electing M!
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+<!--
+w x y z t
+maximize( s,  { 
+ w+x+y >= z+t+s,  #C beats P,M
+ x+y+z+t >= w+s,  #C beats G
+ t+s <= z,        #P elimd 1st rd
+ t+s <= x+y,      #P elimd 1st rd
+ t+s <= w,        #P elimd 1st rd
+ w+x+y+z+t=28, w>=0, x>=0, y>=0, z>=0, t>=0,
+ x+y+s <= w,      #C elimd 2nd rd
+ x+y+s <= z+t,    #C elimd 2nd rd
+ w+x+s <= y+z+t,  #G elimd 3rd rd so M wins IRV
+ x+y >= z+s  } ); #C more core supp than M 
+-->
+

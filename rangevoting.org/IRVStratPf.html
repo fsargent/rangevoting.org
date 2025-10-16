@@ -1,0 +1,316 @@
+<html>
+<head>
+<title>
+RangeVoting.org - "Favorite Betrayal" probabilities and consequences for 2-party domination
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Probabilities of "favorite-betrayal lesser-evil" (FBLE) situations in 3-candidate
+ranked-ballot elections
+</H2>
+
+<p>
+<b>
+Probabilistic model: 
+</b>
+All elections equally likely.  That is, with V voters,
+there are 6<sup>V</sup> possible elections since each voter can vote in 6 ways:
+A>B>C, A>C>B, B>A>C, B>C>A, C>A>B, C>B>A.
+(We disallow "truncated ballots" and "ranking equalities.")
+We shall consider the large-V limit V&rarr;&infin;.
+</p>
+
+<p>
+<b>
+Definition of "FBLE situation":
+</b>
+Call the election-winner A.
+An FBLE situation then occurs when
+some C>B>A voters, by switching to B>C>A ("betraying their favorite" C)
+can make the "lesser evil" B win (an outcome they prefer). <small>Note:
+We shall abbreviate C&gt;B&gt;A votes by "CBA," et cetera, in what follows.</small>
+</p>
+
+<H3> Condorcet </H3>
+
+<p>
+<b>
+<a href="rangeVcond.html">Condorcet</a>'s FBLE probability is 8.78% (but arguably 100%).
+</b>
+Proof sketch:
+An FBLE situation occurs only in the event there is a 
+<a href="CondorcetCycles.html">Condorcet cycle</a>
+A>C>B>A with A suffering the weakest defeat (by C);
+the CBA voters by switching to BCA cause B to defeat C
+and become a Condorcet winner
+(or at least to only be beaten maximally-weakly by C).
+(<a href="IncentToExagg.html">Concrete example but with letters changed</a>.)
+</p>
+<p>
+Rather non-obviously,
+a Condorcet cycle happens with 
+asymptotic probability  (3*arccos(1/3)-&pi;)/(2&pi;)&asymp;8.78%.
+(The obvious guess, 25%, is wrong, see <a href="PuzzlePage.html#p7">puzzle #7</a>
+for an explanation of why the truth is 8.78%.)
+Due to symmetry, the sum of all the pairwise votes behaves like a 3-dimensional
+normal distribution, but not a spherically-symmetric one
+due to correlations.  
+</small>
+Given such a cycle, FBLE happens (i.e. there are enough CBA voters to
+cause C to become a Condorcet winner after they switch)
+with asymptotically 100% probability.
+</p>
+<p><b>Strengthening:</b>
+If could, however, be argued that <i>if</i> the CBA voters are convinced C cannot win,
+then their betrayal by switching to BCA cannot hurt them but with 8.78% probability
+will help them.  I.e, if convinced C cannot win, then this betrayal
+is a strategically sometimes-wise and never-unwise move with <b>100%</b> probability.
+</p>
+<p><b>Discussion:</b>
+For the voters considering betraying the third-party candidate C (who is their honest favorite)
+to make the lesser-evil B win, the question is this.  <i>Which is more likely?</i>
+<ol>
+<li>
+By this betrayal I will cause C to lose whereas otherwise he would have won.  (Bad! Backfire!)
+</li><li>
+By this betrayal I will cause B to win whereas otherwise the greater-evil A would 
+have won.  (Good! Success!)
+</ol>
+If the probability that third-party candidates can win is well below 8.78%
+(which is certainly true in present-day USA politics), then
+the voter is fully justified, 100% of the time (!), in deciding to betray.
+If voters act that way, then third party candidates will never win &ndash; justifying
+their decision! &ndash; and then self-reinforcing
+<a href="Strangle.html">2-party domination</a> is guaranteed, 
+<a href="Duverger.html">just like</a>
+under the plurality system that Condorcet was supposed to "improve over."
+</p>
+<p>
+Mind you, it is not <i>clear</i> Condorcet voting really will lead to self-reinforcing 2-party 
+domination.  That experiment has never been done and it might be that "8.78%" is small enough
+that this trap can be escaped.  We do not know.  But certainly the risk is there.
+And since every IRV country is 2-party dominated and for IRV the magic  number is
+19.6% rather than 8.78%, we know 19.6% is enough to do the job.
+</p>
+<p>
+Another question: 8.78% is the FBLE and cycle probability in our mathematical <i>model</i>, but
+what is that number in <i>real life</i>?  The answer is unknown, but based on
+surveying the few "real life" Condorcet elections that have been conducted so far,
+I am willing to say that it is between 0 and 20%, but unwilling to be any more
+precise than that.
+<p>
+
+<a name="irv"></a>
+<H3> Instant Runoff Voting </H3>
+
+<b>
+<a href="rangeVirv.html">Instant Runoff Voting</a>'s FBLE 
+probability is 19.6% (but arguably 100%).
+</b>
+Proof sketch:
+An FBLE situation occurs only in the event 
+B is eliminated in the first round and then A beats C
+in the second and final round to take the prize.
+If enough CBA voters switch to BCA then C is eliminated in the
+first round instead (with asymptotic 100% probability there
+are enough CBA voters to cause this), and then hopefully B
+beats A.  
+(<a href="FBex3.html">Concrete example</a>;
+<a href="Tarr2Irv.html">Another type</a>;
+<a href="ClayIrv3.html">Another</a>.)
+The 100%s are coming from the fact that, with
+asymptotically 100% probability, there are about V/6 voters
+of each kind, while the differences between any two candidates'
+vote counts are only of order &radic;V, which is far smaller.)
+The "hope" that B will beat A is satisfied with probability P,
+where P is the probability that
+given independent standard normal (Gaussian) random variables 
+S,T,W,X,Y,Z,
+(the original vote counts for ABC, ACB, CAB, CBA, BAC, and BCA respectively)
+and given that 
+S+T&gt;Y+Z <!-- B is eliminated in 1st round  -->
+and 
+W+X&gt;Y+Z, <!-- B is eliminated in 1st round  -->
+<!-- to make A beat C we want   S+T+Y > W+X+Z -->
+we have that 
+S+T+W&lt;Y+Z+X.  
+<!-- the goal here is after the CBA&rarr;BCA switch, to make C lose.
+If Q switch where 0<Q<X then we want   S+T+Q&gt;W+X  and  Y+Z+2Q>W+X to make A&B both beat C first round  
+and we want S+T+W<Y+Z+X to make B beat A in the second rd. -->
+(The Gaussians are justified by the central limit theorem.)
+</p>
+<p>
+<small>
+Let's do that again in slo-mo: (1) S+T&gt;Y+Z and
+(2) W+X&gt;Y+Z make sure B is eliminated in the first round.
+Now our design goal is after the CBA&rarr;BCA switch, to make C lose and B win.
+After Q voters switch where necessarily (3) 0&lt;Q&le;X then we want (4)  S+T+Q&gt;W+X  
+to make A beat B in the first round, and we want (5) Y+Z+2Q&gt;W+X to make B beat C in the first round.
+Finally we want (6) S+T+W&lt;Y+Z+X to make B beat A in the second round.
+Here the reader notes that we mentioned (1) and (2) and (6) above
+but did not mention (3) and (4) and (5).  Huh?
+That is because we may as well take Q=X since that only makes everything we said (if it is true) more true.
+In that case (4) becomes just S+T&gt;W, while (5) becomes just Y+Z+X&gt;W.  
+These two demands can be dropped because in our random model they both are satisfied with 
+100%  probability in the V&rarr;large limit. So we don't have to mention these two.
+</small>
+</p><p>
+More simply but equivalently, P is the probability that
+given independent standard normal (Gaussian) random variables X,Y,Z,
+we have that |X|&lt;Y/&radic;2, whereupon by considering polar coordinates instead of XY,
+we see that
+P=arctan(1/&radic;2)/&pi;=0.195913276...  
+</p>
+<p>
+<small>
+That in slo-mo: The point is that in the original 6-variable formulation,
+S and T only occur in the combination S+T, which
+we may regard as a different normal random variable with &radic;2 times
+larger standard deviation.  Similarly for Y+Z.  We may also treat W+X and W-X as
+independent  normal random variables with enlarged standard deviation.
+The problem then becomes to find the probability that "given F&gt;G and H&gt;G  that F&lt;G+L"
+where F,G,H,L are i.i.d. standard normal random variables.  But then 
+write |X|=F-G and Y=L&radic;2 to get the final formulation in only 3 variables.
+<br>
+A confidence builder:
+Just in case all those manipulations zoomed by a little too quickly for those
+not used to working with Gaussian random variables...
+I have also confirmed this to
+4 decimal places just by Monte Carlo integration for the original 6-dimensional scenario.
+The fact both the Monte Carlo and exact calculations agree, is convincing evidence
+the reduction from a 6-variable to 3-variable problem, was valid.
+<br>
+Finally, we have not explained in detail the case analysis showing
+why this scenario is the <i>only</i> way to get FBLE &ndash;
+but if you don't buy that, then this still
+shows 19.6% is a <i>lower bound</i> on the FBLE probability.
+<!-- Also, the entire derivation was performed independently, and published, with the same answer
+being found, by Peter C. Fishburn in the 1970s? -->
+</small>
+</p>
+
+<p>
+<b>Remark:</b>
+IRV also allows a (more bizarre) form of favorite betrayal, which has not been counted
+in the above "19.6%" because it works differently: A wins, then the C>B>A voters betray C 
+<i>in order to make C win</i>!
+Here's an <a href="ClayIrv2.html">example of that</a>.
+(If these were also to be counted, then presumably "19.6%" would increase?)
+</p>
+
+<p>
+<b>There also is an</b> <a href="IRVstrat2.html">alternative "Dirichlet"</a> 
+probabilistic model in which you get 20.2% not 19.6%.
+</p>
+
+<p><b>Strengthening to "100%":</b>
+It could, however, be argued that even if the "hope" is not satisfied (i.e. the betrayal
+fails to elect B; A still wins) our CBA voters still were not hurt by making this
+switch.  Therefore, <i>if</i> they were convinced C could not win, <i>then</i> betraying C
+would be a strategically sometimes-wise and never-unwise move with <b>100%</b> probability.
+</p>
+
+<p>
+Indeed, there is no need for the CBA voters to be <i>convinced</i> C cannot win;
+<i>it suffices for them merely to believe C's winning chances are well below 19.6%</i> so
+that their move is far more likely to pay off than being honest.
+</p>
+
+<p>
+That belief is justified.
+In US senate, house, and presidential elections, the winning percentage for third-party candidates
+is well below 1% historically.  In Australia's House, elected via IRV, there 
+<a href="AustralianPol.html">currently</a>
+are <I>zero</i> third-party-held seats.  (In both the US and in Australia's House
+it appears being "independent" is better for your chances than being in a third party;
+and being a former major-party member helps a lot if so.)
+</p>
+
+<p>
+<b>Alternative (more realistic?) mathematical model #1:</b>
+We can change our randomized assumption (which we had chosen for maximum simplicity 
+rather than maximum realism)
+from "all elections equally likely" to, e.g,
+"all votes equally likely except that the probabilities that A,B,C
+will be middle-ranked of the three in that vote are 30%, 30%, and 40% respectively"
+where C is the 3rd-party candidate.  Then in IRV as #voters&rarr;&infin;,
+C's probability of winning is provably exponentially tiny so that Joe Voter
+is justified in assuming C only a <i>very</i> tiny chance <i>t</i> of winning.
+Indeed C only has a tiny chance of merely surviving the first round.
+<i>However</i>, Joe reasons, if Joe and friends by honestly-ranking C top
+<i>do</i> manage to make C survive the first round, then
+that will almost certainly happen only at the cost of eliminating Joe's
+second-favorite candidate A.  If the A votes then transfer equally to C and B
+(which in "1-dimensional politics" with C A B arranged along a "line" in
+that order, seems likely)
+then C will almost certainly still lose, <i>and</i> will have deprived A of victory
+in the process.
+</p>
+
+<p>
+The idea then would be that the behavior of mid-ranking the 3rd party candidate would
+be self-reinforcing in IRV: an assumption of a slight bias that way like
+we just made (40% versus 30%, or situation like
+<a href="TarrIrv.html">this example</a>), then leads to it being strategically wise for Joe Voter 
+to do it, leading to  a larger bias that way, etc. &ndash; positive feedback, self-reinforcing
+2-party domination.
+</p>
+
+<p>
+<b>Alternative (more realistic) mathematical model #2:</b>
+We can change our random-model to be "random selection from a set of situations
+resembling <a href="TarrIrv.html">this example</a>."
+</p>
+
+<p>
+This is somewhat more "realistic 1-dimensional politics," and also somewhat
+resembles a situation in which Joe Voter has seen some pre-election polling,
+and it leads to betraying C being the right strategic move.
+</p>
+
+<p>
+<H3>Summary:</H3>
+This discussion presumably is the underlying theoretical explanation
+for the fact that all three IRV countries 
+(<a href="Ireland2002.html">Ireland</a>,
+<a href="AustralianPol.html">Australia</a>,
+<a href="MaltaPol.html">Malta</a>,
+and
+with the recent addition of
+<a href="FijiPol.html">Fiji</a>)
+historically have been 2-party dominated.
+</p>
+
+<p>
+Evidently the IRV voting method leads to 2-party domination, just like the flawed 
+plurality system that method was supposed to "fix."
+It also is plausible that Condorcet methods with full rankings as ballots
+also will lead
+to 2-party domination.
+</p>
+
+<p>
+So anybody who is interested in third parties ever having a chance, would
+be advised <i>not</i> to foolishly advocate IRV, but instead would be advised to 
+advocate <i>Range Voting</i> (which experimentally favors all third parties
+far more than either plurality or approval, incidentally,
+see the CRV web site).
+</p>
+
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

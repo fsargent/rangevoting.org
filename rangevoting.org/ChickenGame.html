@@ -1,0 +1,132 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Game of "Chicken"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Definition of the game of "chicken" </H2>
+
+<p>
+The game of Chicken models two drivers, both headed for a 
+single-lane bridge from opposite directions. 
+The first to swerve away yields the bridge to the other. 
+If neither swerves, the result is a potentially fatal head-on collision.
+If one stays straight while the other swerves, then he wastes less time,
+and also gains face as a very macho fellow
+and all teenage girls immediately have the hots for him.
+</p>
+
+<TABLE bgcolor="lightpink">
+<TR>
+<td></td>
+<td>Swerve</td>
+<td>Straight</td>
+</tr>
+<tr>
+<td>Swerve</td>
+<td>-1,&nbsp;-1</td>
+<td>-1,&nbsp;+2</td>
+</tr>
+<tr>
+<td>Straight</td>
+<td>+2,&nbsp;-1</td>
+<td>-13,&nbsp;-13</td>
+</tr>
+<tr>
+<td colspan="3"><i>Chicken with numerical payoffs.</i></td>
+</tr>
+</table>
+
+<h3> What is optimal chicken strategy? </h3>
+
+<p>
+The optimal strategy for each player (according to game theory)
+is to go straight with probability <i>P</i> and swerve with probability <i>1-P</i>.
+</p>
+<small>
+And keep your randomness secret &ndash; if the opponent knows your
+random choice then it effectively is a deterministic choice, not random at all,
+and the opponent then always wins the game! If you want to be deterministic, then
+use P=0 or P=1 for <i>genuine</I> determinism &ndash; don't go for fake determinism.
+</small>
+<p>
+Your strategy is then defined by a single number <i>P</i>.
+Say your opponent's strategy similarly is defined by a single number also (call it <i>Q</i>).
+Then your expected payoff is
+<center>
+Your Expected Payoff  =  2P(1-Q) - 13PQ - (1-P)Q - (1-P)(1-Q)  =  3P - 15PQ - 1.
+</center>
+So: if Q&lt;0.2 then your best strategy is P=1 (always go straight).
+If Q&gt;0.2 then your best strategy is P=0 (always swerve).
+If Q=0.2 then it does not matter what you do; you always get the same
+expected payoff=-1.
+</p><p>
+An <i>unstable optimum situation</i> is P=Q=0.2.
+In this situation both players get expected payoff=-1.
+It is "optimum" in the sense that neither player can do better by
+unilaterally changing their strategy.
+</p><p>
+If you, instead of P=0.2, use P=0.1999 (slightly perturbed)
+then your opponent will exploit that error by making Q=1 (always going straight).  
+You then will suffer more
+(i.e. get hugely worse expected payoff, namely -3.3988 instead of -1).
+So you are incentivized to keep P&ge;0.2.
+</p><p>
+The reason the original situation is "unstable" is that if one player slightly increases <i>P</i>
+i.e, instead of P=0.2, use P=0.2001 (now perturbed in the increasing direction)
+then your opponent can strategically exploit that by making Q=0, i.e. always swerving.
+But in the event your opponent always swerves, then you are being an idiot &ndash; you could
+have gained hugely more payoff by going straight (payoff=+2 rather than -0.3997).
+</p><p>
+The reason the original situation is "unstable" is that if one player slightly increases 
+<i>P</i> above 0.2, the opponent is best off always swerving, at which point the
+first player is best off always going straight.  So a tiny perturbation slams us into
+the state where we have one "macho guy" who always wins payoff=+2 and never swerves, versus one
+"wimp" who always swerves and always gets payoff=-1.   
+There are two stable macho-V-wimp states &ndash; it's just a question of which one
+you want to keep being.
+</p>
+
+<h3> In politics... </h3>
+
+<p>
+In chicken games played between political parties or candidates (which can 
+arise in certain voting systems), most parties consider it unacceptable to always
+be the "wimp" and always lose the election to the "macho" party.  But if both parties
+try to be macho, the result is disaster (i.e. they both lose).
+</p>
+<p>
+As a contemporary example, I am writing this in mid-March 2008.
+Hillary Clinton and Barack Obama are competing for the Democratic 
+US Presidential Nomination.
+Hillary chose to be "macho" by employing "negative ads" about her opponent Obama,
+and also to try to get unelected "superdelegates" to vote for, and install, her even if
+she loses the popular vote; and also to try to change the rules midgame 
+about Florida and Michigan.   These moves may result in her defeating Obama, but
+also risk disaster &ndash; voters will then prefer the Republican McCain
+to a "Democratic" party that behaves in this manner.
+If Obama also chooses to be "macho" then that danger is increased.
+However, there is, as you can imagine, considerable pressure on
+both to avoid being "wimps," e.g. television commentators every day
+are urging each to "show the American public that they can be strong, fight, and not just
+lie down and take it" (that is almost an exact quote).
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

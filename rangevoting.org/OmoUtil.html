@@ -1,0 +1,621 @@
+<html>
+<head>
+<title>
+RangeVoting.org --  Green & Omohundro's "Expected Utility Theorem" and remarks on extending it to societal utility
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Utility, social utility, democracy, and altruistic and moral behavior
+from unexploitability, Darwinian evolution, and tribes
+</H2>
+
+<p><small>By  Warren D. Smith, April 2008 </small></p>
+
+<p>
+<small>
+ABSTRACT:
+</small>
+S.M.Omohundro in 2007, by building on and/or simplifying ideas by a large number of economists,
+demonstrated that the philosophy of utilitarianism is <i>forced</i> upon an organism if
+that organism wishes to be "unexploitable."   Exploitable organisms presumably tend
+to get exploited, suffer a competitive disadvantage, and thus die off over evolutionary time.
+Hence we should expect, on theoretical grounds, that humans (as the end product of 4 billion
+years of evolution) ought to be utility-maximizers to a good approximation.
+</p><p>
+We then consider <i>social</i> utility.  By the same reasoning, any society
+(collection of individuals) must act like a utility maximizer &ndash; otherwise it can
+be exploited by other societies.  Thus we would expect, over historical time, that 
+countries/tribes whose decisions are not interpretable as utility-maximizing 
+behavior, would be outcompeted
+and die out.
+</p><p>
+Finally we enquire about the relation between the utility functions of
+societies and their citizens.  By either Harsanyi's social aggregation theorem
+or by a new Omohundro-like argument about "exploitability" (now with a more-powerful
+kind of exploiter), we deduce that the relation <i>must</i>
+be that the social utility is a weighted sum (with positive weights) of
+the utility functions of the citizens.  
+</p><p>
+We also deduce that for any society to be unexploitable, it
+<i>must</i> employ a collective decision-making process
+("voting")
+to make social decisions based on taking a weighted sum of 
+continuously-variable utility values.
+Voting systems with discrete votes 
+(Borda, Condorcet, Plurality, Approval, Instant Runoff, etc)
+are certainly ruled out.
+This somewhat resembles <a href="RangeVoting.html">range voting</a>, <i>but</i>
+it is not the same thing if, e.g, the citizens can vote dishonestly-strategically.
+Darwinian evolution <i>on tribes</i> then must encourage tribe-members to vote honestly
+to avoid their tribe dying out, and this is the presumed cause of the evolution of
+"moral" behavior which would seem on the surface to be un-utilitarian for individuals.
+</p>
+
+<hr>
+
+<h3> 1. Omohundro's utility picture: "Utility = Unexploitability" </h3>
+<p>
+Omohundro set out his development of utility theory
+in (of all places) an appendix (pages 37-44) of a 2007 paper titled 
+<a href="http://selfawaresystems.files.wordpress.com/2008/01/nature_of_self_improving_ai.pdf">
+On the nature of self-improving artificial intelligence</a>.
+In his opinion, that appendix is an important new insight into the nature,
+importance, and unavoidability of "utility."
+</p>
+
+<p>
+In essence (colloquially phrased), his theorem says this:
+</p>
+
+<p>
+<b>THEOREM ("Acting Utilitarian = Being Unexploitable" &ndash; informally worded):</b>
+<i>If an agent does <u>not</u> behave as though it is maximizing expectation of some 
+utility function, then it is subject to (unboundedly large) resource loss with no
+compensation from the entities to which it loses those resources.  
+(But if it does act
+utilitarian, then it cannot be thus exploited.)
+</i>
+</p>
+
+<P>
+Omohundro goes through a formal development
+(he makes quite easy to read and
+informal-sounding, but it really is formal or can be made so)
+of what exactly this means and how to prove it.
+Here are  (in abbreviated form) some of the highlights of that argument.
+</p>
+
+<p>
+<b>First,</b> 
+any agent foolish enough to have a cyclic preference like A>B>C>A
+will lose resources to an adversary who "takes it around the cycle."
+For example, suppose you will pay me a small amount of money to move from A to C.
+Then you will pay me a small amount of money to move from C to B.
+Then ditto from B to A.
+So I can keep extracting money from you forever for nothing.
+</p>
+
+<p>
+So: any entity which is not "ridiculously vulnerable" <i>must</i> have transitive (acyclic)
+preferences on world-states (or anyhow, on tradeable objects).
+</p>
+
+<p>
+<b>Second,</b> 
+given a real number &alpha; with 0&le;&alpha;&le;1,
+Omohundro considers owning the probabilistic mixture of two objects
+A and B with probabilities &alpha; and 1-&alpha; respectively.
+(I.e. flip an &alpha;-biased coin and get A if heads, otherwise B.)
+If some entity foolishly misvalues such an &alpha;-lottery on A and B 
+(for some 0&lt;&alpha;&lt;1) as <i>not</i> equal to
+&alpha;U(A)+(1-&alpha;)U(B),
+then that entity again will be 
+exploitable by a "bookie."
+Say (wlog) the entity values the mixture too high.
+</p>
+
+<p>
+The bookie simply sells the probability-mixture to the entity, then
+they flip the &alpha;-coin to generate that mixed-world-state, and then observe that it is
+either A or B.  Either way, the bookie buys back this object from the foolish entity
+at a 
+cheaper (expected) price &ndash; thus making positive expected
+amount of money.  
+By the "law of large numbers" from probability theory,
+this process can be repeated arbitrarily
+many times to 
+extract arbitrarily large amounts of money with arbitrarily large
+success probability.
+</p>
+
+<p>
+Using a similar argument we conclude:
+any entity which is not "ridiculously vulnerable" must have utilities
+on lotteries with are <i>linear</i> combinations of the utilities of their constituents,
+and the weights in the linear combination must be the <i>same</i> as the probabilities.
+(Because otherwise, one always could find misvalued lotteries and use them to construct
+a "dutch book" 
+system of bets which always favor the bookie, but in which the entity would be willing
+to keep on betting and thus keep on losing.)
+</p>
+
+<p>
+<b>Finally:</b>
+an expected utility maximizer will keep increasing utility (or stay the same), hence
+<i>cannot</i> enter an infinite loop in which it loses money but otherwise stays the same.
+Such an organism, in these senses is unexploitable.
+</p>
+<p>
+If we have acyclic (transitive) preferences and value lotteries via expectation value
+(and seek to maximize utility) then that
+<i>is</I> "utilitarianism."
+<b>Q.E.D.</b>
+</p>
+
+<table width="99%">
+<caption>
+<b>Figure:</b>
+Biological examples of exploitation of imperfect utility functions (or imperfectly
+emulating Darwinian fitness).  On the left: two
+"angler fish."  These wave their lures which other fish try to eat.  
+But it does not work &ndash; the angler fish eats them instead.  On the right: many
+orchids have flowers shaped like female wasps or moths in sexually receptive positions.  They also
+emit pheromeones.  Males (next picture to right) try to mate with flower, thus pollinating it.
+Rightmost: "Vampire bat" <i>Diaemus Youngi</i>.  This bat has learned to walk toward chickens
+in a manner
+somewhat imitating the behavior of chicks.  
+Mother birds far larger than it will present
+their "brood patches" (warm areas of skin designed to incubate eggs; these contain many 
+blood vessels close to the surface) to the bat.  The bat then bites the brood patch to
+feed on blood.  (The bite apparently is painless due to anaesthetics in bat saliva.)
+These bats actually do not look at all like chicken chicks, but hens are not renouned for their
+intelligence.
+</caption>
+<tr>
+<td width="20%">
+<a href="anglerfish2.jpg"><img src="anglerfish2.jpg" width="99%"/>
+</td>
+<td width="20%">
+<a href="anglerfish.jpg"><img src="anglerfish.jpg" width="99%"/>
+</td>
+<td width="20%">
+<a href="orchid2.jpg"><img src="orchid2.jpg" width="99%"/>
+</td>
+<td width="20%">
+<a href="wasporchid.jpg"><img src="wasporchid.jpg" width="99%"/>
+</td>
+<td width="20%">
+<a href="DiaemusYoungi2.jpg"><img src="DiaemusYoungi2.jpg" width="99%"/>
+</td>
+</tr>
+</table>
+<p>
+<b>Conclusion:</b>
+In order to 
+avoid being "ridiculously exploitable" an economic entity <i>must</i> behave as though it has a 
+utility for every world state and must act to maximize probabilistically-expected utility.
+</p>
+
+<p>
+<b>Comment:</b>
+The interesting thing about Omohundro's development of utility is that it hardly depends on
+any axioms at all. The usual
+<a href="UtilFoundns.html">developments</a>
+by others employ a lot of axioms, but  Omohundro
+really only has <i>one</i> axiom:  the notion of avoiding being "ridiculously exploitable." 
+</p>
+<p>
+There also is an underlying model he needs to have, which sort of assumes the 
+existence of "money" and the notion that people are willing to pay money to reach better
+states (although I suppose this could be defined abstractly-mathematically
+without need for any "money," it somehow seems to lose force then?).
+Darwinian evolution causes exploitable organisms to die out, so presumably humans, as the product
+of Darwinian evolution, must have built in to them, something very much like a utility notion.
+</p>
+
+<p>
+<small>
+<b>Historical Note:</b>
+Other mathematicians and economists have constructed arguments to the effect that any "rational"
+person must be acting as if he wants to maximize expected utility.  These include:
+<blockquote>
+<!--
+Frank P. Ramsey: Truth and probability, in The foundations of mathematics and other 
+logical essays (1931). London: Routledge and Kegan Paul. Reprinted pp. 61-92
+of H.E. Kyburg Jr. &amp; H.E. Smokler (eds.), 
+Studies in subjective probability (1964) New York: Wiley.
+<br>
+-->
+J. von Neumann &amp; O. Morgenstern:  
+Theory of games and economic behavior. 
+Princeton: Princeton University Press,
+second edition (1947); third (1953).
+<br>
+L.J.Savage: The foundations of statistics. New York: Wiley 1954;
+second revised edition (1972) New York: Dover Publications.
+<br>
+F.J.Anscombe &amp; R.J.Aumann:  
+A definition of subjective probability, The Annals of Mathematical Statistics 22 (1963) 
+199-205.
+<br>
+Jerry Green: 
+Making book against oneself, the independence axiom, and nonlinear utility theory
+<a href="JgreenQJEbook.pdf">(pdf)<a>,
+Quarterly J. Economics 102,4 (Nov. 1987) 785-796.
+</blockquote>  
+Maurice Allais, and
+Amos Tversky &amp; Daniel Kahneman
+have conducted psychological experiments whose results indicate that human behavior is
+<a href="https://rangevoting.org/PuzzAlais.html">not</a> that of an expected utility maximizer.  
+<blockquote>
+A.Tversky &amp; D.Kahneman:
+<a href="TverskyK81.html">The Framing of Decisions and the Psychology of Choice</a>,
+Science 211,4481 (30 Jan. 1981) 453-458. 
+<br>
+C. Camerer: 
+Individual Decision Making, pp. 587-703 of "The Handbook of Experimental Economics"
+(J. Kagel and A. Roth, eds, 1995, Princeton Univ. Press).
+</blockquote>
+How much this matters is unclear;
+one view might be that humans simply have not evolved enough yet,
+and thus still have imperfections and remain exploitable.
+</small>
+</p>
+
+<h3> 2. Social Utility &ndash; first properties </h3>
+
+<p>
+We now take a step beyond Omohundro
+to consider <i>societal</I> rather than <i>individual</i> utilities.
+Suppose individuals can be grouped into sets called "societies."
+These societies can make collective decisions to make collective actions,
+which alter the world-state.
+We shall assume there is money and that personal utility depends on your wealth
+(if everything else is held fixed) in a monotonic-increasing manner.
+We now consider the economic exploitation of one society by another.
+</p>
+
+<p>
+By Omohundro's theorem, if a <i>society</i> does not act in a manner consistent with 
+it having a "utility function" on world states and maximizing
+expected utility, then that society will be "ridiculously exploitable."
+</p>
+
+<p>
+So for example, if a society makes collective decisions via a voting system
+in which  <a href="CondorcetCycles.html">Condorcet cycles</a> are possible,
+then that society is ridiculously exploitable.  (Incidentally, not just by rival societies,
+but also by some agenda-setter within that society...)
+</p>
+
+<p>
+With <a href="RangeVoting.html">range voting</a>, societies always make decisions that are
+consistent with a sum of individual "utilities" (actually, range votes are <i>not</i>
+the same thing as utilities, but that does not matter for the present purpose);
+a society making decisions via range voting is <i>not</i> exploitable
+because it <i>does</i> act identically to a society that uses utility 
+maximization with <i>some</i> "utility" function &ndash; namely the sum of all
+the range votes is that function.   <i>However</i> we must attach a large asterisk to
+that conclusion:   Of course, with <i>two</i>-candidate range votes and strategic (or
+anyhow, full-range-using) voting, "Condorcet cycles" <i>are</i> possible
+(A>B>C>A based on a C:A <i>two</i>-candidate range vote, a B:C vote, and an A:B vote) and
+hence the society is exploitable.   We only can deduce unexploitability <i>if</i> the
+range vote really includes <i>all</i> possible societal options as "candidates."
+</p>
+
+<h3> 3. Social utility must 
+be a weighted sum &ndash; "Harsanyi's social aggregration theorem"</h3>
+
+<p>
+<b>HARSANYI'S SOCIAL AGGREGRATION THEOREM:</b>
+<i>
+<ol>
+<li>
+Suppose there is a set A of at least 2 alternatives
+and let Lott(A) denote the set of lotteries on them.
+</li><li>
+Suppose each <u>individual</u> values the elements of Lott(A) using
+utilities (i.e. individuals are not exploitable).
+</li><li>
+Suppose <u>society</u> values Lott(A) using utilities (i.e. society
+is not exploitable).
+[But the utility functions may differ for different individuals
+and/or society.]
+</li><li>
+Suppose these relations between the social and individual utility
+functions hold:
+<ol type ="i">
+<li>
+If the citizens unanimously prefer
+X over Y, then society prefers X
+over Y.
+</li><li>
+If the citizens unanimously are indifferent about X versus Y, then society is
+indifferent.
+</li><li>
+if unanimous {indifference or preference} of X over Y
+with at least one preference, then society prefers X over Y.
+</li></ol>
+<u>Then:</u> 
+the social utility is a linear combination (i.e. weighted sum)
+of the individual utility functions, with all-positive weights.
+Further, if there exists, for each citizen, an event in A affecting him alone,
+then the weights are unique up to an overall rescaling.
+</li>
+</ol>
+</i>
+
+<p>
+<small>
+<b>Historical note:</b>
+This theorem has been restated in different forms and reproved many times.
+The original statement and proof was by 
+<blockquote>
+John C. Harsanyi:
+Cardinal welfare, individualistic ethics, and interpersonal comparisons of utility,
+J.Political Economy 63 (1955) 309-321
+</blockquote>
+<i>but</i> his proof was invalid
+because it depended on
+an unstated assumption.
+Repaired theorems and proofs were then presented by
+<blockquote>
+Peter C. Fishburn:
+On Harsanyi's Utilitarian Cardinal Welfare Theorem,
+Theory &amp; Decision 17 (1984) 21-28
+<br>
+Kim C. Border 1981 unpublished notes at CalTech
+<br>
+Kim C. Border: 
+More on Harsanyi's utilitarian cardinal welfare theorem,
+Social Choice &amp; Welfare 1 (1985) 279-281
+<br>
+Zoltan Domotor: 
+Ordered sum and tensor product of linear utility structures,
+Theory &amp; Decision 11 (1979) 375-399
+<br>
+T.Coulhon &amp; P.Mongin: 
+Social Choice Theory in the Case of von Neumann-Morgenstern Utilities,
+Social Choice &amp; Welfare 6 (1989) 175-187
+<br>
+John A. Weymark 1990 discussion paper at Univ. of British Columbia.
+</blockquote>
+We have <a href="WeymarkThmStatement.html">based</a>
+our theorem statement and this historical discussion on 
+Theorem 8 of 
+<blockquote>
+John A. Weymark:
+The Harsanyi-Sen Debate on utilitarianism, on p. 277 of the book-length collection, 
+"Interpersonal Comparisons of Well-Being," 
+(Jon Elster &amp; John E. Roemer, eds, Cambridge Univ. Press 1991).
+</blockquote>
+</small>
+</p>
+
+<h3> 
+4. Alternative deduction that Social Utility must be a  linear function of citizen utilities
+from (a different kind of) nonexploitability 
+</h3>
+
+<p>
+Suppose the societal utility function <i>differs</i> from the sum of the
+utility functions of its individuals.
+By "differs," we mean, for
+any positively-weighted sum of individual utilities,
+there is some finite subset of events which are ordered
+one way by society, but the weighted-sum
+orders them in some different way.
+</p>
+
+<p>
+We then claim this society is ridiculously exploitable &ndash; but in a different sense &ndash;
+the exploiter must now have the power both to make deals with society as a whole,
+<i>and</I> with all the individuals in that society.
+(Call this harder-working kind of exploiter,
+a "rabble-rousing exploiter" and the old, lazy, kind is a "plain" exploiter.)
+Why?
+</p>
+
+<p>
+To exploit it, I act thusly.
+First I sell the society the move from B (present state) to new 
+societally-preferred state A.
+Next, I sell to its
+individuals the chance to move back to state B (which their 
+positively-weighted-sum of utilities
+prefers).  
+The "positive weighting" I choose is the one corresponding to the following amounts of money:
+suppose citizen i is willing to pay me some small amount 
+M<sub>i</sub>
+of money if I move us from 
+A to a lottery consisting of a very small probability of B and a large probability of
+staying at A &ndash; where M<sub>i</sub> might be negative and might depend on the individual i, 
+but  summed over all i, is positive.  I claim some A, B, and such a money-vector must
+simultaneously exist.   
+</p><p>
+<small>If in a preliminary step we make everybody's wealth be "generic reals" (by
+offering society a deal where a certain small random amount of money is extracted from 
+everybody then redistributed in a randomized way with a small bonus) 
+then we can use H.Lebesque's theorem that
+a monotonic function is differentiable almost everywhere.
+Given that we are at a differentiable wealth-point,  any small-enough multiple of
+the utility (money) vector will serve as the weights, for a lottery with a
+small-enough chance of moving to B.
+</small>
+</p>
+<p>
+Anyhow, if they do exist, then
+I can keep exploiting the society in this way to make money forever for (in net)
+doing nothing.
+</p>
+
+<h3> 5. Connection to Sen's theorem </h3>
+
+<p>
+Amartya Sen (another Nobel laureate in economics)
+proved a theorem which is somewhat the
+"opposite" of Harsanyi's theorem.
+It says
+that if your voting procedure is foolishly based purely on rank orderings (A>B>C)
+<i>instead</i> of (which would be wiser)
+continuum utilities [util(A)=943] then we're dead. More precisely:
+</p>
+<p>
+Axiom ML ("minimal liberalism"): each voter is decisive (a dictator) over some
+alternative-pair.
+</p>
+<p>
+The point of ML is you alone should have the right to decide what
+shoes to wear today.
+It says there are some individual rights.
+</p>
+<p>
+<b>SEN'S THEOREM:</b>
+<i>
+Suppose #voters&ge;2, #candidates&ge;3 (equivalently #social alternatives&ge;3),
+each voter has a rank order for any subset of alternatives
+("unrestricted domain"),
+and the social-choice method satisfies both ML and Pareto (Pareto meaning
+if all voters unanimously prefer A>B then so does society).
+<u>Then:</u>  the social choice method's output will sometimes include
+preference cycles.
+</i>
+</p>
+
+<p>
+Another theorem of this ilk is <a href="ArrowThm.html">Arrow's theorem</a>.
+</p>
+
+<h3> 6. Morality arising from <i>tribal</i> evolution </h3>
+
+<p>
+The usual voting systems proposals found in political science books
+(Borda, Condorcet, Plurality, Approval, Instant Runoff, etc)
+all immediately are seen to  
+yield exploitable societies.
+</p><p>
+<a href="RangeVoting.html">Range voting</a> might be thought to avoid that fate &ndash;
+and indeed we have seen that it does <i>if</i> we restrict attention to plain exploiters
+and <i>if</i> the citizens employ their utility functions (or arbitrary fixed transformations
+of them which preserve their abstract validity as utility functions) as their votes.
+</p>
+<p>
+However, 
+if the citizens can vote strategically-<i>dis</i>honestly, then they might, e.g,
+employ <i>non</i>-fixed transformations &ndash; and we get an exploitable society.
+(And if they employ any transformations at all, then we get a society exploitable
+by a <i>rabble-rousing</i> exploiter.)
+And indeed we might expect this behavior from utility-maximizing citizens.
+</p><p>
+On the other hand, over evolutionary time, supposing now that not only do <i>citizens</i> procreate
+and evolve, but in fact so do entire <i>societies</i> (which themselves
+can compete, be wiped out like Carthage by Rome,  etc; 
+the citizens mate solely or almost solely with co-citizens
+of the same society; call this the "tribal model") 
+then Darwinian evolution would <i>favor societies whose
+citizens have a gene  influencing them to vote honestly.</i>
+</p>
+<p>
+This argument  is presumably the reason that it is often found, experimentally, that humans
+do act honestly, do not steal,
+or behave according to moral principles &ndash; even when that might not
+seem to be the right move in an individual-utilitarian sense.
+(I might even go so far as to replace the word "often" with "usually.")
+For example:
+</p>
+<ol>
+<li>
+Humans who donate money to charities.
+</li>
+<li>
+The very act of humans voting in a national election <i>at all</i> is (almost always)
+massively economically irrational &ndash; the cost in wasted time, money, etc to vote
+almost always far outweighs the benefit (expected election-altering effect of that vote
+as it affects that individual).
+This constitutes absolutely massive evidence
+<i>against</i> the hypothesis that humans are greedy individual-utility-maximizing,
+and in <i>favor</i> of the hypothesis that they have evolved to want to express themselves
+in the voting booth in some sort of substantially-honest way, or that humans attempt to 
+maximize not just individual but in fact tribe-wide "utility."
+</li>
+<li>
+The observed fact that humans who range-vote, do so in a substantially honest/unstrategic manner
+(and more so than humans who employ Instant Runoff and Plurality voting)
+with vast majorities <i>not</i> voting in strategic "all-max and all-min" style,
+and many <i>not</i> even employing the full range (and thus "altruistically" weakening
+their own vote).
+</li>
+</ol>
+<p>
+The tribal model is of course far more valid for honeybees than it is for humans.
+And sure enough, it <a href="ApisMellifera.html">turns out</a> that 
+(1) honeybees employ range voting,
+and (2) no evidence is known that they do so in a strategic-dishonest manner.
+</p>
+
+<p>
+For citizens who however lack honesty/altruism genes, something like
+<a href="CTT.html">Clarke-Tideman-Tullock</a>
+voting &ndash; designed to try to cause the economically-rational vote to <i>be</i> honest
+&ndash; might seem needed to prevent a society from being 
+ridiculously exploitable.  However, that solution is inadequate because, e.g,
+it is rational for colluder-teams to vote dishonestly using CTT voting (and also
+because "Clarke taxes" represent a loss for that society).
+No voting method is known, and there is 
+<a href="GibbSat.html">good reason</a> to believe none exists,
+which will yield an unexploitable society in the presence of 
+economically-rational possibly-colluding voters.
+</p>
+<p>
+The reader may console herself that
+range voting in the presence of strategic voters essentially degenerates to become
+"approval voting."  Since approval is still a pretty good voting system,
+this is not a severe loss of quality.
+</p>
+
+<!--
+There is a huge literature on the evolution of human moral behaviour, based on the idea that a genetic predisposition to altruism or honesty confers some sort of selective advantage in social animals.  These ideas appeared in population genetics as early as the the 1970s with Robert Trivers' work on `reciprocal altruism'.  And I assume you are familiar with the literature arising out of Robert Axelrod's (1980) computer tournaments involving the Iterated Prisoner's Dilemma.  There is also a closely related literature on the evolution of `social structures' (i.e. systems of laws, institutions or social conventions), based on the idea that societies (`tribes') with sub-optimal institutions eventually become extinct.  Here are two recent books which summarize much of this literature:
+
+  `The Origins of Virtue', by Matt Ridley (1996, Penguin Books)
+
+  `The Stag Hunt and the Evolution of Social Structure', by Bryan Skyrms
+(2004, Cambridge UP)
+
+   Another good source is chapters 11 - 13 of the book:
+
+`Microeconomics:  Behaviour, Institutions, and Evolution', by Samuel Bowles (2004, Princeton UP)
+
+ I'm sure there are a lot of other important works which I can't remember right now;  hopefully the bibliographies in these three sources will point you in the right direction.
+
+ There is also been a recent explosion of work studying the biological basis of `morality instincts' in the brain.  The basic idea here is that there is a kind of `universal moral grammar' in brains which is loosely analogous to Chomsky's `universal grammar' in linguistics.  By using experimental techniques adapted from cognitive science, it is possible to glean information about the workings of this universal moral grammar. [Interestingly, the evidence suggests that the universal moral grammar is NOT utilitarian].
+
+  This work is not directly `evolutionary' in nature;  however, clearly any theory which asserts that there is some kind of `moral grammar' hard-wired into the brain must ultimately provide an evolutionary account of how this hard-wiring got there.  A recent book-length account:
+
+ `Moral Minds' by Marc D. Hauser (2006, HarperCollins)
+
+ There is also an article by Steven Pinker in the New York Times. Pinker conveys more information in 1500 words than Hauser did in 300 pages. So if you read this then you can skip Hauser's book:
+
+PinkerMorals.html
+-->
+
+<p><small>
+I thank Prof. Marcus Pivato for educating me a lot.
+</small>
+<p>
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

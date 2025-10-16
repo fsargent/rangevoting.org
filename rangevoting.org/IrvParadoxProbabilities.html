@@ -1,0 +1,738 @@
+<html>
+<head>
+<title>
+RangeVoting.org - IRV Paradox Probabilities in 3-candidate elections - Master List
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h1> 3-Candidate Instant Runoff Voting: <br><small>
+Master list of paradoxes and their probabilities </small></h1>
+
+<p>By Warren D. Smith, August 2010. &nbsp; (Skip to <a href="#summ">conclusion</a>)</p>
+
+<p>
+This page is intended to be the best-available compendium of information about the probabilities
+of different pathologies in 3-candidate instant runoff voting 
+(<a href="rangeVirv.html">IRV</a>) elections.
+The <b>"total paradox probability"</b>
+in such elections, i.e. the probability that at least one among
+the 8 pathologies {Q, R, U, V, W, X, Y, Z} listed 
+<a href="#masterlistpar">below</a> (note that set does <i>not</i> include
+S and T) occur in a random election, 
+is found to be
+</p><center><big><b>24.59%, &nbsp; 13.99%, &nbsp; and 27.50%</b></big></center><p>
+in our three different probability models (defined 
+<a href="#modelsec">below</a>) respectively.
+But if we restrict attention to elections in which the IRV process <i>matters</i>,
+i.e. in which the IRV and plain-<a href="Plurality.html">plurality</a>
+winners <i>differ</i> (i.e. exactly the elections IRV-advocates 
+tend to cite as examples of the "success" of the Instant Runoff Voting process), 
+the total paradox probability
+becomes stunningly large:
+</p><center><big><b>74.10%, &nbsp; 72.61%, &nbsp; and 54.44%</b></big></center><p>
+<!--in our three probability models!-->
+For the most part, this was not previously recognized.
+This goes a long way toward explaining why it has been so incredibly easy for people like
+me to find pathologies in real-world IRV elections, seemingly most of the time we ever looked
+at any interesting IRV election for which we could obtain enough data, and
+seemingly <i>especially</i>
+in the elections cited by IRV-advocates as "great successes" for IRV.
+</p><p>
+These numbers appear a rather serious indictment of Instant Runoff Voting
+as a decision-making process, as well as hurting its enactment/repeal chances.
+These large probabilities differ from the perception advanced by the IRV-advocacy 
+group "FairVote," formerly named the "Center for Voting and Democracy."
+E.g. FairVote's "senior analyst" Steven Hill and the head of Fairvote,
+Rob Richie, are quoted in the 2008 popular science book
+<a href="PoundstoneRev.html">Gaming the Vote</a>
+by William Poundstone (page 268), thus:
+</p>
+<blockquote><small>
+[FairVote's] position is that such paradoxes are too rare to worry about.
+"We've had thousands of [IRV] elections and it's not an issue,"
+said Rob Richie.
+Steven Hill, a senior analyst with [FairVote] dismisses "these mathematical paradoxes that
+while in theory are interesting for mathematicians to doodle around on their sketch pads, 
+in fact have no basis in reality... it's also possible that a meteorite will strike
+Earth and wipe out life...  but probably not for a few more million years."
+</small></blockquote>
+<p>
+FairVote, Richie, and Hill have all cited various specific IRV elections as "great
+successes," including 
+<a href="Burlington.html">Burlington Vermont USA 2009</a>,
+<a href="Ireland1990.html">Ireland 1990</a>, and the
+<a href="Aus07.html">Australian House elections of 2007</a>,
+which actually contained pathologies such as nonmonotonicity
+(a fact they, during these laudings, left unmentioned).
+Indeed, despite me and others pointing out these and other examples
+to FairVote repeatedly for many years,
+they continue to maintain
+to this very day 
+</p><blockquote><small>
+In terms of the frequency of non-monotonicity in real-world elections: 
+there is <i>no evidence that this has ever played a role in any</i> IRV election &ndash;
+not the IRV presidential elections in Ireland, nor the literally thousands of hotly contested IRV federal elections that have taken place for generations in Australia, nor in any of the IRV elections in the United States.
+<br> &nbsp;&nbsp;&nbsp;&ndash;
+FairVote 
+<a href="FairVoteMonotonicityPage.html">webpage</a> titled 
+"Monotonicity and IRV &ndash; Why the Monotonicity Criterion is of Little Import"
+downloaded 24 August 2010; our emphasis added.
+</small></blockquote> 
+
+<a name="modelsec"></a>
+<h2>1. The three probability models </h2> 
+
+<dl>
+<dt><b>
+<a href="RandElect.html">Random election model</a>
+("REM"; also has been called "impartial culture"):
+</b></dt><dd>
+View a V-voter C-candidate election as a big table with V rows.
+The <i>k</i>th row specifies which of the C! possible rank-order-style ballots 
+was the vote selected by the <i>k</i>th voter.   We assume all 
+among the C!<sup>V</sup> possible such tables are equally likely, and take the limit 
+V&rarr;&infin;.
+</dd><dt><b>
+Dirichlet model
+(also has been called "impartial anonymous culture"):
+</b></dt><dd>
+The election is viewed as being defined by its vector of the C! nonnegative integer
+"vote totals" (one total for each possible ordering of the candidates, i.e.
+saying how many voters provided that ordering); this vector sums to V, the total number of voters.
+All such vectors are considered equally likely, and we
+take the limit 
+V&rarr;&infin;.
+</dd><dt><b>
+Quas's "1D political spectrum" model:
+</b></dt><dd>
+The C candidates are regarded as independent random-uniform points on the real interval (0,1).
+The voters are the uniform distribution on (0,1) itself (the candidates are samples from it).
+As their vote, each voter orders the candidates in order of increasing distance.
+For example,
+<pre>
+        0------------J-----*------------K----------L----------1
+</pre>
+in this picture, the candidates dropped randomly on the line segment (0,1)
+are named J, K, and L; and the voter located at * votes "J&gt;K&gt;L."
+</dd></dl>
+
+<h2>2. Mathematical techniques </h2> 
+
+<p>
+In the Quas and Dirichlet models the probability of any particular event defined
+by linear inequalities is proportional to a 
+polytope volume in a C-dimensional or (C!-1)-dimensional space, respectively.
+It is possible to compute all these as exact rational numbers, in principle.
+For finite instead of infinite V,
+it comes down to counting lattice points inside polytopes, and that is in principle
+doable exactly as an "Ehrhart polynomial(V)" formula.
+In the REM, the probabilities instead arise from polytope volumes in a 
+<i>non</i>Euclidean spherical geometry.  These are also in principle expressible exactly
+in terms of "Schl&auml;fli functions."  
+</p><p>
+However, I'm not doing any of that here.  
+I'm just using Monte Carlo <i>inexact</i> evaluation.
+</p><p>
+However, it looks to me now that all the Quas 1D probabilities tabulated in the blue table
+can be written as rational numbers with denominator=<b>360</b>,
+and all those in the yellow table with denominator=<b>1800</b>.  
+I.e. our inexact Quas evaluations,
+<i>if</i> these conjectures are true (and they appear to be) can trivially be converted
+into exact ones.   
+For example, the approximate number "6.9446" from the blue Quas table is 2500.056/360
+which presumably means the corresponding exact answer is 2500/360=125/18=6.94444...
+and in fact this <a href="#ExactValuesTable">is</a> true.
+<!-- One could further conjecture (although I am currently
+less certain of this) that the 
+Dirichlet-model probabilities all
+can be written as rational numbers with denominator=<b>10368</b>?
+6912 = lcm( 576, 1152, 6912, 864, 288, 96, 16 )?
+Sorry, doesn't look that way anymore?
+-->
+</p><p>
+The Monte Carlo data is presently insufficiently precise to determine the corresponding magic
+denominators for the <i>Dirichlet</i> model, but it strongly supports the idea that
+for the blue table, it is some <b>multiple of 41472</b>, 
+while for the yellow table, it is a <b>multiple of 12780</b>.
+</p>
+<!--
+LCM numerology does not lead to any clear candidate.
+2488320=2<sup>11</sup>3<sup>5</sup>5; whilst for the yellow table it 
+appears to be a near-multiple of 6912, 4875, 852, and 840, for example their LCM
+58149000=2<sup>3</sup>3<sup>2</sup>5<sup>3</sup>7&middot;13&middot;17
+I am much less certain of it, but perhaps the denominator <b>103680</b>
+similarly works for all the Dirichlet-model probabilities in the blue table.
+-->
+</P>
+
+<a name="masterlistpar"></a>
+<h2>3. Master List of Configurations and their Probabilities </h2>
+
+<p>
+Consider the following 10
+possible paradoxes that could afflict a 3-candidate Instant Runoff Voting
+(IRV) election with
+winner <b>A</b> and second-place finisher <b>B</b>.
+</p><blockquote><small>
+In cases S and T, a better word than "paradox" or "pathology"
+might be "phenomenon."  
+That is, S and T cannot be regarded as "flaws" in the IRV election process, they
+are just phenomena that would have happened with those votes for any election process.
+That is why our "total paradox probability" includes only
+the 8 pathologies {Q, R, U, V, W, X, Y, Z} and <i>not</i> either S or T.
+<br>&nbsp;&nbsp;&nbsp;
+Professor Jack Nagel has argued R also should have been un-included.  For that, see
+<a href="#Nagel">&sect;5</a>.
+</small></blockquote>
+<ol type="A" start="17">
+<li> <!--Q-->
+"Loser drop-out paradox." An IRV-loser, by dropping out of the race, would change the winner.
+(The loser, also called a "spoiler," is B, and when B drops out the winner changes from A to C.)
+The same set of 3-candidate IRV 
+elections also exhibit "Favorite betrayal paradox": a set of co-voting
+voters are better off "betraying their favorite" than honestly voting that favorite top,
+i.e. it is unstrategic to vote for a "spoiler."
+</li><li> <!--R-->
+All <a href="WtPositnl.html">scoring rules</a>
+(including Plain Plurality, antiPlurality, Borda, etc) agree the winner is B,
+disagreeing with IRV's winner A.   If you agree that "democracy" should elect 
+the most-loved and least-hated candidate, then since in these situations
+B is both of those things <i>simultaneously</i>,
+you must agree IRV got the wrong winner in these situations.
+</li><li>
+There is a <a href="CondorcetCycles.html">Condorcet Cycle</a>.
+</li><li>
+The <a href="Plurality.html">Plurality</a> and IRV winners differ (i.e. Plurality=B, IRV=A).
+</li><li>
+If some voters raise their ranking of the current winner, that makes him lose. 
+(I.e. can raise A to top in some BAC and/or BCA votes to make C win.)
+</li><li>
+If some voters lower their ranking of a current loser, that makes him win.                   
+(I.e. some voters can lower B to cause B to win.)
+Both this and the preceding are forms of <a href="Monotone.html">non-monotonicity</a>.
+</li><li>
+Possible to delete voters ranking current winner bottom, such that he then loses.             
+(I.e. can delete some BCA voters causing A to lose and C to win.)
+</li><li>
+Possible to add new voters ranking a current loser bottom, such that he now wins.            
+(I.e. can add CAB voters to make A lose and B win.)
+Both this and the preceding are forms of "participation failure."
+</li><li>
+Condorcet "beats-all" winner exists but IRV eliminates him. (I.e. the Condorcet winner is C.)
+</li><li>
+The IRV winner is the same if all ballots are reversed, i.e.
+the "best" candidate A according to IRV, is the same as 
+the "worst" candidate according to IRV.
+</li>
+</ol>
+
+<p>
+For discussion of a particular IRV election containing almost
+all of these pathologies simultaneously, see
+<a href="CompleteIdioticIRV2.html">completely idiotic IRV election</a>.
+</p>
+
+<p>
+There are 1024
+possible combinations of those phenomena or their negations, which we denote 
+by a 10-bit binary string.
+For example 0000<b>1</b>000<b>1</b>0 means "<b>U</b> and <b>Y</b> occur 
+but QRST<b>_</b>VWX<b>_</b>Z all do not."
+We list every possible 10-bit string along with an IRV election example allegedly
+yielding precisely that combination of pathologies &ndash;
+and the probability of occurrence of that combination in our three probability models.
+(Bitstrings omitted if that configuration impossible, which is why there are many fewer than
+1024 lines in our table.)
+Each percentage in the next two tables is based on
+<!-- 4&times;10<sup>10</sup> --> 
+25&times;10<sup>10</sup> 
+Monte-Carlo experiments and therefore has additive
+standard error
+&plusmn;0.0001
+or closer, i.e. please read "33.3333%" as "(33.3333&plusmn;0.0001)%."
+The total computer time (2006-era personal computer) was 
+<!-- &lt;20000 seconds&asymp;5.5 hours. -->
+&asymp;30 hours.
+</p>
+<table cellspacing="2" bgcolor="pink">
+<tr bgcolor="aqua"><td><tt>QRSTUVWXYZ</tt></td><th>Election Example</th><th>REM Prob.</th><th>Dirichlet Prob.</th><th>Quas-1D Prob.</th></tr>
+<tr><td><tt>0000000000</tt></td><td align="center">ABC= 0, ACB= 2, BAC= 0, BCA= 1, CAB= 0, CBA= 0</td><td align="right">69.0762%</td><td align="right">82.6390%</td><td align="right">61.1110%</td></tr>
+<tr><td><tt>0001000000</tt></td><td align="center">ABC= 0, ACB= 7, BAC=12, BCA= 0, CAB= 6, CBA= 0</td><td align="right">6.3361%</td><td align="right">3.3757%</td><td align="right">11.3890%</td></tr>
+<tr><td><tt>0001000100</tt></td><td align="center">ABC=15, ACB= 0, BAC=20, BCA= 0, CAB=10, CBA= 0</td><td align="right">7.8076%</td><td align="right">2.7826%</td><td align="right">8.0555%</td></tr>
+<tr><td><tt>0001010100</tt></td><td align="center">ABC=20, ACB= 0, BAC=16, BCA=14, CAB=15, CBA= 0</td><td align="right">2.8818%</td><td align="right">0.9163%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>0101000000</tt></td><td align="center">ABC=23, ACB=29, BAC=17, BCA=40, CAB= 6, CBA= 0</td><td align="right">0.0164%</td><td align="right">0.0096%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>0101000100</tt></td><td align="center">ABC=18, ACB= 0, BAC= 8, BCA=15, CAB=10, CBA= 0</td><td align="right">1.5332%</td><td align="right">1.0079%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>0101010100</tt></td><td align="center">ABC=26, ACB= 0, BAC=16, BCA=23, CAB=18, CBA= 0</td><td align="right">0.1903%</td><td align="right">0.0675%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1000000010</tt></td><td align="center">ABC= 0, ACB=13, BAC= 0, BCA=12, CAB= 6, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.6970%</td><td align="right">7.0001%</td></tr>
+<tr><td><tt>1000001010</tt></td><td align="center">ABC= 0, ACB=19, BAC= 0, BCA=18, CAB=12, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.1087%</td><td align="right">2.3750%</td></tr>
+<tr><td><tt>1000100010</tt></td><td align="center">ABC= 0, ACB=25, BAC= 6, BCA=18, CAB=18, CBA= 0</td><td align="right">0.7542%</td><td align="right">0.2211%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1000101010</tt></td><td align="center">ABC= 0, ACB=22, BAC= 0, BCA=21, CAB=16, CBA= 0</td><td align="right">1.4849%</td><td align="right">0.8830%</td><td align="right">4.5139%</td></tr>
+<tr><td><tt>1001000010</tt></td><td align="center">ABC= 0, ACB=13, BAC= 4, BCA=14, CAB=10, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.2796%</td><td align="right">1.3333%</td></tr>
+<tr><td><tt>1001001010</tt></td><td align="center">ABC= 0, ACB=15, BAC= 0, BCA=20, CAB=10, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.0866%</td><td align="right">1.7916%</td></tr>
+<tr><td><tt>1001100010</tt></td><td align="center">ABC= 0, ACB=13, BAC= 6, BCA=12, CAB=12, CBA= 0</td><td align="right">0.5816%</td><td align="right">0.1912%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1001101010</tt></td><td align="center">ABC= 0, ACB=25, BAC= 0, BCA=30, CAB=20, CBA= 0</td><td align="right">0.5637%</td><td align="right">0.4842%</td><td align="right">2.4305%</td></tr>
+<tr><td><tt>1010000000</tt></td><td align="center">ABC= 6, ACB= 7, BAC= 0, BCA=12, CAB= 6, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.7006%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1010000001</tt></td><td align="center">ABC=13, ACB= 0, BAC= 0, BCA=12, CAB= 6, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.8733%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1010001000</tt></td><td align="center">ABC= 9, ACB=10, BAC= 0, BCA=18, CAB=12, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.0901%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1010001001</tt></td><td align="center">ABC=19, ACB= 0, BAC= 0, BCA=18, CAB=12, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.0938%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1010100000</tt></td><td align="center">ABC=12, ACB=13, BAC= 6, BCA=18, CAB=18, CBA= 0</td><td align="right">1.3645%</td><td align="right">0.1487%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1010100001</tt></td><td align="center">ABC=25, ACB= 0, BAC= 6, BCA=18, CAB=11, CBA= 7</td><td align="right">0.6750%</td><td align="right">0.1497%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1010101000</tt></td><td align="center">ABC=11, ACB=11, BAC= 0, BCA=21, CAB=16, CBA= 0</td><td align="right">1.5123%</td><td align="right">0.5507%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1010101001</tt></td><td align="center">ABC=22, ACB= 0, BAC= 0, BCA=21, CAB=16, CBA= 0</td><td align="right">0.6668%</td><td align="right">0.5181%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011000000</tt></td><td align="center">ABC= 5, ACB=11, BAC= 3, BCA=18, CAB=10, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.4084%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011000100</tt></td><td align="center">ABC= 8, ACB= 8, BAC= 3, BCA=18, CAB=10, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.3064%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011001000</tt></td><td align="center">ABC= 5, ACB=12, BAC= 0, BCA=23, CAB=11, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.0677%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011001100</tt></td><td align="center">ABC= 9, ACB= 8, BAC= 0, BCA=22, CAB=11, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.0990%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011010100</tt></td><td align="center">ABC=10, ACB=10, BAC= 6, BCA=24, CAB=15, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.0672%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011011100</tt></td><td align="center">ABC=10, ACB=10, BAC= 0, BCA=30, CAB=15, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.0618%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011100000</tt></td><td align="center">ABC=11, ACB=17, BAC= 9, BCA=24, CAB=22, CBA= 0</td><td align="right">0.5674%</td><td align="right">0.0468%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011100100</tt></td><td align="center">ABC=14, ACB=14, BAC= 9, BCA=24, CAB=22, CBA= 0</td><td align="right">0.9166%</td><td align="right">0.0898%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011101000</tt></td><td align="center">ABC=11, ACB=17, BAC= 0, BCA=33, CAB=22, CBA= 0</td><td align="right">0.1713%</td><td align="right">0.0848%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011101100</tt></td><td align="center">ABC=14, ACB=14, BAC= 0, BCA=33, CAB=22, CBA= 0</td><td align="right">0.3934%</td><td align="right">0.2041%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011110100</tt></td><td align="center"><nobr>ABC=15, ACB=15, BAC=11, BCA=29, CAB=25, CBA= 0</nobr></td><td align="right">0.9354%</td><td align="right">0.1557%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1011111100</tt></td><td align="center">ABC=15, ACB=15, BAC= 0, BCA=40, CAB=25, CBA= 0</td><td align="right">0.4667%</td><td align="right">0.3326%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1111000101</tt></td><td align="center">ABC=16, ACB= 0, BAC= 3, BCA=18, CAB=10, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.5566%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1111001101</tt></td><td align="center">ABC=17, ACB= 0, BAC= 0, BCA=22, CAB=11, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.0738%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1111010101</tt></td><td align="center">ABC=20, ACB= 0, BAC= 6, BCA=24, CAB=15, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.0823%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1111011101</tt></td><td align="center">ABC=20, ACB= 0, BAC= 0, BCA=30, CAB=15, CBA= 0</td><td align="right">0.0000%</td><td align="right">0.0347%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1111100101</tt></td><td align="center">ABC=28, ACB= 0, BAC= 9, BCA=24, CAB=16, CBA= 6</td><td align="right">0.4807%</td><td align="right">0.0665%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1111101101</tt></td><td align="center">ABC=28, ACB= 0, BAC= 0, BCA=33, CAB=22, CBA= 0</td><td align="right">0.1528%</td><td align="right">0.1374%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1111110101</tt></td><td align="center">ABC=30, ACB= 0, BAC=11, BCA=29, CAB=20, CBA= 5</td><td align="right">0.3003%</td><td align="right">0.0807%</td><td align="right">0.0000%</td></tr>
+<tr><td><tt>1111111101</tt></td><td align="center">ABC=30, ACB= 0, BAC= 0, BCA=40, CAB=25, CBA= 0</td><td align="right">0.1708%</td><td align="right">0.1689%</td><td align="right">0.0000%</td></tr>
+</table>
+<br>
+<a name="SummTable"></a>
+<p>Below is a smaller <b>summary table</b> of some of the most-requested pathology-probability
+information in our three probability-models
+(All of the numbers in the below tables are derivable by adding up
+appropriate sets of numbers from the above master table):</p><br>
+<table bgcolor="aqua" cellspacing="2">
+<tr bgcolor="pink"><th>Phenomenon</th><th>REM</th><th>Dirichlet</th><th>Quas 1D</th></tr>
+<tr><td><a href="PuzzIrvPartic.html">Participation</a> failure W&cup;X</td><td align="right">20.6286%</td><td align="right">10.2593%</td><td align="right">19.1666%</td></tr>
+<tr><td><a href="Monotone.html">Nonmonotonicity</a> U&cup;V</td><td align="right">15.2305%</td><td align="right">5.7436%</td><td align="right">6.9445%</td></tr>
+<tr><td>V: ("less is more" nonmonotonicity)</td><td align="right">4.9453%</td><td align="right">1.9675%</td><td align="right">0.0000%</td></tr>
+<tr><td>U: ("more is less" nonmonotonicity)</td><td align="right">12.1583%</td><td align="right">4.5138%</td><td align="right">6.9445%</td></tr>
+<tr><td>Y: Condorcet winner eliminated ("thwarted majority")</td><td align="right">3.3843%</td><td align="right">2.9514%</td><td align="right">19.4445%</td></tr>
+<tr><td>Z: <a href="IrvRFfreq.html">Reversal</a> "winner=loser" failure</td><td align="right">2.4464%</td><td align="right">2.8356%</td><td align="right">0.0000%</td></tr>
+<tr><td>R: All scoring rules agree B wins, but IRV says A wins (failure of "sniff test")</td><td align="right">2.8446%</td><td align="right">2.2858%</td><td align="right">0.0000%</td></tr>
+<tr><td>W: Abstention failure: deleting A-bottom voters <i>stops</i> A from winning</td><td align="right">5.5827%</td><td align="right">4.0798%</td><td align="right">11.1111%</td></tr>
+<tr><td>X: Would be strategic mistake for more voters of some single type to come</td><td align="right">16.2296%</td><td align="right">7.2916%</td><td align="right">8.0555%</td></tr>
+<tr><td>T: Plurality and IRV winners differ</td><td align="right">24.4661%</td><td align="right">12.3263%</td><td align="right">25.0000%</td></tr>
+<tr><td>S: Condorcet cycle</td><td align="right">8.7740%</td><td align="right">6.2500%</td><td align="right">0.0000%</td></tr>
+<tr><td>Q&cup;R&cup;U&cup;V&cup;W&cup;X&cup;Y&cup;Z (<b>"total paradox probability"</b>)</td><td align="right">24.5877%</td><td align="right">13.9853%</td><td align="right">27.5000%</td></tr>
+<tr><td>Both kinds of participation failure simultaneously W&cap;X</td><td align="right">1.1837%</td><td align="right">1.1121%</td><td align="right">0.0000%</td></tr>
+<tr><td>Both kinds of nonmonotonicity simultaneously U&cap;V</td><td align="right">1.8732%</td><td align="right">0.7378%</td><td align="right">0.0000%</td></tr>
+<tr><td>Q&cup;V: Betraying B makes either B or C win (where either way the betrayers prefer that to A winning)</td><td align="right">15.2305%</td><td align="right">10.1852%</td><td align="right">19.4445%</td></tr>
+<tr><td>Q: Loser drop-out paradox: If B drops out, that switches the winner from A to C. Also (which happens in exactly the same set of elections) "Favorite betrayal"; voters with favorite B, by betraying B, make C win (whom they prefer as the "lesser evil" over current winner A)</td><td align="right">12.1583%</td><td align="right">9.2014%</td><td align="right">19.4445%</td></tr>
+</table>
+<br><p>And below is the same table, but <i>restricted</i> to elections in which the IRV process
+<i>matters</i>, i.e. in which the IRV and plain-plurality winners differ.
+(Warning: The error bars are approximately twice as wide as in the tables above.)
+This almost always makes pathologies substantially more likely:</p><br>
+<table bgcolor="yellow" cellspacing="2">
+<tr bgcolor="pink"><th>Phenomenon</th><th>REM</th><th>Dirichlet</th><th>Quas 1D</th></tr>
+<tr><td><a href="PuzzIrvPartic.html">Participation</a> failure W&cup;X</td><td align="right">69.3391%</td><td align="right">65.0225%</td><td align="right">49.1106%</td></tr>
+<tr><td><a href="Monotone.html">Nonmonotonicity</a> U&cup;V</td><td align="right">35.8569%</td><td align="right">26.5477%</td><td align="right">9.7221%</td></tr>
+<tr><td>V: ("less is more" nonmonotonicity)</td><td align="right">20.2130%</td><td align="right">15.9622%</td><td align="right">0.0000%</td></tr>
+<tr><td>U: ("more is less" nonmonotonicity)</td><td align="right">23.3002%</td><td align="right">16.5714%</td><td align="right">9.7221%</td></tr>
+<tr><td>Y: Condorcet winner eliminated ("thwarted majority")</td><td align="right">4.6809%</td><td align="right">8.4507%</td><td align="right">22.2219%</td></tr>
+<tr><td>Z: <a href="IrvRFfreq.html">Reversal</a> "winner=loser" failure</td><td align="right">4.5149%</td><td align="right">9.7419%</td><td align="right">0.0000%</td></tr>
+<tr><td>R: All scoring rules agree B wins, but IRV says A wins (failure of "sniff test")</td><td align="right">11.6267%</td><td align="right">18.5445%</td><td align="right">0.0000%</td></tr>
+<tr><td>W: Abstention failure: deleting A-bottom voters <i>stops</i> A from winning</td><td align="right">7.8424%</td><td align="right">14.8901%</td><td align="right">16.8886%</td></tr>
+<tr><td>X: Would be strategic mistake for more voters of some single type to come</td><td align="right">66.3350%</td><td align="right">59.1548%</td><td align="right">32.2220%</td></tr>
+<tr><td>T: Plurality and IRV winners differ</td><td align="right">100.0000%</td><td align="right">100.0000%</td><td align="right">100.0000%</td></tr>
+<tr><td>S: Condorcet cycle</td><td align="right">18.6193%</td><td align="right">25.3526%</td><td align="right">0.0000%</td></tr>
+<tr><td>Q&cup;R&cup;U&cup;V&cup;W&cup;X&cup;Y&cup;Z (<b>"total paradox probability"</b>)</td><td align="right">74.1026%</td><td align="right">72.6136%</td><td align="right">54.4439%</td></tr>
+<tr><td>Both kinds of participation failure simultaneously W&cap;X</td><td align="right">4.8383%</td><td align="right">9.0224%</td><td align="right">0.0000%</td></tr>
+<tr><td>Both kinds of nonmonotonicity simultaneously U&cap;V</td><td align="right">7.6563%</td><td align="right">5.9859%</td><td align="right">0.0000%</td></tr>
+<tr><td>Q&cup;V: Betraying B makes either B or C win (where either way the betrayers prefer that to A winning)</td><td align="right">35.8569%</td><td align="right">41.7844%</td><td align="right">22.2219%</td></tr>
+<tr><td>Q: Loser drop-out paradox: If B drops out, that switches the winner from A to C. Also (which happens in exactly the same set of elections) "Favorite betrayal"; voters with favorite B, by betraying B, make C win (whom they prefer as the "lesser evil" over current winner A)</td><td align="right">23.3002%</td><td align="right">33.8034%</td><td align="right">22.2219%</td></tr>
+</table>
+<p>
+When IRV-pathologies get <i>more</i> likely when IRV &amp; plurality winners differ
+(and they usually do get more likely!), that suggests that IRV, counter-intuitively,
+actually is <i>worse</i> than plain-plurality voting &ndash; at least
+as far as that particular paradox
+is concerned, and in 3-way elections.
+</p>
+
+
+
+<h2>4. Bugs(?) </h2>
+<p>
+Anthony Quas pointed me in the right direction to find a bug in my Quas-generator.
+My Dirichlet generator was also buggy due 
+to some imbecile on Wikipedia publishing an incorrect sorting network.
+Both now repaired.
+</p>
+<a name="ExactValuesTable"></a>
+<p>
+I now agree with the scientific literature values for every number I'm aware of
+in these tables which has already been computed in that literature (over a dozen)?
+To make that clearer, the below table lists some exact values claimed in the scientific literature
+versus our Monte Carlo estimates from the blue table above.
+(I may sometimes be listing somebody as "discoverer," who actually was not the first.
+Quite a few of these values were independently discovered by several authors.)
+</p>
+<table bgcolor="lightgreen">
+<tr><th>Literature Value</th><th>Our Monte-Carlo (std.err.&le;&plusmn;0.00025%)</th><th>Discoverer</th></tr>
+<tr><td align="center">397/6912&asymp;5.74363%</td><td align="center">5.7434%</td><td align="center">Lepelley Chantreuil Berg p.141</td></tr>
+<tr><td align="center">13/288&asymp;4.51389%</td><td align="center">4.5137%</td><td align="center">Lepelley Chantreuil Berg corr.1</td></tr>
+<tr><td align="center">17/864&asymp;1.96759%</td><td align="center">1.9676%</td><td align="center">Lepelley Chantreuil Berg corr.3</td></tr>
+<tr><td align="center">7/96&asymp;7.29167%</td><td align="center">7.2914%</td><td align="center">Lepelley &amp; Merlin table5</td></tr>
+<tr><td align="center">47/1152&asymp;4.07986%</td><td align="center">4.0797%</td><td align="center">Lepelley &amp; Merlin table5</td></tr>
+<tr><td align="center">&asymp;16.230%</td><td align="center">16.2294%</td><td align="center">Lepelley &amp; Merlin table5</td></tr>
+<tr><td align="center">&asymp;5.583%</td><td align="center">5.5826%</td><td align="center">Lepelley &amp; Merlin table5</td></tr>
+<tr><td align="center">5/72&asymp;6.94444%</td><td align="center">6.9446%</td><td align="center">Quas</td></tr>
+<tr><td align="center">1/16=6.25%</td><td align="center">6.2497%</td><td align="center">Gehrlein</td></tr>
+<tr><td align="center">(3arcsec(3)-&pi;)/(2&pi;)&asymp;8.77398%</td><td align="center">8.7738%</td><td align="center">Guilbaud</td></tr>
+<tr><td align="center">17/576&asymp;2.95139%</td><td align="center">2.9513%</td><td align="center">Gehrlein</td></tr>
+<tr><td align="center">&asymp;3.384%</td><td align="center">3.3842%</td><td align="center">Gehrlein</td></tr>
+<tr><td align="center">0</td><td align="center">0.0000%</td><td align="center"><a href=" BlackSingle.html">Black</a></td></tr>
+<tr><td align="center">71/576&asymp;12.32639%</td><td align="center">12.3260%</td><td align="center"> Lepelley Louichi Smaoui</td></tr>
+<!--
+<tr><td align="center">Literature</td><td align="center">Monte</td><td align="center">Discoverer</td></tr>
+<tr><td align="center">Literature</td><td align="center">Monte</td><td align="center">Discoverer</td></tr>
+-->
+</table>
+<!--
+<ul><li>
+Numerous agreements &amp; disagreements with previous calculations.
+The question is: who is right?
+</li><li>
+MLP agrees for Quas, Dirichlet &amp; REM.
+</li><li>
+CYC agrees for all models.  This+above suggests models ok.
+</li><li>
+LMP ok for Dirich.
+</li><li>
+Nonmono total agrees for Dirichlet.
+</li><li>
+CWE disagrees for all models with my old calculation; looks like new one correct.
+</li><li>
+REV disagrees with my old calculation for all models; looks like new one correct.
+</li><li>
+Positive-add-on partic ok for both Dirich &amp; REM.
+</li><li>
+Total Partic Failure disagrees with literature for Dirich &amp; REM. ?!
+Even though
+both kinds of partic agree with lit for REM &amp; Dirichlet?!!
+</li><li>
+Abstention failure agrees with lit for Dirichlet &amp; REM.
+</li><li>
+I believe all my probabilities are accurate to within factor 2 despite any bugs.
+</li></ul>
+-->
+<p>
+Please report any errors/corrections to &nbsp; <tt>warren.wds AT gmail.com</tt>.
+</p>
+
+<a name="Nagel"></a>
+<h2>5. Example of use </h2>
+
+<p>
+<small>
+These based on old run at lower precision??? Redo with new hi-precn numbers to get slight changes
+</small>
+</p>
+<p>
+Prof. Jack Nagel asked what the "total paradox probabilities" would be if
+R were not included as a "paradox."  (Note that S and T already were not included.)
+His question gives us an excellent opportunity to demonstrate the use of the tables.
+The only possible binary codes representing "R plus some subset of S and T, <i>but no other
+letters</i>" are
+</p><center>
+<tt>0100000000,  0101000000,  0110000000,  and  0111000000.</tt>
+</center><p>
+Of these, the only one which actually occurs with nonzero probability (see the pink table)
+is
+<tt>0101000000</tt>
+with probabilities
+0.0164%, 0.0096%, 0.0000%.
+We may therefore obtain Nagel's "no-R total paradox probabilities" by subtracting these
+figures from the "total paradox probabilities" we gave in the blue table.
+The results are
+</p><center><big>(24.5873&ndash;0.0164&asymp;<b>24.57</b>)%, &nbsp; (13.9847&ndash;0.0096&asymp;<b>13.98</b>)%, &nbsp; and &nbsp; <b>27.50%</b></big></center><p>
+in our three different probability models
+respectively (error bars&le;&plusmn;0.00025% as usual).
+Restricted to elections in which the IRV process <i>matters</i>,
+the answers instead are
+</p><center><big>(74.1023&ndash;0.164/0.24466&asymp;<b>73.43</b>)%, &nbsp; (72.6124&ndash;0.0096/0.12326&asymp;<b>72.53</b>)%, &nbsp; and &nbsp; <b>54.44%</b></big></center><p>
+where note the normalization constants 0.24466 and 0.12326 arise from the 
+total-T line of the blue table.
+The reason these adjustments are so small is that R is a rare paradox, and the occasions where 
+R arises <i>unaccompanied</i> by any other paradoxes in
+<nobr>{Q, U, V, W, X, Y, Z}</nobr> &ndash; which are the only ones we need to subtract &ndash;
+are <i>very</i> rare.
+</p>
+<p><b>Another example: "spoilers."</b>
+IRV propagandists have often claimed that IRV "eliminates the spoiler effect."
+As you can see from the fact that paradox "Q" happens with positive probabilities
+(ranging from 9.2% to 33.8% in our 3 probability models for both "all elections"
+and elections where IRV "matters," i.e. 6 scenarios total), that claim was a lie.
+</p><p>
+However, can we at least make the weaker claim that IRV <i>reduces</i> the chance
+of a spoiler scenario versus plain plurality voting?
+The answer in 3-candidate IRV elections is "yes."
+To see that, notice that every 3-candidate
+election where the plurality and IRV winners differ (phenomenon T), is a plurality-voting
+spoiler scenario (with IRV winner A, plurality winner B, and spoiler C).
+There also could be elections in which the IRV-winner A is the plurality-spoiler;
+but since those elections are precisely those
+in which B is a "Condorcet loser" <i>and</i> A is not plurality winner (hence B is), they already were
+counted in set T.
+There also could be elections where the the plurality and IRV winner both are A, i.e. the same
+(i.e. we do <i>not</i> have phenomenon T)
+and there is a plurality-spoiler, who then must be B
+(which happens if and only if either C is Condorcet winner, i.e. we have pathology Y,
+or there is a Condorcet cycle of form A&gt;B&gt;C&gt;A, i.e. phenomenon S).
+Therefore prob(T)+prob((Y&cup;S)&cap;&not;T) equals the chance that at least one plurality-spoiler exists.
+Then looking up the numbers in our tables we see
+prob(Q)&lt;prob(T)+prob((Y&cup;S)&cap;&not;T),
+and indeed
+prob(Q)&lt;prob(T),
+in all 6 of our scenarios,
+indicating <i>yes</i>: IRV does reduce the spoiler chance in 3-candidate elections.
+</p><p>
+What about in C-candidate elections with C&ge;4?
+Does IRV reduce spoiler chances then (and for which C)?
+Sorry: those answers seem both un-deducible from the tables here,
+and non-obvious.
+But see our separate <a href="SpoilerChance.html">page</a>
+about "spoiler candidates" in IRV and plain plurality voting,
+where the chances are explicitly computed when C=3, and among other things, it is argued that in both
+the IRV and plain-plurality voting systems in all three of our probability models, 
+the chance goes to 100% that your election contains at least one "spoiler"
+and hence the probability for "paradox Q" should go to 100% in all three models
+when C&rarr;&infin;.
+</p>
+
+<h2>6. What about C&rarr;&infin; candidates instead of C=3? </h2>
+<p>
+<b>THEOREM:</b>
+As the number C of candidates is made large, the "total paradox probability"
+for IRV approaches 100% in all three probability models here.
+</p>
+<p><b>PROOF (INCOMPLETE IN THE QUAS-1D CASE):</b>
+In the Dirichlet model,
+Quas 2004 in his theorem 1 
+showed that the probability of paradox 'U' ("more is less" nonmonotonicity)
+approached 100% when C&rarr;&infin;.   
+<a href="Monotone.html">Smith 2009</a> was able to show the same result
+in the Random Election Model by
+redoing  Quas's proof with
+appropriate changes. 
+<a name="QuasDistrib"></a>
+In the Quas-1D model, a <A href="Glossary.html#condmeths">Condorcet winner</a>
+generically exists (and always exists aside from the possibility of a 2-way tie)
+as a consequence of 
+Duncan Black's <a href="BlackSingle.html">singlepeakedness theorem</a>
+and it is the candidate located closest to the midpoint.  However, when C&rarr;&infin; Quas
+found that IRV elects the candidate located at x with probability proportional to a certain 
+probability density &rho;(x) with support on (1/6, 5/6) and pictured below.
+</p>
+<img src="QuasIrv1Dhisto.png">
+<p>
+Therefore IRV falls victim to paradox 'Y' with probability&rarr;100%.
+Since the "total paradox probability" is at least as great as the probabilities of
+these particular paradoxes, it must approach 100%
+in all three models, and the proof is complete.
+<b>Q.E.D.</b>
+</p><p>
+<b>WHY THAT PROOF WAS INCOMPLETE IN THE QUAS-1D CASE:</b>
+Actually, the above proof is inadequate because Quas's paper did not prove the existence of
+&rho;(x), although Quas did provide convincing evidence, e.g. the picture above computed by 
+Monte Carlo, for its existence.  
+It seems "obvious" that IRV can exhibit no special favortism for the candidate 
+nearest the midpoint
+(who automatically is the Condorcet winner),
+as opposed to any of the other candidates located between 0.499 and 0.501
+(whose number approaches &infin;); indeed the picture indicates, if anything, IRV
+is biased <i>against</i> the centermost within this interval.   
+Therefore it is "obvious" that the probability IRV elects this
+one centermost candidate approaches 0.   But this "obviousness" is not a "proof."
+</p><p>
+<!--
+Essentially, the candidate nearest to the midpoint
+can easily be eliminated by some round of IRV because it has
+the fewest top-rank votes at that stage.   The probability of that happening at a stage
+when n candidates remain, is approximated by 1/n.
+The fact that &prod;<sub>n&ge;2</sub>(1-1/n)=0
+suggests that the probability&rarr;100% that this candidate will indeed be eliminated;
+this would be valid if (a) the approximation "1/n" were accurate to within a constant 
+multiplicative factor and (b) if there were enough probabilistic independence
+between the round elimination decisions in IRV rounds.
+-->
+It would suffice to prove that after IRV has winnowed the C candidates down to, say, C/logC,
+the probability&rarr;1 (when C&rarr;&infin;) that the centermost candidate has been eliminated.
+</p><p>
+<b>CONJECTURE:</b>
+Paradox 'X' also should occur with probability&rarr;100% in the Quas-1D model,
+indeed in all three models.
+</p>
+
+<h2>7. Sources </h2>
+
+<p>
+The tables here were computed by Warren D. Smith, August 2010, using computer.   
+Also see the <a href="IrvParadox2.html">same results</a>
+but computed using different random number generator as a safety measure.
+[If you average the results from this and that page, you could shrink the error bars 
+by a factor of &radic;2.]
+Smith incorporated results
+from the following literature sources into his 
+<a href="IRVparadoxFinder.c">computer program</a>:
+</p>
+<ol><li>
+Sven Berg &amp; Dominique Lepelley:
+Note sur le calcul de la probabilite des paradoxes du vote,  
+Mathematiques, Informatique et Sciences Humaines 121 (1993) 33-48.  
+</li><li>
+William V. Gehrlein:
+Condorcet's paradox and the likelihood of its occurrence:
+different perspectives on balanced preferences, Theory &amp; Decision 52,2 (March 2002) 171-199.
+</li><li>
+William V. Gehrlein &amp; Dominique Lepelley:
+The probability that all weighted scoring rules elect the same winner,
+Economics Letters 66,2 (2000) 191-197.
+</li><li>
+Dominique Lepelley,
+Ahmed Louichi,
+Hatem Smaoui:
+<a href="LepelleyEhrhart.pdf">
+On Ehrhart polynomials and probability calculations in voting theory</a>,
+Social Choice &amp; Welfare 30,3 (2008) 363-383.
+</li><li>
+Dominique Lepelley &amp; Vincent Merlin: 
+<a href="LepelleyMerlinRunoffParadox.pdf">
+Scoring run-off paradoxes for variable electorates</a>,
+Economic Theory 17,1 (2001) 53-80.
+</li><li>
+Dominique Lepelley, Frederic Chantreuil, Sven Berg: 
+<a href="LepelleyBergRunoffMonoParadox.pdf">
+The likelihood of monotonicity paradoxes in run-off elections</a>,
+Mathematical Social Sciences 31,3 (1996) 133-146.          
+</li><li>
+Anthony Quas:
+<a href="QuasPaper23.pdf">Anomalous outcomes in preferential voting</a>,
+Stochastics &amp; Dynamics 4,1 (2004) 95-105.
+</li><li>
+Mark C. Wilson &amp; Geoffrey Pritchard:
+<a href="WiPr2006.pdf">Probability calculations under the IAC hypothesis</a>,
+Mathematical Social Sciences  54,3 (Dec. 2007) 244-256.
+</li></ol>
+<p>
+Some other sources which I did not consult, but seem plausibly relevant, include:
+</p>
+<ol>
+<li>
+William V. Gehrlein &amp; Peter C. Fishburn:
+Effects of Abstentions on Voting Procedures in Three Candidate Elections,
+Behav. Sci. 24,5 (Sept. 1979) 346-354.
+</li><li>
+Dominique Lepelley &amp; Boniface Mbih:
+The vulnerability of four social choice functions to coalitional
+manipulation of preferences,
+Social Choice &amp; Welfare 11,3 (1994) 253-265.
+</li></ol>
+
+<p>
+<b>Beware:</b> Incorrect (but published) results were computed by Crispin Allard and by 
+Eivind Stensholt (and probably others too; unfortunately I myself had
+computed some incorrect values in 
+CRV web pages).  It is quite easy to make your computer get
+approximately the right value for
+any given paradox probability.  Unfortunately, it also is quite easy to mess up 
+the definitions hence not get it
+<i>exactly</i> right.  (Also, only good random number generators
+passing all 'Supercrush U01' and Marsaglia 'Diehard' tests should be employed;
+system-supplied generators usually fail numerous tests in those batteries even as of 2010.)
+It is usually rather difficult to make your computer get an
+<i>enormously</i>-wrong estimate.  The only case I am aware of where that happened was Allard's
+paper, which underestimated the nonmonotonicity probability
+by 3 orders of magnitude by making 4 seperate errors,
+all biased in the same direction, and apparently never doing any simple "sanity checks."
+</p>
+
+<p>
+<b>Update (Nov. 2015):</b>
+I recently was made aware of the 2009 Dartmouth senior thesis
+(<a href="JoeOrnstein2009DartmouthThesis.pdf">pdf</a>) by Joe Ornstein
+titled "Instant Runoff Voting's Startling Rate of Failure."
+He examines 10000 instant runoff voting elections each in 20 different probabilistic models,
+including "spatial models."  Ornstein is especially interested in "close elections"
+defined as "any election in which three candidates receive more than 25% of
+the first-place votes." 
+Depending which of his 20 probabilistic models he uses,
+Ornstein finds that 7% to 33% of his elections are close.
+As a fraction of all elections (both close and non-close) 0.6% to 13.5% 
+feature "type I nonmonotonicity" (our paradox "U"),
+depending which of Ornstein's 20 probability models we use.
+And Ornstein finds that <b>13% to 45% of the close elections feature paradox U.</b>
+Furthermore, the higher paradox percentages coincide with the probability models
+Ornstein considers more realistic.
+</p><p>
+Ornstein: "The proportion of non-monotonic IRV elections 
+[is] disturbingly large, large enough to
+severely question IRV's adequacy as a suitable election reform."
+</p><p>
+A journal article 
+[Joseph T. Ornstein &amp; Robert Z. Norman:
+<a href="OrnsteinNormanMonotonicityIRV.pdf">
+Frequency of monotonicity failure under Instant Runoff Voting:
+estimates based on a spatial model of elections</a>,
+Public Choice 161,1 (October 2014) 1-9]
+later appeared based on this work.
+</p>
+<p>
+<b>Update (Oct. 2016):</b>
+Nicholas R. Miller
+gave two presentations at Amer. Political Science Assoc'n meetings in 2012
+(he was former president of APSA),
+about his papers:
+<br>
+<a href="MONFAILURE.R2.NRM.pdf">
+Frequency of monotonicity failure under Instant Runoff Voting
+with three candidates: Closeness matters</a>, 2012 &amp; revised 2016
+<br>
+<a href="MFandIRV.pdf">
+Monotonicity failure under Instant Runoff Voting
+with three candidates</a>, 2012
+</p><p>
+Miller's conclusions seem consistent with mine and with Ornstein's,
+at least on shallow examination.
+</p>
+
+<a name="summ"></a>
+<h2>8. Conclusion </h2>
+
+<blockquote>
+That's incredible. Before I had the sense that IRV was bad because paradoxes could happen 
+and weren't so rare. Now it's looking like IRV is benign only in those unproblematic elections 
+where all election methods perform well.
+In cases where you actually need a better way of voting, IRV is a crapshoot.
+<br>
+&ndash; &nbsp;
+William Poundstone, author of 
+the 2008 popular science book
+<a href="PoundstoneRev.html">Gaming the Vote</a>,
+after seeing this page (this was his comment by email).
+</blockquote>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

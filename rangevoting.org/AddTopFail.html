@@ -1,0 +1,171 @@
+<html>
+<head>
+<title>
+RangeVoting.org
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H3> Typical simple example  of "add-top failure" </H3>
+
+<p>
+"<a href="BtrIrv.html">BTR-IRV<a>" 
+is a  voting method intended to try to
+combine the virtues of Instant Runoff Voting (IRV) with 
+Condorcet: BTR-IRV will always elect a Condorcet-winner if one exists.
+The BTR-IRV method is this.  Each "vote" is a rank-ordering of the N candidates.
+The two candidates with the fewest top-rank votes ("the two worst")
+are compared head-to-head based
+on all the votes with the remaining N-2 candidates erased from the picture.
+Whoever loses this comparison ("the worst")
+is eliminated from the election and from all votes.
+We then continue doing such eliminations
+until only one candidate remains, and declare him winner.
+</p>
+
+<p> 
+There are many many voting methods out there, and (like this one) all sound like
+reasonably good ideas, at least at first.   We are just considering BTR-IRV here as
+a typical example.  Because BTR-IRV is a Condorcet method, a 
+<i>general-purpose theorem</I> tells
+us it must exhibit "add-top failure."  Our goal on  this page is to make
+that completely concrete by actually exhibiting a BTR-IRV election in which that
+happens.  Here it is:
+</p>
+
+<table border="3" cellpadding="4" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td>
+3 
+</td>
+<td>
+A > D > B > C 
+</td>
+</tr>
+<tr>
+<td>
+3
+<td>
+A > D > C > B
+</td>
+</tr>
+<tr>
+<td>
+4
+<td>
+B > C > A > D 
+</td>
+</tr>
+<tr>
+<td>
+5
+<td>
+D > B > C > A 
+</td>
+</tr>
+<tr>
+<td>
+4
+<td>
+C > A > B > D 
+</td>
+</tr>
+</table
+
+<p>
+In this 19-voter example,
+<b>A wins</b> (C, B, and D are eliminated in that order).
+But if we add 6 new voters each of whom votes
+A>C>B>D, i.e. all ranking the current winner A top...
+then C wins!  One of the new votes 
+ranking the current-winner top actually causes him to lose!
+(End of example.)
+</p>
+
+<p>
+The proof of the "general-purpose theorem"  is not at all mysterious.  It simply exhibits 
+about 7 different fully-concrete 
+election scenarios just like the table above (in fact this is one of them)
+and argues via a case analysis
+that no matter what election method you use, if it is a "Condorcet method,"
+then it must exhibit add-top failure (that is: adding some new votes all ranking the
+current winner top, causes him to <i>lose</i>)
+in at least one of those 7 scenarios.
+</p>
+
+<a name="Rouse">
+<H3> Another example </H3>
+
+<p>
+Here is another example of add-top failure, this time for "Rouse's voting method,"
+another (fairly complicated to describe) elimination method that elects
+Condorcet winners whenever they exist.
+</p>
+
+<table border="3" cellpadding="4" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td>
+5
+</td>
+<td>
+C > A > B
+</td>
+</tr>
+<tr>
+<td>
+4
+<td>
+A > B > C
+</td>
+</tr>
+<tr>
+<td>
+2
+<td>
+B > C > A
+</td>
+</tr>
+</table>
+
+<p>
+In this 11-voter example,
+<b>A wins</b> (C then B are eliminated).
+But if we add 2 new voters each of whom votes
+A>C>B, i.e. all ranking the current winner A top...
+then C wins! (B then A are eliminated.)  One of the new votes 
+ranking the current-winner top actually causes him to lose!
+</p>
+
+<H3> Further reading </H3>
+
+A full proof (due to Markus Schulze) of the "general purpose theorem" we mentioned
+above, is given in
+
+<p>
+Warren D. Smith: The voting impossibilities of Arrow, Gibbard & Satterthwaite, and Young, (survey)
+ paper #79 <a href="WarrenSmithPages/homepage/works.html">here</a>.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

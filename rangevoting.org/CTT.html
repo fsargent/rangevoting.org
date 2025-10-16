@@ -1,0 +1,546 @@
+<html>
+<head>
+<title>
+RangeVoting.org - CTT "perfect" voting-with-money scheme
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H2> Clarke-Groves-Tideman-Tullock "perfect" scheme for voting-with-money </H2>
+
+<blockquote>
+<i>This is what happens when some economists invent a voting system...</i>
+</blockquote>
+
+<p>
+In principle, 
+the ultimate voting scheme would be "honest utility voting" in which each voter
+states the "utility" (measured in some common, agreed-upon units)
+of each possible candidate for him, and then the candidate with the greatest
+utility (summed over all of society) is elected.
+</p>
+<p>
+Unfortunately, honest utility voting seems unachievable in practice, since
+(a) there are no common agreed-upon units (and utility is intangible), and 
+(b) just one dishonest-strategic voter,
+by making some vast exaggeration, could control the election.
+<small>
+(However, in certain unusual scenarios, such as where the voters are not
+dishonest humans, but rather honest <i>robots</i>, and in which utility <i>is</i>
+easily measured, this voting method would be best possible.)
+</small>
+</p>
+<p>
+Therefore (the common thinking before the 1970s was) honest utility voting is
+a pipe dream &ndash; an idealization of no practical interest.
+However in the 1970s several people realized, some independently, that,
+at least in a mathematical idealization of voters as rational economic money-maximizing
+animals, such a "perfect" voting system (that always elects the max-utility candidate)
+actually <i>is</i> achievable!
+</p>
+<p>
+The initial idea (1961)
+was by W.Vickrey  in a different context: auctioneering.
+<small>(Vickrey was awarded the 1996 Nobel Prize in economics, mainly for this idea.)</small>
+Imagine some moderate number of bidders (e.g. 10-20) want to buy some expensive object.
+</p>
+<p>
+<b><a href="rothkopf_article.pdf">Vickrey</a> second-price (sealed bid) auction protocol:</b>
+<ol>
+<li>
+Each bidder privately estimates the true worth of the object, to him, in dollars.
+</li><li> 
+Each bidder submits that secret estimate, in a sealed envelope, as his bid.
+</li><li>
+All the envelopes are opened.  The winner is the one who submitted the
+greatest bid, <i>but</i> now he only <i>pays</i> the amount
+specified by the <i>second</i>-highest bidder.  
+<!-- [<i>Modification suggested by Jan Kok:</i> 
+if the top bid is <i>T</i> and the second-top bid <i>S</i>, then
+we can make the payment be <i>S + (T-S)X</i>
+for any constant or randomly chosen real
+<i>X</i> with <i>0 &le; X &lt; 1</i>.]
+Wait, this is not good because you are motivated to bid low because that will reduce
+your payment!
+-->
+</li>
+</ol>
+<p>
+Vickrey argued that in this scenario, <i>there is no strategic motivation for bidders to
+be dishonest in their bids</i>, and plenty of motivation for them to be honest.
+<small>
+Bid too high? Risk paying more than it is worth.  Bid too low?  Risk not acquiring
+the object at cost below its true worth to you, and does not reduce your payment
+if you do get the object.</small>  
+Note that in this scheme it
+is important that the other bids be <i>secret</i>, since a bidder who knew the topmost
+external bid could <i>then</i> have motivation to be dishonest and bid
+1 cent below it to minimize the profit of that enemy bidder.
+But it also is
+important that the bids ultimately be <i>revealed</i> since otherwise the auctioneer could
+cheat by pretending the second-top bid was much higher than it really was.
+</p>
+<p>
+<b>Clarke-Groves-Tideman-Tullock public choice (i.e. voting) protocol:</b>
+<ol>
+</li><li>
+Each voter as his (secret ballot) vote submits his private estimate of the true worth
+of each candidate (or election alternative) to him, in dollars.
+</li><li> 
+The alternative (or candidate) with the greatest amount of money voted for it/him,
+wins.
+</li><li>
+We now re-examine all the votes, but now with the name of its voter-author unveiled on each.
+Suppose that vote "made a difference," i.e. caused the election result to differ from
+what it would have been with that vote removed.  Namely, suppose without
+some voter's pair (<i>B<sub>Y</sub>, B<sub>Z</sub></i>) of
+vote-bids for candidates <i>Y</i> and <i>Z</i>, alternative <i>Y</i> would have won,
+but with it
+alternative <i>Z</i> wins.
+Suppose the minimum amount of money that vote-bid-difference
+<i>B<sub>Z</sub>-B<sub>Y</sub></i>
+could have been replaced by that still
+would have caused <i>Z</i> to win, is <i>M<sub>YZ</sub></i> where
+<i>0 &lt; M<sub>YZ</sub> &lt; B<sub>Z</sub>-B<sub>Y</sub></i>.  
+Then that voter now must pay a <i>fee</i>
+(the "Clarke tax") equal to <i>M<sub>YZ</sub></i>.  
+<!-- [Modified version: the payment is 
+<i>M<sub>YZ</sub> + (B<sub>Z</sub>-B<sub>Y</sub>-M<sub>YZ</sub>) X</i>
+for any constant or randomly chosen real
+<i>X</i> with <i>0 &le; X &lt; 1</i>.] Again, this modification encourages underbidding. -->
+</li></ol>
+</p>
+<p>
+The Clarke-Groves-Tideman-Tullock <b>central claim</b>
+is that there is no strategic motivation for voters to
+be dishonest in their votes, and plenty of motivation for them to be honest.<small>
+Bid too high? Risk paying more than the election <i>Y  &rarr;  Z</i>
+result-change you caused,
+actually was worth to you.  
+Bid too low?  Risk not acquiring
+the election result you want, even though you could have done so at cost 
+below its true worth to you and without decreasing your payment if you have to make one.
+</small>
+And if the votes indeed are honest, then
+this voting system therefore is "perfect" and always elects the best choice, as
+measured in (perceived) dollars, for all of society.
+<small>Tideman and Tullock
+felt obliged to point out that nevertheless their method "would not cure cancer."
+</small>
+<!-- And this is also true for the Jan Kok modified version. Nope. -->
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" align="center">
+<tr><th> Voter </th><th> Y </th><th> Z </th></tr>
+<tr><td> Amy </td><td> $5 </td><td> $0 </td></tr>
+<tr><td> Bob </td><td> $5 </td><td> $0 </td></tr>
+<tr><td> Cal </td><td> $3 </td><td> $0 </td></tr>
+<tr><td> Dee </td><td> $0 </td><td> $4 </td></tr>
+<tr><td> Eve </td><td> $0 </td><td> $7 </td></tr>
+</table>
+<caption>
+<blockquote>
+<b>A Clarke-Tideman-Tullock 2-candidate example-election.</b>
+<i>Y</i> wins by $13 to $11.
+Amy and Bob then pay Clarke tax $3 each (because without
+Amy, <i>Z</i> would have won by $3), and Cal pays $1.
+The other voters Dee and Eve pay nothing.
+</blockquote>
+</caption>
+<p>
+<b>Unique features.</b>
+This is the only system claiming to result in "perfection" and "voter honesty."
+It also is the only one that directly involves <i>money</i>
+(and therefore sadly cannot be used in abstract scenarios
+in which the "voters" actually  are not money-owning economic entities).
+</p>
+<p>
+<b>Additional work.</b>
+For some reason, interest in this scheme
+apparently died after 1984 and it was almost entirely forgotten.
+(Later note: actually it was not forgotten; a remarkable 2001 
+<a href="RVPapers.html">book</a> by Bailey
+uses it as a key ingredient.)
+One of the last works (besides Bailey) on the matter was by Tideman  who
+conducted experiments on actual use of the scheme.
+Specifically, Tideman paid several college fraternities
+to do their decisions by his process instead of plurality voting for
+about 1 year.
+Tideman's experiments failed to reach a convincing conclusion.
+The fraternity members (polled afterward) preferred plain plurality
+voting to Tideman's method,
+108-to-56, because of increased administrative work!
+But they preferred Tideman (112-to-42)
+<i>if</i> the issue-proposer was willing to pay a administration-fee
+to get his issue considered by the Tideman method &ndash; <i>but</i> that in fact
+never happened during the subsequent year.
+</p>
+<p>
+Tideman's process yielded different decisions than plain
+voting in about 10% of the fraternity decisions.  
+This led to about 2.25% extra perceived dollar benefit.
+However the "Clarke taxes" paid were larger than that 
+(namely 3.04%) so in some sense it <i>wasn't</i> worth it.  However, frat houses
+are small &ndash; and in larger elections the Clarke taxes would be
+comparatively negligible.  Finally, there may have been collusions or other effects
+(see criticism list below) which really caused CTT voting to perform even worse, 
+and if so Tideman
+had no way to know it.
+</p>
+<p>
+<b>Criticisms.</b>
+Unfortunately there are several reasons that Clarke-Tideman-Tullock, in practical
+use in large elections, would in fact fall considerably short of perfection.
+</p>
+<p>
+<b>1.</b>
+In the large elections typical in governments, the probability is extremely
+small that any one vote will "make a difference."  (In all the 50,000 or so
+US presidential, congressional, and senatorial popular elections so far, there has
+<i>never</i> been a case where any single vote has affected the outcome.)
+This <i>contrasts</i> mightily with the situation in most auctions (typically there
+are 10-20 bidders so each has a reasonable chance &ndash; 1/10 or 1/20 &ndash; of winning)
+and in most small fraternity-house elections.  And that contrast, as we shall see next
+paragraph, does matter.
+</p>
+<p>
+<b>2.</b>
+In auctioneering and fraternity houses, the problem of bidders not paying,
+is a minor problem.  But in nationwide elections in the <i>very rare</i>
+instances when payment
+was required, there might be a severe nonpayment problem.  Even if all voters were
+honest, some would die during the election.  And if 
+only one election in a million required the typical voter to pay, that
+might encourage a culture of dishonest exaggerated votes, followed on the rare occasions
+every 3000 years (!?)
+where payment actually <i>was</i> required, by a culture of tax-evasion.  How could voters
+be forced to pay?  Throwing the election the other way in response to nonpayment
+would not work because the other side also might not pay!  This all could lead
+to a nightmare scenario giving a new meaning to the term "election fraud."
+</p>
+<p>
+The problem here is the <i>combination</i> of 1 and 2.
+To defeat it 
+we could require each voter to submit his payment in "escrow" (to be refunded
+in most cases).  That would avoid the nonpayment problem.  However, it would cause
+a new problem:  the cost in time, hassle, and interrupted investments to 
+place one's money in an escrow account &ndash; a cost greatly and unfairly
+varying from person to person --
+would vastly exceed the actual expected value
+of the Clarke tax.  (If the Clarke tax must be paid 1 time in 40,000 then even missing out
+on one day of interest even at only 1% annually, would exceed
+the expected value of the Clarke tax.)  
+Furthermore, the escrow account set-ups and necessary financial motion
+might defeat the goal of <i>secret</i> voting. (And, as with Vickrey auctions,
+secrecy is <i>essential</i> to prove the
+CTT central claim on which everything rests.)  
+<small>
+Actually, the fact that all voter-names
+are revealed to somebody to cause payment, 
+seems to mean that CTT voting is incompatible with ballot secrecy.
+</small>
+Therefore, in practice the economic
+rationale of this sort of voting would
+be <i>dominated</i> by these distortionary effects and the CTT goal of
+a voting system in which undistorted true utility dominates
+would not be achieved at all.
+</p>
+<small>
+<p>
+To minimize these effects, the government could give each voter a "free donation" 
+of a certain small amount of money into his escrow account, provided he voted, and could
+pay interest on the escrow accounts.  These moves would attempt to null-out transaction costs.
+However, there would unavoidably be remaining inequities and mismatches in that nulling-out
+attempt, which would usually still dominate the true expected utility estimates made by,
+and true "costs of voting"  for, each voter.
+</p>
+<p>
+The point of this has been that certain "negligibly small"
+effects such as the cost of moving money and cost of voting, while they <i>are</i> negligibly
+small in the case of auction of an expensive object, are in fact the <i>most</i>
+important thing  in the voting case.
+</p>
+</small>
+<p>
+The two problems of auctioneering and voting
+might seem almost equivalent except that some numbers are changed, but the
+problem is that these numbers change so <i>vastly</i> that
+the approximations of certain effects as negligible, become completely invalid.
+</p>
+<p>
+Margolis 1982 made similar points.
+He observed that in a typical election situation the expected Clarke tax on a typical voter 
+would be
+0.00001 penny, and hence expressed doubt that voters would bother to
+work out and use their optimum-utility votes.  The transport, money-motion,
+and other transaction costs experienced by a typical voter would dwarf this and hence,
+rather than being "negligible" would in fact "dominate" the thinking of
+rational voters.
+</p>
+<p>
+<b>Pre-deposit idea to combat Margolis' 1982 criticism:</b>
+The government would contribute and pre-deposit
+into voter escrow accounts, a moderate amount of money &ndash;
+enough usually to pay for all transport and time-costs &ndash;
+but these moneys would only be available to people who actually voted.
+Further, the government would, by law, require bank transfers into and out of your voter-escrow
+account to be free of cost (or automatically compensated by the government).
+In that case, <i>once a voter has decided to vote</i>, he shuts these transaction costs
+out of his mind.  They are no longer relevant; the voter already 
+has the money that more-than-covered those
+costs.  The voter can now purely concentrate on: what is my best voting decision?
+</p>
+<p>
+<small>Problem is, this does not quite work, because many voters will have moneys tied up
+in other forms than bank accounts.</small>
+</p>
+<p>
+<b>3.</b>
+Most people would <i>not</i> agree utility is the same thing as money --
+even though (economist) Tullock may think it is!
+If alternative <i>A</i> leads to a rich man dying while alternative <i>B</i>
+kills five
+poor men, then CTT voting would choose alternative <i>A</i>.  
+More generally
+this system might do whatever the rich and
+fanatical want, and might exhibit a systematic bias against poor people.
+Indeed, for this reason CTT voting is <i>unconstitutional</i>
+in the USA under the 24th amendment.
+</p>
+<p><small>
+But recently Professor Marcus Pivato has proposed a way to make CTT voting be truly based 
+on utility not money!
+Pivato's idea is that the bids not be in terms of money, but rather in terms of
+<i>probability</i>.   Suppose we can identify two magic events which we can agree
+have about the same utility-difference for
+everybody.   When you "pay" the Clarke tax, in Pivato's non-monetary scheme, that now
+means you get subjected to a lottery in which the worse-event happens to you with probability P
+(where P is your tax) and the better-event with probability 1-P.
+To make this work it is essential that the two events be enough-different in utility that they
+(for all or almost all voters)
+exceed the utility difference arising from who gets elected.
+(Otherwise we get "truncation effects" distorting the picture.)
+</small></p>
+<p>
+<b>4.</b>
+The Clarke taxes would in fact be paid into government funds which would
+then be used to reduce (ordinary) taxes.  Hence in reality the
+<i>true</i> amount voters would effectively pay, would differ from the Clarke tax.
+That in practice would distort the system away from the ideal of
+employing "perfect utilities."  (One nightmare: consider a candidate whose platform was
+"if elected, I will refund all Clarke taxes.")
+</p>
+<p>
+<small>One suggestion to combat(?) that criticism is to award all the Clarke taxes to
+one randomly selected voter, the "Clarke-tax lottery winner."</small>
+</p>
+<p>
+<b>5.</b>
+Collusions: Suppose "Nixon"
+bids some enormous amount of money and "Agnew" also does,
+to make the Nixon-Agnew ticket win.   Now, each of  {Nixon, Agnew}
+alone did not change the election result because their bids were each vastly huger than
+everybody else in the country combined, so Nixon could argue "I would
+have been elected anyway thanks to Agnew's bid" therefore
+Nixon pays zero Clarke tax.  Similarly Agnew also pays zero and both get elected for free.
+This pathology could reduce everything to 2-man teams of colluders each trying to "name the
+largest number they can" &ndash; which would be a ridiculous dysfunctional state of affairs.
+</p>
+<p>
+However, this Nixon-Agnew criticism largely
+falls to the ground if <i>escrowed</i> vote moneys are demanded.
+That makes ridiculously large bids impossible.
+But that, as we said, leads
+to other difficulties.  (Another related to #3 is: what if my utility exceeds the amount of
+money I am able to raise in cash form?<small>
+Consider abortion rights.
+Jill in losing her abortion rights, is losing a lot of expected dollars.
+The ratio of abortions to live births was approximately 32:100 in the 1990s USA.
+Suppose it costs $100,000 to birth and raise a child but only $300 to get an
+abortion (1990s dollars).
+Suppose Jill is going to have 3 children and hence (on average) one abortion.
+That means $100,000 of expected utility is at stake for her if there is a vote
+on a law that would make it impossible for her to abort. 
+(Actually she could
+still try
+to get an abortion in a foreign country, or try to abandon her child for
+adoption, so
+it is less than $100,000, but we shall ignore that.) 
+But more utility is
+at stake the younger Jill is. 
+However, the younger Jill is, the less likely she has
+$100,000 to vote with!
+Now on the other side are the moralists who believe
+abortion is murder. 
+From their view, it is worth all the money some fetus would
+ever be able to earn, to avoid being murdered.  
+However... fetuses don't have
+any money and can't vote. 
+So it appears both sides in this issue
+are going to regard the CTT voting system as unfairly biased against them
+and invalid.
+How do CTT-proponents answer them?
+</small>)  
+</p>
+<p>
+<b>New randomization idea to reduce the collusion problem:</b>
+Suppose every vote-bid <i>X</i>
+is automatically <i>replaced</i>, before doing the election,
+with a <i>random number</i> in the interval <i>[0, 2X]</i> with <i>mean</i> <i>X</i>.
+<small>
+(The problem of making everybody confident the randomizations were genuine, independent,
+and unbiased, while keeping everything secret until the end, is a solvable cryptographic problem.)
+</small>
+One possible probability distribution would be the two-mass one with either <i>0</i>
+or <i>2X</i>
+chosen by a coin flip.
+</p>
+<p>
+This idea has the disadvantage that it adds extra "noise" to the election
+and that it can stick unlucky voters with a higher than-expected Clarke tax bill
+(although they could compensate by underbidding by a constant factor).  
+But its advantage &ndash; and point &ndash;
+is that it causes the Nixon-Agnew collusion we just described to become
+<i>very risky</i>.  
+Randomization causes your collusion-teammates to become
+effectively "untrustworthy" even if they actually were totally loyal.
+</p>
+<p>
+<b>Counterattack:</b>
+With 100 colluders, it becomes exceedingly unlikely (probability 100&middot;2<sup>-99</sup>)
+that any colluder will be forced to pay.  So the colluders by organizing moderately large
+teams can defeat this idea.
+</p>
+<p>
+Incidentally,
+Margolis in 1983 tried to argue using differential equations 
+that the CTT scheme was the essentially <i>unique</i>
+one with its properties.  Margolis unfortunately did
+not actually state an explicit theorem with proof,
+but suffice it to say that Margolis was <i>wrong</i> in the sense that we have just exhibited
+this randomization generalization
+<!-- Jan Kok's <i>X</i>-generalization NO GOOD -->
+constituting an infinite number of ways to generalize CTT.
+So no, CTT is not unique at all, but yes, it is unique if we restrict to deterministic
+voting schemes in which voter payments are made as small as possible.
+</p>
+<p>
+<b>Other ideas to reduce the collusion problem:</b>
+<ol type="a">
+<li>
+Require "reasonable" bids: e.g. the top 5% highest bids could be collapsed to the same amount.
+</li><li>
+Randomly split the voters into 3 groups.
+All 3 groups are likely to agree on a winner. However, if only 2
+agree, then both those 2 groups have to pay. 
+This is a different randomization 
+technique but with the same goal of making collusions become risky.
+(Of course, this might work even better with more than three groups.
+Having more groups makes collusions more risky, but also makes the election more noisy and less
+ideal.)
+</li>
+</ol>
+These ideas may slightly destroy the mathematical
+"perfection" of the CTT scheme, but it may be worth the
+sacrifice.
+</p>
+<p>
+<b>6.</b>
+Howard Margolis  offered another criticism:
+which is that voter "ancillary utilities" (<small>Margolis called it "altruism,"
+but Professor Marcus Pivato convinced me that was a 
+bad name and "ancillary utilities" is a better name</small>)
+would invalidate CTT.
+That is,
+in many cases the amount of money at stake for each voter is small, so
+that voter is willing to be altruistic and lose money to further what he
+considers to be a good cause.  Or that voter simply gets a certain amount of joy
+simply from pulling the voting lever, which is <i>not</i>  the expected amount of joy she gets from
+the chance that vote will alter the election winner.  The problem is this "ancillary utility"
+is likely to far-exceed the utility CTT is trying to measure.
+</p><p>
+That seems to me to be an excellent and
+completely valid criticism: 
+the only reason almost
+anybody votes at all, is "altruism"/"ancillary utilities"
+since it is totally economically irrational
+to vote considering the cost in time and transport to vote versus the low probability
+of that vote having an election-swinging effect.
+So ancillary utilities (aka economic irrationality) are not "negligible"; they are
+the "dominant" effect in voting!  
+Given any such huge distortionary effect on utilities, CTT's claims of "perfection"
+fall to the ground.  
+</p>
+<p>
+The net effect of all these criticisms is very serious and probably render the  
+Clarke-Groves-Tideman-Tullock voting system practically useless 
+(or at least uncompetitive enough to remove it from consideration) for
+large governmental elections.
+<small>
+</small> 
+CTT also is useless for (or at least dubious for) small
+elections such as in Tideman's frat house study (since for them the Clarke taxes exceed
+the benefit of switching to the system).  
+However, for elections of <i>intermediate</i> size
+(500-50000 voters?) and in which utility <i>does</i> closely correspond with money,
+and assuming the collusion problem is overcome,
+this system may make excellent sense.  
+(<b>Stockholder elections in corporations</b>, with Clarke taxes donated to charity?) 
+It might also make sense if future
+techno/political developments alter the nature of "money" so that large anonymous
+and undetectable monetary transfers become easy and cheap.
+</p>
+
+<H3> References </H3>
+
+<p>
+Martin J. Bailey (with editing by Nicolaus Tideman): 
+Constitution for a future country, Palgrave 2001.
+</p>
+<p>
+Edward H. Clarke: Demand-revelation and the provision of public goods,
+Ballinger Cambridge MA 1980.  (Second ed. 2000.)
+</p>
+<p>
+T. Groves &amp; J. Ledyard: Optimal allocation of public goods, a solution
+to the free rider problem, Econometrica 45 (1977) 783-809.
+</p>
+<p>
+H. Margolis: A thought experiment on demand-revealing mechanisms,
+Public Choice 38 (1982) 87-91.
+</p>
+<p>
+H. Margolis: A note on demand-revealing, Public Choice 40 (1983) 217-225.
+</p>
+<p>
+H. Margolis: Selfishness, altruism, and rationality, Cambridge Univ. Press 1982.
+</p>
+<p>
+T.N. Tideman: An experiment in the demand-revealing process, 
+Public Choice 41 (1983) 387-401.
+</p>
+<p>
+T.N.Tideman &amp; G. Tullock: A new and superior process for making
+public choices, J. of Political Economy 84 (1976) 1145-1159.
+</p>
+<p>
+W.Vickrey: Counterspeculation, auctions, and competitive sealed tenders,
+J.Finance 16 (1961) 1-17.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

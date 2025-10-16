@@ -1,0 +1,142 @@
+<html>
+<head>
+<title>
+RangeVoting.org - 100-voter Condorcet election example
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> A 100-voter Condorcet election example </H1>
+
+<p><small>By Warren D. Smith, Feb. 2014</small></p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff00">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr bgcolor="aqua"> 
+<td align="center">
+  <b>35</b>
+</td>
+<td>
+A>B>C
+</td>
+</tr>
+<tr   bgcolor="pink">
+<td align="center">
+  <b>21</b>
+<td>
+B>A>C
+</td>
+</tr>
+<tr bgcolor="aqua">
+<td align="center">
+  21
+<td>
+B>C>A
+</td>
+</tr>
+<tr bgcolor="aqua">
+<td align="center">
+   21
+<td>
+C>A>B
+</td>
+</tr>
+<tr  bgcolor="pink">
+<td align="center">
+   1
+<td>
+A>C>B
+</td>
+</tr>
+<tr bgcolor="pink">
+<td align="center">
+    1
+<td>
+C>B>A
+</td>
+</tr>
+</table>
+
+<p>
+<b>A</b> is the Condorcet winner,
+beating B pairwise by 57:43
+and also
+beating C pairwise by 57:43.
+Now: one voter each of types "A>C>B," "B>A>C," and "C>B>A" 
+&ndash; as well as 21 voters each of the types "B>C>A," "C>A>B," and "A>B>C"
+(which form a reversed-direction cycle) &ndash; 
+all together should constitute a three-way tie.
+So those votes should cancel out. 
+If we remove those 66=21&times;3+3 "cancelled out" ballots,
+then we get:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff00">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr bgcolor="aqua"> 
+<td align="center">
+  <b>14</b>
+</td>
+<td>
+A>B>C
+</td>
+</tr>
+<tr  bgcolor="pink"> 
+<td align="center">
+  <b>20</b>
+<td>
+B>A>C
+</td>
+</tr>
+<tr>
+</table>
+
+<p>
+whereupon <b>B</b> becomes the Condorcet winner!
+Namely, B beats A pairwise by 20:14,
+and B also beats C pairwise by 34:0.
+(And B is the IRV winner, and also Borda winner, in both elections.)
+</p>
+
+<p>
+This seems to demonstrate a <b>self-contradiction</b> within the Condorcet philosophy.
+</p>
+
+<!--
+MAPLE9:
+with(simplex);
+cns := {
+x1>=0, x2>=0, x3>=0, x4>=0, x5>=0, x6>=0,
+x1>=z, x2>=y, x3>=z, x4>=z, x5>=y, x6>=y,
+x1+x2+x3+x4+x5+x6=100,
+x1+x4+x5 >= s + x2+x3+x6, x1+x2+x5 >= s + x3+x4+x6, 
+x1-z + x4-z + x5-y + s <=  x2-y + x3-z + x6-y, 
+x1-z + x2-y + x3-z >= s + x5-y + x4-z + x6-y, 
+y >= 1, z >= 1  };  #cannot demand y=z
+maximize( s, cns);
+-->
+
+<br>
+<p><a href="FishburnAntiC.html">Fishburn's anti-Condorcet example</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+
+

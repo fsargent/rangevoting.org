@@ -1,0 +1,293 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Good criteria support range voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2> Only criteria range voting obeys, can be
+good criteria for single-winner voting systems to obey </h2>
+
+<p><small>Warren D. Smith, March 2018.</small></p>
+<p>
+<b>Abstract.</b>
+The imprecise claim in the title is made precise, and proved as a theorem.
+Although this theorem has some limitations it nevertheless seems adequate 
+to upend a large amount of voting-system literature.
+<p>
+<blockquote>
+It is not down in any map; true places never are.
+ &nbsp;&nbsp;&nbsp;&ndash; Herman Melville (1819-1891), <i>Moby Dick</i>.
+</blockquote>
+<p>
+The title's provocative claim sounds on the surface like some propagandistic
+nonsense "FairVote" would come up with about 
+<a href="rangeVirv.html">Instant Runoff Voting</a>.
+Indeed, infamously, "FairVote" once declared
+<p><blockquote>
+The only voting methods that should be weighed seriously for governmental elections 
+are methods that do not violate the
+"<a href="LNH.html">later no harm</a>" criterion
+(plurality voting and forms of runoff elections and instant runoff voting) 
+or only do so indirectly (such as Condorcet voting methods).
+</blockquote><p>
+which was completely ridiculous, and solely motivated by FairVote's backwards-directed
+desire to "prove" Instant Runoff the greatest-ever possible voting method.
+So might it be that I, as a known advocate of 
+<a href="RangeVoting.html">range voting</a>, am again merely working backwards
+to prove my desired conclusion?  
+</p><blockquote>
+<b>Definition 1:</b>
+For us "<b>Range voting</b>" shall mean the following voting method.
+Each voter provides as her vote, a set of real number scores, each in [0,1],
+one for each candidate.  The candidate with greatest score-sum, is elected.
+</blockquote><p>
+Well, rather remarkably given the
+late date, this all is not nonsense &ndash; it is a <i>theorem</i>.
+And perhaps the best explanation I can give for why it was previously overlooked, 
+was because it was too obvious.
+However, we must admit that
+</p><ol type="a"><li>
+It is a "theorem"
+with a rather large asterisk attached about its applicability  (or that of its
+underlying definitions) to the real world &ndash; we shall 
+<a href="#theasterisk">explain</a> 
+that in due time),
+</li><li>
+To achieve that, we need to make some precise definitions 
+(or at least partial definitions) of
+"single-winner voting systems," "good," and "criteria,"
+which the reader might not adore.  I am perfectly happy with the first.
+With the second, I only provide (and only need) 
+a partial definition, but to the extent it
+goes, I am ok with it modulo the later <a href="#theasterisk">asterisk</a>.
+Finally to handle the third, we actually shall coin the new word "scriterion,"
+note the "s," to signify we are speaking of a specific technical notion
+of what voting-system criteria the <a href="#mainthm">Theorem</a>
+is speaking about.  It does not speak about others.  
+Our Theorem then potentially has various-strength versions,
+with the stronger ones permitting wider "scriteria" notions.
+(We'll initially start with a simple one, but some 
+<a href="#strongerthm">strengthenings</a>
+will be given later. Probably other strengthenings also could be devised.)
+</li><li>
+Note that our <a href="#mainthm">Theorem</a>
+asserts only a <i>unidirectional</i> implication:
+any scriterion disobeyed by range voting, cannot be a good scriterion.
+It does <i>not</i> assert that any
+scriterion obeyed by range voting <i>is</i> a good scriterion.
+</li></ol>
+<p>
+Despite all those warnings and limitations, our Theorem remains quite remarkably
+simple and powerful.
+First of all, it affirms the pre-eminent position range voting holds 
+among single-winner voting methods.
+Second, many voting methods books have been published over the decades,
+discussing many voting systems criteria, but none of them mentioned our Theorem.
+And despite its limitations, this Theorem still is like a giant armed with a
+shillelagh, smashing cruddy criteria right and left.  Plenty
+of voting system criteria listed in those books, both 
+</p><ol type="i"><li>
+meet our technical requirements to be "scriteria," and 
+</li><li>
+now are instantly reduced to rubble.
+</li></ol><p>
+The "asterisk" attached to our Theorem can be quite bothering, but for practical purposes most
+of the time does not bother us &ndash; that shillelagh still is doing
+a hell of a lot of smashing, and few should be willing to dispute that.
+</p><a name="mainthm"></a><p>
+<b>THEOREM-WITH-<a href="#theasterisk">ASTERISK</a>:</b>
+Only scriteria obeyed by range voting, can be good criteria for single-winner
+voting systems to obey.
+</p><p>
+<b>Definition 2:</b>
+A "<b>voting system</b>" shall mean a <i>function</i> F
+mapping a set v of votes to the name w of a winner: w=F(v).
+"Votes" are arbitrary information packets (e.g. bitstrings).
+</p><a name="scrit1"</a><p>
+<b>Definition 3:</b>
+A "<b>scriterion</b>" specifies a set S of ordered pairs (x,y).
+A voting system F "obeys" S
+if the set of ordered pairs (v,w) with w=F(v) is a <i>subset</i> of S.
+</p><p>
+<b>Equivalent scriterion-obeyance notion:</b>
+We instead could specify <i>complement(S)</i> (a set of "forbidden elections")
+and demand the set of (v,w) from our
+voting method have empty intersection with it.
+</p><p>
+<b>PROOF OF THE THEOREM:</b>
+Consider the ideal voting system for superhuman honest voters:
+"true utility voting" (TUV).  That is: each voter as her ballot states
+the true utility,
+for her, for each candidate's election, as an unrestricted real number
+on some agreed-upon scale.
+We elect the candidate maximizing utility-sum (summed over all voters).
+The TUV system is not feasible in practice for actual humans for three reasons:
+</p><ol><li>
+There is no agreed-upon utility scale.
+</li><li>
+Even if there were, voters do not even know their own utilities.
+</li><li>
+Just one dishonest voter could give huge numbers,
+singlehandedly throwing the election.
+</li></ol><p>
+But for <i>super</i>humans, TUV would be feasible, and would actually be the
+unique best possible voting system in the sense it always would elect whatever option
+maximized society-wide utility-sum.  (Zero <a href="BayRegDum.html">regret</a>.)
+</p><p>
+Therefore, only scriteria obeyed by TUV can be good scriteria
+for single-winner voting systems to obey.  
+Because any insistence on any other scriterion,
+would immediately exclude the unique best voting system for superhumans,
+as a matter of <i>foundational demand</i>.
+That would be absurd and
+would immediately brand the insistor as an idiot.
+</p><blockquote>
+The preceding paragraph can be viewed as a partial definition,
+adequate for the purposes of this Proof, of "good."
+We hereby brand any scriterion
+failing to meet that goodness-requirement, as definitely "bad."
+</blockquote><p>
+Now for TUV and range voting,  F<sub>TUV</sub> 
+is the <i>same</i> function as F<sub>range</sub>,
+except that F<sub>range</sub> is restricted to a 
+sub<a href="https://en.wikipedia.org/wiki/Domain_of_a_function">domain</a>.
+</p><p>
+Any scriterion obeyed by F<sub>TUV</sub> therefore
+automatically is obeyed by F<sub>range</sub>.
+</p><p>
+Any scriterion <i>dis</i>obeyed by F<sub>range</sub>.
+therefore automatically is disobeyed by F<sub>TUV</sub> 
+and hence cannot be claimed to be a "good" criterion.
+<!--(without the claimer looking like an idiot:)-->
+<br>
+<b>Q.E.D.</b>
+</p><p><b>Example 1</b>:
+Consider this form of the <b>Condorcet-winner criterion</b>:
+"whenever a candidate C exists who would defeat each rival pairwise in a
+simple majority vote, then C must win."
+Evidently this is a bad scriterion, since it is disobeyed
+by range voting and TUV.  And indeed Fishburn already had made arguments against
+Condorcet in 1974:
+</p><center>
+   <a href="FishburnAntiC.html">/FishburnAntiC.html</a>.
+</center><p>
+But range voting actually <i>does</i> obey the following
+scriterion, which is a somewhat inequivalent
+wording of the Condorcet criterion:
+"whenever a candidate C exists who would defeat each rival X pairwise in a
+vote with the same voting system but with all candidates besides C &amp; X
+erased from all ballots, then C must win."
+</p><p><b>Example 2</b>:
+Consider this form of the <b>Majority-top criterion</b>:
+"if &gt;50% of the votes rate some particular candidate C unique-top,
+then C must win."
+Again, this evidently is a bad scriterion, since it is disobeyed
+by range voting and TUV. 
+Unrelated arguments had also previously been made against majority-top, based on
+the <a href="https://rangevoting.org/NSED.html">conjecture</a> that
+any country using a system obeying it is at substantial risk of 
+falling irreversibly into 2-party domination.
+</p><p>
+Range voting <i>does</i> obey this somewhat inequivalent wording of majority-top:
+"if a majority of voters want to force X's election, they can."
+This new wording, however, does not satisfy the requirements of the definition of "scriterion,"
+nor even the below <i>k</i>th order variant for any particular k&ge;1.
+</p><p><b>Example 3</b>: Nevin Brackett-Rozinsky's
+"infinity criterion" (which TUV passes, but range voting fails)
+"A voting method should not impose any finite bound on a voter's scores for candidates."
+This would be a fine <i>counterexample</i> to our Theorem if we permitted as "criteria"
+arbitrary English descriptions.  However, the Theorem  only permits
+"scriteria" and this isn't a scriterion.  (It would have been a scriterion
+if we replaced "should not impose any" with "must impose a" 
+while demanding candidate-rating-style ballots,
+in which case the Theorem would not have branded this as a "bad" scriterion,
+nor would it have been a counterexample.)
+</p><p><b>Example 4</b>:
+Brams 2015's criterion forbidding the "<b>paradox of grading systems</b>"
+is a "bad scriterion" according to our definitions, since
+TUV disobeys it.
+</p><p><b>Example 5</b>:
+"<a href="LNH.html">Later no harm</a>" 
+does not meet the demands of our 
+above <a href="#scrit1">definition</a> of a "scriterion."
+However, that problem is solved (proving LNH also is bad)
+if we strengthen our Theorem by also allowing this wider
+</p><a name="scrit2"></a><p>
+<b>Definition 4</b> of "<b>2nd-order scriterion</b>":
+A second-order scriterion S<sub>2</sub> is a set of 2-tuples
+of ordered pairs (x,y).  A voting system F "obeys" it
+if the set of 2-tuples 
+</p><center>
+<big>(</big>(v<sub>1</sub>, w<sub>1</sub>), (v<sub>2</sub>, w<sub>2</sub>)<big>)</big>
+</center><p>
+of ordered pairs (v,w) with w=F(v), is a subset of S<sub>2</sub>.
+</p><p>
+We similarly may define "<b><i>k</i>th-order scriterion</b>" for any k&ge;1: just
+replace "S<sub>2</sub>" by "S<sub>k</sub>" and "2-tuple" by "k-tuple."
+</p><a name="scrit3"></a><p>
+<b>Definition 5</b> of "<b>subdomain-invariant criterion</b>":
+Any predicate concerning a voting system which, if true for voting system A,
+necessarily also is true for voting system B whenever B's defining function is
+the same as A's restricted to a subdomain.
+</p><a name="strongerthm"></a><p>
+<b>Strengthenings</b>:
+The <a href="#mainthm">Theorem</a> 
+(and its proof) still work if we replace the word "scriterion" in its
+statement by "<i>k</i>th-order scriterion for any finite k&ge;1" or by
+"subdomain-invariant criterion."
+Also (pointed out by Ciaran Dougherty):
+the theorem statement's "obeyed by range voting" can be strengthened to
+"simultaneously obeyed by range, approval, and plurality voting."
+</p><blockquote><small>
+But Dougherty's strengthening comes with the further asterisk that a lot
+of criteria in voting books,  are pretty much just not applicable to (or
+at least <i>uninteresting</i> if you try to apply them to) approval
+or especially to plurality. For example, if the criterion were discussing rank
+orders...
+</small></blockquote>
+<p>
+<a name="theasterisk"></a></p>
+<b>THE ASTERISK:</b>
+Since TUV was about honest voters ("superhumans"), the <a href="#mainthm">Theorem</a> 
+presumably should not be applied concerning criteria that are about <i>strategy</i>.
+It still is a valid theorem of mathematics, but our
+justification for using the name "good" then would become dubious or vanish.
+<p></p>
+For example, 
+"<a href="FBCsurvey.html">favorite betrayal</a> criteria" (FBC) or 
+"<a href="TidemanRev.html#zihc">zero info honesty criterion</a>" (ZIH)
+or the (much deprecated) "later no harm" criterion LNH
+all arguably fall under the umbrella of this asterisk.
+If we were to ignore this asterisk, then FBC would seem good as
+far as the Theorem were concerned, while ZIH and LNH both would be bad.
+</p>
+
+<h3> References </h3>
+
+<p>
+Steven J. Brams: 
+<a href="https://link.springer.com/article/10.1007%2Fs11127-015-0303-6">The 
+paradox of grading systems</a>,
+Public Choice 165, 3-4 (Dec. 2015) 193-210.
+</p>
+<p>
+Peter Fishburn:
+Paradoxes of Voting, Amer. Political Science Review 68 (1974) 537-546.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

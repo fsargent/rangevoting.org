@@ -1,0 +1,651 @@
+
+<html>
+<head>
+<title>
+RangeVoting.org - Optimal party- and district-based proportional representation
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Optimal party- and district-based proportional representation with one MP per district </H2>
+
+<p><small>
+Warren D. Smith. Nov. 2015.  PRELIMINARY, it would be better to have a more careful &amp; complete examination of
+various problem-version's LP duals, and analysis of the integer programs which result when the &sum;=W
+constraint is adjoined.
+</small></p>
+
+<h3> Table of contents </h3>
+
+<ol>
+<li><a href="#OV">Overview</a></li>
+<li><a href="#VO">The voting system</a></li>
+<li><a href="#IM">Why that voting method can be implemented efficiently &ndash; graph formulation and LP reformulation</a></li>
+<li><a href="#DU">Dual form of our linear program</a></li>
+<li><a href="#BA">Balinski's "fair majority voting" system, and its relationship (but inequivalence) to ours</a></li>
+<li><a href="#WR">What Balinski's LP is optimizing and why that is the wrong thing to optimize</a></li>
+<li><a href="#TK">How "targeted killing" strategic voting method would devastate Balinski's system and render it
+utterly unfit for direct use in designing the government of a country 
+</a></li>
+<li><a href="#LE">The lesser (but probably still unacceptably severe) vulnerability of our system to "targeted killings"</a></li>
+<li><a href="#EG">Why neither Balinski's nor our systems should be expected to "eliminate gerrymandering"</a></li>
+<li><a href="#TU">Would it be  acceptable to use our system merely as a "top up"? 
+Yes, and the simple result is "MMP with score voting."</a></li>
+<li><a href="#RE">References</a></li>
+</ol>
+
+<a name="OV"></a>
+<h3> Overview </h3>
+<p>
+If, in an election, each district attempted to elect its MP using 
+<a href="RangeVoting.html">score voting</a>, then the resulting parliament could
+be disproportional.  I.e: each voter
+rates each candidate with a numerical score from (say) 0=bad to 9=good.
+That causes each candidate to acquire an average score.  
+<i>But</i> if each district then just elected whoever 
+had the highest average score, the resulting parliament could
+be "disproportional."
+</p><p>
+A possible solution to that problem is to demand that the parliament have
+a prescribed party composition (proportional to the number of voters who had awarded each party
+their top rating), and <i>among all possible parliaments meeting the party-composition constraints
+and 1-seat-per-district constraint,
+finding the "best" one, i.e. the one <u>maximizing</u> the sum of the average scores
+of all its MPs.</i>  We'll show that this optimization problem is efficiently soluble using 
+&quot;<a href="https://en.wikipedia.org/wiki/Linear_programming">linear programs</a>&quot; (LPs)
+of a well understood type arising in optimal "weighted bipartite graph matching."
+</p><p>
+When the "dual form" of our linear program is studied, we find that it is quite similar to
+&ndash; but <i>not</i> the same as &ndash; the "Fair Majority Voting"
+scheme <a href="BalinskiFairMajGerry.pdf">proposed</a>
+by Michel Balinski in 2008.  The reason it is not the same is that Balinski made
+a severe design error.  He, in our terminology, optimized the wrong thing.
+(Although actually, Balinski did not really realize he was optimizing anything.)
+The right thing to optimize must approximate perceived society-wide "utility."
+Balinski optimizes something rather unrelated to that, whereas we optimize the obvious
+natural approximation to it.
+But it is possible to alter the Balinski proposal to remove his
+"multiplicative weights" by replacing them with "additive offsets."
+When that is done, Balinski's altered system becomes essentially equivalent to ours via
+an LP-duality, 
+aside from his preference for <a href="Plurality.html">plurality</a>-style 
+"name-one-candidate" ballots
+as opposed to our preference for
+<a href="RangeVoting.html">score</a> voting
+style "rate-all-candidates"  ballots.
+</p><p>
+Also, still more embarrassingly for Balinski, he contended his system would
+"eliminate <a href="GerryExec.html">gerrymandering</a>" by removing all incentive for it.
+That claim was total garbage, and displays a massive lack of understanding by Balinski of
+what gerrymandering is like in the USA and why it happens.
+</p><p>
+Both our proposal and Balinski's enjoy the virtues of electing exactly one MP per district,
+<i>and</i> achieving 
+proportional representation (<a href="PropRep.html">PR</a>)
+as measured by party-fractions.
+</p><p>
+However, they also both suffer the disadvantage that <i>parties</i> are woven into
+the very fabric of the voting system definition.  A government based on either system
+would need to forbid, or at least be very unfriendly to, unaffiliated candidates;
+and it probably would be deemed necessary to enact laws forbidding MPs from switching parties
+(countries have enacted such laws since they felt otherwise their
+PR systems could be "gamed").  I greatly prefer systems based entirely on
+candidates with no reference to parties, and which work equally well regardless of
+who is in what party, or whether parties even exist.
+</p><p>
+Also, we demonstrate another massive disadvantage of both schemes (Balinski's method 
+is afflicted more severely than ours, but both seem severely damaged):
+they are hugely susceptible to a simple organized 
+form of strategic voting I call "targeted killing."
+I would forecast that any country trying to use either scheme to elect its parliament would
+be devastated by this problem.
+</p><p>
+I think these disadvantages render both schemes, especially Balinski's,
+unacceptable for the basic design of the government of a country. 
+</p><p>
+(Also, more generally, <i>any</i> of a wide class of PR schemes
+involving explicit use of party labels as part of their definitions, <i>might</i> be vulnerable to an
+analogous problem, which should be a very scary thought for anybody designing such a system. 
+Play it safe by refusing to involve party labels in your system. 
+Or watch out.)
+</p><p>
+But there is a possible salvage.  Do not use our scheme as the election method.  
+Instead merely use
+it as a "top up" method to try to restore PR to an otherwise
+single-winner-per-district parliament
+elected by old fashioned independent single-district single-winner elections.
+(Note: Our LP formulation can also be used to find the optimum parliament with 
+prescribed party-composition such that district k elects N<sub>k</sub>
+MP's, where the integers N<sub>k</sub>&ge;0
+can be anything, not necessarily all 1 or all equal.)
+When used for this top-up purpose, our method becomes a far less attractive "target" for
+"killings."  And then it actually <i>might</i> be a decent way to design a government, at least if you
+can stomach being force-fed political parties...
+</p>
+
+<a name="VO"></a>
+<h3> The voting system </h3>
+<p><b>Purpose.</b>
+To elect a W-seat parliament, consisting of one MP per district, in such a way that
+the party-composition of the parliament, mirrors that of the voters.
+We assume some number C&gt;W of candidates run and at least one candidate runs in each district.
+</p><p>
+Extension: we could optimally make district k elect R<sub>k</sub> MPs,
+for any pre-specified set of non-negative integers R<sub>1</sub>, R<sub>2</sub>, ... summing to W;
+they do not need to all equal 1.  Indeed, if desired we could even just pre-specify integer intervals 
+[L<sub>k</sub>, R<sub>k</sub>] and merely demand district k elect a number x of MPs where
+L<sub>k</sub>&le;x&le;R<sub>k</sub>.
+</p>
+<p><b>1.</b>
+Each voter rates each candidate in her district, on an 0-to-9 numerical scale. 
+(Voters also allowed to leave some candidates unrated, if that voter wishes not to express any 
+opinion about that candidate.) 
+<small>
+Refinement suggested by J.Quinn: "Any voter who did not explicitly rate any candidates at 0 is considered 
+to have given 0 to any candidates they left blank. Any voter who did rate at least one candidate explicitly 
+at 0 is considered to have expressed 'no opinion' about any candidates they left blank. (I think this 
+rule is the safest way to interpret 'intent of the voter'.)"</small>
+</p><p><b>2.</b>
+At this point, each candidate in each district possesses some "average score."
+Also, each political party, nationwide, has a number of "points."  
+(Each time a voter rates K candidates co-equal top,
+then each of their political parties gets 1/K of a point.)
+</p><p><b>3.</b>
+Determine the number of seats each party "deserves" in parliament,. e.g. party j deserves N<sub>j</sub>
+seats, for some set of non-negative integers S<sub>1</sub>, S<sub>2</sub>, ... summing to W.
+These S<sub>j</sub> could be produced from the party point-counts and W by, 
+for example, the classical procedure of
+<a href="https://en.wikipedia.org/wiki/Sainte-Lagu%C3%AB_method">Sainte-Lagu&euml;</a>. 
+Extension: everything to follow could also more generally be done with 
+integer <i>intervals</i> [S<sub>j</sub>, T<sub>j</sub>] where we shall demand that party j
+gets a number x of seats with 
+S<sub>j</sub>&le;x&le;T<sub>j</sub>.  
+</p><p><b>4.</b>
+Find, from among all possible ways to elect W of the candidates to parliament which meet
+all the party seat-count constraints and also simultaneously meet all
+the district MP-count constraints, the "best" possible choice, and elect those W.  Here "best" means
+that the average scores possessed by the W elected MPs, have maximum possible sum.
+(Note: if no parliament meeting all the constraints exists, then report that
+failure and stop.  However, if the S<sub>j</sub> were produced via Sainte-Lagu&euml; as described in step 2, 
+then a solution obviously will exist.)
+</p>
+
+<a name="IM"></a>
+<h3>Why that voting method can be implemented efficiently &ndash; graph formulation and LP reformulation</h3>
+
+<p>
+We can view this as a problem about bipartite graphs (or bipartite multigraphs)
+with edge weights, then solve it efficiently via linear programming.
+Specifically, consider a bipartite graph with one red vertex for each political party, and
+one blue vertex for each district.  The edge from party j to district k has numerical <i>weight</i>
+equal to the average score possessed by the candidate from party j who ran in district k.
+(If some party runs more than one candidate in some district, we'd need to make
+multiple edges between those two vertices, and it'd be a bipartite <i>multi</i>graph.
+That is ok.)
+</p><p>
+Our optimization problem then is a "max-weight constrained-valence subgraph" problem. 
+That is, we seek a subgraph (W-element subset of the edges) of the original graph.
+This subgraph must obey the "valence constraints" that, e.g. the number  &nu; of edges emerging
+from the party-j red vertex, must obey 
+S<sub>j</sub>&le;&nu;&le;T<sub>j</sub>.  And so on; each vertex of the original graph has its
+own allowed-valency integer interval.  Among all possible subgraphs meeting
+the valency constraints, our task is to find the one maximizing the sum of the edge-weights.
+</p><p>
+This graph problem has been heavily studied since the 1950s and consequently nowadays
+is well understood.  One way to solve it is 
+by reformulating it as a <a href="https://en.wikipedia.org/wiki/Linear_programming">linear program</a>.
+That works to provide a polynomial-time algorithm.  (However, it also is possible to 
+solve it more quickly because this linear program happens to have special structure.
+We won't discuss that.) 
+</p><p>
+Here is the linear program.
+If there are P parties and D districts, then there are PD variables x<sub>jk</sub>.
+(We are formulating this, for simplicity of notation, in the
+ordinary-graph case.  Actually, in the multigraph case we really would need to index the x's by
+which <i>edge</i> of the original multigraph that x pertained to.  In the ordinary graph case,
+an edge is specified by its two endpoints, namely party j and district k, which simplifies notation.)
+The meaning of x<sub>jk</sub> will be the number of candidates elected by party j from
+district k, and this number after solution will always be
+either 0 or 1.
+These obey the linear inequality constraints
+</p><center>
+0 &le; x<sub>jk</sub> &le; 1, &nbsp;&nbsp; 
+(&sum;<sub>1&le;j&le;P</sub>&sum;<sub>1&le;k&le;D</sub> x<sub>jk</sub> = W), &nbsp;&nbsp; 
+S<sub>j</sub> &le; &sum;<sub>1&le;k&le;D</sub> x<sub>jk</sub> &le; T<sub>j</sub>, &nbsp;&nbsp; 
+M<sub>k</sub> &le; &sum;<sub>1&le;j&le;P</sub> x<sub>jk</sub> &le; N<sub>k</sub>.
+</center><p>
+Subject to those constraints, we find the x<sub>jk</sub> that maximize
+</p><center>
+&sum;<sub>1&le;j&le;P</sub>&sum;<sub>1&le;k&le;D</sub> x<sub>jk</sub> A<sub>jk</sub>
+</center><p>
+where A<sub>jk</sub> is the average score possessed by candidate jk.
+</p><p>
+Obviously, this is a linear program, and if its optimum solution happens to have all entries
+x<sub>jk</sub> <i>integer</i>,
+then that solution instantly solves our original graph problem optimally.
+However, if we ignore the parenthesized
+&sum;<sub>1&le;j&le;P</sub>&sum;<sub>1&le;k&le;D</sub> x<sub>jk</sub>=W
+constraint, then it <i>automatically will</i> have all entries integer, because then this is a 
+&quot;<a href="https://en.wikipedia.org/wiki/Unimodular_matrix#Total_unimodularity#Total_unimodularity">totally unimodular</a>&quot; 
+linear program 
+with "integer right hand sides," due to the 
+<a href="https://en.wikipedia.org/wiki/Unimodular_matrix#Common_totally_unimodular_matrices#Common_totally_unimodular_matrices">Hoffman-Gale theorem</a>.
+</p><p.
+Warning: in maximally extended versions of our voting problem,
+we actually may not be able via an LP solve to force
+the parliament to have exactly W seats, because we need to leave out
+the parenthesized constraint in order to enjoy total unimodularity, and if
+we keep it in we may suffer non-integer solutions featuring "fractional seat occupancies."
+(One could try different W values to see for which we luckily get an all-integer solution,
+but some such attempts presumably will fail.)
+</p><p>
+Non-integer solutions would be inconvenient because politicians do not like being cut in half.
+Hence for those problem versions we could end up having some other (i.e. not W) integer
+number of seats consistent with all the other (nonparenthesized) constraints.
+However in the unextended (or less extended) forms of our voting problem,
+the W-seat demand will be satisfied automatically, even without explicitly imposing it,
+ just because, e.g, the sum of the demanded 
+district-occupancies equals W if all M<sub>k</sub>=N<sub>k</sub>.
+</p>
+
+<a name="DU"></a>
+<h3> Dual form of our linear program </h3>
+
+<p>
+When we apply the linear programming 
+<a href="https://en.wikipedia.org/wiki/Linear_programming#Duality#Duality">duality theorem</a>,
+we find our LP is equivalent to the following.  (We'll assume
+S<sub>j</sub>=T<sub>j</sub>
+and
+M<sub>k</sub>=N<sub>k</sub>
+for this purpose.)
+Seek "additive adjustments" U<sub>j</sub>&ge;0
+for party j and V<sub>k</sub>&ge;0 for district k
+such that 
+</p><center>
+U<sub>j</sub> + V<sub>k</sub> &le; A<sub>jk</sub>,
+&nbsp;&nbsp;
+and  &nbsp;&nbsp;
+&sum;<sub>1&le;j&le;P</sub>S<sub>j</sub>U<sub>j</sub>
++
+&sum;<sub>1&le;k&le;D</sub>N<sub>k</sub>V<sub>k</sub>
+&nbsp;
+is maximized.
+</center><p>
+We then elect the N<sub>k</sub> candidates in district k having
+the maximum <i>adjusted</i> average score 
+<nobr>A<sub>jk</sub>-U<sub>j</sub>-V<sub>k</sub>,</nobr>
+for each k=1,2,3,...,D.
+(The adjustments automatically will cause the resulting
+parliament to obey the party-seat-occupancy demands.)
+Equivalently, we elect 
+the S<sub>j</sub> candidates in party j having
+the maximum adjusted average score, for each j.
+(Generically, the same winner-set will result either way.)
+</p>
+
+<a name="BA"></a>
+<h3> Balinski's "fair majority voting" system, and its relationship (but inequivalence) to ours </h3>
+
+<p>
+Balinski's system begins by soliciting from each voter in each district a "name one candidate"
+<a href="Plurality.html">plurality</a>-style vote, saying their presumably-favorite candidate running
+within their district.  Each such vote for a <i>candidate</i> also counts as a vote for his <i>party</i>.
+Balinski then determines each party's "deserved" seat count, by applying
+<a href="https://en.wikipedia.org/wiki/D%27Hondt_method">d'Hondt</a>'s method to the party vote counts.
+(Balinski prefers d'Hondt, while I prefer Sainte-Lagu&euml;, for this purpose.
+It perhaps is of interest that Germany's Bundestag originally used
+d'Hondt, but as of 2005 has switched to Sainte-Lagu&euml;.)
+</p><p>
+Then 
+"multiplicative adjustments" &rho;<sub>j</sub>&gt;0
+for party j and &lambda;<sub>k</sub>&gt;0 for district k, are found, such that if the vote counts
+are adjusted &ndash; i.e. any vote cast within district k is multiplied by 
+&lambda;<sub>k</sub> and any vote cast for a party-j candidate
+is multiplied by &rho;<sub>j</sub> &ndash; then
+the winners in each district using adjusted votes, 
+yield the deserved number of seats for each party.
+</p><p>
+So Balinski's system is the <i>same</i> as ours, except for the following changes:
+</p><ol><li>
+Balinski uses 
+<a href="Plurality.html">plurality</a>-style ballots, while we use
+<a href="RangeVoting.html">score</a>-style.
+</li><li>
+Balinski uses d'Hondt, we use Sainte-Lagu&euml;.  (Balinski claimed that was since he wanted the USA to
+develop a "majority party" and d'Hondt made that more likely.  
+Evidently Balinski felt for some mysterious reason that
+the USA did not already have enough 2-party domination.
+Polls of US citizens, however, disagree, with 60% finding the USA needs a third party.)
+<br>
+<img src="GallupUSthirdPartyNeed2015.png" alt="Gallup: Opinions of Need for a Third U.S. Political Party" />
+</li><li>
+Balinski uses <i>multiplicative</i> adjustments, while we use additive ones.  (But Balinski's
+also are additive after logarithmically transforming everything, 
+in which sense his and my methods are "the same.")
+</li></ol>
+<p>
+While I believe all three of these choices by Balinski were unwise,
+the last one was truly absurd, because...
+</p>
+
+<a name="WR"></a>
+<h3> What Balinski's LP is optimizing and why that was the wrong thing to optimize </h3>
+
+<p>
+We optimize the right thing, namely, the sum, over all
+MPs, of their average score reckoned by voters.  
+This is the obvious naive approximation to the 
+"quality" or "social utility" of the parliament, as estimated by voters.
+Balinski maximizes the sum, over all MPs, of the <i>logarithm</i> of
+their number of votes.  (Equivalently, he maximizes the <i>product</i> of
+their vote-counts.)  This has little relation to anything utilitarian.
+</p>
+
+<a name="TK"></a>
+<h3> How "targeted killing" strategic voting method would devastate Balinski's system and render it
+utterly unfit for direct use in designing the government of a country 
+</h3>
+
+<p>
+With Balinski, the NaziLoon party (which gets 1% of the votes and hence deserves 1% of the seats)
+necessarily will enjoy a multiplicative scale-up factor of about 50,
+as compared with the Mainstream party (which gets 50% of the votes) 
+with a multiplier of about 1.  In other words, Balinski is going to force each NaziLoon
+vote to count about the same as 50 Mainstream votes. 
+</p><p>
+This is a huge "leverage" or "amplification" factor subject to easy exploitation 
+via "strategic voting."  For example, suppose for the purposes of argument that Justin Trudeau
+(leader of Canada's Liberal party, recently elected prime minister in 2015) 
+is the most popular MP in Canada.  So the Tories might like it considerably if Trudeau's district
+were to un-elect him and thus remove him from power.
+Tory leadership can easily accomplish that goal.  They simply
+tell the Tories in Trudeau's district "we suggest that instead of voting Tory, which is a lost cause,
+you vote NaziLoon."  The 50&times; amplification factor then easily carries the day,
+and &ndash; voila &ndash; Trudeau is gone.
+</p><p>
+I call this "targeted killing."
+Now the Tories might now want to try that again, selecting as their target some
+other important Liberal MP.  If, however, they kept re-using the NaziLoon party as their pawn
+in the targeted-killing game, it would no longer work as well. So instead, for their
+next "target" the Tories would switch to using the BeerLovers party as the (new) pawn.
+And so on.
+</p><p>
+This would cause all the important leaders in Canada to be "assassinated" &ndash; removed
+from political power &ndash; and instead a ragtag random collection of normally unelectable
+NaziLoons, BeerLovers, etc  would be all over parliament.
+So perhaps the best two-word description of the situation that would be caused
+if Balinski's voting system were the design for Canada, would be
+"complete devastation."
+</p>
+
+<a name="LE"></a>
+<h3>The lesser (but probably still unacceptably severe) vulnerability of our system to "targeted killings"</h3>
+
+<p>
+With our system, which has <i>additive</i> rather than multiplicative adjustments to votes,
+the situation is somewhat less dire than with Balinski.  There will no longer be
+a 50&times; amplification factor for NaziLoon votes which could be used to "kill"
+any "target."  Instead, the NaziLoons will get a large additive "head start" in vote count
+in each district.  Because Trudeau (in our example above)
+was postulated to be a very popular Liberal MP, it would
+still take a lot of NaziLoon votes to overcome him in his district, and it would be far easier
+and much more likely to work, to target an <i>un</i>popular Liberal MP in this way.  
+So it would no longer be possible to target essentially anybody.  Only some
+targets, usually comparatively unattractive ones, would be easily "hittable."
+</p><p>
+Nevertheless, even with our system there would be some easily predictable places where easily-determined
+strategic voting could be used to hit hard.  These hits would be highly effective and 
+also would, as a side effect, distort PR to artificially enrich parliament with fringe candidates.
+</p>
+
+<a name="EG"></a>
+<h3> Why neither Balinski's nor our systems should be expected to "eliminate gerrymandering" </h3>
+
+<p>
+Balinski (judging by his title) seems to hold the view that with his voting method, 
+<a href="GerryExec.html">gerrymandering</a> will vanish because it
+is no longer useful.  From then on, districts would be drawn sensibly, for a refreshing change!
+</p>
+
+<p>
+Unfortunately, <b>we believe Balinski is wrong 
+about that.</b>  We think it quite likely, unfortunately,
+that gerrymandering would persist
+and continue to corrupt the USA massively.
+</p>
+
+<p>
+<i>Nationwide</i>, we get proportionality, therefore it does not pay
+to gerrymander. Agreed.
+<i>But locally</i>, gerrymandering pays &ndash; plenty!
+</p><P>
+Suppose you are Joe Democrat Congressman. You'd like to have a safe
+seat. So you get your buddies in the statehouse to draw you a safe
+district full of Democrats.
+</p><p>
+Result (under Balinski voting):  Joe is almost certain to be elected.
+The only way Joe can fail to be elected is if the entire country decides
+it hates Democrats hugely, and/or Joe's district stops voting Democratic &ndash; both
+of which are almost impossible.  (Well, if we ignore the above about "targeted killings.")
+</p><p>
+So what I predict would happen (with Balinski voting) is this.
+The Democrats and Republicans will make interparty deals (just as they already do)
+to draw "safe" districts for all their high-ranking members.
+As usual, none of them will be defeatable.
+</p><p>
+But there will also be some districts occupied by lower-ranking Dems and
+Repubs, who do not have as much influence with the party bosses, which
+will be "at play." Those will be unsafe seats.
+So Balinski might improve things, but by no means will eliminate either gerrymandering or
+"congressmen for life."
+</p><p>
+Because of proportionality, the Greens will be able to get elected
+too. <!--However they will never be elected from a D- or R-safe district?  NOT SO! -->
+There could in principle actually be districts that are safe for
+Greens (i.e. essentially guaranteed to elect a Green).
+That is because the Greens will (by proportionality) win, say 5% (or whatever)
+of congress. The most-Green district in the country
+will then be essentially guaranteed to elect a Green, even though it
+(say) contains only 10% Greens. 
+</p>
+<blockquote>
+Ivan Ryan comments: 
+Locals might be pissed at a third-party which sets up its base
+in their district so it can consistently get 5% of the vote &ndash; the
+result being that 95% of the residents of the district are represented
+by a wacko-fringe party that they don't support.
+</blockquote>
+<p>
+Now the Dems and Repubs could (and probably will?) conspire to hurt the
+Greens as follows. Although the Dems and Repubs will be unable to prevent
+10% Greens from being elected if the voters are 10% Green, they <i>can</i> keep shifting the Green
+district-boundaries with the goal of preventing any Green from being
+<i>re</i>elected. 
+Or, they could try to make all the districts safe for everybody, so
+nobody ever gets defeated. This won't entirely work
+(if the country shifts from 60-40 R/D to 40-60, say, then
+there will be a 20% change) but it will work in the sense that
+all the established party members will be safe everywhere.
+Further, if, say, the Dems arrange to make their seatholders all have districts packed
+with Democratic voters, we don't see how that will hurt the Democratic party:
+<ol type="A">
+<li>
+Their seatholders will now be safe.
+</li><li>
+The remaining parts of the country, which contain (say) only 1% Democratic voters
+because the gerrymanderers sucked it dry, <i>still</i> will elect Democrats
+because of the proportionality guarantee, so the party as a whole is not hurt.
+</li></ol>
+<p>
+So, sorry Balinski &ndash; there is huge incentive to continue to gerrymander.
+Indeed, the ultimate limit would be that <i>every</i> district is 100% politically monolithic.
+In that case, yes
+we'd get proportionality, but every congressman would be a congressman for life
+(the opposite of democracy)
+and the country would be totally divided+polarized into utterly predictable
+red and blue chunks.
+</p><p>
+Indeed, Balinski throughout his paper about "eliminating gerrymandering in the USA,"
+appeared to be completely unfamiliar with the fact that
+a large number (probably "most") of the seats in the USA are "bipartisan gerrymandered" and
+indeed unaware even of the <i>existence</i> of the <i>concept</i> of
+"bipartisan gerrymandering."    And also, with the fact the USA's
+districts are drawn, not federally, but rather locally (i.e. state by state).
+For next time, I would recommend Balinski acquaint himself with the
+basics about an area <i>before</i> he revolutionizes it.
+</p>
+
+<a name="TU"></a>
+<h3> Would it be  acceptable to use our system merely as a "top up"? 
+Yes, and the simple result is "MMP with score voting." </h3>
+
+<p>
+The idea would be: first to elect 1 MP per district in an old-fashioned (non-PR) manner,
+i.e. with single-winner elections within each district independently. (Preferably the 
+<a href="RangeVoting.html">score voting</a>
+single-winner voting system would be used, not "first past the post.")
+ <i>Then</i>
+we would add "<i>top-up</i>" MPs to try to bring the parliament back toward proportionality.
+(There would be some pre-specified number W of seats in parliament, of which W-T were
+single-MP-in-district seats and the remaining T were top-up seats.)
+The number of top-up seats from each party could be obtained using Sainte-Lagu&euml; based on each 
+party's vote counts, <i>but</i> now starting the Sainte-Lagu&euml; seat-addition
+procedure <i>not</i> from zero initial seat-counts for each party, but rather from the party seat-counts 
+arising from the initial W-T "one MP per district" elections. 
+</p><blockquote>
+<b>Sainte-Lagu&euml; seat-addition procedure:</b>
+Let V<sub>j</sub> denote the vote-count for party j, and S<sub>j</sub> denote its current seat count.
+Find the party with the greatest V/(2S+1) value.  Give that party one additional seat (incrementing its S).
+Keep doing this, one seat at a time, until all the seats in parliament have been
+labeled with party-occupancy labels.  
+[d'Hondt is the same except that the formula V/(2S+1) is replaced by V/(S+1).]
+</blockquote><p>
+With each party's deserved-seat count known for the top-up seats, the plan then would be to employ the
+linear program here to choose the T top-up MPs optimally while meeting the party-occupancy demands.
+This task would, in fact, be <b>trivially simple, i.e, no linear programming would be needed!</b>
+That it because we simply would, for a party deserving S more seats, simply elect the S highest-scoring 
+as-yet-unelected MPs from that party.  
+This essentially would be the (already well known and already used, e.g. in Sweden)
+<b>Sainte-Lagu&euml; method of "party lists"</b> but used
+as a top-up method, with the list ordering within
+each party simply being descending order by average scores received by
+their candidates from the voters in their districts. 
+</p><blockquote>
+If we wanted to impose the additional demand that
+no district could have more than one top-up MP, though, <i>then</i> we would need linear programming,
+and indeed <i>integer</i> programming.  The latter might be too computationally difficult for feasibility.
+Linear programming is computationally efficient.  Integer programming is not and too-large integer programs 
+can be infeasible to solve.  (Anyhow quite likely such an integer-programming-based top up would not
+even be desirable, if the "targeted killing" threat were considered worse than the problem of
+occasionally having districts with several MPs.)
+</blockquote><p>
+Here is a list of advantages and disadvantages of the resulting system:
+</p><ol><li>
+Pro: Very simple, well known, method with historical experience of use
+(approximates the 
+&quot;<a href="https://en.wikipedia.org/wiki/Mixed-member_proportional_representation">MMP</a>&quot;
+systems currently used in Germany and 
+<a href="https://en.wikipedia.org/wiki/Electoral_system_of_New_Zealand">New Zealand</a>)
+with no linear or integer programming needed.
+</li><li>
+Con: needs explicit use of party names.  "Independent" candidates, therefore, are placed at a severe disadvantage,
+or anyhow treated unequally.    It is probably not a good thing if a country, by law, in the 
+definition of its voting system itself, disparages or forbids independent thinking.  In the USA during 1970-2015,
+approximately 1/3 of voters identified themselves as "Democratic," approximately 1/3 "Republican" and 
+approximately 1/3 Independent.  In 2015, Gallup reported that the precise count was
+43% Independent, 30% Democrat, 26% Republican:
+<br>
+<img src="GallupUSpartyIdent2015.png" alt="US party self-identification, 1988-2014" />
+<br>
+At the same time, <a href="http://www.ipsos-na.com/news-polls/pressrelease.aspx?id=6967">Ipsos</a>
+(on behalf of Global News) polled <i>Canadians</i>
+about how they would vote (if they could) in
+the <i>USA</i> presidential election, finding 55% Democrat, 28% Independent, 17% Republican.
+In Hong Kong, the majority of the legislative council consists of independents. 
+The Irish Dail (elected via a PR system defined in a way that nowhere mentions "parties")
+contained 10% independent MPs during 2011-2015. This contrasts with Poland, which had zero, since
+the Polish system basically makes it impossible to be an independent politician.
+Many countries over time have experienced a rise in party control, which has
+caused a decrease in the numbers of their independent politicians.  In the opinion of many,
+this trend has been bad.  So if we were to use the present section's
+"proportional representation" party-list top-up system to elect a parliament, 
+and if it resulted in fewer than 1% of MPs being independents (duplicating Canada's 2015 situation)
+&ndash; then that wouldn't <i>be</i>
+"proportional representation." It would be "an enormous distortion of PR."
+</li><li>
+Think that's unrealistic?
+The two most prominent countries using an MMP system to elect their parliaments are Germany
+(Bundestag) and New Zealand.  In the German Bundestag's first election in 1949, three
+MPs were independents.  In all elections after than (up to 2015) there have been zero.
+New Zealand installed its current MMP system in 1996.
+The last independent MP elected was Winston Peters (elected in 1993); up to 2015 there have been no others.
+It is possible to <b>repair</b> this perceived problem to some extent by 
+regarding all the independents as a pseudo-party (the "independents' party").
+Of course, many independents are quite dissimilar, so that such an agglomeration could be highly
+misleading.  But from the standpoint of just providing an extra boost to independents
+versus party candidates to try to repair inherent pro-party unfair biases, 
+this repair ought to work pretty well.
+</li><li>
+Con: it is possible to "game the system" tremendously by switching party affiliations.
+To stop that, New Zealand (which uses a top-up system of a similar nature) found it necessary
+to enact anti-switching laws making it <i>illegal</i> for politicians to switch parties.
+Such laws are not exactly conducive to independent thinking. (I am writing this in 2015.
+New Zealand has not had any Independent MPs for over 20 years.)
+</li><li>
+Con: the top-up MPs are "countrywide" and not "regional," and since some districts will
+have more than one MP due to top-ups, that could be viewed as unfair.  It is possible to
+<b>repair</b> this perceived problem to some extent by dividing the country into, say, 20 regions,
+and electing 1/20 of the parliament from
+each region (complete with its own top-ups and own party-lists inside each region).
+The regions conduct elections independently using the top-up system we've described (each region contains
+many districts inside) and then at the end all the regional subparliaments are merged to obtain
+the full countrywide parliament.
+</li><li>
+Con: In this kind of system, it can be strategic for voters <i>not</i> to vote
+for their favorite candidate.  Such votes can be "wasted" and it can be strategically better to lie
+so that you can elect a "lesser evil."
+<!--
+It can be more-strategic for a voter to <i>not vote at all</i> 
+than to cast an honest vote, i.e. by voting you make the situation worse in your view??
+-->
+</li></ol>
+
+<a name="RE"></a>
+<h3>References </h3>
+
+<p>
+Michel Balinski: 
+<a href="BalinskiFairMajGerry.pdf">Fair Majority Voting (or how to eliminate gerrymandering)</a>,
+American Mathematical Monthly 115,2 (Feb. 2008) 97-113.
+</p><p>
+Steven J. Brams &amp; Peter C. Fishburn:
+<a href="BramsFishburnPR1984.pdf">Proportional representation in variable-size legislatures</a>,
+Social Choice and Welfare 1,3 (Oct. 1984) 211-229.
+</p><p>
+George B. Dantzig: Linear programming and extensions,
+Princeton Univ. Press 1963.
+</p><p>
+A.J.Hoffman &amp; David Gale:
+Appendix within the paper
+I.Heller &amp; C.B.Tompkins:
+An Extension of a Theorem of Dantzig's, pp.247-254 in
+H.W.Kuhn &amp; A.W.Tucker eds.
+<i>Linear Inequalities and Related Systems</i>, 
+Annals of Mathematics Studies #38, Princeton University Press 1956.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

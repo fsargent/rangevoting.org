@@ -1,0 +1,128 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Avi Rubin on voting machine "independent testing authorities"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Avi Rubin rips the lid off the festering sewer of voting machine "independent testing authorities" </H2>
+
+<p><small>By <a href="http://AviRubin.com">Avi Rubin</a>, Johns Hopkins University,
+16 December 2005.
+This article originally appeared in 
+<a href="http://www.huffingtonpost.com/avi-rubin/the-dirty-little-secrets-_b_12354.html">The
+Huffington Post</a> and is reposted here with Rubin's permission.
+</small></p>
+
+<p>
+A couple of weeks ago, I spoke at a voting system testing summit hosted
+by the Secretary of State of California, Bruce McPherson. It was an
+event that included members of the US Election Assistance Commission,
+Secretaries of State, local election officials, vendors, voting machine
+testers, representatives from NIST, social scientists who study voting
+issues, and computer scientists, such as myself.
+</p><p>
+Most notable by their absence were Wyle Laboratories and Ciber Inc. Let me explain.
+</p><p>
+Before election officials can purchase voting systems, those systems
+need to be certified by a federally accredited lab called an
+<i>Independent Testing Authority</i> (ITA). There are three such labs in the
+US: Ciber, Wyle Labs, and Systest. These labs are tasked with testing
+any proposed voting systems against federal standards, in this case,
+the 2002 federal standards, soon to be replaced by the 2005 voluntary
+voting system guidelines (VVSG). You would think that these labs would
+be very interested in attending a summit such as this, and in fact,
+they were all invited. Only Systest showed up.
+</p><p>
+
+There were several overriding themes that emerged at the voting systems
+testing summit. Perhaps the most prevalent one was that the ITAs
+consistently decline to appear at these meetings. Why? Well the main
+reason is that they are fraught with conflict of interest and
+incompetence. In fact, had they shown up, they would have been raked
+over the coals by some of the voting system examiners that attended the
+summit. For instance, an examiner from Pennsylvania wanted to know how
+come so many systems that passed the ITA testing still had serious
+security and even operational flaws. The Systest representative, who
+had the misfortune of representing his entire industry alone, replied
+that they were only required to test against the standard. When pressed
+about whether or not the ITAs would fail a system if a serious flaw was
+found, the reply was that a memo would be written, but that the system
+would still pass. I couldn't believe it. The company that was tasked
+with certifying machines for elections in the United States would still
+pass them, even if a serious flaw was found, as long as the machine did
+not violate any aspects of the standard. Unbelievable.
+</p><p>
+
+Now, let me talk a bit about the conflict of interest. As a friend of
+mine put it, the ITAs are not independent and they have no authority.
+So Independent Testing Authority is a misnomer. Thankfully, NIST is
+going to change the name next year. Here's where it gets bad. The ITAs
+are hired by and paid by &ndash; the <i>vendors</i>. That is, when a vendor has a
+voting machine that they want certified, they find an ITA who is
+willing to certify the voting machine. Any memos about flaws that are
+discovered remain confidential. There is no requirement to disclose any
+problems that are found with the machines. In fact, the entire ITA
+report is considered proprietary information of the voting machine
+vendor. After all, they paid for it. This provides an incentive for
+ITAs to certify machines, to satisfy their clients.
+</p><p>
+
+Two years ago, my research team got our hands on the code that runs
+inside of Diebold's Accuvote machines. We performed a source code
+analysis and reported all kinds of serious security problems (see
+<a href="http://avirubin.com/vote/analysis/">http://avirubin.com/vote/analysis/</a>). 
+It was incredible to me that such
+machines were actually deployed and used in elections. Equally
+confounding was that a national testing lab, in this case Wyle Labs,
+actually certified this machine. Either they did not know the first
+thing about cryptography and security, or they did not look at the
+source code. In fact, according to the 2002 standards, they were not
+required to examine the code.
+</p><p>
+So, the current state of affairs is grim. The ITA model provides an
+incentive to certify bad systems, and clearly such systems are being
+certified all the time. When the ITAs find a serious problem, it is
+relayed, confidentially, to the vendor, and the only thing that the
+public ever learns is that a machine was certified. If a machine is not
+certified, nobody ever learns about it. The ITAs are aware enough of
+how broken the system is that they mostly hide from public events where
+they might be taken to task. Here's how I would reform the system.
+First off, I would have all the vendors pay a tax to NIST. NIST would
+then hire real independent testers to examine any voting machine
+proposed by a vendor. The testers would be paid more for finding
+problems with the machines than for certifying them. Thus, you can be
+sure that the testers tried every way of failing a machine before
+passing it. Everything done by the testers, every test performed, as
+well as the result, would be public. Occasionally, to keep the testers
+on their toes, NIST would throw a machine at the testers with a known
+serious problem, just to see if the testers could find it, and testers
+who did not find the problem would be penalized. The whole process
+would be open and transparent to the public. I doubt systems such as
+the 2003 Diebold Accuvote would have ever made it to a polling station
+in that model.
+</p><p>
+I learned a lot at the voting system testing summit, and I applaud
+Secretary McPherson for the dialogue that he opened up. I sincerely
+hope that in such events in the future, there will be no stakeholders
+who are afraid or ashamed to show their faces.
+</p>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

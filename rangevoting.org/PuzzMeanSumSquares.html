@@ -1,0 +1,69 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle ??? - The point with least sum of squared distances
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Puzzle #??: The point with least sum of <i>squared</i> distances
+</H2>
+
+<p>
+Given N point-sites in a Euclidean space, suppose we wish to find the point
+X (which is not necessarily a site) whose sum of <i>squared</i> distances to the N sites
+is minimal.
+</p><ol type="A"><li>
+Show that X is the <i>mean</i> of the N sites.
+</li><li>
+More generally if we wish to minimize the <i>weighted</i> sum of the 
+squared distances to the N sites where each site <i>k</i> is associated with
+a pre-specified positive weight w<sub>k</sub>, then
+show that X is the <i>weighted mean</i> (using the same weights) of the N sites.
+</li>
+</ol>
+
+<h2> Answers </h2>
+<p><b>a.</b>
+The squared distance function x<sup>2</sup>+y<sup>2</sup>+...+z<sup>2</sup>
+obviously is strictly concave-&cup; hence the sum of 
+squared distances to the sites &ndash; call it G(X) &ndash; is strictly
+concave-&cup; (and goes to &infin; when |X|&rarr;&infin;)
+hence has a unique minimum.
+This minimum occurs when the partial derivatives of G(X) with respect to each of
+its coordinates, all are 0.
+</p><center>
+G(X) = &sum;<sub>1&le;k&le;N</sub> (X-s<sub>k</sub>)<sup>2</sup>
+</center><p>
+Hence G(X)'s partial derivative with respect to (say) the y-coordinate of the
+vector X is
+</p><center>
+2 &sum;<sub>1&le;k&le;N</sub> (y - t<sub>k</sub>)
+</center><p>
+where t<sub>k</sub> denotes the y-coordinate of 
+s<sub>k</sub>.
+Setting this to 0 we find 
+</p><center>
+y = N<sup>-1</sup> &sum;<sub>1&le;k&le;N</sub> t<sub>k</sub>
+</center><p>
+which is the arithmetic mean of the  t<sub>k</sub>.  The discussion is the same for
+every other coordinate.   We conclude X must be the coordinatewise arithmetic mean of the
+sites.
+</p><p><b>b.</b>
+If the weights are positive integers then the same proof goes through 
+after simply making w<sub>k</sub> copies of site k.
+If they are positive rationals this is still valid by scaling by common denominator.
+If they are positive reals it still is valid by continuity and the fact the rationals 
+are everywhere dense within the reals.
+(Or, you could just redo the approach of the preceding proof but introducing weights 
+into all expressions; that also works.)
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+

@@ -1,0 +1,194 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Schulze's beatpath method - a complicated Condorcet voting system
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> (Partial) Explanation of Schulze "beatpath voting," a complicated Condorcet-type
+voting system. </H2>
+
+<p>
+[Markus Schulze's papers
+on his method may be found 
+<a href="http://de.wikipedia.org/wiki/Schulze-Methode">here</a>.
+His method was described in print in
+M.Schulze:
+A new monotonic and clone-independent single-winner election method,
+<a href="http://www.mcdougall.org.uk/VM/INDEX.HTM">Voting Matters</a> 17
+(2003) 9-19.  
+A short explanation of why Schulze invented it is <a href="SchulzeExplan.html">here</a>.]
+</p>
+
+<H3> Preface and disclaimer </H3>
+<p>
+In some sense the range versus Condorcet debate is a red herring
+since Condorcet methods have, I think, no chance of actual adoption
+by governments. And range does have a chance. So for practical purposes,
+forget Condorcet. 
+Why do I say that?
+</p>
+
+<p>
+Well, in our real-world-voter study of range &amp; approval: USA voters
+by statistically clear margins, told us they wanted to stay with plurality and
+<i>not</i> switch to either range or approval voting. This makes it sound
+(correctly) like range will have a hard time getting adopted!
+Now as far as I and the other pollsters could imperfectly see from listening to
+them,
+the top reason the USA voters felt this way, was complexity. They felt range
+and
+approval were too complicated. But range voting is actually quite simple.
+From this my coauthor Doug Greene concluded that
+discussing methods significantly <i>more</i> complicated than range was
+just "mental masturbation" with no hope of actual political success.
+</p>
+
+<p>
+That to me is a big reason to go with range: it seems to me to be
+by far the <i>simplest</i> method out there that much improves upon
+plurality voting. 
+Approval voting is even simpler than range (though not as
+simple
+as plurality). So that may be a reason to go with approval. However,
+my feeling is that
+</p>
+<ol>
+<li>
+despite the simplicity advantage of approval, USA third parties
+would be foolish to support it because range experimentally gives them <i>hugely</i>
+more votes than approval.
+</li>
+<li>
+if we cannot get &ndash; at the very least &ndash; the USA third parties to support a
+method,
+there is no chance to get it adopted!
+</li>
+</ol>
+So it seems to me range is clearly more likely to be adopted by the USA because
+it, but not approval, has a good hope of getting at least a mildly large hard-core 
+support base.
+In fact a key part of CRV's tactical plan is exactly to try to mobilize the third parties.
+</p>
+
+<p>
+So it seems to me that from a practical point of view of maximizing our chances
+(as voting reform advocates) of success, there is only one reasonable
+choice: range voting. Not approval or IRV (not good enough to third parties)
+and not advanced Condorcet (too complicated for USA voters to accept).
+</p>
+
+<p>
+So while I want the mental masturbation
+(that was a <i>joke</i>! I want the research and debate and education about
+all voting methods to continue, Ok!)
+to continue unabated, I think we have to
+unify
+as a practical matter behind range voting. And that is why I created both the
+<a href="http://groups.yahoo.com/group/RangeVoting">range voting list</a>
+and the CRV; I meanwhile recommend continuing the 
+study and endless debate over all voting methods on 
+<a href="http://wiki.electorama.com/wiki/Election-methods_mailing_list">Electorama</a>.
+I encourage all Electoramers who feel similarly to also join the CRV. As some have
+already found, we also have interesting discussions here on CRV!
+</p>
+
+
+<H3> Now: Schulze's beatpaths method </H3>
+<p>
+To illustrate what I mean about advanced Condorcet methods being "complicated",
+let me now describe a Schulze-beatpaths method, which many favor, and in
+fact has been adopted by Debian for votes on Linux development.
+We will include
+the wv and equality-allowing enhancements, which both Tarr and I consider
+essential. Hopefully I will not make any severe errors in exposition.
+</p>
+
+<p>
+<b>(1)</b> "votes": are orderings of the candidates of the form
+A>B>C=D>E (equalities are permitted). 
+All candidates must be ordered
+and none omitted (if any are omitted, the system either refuses to
+accept your vote, or tells you it will assume all the unlisted
+candidates are ranked coequal last &ndash; either way you have no
+way to express ignorance about any candidate).
+</p>
+
+<p>
+<b>(2)</b> For each pair of candidates (a,b) we compute the "winning vote count"
+for a over b, which is the number of voters whose vote said a>b,
+assuming this number exceeds the count for b>a.
+<small>It would also be possible to base the method on 
+&quot;<a href="WinningVotes.html">margins</a>&quot; but Schulze himself does
+not recommend that. The two are equivalent if there are no candidate-equalities
+in any votes.</small>
+The result is a
+"directed graph" with N vertices where each vertex corresponds to
+one of the N candidates.
+For each pair (a,b) of candidates
+an arrow is drawn pointing from the loser (call it b) to the winner (here a)
+of that pairwise sub-election, and the arrow is labeled
+with the numerical value of the winning-vote count we just described.
+</p>
+
+<p>
+<b>(3)</b> Now, in this directed graph, a "beatpath" is a directed path
+of edges, always walking in the direction of an arrow, which
+leads from some candidate L to some other W. 
+The "strength"
+of this beatpath is the minimum value of the numerical labels on its arrows.
+Non-obviously, it is possible to compute all the beatpath strengths in polynomial time
+by a modification, invented by Schulze, of R.W.Floyd's dynamic programming algorithm for
+digraph all-shortest-paths.
+</p>
+
+<p>
+<b>(4)</b> If the strongest path from L to W, is stronger than, or at least as strong
+as, the strongest path from W to L, and if this is <i>simultaneously</i> true for <i>every</i>
+L, then
+W is a "Schulze winner." Schulze proved the theorem that such a W always
+exists (at least using "margins"; I am confused re the "winning-votes" enhancement).
+</p>
+
+<p>
+<b>(5)</b> Usually (i.e. in the absence of unlikely "ties"), 
+W will be unique, but ties for winner are possible.
+In that case, Schulze advocates breaking the ties by a rather complicated
+procedure which I thoughtfully will spare you from having to know!  (If I
+described it, the length of this description would roughly double.)
+</p>
+
+<p>
+<b>(6)</b> In this procedure, it perhaps is possible or desirable to further enhance it
+by permitting "partial-order-type" votes so voters can express
+ignorance/no-opinion.
+Some such votes would be illegal since they contain a "preference cycle" and
+hence make no logical sense.
+They would have to be detected and rejected.
+That would add considerable additional complexity to the algorithm.
+</p>
+
+<p>
+So. OK, what do you think? Does this method strike you
+as simple enough, compared to range voting, to allow its adoption by the public?
+Holy cow. I think it has some beautiful ideas, but... it's not going to fly with Joe Public.
+</p>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

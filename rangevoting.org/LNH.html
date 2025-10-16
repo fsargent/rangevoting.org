@@ -1,0 +1,467 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Later no harm
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> "Later no harm" &ndash; an actually-silly (&amp; massively overhyped by "FairVote")
+ voting system criterion </H2>
+
+<p>
+In July 2011, FairVote posted a <a href="FairVoteLNHnonsense.html">webpage</a>
+that began
+</p><blockquote>
+<a href="Approval.html">Approval</a> voting 
+is a method of voting to elect single winners that has adherents among some voting theorists, 
+but is unworkable in contested elections in which voters have a stake in the outcome.
+Once aware of how approval voting works, strategic voters will always earn a 
+significant advantage over less informed voters. This problem with strategic voting 
+far outweighs any other factor when evaluating the potential use of approval voting in 
+governmental elections. 
+<br> &nbsp;&nbsp;&nbsp;
+Other methods that should not be used in meaningfully contested elections include range voting, 
+score voting, the Borda Count and Bucklin voting. They all share approval voting's practical 
+flaw of not allowing voters to support a second choice without potentially causing the 
+defeat of their first choice. Such voting methods have their potential value, 
+but only in elections where voters have no particular stake in the outcome. 
+<br> &nbsp;&nbsp;&nbsp;
+The only voting methods that should be weighed seriously for governmental elections are
+methods that do not violate this "later-no-harm" criterion (plurality voting and forms of 
+runoff elections and <a href="rangeVirv.html">instant runoff</a>
+voting) or only do so indirectly (such as Condorcet 
+voting methods).
+</blockquote>
+<p>
+and then it got worse from there.  
+Well, first of all, what <i>is</i> this "later-no-harm" criterion that they consider 
+to be so crucial and 
+incredibly pre-eminent among voting system <a href="CompChart.html">criteria</a>?
+Well, FairVote's page (and also their many-page-long so-called "analysis" it cited)
+did not actually formally define it (!!), but since we're trying to 
+be better than them,  we actually shall:
+</p><blockquote>
+<b>The Later-No-Harm criterion (LNH):</b>
+In a voting method based on rank-order ballots (i.e. each ballot is a ranking of the candidates 
+in order from most to least liked), a voter, by honestly stating her second-choice candidate,
+should never be able to "harm" the candidate she wrote as her top preference.
+Here "harm" means "cause to lose (or prevent from outright winning) the election."
+<br> 
+<small>
+[Warning: This wording by me has intentionally been based on FairVote's.  
+But an actual published paper
+by Douglas R. Woodall (1994)
+<a href="WoodallP5.html">Properties of Preferential Election Rules</a>
+defining over 30 voting system criteria, many new,
+stated the somewhat stronger and different definition
+"Adding a later preference to a rank-order ballot should not harm any candidate already listed,"
+which was repeated in Woodall's 1997 <a href="Woodall97.pdf">paper</a> in Discrete Applied Maths.
+But Woodall felt it necessary to note
+that a referee had described LNH as "unpalatable" and that Michael Dummett
+had called it  "quite unreasonable." 
+LNH and "House monotonicity" were the only criteria Woodall felt it necessary to attach 
+such a health and safety warning to.
+Also, Woodall 1997's theorem 2 proved no Condorcet method
+could obey LNH, which contradicts the assertion by FairVote that it does so "indirectly" 
+&ndash; whatever that was supposed to mean.]
+</small>
+<br> &nbsp;&nbsp;&nbsp;
+But what about voting methods whose ballots are <i>not</i> rank-orderings?  
+For example, with <a href="https://rangevoting.org/RangeVoting.thml">score</a> voting, each ballot gives a numerical 
+score on some fixed scale (say from 0 to 9) to each candidate 
+(greater scores for better candidates).  Presumably, LNH then would mean "by honestly scoring
+somebody with the second highest score used on that ballot, a voter should be unable to
+harm the candidate she gave her greatest score to."  Unfortunately it then would remain
+unclear just what LNH should mean if, say, she scored more than one candidate co-equal top.
+Should doing so be unable to "harm" any of them?  FairVote never said, and as we've said they
+did not even try to define LNH.  And this equality issue gets rather relevant with
+<a href="Approval.html">approval</a> voting, because it is just score voting where
+the <i>only</i> permitted scores are 0 and 1 ("disapprove" and "approve").
+Obviously, an approval voter in an election with &ge;3 candidates is <i>forced</i> to 
+treat some as equal (which is a disadvantage of approval versus score voting).
+</blockquote><p>
+And with <a href="Plurality.html">plurality</a> voting
+(unfortunately the most-used voting method in the world at present) your ballot 
+is "name one candidate, then shut up" so it is <i>impossible</i> for a voter 
+even to <i>state</i> her "second choice"... except actually it <i>is</i> possible,
+but if you try, then your ballot is discarded as "spoiled."
+FairVote therefore (quote above) considers
+Plurality to satisfy LNH, but obviously it really does not, because: 
+if your plurality-vote for X caused X to win,
+but then you indicated a second choice Y, that would cause your ballot to be 
+discarded, which would "harm" X by causing him no longer to be an outright winner.
+</p><p>
+So now that we have at least some idea what LNH is: which voting methods obey or disobey it?
+FairVote is correct that Instant Runoff (IRV) obeys LNH and that score and Borda disobey LNH.
+</p><p>
+What about approval voting?  That's debatable.  A voter by approving several candidates, thus
+regarding them as "equal," can only "harm" approved-candidate X, by "helping" (i.e. electing)
+also-approved candidate Y &ndash;
+which is fine with that voter if X and Y were truly equal in her view!
+Of course in reality, most voters do <i>not</i> really regard candidates X and Y as equal; they 
+simply were forced by the rules of approval voting to pretend they were equal.
+And a voter who honestly prefers X over Y, can by approving both X and Y, harm X!
+She could avoid that harm by disapproving Y, but in that case she could still be 
+in trouble, because then she might be (say) disapproving both Y and Z
+(and she hates Z), and
+she by the foolish act of disapproving Y, might cause Z to win!  So with approval 
+voting in a &ge;3-candidate election, every ballot must take such risks.  They are unavoidable.
+If you approve too many candidates you risk electing one of the worse among them.
+If, on the other hand, you <i>dis</i>approve 
+too many candidates, you risk electing one of the worse among <i>them</i>.
+</p><p>
+A good compromise, which tends to minimize such risks, is "approve
+all the candidates you consider better than the expected value of the winner."
+You of course do not know who the winner will be, ahead of time &ndash; you can only make
+probabilistic <i>guesses</i> about everybody's winning chances &ndash;
+which is why I am using the word "expected."  Any approval-voter who follows this strategy will
+never help anybody to win whose quality is below expectation; and never will harm
+anybody whose quality (in her judgment) lies above expectation.  Therefore, by voting
+in this way, her vote will <i>always</i> increase the expected quality (as reckoned by her)
+of the winner (versus if she had not voted at all).
+</p><p>
+Similarly, with score voting, a voter by using the approval-voting strategy we just 
+described (i.e. give the maximum-allowed score to each candidate you consider above 
+expectation, and the minimum-allowed score to each candidate you consider below expectation) can
+guarantee that her vote will increase the expected value of the winner. Further,
+with score voting, by casting an honestly-ordered vote, you <i>never</i> can
+cause a worse election result than you would have gotten by not voting at all.
+</p><p>
+Those desirable properties, sadly, are not enjoyed by IRV.
+More precisely, a voter, by voting
+her honest rank-ordering in IRV, can cause the election result to 
+<a href="IRVpartic.html">worsen</a> by
+her reckoning. She in such cases would have been better off casting a dishonest 
+rank-ordering, or not voting at all. 
+</p><p>
+But 
+<a href="FairVoteLNHnonsense.html">FairVote</a> ignores all that, plus also pretends
+that the most strategic way to approval-vote is to approve exactly <i>one</i> candidate,
+and they further pretend that once approval voters are 
+"aware" of this brilliant strategy that will give them a
+"significant advantage over less informed voters."  That all was usually wrong advice!  Usually,
+single-approval votes are <a href="Approval.html#pairsarg">not</a> 
+the best strategy, so FairVote is giving its readers exactly the
+<i>wrong</i> strategic advice, then pretending that advice was a hidden advantageous secret
+only the FairVote geniuses knew. 
+</p><p>
+(<a href="RVstrat3.html">Comparison</a> of
+various score &amp; approval voting strategies indicating the "mean based thresholding" 
+strategy was the best one tried in all experiments with &ge;30 other voters; and "scaled honesty"
+appears to be at least 2/3 as good as the best score-voting strategy in every experiment
+tried so far.)
+</p>
+
+<h2>Why is LNH a silly criterion?</h2>
+<p>
+<b>1.</b>
+ Suppose Joe wins an election.  Don't you agree that, if Mary has
+enough support, then Mary should have won?  Don't you agree that, if
+Mary gets "Mary is my 2nd choice" votes from a lot of voters, that
+ought to mean Mary is more-worthy of thus-winning?  In other
+words, it is desirable for a voter to be allowed to indicate that she
+also likes Mary, even if she likes Joe more.   
+And it is desirable that this should
+sometimes cause the election of Mary, not Joe, because that  extra
+Mary-support tips the balance.
+   So, objectively better election results are obtained, at least with
+honest voting, in LNH-<i>dis</i>obeying voting systems than in LNH-obeying
+voting systems.  I.e. objectively,
+LNH is <i>not even a desirable property</i> with honest voters unlike (say)
+<a href="Monotone.html">monotonicity</a>.
+</p><p>
+<b>2.</b>
+ Now, one might argue that LNH <i>is</i> desirable with strategic=dishonest
+voters.  Because
+LNH hopefully will encourage the strategists to provide honest second
+choices.  Without
+LNH, they'd lie more. 
+</p><p>
+That's a sensible idea.  But if that is your view, and your
+goal is to motivate
+voters to provide honest 2nd choices, then it is better instead to use as your
+criterion, the straightforward "with this voting method, providing an
+honest 2nd choice, is never a
+strategic mistake, i.e. never forces the election result to worsen
+in that voter's perspective."   <i>That</i> would be exactly the criterion that
+<i>truly</i> would motivate honest 2nd choices.  Call it the "HSC criterion"
+(motivates Honest Second Choices). But since instant runoff voting (IRV) 
+<a href="rangeVirv.html#BramsEx">disobeys</a> that
+superior criterion, the IRV propagandists at FairVote have always hidden
+this issue. Instead, they very carefully word their LNH criterion, which we
+now see is the <i>wrong</i> criterion for their very own declared goal, so
+that IRV obeys it.  Then they <i>act</i> as though LNH=HSC, i.e. act as 
+though LNH were the correct criterion, hoping nobody notices this sleight of hand.
+And then they take
+the deception even further &ndash; in the FairVote web page on this
+(<a href="FairVoteLNHnonsense.html">local copy</a>) they actually
+declared that this wrong LNH criterion was actually <i>the</i> pre-eminent
+criterion which should "far outweigh" all others in importance for judging 
+voting systems &ndash;
+and if you disobey it, your voting method is doomed and should never even be
+considered.  
+</p><p>
+This is absurd.
+</p><p>
+<b>3.</b>
+ And as long as we are worried about motivating honest 2nd choices,
+why aren't we worried about honest <i>first</i> choices even more?  The "HF
+criterion" would be, say,
+"with this voting method, honestly scoring your 1st choice candidate
+with the maximum allowed score (or top ranking), is never a
+strategic mistake, i.e. never forces the election result to worsen
+from that voter's perspective."  Well, IRV <a href="IRV1519.html">disobeys</a> HF.
+(So do <a href="BordaExec.html">Borda</a>, <a href="Plurality.html">plurality</a>, 
+and every <a href="VenzkePf.html">Condorcet</a> method.)
+Range and approval both obey HF.
+It seems intuitively clear HF is more important than HSC, which in turn is
+more important than LNH.  So the very chain of reasoning FairVote is using,
+when redone correctly, actually leads us to support <a href="Approval.html">approval</a>
+&amp; <a href="RangeVoting.html">score</a> voting,
+and <i>not</i> support IRV &ndash; <i>exactly the opposite</i> of the
+conclusion FairVote drew!
+</p><p>
+<b>4.</b>
+ All that was theory.  What about practice?
+Well, in practice about 85% of Australian voters rank one major party top,
+other bottom or 2nd to bottom, which is clear massive strategic
+exaggeration voting behavior, and it causes major harm to Australia, making
+it essentially impossible for a 3rd party to win an IRV seat.  In 3
+consecutive house
+elections (150 IRV seats each) in 
+<a href="Aus01.txt">2001</a>, 
+<a href="Aus04.txt">2004</a>, 
+<a href="Aus07.html">2007</a>, 
+their third parties won zero seats.  In the
+4th (2010), they finally won one seat &ndash; the Green MP Adam Bandt.
+</p><blockquote>
+<small>
+Aside: How did this miracle occur? 
+Chip LeGrand: "Greens celebrate historic lower house victory,", <i>The Australian</i> 21 Aug. 2010
+discusses this 
+<a href="http://www.abc.net.au/elections/federal/2010/guide/melb.htm">election</a>
+in the "Melbourne inner city" district.
+Bandt won with 56.1% of the final-round votes versus Cath Bowtell
+(Labor party) who had 43.9%.  In the first IRV round, the top
+contenders were
+Bandt(Green) 36.2%, Bowtell(Labour) 38.1%, and Simon Olsen (Liberal) 21.0%, plus 4 
+candidates from other parties 
+("Family First", "Sex", "Democrats", and "Secular")
+who in aggregate got 4.5%.  Australia's top two
+parties are the Liberal/Nationals and Labour.  The Green party is a "third" party.
+This was the first time a Green had ever won a House seat in a general election in
+Australian history &ndash; but they had won one once before in a special election in which
+one of the major parties did not run anybody &ndash;
+and it happened because Olsen's voters almost
+unanimously preferred Bandt over Bowtell.
+So in this case IRV seems to have worked exactly as its proponents would hope.
+</small>
+</blockquote><p>
+So strategic voting really happens in
+IRV, at a  massive rate of occurrence, and it causes huge damaging effects.
+</p><p>
+But why?  Wasn't FairVote claiming those Australian voters, motivated by 
+the wonderful wonderful essential pre-eminent LNH property of their voting system,
+would vote honestly, not strategically?  Whatever is the matter with them?
+</p><p>
+I mean, if Australians supported
+the Greens, why not rank Greens top, and then honestly as their 2nd
+choice, name one of the two major
+parties, and do this in the full confidence this 2nd choice will in no
+way hurt their Green 1st choice?
+</p><p>
+  Well, experimentally, they don't.  Experimental fact is, that about 85% of
+Australians vote the exaggerated way I described with the 2 major parties artificially
+shoved to top &amp; bottom.  So any hope the LNH criterion will prevent
+strategic voting, is just garbage in the real world.  And it is a <i>theorem</i>
+that with IRV, if over 75% of voters vote for one of the two major parties top,
+then it is <i>mathematically impossible</i> for any third party to win a seat.
+Ever.
+</p><p>
+And this all is not some mere quibble.  
+This is approximately the most massive refutation one could possibly have hoped for.
+</p><p>
+So: All this LNH nonsense spewed by FairVote is both theoretically <i>and</i>
+experimentally bankrupt.
+</p>
+<h2> Going further </h2>
+<p>
+<b>5.</b>
+But let us not completely waste our time.  Let's try to turn this investigation
+into something useful, not merely yet another demonstration of the perpetual lies
+"FairVote" continually spews as their standard modus operandi.
+</p><p>
+First of all, we just said HF is a good criterion.  And score and approval voting
+both obey it, while
+such other voting methods as IRV, Borda, Plurality, and Condorcet do not.
+</p><p>
+Second, we showed that if you like the LNH criterion, you obviously must
+like the HSC criterion even more, although 
+presumably not as much as you must like HF.
+So, <b>Natural question:</b> 
+Can we invent a voting method obeying <i>both</i> HF <i>and</i> HSC?
+</p><p>
+<b>Answer.</b>
+No deterministic voting system based on rank-order ballots is possible
+that obeys both HF and HSC, except for a "dictatorship" (i.e. one special voter, 
+the 'dictator,' decides all election results all by himself).
+Proof: this is a restatement of the famous
+<a href="GibbSat.html">Gibbard-Satterthwaite theorem</a>
+in the case of 3-candidate elections.
+</p><blockquote>
+Jan Kok described this as:
+"(For ranked-order-ballot deterministic non-dictator votng methods)
+Later-no-harm implies earlier-yes-harm"!
+<br>&nbsp;&nbsp;&nbsp;
+In the 2009 Burlington, VT mayoral <a href="Burlington.html">IRV election</a>, 
+if you voted for the Republican as your favorite and you also preferred the Democrat 
+over the Progressive, you shot yourself in the foot. You should have dishonestly voted for the 
+Democrat as your first choice. That would have allowed the Democrat to win, instead 
+of the Progressive who actually won.
+<br>&nbsp;&nbsp;&nbsp;
+In other words, voting for your favorite as your first choice can actually <i>harm</i> you.
+</blockquote><p>
+(<a href="WoodallP5.html">Woodall</a>
+also proved some statements of the form "later no harm forces various kinds of
+non-<a href="Monotone.html">monotonicity</a>.")
+</p><p>
+<b>6.</b>
+<i>But</i> the key phrase in that theorem statement was "based on rank-order ballots."
+<a href="RangeVoting.html">Score</a> voting is <i>not</i> based on rank-ordering the
+candidates as ballots. 
+It is based on numerically <i>scoring</i>  the candidates, as your ballot.
+Could range voting thus manage to evade the
+Gibbard-Satterthwaite theorem to achieve the holy grail of satisfying 
+<i>both</i> HF and HSC in 3-candidate elections?  Even though neither IRV, nor any other 
+rank-order ballot voting system, can?
+</p><p>
+The answer to that follow-up question is: "partially."
+With score voting, honestly giving your true favorite candidate, the maximum score, is 
+<i>always</i> strategic.  It can <i>never</i> worsen the election result from your perspective.
+And also: With score voting, honestly giving the candidate you truly consider the worst,
+the <i>min</i>imum score, also is 
+always strategic and can never worsen the election result from your perspective.
+So once you as a voter in a 3-candidate election
+have done those two things, there is only one task remaining: 
+to determine your score
+for the candidate you honestly view as the middle one (i.e, your honest
+second choice).  Choose whatever the strategically best score is (and if more than one
+such score exists, then, e.g, choose the "most honest" within this strategically-best set).
+So what have we now done?  We now have voted, using score voting, in a maximally strategic
+way, and at the same time, in a "<i>semi</i>-honest" way &ndash; meaning
+for every candidate pair (A,B) such that we honestly think A&gt;B,
+we have stated scores on our ballot obeying A&ge;B and we've never <i>dis</i>honestly
+scored as though A&lt;B.     [Also, for every (A,B) such that you honestly think A=B,
+you can strategically score-vote fully honestly, i.e. such that your scores for A and B are equal.]
+</p><p>
+So with score voting (and this also works for approval voting)
+in 3-choice elections, we've just <i>proven</i> it always is
+possible to vote "semi-honestly."  
+Indeed, with score voting, but not approval voting,
+we actually can go a bit further:
+with probability=1 if the other score-voters
+include some continuum randomness (e.g. if at least one voter someplace scores randomly-uniformly
+within the allowed-scores interval), then
+it always is possible to score-vote <i>fully</i> honestly,
+in the sense your scores obey the same &lt;, =, or &gt; relations as your honest opinion.
+</p><p>
+But the 
+<a href="GibbSat.html">Gibbard-Satterthwaite theorem</a>
+shows that <i>no</i> 
+rank-order ballot voting method &ndash; not IRV, not Borda, not Condorcet, 
+not any of the infinite number of rank-order voting methods that nobody has
+even invented yet &ndash; can say that, because for all of them, that feat is impossible.
+With IRV or any such voting method, there are elections in which the <i>only</i> way for you to
+get a good election result, is to flat-out 
+<a href="IRV1519.html">lie</a> by pretending A&gt;B 
+when your honest  belief about
+that candidate pair is A&lt;B.
+</p><p>
+<small>
+Think such "forced to lie" scenarios are uncommon?
+Sorry, the Friedgut-Kalai-Nisan 2008
+<a href="mani-focs.pdf">quantitative</a>
+<a href="FKKN.pdf">version</a>
+of the
+Gibbard-Satterthwaite theorem would appear to kill that hope...
+and if we are only taking about IRV, then
+our <a href="IrvParadoxProbabilities.html">computer simulations</a> definitely kill it.
+</small>
+</p><p>
+So, things are really looking quite bad for FairVote's so-called argument "against"
+score voting and "for" IRV at this point.
+<!--  &ndash; IRV forces you to vote dishonestly. -->
+</p><p>
+And it's about to get even worse.  
+Now, let's forget about 3-candidate elections; let's go to C-candidate
+elections for <i>any</i> C&ge;3.  In that case, I claim this 
+<b>theorem:</b> with score or approval voting
+(either work) if you knew everybody else's vote, you always could select a vote that would  
+simultaneously be:
+</p><ol type="i">
+<li>
+maximally strategic (assuring the best possible election result in your view), and
+</li><li>
+semi-honest, i.e. for any candidate-pair (A,B), if you honestly consider A&gt;B your vote
+features scores A&ge;B; 
+while if you honestly consider A=B then your vote's scores obey A=B.
+</li><li>
+With score (but now not with approval) voting we can further claim that
+with probability=1 if the other score-voters
+include some continuum randomness, then it always is possible to score-vote <i>fully</i> honestly,
+in the sense your scores obey the same &lt;, =, or &gt; relations as your honest opinion.
+</li><li>
+No non-dictatorial deterministic rank-order-ballot voting method (including, of course, IRV) 
+can achieve (i) and (ii)  simultaneously even in the simplest case 
+C=3 of 3-candidate elections, and even for voters who knew the votes from everybody else.
+</li></ol>
+<p>
+<b>Proof:</b>
+(iv) is just the 
+<a href="GibbSat.html">Gibbard-Satterthwaite</a> impossibility theorem.
+And (i) &amp; (ii) are accomplished thus: find the <i>b</i>est candidate 
+(in your reckoning &ndash; call him B)
+whom your score-vote could elect.  Give B the maximum score.  Give all better candidates
+that same max score, and give all worse candidates the <i>min</i>imum score.
+Now, to show (iii), perturb all C scores by amounts smaller than &epsilon; in such a way 
+that the ordering
+becomes fully honest and all candidates in the upper, and all in the lower group,
+are each equi-spaced.   
+With probability=1 there will exist some &epsilon; small enough
+that this vote will still elect B.
+For example, any &epsilon; less than (2C)<sup>-1</sup> times the minimum spacing
+between the candidates' summed-scores from all the other voters, will work.
+</p>
+<h2>Bottom line</h2>
+<p>
+So approval voting, and even better score voting, both accomplish precisely 
+the dishonesty-discouraging feats FairVote claimed to
+want (once their idiocy and deceptions are corrected), and 
+do so not only to a greater extent than IRV does,
+but also than <i>any</i> rank-order-ballot voting method can.
+It is mind-boggling that FairVote claims to use all this as an argument <i>against</i> 
+Approval and Score voting and <i>for</i> IRV.  
+</p><p>
+More generally, FairVote, over and over, tries
+to take the strategy of Appealing to the Idiot.  They come up with arguments that sound 
+naively appealing to people who've never thought about voting systems before, then push
+them whether or not they have any actual validity, and no matter how absurd they really are,
+and apparently never correcting themselves even after years of actual experts pointing
+their nonsense out.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

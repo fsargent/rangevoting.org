@@ -1,0 +1,1257 @@
+<html>
+<head>
+<title>
+RangeVoting.org - criticism of the voting-related work of Donald G. Saari
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Prof. Donald G. Saari and his (sometimes wrong or wrongheaded) statements about voting </H1>
+
+<p>
+<b>Donald G. Saari</b> is a mathematician.
+<!-- used to be a Northwestern University in Chicago, later UC Irvine in CA. -->
+Remarkably, "Saari favors a [voting] method called the 
+<a href="BordaExec.html">Borda</a> count."
+(That was a quote from
+Dana Mackenzie [<i>Discover Magazine</i> November 2000].)
+I say "remarkably" because Saari is almost the only voting expert in the world
+who doesn't think Borda is a very bad voting method.  But Saari is 
+a rather prolific and publicity-hungry one, and thus, unfortunately,
+has an outsized impact on the popular mind.
+</p>
+<p>
+<b>Borda is worse than range voting</b> in <a href="BordaExec.html">every</a>
+way I can think of: less
+<a href="SmittyExp.html">expressive</a>, 
+worse for honest voters, worse for strategic voters, extremely 
+<a href="rangeVborda.html#bossbulb">sensitive</a>
+to voter-strategy, vulnerable to candidate 
+<a href="CandCloning.html">cloning</a>, more complicated
+both for the voter and for voting <a href="CondTot.html">machines</a>, 
+severely fails <a href="rangeVborda.html#JohnsonEx">irrelevant alternatives</a>,
+and <a href="IncentToExagg.html">incentivizes</a> "favorite-betrayal."
+</p>
+<p>
+So what underlies Saari's view?
+We now go though various public statements by Saari, showing how they are wrong, miss the point,
+and/or work at least as well (or better) as a pro-range-voting argument 
+than as a pro-Borda argument.
+We conclude at the end by showing there was one unified wrongheaded theme in all Saari's work.
+</p>
+
+<h2> Saari's views about <i>symmetry</i> &ndash; repeatedly 
+failing to point out that range voting obeys all the same symmetries Borda obeys:  </h2>
+<p>
+<b>Dana Mackenzie, <i>SIAM News</i> (21 October 2000) article on Don Saari's voting
+accomplishments:</b>
+"According to Saari's analysis... If you think that the outcome for a profile with 
+cyclic symmetry should be a tie 
+(and everyone questioned by Saari has replied that it should), 
+then you should choose a voting method based on 
+rankings &ndash; in any such system, the candidates in a cyclic profile have the same 
+number of firsts, 
+seconds, and so forth. If you believe that the result for a profile with reversal symmetry 
+should be a tie, then you should choose a voting method based on pairwise comparisons, 
+like Condorcet's criterion.
+And if you think <i>both</i> of the above profiles should be ties? In that case you 
+have one choice; 
+the only voting method that can be expressed both as a ranking method and as a 
+pairwise-competition method:
+the Borda count. Saari's proof of this fact is a tour de force of linear algebra..."
+</P>
+
+<p>
+<b>Saari again saying the same thing (Dana Mackenzie, <i>Discover Magazine</i> Nov 2000):</b>
+"The reason voting procedures give us paradoxes and unwanted outcomes is that they do not 
+respect the symmetries of data that give us ties," 
+Saari says. Is there any system that would consistently declare the vote of 
+Alice, Betty, and Cheryl a tie, and would do the same for
+Andrew and Bob? "Only one procedure does that," Saari says. "The Borda count." 
+To prove his point, he published two 
+50-page papers on the Borda count in the January 2000 issue of the 
+journal <i>Economic Theory</i>. 
+END QUOTE.
+</p>
+
+<p>
+<b>Our response:</b>
+Borda is the "only" such voting method?   Wrong.   <a href="RangeVoting.html">Range voting</a> 
+is another.    (Reversal symmetry for [0,1] range voting: x&rarr;1-x.)
+Saari's "proof" simply began by <i>defining</i> range voting as "not" a voting method at all, then
+proceeded to prove that Borda was the only voting method satisfying his criteria.
+It is easy to "prove" things by methods of that nature.   
+For example, if I want to prove 1+1=5, I begin
+by defining 1 "not to be" a number.
+<small> More precisely, Saari in this and other works, only considers the class of
+"<a href="WtPositnl.html">weighted positional</a>" 
+voting systems, which is a tiny subclass of "rank order ballot" voting
+systems, which is a tiny subclass of all voting systems.
+Any results by Saari that Borda is the "best" voting system, or the "only" voting system
+with some property, mean, therefore, almost nothing.  They are kind of like "proving"
+that milk is the "only" white substance, or the "whitest" substance, by as your first step
+declaring "we shall only consider liquid edible substances available at Shop-Rite."</small>
+</p>
+<p>
+Also, Schulze's <a href="SchulzeComplic.html">beatpath</a> 
+Condorcet voting method is based on rank-order ballots,
+obeys reversal symmetry, and declares an exactly-symmetric cycle to be a tie.
+Oh gee.  I guess that wasn't a "voting method" either.
+</p>
+
+<h2> Saari on "lost information" &ndash; fails to point out range voting has more info </h2>
+
+<p>
+In a recorded lecture distributed by the American Mathematical Society, 
+Saari remarks that "lost information" is a top culprit behind lots
+of voting problems.  For example if we ignore everything in a set of 
+<a href="Glossary.html#Borda">Borda</a> votes
+except for the top rankings
+(i.e. we use <a href="Plurality.html">plurality voting</a>) that loses information.
+And that's terrible.
+</p><p>
+What Saari fails to remark (not only in this lecture, but indeed in all his published work 
+so far): 
+<i>if we eliminate from a set of range votes, all strength information,
+we get Borda-style votes.</i>
+So Saari's view is that losing
+information is terrible &ndash; except when that discussion makes Borda voting look
+<i>bad</i>, in which case he ignores it.
+</p>
+
+<h2> Saari on "geometry" &ndash; fails to note range voting just as geometrically nice </h2>
+
+<img src="SaariVoteTriangle.png" align="left" width="33%" border="1" spacing="3">
+<p>
+Saari has a pretty picture of 3-candidate Borda voting using an equilateral triangle ABC.  You
+divide it into 6 congruent sub-triangles using angle bisectors.  In each sub-triangle you
+write a number of votes.  For example, if there are 5 "A>B>C" votes you write "5"
+in the subtriangle nearest to A and second-nearest to B. 
+Borda voting consists then in just finding out where the "center
+of (numerical) mass" lies.
+</p>
+<p>
+Nice picture.
+</p>
+<p>
+Now with range voting, <i>not</i> all "A>B>C" votes are identical; some 
+express greater strengths for some preferences.  That corresponds, in fact, to placing
+a point in the cube [0,1]<sup>3</sup>, located at coordinates (a,b,c).
+If you look along the 1,1,1 direction then you see a two-dimensional picture of this, which is
+how Saari got his 2D picture.
+We can do that for range voting too; then a range vote is a point at (a-&mu;, b-&mu;, c-&mu;),
+where &mu;=(a+b+c)/3.  This lies in the projection-<i>plane</i> X+Y+Z=0.
+Then range voting again just takes the center of mass to find out who won the election.
+We can do this all inside the 2D plane.  Saari's set of possible Borda votes is 6
+points forming the <i>corners</i> of a regular hexagon (shown pink).
+In contrast, the set of possible range votes is a <i>solid</i> regular
+hexagon, i.e. including the 
+whole interior, not just its 6 isolated corners.
+(If you look at a cube along its diagonal, you see a regular hexagon as its silhouette.)
+</p>
+<p>
+So with range voting we get a just-as-nice geometrical interpretation, 
+with <i>exactly</i> the same symmetries.
+Saari forgot to mention that.
+</p>
+
+<h2> Saari says honest voters are more important.  How does he know? </h2>
+
+<p>
+The top criticism of Borda voting is its 
+<a href="rangeVborda.html#bossbulb">horrible reaction</a> to strategic voters.
+Borda himself is reported to have cried in frustration that his voting system was 
+"designed for honest men."
+</p>
+<p>
+To make this clearer: given that A and B are the two "frontrunners" most-likely to
+win, you are "wasting" some portion of your Borda vote if you do anything other than ranking them
+"top" and "bottom."   In particular in a 12-candidate field if you (honestly) rate them top and
+2nd-top, then you are a strategic idiot with over 10&times; less voting power than 
+such an exaggerator.  But if you decide not to waste over 90% of your vote, then you
+are being extremely dishonest about B, misordering him with respect to every candidate 
+other than A.  (And you have no choice about that because the rules of the Borda system 
+<i>force</i> all that misordering.  It's the same "fool versus idiot" choice you
+get with the "lesser evil dilemma" of plain <a href="Plurality.html">plurality</a>
+voting, writ larger.)
+So Borda incentivizes massive voter dishonesty, often resulting in 
+extremely bad election results.   In contrast, with <a href="RangeVoting.html">range voting</a>, 
+a strategic AB-exaggerator
+would <i>not</i> be forced to 
+misorder B with respect to <i>anybody</i> and thus would produce a 
+far-more-honest vote without "wasting" any power.
+The change in rules from Borda to range voting thus may seem minor, but it has
+a far-reaching effect as far as its interaction with strategic voters is concerned.
+</p>
+<p>
+When asked about this by William Poundstone (quoted in his 2008 book <i>Gaming the Vote</i>),
+Saari explained that the reaction of a voting system to honest voters has to be pre-eminent
+in our considerations, while the reaction to strategic voters must be secondary.
+</p>
+<p>
+But how did Saari know that?   
+Maybe strategic voters are more important.
+This is simply an <i>opinion</i> by Saari with no justification offered.
+And in the field of voting (as Saari himself repeatedly explains throughout his works)
+intuition is a poor guide.
+</p>
+<p>
+How can we look at this more objectively? Several ways:
+</p>
+<ol>
+<li>
+We can use Bayesian Regret methodology to objectively measure the Regret for Borda
+(and other voting systems) with either honest or strategic voters (or mixtures).
+When this is done we find that range voting does better than Borda for all three kinds of voters.
+But Saari never cited or mentioned this in any of his works.
+</li><li>
+We can examine actual elections to find out how strategic voters are.
+When Harvard Professor Barry C. Burden examined NES "thermometer"
+data about the 2000 US Presidential
+election, he found <i>90 percent</i> of honestly-Nader-top voters voted (strategically)
+for somebody else.  When <a href="FunnyElections.html#kiribati">Kiribati</a> employed Borda voting, they immediately
+encountered massive problems caused by strategic voting.  In my only 
+<a href="rangeVborda.html#bossbulb">personal</a>
+experience with a high-stakes Borda vote, exactly the same pathology happened.
+</li>
+</ol>
+
+<h2> Saari (et al) on various real-world elections &ndash; 
+repeatedly drawing unjustified and/or wrong conclusions (basically via wrong arithmetic!): </h2>
+<p>
+<b>Hypothetical USA 2000 election using Borda 
+(this quoted from Mackenzie's 2000 <i>Discover</i> article on Saari):</b>
+How would McCain, Bush, and Gore have fared in a general election under the Borda count? 
+The <i>Sacramento Bee</i> poll, plus the official tallies for California's open primary, offers a clue. 
+According to the <i>Bee</i>'s
+results, McCain would have beaten Gore 48 to 43, and Gore would have beaten Bush 51 to 43. 
+But could McCain have beaten Bush among all voters, not just Republicans? 
+Here's one way to figure it out. In the California primary, 60 percent of Republicans voted for Bush and 35 
+percent voted for McCain. We can assume that those percentages would have stayed the same 
+had they been slated to run against each other in November. On the Democratic side, 
+nearly 800,000 voters broke party ranks in March's primary to vote for Republicans. 
+Of these, 64 percent voted for McCain and 31 percent voted for Bush. 
+Again, the simplest thing to do is assume that the entire Democratic party would have split 
+the same way if they were forced to choose between those two candidates in November.
+</p><p>
+So in our hypothetical Bush-McCain race, Bush would win by 60 to 35 among the Republican voters, and 
+McCain would win by 64 to 31 among the Democratic voters. Overall, McCain would beat Bush, 
+50 percent to 45 percent. 
+(To arrive at those figures I first added together each candidate's percentage of the Democratic and Republican vote 
+[60 and 31 for Bush, 64 and 35 for McCain] and divided by 2.)
+To see how all three candidates would do under the Borda count, we add up the results of the head-to-head matchups:
+  <table width="242" cellpadding="0" cellspacing="3" border="0" align="center" bgcolor="yellow">
+      <tr>
+        <td width="80" align="center">Gore=51</td>
+
+        <td rowspan="3" bgcolor="#CCCCCC" width="1">&nbsp;</td>
+
+        <td width="80" align="center">Bush=43</td>
+
+        <td rowspan="3" bgcolor="#CCCCCC" width="1">&nbsp;</td>
+
+        <td width="80" align="center">&nbsp;</td>
+      </tr>
+
+      <tr>
+        <td align="center">Gore=43</td>
+
+        <td>&nbsp;</td>
+
+        <td align="center">McCain=48</td>
+      </tr>
+
+      <tr valign="top">
+        <td>&nbsp;</td>
+
+        <td align="center">Bush=45</td>
+
+        <td align="center">McCain=50</td>
+
+      </tr>
+
+      <tr valign="top">
+        <td colspan="5">
+          <hr />
+        </td>
+      </tr>
+
+      <tr valign="top" bgcolor="#88ffcc">
+        <td colspan="2" align="center"><strong>Gore=94</strong></td>
+
+        <td colspan="2" align="center"><strong>Bush=88</strong></td>
+
+        <td align="center"><strong><nobr><font color="red">McCain=98</font></nobr></strong></td>
+      </tr>
+  </table>
+
+  <p>Hence, in California at least, McCain would have been the Borda count
+  winner. END QUOTE.</p>
+
+<p><b>Hypothetical France 2007 election using Borda:</b>
+Essentially the same kind of calculation, with the same error,
+was done by Prof. Bruce P. Conrad
+[Jan. 2008 essay "How should we count the votes" on the American Math'l Society web site],
+now concerning the <a href="OrsayTable.html">2007 French Presidential election</a>.
+Officially, the top 3 finishers in this election were Sarkozy, Royal, and Bayrou, in that
+descending order.
+Conrad knew the official Sarkozy:Royal runoff was won 53-47 by Sarkozy.
+He also knew from IFOP polls about hypothetical 2-candidate runoffs
+that Bayrou would have beaten Sarkozy 55-45 and Royal 58-42.
+Hence he concluded Bayrou would have won if France had run its
+election using Borda count:
+</p>
+
+  <table width="242" cellpadding="0" cellspacing="3" border="0" align="center"  bgcolor="yellow">
+      <tr>
+        <td width="80" align="center">Sarkozy=53</td>
+
+        <td rowspan="3" bgcolor="#CCCCCC" width="1">&nbsp;</td>
+
+        <td width="80" align="center">Royal=43</td>
+
+        <td rowspan="3" bgcolor="#CCCCCC" width="1">&nbsp;</td>
+
+        <td width="80" align="center">&nbsp;</td>
+      </tr>
+
+      <tr>
+        <td align="center">Sarkozy=45</td>
+
+        <td>&nbsp;</td>
+
+        <td align="center">Bayrou=55</td>
+      </tr>
+
+      <tr valign="top">
+        <td>&nbsp;</td>
+
+        <td align="center">Royal=42</td>
+
+        <td align="center">Bayrou=58</td>
+
+      </tr>
+
+      <tr valign="top">
+        <td colspan="5">
+          <hr />
+        </td>
+      </tr>
+
+      <tr valign="top"  bgcolor="#88ffcc">
+        <td colspan="2" align="center"><strong>Sarkozy=98</strong></td>
+
+        <td colspan="2" align="center"><strong>Royal=89</strong></td>
+
+        <td align="center"><strong><nobr><font color="red">Bayrou=113</font></nobr></strong></td>
+      </tr>
+  </table>
+
+<p>
+<b>What's wrong with both those calculations?</b>
+The problem was there were <i>not</i>
+just 3 candidates.  In France 2007 there were 12 candidates.
+Voting "A>B>C" giving A,B,C Borda scores 2,1,0 is not realistic.
+<i>Really</i> it'd be (say) this vote "A>x>y>q>z>m>r>s>t>B>u>C" giving them
+11,2,0.
+Or something else.  
+It all depends how the voters rate the other 9 candidates.
+Those other 9 candidates are <i>not</i> a "minor neglectible" effect.  
+They are "the dominant" effect.  
+A voter who ranks Sarkozy, Bayrou, and Royal at the top
+of her ballot (the way Conrad supposes) is about 10 times less powerful than one who
+ranks one top and another bottom.  The effect of the 10&times; more powerful voters
+swamps out the wimpy voters Conrad was considering.  
+Hence, Conrad's conclusion that Bayrou would have been the
+Borda winner is unjustifiable.   (Perhaps right, but not justifiable.)
+</p>
+<p>
+So who <i>would</i> have been the Borda winner? 
+Nobody knows.  But I can guess.  My guess is that the Royal supporters would have
+ranked Royal top with both her major rivals ranked bottom.  
+That is because they would not have wanted to be 10&times; less powerful.
+(Royal would have urged her voters to be "powerful" on her behalf.
+Not "idiotic" on her behalf.)
+Similarly the Sarkozy voters
+would have ranked Sarkozy top with both his major rivals  bottom.
+Finally, the Bayrou voters would have ranked Bayrou top with both his 
+major perceived rivals bottom.   
+And yes, there would have been some voters ranking all three top, 
+but their effect on the election would have been comparatively about
+10 times smaller per capita.
+<i>If</i> we suppose <i>neglectibly</i> smaller, <i>then</i>
+we can prove this <b>conclusion:</b>
+<i>Neither</i> Sarkozy, Bayrou, or Royal would have won with Borda voting, because
+all three would have had below-average Borda score!  
+</p>
+<p>
+<small>In fact this is <i>exactly</i> what happened in my
+only personal 
+<a href="rangeVborda.html#bossbulb">experience</a>
+with a high-stakes Borda vote (and a similar experience was reported by
+Salvador Barbera) and another example
+occurred in the only government known to have employed Borda voting,
+<a href="FunnyElections.html#kiri91">Kiribati</a>.
+Also, note in France 2002 under the same postulated voter behavior,
+none of the Big Three would have been a "Condorcet Winner," although based on those
+polls Bayrou <i>was</i> a Condorcet winner with honest voting.  
+Bayrou <a href="OrsayTable.html">was</a>
+the range voting winner, which is a good illustration of the  
+counterintuitive fact that range voting actually can
+be <a href="AppCW.html">more likely</a>
+to elect Condorcet winners than Condorcet voting methods!
+</small>
+</p>
+<p>
+I repeat: I do not <i>know</i> whether this (all three losing with Borda)
+would have happened. It is just my guess.  But I think you can now
+see it is at least a plausible guess.
+</p>
+<p>
+This actually is an excellent illustration of two well-known major flaws &ndash;
+<a href="CandCloning.html">clone vulnerability</a> 
+and
+vulnerability to inserting and <a href="rangeVborda.html#JohnsonEx">removing</a> candidates
+&ndash; in Borda voting.
+</p>
+
+<p>
+This kind of strategic voter exaggeration <i>also</i> would be highly impactful with
+range voting, but
+range voting, unlike Borda and Condorcet, would not have caused a 
+"dark horse" to win.    One of the Big Three still would have won.  And in
+fact we have a pretty good guess who, 
+because a range-voting exit poll was <a href="OrsayTable.html">conducted</a>, 
+and Bayrou won it.
+</p>
+
+<a name="Perot"></a>
+<p>
+<b>Saari in an April 2008 Radio Interview (I have an audio recording)</b>
+claimed that had either <a href="Approval.html">approval voting</a> or
+range voting
+been used in the Bush v. Clinton v. Perot US presidential election (1992),
+then Perot would have won.  
+Saari then indicated this was crazy because clearly Perot was bad
+and/or unwanted by the USA.  This in Saari's view was a big flaw in Approval Voting.
+</p>
+
+<p>
+<b>But polls say Saari was wrong:</b>
+In fact, nationwide
+approval voting polls were <i>done</i> for this election by
+two polling organizations (Gallup and New York Times)
+independently!    And a range voting poll was also done!
+Saari didn't mention all that.  
+The combined poll results show Clinton would have won with both approval 
+and range voting (and Clinton also won with the official plurality
+voting system).  Here is the data:
+</p>
+
+<p>
+<b>Approval voting:</b>
+We combine this New York Times telephone poll of 1854 US citizens (on 23 Oct. 1992)
+"Is your opinion of Ross Perot favorable, not favorable,
+undecided, or haven't you heard enough about him yet to have an
+opinion?" (same question also asked for Bush &amp; Clinton)
+with the result of an independent 
+Gallup telephone poll of 1579 US citizens (on 31 Oct. 1992) [almost identical question phrasing
+except "undecided" and "don't know" lumped into one].
+The results (for all 3433 pollees; note some rows may not sum to exactly 100% due
+to integer twice-roundoff effects) are as follows:
+</p>
+<table bgcolor="yellow" cellspacing="2" cellpadding="2" border="1">
+<tr><th>Candidate</th><th>Favorable</th><th>Unfavorable</th><th>No opinion</th><th bgcolor="#ff8888">F/U Ratio</th></tr>
+<tr>
+<th>H.Ross Perot</th><td>36.4%</td><td>39.4%</td><td>23.7%</td><td>0.924</td>
+</tr><tr>
+<th>G.H.W.Bush</th><td>39.6%</td><td>47.8%</td><td>13.1%</td><td>0.828</td>
+</tr><tr>
+<th bgcolor="#ff888">William J. Clinton</th><td>40.8%</td><td>42.2%</td><td>17.0%</td><td bgcolor="#ff8888">0.969</td>
+</tr>
+</table>
+
+<p><small>
+Interestingly, note that <i>no</i> candidate got more "favorables" than "unfavorables."
+An academic
+paper by S.J.Brams and S.Merrill "Would Ross Perot have won the 1992 presidential election
+under approval voting?" 
+PS: Political Science &amp; Politics 27,1 (March 1994) 39-44   
+<a href="RR93-30.pdf">(pdf)</a>
+<!--
+New York University C.V. Starr Center for Applied Economics Economic Research Report # 93-30,
+July 1993.
+-->
+also independently concluded, this time based on NES "thermometer" 
+data, that Clinton would have won: they
+estimated Clinton 55%, Bush 49%, and Perot 42% approval.
+</small></p>
+
+<p>
+<b>Range Voting:</b>
+(Market Facts Inc. telephone poll of 1000 US citizens on 18 Oct. 1992)
+"First I'd like to know how you feel about some of the presidential
+candidates. Use a 7 point scale where 7 means that you have an
+'extremely favorable' impression, 1 means 'extremely unfavorable' and
+4 means 'neither favorable nor unfavorable.' 
+Of course, you can use
+any number between 1 and 7. How do you feel about Ross Perot?"
+</p>
+<table bgcolor="#88ffcc" cellspacing="2" cellpadding="2" border="1">
+<tr>
+<th>H. Ross PEROT</th>
+<th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>(don't know/refuse)</th>
+</tr><tr>
+<td bgcolor="yellow">avg=3.55</td>
+<td>20.7%</td><td>9.0%</td><td>12.5%</td>
+<td>25.5%</td><td>13.7%</td><td>7.4%</td>
+<td>6.9%</td><td align="right">2.5%</td>
+</tr>
+<table>
+<!--<p>G.H.W.Bush?</p>-->
+<br>
+<table bgcolor="#ff8888"  cellspacing="2" cellpadding="2" border="1">
+<tr>
+<th>Geo. H.W. BUSH</th>
+<th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>(don't know/refuse)</th>
+</tr><tr>
+<td bgcolor="yellow">avg=3.58</td>
+<td>25.2%</td><td>9.4%</td><td>10.3%</td>
+<td>19.2%</td><td>13.1%</td><td>8.4%</td>
+<td>11.7%</td><td align="right">2.0%</td>
+</tr>
+<table>
+<!--<p>William J. Clinton?</p>-->
+<br>
+<table bgcolor="#8888ff"  cellspacing="2" cellpadding="2" border="1">
+<tr>
+<th>Wm.J. CLINTON</th>
+<th>1</th><th>2</th><th>3</th><th>4</th><th>5</th><th>6</th><th>7</th><th>(don't know/refuse)</th>
+</tr><tr>
+<td bgcolor="yellow">avg=<b>4.08</b></td>
+<td>19.0%</td><td>7.3%</td><td>10.1%</td>
+<td>15.9%</td><td>14.2%</td><td>14.3%</td>
+<td>15.7%</td><td align="right">0.0%</td>
+</tr>
+<table>
+
+
+<a name="degenP"></a>
+<h2> Saari falsely claims range and approval will degenerate to plurality voting </h2>
+
+<p>
+Saari in the same radio interview, and also other times, has claimed that range and approval 
+voting will
+just effectively become plurality voting because the voters once they "get wise" will just vote 
+in plurality style (giving the maximum score to <i>one</i> candidate, and the minimum to all others)
+because that is the strategic way to vote.
+</p>
+<p>
+This is a false claim.  In fact, one might even go so far as to say that Saari <i>knew</i>
+it was a false claim <i>when he made it</i>.   That is because:
+<ul>
+<li>
+In the very same radio interview,
+Saari claimed these systems would <i>not</i> have elected the man he  knew was
+the plurality-voting winner &ndash; Clinton &ndash; and would instead have elected Perot.
+Since Saari contradicted himself, he had to be wrong on at least one of
+these statements.  (Actually he was wrong on both.)
+</li><li>
+I (and others) had on numerous occasions over many years, already corrected Saari on this point.
+He ignored us all.
+</li>
+</ul>
+
+<p>
+To prove Saari is wrong, simply consider the 2000 US presidential
+election Nader vs. Gore vs. Bush.  According to Saari, it would be "strategic" for the 
+Nader-favoring voters to approve Nader <i>only</i> (or perhaps to approve Gore <i>only</i>,
+but not both, since approving two is "nonstrategic"). Once those voters "get wise."
+</p>
+<p>
+Wrong!  That would <i>obviously</i> be strategically foolish!
+<small>And here's <a href="Approval.html#pairsarg">Another argument</a>.</small>
+</p><p>
+In all of Saari's works, he has <i>never</i> cited the <a href="FrenchStudy.html">French approval
+voting study</a>, the largest
+study of real approval voters.  It found voters approved an average of 3.15 candidates.  Note, 
+3.15 is
+well above 1.
+So far, almost <a href="RangePolls.html">every</a>
+other exit-poll approval-voting study of real voters in real governmental
+elections has found the same conclusion, exactly opposite to Saari's unsupported assertion.
+You also might be interested in the <i>real</i> approval-voting election of the 
+<a href="UNsecyGen.html">UN secretary general</a>.
+</p>
+<p>
+The only way to Saari to deny this, then (albeit since he <i>ignores</i> every such study, he 
+doesn't have to <i>deny</i> them) is to claim these real-world voters were not yet "wise" enough.
+They did not "understand" strategy.  (But actually, as we've seen, it is Saari who did not 
+understand strategy.)  Saari therefore enjoys pointing out a small election the
+Social Choice &amp; Welfare Society held in 1999, using approval voting, to elect its president
+from three candidates.
+These voters were voting experts, and as Saari gleefully points out on every possible
+occasion, every one voted for <i>one</i> candidate, except for (approval voting advocate) 
+Prof. Steven Brams.  Thus, in this case, approval voting was the same as plurality voting.
+</p>
+<p>
+Does that SC&amp;W election prove Saari's point?
+</p>
+<p>
+<a href="BulletBugaboo.html">NO</a>.  
+In <i>some</i> (comparatively rare) elections, it <i>is</i> strategically wise for
+approval voters to employ plurality-style voting.
+This SC&amp;W election was one of them.  
+Specifically, in elections with a small number of voters and
+exactly 3 candidates, all good, and none of whom having any obvious
+advantage in winning chances versus any other, voting for one <i>is</i>
+the best approval voting strategy among all the strategies
+tried in <a href="RVstrat3.html">this mini-study</a>.
+And as Saari <i>himself stated</i> in his radio interview (and his intellectual opponents 
+Brams &amp; Fishburn agreed), that was exactly the
+sort of election this was.
+Further, if there is an approximate
+consensus two of the candidates both seem better than the third, like this
+<pre>
+-----A---------------B--C------>  (increasing quality)
+</pre>
+and there is substantial recognition of that,
+then it tends to be best
+to vote for only one of the top two since voting for both would be a wasted vote.
+That also happened in this election (revealed by its results) to some extent.
+But other elections might involve more than three candidates, or quite-unequal apparent winning
+chances, or a different 1D picture.
+In that case, it <i>often</i> is good strategy to approve two or more.  As we just saw with
+the Nader example.
+</p><p>
+So with a <i>genuine</i> understanding of approval-voting strategy,
+we would have <i>predicted</i> this, as well as predicting the behavior
+of the voters in the French study.  Nothing surprising is here at all.
+Nothing bad is here at all either, since in the SC&amp;W election,
+there <i>was</i> no clear winner, much less was the wrong winner elected (in fact,
+the top two Borda finishers got 59 and 60; while with Approval voting they got
+22 and 20; the margin of victory in either case was far below statistical "sampling noise"
+so it is absurd to claim an injustice was done by either election method).
+Saari's SC&amp;W example does not at all <i>refute</i>
+the conventional understanding of approval voting strategy &ndash; it <i>supports</i> it;
+and it does not at all demonstrate anything wrong with approval voting.
+</p>
+<p>
+<small>
+Saari in his radio interview also mentioned "a study by psychologist Michael Rankin"
+again showing that plurality-style approval voting is common.   I have made repeated attempts
+to contact Michael Rankin to find out about that, but got no reply; 
+nor did I find Rankin's study
+in database searches.
+</small>
+</p>
+
+<h2> Is there any genuine case against Approval Voting underneath Saari's baloney? </h2>
+
+<p>
+Yes.  Saari was wrong about the Clinton-Perot-Bush 1992 election, and 
+he was also wrong about the meaning of the SC&amp;W 1999 election.
+But he has a <i>correct</i> criticism of Approval Voting well-hidden beneath his baloney.
+</p>
+<p>
+It is this.
+Suppose there are 3 candidates running: rightist, centrist, and leftist.
+Then many rightist voters
+will approve both R and C; many leftist voters will approve both L and C;
+but hardly anybody will approve both L and R.  <i>That gives C an artificial advantage.</i>
+Approval voting artificially favors centrists over extremists.
+</p>
+<p>
+You can clearly  see such biases graphically in 
+<a href="IrvExtreme.html">Yee diagrams</a> and 
+<a href="IEVS/Pictures.html">here</a>.
+It is plain that approval voting, at least with some kinds of voter behavior, favors
+centrists.  Meanwhile IRV favors extremists.  
+Range voting and Condorcet voting
+show little or no extremist-vs-centrist bias (with honest voters).
+(With strategic voters, range will probably gain some centrist-favoring-bias, 
+Borda will act utterly insanely, and Condorcet I do not know.)
+</p>
+<p><small>
+Saari also has another criticism, the 
+"<a href="rangeVapp.html#newenh">indeterminacy</a>" of
+approval voting.  
+Since that criticism does not apply to range voting, we shall not discuss it.
+</small></p>
+
+<h2> Saari's "dictionary of paradoxes" &ndash; analysis of the wrong thing, using the wrong techniques, while tossing out most voting systems at square one (and it arguably supports range more than Borda anyhow) </h2>
+
+<p>
+Two of the reasons Saari likes Borda voting are:
+<ol>
+<li>
+He considered the class of <a href="WtPositnl.html">weighted positional</a>
+Voting (WPV) systems.
+He showed <i>Borda (with honest voters)
+is the only fair WPV system also satisfying
+"reversal symmetry."   (At least, in the 3-candidate case.)
+</i>
+</li><li>
+Saari considered the "dictionary" mapping the
+V voters's candidate preference orders
+(i.e. V permutations of the C candidates) (input) into the
+C-permutation output by the voting system
+[and also the (&le;C)-permutations output by the voting system if
+some of the candidates are removed; this was done for every possible subset]
+as output.
+The more output-types such a dictionary could have, the more
+Saari considered a voting system "paradoxical." Saari
+showed that <i>Borda is the uniquely least paradoxical WPV system</i>.
+Indeed, every "paradox-type" Borda can experience, also is experienced by <i>every</I>
+weighted positional voting system, i.e. Borda's paradox-types are not just fewer in number, 
+but in fact a <I>subset</i>.
+</li>
+</ol>
+<p>
+Why is this silly?  First of all, the WPV voting systems are a
+tiny, tiny, tiny subclass of voting systems.
+Thus at square one,  Saari eliminated from 
+consideration (for no reason other than his personal 
+convenience)
+range voting,
+Condorcet voting, instant runoff voting, etc.
+E.g, range voting <i>also</i> obeys reversal symmetry. 
+This would (by Saari's theorem) be impossible &ndash; except that
+Range Voting, since it is not a WPV system, is not discussed by Saari's theorem 1.
+Saari fails to mention that.
+</p>
+<p>
+<b>Second</b>, nobody cares about rank-ordering the losers! (Or anyhow, they care a lot less.)
+We care about finding the
+winner. So Saari's "dictionary" is <i>dominated</i> by irrelevancy.
+</p>
+<P>
+<b>Third</b>, 
+Saari in this work ignores the reality that voters are rational &ndash; instead modeling
+them as imbeciles who always vote "honestly," no matter how
+tactically stupid that is.
+</p><p>
+<b>Fourth</b>, Saari ignores "utility."  
+Some paradoxes have severe effects and are likely to occur,
+while others have mild effects and are unlikely to occur.  
+Saari ignores all that &ndash; to him, all paradoxes count the same.
+Because he refuses to discuss utility theory,
+he has no alternative to ignoring all that &ndash; he has denied 
+himself the tool he needs to consider it.
+(Saari's book <i>Decisions and Elections</i>
+actually does not even <i>mention</i>
+"utility" in its index.  This is utterly remarkable since every other author
+I've ever heard of, considers utility to be <i>the</i> foundational concept underlying
+decision theory.
+On countless occasions inside the book, Saari brings up some "paradox"
+which simply does not exist for anybody who thinks with utilities rather 
+than strength-free rank-orderings.  Every time Saari mentions such a 
+paradox, he refuses to discuss utility or mention this at all.)
+<a href="BayRegExec.html">Bayesian Regret</a> does <i>not</i> ignore that.
+But Saari has never cited or mentioned Bayesian Regret methodology in any of  his works,
+far as I can tell (2008).
+</p><p>
+<b>Fifth</b>, it should be remarked that Saari's notion of a "paradox type" is not the
+only possible one.  It <i>ignores</I> certain kinds of (what other people would call)
+paradoxes such as "nonmonotonicity."   This remark may be minor, but should be kept in mind 
+to refute any claim that Saari's work somehow has
+"completely settled" the understanding of paradox-types.   It has gone further
+in that direction than anybody else's work, yes &ndash; but completely settled it? No.
+</p><p>
+<b>Sixth</b>,  if we <i>ignore</I> all those quibbles for the purposes of arguing with Saari, we
+have to ask: what would <b>range voting</b> do in Saari's count of paradox types?
+To consider this, we can either <i>renormalize</I> all range votes when a subset of
+candidates drop out (so that each vote always rates somebody with the maximum allowed score
+and somebody else with the minimum) or we can keep the rangevote scores for
+the candidates <i>unaltered</I> when
+other candidates drop out.
+Both problem versions are of
+interest (unlike in the case of rank-order voting systems <i>without</i> 
+preference strength, where
+there is only one reasonable problem version).
+</p><p>
+In the unaltered-scores case, range voting <i>never</I> exhibits <i>any</i> "paradox,"
+i.e, in Saari's dictionary, the election's output ordering of the C candidates
+<i>determines</i> its ordering on any subset of them (and in the obvious manner)
+uniquely. So by Saari's very own measure, range voting is superior to Borda,
+for any number of candidates N&ge;3,
+and in fact is <i>optimal</i>
+versus every possible fair voting system, in the sense it exhibits the fewest possible
+Saari-paradox-types!
+Saari never mentioned that.  
+But it completely blows him away.
+</p><p>
+But if, on the other hand, we consider the renormalization-version of the problem, then
+in the <i>3-candidate</i> case
+range voting certainly exhibits every paradox-type that Borda can exhibit, 
+as well as every type
+that any weighted-positional voting system can exhibit, i.e. (as Saari had shown)
+<i>every</I> possible paradox-type.   Thus renormalized
+range voting, as well as (Saari had shown) every
+weighted positional system <i>other than</i> Borda, are coequally-<i>pessimal</i>
+among possible 3-candidate voting systems, in the sense they exhibit the maximum-possible
+number of Saari-paradox-types.  (But I repeat that this is the wrong yardstick. 
+Bayesian Regret and Utility are the right yardsticks, and renomalized-range is far
+superior to Borda measured using them.)
+</p><p>
+I do not currently know what renormalized
+range voting will do in N-candidate elections with N&ge;4; it might exhibit
+fewer paradox-types than weighted positional systems, indeed even fewer than Borda &ndash;
+or it might not.    However, I <i>conjecture</i> range remains
+coequally-<i>pessimal</i> with every generic weighted-positional voting system,
+among all possible N-candidate voting systems, for every N&ge;3,
+in the sense that both renormalized-range and each generic weighted-positional system
+exhibit the maximum-possible number (i.e. all) of Saari-paradox-types.
+The reason I conjecture this is that you can throw in a lot of range votes in which 
+some subset S of candidates are scored very close together.  These votes
+have almost no effect concerning that subset. However, when the set-complement of S
+is <i>removed</i>, the renormalization suddenly "expands" these votes tremendously,
+causing them to have enormous effect on the ordering of the remaining candidates.
+It (at least naively)
+seems as though by
+using this trick appropriately and in enough ways, we can cause "anything"
+to happen.
+</p>
+
+
+<h2> Saari's proof Borda is "optimal" </h2>
+
+<p>
+<b><a href="RehmeyerNS.html">Quoted</a>
+in "Spoil-proofing elections" by Julie Rehmeyer in <i>New Scientist</i> 12 March 2008:</b>
+"Suppose, [Saari] argues, that voters prefer candidate A to 
+candidate B to candidate C and candidate B then drops out. 
+The voters should still prefer A to C, right? Saari found that for 
+three-candidate elections, the Borda count is the method most likely to ensure that."
+</p>
+
+<p>
+Wrong.
+Range voting ensures that 100% of the time &ndash; if B drops out (and is erased from all
+ballots,
+but the ballots stay the same otherwise) then A still is preferred.   Always.
+Without exception.
+Meanwhile, with Borda voting, exceptions exist (as Saari himself has pointed out in published works),
+e.g:
+<a name="bordafunny"></a>
+</p>
+<table bgcolor="yellow" clesspacing="2" cellpadding="2" border="1">
+<tr><th>#Voters</th><th>Their votes</th></tr>
+<tr><td>3</td><td>A>B>C</td></tr>
+<tr><td>2</td><td>B>C>A</td></tr>
+<tr><td>2</td><td>C>A>B</td></tr>
+</table>
+
+<P>
+So by Saari's very own "optimality" criterion, range voting is better than Borda voting.
+</p>
+<p>
+But Saari did not mention that.  (And his "proof" began by defining Range Voting "not to be"
+a voting system.)
+</p>
+<small>
+<p>
+Incidentally, another interesting analysis 
+[Davide P. Cervone, Wm. V. Gehrlein, Wm. S. Zwicker:
+<a href="DC-BG-BZ.pdf">Which scoring rule maximizes Condorcet Efficiency?</a>,
+Theory &amp; Decision 58 (2005) 145-185]
+asks which 
+<a href="WtPositnl.html">WPV</a>
+system maximizes the chance
+of electing
+a "Condorcet winner." 
+Surprisingly (and contrary to a previous wrong article)
+the answer is <i>not</i> the Borda count.  
+See <a href="PuzzlePage.html#p88">puzzle #88</a>.
+</p><p>
+One might, therefore, by analogy, speculate that some other voting system 
+than range voting &ndash; specifically, involving some monotonic but nonlinear 
+pre-transformation of vote-scores &ndash; would be better than plain range voting by this measure
+(with some utility-generator probabilistic model).  
+However, that does not happen because with range voting any voter is free to perform
+any such transformation <i>already</i>.  Thus plain range voting, <i>if</i> all voters
+"honestly and altruistically" decided to behave that way, would automatically maximize
+this (or any other) quality measure over the whole space of transformations.  
+(This remark would, presumably,
+actually yield <i>even better</i> range voting "Bayesian regret" scores
+for honest voters than the ones measured, which <i>already</i> were better than all common-rival
+voting systems.)
+Meanwhile with
+Borda, voters
+<i>cannot</i> effectively "change the rules" in this way; they are stuck with Borda weights.
+</p>
+</small>
+
+<h2> Saari's proof Borda is forced by Arrow-like conditions </h2>
+
+<p>
+Saari has his own version of <a href="ArrowThm.html">Arrow's Impossibility Theorem</a>,
+and a way to redo it so that Borda is
+the only voting system the (revised) conditions allow.  We now explain that and explain why 
+it is stupid.
+</p>
+<p>
+Here's Saari's wording of Arrow's theorem:
+</p>
+<dl>
+<dt><b>Assumption #1:</b></dt>
+<dd>
+The votes are (strict) rank-orders of
+all the candidates. [Note: Immediate consequence: range voting is "not" a
+voting system.]
+</dd>
+<dt><b>Assumption #2:</b></dt>
+<dd>
+The output of the voting system is a rank-order of all
+the candidates.
+</dd>
+<dt><b>Assumption #3a:</b></dt>
+<dd>
+The societal ranking (i.e. output of voting system) of any pair A,B is
+determined solely by how the voters rank that pair.
+</dd>
+<dt><b>Assumption #3b:</b></dt>
+<dd>
+Unanimity on A,B implies the outcome must rank A,B
+that same way.
+</dd>
+</dl>
+<p>
+<b>THEOREM (Arrow):</b> If #candidates&ge;3 and #voters&ge;2 then
+any voting system obeying all these conditions must be a "dictatorship" 
+(meaning a single voter, the "dictator," exists who has the power to decide who wins regardless 
+of what the other voters do).
+</p>
+<p>
+Saari then considers replacing assumption #3a with his alternative
+SAARI-ASSUMPTION-3a: The societal ranking of any pair A,B is
+determined solely by how the voters rank that pair <i>and</i> by the
+number of candidates they rank <i>between</i> A,B.
+</p>
+<p><b>CONCLUSION (Saari):</b> 
+With this revision, Borda voting obeys all the conditions, and
+if a few extra assumptions also are added
+(the "anonymity" assumption that all voters are equivalent, is one; he says
+the others are "technical")
+Saari concludes Borda is the <i>only</i> voting system satisfying these
+assumptions.
+</p>
+<p>
+<b>Why this is stupid:</b>
+Saari is specifically artificially
+<i>constructing</i> his axiom to get Borda out, rather than constructing
+reasonable axioms and then <i>seeing</i> what results.
+His SAARI-ASSUMPTION-3a is preposterous because it is not
+something we want a voting system to obey, it is something we want a
+voting system to <i>dis</i>obey!
+Several papers have been written about how 
+<a href="CandCloning.html">immunity to candidate cloning</a>
+is a desirable property of a voting system.
+But here Saari is specifically <i>demanding</i> that the voting system be
+<i>vulnerable</i> to cloning, unlike the
+previous authors
+who (more reasonably!) had demanded exactly the opposite.
+</p><p>
+In other words, Saari just proved Borda is a uniquely <i>bad</i> voting
+system.  But he then failed to cite or mention all of the previous anti-clone authors
+(e.g. his book <i>Decisions and Elections</i> fails to cite Tideman or 
+mention the whole cloning concept!??)
+and thus regarded Borda as a "success."
+</p>
+<p>
+Saari's revised condition 3a is, of course, actually the introduction of an estimate of
+preference strength. The problem is that it regards
+"number of candidates" as  preference strength. 
+If we <i>genuinely</i> introduce preference strength, you get range voting.  Indeed, in 
+a paper by <a href="DhillonM.html">Dhillon and Mertens</a>
+which Saari as usual failed to mention or cite, a revised version of Arrow's conditions,
+this time reasonable, is used to show that (normalized) range voting is the unique
+voting system obeying the conditions.  Also, range voting <a href="ArrowThm.html">obeys</a> Arrow's
+<i>original</i> "impossible" conditions with some authors' wordings (but not Saari's wording)
+of the theorem.
+And Range voting is cloneproof.
+Saari fails to mention any of that.
+</p>
+
+<h2> Is Saari an unmitigated evil? </h2>
+
+<p>
+<small>
+The tongue-in-cheek
+heading here
+is based on a <a href="UnmitEvil.pdf">paper</a> Saari authored "Is approval voting 
+an unmitigated evil?".
+</small>
+</p>
+<p>
+The answer (to both questions!) is "no."
+Saari has good points.  When he proves a theorem, it is usually a valid theorem.
+<blockquote>
+<small>
+But counterexamples exist.
+E.g. see <a href="PuzzlePage.html#p46">puzzle 46(a)</a> 
+for an
+apparently false theorem "proved" by Saari; Saari would not have made this error had he 
+done some computer simulations, but he seems allergic to them.
+Saari's section 7.2.1 of part II of his January 2000 Economic Theory paper
+is entirely wrong.  It describes (in a way hard to follow unless you
+understood the whole rest of his development) how to construct
+N-candidate <a href="rangeVirv.html">IRV</a>
+(instant runoff) elections which are "basic profiles"
+(i.e. all weighted positional and all pairwise methods agree on
+the winner and on the finish order) where the IRV winner
+is the candidate they all rank <i>last</i>, and the IRV elimination order
+is exactly their finish order, i.e. IRV is maximally insane
+in the view of all these other voting methods.
+Saari's construction is inductive on N.  
+The only problem is that his whole claim
+is false for every N: <b>Proof:</b>
+IRV cannot eliminate
+the plurality-voting winner in the first IRV round (and plurality is
+a weighted positional voting method). <b>Q.E.D.</b>
+It would be interesting to know what (if anything) can be salvaged from Saari's 
+line of reasoning.
+</small>
+</blockquote>
+Saari sometimes proves some quite difficult and powerful theorems too. 
+He has ability.  
+His voting books are usually pretty fun to read and have educational value.
+We are just warning the reader to keep in mind 
+the defects of Saari's work, which unfortunately also are numerous.
+Specifically, his books are neither complete nor unbiased.  They indeed
+&ndash; and to a degree which can be absolutely absurd &ndash; 
+fail to cite notions and papers showing results which do not conveniently
+fit into his biased 
+worldview.
+</p>
+
+<h2> Post Mortem: Saari spent his life solving the wrong problems, then was too pigheaded to 
+escape his self-created trap </h2>
+
+<p>
+Reviewing the above, there is a unified theme.
+Saari spent his entire voting-research career solving the <i>wrong problems.</I>
+Sometimes he did so quite impressively (but so what?).
+And then, once he'd gotten the idea in his head that Borda was the best voting system, he
+often ignored and refused to cite (large) evidence to the contrary.  If other experts
+wrote to him who had different views, Saari would
+insult them and refuse to have anything to do with them.  
+(I know, because I personally experienced this, and I keep encountering others who have 
+experienced the same treatment.)  That's sad.
+</p>
+<p>
+What do we mean by "wrong problems"?  
+The right problem is: what is the best voting method?
+The way to measure "best" is: <a hrf="BayRegExec.html">Bayesian Regret</a>.
+This is a large framework within which somebody like Saari could have worked.
+</p>
+<p>
+As far as I can tell (2008),
+in Saari's entire (large) publication record, he has never 
+mentioned <a href="BayRegDum.html">Bayesian Regret</a>.
+Ever.  Not to praise it, not to criticize it, not to use it at all.
+I see no evidence he even knows what it is.
+Indeed, Saari stated during his April 2008 radio appearance he had never read my paper on the
+subject, despite me bringing it to his attention years previously 
+<i>and</i> him telling me what an idiot
+I was for writing that paper.
+</p>
+<p>
+Therefore, without the right yardstick for measuring voting system quality, 
+Saari was forced to employ other, wrong, yardsticks.  (Not once in his
+entire opus did Saari ever make a serious comparative
+consideration of what a "good yardstick"
+even would <i>be</i>.  As far as I can see, he simply assumed whatever felt intuitively 
+interesting to him, must be a good one.)
+Examples of wrong yardsticks include: 
+requiring "reversal symmetry."
+Or requiring a small "dictionary."  
+Or demanding rank-order voting or demanding weighted-positional
+voting systems while ignoring all others for no reason.
+These all were moves Saari made at one point or another.  Now reversal symmetry
+<i>sounds</i> good, and presumably has some correlation with something good.
+But it is not the right thing.  
+And a small dictionary also presumably has some correlation
+with something good.
+But it too is not the right thing. 
+<small>
+(To make an analogy, it is something like deciding grocery store A is better than B because it
+stocks more kinds of food, while ignoring the quality, price, and demand for those foods.
+Some correlation with the right judgment? Yes. The right judgment? No.  And if you define
+90% of all grocery stores not to "be" grocery stores because they do not have a <i>red</i> sign, that
+makes things worse...)
+</small>
+And no matter how many times Saari creates some odd definition of
+some
+measure of voting system goodness, and then tries to optimize it, and no matter how
+ingenious he is when he does so, it will still be solving the wrong problem unless he (one day)
+makes connection to the correct yardstick, Bayesian Regret.
+Which Saari, so far, apparently does not understand.
+<small>
+One could conjecture that this is because Saari is uneducated about Bayesian statistics
+and utility theory, 
+which is the area that formulates notions of what it is to be "best."
+</small>
+</p>
+<p>
+Not only did Saari employ the wrong yardstick, he also in most or all of his work,
+optimized that wrong yardstick within a teeny tiny subclass of all voting systems,
+the <a href="https://rangevoting.org/WtPositnl.html!">weighted positional</a> systems.
+He then often, in public statements, <i>pretended</i> that subclass was actually the 
+<i>full</i> class.
+That is simply false. Here is a recent example.
+In a 15 October 2008 interview of Saari in <i>IndyWeek</i>, Fiona Morgan asked
+</p>
+<blockquote>
+<b>Q.</b> What system would best reflect voters' views?<br>
+<b>Saari's answer:</b> 
+This is a mathematical problem that took well over 200 years to be resolved. 
+I solved it within the last several years. 
+It turns out that the system that most accurately reflects the views of the voters is the 
+Borda count.
+</blockquote>
+<p>
+That was Saari's full statement. 
+It not only is undefined (what might 
+"most accurately reflects" mean?) it also has the disadvantage of being false.
+To see that, consider for maximum simplicity, an election with only  single voter.
+The voter with Borda rank-orders all the candidates, e.g. Bush=2, Nader=1, Gore=0. 
+With Range Voting she provides <i>scores</i> for
+all candidates, e.g. Bush=9, Nader=8, Gore=0.
+Which is a "more accurate reflection" of the views of that one voter?
+</p>
+<blockquote><small>
+<b>And again</b>
+in a <a href="http://www.youtube.com/watch?v=6Fhcl2CAk1s">video-recorded</a>
+lecture "Chaotic Elections"
+by Saari as the "Scope lecture" on 11 October 2008 at NC State University, he says 
+at 46:46, "The Borda count is the unique
+choice where the outcomes reflect the voters' views."
+At 49:31 he was asked "Do I understand 
+you right that a true fair election is to do it by the Borda count?" 
+His answer:
+"Correct. The Borda count has some anomalies, but we know 
+what they are and we know how to 
+handle them.
+Any other procedure you have &ndash; <i>any</I> other procedure &ndash;
+there is a strong probability that you are going to have an outcome which does
+not satisfy any consistency statement... where the outcome just clearly is off."
+This answer by Saari is false and unjustified because his repeated-for-emphasis 
+phrase "any other procedure" is false since his work only was able to 
+consider an extremely tiny subset of
+all procedures, in particular excluding range voting.
+<!--Further, his work did not find "probabilities," it only counted paradox-types.-->
+<!--Saari then recommends Borda count for US elections.-->
+</small></blockquote>
+<blockquote><small>
+<b>What does Saari think of range voting?</b>
+In the same lecture
+at 56:40, Saari was asked about strength of preference.
+The questioner indicated "Mother Teresa"
+might be a <i>lot</I> better than somebody, not just 'better,'
+and Borda offers no way for a voter to indicate that" (unlike range voting).
+Saari then responds that the system where you have 10 points and can allocate them any
+way you
+want (this vague description sounds like <a href="rangeVcumulative.html">cumulative voting</a>) 
+is unbelievably bad.
+Why do we know it is bad? "Because a version of it was used in figure skating."
+(Strange: Saari now seems to be mentally switching from cumulative to range
+voting without realizing they differ? Or without realizing that this difference
+might be important?) Then Saari laughs and says "enough said." That was his full answer.
+However, I'm afraid I cannot agree with Saari that this answer suffices.
+Indeed, figure skating after switching <i>away</i> from range voting got repeatedly 
+<a href="OlympBonaly.html">embarrassed</a> by 
+events in which A finished ahead of B... until C skated, 
+at which point magically the system decided B was ahead of A.  
+That problem cannot happen with either ordinary or trimmed-mean
+range voting but can and does happen with Borda.
+The figure skating association finally decided this "switcheroo" behavior was
+unacceptable, i.e. Borda was unacceptable, and they switched to another 
+system designed to eliminate it.
+(However, the replacement was misdesigned and thus actually did <i>not</i> eliminate it, 
+but that is <a href="Skating1998.html">another story</a>.)
+</small></blockquote>
+<p>
+I've put this bluntly.  At the bottom it is simple.
+Saari keeps solving the wrong problem in a teeny tiny (so tiny it is almost irrelevant)
+subclass of all voting systems.  He is quite able at it.
+He then announces his solutions very loudly to all kinds
+of Media, publishes Books, and gets a lot of attention, all the while pretending he has 
+solved The Great Problem open for 200 years of finding The Best Voting System,
+and wonder of wonders, it is the (embarrassingly bad) Borda system.
+He then repeats the process.
+Saari is by no means the only voting researcher who has solved problems and proved
+various voting systems &quot;<a href="OptThms.html">optimal</a>&quot;
+in various (also wrong) senses. 
+<small>
+Indeed, I think the Condorcet/Young optimality theorem for Condorcet voting is
+considerably more appealing than Saari's Borda theorems &ndash; the sense in which 
+it is "optimal," which concerns "probability of electing the 'wrong' winner"
+rather than Bayesian Regret,
+is still wrong but seems closer to what 
+matters than e.g, Saari's "dictionary size."
+</small>
+Saari generally does it for Borda voting
+and the others for other voting systems (and then Saari generally
+refuses to cite those other works).
+Saari just tries to get, and gets, more attention than most.   
+</small>
+</p>
+
+<h3>Some important Saari publications</h3>
+<p>
+Donald G. Saari:
+A dictionary of voting paradoxes, Journal of Economic Theory 48,2 (1989) 443-475.
+<br>
+Explaining all Three-Alternative Voting Outcomes,
+J.Econ.Th. 87 (1999) 313-355.
+<br>
+Mathematical structure of voting paradoxes,
+I. Pairwise votes, Economic Theory 15,1 (2000) 1-53.
+II. Positional voting, Economic Theory 15,1 (2000) 55-102.
+<br>
+Decisions and Elections: Explaining the Unexpected,
+Cambridge University Press, 2001.
+<br>
+Geometry of Voting, Springer Verlag, 1994.
+</p>
+<p>
+Saari has published somewhere in the neighborhood of 50 papers on voting.
+But the papers listed above constitute 
+(what apparently Saari regards as) his greatest accomplishment:
+they reach an essentially complete understanding of the full set of
+<i>every</I> logical "Saari-paradox-type" 
+suffered by <i>every</i>
+weighted positional rank-order voting method (and his techniques also tell us
+quite a lot about
+paradox types in certain other kinds of rank-order-ballot voting methods too).
+Saari shows that every Saari-paradox-type suffered by the
+"<a href="BordaExec.html">Borda</a> count" 
+is also suffered by <i>every</I> 
+<a href="WtPositnl.html">weighted positional</a> voting method,
+so that Borda is the one with the fewest paradox-types.
+Indeed, Saari shows that almost every 
+weighted positional method suffers every thinkable kind of paradox.
+In the 3-candidate case, every 
+weighted positional method <i>except</I> Borda suffers
+every thinkable kind of paradox (according to Saari's notion of what a "paradox-type"
+is &ndash; which is however an incomplete notion since for example 
+<a href="Monotone.html">non-monotonicity</a>
+is a kind of paradox inadmissible as far as Saari's enumeration is concerned).
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

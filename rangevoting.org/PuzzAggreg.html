@@ -1,0 +1,474 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle 94:  The "YN model"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H2>
+Puzzle #94: The "YN model" &ndash; a simple voting model in which range voting behaves optimally
+while many competing voting systems can behave pessimally
+</H2>
+
+<p><b>Puzzle:</b><br>
+The "YN-model" is a simple model of voting
+(with a fair amount of realism) in which range voting
+performs optimally with "honest voters."  
+There are <i>m</i> independent "issues"
+and 2<sup>m</sup> "candidates"; each candidate announces
+a clear yes or no stance on each issue, and by some benificent miracle we have a full
+democratic marketplace, i.e, every possible issue-stance is
+represented.  Hence (in the case m=4) we can name the 16 candidates YYYY
+("yes" on all 4 issues), YYYN, YYNY,..., NNNN.
+Suppose, for each voter, the <i>utility</i> of electing
+any given candidate is just the 
+<i>number of issues</i>
+on which that candidate agrees with the voter.
+Finally, we suppose without loss of generality
+that all <i>m</i> issues each would win if put to a single-issue
+yes/no vote, therefore the objectively best candidate is YYYY.
+<small>The "without loss of generality" is because we could just 
+rename the issues to make "yes" become "no" for that issue, e.g. the issue
+"raise taxes?" becomes "do not raise taxes," so with such canonical
+renaming we can always cause
+the best candidate to be named YYYY.
+</small>
+</p>
+<ol type="a"><li>
+Prove that <b>range</b> voting, with "honest voters" (who always score their
+favorite <i>m</i>, their least-favorite 0, and everybody else linearly-interpolated
+between according to their utility) 
+will <i>always elect the best</i> candidate in the YN model (i.e,
+here, YYYY).
+</li><li>
+But show that <b>plurality</b> voting can
+unambiguously elect the worst candidate (here NNNN)
+while causing the best candidate (YYYY) to have <i>zero</i> votes.
+</li><li>
+Hence <b>Instant Runoff</b> (and <b>Coombs</b>), in such an election,
+would fail to elect YYYY.  
+Can IRV ever elect the worst candidate NNNN?
+</li><li>
+Show that <b>Condorcet Cycles</b> can happen in the YN model.
+</li><li>
+Show that all <b>Condorcet</b> methods (with honest voters)
+can elect the worst candidate NNNN 
+<i>and</i> can mis-order the finishers 
+exactly backwards so that candidates with more Ns always are majority-preferred 
+over those with fewer!
+</li><li>
+Show that <b>Borda</b> voting (with honest voters)
+both can elect the worst candidate NNNN and order the candidates exactly backwards.
+</li><li>
+Show that <b>Approval</b> voting (with honest voters who approve the top F percent
+of the available candidates and disapprove the rest, 
+where F is any fixed value with 0&lt;F&le;50%)
+can elect the worst candidate NNNN.
+(And range voting can also do this with strategic voting.)
+</li><li>
+(Partially open) What about <b>Coombs</b> voting?  Can it elect the worst candidate NNNN?
+</li><li>
+What about <b>Copeland</b> voting?  Can it elect the worst candidate NNNN?
+</li>
+</ol>
+
+<p>
+<b>Comment:</b>
+Most analyses of voting system "properties" ignore the fact  that "issues" exist and candidates
+have stances on them.  The YN model is approximately the simplest and most natural 
+possible voting model which <i>doesn't</I> ignore that.   It turns out that honest range voting
+is always optimal in the YN model and is "self consistent."  But most other commonly
+proposed voting methods
+turn out to be both "self contradictory" and non-optimal (indeed they can
+even behave pessimally)
+in the YN model.
+</p>
+
+<hr>
+<h3> Answers </h3>
+
+<p><b>a.</b>
+With honest range voters, "Y" (on the first issue) can be regarded as
+getting a 1-vote
+or a 0-vote (for those voters who support or oppose issue #1), and ditto
+for each other issue, as a contribution to each candidate's range score.
+This view is mathematically equivalent thanks to our postulate the honest range voters 
+linearly interpolate their range votes (between the best 
+and the worst candidates getting the max and min
+range votes) based on utilities.
+Since we have postulated that Y beats N on each issue, the candidate YYYY beats every
+other candidate.  In other words, range voting always delivers the best possible winner
+in the YN model.
+</p>
+<p><b>b.</b>
+Say 71% of the voters each have ideologies consisting of 71% Ys
+(all such ideologies equinumerous)
+while 29% have the NNN...NN ideology.
+Then 50.4%=71%&sup2; of the voters prefer Y on any given issue, so by majority vote,
+Y would win on each issue individually.
+But NNN..NN is the plurality-vote winner with 29% of the vote,
+while YYY..YY gets zero top-rank votes, and indeed every candidate besides NNN..NN gets
+(in the m&rarr;&infin; limit) zero percent of the votes &ndash; sort of the 
+ultimate in "vote splitting."
+</p><p>
+As a very concrete example of this kind of idea with m=4
+(this election 
+data was created artificially by S.J.Brams
+for the purpose of solving this problem),
+let the plurality votes for each candidate be as follows in a
+31-voter, 4-issue, 16-candidate election 
+</p>
+<table bgcolor="aqua">
+<tr><th>candidate</th><th>votes</th><th bgcolor="yellow">candidate</th><th bgcolor="yellow">votes</th>
+</tr>
+<tr bgcolor="#ffcccc"><td>YYYY</td><td><b>0</b></td><td>YNYY</td><td>4</td></tr>
+<tr bgcolor="#ffcccc"><td>YYYN</td><td>4</td><td>YNYN</td><td>1</td></tr>
+<tr bgcolor="#ffcccc"><td>YYNY</td><td>4</td><td>YNNY</td><td>1</td></tr>
+<tr bgcolor="#ffcccc"><td>YYNN</td><td>1</td><td>YNNN</td><td>1</td></tr>
+
+<tr bgcolor="#ffffcc"><td>NYYY</td><td>4</td><td>NNYY</td><td>1</td></tr>
+<tr bgcolor="#ffffcc"><td>NYYN</td><td>1</td><td>NNYN</td><td>1</td></tr>
+<tr bgcolor="#ffffcc"><td>NYNY</td><td>1</td><td>NNNY</td><td>1</td></tr>
+<tr bgcolor="#ffffcc"><td>NYNN</td><td>1</td><td>NNNN</td><td><b>5</b></td></tr>
+</table>
+<p>
+Then on each issue Y beats N by 16 to 15.
+(For example, just look at the first letter of each candidate's name to see Y on
+the first issue wins by 16:15 over N.)
+But nevertheless YYYY gets zero votes and NNNN
+wins a plurality election
+with 5 votes.
+</p>
+<p>
+<b>c.</b> Instant runoff never elects a candidate with zero top-rank votes
+(since it always eliminates that candidate in the first round).
+<small>
+Also Coombs eliminates the candidate (here YYYY) with the <i>most</i> bottom-rank
+votes, hence cannot elect YYYY since it eliminates it immediately.
+</small>
+Unfortunately, IRV advocate Rob Richie once pronounced this an "advantage"
+of IRV.  However, in the present example,
+it is clearly a disadvantage, because the clearly best
+candidate YYYY gets zero top-rank votes.
+</p>
+<p>
+Who <i>is</i> elected in this election by IRV? 
+In this example IRV experiences many difficulties with
+tied round results. If we pretend/assume that the votes somehow get transferred equally in
+all tied-directions (and start with the above example multiplied by 10), 
+then we'd arrive, at an intermediate stage in the IRV process, at this situation
+</p>
+
+<table bgcolor="aqua">
+<tr><th>candidate</th><th>votes</th></tr>
+<tr><td>NYYY</td><td>55</td></tr>
+<tr><td>YNYY</td><td>55</td></tr>
+<tr><td>YYNY</td><td>55</td></tr>
+<tr><td>YYYN</td><td>55</td></tr>
+<tr><td>NNNN</td><td>90</td></tr>
+</table>
+
+<p>
+and then the tie would be broken randomly with the result that
+one of the four Y<sup>3</sup> candidates would win.
+</p>
+<p>
+More detail:
+Abd ul-Rahman Lomax manually constructed the full honest-vote rank-orderings
+in the Brams example
+(we assume each voter rank-orders the candidates in descending order of the number of
+issues on which they agree with that voter.  There could be ties in which case Lomax
+broke them according to his personal whim):
+</p>
+<table bgcolor="yellow">
+<tr bgcolor="pink"><th>#voters</th><th>Their honest vote</th></tr>
+<tr><td>0</td><td>
+YYYY&gt;YYYN&gt;YYNY&gt;YNYY&gt;NYYY&gt;YYNN&gt;YNYN&gt;YNNY&gt;NYYN&gt;NYNY&gt;NNYY&gt;YNNN&gt;NYNN&gt;NNYN&gt;NNNY&gt;NNNN
+</tr><tr><td>4</td><td>YYYN&gt;YYYY&gt;YYNN&gt;YNYN&gt;NYYN&gt;YYNY&gt;YNYY&gt;YNNN&gt;NYYY&gt;NYNN&gt;NNYN&gt;YNNY&gt;NYNY&gt;NNYY&gt;NNNN&gt;NNNY
+</tr><tr><td>4</td><td>YYNY&gt;YYNN&gt;YYYY&gt;YNNY&gt;NYNY&gt;YYYN&gt;YNNN&gt;YNYY&gt;NYNN&gt;NYYY&gt;NNNY&gt;YNYN&gt;NYYN&gt;NNNN&gt;NNYY&gt;NNYN
+</tr><tr><td>1</td><td>YYNN&gt;YYNY&gt;YYYN&gt;YNNN&gt;NYNN&gt;YYYY&gt;YNNY&gt;YNYN&gt;NYNY&gt;NYYN&gt;NNNN&gt;YNYY&gt;NYYY&gt;NNNY&gt;NNYN&gt;NNYY
+</tr><tr><td>4</td><td>YNYY&gt;YNYN&gt;YNNY&gt;YYYY&gt;NNYY&gt;YNNN&gt;YYYN&gt;YYNY&gt;NNYN&gt;NNNY&gt;NYYY&gt;YYNN&gt;NNNN&gt;NYYN&gt;NYNY&gt;NYNN
+</tr><tr><td>1</td><td>YNYN&gt;YNYY&gt;YNNN&gt;YYYN&gt;NNYN&gt;YNNY&gt;YYYY&gt;YYNN&gt;NNYY&gt;NNNN&gt;NYYN&gt;YYNY&gt;NNNY&gt;NYYY&gt;NYNN&gt;NYNY
+</tr><tr><td>1</td><td>YNNY&gt;YNNN&gt;YNYY&gt;YYNY&gt;NNNY&gt;YNYN&gt;YYNN&gt;YYYY&gt;NNNN&gt;NNYY&gt;NYNY&gt;YYYN&gt;NNYN&gt;NYNN&gt;NYYY&gt;NYYN
+</tr><tr><td>1</td><td>YNNN&gt;YNNY&gt;YNYN&gt;YYNN&gt;NNNN&gt;YNYY&gt;YYNY&gt;YYYN&gt;NNNY&gt;NNYN&gt;NYNN&gt;YYYY&gt;NNYY&gt;NYNY&gt;NYYN&gt;NYYY
+</tr><tr><td>4</td><td>NYYY&gt;NYYN&gt;NYNY&gt;NNYY&gt;YYYY&gt;NYNN&gt;NNYN&gt;NNNY&gt;YYYN&gt;YYNY&gt;YNYY&gt;NNNN&gt;YYNN&gt;YNYN&gt;YNNY&gt;YNNN
+</tr><tr><td>1</td><td>NYYN&gt;NYYY&gt;NYNN&gt;NNYN&gt;YYYN&gt;NYNY&gt;NNYY&gt;NNNN&gt;YYYY&gt;YYNN&gt;YNYN&gt;NNNY&gt;YYNY&gt;YNYY&gt;YNNN&gt;YNNY
+</tr><tr><td>1</td><td>NYNY&gt;NYNN&gt;NYYY&gt;NNNY&gt;YYNY&gt;NYYN&gt;NNNN&gt;NNYY&gt;YYNN&gt;YYYY&gt;YNNY&gt;NNYN&gt;YYYN&gt;YNNN&gt;YNYY&gt;YNYN
+</tr><tr><td>1</td><td>NYNN&gt;NYNY&gt;NYYN&gt;NNNN&gt;YYNN&gt;NYYY&gt;NNNY&gt;NNYN&gt;YYNY&gt;YYYN&gt;YNNN&gt;NNYY&gt;YYYY&gt;YNNY&gt;YNYN&gt;YNYY
+</tr><tr><td>1</td><td>NNYY&gt;NNYN&gt;NNNY&gt;NYYY&gt;YNYY&gt;NNNN&gt;NYYN&gt;NYNY&gt;YNYN&gt;YNNY&gt;YYYY&gt;NYNN&gt;YNNN&gt;YYYN&gt;YYNY&gt;YYNN
+</tr><tr><td>1</td><td>NNYN&gt;NNYY&gt;NNNN&gt;NYYN&gt;YNYN&gt;NNNY&gt;NYYY&gt;NYNN&gt;YNYY&gt;YNNN&gt;YYYN&gt;NYNY&gt;YNNY&gt;YYYY&gt;YYNN&gt;YYNY
+</tr><tr><td>1</td><td>NNNY&gt;NNNN&gt;NNYY&gt;NYNY&gt;YNNY&gt;NNYN&gt;NYNN&gt;NYYY&gt;YNNN&gt;YNYY&gt;YYNY&gt;NYYN&gt;YNYN&gt;YYNN&gt;YYYY&gt;YYYN
+</tr><tr><td>5</td><td>NNNN&gt;NNNY&gt;NNYN&gt;NYNN&gt;YNNN&gt;NNYY&gt;NYNY&gt;NYYN&gt;YNNY&gt;YNYN&gt;YYNN&gt;NYYY&gt;YNYY&gt;YYNY&gt;YYYN&gt;YYYY
+</tr>
+</table>
+<p>
+and then upon working through this election with
+<a href="http://cec.wustl.edu/~rhl1/rbvote/calc.html">Rob LeGrand's ranked-ballot calculator</a>
+we confirm that YYNY
+indeed wins with IRV. 
+<small>
+NNYY won with Coombs' method.
+Also
+with honest <i>Bucklin</i> voting YYYY wins (although if the
+Bucklin voters vote
+"strategically," Lomax says NNNN wins).
+YYYY also wins with honest Borda and honest Condorcet voting
+using either Tideman ranked pairs, Schulze beatpaths, Nanson, Simpson-Kramer min-max, Copeland,
+and basic Condorcet.
+</small>
+<!-- Gorr:
+0: YYYY>YYYN>YYNY>YNYY>NYYY>YYNN>YNYN>YNNY>NYYN>NYNY>NNYY>YNNN>NYNN>NNYN>NNNY>NNNN
+4: YYYN>YYYY>YYNN>YNYN>NYYN>YYNY>YNYY>YNNN>NYYY>NYNN>NNYN>YNNY>NYNY>NNYY>NNNN>NNNY
+4: YYNY>YYNN>YYYY>YNNY>NYNY>YYYN>YNNN>YNYY>NYNN>NYYY>NNNY>YNYN>NYYN>NNNN>NNYY>NNYN
+1:YYNN>YYNY>YYYN>YNNN>NYNN>YYYY>YNNY>YNYN>NYNY>NYYN>NNNN>YNYY>NYYY>NNNY>NNYN>NNYY
+4:YNYY>YNYN>YNNY>YYYY>NNYY>YNNN>YYYN>YYNY>NNYN>NNNY>NYYY>YYNN>NNNN>NYYN>NYNY>NYNN
+1:YNYN>YNYY>YNNN>YYYN>NNYN>YNNY>YYYY>YYNN>NNYY>NNNN>NYYN>YYNY>NNNY>NYYY>NYNN>NYNY
+1:YNNY>YNNN>YNYY>YYNY>NNNY>YNYN>YYNN>YYYY>NNNN>NNYY>NYNY>YYYN>NNYN>NYNN>NYYY>NYYN
+1:YNNN>YNNY>YNYN>YYNN>NNNN>YNYY>YYNY>YYYN>NNNY>NNYN>NYNN>YYYY>NNYY>NYNY>NYYN>NYYY
+4:NYYY>NYYN>NYNY>NNYY>YYYY>NYNN>NNYN>NNNY>YYYN>YYNY>YNYY>NNNN>YYNN>YNYN>YNNY>YNNN
+1:NYYN>NYYY>NYNN>NNYN>YYYN>NYNY>NNYY>NNNN>YYYY>YYNN>YNYN>NNNY>YYNY>YNYY>YNNN>YNNY
+1:NYNY>NYNN>NYYY>NNNY>YYNY>NYYN>NNNN>NNYY>YYNN>YYYY>YNNY>NNYN>YYYN>YNNN>YNYY>YNYN
+1:NYNN>NYNY>NYYN>NNNN>YYNN>NYYY>NNNY>NNYN>YYNY>YYYN>YNNN>NNYY>YYYY>YNNY>YNYN>YNYY
+1:NNYY>NNYN>NNNY>NYYY>YNYY>NNNN>NYYN>NYNY>YNYN>YNNY>YYYY>NYNN>YNNN>YYYN>YYNY>YYNN
+1:NNYN>NNYY>NNNN>NYYN>YNYN>NNNY>NYYY>NYNN>YNYY>YNNN>YYYN>NYNY>YNNY>YYYY>YYNN>YYNY
+1:NNNY>NNNN>NNYY>NYNY>YNNY>NNYN>NYNN>NYYY>YNNN>YNYY>YYNY>NYYN>YNYN>YYNN>YYYY>YYYN
+5:NNNN>NNNY>NNYN>NYNN>YNNN>NNYY>NYNY>NYYN>YNNY>YNYN>YYNN>NYYY>YNYY>YYNY>YYYN>YYYY
+-->
+</p><p>
+It also is possible (in other situations) for IRV to elect the worst candidate NNN...NN.
+The idea in answer (e) will usually do that if <i>m</i> is large enough,
+and we throw in enough NNN...NN voters to make sure that NNN...NN does not
+get eliminated in an early round for having zero top-rank votes,
+and we randomly pre-perturb the vote-counts slightly to break ties.
+(And a fully explicit example with 83 voters will be given in answer "e" below.)
+<!-- I currently am unsure what the simplest "IRV-elects-NNNNN" example is.-->
+</p>
+
+<p><b>d.</b>
+The YN model with m=6 can exhibit a Condorcet cycle
+among the three candidates named<br>
+YYNNNN, NNYYNN, and NNNNYY.<br>
+This will happen if there are three equinumerous types of voters whose
+ideologies are<br>
+YYYNNN, NNYYYN, and YNNNYY.
+<!--
+(Condorcet cycles also are possible when m=3 by using the 
+same idea in a slightly more complicated way now using six voter-types:
+the three candidates are YNN, NYN, NNY
+and the 6 voters are
+YYN, NYY, YNY, YNN, NYN, NNY.)
+NO??!!!  
+-->
+</p>
+
+<p><b>e.</b>
+<!--
+We claim YYYY is a beats-all "Condorcet winner."
+Try to prove by induction on m.
+Obviously it is true if m=1.
+Compare YYYY...Y (name m letters long)
+with some other candidate featuring k "N"s in its name.
+By induction, YYY...Y is preferred over this other candidate by a 
+voter-majority, if 1&le;k&lt;m. 
+So the only thing we need to complete the proof is that YYY...Y is preferred over NNN...N
+by a voter-majority. But no!
+-->
+
+If 70% of the voters each have ideologies consisting of 70% Ns
+(all such ideologies equinumerous)
+while 30% have the YYY...YY ideology, then the worst candidate NNN...NN is majority-preferred
+over the best candidate YYY...YY.
+(Note 49%=70%&sup2; of the voters prefer N on any given issue, so by 51-49 majority vote,
+Y would win on each issue individually.)
+</p><p>
+At first I thought this meant NNN...NN was the Condorcet winner, but 
+actually, that is not the case;
+NNN...NNY (with just a single Y) pairwise-beats NNN...NNN!
+Still, I think NNN...NNN wins with the Simpson-Kramer minmax Condorcet method?
+(And which others?)
+</p>
+<!--
+Simplest exaple is m=7??!!!
+Gorr:
+21:YYYY>YYYN>YYNY>YNYY>NYYY>YYNN>YNYN>YNNY>NYYN>NYNY>NNYY>YNNN>NYNN>NNYN>NNNY>NNNN
+0: YYYN>YYYY>YYNN>YNYN>NYYN>YYNY>YNYY>YNNN>NYYY>NYNN>NNYN>YNNY>NYNY>NNYY>NNNN>NNNY
+0: YYNY>YYNN>YYYY>YNNY>NYNY>YYYN>YNNN>YNYY>NYNN>NYYY>NNNY>YNYN>NYYN>NNNN>NNYY>NNYN
+0:YYNN>YYNY>YYYN>YNNN>NYNN>YYYY>YNNY>YNYN>NYNY>NYYN>NNNN>YNYY>NYYY>NNNY>NNYN>NNYY
+0:YNYY>YNYN>YNNY>YYYY>NNYY>YNNN>YYYN>YYNY>NNYN>NNNY>NYYY>YYNN>NNNN>NYYN>NYNY>NYNN
+0:YNYN>YNYY>YNNN>YYYN>NNYN>YNNY>YYYY>YYNN>NNYY>NNNN>NYYN>YYNY>NNNY>NYYY>NYNN>NYNY
+0:YNNY>YNNN>YNYY>YYNY>NNNY>YNYN>YYNN>YYYY>NNNN>NNYY>NYNY>YYYN>NNYN>NYNN>NYYY>NYYN
+10:YNNN>YNNY>YNYN>YYNN>NNNN>YNYY>YYNY>YYYN>NNNY>NNYN>NYNN>YYYY>NNYY>NYNY>NYYN>NYYY
+0:NYYY>NYYN>NYNY>NNYY>YYYY>NYNN>NNYN>NNNY>YYYN>YYNY>YNYY>NNNN>YYNN>YNYN>YNNY>YNNN
+0:NYYN>NYYY>NYNN>NNYN>YYYN>NYNY>NNYY>NNNN>YYYY>YYNN>YNYN>NNNY>YYNY>YNYY>YNNN>YNNY
+0:NYNY>NYNN>NYYY>NNNY>YYNY>NYYN>NNNN>NNYY>YYNN>YYYY>YNNY>NNYN>YYYN>YNNN>YNYY>YNYN
+10:NYNN>NYNY>NYYN>NNNN>YYNN>NYYY>NNNY>NNYN>YYNY>YYYN>YNNN>NNYY>YYYY>YNNY>YNYN>YNYY
+0:NNYY>NNYN>NNNY>NYYY>YNYY>NNNN>NYYN>NYNY>YNYN>YNNY>YYYY>NYNN>YNNN>YYYN>YYNY>YYNN
+10:NNYN>NNYY>NNNN>NYYN>YNYN>NNNY>NYYY>NYNN>YNYY>YNNN>YYYN>NYNY>YNNY>YYYY>YYNN>YYNY
+10:NNNY>NNNN>NNYY>NYNY>YNNY>NNYN>NYNN>NYYY>YNNN>YNYY>YYNY>NYYN>YNYN>YYNN>YYYY>YYYN
+0:NNNN>NNNY>NNYN>NYNN>YNNN>NNYY>NYNY>NYYN>YNNY>YNYN>YYNN>NYYY>YNYY>YYNY>YYYN>YYYY
+-->
+<p>
+As a very-concrete instantiation of approximately that idea (got by taking
+various rows from Lomax's table and changing the numbers), with these 67 voters
+</p>
+<table bgcolor="yellow">
+<tr bgcolor="pink"><th>#voters</th><th>Their honest vote</th></tr>
+<tr><td>24</td><td>
+YYYY&gt;YYYN&gt;YYNY&gt;YNYY&gt;NYYY&gt;YYNN&gt;YNYN&gt;YNNY&gt;NYYN&gt;NYNY&gt;NNYY&gt;YNNN&gt;NYNN&gt;NNYN&gt;NNNY&gt;NNNN
+</tr><tr><td>10</td><td>YNNN&gt;YNNY&gt;YNYN&gt;YYNN&gt;NNNN&gt;YNYY&gt;YYNY&gt;YYYN&gt;NNNY&gt;NNYN&gt;NYNN&gt;YYYY&gt;NNYY&gt;NYNY&gt;NYYN&gt;NYYY
+</tr><tr><td>10</td><td>NYNN&gt;NYNY&gt;NYYN&gt;NNNN&gt;YYNN&gt;NYYY&gt;NNNY&gt;NNYN&gt;YYNY&gt;YYYN&gt;YNNN&gt;NNYY&gt;YYYY&gt;YNNY&gt;YNYN&gt;YNYY
+</tr><tr><td>10</td><td>NNYN&gt;NNYY&gt;NNNN&gt;NYYN&gt;YNYN&gt;NNNY&gt;NYYY&gt;NYNN&gt;YNYY&gt;YNNN&gt;YYYN&gt;NYNY&gt;YNNY&gt;YYYY&gt;YYNN&gt;YYNY
+</tr><tr><td>10</td><td>NNNY&gt;NNNN&gt;NNYY&gt;NYNY&gt;YNNY&gt;NNYN&gt;NYNN&gt;NYYY&gt;YNNN&gt;YNYY&gt;YYNY&gt;NYYN&gt;YNYN&gt;YYNN&gt;YYYY&gt;YYYN
+</tr><tr><td>3</td><td>NNNN&gt;NNNY&gt;NNYN&gt;NYNN&gt;YNNN&gt;NNYY&gt;NYNY&gt;NYYN&gt;YNNY&gt;YNYN&gt;YYNN&gt;NYYY&gt;YNYY&gt;YYNY&gt;YYYN&gt;YYYY
+</tr>
+</table>
+<p>
+we find that Y wins on issue #1 by 34-to-33 majority (and ditto for any other issue).  
+But NNNN is the election winner
+using either Basic Condorcet, Schulze beatpaths, Tideman Ranked Pairs, 
+Simpson-Kramer min-max, Nanson-Baldwin, 
+or Bucklin,
+while NNNY wins with IRV and NYYY with Black and Borda.
+Coombs delivers the best winner YYYY in this case.
+</p>
+<p>
+And with these 83 voters
+</p>
+<table bgcolor="yellow">
+<tr bgcolor="pink"><th>#voters</th><th>Their honest vote</th></tr>
+<tr><td>32</td><td>
+YYYY&gt;YYYN&gt;YYNY&gt;YNYY&gt;NYYY&gt;YYNN&gt;YNYN&gt;YNNY&gt;NYYN&gt;NYNY&gt;NNYY&gt;YNNN&gt;NYNN&gt;NNYN&gt;NNNY&gt;NNNN
+</tr><tr><td>10</td><td>YNNN&gt;YNNY&gt;YNYN&gt;YYNN&gt;NNNN&gt;YNYY&gt;YYNY&gt;YYYN&gt;NNNY&gt;NNYN&gt;NYNN&gt;YYYY&gt;NNYY&gt;NYNY&gt;NYYN&gt;NYYY
+</tr><tr><td>10</td><td>NYNN&gt;NYNY&gt;NYYN&gt;NNNN&gt;YYNN&gt;NYYY&gt;NNNY&gt;NNYN&gt;YYNY&gt;YYYN&gt;YNNN&gt;NNYY&gt;YYYY&gt;YNNY&gt;YNYN&gt;YNYY
+</tr><tr><td>10</td><td>NNYN&gt;NNYY&gt;NNNN&gt;NYYN&gt;YNYN&gt;NNNY&gt;NYYY&gt;NYNN&gt;YNYY&gt;YNNN&gt;YYYN&gt;NYNY&gt;YNNY&gt;YYYY&gt;YYNN&gt;YYNY
+</tr><tr><td>10</td><td>NNNY&gt;NNNN&gt;NNYY&gt;NYNY&gt;YNNY&gt;NNYN&gt;NYNN&gt;NYYY&gt;YNNN&gt;YNYY&gt;YYNY&gt;NYYN&gt;YNYN&gt;YYNN&gt;YYYY&gt;YYYN
+</tr><tr><td>11</td><td>NNNN&gt;NNNY&gt;NNYN&gt;NYNN&gt;YNNN&gt;NNYY&gt;NYNY&gt;NYYN&gt;YNNY&gt;YNYN&gt;YYNN&gt;NYYY&gt;YNYY&gt;YYNY&gt;YYYN&gt;YYYY
+</tr>
+</table>
+<p>
+we find that Y wins on issue #1 by 42-to-41 majority (and ditto for any other issue).  
+But NNNN is the election winner
+using either Basic Condorcet, Schulze beatpaths, Tideman Ranked Pairs, Nanson-Baldwin,
+Simpson-Kramer min-max, Bucklin, or IRV.
+(But NYYY wins with Black and Borda and YYYN wins with Copeland. Again Coombs elects YYYY.)
+<p>
+Later note: see answer i for a complete solution to the Condorcet-method problem,
+which works for <i>every</i> Condorcet method, not just the named-methods we mentioned above.
+</p>
+<p><b>f.</b>
+The same example that led off answer (e) also yields that NNN...NN is the Borda winner 
+(if <i>m</i> is large enough).
+To be ultra-concrete about it, with m=4 take 21 YYYY voters versus
+10 each for YNNN, NYNN, NNYN, NNNY (and use Borda score
+<i>expectation value</i> among random honest orderings of the candidates); then 
+the unique Borda winner is NNNN
+even though any individual issue is won by Y by a 31-to-30 majority.
+</P>
+<p>
+[Our more-powerful "backwards Condorcet" example in (i) will also yield a backwards Borda ordering
+because of the fact that a candidate's Borda score is the sum of his pairwise-victory margins,
+up to an overall additive constant.]
+</p>
+<p><b>g.</b>
+The same example in (e) also yields that NNN...NN is the Approval Voting
+winner (if <i>m</i> is large enough)
+for <i>any</i> fixed value of F with 0&lt;F&le;50%.
+<small>
+Also, of course, the Brams m=4 example for plurality voting is also valid
+for approval voting if the voters only approve their top choice, i.e. the top 1/16 of the
+candidates.  
+In that example Lomax also notes that voters approving only their favorite if
+he is a "frontrunner" but approving both their favorite and successive candidates worse than
+him until they reach a "frontrunner"... will sadly still elect NNNN
+if we regard "frontrunners" as those with 4 or more plurality votes.
+Further, in the 61-voter concrete m=4 example in answer "f",
+if voters approve the top 5 candidates, then NNNN wins with 40 approvals; no rival
+gets more than 30.   Also we note that <i>range voting</i> can elect NNNN if
+the voters are <i>strategic exaggerators</i> rather than "honest," i.e. if we assume they
+vote in "approval style."   Also, if voters have different strengths of feeling,
+e.g. if the NNNN voters were extra passionate (this differs from the utilities
+assumed in the problem statement), then range can elect NNNN, albeit
+in that case this might be "good behavior," not a "malfunction."
+</small>
+</P>
+
+<p><b>h.</b>
+In the election example that began answer b,
+Coombs begins by eliminating YYY..YY because it has the most bottom rankings (29% of the voters
+rank it bottom, far more than for any other candidate).
+Coombs (assuming random tie-breaking in who-to-eliminate decisions)
+then continues by eliminating candidates with fraction-F of "Y"s in their names, 
+where F gradually decreases from 100% down to 71% and continues down toward 
+0 (it gets arbitrarily near to 0 if m is sufficiently large).
+Eventually we reach a situation where only a few candidates remain, all of them with
+almost-all "N"s in their name, and one wins.
+This <i>almost</i> solves the problem because the 
+winner will have an arbitrarily large fraction  (below 100%)
+of "N"s in its name &ndash;
+but does not completely solve the problem because we have not proved
+it is NNN..NN itself.
+If m is sufficiently large, then NNN..NN will be
+ranked bottom &ndash; in a head-to-head 2-candidate race between NNN..NN and
+NNN..NNY with just a single Y, or any very small fraction of Ys, in
+the latter name &ndash; by at least 50.4% of the voters, hence will be eliminated.
+That proves NNN..NN <i>cannot</i> be the Coombs winner.
+So this election almost, <i>but</i> not quite, solves the problem.
+</p>
+<p>
+Incidentally, in this election note that Coombs eliminates almost all candidates
+in exactly backwards order, i.e. starting by eliminating the best candidate YYY..YY,
+and thus "outputs a rank ordering" of the candidates which is almost exactly the reverse
+of the order that "should" be output!
+</p>
+
+<p><b>i.</b>
+Let 51% of the voters have ideologies which are 49% Y.
+The remaining
+49% of the voters have ideologies which are 60% Y.
+(All such ideologies equinumerous.)
+Then Y beats N on every individual issue.
+Now compare a candidate with fraction-P of Ys in its name, versus
+a candidate with fraction-Q of Ys in its name, P&lt;Q.
+The former candidate is preferred arbitrarily-near-unanimously within
+the 51%-bloc of voters, hence by an overall majority, if 
+0.49(1-P)+0.51P&lt;0.49(1-Q)+0.51Q
+[since
+these formulae give the expected number of letters-changed between the voter and the candidate
+for a random voter in the 51% bloc, and the distribution becomes arbitrarily sharply peaked about
+its expectation value in the m&rarr;&infin; limit]
+i.e. if
+P&lt;Q.
+Therefore, a candidate with fewer Ys in its name, is always majority-preferred
+over one with more Ys in its name!
+[Actually, the same analysis also works for the 49%-voter-bloc too, but in reverse, so that
+we see that the majority preference here is always a 51-49 majority to within &epsilon;.]
+Hence NNN..NN is the Condorcet winner and there are no cycles.
+This proves that not only Copeland, but in fact <i>every</I> Condorcet voting method,
+will elect the worst candidate NNN..NN and will order the finishers in exactly the reverse
+of the "right" ordering. 
+Indeed every voting method based purely on the "pairwise matrix" will get everything
+totally backwards. 
+</p>
+
+<p><b>Final comment.</b>
+This answer is almost perfect for theoretical purposes, i.e. it almost totally settles the 
+worst-case behavior of all the most-common voting system proposals in the YN model.
+However, because fairly large <i>m</i> values seem needed to make the examples work (?),
+and because we <i>are</i> talking about worst case behavior which is rare (?), these
+pathologies all may have little <i>practical</i> interest.  
+</p>
+<p>
+It therefore is of interest also to examine the YN model for <i>random</i> voters.
+That will be the subject of a <a href="PuzzAggregRandom.html">different</a>
+puzzle.
+</p>
+
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

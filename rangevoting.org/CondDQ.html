@@ -1,0 +1,151 @@
+<html>
+<head>
+<title>
+RangeVoting.org - "Condorcet" definition quibble
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> The "official" and "unofficial" definitions of "Condorcet"
+(and about range voting and red herrings) </H2>
+<small>[Adapted from a electorama web post by Warren D. Smith in August 2005.]</small>
+
+<p>
+Most political science books define "Condorcet critierion" in a way that implicitly 
+or explicitly assumes the voting method uses ranked ballots.
+That is because Condorcet himself had them, and only them, in mind.
+Our point is that there are <i>two</i> natural ways to
+generalize the definition of the "Condorcet criteron" to more general voting methods.
+</p>
+
+<p>
+To try to say so hits
+a wall of opposition from traditionalists,
+which is a red herring (i.e. distraction from the main issue
+of which is better &ndash; range voting or Condorcet methods?).
+To avoid being distracted by that red herring,
+let us simply make the "classic"
+Condorcet definition be:  
+</p>
+
+<p>
+<b>CLASSIC CONDORCET(CC for short):</b>
+Elects a winner W, whom the voters based on the <i>counts</i> of X>W and W>X type votes,
+agree is pairwise-superior to all others X (if such a "Condorcet winner" exists &ndash; in
+the sad case where none exists, then no claim is made).   
+Only applicable to: voting systems in which candidate rank orderings
+are deducible from the votes.
+</p>
+
+<p>
+Then the "<i>unofficial</i> Warren D. Smith Condorcet property" of a voting system
+(which is related and also interesting) is
+</p>
+
+<p>
+<b>WDS-CONDORCET (WC for short):</b>   Elects a winner W, whom the voters would
+agree is superior to all others X (if such a "WDS-Condorcet winner" exists &ndash; if none exists,
+then no claim is made) in each paired-off 2-candidate election "W versus X",
+using the same voting system but with all but these two candidates erased from
+all votes.  Only applicable to: voting systems in which "erasing all candidates from all votes,
+except for a preselected pair of candidates" has a meaning.
+</p>
+
+<blockquote>
+<small><b>Another view:</b>
+The "classic" CC definition 
+assumes that the 2-candidate comparisons are based on plurality voting
+(PV). With this definition, there are circumstances under which the
+range voting (RV) winner is not the Condorcet Winner (CW). But I think it is more
+reasonable to do the 2-person comparisons on the basis of the <i>same</i>
+system used for the multi-candidate election being considered.
+[That is the WC definition].
+<br><br>
+If this is done, then RV always
+picks the CW (and, in fact, the RV winner is <i>always</i> a CW). Note
+that this is <i>not</i> the case for Instant Runoff Voting (IRV), 
+where even considering 2-candidate
+IRV elections, IRV can fail to elect the CW.
+ &ndash; Prof. Steven Unger (Columbia University, NY) in
+a 2008 web post independently rediscovering this same idea.
+<br><br>
+[That is, in a 3-candidate IRV election, IRV can fail to elect a candidate who would defeat 
+every rival in 2-candidate IRV elections.  
+Example: 2 votes B>A>C, 2 votes C>A>B, and 1 vote A>B>C.  B wins this 3-candidate IRV election but
+A beats both B and C pairwise by 3:2 majority vote.]
+</small>
+</blockquote>
+
+<H3> Comparison of the two definitions CC and WC </H3>
+
+<ol>
+<li>
+WC seems applicable to a strict <i>superset</i> of the voting systems to which CC is applicable,
+so in that sense it is a <i>more useful</i>, important, and valuable property.
+</li><li>
+WC and CC happen to be <i>equivalent</i> on all "ranked-ballot voting systems which
+reduce in the 2-candidate case to majority vote."  I.e. every system that CC has ever been 
+tested on, in all preceding political science literature (apparently).  
+(This justifies our claim that <i>both</i> are fully valid ways to generalize the 
+original conception.)
+But they are <i>not</i> equivalent if
+applied to voting systems more general than that, e.g. range voting:
+&nbsp; <a href="CondRangeExample.html">Example</a>.
+</li><li>
+Is CC a desirable property for a voting system to have?  It sounds that way at first, 
+but it is a known <a href="AddTopFail.html">theorem</a> 
+that any voting system obeying CC must exhibit
+"add top" and/or "add bottom" failures (e.g. adding a new vote ranking the current-winner 
+top, can cause him to lose).  That makes CC sound less like a desirable property.
+And there is also the <a href="FishburnAntiC.html">Fishburn counterexample</a>
+and
+<a href="CondCoursera.html">Condorcet self-contradiction</a> example.
+</li><li>
+Also, a simple instance where CC clearly is undesirable, is the "free the slaves" vote
+in the early USA, where, say, 60% of the voters would vote to keep slavery,
+and 40% (we assume the slaves are allowed to vote) would vote to ban slavery.
+However, the right decision is to free the slaves, and a voting system that were
+somehow able to weight the votes based on the utility to that person (slaves: freedom
+has high utility.  Slaveowners: having a slave has utility, but a lot less) would
+produce a superior result utility-sum-wise.  
+In this scenario range voting with honest-enough voters would
+be capable of freeing the slaves, although no classic-Concorcet system could do so.
+</li><li>
+Is WC a desirable property for a voting system to have?  Sounds that way, yes.
+</li><li>
+Both Range voting, and all so-far-constructed "Condorcet voting methods",
+obey WC.
+</li><li>
+Range voting elections (ignoring exact ties) <i>always</i> produce a WC-Condorcet winner.
+</li><li>
+All other so-far-constructed "Condorcet voting methods" do <i>not</i> always
+produce either a WC-Condorcet winner or a CC-Condorcet winner.
+</li><li>
+So in that sense, which is very highly related to the yardstick used by Condorcet proponents
+<i>themselves</i>, range voting is <i>superior</i> to 
+every so-far-constructed Condorcet voting method!
+</li>
+</ol>
+
+<p>
+<a href="CondRangeExample.html#sc">More details</a> &ndash;
+there is really also a <i>third</i> way ("SC")
+to generalize the definition of "Condorcet" and Range Voting obeys one out of three
+(two out of three with a bit of generous fudging) while "traditional  Condorcet" methods
+also obey one out of three.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

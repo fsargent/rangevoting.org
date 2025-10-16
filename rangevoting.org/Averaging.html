@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Averaging
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Averaging versus Totaling </H2>
+
+<p>
+Averaging and totaling
+are exactly <i>equivalent</i> things <i>if</i> no voter ever leaves a score 
+blank
+(or if blanks are disallowed).
+</p>
+
+<p>
+They only differ if some voters intentionally leave some 
+scores <i><a href="Blanks.html">blank</a></i> (by filling in that slot with an X)
+because of their intent not to express an opinion about that candidate.
+Then with totaling, blanks would be equivalent to a zero-vote,
+whereas with averaging, blanks are ignored.
+</p>
+
+<H3> Unique properties of Averaging </H3>
+
+Only averaging has the property that all voters "have equal influence"
+on the final score.  I.e. if one voter (among N) perturbs vote by x then
+the average score moves by x/N in the same direction.
+This is a unique property of the "averaging" function.  No other has it.
+
+For example with the "median" (or 75%tile) function, perturbing
+your vote by x has zero effect except that one voter
+can have x effect, i.e. maximally unequal effects.
+
+<H3> Could averaging with blanks-for-"no opinion" lead to some 
+unknown candidate getting elected with just one vote?! Yikes!
+</H3>
+
+<p>
+<b>Claim:</b>
+Averaging the scores of all those who expressed an
+opinion, leaving out blanks, is a bad idea, since it could elect an unknown based
+on a single vote!
+</p>
+
+<p>
+<b>Response:</b>
+Yes, true in theory... (if we eliminate the "<a href="RuleD.html">safety valve rule</a>"
+and its current <a href="BetterQuorum.html">better version</a>)...
+<i>but</i> you have to stop worrying about super-unlikely worst case scenarios 
+and focus on cases that will happen.
+</p>
+
+<p>
+The actual experimental fact is, lots and lots of voters experimentally are seen to fill in
+a "no opinion/ignorant" slot with <i>zeros</i>. Not all of them. But about 1.7 times
+more than prefer to leave them blank. (According 
+to our data #82 <a href="WarrenSmithPages/homepage/works.html">here</a>.) 
+My inquisitor evidently feels the same way.
+(<font size="-1">In fact it is quite astounding how those who furiously argue against the X-blank
+option assert that [1] they and their side &ndash; demanding that blanks be regarded as <i>zero</i> &ndash;
+are vastly in the majority in this argument, <i>but</i> [2] none of that vast majority is
+actually going to show up at the polls to actually vote 0, which is the whole reason we are
+going to get a catastrophe.</font>)
+These "give 'em zeros to play it safe"
+voters will have a huge effect and will prevent the "single vote
+from causing a win" nightmare scenario. In fact they will prevent the
+"any small percentage of votes causing a win" scenario.
+It simply is a bullshit scenario that
+will not happen.
+</p>
+
+<a name="unlikely">
+<p>
+<i>Can</i> it happen? Yes, but it is unlikely. You do not seem to appreciate
+just how unlikely. So let's do a calculation. 
+Let us suppose it is a 100-voter
+election.
+Let us suppose that the stealth candidate has 10 secret supporters
+pledged to give him 99s as part of his Evil World Takeover Plan.
+Suppose he needs above 49 average to get elected. 
+Now suppose
+the rest of the voters (who are totally ignorant of that candidate) flip a coin.
+If "tails" they leave the slot blank to express their ignorance. 
+If "heads" they fill it in with 0 to play it safe.
+This approximates the true situation, except I am being
+very generous to my inquisitor by using a fair coin. In fact, the data says the
+coin is biased about 10:17 in favor of heads. Maybe more. Ok, what are the
+chances the stealth candidate will be elected? 
+Same chances the 90 coin flips
+come up heads only 10 times or fewer. I compute this chance to be
+5.3&times;10<sup>-15</sup>.
+Suppose we held one such election every day from the beginning of
+the universe until now. The number of times the stealth candidate would have
+been elected, from then to now, would have been in expectation
+0.025, i.e. you'd have to wait 40 universe-lifetimes for it to happen.
+</p>
+
+<p>
+Or put another way, of all the elections (including counting informal votes at meetings
+and family gatherings) ever held in all human history, the total number
+that would elect the stealth candidate (at this rate) would be below 1.
+</p>
+
+<p>
+Now I was very generous to my inquisitor in the above calculation.
+In reality any such stealth candidate could <i>not</i> mobilize 10% of society while
+at the same time keeping everybody else totally ignorant about him!
+One or the other, ok.  But not both.
+And further, suppose we are not talking about a 100-voter election.
+We are more realistically talking about 1000, or 10000, or more, voters.
+Then the unlikeliness
+gets <i>really</i> incredibly huge. I mean 0.000000...0001 with
+pages and pages of zeros before you reach the 1.  That is how unlikely.
+Beyond tiny.   Even if an election were held every nanosecond on every
+atom in the universe for the whole age of the universe, the total
+number of stealth victories then
+would still be incredibly near zilch.
+</p>
+
+<p>
+So can we return to the world of reality? 
+<a href="AirMolec.html">Election system design should not
+be based upon ludicrously unlikely stuff.</a>
+It should be based on
+likely phenomena. What is likely, is that honest voters and whatever
+they want to say, is good to get in as undistorted a form as possible.
+</p>
+
+<p>
+Paranoia can be good. But overmuch paranoia, is counterproductive.
+</p>
+
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

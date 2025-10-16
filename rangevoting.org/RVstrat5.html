@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Personal Utility Analysis of "Range-2" three-candidate election
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2> Personal Utility vs Strategy Analysis of "Range-2" three-candidate election </h2>
+
+<p><small> by Abd ul-Rahman Lomax &amp; Warren D. Smith </small> </p>
+
+<p>
+We consider "3-slot range" voting where you can give each candidate a score in the set {0,1,2};
+highest sum-score wins.
+</p>
+<p>
+The voter (you) has these utilities for the three candidates ABC:
+<center>
+U<sub>A</sub> = 20, &nbsp;&nbsp;
+U<sub>B</sub> = 10+6e, &nbsp;&nbsp;
+U<sub>C</sub> =  0, &nbsp;&nbsp;
+for some adjustable e with &nbsp; &ndash;10&le;6e&le;+10.
+</center>
+</p>
+<p>
+We contrast three voting strategies in a 3-candidate election:
+<ol type="a">
+<li>
+honest "Borda-style" 3-slot range voting: A=2, B=1, C=0.
+</li>
+<li>
+exaggerated "AntiPlurality-style" voting: A=2, B=2, C=0.
+</li>
+<li>
+exaggerated "Plurality-style" voting: A=2, B=0, C=0.
+</li>
+</ol>
+<p>
+Which strategy works better for you?  
+</p>
+
+<p>
+Here we shall determine "utility" 
+in cases where your vote could be "relevant" &ndash; i.e. it
+could raise
+average utility above not voting at all. 
+This eliminates from consideration
+all the  vote patterns in which your vote could not possibly change the winner.
+In other words, we only examine 2-way near-ties or 3-way near-ties.
+</p><p>
+We assume all such patterns of vote totals
+are equally likely, except that <i>three</i>-way near-ties are regarded as 
+<i>less</i> likely (say T times the probability, for some T with 0&lt;T&le;1;
+although actually we could also permit these to be <i>more</i> likely, i.e. T&gt;1,
+the math below will not mind).
+Finally, we also assume ties are broken by unbiased random chance.
+</p>
+<p>
+Then there are
+exactly 15 vote-total patterns for which the other voters are relevant and
+somebody is out of contention ("&ndash;&infin;"), and exactly 25
+vote-total patterns for which the other voters are relevant and
+<i>everybody</i> has a chance to win or tie.
+(For each, an offset is subtracted such that one
+of the candidates &ndash; it doesn't matter which &ndash;
+has a net vote of 2. The rivals' vote-totals thus vary from 0 to 4.
+If the other candidate is far behind, he has a score of "&ndash;&infin;".)
+</p>
+
+<pre>
+Totals from   Result if          Result if you       Result if you
+other voters you honestly        exaggerate          exaggerate
+------------ vote 210  utility      "220"  utility        "200"  utility
+ A  B  C     --------  -------     ------- -------       ------- -------
+-&infin;  0  2     C wins    0           BC tie    5+3e        C wins    0    
+-&infin;  1  2     BC tie    5+3e        B wins   10+6e        C wins    0    
+-&infin;  2  2     B wins   10+6e        B wins   10+6e        BC tie    5+3e
+-&infin;  3  2     B wins   10+6e        B wins   10+6e        B wins   10+6e
+-&infin;  4  2     B wins   10+6e        B wins   10+6e        B wins   10+6e
+ 0 -&infin;  2     AC tie   10           AC tie   10           AC tie   10    
+ 1 -&infin;  2     A wins   20           A wins   20           A wins   20    
+ 2 -&infin;  2     A wins   20           A wins   20           A wins   20    
+ 3 -&infin;  2     A wins   20           A wins   20           A wins   20    
+ 4 -&infin;  2     A wins   20           A wins   20           A wins   20    
+ 0  2 -&infin;     B wins   10+6e        B wins   10+6e        AB tie   15+3e
+ 1  2 -&infin;     AB tie   15+3e        B wins   10+6e        A wins   20    
+ 2  2 -&infin;     A wins   20           AB tie   15+3e        A wins   20    
+ 3  2 -&infin;     A wins   20           A wins   20           A wins   20    
+ 4  2 -&infin;     A wins   20           A wins   20           A wins   20    
+
+The below 25 configurations each have (smaller?) relative likelihood T:
+-----------------------------------------------------------------------
+0  0  2    AC tie  10          ABC tie  10+2e       AC tie  10    
+0  1  2   ABC tie  10+2e        B wins  10+6e       AC tie  10    
+0  2  2    B wins  10+6e        B wins  10+6e      ABC tie  10+2e
+0  3  2    B wins  10+6e        B wins  10+6e       B wins  10+6e
+0  4  2    B wins  10+6e        B wins  10+6e       B wins  10+6e
+1  0  2    A wins  20           A wins  20          A wins  20    
+1  1  2    A wins  20           AB tie  15+3e       A wins  20    
+1  2  2    AB tie  15+3e        B wins  10+6e       A wins  20    
+1  3  2    B wins  10+6e        B wins  10+6e       AB tie  15+3e
+1  4  2    B wins  10+6e        B wins  10+6e       B wins  10+6e
+2  0  2    A wins  20           A wins  20          A wins  20    
+2  1  2    A wins  20           A wins  20          A wins  20    
+2  2  2    A wins  20           AB tie  15+3e       A wins  20    
+2  3  2    AB tie  15+3e        B wins  10+6e       A wins  20    
+2  4  2    B wins  10+6e        B wins  10+6e       AB tie  15+3e
+3  0  2    A wins  20           A wins  20          A wins  20    
+3  1  2    A wins  20           A wins  20          A wins  20    
+3  2  2    A wins  20           A wins  20          A wins  20    
+3  3  2    A wins  20           AB tie  15+3e       A wins  20    
+3  4  2    AB tie  15+3e        B wins  10+6e       A wins  20    
+4  0  2    A wins  20           A wins  20          A wins  20    
+4  1  2    A wins  20           A wins  20          A wins  20    
+4  2  2    A wins  20           A wins  20          A wins  20    
+4  3  2    A wins  20           A wins  20          A wins  20    
+4  4  2    A wins  20           AB tie  15+3e       A wins  20    
+
+          210+405T+30e+47eT    210+370T+42e+74eT   210+430T+18e+26eT
+AvgUtil   -----------------    -----------------   -----------------
+              15 + 25T             15 + 25T            15 + 25T
+</pre>
+<!--
+Sign of e        any                  +                   -
+(for brain-equipped voter)
+-->
+
+<h3>Conclusion:</h3>
+<p>
+Depending on the values of e and T, any one of the three voting strategies can be best:
+<ul>
+<li>
+If e=T=0, all are equal with utility=14.
+</li><li>
+If e = +0.5, T=0  then AntiPlurality is best with utility=15.4 (Borda=15.0, Plurality=14.6).
+</li><li>
+If e = &ndash;0.5 (and any T&gt;0) Plurality is best, with utility=13.4 
+(Borda=13.0, AntiPlurality=12.6) when T=0.
+</li><li>
+If e = +0.8, T=8/9 Borda is best with utility&asymp;16.86 (Plurality=AntiPlurality&asymp;16.79)
+</li><li>
+If 0&lt;e&lt;1.25=5/4 and T=2e/(5-4e)  then Borda is best.
+Equivalently, if 0&lt;T and e=5T/(4T+2) then Borda is best.
+</li></ul>
+Here are some more powerful results.  They imply that no matter how small T&gt;0 is,
+still any and all of the three strategies can be best (depending on e):
+<ul><li>
+If 0&lt;e&lt;25/21 and 12e/(35-27e)&lt;T&lt;12e/(25-21e) then Borda is best.
+</li><li>
+If e&lt;0 and T&gt;0, then Plurality is best.
+</li><li>
+If 0&lt;e&lt;35/27 and 0&lt;T&lt;12e/(35-27e), then AntiPlurality is best.
+</li></ul>
+This can be recast as the following, which seems to be the final word: 
+</p><p>
+<b>THEOREM:</b> For any T&gt;0:
+<ul>
+<li>
+If &nbsp;  e &lt; 25T/(12+21T), &nbsp; then Plurality is best strategy.
+</li><li>
+If &nbsp;  25T/(12+21T) &lt; e &lt; 35T/(12+27T), &nbsp;
+then Borda is best.
+</li><li>
+If &nbsp;  35T/(12+27T) &lt; e, &nbsp;
+then AntiPlurality is best.
+</li>
+</ul>
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

@@ -1,0 +1,162 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 strict //EN">
+<html>
+<head>
+<title>
+Voting matters, Issue 1: pp 11-12
+</title>
+</head>
+<body>
+<B>Up:</B> <A HREF="https://rangevoting.org/INDEX.HTM"> Issue 1 </A>
+<B>Next:</B> <A HREF="https://rangevoting.org/P4.HTM"> Paper 4 </A>
+<B>Previous:</B> <A HREF="https://rangevoting.org/P2.HTM"> Paper 2 </A>
+<BR><P>
+<H1>Voting matters - Issue 1, March 1994</h1>
+
+
+<H2>Computer counting in STV elections</h2>
+
+<h4>D R Woodall, Department of Mathematics, University of Nottingham</h4>
+
+<p>
+Douglas Woodall is Reader in Pure Mathematics at Nottingham University.
+
+<p>
+<i>Reprinted [with minor corrections] from Representation 23 (1983), 4-6.</i>
+
+<p>
+The Single Transferable Vote is by far and away the fairest form of
+electoral system. Nevertheless, when the counting in STV elections is
+carried out by hand, rather arbitrary decisions have to be made in order to
+simplify the count, and these introduce anomalies. Although small in
+comparison with anomalies present in other electoral systems, these
+anomalies may affect the result, and are certainly annoying to the purist.
+
+<p>
+The biggest anomaly is caused by the decision, always made, not to transfer
+votes to candidates who have already reached the quota of votes necessary
+for election. This means that the way in which a given voter's vote will be
+assigned may depend on the order in which candidates are declared elected or
+eliminated during the counting, and it can lead to the following form of
+tactical voting by those who understand the system. If it is possible to
+identify a candidate W who is sure to be eliminated early (say, the
+Cambridge University Raving Loony Party candidate), then a voter can
+increase the effect of his genuine second choice by putting W first. For
+example, if two voters both want A as first choice and B as second, and A
+happens to be declared elected on the first count, then the voter who lists
+his choices as 'A B ...' will have (say) one third of his vote transferred
+to B, whereas the one who lists his choices as 'W A B ...' will have all of
+his vote transferred to B, since A will already have been declared elected
+by the time W is eliminated. Since one aim of an electoral system should be
+to discourage tactical voting, this seems to me to be a serious drawback.
+
+<p>
+If, on the other hand, one agrees that surpluses will be transferred to
+candidates who have already reached the quota, then one has to do something
+to avoid the never-ending transfer of progressively smaller surpluses
+between two candidates. Whatever strategy one adopts, it is bound to
+introduce other anomalies, albeit smaller than the one already described.
+
+<p>
+If the counting is carried out by computer, however, no such arbitrary
+decisions are necessary, as the never-ending transfer can be carried out to
+completion, or at least until the surpluses remaining to be transferred are
+less than (say) a millionth of a vote. The resulting procedure is described
+in the next paragraph in a different way. It is comparatively simple in
+concept, and the undoubtedly long calculations are all safely hidden inside
+the computer.
+
+<p>
+The counting is divided into rounds, in each of which one candidate is
+eliminated. In each round of the elimination, a scaling factor is assigned
+to each candidate, representing the proportion that will actually be
+credited to him out of the votes potentially available to him, in such a way
+that: 
+
+<ol>
+<li> a candidate who has already been eliminated in a previous round is
+assigned scaling factor 0, so that no votes will be credited to him in the
+current round;
+
+<li> a candidate whose fate is undecided at the end of the current round is
+assigned scaling factor 1, so that all the votes potentially available to
+him are credited to him; and
+
+<li> a candidate who by the end of the current round has at least the quota
+of votes necessary for election (and so is certain to be elected) is
+assigned a scaling factor less than or equal to 1 so that the number of
+votes credited to him is brought down exactly to the quota.
+
+</ol>
+
+ The candidate with the smallest number of votes is then eliminated, and the
+process is repeated until the number of candidates remaining is equal to the
+number of places to be filled.
+
+<p>
+For example, suppose that, in a given round of the counting, candidates A
+and B are certain of election and have scaling factors of two thirds and
+three quarters respectively, and candidates C, D and E have already been
+eliminated in previous rounds, whereas the fates of the remaining candidates
+remain undecided. Then a voter who lists the candidates in the order C, A,
+D, B, E, F will, in the current round, have none of his vote assigned to C.
+The whole of his vote will be passed down to A, who will retain two thirds
+of it. The remaining third of his vote will be passed over D and down to B,
+who will retain three quarters of it (that is, one quarter of a vote). The
+twelfth of a vote that is still unassigned will be passed over E and down to
+F, who will retain all of it.
+
+<p>
+The calculation of the scaling factors, which would be prohibitively long to
+do by hand, could be carried out quite easily by computer. However, once the
+computer had done the work, it would be possible to check by hand that the
+computer was correct; certainly this would take no longer than carrying out
+the whole count by hand as at present.
+
+<p>
+(This situation is not unusual in mathematics. Suppose, for example, that
+you were asked to find a number <i>x</i> between 1 and 2, accurate to seven
+places of decimals, such that (say) x(x(x(x(x+1)-4)-3)+3)+1 = 0.
+
+<p>
+You would find it very tedious to do so by hand, even with the aid of a
+pocket calculator.  Suppose, however, that a computer were to do the work
+and tell you that the answer is 1.6825071; then it would take you only a few
+minutes to check that the computer was correct.) 
+
+<p>
+The size of computer required would depend on the size of the electorate, on
+the number of places to be filled and, to a lesser extent, on the number of
+candidates. In the case of an election with both a very large electorate and
+a large number of places, it might even be impossible to carry out the
+calculations in a reasonable time with the present generation of computers. 
+
+<p>
+However, for parliamentary elections, there would be no problem: the
+calculations could be done quite easily even on a mini-computer.
+
+<p>
+Since proposing the above method, I have learnt that it is not new; a
+differently worded but exactly equivalent method was proposed by Brian Meek
+in 1969.<a href="#r1">[1]</a>,<a href="#r2">[2]</a>  I hope it will be possible
+to agree that, whenever computer counting is used in STV elections, this
+method should be used.
+
+<h3>References</h3>
+<ol>
+
+<li> <a name="r1"><a href="https://rangevoting.org/P1.HTM">B L Meek</a>, Une nouvelle approche du
+scrutin transf&eacute;rable, Math&eacute;matics et Sciences Humaines 25
+(1969), 13-23.</a>
+
+<li> <a name="r2"><a href="https://rangevoting.org/P2.HTM">B L Meek</a>, Une nouvelle approche du
+scrutin transf&eacute;rable (fin), Math&eacute;matics et Sciences Humaines
+29 (1970), 33-39.</a>
+
+</ol>
+
+<hr>
+<B>Up:</B> <A HREF="https://rangevoting.org/INDEX.HTM"> Issue 1 </A>
+<B>Next:</B> <A HREF="https://rangevoting.org/P4.HTM"> Paper 4 </A>
+<B>Previous:</B> <A HREF="https://rangevoting.org/P2.HTM"> Paper 2 </A>
+</body>
+</html>

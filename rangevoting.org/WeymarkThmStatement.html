@@ -1,0 +1,88 @@
+<html>
+<head>
+<title>
+RangeVoting.org --  Weymark's Statement of Harsanyi's Social Aggregation Theorem
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Weymark's Statement of Harsanyi's Social Aggregation Theorem
+</H2>
+
+<p><small>By Marcus Pivato.
+This is simply theorem 8 from
+John A. Weymark: The Harsanyi-Sen Debate on utilitarianism, in
+"Interpersonal Comparisons of Well-Being," 
+(Jon Elster &amp; John E. Roemer, eds, Cambridge Univ. Press 1991), 
+but rewritten to condense it into a single theorem rather than with
+different parts spread over many theorems.
+</small></p>
+
+<p>
+<b>THEOREM:</b>
+</p><p>
+Let X be a set of two or more "alternatives" and let Lott(X) be the set of all "lotteries"
+(i.e. probability distributions) over X.  
+</p><p>
+Let I be a collection of individuals, and suppose each individual i in I has 
+von Neumann Morgenstern ("vNM") preferences over Lott(X) &ndash; i.e. 
+there is some utility function U<sub>i</sub>: X &rarr; <b>R</b> such that i 
+prefers lottery p to lottery q iff the p-expected value of U<sub>i</sub> 
+is bigger than the q-expected value of U<sub>i</sub>. 
+</p><P>
+Suppose "Society" also has vNM preferences over Lott(X), described by
+some utility function U: X &rarr; <b>R</b>.
+</p><P>
+<b>(a)</b>
+Suppose Society's preferences satisfy "Pareto Indifference":
+For any p and q in Lott(X), if every person is indifferent
+between p and q, then so is Society.  Then U is a <i>linear combination</i> of
+{ U<sub>i</sub> ; i in I}.  That is, there are some coefficients a<sub>i</sub> in <b>R</b>
+(not necessarily positive) such that
+<center>
+ U =  &sum;<sub>i in I</sub> a<sub>i</sub> U<sub>i</sub>, &nbsp;&nbsp;&nbsp;  (plus some constant).
+</center>
+</p><P>
+<b>(b)</b>
+Suppose Society's preferences also satisfy "Semistrong Pareto":
+For any p and q in Lott(X), if every person thinks p is at least
+as good as q, then so does Society.
+</p><P>
+Then U is a linear combination of {U<sub>i</sub>}, 
+and furthermore the coefficients a<sub>i</sub> are <i>nonnegative</i>.
+</p><P>
+<b>(c)</b>
+Suppose further that  Society's preferences satisfy "Strong Pareto":
+This is the same condition as "Semistrong Pareto" with the further requirement: 
+"if everyone thinks p is as good as q, and at least one thinks p is better, 
+then Society thinks p is better than q."
+</p><P>
+Then U is a linear combination of {U<sub>i</sub>}, 
+and furthermore the coefficients a<sub>i</sub> are <i>positive</i>.
+</p><P>
+<b>(d)</b>
+In any of parts (a), (b), or (c), suppose Society's preferences also satisfy 
+"Independent prospects":
+For every individual i in I, there exist two lotteries p and q such that i prefers p to q, 
+but everyone else is indifferent between p and q 
+(i.e. p and q concern some matter affecting i only).
+</p><P>
+Then the coefficients a<sub>i</sub> are
+<i>unique</i> up to multiplication by some constant rescaling factor.
+</p>
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

@@ -1,0 +1,1377 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Connection between approval voting and candidate-honesty
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Probable connection between approval voting and candidate-honesty </H2>
+
+<p><small>Warren D. Smith, Sept. 2016</small></p>
+
+<a name="Summary"></a><h3>Summary</h3>
+<p>
+It appears that the most-approved candidates in 
+<a href="Approval.html">approval</a>-style polling
+coincide with the most-truthful candidates according to fact-checking organizations.
+Previously, it had been unclear why real-world approval voters approved or
+disapproved candidates or what approval "meant" to them.  This observation 
+may go a long way toward clarifying that, although further data, and possibly
+then some refined rewording of the hypothesis, are desirable. 
+But our present data already is good enough to yield one to five "nines"
+worth of confidence.  We explain various confidence calculations and criticisms thereof,
+eventually claiming confidence&ge;99.5% for our final 
+<a href="#ObnoxHypot">model</a> versus the null hypothesis, which bound ought
+to be immune to all the criticisms.
+</p>
+
+<h3> Table of contents </h3>
+<ol>
+<!-- <li><a href="#Summary">Summary</a></li> -->
+<li><a href="#USA2016">2016 USA presidential election</a>
+</li><li><a href="#GaryJohnson">Note about Gary Johnson</a>
+</li><li><a href="#USA2012">The preceding (USA 2012) Presidential election</a>
+</li><li><a href="#France2016">French 2012 Presidential election</a>
+</li><li><a href="#ConclusionI"> First try at a Conclusion</a>
+</li><li><a href="#ConclusionII">Conclusion revisited in light of "p-hacking" worry</a>
+</li><li><a href="#USA2008">USA 2008 Presidential election</a>
+</li><li><a href="#MaxLik">A maximum likelihood model, and yet another criticism (by Gary Smith)</a>
+</li><li><a href="#ConclusionIII">Final Conclusion</a>
+</li><li><a href="#Implications"> Implications for Democracy </a>
+</li></ol>
+
+
+<a name="USA2016"></a><h3>2016 USA presidential election</h3>
+<p>
+I am writing this in September 2016 in the midst of the 2016 US presidential race.
+I noticed an interesting possible connection, see the data table below.
+</p>
+<a name="USA2016rtable"></a> 
+<table cellspacing="5">
+<tr bgcolor="pink"><th>Candidate</th><td>H0 H1 H2 H3 H4 H5</td><th>FC</th><th>ApprovalRCP</th><th>ApprovalHP</th><th>AppNum</th></tr>
+<tr><td>Hillary Clinton(DN)</td><td><tt>2  11  15  22  28  22</tt></td><td>249</td><td>42.3/52.3</td><td>41.6/56.2</td><td>0.775</td></tr>
+<tr><td>Bernie Sanders(D)*</td><td><tt>0  11  17  20  39  13</tt></td><td>106</td><td>50.0/36.8</td><td>55.8/35.6</td><td>1.463*</td></tr>
+<tr><td>Elizabeth Warren(Dx)*</td><td><tt>0   0  11  11  33  45</tt></td><td>  9</td><td>28.0/26.3</td><td>25.2/27.1</td><td>0.997*</td></tr>
+<tr><td>Joe Biden (Dx)    </td><td><tt>5  13  15  28  21  17</tt></td><td> 75</td><td>45.7/37.7</td><td>51.3/36.6</td><td>1.307*</td></tr>
+<tr><td>Martin O'Malley(D)</td><td><tt>0   6  17  56  22   0</tt></td><td> 18</td><td>17.5/27.0</td><td>    --   </td><td>0.648</td></tr>
+<tr><td>Donald Trump(RN) </td><td><tt>18  35  18  15  11   4</tt></td><td>250</td><td>38.8/58.6</td><td> 38.3/59.0</td><td>0.656</td></tr>
+<tr><td>Ted Cruz(R)      </td><td><tt>7  27  31  13  16   7</tt></td><td>114</td><td>29.7/54.8</td><td> 23.8/54.8</td><td>0.488</td></tr>
+<tr><td>John Kasich(R)*  </td><td><tt>5  13  14  16  28  25</tt></td><td> 55</td><td>39.1/30.0</td><td>37.4/37.7</td><td>1.148*</td></tr>
+<tr><td>Marco Rubio(R)   </td><td><tt>3  15  23  22  24  13</tt></td><td>142</td><td>36.3/40.3</td><td> 34.9/46.0</td><td>0.830</td></tr>
+<tr><td>Jeb Bush(R)      </td><td><tt>3   6  22  22  30  14</tt></td><td> 79</td><td>30.8/52.4</td><td> 30.6/53.5</td><td>0.580</td></tr>
+<tr><td>Rand Paul(R)     </td><td><tt>6  16  14  20  24  22</tt></td><td> 51</td><td>25.7/41.0</td><td> 27.7/44.0</td><td>0.628</td></tr>
+<tr><td>Chris Christie(R)</td><td><tt>8  17  10  28  19  21</tt></td><td>102</td><td>29.8/44.5</td><td> 30.4/48.2</td><td>0.650</td></tr>
+<tr><td>Rick Santorum(R) </td><td><tt>8  27  20  22  12  10</tt></td><td> 59</td><td>24.0/42.0</td><td> 19.9/46.3</td><td>0.510</td></tr>
+<tr><td>Rick Perry(R)    </td><td><tt>11  18  18  25  14  15</tt></td><td>169</td><td>21.0/39.3</td><td> 23.6/43.5</td><td>0.538</td></tr>
+<tr><td>Scott Walker(R)  </td><td><tt>6  24  15  19  23  13</tt></td><td>172</td><td>23.5/29.3</td><td> 33.7/37.4</td><td>0.852</td></tr>
+<tr><td>Bobby Jindal(R)  </td><td><tt>0  10   0  40  40  10</tt></td><td> 10</td><td>18.7/30.3</td><td> 17.1/35.9</td><td>0.547</td></tr>
+<tr><td>Ben Carson(R)    </td><td><tt>14  43  25  11   7   0</tt></td><td> 28</td><td>   --   </td><td>  36.3/45.4</td><td>0.830</td></tr>
+<tr><td>Lindsey Graham(R)</td><td><tt>0  17  17  33  17  17</tt></td><td> 12</td><td>   --     </td><td>16.3/42.1</td><td>0.387</td></tr>
+<tr><td>George Pataki(R) </td><td><tt>20  80   0   0   0   0</tt></td><td>  5</td><td>   --     </td><td>14.8/37.9</td><td>0.391</td></tr>
+<tr><td>Mike Huckabee(R) </td><td><tt>10  12  29  22   7  20</tt></td><td> 41</td><td>   --     </td><td>28.5/45.0</td><td>0.633</td></tr>
+<tr><td>Carly Fiorina(R) </td><td><tt>9  23  23  18  14  14</tt></td><td> 22</td><td>   --     </td><td>24.6/39.0</td><td>0.631</td></tr>
+<tr><td>Jill Stein(G)    </td><td><tt>0   0 100   0   0   0</tt></td><td>  1</td><td>   --     </td><td>15.4/28.9</td><td>0.532</td></tr>
+<tr><td>Gary Johnson(L)  </td><td><tt>0  33  33   0  33   0</tt></td><td>  3</td><td>   --     </td><td>24.1/28.9</td><td>0.834</td></tr>
+</table>
+<p><b>KEY:</b>
+<br>
+FC=Number of "facts" claimed by that candidate and
+  checked by "politifact.com, winner of pulitzer prize" as of 13 Sept. 2016.
+  Note: for the following 4 people politifact did not check enough facts; therefore
+  I have added all the facts checked by FactCheck.org for that candidate, along with
+  numerical ratings provided by me, to their totals:
+    George Pataki, Jill Stein, Gary Johnson, Elizabeth Warren.
+  Even then, still below 10 facts for each of them.
+<br>
+H0=Percentage of those facts given the worst "pants on fire" rating.
+<br>
+H1=Percentage given 2nd worst "false" rating.
+<br>
+H2=Percentage "mostly false."
+<br>
+H3=Percentage "half true."
+<br>
+H4=Percentage "mostly true."
+<br>
+H5=Percentage "true."
+<br>
+In parentheses: (D/R)=Democratic/Republican party candidate.
+             N=eventual nominee of that party.
+             x=never actually ran.
+<br>
+ApprovalRCP=Favorable/Unfavorable rating from USA-wide poll averages
+compiled by RealClearPolitics.com, as of 13 Sept. 2016, mostly from
+   <a href="http://www.realclearpolitics.com/epolls/2016/president/favorable_unfavorable.html">http://www.realclearpolitics.com/epolls/2016/president/favorable_unfavorable.html</a>
+<br>
+ApprovalHP=same thing, but instead compiled by "HuffPost Pollster" as of 15 Sept 2016.
+<br>
+AppNum=numerical computation of the Fav/Unfav ratio (averaged if have two).
+<br>
+<i>Asterisks</i>: Candidate-name awarded a star (*) if he/she manages to attain &ge;51%
+"true" or "mostly true" rating from politifact.com.  AppNum awarded asterisk if &ge;1.00
+(after rounding to two decimals) i.e. if candidate manages to get at least as 
+many "favorable" as "unfavorable" ratings.
+<!--(HP and RCP disagreed on approval-star-worthiness for Warren and Kasich, but we shall
+grant them the benefit of the doubt.)-->
+</p><p>
+<i>Amazingly enough, the two kinds of asterisks happened to coincide.</i> I.e,
+the only two candidates (Sanders &amp; Kasich) who got 51%-or-above honesty ratings from
+politifact, <i>also</i> happened to be the only two who were more approved 
+than disapproved by the US public.
+</p><p>
+Is this just a fluke?  Well, there are 21 candidates listed here, 
+hence 21&times;20/2=210 possible candidate-pairs.  If honesty and approval were completely
+unrelated, the chance the two pairs would coincide would be 1/210.  (Actually, less,
+since it did not have to be a "pair.")  Therefore, we conclude with confidence&gt;99.52%
+versus the null hypothesis that this effect is real.
+</p><p>
+If we include also the two non-candidates (but the press acted as though they were
+likely to be candidates for quite a while) Warren and Biden, then Warren also
+would have gotten a double-*, albeit based on only 9 checked facts.  (She has the
+greatest True+MostlyTrue rating among those listed.)
+But Biden would have only a single *.
+<!-- (Hillary Clinton and Bobby Jindal came even closer with 50% each.) -->
+So, all in all, if we consider adding Warren and Biden
+we then would have 3 honesty stars and 4 approval stars among
+23 candidates and close-to-candidates, with the honesty stars
+forming a strict subset of the approval stars.  Is <i>this</i> a mere coincidence?
+If the two kinds of stars were wholy unrelated then considering 
+that the number of possible 4-element-subsets of 23 pseudo-candidates is
+23&times;22&times;21&times;20/24=8855 and the number of such subsets that include
+one particular triple is 20, this would again be a low-probability
+(specifically chance=20/8855) event, 
+yielding 1-20/8855&asymp;99.77% confidence versus the
+null hypothesis that this is a real effect.
+</p><p>
+<b>Conclusion:</b> Depending which of 2 ways we calculate it, we get 99.5 or 99.8% confidence
+based on this data that "candidate truthfulness" and "approval rating" are related.
+This could be an important insight into approval voter behavior.
+</p><p>
+Meanwhile, the actual voting system used by the Dem/Repub parties to select their
+nominees &ndash; which was <i>not</i> approval voting &ndash; produced results (e.g, their 
+nominees Clinton and Trump) far less correlated with honesty!
+  Trump was the single most-dishonest person tabulated among those with at least 30 checked
+facts, with only 15% True+MostlyTrue (lowest by far) and 53% False+PantsOnFire (highest by far)
+and an incredible 71% MostlyFalse+False+PantsOnFire.
+Meanwhile, Clinton was about the 4th most honest among the 21 listed, but could not quite
+manage to reach 51% True+MostlyTrue.
+</p><p>
+   Also, if one examines the scores of candidates in plurality-style polls
+and the official primary votes... then again, one sees far less correlation with
+candidate truthfulness than one would find with approval-style voting &ndash; indeed
+I doubt that any statistically significant connection is discernible.
+</p><p>
+Might the cause of all this merely be some sort of bias from that nasty evil organization
+"<a href="http://politifact.com">politifact.com</a>"?  
+Certainly their ratings are somewhat subjective (and I do not always
+agree with them, and instances exist where
+different fact-checking organizations disagree about the same 
+"fact"), and their choice of which "facts" to check may be somewhat manipulable.
+</p><p>
+To try to protect ourselves from that worry, we alternatively could consult other 
+independent fact-checking organizations.  The book
+<a href="https://www.amazon.com/Deciding-Whats-True-Fact-Checking-Journalism/dp/0231542224">
+Deciding What's True: The Rise of Political Fact-Checking in American Journalism</a>
+by Lucas Graves (Columbia University Press, Sept. 2016) 
+is helpful for learning
+about that.  Apparently the fact-checking entity is a fairly recent invention and it
+may have been an American invention:
+</p><pre>   
+  Snopes.com &ndash; founded 1995
+  Spinsanity &ndash; founded 2001, over 400 facts checked during 2004 US election, but ended
+  FactCheck.org  &ndash; founded 2003 Annenberg public policy center at Univ. Pennsylvania;
+            produces about 5 fact checks per week, supported by foundation philanthropy.
+  Politifact.com &ndash; founded by St Petersburg Times / Congressional Quarterly in 2007,
+     sold in 2009 to The Economist Group; checks about 20 facts per week making it
+     the most productive fact checker (at least among USA-based ones if not worldwide).
+  Washington Post fact checker &ndash; started September 2007, ended after 2008 campaign season,
+     but revived in January 2011. Checks about 1 fact per day.
+  CNN.com's "reality check" &ndash; not sure of its years of operation, but it has
+    been checking Clinton &amp; Trump during the latter part of the 2016 presidential campaign.
+</pre><p>
+Internationally, we have
+</p><pre>
+  "Pagella politica" and "Il politicometro" (both Italy)
+  The Guardian "reality check" (UK)
+  FactChecker.in  (India)
+  MorsiMeter (Egypt)
+  "El poligrafo" a fact-checking feature in "El Mercurio" (Chile) founded 2013
+  Africacheck.org (Africa)
+  French fact checkers:
+    Decodeurs:  http://decodeurs.blog.lemonde.fr/
+         http://www.lemonde.fr/les-decodeurs/        Founded by Le Monde in 2009
+    Les Pinocchios:  http://tempsreel.nouvelobs.com/politique/les-pinocchios-de-l-obs/
+    OWNI veritometre:   http://owni.fr/2012/02/16/veritometre-factchecking-presidentielle/
+                http://owni.fr/2012/05/03/veritometre-debat-hollande-sarkozy/    etc.
+    Desintox:  http://www.liberation.fr/desintox,99721
+                           Founded by Cedric Mathiot for Liberation.fr in 2008
+  Der Spiegel (Germany) also has perhaps the largest fact-checking team in the world.
+</pre><p>
+Unfortunately for our purposes, "Factcheck.org" does not provide numerical truth-ratings
+for checked facts nor summary ratings for candidates; they just provide lists
+of individual facts, usually claimed by or about candidates.  
+(Anybody willing to work could tally them up and numerically rate them, however;
+and they do index their facts by candidate-name and provide "annual reviews.")
+The same problems pertain to "Fact checks of the 2016 election" by New York Times and
+most or all of the international and other groups.  (Further, e.g, MorsiMeter
+focused solely on Morsi's campaign promises and not on fact-checking any of his rivals,
+making it nearly useless for our purposes.)
+</p><p>
+  "Fact checker at the Washington Post" <i>does</i> provide numerical "Pinocchio ratings"
+with occasional summary tallies.  Here is the summary they published on 15 July 2016.
+</p><pre>
+   Candidate        4P  3P  2P   1P   0P   FC
+  Donald Trump      63  21  10    2    2   52
+  Hillary Clinton   13  36  30.5  5.5 14   36
+</pre><p>
+<b>KEY:</b><pre>
+  4P = percentage of facts regarded as "4 Pinocchios" &ndash; outright whopper lies.
+  3P = "3 Pinocchios" &ndash; "mostly false."
+  2P = "2 Pinocchios" &ndash; "half true."
+  1P = "1 Pinocchio" &ndash; "mostly true."
+  0P = the coveted "Gepetto checkmark" &ndash; completely true.
+  FC = total number of facts checked for that candidate.
+</pre><p>
+As you can see the Washington Post agrees with Politifact that Clinton is
+far more truthful than Trump, but appears to have a tougher standard in
+that both Clinton and Trump score worse at Washington Post than they 
+score at Politifact.  (I also think the Washington Post checks fewer facts than 
+Politifact, but the ones it checks, it checks more thoroughly.)
+</p><p>
+   The Washington Post went further by claiming
+that Trump was not merely the least-honest candidate in the 2016
+race (that conclusion agrees with Politifact), but actually among 
+all major politicians in the entire history of the Washington Post's
+fact-checking feature.  Also amazing is this.  Most politicians show a 
+unimodal distribution of honesty-scores, with, for example, Graham's peak
+being at honesty level "H3" in our first data table.  But in the case of Trump, his
+frequency actually <i>keeps increasing</i> (at least in the view of Washington Post)
+with more Pinocchios, up to the highest Pinocchio level the Post could conceive of!
+FactCheck.org also found Trump to be
+"The king of whoppers" on 21 Dec 2015 and noting
+"in the 12 years of FactCheck.org's existence, we've never seen his match."
+CNN's "reality check" one day after the first Clinton-Trump presidential debate
+on 26 September checked claims made by both during that debate and my tally of their
+checks (version of noon 27 Sept) was
+</p><pre>
+   Candidate       IC  FA  TB  MT TR   FC
+  Donald Trump      0  14   2   0  3   19
+  Hillary Clinton   0   0   1   5  6   12
+</pre><p>
+<b>KEY:</b>
+  TR=true; MT="mostly true"; TB="true but misleading"; FA=false; or IC="it's complicated."
+</p><p>
+CNN concluded "From misrepresentations to
+half-truths and flat-out lies, Trump has talked around and away from
+the truth more brazenly than any major party presidential nominee in
+modern political history" agreeing with all the other fact-checking bodies.
+This debate also was fact-checked by 
+<a href="https://www.washingtonpost.com/news/fact-checker/wp/2016/09/27/fact-checking-the-first-clinton-trump-presidential-debate">
+Washington Post</a>,
+<a href="http://www.factcheck.org/2016/09/factchecking-the-first-debate">FactCheck.org</a>,
+and <a href="http://www.politifact.com/truth-o-meter/article/2016/sep/27/trump-clinton-first-debate-fact-checks/">PolitiFact</a>.
+</p>
+
+<a name="GaryJohnson"></a><h3>Note about Gary Johnson</h3>
+<p>
+The data tabulated <a href="#USA2016rtable">above</a> shows that (at least as of mid-September 2016) 
+the most-approved presidential candidate still running (based on 
+approval/disapproval ratio) was <i>not</i> Hillary R. Clinton, and <i>not</i> Donald J. Trump.
+It was the Libertarian party's nominee (and former governor of New Mexico) 
+Gary Johnson.  
+</p><p>
+Johnson was not permitted to participate in the Presidential Debates and got very
+little media attention.  He will undoubtably get only a tiny percentage of the
+official vote on election day.  Nevertheless it appears the USA currently wants him as
+president more than any rival.
+</p><p>
+Despite that, I have no doubt that Trump will get more votes in the official
+election on 8 Nov. 2016, than all his rivals (besides Clinton) combined.
+This illustrates the massively distortionary nature of the USA's 
+<a href="Plurality.html">plurality</a> voting system.
+A further confirmation of that is the following 
+<a href="OctoberJohnsonWeldPoll.txt">pairwise poll</a>
+conducted by the Johnson/Weld campaign (nationwide sample, 1006, polled by
+telephone on 8 &amp; 9 October 2016). 
+Question 4: "For whom would you vote for president if the choice was between Republican
+Donald Trump and Libertarian Gary Johnson?"
+Results:
+</p><blockquote>
+ Johnson  41.6%, Trump 37.3%, Don't know 21.1%.
+</blockquote><p>
+This margin is 43 more Johnson than Trump preferrers among the 1006 polled,
+which naively would be at least 2.7&sigma;,
+where &sigma;&le;(&radic;1006)/2=15.86 voters.  
+For those worried this poll should not be trusted &ndash; because it was released
+by the Johnson/Weld campaign, not conducted by some independent entity &ndash;
+some reassurance is provided by Question 1
+("Do you have a favorable or unfavorable opinion of Gary Johnson?")
+with result
+</p><blockquote>
+Fav=15.2%, Unfav=30.0%, NoOpinion=38.1%, Never heard of GJ=16.7%.
+</blockquote><p>
+This result is worse for Johnson than the ApprovalHP numbers from independent polls,
+which is evidence against the hypothesis that the Johnson/Weld campaign released
+an atypically Johnson-favoring poll. If anything, the opposite was true.
+</p><p>
+While it is true that Gary Johnson currently has the highest
+approval/disapproval ratio, it is unclear how seriously that should be taken 
+because the US public is poorly informed about GJ compared to HRC and DJT.
+(Indeed, only 53% of those polled in the HuffPost poll set
+were able to express an opinion about him;
+the remaining 47% said "don't know.")
+If our elections were using approval, then the media and his rivals 
+would scrutinize GJ a lot more, everybody would be better informed, and then
+his approval might change a lot in one or the other direction, perhaps 
+invalidating his frontrunner status.
+</p><p>
+Nevertheless it is totally clear GJ deserves far more attention than he got, 
+and deserves far more votes than he will get &ndash; the USA's present voting 
+system plainly is an absurd parody of democracy.
+</p>
+<a name="USA2012"></a><h3>The preceding (USA 2012) Presidential election</h3>
+<p>
+This election was largely but not entirely independent of the USA 2016 race.
+"Not entirely" because Perry and Santorum ran in both races.  "Largely" because
+all the major candidates in 2016 were a wholy-disjoint set from those in 2012,
+i.e. Perry and Santorum both were minor.
+</p><table cellspacing="5">
+<tr bgcolor="pink"><th>2012 Candidate</th><td>H0  H1  H2  H3  H4  H5</td><th>FC</th><th>Apprv</th></tr>
+<tr><td>Mitt Romney(RN)    </td><td>  9  18  17  28  18  15</td><td>  206</td><td>   475</td></tr>
+<tr><td>Rick Santorum(R6)  </td><td>  8  27  20  22  12  10</td><td>   59</td><td>   430</td></tr>
+<tr><td>Ron Paul(R)        </td><td>  8  20  13  20  20  20</td><td>   40</td><td>   610</td></tr>
+<tr><td>Newt Gingrich(R)   </td><td> 15  20  20  24  13   8</td><td>   75</td><td>   325</td></tr>
+<tr><td>Herman Cain(R)     </td><td> 12  42  15  19  12   0</td><td>   26</td><td>   430</td></tr>
+<tr><td>Tim Pawlenty(R)    </td><td>  6  18  12  18  35  12</td><td>   17</td><td>   420</td></tr>
+<tr><td>Jon Huntsman Jr.(R)</td><td>  6   6  28  28  22  11</td><td>   18</td><td>   490</td></tr>
+<tr><td>Michele Bachmann(R)</td><td> 26  36  13  10   7   8</td><td>   61</td><td>   420</td></tr>
+<tr><td>Rick Perry(R6)     </td><td> 11  18  18  25  14  15</td><td>  169</td><td>   345</td></tr>
+<tr><td>Barack Obama(DN6)  </td><td>  2  12  12  27  28  21</td><td>  572</td><td>   525</td></tr>
+<!-- 2012-only-Obama   T=17, MT=27, HT=32, MF=11, F=10, POF=3 -->
+</table>
+<p><b>NOTES:</b>
+6 inside the parentheses warns that candidate's politifact report card
+honesty stats may include many statements they made not just in the 2012 race,
+but also during the 2016 and/or 2008 races.
+<br>
+  Approval gives favorable/unfavorable percentages expressed as 1000F/(F+U)
+at latest date shown for that candidate in this multicolored approval-vs-time graph
+which I'd created about 4 years ago from a large number of approval-style polls.
+<br>
+<img src="AppPrimaryGOP2012.png" alt="Multicolored approval-vs-time graph"/>
+<!--
+(I put it toward the end of
+       /USA2012primary.html ).
+-->
+<br>
+None of the 10 candidates listed managed to get True+MostlyTrue percentages &ge;51%
+according to Politifact; the highest three were Obama with 49%, Pawlenty 47%
+(but that was based on only 17 facts checked), and Ron Paul with 40%.
+Only two candidates got more approval than disapproval:
+</p><center>
+  Obama and Paul.
+</center><p>
+Again, <i>by an amazing coincidence, the two most-approved candidates
+coincided with the two most-truthful candidates</i> &ndash; at least, <i>provided</i>
+the low-data candidate Pawlenty is ignored.
+Pawlenty dropped out very early in the race, on 14 August 2011,
+many months before the first vote in the first US state primary was cast and hence
+in my view should not even be counted as a "candidate" at all.  All the others stayed
+in the race until at least two states had voted.
+</p><p>
+Also, considering Pawlenty's August 2011 drop-out date, arguably his June 2011 Approval poll 
+should be used instead of his August 2012 poll.  If so, the problem disappears:
+Pawlenty then becomes both the 2nd-most-approved candidate and 2nd-most honest, causing
+the 3 most-approved and 3 most-honest (out of the 10 total) candidates to coincide, an amazing probability=1/120 event.
+</p><p>
+This amazing coincidence corresponds to a confidence level of 88 to 99%
+depending on which of those three methods I use to compute it.  
+</p>
+<a name="France2016"></a><h3>French 2012 Presidential election</h3>
+<p>
+The following table is based on fact checking by OWNI's "Veritometre."
+There are two classes of facts checked: quantitative claims, and other.
+</p><p>
+For the 6 most important candidates in the race (e.g. they had the six highest approval ratings)
+I am going to tabulate each candidate's correct/incorrect <i>ratio</i>
+on quantitative claims,
+ignoring claims that Veritometre called "en cours" (i.e. still unchecked;
+apparently they planned to check those later but I do not know if that
+ever happened) and for the present purpose I am going to count what
+Veritometre calls "declarations imprecises" (meaning numbers 
+within &plusmn;10% but not within 5%) as "correct."
+Our six candidates were exactly the six with over 100 quantitative
+claims checked by Veritometre
+as of 20 April 2012.
+</p><p>
+For the nonquantitative claims, Veritometre awarded "Pinocchios"
+(the more Pinocchios, the more untruthful the candidate); and we also tabulate
+the average Pinocchio-count for each candidate's other-facts collection.
+</p>
+<table>
+<tr bgcolor="pink"><th>Candidate</th><th>FC</th><td>Veritometre ratio<br>correct/incorrect</td><td>Average<br>Pinocchios
+</td><td>Approval</td><td>Fav/Unfav</td><td>Comment</td></tr> 
+<tr><td>Jean-Luc Melenchon</td><td>164</td><td>2.82</td><td> 1.83 (23)</td><td>  39.07%</td><td> 45/46=0.978</td></tr>
+<tr><td>Francois Hollande </td><td>215</td><td>2.71</td><td> 1.97 (35)</td><td>  49.44%</td><td> 61/32=1.906</td><td>won</td></tr>
+<tr><td>Eva Joly          </td><td>107</td><td>1.86</td><td> 2.20 (20)</td><td>  26.69%</td><td> 30/61=0.492</td></tr>
+<tr><td>Nicholas Sarkozy  </td><td>392</td><td>1.11</td><td> 2.35 (34)</td><td>  40.47%</td><td> 49/48=1.021</td><td>also in runoff</td></tr>
+<tr><td>Francois Bayrou   </td><td>271</td><td>1.08</td><td> 2.43 (23)</td><td>  39.20%</td><td> 48/42=1.143</td></tr>
+<tr><td>Marine Le Pen     </td><td>163</td><td>1.25</td><td> 2.71 (21)</td><td>  27.43%</td><td> 33/62=0.532</td></tr>
+</table>
+<p><b>KEY:</b>
+FC = #quantitative claims made by that candidate that they checked;
+correct/incorrect ratio as described above
+<br>
+OWNI "Veritometre" fact-checking data:
+   <a href="http://owni.fr/2012/04/20/une-presidentielle-en-donnees/">http://owni.fr/2012/04/20/une-presidentielle-en-donnees/</a>
+"OWNI data journalists have checked nearly 1300 quantitative claims by
+the presidential candidates &ndash; on employment, security, trade ... 
+Of all the statements we checked, 40.2% are correct, 41.6% are 
+incorrect and 18.6% turn out to be too vague."
+<br>
+Average Pinocchios: a different 
+<a href="http://frenchflairdata.blogspot.com/2012/08/french-presidential-candidates-fact.html">set</a>
+of facts checked by Veritometre each were
+awarded "Pinocchio counts" (more Pinocchios&rArr;more dishonest).  For example
+Melenchon's "1.83 (23)" means of the 23 facts claimed by Melenchon he got an
+average of 1.83 Pinocchios.
+<br>
+Approval: in a pseudo-election exit poll study of 2340 voters
+ using approval-style voting. carried out by
+ Antoinette Baujard, Frederic Gavril, Herrade Igersheim,
+ Jean-Francois Laslier, and Isabelle Lebon and corrected by them for geographic
+ biases.
+<br>
+Fav/Unfav: IPSOS professional approval-voting-style France-wide poll 19 April 2012.
+ (Apparently by telephone with about 956 respondents.)  I have also computed
+ their F/U ratio numerically.
+</p><p>
+Hollande not only won the official election (both first round, and runoff), 
+he also would have won with approval voting (either poll) and also apparently 
+would have been the "Condorcet beats-all winner" according to pairwise polls.
+</p><p>
+And Hollande was the second-most-truthful candidate, slightly behind Melenchon,
+and was actually <i>the</i> most truthful within the statistical margin of error
+in the truthfulness measurement [i.e. given that only 164, a finite number, of facts
+were checked for Melenchon, if those facts were randomly chosen from a large pool, then
+his truthfulness is only measurable to within error 
+at least about &plusmn;1 part in &radic;164].
+</p><blockquote>
+<b>Warning:</b> Concerning such "statistical errors in candidate-truthfulness estimates,"
+keep in mind that fact-checkers actually choose the claims they check for each candidate in
+a <i>non</i>random manner, concentrating on more-interesting, more-emphasized,
+more-requested, and less-obvious facts.
+And even just a <i>single</i> big lie by a candidate can
+cause many voters to despise him &ndash; and probably rightfully so &ndash; even though
+if that were the only 
+fact checked for him, that would mean that candidate's truthfulness percentage 
+was very poorly measured indeed.
+</blockquote>
+<p>
+After France's first voting round, the runoff was to be between Hollande and
+(the incumbent seeking re-election) Sarkozy.
+Hence there was a Hollande-Sarkozy debate, and further fact-checking of statements 
+by Hollande &amp; Sarkozy:
+</p><blockquote>
+"Data journalists from OWNI 
+<a href="http://owni.fr/2012/04/29/credibilite-hollande-56-sarkozy-44/">checked</a>
+132 statements by Nicolas Sarkozy or 
+Francois Hollande made during recent debates or speeches."
+Veritometre gave a score of 56% correct to Hollande versus 44% for
+the incumbent Sarkozy.
+</blockquote><p>
+So our truthfulness&harr;approval connection arguably is supported
+by Hollande's victory in France 2012, in the sense that he was the 
+second-most-honest candidate (and considering the statistical margins of
+error, given the finite number of checked facts we have, 
+may actually have been the most honest).
+This support is far less clear if we go to the next most approved
+candidate &ndash; either Melenchon, Bayrou, or Sarkozy.  All three were
+comparably approved, within statistical margin of error;
+but their truthfulnesses
+differed considerably according to Veritometre.
+So certainly our whole hypothesized connection is only partially supported by France 2012
+(as opposed to USA 2012 or USA 2016 which pretty much fully supported it), 
+but nevertheless I would vaguely contend France 2012,
+on overall balance, supports the hypothesis more than it opposes it.
+</p><p>
+Unfortunately, Veritometre for our table's column about correct/incorrect ratio
+only checked numerical claims, and their &plusmn;10% cutoff,
+while objective, probably does not have greatly relate to what voters care about.
+For example a candidate who said "three million" when the correct number was 
+2.6 million would be rated "incorrect" by Veritometre &ndash; but speaking as a voter,
+I probably would have been satisfied with that candidate's approximation.  
+Meanwhile, such blatantly false (according to several fact-checking entities
+unanimously) claims by Donald Trump in the USA 2016 campaign, such as 
+"I opposed the Iraq war from the beginning,"
+"Hillary Clinton started the 'birther' movement, but I finished it" and
+"Hillary Clinton has been fighting ISIS her entire adult life"
+would not matter to this Veritometre column at all since those were <i>unquantitative</i>
+claims!  But those claims probably would matter to voters!
+On the other hand, Trump's pledge to spend at least $100 million of his own 
+money on his campaign 
+<a href="http://www.cnn.com/2016/10/28/politics/donald-trump-checkbook-campaign-contribution/">would</a>
+have been counted as a lie, albeit one only detectable afterwards.
+</p><p>
+This criticism might be overcomable by also obtaining fact-checking data from
+Le Monde's "Les decodeurs."  Unfortunately Le Monde
+only has made Decodeurs archives available online starting soon <i>after</i> the 2012
+election ended, so I haven't been able to investigate that.  And Desintox
+did not provide tallies and hence also was not very useful.  Fortunately an
+independent (?) collection of facts were checked one by one by Veritometre using
+a "Pinocchio scale" over several months and their "average Pinocchio"
+tallies were computed by 
+<a href="http://frenchflairdata.blogspot.com/2012/08/french-presidential-candidates-fact.html">
+Vincent Flores</a> &ndash;
+albeit unfortunately the number of these
+facts checked for each candidate remains 3-10 times
+fewer than Politifact's corresponding fact-check-counts for the major USA 2016 candidates.
+</p>
+<a name="ConclusionI"></a><h3> First try at a Conclusion</h3>
+<p>
+If we naively multiplicatively 
+<i>combine</i> the USA 2012 coincidence with the USA year-2016 
+coincidence (we also optionally could expunge the Santorum and Perry data from the 2016 race
+to make 2012 and 2016 more-independent; this has little effect on our conclusions), 
+then we deduce combined confidence levels of between 99.94 and 99.996%
+(depending on how calculated) that the following hypothesis is correct (versus
+the null hypothesis)
+</P><center>
+   HYPOTHESIS:  The highest approvals happen only for candidates with high truthfulness.
+</center><p>
+If we also throw in Hollande in France 2012 that would bring us a further factor 
+of about 3 nearer to 100% confidence, reaching between 99.98 and 99.999%
+confidence that highest approval is connected to highest truthfulness.
+</p><p><small>
+Incidentally, note that I chose these three elections simply because 
+they were the only major elections in human history 
+for which I could get both approval and fact-checker quantitative truthfulness data
+for all the major candidates.  But for a harder-working scholar than I,
+it is conceivable that this might also be possible for
+a couple more elections, such as USA 2008 or Chile 2013 (or in future, France 2017) &ndash;
+or that more truthfulness data from an independent fact-checker 
+could be got for France 2012.
+</small></p><p>
+I consider this finding to be a further sign that approval voting is a good idea,
+because I consider more-truthful presidents to be better.  Why are they better?
+Well, first of all, the whole ideal of "democracy" works better if everybody has 
+more information, and more-honest information.
+Second, candidates lie either because they are unable to determine, or unwilling to state,
+the truth.  The former is likely to yield poor performance as president.
+The latter ("strategic lying") might help a president in, e.g. negotiations, but only
+in circumstances where whoever he is lying to, cannot
+recognize that it was a lie.  If the lie is detected, then it tends
+to hurt, not help.  But now consider that every lie we have tabulated <i>was</i> 
+detected as a lie.
+</p>
+<a name="ConclusionII"></a><h3> Conclusion revisited in light of "p-hacking" worry </h3>
+<p>
+An early reader of this report, with expertise in statistics (who
+shall remain nameless for the moment, unless he tells me to use his name)
+claimed "[The] argument seems to be extensively 'p-hacked.'
+(Unfortunately he didn't say why it 'seemed' that way.)
+I have not closely investigated this, but I'd guess this is at the level of 
+'probably but not definitely meaningful' rather than the '99.999% confidence'
+claimed. For more on p-hacking, google the 'crisis of replication'."
+He concluded (to slightly paraphrase) this all was 
+"[probably worth publishing] but the exaggerated claims should be toned down."
+</p><p>
+Ouch.
+My first reaction to this accusation 
+was to note that I had computed the confidences asociated with
+the USA 2016 and USA 2012 elections each in <i>two or three different ways</i>.
+This was done intentionally, <i>not</i> to do "p-hacking," but rather to make it
+clear the confidences did vary depending on the precise statistical test chosen,
+but not by enough to hurt us, i.e. we still get a lot of confidence even using
+the least powerful among the three tests.  (And by the way, these were the only tests
+I tried, all were done manually, not with a computer, and were chosen mainly because 
+it was easy to compute them manually.)
+</p><p>
+However, I thought about it some more and think the complaint
+deserves a better response than that.  So: what is "p-hacking" and what should
+one do about it?
+</p><p>
+Well, "p-hacking" is inherently a somewhat vague concept, but the rough idea is this.  Suppose
+you have some data.  You want to deduce some impressive-sounding statistical conclusion
+from it.  So, you create (say) a computer program that tries N different statistical
+tests on the data (and perhaps N=1000000).  You then find the "most amazing"
+test, from that ensemble,
+which, viewed in isolation, would produce the greatest confidence, e.g. smallest "p-level." 
+For example, suppose that this most-amazing test produced p&le;0.00001,
+i.e. confidence&ge;99.999%, in some conclusion.  Wow!  You publish it and are acclaimed by
+all as a great scientist who's discovered some Wonderful New Truth.
+</p><p>
+Unfortunately, if you behave that way, your conclusion is quite likely to be bunk.
+If the N tests were all independent events,
+then we'd <i>expect</i> 10 out of the 1000000 tests,
+and therefore the one you chose,
+to have p&le;0.00001 even for meaningless fake data consisting entirely of random numbers.
+Hence, your "confidence&ge;99.999% conclusion" really would mean nothing!
+</p><p>
+In practice, though, usually such a computer search would have been searching
+among tests which were not at all "independent," e.g. they probably fell into at most
+a few families, in which case the situation would not be nearly that bad... but there
+still would effectively be confidence-exaggeration happening, it just would
+be highly non-obvious a priori how much.  
+In particular, you could search a 1-parameter  continuum family
+of tests to find the "most amazing" parameter value; this has N=<i>infinity</i>,
+but certainly in most practical applications that test result would <i>not</i>
+be an infinite exaggeration!
+<small>
+In fact, we later <i>are</i> going to <a href="#MaxLik">find</a>
+a maximum-likelihood 1-parameter  model, and at the end of that section we shall explain
+a way to justify it using a finite-N Bonferroni correction.
+</small>
+</p><p>
+One way to protect yourself against this is to <i>multiply</i> your p-value
+by N ("Bonferroni correction") as a "safety factor."  
+Which you trivially can do, if you know N.  
+This is always safe,
+i.e. always conservative, in the sense that the new p-level is guaranteed
+to upper bound the truth.  
+However, this often will be overprotection.
+</p><p>
+Now although my critic was using "p-hacking" in a pejorative way,
+in fact some of this behavior is what you are <i>supposed to do</i>.
+I.e. you are supposed to be intelligent in your choice both of statistical tests, and of
+hypothetical theories of nature that you devise to test versus data.  You aren't supposed
+to be an idiot and choose some irrelevant-sounding test, or devise some 
+obviously dumb theory.  (And if you weren't intelligent,
+then you could use computer searching to effectively become
+more intelligent.)
+The problem only arises if you keep N secret and do not employ any Bonferroni 
+(or other appropriate) correction to stay safe.
+</p><p>
+Now let us return from the abstract to the particular situation here.  
+I devised only N=2 or N=3 tests (all variants of the same test actually, but
+under some definitional changes of, e.g, who really was a "candidate") 
+for each of the two elections USA 2016 and USA 2012.
+I chose the "&ge;51% honesty" and "approval&ge;disapproval" threshold for
+2016 without any "computer search" &ndash;
+those were simply the first values that sprung to my mind as 
+a plausible "theory of nature."  E.g, I as a typical(?) voter would disapprove
+any candidate who couldn't outperform a coin-toss in terms of honesty.
+</p><blockquote><small>
+In a simplistic 1-dimensional model where a president, each time he 
+makes a decision based on a false fact, moves his country 1 step "backward" 
+but if based on a true fact moves it "forward"...
+we see that by approving presidents who outperform
+coin tosses, we are precisely approving the ones who 
+"tend to move the country forward."
+</small></blockquote>
+<p>
+But when I then attempted to redo that same test for USA 2012, it was inapplicable
+because <i>nobody</i> achieved &ge;51% honesty!  Therefore I, putting on
+my "typical(?) voter" hat once again, said to myself, said I, "in that case,
+let's just lower our standards to: the top two most honest candidates in the race."
+(I was somewhat biased in my choice of "two" since
+I knew exactly two candidates tend to get the lion's share of the votes in
+US presidential elections; plus in USA 2016, exactly two candidates <i>were</i>
+involved in both "magic pairs.")
+</p><p>
+Then, after a considerable delay unsuccessfully seeking help from
+some Frenchmen, I found out how to obtain Veritometre data for the France 2012 election.
+But then <i>again</i> my initial test was inapplicable because <i>all</i> the 6 candidates
+I had data on achieved &ge;51% honesty!
+Therefore I, putting on
+my "typical(?) voter" hat a final time, said to myself, "in that case,
+let's just raise our approval-threshold to: the top two most honest candidates in the race."
+Note how I'm trying to keep my "theory of nature" the same for all three elections.
+In the France 2012 case, however, the theory&harr;facts match, unfortunately for me,
+no longer was arguably perfect.  But there still was a partial match.
+</p><p>
+Then I finally was able to obtain a reasonable tranche of data for USA 2008,
+and again the theory&harr;facts match was only partial.
+</p><p>
+The point of all the above was to reconstruct my thought process (which I assure you
+was not at all deep) in writing.  And now that I have done so, we know what "N" is so
+that we can apply Bonferroni corrections.   If for safety we intentionally choose the
+least-confidence among the two or three listed tests for each election,
+then no correction is needed at all,
+and the confidence we get should be a safe lower bound.
+If we choose the highest, however, then it should again be safe provided we
+use Bonferroni with N=3 for USA 2012, and N=2 for USA 2016.  (For France 2012 
+I never computed any precise confidence, but merely claimed that overall the French data
+supported the Hypothesis more than it opposed it.)
+</p><p>
+Using USA 2016 &amp; 2012 alone,
+99.8% and 99% confidence using N=2 and N=3 corrections to each (i.e. 99.5% and 97%)
+yield &ge;99.97% in combination.
+Here I am <i>not</i> using the naive p-multiplication combining formula "ba", but the more
+valid and conservative formula (2b-a)a where b is the greater and a the lesser p-level.  
+(Alternatively, 99.5% and 88% confidence combine to yield
+at least 99.9% confidence, but this is less good so I will not continue with it.)
+Finally we can get an extra confidence boost
+in either case by throwing in the French data too, which I believe
+is enough to reach 99.98%.
+</p><p>
+I hope this satisfies my critic, and note 99.98% indeed 
+is not as great as 99.999%, i.e. his criticism did indeed accomplish
+something useful in my [present revised] opinion.
+</p>
+
+<a name="USA2008"></a><h3> USA 2008 presidential election </h3>
+
+<!-- http://www.politifact.com/personalities/mitt-romney/ -->
+
+<p>
+The free-access online poll database 
+<a href="http://www.pollingreport.com">http://www.pollingreport.com</a>
+contains many approval-style (and some score-style) polls.
+This, together with early politifact.com fact-checking data, enables
+me to extend this study to include the USA 2008 election.
+</p>
+<table>
+<tr bgcolor="pink"><th>&nbsp;</th><th>Politifact truthfulness</th><th>&nbsp;</th><th>&nbsp;</th><th>&nbsp;</th></tr>
+<tr bgcolor="pink"><th>Candidate</th><td><tt>H0 H1 H2 H3 H4 H5</tt></td><th>FC</th><th>Summary</th><th>Approval/Disapproval [Poll]</th></tr>
+<tr><td>Hillary Clinton(D)</td><td><tt>2 11 15 22 28 22</tt></td><td>249</td>
+<td>50; 1.22</td><td>46/38 [CBS/NYT 7-14 Jul RV]; 53/43 [Newsweek 21-22 May]
+</td></tr>
+
+<tr><td>Barack Obama(DN)</td><td><tt>2 12 12 27 28 21</tt></td><td>572</td><td>49; 1.54</td><td>60/39 [CNN/ORC 10/30-11/1]</td></tr>
+<tr><td>John McCain(RN)</td><td><tt>4 21 17 17 20 20</tt></td><td>183</td><td>40; 1.20</td><td>43/42 [CBS/NYT 10/31-11/2]</td></tr>
+<tr><td>Joe Biden(D)</td><td><tt>5 13 15 28 21 17</tt></td><td>75</td><td>38; 1.08-1.23</td><td>13/12 [CBS 15-20 Aug]; 27/22 [CNN/ORC 27-29 July RV]
+</td></tr>
+<tr><td>Mitt Romney(R)</td><td><tt>9 16 17 28 16 15</tt></td><td>206</td><td>31; 1.28</td><td>41/32 [CNN/ORC 27-29 July]</td></tr>
+<tr><td>Rudy Giuliani(R)</td><td><tt>6 23 19 21 15 15</tt></td><td>47</td><td>30; 1.18</td><td>46/39 [CNN/ORC 29-31 Aug RV]</td></tr>
+<tr><td>Mike Huckabee(R)</td><td><tt>10 12 29 22  7 20</tt></td><td>41</td><td>27; 0.89</td><td>41/38 [Gallup Feb 8-10]; 24/34 [CBS/NYT 20-24 Feb]</td></tr>
+</table>
+<!--
+<pre>
+                politifact truthfulness     
+                T  MT HT MF  F PoF  FC  summary   Approval/Disapproval
+Hillary Clinton 22 28 22 15 11  2  249  50;1.22   46/38 CBS/NYT 7-14 Jul RV; 53/43 Newswk 21-22 May
+Barack Obama    21 28 27 12 12  2  572  49;1.54   60/39 CNN/ORC 10/30-11/1 
+John McCain     20 20 17 17 21  4  183  40;1.02   43/42 CBS/NYT 10/31-11/2 
+Joe Biden       17 21 28 15 13  5   75  38;1.08-1.23  13/12 CBS 15-20 Aug; 27/22 CNN/ORC 27-29 July RV
+Mitt Romney     15 16 28 17 16  9  206  31;1.28   41/32 CNN/ORC 27-29 July 
+Rudy Giuliani   15 15 21 19 23  6   47  30;1.18   46/39 CNN/ORC 29-31 Aug RV
+Mike Huckabee   20  7 22 29 12 10   41  27;0.89   41/38 Gallup Feb 8-10; 24/34 CBS/NYT 20-24 Feb
+</pre>
+-- Ron Paul   20 20 20 13 20  8   40  hon=40     Economist/YouGov 1000-person telephone poll 22-24 July
+Dennis Kucinich 44 24 16  4 12  0   25  hon=68  
+81/10 Romney CBS/NYT, telephone 854 people USwide July 23 to Aug 26?
+36/45 McCain CBS/NYT, telephone 518 people USwide Oct 17-19?
+66/13 Huckabee CBS/NYT, telephone 854 people USwide July 23 to Aug 26?
+--
+LEAST SQUARES REGRESSION LINE FOR THE GIVEN DATA n = 7 DATA PAIRS
+y = ax + b
+y = 26.2683009874x + 6.78549540347
+1.22 50
+1.54 49
+1.02 40
+1.15 38
+1.28 31
+1.18 30
+0.89 27
+-->
+<p>
+<b>Notes:</b>
+Warning: for candidates who also ran in other elections,
+fact-checking data mixed in with facts
+checked during later years.
+</p><p>
+Candidates tabulated only if FC&ge;20 and I have a 2008 approval poll for them.
+For example Dennis Kucinich is excluded since even though he satisfies
+the first criterion with FC=25&ge;20,
+<a href="http://www.pollingreport.com/k.htm#Kucinich#Kucinich">http://www.pollingreport.com/k.htm#Kucinich</a>
+has no 2008 approval poll for him.
+Similarly we exclude Ron Paul since there is no 2008 approval poll
+among those listed by 
+<a href="http://www.pollingreport.com/p.htm#Paul#Paul">http://www.pollingreport.com/p.htm#Paul</a>.
+All the other candidates had &le;17 checked facts each.
+</p><blockquote><small>
+Ron Paul <i>was</i> approval-polled by Economist/YouGov polls of 22-24 July, 4-6 Aug, and 11-13 Aug 2008
+(and possibly more) but unfortunately their polling reports only stated <i>one</i> approval
+number (which was 302 approvals out of 891 "valid cases" in July, 303 of 978 in early Aug, 284 out of 954 in mid-Aug) 
+despite their question wording
+"Do you have a favorable or an unfavorable opinion of ..." soliciting <i>two</i> possible answers,
+plus a probable, albeit unsolicited, "don't know" answer.
+</small></blockquote>
+
+<!--
+tr><th>Candidate</th><th>Favorable</th><th>Unfavorable</th><th>Poll</th></tr>                                                           
+<tr><th>Ron PAUL</th><td>31%</td><td>&nbsp;</td><td>Economist/YouGov 1000-person telephone poll July 22-24 2008</td></tr>
+<tr><th>John McCAIN</th><td>52%</td><td>&nbsp;</td><td>Economist/YouGov 1000-person telephone poll July 22-24 2008</td></tr>
+<tr><th>Mike HUCKABEE</th><td>66%</td><td>13%</td><td>CBS News/New York Times Poll, telephone 854 people USwide July 23 to Aug 26</td></tr>
+<tr><th>Mitt ROMNEY</th><td>81%</td><td>10%</td><td>CBS News/New York Times Poll, telephone 854 people USwide July 23 to Aug 26</td></tr>
+<tr><th>John McCAIN</th><td>36%</td><td>45%</td><td>CBS News/New York Times Poll, telephone 518 people USwide Oct 17-19</td></tr>
+The Econ/YouGov poll question is here:
+http://www.economist.com/media/pdf/econ22july2008_tabs.pdf
+Do you have a favorable or an unfavorable opinion of the following people?
+Have a favorable opinion of ...
+Valid Cases 891, John McCain 511, Ron Paul 302 , Hillary Clinton 488, Barack Obama 539, Bill Clinton 468, George W. Bush 321
+Dick Cheney 260
+Nancy Pelosi 263
+The poll-results table they supply only gives one number (favorable?) despite the 
+question giving 2 options (fav & unfav).
+Here is 4-6 Aug http://www.economist.com/media/pdf/econ04aug2008_tabs.pdf
+Base: Valid Cases 978
+Ron Paul 303, Hillary Clinton 475, Barack Obama 513, Bill Clinton 480, George W. Bush 344, Dick Cheney 286, Nancy Pelosi 276
+Here is 11-13 aug http://www.economist.com/media/econ11aug2008_tabs.pdf
+Base: Valid Cases 954, Ron Paul 284, Hillary Clinton 442, Barack Obama 505, Bill Clinton 461, George W. Bush 348, Dick Cheney 272, Nancy Pelosi 260
+-->
+<p>
+Generally we report only the most-recent approval polls we have, prior 
+to the Nov. 2008 election date. However,
+Biden dropped out of the Presidential race on 3 January 2008,
+but on 23 August became Obama's (vice presidential) running mate.  
+To avoid Biden's approval being conflated with Obama's, 
+we only use his approval polls <i>before</i> 23 August.
+"RV" means that poll was among registered voters only.
+CBS=Columbia Broadcasting System.
+CNN=Cable News Network. 
+NYT=New York Times.
+ORC=Opinion Research Center.
+</p><p>
+"Summary" column of table gives honesty (true + mostly true percentage);
+and approval/disapproval numerical ratio.
+</P><p>
+Our Hypothesis would have predicted that H.Clinton and Obama, 
+as the two most-truthful candidates with 50% and 49% honesty (true + mostly true)
+percentages respectively, ought to be the two most-approved.
+In fact, Obama was the most-approved, but Romney, <i>not</i> Clinton, 
+was the second-most approved.
+This could be regarded as a partial success.
+</p>
+
+<a name="MaxLik"></a><h3>A maximum likelihood model, and yet another criticism (by Gary Smith)</h3>
+
+<p>
+Gary Smith (no relation) on p.22 of his enjoyable book 
+<a href="https://www.pomona.edu/news/2014/07/03-professors-new-book-helps-readers-avoid-being-duped-devious-data">Standard deviations</a> 
+<a href="https://www.amazon.com/Standard-Deviations-Assumptions-Tortured-Statistics/dp/1468311026">(flawed assumptions,
+tortured data, and other ways to lie with statistics)</a> (Overlook Duckworth 2014)
+&ndash; which is an excellent book to read to get into the right frame of 
+mind to be skeptical about statistics &ndash;
+wrote
+</p><blockquote>
+It is not sensible to test a theory with the same data that 
+were ransacked to concoct the theory.
+If a theory was made up to fit the data, of course the data 
+support the theory! Theories should be tested with new data 
+not contaminated by data grubbing.
+</blockquote><p>
+I'm afraid I must plead guilty to this criticism.
+Referring
+to my description of my thought process "concocting the theory"
+last section, we could argue my original theory was developed 
+without reference to any data,
+but the fact is, this whole investigation was stimulated by seeing,
+ten seconds later, that it worked perfectly for the USA 2016 election.
+If it had not, I probably would have never started this whole project, or
+perhaps I'd have tried to devise a new theory. 
+Then, when it turned out the original theory
+was inapplicable to the USA 2012 and France 2012 elections, I modified it a bit,
+although as it turned out, just one common modification was used for both.
+Finally, I did indeed test the theory in Gary-Smith-approved style
+without any modification, on the USA 2008 election.
+</p><p>
+In some situations, e.g. if I were trying to invent the "ideal gas law" during 
+the era 1600-1850,
+it would be no problem, after concocting the theory, to test it on new
+gas samples.  However, the present case is quite different because I
+may have used up 100% of the (truthfulness, approval) election data
+available to me in the world. 
+It is difficult to get more!
+(Also, political data is inherently "messier" than gas-measurement data
+since definitional questions arise.)
+</p><p>
+Plenty of other statistics books pay no attention to Gary Smith's Dictum.
+They instead advise something like this:  
+</p><ol><li>
+Concoct a parameterized class of statistical models.
+</li><li>
+Using all the data you can obtain, construct the "likelihood function"
+telling you the probability that data would have occurred given any particular model.
+</li><li>
+Find the "maximum likelihood" model in your class. 
+</li></ol>
+<p>
+And in fact, I agree with those other statistics books to some degree, i.e.
+do not 100% agree with that Gary Smith quote.  Why?  Even if your theory
+is devised entirely by data-grubbing, with no independent ungrubbed data
+at all available for testing, then a theory that works well enough plainly must
+be given credence.   For example if a coin, tossed 20 times, came up "heads" every time,
+we suspect even Gary Smith would suspect the coin was biased, even if 
+he devised that theory <i>after</i> seeing that data.
+</p><p>
+In any case, let's carry out that procedure &ndash; which Gary Smith may not like, but at 
+the very least it will give us more understanding and more clarity about
+exactly what our "hypothesis" is.
+Here is my <b>1-parameter class of generative models:</b>
+</p><ol><li>
+There are C&ge;2 candidates in some particular election. 
+The input to the model is the honesty percentage for each candidate.
+</li><li>
+We then sample (without replacement) 
+two candidates from the C.  The probability of choosing a candidate
+is p if that candidate is among the two most-honest, and q otherwise,
+where 0&le;p&le;&frac12;, 0&le;q&le;1/C, and 2p+(C-2)q=1.
+(Our model has exactly one parameter, namely p.)
+</li><li>
+Those two candidates are predicted to be the two with the greatest approval/disapproval
+ratios.
+</li></ol>
+<p>
+If p=q=1/C in each election,
+then that model is just the uniform sampling model, i.e, the "null hypothesis."
+We presume/hope, however, that some p&gt;q will deliver greater likelihood, i.e.
+a candidate by being one of the top two most honest, tends to enjoy more approval.
+</p><p>
+Now here is a table giving likelihood formulas:
+</p><table>
+<tr bgcolor="pink"><th>Election</th><th>C</th><th>Likelihood</th><th>Null Hyp.likelihood</th></tr>
+<tr><td>USA 2016</td><td>21</td><td>2p<sup>2</sup>/(1-p)</td><td>1/210=2/[(C-1)C]</td></tr>
+<tr><td>USA 2012</td><td>9</td><td>2p<sup>2</sup>/(1-p)</td><td>1/36=2/[(C-1)C]</td></tr>
+<tr><td>France 2012</td><td>6</td><td>pq/(1-p)+qp/(1-q)</td><td>1/15=2/[(C-1)C]</td></tr>
+<tr><td>USA 2008</td><td>7</td><td>pq/(1-p)+qp/(1-q)</td><td>1/21=2/[(C-1)C]</td></tr>
+<tr bgcolor="yellow"><td>MULTIPLICATIVELY<br>COMBINED</td><td>21+9+6+7</td><td>
+5<sup>-1</sup> (1-p)<sup>-2</sup> p<sup>6</sup> (1-2p)<sup>2</sup> &times;<br>[1/(1-p)+4/(3+2p)] [1/(1-p)+7/(6+2p)]
+</td><td>1/(210&times;36&times;15&times;21)<br>&nbsp;&nbsp;=1/2381400</td></tr>
+</table>
+<!--
+(1/5)*(1-p)^(-2)*p^6*(1-2p)^2*(1/(1-p)+4/(3+2p))*(1/(1-p)+7/(6+2p)) find local maxima for 0<p<1/2
+p=0.30:             = 716.719*NHL 
+p=0.33:             = 1041.68*NHL 
+p=0.35:             = 1262.1*NHL 
+p=0.36:             = 1363.14*NHL 
+p=0.39:             = 1571.11*NHL 
+p=0.40: 0.000667324 = 1589.17*NHL 
+p=0.41: 0.000659819 = 1571.29*NHL 
+p=0.43:             = 1406.42*NHL
+p=0.45:             = 1053.2*NHL 
+p=0.46:             = 814.53*NHL 
+-->
+<p>
+The combined likelihood formula (got by multiplying the individual likelihoods
+under the naive assumption the four elections are independent) 
+is maximized over the domain 0&le;p&le;&frac12; when
+p&asymp;0.4003 yielding Likelihood&asymp;0.00667324&asymp;1589.2&times;NHL
+where NHL=1/2381400 is the likelihood of the null hypothesis.
+So according to this calculation, our maximum likelihood model is 1589.2 times
+more likely than the null hypothesis, corresponding to confidence&asymp;99.937%
+versus it.
+</p><p>
+But my first critic presumably would denounce this whole
+process as "p-hacking" while Gary Smith would call it "data grubbing."
+</p><p>
+I believe both my critics here do have a point.  I believe I had answered the first critic,
+in the preceding <a href="#ConclusionII">section</a>.  
+However, the question is what to do about Gary Smith's related
+complaint.  If we approximated the situation as "50% of
+our theory was 'concocted via data grubbing' while the other 50% was tested on
+new data" then perhaps our p-level should be <i>squarerooted</i>
+in which case the "99.937% confidence" would shrink to 97.5%.
+If 2/3 of the theory were concocted, then taking the <i>cube</i>root 
+presumably would be wanted (91.4% confidence) or if 3/4 then the 4th root (84.5%).
+</p><p>
+At this point I'm feeling somewhat statistically-battered, and 
+it evidently is not so easy to do statistics well under these circumstances.
+But whichever way we do it, the confidences always come out high enough that
+it still seems probable that there is some validity to all this.
+</p>
+<a name="ConclusionIII"></a><h3> Final Conclusion </h3>
+<p>
+So what <i>is</i> a valid conclusion, taking advantage of the information
+obtainable through likelihood maximization using all 4 elections worth of data
+&ndash; but immune to the criticisms?  
+Let me now try to state one.
+</p><p>
+<a name="ObnoxHypot"></a>
+The final (?) theory, in a formulation that seems obnoxiously specific 
+considering its crudity, is:
+</p>
+<blockquote>
+<b>Hypothesis:</b>
+"If we associate probability 0.4 with each of the
+two most-honest candidates, with the remaining 0.2 probability
+equidistributed among the remaining candidates
+(everything restricted to candidates important enough to have
+substantial fact-checking done on them and for pollsters to determine
+their approval) then:
+the two most-approved candidates are predicted to be
+got by sampling two candidates from that non-uniform distribution without replacement."
+</blockquote>
+<p>
+We now deduce a final confidence as follows.  This hypothesis arose
+by finding the max-likelihood model within a 1-parameter class of models. 
+The parameter was called "p."  
+Its likelihoods range everywhere from zero (when p=0 or p=0.5) up to
+the maximum attained when p&asymp;0.4003.
+<!--
+If we had tried every p in 
+the 51-element finite set {0, 0.01, 0.02, 0.03, ..., 0.49, 0.50}
+then the top two most-likely models would have been with p=0.40 and p=0.41,
+which are respectively 1589.2 and 1571.3 times more likely than the null
+hypothesis.
+If we had tried every p in 
+the 11-element finite set {0, 0.05, 0.10, 0.15, ..., 0.45, 0.50}
+then the top two most-likely models would have been with p=0.40 and p=0.35,
+which are respectively 1589.2 and 1262.1 times more likely than the null
+hypothesis.  
+If we had tried every p in 
+the 6-element finite set {0, 0.1, 0.2, 0.3, 0.4, 0.5}
+then the top two most-likely models would have been with p=0.4 and p=0.3,
+which are respectively 1589.2 and 716.7 times more likely than the null
+hypothesis.  
+If we had tried every p in 
+the 7-element equispaced finite set {0.01, 0.09, 0.17, 0.25, 0.33, 0.41, 0.49}
+then the top two most-likely models would have been with p=0.41 and p=0.33,
+with N=7 to deduce a valid <b>confidence&gt;99.33%</b> bound.
+If we had tried every p in 
+the 8-element equispaced finite set {0.01, 0.08, 0.15, 0.22, 0.29, 0.36, 0.43, 0.5}
+then the top two most-likely models would have been with p=0.43 and p=0.36,
+which are respectively 1406 and 1363 times more likely than the null
+hypothesis.  The worse among these (p=0.36) would yield 99.927%
+confidence uncorrected, but it seems valid to apply a Bonferroni correction
+with N=8 to deduce a valid <b>confidence&gt;99.41%</b> bound.
+-->
+If we had tried every p in 
+the 7-element equispaced finite set {0.04, 0.11, 0.18, 0.25, 0.32, 0.39, 0.46}
+then the top two most-likely models would have been with p=0.46 and p=0.39
+which are respectively 815 and 1571 times more likely than the null
+hypothesis.
+It then seems valid to apply a Bonferroni correction
+with N=7 to deduce a valid <b>confidence&gt;1-7/1571&asymp;99.55%</b> lower bound.
+</p><p>
+If we had instead employed
+the 8-element equispaced finite set {0.01, 0.08, 0.15, 0.22, 0.29, 0.36, 0.43, 0.5}
+then the top two most-likely models would have been with p=0.43 and p=0.36,
+which are respectively 1406 and 1363 times more likely than the null
+hypothesis.  Even the worse among these two (p=0.36) 
+with a Bonferroni N=8 correction
+would yield a valid <b>confidence&gt;1-8/1363&asymp;99.41%</b> lower bound.
+</p><p>
+In view of both the fact that Bonferroni is often overprotection,
+and the fact the true max-likelihood parameter choice p=0.4003 ought to be better
+than either 0.36 or 0.39, the true confidence
+is greater than these lower bounds; and furthermore our model obviously is
+crude, so presumably there is some better and truer (but unknown) model 
+of the truth&harr;approval connection which would enjoy greater confidence still.
+</p><p>
+It also is worth noting that in all four of the elections we've
+examined, the two top finishers with the official voting system,
+were <i>never</i> the same pair as either the two most-approved 
+or the two most-honest among the candidates we considered:
+</p>
+
+</p><table cellspacing="5">
+<tr bgcolor="pink"><th>Election</th><th>#canddts</th><th>Top 2 officially</th><th>Top two approval</th><th>Top two most-honest</th></tr>
+<tr><td>USA 2016</td><td>21</td><td>H.Clinton &amp; Trump</td><td>Sanders &amp; Kasich</td><td>Kasich &amp; Sanders</td></tr>
+<tr><td>USA 2012</td><td>9</td><td>Obama &amp; Romney</td><td>Ron Paul &amp; Obama</td><td>Obama &amp; Ron Paul</td></tr>
+<tr><td>France 2012</td><td>6</td><td>Hollande &amp; Sarkozy</td><td>Hollande &amp; Bayrou</td><td>Melenchon &amp; Hollande</td></tr>
+<tr><td>USA 2008</td><td>7</td><td>Obama &amp; McCain</td><td>Obama &amp; Romney</td><td>H.Clinton &amp; Obama</td></tr>
+</table>
+<p>
+In other words, approval voting is <i>genuinely different</i> 
+than the official USA &amp; French systems. And it's probably better, since in
+USA 2016 and USA 2012, Approval chose the top 2 most honest candidates both times, 
+while Official got 0 and 1 respectively;
+while in France 2012 and USA 2008, Approval and Official each got 1.
+</p><p><small>
+Regarding the latter two races: Bayrou overall seems 
+to have been slightly more honest than Sarkozy, 
+indicating Approval was a slightly better voting system,
+although each beat the other on one of the two Veritometre honesty scores.
+Which of {McCain, Romney} was more honest depends 
+how one determines that, e.g. McCain had greater H4 and H5 indicating
+McCain was more honest (and H4+H5 had been my main honesty measure 
+for USA 2016 and USA 2012), but H3+H4+H5=59
+was greater for Romney than McCain's 57, indicating Romney was more honest &ndash;
+so in that sense their honesties are not comparable.  
+(Despite this I still would overall regard McCain as the more honest.)
+In that same sense Sanders &amp; Clinton
+had noncomparable honesties in USA 2016, but both dominated Trump at every 
+politifact honesty level.  In USA 2012, Obama dominated Pawlenty,
+who in turn dominated Ron Paul, who in turn dominated everybody else
+except for being noncomparable with Huntsman and Romney
+(and despite that I still would regard Paul as overall more honest than either).
+As the bottom line, Approval seems better than the Official systems based on 
+honesty data from all 4 elections,
+but about the same based on the earliest two alone.
+</small>
+</p><p>
+In <i>all</i> of these 4 elections, both the official and
+approval winner were "effectively most honest" candidates in the sense that the 
+true max-honesty candidate was less than one statistical
+standard deviation error (assuming checked facts are chosen randomly from a much larger
+fact-pool for each candidate)
+above Politfact's estimate 
+of the official- and approval-winners' honesty percentages.
+We could summarize that as "this is evidence that <b>Democracy works!</b>"
+But we warn the reader that actually, fact-checkers do <i>not</i>
+choose which facts to check by random selection from a large pool &ndash;
+they instead concentrate on particularly prominent, interesting and/or
+unclear ones &ndash;
+and even a <i>single</i> Big Lie can (and probably should) cause many voters
+not to vote for a candidate.  
+</p>
+<!--
+Therefore, "effective maximum honesty" may not mean so much...
+2016: Kasich most-honest, Sanders max-approval, Sanders 1% off Kasich honesty.
+2012: Obama most-honest, Paul max-approval, Paul within stderr of Obama honesty
+2012F: Melenchon most-honest, Hollande max-approval, Hollande within stderr of Melenchon honesty
+2008: HClinton most-honest, Obama max-approval, Obama 1% off HClinton honesty.
+maximize 6*x^2*y^2 subject to x>z, y>0, z>0, x+z+y=1 
+  2/27 if x=y=z=1/3
+  3/32 if x>0 and y=1-2x>0; then x=z=1/4, y=1/2
+--
+<p>
+And this table alone would seem to support the theory that "approval voting is better connected to
+candidate-honesty than the official plurality-based 2-round election methods" 
+with confidence&gt;29/32&gt;90.6% ??
+</p><blockquote>
+Calculated as follows:
+Assume the contrary; then approval produces a better result with probability x, an
+equal-quality result with probability y, and a worse result with probability z,
+for some x,y,z with x+y+z=1, and 0&le;x&le;z and 0&le;y. 
+It then is simply a mathematical truth that the chance 6x<sup>2</sup>(x+y)<sup>2</sup>
+of the tabulated (or stronger) results happening would necessarily be &le;3/32
+(achieved only if x=z=1/4 and y=1/2).  
+</blockquote>
+-- maybe 1-6/(210&times;36)=1-1/1260=99.923% -->
+
+
+<hr>
+
+<p>
+The plots below present our data tables in graphical form.  Blue points are low-data candidates
+(&lt;10 checked facts) and red ones are "candidates" who either never actually ran, or dropped out
+well before the first vote was cast.  All other candidates represented by green points.
+Least-squares
+<a href="http://www.neoprogrammics.com/linear_least_squares_regression/index.php">regression</a>
+lines also shown (with the red Pawlenty point omitted from
+the USA 2012 fit),
+demonstrating that greater honesty and greater approval
+tend to correlate, for <i>all</i> candidates, not merely the ones
+obtaining the highest approval.
+Note that in all 4 cases the line's slope has the "correct" sign
+(and this remains true whether or not we include red and/or blue points in the linefits),
+which alone is an event of
+probability=2<sup>-4</sup>=1/16=6.25% under the null hypothesis.
+</p>
+<table width="100%"><tr>
+<td>
+<img src="USA2016TA.png" width="100%"/>
+</td><td>
+<img src="USA2012TA.png" width="100%" />
+</td></tr>
+<tr><td>
+<img src="France2012TA.png" width="100%"/>
+</td><td>
+<img src="USA2008TA.png" width="100%"/>
+</td>
+</tr></table>
+
+<a name="Implications"></a><h3> Implications for Democracy </h3>
+
+<p>
+The important book
+<a href="http://press.princeton.edu/titles/10671.html">Democracy for Realists</a> 
+by C.H.Achen and L.M.Bartels 
+(Princeton Univ. Press 2016) begins
+</p><blockquote>
+In the conventional view, democracy begins with the voters. 
+Ordinary people have preferences about what their government should do. 
+They choose leaders who will do those things, or they enact their 
+preferences directly in referendums. In either case, what the majority 
+wants becomes government policy &ndash; a highly attractive prospect...
+That way of thinking about democracy...
+constitutes a kind of "folk theory" of democracy, a set of accessible, 
+appealing ideas assuring people that they live under an ethically
+defensible form of government that has their interests at heart.
+<br> &nbsp;&nbsp;&nbsp;
+<i>Unfortunately</i>, while the folk theory of democracy has flourished as an ideal,
+its credibility has been severely undercut by a growing body of scientific
+evidence presenting a different and considerably darker view of democratic politics...
+the great majority of citizens pay little attention to politics. At election time,
+they are swayed by how they feel about "the nature of the times," especially 
+the current state of the economy, and by political loyalties typically
+acquired in childhood. Those loyalties, not the facts of political life and
+government policy, are the primary drivers of political behavior. 
+<i>Election outcomes turn out to be largely random events</i> from the 
+viewpoint of contemporary democratic theory. That is, elections are well
+determined by powerful forces, but those forces are not the ones that
+current theories of democracy believe should determine how elections come out.
+Hence the old frameworks will no longer do.
+<br> &nbsp;&nbsp;&nbsp;
+We want to persuade the reader to think about democracy in a fundamentally different way...
+the mental framework they bring to democratic life, while it may once have seemed
+defensible, can now be maintained only by willful denial of a great deal of
+credible evidence. However disheartening the task, intellectual honesty
+requires all of us to grapple with the corrosive implications of that
+evidence for our understanding of democracy. That is what this book aims to do.
+</blockquote><p>
+Unfortunately, Achen &amp; Bartels' book tells us very little about what to <i>do</i>
+to improve this "disheartening" and "unfortunate" state of affairs.
+Their book does not even <i>mention</i>, much less consider the effect of,
+improved forms of voting like
+<a href="Approval.html">approval</a>,
+<a href="RangeVoting.html">score</a>,
+or even Borda, Condorcet systems, instant runoff, or 
+<a href="PropRep.html">proportional representation</a>.
+However, the picture suggested by
+our data here differs from the gloomy one painted by Achen &amp; Bartels.
+With approval voting, the voters work in a largely fact-based manner 
+to determine and elect the candidates (from a wide democratic marketplace, not just two)
+who are the most honest &ndash; or they somehow accomplish something equivalent to that
+despite working in some different manner.  And if by "random events" Achen &amp; Bartels meant
+what we have been calling "the null hypothesis" then we have refuted this claim
+(with whatever confidence the reader chooses to believe we attained &ndash;
+we contend &gt;99.5%),
+for <i>approval voting</i> based democracy.
+</p><p>
+This suggests that there is a very simple very easy cure for the ills of
+democracy pointed out by Achen &amp; Bartels &ndash; just switch to approval 
+(or, probably even better, score) voting &ndash; and that the underlying cause of
+the disease was our ultra-poor <a href="Plurality.html">plurality</a> voting system.
+</p><p>
+Furthermore, some of the symptoms A&amp;B point out, such as 
+"political [party] loyalties typically
+acquired in childhood" (also on p.26 they complain about artificial "unidimensionality")
+are <i>caused</i> by the fact the USA has a 2-party domination, 
+which probably is the <i>result</i> of its foolish use of plurality voting.
+(E.g. Score and approval voting were used in Ancient Sparta
+and renaissance Venice both for longer than the entire history of the USA,
+with no record of political 2-party dominance
+ever developing.)  And the lack of voter knowledge A&amp;B complain
+about may have something to do with the
+lack of media coverage, which in turn is 
+caused by the plurality voting system.  Specifically, right now
+(mid-September 2016), few Americans know anything
+much about Gary Johnson, even though he, if reckoned by approval/disapproval ratio,
+is the clear <i>frontrunner</i> in the USA presidential race.
+(38% of Americans do not even recognize Johnson's name, according to a Huffpost/YouGov 
+<a href="https://today.yougov.com/news/2016/08/31/poll-results-third-party-candidates/">survey</a>
+25-26 August 2016.)
+Why do few Americans know about Johnson? Because the media has 
+told them almost nothing about him.  Why has the media said almost nothing about him?
+Because the USA is using plurality voting, not approval voting, so that
+the fact Johnson is the leader with the latter system, implies virtually nothing
+about his chances of winning the presidency, and indeed Johnson's
+chances are near zero &ndash; therefore media has no motivation to cover him.  
+Why are Johnson's chances near zero?  Because
+with plurality voting any vote for anybody who is not one of the two leaders,
+is "wasted."  Few are willing to waste their vote, causing Johnson to get few votes 
+(tremendously fewer than he "deserves" in view of his approval), causing his chances
+to be near zero, in a self-reinforcing cycle.  
+</p><p>
+This Johnson discrepancy also makes it completely clear that USA
+democracy, <i>because of the voting system</i>,
+does <i>not</i> elect the candidates voters (tell pollsters they) regard as best.
+The same effect, over historical time, has 
+<a href="Duverger.html">caused</a> only two parties to 
+<a href="Strangle.html">dominate</a>
+US politics totally, even though their current presidential candidates are the
+two most-disapproved major party nominees in the entire history of approval-style polling 
+(dating back to 1956 using Gallup data, and dating back to 1980 using CBS/New York Times
+poll data; the closest competitor in terms of low approval was Barry Goldwater in 1964) 
+and even though the US congress as a 
+whole &ndash; almost entirely occupied by the Democratic and Republican parties &ndash;
+<a href="https://today.yougov.com/news/2016/08/31/poll-results-third-party-candidates/">is
+currently</a> 
+only 18% approved. This in turn has caused the development of fairly mindless 
+"party loyalties" because under such circumstances it is pointless to be a free-thinker.
+</p>
+
+<hr>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+<!--
+http://www.politifact.com/truth-o-meter/article/2016/aug/16/post-truth-election-comparing-2016-past-elections-/
+Politifact 2012 election only:
+Romney  T=9,  MT=18, HT=30, MF=18, F=15, POF=11
+Obama   T=17, MT=27, HT=32, MF=11, F=10, POF=3
+
+Politifact 2008 election only:
+Obama   T=30, MT=19, HT=20, MF=14, F=16, POF=1
+McCain  T=19, MT=18, HT=18, MF=18, F=22, POF=5
+
+Politifact 2008 election candidates:
+Candidate (Party)Amount raisedAmount spentVotesAverage spent per vote
+Barack Obama (D)$778,642,962$760,370,19569,498,516$10.94
+John McCain (R)$379,006,485$346,666,42259,948,323$5.78
+Ralph Nader (I)$4,496,180$4,187,628739,034$5.67
+Bob Barr (L)$1,383,681$1,345,202523,715$2.57
+Chuck Baldwin (C)$261,673$234,309199,750$1.17
+Cynthia McKinney (G)$240,130$238,968161,797$1.48
+
+http://www.politifact.com/personalities/mitt-romney/
+                T  MT HT MF  F PoF   FC
+Duncan Hunter   40 40  0  0 20  0    5   hon=80 but only 5 facts
+Tommy Thompson  40 40  0  0 20  0    5   hon=80 but only 5 facts
+Fred Thompson   31 19 19  6 25  0   16   hon=50 but only 16 facts
+Ron Paul        20 20 20 13 20  8   40   hon=40
+John McCain     20 20 17 17 21  4   183  hon=40
+Mitt Romney     15 16 28 17 16  9   206  hon=31
+Rudy Giuliani   15 15 21 19 23  6   47   hon=30
+Mike Huckabee   20  7 22 29 12 10   41   hon=27
+Alan Keyes                           0
+Tom Tancredo     0 13 13 25 50  0    8
+Sam Brownback   50  0  0 25 25  0    4
+Jim Gilmore    100  0  0  0  0  0    1
+
+Dennis Kucinich 44 24 16  4 12  0   25  hon=68
+Chris Dodd      25 38 38  0  0  0    8  hon=63 but only 8 facts
+Bill Richardson 12 47 18  6 12  6   17  hon=59 but only 17 facts
+John Edwards    27 27 27  0 13  7   15  hon=54 but only 15 facts
+Hillary Clinton 22 28 22 15 11  2  249  hon=50
+Barack Obama    21 28 27 12 12  2  572  hon=49
+Joe Biden       17 21 28 15 13  5   75  hon=38
+Mike Gravel     25  0 25 25  0 25    4
+Evan Bayh        1  0  0  0  0  0    1
+Tom Vilsak                           0
+
+Ralph Nader     25 25  0 25 25  0    4
+Bob Barr        50 50  0  0  0  0    2
+Chuck Baldwin   0   0  0  0  0 100   1
+Cynthia McKinney                     0
+
+CandidateFavorableUnfavorableF/U Ratio
+John McCAIN  52.3% 41.5% 1.26
+Barack OBAMA 73.6% 15.4% 4.78
+Ralph NADER  22%   41%   0.54
+Bob BARR     10%   17%   0.59
+
+Approval:
+http://www.pollingreport.com/k.htm
+http://www.pollingreport.com/k.htm#Kucinich
+Kucinich  Jan 1-3 2007:  fav=4 unfav=11 undecided=12 dunno=73
+
+http://www.pollingreport.com/l.htm#McCain
+McCain 10/31-11/2/08:    fav=43 unfav=42 undecided=12 dunno=21  CBS/NYT
+
+http://www.pollingreport.com/obama.htm
+http://www.pollingreport.com/obama_fav.htm
+Obama:    fav=60 unfav=39 undecided/dunno=1  CNN/ORC  10/30-11/1/08
+
+Biden: 10/3-5/2008 Gallup: fav=57 unfav=27 neverheard=6 noopin=9
+
+Romney: 7/27-29/2008 CNN/ORC: fav=41 unfav=32 neverheard=13 unsure=13
+
+Ron Paul: 7/27-29/2008 RV, CNN/ORC:  fav=14 unfav=11 undec=51 neverheard=23
+
+Nader: USAtoday/Gallup 8/21-23/08:  fav=29 unfav=44 undec=11 dunno=16
+
+Bob Barr: USAtoday/Gallup 8/21-23/08:  fav=10 unfav=17 undec=56 dunno=17
+
+R.Giuliani: 8/29-31/08 RV CNN/ORC: fav=46 unfav=39 nvrhrd=4 unsure=11
+
+M.Huckabee: 2/8-10/08  Gallup Poll: fav=41 unfav=38 nvrhrd=6 unsure=15
+
+-->

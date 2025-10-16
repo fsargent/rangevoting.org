@@ -1,0 +1,655 @@
+<html>
+<head>
+<title>
+RangeVoting.org  - Tentative suggestion for a voting system for electing the parliament of Canada 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Tentative suggestion for a voting system for electing the parliament of Canada, 1 </H2>
+
+<p>
+<small> Warren D. Smith, October 2015</small>
+</p>
+
+<p>
+Here is one concrete tentative system suggestion for Canada.  I am putting it here
+(/CanadaSA1.html) just to serve as a reference point for further discussion.
+I obtained this system
+by hybridizing 
+<a href="RangeVoting.html">score voting</a> within ridings, with a new
+"top-up" system based on Simmons' version of <a href="Asset.html">asset voting</a>.
+<small>If T=0 our proposal simplifies
+to become <a href="CanadaSA5.html">pure score voting</a>
+to elect MPs in ridings.
+If T=W (which I would <i>not</i> recommend) it becomes pure asset voting countrywide.
+</small>
+This system is designed to resemble some current widely known ideas in Canada,
+but which however fail to enjoy nearly as many good properties as our scheme.
+</p>
+
+<h3> Contents </h3>
+
+
+<ol><li>
+<a href="#DG"> Design goals </a>
+</li><li>
+<a href="#RU"> Rules of proposed voting system (on a single page) </a>
+</li><li>
+<a href="#CR"> Criticisms (and responses, some of them good)  </a>
+</li><li>
+<a href="#MO"> Possible modifications  </a>
+</li></ol>
+
+<a name="DG"></a>
+<h3> Design goals </h3>
+
+The <b>goal</b> is to elect a W-member parliament, from W-T ridings (0&le;T&le;W), in such
+a way that:
+<ol type="A">
+<li>
+The system has two stages. In the first stage,
+exactly one MP is elected from each riding
+(hopefully the one that riding considers the best available!);
+call these the "local" MPs.
+</li><li>
+In the second stage, a further T  "top up"  MPs are elected countrywide
+(call these the "top up" or "nonlocal" MPs)...
+</li><li>
+In such a way as to obtain or approach "<a href-="PropRep.html">proportionality</a>."*
+</li><li>
+The rules of the voting system in no way even mention or require
+the existence of "parties,"   nor assume anything about the existence
+or nature of "leaders" or "pecking orders" within those parties,  and thus hopefully in no
+way inherently hurt independent candidates or nonconformist parties.
+<small>
+(That is important because PR countries 
+&ndash; which future-Canada would become under this system &ndash;
+usually have a lot of small parties, with independents as "parties of one" being the
+extreme case of that.  E.g. the 
+<a href="https://en.wikipedia.org/wiki/List_of_political_parties_in_the_Netherlands#Parliamentary_parties#Parliamentary_parties"
+>Netherlands</a>, with population about half Canada's,
+as of year 2015 has 17 parties holding
+seats.)</small>
+</li><li>
+System is simple.
+</li><li>
+The ballots are "ratings style" which allows voters to provide the
+most possible information,  but also (if that voter desires) less.
+</li><li>
+The system is immune to "candidate <a href="CandCloneSumm.html">cloning</a>."*
+</li><li>
+It is never suboptimal strategy, for a voter to give her honestly
+favorite candidate,   the max rating.*
+</li><li>
+It is never suboptimal strategy, for a voter to give her honestly
+most-detested  candidate, the min rating.*
+</li><li>
+Not voting, is never a superior voting strategy than voting honestly
+("participation property")*;
+and raising a candidate's score on your ballot cannot hurt him*, 
+while lowering it cannot help him* 
+("<a href="Monotone.html">monotonicity</a> properties").
+</li><li>
+The system is "precinct countable," i.e. each precinct could publish
+a compact table of "subtotals," in such a way that the whole
+election process could be performed using only these precinct
+subtotals tables as input.
+</li></ol>
+
+<p>
+<b><big>*</big> More precise claims:</b></p>
+<p>
+<b>Proportionality theorem:</b> under a "party loyalty assumption" 
+that candidates always prefer own-party colleagues over foreign-party candidates,
+and if voters always give their own party's candidate the maximum rating and all other-party
+candidates the minimum rating, <i>then</i> 
+the final parliament will have the same party composition
+&ndash; up to small errors forced by rounding to integers, and up to 
+limitations which could sometimes be forced
+by T being too small so that the top-up simply does not have enough seats to achieve
+exact proportionality in cases where the first stage
+provided a too-disproportional winner-set &ndash; as the electorate.
+<blockquote>
+<small>
+Additional stronger claim: if voters give other-party candidates not necessarily
+minimal, but merely submaximal,
+ratings, then we still guarantee exact proportionality (based on top choices for
+each voter only) <i>provided</i>
+the "zeroing negative juice" substep inside step 5, does not occur, and provided
+enough top-up seats are available to allow proportionality.
+The zeroing problem arises for local MPs who won
+because they are the favorite of few, but the 2nd-favorite of many. 
+It can cause a party
+containing many such "compromise" MPs to be somewhat over-represented.
+All proportionality theorems ever proven for voting systems, necessarily make some
+extreme partisan-behavior assumption of our ilk. (Specifically, ours was that all voters
+score their party  MAX and all others MIN; we had proved our PR theorem under this assumption.)
+Proportionality advocates
+then have to hope that with more realistic voter behavior, their voting systems will 
+actually elect <i>better</i> parliaments for their country 
+than arise from the simpler-to-model extreme voter-behaviors. These "better"
+parliaments might have greater proportionality-errors, but 
+will enjoy other benefits hopefully more than compensating for that.
+The point of a proportionality theorem is as a safety backstop.  It tends to prevent parliaments
+from becoming too-poorly reflective of the electorate's composition.  No proportionality
+theorem can always assure a perfect mirroring; and there usually is no way even to define
+what that would even mean, or measure whether we have it.  (E.g, if you scored
+the Liberal 8 and the Tory 6, does than mean you are 4/7 liberal and 3/7 Tory for purpose
+of assessing your "composition"?)  The best that PR theorems can do is to assure that in
+certain <i>crudely simplified circumstances</i> where it <i>is</i>
+possible to clearly define what a
+"perfect mirroring" would mean, it is achieved.
+</small>
+</blockquote><p>
+<b>Cloneproofness, Participation, &amp; Monotonicity theorems:</b> Always valid for first stage.
+These all also valid about the top-up stage provided we assume both party loyalty and a
+"party sameness model" that all candidates from any one party are equivalent.
+</p>
+
+<p>
+<b>Comments:</b>
+A scheme suggested to me by one Liberal MP was similar to ours except 
+(i) involved the first stage instead done via <a href="IrvExec.html">Instant Runoff</a>
+Voting (IRV),
+and (ii) the second top-up stage via a party-list system.
+That's worse because:
+</p><p>
+(i) IRV would cause the first stage to disobey
+<a href="Monotone.html">monotonicity</a>, 
+participation, and precinct 
+<a href="IrvNonAdd.html">countability</a>, 
+and 
+the <a href="CompleteIdioticIRV2.html">favorite</a>-safe property H and its mirrored property I;
+and would <i>force</i> voters who wish not to express an opinion about a candidate, to 
+provide one (which, if they were ignorant, would just be forcing them to guess);
+and would make everything more complicated.
+</p><p>
+(ii) Party-list based top-up would inherently kill independents, by law. 
+One could counter-argue that
+independent MPs have been neither very common nor very effective in Canada &ndash; but
+in future-PR-Canada they would be more common. Independent thinking is very
+important for making good decisions!  Should we kill it all, as a matter of <i>law</i>?!
+Should we <i>mandate</i> the existence of political parties?  
+And also, countries with such top-up systems have found it
+necessary (to prevent "gaming the system") to, by law,
+restrict the ability of MPs to change parties!  Should
+we, as a matter of <i>law</i>, force MPs to stay in a party they dislike?
+(That'd take "whipping" to a whole new level.  Remember, the ultimate cure for the disease of
+too-whipped parties, is for unhappy MPs to be able to switch parties.)
+I think not.  
+</p><p>
+So in my view, the scheme suggested here is similar in spirit to the one that MP
+had in mind, but repairs many of its most severe disadvantages.  Also, given 
+that Canada's Liberal Party seems likely often to be victimized by 
+IRV's <a href="IrvCenterSqueeze.html">center squeeze</a> pathology, it may be
+against the Liberal party's own interests to use IRV (i.e. that Liberal MP
+would, by enacting his system, have risked hurting his own party as a nasty
+unintended side effect!).
+</p><p>
+<b>Simplicity for voters:</b>
+In the view of any voter, our proposal
+is <a href="RangeVoting.html">simple</a>: 
+just give the candidates ratings on an 0-9 numerical scale
+(leaving some unrated if that is too difficult).  Done.
+</p><p>
+I don't mind if the candidates &ndash; they are pros usually with helpers &ndash;
+have to work hard during election, but Amy The Average Voter must have it easy and simple.
+</p>
+
+<a name="RU"></a>
+<h3> Rules of proposed voting system (on a single page) </h3>
+
+<p>
+I will regard voters as "female" and candidates as "male" just to make wording clearer.
+<small>
+Various numbers (2, 9, 1000, 3) in our description 
+have been selected pretty
+arbitrarily and could perfectly well be replaced by other numbers.  
+And we could demand T=&lfloor;W/5&rfloor;,
+where again "5" is a pretty arbitrary value. 
+</small>
+</p>
+<!--
+0. [Optional.] Each candidate in each riding receives 1000 scores of 2
+before voting starts.
+-->
+<p><b>1.</b> 
+Each voter rates each candidate in her riding, on an 0-to-9 numerical scale.
+(Voters also allowed to leave some candidates unrated, if that voter
+wishes not to express any opinion about that candidate.)
+<small>Refinement suggested by J.Quinn: 
+"Any voter who did not explicitly rate any candidates at 0 is considered to have given 0 to 
+any candidates they left blank. Any voter who did rate at least one candidate explicitly at 0 
+is considered to have expressed 'no opinion' about any candidates they left blank. 
+(I think this rule is the safest way to interpret 'intent of the voter'.)"
+</small>
+</p><p><b>2.</b>
+ In each riding, the candidate with the highest average score 
+wins that riding's MP seat.
+<small>Slight optional refinement: each candidate could receive 1000 artificial scores of 2
+before voting begins.  Then the candidate with the highest average among both his 
+genuine and artificial scores, wins.</small>
+</p><blockquote>[At this point we have elected W-T of the W seats in Parliament,
+each via the excellent 
+&quot;<a href="RangeVoting.html">score voting</a>&quot;
+single-winner system.  
+The "top up" now commences, whose mission now is to fill the remaining T seats.]
+</blockquote>
+<p><b>4.</b>
+Each voter is viewed as having given 1 cup of "juice" to her top-rated candidate.
+(If a voter rates more than one candidate co-equal top, then her juice is
+divided equally among them.)
+Let J denote the total amount of juice.  (Which, note, equals the
+total number of voters.)
+</p>
+<a name="step5"></a>
+<p><b>5.</b>
+Remove J/(W+1) cups of juice from each candidate who has already won a seat.
+(<i>Except</i>: If this would cause that candidate now to have a negative amount of
+juice, instead just give him zero.)
+</p><a name="step6"></a><p><b>6.</b>
+Candidates are now X'd off, one by one.  Always, the un-X'd candidate who currently
+possesses the least juice is the one who is X'd.
+Each time such a candidate is X'd, he may donate all or some of his juice to
+some not-yet-Xd candidate (or candidates, plural, if he wishes to split it up) 
+of his choice somewhere in Canada
+within 3 minutes, otherwise his juice vanishes.   (As this process
+proceeds, internet
+should continually broadcast the amounts of juice currently possessed by all
+candidates.  Any candidate worried that about his internet connection could pre-provide
+instructions about how to disperse his juice in the event he is unreachable,
+in the form "if I am X'd, then please give all my juice
+to the first candidate on the following list eligible to accept it.")
+</p><p><b>7.</b>
+Keep doing step 6 until the number of "both not-yet-elected and
+not-yet-Xd" candidates, shrinks to T.
+</p><p><b>8.</b>
+Those T candidates (the "juiciest" T) fill the remaining T seats.  The parliament has
+now been fully chosen.
+</p>
+
+<a name="CR"></a>
+<h3> Criticisms (and responses, some of them good)  </h3>
+
+<p><b>Simplicity criticism:</b>
+The rules would be simpler to describe, if we eliminated steps 6,7,8 and replaced them with 
+the single
+</p><blockquote>
+<b>6'.</b>
+The juice-possessing candidates now negotiate, during which, some of them donate some or all of
+their juice to others with the aid of an internet-based juice-tracking system.
+The T juiciest as-yet-unelected candidates (at a pre-agreed deadline time) win the T top-up seats.
+</blockquote>
+<p><b>Response:</b>
+This would indeed cause simpler rules, and I like simpler rules.  The only reason I suggested 6,7,8 instead of 6'
+was I was afraid negotiations among this many people (&asymp;1000) might, if completely unstructured,
+risk a logistical nightmare.  6,7,8 impose some structure to make everything more predictable.
+Another idea would be to use 6,7,8 until the juice-possessing unelected
+candidates had been winnowed down to 1.5T, then switch to unrestricted negotiations as in rule 6'.
+</p>
+<p><b>Proportionality criticism:</b>
+The critic does not like the possibly-proportionality-damaging 
+effect of the "zeroing negative juice"
+exception-substep of step <a href="#step5">5</a>.
+</p><p>
+The critic realizes that: The whole "juice" <a href="Asset.html">mechanism</a>
+was designed to force proportionality in a simple manner
+while at the same time avoiding any explicit mention of "parties" in the rules, and 
+also granting all candidates some freedom of action to try to mould
+the parliament in ways that will improve it in their view.  There might well be
+<i>negotiations</i> about juice transfers between candidates in the same (or different)
+parties, which might allow
+even candidates or parties 
+who fail to win seats, still to influence policy in return for their juice.
+This can
+</p><ol type="a"><li>
+yield a finer degree of "proportionality" than <i>any</i> PR method not involving such 
+candidate-involvement,
+</li><li>
+tend to yield a more-harmonious parliament with less risk of "gridlock" because
+the winners will become enriched 
+with proven negotiators &amp; compromisers, and those the other MPs
+appreciate.  (If Canada adopts a PR system such as ours, then majority-control
+by a single party will become less common, and it will become
+more common that "coalition governments" are needed, so gridlock will be more 
+of a risk, so this feature will be very useful.)
+This beneficial side-effect
+also can tend to protect MPs their party-cohorts consider valuable 
+(e.g. respected leaders) from losing their seat, which otherwise would have denied
+Canada an MP widely considered useful.
+</li></ol>
+<p>
+</p><p><b>Response to that critic:</b>
+The zeroing problem arises for local MPs who won
+because they are the favorite of few, but the 2nd-favorite of many. 
+It can cause a party
+containing many such "compromise" MPs to be somewhat over-represented.
+However:
+in a riding in which Compromise Candidate Claude wins, he <i>is</i> the "favorite"
+candidate of that riding, and therefore, in some reasonable approximate sense, of its
+voters.  Therefore, if we were to steal juice from all of Claude's
+rival (losing) candidates in that riding (say
+stealing F fraction of each's juice) to give it to Claude to bring his negative juice up to zero
+(F would have to be chosen just right in each riding to accomplish that)
+then the net effect of such thefts would  
+not constitute a horrible distortion.  They are just removing juice from individually-favorite
+candidates to give it to a collective-favorite candidate, the collective effect
+of which is not hugely distortionary.
+And since this only happens when Claude is a <i>compromise</i> candidate, e.g. a Centrist
+who here would be stealing juice from Leftists and Rightists, this theft is inherently less
+distortionary than if, say, a Leftist was stealing juice from a Rightist.
+So if, after we did all those thefts, the juice-mechanism proceeded normally
+from then onward, we still would expect a not-horribly-distorted parliament.
+</p><p>
+So we've just argued that a certain modification of our proposal, involving "juice thefts,"
+should, while imperfect, still work well.  But now, 
+we argue that <i>doing nothing</i> (i.e. <i>no</i> such juice-thefts)
+should be simpler and actually better!   Because:
+the whole problem was Claude's Compromise Party getting <i>over</i>represented in parliament.
+The juice-theft plan would actually 
+amplify that problem by not only giving Claude extra juice, but also taking
+it away from the rival parties.  So without juice-theft, just the negative-zeroing substep
+of step 5 alone,
+we should approximately halve the problem.
+</p><p>
+That argument has now
+"proven" that our whole top-up proposal should perform decently about proportionality, 
+in all circumstances, despite the so-called "zero-floor flaw" inside step 5.
+The word "proven" is in quotes to indicate that this is not really a proof &ndash;
+it's admittedly a somewhat flaky argument, which indeed my critic did not like &ndash;
+but there nevertheless is a lot of truth in it.
+</p><p>
+</p><p><b>Whipping criticism:</b>
+The fact the candidates donate their juice is "horrible" because they will be "whipped" by evil
+party bosses to do whatever those party bosses want!  Yikes!
+</p><p><b>Response:</b>
+This criticism is about as wrong as it could possibly be, for the following simple reason:
+the vast majority of the donated juice is going to come from <i>losing</i> candidates who
+are donating their juice as their last official act before vanishing!
+It is hard for bosses to pressure anybody who's <i>leaving</i> government employ.
+Furthermore, this pressure can work in both directions:  
+MPs can influence who their bosses will <i>be</i>,
+and who their colleagues will be, by <i>using</i> their juice.
+</p><p><b>Logistical criticism:</b>
+Steps 6-7 could be a logistical nightmare.  And what if the internet breaks, possibly
+due to a cyberattack?  And what if it
+doesn't break, but some candidate pretends that it did?
+</p><p><b>Response:</b>
+First, we expect future-Canada will have better internet than now.
+Second, television could be used as emergency backup if the internet breaks.
+Third, we've also proposed (in step <a href="#step6">6</a>)
+an emergency backstop measure involving juice-transfer priority lists,
+that could be used even if all communication broke down (and obviously
+<i>any</i> election scheme is going
+have trouble if all communication breaks).
+Fourth, the main logistical problem we actually expect is related to the X-ing 
+ordering in step 6.   There will  come a time when we ask 
+"who do we X-off next: Joe or Tom?"
+And then it will be a near-tie.  And then the entire country will
+stall until every last vote is precision-counted in a major lawsuit nightmare,
+just to get past that point.
+I.e, the problem is, the system is vulnerable to near-ties of this kind causing a
+stall, and there are a huge number of opportunities for them to arise.
+</p><p>
+However, there is a simple and effective workaround:
+Allow the  election authority
+(EA), whenever Joe and Tom are within 0.5% of each other,
+to just order them wrong in any way it
+likes.  Well, more precisely, it has to order them according to
+whatever it thinks the vote counts are, but Joe is not allowed to complain
+unless they were
+more than 0.5% wrong.  
+(That may allow the EA to be slightly evil, but live with that.)
+</p><p>
+Note the whole top-up stage will be unable to start until everybody is
+nailed down
+to better than 0.5% accuracy.
+Also, even if future Canada will somehow be able to attain the 0.5% accuracy instantly,
+then still there will be a long delay while all the very-low-juice fringe candidates
+(who will have very little effect on the final result) perform their donations.
+My point is, these initial delays will give all
+the candidates plenty of time to scheme and plan their juice-transfer
+strategies well ahead of time based on preliminary counts;
+but thanks to the "0.5% fuzz" workaround, there should be no stalls thereafter.
+</p><p><b>"Fake MP" corruption criticism:</b>
+To understand this criticism, you
+have to know that a form of corruption which has occurred in Canada is the "fake shadow MP."
+That is, the official MP from some riding has little power because he
+is in an opposition party.  That can allow a fake unelected MP from the
+governing party to, because he has the right friends, effectively have more power
+than the real MP.  So, if he wants, he could
+run around telling people he is "the shadow MP"
+for his riding, and that he, not the official MP, is the guy
+to go to for funding and problem solving.  Then later, hope to really get elected.
+(In the USA, this happens too, except in this
+different flavor: they do not call it a "shadow MP," 
+they call it "retiring from congress to become a big-money lobbyist.")
+</p><p>
+Now (the critic continues) with our proposed system some ridings
+will actually have <i>two</i> MPs (if one was a top-up) and if those two
+are from the opposition and governing parties, then the latter can
+proclaim he is the "real" MP with all the power, while his colleague is 
+useless, so don't bother going to that joker for funding and problem solving.  
+This is just like the fake MP problem, except likely worse because he's
+real, not fake!
+Also, the critic dislikes the fact some ridings will have two not one MP, which 
+could have a geographically-unfair effect.
+</p><p><b>Response:</b>
+These problems actually will happen not only with our system, but indeed with <i>any</i>
+riding-based system trying to achieve PR via "top up" schemes.  
+I.e, sorry, they are unavoidable. 
+We can proclaim that the top-up MPs are "nonlocal" i.e. do not represent any riding 
+&ndash; they were not elected by their riding, but really by slight effects from 
+the whole rest of Canada &ndash; but if those
+MPs disobey that proclamation, then the critic's problem arises!
+</p><p>
+This critic suggested a partial <a href="#regionalmod">fix</a> for his own problem.
+Regard the top-up MPs as representing multi-riding regions.
+Then they <i>will</i> have official local roles, but the region involved 
+will be larger than just one riding.  (We indeed could design 
+some kind of hierarchical division of Canada into ridings, 
+coarser-grained super-ridings, etc, and my critic wondered if a system that did that 
+could be better...)
+</p><p>
+But all that is at best 
+only a <i>partial</i> fix because any such MP still will have motivation to focus
+on his home riding to try to prepare for a future in which he might be elected
+from it later as a local MP &ndash; and also just because he lives there.
+</p><p>
+So this criticism seems nasty and largely uncurable.
+The only solution I can see is to entirely abandon "top-up" approaches,
+at considerable cost in simplicity.  But even if that were done, I believe the problem
+still would arise in an altered form.  For example, if each riding
+elected 5 MPs (emulating Ireland's PR system) then the MPs who were in the governing party
+could announce they were "real" while their colleagues in the same riding from opposition
+parties were "useless."  And even if we devised a PR scheme with exactly one MP per riding
+(which <a href="OptimumPartyAssign.html">can</a> be done, although only by forcing some ridings to elect an MP
+whom they very much do not want) even then ridings <i>still</i> would get effectively highly
+unfair representation, since the MPs from the majority party would have more power
+while the ridings with opposition MPs would suffer.
+</p><p>
+There is, however, one saving grace (which is so good it may pretty much nullify this whole criticism):
+in future-PR-Canada, majority control of parliament by <i>one</i> party would become rarer,
+and coalition governments necessarily more common.  That in turn will diminish
+all of those problems.  It is even possible, perhaps, that the net effect would
+be that our new system actually is an <i>improvement</i> in this respect!
+That question is hard to answer since it is hard to predict the future, but
+this guess certainly seems possible.
+</p>
+<a name="weakenmsg"></a>
+<p><b>Criticisms of the whole juice-transfer PR approach:</b>
+Will MPs try to be nice to those from other parties so that the "juice transfers"
+at the next election will be favourable? 
+I doubt it &ndash; I think the parties will just do deals 
+(like: we'll transfer votes to you in one riding, you transfer to us in another, 
+then we will form a coalition government and give patronage appointments to all the 
+defeated candidates from our parties). Voters will feel like they are being left out
+if that happens, and they may feel the elected parliament is less legitimate.
+</p><p>
+Candidates also will be loathe to say, during the election campaign, 
+who they would transfer their juice to. 
+You are just weakening your campaign message if you talk like that. 
+But in a juice-transfer (&quot;<a href="Asset.html">asset voting</a>&quot;)
+system, that is exactly what voters will want to know before they vote!
+</p><p>
+<b>Response:</b>
+The whole "patronage appointment" thing is a form of corruption, or abuse of power,
+which can happen regardless of voting system, but perhaps asset voting would worsen it.
+On the other hand it could be argued that whenever such inter-party deals are made, that
+is good, in the sense that some party which (in terms of the votes for it) deserves power
+but would under prior voting systems lose it, now would effectively regain power via these
+deals.  In other words, the deals may sometimes have a bad smell, but they necessarily
+will tend to act in the right direction as far as restoring power balances is concerned.
+</p><p>
+I had wanted to respond that inter-party dealmaking  would be hindered because
+most of the juice-donors
+are <i>losing</i> candidates, whom, therefore, the party bosses cannot boss very well.
+But the patronage-appointment criticism would hurt that response!
+</p><p>
+And to respond to the "loathe to say" critique, we could overcome that to a considerable extent
+by demanding all candidates
+<i>pre-specify</i> juice-transfer priority lists (recall them from step <a href="#step6">6</a>;
+these were planned to be used
+as an emergency backup measure in case that candidate's internet connection failed). 
+</p>
+<p><b>"I like PR less or more than you do" criticism:</b>
+Proportional representation versus single winners &ndash; which is the better way
+to run the world?  This is a debate that has continued for at least 100 years with
+no conclusion.  The critic may not like our proposal above since he regards it as too far to
+one side or the other of that debate.
+</p><p>
+<b>Response:</b>
+The <i>ideal</i> of PR is that if the parliament were
+to exactly mirror the demographics of the population in every way, then every decision the
+parliament made, would be the same as the whole population would have made in a
+(usually impractical) countrywide referendum.
+So everything will be as good as it could hope to be.
+That's an excellent ideal.
+But the <i>reality</i> is that every PR country that has so far existed, has elected
+parliaments that usually massively <i>fail</i> to mirror 
+the population with respect to, e.g. gender, economic situation, and life-experience, education &amp;
+expertise in varied areas.
+The best PR so far has ever managed to do
+is to mirror "party identification" counts, which is a very
+crude kind of mirror.  
+</p><p>
+So in view of this, I do not advocate "too much" PR. Do not overdo it trying
+to chase the will-o'-the-wisp of PR "perfection" &ndash; that would be pointless.
+Instead I advocate using PR proportionality theorems merely as "safety backstops"
+to prevent parliament from becoming too distorted a reflection of the population,
+<a href="CanadaSeatsVotes.html">such</a> as Canada 2008 entirely giving the Greens zero seats.
+</p><p>
+Meanwhile, the (unfortunately conflicting) <i>ideal</i> of non-PR "single winner" elections is 
+maximizing individual accountability and quality.  Each MP is elected by 1 district, maximizing
+simplicity, voter&harr;candidate mutual knowledge, and clarity,
+and hopefully assuring that MP the best choice available (at least if a good-quality 
+single-winner voting system were used &ndash; Canada's
+<a href="Plurality.html">plurality</a> system is a horribly bad way to try to
+determine who that best option is, 
+<a href="RangeVoting.html">score voting</a> or
+<a href="Approval.html">approval</a> would clearly be superior).
+</p><p>
+That also is an excellent ideal, but in reality it can (and many times in
+Canadian history has) yielded highly disproportional parliaments and shut
+important views out of power entirely.
+</p><p>
+The nice thing about our proposal is that it is <i>tuneable</i> to seek the
+optimum tradeoff between these two ideals.
+The designer can vary the fraction T/W of top-up seats;
+making T larger causes better PR but at the cost of having fewer directly elected seats.
+I suspect, based partly on 
+<a href="CanadaSeatsVotes.html">data</a> and partly on extrapolation, that
+ the optimum tradeoff will be reached when T is about 15-25% of W, i.e.
+15-25% of the parliament is top-up seats.
+</p>
+
+<a name="MO"></a>
+<h3> Possible modifications </h3>
+
+<a name="regionalmod"></a>
+<p><b>1.</b>
+If one wanted the top-up MPs to be "regional" rather than "Canada-wide" then use
+the same proposal, just within
+regions only.  For example if each region were 1/25 of Canada, 
+then use our system to elect 1/25 of
+the parliament, doing that independently within each region; then finally combine
+all 25 subparliaments to obtain the whole parliament.
+This would sacrifice some proportionality-accuracy, but hopefully the
+advantages of greater MP regional identification would  outweigh those disadvantages,
+at least if it is "tuned" optimally (i.e. by adjusting the number "25" to get
+the optimal tradeoff).
+</p><a name="rain"></a><p>
+Whether or not you buy the 
+whole idea that "regional" MPs are inherently more motivated or better than
+"nationwide 'at large' MPs" the regional scheme still enjoys the following important
+advantage.  Suppose that party composition is highly correlated with geography,
+e.g. "the Liberals all are located in the East."
+Now suppose it rains in the East on election day, depressing turnout.
+With nationwide PR schemes, Canada would then artificially suffer a disproportionately
+low-liberal parliament, purely because it happened to rain on that day.
+(Or if it rained in the West instead, then the opposite problem.)
+With regional top-ups, and each region's number of MPs based on its
+population (not its <i>voting</i> population), that problem is avoided.
+</p><p>
+<p><b>2.</b>
+Suggested (in essence) by professor S.J. Brams:
+replace score voting by <a href="Approval.html">approval</a> voting,
+using an "approval plus one favorite" style ballots where each voter <i>approves</i>(score 1) or 
+<i>disapproves</i>(score 0) every candidate (intermediate scores forbidden)
+and also designates one <i>favorite</i> among her approved candidates.  
+All that voter's juice goes to her favorite.
+</p;>
+<p>
+Approval is simpler than score, but 
+<a href="https://rangevoting.org/RateScaleReearch.html">surveys</a>
+<a href="WhatVotersWant.html">show</a>
+people nevertheless prefer score, and score is <a href="rangeVapp.html">better</a>
+both in principle and in tests.
+</p>
+<p><b>3.</b>
+Elect a "weighted parliament" in which the MPs are not all equal.  They each
+have a "voting weight" equal to their amount of "juice" when they were elected.
+</p><p><b>Pros for weighting:</b>
+</p><ul><li>
+Each candidate has an incentive to maximize his vote share (e.g. by broadening his base of 
+support).  
+</li><li>
+Even "abstention" is politically meaningful: it denies any candidate
+the weight they would receive from your vote.
+That all is good since then, politicians would not benefit (in fact, generally would be
+harmed) by policies which alienate voters and lower voter turnout, e.g. the
+"vote suppression" tactics unfortunately currently practiced in USA politics.
+</li><li>
+The distribution of power in Parliament would be exactly proportional 
+to the distribution of public opinion. (So if 15% of 
+voters voted for, say, libertarian candidates, then about 15% of the voting weight 
+in Parliament will be controlled by libertarian candidates.)
+This would be true to a greater degree of exactness than is possible with old-style
+unweighted parliaments suffering "round to integer" effects.
+And note this would happen without mentioning "parties" &ndash; i.e.
+it would work just as well if each of the candidates ran as an "independent."
+</li></ul>
+<p><b>Cons for weighting:</b>
+Weighted parliaments obviously are more complicated logistically &ndash; both for conducting
+votes, and also other issues arise (e.g. should the MPs be paid unequally and have unequal staff?).
+But if the parliament is equipped with an instant
+computerized voting system (which many or all do, nowadays) that <i>might</i> be no
+obstacle.  Also the whole "rains in the East" problem pointed out above,
+is another good objection to weighting seats.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

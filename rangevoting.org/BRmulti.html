@@ -1,0 +1,123 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Bayesian Regret with PR/multiwinner elections
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Bayesian Regret with PR/multiwinner elections </H2>
+<p><small>By Warren D. Smith.  Idea invented about 2005. </small></p>
+
+<p>
+At first I thought "<a href="BayRegExec.html">Bayesian Regret</a>" 
+(mathematical <a href="BayRegMath.html">definition</a>)
+methodology was only going to be
+usable for comparing <i>single-winner</i> election methods.
+In multi-winner elections many other issues come to the fore besides
+just "utility of the winner," e.g. how well the winners work together,
+how well they "represent" the public, etc.  (For example, one voter
+in a country of this ilk told me he intentionally voted <i>against</i> his
+favorite party because he did not want to them to win too big, i.e, to get
+too-many seats.)
+</p><p>
+However, it later occurred to me (and this idea has never been tried
+or tested, as yet) how to compare multiwinner methods. The technique
+is "two stage" (and that is the key idea).
+Explanation:
+</p>
+<ol><li>
+Generate artificial "voters" and "candidates" and "societal options."
+[Cf, in the old-style single-winner BR methodology, only voters &amp;
+candidates were generated here.]
+</li><li>
+Each voter, and also each candidate, has "utilities" for each
+societal option.
+(Generate them in some randomized fashion. They are real numbers.)
+</li><li>
+Now candidates announce info about their utilities according to
+some assumed announcement behavior.
+And voters vote on the candidates, according to some assumed
+strategic behavior. [Simplest behaviors
+are "honesty," but others could be tried too.]
+</li><li>
+Now we use the (multiwinner) election system E to elect a subset of the candidates.
+</li><li>
+Now we have a "parliament" (the set of winning candidates).
+</li><li>
+["stage 2"] the parliament votes, now using a <i>single</i>-winner voting
+system, on the societal options.
+</li><li>
+Some societal option wins.
+</li><li>
+In view of the winning option, we assess the Bayesian Regret to all
+the voters (by using utilities from step 2).
+<blockquote>
+Actually, more realistic is probably to hold <i>several</i>
+single-winner societal option votes, among the options in chunk A,
+chunk B, and chunk C respectively &ndash;
+e.g. A=options about <i>a</i>bortion policy,
+B=options about <i>b</i>order with Mexico,
+C=options about health <i>c</i>are, etc. &ndash;
+find the winning A-option, the winning B-option, and the winning C-option;
+and then assess the BR for the voters of these 3 simultaneous winning options.
+Call that "chunking."
+<blockquote>
+</li><li>
+Repeat steps 1-8 a zillion times to find the mean Bayesian Regret
+of election method E.
+</li></ol>
+<p>
+Note, BR(E) depends not only on E but also on all the "knobs on the
+side of the simulator" namely the assumed voter- and
+candidate-behavior models, the number of candidates and seats and voters
+and societal options (and chunks), 
+which single-winner system is employed in the "second stage,"
+and the utility generator.
+</p><p>
+Hopefully (but it is unclear whether this hope will come true!)
+some election method E will
+turn out to be robustly superior to the others you try. "Robustly"
+means "pretty independently of all those knob settings."
+</p><p>
+That's basically what (fortunately)
+happened with single-winner BR, with range voting.
+</P>
+<p>
+I invented this idea about 2005. 
+As of January 2009 still nobody has
+ever programmed the
+computer to do it yet.  
+(Some people have said they'd do it, but all bailed out before completing the project.)
+<!--
+However there is one person currently
+working on it who hopes to have
+produced the program, run it, made
+it public-source,
+and
+written a report about whatever happened, all by November 2009. -->
+</p><p>
+<b>Update: Billy Tetrud writes first(?) multi-winner BR code (2016):</b>
+His program, written in javascript, is
+<a href="multiWinnerBaysianRegret.html">here</a>
+and I think it is a good start.
+Among the (not very many) multiwinner 
+voting methods Tetrud initially implemented, the
+best one appears to be 
+<a href="RRV.html">reweighted range voting</a>.
+</p>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

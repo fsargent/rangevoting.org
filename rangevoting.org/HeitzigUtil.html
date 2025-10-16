@@ -1,0 +1,125 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Utility, Equality, and Efficiency by Jobst Heitzig
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2>Some thoughts about "equality" and "efficiency" by Jobst Heitzig</h2>
+<p>
+I thought some while about "equality" and "efficiency" as a basic 
+principles of voting. It seems that both terms can mean quite different 
+things that we should perhaps try to distinguish. First, there is 
+"formal equality" (=anonymity), "equality of outcomes", "equality of 
+expected outcomes", and "equality of power". On the efficiency side, 
+there is "total utility efficiency", "social welfare efficiency", 
+"Condorcet efficiency" and so on.
+</p><p>
+To start a discussion, I have devised a simple example which I use to 
+distinguish these kinds of equality and efficiency, and which therefore 
+also leads to quite different results under various voting methods. 
+<!--
+At the end of this post, I also present a new method designed to provide 
+both "equality of power" and some sort of efficiency.
+-->
+</p>
+<pre>
+Example preferences:
+--------------------               mean utility
+1 voter:  A> > > > > >C>G|E>T>M>B   26/7=3.7
+1 voter:  B> > > >M>T>G| >E> >C>A   33/7=4.7
+1 voter:  C>T> >G>M> | > >E> >B>A   40/7=5.7
+          | |   | | | | | | | | |
+utility  11 10  8 7 6 5 4 3 2 1 0
+
+(> designates a utility gap of 1,
+ | shows the approval cutoff under above-mean strategy)
+
+Analysis:
+---------
+               Approval  Borda  median   total    Gini social
+option  beats  score     score  utility  utility  welfare
+C       all    2         12 !   5        17       31/9
+T       ABEMG  2         11     6        18 !     38/9
+G       ABEM   3 !       11     5        17       43/9 !
+M       ABE    2          9     7 !      15       33/9
+E       AB     0          7     3         9       27/9
+B       A      1          7     1        12       14/9
+A       -      1          6     0        11       11/9
+</pre>
+<p>
+C is both the Borda and the beats-all (Condorcet) winner.
+The beats are transitively C>T>G>M>E>B>A.
+</p><p>
+M maximizes median utility.
+</p><p>
+T maximizes total utility.
+</p><p>
+G maximizes Gini social welfare (=expected minimum utility of two 
+randomly drawn voters) and is the Approval winner with above-mean 
+approval strategies. In a more realistic scenario, the third voter would 
+rather approve of C and T only since that would change the Approval 
+winning set to {C,T,G}.
+</p><p>
+If we want equal utilities for all voters, we must elect E.
+</p><p>
+If we want equal expected utilities for all voters, one solution is to 
+elect A,M,E with probabilities 6/s,11/s,(s-17)/s, for some arbitrary 
+s&ge;17. (There also exist other solutions with three possible winners.)
+</p><p>
+If we give each voter equal voting power, i.e. let her distribute 1/3 of 
+the winning probability, the winner is A,B, or C, each with probability 1/3. 
+For the B and C voters, it would increase their expected utility when 
+they gave their probability share of 2/3 all to M rather than B and C. 
+However, under Random Ballot, this is a prisoner's dilemma since, given 
+the other's strategy, it is always best to vote sincerely A or B instead 
+of M. Therefore, such a cooperation won't probably occur with Random 
+Ballot. In this respect, Random Ballot is quite inefficient in terms of 
+total utility and/or social welfare.
+</p>
+
+<!--
+A method providing both "equality of power" and efficiency:
+-----------------------------------------------------------
+
+The latter observation is the reason why I studied more cooperative 
+variants of Random Ballot for a while. The variant I consider best at 
+this moment is  the simple "Draw Two / Most Approved Compromise" (D2MAC).
+
+In D2MAC, each voter marks one option as "favourite", and marks as "also 
+approved" any number of additional options she considers promising 
+compromise options. Then two ballots are drawn at random (with 
+replacement). The winner is the most approved option of those options 
+which are marked on both ballots (if any such exist), or else the option 
+marked as "favourite" on the first ballot. In this way, each voter can 
+be sure that her share of the probability goes to one of the options she 
+marked, and only goes to a non-favourite if many other voters approved 
+of her compromise options as well. Hence voters can cooperate safely to 
+transfer probability to good compromise options.
+
+In our above example, the B and C voters can safely mark B or C as 
+"favourite" and M as "also approved", thereby changing the winning 
+probabilities to 1/3 A, 4/9 M, 1/9 B, 1/9 C. (M wins iff both of the two 
+ballots drawn at random are different from the first ballot.) If only 
+one of the two voters approves of M, the probabilities remain 1/3 A,B,C, 
+hence no prisoner's dilemma occurs in this case with D2MAC.
+Jobst
+-->
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

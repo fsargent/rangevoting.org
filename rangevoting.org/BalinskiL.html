@@ -1,0 +1,269 @@
+
+<HTML>
+<HEAD>
+ <TITLE>experimental vote</TITLE>
+</HEAD>
+<BODY>
+<H2>THE MAJORITY JUDGEMENT</H2>
+
+<p>by Michel Balinski and Rida Laraki.  
+<!-- emails: 
+Rida.Laraki at shs.polytechnique.fr
+laraki at poly.polytechnique.fr 
+michel.balinski at shs.polytechnique.fr
+-->
+<small>Translated into English by Warren D. Smith 16 April 2007.
+You can also see the
+<a href="http://www.ceco.polytechnique.fr/jugement-majoritaire.html">
+French-language original of this web page at the Ecole Polytechnique 
+entitled &quot;Le jugement majoritaire&quot;</a> and our
+<a href="MedianVrange.html">critique</a>, and our annotated table 
+of <a href="OrsayTable.html">their results</a>.
+</small>
+</p>
+
+<p>This page gives theoretical and experimental documentation
+of a new kind of poll: "the majority judgement."
+It will be tried out on 22 April 2007 in three polling stations in the
+town of Orsay
+(91 - the Essonne).
+The experimental results will be posted as soon as possible.
+</p>
+<p>In this kind of poll, each voter must fill the following ballot paper, by
+providing a score for each candidate.
+There are 6 possible scores
+ranging from "very good" to "reject."
+       </p>
+
+       <p><img src="BulletinVoteJugeMajC.png" width="800" height="565"></p>
+
+       <p>How does it work?</p>
+
+       <p>One sorts all the scores
+obtained by this candidate, by laying them out from best to worst,
+then one takes the
+score which is in the middle of this classification, i.e. we assign a
+candidate his
+<i>median</i> score.
+
+       <p align="left"><b>Example:</b> </p>
+       <p align="left">Let us imagine that there are only 5 voters
+and that a candidate
+obtained the scores:
+</p>
+<p align="center">
+      Good, Passable, Reject, Good, Mildly good.</p>
+<p>
+Sorting into order yields
+</p><p align="center">
+Good, Good, <b>Mildly Good</b>, Passable, Reject.</p>
+<p>
+This candidate's "majority score" is the median, i.e. "mildly good."
+It is the <i>best</i> score in the sense that the majority of the
+voters agrees that
+the candidate deserves at least the score "mildly good."
+</p>
+<p>
+But an electoral method must consider all possible cases.
+If there are an 
+even number
+of voters: after having sorted the scores
+from best to worst there
+will be <i>two</i> scores which are in the middle ("bi-medians").
+If they differ, the method chooses the <i>worst</i> of these two scores.
+</p>
+<H2>
+What if the election is a tie?
+</H2>
+<p>
+It is possible for several candidates to get the
+same median "majority score."
+How to decide between them?
+For each one of the tied candidates, one removes exactly
+one ballot paper giving him the median-score, then re-calculates the
+"majority score"
+for this candidate based on the remaining ballots: that is called the
+"majority score
+of rank one."
+We use these to break the tie.  If there is still a tie, then we
+do it again to compute
+the "majority score
+of rank two" for each still-tied candidate.
+And so on.
+</p><p>
+<a name="example"></a>
+<b>Example:</b>
+There are 7 voters and two candidates.</p>
+<p>
+Candidate A's  scores are
+</p><p align="center">
+Reject, Very Good, Good, Passable, Mildly Good, Good, Reject.</p>
+<p>
+Candidate B's  scores are
+</p><p align="center">
+Very Good, Mildly Good, Insufficient, Insufficient, Mildly Good, Very
+Good, Reject.</p>
+<p>
+One starts by sorting the scores of each candidate.</p>
+<p>
+For the candidate A, that gives:</p>
+       <p align="center">Very Good, Good, Good, <b>Mildly Good</b>, Passable,
+Reject, Reject.</p>
+<p>
+For candidate B:</p>
+<p align="center">
+Very Good, Very Good, Mildly Good, <b>Mildly Good</b>, Insufficient,
+Insufficient,
+
+Reject.</p>
+<p>The "majority score" (median) for both candidates is "Mildly Good"
+&ndash; a tie.
+To decide between them one removes  one "Mildly Good" from each to get
+<p align="center"><b>A:</b>
+Very Good, Good, Good, <b>Passable</b>, Reject, Reject.
+</p>
+<p align="center"><b>B:</b>
+Very Good, Very Good, Mildly Good, <b>Insufficient</b>, Insufficient, Reject.
+</p>
+Thus the "majority score of rank one" of A is Passable, while that of
+B is Insufficient,
+therefore A is elected.
+</p>
+<P>
+(We thank Jerome Renault for this simple and clear description of the majority
+judgement).</P>
+
+<p>
+<small> <b>Question:</b>
+Isn't it possible in this process to run out of ballots on which one 
+or more tied candidate is given the median-score? What happens then?
+<br><b>Answer:</b>
+It is (almost) impossible.  If you run out, that means the median changed. 
+You now just continue on using the new median.  Always use
+the <i>current</i> median.
+So you never run out until either the tie is broken or you <i>really</i> run out
+(in which case the tie is never broken) but that'll be extremely rare.
+</small>
+</p>
+
+<H2> Links (All of these are in French, except for the ones saying "ENGLISH") </H2>
+
+<ul>
+<li>
+<a href="http://www.ceco.polytechnique.fr/2007-06.pdf">
+A detailed description of four pages of the majority judgement (pdf)
+</a> 
+</li><li>
+
+<a href="Page3-LeMonde-26avril2007.pdf">
+Entire page 3 of <i>Le Monde</i> 26 April 2007! (pdf)</a> 
+</li><li>
+
+<a href="http://www.ceco.polytechnique.fr/BulletinVoteJugeMajC.pdf">
+Ballot paper of the
+&quot;Majority Judgement&quot;  (pdf)</a> 
+</li><li>
+
+<a href="http://www.ceco.polytechnique.fr/AfficheVoteJugeMaj1C.pdf">Post
+scientific experiment
+with Orsay  (pdf) </a> 
+</li><li>
+
+<a href="http://www.ceco.polytechnique.fr/ListeParticipantExperienceOrsay.pdf">Organization
+of the experiment of Orsay (pdf) </a>
+</li><li>
+
+
+<a href="http://www.ceco.polytechnique.fr/MagazineMunicipalOrsay29Mai.pdf">
+Extract of the
+&quot;Magazine of the Municipality of Orsay&quot; of 29 May 2007
+(pdf)</a> </li><li>
+
+
+<a href="http://www.ceco.polytechnique.fr/LettreMaireOrsayAuxElecteurs.pdf">Extract
+of the
+letter of the Mayor of Orsay to the voters of offices 1, 6 and 12
+(pdf)</a> </li><li>
+
+
+<a href="http://www.ceco.polytechnique.fr/Monde.2007.03.31C.pdf">Extract
+of the newspaper "Le
+Monde": The dilemma of the useful vote (pdf) </a> </li><li>
+
+
+<a href="http://www.ceco.polytechnique.fr/NouvelObsC.pdf">Extract of the
+newspaper "New
+Observer": Mathematics and elections: the theory of the votes (pdf)
+</a> </li><li>
+
+
+Research paper:
+<a href="http://www.ceco.polytechnique.fr/Theory.meas.elect.rankC.pdf">
+On the Theory of Measuring, Electing and Ranking</a>
+(<small>LATER NOTE:</small>
+an <a href="BalinskiLarakiPNASpdf.pdf">updated</a> 
+article of the same title has now appeared in English in <i>Proceedings of
+the National Academy
+of Sciences USA</i> (pdf) 
+<!-- also have a local CRV copy made 17 April 2007 -->
+</li>
+</ul>
+
+<TABLE WIDTH="100%" BORDER="0" CELLSPACING="0" CELLPADDING="0">
+       <TR bgcolor="#CCCCCC">
+         <TD COLSPAN="2">
+           <p>&nbsp;</p>
+           <p align="center"><img src="MichelBalinski.OrsayC.png" width="300"
+
+height="333"></p>
+           <p align="center"><font face="High Tower Text" size="4"> Michel
+
+Balinski</font></p>
+           <p align="center">&nbsp;</p>
+         </TD>
+         <TD WIDTH="50%">
+           <P ALIGN=center><img src="RidaLaraki.orsayC.png"
+width="300" height="333">
+           <P ALIGN=center><font face="High Tower Text" size="4">Rida
+Laraki</font>
+         </TD>
+       </TR>
+     </TABLE>
+
+<table width="100%" border="0" cellspacing="0" cellpadding="0" height="18">
+       <tr bgcolor="#FFFFFF">
+         <td height="27">
+           <div align="left"></div>
+           <div align="left"></div>
+         </td>
+       </tr>
+       <tr>
+         <td height="17" bgcolor="#FFFFCC">
+           <div align="right"><font
+color="#ED181E">&nbsp;&nbsp;</font><font size=-1><a
+href="http://www.ceco.polytechnique.fr/index.php" 
+target="_parent">Retour &agrave; l'accueil</a></font><br>
+             <b><font color="#ED181E" size=-1>Laboratoire
+D'Econom&eacute;trie<br>
+             de l'&Eacute;cole Polytechnique<br>
+             </font><font size=-1>derni&egrave;re mise &agrave; jour
+: 13 avril
+             2007 </font></b></div>
+         </td>
+       </tr>
+</table>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

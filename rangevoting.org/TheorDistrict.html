@@ -1,0 +1,3314 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Theoretical Issues in Districting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Theoretical Issues in Political Districting </H1>
+<p><small>By Brian Olson &amp; Warren D. Smith. Third PRELIMINARY draft August 2011. 
+</small></p>
+
+<blockquote><small>
+There is no issue that is more sensitive to politicians of all colors and
+ideological persuasions than redistricting. It will determine who wins
+and loses for eight years.
+<br> &nbsp;&nbsp;&nbsp; &ndash;
+ Ted Harrington, chair of political science at the University of
+North Carolina (quoted during Shaw v. Hunt trial, March 1994).
+</small></blockquote>
+<p>
+Smith was urged to write an essay about theoretical issues in political districting.
+This page is his current answer to this request. 
+Brian Olson helped him a lot hence is credited as co-author.
+</p>
+
+<h3>Table of Contents</h3>
+
+<ol>
+<li>
+<a href="#WhatIsD">What is a "district"?</a></li><li>
+<a href="#NotDraw">Politicians should not draw their own districts</a></li><li>
+<a href="#Paradigm">Results-based "contest paradigm," versus "procedure-based" paradigm</a></li><li>
+<a href="#QualityDefns">What is a "good" district? Three inequivalent  quality measures defined</a></li><li>
+<a href="#GenUniq">Generic Unique-Optimum-Map Theorem </a></li><li>
+<a href="#IneqRels">Inequalities relating our three cost-measures </a></li><li>
+<a href="#StupidQual">Some stupid cost-measures to shun </a></li><li>
+<a href="#beehive">For an infinite flat earth with uniform population density... </a></li><li>
+<a href="#hybrid">Does this mean all these stupid ideas should be <i>totally</i> abandoned?</a></li><li>
+<a href="#ApplySimp">Let's apply our three quality measures to the simplest nontrivial artificial "country" </a></li><li>
+<a href="#PerimBest">Why I think the perimeter-length quality measure is the best </a></li><li>
+<a href="#Countervail">Countervailing nice properties of the min-squared-distance-based quality measure </a></li><li>
+<a href="#LVdiagNE">Generalization of the concept of "Laguerre-Voronoi diagram" to nonEuclidean geometries</a></li><li>
+<a href="#weightedsum">Should we combine district  costs via <i>weighted</i> summation? </a></li><li>
+<a href="#NPCsec">NP-completeness of optimum districting problems </a></li><li>
+<a href="#SSA">The shortest splitline algorithm </a></li><li>
+<a href="#Phase2">Two-phase improvement algorithms for Olson's and 
+the squared-distance-based measure </a></li><li>
+<a href="#GoodI">Heuristically good (but random) places to start improving from</a></li><li>
+<a href="#GoodII">Guaranteed-good random places to start improving from </a></li><li>
+<a href="#HandyChart">Handy comparison chart (methods for producing maps with N equipopulous districts) </a></li><li>
+<a href="#Travel">What about travel time? Rivers? County lines? Census blocks? </a></li><li>
+<a href="#Minority">Will this "disenfranchise minorities?"</a></li><li>
+<a href="index.html%3F%3F.html">What about "competitive" districts??? [section missing]</a></li><li>
+<a href="#PrettyPic">Pretty pictures section: Olson vs Voronoi vs Shortest splitline </a></li><li>
+<a href="#Ackno">Acknowledgments </a></li><li>
+<a href="#Bibliog">References about political districting math &amp; related topics </a></li>
+</ol>
+
+<a name="WhatIsD"></a>
+<h3>What is a "district"?</h3>
+<p>
+At any level of government, a <i>district</i> means that there is a specific 
+piece of government 
+responsible for your and the other people in your district's needs.
+Districts break governance into managable pieces.
+School districts let us manage just the schools 'here' and not 'there.'
+State Legislature and Congressional districts let you elect one specific representative.
+</p>
+
+<a name="NotDraw"></a>
+<h3>Politicians should not draw their own districts</h3>
+<p>
+"Democracy" is voters choosing their leaders.
+But when politicians get to draw their 
+own districts, such as (<a href="CrossCountryG.html">most</a>
+egregiously) in the USA, the result is the opposite &ndash;
+the politicians choose their voters.  
+Outrageously biased
+<a href="GerryGal.html">absurd</a>-looking district maps are common in the 2000-era USA,
+and not coincidentally, re-election rates to congress are &asymp;98%.  
+Voters thus play little role
+in the "democratic" process. Statehouses
+often are even worse. 
+</P><blockquote><small>
+Here's an actual quote (given as evidence in a court case)
+by a redistricting committee chairman
+to one of his committee colleagues: "We are going to shove
+[this map] up your f------ a-- and you are going to like it, and
+I'll f--- any Republican I can."
+<br> &nbsp;&nbsp;&nbsp;
+US Supreme Court Justice Sandra Day O'Connor apparently regarded this as a <i>virtue</i>,
+opining that any politician who did not do absolutely everything he could to help his party
+"ought to be impeached."  (To be clear, the fact that a US supreme court justice
+could emit that quote, absolutely astounds and revolts me; 
+and I would be more in agreement with
+"any politician who does absolutely everything he can to help his party
+ought to be impeached.")
+<br> &nbsp;&nbsp;&nbsp;
+Justin Levitt (Law Professor at Loyola)
+claims that the USA "is unique among industrialized democracies in putting an
+inherent conflict of interest directly at the heart of the redistricting
+system."
+</small></blockquote><p>
+Computerized gerrymandering systems and massive secret
+databases about people compiled
+by the political parties (they know your gender, your household composition,
+what magazines you subscribe to, what party you
+are registered in, what crimes you committed, how often you vote, what products you buy...)
+are now enabling
+gerrymandering with extreme levels of detail &ndash; individual buildings &ndash; making
+the problem much worse still.
+This all is an extreme failure of democracy.
+</p>
+<p>
+Stupid ways to try to avoid this problem, which in the USA usually have not worked,
+include
+</P><ul>
+<li>
+Nonpartisan committees draw the districts.
+In <a href="RosenbEd.html">practice</a>
+that has usually meant <i>bi</i>partisan committees which simply negotiate 
+deals between the two major parties to make sure that all politicians from both parties
+keep their seats.  This is not democracy, not even close.
+</li><li>
+Laws that <i>super</i>majorities (e.g. 2/3) of the legislature must agree to district maps.
+That generally has either led to gridlock where the legislature is unable to produce a map, 
+or (more commonly)
+again to bipartisan gerrymandering where all members are virtually assured of keeping their seats
+next election, and in fact this makes that even more certain to happen because the entire
+legislature has to cater to its most-corrupt 1/3.
+</li><li>
+Feel-good vague subjective words in laws about how to draw districts.
+The trouble is, those words have no clearly judicable meaning.  E.g. districts should be
+"compact" and "not drawn for the purpose of racial discrimination."
+But those words mean what, exactly? And even to the extent they 
+have some meaning, such
+words in those laws are simply blatantly disregarded on a continual basis.
+</li></ul>
+
+<a name="Paradigm"></a>
+<h3>Results-based "contest paradigm," versus "procedure-based" paradigm</h3>
+<p>
+I know of exactly two ways to genuinely fix the problem and produce
+genuinely unbiased district maps.   
+</p>
+<ol><li>
+<b>Results-based "contest paradigm":</b>
+A law sets up some unambiguous mathematical definition of "how good" any district map is.
+Then, each redistricting, anybody or any group in the world is allowed to enter
+the "contest" to produce the best district map.   The best map submitted to the contest
+(as measured numerically by computer using the quality definition) wins.
+</li><li>
+<b>Procedure-based paradigm:</b>
+A law defines a simple unambiguous algorithm which inputs
+the shape of the country and the locations of all the people inside it, and outputs
+a district-map.   A computer then draws the maps using the algorithm with
+census and geographic data as its input.
+Note the algorithm does <i>not</i> input and <i>doesn't know</i>
+any person's party-registration, magazine subscriptions,
+race/ethnicity, etc etc, hence this is unbiased.
+</li></ol>
+
+<p>
+<small>Anybody in the world is allowed to run the same algorithm on
+the same data (both being public) to hopefully get the same district map, verifying there
+was no cheating, and if it is a simple-enough algorithm then anybody can check validity to
+a considerable extent just "by eye" with no computer needed.  In the results-based paradigm,
+again, anybody can confirm the claimed map goodness
+by computer, or,
+if it is a simple-enough quality definition,
+one can confirm/deny fairly well merely by eye.
+</small>
+
+<p>
+<b>Why can't we get the best of both worlds by making a
+computer find the <i>best possible</i> district-map?</b>
+Because for <a href="#QualityDefns">all three of my favorite</a>
+reasonable quality metrics, I can prove that finding the best 
+district-map [or even answering the yes/no question "does a map with quality better than X
+<i>exist</i>?"] 
+is an "NP-complete" problem.  (Discussed in <a href="#NPCsec">NP-completeness</a> 
+section below.)
+Given that essentially everybody believes P&ne;NP, that
+basically means that there <i>cannot be</i> any
+computer program that both (i) finds the best map, or
+even merely 
+answers that yes/no question for arbitrary X and (ii) can be guaranteed to
+run quickly enough that it is going to finish computing in any reasonable amount of 
+time (e.g. your lifetime, the age of the universe, etc).
+</p><blockquote><small>
+Note the word "guarantee."  Even if some computer program were found by empirical testing to 
+often succeed quickly in finding a provably optimum districting, there would be
+no <i>guarantee</i> that the very next run tried would not take longer than the age of the 
+universe.  This is unfortunately simply the way it is with NP-complete problems, and is
+why NP-completeness renders
+many schemes unacceptable for many election-related and districting-related purposes
+in which guarantees are required.
+</small></blockquote><p>
+<b>OK, can we at least make a computer find a map guaranteed to be no worse than a factor of 2 away
+from optimum? (Or a factor 1.1? Or 1.01? Or any constant factor at all, even 9999999?)</b>
+Those at present (year 2011) all remain <i>open questions</i> 
+for any of the three quality-measures
+discussed below!
+I suspect such an algorithm will eventually be found (indeed, I have some candidates), 
+but unfortunately I also suspect it will be complicated.
+</p><p>
+<b>Will that contest paradigm work in real life?</b>
+I'm presently unconvinced.   There was a trial contest to redistrict Arizona 2011, and
+it was a total failure; by their announced deadline 5 June
+nobody was able to use their website's software to produce any
+sensible map (there were a few "entrants" which were obviously 
+just failed experiments in using their software) whereupon they 
+magically changed the deadline to 22 June. There was a later magical rescheduling too.
+I personally tried to use their
+contest software and failed, and so did several others whom I know.
+There would need to be hundreds, maybe thousands or tens of thousands, of such contests
+set up to district all the 100s-10000s of areas that need to be districted.
+MORE ON THIS???
+</P><p>
+The whole paradigm depends on having enough entrants (and enough entrants with enough competence!)
+in every contest.
+Right now, often, even simple manual 
+sanity checks on published-by-the-USA-government election results, simply
+are not conducted. Not by any person.  Not by any group.  <i>Not even the losing 
+candidates in that election, even in close races</i>,
+perform simple arithmetic sanity checks!!
+I know this because, 
+many years later, when I or somebody else gets prodded by some random news event to finally
+perform such a sanity check, we often find some incredibly obvious mathematical impossibility
+(often more than one).  Like more votes than voters.  Or sums that are wrong.  With
+these errors exceeding the official election margin.
+Meaning nobody ever found it/them and made it/them public before.   
+CITE EXAMPLES???
+Now drawing district maps is
+<i>far</i> more complicated and difficult than performing simple arithmetic checks on 
+published election results.   It's pretty much beyond the ability of some unfunded amateur
+without computerized tools.  
+So it is even less likely to happen.
+</p><p>
+<b>But in the future, computerized tools will get common and huge numbers of people will
+enter the contests, right?</b>
+Maybe they will and maybe they won't. Even if you can easily get and install 
+such tools and they all work perfectly and you aren't
+worried their authors might be evilly trying to malware your computer &ndash;  
+it still is way easier to
+perform simple sanity checks on election results, and I repeat, that isn't happening.
+And the government can and often has in the past, 
+published their data in bizarre,
+changing with time and place, formats. (With errors in it too.)
+For example just now for 2010
+the census department changed its
+file formats, killing our districting program (which had worked with their 2000-era data).
+Election data all over the USA is published in absolutely insane, ridiculous,
+not the same in this town as that town, formats, making it impossible for any simple computer tool
+to just look at everything on election day and spot obvious insanities.
+It can take hours to
+months to rewrite your program to try to eat some new data format, and months of effort
+per town, with tens of thousands of towns in the USA, 
+adds up to too much effort.   In short, the politicians could easily screw up
+any contest to make it effectively impossible for anybody to enter it besides their
+own entrant.   Just like they made "Jim Crow" laws which for 50+ years made it almost
+impossible for black people in the Southern USA to vote.   Just like they
+have blatantly gerrymandered, drawing absolutely <a href="GerryGal.html">absurd</a>
+district-shapes,
+for 200+ years without ever stopping,
+now having &asymp;98% re-election rates.
+Just like the Tweed Ring took over New York and redirected about one-third 
+of its total budget into their own pockets, with only 2 members of this ring ever
+serving any jail time ever.
+</p><p>
+<b>But we'll just solve that problem by making a law that there has to be a simple, 
+never-changing, fixed format for census and map data.</b>
+Dream on.  Let me put it this way. In the history of the universe, 
+I doubt there has ever been such a law, and trying to describe data formats in legalese
+basically adds up to dysfunctional garbage.  
+</p><blockquote><small>
+As of 2011, 
+there is an <a href="http://www.iso.org/iso/home.html">ISO</a>
+standard for "Geographic information &ndash; 
+Geodetic codes and parameters" (ISO/TS 19127:2005) but unfortunately there do not appear
+to be any ISO standards for "census" or "population" or reporting election results.
+</small></blockquote><p>
+Incidentally, we wrote a program to eat 2000 USA census data... and the census dept swore to us
+they'd never change this data format. It was a de facto standard which tons of software all
+over the world relied on.  So they'd never change it.  Presto, 
+very next census (2010) they changed 
+it and all the old software broke.
+</p><p>
+<b>Will the procedure-based paradigm work in real life?</b>
+Yes it will.  The government itself will need to run the procedure so they will not be able to 
+stop contestants by introducing bogus and sick data, because they are the only contestant.
+Even if the government decides to stall and claim it was impossible for them to produce a 
+district map,
+then other people could easily run the algorithm so everybody would know what the map was anyway.
+Gerrymandering will be impossible because the algorithm produces one and only one map,
+with no adjustability whatsoever, given your state's shape and where its people live.
+Ivan Ryan programmed
+the <a href="SplitLR.html">shortest splitline algorithm</a> and ran it on all 50 US states
+using year-2000 US census data &ndash; 
+at a cost in electricity of around 10 cents and total computer runtime (needed only one 
+2000-era PC) of one day, which 
+are <i>far</i> less cost and time than the USA's human districters have ever consumed
+&ndash; and it almost always produced clearly-better district maps.
+</p><p>
+
+<a name="QualityDefns"></a>
+<h3>What is a "good" district? Three inequivalent  quality measures defined</h3></a>
+
+<p>
+Here are three quality-measures that previous authors have proposed
+as hopefully suitable for the contest-based paradigm or evaluative
+purposes.   (In all cases, we demand there be exactly N districts,
+all equi-populous, and each a connected set.) 
+</p><small>
+About <b>"equipopulousness":</b>
+It is <i>mathematically</i> feasible, but
+in the real world infeasible and pointless due to census data-gathering errors, to get 
+exact equi-populousness down to at most &plusmn;1 person.  Requiring the max-pop district
+have <b>&le;1.005</b> times the alleged population of the min-pop district plus at most 5 people,
+seems a more-than-adequate compromise sanctioned by <a href="SupremeCt.html">US courts</a>,
+although 0.7% deviation was judged too much in KARCHER vs. DAGGETT 1983.
+<br>&nbsp;&nbsp;&nbsp;
+We shall model the Earth as a perfect <b>sphere</b>,
+which seems adequate for this level <!--(2 significant digits)-->
+of accuracy. But modeling the Earth as flat would not be good enough since, e.g. it
+would get the perimeter/width ratio of South Dakota wrong by about 4%.
+<!-- width of SD is about 490 km. -->
+At this accuracy it seems permissible to neglect the slight
+<a href="http://nssdc.gsfc.nasa.gov/planetary/factsheet/earthfact.html">asphericity</a>
+of the Earth (Polar radius 6356.8km, Equatorial radius 6378.1km, ratio=1.0034) 
+and variation of altitudes between 0.423km below sea level at Jordan's Dead Sea
+and 8.848km on Mt.Everest. Raising one side of S.Dakota by 9km would multiply its
+width by &lt;1.0002. 
+Perhaps the US state whose width is most affected by altitude
+is New Hampshire which is only about <a href="http://www.nh.gov/nhinfo/history.html">80km</a>
+wide and whose highest point is
+Mt.Washington at 1.917km.  Putting Mt.Washington at one side of NH and sea level at the other
+multiplies the state's width by 
+<nobr>(80<sup>2</sup>+1.917<sup>2</sup>)<sup>1/2</sup>/80&lt;1.000288.</nobr>
+<!-- And 1.0006 if Mt.Wash in middle and sea level at both sides. -->
+A better candidate is Hawaii; Mauna Kea is 4.205km high and the main island 150km wide;
+<nobr>(150<sup>2</sup>+4.205<sup>2</sup>)<sup>1/2</sup>/150&lt;1.000393.</nobr>
+(That increases to 1.0016  if we more realistically
+regard Mauna Kea as in the <i>middle</i> of Hawaii with
+the two sides both at sea level and measure total distance across the island.)
+California's 400km width is affected by Mt.Whitney's 4.421km height by &lt;1.000062.
+</small>
+</p><p>
+<b>1. Brian Olson's "average distance to center" measure:</b>
+</p>
+<blockquote>
+Across all districts and all people,
+the "best" district map is the one where people have the least 
+average distance to the center of their district.  (And this quantity &ndash; the
+average distance from a person to her district-centerpoint &ndash; is 
+a numerical measure of goodness for
+any map; smaller numbers are better.)
+<small>Note, a similar but much
+worse idea was put forward by Boyce &amp; Clark 1964.</small>
+</blockquote>
+<p>
+Annoying but crucial details:
+"Distance" means geodesic "great circle" distance on the surface of the sphere.
+This distance between two points with (longitude, latitude) given by (a,b) and (c,d)
+is
+</p><center>
+R arccos( sin<i>b</i> sin<i>d</i> + cos<i>b</i> cos<i>d</i> cos|<i>a-c</i>| )
+</center><p>
+where R&asymp;6371km
+is the radius of the Earth and |b-d| is computed appropriately modulo 360 so that it
+always is &le;180 degrees.
+"Center" means, I presume, the "Fermat-Steiner-Weber point"
+(based on surface-distance) of all the people-locations in that district.
+The FSW point of N point-sites is defined to be
+the point X which minimizes the sum of
+the N distances from X to the sites. There are known efficient
+algorithms to find X to high accuracy (it's a "convex programming" problem), 
+although these algorithms are not obvious and
+not very simple.  On a flat earth the FSW point is always unique.
+On a round earth it can be non-unique, but that should not be a problem in practice.
+</p><blockquote>
+To learn more about FSW points:
+<br>
+<a href="http://en.wikipedia.org/wiki/Geometric_median">http://en.wikipedia.org/wiki/Geometric_median</a>
+<br>
+<a href="http://en.wikipedia.org/wiki/Fermat_point">http://en.wikipedia.org/wiki/Fermat_point</a>
+<br>
+<a href="http://mathworld.wolfram.com/FermatPoints.html">http://mathworld.wolfram.com/FermatPoints.html</a>.
+<a name="WeiszfeldIter"></a>
+<br> &nbsp;&nbsp;&nbsp;
+<b>"Weiszfeld's iteration"</b>
+consists of iteratively replacing the current center X
+(initially a random point) 
+by the weighted mean of all the sites, where
+the weight of site <i>k</i> is proportional to the reciprocal of its distance to the current X.
+(The proportionality constant is chosen so the weights sum to 1.)
+<!-- Initially all the weights are equal (so that initially X is the
+ordinary mean of the sites). -->  
+In a Euclidean space using ordinary Euclidean distance, X converges 
+to the FSW point &ndash; in a manner which 
+<a href="PuzzWeiszfeld.html">decreases</a> the summed distance each iteration &ndash;
+provided the sites have a full-dimensional convex hull and provided 
+X never lands exactly on a site.
+(<a href="#WeiszfeldRefs">References on Weiszfeld iteration</a>.)
+</p>
+<!-- 
+The center of gravity minimizes the sum of the sqs of the distances to the sites
+
+http://www.tau.ac.il/~chenr/Pubs/chen87.pdf
+J.Brimberg &amp; R.Chen:
+A note on convergence in the single facility minisum location problem,
+Computers &amp; Mathematics with Applications 35,9 (1998) 25-31.
+[If convex hull of sites has full dimensionality then
+Weiszfeld converges from a full measure set of starting points
+using Lp distances for 1<=p<=2 and any fixed set of positive site-weights.
+We get convergence if never land exactly on a site.
+If p>2 there are divergent examples.
+However 
+H.&Uuml;ster and R. F. Love:
+The convergence of the Weiszfeld algorithm,
+Computers & Mathematics with Applications 40,4-5 (August-September 2000) 443-451
+show that you can still get convergence with p>2 by "introducing a step size factor."]
+
+J.A. Chatelon, D.W. Hearn, T.J. Lowe:
+A subgradient algorithm for certain minimax and minisum problems,
+Math'l Programming 15,1 (1978) 130-145
+[Algorithm for minimizing the maximum of a finite collection of convex (U?) functions.]
+
+J.E.Burt &amp; G.Barber: Elementary statistics for geographers,
+Guilford, New York 1996.
+
+Horst A. Eiselt: Foundations of Location Analysis, Springer 2011, 509pp.
+Contains paper Frank A.A.Plastria: "The Weiszfeld Algorithm: Proof, Amendments, and Extensions"
+pp357-389=ch16.
+
+Jean Taylor:
+Problems of minimum-cost location, the Kuhn and Kuenne algorithm. 1975. HD58.T38
+(Occasional papers #4 - Published by 
+Department of Geography, Queen Mary College, University of London) 
+[Paperback ISBN=0904791033]
+-->
+<p>
+But on a <i>round</i> Earth using surface distance, it's a little more difficult.
+The following new Weiszfeld-like algorithm conjecturally works if all the sites 
+lie within the same 
+hemisphere: work in a suitable
+<a href="http://en.wikipedia.org/wiki/Gnomonic_projection">gnomonic projection</a>
+of the Earth's surface onto a flat plane.  (The virtue of this map
+projection for districting purposes is that geodesic shortest-paths 
+on the sphere correspond to straight line segments on the plane, hence "convexity" is
+preserved.)
+On this flat map, use the Weiszfeld iteration, <i>but</i> 
+letting the weight of site <i>k</i> instead be proportional to 
+</P><center>
+EuclideanDist(X, site<i>k</i>)<sup>-2</sup>TrueSphericalDist(X, site<i>k</i>).
+</center><p>
+Finally, after X has converged, un-project it back
+onto the sphere.
+</p><a name="gnomonic"></a><blockquote>
+<b>Side-note on the gnomonic projection:</b>
+To map (x,y,z) on the unit sphere (x&sup2;+y&sup2;+z&sup2;=1)
+to (X,Y) in the plane via a gnomonic projection centered at a point C
+having longitude=A and latitude=B, first rotate (x,y,z) about the North-South z-axis
+by angle -A so that C is moved onto the Greenwich meridian at x=1;
+then rotate by angle -B about the y-axis to move C onto the equator with z=0
+[the net effect is to move C to new location (1,0,0)]:
+<pre>
+       [ x ]      [  cosB 0 sinB ]  [  cosA sinA 0 ]  [ x ]
+       [ y ]  &larr;  [    0  1   0  ]  [ -sinA cosA 0 ]  [ y ]
+       [ z ]      [ -sinB 0 cosB ]  [   0    0   1 ]  [ z ]
+
+        new          rotation by       rotation by     old
+        xyz           angle -B          angle -A       xyz
+</pre>
+[now it should be the case that x&gt;0
+otherwise (x,y,z) was on the other side of the planet from C]
+then perform the projection itself:
+<center>
+         X = y/x; &nbsp;&nbsp;   Y = z/x.
+</center>
+This last operation can be inverted by x=(1+X<sup>2</sup>+Y<sup>2</sup>)<sup>-1/2</sup>
+then y=xX, z=xY.  
+<!-- Then the rotation operation could be inverted by multiplying
+by the inverse rotation matrices in the opposite order.  -->
+</blockquote>
+<p>
+I note that the <i>direction</i> to the Weiszfeld point 
+is always a descent direction (also true for
+<a href="Cooper1968Weiszfeld.pdf">Cooper 1968</a>'s
+variant based on distance<sup>e</sup> rather than plain distance, for any exponent
+e with 1&le;e&lt;&infin;; and also true for our gnomonic-projected version of the 
+spherical-distances problem; this using Cooper's or my generalized Weiszfeld iterations) 
+so that one can always 
+"back up"  from the candidate
+new Weiszfeld point 
+by repeatedly dividing the stepsize by 2
+until we find a descent point.
+</blockquote><a name="AvgInterpersonOlson"></a><p>
+<b>Relation to Average Interperson Distance:</b> 
+The average distance from a random person to a random person in the same district,
+is bounded between 1 and 2 times Olson's average distance to district-center.
+</p><p>
+<b>Olson's motivation:</b> 
+If there were exactly one voting-place in each district, and if each one were 
+optimally located, and
+if each inhabitant traveled there by personal helicopter to vote, and if
+all helicopters had identical performance, <i>then</i>
+the best district map by Olson's criterion, would
+be the one minimizing the total travel expense to all the people each election.
+But of course in real life all these "if" assumptions are untrue, especially the first.  
+They may, however, have some approximate validity.
+</p>
+<a label="squaredistmeas"></a>
+<p>
+<b>2. The "average <i>squared</i>-distance" (area-valued) measure:</b>
+</p>
+<blockquote>
+The "best" district map is the one where the average squared-distance between two
+people in the same district (averaged across all districts and all such people-pairs)
+is minimized.
+</blockquote>
+<p>
+I intend that "squared distance" now mean 
+</p><center>
+(x-X)<sup>2</sup> + (y-Y)<sup>2</sup> + (z-Z)<sup>2</sup>,
+</center><p>
+the usual Pythagorean straight-line formula.
+</p><small>
+To convert from (longitude,latitude) pair (&alpha;,&beta;) to Euclidean coordinates (x,y,z)
+use
+x=[cos&alpha;][cos&beta;], y=[sin&alpha;][cos&beta;], and z=sin&beta;.
+</small>
+</p><p>
+<b>Remarks:</b>
+It is mathematically <b>equivalent</b> (but simpler to compute)  to minimize the 
+<i>average squared-distance between each person and her district-centerpoint</i>, where 
+"center" now simply means the numerical average (in 3-space) of all the 
+(x,y,z) 
+locations of the voters in that district.  (It is 
+<a href="PuzzMeanSumSquares.html">well known</a> that the average of
+sites in a Euclidean space uniquely minimizes the sum
+of <i>squared</i> distances to those sites.)
+<!-- And the coordinate-wise median minimizes the sum of the L1 distances to the sites. -->
+ This quantity is a numerical quality-measure for
+any districting (smaller numbers better).  It has the dimensions of <i>squared</i> distance, 
+i.e. <i>area</i>, as opposed to Olson's measure which has the dimensions of <i>length.</i>
+</p><blockquote>
+The reasons it is "simpler to compute"
+this than Olson's measure are 
+<ol type="i"><li>because squared Euclidean distances
+are simpler to compute than unsquared surface distances
+(no trig, inverse-trig,  or square roots required; 
+just multiply, add, &amp; subtract)
+</li><li> 
+averages are much simpler to compute than FSW points.
+</li></ol>
+<p><small>
+Olson should easily be able to modify
+his computer program to employ either quality
+measure 1 or 2 (user chooses which).
+</small>
+</p><p>
+The reason the pair-sum and single-sum measures are "equivalent" is 
+that 
+</p><center>
+&sum;<sub>1&le;i&le;N</sub>
+&sum;<sub>1&le;j&le;N</sub>
+(x<sub>i</sub>-x<sub>j</sub>)<sup>2</sup>
+&nbsp;&nbsp;&nbsp; and &nbsp;&nbsp;&nbsp;
+2N &sum;<sub>1&le;i&le;N</sub> 
+(x<sub>i</sub>-&mu;)<sup>2</sup>
+&nbsp;&nbsp; where &nbsp;&nbsp; N&mu; = &sum;<sub>0&le;j&le;N</sub> x<sub>j</sub>
+</center><p>
+are identical and N (the population of a district) is merely a constant scaling factor.
+<small>To prove that, realize that both expressions are translation-invariant, i.e. adding
+any fixed constant vector  to all the x<sub>i</sub> and to &mu; leaves both of our expressions
+unaltered, so
+therefore we can wlog demand &mu;=0=&sum;<sub>j</sub>x<sub>j</sub>, 
+whereupon it becomes trivial to see 
+they're equal.</small>
+</blockquote>
+<p>
+<b>3. The min-perimeter measure:</b>
+</p>
+<blockquote>
+The "best" district map minimizes the total length of
+all the district boundaries (subject to the usual constraints that there 
+be the correct total number of districts and each have the right population and form 
+a <i>connected</i> set).
+This total length is a quality measure for any map (smaller is better).
+</blockquote>
+<p>
+This tends to prevent ultra-wiggly district boundaries and makes maps easy to draw.
+It is probably the easiest measure (among the three) to compute.
+It also tends (albeit somewhat less directly) to minimize voter travel distances.
+</p>
+<p>
+<b>Mackenzie's related index:</b>
+John Mackenzie in his paper
+<i>Gerrymandering and Legislator Efficiency</i>
+introduced the following measure Q of badness, which some have branded the
+"Mackenzie index":
+</p><blockquote>
+Let P=g+n denote total district perimeter as the sum of mutable political boundary
+length g plus immutable natural boundary length n.
+The the mutable proportion equals g/P.  The polygon
+complexity attributable to political manipulation is 
+Q = (g/P)(P<sup>2</sup>/A) = gP/A.
+</blockquote><p>
+For districts with g=P, the least possible Mackenzie index would
+be achieved on a flat earth by a circle, with Q=4&pi;&asymp;12.57;
+a square would have  Q=16;
+a 2&times;1 rectangle would have Q=18;
+a 3-4-5 right triangle would have Q=24;
+and a 4&times;1 rectangle would have Q=25.
+Therefore in my opinion <b>districts with Q&gt;40 ought to be illegal.</b>
+But Q values as low as 0 are possible (for a state consisting
+of exactly 1 district, entire boundary immutable) and unboundedly
+large values also are possible (very wiggly boundary).
+The worst districts in the 1999-2009 USA had 200&lt;Q&lt;900.
+</p><p>
+Mackenzie then used US government district shape datafiles
+<!--  www.census.gov/geo/www/cob/bdy_files.html   -->
+to compute all Q values
+for all congressional districts for the 106th through 110th congresses (years 1999-2008)
+and used the results to create color coded maps of the USA highlighting the 
+worst-gerrymandered areas (100&lt;Q&le;870)
+in orange and red, and the least-gerrymandered areas (0&le;Q&le;75)
+in green.  
+<!--
+The following were the states containing large amounts of orange and red:
+</p><center>
+TX, FL, SC, MA, TN, NC, AL, VA,
+</center><p>
+in approximately worst&rarr;best order judged by my eye.
+Mackenzie also computed (<i>not</i> by eye, but rather by
+average Q for their districts) 
+his own list of 
+-->
+The worst-gerrymandered states during
+this era (having greatest average Q for their districts),
+are given in the table below at left computed by Mackenzie (2007-2008
+only); at right are Mackenzie's five Q-maps combined into one animated GIF,
+and note that about half the land area of the USA is gerrymandered at Q&gt;50
+levels which I contend ought to be illegal.
+</p>
+<table>
+<tr><td>
+<table>
+<tr bgcolor="pink"><th>State</th><th>Seats</th><th>110th congress<br>average(Q)</th></tr>
+<tr><td>MD</td><td>8</td><td>150.3</td></tr>
+<tr><td>NC</td><td>13</td><td>115.5</td></tr>
+<tr><td>FL</td><td>25</td><td>90.4</td></tr>
+<tr><td>PA</td><td>19</td><td>89.1</td></tr>
+<tr><td>CA</td><td>53</td><td>80.6</td></tr>
+<tr><td>NJ</td><td>13</td><td>77.6</td></tr>
+<tr><td>IL</td><td>19</td><td>76.6</td></tr>
+<tr><td>TX</td><td>32</td><td>68.6</td></tr>
+<tr><td>AL</td><td>7</td><td>64.8</td></tr>
+<tr><td>TN</td><td>9</td><td>62.9</td></tr>
+<tr><td>MA</td><td>10</td><td>62.0</td></tr>
+<tr><td>VA</td><td>11</td><td>55.7</td></tr>
+<tr><td>NY</td><td>29</td><td>54.9</td></tr>
+<tr><td>OH</td><td>18</td><td>51.0</td></tr>
+<tr bgcolor="aqua"><td colspan="3">
+The 14 US states with average(Q)&gt;50 during 2007-2008.
+</td></tr>
+</table>
+</td><td>
+<img src="JMackGerry1to5.gif" alt="All 5 Mackenzie Q-maps">
+</td></tr>
+</table>
+<p>
+Gerrymandertude changes with time.
+In the earlier 106th congress (1999-2000) it looks to the eye like the
+most-gerrymandered states instead were 
+</p><center>
+TX, FL, SC, MA, TN, NC, AL, VA,
+</center><p>
+in approximately worst&rarr;best order.
+</p><p>
+<small>
+Mackenzie then also tried to ask:
+"Is there any correlation (or anti-correlation)
+between the geometric complexity (Q value) of
+districts and the efficacy of their congressmen at unfairly
+channeling federal money toward that district?"  
+But he failed to find any such connection (or if one exists,
+then it is not immediately apparent in his data, the "noise"
+seeming larger than the "signal").
+</small>
+</p>
+
+<a name="GenUniq"></a>
+<h3> Generic Unique-Optimum-Map Theorem (of Fundamental Importance)</h3>
+
+<p>
+<b>Generically unique optimum Theorem:</b>
+each of the above three measures generically yields
+a <i>unique</i> optimum
+partitioning of the P people into N districts for any P&ge;N&ge;1
+(max-pop district has at most 1 more person than min-pop district; "people" regarded
+as disjoint points on the sphere surface).
+"Generic" means if the people's locations got perturbed randomly-uniformly by &le;&epsilon;
+then you'd get uniqueness with probability=1 for any &epsilon;&gt;0, no matter how small,
+starting from any set of people locations.
+</p>
+<p><small>
+<b>Proof:</b>
+Assume a flat Earth.
+"Generic real numbers" disobey every polynomial equation with integer coefficients
+(except for always-true equations such as 1=1).  In other words they 
+are "algebraically unrelated."
+For any partitioning of the P points
+into N equi-populous subsets we can compute the centerpoints (whether mean or FSW-point)
+for each subset and thus its Olson or squared-distance-based quality measure, as an 
+<i>algebraic</i>
+function of the people's coordinates.   Since no two algebraic functions can be equal
+on generic data (because if they were, you'd get one of those forbiddden polynomial equalities), 
+these quality measures will have <i>distrinct</i> values for
+every partitioning, and hence the optimum partition must generically be unique.
+The perimeters-sum measure also is an algebraic function of the coordinates
+(for any given partition), and a <i>different</i> function for each partition; so
+no two partitions can have equal cost, so again the optimum is
+generically unique.
+For a round Earth, one can employ e.g. the stereographic projection to "flatten" it,
+but then the above proof only immediately works for the sum-of-squared-based measure, because only
+it is an algebraic function of the flat-map coordinates  (the other two measures
+also require inverse-trigonometric functions).  It is, however, possible by using trigonometric
+"summed angle" identities to convert any cost-equality 
+into an algebraic (and then further into a polynomial)
+equality. For example if two sums of arccosines are equal, then take the cosine of both sides,
+and apply cos(A+B)=cos(A)cos(B)-sin(A)sin(B) and use 
+sin(A)<sup>2</sup>+cos(A)<sup>2</sup>=1 and cos(arccos(X))=X to convert to an algebraic identity.
+<b>Q.E.D.</b>
+<br> &nbsp;&nbsp;&nbsp;
+Another way to prove all this is to note that the number of possible ways to write
+cost-equality formulae
+is at most <i>countably</i> infinite, whereas the real numbers are uncountably infinite;
+it is key that for our cost-measures any two set-partitions always have different 
+cost-formulae.   
+</small></p>
+<p>
+Of course with <i>special</i> (non-generic) real numbers, it is possible
+for two different districtings to be exactly tied for least-cost.   The virtue
+is that any slight perturbation of the people-locations will (with probability 1 for a 
+random perturbation) break all ties.
+</p>
+
+<a name="IneqRels"></a>
+<h3> Inequalities relating our three cost-measures </h3>
+
+<p>
+The following inequalities hold where "optimal" means the least-cost map
+for <i>that</i> cost measure, i.e. each 
+occurrence of the word "optimal" has a different meaning:
+</p>
+<center>
+0
+&le;
+Optimal mean distance to district center 
+<b>&le; </b>
+(Optimal mean squared-distance to district center)<sup>1/2</sup>
+&le; 
+(Optimal mean district-perimeter)/2.
+</center>
+<p>
+Note the middle inequality is only valid if "distances" are measured in the same way on
+both sides of it (but sadly Spherical &amp; Euclidean distances differ) but the outer
+two "&le;"s are valid even using the two different kinds of distances involved in
+our quality definitions.  The middle <b>&le;</b> becomes valid with
+our incompatible distances either in the flat-Earth limit or
+if we weaken it by multiplying its left hand side by (2/&pi;).
+</p><p><small>
+<b>Proof:</b>
+The distance from A to B cannot exceed half the perimeter of the district
+(A,B both in the district) as you can see by rigidly moving AB until both endpoints
+hit a boundary.  Hence the square root of the 
+<i>mean</i> squared distance to center, is &le; the square root of the <i>maximum</i>
+squared distance to center, which is &le; perim/2.  
+Of course, that is for the districts that minimize perimeter.  For the districts redrawn to
+minimize mean-squared-distance, this inequality only becomes more true; and if we switch from
+spherical surface distance to Euclidean 3D distance, it again only makes it more true since
+the latter kind of distance is always smaller.
+Next, for any set of nonnegative real numbers, 
+their mean 
+<a href="http://en.wikipedia.org/wiki/Generalized_mean#Inequality_between_any_two_power_means#Inequality_between_any_two_power_means">is</a> 
+always &le; the square root of their mean square.
+Of course, that is for the districts that minimize mean-squared-distance.  
+Redrawing the districts to
+minimize mean-<i>unsquared</i>-distance, only makes the inequality more true.
+If the squared distances are measured using straight line 3D distance but the unsquared distances
+are measured on the sphere surface, then that reasoning was invalid but is salvaged if
+we weaken it by multiplying the left hand side by (2/&pi;) because straight-line 3D distances 
+from A to B cannot be shorter than (2/&pi;) times the sphere surface distance from A to B
+(and equality occurs only if A and B are antipodal).
+<b>Q.E.D.</b>
+</small>
+</p><p>
+It is possible by positioning the people appropriately to make
+each of these &le; be very strongly obeyed, i.e. "&lt;&lt;";
+but with a uniform distribution of people in any nicely-shaped country, 
+the three quantities all will
+be within constant multiplicative factors of any other.
+</p>
+
+<a name="StupidQual"></a>
+<h3> Some stupid cost-measures to shun </h3>
+
+<p>
+The above three quality-measures seem to me to be the <i>best</i> three 
+among those that people have proposed over the years (that I am aware of).
+However, many <i>stupid</i> quality-measures have also been proposed.
+Many of them are <i>incredibly</i> stupid to the point where my mind
+absolutely boggles that professional scientists could actually have proposed them in print.
+</p><p>
+<b>Example stupid idea #1:</b>
+The "quality" of a district is the ratio of the radius of the
+smallest-enclosing circle, divided by the radius of the
+largest-enclosed circle (smaller ratios better).
+</p><p>
+<b>Example stupid idea #2:</b>
+The "quality" of a district is the ratio of the area of the
+smallest-enclosing circle, divided by the area of the district
+(smaller ratios better).  This has been called the "Roeck (1961) measure."
+<br><small>
+An even more-peculiar related quality measure was 
+Schwartzberg 1966's &ndash; defined on p.108 of 
+Young's review 
+<a href="YoungCompactness.pdf">paper</a> as
+the ratio of
+a polygonal pseudo-perimeter divided by
+the perimeter of a circle with the same area as the district.
+This, because it is based on a polyonal <i>pseudo</i>-perimeter, is not affected
+by the <i>real</i> perimeter.  Thus in a district-map that is  square grid with
+500-mile sidelengths (not bad), replacing all the square sides by 
+arbitrary hugely-wiggly curves
+would leave the Schwartzberg quality measure <i>unaffected</i>,
+because (as defined by Young) the pseudo-perimeter would still be the original square grid!
+I saw, however, a website which (re)defined Schwartzberg using genuine, not pseudo,
+perimeter. Call that <a name="sanschw">"sanitized Schwartzberg";</a> it makes far more sense. 
+(I do not have access to Schwartzberg's original 1966 paper.)
+</small>
+</p><p>
+<b>Example stupid idea #3:</b>
+Inscribe the region in a rectangle with largest length/width
+ratio. This ratio is &ge;1,
+with numbers closer to 1 corresponding to "better" regions.
+(Harris 1964 and Papayanopoulos 1973.)
+</p><p>
+In all cases the quality of the whole multi-district map is obtained
+by summing the qualities of all the districts within it.
+</p><p>
+A big reason these three ideas &ndash; and many others &ndash; are stupid, 
+is that you can take a multi-district map "optimal" by this measure, then add a ton
+of essentially arbitrary wiggles to large portions of the district boundaries, while leaving the
+"quality" of that map <i>exactly the same.</i>  Here's an example for
+stupid measure #1:
+</p><img src="StupidDistrictExample1.png" /><p>
+The picture shows a disc-shaped "country" subdivided by a diameter-line into
+two semicircular districts, one in the North and one in the South.
+<!-- http://www2.stetson.edu/~efriedma/cirincir/ 
+http://www.math.ucsd.edu/~fan/ron/papers/98_01_circles.pdf
+-->
+This 2-district map is "optimum" by stupid quality measure #1
+(dashed smaller circle is just a mental crutch to help you see that; it is not
+a district boundary; for how to know this is optimum,  see
+<a href="https://rangevoting.org/GrahamGraham98_01_circles.pdf">Graham et al 1998</a> and employ the 
+max&ge;arithmetic mean&ge;harmonic mean&ge;min inequality).  
+However, upon making very-wiggly alterations to two
+portions of the interdistrict boundary as shown,
+we <i>still</i> have an "exactly optimum" 2-district
+map  (assuming the original map was optimum) according to stupid measure #1.
+Similarly the hexagonal <a href="#beehive">beehive</a> ought to be optimum for both
+stupid quality measures #1 and #2, but we can alter large portions of each hexagon edge by adding 
+almost arbitrary wiggles and still get an "exactly optimum" tesselation.
+Stupid idea #3 just does not work sensibly on a <i>round</i> Earth
+(there is no such thing as a "rectangle" if that means all four angles are 90 degrees;
+if it means all 4 angles are equal and the sides come in two equal-length pairs,
+then a district consisting of the entire Northern Hemisphere is "infinitely bad"!).
+If we only consider it on a flat Earth, then
+<i>any</i> region bounded by a <a href="http://en.wikipedia.org/wiki/Curve_of_constant_width">
+constant-width curve</a> (there are an continuum-<i>infinite</i> 
+number of inequivalent such shapes)
+has ratio=1 and hence is "optimal" by stupid measure #3.
+</p><p><b>Example stupid idea #4:</b>
+<a href="Yamada09-3.pdf">Yamada 2009</a>
+had the idea that the cost of a districting should be the total length of its
+minimum spanning forest; that is, for each district you find the minimum-length
+tree (<a href="https://en.wikipedia.org/wiki/Minimum_spanning_tree">MST</a>) 
+made of inter-person line segments for all the people in that district, and
+the cost of the whole districting is the sum of the lengths
+of all the district MSTs.
+</p><p>
+With Yamada's idea, if the people are located one each
+at the vertices of the regular-hexagon "beehive,"
+then <i>every</i> district map (so long as each district contains a connected
+sub-network of the beehive) is "exactly optimum."  This allows incredibly
+"fuzzy hairy tree shaped" districts while still achieving "exact optimality."
+There is virtually no discrimination.  And presumably by perturbing these locations
+arbitrarily slightly
+we could break the tie in a highly arbitrary manner in which case insane
+fern-shaped districts would actually be "the unique optimum"!
+</p><p>
+<b>Summary of stupidity:</b>
+In other words, with those stupid quality measures
+</p><ol type="a">
+<li>
+the "optimum" map often is infinitely non-unique, 
+</li><li>
+many among these
+co-optimum maps are extremely gerrymandered (design the wiggles to exclude
+all the Republican voters who live near that boundary), and/or the whole concept 
+is massively senseless/dysfunctional on a round Earth.
+</li></ol>
+<p>
+It's an embarrassing sign of the dysfunctionality of this entire scientific field,
+that, e.g. no previous author (before this web page) has considered the fundamental
+uniqueness theorems. In short, they never reached "square one."
+</p><p>
+It seems to me, however, that my three favorite quality measures are invulnerable to those
+criticisms &ndash; the "optimum" map is always a pretty decent map; and since it is
+generically <a href="#GenUniq">unique</a> <i>any</i> attempt to
+add wiggling to any boundary, will destroy optimality.
+</p><p>
+<b>Example stupid idea #5:</b>
+Quality of a district is the
+ratio of the area of the convex hull of
+a district divided by the area of the district.
+</p><p>
+<b>Example stupid idea #6:</b>
+Quality of a district is the
+probability that a district will contain the shortest path between a randomly selected pair of
+points in it. (Chambers &amp; Miller 2007.)
+</p><p>
+<b>Example stupid idea #7:</b>
+An even stupider related idea &ndash;
+the average percentage of reflex angles in a polygonal
+pseudo-perimeter &ndash;
+was advanced by Taylor 1973. 
+</small>
+</p><p>
+With stupid ideas 5, 6 &amp; 7, <i>every</i> convex shape is "exactly optimum." 
+Thus the "hexagonal beehive" 
+<a href="#beehive">pictured</a> in an upcoming section
+is optimum, but with this stupid idea so is the "squished beehive"
+with long thin needle-like districts (this picture was got by factor-2 squishing, but
+stupid ideas #5-7 would still regard this as "exactly optimum" even with 99!):
+</p>
+<img src="SquishedHexGraphPaper.png" />
+<p>
+But Taylor's idea #7 goes beyond even that amount of stupidity to enter whole
+new regimes.  Observe that Taylor's idea is not even <i>defined</i> for a
+district that is not polygonal (e.g. has boundaries that are smooth curves, or fractals).
+One could try to define it by approximating such a shape by a polygon, but then different 
+sequences of polygons (all sequences approaching the same limit-shape) would yield vastly different
+Taylor quality measures.  Thus, the Taylor measure is not a measure of <i>shape</i> at all!
+</p>
+
+<a name="hybrid"></a>
+<h3> Does this mean all those stupid ideas should be <i>totally</i> abandoned?</h3>
+<p>
+Not necessarily.  Some of them could still have value if used in combination with a non-stupid
+idea such as our three cost-recommendations.
+For example, we could minimize the sum of district perimeters 
+(good idea #3) <i>subject to the constraint</i>
+that we only permit districts having 
+ratio of the radius of the
+smallest-enclosing circle, divided by the radius of the
+largest-enclosed circle, less than 2 (stupid idea #1!) and/or
+subject to the constraint
+that we only allow convex district shapes (related to stupid ideas #5 and 6).
+(We then would need to use <i>total</i> district perimeters; i.e. we do not allow
+using segments of
+the country-border "for free"; 
+indeed we in this formulation would need to ignore the 
+country-border entirely,
+regarding the people-locations as the only important thing.)
+</p><p>
+I don't see anything wrong with this sort of idea-combination (aside from the fact that
+no district map satisfying the extra constraint exists, for, e.g, a very long thin country...), 
+and indeed some such
+hybrid might be superior to either ingredient alone.
+</p>
+
+<a name="beehive"></a>
+<h3> For an infinite flat earth with uniform population density... </h3>
+
+<p>
+...the optimum way to subdivide it into equi-populous districts, would be a
+regular-hexagon "beehive" tessellation.  (This is simultaneously
+true for all three of our optimality notions.  For example using Olson's measure,
+the hexagon tesselation has average distance to tile-center which is approximately
+98.5883% of what it would have been using the square-grid tessellation.)
+</p>
+<img src="HexGraphPaper3.png" />
+<p>
+However, on a round earth, or in a finite country, or with non-uniform population density,
+the pictures would change and would no longer (in general) be identical and no longer
+be the regular-hexagon-beehive.
+</P>
+
+<a name="ApplySimp"></a>
+<h3> Let's apply our three quality measures to the simplest nontrivial artificial "country" </h3>
+
+<img src="DiscCountry2Districts.png" />
+
+<p>
+The picture shows a disc-shaped "country,"
+mainly rural, but with one densely-populated city 
+(the small white off-center subdisc).
+The population densities in the city and rural areas both are uniform and
+both areas have equal total populations.  For simplicity we use a flat Earth.
+The problem is to divide this country into exactly <i>two</i> districts.
+</p>
+<ol>
+<li>
+I think the "best" districting according to Olson's least-average-distance-to-center measure
+is to cut the country roughly along curve A.  It's a piecewise-smooth curve,
+but its exact shape is complicated to describe and I do not know what it is.
+The Northern district then contains about 55% of
+the city and 45% of the rural area.  The two district "centerpoints"
+both lie within the city boundary (no matter how small &amp; dense
+the city is!).
+</li><li>
+The "best" districting according to the squared-distance-based measure
+is instead to cut the country along vertical line B.  The two districts are mirror images.
+Each contains exactly half the city and half the rural area.
+The two district 
+population-centerpoints then are indicated with x.
+</li><li>
+The "best" districting according to the min-perimeter measure
+is just to use the city boundary.  One district is 100% urban, the other 100% rural.
+</li></ol>
+
+<a name="PerimBest"></a>
+<h3> Why I think the perimeter-length quality measure is the best </h3>
+<p>
+Based on the above simple example &ndash; and also based on my intuition before I worked this
+example out &ndash; I suspect
+we have listed our three quality-measures in increasing order of both
+goodness and simplicity &ndash; the best one
+is the <i>min-perimeter</i> measure (3).   
+<p><small>
+I'm not alone.
+Election-expert Kathy Dopp has also told me (June 2011) she independently came to
+the same conclusion for her own reasons: minimizing total perimeter is the best.
+More precisely (Oct 2011), it seems Dopp prefers to minimize some function of the
+isoperimetric ratios of the districts in the map.  However, it is not clear to me 
+what the best such function should be.   See discussion <a href="#weightedsum">below</a>
+about "weighted sum."
+Similar ideas have been advanced also in many scientific publications by other authors.
+</small></p><p>
+<b>Reasons:</b>
+</p><ol type="A"><li>
+Measures 1 and 2 unfortunately both are pretty insensitive to
+adding massive boundary wiggling, e.g. they consider a circle altered to add a ton of
+small-amplitude wiggles to its boundary as
+"better" than a square-shaped district (for a single district, constant population density).  
+</p><blockquote><small>
+In the contest paradigm, if you (a good person)
+submit a sensible districting, but I (evil) have more funding, hence
+more compute power and better programmers,
+than you, then I'll find a "better" map by either 
+measure 1 or 2 (whichever is the one we are using).   
+I will then be able to modify
+my map by adding an enormous number of 
+evil wiggles, while still having a "better" map than you do (because that'll only alter
+my quality measure by a tiny amount which goes to zero like the <i>square</i> of the
+maximum wiggle-size when my wiggles are made small), 
+hence I'll still win the contest.  
+<br> &nbsp;&nbsp;&nbsp;
+To hammer that home:
+suppose I'm able to beat you by 1% due to my extra compute power.
+I'll keep my 1%-better map secret until 1 second before the contest deadline.
+I'll then add evil wiggles of order 10% of my district size to my map, and submit that.
+Note, I'll still be able to beat you,
+since the square of 10% is 1%.  
+But wiggles of size 10%
+are actually quite enormous and quite sufficient to enable very severe gerrymandering!
+Evil will be able to win.
+<br> &nbsp;&nbsp;&nbsp;
+In practice the Democratic and Republican parties probably would have far more funding,
+compute-power, motivation, and programmer-years to throw at it than everybody else.
+Hence I worry that we might get an evil-Democrat plan or an evil-Republican plan always winning
+the contests, with the non-evil non-biased non-wiggly maps, all losing.
+</small></blockquote>
+</li><li>
+Measures 1 and 2 each seem more 
+complicated to compute than the perimeter measure 3.
+</p><blockquote><small>
+If we both are handed maps with N equi-populous districts, then I'll be able to evaluate
+the perimeter length <i>without needing to know or think about</i>
+the locations of every single person.  All I need is a tape-measure.
+Meanwhile you, in order to
+compute quality-measures 1 and 2, will need to know, and do some arithmetic related to, the
+location of each of the millions of people.
+(Although actually I <i>would</i> need to know the people-locations if I wanted to be sure the
+districts were equi-populous; but not if all I wanted was to compute the cost-measure.)
+</small></blockquote></li><li>
+Measures 1 and 2
+fail to enjoy the min-perimeter measure's 
+advantage of being easily modifiable to know about rivers, highways, etc 
+(discussed <a href="#ModifPerim">below</a>).
+</li><li>
+Measure 2 
+can yield districts  with more than one <i>disconnected</i> component
+on the Earth-sphere.   (But this problem is probably rare since on a flat Earth it
+always yields connected convex districts.)
+Meanwhile optimizing measures 1 and 3
+automatically yields connected districts.
+<small>LATER NOTE (2018):</small>
+A new notion <i>related</i> to measure 2, but changing the "squared distance to
+district centerpoint" to a slightly different function of distance
+(<a href="#LVdiagNE">generalizing</a> the concept of
+"Laguerre-Voronoi diagram" to nonEuclidean geometries) avoids this complaint.
+</li></ol><p>
+<i>However</i>, I'm not 100% sure of the conclusion that min-perimeter is the best criterion.
+</p><p>
+This question of what is the best quality measure
+probably cannot be answered just via pure mathematics; it requires experiment.
+If somebody produced the optimum maps (for all three notions of "optimal") for
+districting about 100 real-world countries, and we looked at them, then we'd have a better
+idea how well they perform.  As of the year 2011 nobody has done that experiment &ndash;
+and it would probably be infeasible to really do it since optimal districting
+is <a href="#NPCsec">NP-hard</a> &ndash;
+but see the pretty <a href="#PrettyPic">pictures</a> section for the closest we've come.
+</p>
+
+<a name="Countervail"></a>
+<h3> Countervailing nice properties of the min-squared-distance-based quality measure </h3>
+
+<p>
+But there are some valid counter-arguments that the 
+min-squared-distance-based quality measure (2) is better
+than my favored min-perimeter measure (3). 
+[And the new <a href="#LVdiagNE">generalization</a> of the concept of
+"Laguerre-Voronoi diagram" to nonEuclidean geometries can only bolster this view.]
+The case is not entirely one-sided:
+</p><p>
+A. Under certain rules (discussed <a href="#CBlocks">below</a>) the min-perimeter measure 
+plausibly seems more vulnerable to manipulation by a (possibly corrupt) census department.
+</p><p>
+B. The squared-distance cost measure can easily be
+modified so that districts not only tend to be
+geographically compact,
+but also tend to group people with common interests together.
+To do that, associate an "interest vector" with each person.
+Each person now has more than 3 coordinates; the extra dimensions represent her interests.
+We now can use the same squared-distance-based
+cost measure as before, just in a higher-dimensional space.
+(I happen to <i>hate</i> that idea because:
+what qualifies as an "interest" and by how much should
+we scale each interest?  Whoever arbitrarily decides those things, will control the world.)
+</p><p>
+C. The squared-distance-based measure has this beautiful property which in general is disobeyed
+by the other two:
+</p><a name="VoronoiThm"></a>
+<p>
+<b><a href="http://en.wikipedia.org/wiki/Voronoi_diagram">Voronoi</a> Characterization Theorem:</b>
+The "optimum" N-district map according to the 
+squared-distance-based measure always subdivides the population in such
+a way that the districts are "Voronoi regions."  That is, associated with each district k,
+is a magic point x<sub>k</sub> in 4-space, such that the inhabitants of
+district k consist exactly
+of the people closer to 
+x<sub>k</sub> than to any x<sub>j</sub> with j&ne;k. 
+[Yes, I did say <i>four</i>-dimensional space!  Use coordinates w,x,y,z.  Every point on the
+Earth has w=0, but those N magic points are allowed to have w&ge;0.  The x,y,z coordinates of a
+district's magic point are just the mean x,y,z for its inhabitants.]
+</p><a name="VorProblems"></a><p>
+<b>Remark:</b>
+This makes describing the exact shapes of the districts very simple &ndash; they always are 
+<b>convex polyhedra</b> 
+in 3-space &ndash; makes it easy for anybody to determine which district they are in
+(simply compute your N distances to the N magic points; which is closest tells you your district)
+&ndash; and finally
+makes it much easier for a computer to try to search for the optimum districting.
+Note also that <i>if</i> our districts are small enough that it is OK to approximate the Earth as
+"flat," i.e. 2-dimensional, then the regions are Voronoi regions whose magic
+points now lie merely in 3-space, and the Voronoi polyhedra, when we only look on the plane,
+reduce to convex <i>polygons</i>.    In other words, on a flat Earth, the optimum N-district map
+always has convex polygonal districts.   That's very nice.
+</p><p>
+Unfortunately on a <i>round</i> earth, it is not quite so simple.
+The optimum map's
+districts, although still convex polyhedra in 3-space, if just viewed on the sphere surface
+become usually-<b><i>non</i>convex "polygons"</b>
+whose "edges" are non-geodesic circular arcs; and it is possible
+for a district to consist of more than one <i>disconnected</i>
+such polygons.  For example consider N-1
+equipopulous cities equi-spaced along the equator, plus two half-population cities at the 
+North and South poles, plus a uniform distribution
+of a comparatively tiny number of rural people.
+The best N-district map (if N is sufficiently large)
+then has N-1 identical
+districts each containing
+a single equatorial city, plus an Nth district consisting
+of <i>two</i> disconnected regions containing <i>both</i> poles
+(all districts have equal area and equal population).
+</p><p>
+Even so, though, a very concise exact description of the optimum map exists &ndash; simply
+give the 4N coordinates specifying the N magic points.  If we <i>only</i> permit thus-specified
+maps as contest-entrants, that prevents ultra-wiggly district boundaries, whereupon the
+criticism A 
+of the sum-of-squares-based quality measure &ndash; that an evil computationally-powerful
+contest-entrant could submit a wiggly map and still win &ndash; is avoided.
+</p><p>
+<b>Proof:</b>
+See &sect;5.3 of <a href="https://rangevoting.org/SpannGulottaKaneMCM2007.podf">Spann, Gulotta &amp; Kane</a>
+for a beautiful proof employing the duality theorem for 
+<a href="https://en.wikipedia.org/wiki/Linear_programming">linear programming</a>
+(which in turn is discussed in Dantzig 1963).
+Their -C<sub>j</sub> is the same (up to an arbitrary overall additive constant)
+as our +w<sub>j</sub><sup>2</sup>, and
+their p<sub>i</sub> is the "magic point" associated with district i, whose (x,y,z)
+coordinates, note, are seen to be the means of the people-locations in district i.
+<b>Q.E.D.</b>
+</p>
+<a name="OlsonExtension"></a>
+<p><small>
+<b>Extension to handle Olson:</b>
+The same Spann proof also will show a related theorem about what the Olson-optimum  
+districting is: It always is
+an "additively weighted Voronoi diagram" for the sphere surface metric
+(basically you just go through their
+proof but now using <i>unsquared</i> distances).  
+In other words, associated with each optimum-Olson district <i>k</i>
+is <i>both</i> a magic point M<sub>k</sub> on the sphere surface (the FSW point)
+<i>and</i> a real 
+"additive weight" A<sub>k</sub>; and the <i>k</i>th optimal-Olson 
+district consists precisely of
+the points x on the sphere such that 
+</p><center>
+SurfaceDist(x, M<sub>k</sub>) + A<sub>k</sub> &lt;
+SurfaceDist(x, M<sub>j</sub>) + A<sub>j</sub> &nbsp; for every &nbsp; j&ne;k.
+</center><p>
+The regions in such a diagram are
+in general nonconvex (but always connected) and have boundaries described
+piecewise by certain algebraic curves.
+On a flat earth the district boundary curves are 
+(piecewise) hyperbola-arcs and line segments; and the regions always are connected, although
+usually nonconvex.
+</small></p>
+
+<a name="LVdiagNE"></a>
+<h3>Generalization of the concept of "Laguerre-Voronoi diagram" to nonEuclidean geometries</h3>
+
+<p><small>(This section added 2018 by WDS.)</small></p>
+
+<p>
+The above "<a href="#VoronoiThm">Voronoi characterization theorem</a>"
+describing the optimum districting 
+(for <a href="#squaredistmeas">quality measure 2</a>
+arising from sum-of-squared-Euclidean-distances from people to their district centerpoint)
+as a Voronoi diagram in a <i>four</i> dimensional space
+had several <a href="#VorProblems">disadvantages</a> on a round Earth.
+It turns out to be possible to eliminate those disadvantages by modifying the
+squaring function x&rarr;x<sup>2</sup> slightly, as follows.
+We shall see exactly one (up to rescaling and additive offsets)
+"magic function" works.
+</p><ol><li>
+Our 4-dimensional Voronoi diagram, when we restrict attention to
+the 3-dimensional subspace w=0, i.e. our usual (x,y,z) space, really is
+a <i>Laguerre-Voronoi diagram</i> 
+(also sometimes called a "<a href="https://en.wikipedia.org/wiki/Power_diagram">power diagram</a>")
+in 3 dimensions.
+<br>
+Definitions: 
+A "<b>Voronoi diagram</b>" 
+of N point sites in a Euclidean space, is the partition of that space 
+into the N "Voronoi regions," region k consisting of all the points P of the space lying
+closer to site k than to any other, i.e. such that 
+<center>
+EuclideanDistance(P,site<sub>k</sub>) &lt; EuclideanDistance(P,site<sub>j</sub>)
+</center>
+for all j&ne;k.  Each region is a (possibly unbounded) convex polyhedron.
+<br>
+A <b>"<i>Laguerre</i>-Voronoi diagram"</b>
+of N <i>weighted</i> point sites in a Euclidean space 
+(each site k now having a real-number-valued "weight" W<sub>k</sub>)
+is a partition of that space
+into N "Laguerre regions." 
+Region k consists of all the points P of the space such that
+<center>
+W<sub>k</sub> + EuclideanDistance(P,site<sub>k</sub>)<sup>2</sup>
+ &lt; 
+W<sub>j</sub> + EuclideanDistance(P,site<sub>j</sub>)<sup>2</sup>
+</center>
+for all j&ne;k.  Each region is a (possibly unbounded) convex polyhedron.
+[The reason why our 4D Voronoi diagram is in 3D a Laguerre diagram is:
+consider making W<sub>k</sub> equal the squared extra-coordinate (4th dimension).
+Note also that the Laguerre-Voronoi concept generalizes the Voronoi concept,
+because the latter arises as the special case when all the site-weights are equal]
+</li><li>
+It is possible to generalize the Laguerre-Voronoi diagram concept to <i>non</i>Euclidean
+geometries.  For the districting problem, the <i>surface of the sphere</i> is
+the 2-dimensional nonEuclidean geometry we want, and along-surface travel-distance is
+its natural distance function.  Mathematicians can also consider 
+"hyperbolic geometry" in addition to that "spherical geometry" (and both 
+in any number of dimensions).  It turns out there is a unique natural way to do
+that, which is presented here for the first time in the hyperbolic case. For a brief shining
+week or two in 2017 
+I thought I was the first inventor of this concept in the spherical-geometry case too,
+but then I found out that my exact same concept had already been published by 
+Kokichi Sugihara in 2002.  But I am going to develop this my way, 
+taking the nonEuclidean geometry point of view. 
+You can read Sugihara's paper to see his way.
+</li><li>
+With the Sugihara/Smith nonEuclidean Laguerre-Voronoi diagram, the regions always are 
+nonEuclidean convex polygons (in 2-dimensional nonEuclidean spaces) &ndash; 
+or in general dimension are <b>convex polytopes</b>.
+That is, we have the <br>
+<b>Convex-region Theorem:</b>
+for any two points P and Q within the same region, 
+the entire geodesic arc defining the unique shortest-distance-path from P to Q,
+always lies within it.  
+<br>
+<b>Connectedness Corollary:</b> 
+each region is a <i>connected</i> set.
+<blockquote>
+<a name="hemiast"><b>Asterisk:</b></a>
+in the spherical case, this theorem &amp; corollary need only hold for
+Laguerre regions <i>entirely containable within a single hemisphere</i>.   
+Indeed the whole Sugihara diagram
+concept breaks down if too-large districts, specifically those
+not containable within any single hemisphere, are permitted.
+Fortunately, I have checked that 
+every continent, as well as the multicontinent Africa-Europe-Asia and N+S America contiguous 
+land masses, each are containable within a single hemisphere.  
+Therefore, on our planet this asterisk should not
+be much of a limitation.
+</blockquote>
+</li><li>
+The whole diagram (or political districting, if that is what we use it for) still is
+describable very simply: each district is specified by its single "power-center" point (which
+for Sugihara diagrams always lies on the surface of the Earth) and its real weight.
+Terminology note: The "power-center" point for district k, is weighted-site k.
+</li></ol>
+<p>
+The time has come to actually explain what this concept is.
+</p><p>
+<b>The Sugihara/Smith nonEuclidean generalization of "Laguerre-Voronoi diagram."</b>
+For N <i>weighted</i> point sites in a nonEuclidean space &ndash;
+each site k having a real-number-valued "weight" W<sub>k</sub> &ndash;
+the diagram is the partition of the space into 
+the N "Laguerre regions." 
+Region k consists of all the points P of the space 
+such that
+</p><center>
+W<sub>k</sub> + ln(sec(NonEuclideanDistance(P,site<sub>k</sub>)))
+ &lt; 
+W<sub>j</sub> + ln(sec(NonEuclideanDistance(P,site<sub>j</sub>)))
+</center><p>
+for all j&ne;k.  
+We have stated this <b>magic formula</b> using the <b>magic function</b> ln(sec(&theta;))
+for the <b>spherical</b>-geometry case, where
+the NonEuclideanDistance is <i>angular</i> surface distance (i.e.
+"distance" from A to B is the angle subtended by A and B at the Earth's center).
+Note that sec(&theta;) is well behaved when 0&le;&theta;&lt;&pi;/2,
+but sec(&pi;/2) goes infinite. That is the reason for the 
+"<a href="#hemiast">asterisk</a>."
+If you instead want <b>hyperbolic</b> geometry 
+(which is the only other nonEuclidean geometry), then
+replace all occurences of "sec" in the formula &amp; function
+by "cosh" and use the natural hyperbolic
+distance metric (i.e. with unit curvature).
+</p><p>
+Each Laguerre region then
+is a convex polyhedron, which, in the hyperbolic case, possibly is unbounded.
+</p><p>
+<b>Uniqueness theorem</b>:
+In the spherical case, if any other function of &theta;
+besides A+Bln(sec(&theta;)) where A and B&gt;0 are real constants,
+had been used, then the resulting diagram would, in general, <i>fail</i> 
+to have convex regions.  I.e. our function truly is "magic"; no other works.
+Similarly in the hyperbolic geometry case, <i>only</i> functions of form
+A+Bln(cosh(&Delta;)) work.
+</p><p>
+The key underlying fact which makes 
+the convexity and uniqueness theorems true 
+</p><blockquote><small>
+I don't want to prove them here, but
+the proofs are easy once you know this... 
+hint: consider walking along the boundary between two
+adjacent Laguerre regions, beginning
+at the point Q on the line between their two power-centers A and B.
+This walk will be along one leg of a right triangle, the other leg being QA...
+</small></blockquote><p>
+is the
+</p><p>
+<b>NonEuclidean generalization of the Pythagorean theorem:</b>
+For points A,B,C in a Euclidean space, forming a <i>right-angled triangle</i>
+(the right angle is at C), let 
+a=Dist(B,C)=leg#1, b=dist(A,C)=leg#2, c=dist(A,B)=hypotenuse.
+Then the famous 
+<a href="https://en.wikipedia.org/wiki/Pythagorean_theorem">Pythagorean theorem</a>
+states that
+</p><center>
+c<sup>2</sup> = a<sup>2</sup> + b<sup>2</sup>,
+</center><p>
+and in this formula <i>only</i> the squaring function x&rarr;x<sup>2</sup>
+(and its multiples by arbitrary positive scaling constants) works.
+If instead A,B,C are the vertices of a 
+<a href="https://en.wikipedia.org/wiki/Spherical_trigonometry">spherical</a> right-triangle,
+i.e. one drawn on the surface of a sphere using geodesic arcs as edges, then
+if a,b,c, are measured using angular surface-distance 
+</p><center>
+ln(sec(c)) = ln(sec(a)) + ln(sec(b)),
+</center><p>
+and in this formula <i>only</i> the ln(sec(&theta;)) function 
+(or its multiples by arbitrary positive scaling constants) works.
+</p><p>
+And if A,B,C instead are the vertices of a <i>hyperbolic</i> right-triangle,
+i.e. one drawn on the 
+<a href="https://en.wikipedia.org/wiki/Hyperbolic_geometry">hyperbolic</a>
+nonEuclidean plane (and measuring distances geodesically), we have
+</p><center> 
+ln(cosh(c)) = ln(cosh(a)) + ln(cosh(b)),
+</center><p>
+and in this formula <i>only</i> the ln(cosh(&Delta;)) function 
+(or its multiples by arbitrary positive scaling constants) works.
+</p><blockquote><small>
+For political readers interested only in the round Earth: you can just ignore everything
+I say about hyperbolic geometry or about nonEuclidean dimensions other than 2. 
+(Meanwhile mathematicians can secretly exult in
+your superiority over those political readers.)
+The nonEuclidean Pythagorean theorem and its uniqueness are well known
+and will be found (in essence; they state it in other forms than I do)
+in every book on nonEuclidean gemetry and nonEuclidean trigonometry.
+Two such books are Coxeter and Fenchel.
+</small></blockquote><p>
+Because 
+</p><center> 
+ln(sec(u)) = u<sup>2</sup>/2 + u<sup>4</sup>/12 + u<sup>6</sup>/45 +...
+&nbsp; &nbsp; &nbsp; 
+ln(cosh(v)) = v<sup>2</sup>/2 - v<sup>4</sup>/12 + v<sup>6</sup>/45 +...
+</center><p>
+in the <b>limit</b> of <i>small</i> distances u and v ("small" by comparison to an
+an Earth radius, or to the radius of curvature of the hyperbolic space)
+the nonEuclidean Pythagorean theorems reduce to the ordinary
+Euclidean one (because all terms other than the first in each of these series 
+become negligibly small).
+</p><p>
+<b>Dot-product characterization:</b>
+Notice also in the spherical case that
+</p><center> 
+ln(sec(AngularDistance(A,B))) = -ln(A&middot;B/R<sup>2</sup>)
+</center><p>
+where A&middot;B denotes the "dot product" of the two 3-vectors A and B,
+if R is the radius of the Earth and the origin of the 3-dimensional coordinate system
+is the Earth's center.  The hyperbolic geometry version of that is
+</p><center> 
+ln(cosh(StandardHyperbolicDistance(A,B))) = -ln(&lang;A,B&rang;)
+</center><p>
+where &lang;A,B&rang; denotes the 
+Minkowskian inner 
+<a href="http://mathworld.wolfram.com/LorentzianInnerProduct.html">product</a> 
+(including one negative sign for the "time"-coordinate) where the points A and B both
+lie on the "pseudosphere," i.e. &lang;A,A&rang;=-1.
+(By the "pseudosphere" we here mean the positive-time sheet of the
+2-sheeted hyperboloid &lang;A,A&rang;=-1; the points on this surface under the Minkowski
+pseudometric become metrically equivalent to the genuine metric of 
+timeless hyperbolic geometry.)
+</p><p>
+<b>Polyhedron characterization of the diagram:</b> 
+Consequently, the 2D-nonEuclidean diagram regions can be regarded  as the 
+<b>N faces of a certain convex polyhedron</b> in 3D Euclidean space. 
+</p><p>
+Specifically, let us describe this in
+the case of the surface of the unit-radius sphere in (x,y,z) space.
+With region k, associate a 3-dimensional <i>halfspace</i> H<sub>k</sub> whose
+defining plane lies at Euclidean distance
+exp(W<sub>k</sub>)
+from the Earth's center (specifically, the halfspace is the points
+on the Earth-center's side of this plane), such that the
+ray from the Earth-center to the closest point of that plane, passes through
+site k.  As a formula this halfspace is X&middot;S&lt;S&middot;S
+where S is the point at distance exp(W<sub>k</sub>) along that ray.
+The polyhedron is the intersection of these N halfspaces.
+The diagram is the projection of this polyhedron's surface
+along radial lines onto the sphere-surface.
+</p><p>
+In the hyperbolic D-space case, the halfspace associated with point S
+arises from the hyperplane
+&lang;X,S&rang;&lt;&lang;S,S&rang;
+in Minkowski (D+1)-dimensional space, where S lies on the ray from the origin passing
+through the site (located on the pseudosphere surface &lang;X,X&rang;=-1) but at Minkowski
+distance exp(W<sub>k</sub>), not 1, from the origin.  The polyhedron is the intersection of
+these N halfspaces.  The Laguerre-Voronoi diagram then arises by projecting this polyhedron's surface
+onto the psuedosphere along lines through the origin.
+</p><p>
+Sugihara actually programmed an O(NlogN)-time O(N)-memory-words <b>algorithm</b>
+to compute the Sugihara Laguerre-Voronoi
+diagram of N sites on a sphere.  I also claim
+an analogous algorithm exists in the hyperbolic case.
+With our characterization of the 2D nonEuclidean diagrams as a polyhedron 
+defined as the intersection of N halfspaces in a 3D Euclidean space,
+it is trivial to create such algorithms by simply stealing known NlogN-time
+algorithms, e.g. the one by Preparata &amp; Muller 1979,
+for constructing halfspace-intersections.
+More generally:
+</p><p>
+<b>Algorithmic complexity theorem:</b>
+The Laguerre-Voronoi diagram of any N weighted point-sites
+in any Euclidean or nonEuclidean space of dimension D&ge;1 can be computed in the same 
+(up to constant factors) amount of
+time and memory as it takes to compute the intersection of N halfspaces in
+a (D+1)-dimensional Euclidean space, which also is known 
+(as a consequence of "geometric duality")
+to be the same as the amounts
+of time and memory it takes to compute the convex hull of N points in 
+a (D+1)-dimensional Euclidean space.
+</p><p>
+<b>Other equivalent ways to write those "magic formulas":</b>
+Consider the trig identities
+<nobr>2sin(&theta;)<sup>2</sup>=1-cos(2&theta;)</nobr>
+and
+<nobr>2sinh(&Delta;)<sup>2</sup>=cosh(2&Delta;)-1.</nobr>
+Therefore our magic function
+<nobr>ln(sec(&theta;))</nobr>
+can equivalently be rewritten
+<nobr>-ln(1-2sin(&theta;/2)<sup>2</sup>)</nobr>
+and since the Euclidean 3D distance between two points on the surface
+of a unit-radius spherical Earth separated by angle &theta;
+is <nobr>2sin(&theta;/2)),</nobr> this is just
+<nobr>-ln(1-EuclideanDist<sup>2</sup>/2).</nobr>
+This clarifies how the Euclidean Laguerre diagram arises from squared distances,
+and the spherical nonEuclidean geometry Laguerre diagram arises from a magic formula
+which actually also has quite a lot to do with squared Euclidean distances.
+</p><p>
+Similarly in the hyperbolic geometry world our magic function
+<nobr>ln(cosh(&Delta;))</nobr>
+can equivalently be rewritten as
+<nobr>ln(1+2sinh(&Delta;/2)<sup>2</sup>)</nobr>
+and
+<nobr>ln(1+MinkowskiPseudoDist<sup>2</sup>/2).</nobr>
+</p>
+<p>
+<b>A few useful properties of those "magic functions":</b>
+ln(sec(&theta;) is an increasing and concave-&cup; function of
+&theta; for 0&le;&theta;&lt;&pi;/2.
+[To prove increasing, note its derivative is tan(&theta;), which is positive;
+and tan(x) is increasing, from which the concavity follows.]
+And -ln(1-E<sup>2</sup>/2) is an increasing 
+and concave-&cup; function of E for 0&le;E&lt;&radic;2.
+[To prove: note its derivative is 2E/(2-E<sup>2</sup>) which is positive
+and increasing.]
+</p><p>
+ln(cosh(&Delta;) is an increasing and concave-&cup; function of
+&Delta; for 0&le;&Delta;&lt;&infin;.
+[To prove: note its derivative is tanh(&Delta;), which is positive
+and increasing.]
+And ln(1+M<sup>2</sup>/2) is an increasing 
+and concave-&cup; function of M for 0&le;M&lt;&radic;2.
+[To prove increasing: note its derivative is 2M/(2+M<sup>2</sup>) which is positive.
+To prove concave-&cup;: its second derivative is 
+<nobr>2(2-M<sup>2</sup>)/(2+M<sup>2</sup>)<sup>2</sup></nobr>
+which is positive when |M|&lt;&radic;2.]
+</p><p>
+<b>Uniqueness Consequence:</b>
+The power-center S of a set P of points in a nonEuclidean geometry, now meaning
+the location S minimizing &sum;<sub>j</sub> F(NonEucDist(P<sub>j</sub>,S)),
+where F is the magic function for that geometry [e.g. F(&theta;)=ln(sec(&theta;))]
+exists and is <i>unique</i>, with the asterisk in the spherical case that all
+points of P must be contained within some single hemisphere and the
+power-center is demanded to lie within angular distance&lt;&pi;/2 from every point.
+</p><p>
+<b>Proof:</b>
+The "cost" quantity being minimized is a concave-&cup; function (meaning it is concave-&cup;
+along any geodesic) of S.  Therefore if it has a minimum it necessarily is unique.
+In the hyperbolic case it is obvious a minimum must exist because the cost goes
+to infinity at large distances.  In the spherical case 
+one exists by compactness.
+The concave-&cup; nature of it is because a spherical rotation of any concave-&cup;
+function is concave-&cup; and the sum of concave-&cup;; functions is
+concave-&cup;.
+<b>Q.E.D.</b>
+</p>
+
+<a name="weightedsum"></a>
+<h3>Should we combine district  costs via <i>weighted</i> summation?</h3>
+
+<p>
+Our three favorite cost measures for districts were
+</p>
+<ol><li>
+Sum of distances of district-residents to district-centerpoint
+</li><li>
+Sum of <i>squared</i> distances
+</li><li>
+District's perimeter
+</li></ol>
+<p>
+We then suggested that the cost of a <i>multi</i>district map should be just the sum of the
+individual district costs.
+</p><p>
+But maybe that latter idea was too simplistic.  Perhaps instead of
+a plain sum, we should use some sort of <i>weighted</i> sum.
+</p><p>
+<b>Advantages of plain unweighted sum:</b>
+</p>
+<ol><li>
+It is unbiased: district #1 is not "unfairly favored" over district #2.
+</li><li>
+It is simple.
+</li><li>
+Adding yields something related to or interpretable as some 
+kind of genuine physical or economic cost.
+I.e. with Olson's sum-of-distances measure, we get a "total travel cost" (or at least, something
+rather related to one) and it makes societal sense to minimize that, because it
+approximates a real economic cost (money) or real physical (e.g. energy) cost.
+<br> &nbsp;&nbsp;&nbsp;
+Minimizing sum of <i>squared</i> distances is similar but tends to "even it out" more.
+That is, if the travel costs for four people were 1,1,1,9 (sum=12, sum-of-squares=84)
+that does have smaller total cost than 2,3,4,5 (sum=14, sum-of-squares=72) 
+but the latter is more "fair" since
+it does not "discriminate" as much against the poor fellow with cost=9.
+Also, squared distances, since they are <i>areas</i>,
+correspond to some intuitive notion
+of "compactness" of a district.
+<br> &nbsp;&nbsp;&nbsp;
+Minimizing perimeter tends to "even it out" even more, since half the
+perimeter upperbounds the 
+<i>maximum</i> travel distance
+from any district-resident to any other, so minimizing that tends to help the 
+worst-off resident.
+</li></ol>
+</p><p>
+<b><i>Dis</i>advantages of plain unweighted sum:</b>
+One could argue, however, that what we need to focus on is not 
+<i>economic</i> or <i>physical</i> costs, but rather <i>political</i> costs, 
+as measured in votes.   In that view, if we have a tiny (since
+densely populated) district, some amount of geometrical badness for
+it should count the <i>same</i> as, not less than,
+a much-larger-scaled (since sparsely populated) district of
+the same shape &ndash; since they both contain the same number of votes.
+This can be accomplished "fairly" by <i>weighting</i> our summands by
+appropriate negative powers of the district areas, as follows:
+</p>
+<ol><li>
+If cost(district) = sum of distances of district-residents to district-centerpoint,
+then multidistrict map cost = &sum;<sub>D</sub> area(D)<sup>-1/2</sup> cost(D) 
+</li><li>
+If cost(district) = sum of <i>squared</i> inter-resident distances,
+then multidistrict map cost = &sum;<sub>D</sub> area(D)<sup>-1</sup> cost(D) 
+</li><li>
+If cost(district) = its perimeter,
+then multidistrict map cost = &sum;<sub>D</sub> area(D)<sup>-1/2</sup> cost(D).
+</li></ol>
+<p>
+Note the powers are chosen so the final cost comes out dimensionless (as it should 
+since votes are dimensionless, unlike
+areas and lengths).
+One could also consider using powers of district perimeters or diameters, instead of areas.
+</p><p>
+<b>Criticisms of area-based (or other) weighting:</b>
+Unfortunately 
+these kinds of weighting destroy some of the nice theoretical properties of our cost measures.
+For example, with weighted-Olson, optimum-cost maps now will be
+"additively <i>and</i> multiplicatively 
+<a href="http://en.wikipedia.org/wiki/Weighted_Voronoi_diagram">weighted</a> Voronoi diagrams."
+The regions (districts) in such diagrams (even on a flat earth) each now can be
+very non-convex, can be disconnected into very many components, 
+and can have many holes.
+</p><p>
+Also, this kind of weighting can inspire an optimizer to artificially "bloat" small-area districts
+just in order to decrease their weights, in opposition to the whole goal of keeping
+districts "compact."
+With area<sup>-1/2</sup>-weighted Olson,
+"good" districts would no longer be cities or chunks of cities anymore, they would be 
+"chunks of cities that always also have a large rural area attached."
+Ditto if the weighting instead is based on diameter<sup>-1</sup>.
+</p><p>
+Weighting by negative powers of district
+<i>perimeters</i> would be even worse in this respect
+since the optimizer then would be inspired to add wiggles to boundaries!
+Indeed with district map costs based on the Olson or squared-distances measures using
+weighted-sum-combining using perimeter<sup>-1</sup>
+and perimeter<sup>-2</sup> as weights,
+optimum maps would not even <i>exist</i>
+due to this problem &ndash;  a devastating indictment!
+</p><p>
+<b>Verdict:</b>
+In view of these criticisms, in my opinion at most <i>one</i> among
+the 9 possible weighted-sum schemes I considered (based on
+our 3 favorite district costs and 3 types of weighting based on
+powers of area, perimeter, and diameter; 3&times;3=9)
+can remain acceptable:
+</p><center>
+If cost(district) = its perimeter,
+then multidistrict map cost = &sum;<sub>D</sub> area(D)<sup>-1/2</sup> perimeter(D).
+</center><p>
+I have called this the <a href="#sanschw">sanitized Schwartzberg</a> 
+cost above.  <b>Warning:</b>
+If you do this, then
+you must not use the outer boundary of a country as part of district-perimeters.
+(if you tried, then a country with a very wiggly boundary, would artificially always get only
+huge-area districts adjacent to the country's border!  For a country with a fractal boundary,
+optimum map either would not exist or would be insane!).
+Instead you must take the view that the country has no boundary and is defined only by its
+set of residents (points); or the view that the country's boundary "costs nothing"
+and only inter-district boundaries cost anything.
+</p><p>
+Sanitized Schwartzberg also will suffer, though to a lesser extent, from the optimizer
+artificially "bloating" small-area districts.  (Sanitized Schwartzberg in some sense does 
+not encourage such bloating
+but also no longer discourages it.)  With plain unweighted perimeter minimization,
+the optimum map for a country with one geographically compact city would usually
+be: some districts 100% rural, some
+districts 100% urban, with at most one mixed district.
+But with sanitized Schwartzberg, it could well be happy to make, say,
+four mixed urban+rural districts (e.g. three each containing about 0.2 of the city plus 0.8 of a
+normal-sized rural district, plus one with 0.4 of the city and 0.6 of a 
+normal-sized rural district) and all the rest entirely rural, without any 
+pure-urban districts at all.
+</p><p>
+An ad hoc compromise scheme which both discourages such bloat, but also tries to gain some
+of the benefits of Schwartzbergian thinking, would be
+</p><center>
+Multidistrict map cost = &sum;<sub>D</sub> area(D)<sup>-1/4</sup> perimeter(D).
+</center><p>
+Another idea related to the original sanitized Schwartzberg idea would be to minimize this
+</p><center>
+Multidistrict map cost = &sum;<sub>D</sub> area(D)<sup>-1</sup> perimeter(D)<sup>2</sup>.
+</center><p>
+This proposal would still be dimensionless.  Yet another idea related to our original
+sum-of-perimeters (dimensionful) idea would be to minimize
+</p>
+</p><center>
+Multidistrict map cost = &sum;<sub>D</sub> perimeter(D)<sup>2</sup>.
+</center><p>
+It is not obvious to me what is best among the ideas of this ilk.
+</p>
+
+<a name="NPCsec"></a>
+<h3> The NP-completeness of optimum districting problems </h3>
+
+<p>
+<b>What are P and NP?</b>
+A computer program which, given B bits of input, always runs to completion in a
+number of steps bounded by a polynomial in B, is called a "polynomial-time algorithm."
+The set of problems soluble by polynomial-time algorithms is called polynomial time
+(often denoted "P" for short).  The set of problems whose solutions, once somehow found, may be
+<i>verified</i> by a polynomial-time algorithm, is called "NP."
+It is generally believed &ndash; although proving this is a million-dollar open problem &ndash;
+that hard problems exist whose solutions (once found) are easy to verify &ndash;
+i.e. P&ne;NP. Examples:
+</p><ol><li>
+Factoring an N-digit integer into primes, appears to be hard.  But
+verifying that a claimed factorization really works, turns out to be easy, i.e. in P.
+</li><li>
+Another example: it is easy to <i>verify</i> that some graph is "colorable" using K colors,
+once somebody shows you the coloring.   But actually <i>finding</i> a valid
+way to color it using &le;K colors, is hard (known to be NP-complete).
+</li></ol>
+<p>
+An "NP-hard" problem is one such that, if anybody ever found a polytime algorithm
+capable of solving it, then there would be polytime algorithms for <i>every</i> NP problem.
+An "NP-complete" problem is an NP-hard problem that is in NP.
+Many NP-hard and NP-complete problems have been identified.
+One classic example is the "3SAT" problem,
+which asks whether an N-bit binary sequence exists meeting certain logical conditions
+(those conditions are specified by the problem poser as part of the input).
+If P&ne;NP, then every NP-hard problem actually <i>is</i> hard, i.e. cannot always be
+solved by any polynomial-time algorithm.  In particular, if P&ne;NP then 3SAT problems
+cannot always be solved by any polynomial-time algorithm.
+</p><p>
+See 
+<a href="http://www.amazon.com/Computers-Intractability-NP-Completeness-Mathematical-Sciences/dp/0716710455">Garey &amp; Johnson's book </a>
+for a much more extensive introduction to NP-completeness,
+including long lists of NP-complete problems and how to prove
+problems NP-complete.
+</p><p>
+It was shown by 
+<a href="MegiddoSupowit1984.pdf">Megiddo &amp; Supowit 1984</a>,
+that this yes-no problem is NP-hard:
+<br> &nbsp;&nbsp;&nbsp;
+Given the (integer) coordinates of a set of people (points) on a flat Earth, and
+an integer N, and a rational number X: does
+there exist a way to subdivide the people into N
+equipopulous disjoint subsets ("districts")
+having <b>Olson</b> cost-measure less than X? (Yes or no?)
+</p><p>
+Therefore (unless P=NP)
+<b>Olson-optimal districting is hard</b>, i.e.
+not accomplishable by <i>any</i> algorithm in
+time always bounded by <i>any</i> fixed
+polynomial in the number of people, the number of districts, and the number of bits
+in all those coordinates.
+</p><p>
+<a href="kmeansNPhard.pdf">Mahajan et al 2009</a>, by adapting
+Megiddo &amp; Supowit's method,
+showed that the same yes-no problem, but using the <b>sum-of-squared-distances</b>-based
+cost measure instead of Olson's, is NP-hard.
+</p><p><small>
+We should note that
+those two proofs actually addressed different problems than we said.
+However, it is almost trivial
+to modify them to make their NP-hard
+point-set  have <i>equal</i> numbers of points in each "district."
+Then those proofs show NP-hardness of
+optimal equipopulous districting.  
+So the realization of the NP-hardness of districting is really a new result by me;
+but my "new contribution" is only 1% because 99% of the work was done in these previous papers.
+</small>
+</p><p>
+Another interesting NP-complete problem is the problem of finding the shortest 100-0
+gerrymander.  More precisely, given N points in the plane, some red and some blue, 
+if you are asked to find the shortest-perimeter polygon containing all the red points
+but none of the blue points inside, that's NP-hard.
+There's a very easy NP-hardness proof if we happen to already know that the problem of
+finding (or merely approximating to within a factor of 1+N<sup>-2</sup>)
+the shortest traveling salesman tour of N points in the plane, is NP-hard.
+You simply place N red points in the plane then place N blue points each extremely near to 
+a red point (each red has a blue "wife").  Then the polygon separating the red and blue points
+must pass extremely near to each red point in order to separate each husband-wife pair
+hence must be a "traveling salesman tour" of the red (or of the blue) points.  In other
+words, optimally solving the 100-0 gerrymander problem is at least as hard as
+optimally solving the plane traveling salesman problem, hence is NP-hard.
+You should now find it almost as trivial to
+prove that the problem of, e.g. finding the shortest-perimeter polygon enclosing
+exactly 50% of the points and having at least a 51-49 red:blue majority on its inside,
+is NP-hard (for any particular values of 50 and 51).
+Unfortunately, this all
+won't stop gerrymanderers because they don't give a damn about the "quality"
+(minimizing the length) of their gerrymander.
+<!--
+Peter Eades &amp; David Rappaport: The complexity of computing minimum separating polygons, 
+Pattern Recognition Letters 14,9 (1993) 715-718.
+E.M.Arkin, S.Khuller, J.S.B.Mitchell: Geometric knapsack problems,
+Algorithmica 10 (1993) 399-427.
+E.D. Demaine, J. Erickson, F. Hurtado, J. Iacono, S. Langerman, H. Meijer, M. Overmars, 
+S. Whitesides: Separating Point Sets in Polygonal Environments, to be presented at SOCG, June 2004,
+http://www.cs.mcgill.ca/~sue/papers/chord-sep05.pdf
+They've got nothing
+
+min-link red-blue separation problem is NP-hard.
+JSB Mitchell Approxn Algs for Geometric Separation Problems 1993 gives an O(logN)-factor
+polytime approx alg for it, 
+and O(1)-factor if the separating polygon is required to be rectilinear.
+C.S. Mata &amp; J. Mitchell:
+Approximation Algorithms for Geometric tour and network problems,
+In Proc. 11th ACM Symp. Comp. Geom (1995) 360-369.
+Give an O(logN)-factor approx alg in polytime O(N^5).
+J.Gudmundsson &amp; C.Levcopoulos:
+A fast approximation algorithm for TSP with neighborhoods and red-blue separation,
+COCOON'99 Proceedings of the 5th annual international conference on Computing and combinatorics
+speed that up to O(NlogN) time.
+S.Arora &amp; Kevin L. Chang:
+Approximation Schemes for Degree-restricted MST and Red-Blue Separation Problem.
+This appears to be a different problem, involving minimizing the length not the #links.
+N(logN)^O(1/epsilon)-time (1+epsilon)-approx alg for it which is almost exactly the
+same as Arora's JACM 1998 TSP-approx algorithm in plane.
+Claims with no hint of a proof that this problem is NP-hard.
+-->
+</p><p>
+There are <b>different flavors of NP-hardness.</b>
+For some optimization problems it is NP-hard
+even to <b>approximate</b> the optimum value to within any fixed constant multiplicative factor.
+(Example: the chromatic number problem for graphs.  Indeed, even the <i>logarithm</i> of
+the chromatic number for graphs.)
+For others, it is NP-hard to get within a factor of 1+&epsilon; of the optimum cost
+for any positive &epsilon; below some threshhold &ndash; this class is called 
+<a href="http://www.nada.kth.se/~viggo/wwwcompendium/">APX-hard</a>.
+(Example is the "triangle packing problem" &ndash;
+phrased as a <i>maximization</i> problem this is:
+given a graph, what is the maximum number of vertex-disjoint triangles 
+that exist inside that graph?  A related problem, which also is APX-complete, is
+the same but for <i>edge</i>-disjoint triangles.)
+For other problems, it is possible in polynomial time (but which polynomial it is, depends upon
+1/&epsilon; in a possibly non-polynomial manner) to get within 1+&epsilon; of the optimum cost
+for any &epsilon;&gt;0
+&ndash; that is called a "polynomial-time approximation scheme," or PTAS.
+(Example: the NP-hard "traveling salesman problem" in the Euclidean plane has a PTAS.)
+No PTAS can exist for any APX-hard or APX-complete problem, unless P=NP.
+</p><p>
+It is presently <i>unknown</i> whether the districting problem based on 
+either Olson's or the sum-of-squared-distances
+cost measure has a PTAS, or is APX-hard, or what.  Those NP-hardness proofs only pertain
+to finding the exact optimum and do
+not address approximability questions.
+</p><p>
+Another important flavor-distinction in the NP-completeness world
+is <b>weak</b> versus <b>strong</b> NP-hardness.   
+Suppose some NP-hard problem's input includes a bunch of numbers.
+<i>If</i> requiring those numbers to be input in <i>unary</i> 
+(greater number of input bits) causes the problem to become soluble by an algorithm running in 
+time bounded by a polynomial in this new longer input length, then that
+was only a <i>weakly</i> NP-hard problem.  The most famous example of this is
+the <b>"number partition" problem</b> where the input is a set of numbers, and the yes-no 
+question is: does there exist a subset of those numbers, whose sum is exactly half of the 
+total?  
+</p><p>
+Our above two districting NP-completeness results both are "strong."
+</p><p>
+It is trivial to use the number partition problem to see that
+the following problem is weakly NP-complete:
+</p><p>
+<b>Two-district min-cutlength problem with cities:</b>
+The input is a simple polygon "country" in the Euclidean plane, and a set of 
+disjoint circular-disc "cities"
+lying entirely inside that country, each regarded as containing uniform
+population density; and for each city the problem-input further specifies its positive integer
+population.   Also input is a rational number X.  The yes-no question:
+Is there a way to cut the country apart, using total cutlength&le;X, into two 
+now-disconnected-from-each-other sets, each having exactly equal population?
+</p><p>
+Furthermore, by shaping the country appropriately with tiny
+narrow bits and
+making the cities all lie
+far from both each other and the country's border, we can see that 
+it is weakly NP-hard even to <i>approximate</i> the minimum cutlength to within 
+any constant factor!
+</p><p>
+That proof depended heavily upon the requirement that
+the population-split be <i>exactly</i> 50-50.
+However, 
+<a href="Fukuyama2006.10.2.pdf">Fukuyama 2006</a>
+used a cleverer version of the same idea with a "tree shaped" country
+to show that,
+even if we did not require a 50-50 
+split, but instead were satisfied with a
+<nobr>(&ge;F):(&le;100-F)</nobr>
+split for
+<i>any</i> fixed percentage F (0&lt;F&le;50 with F either rational or quadratic irrational),
+it <i>still</i> is weakly NP-hard to
+approximate the minimum cutlength to within 
+any constant factor.
+</p><p>
+However, this can be criticized for being only a "weak" NP-hardness result.
+With only this result, it would remain conceivable that if the population
+had to be specified by stating coordinates for each person, that then the min-perimeter
+districting problem would become polynomial-time soluble, or have a PTAS.
+</p><p>
+A different criticism:
+if instead of the <i>cut</i>length, we used the <i>entire</i> sum of
+district perimeters as the cost measure (i.e. no longer allowing use of the country's own 
+border "for free") then it would be 
+conceivable that the min-perimeter
+districting problem would have a PTAS (although finding the <i>exact</i> 
+optimum would remain NP-hard).
+</p><p>
+The first criticism
+<!-- can probably be overcome by a proof rather like
+Megiddo &amp; Supowit's, 
+but modified to pertain to the min-perimeter cost measure instead of Olson.
+-->
+can be overcome by using the fact 
+(proven in theorem 4.6 of <a href="HuntMRS98.pdf">Hunt et al 1998</a>)
+that 
+<b>partition into triangles</b> remains NP-complete even in 
+<i>planar</i> graphs with bounded maximum valence.
+It follows easily from this that
+</p><p>
+<b>Theorem:</b>
+Min-cutlength 
+districting into 3-person districts
+is strongly NP-hard in the Euclidean plane for polygonal countries with polygonal holes, 
+with the locations of each inhabitant specified one at a time.
+</p><p>
+<b>Proof sketch:</b>
+Make a country which looks like a "road map"
+of a planar graph with maximum valence&le;5;
+and make each road have a narrow stretch.
+In other words, our country is an archipelago whose islands are joined by roads across
+bridges over the sea; the road-surfaces also count as part of the "country."
+Place one person at each vertex (or equivalently, place one city well inside
+each island, all cities have the same population).  All the narrow portions of the
+roads have equal tiny widths.
+There will be V people in all for a V-vertex E-edge graph, with V divisible by 3.
+It is possible to divide this country into V/3 different 
+3-person districts by cutting E-V edges at their narrow parts <i>if, and only if</i>, the
+graph has a partition into triangles.  (Otherwise more cutting would need to be done.)
+<b>Q.E.D.</b>
+</p>
+
+<a name="SSA">
+<h3> The shortest splitline algorithm </h3>
+
+<p>
+Was invented by Warren D. Smith in the early 2000s.  
+It is a very simple mechanical procedure that inputs the 
+shape of a country and the locations of its inhabitants, and a positive number N,
+and outputs
+a unique subdivision of that country into N equipopulous districts.
+</p>
+<blockquote>
+<b>Formal recursive formulation of shortest splitline districting algorithm:</b>
+<pre>
+ShortestSplitLine( State, N ){
+  If N=1 then output entire state as the district;
+  A = floor(N/2);
+  B = ceiling(N/2);
+  find shortest splitline resulting in A:B population ratio
+        (breaking ties, if any, as described in notes);
+  Use it to split the state into the two HemiStates SA and SB;
+  ShortestSplitLine( SB, B );
+  ShortestSplitLine( SA, A );
+}
+</pre></blockquote>
+<p><b>Notes:</b>
+</p><ol>
+<li>
+Since the Earth is round, when we say "line" we more precisely mean
+"great circle."  If there is an exact length-tie for "shortest" then break that tie by using
+the line closest to North-South orientation, and if it's still a tie, then use the Westernmost of
+the tied dividing lines.
+</li><li>
+If the state is convex, then a line will always split it into exactly two pieces
+(each itself convex).  However, for nonconvex states, a line could split it into more than
+two connected pieces e.g. by "cutting off several bumps."  (We expect that will occur 
+rarely, but it is certainly mathematically possible.)  In either case the splitline's 
+"length" means the distance between the two furthest-apart points of the line that both lie
+within the region being split.
+</li><li>
+If anybody's residence is split in two by one of the splitlines (which would happen,
+albeit very rarely) then they are automatically declared to lie in
+the most-western (or if line is EW, then northern) of the two districts.
+(An alternative idea would be to permit such voters to choose which district they want to be in.)
+</li></ol>
+<a name="LAexample"></a>
+<p><b>Example:</b>
+The picture shows 
+Louisiana districted using the 
+shortest splitline algorithm using year-2000 census data.
+</p><img alt="Louisiana using 2000 census data, shortest splitline algorithm"
+src="SSHR/la_final.png" />
+<pre>
+Want N=7 districts.
+Split at top level:   7 = 4+3.  This is the NNE-directed splitline.
+Split at 2nd level:   7 = (2+2) + (1+2).
+Split at 3rd level:   7 = ((1+1) + (1+1)) + ((1) + (1+1)).
+result: 7 districts, all exactly equipopulous.
+</pre>
+
+<p>
+For theoretical investigation trying to determine the fastest possible
+algorithmic way to implement the
+shortest splitline algorithm, see <a href="FastShortestSplitline.html">this</a>.
+</p><p>
+For a discussion of several interesting SSA <i>variants</i>,
+see  <a href="Splitlining.html">this</a> page.
+</p>
+
+<a name="Phase2"></a>
+<h3> Two-phase improvement algorithms for Olson's and 
+the squared-distance-based measure (also applicable to nonEuclidean Laguerre-Voronoi)</h3>
+
+<p>
+We suppose there are P "people" (points with known coordinates)
+whom we wish to subdivide into N "districts" (disjoint subsets)
+which are equipopulous (up to a single extra person), P&ge;N&ge;2.
+Begin with some N-district subdivision.  Now
+<ol>
+<li>
+For each of the current districts
+(each represented as the set of people in it), find a better, i.e. lower-cost,
+center.
+If we are using the sum-of-squared-distances cost measure, the <i>best</i> center 
+<a href="https://rangevoting.org/PuzzMeanSumSquares,html">is</a> the mean-location in 3-space of all its people.
+If we are using Olson's cost measure, the best center for a district is its FSW-point,
+but merely <i>improving</i> the center can be accomplished by 
+performing one <a href="#WeiszfeldIter">Weiszfeld</a>
+iteration starting from its current center.
+</li><li>
+For the current set of district centerpoints,  find a better,
+i.e. lower-cost, assignment of the people to the districts.
+It is simplest to require this assignment to make all districts equi-populous.
+However we instead could add K times the sum of the squares of the district populations
+to the cost function
+which automatically would cause the district-populations to tend to equilibrate, without actually 
+explicitly enforcing that, in the limit K&rarr;&infin;.
+<br> &nbsp;&nbsp;&nbsp;
+The <i>best</i> assignment may be found in polynomial(P) time by finding the min-cost 
+<a href="http://en.wikipedia.org/wiki/Assignment_problem">matching</a>
+in a bipartite graph, whose P red vertices are the people and whose 
+N&lfloor;P/N&rfloor;
+blue vertices are pre-labeled with the names of the N districts (&lfloor;P/N&rfloor;
+copies of each) and the cost of an edge is the surface-distance (or squared 3D Euclidean
+distance) from that person
+to that district's centerpoint.  Then match the P-N&lfloor;P/N&rfloor;
+leftover people to the N district centerpoints
+in a second run on another bipartite graph with N+P-N&lfloor;P/N&rfloor;&lt;2N vertices.
+The <a href="http://en.wikipedia.org/wiki/Hungarian_algorithm">Hungarian Algorithm</a>
+finds these optimum matchings in O(P<sup>3</sup>) steps.
+<a href="#BibliogC">Other</a> 
+algorithms by Varadarajan &amp; Agarwal 
+accomplish the same thing faster
+(albeit in some cases only approximately) although some of their algorithms are 
+much more complicated.
+<br> &nbsp;&nbsp;&nbsp;
+Merely <i>improving</i> the current assignment can be accomplished by 
+performing just one of the P stages of the Hungarian algorithm (finding a "negative-sum cycle"
+in the bipartite graph, whose edges are alternately in and not in the current matching;
+then these two edge subsets are swapped); this takes only O(P<sup>2</sup>) steps.
+[In practice I'd recommend that idea, if used, be done for a random <i>subset</i> of 
+only about 10NlogN of the P people, i.e. effectively reducing the population P to a much
+smaller number; the full population need only be brought in once we've gotten
+quite near optimality for districting a random reduced subset of the population.]
+<br> &nbsp;&nbsp;&nbsp;
+By using the <a href="#VoronoiThm">Voronoi Theorem</a> we can improve our assignments much 
+faster than that, in more like O(PN) time, while totally avoiding any need to think about
+bipartite matchings.   
+For the sum-of-squares-based cost measure, we maintain the locations of the centers in 
+<i>four</i>-dimensional space 
+and then realize via the theorem that the best
+assignment is simply to assign each person to her closest center!
+(With Olson we <a href="#OlsonExtension">use</a> coordinates on the sphere
+plus one additional "additive weight" coordinate for each center,
+then assign each point to the center with least additively-weighted distance.)
+This may not result in equipopulous districts; but then we can
+increase the 
+value of the square of
+the extra (4th) coordinate [or with Olson increase the additive weight]
+for each district having the maximum number of people, by adding &Delta;.
+The best &Delta;&gt;0 (which most-decreases the maximum population-disparity, or
+leaves it the same while most-decreasing the total population in that subset of
+districts) can be found by a 1-dimensional search. 
+<br><small>
+Actually, it is possible &ndash;
+by building the Voronoi-esque diagrams on the sphere in O(NlogN) time,
+then using fast point-location techniques  from computational geometry &ndash; to 
+speed up the time O(PN) for a 2-phase improvement iteration
+to O([P+N]logN).  But we shall not discuss that.  O(PN) is fast enough.
+</small>
+</li>
+</ol>
+<p>
+We simply continue applying these two-phase improvement
+cycles until no further improvement is possible, then stop.
+At that point we have found a "local optimum" districting, i.e. one whose cost cannot be decreased
+either
+by moving the district centers or by differently assigning the people to those district-centers
+(but improvement could be possible by doing both <i>simultaneously</i>).
+Each 2-phase improvement step takes only
+polynomial time, but it is conceivable that an exponentially long chain of
+improvements will happen (see
+<a href="VattaniKmeans.pdf">Vattani 2011</a> for a point set in the plane 
+that causes our 2-phase iteration to iterate an exponentially large number of times,
+all the while keeping all districts equipopulous to within an 
+additive constant).  But usually the number needed is small.
+We can perform this whole optimization
+process many times starting from different initial district-maps,
+selecting only the best among the many locally-optimum maps thus produced.
+</p>
+<p>
+<small>UPDATE 2018:</small>
+The 2018 paper 
+</p><blockquote>
+Vincent Cohen-Addad, Philip N. Klein, Neal E. Young:
+<a href="https://arxiv.org/abs/1710.03358">
+Balanced power diagrams for redistricting</a>,
+</blockquote><p>
+implements a public source
+computer program for a two-phase improvement districting algorithm 
+somewhat like the one we sketched; it inputs
+US census data and outputs district maps but (at least at prsent)
+demands a "flat earth."
+</p>
+
+<a name="GoodI"></a>
+<h3> Heuristically good (but random) places to start improving from </h3>
+<p>
+The 2-phase improvement technique above is very elegant.
+However, it could get stuck in a local, but not global, optimum.
+It would be nicer if we somehow could guarantee at least some decent probability of
+getting at least within some 
+constant factor of optimum-quality.
+</p>
+<!--
+<p>
+A beautiful idea of 
+<a href="kMeansPlusPlus.pdf">Arthur &amp; Vassilvitskii 2007</a>
+tries to do something like that.
+</p>
+<p>
+<b>Arthur &amp; Vassilvitskii's good random initial districting</b>
+</p>
+<ol>
+<li>
+Our goal is to choose N "district centers."  The first center is simply the location of a
+uniform-random person.
+</li><li>
+To obtain each of the next N-1 centers in succession:
+choose each randomly from among the P people,
+<i>but</i> using <i>non</i>uniform probabilities proportional to the squared-distance
+to the nearest previously-chosen center. 
+(This more-favors locations further-away from previous ones.)
+</li>
+</ol>
+<p>
+Arthur &amp; Vassilvitskii proved that this will yield <i>expected</i> sum-of-squared
+distances (of the people to the nearest center) a factor&le;8(2+lnN) times
+least possible.   Unfortunately that is not quite what we want, because
+we sometimes want people to go to <i>non</i>closest centers, because otherwise our
+district populations would be unequal.
+</p>
+Their lemma 3.1 stays the same: the first center multiplies the sum of squared distances
+from the people in its optimal-district, to it, by at most 2
+in expectation.  
+We also can easily see it
+multiplies the sum of <i>unsquared</i> distances, by at most 2
+in expectation.  
+-->
+<p>
+<b>Heuristic algorithm based on matching:</b>
+Here's an interesting idea.  Observe that if P=2N, i.e. if we were trying to 
+divide our country into "districts" each containing exactly 2 people, then the 
+<i>optimum</i> districting 
+(for any of our three quality measures) could actually be found in polynomial(N)
+time by finding a min-cost matching in the complete (nonbipartite) graph of all
+people (with edge cost being the squared-Euclidean or unsquared-spherical distance between the
+two people).
+But in the real world P&gt;&gt;N.
+That suggests taking a uniform random sample, of, say, 256N people from among the P,
+then finding their min-cost matching and replacing each matched person-pair by a random point
+on the line segment joining them
+(thus reducing to 128N pseudo-people) then continuing on reducing to 64N, 32N, 16N, 8N,
+4N, and finally 2N pseudo-people, then employing their matching's midpoints as our N initial 
+district centers for use with the 2-phase improvement procedure.
+Software exists which will solve an N-point geometric matching task
+quickly and usually almost-optimally for the numbers of points we 
+have in mind here (Fekete et al 2002).
+</p><p>
+<b>Easy Lower Bound Theorem:</b>
+The expected cost of the min-cost matching among 2N random people (using squared 
+distances as
+edge costs) is a <i>lower bound</i> on the mean-squared-interperson-distance
+cost measure for the optimum N-district map.  
+Half 
+the expected cost of the min-cost matching among 2N random people (now
+using unsquared spherical distances as
+edge costs) is a lower bound on the Olson
+mean-distance-to-district-center
+cost measure for the optimum N-district map.  
+</p><p>
+This theorem usually makes it computationally feasible to
+gain high confidence that some districting is within a factor of 2.37 (or whatever the
+number happens to be for that map) of
+optimum under the squared-distance-based and Olson cost measures and hence (in view of
+our <a href="#IneqRels">inequality</a>) for the min-perimeter cost measure too.
+</p><p>
+<b>Heuristic idea based on randomly ordering the people:</b>
+Here's another interesting idea.  Randomly reorder the P people in your country.
+Now take the locations of the first N people as the initial centerpoints of
+your N districts.  Now start adding the remaining P-N people one at a time.
+Each time one is added, adjust the current district definitions
+(defined by their centerpoints and additive weights or extra coordinate)
+so we always have an equipopulous
+districting of the people that have been added so far.
+For example, one could agree to always add the new person to the district with the closest
+centerpoint (using additively-weighted distances), except if that resulted in
+a too-high district-population, then we search for a weight adjustment for that district
+that moves one of its people out into another district; then if <i>that</i>
+district now has too many people we need to adjust its weight, etc.
+After making all P-N adjustments (or we can stop earlier), 
+we'll have found a, hopefully good, districting of
+the country.  It then can be improved further by running 2-phase improvement iterations.
+</p>
+
+<a name="GoodII"></a>
+<h3> Guaranteed-good random places to start improving from </h3>
+<p>
+We shall now, for the first time, describe a very simple randomized polynomial-time
+algorithm for finding
+N districts (for P people on a flat Earth) which is <i>guaranteed</i>
+to produce a districting whose expected Olson-cost
+is O(logP) times the minimum possible cost for the unknown optimum districting.
+This districting can be used as a randomized starting point for
+the <a href="https://rangevoting.org/Phase2">2-phase improvement</a> algorithm.
+</p><blockquote><small>
+We must admit that "O(logP)" is <i>not</i> a hugely impressive quality guarantee!
+With P=1000000, log<sub>2</sub>P&asymp;20, and guaranteeing getting within a factor of O(20)
+away from optimum is a pretty weak guarantee.   We're only mentioning this because
+nobody else in the entire 50-year history of this field has ever proved <i>any</i>
+approximate-optimality theorem even close to being this good (poor as it is).
+As we have remarked before, this field of science is in an extremely dysfunctional state
+and most of the work in this area has, so far, been of remarkably low quality.
+</small></blockquote><p>
+It then immediately follows from 
+<a href="http://en.wikipedia.org/wiki/Markov%27s_inequality">Markov's inequality</a>
+that this algorithm will with probability &ge;1/2 return a
+districting with cost&le;O(logP)&times;optimal;
+and re-running the algorithm R times (with independent random numbers each time)
+and picking the best districting it finds, will reduce the failure probability
+from 1/2 to &le;2<sup>-R</sup>.
+</p>
+<p>
+<b>Expectation&le;O(logP)&times;Optimal Districting Heuristic:</b>
+</p><ol><li>
+Input the locations of the P people and the number N of districts wanted, 1&lt;N&lt;P.  
+We shall assume wlog that the people's XY coordinates all are integers in [0, P<sup>2</sup>].
+(This can be assured by rescaling all coordinates then rounding them to integers.
+The only way that approximation could introduce too-large errors would be if
+the people were readily <i>separable</i> into two smaller districting subproblems
+&ndash; in which case that wasn't a problem at all  &ndash;
+we omit the details.)  
+For simplicity we'll assume N divides P exactly.
+</li><li>
+Regard these P people as all lying within an axis-parallel 1:&radic;2 rectangle with 
+shorter sidelength=2P<sup>2</sup>. Choose this outer rectangle <i>randomly.</i>
+(That is, shift it horizontally and vertically by random uniform amounts subject 
+to the constraint it
+still contain all the people.)
+</li><li>
+Subdivide this rectangle into two half-size rectangles (still with aspect ratio &radic;2),
+then each of those 
+into two,
+and so on. ("Rectangle Tree.")
+Keep subdividing until each "leaf" rectangle contains &lt;2P/N people.
+</li><li>
+Work backward from the leaves toward the root of this tree.  
+Whenever the current 
+rectangle contains P/N or more people (it will never contain as many as 2P/N), 
+remove P/N of them as a "district."  
+Use the optimal 
+single district.  This, more precisely, means 
+you color P/N people red and the rest (R with 0&le;R&lt;P/N)
+blue, and choose a red centerpoint and a 
+blue centerpoint, such that the sum of all the distances from the people to their same-color 
+center, is minimum.
+It is possible to do that optimally in polynomial time, most simply by
+brute force requiring the red and blue points both to have integer coordinates.
+(The blue centerpoint will be discarded and not actually used.)
+</li></ol>
+<p><b>Sketch of why this works:</b>
+<!--
+We shall use the <a href="#AvgInterpersonOlson">lemma</a>
+about average interperson distance.
+-->
+(The argument shall implicitly use the <i>subset monotonicity lemma</i>
+that Olson's optimal sum-of-distances-to-centers 
+generally increases, and cannot decrease, if we add new people.
+This lemma is <i>false</i> for the perimeter-length, which is why this algorithm and/or 
+proof only work for Olson, not perimeter-length, cost measure.)
+If some rectangle-tree box contains 
+too many people to fit in an integer number of districts, then its excess people
+need (in the optimum districting) to have a district 
+"outside" that box, so that the line segments
+joining each of them to their district center must cross the box wall.
+(Or, the district center could lie inside the box in which case the line segments from the
+people <i>outside</i> it that are in that
+district, must cross the wall.  In that case we regard the <i>other</i> sibling box
+as the one with the "excess" and
+assign this cost to it.)
+But (<i>crossing expectation lemma</i>)
+the length L of <i>any</i> line segment that crosses a box-wall of length W, is,
+in <a href="http://en.wikipedia.org/wiki/Stereology">expectation</a>
+over the random box-shifts, of order &ge;W.
+No matter how crudely it handles those excess people our algorithm isn't going to give them length
+more than order W each.   So it seems to me 
+(in view of the subset monotonicity and crossing expectation lemmas)
+that at each level of the rectangle tree the 
+expected excess cost incurred
+is at most a constant times the total cost of the (unknown) optimal districting.
+[And it does not matter that these excesses are statistically dependent on each other,
+due to <i>linearity of expectations</i>: E(a)+E(b)=E(a+b) even if the random variables
+a and b depend on each other.]
+The whole tree is only O(logP) levels deep, so the whole procedure should yield a districting whose
+expected cost is O(logP) times optimal.
+In fact, very crudely trying to bound the constants, I think the expected cost will be
+&le;6+32log<sub>2</sub>P times the optimal districting's Olson-cost.
+<b>Q.E.D.</b>
+</p>
+
+<a name="HandyChart"></a>
+<h3> Handy comparison chart (methods for producing maps with N equipopulous districts) </h3>
+
+<table>
+<tr>
+<th>Districting method</th>
+<th>Contest needed?</th>
+<th>Convex districts?</th>
+<th>Optimality?</th>
+<th>Other</th>
+</tr>
+<tr>
+<td>Shortest splitline algorithm</td>
+<td>No; extremely fast simple untunable algorithm</td>
+<td>Districts are convex polygons drawn on sphere using geodesics as edges</td>
+<td>Usually does well with respect to the cutlength cost measure,
+but not always; <a href="PuzzSSL.html">can</a> yield a map far worse than optimal.
+</td>
+<td>See <a href="SplitLR.html">results</a> for all 50 US states (year-2000 census)</td>
+</tr>
+
+<tr>
+<td>Minimize sum of district-perimeters</td>
+<td>Yes (finding optimum is NP-hard)</td>
+<td>Districts are (generally nonconvex) polygons</td>
+<td>Simplest cost measure to compute.
+<!--
+I believe I have found a polynomial-time approximation scheme (PTAS);
+this assures optimality to within a factor of 1+&epsilon; for total perimeter,
+for any <i>fixed</i> &epsilon;&gt;0, in runtime bounded by a polynomial in P and N.
+However, the polynomial depends upon &epsilon; and becomes enormous when &epsilon;&rarr;0+.
+-->
+No polytime algorithm is known that can even assure constant-factor
+approximation for <i>any</i> constant.
+</td><td>
+Readily modified to minimize crossings of rivers, roads, etc &ndash;
+but that would make it vulnerable to redefining or re-engineering "rivers."
+If district lines required to follow census-block boundaries (not recommended!), 
+then vulnerable to redefinition of those blocks.</td>
+</tr>
+
+<tr>
+<td>Minimize sum of squared distances to your district-center</td>
+<td>Yes (finding optimum is NP-hard)</td>
+<td>Districts generally <i>non</i>convex circular-arc "polygons" on the sphere,
+and a district can be more than one <i>disconnected</i> polygon; but
+each district arises as a convex polyhedron in 3-space and in the "flat Earth" limit all
+districts become convex polygons.
+</td>
+<td>No algorithm is known
+assuring constant-factor
+approximation for <i>any</i> constant.
+</td><td>
+Readily modified to add extra "interest" dimensions to group voters with 
+common interests in same districts  &ndash;
+but that would make it vulnerable to redefinitions &amp; rescalings of
+what valid "interests" are.
+</td>
+</tr>
+
+<tr>
+<td>Minimize sum of distances to your district-center</td>
+<td>Yes (finding optimum is NP-hard)</td>
+</td>
+<td>Districts generally <i>non</i>convex both on the sphere and on a flat Earth; 
+boundaries are piecewise-algebraic curves that are complicated to describe.
+</td>
+<td>It is probably possible to get within some constant factor of optimum 
+in polynomial worst-case time, but nobody has shown that yet.
+We've <a href="#GoodII">shown</a> how to get within a log-factor of optimum.
+<!--(Algorithmic ideas by Joe Mitchell,
+Stavros G. Kolliopoulos, and Satish Rao
+seem promising.)
+  Stavros G. Kolliopoulos &amp; Satish Rao:
+A Nearly Linear-time Approximation Scheme for the Euclidean k-median problem
+SIAM J. Computing 37 (2007) 757-782.
+http://cgi.di.uoa.gr/~sgk/papers/kmedian-3rd.pdf
+-->
+</td>
+<td>
+Olson has programmed a heuristic algorithm to seek districtings good by this measure.
+<a href="http://bdistricting.org">See</a>
+his USA (year-2010 census) results.
+</td>
+</tr>
+
+</table>
+
+<a name="Travel"></a>
+<h3> What about travel time? Rivers? County lines? Census blocks? </h3>
+<p>
+It's possible in principle for human-drawn districts to 
+better represent "communities of interest" and other fuzzy but real sociological features.
+I think that desire must be sacrificed in order to get
+fully automatic and impartial districting.
+This might sometimes draw awkward lines which cut regions in strange ways.
+(But it is certain that there are <i>currently</i>
+a lot of awkward lines cutting regions in strange ways,
+put there intentionally to defeat democracy!)
+The kind of solutions we're proposing here, usually are better
+than what human USA legislators currently draw. 
+This is true essentially 100% of the time
+measured by our objective mathematical quality measures.
+It also is true about 98-100% of the time measured subjectively by my eye.
+</p><p>
+Minimizing "travel time" is hard to measure &amp; automate, and fairly easy for
+evildoers to manipulate.
+</p><a name="ModifPerim"></a><p>
+It is fairly easy to modify cost-measure (3) to inspire district boundaries
+to follow, but not cross: rivers, highways, county lines, etc.   E.g. you could count the
+"cost" of each meter of district boundary as "10 dollars" normally, but only
+"5 dollars" wherever the district boundary happens to be following a river or highway,
+and add a penalty of 2 dollars every time it crosses a river.
+But measures (1) and (2) are not easily modifiable to accomplish these goals.
+[All the unmodified measures simply ignore rivers, highways, etc.]
+This easy modifiability
+is yet another advantage of the min-perimeter quality measure, versus the other two.
+</p><p>
+If these magic "dollar" numbers were chosen right we could get better districtings, 
+I suppose &ndash; but the danger is that some evil person would try to tune them
+intentionally-wrong to get gerrymandering effects, plus this all makes computer programs
+more complicated (although not insurmountably so). It
+also makes things somewhat manipulable by evilly changing the definitions of
+county lines, or of "rivers," building different highways, etc. 
+("That wasn't a 'river,' that was a 'creek'!  
+That wasn't a 'highway,' that was a mere 'road'!")
+The joy of
+the shortest splitline algorithm is it has absolutely <i>no</i> tunable parameters
+or unclearly-defined entities,
+hence cannot be manipulated by building highways, redefining rivers, altering a parameter,
+etc.
+</p><a name="CBlocks"></a><p>
+The <a href="http://www.census.gov/">US Census</a> measures population
+in small regions called <b>"blocks."</b> 
+In California 2010 there are 533163 of these blocks, see
+<a href="camask.png">image (png 200KB)</a>.
+Note that some blocks are actually quite large, and their shapes are not always simple.
+The census also provides a coarser subdivision called census "tracts."
+There are roughly 50 blocks per tract.
+If every district is made a union of census blocks, then you get "exact"
+population counts in each district, but the district boundaries will usually
+be very jagged.   If district boundaries cut through census blocks, then we can
+get much simpler non-jagged 
+district boundaries (e.g. "straight lines" on a map) but sacrifice 
+exact knowledge of district populations.   (We still can model each block as
+containing uniform population density and thus <i>estimate</i> the district
+populations fairly well.)
+Of course, everybody knows the census is
+not and cannot be exact, i.e.
+many of their alleged block populations are wrong. 
+So we never had exact knowledge, we just had the <i>illusion</i> of exact knowledge &ndash;
+but we now must sacrifice that illusion!
+</p><p>
+Census blocks are supposed to break along existing political divisions 
+(counties, zip codes, cities) or roads or natural features.
+Therefore, following census block boundaries has some advantages versus simple
+straight lines.   
+</p><p>
+<i>But</i> if
+a law demanded that district boundaries <i>must</i> always follow census-block boundaries,
+then everything becomes manipulable via evil alterations to the exact definitions of
+the census blocks.  For example, 'here' the evil manipulator could make
+the census blocks tend to be long, thin, and oriented East-West, 'there' he could
+predominantly orient them North-South, and in a third region he could make them
+tend to have wigglier boundaries than usual.   
+These manipulations could all be fairly small changes
+which still look fairly innocent but nevertheless
+would cause a massive alteration of
+the "optimum"  (based on the min-perimeter measure) districting.   
+</p><p>
+There would be incentive to appoint a Republican as the head of the
+census department so he could corrupt things their way!
+</p><p>
+Perhaps such manipulations could force "evil wiggly"
+boundaries with one or other of the two other optimality notions, also &ndash; I'm not sure.
+I am certain this kind of manipulation-potential is greatly diminished if district
+drawings are unrestricted, i.e. district boundaries are allowed to cut through census blocks.
+</p>
+
+<a name="Minority"></a>
+<h3>Will this "disenfranchise minorities?"</h3>
+<p>
+Possibly.
+There are currently some districts 
+in some states which are created to almost-guarantee that a Black or Hispanic person gets 
+elected to the US House.
+This might be considered a "good" kind of gerrymandering.
+It is a distortion of districting to an end that many people currently agree with.
+(I can't provide an exact count but believe there are more districts 
+resulting from bad gerrymandering than good.)
+</p><p>
+We warn you that "good gerrymandering" is a very dangerous road to take.
+Furthermore, it may not have the effect you think.  For example, suppose you
+create one "majority minority" district, e.g. containing more than 50% Blacks,
+by drawing absurdly-shaped boundaries to shove more Blacks in there.
+The idea is this way, a 90%-White state will elect
+one Black congressman, as opposed to 10 out of 10 Whites.
+Sounds great.  <i>But</i>, what also might happen is that a less-absurd
+map would have several districts with close battles between A and B, and the Blacks in those
+districts would be enough to swing all those battles toward B.  So we'd have several
+Black-decided battles with a non-absurd map.  But with the absurd map, the Blacks would
+basically always elect exactly one guy, who'd basically be a sure thing, and have
+zero influence on any other battle.   (Also they'd have zero influence even on their own 
+district, 
+because he'd be a sure thing to win.  You can't "influence" a sure-thing race.)
+So the net effect of drawing absurd districts to "help"
+Blacks, might actually be to <i>deprive</i> them of voting power so they could influence
+<i>fewer</i> races &ndash; and <i>every</i> district becomes a non-competitive "sure thing" race
+where no voter of any color can affect anything &ndash; it is all pre-ordained.
+This is great for politicians, whose seats are now safe for life, but not so great for
+voters (of any color), who all now are powerless.
+</p><p>
+Oops.
+</p><p>
+Just to hammer that home, in a state with 53% Democrat and 47% Republican voters, you
+might hope/expect that Democrats would win a majority of the seats.  But Blacks in
+the year-2000 era vote about 90% Democrat, and cramming them all in 1 district to
+"help" them would result in 1 Democrat winner versus 9 Republican winners!  This
+would be a huge non-help to Blacks and a huge distortion of democracy.
+</p><p>
+Some people have told me
+the USA's <a href="VRAtext.html">Voting Rights Act</a> <i>requires</i>
+"majority minority" districts.  The link gives the full text of the VRA, and
+I <a href="MajMin.html">see no</a> such 
+requirement.
+(Also note that there are many US states right now 
+ &ndash; and for many decades past too &ndash;
+have had <i>zero</i>
+majority-minority districts.)  
+</p><p>
+<a href="PropRep.html">Proportional Representation</a> (PR) is an alternative to districting 
+which does a good job of representing people based on identity groups.
+The whole idea of single-winner elections in districts is discarded with PR.
+Instead you have <i>multi</i>winner elections. More complicated and
+cleverly designed election methods then are needed, but they can be designed in such a way that
+<i>any</i> fraction-F minority can, by voting in a "racist" manner, assure they get 
+about a fraction &ge;F of their-color winners (provided they run).
+</p><p>
+It also is possible to conceive of systems with a <i>mix</i>
+of districting and PR.  (Some countries have such mixed systems.)
+Districting maintains the tradition of having <i>your local representative</i> 
+who is more directly accessible for communication and regional issues.
+PR better represents the whole mix of identity groups across a state or country.
+<p><p>
+With or without such changes I'm going to continue 
+advocating for anti-gerrymandering measures because I think they will make far
+more good changes than bad.
+</p>
+
+<!--
+<h3>What about "competitive" districts???</h3>
+<p>
+Why should a district be constructed to have 
+a near 50%-50% split of people registered for the two major parties?
+If it were possible to create all districts that way (and in most states it won't) 
+the end result would be to have something like 50% of the seats for one party and 50% for the other, <em>whether this accurately reflects the population at large or not!</em>
+I suspect that cries for more "competitive districts" will most often come from the slightly smaller of the two major parties.
+I don't think representative democracy is served by this kind of goal for redistricting.
+Again, <a href="http://en.wikipedia.org/wiki/Proportional_Representation">Proportional Representation</a> should be part of the solution of accurately representing the citizenry.
+If the problem is undesirable entrenched incumbents, I recommend <a href="http://bolson.org/voting/">rankings and ratings ballot</a> methods to allow people to safely vote the bums out without compromising or risking spoiled elections.</p>
+</p>
+-->
+
+<a name="PrettyPic"></a>
+<h3> Pretty pictures section: Olson vs Voronoi vs Shortest splitline </h3>
+
+<p>
+Olson's computer program, as we said, uses enormous computation to try to find a map
+near-optimum under his quality measure.  (Olson's current program "cheats"
+in several ways, e.g. it does not use
+true spherical surface distance &ndash; he uses a certain ugly approximate
+distance formula &ndash; and not using
+the true FSW point as the "center", but those issues don't matter much for our
+comparison-purposes here.)
+</p><p>
+Meanwhile the shortest splitline algorithm uses a far tinier
+amount of computing and
+makes no attempt to find an optimum or 
+especially-near-optimum districting &ndash; except for the fact that each split-step, it
+chooses the shortest possible splitline. The net effect of that
+seems in the right direction to keep the perimeter-measure small, but
+it might in principle still yield total perimeters far larger than optimum.
+</p><p>
+Consequently, it seemed reasonable to guess that Olson and splitlining 
+would often output quite-different maps.  
+However, examining Olson's <a href="Olson2000list.html">50</a>
+USA state maps (based on year-2000 census)
+versus <a href="SplitLR.html">our</a>
+splitlining-based maps of the same 50 states, we find that they actually 
+usually are astonishingly similar!
+Consider <b>Texas</b>.
+Left top, the official district map produced by the gerrymandering slimeballs in the TX
+legislature (32 districts).  Right top, Olson's near-optimal map. 
+Bottom left: splitlining's map.
+Bottom right, map by <a href="SpannGulottaKaneMCM2007.pdf">Spann, Gulotta &amp; Kane</a>
+trying to minimize a sum-of-squared-distances based 
+measure (they use a method like our <a href="#Phase2">2-phase improver</a>
+working on a "flat Earth"
+allowing up to 4% population difference between the most- and least-populous districts).
+</p>
+<img width="100%" src="TX_ba.png"/>
+<img width="57%" src="TxNewSplitline.png"/><img width="43%" src="TXmoi2000.png"/>
+<p>
+The official map is clearly utterly despicable garbage.
+And if you liked TX's official districts based on the 2000 census, 
+you'll <i>love</i> the upcoming 
+new ones from the 2010 census &ndash; below check a detail insert from the
+<a href="http://www.tlc.state.tx.us/redist/redist.html">Texas State Legislature</a>'s
+"plan C125" for congressional redistricting:
+</p>
+<img src="TXc125DetailInsert.png"/>
+<p>
+Meanwhile,
+Olson's, the squared-dist-based, and the splitlining maps all are pretty reasonable.
+Olson's map has jagged boundaries if viewed closely, 
+which is mainly because it follows census-block-boundaries (if Olson changed his program to
+have it cut through census blocks, then his boundaries would smooth).
+Note that Olson's districts have curved boundaries (even after smoothing)
+while splitlining and optimizing the squared-distance-based measure both
+always produce district boundaries made of straight lines (on a flat Earth; on
+a round Earth splitlining  still uses "straight" geodesic 
+segments but the squared-dist minimizer would employ slightly non-straight curves).
+The basic structure of the Olson and splitline maps is almost identical, except
+Olson has handled the two big districts in the Western part of the state
+differently than (and in this case I think better than) splitlining.
+</p><p>
+And here's <b>Virginia:</b>
+</p>
+<table width="100%">
+<tr><th>Official</th><th>Olson</th></tr>
+<table>
+<img width="100%" src="VA_ba.png"/>
+<!-- <img width="100%" src="/SSHR/va_final.png"/>  -->
+<img width="100%" src="Splitline2009/va.png"/>
+<table width="100%">
+<tr><th>Splitlining</th></tr>
+<table>
+<p>
+Again, the official gerrymandering at top left
+is despicable garbage, and Olson and splitlining
+both do a decent job and again are very similar except for the big western
+district (which this time I think splitlining handles better than Olson)
+and the fact splitlining pretty much puts the Delmarva peninsula at the East
+(Accomack &amp; Northhampton
+counties; Chincoteague, Cape Charles) 
+in its own district, which I also prefer versus Olson.
+(It can't entirely separate it
+since there is not enough population in this peninsula to comprise
+a full district, but it tries the best it can.)
+We could similarly go through other states:
+</p><table width="99%">
+<caption> Click links to see maps calculated from year-2000 USA census data. 
+The "best" map according to my subjective eye, is starred(*); your opinion may differ.
+</caption>
+<tr><th>TX (32 districts)</th>
+<td><a href="Olson2000/TX_ba.png">Official &amp; Olson</td>
+<td><a href="Splitline2009/tx.png">Splitline</td>
+<td><a href="TXmoi2000.png">&Sigma;dist&sup2;-based*</td>
+<td>As <a href="http://en.wikipedia.org/wiki/2003_Texas_redistricting">re</a>Gerrymandered 
+in 2003<br>to favor Republicans</td>
+</tr>
+<tr><th>NY (29 districts)</th>
+<td><a href="Olson2000/NY_ba.png">Official &amp; Olson</td>
+<td><a href="Splitline2009/ny.png">Splitline*</td>
+<td><a href="NYmoi2000.png">&Sigma;dist&sup2;-based</td>
+<td>Census dept. provided erroneous<br>
+geographic data (chopped off part<br>of Long Island near Greenport).
+</td>
+</tr>
+<tr><th>AZ (8 districts)</th>
+<td><a href="Olson2000/AZ_ba.png">Official &amp; Olson*</td>
+<td><a href="Splitline2009/az.png">Splitline</td>
+<td><a href="AZmoi2000.png">&Sigma;dist&sup2;-based</td>
+<td>Districted by an "independent commission" (ha!);<br>
+note the green district <i>is</i> contiguous, but joined<br>
+by filaments too fine to see since &lt;&frac12; pixel wide.
+</tr>
+<tr><th>IL (19 districts)</th>
+<td><a href="Olson2000/IL_ba.png">Official &amp; Olson</td>
+<td><a href="Splitline2009/il.png">Splitline</td>
+<td><a href="ILmoi2000.png">&Sigma;dist&sup2;-based*</td>
+<td>Several too-fine-to-see filaments in the official map.</td>
+</tr>
+<tr><th>All 50 states</th>
+<td><a href="Olson2000list.html">Official &amp; Olson</td>
+<td><a href="SplitLR.html">Splitline</td>
+<td>&nbsp;</td>
+<td>
+(Unrelated: what if the entire 
+<a href="USsplitLine.png">Entire USA (lower 48)</a> were districted in 1 go?
+</td></tr>
+</tr>
+</table>
+<p>
+Here's <b>New Jersey</b> (also districted by an "independent commission," ha ha ha):
+</p>
+<table width="100%">
+<tr><th>Official</th><th>Olson</th><th>Splitline</th></tr>
+<table>
+<img width="66%" src="NJ_ba.png"/><img width="34%" src="Splitline2009/nj.png"/>
+<p>
+The conclusion for other states is almost always basically the same as for VA, TX and NJ.
+</p><p>
+This exercise has led me to be more impressed with splitlining &ndash; 
+even though it makes no serious effort to optimize, it nevertheless does quite well 
+most of the time.  Certainly Olson and splitlining yield maps far more similar than
+I would have naively expected.
+</p><p>
+<b>Tentative "current fairness" analysis:</b>
+Another kind of comparative analysis has been made by "Walabio" and by Jameson Quinn.
+Walabio claimed that
+<ol type="a"> 
+<li>
+California has more Democratic voters than Republican, hence
+with a "fair" district map should elect fewer Republicans than Democrats. <i>But </i>
+</li><li>
+Due to differences
+in the ways Olson and splitlining divvy up voters near dense cities, combined
+with the fact urban voters in the 2000-era USA tend to vote less Republican than
+rural voters, Walabio
+calculated that Olson's districting would elect <i>more</i> Republican than Democratic
+congressmen!
+Unfair!
+</li></ol>
+<p>
+Jameson Quinn then confirmed this assessment plus
+examined some other states besides CA, and again concluded that splitlining,
+at least with USA 2000-era voter distributions, tends to produce "fairer"
+district maps than Olson's computer program, i.e. better-simulating
+proportional representation.
+I warn the reader that these conclusions are tentative, based on manual inexact
+examinations of not very many US states.  They could be just wrong. 
+Even if they are valid,  I'm not sure what we should conclude.  In future, for
+example, maybe urban voters will prefer <i>Republicans</i> &ndash;
+well, that would just yield reverse-direction unfairness, but more seriously,
+the geographic distributions of
+party-affiliation within states might change
+in some other way &ndash; whereupon Olson's maps might
+become the "fairer" ones.  I don't currently understand that very well...
+but anyhow as matters presently stand there is a not-very-confident conclusion splitlining's
+maps are "fairer" than Olson's.
+</p>
+
+<a name="Ackno"></a>
+<h3> Acknowledgments </h3>
+
+<p>
+We thank
+Stefano Zunino, James Gilmour, "Walabio," and Jameson Quinn,
+for helpful comments and/or error-corrections.
+
+The shortest splitline algorithm was programmed by Ivan Ryan.
+</p>
+
+<a name="Bibliog"></a>
+<h3> References about political districting math &amp; related topics </h3>
+
+<a name="WeiszfeldRefs"></a>
+<p>
+<b>A. References about Weiszfeld-like iterations:</b>
+<br>
+Weiszfeld's original paper [Tohoku Math. Journal 43 (1937) 355-386]
+has been translated into English and republished:<br>
+Endre Weiszfeld: On the point for which the sum of the distances to n given points is minimum, 
+translated and annotated by F.Plastria, Annals of Operations Research 167,1 (March 2009) 7-41.
+["Andrew Vazsonyi" and "Endre Weiszfeld" were same person.]
+<br> &nbsp;&nbsp;&nbsp;
+Other papers on this include:
+<small>
+<br>
+Leon Cooper:
+<a href="Cooper1968Weiszfeld.pdf">An extension of the Generalized Weber Problem</a>,
+J. of Regional Science 8,2 (1968) 181-197.
+[Incidentally, this is <i>not</i>  the physics Nobel prize winner Leon N. Cooper.]
+<br>
+<!--
+Zvi Drezner: A note on accelerating the Weiszfeld procedure,
+Location Science 3,4 (December 1995) 275-279.
+[Speeds up the ultimate convergence of  Weiszfeld iteration by
+doing two consecutive iterations then assuming the differences 
+between successive points form a geometric series. Then try the
+limit of this geometric series. Experiments reported.   Probably not worth it.]
+<br>
+-->
+Ulrich Eckhardt: Weber's problem and Weiszfeld's algorithm in general [Banach] spaces,
+Math'l Programming 18,1 (1980) 186-196.
+<br>
+<!--
+P.T.Fletcher, S.Venkatasubramanian, S.Joshi:
+<a href="Fletcher_NeuroImage2009.pdf">The geometric median on Riemannian manifolds with applications to robust atlas estimation</a>,
+Neuroimage 45 (1 Suppl) (2008) s143-s152.
+<br> -->
+I.Norman Katz:
+Local convergence in Fermat's problem, Math'l Programming 4,1 (1973) 98-107;
+6,1 (1974) 89-104.  [Shows Weiszfeld algorithm generically converges in ultimately geometric,
+aka "linear," fashion, but convergence can be either sub- or superlinear in special cases.]
+<br>
+I.N.Katz &amp; L.Cooper: Optimal location on a sphere,
+Computers Math. Applic. 6,2 (1980) 175-196.
+[Propose a Weiszfeld-like iteration for the Fermat problem on a round Earth.
+It appears to converge generically in numerical experiments, e.g. see 27,6 (1994) 37-50.]
+<br>
+Harold W. Kuhn: A note on Fermat's problem, Math'l Programming 4,1 (1973) 98-107.
+[Careful proof of convergence of Weiszfeld iteration to optimum. But his final theorem
+is only correct in 2 dimensions or if the convex hull of the sites is full-dimensional.]
+<br>
+H.W.Kuhn &amp; R.E.Kuenne:
+An efficient algorithm for the numerical solution of the generalized 
+Weber problem in spatial economics, J. of Regional Science 4,2 (1962) 21-33.
+[Found 7 Weiszfeld iterations always sufficed to solve 15 problems with up to 24 sites.
+Although it is possible to devise problems for which Weiszfeld's convergence is very slow, 
+they arise rarely in practice.]
+<br>
+James G. Morris: 
+<a href="Morris1981Weiszfeld.pdf">Convergence of the Weiszfeld Algorithm
+for Weber Problems Using a Generalized "Distance" Function</a>,
+Operations Research 29,1 (Jan-Feb 1981) 37-48.
+[Morris and Cooper1968 both consider minimizing the sum of <i>Kth powers</i>
+of the distances to the sites, K&gt;0. Morris further 
+generalizes by allowing L<sub>p</sub> distance for any p&ge;1.
+The triangle inequality holds if p&ge;1 and 0&lt;K&le;1, but not if K&gt;1 or 0&lt;p&lt;1.
+The summed-power-distance function is concave-&cup; if K&ge;1 and p&ge;1, but not if 0&lt;K&lt;1.
+Morris devises a Weiszfeld-like iteration and proves convergence if 1&le;p&le;2 and 0&lt;K&le;p
+and it never lands exactly on a site. Cooper considers only p=2 and 
+considers the obvious generalization of Weiszfeld's iteration in which the site-weights are 
+proportional to the (K-2)th power of the distance to that site.  He conjectures this
+iteration generically converges to the optimum for every K with 1&le;K&lt;&infin;,
+based on the fact that he successfully solved 180 such problems by computer.
+But this has only been proven for K=1 and K=2.]
+<br>
+Lawrence M. Ostresh Jr: On the convergence of a class of iterative methods for solving the
+Weber location problem. Oper. Res. 26,4 (1978) 597-609;
+<a href="Ostresh1978WeisfeldTS.pdf">Convergence and Descent in the Fermat Location Problem</a>,
+Transportation Science 12,2 (May 1978) 153-164.
+[Ostresh's 2nd paper first notes that
+if the sites are non-collinear the 
+sum-of-distances function is <i>strictly</i> concave-&cup; hence has a unique minimum.
+Given that, he
+proves Weiszfeld's descent theorem in 1 paragraph (thm2) then further
+proves (thm3) that <i>any</i> 
+point in a ball centered at the new Weiszfeld point, with radius being
+the distance to the old one, yields descent.  That makes it trivial to avoid the
+slight flaw in the Weiszfeld iteration that if you land exactly on a site, you need 
+to divide by 0 and die.]  
+<br>
+Liping Zhang: 
+<a href="https://rangevoting.org/ZhangweiszfeldSphere.pdf">On the convergence 
+of a modified algorithm for the spherical facility location problem</a>,
+Operations Research Letters 31,2 (2003) 161-166.
+[Gives an algorithm which he proves under certain circumstances always converges to the 
+Fermat global-optimum point on a round Earth.  Because the sum-of-spherical-distances
+function is "spherically concave-&cup;" if all sites lie on the same hemisphere, and "strictly"
+so if they do not all lie on a single geodesic, it is clear there is no fundamental difficulty in
+devising such an algorithm; many approaches will work.  Similar remarks can be made
+about the K-powered L<sub>p</sub> distance variant with K&ge;1 and p&ge;1.]
+</small>
+</p>
+
+<p><b>B. The COMAP/UMAP districting-math contest of 2007:</b>
+UMAP (undergraduate journal of maths &amp; applications) issue
+28,3 (Fall 2007) pages 191-332, contains 5 papers on political districting.
+<small>
+Except that really, it only contains only <i>one</i> paper, because 
+pages 261-450 are <i>missing</i>
+from the printed journal, though allegedly available on a CD-ROM.  (Not
+in my library!)
+</small>
+These papers were judged the best 5 among 351 submissions (by teams of undergraduates all over
+the world) to a contest.  Here are those papers:
+</p><ol><li>
+Nikifor C. Bliznashki, Aaron Pollack, Russell Posner:
+<a href="MCM2007bpp.pdf">When Topologists Are Politicians</a>
+(Duke Univ. pp.249-260);
+</li><li>
+Ben Conlee, Abe Othman, Chris Yetter:
+<a href="OthmanMCM.pdf">What to Feed a Gerrymander</a>
+(Harvard, pp. 261-280);
+</li><li>
+Andrew Spann, Dan Gulotta, Daniel Kane:
+<a href="">Electoral 
+redistricting with moment of inertia and diminishing halves methods 
+</a>
+(MIT, pp.281-300);
+</li><li>
+Lukas Svec, Sam Burden, Aaron Dilley:
+<a href="Week.8.lukas.svec.pdf">Applying Voronoi Diagrams to the Redistricting Problem 
+</a>
+(Univ.of Washington Seattle, pp.301-314);
+</li><li>
+Sam Whittle, Wesley Essig, Nathaniel S. Bottman:
+<a href="MCM_2007Smaller.pdf">
+Why Weight? A Cluster-Theoretic Approach to Political Districting 
+</a>
+(Also Univ.of Washington Seattle,
+pp.315-332).
+</li>
+</ol>
+<p>
+Ingredients of our suggested
+<a href="#Phase2">two phase</a> approach and the Voronoi theorem were discovered and rediscovered
+and/or refined by a number of people listed above and below (including by me; the earliest 
+discoverers seem to be Weaver and Hess in the early 1960s), but we've relied mainly on
+its treatment by Spann et al.
+</p><a name="BibliogC"></a><p>
+<b>C. Other books and papers:</b>
+</p>
+Sanjeev Arora:
+<a href="AroraTSP.ps">
+Polynomial-time Approximation Schemes for Euclidean TSP and other Geometric Problems</a>,
+Journal of the ACM 45,5 (1998) 753-782. 
+<a href="arorageo.ps">
+Approximation schemes for NP-hard geometric optimization problems: A survey<a>,
+ Math'l Programming 97,1-2 (July 2003) 43-69.
+<br>
+S.Arora, P.Raghavan, S.Rao:
+<a href="AroraRaghavanRao.ps">Approximation schemes for Euclidean k-medians and related 
+problems</a>,
+STOC 30 (1998) 106-113.
+<br>
+David Arthur &amp; Sergei Vassilvitskii:
+<a href="kMeansPlusPlus.pdf"><tt>k-means++</tt>: The Advantages of Careful Seeding</a>,
+Proceedings 18th annual ACM-SIAM symposium on Discrete algorithms SODA (2007) 1027-1035.
+[Unfortunately their proof does not work if we demand equipopulousness.]
+<!--
+<br>
+Kevin Q. Brown:
+Voronoi diagrams from convex hulls,
+Info. Processing Letters 9,5 (Dec.1979) 223-228.
+-->
+<br>
+H.S.M.Coxeter:
+NonEuclidean geometry,
+Mathematical Association of America 1998 (originally written in the 1950s).
+QA685.C83
+<br>
+G.B.Dantzig: 
+<A href="http://press.princeton.edu/titles/413.html">Linear programming and extensions</a>, 
+Princeton Univ. Press 1963.
+<br>
+S.P.Fekete, H.Meijer, A.Rohe, W.Tietze:
+<a href="http://arxiv.org/abs/cs.DS/0212044">
+Solving a "hard" problem to approximate an "easy" one: good and fast heuristics 
+for large geometric maximum matching and maximum Traveling Salesman problems</a>, 
+Journal of Experimental Algorithms 7 (2002), article 11.
+<br>
+Werner Fenchel: 
+Elementary geometry in hyperbolic space,
+W. de Gruyter, Berlin 1989.
+QA685.F38
+<br>
+Junichiro Fukuyama:
+<a href="Fukuyama2006.10.2.pdf">NP-completeness of the planar separator problems</a>,
+J. Graph Algorithms &amp; Applications 10,2 (2006) 317-328.
+<br>
+M.R.Garey &amp; D.S.Johnson: 
+<a href="http://www.amazon.com/Computers-Intractability-NP-Completeness-Mathematical-Sciences/dp/0716710455">Computers and Intractability: A Guide to the Theory of NP-Completeness</a>,
+Freeman 1973.
+<br>
+R.L.Graham, E.Lubachevsky, K.J.Nurmela, P.R.Ostergard:
+<a href="https://rangevoting.org/GrahamGraham98_01_circles.pdf">Dense
+packings  of   congruent  circles  in  a  circle</a>,
+Discrete Maths 181 (1998) 139-154; see also 
+<a href="http://en.wikipedia.org/wiki/Circle_packing_in_a_circle">wikipedia</a>'s
+summary of this.
+<br>
+S.W.Hess, J.B.Weaver, H.J.Siegfeldt, J.N.Whelan, P.A.Zitlau:
+Nonpartisan political districting by computer, Operations Research 13 (1965) 998-1106.
+<br>
+Mehran Hojati: 
+<a href="Hojati.pdf">Optimal political districting</a>,
+Computer &amp; Operations Research 23,12 (1996) 1147-1161.
+[This paper proves an NP-completelness result and also suggests a method resembling both our
+<a href="#Phase2">2-phase improver</a> and the Spann-Gulotta-Kane approach,
+for minimizing sum-of-squared-distances measure;
+and finally tries the method out on the problem of dividing Saskatoon into 42 districts.]
+<br>
+H.B. Hunt III, M.V. Marathe, V.Radhakrishnan, R.E.Stearns:
+<a href="HuntMRS98.pdf">The complexity of planar counting problems</a>,
+SIAM J. Computing 27,4 (1998) 1142-1167.
+<br>
+<!-- Stavros G. Kolliopoulos &amp; Satish Rao:
+<a href="kmedian-3rd.pdf">
+nearly linear-time approximation scheme for the Euclidean <i>k</i>-median problem</a>,
+SIAM J. Computing 37,3 (July 2007) 757-782.
+<br> -->
+Meena Mahajan, Prajakta Nimbhorkar, Kasturi Varadarajan:
+<a href="kmeansNPhard.pdf">The planar k-means problem is NP-hard</a>,
+Theoretical Computer Science 442 (July 2012) 13-21.
+A preliminary version appeared in Proceedings of 
+3rd Annual Workshop on Algorithms and Computation
+(WALCOM 2009) in Kolkata India;
+Springer-Verlag LNCS#5431, pages 274-285.  [They also remark that another
+NP-hardness proof was found independently by Andrea Vattani, which works for 
+k&asymp;N<sup>c</sup> for any 0&lt;c&lt;1.]
+<br>
+Nimrod Megiddo &amp; Kenneth J. Supowit: 
+<a href="MegiddoSupowit1984.pdf">On the Complexity of Some Common Geometric Location Problems</a>,
+SIAM J. Comput. 13,1 (1984) 182-196.
+[In their proof of the NP-hardness of the "k-median problem," it is almost trivial
+to make their NP-hard
+point-set  have <i>equal</i> numbers of points served by
+each median in the optimal solution.  Then it shows NP-hardness of
+Olson-optimal equipopulous districting.  The same remark applies to the
+Mahajan et al NP-completeness proof for the "k-means problem," thus showing the NP-completeness
+of optimal equipopulous districting under the squared-distance-based cost measure.]
+<br>
+Joseph S.B. Mitchell:
+<a href="MitchellGuill99.ps">Guillotine Subdivisions 
+Approximate Polygonal Subdivisions:
+A simple polynomial-time approximation scheme for geometric TSP, k-MST, and related problems</a>,
+SIAM J. Computing 28,4 (1999) 1298-1309.
+There is also 
+an <a href=" MitchellGuillotine3.pdf">extension/improvement</a> of these techniques by Mitchell
+and a subsequent <a href="guillotineCut.ps">survey/reexamination</a> of them by
+by X.Cheng, D-Z.Du, J-M. Kim, H.Q.Ngo 2001.
+<br>
+F.P.Preparata &amp; S.I.Hong: Convex hulls of finite sets of points in two and
+three dimensions, Communicationa of the Assoc. for Computing Machinery 20,2 (Feb.1977) 87-93.
+<br>
+F.P.Preparata &amp; D.E.Muller: 
+Finding the intersection of n halfspaces in time O(nlogn),
+Theoretical Computer Science  8 (1979) 45-55.
+<br>
+Kokichi Sugihara:
+<a href="jgg0606.pdf">Laguerre Voronoi Diagram on the Sphere</a>,
+J. Geometry and Graphics 6,1 (2002) 69-81.
+<br>
+Pravin M. Vaidya: 
+Geometry helps in matching, <!--STOC 20 (1988) 422-425-->
+SIAM J. Comput. 18,6 (1989) 1201-122;
+Approximate Minimum Weight Matching on Points in k-Dimensional Space,
+Algorithmica 4,4 (1989) 569-583.
+<br>
+Kasturi R. Varadarajan:
+A Divide-and-Conquer Algorithm for Min-Cost Perfect Matching in the Plane,
+39th Annual Symposium on Foundations of Computer Science
+SFOCS 39 (1998) 320-331;
+<br>
+K.R. Varadarajan &amp; Pankaj K. Agarwal:
+Approximation algorithms for bipartite and non-bipartite matching in the plane,
+Symposium Computational Geometry (SoCG 2004) 247-252;
+Symposium on Discrete Algorithms (SODA 1999) 805-814.
+<br>
+Andrea Vattani: 
+<a href="VattaniKmeans.pdf">K-means requires exponentially many iterations even in the plane</a>,
+Special Issue of Discrete and Computational Geometry 45,4 (March 2011) 596-616.
+<br>
+Andrea Vattani: 
+<a href="VattaniKmeansNPC.pdf">The NP-hardness of k-means clustering in the plane</a>,
+Manuscript filched from Vattani's web page 2009.
+<br>
+B.Weaver &amp; S.W.Hess: A procedure for nonpartisan districting,
+Yale Law Journal 73 (1963) 288-308.
+<br>
+Justin C. Williams Jr: <a href="http://onlinelibrary.wiley.com/doi/10.1111/j.1435-5597.1995.tb00626.x/abstract">Political redistricting &ndash; a review</a>, 
+Papers in Regional Science 74,1 (1995) 13-40.
+</p>
+<p>
+<b>D. References about measuring district-shape "quality" (mostly embarrassingly bad ideas):</b>
+</p><p>
+Ronald R. Boyce &amp; W.A.V.Clark: The concept of shape in geography, 
+Geographical Review 54 (1964) 561-572.
+<br>
+Christopher P. Chambers &amp; Alan D. Miller: A measure of bizarreness, 
+Quarterly Journal of Political Science 5,1 (2010) 27-44.
+<br>
+C.C.Harris: A scientific method of districting, Behavioral Science 9 (1964) 219-225.
+<br>
+H.F.Kaiser:  An objective method for establishing legislative districts, 
+Midwest  J. Political Science 10 (1966) 200-213.
+<!--
+<br>
+John Mackenzie: <a href="JohnMackGerry.pdf">Gerrymandering and Legislator Efficiency</a>
+Mackenzie introduced the following measure Q of badness, which some have branded the
+"Mackenzie index":
+<blockquote>
+Let P=g+n denote total district perimeter as the sum of mutable political boundary
+length g plus immutable natural boundary length n.
+The the mutable proportion equals g/P.  The polygon
+complexity attributable to political manipulation is 
+Q = (g/P)(P<sup>2</sup>/A) = gP/A.
+</blockquote>
+
+For districts with g=P, the least possible Mackenzie index would
+be achieved on a flat earth by a circle, with
+  Q = 4*pi = 12.57.
+A square would have  Q = 16.
+A 2x1 rectangle would have Q = 18.
+Q values as low as 0 are possible (for a state consisting
+of exactly 1 district, entire boundary immutable).
+The worst districts in the USA, color-coded red by Mackenzie,
+have 200<Q<900.
+
+Mackenzie then used US government district shape datafiles to compute all Q values
+for all congressional districts for the 106th through 110th congresses (years 1999-2008)
+and used the results to create a color coded map of the USA highlighting the 
+worst-gerrymandered areas (101&le;Q&le;870)
+in orange and red, and the least-gerrymandered areas (0&le;Q&le;75)
+in green.  
+The following states are the ones containing large amounts of orange and red:
+TX, FL, SC, MA, TN, NC, AL, VA in
+approximately worst&rarr;best order judged by my eye.
+Mackenzie also computed (<i>not</i> by eye, but rather by
+average Q for their districts) his list of the worst-gerrymandered states finding
+State Seats average(Q)
+MD 8 150.3
+NC 13 115.5
+FL 25 90.4
+PA 19 89.1
+CA 53 80.6
+NJ 13 77.6
+IL 19 76.6
+TX 32 68.6
+AL 7 64.8
+TN 9 62.9
+MA 10 62.0
+VA 11 55.7
+NY 29 54.9
+OH 18 51.0
+as the 14 states with average(Q)&gt;50.
+-->
+<br>
+Lee Papayanopoulos: Quantitative measures underlying apportionment methods,
+Annals New York Academy of Sciences Special Issue 219 (1973) 181-191.
+<br>
+E.C.Roeck: Measuring compactness as a requirement of legislative apportionment, 
+Midwest J. Political Science 5 (1961) 70-74.
+<br>
+Joseph E. Schwartzberg: Reapportionment, gerrymanders, and the notion of compactness, 
+Minnesota Law Review 50 (1966) 443-452.
+<br>
+Peter J. Taylor: A new shape measure for evaluating electoral districts,
+American Political Science Review 67,3 (1977) 947-950.
+<br>
+Takeo Yamada: <a href="Yamada09-3.pdf">A minimax spanning forest
+approach to the political districting problem</a>,
+Int'l J. Systems Science 40,5 (May 2009) 471-477.
+<br>
+H.P.Young: 
+<a href="YoungCompactness.pdf">Measuring the compactness of legislative districts</a>, 
+Legislative Studies Quarterly 13,1 (1988) 105-115.
+[Discusses how bad various district-shape-quality measures advanced by
+previous authors are, hence suggests giving up on all of them and abandoning problem as 
+hopeless. But his review also is of low quality, e.g. contains not a single theorem
+and reaches some too-rapid conclusions via extremely shallow reasoning.]
+</p>
+<p><b>E. Other Redistricting Websites</b>
+</p><p>
+Brian Olson has a nice <a href="http://bdistricting.org">website</a>
+where he exhibits maps drawn by his open-source program trying
+to use "simulated annealing" and
+immense amounts of computation
+to work out probably-near-optimum district maps for all
+50 states ("optimum" using a bastardized variant of the least-average-distance-to-center
+measure described above).  He's done that for both the year-2000 and 
+<a href="http://bdistricting.com/2010/">2010</a> censuses.
+</p><p>
+Drs. <a href="http://elections.gmu.edu/Redistricting.html">Michael McDonald &amp; Micah Altman</a> 
+have an automated redistricting and districting-analysis tool called BARD
+(Better Automated ReDistricting).</p>
+<p><a href="http://davesredistricting.blogspot.com/">Dave's Redistricting</a> has a program you can run to tinker with district maps if you have microsoft silverlight.</p>
+<p><a href="SplitLR.html">The Shortest Splitline Algorithm</a> tries to make fair maps by making a reasonable line at every step. Also a public-source program;
+successfully run on year-2000 census data for all 50 states.
+But the US Census Bureau changed their data format for 2010, breaking the program.
+</p>
+<p><a href="http://www.stealingourvotes.com/pages/1/index.htm">George L Clark</a> has written his own redistricting software and come up with some good, substantially similar and interestingly different solutions based on a perimeter measure.</p>
+<p><a href="http://www.burtonsys.com/redist.html">David Burton is working on redistricting for North Carolina</a>. He has a similar approach to Olson
+but wants districts with equal numbers of <em>voters</em> rather than equal <i>population</i>.
+(Which goal, incidentally, is unconstitutional 
+according to the US <a href="SupremeCt.html">Supreme Court</a>.)</p>
+<!--
+<p><a href="http://www.fraudfactor.com/ffgerrymander.html">A long and extensive treatise on gerrymandering</a> with some good history and simple illustrative examples. Also some things I disagree with that should be taken skeptically.</p>
+-->
+<p>Prof. Moon Duchin's
+<a href="https://sites.tufts.edu/gerrymandr/resources/">gerrymandering resources</a>
+at Tufts University.
+</p><p>
+<p>Kevin Baas's
+<a href="http://autoredistrict.org/">autoredistrict.org</a>:
+"Auto-Redistrict is a free and open source computer program that automatically creates fair and compact electoral districts. Simply open a shapefile, load in census and election data (if not already included in the shapefile), and hit 'Go.'
+Auto-Redistrict uses a genetic algorithm to design districts that meet multiple criteria..."
+It seems highly sophisticated, but also complicated and 
+computationally very intense, and he makes a lot of decisions that
+seem suspicous to me.  Baas has a lot of original ideas.
+</p>
+<p>High quality authoritative congressional district
+maps are available from 
+<a href="http://nationalatlas.gov/printable/congress.html">nationalatlas.gov</a></p>
+
+<!--
+<a name="election"><h2>Other Election Issues</h2></a>
+<p>See also <a href="http://bolson.org/voting/">bolson's page on election reform</a> which mostly focuses on using rankings or ratings ballots to improve the outcome of elections.</p>
+
+<a name="solver"><h2>How does your solver work?</h2></a>
+<p>My implementation is a heuristic based gradient descent solver with
+simulated annealing jitter. It looks at the boundaries
+between districts and tries to make things better by flipping one block
+from district A to district B (and possibly over some number of steps,
+other blocks from B to C and C to A). It doesn't actually directly optimize the measure of population compactness, but looks at related measures like the ratio of the block's distance to the average edge blocks' distances from each district's center, and the ratio of the populations of the two districts the block might go into. Each district grabs up to one block, then centers are recalculated and the cycle begins again checking all the edge blocks.</p>
+
+<a name="open"><h2>Open Source</h2></a>
+<p>Part of the point of all this is to increase openness and participation in government.
+So, nothing is hidden.
+The tools and the data are all out there, and hopefully better than reinventing all this stuff again.<p>
+<p>The automatic redistricting solver can be had here: <a href="http://code.google.com/p/redistricter/">Open Source Redistricting</a> (GPLv2).
+The code isn't pretty or easy, but I have put in a little work recently on commenting and cleanup, so it shouldn't be too bad.
+Someone interested should definitely be able to take this and start tinkering with alternate solving algorithms in pretty short order.</p>
+-->
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+<!--
+sq := integrate( integrate( sqrt(x^2+y^2), x=-1/2..1/2 ), y=-1/2..1/2);
+
+hxK := 6*integrate( integrate( sqrt(x^2+y^2), x=y/sqrt(3) .. (2*K-y)/sqrt(3) ), y=0..K);
+evalf(sq);  #0.3825978582
+
+hxa := 6*integrate( integrate( 1, x=y/sqrt(3) .. (2*K-y)/sqrt(3) ), y=0..K);
+sqa := integrate( integrate( 1, x=-1/2..1/2 ), y=-1/2..1/2);
+
+K := 3^(3/4) * 2^(1/2) / 6;    #causes hxa=1
+hxK;
+evalf(%);   #0.3771967355
+#hexagon slightly better than square by Olson avgdist measure.
+-->
+<!--
+Alberto Caprara &amp; Romeo Rizzi:
+Packing triangles in bounded degree graphs
+Information Processing Letters 84,4 (Nov.2002) 175-180.
+
+http://www.google.com/url?sa=t&source=web&cd=2&sqi=2&ved=0CCMQFjAB&url=http%3A%2F%2Fciteseerx.ist.psu.edu%2Fviewdoc%2Fdownload%3Fdoi%3D10.1.1.94.1082%26rep%3Drep1%26type%3Dpdf&rct=j&q=triangle%20packing%20planar%20NP%20%20Capraraa&ei=Qhb-TbWcJ8ru0gHsx5SUAw&usg=AFQjCNGOcIyCtRRv_zN3XfQrUcIqDESevA&sig2=PIiXZySRRgGp-70VDCE3WQ&cad=rja
+-->
+

@@ -1,0 +1,120 @@
+
+<html>
+<head>
+<title>
+RangeVoting.org - 9-voter Condorcet election example
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> A 9-voter 3-candidate election example suggesting something is wrong with 
+both instant runoff and Condorcet</H2>
+
+<p><small>By Toby Pereira, May 2016</small></p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff00">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr bgcolor="aqua"> 
+<td align="center">
+  <b>3</b>
+</td>
+<td>
+A>B>C
+</td>
+</tr>
+<tr bgcolor="aqua"> 
+<td align="center">
+  <b>2</b>
+<td>
+B>A>C
+</td>
+</tr>
+<tr bgcolor="aqua">
+<td align="center">
+  <b>2</b>
+<td>
+B>C>A
+</td>
+</tr>
+<tr bgcolor="aqua">
+<td align="center">
+   <b>2</b>
+<td>
+C>A>B
+</td>
+</tr>
+</table>
+
+<p>
+<b>A</b> is the Condorcet winner,
+beating B pairwise by 5:4
+and also
+beating C pairwise by 5:4.
+Also, A would win using "instant runoff voting" (C eliminated, then A defeats B 5:4).
+Now: remove two voters each of types "A>B>C," "B>C>A," and "C>A>B" 
+(six removed in all) who all together should constitute a three-way tie.
+Then you are left with:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff00">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr bgcolor="aqua"> 
+<td align="center">
+  <b>1</b>
+</td>
+<td>
+A>B>C
+</td>
+</tr>
+<tr bgcolor="aqua"> 
+<td align="center">
+  <b>2</b>
+<td>
+B>A>C
+</td>
+</tr>
+<tr>
+</table>
+
+<p>
+whereupon <b>B</b> becomes the Condorcet winner!
+Namely, B beats A pairwise by 2:1,
+and B also beats C pairwise by 3:0.
+And B also is the winner using "instant runoff voting."
+</p>
+
+<p>
+This seems to demonstrate a <b>self-contradiction</b> within the Condorcet philosophy.
+(Also within the instant runoff philosophy.)
+</p>
+<p>
+However, it does <i>not</i> demonstrate a contradiction for Borda voting;
+B is the Borda winner in both elections.
+To see a Borda self-contradiction, consider
+<a href="rangeVborda.html#JohnsonEx">this</a>.
+</p>
+
+
+<br>
+<p><a href="FishburnAntiC.html">Fishburn's anti-Condorcet example</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

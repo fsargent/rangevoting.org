@@ -1,0 +1,337 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Election Collection
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> An Election Collection (June 2009: now includes over 100 elections!) </H1>
+
+<H2> Tideman data collection: 87 ranked-ballot elections </H2>
+
+<p>
+The data in these files were gathered by two different investigators.    
+Elections <b>1-32</b> and <b>48-99</b> were gathered in 1987 and 1988       
+respectively, by Nicolaus Tideman, with support from NSF grant SES86-18328.   
+Elections <b>33-35</b> were gathered by David Hill whose address is Laverton,
+Berry Lane, Chorleywood, Rickmansworth, Herts, WD3 5EY, England.  
+Numbers <b>36-47</b> were not assigned.
+</p><p>
+The data are records of ballots from elections of British organizations  
+(mostly trade unions
+using PR-STV or IRV voting)
+in which the voters ranked the candidates.  The data were gathered under
+a stipulation that the organizations involved would remain anonymous.
+</p><p>
+The data are in a format developed by David Hill.  
+The <i>first line</I> contains the <i>number of candidates</i> and
+the <i>number to be elected</i>.  (Many but not all elections were multiwinner.) 
+In subsequent lines that represent ballot papers, the first number is always 1.  
+(The format was designed for a counting program that treats the first 
+number as the number of instances of the ordering of the candidates on the line.)  
+Next on these lines is a sequence of numbers representing a voter's 
+reported ranking:  The number of the candidate ranked first, the
+number of the candidate ranked second, and so on.  
+The end of the reported ranking is signaled by a zero.  
+A zero at the beginning of the ranking is a signal that the list of ballot papers has ended.  
+</p><p>
+Next come the names of the candidates, each in parentheses, as required by the counting program, 
+and finally the name of the election.
+</p><p>
+Invalid votes and a small number of references to write-in candidates were deleted from the data.
+</p><p>
+Any questions or comments regarding the data should be addressed to:     
+</p>
+<pre>                                                                              
+     Nicolaus Tideman       
+     Economics Department   
+     Virginia Tech          
+     Blacksburg VA 24061    
+     (540) 231-7592         
+     e-mail: ntideman AT vt.edu             
+</pre>
+
+<H3> Comments on Tideman data </H3>
+
+<p>
+The least number of voters in any Tideman election is 9, in A33.HIL, which has 18 candidates.
+The greatest number of voters in any Tideman election is 3422, in A9.HIL, 
+which had 12 candidates and 11 winners (although this could be thought
+of as a 1-<i>loser</i> election!); this also is the greatest number of winners in
+any Tideman election.
+The greatest number of candidates in any Tideman election is 26, in A13.HIL (with 849 voters).
+The least number of candidates in any Tideman election is 3, in several elections
+including A77.HIL.
+The average number of voters in the 87 Tideman elections is 410.
+</p>
+
+<H3> 2010 UK Labour Party leader election data </H3>
+<p>
+<a href="LabourUK2010.html">/LabourUK2010.html</a>
+</P>
+
+<H3> 1998 skating data </H3>
+
+<p>
+Sandra J. Loosemore collected all the judge's rankings of the skaters in the 48 skating 
+subcontests of the 4 top skating contests 
+during 1998.  
+Note: actually each judge rated each skate with a real number from 0 to 6
+(such as "5.9") <i>but</i> those real numbers were <i>ignored</i> by the voting system for 
+allocating gold, silver and bronze medals &ndash; which 
+converted them all to <i>rank-orders</i> and from then onward the numbers played no role.
+Unfortunately Loosemore did not provide the original real numbers.  But
+she did provide the rank-orders.
+Read down the Kth column for each event to get the Kth judge's rank ordering,
+where "1" is the rank of the best skater according to that judge.
+It appears there were always 9 judges (voters).  For example,
+in the Europeans, the first judge ranked TELENKOV 27th in the men's short program.
+</p>
+
+<p>
+<a rel="nofollow" href="SkateData1998.txt">SkateData1998.txt</a>
+<!--
+<a rel="nofollow" href="obo-euros.el">European Championships</a>,<br>
+<a rel="nofollow" href="obo-oly.el">Olympics</a>,<br>
+<a rel="nofollow" href="obo-wjr.el">World Junior Championships</a>,<br>
+<a rel="nofollow" href="obo-worlds.el">World Championships</a>
+-->
+</p>
+
+
+<H3> Additional Elections (beyond those collected by Tideman) </H3>
+<p>
+Anybody who wants to contribute additional new election data
+(preferably in the same format or very near...) please contact me:<br>
+&nbsp;&nbsp;    warren.wds at gmail.com
+</p>
+<p>
+WDS has added the annual <b>Debian Leader Elections</b> 2001-2006.
+These all were single-winner elections conducted
+using Schulze-beatpaths Condorcet voting method.
+The number of voters ranged from 311 to 505 and the number of candidates from 4 to 8.
+The last candidate was always "None of The Above" (which can be viewed
+as an "approval threshold"; so far, NOTA has never won a Debian election).
+In these elections some votes expressed <i>equal</i> 
+rankings, e.g. ranking two candidates <i>both</i> 1
+or both 2 (this was allowed by the rules).  Unfortunately Tideman's HIL format does
+not allow equal rankings, so the votes have been converted to strict rankings by favoring
+the lower-indexed candidate to break any and all such ties.
+</p>
+
+<H3> Tideman data files </H3>
+<p>
+<a rel="nofollow" href="TiData/A1.HIL">A1.HIL</a>,
+<a rel="nofollow" href="TiData/A2.HIL">A2.HIL</a>,
+<a rel="nofollow" href="TiData/A3.HIL">A3.HIL</a>,
+<a rel="nofollow" href="TiData/A4.HIL">A4.HIL</a>,
+<a rel="nofollow" href="TiData/A5.HIL">A5.HIL</a>,
+<a rel="nofollow" href="TiData/A6.HIL">A6.HIL</a>,
+<a rel="nofollow" href="TiData/A7.HIL">A7.HIL</a>,
+<a rel="nofollow" href="TiData/A8.HIL">A8.HIL</a>,
+<a rel="nofollow" href="TiData/A9.HIL">A9.HIL</a>,
+<br>
+<a rel="nofollow" href="TiData/A10.HIL">A10.HIL</a>,
+<a rel="nofollow" href="TiData/A11.HIL">A11.HIL</a>,
+<a rel="nofollow" href="TiData/A12.HIL">A12.HIL</a>,
+<a rel="nofollow" href="TiData/A13.HIL">A13.HIL</a>,
+<a rel="nofollow" href="TiData/A14.HIL">A14.HIL</a>,
+<a rel="nofollow" href="TiData/A15.HIL">A15.HIL</a>,
+<a rel="nofollow" href="TiData/A16.HIL">A16.HIL</a>,
+<a rel="nofollow" href="TiData/A17.HIL">A17.HIL</a>,
+<a rel="nofollow" href="TiData/A18.HIL">A18.HIL</a>,
+<a rel="nofollow" href="TiData/A19.HIL">A19.HIL</a>,
+<br>
+<a rel="nofollow" href="TiData/A20.HIL">A20.HIL</a>,
+<a rel="nofollow" href="TiData/A21.HIL">A21.HIL</a>,
+<a rel="nofollow" href="TiData/A22.HIL">A22.HIL</a>,
+<a rel="nofollow" href="TiData/A23.HIL">A23.HIL</a>,
+<a rel="nofollow" href="TiData/A24.HIL">A24.HIL</a>,
+<a rel="nofollow" href="TiData/A25.HIL">A25.HIL</a>,
+<a rel="nofollow" href="TiData/A26.HIL">A26.HIL</a>,
+<a rel="nofollow" href="TiData/A27.HIL">A27.HIL</a>,
+<a rel="nofollow" href="TiData/A28.HIL">A28.HIL</a>,
+<a rel="nofollow" href="TiData/A29.HIL">A29.HIL</a>,
+<br>
+<a rel="nofollow" href="TiData/A30.HIL">A30.HIL</a>,
+<a rel="nofollow" href="TiData/A31.HIL">A31.HIL</a>,
+<a rel="nofollow" href="TiData/A32.HIL">A32.HIL</a>,
+<a rel="nofollow" href="TiData/A33.HIL">A33.HIL</a>,
+<a rel="nofollow" href="TiData/A34.HIL">A34.HIL</a>,
+<a rel="nofollow" href="TiData/A35.HIL">A35.HIL</a>,
+<br>
+<a rel="nofollow" href="TiData/A48.HIL">A48.HIL</a>,
+<a rel="nofollow" href="TiData/A49.HIL">A49.HIL</a>,
+<br>
+<a rel="nofollow" href="TiData/A50.HIL">A50.HIL</a>,
+<a rel="nofollow" href="TiData/A51.HIL">A51.HIL</a>,
+<a rel="nofollow" href="TiData/A52.HIL">A52.HIL</a>,
+<a rel="nofollow" href="TiData/A53.HIL">A53.HIL</a>,
+<a rel="nofollow" href="TiData/A54.HIL">A54.HIL</a>,
+<a rel="nofollow" href="TiData/A55.HIL">A55.HIL</a>,
+<a rel="nofollow" href="TiData/A56.HIL">A56.HIL</a>,
+<a rel="nofollow" href="TiData/A57.HIL">A57.HIL</a>,
+<a rel="nofollow" href="TiData/A58.HIL">A58.HIL</a>,
+<a rel="nofollow" href="TiData/A59.HIL">A59.HIL</a>,
+<br>
+<a rel="nofollow" href="TiData/A60.HIL">A60.HIL</a>,
+<a rel="nofollow" href="TiData/A61.HIL">A61.HIL</a>,
+<a rel="nofollow" href="TiData/A62.HIL">A62.HIL</a>,
+<a rel="nofollow" href="TiData/A63.HIL">A63.HIL</a>,
+<a rel="nofollow" href="TiData/A64.HIL">A64.HIL</a>,
+<a rel="nofollow" href="TiData/A65.HIL">A65.HIL</a>,
+<a rel="nofollow" href="TiData/A66.HIL">A66.HIL</a>,
+<a rel="nofollow" href="TiData/A67.HIL">A67.HIL</a>,
+<a rel="nofollow" href="TiData/A68.HIL">A68.HIL</a>,
+<a rel="nofollow" href="TiData/A69.HIL">A69.HIL</a>,
+<br>
+<a rel="nofollow" href="TiData/A70.HIL">A70.HIL</a>,
+<a rel="nofollow" href="TiData/A71.HIL">A71.HIL</a>,
+<a rel="nofollow" href="TiData/A72.HIL">A72.HIL</a>,
+<a rel="nofollow" href="TiData/A73.HIL">A73.HIL</a>,
+<a rel="nofollow" href="TiData/A74.HIL">A74.HIL</a>,
+<a rel="nofollow" href="TiData/A75.HIL">A75.HIL</a>,
+<a rel="nofollow" href="TiData/A76.HIL">A76.HIL</a>,
+<a rel="nofollow" href="TiData/A77.HIL">A77.HIL</a>,
+<a rel="nofollow" href="TiData/A78.HIL">A78.HIL</a>,
+<a rel="nofollow" href="TiData/A79.HIL">A79.HIL</a>,
+<br>
+<a rel="nofollow" href="TiData/A80.HIL">A80.HIL</a>,
+<a rel="nofollow" href="TiData/A81.HIL">A81.HIL</a>,
+<a rel="nofollow" href="TiData/A82.HIL">A82.HIL</a>,
+<a rel="nofollow" href="TiData/A83.HIL">A83.HIL</a>,
+<a rel="nofollow" href="TiData/A84.HIL">A84.HIL</a>,
+<a rel="nofollow" href="TiData/A85.HIL">A85.HIL</a>,
+<a rel="nofollow" href="TiData/A86.HIL">A86.HIL</a>,
+<a rel="nofollow" href="TiData/A87.HIL">A87.HIL</a>,
+<a rel="nofollow" href="TiData/A88.HIL">A88.HIL</a>,
+<a rel="nofollow" href="TiData/A89.HIL">A89.HIL</a>,
+<br>
+<a rel="nofollow" href="TiData/A90.HIL">A90.HIL</a>,
+<a rel="nofollow" href="TiData/A91.HIL">A91.HIL</a>,
+<a rel="nofollow" href="TiData/A92.HIL">A92.HIL</a>,
+<a rel="nofollow" href="TiData/A93.HIL">A93.HIL</a>,
+<a rel="nofollow" href="TiData/A94.HIL">A94.HIL</a>,
+<a rel="nofollow" href="TiData/A95.HIL">A95.HIL</a>,
+<a rel="nofollow" href="TiData/A96.HIL">A96.HIL</a>,
+<a rel="nofollow" href="TiData/A97.HIL">A97.HIL</a>,
+<a rel="nofollow" href="TiData/A98.HIL">A98.HIL</a>,
+<a rel="nofollow" href="TiData/A99.HIL">A99.HIL</a>
+</p>
+<H3> Debian Leader Election data files </H3>
+<p>
+In Tideman's format:
+</p>
+<p>
+<a rel="nofollow" href="TiData/D01.HIL">D01.HIL</a>,
+<a rel="nofollow" href="TiData/D02.HIL">D02.HIL</a>,
+<a rel="nofollow" href="TiData/D03.HIL">D03.HIL</a>,
+<a rel="nofollow" href="TiData/D04.HIL">D04.HIL</a>,
+<a rel="nofollow" href="TiData/D05.HIL">D05.HIL</a>,
+<a rel="nofollow" href="TiData/D06.HIL">D06.HIL</a>
+</p>
+<p>
+In the format originally provided by Debian (which is better since it allows 
+equal rankings in ballots):
+</p>
+<p>
+<a rel="nofollow" href="TiData/leader2001_tally.txt">leader2001_tally.txt</a>, &nbsp;
+<a rel="nofollow" href="TiData/leader2002_tally.txt">leader2002_tally.txt</a>,<br>
+<a rel="nofollow" href="TiData/leader2003_tally.txt">leader2003_tally.txt</a>, &nbsp;
+<a rel="nofollow" href="TiData/leader2004_tally.txt">leader2004_tally.txt</a>,<br>
+<a rel="nofollow" href="TiData/leader2005_tally.txt">leader2005_tally.txt</a>, &nbsp;
+<a rel="nofollow" href="TiData/leader2006_tally.txt">leader2006_tally.txt</a>,<br>
+<a rel="nofollow" href="TiData/leader2007_tally.txt">leader2007_tally.txt</a>.
+</p>
+<p>
+Same thing but cleaned up to make them all the same, machine-readable, format:
+</p>
+<p>
+<a rel="nofollow" href="TiData/DB2001.DEB">DB2001.DEB</a>, &nbsp;
+<a rel="nofollow" href="TiData/DB2002.DEB">DB2002.DEB</a>, &nbsp;
+<a rel="nofollow" href="TiData/DB2003.DEB">DB2003.DEB</a>, &nbsp;
+<a rel="nofollow" href="TiData/DB2004.DEB">DB2004.DEB</a>, &nbsp;
+<a rel="nofollow" href="TiData/DB2005.DEB">DB2005.DEB</a>, &nbsp;
+<a rel="nofollow" href="TiData/DB2006.DEB">DB2006.DEB</a>,<br>
+<a rel="nofollow" href="TiData/DB2007.DEB">DB2007.DEB</a>.
+</p>
+
+<H3> Multiwinner elections carried out using <a href="RRV.html">reweighted range voting</a> </H3>
+
+<p>
+A real-world high stakes
+<a href="June2011RealWorldRRVvotes.txt ">election</a>
+with 9 winners and 39 voters that was carried out with RRV
+(you will need to view it with wide window). 
+</p>
+
+
+<H3> More election data </H3>
+<p>
+The <a href="HaikuIcon.html">&quot;Haiku&quot; icon election</a> is another dataset.
+<a rel="nofollow" href="HaikuScores.txt">Raw data</a> for it.
+</p>
+<p>
+The <a rel="nofollow" href="SF07HumanRead.txt">San Francisco 2007 Mayoral</a>
+race (about 150000 voters; 12 on-ballot candidates plus 6 write-ins;
+conducted using <a href="IRV3.html">top-3-only bastardized IRV</a>, won by Gavin
+Newsome; also G.N. won under bastardized Borda count and with every Condorcet method).
+Format with one unique-ballot-type per line, each line comes with count of how many times
+that ballot was cast.   UNDERVOTES and OVERVOTES are two pseudo-candidates
+used by San Francisco to denote somebody leaving that slot in the 3-slot-rank-order
+blank or ranking two or more candidates in that slot, respectively (I presume).
+</p>
+<p>
+The <a rel="nofollow" href="DublinNorthSorted.txt">Dublin North</a>
+STV race (13 candidates, 43943 voters),
+<a rel="nofollow" href="DublinWestSorted.txt">Dublin West</a>
+(10 candidates, 29988 voters)
+and 
+<a rel="nofollow" href="CountyMeathSorted.txt">County Meath</a>
+(14 candidates, 64081 voters)
+multiwinner STV races (all same format, all year 2002 and anonymized).  
+The ballots from these three races were unusually 
+made publicly electronically available by Ireland as an experiment (which apparently 
+was never repeated) and I converted them to the present format.
+In the County Meath 14-candidate race, voters ranked an average of 6.15 candidates;
+candidate "B" was the IRV and Condorcet beats-all winner; but
+"Q" was the Borda Count winner.
+</p>
+<p>
+The <a href="JLburl09.txt">Burlington VT 2009 Mayoral</a>
+race was conducted using <a href="rangeVirv.html">IRV</a>.
+There were 5 on-ballot candidates (plus write-ins) and about 9000 voters.
+It <a href="Burlington.html">exhibited</a> numerous pathologies.  Data supplied
+by Juho Laatu based on processing data from Burlington web site.
+</p>
+<p>
+The 
+<a href="RunningClub13.html">Gay Asian Pacific Association Foundation 2013 Pride Run 
+Beneficiary Election</a>, 86 voters, 14 candidates, $8000-$10000 at stake.
+Also similar <a href="FrontRun12.html">2012 beneficiary election</a>.
+Both supplied by Dominic Paris.
+</p>
+<p>
+Greg Dennis has collected a database of STV elections 
+he calls <a href="https://rangevoting.org/stv.sourceforge.net/stvdb">Open STV</a>.
+</p>
+<p>
+More elections to be added (hopefully soon)...
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

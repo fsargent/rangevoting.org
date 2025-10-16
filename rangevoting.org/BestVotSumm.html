@@ -1,0 +1,142 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Summary of most prominent "Best Voting Systems" theorems by WDS
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Summary of W.D.Smith's most prominent "Best Voting Systems" theorems </H2>
+
+<p>
+This page concisely summarizes some of the most important theorems proved by Warren D. Smith in his 3-part
+"best voting systems" papers
+<a href="http://www.rangevoting.org/BestVrange.html">I</a>,
+<a href="http://www.rangevoting.org/Best4.html">II</a>,
+<a href="http://www.rangevoting.org/BestVot2.html">III</a>.
+</p><p>
+    The goal of these papers was to prove theorems about, and show how to evaluate, and actually evaluate,
+    the Bayesian regrets (BR) of various voting systems, and identify best &ndash; meaning lowest BR &ndash;
+    systems.  For any particular algorithmic voting method E,
+    we can compute BR(E) to arbitrarily high accuracy (if you run the computer long enough)
+    by computerized Monte Carlo election simulations.  However, the goal
+    of these 3 papers was instead to do it with the human brain, and to make statements valid for <i>infinite</i> sets
+    of voting methods, not just one particular one at a time.
+</p><p>
+    That was indeed accomplished, but at a price. The main "price" to be paid is that my human brain, to prove theorems,
+    needs to make oversimplified, and hence less-realistic, assumptions about voters and elections, versus what the
+    computer can handle.  But within some oversimplified "clean" election models, I was indeed able to do it,
+    which was a breakthrough.
+</p><p>
+<b>Description of the three models:</b>
+</p><ol><li>
+Random Normal Elections Model (<a href="RandElect.html">RNEM</a>):
+Each voter Y gets a random standard normal variate as her utility for the election of candidate X
+(and this happens independently for all candidate-voter XY pairs).
+(The centers of the normals do not need to all be 0;
+they could be voter-dependent constants.)   
+</li><li>
+Absurdly Spherically Symmetric Issue-Space Model (ASSISM):
+Let the V voters and C candidates each be points in a D-dimensional issue space with C&ge;1 and D&ge;1 fixed.
+Let the utility of each candidate for each voter be a fixed decreasing function of the Euclidean distance between them,
+which decreases to zero sufficiently quickly at &infin; (or it is acceptable for it to tend to any other constant, and
+these constants can be voter-dependent, of course).
+Suppose the voters are distributed according to a radially-decreasing probability density spherically symmetric about
+some centerpoint 0, with each voter's location chosen independently from that density (and again we need this density
+to decrease sufficiently quickly at &infin;; it will suffice if it is a normal distribution or has compact support).
+But no assumption is made about the locations of the candidates aside from supposing their locations
+are sufficiently generic that the C distances from the candidates to 0 all are distinct.
+</li><li>
+YN (yes/no) model:
+  There are <i>D</i> independent "issues"
+  and 2<sup>D</sup> "candidates"; each candidate announces
+  a clear yes or no stance on each issue, and by some benificent miracle we have a full
+  democratic marketplace, i.e, all 2<sup>D</sup> possible issue-stances are
+  represented.  Hence in the case D=4 we could
+  name the 16 candidates YYYY
+  ("yes" on all 4 issues), YYYN, YYNY,..., NNNN.
+  We shall suppose, for each voter, the <i>utility</i> of electing
+  any given candidate is just the
+  <i>number of issues</i>
+  on which that candidate agrees with the voter.
+  Finally, we suppose without loss of generality
+  that all <i>D</i> issues each would win if put to a single-issue
+  yes/no vote, therefore the objectively best candidate is YYYY.
+</li></ol>
+<p><b>Remarks.</b>
+The RNEM generalizes a model that
+had long been called the "Impartial Culture" in the political science literature, in which
+"all V-voter C-candidate ranked-ballot elections are equally likely" and there is especial interest in the V&rarr;&infin; limit.
+</p><p>
+The YN model arguably is the simplest possible "issue space" political model.
+</p><p>
+There are two reasons ASSISM is "absurdly spherically symmetric"
+(1) use of <i>Euclidean</i> distance (not,
+e.g, L<sub>1</sub> distance which probably would have been more realistic) and
+(2) spherically symmetric assumed distribution of voters.
+Unfortunately my main result in ASSISM turns out to be sensitive to even slight asphericity.
+</p><p>
+<b>Descriptions of the most prominent theorems:</b>
+</p><ol><li>
+In the RNEM, I evaluated the exact BR values of several voting methods, sometimes in closed form in terms of constants like &pi;.
+</li><li>
+I proved the best (meaning least-BR!) 3-candidate election ranked-ballot method (under RNEM) is Borda, but with &ge;4 candidates it is new.
+</li><li>
+I proved that both Approval Voting and Score Voting equal or better all rank-order voting systems, for
+both honest and strategic voters (or any mixture) in 3-candidate RNEM elections.
+For Score Voting this superiority is strict.
+</li><li>
+	Score Voting with honest voters is superior to every rank-order ballot method in C-candidate RNEM
+	elections for each C&in;{3,4,5,...31}.
+      </li><li>
+	For strategic voters using what I call "pseudo-best" voting strategy,
+	I proved Score Voting superior to <i>any</i> rank-order system for any mixture of honest and strategic voters
+	in C-candidate RNEM elections for each C&in;{3,4,...,9}.
+      </li><li>
+	Honest Score Voting has regret which in the limit C&rarr;&infin; is <i>zero</i>
+	relative to that of "random winner," whereas various other voting methods like Approval and Borda
+	have asymptotically nonzero relative regret; and strategic range=approval voting has asymptotic regret
+	which is a constant factor times smaller than that of random winner, although certain
+	other voting methods (e.g. Plurality) with strategic voting have asymptotically the same regret as random winner.
+      </li><li>
+Under ASSISM, Condorcet voting methods are optimum in the limit of an infinite number of wholy-honest voters,
+	in the sense that they achieve asymptotically zero regret with probability&rarr;1.
+	(Meanwhile, Score Voting and every weighted positional system have positive regret.)
+      </li><li>
+	In the same spherically-symmetric ASSISM model, certain variants of honest and strategic <i>Approval</i> voting also are asymptotically optimum.
+	But the optimality of both Condorcet and these flavors of Approval Voting both are artifacts of ASSISM's exact spherical symmetry,
+	and are destroyed by even slight asphericity.
+      </li><li>
+	Under the "YN Model" (another D-dimensional politics model, this time with binary yes/no rather than continuum issues),
+	I proved Score Voting always delivers <i>zero</i> regret for any number V of honest voters.  
+	In contrast I showed that many other voting systems such as
+	approval, Borda, instant runoff, and Condorcet (and score voting with <i>strategic</i> dishonest voters)
+	can exhibit horrible pathologies in contrived situations inside this model, e.g. electing the <i>worst</I> candidate,
+	plus many of them exhibit significantly positive regret in more realistic randomized settings.
+  </li><li>
+    A generalization, the "YN model with added jokers," has the property that honest voter range voting still is
+    always optimal (zero regret always) but <i>every</i> "weighted positional" rank-order method can be made to perform almost arbitrarily badly.
+    Conjecturally the same is true for the full class of <i>all</i> rank-order methods.
+    </li></ol>
+<p>
+<b>Bottom line:</b>
+"Best" voting systems were identified in all of these models, and Score Voting proven superior to all rank-order systems
+in some of them.
+For more details and more results, read the original papers.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

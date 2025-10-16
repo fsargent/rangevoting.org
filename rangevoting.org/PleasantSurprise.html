@@ -1,0 +1,113 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Pleasant surprise
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Strategic <a href="RangeVoting.html">range voting</a> approximately
+maximizes number of "pleasantly surprised" voters</H2>
+
+<p>
+<b>The claim:</b>
+All RV versions, including <a href="Approval.html">Approval</a>, 
+when voting is strategic, guarantee that,
+with a few
+plausible assumptions RV will maximize the number of voters for whom the utility
+of the
+winner is greater than their pre-election expectation for the election. 
+I.e, with (approximately)
+strategic voting, RV
+maximizes the number of voters who are <i>pleasantly surprised</i>
+by the
+outcome.
+</p>
+
+<p>
+<b>Another claim (proven symmetrically):</b>
+With (approximately)
+strategic voting, RV
+<i>min</i>imizes the number of voters who are <i>un</i>pleasantly surprised
+by the outcome.
+</p>
+
+<H3> First (simple) argument </H3>
+
+<p>
+In "approval voting," assume approximately that each strategic
+voter votes for candidates with utility above the amount they expect for the winner.
+(This seems a strategically fairly reasonable thing to do &ndash; since 
+why bother trying to influence improbable events far from your expectation.
+And indeed it can be <a href="RVstrat7.html">proven</a>
+to be <i>the strategically optimum</i> way to vote, in a certain 
+probabilistic model.)
+Then the claim follows trivially: the most-approved candidate wins, i.e. the candidate 
+approved by the most voters, i.e. the candidate whom the most voters regard as above 
+their expected utility value for the winner.  Q.E.D.
+</p>
+
+<H3> Second (a little more complicated) argument (from Mike Ossipoff) </H3>
+
+<p>
+Well &ndash; what "plausible assumptions" exactly?
+<p>
+
+<p>
+The plausible assumption that strategic voters will (usually) vote
+for the candidates who seem better than their 
+<a href="RVstrat7.html">estimate of expected
+quality of the winner</a>.
+</p>
+
+<p>
+And why should they do that?
+The question is whether or not to vote for candidate i, looked at in
+isolation.
+</p>
+
+<p>
+Say candidate i is better than your expectation for the election. 
+It's obvious that, for your expectation for the election to be
+worse than i's utility, it must be that your conditional expectation in the
+event that someone other than i wins must be less than i's utility, to bring the
+overall expectation down.
+</p>
+
+<p>
+Now let's assume <i>approximately</i> that when
+you vote for i, raising i's win probability, you
+lower everyone else's win probability by a single <i>uniform</i> factor. 
+<!-- (That's
+the same assumption that I used in the 2nd demonstration that I sent to
+WDS). -->
+</p>
+
+<p>
+So, in case i doesn't win, at least your vote for him doesn't worsen your
+expectation when someone other than him wins. In fact, it doesn't change it at all.
+</p>
+
+<p>
+And so, since i is better than your expectation if someone else wins, you
+should vote for i.
+Q.E.D.
+</p>
+
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

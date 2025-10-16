@@ -1,0 +1,1230 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Envy-Free allocations
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1>Envy-Free allocations</H1>
+
+<p>
+<small>By Warren D. Smith, <tt>warren.wds@gmail.com</tt>.
+First draft Feb. 2014.
+Second draft March 2014.
+</small>
+</p>
+<p>
+<b>Abstract.</b>
+Basically, we redo the <a href="http://www.ams.org/notices/201402/rnoti-p130.pdf">work</a> of
+Brams, Kilgour, Klamler [Notices Amer. Math'l. Soc. 61,2 (2014) 130-141]
+on "envy-free allocations" of 2N items among two people "Alice" and "Bob" &ndash;
+obtaining better results, clearer proofs, and/or clearer and faster algorithms.
+We re-prove BKK's fundamental existence theorem using a characterization
+as a "totally unimodular linear program."
+We show the number of such allocations is lower
+bounded by 0 and upper bounded by the Nth Catalan number
+(2N)!/[N!(N+1)!]. 
+We find a formula for the "failure" probability
+no envy-free allocation exists (if Bob's preference ordering is uniform random)
+which for 2N large is asymptotic to 4/(4N+1), which tends to 0.
+We find an O(N)-time O(1)-space algorithm for deciding whether such an allocation exists; 
+and if one does, we show how to produce an example 
+in O(NlogN) expected time and O(N) words
+of memory via a randomized algorithm.  
+All these results are best possible except that perhaps some
+algorithm faster than NlogN might exist and/or perhaps it could be derandomized.
+But we prove a lower bound of order NlogN for any algorithm, including
+randomized ones, of the
+"algebraic decision tree" class (and ours was in this class).
+BKK's probability model that Bob
+has uniform random preference order was unrealistic.  
+We discuss more-realistic probability models,
+and it appears that in them the failure-probability does <i>not</i> tend to 0; 
+indeed in one of our models it goes to 1!
+</p>
+<a name="intro"></a>
+<h3> 0. Introduction </h3>
+<p>
+This work was stimulated by my reading, in the Feb. 2014 <i>AMS Notices</i>,
+a paper by Brams, Kilgour, and Klamler about <b>"Envy Free" allocations.</b>
+Suppose there are N indivisible items we wish to divide among two people, "Alice" and "Bob."
+(<b>Warning:</b>  some sections of this paper shall use N, others
+2N, to describe the number of items.
+The present section uses N.)
+Alice has a preference order among these items.  Bob has another.
+An "allocation"of the N items is an N-bit binary string, whose Kth bit is 1 if
+item K is awarded to Bob, and 0 if it is awarded to Alice.
+The allocation is "Envy-Free" if there exist two matchings,
+each pairing Alice's items with Bob's items (each matching contains N/2 disjoint pairs), 
+with the property that 
+for each pair (a,b) in matching #1,
+Alice prefers her item a over Bob's paired item b;
+while for each pair (B,A) in matching #2,
+Bob prefers his item B over Alice's paired item A.
+</p><p>
+I think the greatest accomplishment of the Brams-Kilgour-Klamler paper (henceforth "BKK")
+was to prove
+</p><p>
+<b>THEOREM (existence):</b>
+Let there be N&ge;0 items, and (without loss of generality)
+let Alice's preference order be 1,2,3,4,...,N,
+i.e. she prefers lower-numbered over greater-numbered items.
+An envy-free allocation exists if, and only if, N is <i>even</i> and 
+Bob's preference permutation does not fix any odd prefix.
+That is: if and only if N is even and no odd K exists with
+1&le;K&lt;N such that 
+Bob's top K most-prefered items, are the same (in the sense of set-equality) 
+as Alice's top K most-prefered items.
+</p><p>
+However, I was worried about BKK's proof.  It is easy to prove necessity:
+exactly one among {Alice,Bob} will be allocated the majority among their common top K
+items, if K is odd, which forces the other to be envious re at least one of those items.  
+But to prove
+sufficiency, BKK relied on an <i>al</i>gorithm they invented, called "AL,"
+which allegedly finds an <i>al</i>location whenever one exists.  I did not understand their
+algorithm.  The problem was it was written in "English," rather than a formal "pseudocode,"
+(a policy I <i>strongly</i> discourage for algorithms of their considerable level of complexity)
+and it was complicated and ambiguously parseable.  Specifically, I did not understand their
+steps 3 and 4, nor the meaning of their word "etc."
+</p><p>
+Upon enquiring about this by email to B,K, and K, 
+they did not answer those questions, and it seemed to me they themselves 
+did not understand AL very well. 
+(Albeit, Brams said he did not understand why I did not understand...)
+For example, their paper claimed AL is a "polynomial time" algorithm.
+Great &ndash; but what <i>is</i> the runtime-bounding polynomial?
+Their paper did not say, nor were they willing/able to tell me in email.
+It is quite remarkable for a paper to be written about an allegedly practical
+and polynomial-time algorithm, where the authors do not determine the degree of
+the polynomial.  Indeed, I am not sure if that has ever occurred before.
+</p><p>
+Also, Brams told me that "a student" was currently working on programming AL,
+indicating their algorithm had, at the time of publication, not yet been programmed and tested.
+(Mind you, I am hoping the situation will be clarified if and when that student succeeds. 
+Or fails.)
+</p><p>
+So that all led in my mind to the following <b>natural questions:</b>
+</p><ol><li>
+Can a new and clearer proof of BKK's Existence Theorem be found?
+</li><li>
+As a function of N, what is the greatest possible number C(N) of envy-free allocations
+that can exist, and what is the least possible number?
+</li><li>
+As a function of N, what is the (failure) probability P(N) that no envy-free allocations
+exist, assuming Bob's preference order is <i>uniformly-random</i>
+from among all N! possible
+permutations?  Slightly more strongly (since it also allows odd N): 
+what is the number F(N)=N!&middot;P(N) of
+permutations of {1,2,3,...,N} which fix at least one odd prefix?
+</li><li>
+Uniform random preference ordering by Bob (conditioned on Alice's preference ordering)
+seems an unrealistic model.
+What happens in more-realistic probability models (and what are those models)?
+</li><li>
+What is the computational complexity of deciding, given Alice's and Bob's
+preference orders as input, whether at least one Envy-Free allocation exists?
+</li><li>
+And if the answer is "yes, one exists," then what is the 
+computational complexity of producing such an allocation?
+</li></ol>
+<p>
+I was able to answer all of these questions, except perhaps the last.
+The <b>answers:</b>
+</p>
+</p><ol><li>
+Yes!  
+We shall recast the problem of finding an envy-free allocation as solving a
+"totally unimodular linear program."  This will immediately prove BKK's Existence Theorem
+as well as, in my opinion, revealing more of the inner structure of the problem
+and "explaining why" it works.  (As a side effect, in view of
+the known fact that linear programming is a polynomial-time task, 
+this also immediately shows the existence of a
+polynomial-time algorithm &ndash; albeit not an appealing one.)
+</li><li>
+<nobr>
+C(2M)=(2M)!/[M!(M+1)!]=&prod;<sub>1&le;j&le;M</sub>(4j-2)/(j+1)
+</nobr>
+is the Mth 
+<a href="http://en.wikipedia.org/wiki/Catalan_number">Catalan number</a> C<sub>M</sub>
+when M&ge;0
+[but C(N)=0 whenever N is odd].
+This Catalan-number upper bound is achieved if and only if Alice and Bob's preference orders are
+exact reversals of each other. 
+Meanwhile, when N&ge;1 the <i>least</i> possible number of envy-free allocations
+that can exist is zero, achieved when, e.g, Alice and Bob have exactly the same 
+preference orders.   Also, if the preference orders are
+</p><pre>
+Alice:  1 2  3 4  5 6  7 8  ...    N-1   N
+Bob:    2 1  4 3  6 5  8 7  ...     N   N-1
+</pre><p>
+with N even,
+then exactly one envy-free allocation exists, namely Alice gets the odd-numbered items.
+The Catalan numbers are easily computed, starting with C(0)=1, 
+via the recurrence 
+<nobr>
+C(2N+2)=2(2N+1)C(2N)/(N+2).
+</nobr>
+For large M asymptotically 
+<nobr>
+C(2M)&sim;2<sup>2M</sup>M<sup>-3/2</sup>&pi;<sup>-1/2</sup>.
+</nobr>
+This compares with the total number
+2<sup>2M</sup>
+of allocations (whether envy-free or not). 
+BKK had a much weaker lower bound on the counting function, approximately the 4th root of ours.
+The C(2M) <a href="http://oeis.org/A000108">sequence</a> begins
+1, 1, 2, 5, 14, 42, 132, 429, 1430, 4862, 16796, 58786, 208012, 742900, 2674440, 9694845
+for 2M=0,2,4,6,...,30.
+</li><li>
+Let F(N) be the number of 
+permutations of {1,2,3,...,N} which fix at least one odd prefix.
+[F(M) can be nonzero even when M is odd, but the answers are directly applicable to
+the envy-free allocation problem only when M is even.]
+F(N) 
+also turns out to be simply computable, starting from F(0)=F(1)=0,
+via the recurrence 
+<nobr>
+F(N) = &sum;<sub>k=1,3,5,...,2&lfloor;N/2&rfloor;-1</sub> [k!-F(k)](N-k)!.
+</nobr>
+<!-- MAPLE:
+F := array(1..1025);
+F[1] := 0;
+F[2] := 1;
+for n from  3  to  1025  do
+ F[n] := sum( ((2*j+1)! - F[2*j+1]) * (n-(2*j+1))!, j=0 .. (n-2)/2 );
+od;
+for j from  1  to  10  do
+  print(2^j, evalf( 2 * (2^j)! / F[2^j] ));
+od;
+for j from  2  to  10  do
+  print(2^j - 1, evalf(  (2^j - 1)! / F[2^j - 1] ));
+od;
+for j from  0  to  10  do
+  print(2^j + 1, evalf(  (2^j + 1)! / F[2^j + 1] ));
+od;
+-->
+For large even N, asymptotically 
+<nobr>
+F(N)/N!&sim;2/(N+&frac12;),
+</nobr>
+while for large odd N, asymptotically 
+<nobr>
+F(N)/N!&sim;1/(N-2).
+</nobr>
+The F(N)
+<a href="http://oeis.org/A236921">sequence</a>
+begins
+0, 0, 1, 2, 10, 32, 232, 992, 10096, 53408, 727360, 4569536, 79501696, 578101376, 12337163008,
+101945840384, 2582987522560, 23913303638528, 701604503968768,
+7194776722623488, 239847438803052544
+for N=0,1,2,3,...,20.
+</li><li>
+We will discuss more realistic models in <a href="#powerlaw">&sect;4</a>.
+Unfortunately for lovers of "fairness," all those models yield
+considerably greater failure-probabilities than the uniform model.
+The F(N) asymptotics show that envy-free allocations exist, in the uniform model, with
+probability&rarr;1 (i.e. failure chance&rarr;0)
+when N&rarr;&infin;.  But in some of our non-uniform
+models, we appear empirically to get failure chances going to 100%,
+or in some cases perhaps to other nonzero constants.
+In view of this, the whole envy-free allocation concept would seem to have substantially
+smaller usefulness in the real world, than would have been expected from the uniform model.
+</li>
+<a name="envyexistalg"></a>
+<li>
+Here is a simple O(N)-step <a name="lintimealg">algorithm</a>, consuming O(N) words of memory, 
+for deciding whether at least one Envy-Free allocation exists.
+It assumes Alice's preference order is 1,2,3,...,N while Bob's is
+Bob[k] for k=1,2,3,...,N.  (It assumes 1&le;Bob[k]&le;N for all these k,
+and that Bob[j]&ne;Bob[k] if 1&le;j&lt;k&le;N; 
+then the validity of their algorithm follows immediately from the Existence Theorem.)
+<pre>
+    m &larr; 0;
+    for(k=1,2,3,...,N){
+      if(Bob[k]&gt;m){ m &larr; Bob[k]; }  //m is running maximum
+      if(k mod 2=1){
+         if(m&le;k){ report("No envy-free allocation exists"); quit; }
+      }
+    }
+    report("At least one exists");
+</pre>
+This time consumption obviously is best possible 
+for any correct algorithm
+since it is easily seen that
+essentially the entire Bob[] array
+must be inspected to assure correctness.
+But also note that if we input the Bob[] array entries "on the fly" without storing 
+the whole array &ndash; which this algorithm permits &ndash;
+then the memory consumption drops to O(1) words which then also
+obviously is best possible.
+</li><li>
+If the preceding procedure reports "at least one exists" then
+<a href="#nlognalg">&sect;5</a>
+will give a randomized algorithm for finding an envy-free allocation.
+By "randomized" we mean that the algorithm depends not only on its input
+(i.e. Alice &amp; Bob's preference permutations) but also on random numbers.
+The <i>expected</i> number of steps before our algorithm outputs an envy-free allocation
+is O(NlogN) and it consumes at most O(N) words of memory.
+Also, O(NlogN) is an <i>almost-sure</i> run time bound in the sense that 
+there exists a constant c&gt;0 such that in the
+limit N&rarr;&infin;,
+the probability that the runtime exceeds cNlogN, goes to zero 
+[and at least exponentially(N) quickly].
+All these "probabilities" and "expectations" arise solely from the randomness and
+are valid even for worst-case inputs.
+I do not know whether this algorithm is best possible, but 
+(i) it obviously cannot be sped up by
+more than an O(logN) factor
+and 
+(ii) although I do not understand BKK's algorithm AL, I believe our algorithm 
+is asymptotically faster.
+Finally, <a href="#lowerbd">&sect;7</a> shall prove <i>lower</i>
+time bound of order NlogN for this task in "algebraic decision tree"
+models of computation (including ones that permit randomization).
+If one cannot do better than ADT-type algorithms, then that
+proves that our O(NlogN)-time randomized
+algorithm is <i>optimal</i>.  If one could, then
+we've still usefully found that the only way an algorithm 
+could hope for faster runtime than NlogN is by exploiting
+computational primitives not present in ADT models of computation.
+</li></ol>
+
+<a name="tulp"></a>
+<h3>1. Totally Unimodular Linear Program </h3>
+<p>
+A "linear program" (LP) is a set of inequalities
+</p><center>
+Ax&le;b 
+</center><p>
+where A is a matrix with  known integer entries, b is a vector with known integer entries,
+and x is a vector of unknowns; plus a directive to find, among all vectors 
+satisfying the inequalities, one maximizing some linear function c&middot;x
+(where c is some known real vector).
+The matrix A (and the linear program) is "totally unimodular" if every square submatrix of A
+&ndash; got by taking an arbitrary subset of its rows, and same-cardinality subset
+of its columns &ndash; has determinant lying in the set {-1, 0, +1}.
+</p><p>
+<b>LEMMA:</B>
+If any real solution-vector exists, then a solution x 
+of a totally unimodular linear program always exists with
+all its entries <i>integer</i>.
+</p><p>
+(Proof hint: consider "Cramer's rule." Full discussion: Schrivjer 1998.)
+</p><p>
+For the envy-free allocation problem, in which Alice's preference ordering is
+1 2 3 ... N, while Bob's is described by the array Bob[1...N],
+consider the following set of inequalities.
+</p><center>
+0 &le; x<sub>j</sub> &le; 1, &nbsp;&nbsp;&nbsp; 
+for each j with 
+1&le;j&le;N
+<br>
+&sum;<sub>0&le;i&le;k</sub> x<sub>i</sub> &le; &lfloor; k/2 &rfloor;
+&nbsp;&nbsp;&nbsp; 
+for each k with 1&le;k&le;N
+<br>
+&sum;<sub>0&le;i&le;k</sub> x<sub>Bob[i]</sub> &ge; &lceil; k/2 &rceil;
+&nbsp;&nbsp;&nbsp; 
+for each k with 1&le;k&le;N
+</center><p>
+(Incidentally, the second set of inequalities would be replaced by
+&sum;<sub>0&le;i&le;k</sub> x<sub>Alice[i]</sub> &le; &lfloor; k/2 &rfloor;
+more generally, but our numbering convention that Alice's order be 1 2 3... N,
+i.e. that Alice[j]=j, incurs
+no loss of generality and makes life easier.)
+I claim that this linear program is totally unimodular.
+It immediately follows that if this program has any solution vector x,
+then (for any c) it always has an <i>all-integer</i> solution.
+It then follows from the first set of inequalities that
+every entry of that solution vector x lies in the two-element set {0, 1},
+hence is a binary <i>allocation.</i>
+It is trivial to see that
+any such solution vector, regarded as N bits,
+describes an <i>envy-free</i> allocation (Alice gets the items with 0-bits, 
+Bob the items with 1-bits).
+It also is trivial to see that no envy-free allocation can exist if
+no solution of the linear program exists.
+Hence
+</p><p>
+<b>THEOREM (totally unimodular LP formulation):</b>
+An envy-free allocation exists if,
+and only if, this LP has a solution.
+</p><p>
+<b>PROOF:</b>
+The only nontrivial thing we still must
+prove, is that the LP is indeed totally unimodular.
+Negating any row or column of A 
+leaves A's total unimodularity unaffected.
+Permuting the rows (or columns) of A 
+leaves its total unimodularity unaffected.
+Adjoining an <i>identity</i> matrix &ndash;
+or more generally, any 
+<a href="http://en.wikipedia.org/wiki/Permutation_matrix">permutation matrix</a>
+with any subset of its entries negated &ndash;  above (or to the left of) A
+leaves A's total unimodularity unaffected.
+Our LP's first set of inequalities precisely arises from 
+identity matrix (or negated identity matrix)
+adjoinings and hence can be ignored from now on.
+Its second set of inequalities
+is described by the lower-triangular matrix with all 1 entries in the 
+lower triangle (including diagonal) and 0's elsewhere.  Any submatrix of
+that kind of matrix is reducible via determinant-preserving row-operations
+(i.e. subtracting rows) 
+to one with only 0 and 1 entries and all the 1-sets in the rows are
+disjoint sets.
+Its third set of inequalities is equivalent to the second set &ndash;
+after columns are permuted into Bob-order &ndash; except with all
+entries negated.  The second and third sets of inequalities thus,
+after restriction to a submatrix followed by row reduction,
+yield a submatrix with only 0 and &plusmn;1 entries, and the (+1)-sets
+in rows are disjoint, and the (-1)-sets in rows are disjoint, and each row is
+entirely {0, +1} or entirely {0, -1}.
+Each column of this reduced submatrix 
+thus contains at most a single +1 and at most a single -1, with
+all other entries 0.
+But any such matrix automatically itself is totally-unimodular by 
+a simple induction argument.  Consider a square submatrix.
+If it has a column with at most one nonzero entry, then &quot;expand that column 
+by <a href="http://mathworld.wolfram.com/DeterminantExpansionbyMinors.html">minors</a>&quot;
+to reduce to a matrix with one fewer column (induction step).
+Otherwise, each column contains exactly one +1 and one -1 (rest 0)
+in which case the determinant equals 0 because every column-sum is 0, forcing
+a linear dependency among the columns, i.e. the matrix must have less than full rank.
+(This induction argument was attributed to
+Veblen &amp; Franklin 1921 on page 274 of Schrivjer, who further claims this result
+was already known to H.Poincare in 1900.)
+<b>Q.E.D.</b>
+</p>
+<!--
+Thm 19.3.v Schrivjer: TU &hArr; each nonsingular submatrix contains
+at least one row with an odd number of nonzero components.
+p.272: Tamir proof:  TU &hArr; for each nonsingular submatrix B the gcd of
+the column sums of B equals 1.
+-->
+</p><p>
+In view of either the 
+&quot;<a href="http://en.wikipedia.org/wiki/Ellipsoid_method">ellipsoid method</a>&quot; or 
+&quot;<a href="http://en.wikipedia.org/wiki/Karmarkar%27s_algorithm">Karmarkar's algorithm</a>&quot;
+for linear programming (see, e.g, Schrivjer 1998)
+&ndash;
+also Tardos 1986's methods for "combinatorial" linear programs apply in our case
+&ndash;
+we immediately find
+</p><p>
+<b>COROLLARY:</b>
+Polynomial-time algorithms exist to determine whether an envy-free allocation exists,
+and if so to find one (indeed to find one maximizing any desired 
+linear function c&middot;x).
+</p><p>
+For example, one might want to choose c[j]=Alice[j]-Bob[j] 
+which would in some Borda-like sense find the "optimal" envy-free allocation.
+Or we could take
+c[j]=B[j]-A[j] 
+where A[j] is Alice's real-valued "utility" for item j, and B[j]
+is Bob's (if these utility values were somehow known)
+to get the envy-free allocation maximizing "total utility."
+Or just c[j]=B[j] to get the envy-free allocation optimal in Bob's view alone.
+</p><p>
+We also have
+</p><p>
+<b>COROLLARY:</b>
+Brams, Kilgour, and Klamler's existence theorem, is correct.
+</p><p>
+<b>PROOF:</b>
+Obviously, if Bob and Alice had the same first-k preference sets for some odd k,
+1&le;k&lt;N, then the corresponding inequalities in the LP's second and third inequality-sets
+would contradict &ndash; it is false that
+&lceil;k/2&rceil;&le;&lfloor;k/2&rfloor;
+for any odd integer k
+&ndash; preventing any solution from existing.
+If there is no such odd k, then there is no obvious contradiction; and indeed a real
+solution vector then does exist.
+To construct it, proceed as follows.  Alice and Bob walk through
+their orderings both in the most-to-least preferred direction.
+If at any point, their current favorites a and b disagree,
+then Alice gets hers (x<sub>a</sub>=0)
+and Bob's his
+(x<sub>b</sub>=1). 
+But if they agree, then that item is placed in the
+"contested pile." 
+Either way, they move on to the next (as-yet untaken) item in their lists
+until both lists are exhausted.
+Finally, set x<sub>i</sub>=1/2 for every contested item i.
+The resulting vector x is then readily seen to be a solution-vector of the LP
+(although not necessarily an all-integer one) because every odd prefix contains at least
+one more wholy-owned item than wholy-not-owned one (for Bob's preference ordering; 
+also true for Alice's), 
+plus all other items are half-owned.
+Then our previous Lemma shows an all-integer
+and therefore all-01 solution automatically exists, and hence an envy-free allocation.
+<b>Q.E.D.</b>
+</p>
+
+<a name="catnums"></a>
+<h3>2. Catalan numbers </h3>
+<p>
+<b>Historical aside:</b>
+It turns out that what we in the West call the 
+&quot;<a href="http://en.wikipedia.org/wiki/Catalan_number">Catalan numbers</a>&quot;
+C<sub>n</sub>=&prod;<sub>2&le;k&le;n</sub>(n+k)/k=(2n)!/[n!(n+1)!]
+were actually discovered by the Mongolian astronomer
+<a href="http://en.wikipedia.org/wiki/Minggantu">Minggatu</a> (1692?-1763?), 
+who found the infinite series generating function
+</p><center>
+sin(2x) = 2sin(x) - &sum;<sub>1&le;n</sub> (sin x)<sup>2n+1</sup> C<sub>n</sub> 4<sup>1-n</sup>.
+</center><p>
+One nice special case arising from x=&pi;/2 is
+&sum;<sub>j&ge;0</sub> C<sub>j</sub> 4<sup>-j</sup> = 2.
+Minggatu discovered many infinite series identities, all without calculus.
+Another identity by Bill Gosper is
+</p><center>
+&sum;<sub>0&le;n</sub> 1/C<sub>n</sub> = 2+3<sup>-5/2</sup>4&pi; &asymp; 2.806133050770763
+</center><p>
+Minggatu's and Gosper's results arise from the following two generating functions:
+</p><center>
+2&sum;<sub>0&le;n</sub>(4x)<sup>n</sup>/C<sub>n</sub> = 
+(x+2)(1-x)<sup>-2</sup>
++ 3x<sup>1/2</sup>arcsin(x<sup>1/2</sup>)(1-x)<sup>-7/2</sup>
+</center>
+<center>
+&sum;<sub>0&le;n</sub>C<sub>n</sub>x<sup>n</sup> 
+= 2/[1+(1-4x)<sup>1/2</sup>] 
+= [1-(1-4x)<sup>1/2</sup>]/(2x)
+</center>
+<p>
+and the latter is also the reason for the "amazing" fact that 
+</p><center>
+1000 / (500 + 249999<sup>1/2</sup>)
+= 1.000001000002000005000014000042000132000429001430004862016796058786...
+</center>
+<p>
+Here are some more generating functions (all of these are confirmable by direct computation
+of the Maclaurin series of the right hand side):
+</p><center>
+&sum;<sub>0&le;n</sub>(C<sub>n</sub>)<sup>2</sup>(x/4)<sup>n</sup> =
+[4&pi;<sup>-1</sup>E(2x<sup>1/2</sup>) + (8x-2)&pi;<sup>-1</sup>K(2x<sup>1/2</sup>) - 1]
+x<sup>-1</sup>
+&nbsp;&nbsp;
+where K and E are complete elliptic integrals;
+</center>
+<center>
+&sum;<sub>0&le;n</sub>(x/2)<sup>n</sup>C<sub>n</sub>/n! =
+exp(x) [I<sub>0</sub>(x)-I<sub>1</sub>(x)]
+&nbsp;&nbsp;
+where I<sub>m</sub>(x) is the modified Bessel function of order m;
+</center>
+<center>
+&sum;<sub>0&le;n</sub>(C<sub>n</sub>)<sup>-1</sup>(4x)<sup>n</sup>/n! =
+1 + x + 
+(3/2 + x)
+&pi;<sup>1/2</sup>  x<sup>1/2</sup> 
+exp(x) erf(x<sup>1/2</sup>).
+</center>
+<p>
+<b>THEOREM (Catalan count):</b>
+If Alice and Bob's preference orders are
+exact reversals of each other, and there are 2N items,
+then there are exactly (2N)!/[N!(N+1)!]
+envy-free allocations.  But if
+Alice and Bob's preference orders 
+are <i>not</i> exact reversals, then the number of 
+envy-free allocations is less.  (And if the number of items is odd, then no
+envy-free allocations exist.)
+</p><p>
+<b>PROOF:</b>
+In the exact-reversal case, envy-free allocations correspond
+precisely to 
+<a href="http://en.wikipedia.org/wiki/Catalan_number#Applications_in_combinatorics#Applications_in_combinatorics">Dyck words</a>
+&ndash; binary 2N-bit strings 
+each of whose prefixes contains at least as many 0s as 1s.
+If we replace "0"&rarr;"(" and "1"&rarr;")" then Dyck words
+become precisely "expressions containing N pairs of correctly-balanced
+parentheses."  These in turn are equivalent to 
+"rooted ordered trees with N+1 nodes."
+All these are well known to be counted using Catalan numbers.
+(There is actually an entire book about Catalan numbers: Koshy 2008.
+Dyck words are discussed in its chapter 6.)
+</p><p>
+In any not-reversal case, we also must demand of our binary strings that
+the prefixes when the bits are considered in Bob's order
+must each contain at least as many 1s as 0s.
+With the exact reversal Bob-order this condition would be superfluous
+since Bob's prefixes correspond to Alice's suffixes
+so Alice's prefix demands are <i>equivalent</i> to Bob's.  
+But without exact reversal, at least one of Bob's
+conditions constitutes a genuine additional demand.
+If even a single Dyck word fails to satisfy even a single one of
+these Bob-prefix demands, that completes our proof by showing
+the Catalan number is a strict overestimate of the envy-free allocation count.
+But it is trivial to confirm that at least one Dyck word exists with
+any two specified bits of it demanded equal to 0 and 1 respectively (except,
+of course, the first bit cannot be demanded to be 1 and the last cannot be demanded to be 0) 
+by <i>using</i> our
+preceding existence theorems for envy-free allocations (with a suitably
+constructed fake "Bob").
+<b>Q.E.D.</b>
+</p>
+
+<a name="existprob"></a>
+<h3>3. Existence Probability for Envy-Free Allocations  </h3>
+<p>
+Let F(N) be the number of permutations of {1,2,3, ..., N}
+which
+which fix at least one odd-prefix.  Start with F(0)=F(1)=0.
+</p><p>
+<b>THEOREM (recurrence formula for F):</b>
+</p><center>
+F(N) = &sum;<sub>k=1,3,5,...,2&lfloor;N/2&rfloor;-1</sub> [k!-F(k)](N-k)!
+for each N&ge;2.
+</center>
+<p>
+<b>PROOF:</b>
+Enumerate all the F(N)
+permutations of {1,2,3,...,N}  which fix an odd prefix.  They are:
+</p><pre>
+perms of form   their count
+1...             (N-1)!
+
+(123)...         [3!-2](N-3)!  where we only count the ones not of
+                 preceding form; this is  [3!-F(3)](N-3)!
+
+(12345)...       [5!-F(5)](N-5)!      where again count only those not of
+                                      preceding two forms
+and so on.
+</pre><p>
+<b>Q.E.D.</b> (And the resulting counts agree with a brute force enumeration
+by computer for 0&le;N&le;14.)
+</p><p>
+<b>THEOREM:</b>
+For large even N, asymptotically 
+<nobr>
+F(N)/N!&sim;2/(N+&frac12;),
+</nobr>
+while for large odd N, asymptotically 
+<nobr>
+F(N)/N!&sim;1/(N-2).
+</nobr>
+As a single combined formula:
+<nobr>
+F(N)/N!&sim;[6+(-1)<sup>N</sup>2]/[4N-3+(-1)<sup>N</sup>5].
+</nobr>
+</p><p>
+<b>PROOF SKETCH:</b>
+Just the first and last couple of
+summands in the recurrence suffice to confirm this; the rest are relatively negligible.
+(Both our even and odd expressions are accurate to both leading and
+next-to-leading order as N&rarr;&infin;.)
+<b>Q.E.D.</b>
+</p>
+
+<a name="powerlaw"></a>
+<h3>4. More realistic models involving, e.g, "power-law price distributions"  </h3>
+<p>
+Unfortunately, it is unrealistic in most situations to regard
+Bob's preference permutation as being uniform-random (conditioned on Alice's).
+More realistic is that the items have monetary "prices" which are 
+approximately agreed by Bob and Alice, and
+further that the distribution of those prices is  
+approximately power law.  
+</p><a name="econsubbib"></a><blockquote>
+E.g. see
+Xavier Gabaix: <a href="http://pages.stern.nyu.edu/~xgabaix/papers/pl-ar.pdf">Power Laws 
+in Economics and Finance</a>, Annual Rev. Economics 1 (2009) 255-293.
+<br>
+J. Doyne Farmer &amp; John Geanakoplos:
+<a href="http://imobbo.com/download/papers/Farmer-powerlaw3.pdf">Power laws
+in economics and elsewhere</a>, 
+2008 manuscript (never published?)
+<br>
+J.D. Farmer &amp; Fabrizio Lillo:
+<a href="http://tuvalu.santafe.edu/~jdf/papers/powerlawtails.pdf">On the 
+Origin of Power Law Tails in Price Fluctuations</a>, 
+Quantitative Finance 4,1 (2004) 7-11.
+<br>
+Niall MacKay: <a href="http://arxiv.org/abs/1012.3039">London house prices are power-law distributed</a>, <tt>http://arxiv.org/abs/1012.3039</tt>
+</blockquote><p>
+A model of that is as follows.  Fix some real constant E.
+For item k where k=1,2,3,...,n,  Alice
+regards its price as r<sub>01</sub>k<sup>E</sup>
+while Bob regards its price as r<sub>01</sub>k<sup>E</sup>
+where r<sub>01</sub> is a random real number uniform in the interval [0,1], 
+assumed to change every time it is used so that Alice and Bob's 
+item-valuations generically differ.
+</p><p>
+In this power-law model, what is the probability that an envy-free allocation exists?
+When E=0 our probability model is the same as Brams-Kilgour-Klamler (i.e. uniform).
+But when E&gt;0, or when E&lt;0, our model is more pessimistic and in either case I would 
+expect the envy-free-failure probability to be an increasing function of |E|.  
+</p><p>
+Here is what a computer simulation 
+(each datum based on 4000000 Monte-Carlos)
+<!--(warning &ndash; currently uses crappy system "drand48" generator,
+REDO WITH BETTER? &ndash;
+and currently 4000000 Monte-Carlos per result hence only accurate to 3 significant figures) -->
+finds as the <b>failure-probabilities:</b>
+</p><pre>
+NEGATIVE E:
+     -E=0   0.2   0.4   0.6   0.8   1.0   1.2   1.4   1.6   1.8   2.0   2.2   2.4   2.6   2.8   3.0
+n= 2: 0.500 0.508 0.530 0.558 0.591 0.625 0.660 0.693 0.725 0.754 0.781 0.806 0.828 0.849 0.867 0.883 
+n= 4: 0.417 0.442 0.495 0.555 0.615 0.671 0.721 0.764 0.802 0.835 0.862 0.885 0.905 0.921 0.935 0.946 
+n= 6: 0.322 0.368 0.448 0.530 0.604 0.671 0.729 0.778 0.819 0.854 0.882 0.906 0.925 0.940 0.952 0.962 
+n= 8: 0.250 0.315 0.413 0.507 0.589 0.662 0.725 0.778 0.822 0.859 0.889 0.913 0.932 0.947 0.959 0.968 
+n=10: 0.201 0.281 0.390 0.489 0.576 0.653 0.719 0.775 0.821 0.859 0.890 0.915 0.934 0.949 0.962 0.971 
+n=12: 0.166 0.259 0.374 0.476 0.566 0.645 0.713 0.770 0.818 0.857 0.890 0.915 0.935 0.951 0.963 0.972 
+n=14: 0.142 0.244 0.364 0.467 0.559 0.638 0.707 0.766 0.815 0.855 0.888 0.914 0.935 0.951 0.963 0.972 
+n=16: 0.123 0.235 0.356 0.461 0.552 0.633 0.703 0.762 0.813 0.853 0.887 0.913 0.934 0.951 0.963 0.972 
+n=18: 0.109 0.228 0.350 0.456 0.548 0.629 0.700 0.760 0.810 0.852 0.885 0.912 0.933 0.950 0.963 0.972 
+n=20: 0.099 0.223 0.346 0.452 0.545 0.626 0.697 0.757 0.808 0.850 0.884 0.911 0.933 0.949 0.962 0.972 
+n=22: 0.090 0.218 0.343 0.449 0.542 0.624 0.694 0.756 0.806 0.849 0.883 0.910 0.932 0.949 0.962 0.972 
+n=24: 0.082 0.215 0.339 0.446 0.540 0.622 0.693 0.754 0.805 0.847 0.882 0.910 0.931 0.949 0.962 0.972 
+n=26: 0.076 0.212 0.337 0.444 0.538 0.619 0.691 0.753 0.804 0.847 0.881 0.909 0.931 0.948 0.961 0.971 
+n=28: 0.071 0.209 0.336 0.442 0.536 0.618 0.690 0.752 0.803 0.846 0.881 0.908 0.931 0.948 0.961 0.971 
+n=30: 0.066 0.208 0.334 0.441 0.534 0.617 0.689 0.751 0.802 0.845 0.880 0.908 0.930 0.948 0.961 0.971 
+</pre> <!-- [runtime = about 65 minutes.] -->
+<pre>
+POSITIVE E:
+      E=0   0.2   0.4   0.6   0.8   1.0   1.2   1.4   1.6   1.8   2.0   2.2   2.4   2.6   2.8   3.0
+n= 2: 0.500 0.508 0.529 0.558 0.590 0.625 0.659 0.693 0.724 0.754 0.781 0.806 0.828 0.849 0.867 0.883 
+n= 4: 0.417 0.440 0.483 0.534 0.587 0.640 0.689 0.735 0.776 0.813 0.845 0.871 0.893 0.913 0.928 0.941 
+n= 6: 0.322 0.356 0.410 0.469 0.531 0.595 0.657 0.715 0.766 0.812 0.849 0.880 0.905 0.925 0.941 0.954 
+n= 8: 0.251 0.292 0.345 0.404 0.470 0.541 0.612 0.680 0.741 0.794 0.838 0.875 0.904 0.926 0.944 0.957 
+n=10: 0.201 0.245 0.295 0.351 0.416 0.488 0.565 0.641 0.711 0.772 0.824 0.865 0.898 0.923 0.942 0.957 
+n=12: 0.166 0.211 0.257 0.309 0.370 0.443 0.523 0.605 0.682 0.750 0.806 0.853 0.889 0.918 0.939 0.955 
+n=14: 0.142 0.186 0.230 0.276 0.334 0.405 0.487 0.572 0.655 0.728 0.790 0.841 0.881 0.912 0.935 0.952 
+n=16: 0.124 0.167 0.207 0.251 0.306 0.374 0.456 0.544 0.631 0.708 0.775 0.829 0.872 0.905 0.931 0.949 
+n=18: 0.109 0.153 0.191 0.231 0.282 0.349 0.430 0.521 0.610 0.691 0.761 0.818 0.864 0.899 0.926 0.946 
+n=20: 0.099 0.141 0.177 0.215 0.263 0.328 0.409 0.501 0.592 0.676 0.749 0.809 0.857 0.894 0.923 0.943 
+n=22: 0.090 0.132 0.166 0.201 0.248 0.311 0.392 0.483 0.577 0.664 0.739 0.801 0.851 0.890 0.919 0.941 
+n=24: 0.082 0.123 0.156 0.190 0.234 0.296 0.376 0.469 0.563 0.653 0.730 0.794 0.845 0.885 0.916 0.939 
+n=26: 0.076 0.117 0.148 0.181 0.223 0.284 0.363 0.456 0.553 0.643 0.722 0.788 0.840 0.881 0.913 0.937 
+n=28: 0.071 0.110 0.140 0.172 0.214 0.272 0.352 0.445 0.542 0.635 0.715 0.782 0.836 0.878 0.910 0.935 
+n=30: 0.066 0.105 0.134 0.165 0.205 0.263 0.341 0.435 0.534 0.628 0.709 0.778 0.832 0.875 0.908 0.933 
+</pre>
+<p>
+It does not look like the failure probability tends to 0 for
+large N in all these models.  
+Some of them seem to remain pretty large.
+Indeed, I can prove that failure-probability&rarr;1 in a different model!
+</p><a name="asft"></a><p>
+<b>CLAIM (Almost-sure failure):</b>
+In an exponential model where item j is assessed at value 
+r<sub>01</sub>C<sup>-j</sup>
+by Bob (where r<sub>01</sub> is a uniform random deviate in the interval [0,1])
+and as
+r<sub>01</sub>C<sup>-j</sup>
+by Alice (with all r<sub>01</sub>'s independently random, here C&gt;1 is a sufficiently
+large constant)
+the probability than an envy-free allocation exists, tends to 0 as N&rarr;&infin;.
+</p>
+<!--
+<p>
+<b>PROOF SKETCH:</b>
+Essentially, the idea is that in each "price octave" there is a probability bounded
+above a positive constant, that
+envy about items within that octave is forced.  This happens independently for every octave
+&ndash; or more precisely, the higher-price octaves are unaffected by 
+what happens in cheaper octaves &ndash;
+so the success probabilities multiply and therefore die exponentially with N.
+<br>
+<b>Q.E.D.</b>
+</p>
+-->
+
+<a name="nlognalg"></a>
+<h3>5. O(NlogN) expected-time algorithm to find envy-free allocation   </h3>
+<p>
+<b>THEOREM:</b>
+There exist algorithms which, given Alice's and Bob's preference orderings
+for the N items as input, will determine whether an envy-free allocation exists
+in O(N) time and O(1) space; and if it does exist, will produce one
+in O(NlogN) time and O(N) space.  
+</p><p>
+Here "space" counts words of memory;
+each memory cell is assumed to hold an integer (or "pointer")
+whose absolute value is bounded by 
+O(N); and we assume a "pointer machine" in which additive and comparison operations on
+such integers can be performed in 1 step, and pointed-to memory cells 
+can be accessed in 1 step.
+</p><p>
+<b>PROOF SKETCH:</b>
+</pre><p>
+1. Label the items 1,2,...,N in order of Alice's preference.
+Then the only input is Bob's preference order.
+[This relabeling or renumbering can be done in O(N) time and space by
+methods the reader should know, but if not see e.g.
+Nijenhuis &amp; Wilf  1978.]
+We'll assume this numbering convention from now on.
+</p><p>
+2. An envy-free permutation exists if, and only if, Bob's permutation
+does not fix any odd prefix.  That is, Bob's first K most-prefered items, as a set,
+always differ from the set {1,2,3,...,K} whenever K is odd and 0&lt;K&le;N.
+This is the Existence Theorem of
+Brams, Kilgour, Klamler and immediately yields our linear-time
+existence-testing <a href="#lintimealg">algorithm.</a>
+</p><p>
+3. We shall use 
+<a href="http://en.wikipedia.org/?title=Link/cut_tree">link/cut tree</a>
+data structure, or
+more precisely we'll
+only need the considerably simpler "link/cut paths" special case of
+it, described in
+&sect;5.2 and 5.3 of
+Tarjan 1983.
+[Link/cut trees also are described in the papers by Sleator &amp; Tarjan.]
+</p><p>
+We assume from here on that an envy-free assignment is known from 
+part a to exist.
+All we need to do is find one.
+The idea is as follows.  We create a <i>data structure</i> storing Bob's
+preference order (the array Bob[1...N]).  Our data structure will fit in
+O(N) words of memory, and it will allow at any time
+</p><ul><li>
+"<tt>Query</tt>(L,U)" operation:
+determine the least value of  Bob[k]-k  among the k with
+L&le;k&le;U, in O(logN) steps.
+</li><li>
+"<tt>Delete</tt>(X)" operation:
+delete any item X (and perform all then-necessary
+renumberings and data structure modifications) in
+O(logN) steps.
+</li><li>
+"<tt>Adjoin</tt>(X,Y)" operation:
+add any new item X to the data structure (X can be located at any specified place, e.g. 
+immediately after Y, in
+Bob's order; and use the special value
+Y=-&infin; to make the new item X be the one most-preferred by Bob) in O(logN) steps.  
+</li></ul><p>
+Thus the entire data
+structure could be created from nothing by performing O(N) "adjoin(X)" steps
+in O(NlogN) total time.
+This data structure is readily provided by anybody who understands the
+"link/cut paths" data structure (it is a trivial modification of it).
+But for the benefit of novice readers we'll explain a way to build this data structure in
+<a href="#datastruct">&sect;6</a>.
+</p><p>
+4. Taking it as given that such a data structure is available for use, we
+work as follows.  We argue that if two items a,b (with a&lt;b) are
+chosen at random from the as-yet-unassigned ones, and assigned to Alice and Bob
+respectively, then that will, with chance at least 1/2, not ruin
+existence of an envy-free assignment.  
+</p><blockquote>
+This is since if there are 2M unallocated items, we know
+exactly M must belong to Alice and M to Bob in the unknown envy-free allocation;
+hence there are M<sup>2</sup> ways to pick an (a,b) pair with a belonging
+to Alice and b to Bob, as versus (2M-1)M ways to pick an unconstrained (a,b) pair.
+The former is at least half of the latter.
+</blockquote><p>
+So we do this
+random choice, <tt>Delete</tt> the two items from Bob preference order, and
+use <tt>Query</tt> to test whether 
+<nobr>min<sub>k&isin;remaining items</sub>(Bob[k]-k) &gt; 0.</nobr> &nbsp;  If so,
+then that confirms envy-free assignment still exists,  and we just continue on.
+If not, then our random choice was bad, so undo it via <tt>Adjoin</tt>ings, and continue on.
+</p><p>
+5. The expected number of data-structure operations that process invokes is 2N or less.
+Each one takes O(logN) time.  
+The central limit theorem may be used to see that the 
+chance that &ge;2N+Z&radic;N tests are
+needed falls exponentially with Z, 
+so we get an almost sure O(NlogN) time bound too.
+<b>Q.E.D.</b>
+</p>
+
+<a name="datastruct"></a>
+<h3>6. Sketch of the data structure design</h3>
+<p>
+The items in Bob's preference order will be stored in-order, as the nodes of a rooted
+"binary tree" which satisfies a "balance" condition.  
+A suitable rooted-balanced-tree class are "red-black trees"
+defined by the criteria that each node has a color (red or black) and 
+</p><ol><li>
+Each non-leaf red node must have exactly two children, both black.
+</li><li>
+All root-leaf paths contain the same number of black nodes.
+</li></ol><p>
+To locate an item X in such a tree, walk down it starting from the root, at
+each node going to its left (right) child if X is less than (greater than)
+that node's item.  This kind of "binary search" will find the tree node containing X
+(or prove it is not present, in which case it will find the appropriate place 
+to surgically insert a new node now containing X, if then desired) in O(logN) steps.
+</p><p>
+It is possible to design the data structure we shall want, using red-black trees.
+(Red-black trees are discussed in chapter 13 of the textbook by Cormen, Leiserson, Rivest.
+A gnu free software <a href="http://adtinfo.org/">implementation</a> as a "literate program"
+called "libavl" by Ben Pfaff is available; another public source library has been 
+<a href="http://www.eternallyconfuzzled.com/">posted</a> by Julienne S. Walker.)
+But it is simpler to use "splay trees"
+(Sleator &amp; Tarjan 1983) which actually do not satisfy any explicit balance
+condition at all (and do not have red/black node-color information) but
+nevertheless are guaranteed to enjoy O(logN)-time 
+accessing <i>on average</i> over any sequence of accesses, new-node insertions, and
+node-deletions.  Whenever a node is accessed in a splay tree, a rearrangement,
+called "splaying," is performed which causes X to become the new tree root.
+</p><p>
+If new nodes X are inserted  into a red-black tree (or splay tree), or are removed from
+one, then rearrangements and/or node recolorings may need to be done.  
+Suitable algorithms for doing that were invented by the original designers
+of red-black trees (and splay trees) which perform only <b>"local"</b> operations
+affecting only the nodes along the root-X path and perhaps their immediate neighbors, 
+and hence which take O(logN) steps.
+These rearrangements and recolorings preserve/enforce the ordering and coloring
+properties of the tree, so that the new tree still supports O(logN) time accesses.
+</p><p>
+It is also possible to make such trees support O(logN)-time "rank queries" 
+by also storing in each tree node, the number of its descendants.   (Incidentally, if you
+are going to store that information in each tree node, that permits using other kinds
+of "balance conditions" besides "red black.")   That way, you
+can determine in O(logN) steps
+(by inspecting the nodes along a root-X path), the number of tree nodes
+less than, and the number greater than, X, in tree-order.  Also you can search for
+the Jth item in the tree, finding it after a walk taking O(logN) steps.
+The nodes' rank information needs to be updated as the tree is rearranged,
+or whenever we insert or delete a tree node, but again the updating rules are
+purely local so that the O(logN) time bounds remain valid.
+(This also permits random uniform sampling from the tree nodes in any specified range, if
+we can generate random uniform integers J in that range.)
+</p><p>
+<i>We</i>
+shall also store in the Kth node, the <i>min</i> (over all its descendants, and itself)
+of X<sub>j</sub>-j, where j is the node number (i.e. rank) and X<sub>j</sub> is its contents.
+This permits fast <tt>Query</tt>(L,U) operations by accessing L and U
+in the tree and reconstituting the minvalue from the min-values of the subtrees of nodes in
+the root-L and root-U paths.  For splay trees this is simpler since 
+we can just splay L to the root and the U to the right-child of the root, whereupon
+only the min-field rising from the left-child of U needs to be examined.
+</p><p>
+If this is done, additional update rules need to be devised.  
+If a new tree-node is inserted (or deleted), then all items (there might be as many as N) 
+"greater" than it in tree-order need to have 1 subtracted from (or added to)
+their min-fields.
+This is accomplished quickly by storing with each tree parent&rarr;child edge in
+the tree, a delta-value; tree nodes do not really store their min(X<sub>j</sub>-j)
+values but instead additively-offset versions of these values.  The correct
+additive offset is the sum of the delta values of the tree-edges along
+the root-X path.  Then only O(logN) delta-values need to be 
+updated (by adding &plusmn;1) when tree nodes are inserted or removed, which
+is much faster than updating N values naively would have been.
+If any local "rotation" rearrangement is applied to a 
+(parent,child) 
+node pair in our tree,
+then the delta values (and rank information fields, and min information fields) 
+can be adjusted by suitable
+local operations. 
+</p><p>
+This completes our sketch of the data structure.  Data structure afficionados will
+note it combines features of both a "heap" and a "balanced tree" into one object.
+The reader should now
+be able to write computer code implementing it and should understand why all operations
+are supported by this structure in O(logN) time, at most, each.
+[Or in the case of the simpler splay-tree versions, in O(logN) "amortized time" per operation.]
+</p>
+
+<a name="lowerbd"></a>
+<h3>7. A computational complexity lower bound </h3>
+
+<p>
+This section shall consider a slightly different version of our Problem.
+We now suppose Bob, instead of stating a preference order, states a <i>vector</i> of N
+real-number <i>scores</i>, the Kth score pertaining to item K.  (Bob
+prefers items with greater scores.)
+</p><p>
+Of course, if Alice and Bob provide scores rather than preference orders,
+it is trivial to <i>convert</i> the scores to preference orderings in O(NlogN)
+steps [using O(N) memory cells, each capable of containing a score; each step
+is an item-comparison or item-move]
+by using any O(NlogN)-time sorting algorithm, e.g. "merge sort."
+[Or, if randomized algorithms are permitted, one could use "quick sort,"
+which runs in O(NlogN) <i>expected</i> time.]
+Therefore, our previous O(NlogN)-time algorithm remains O(NlogN)-time
+even with score-based input.
+</p><p>
+The <b>task</b> is to decide whether an envy-free allocation exists
+(this is clearly no harder
+than producing an allocation if "yes").
+There actually are <i>three</i> possibilities about Bob's and Alice's envy-statuses:
+</p><ol>
+<li>
+Bob envies Alice, and/or Alice envies Bob,
+i.e. for each matching pairing the 1-bit items with the 0-bit items,
+there exists at least one pair (a,b) where Bob had scored item a greater than
+(the item he gets) b, or where Alice has scores b greater than a
+</li><li>
+Bob and Alice are completely free of envy.  I.e. there exists at least two matchings
+one if which has every (a,b) pair such that Bob had given greater score to b than a,
+and Alice similarly has no envy for the other matching.
+</li><li>
+Borderline case: 
+Neither of the above &ndash; e.g. there exists an envy-free matching except that for some
+of its (a,b) pairs, Bob gave an <i>equal</i> score to a and b.  In borderline cases,
+it is possible by perturbing Bob's and/or Alice's scores by additive amounts of
+absolute value&le;&epsilon;, to swing the existence answer either way
+(and this is true for each &epsilon;&gt;0, no matter how small).
+</li>
+</ol>
+<p>
+We shall only allow algorithms which are <b>"algebraic decision trees."</b>
+That is: the algorithm is fed as input Bob's N scores and Alice's N scores.
+It then computes algebraic functions of those inputs and test whether the function is
+greater than, less than, or equal to, zero.  Each test, and arithmetic operation
+(permitted ops: algebraic functions of a bounded number of inputs having bounded degree)
+takes one "timestep."
+Based on the results of preceding tests the algorithm decides what algebraic functions to
+compute, or outputs to emit, next.
+Such an algorithm can be viewed as a "decision tree"  in the sense that each test
+"branches" to three possible "child nodes" of the tree.  Finally,
+when the algorithm is done testing (i.e. reaches a tree "leaf") it outputs its 
+final yes/no answer.
+</p><p>
+For those who want to permit randomized algorithms which also depend on 
+(an arbitrary finite amount of) randomness,
+it also is possible to consider "<i>randomized</i> algebraic decision trees" (RADT).
+An RADT is a finite
+collection of plain ADTs, each with some probability-weight.
+The algorithm chooses which tree to employ with the aid of random numbers, and then 
+uses it.  We shall also allow replacing the word "finite" by
+"countably infinite." Further, we shall even allow uncountably infinite randomness
+provided it arises by giving the algorithm access to a source of random numbers uniform on 
+the real interval [0,1], and then allowing it to make decisions based on algebraic
+functions of these as well as of the 4N genuine inputs &ndash; with at most O(N)
+random numbers allowed.
+</p><p>
+<b>THEOREM (computational complexity lower bound):</b>
+Any <i>deterministic</i> algebraic decision tree fed 
+as input Bob's N scores and Alice's N scores,
+and which always outputs a correct answer of types 1 or 2 (for the deterministic case
+it is permissible to regard type 3 as merged with type 2)
+necessarily will have depth&ge;kNlogN for some positive constant k and
+an infinite set of N&gt;0 for some suitable choice of 2N-component inputs.
+Further, any <i>randomized</i> algebraic decision tree which returns an
+answer of types 1, 2, or 3 with answer-correctness probability&ge;51%
+will have expected depth&ge;kNlogN again for some positive constant k and an infinite
+set of N&gt;0 for some suitable choice of 2N-component inputs.
+</p><p>
+<b>PROOF:</b>
+We follow the ideas and techniques in Ben-Or 1983 and Grigoriev et al 1996/7,
+with a few minor changes.
+Ben-Or's idea (e.g. see his "theorem 3")
+was that if the number of <i>connected components</i> of the
+input of some problem in N-dimensional space, which must yield output=1
+(as opposed to the input-subset in N-space which yields output=0)
+is large, then any algebraic decision tree describing those subsets
+must have large depth.   He gives specific 
+formulas which quantify this.   The same argument will show that if the 1-set
+is <i>polyhedral</i> &ndash; i.e. is a boolean combination of halfspaces, e.g. 
+H<sub>1</sub> AND (H<sub>2</sub> OR H<sub>3</sub>) AND NOT H<sub>4</sub> &ndash;
+and if the <i>boundary</i> of that set consists of a large number of faces,
+then the decision tree must have large depth.  This boundary-based argument is the one 
+we shall use.  Specifically, for our problem it is easy to see that the set
+of possible Bob-score vectors for which an envy-free allocation exists, is
+(a) polyhedral and (b) has a boundary containing at least 
+N!&middot;N<sup>-O(1)</sup> faces.
+From this it follows that any algebraic decision tree must depth of order NlogN.
+If we instead employ Grigoriev et al's "main theorem" we obtain the same result
+now even for "randomized algebraic decision trees."
+<br>
+<b>Q.E.D.</b>
+</p><p>
+<b>DISCUSSION:</b>
+This "proof of a lower bound" may be evadable by resorting to algorithms which are <i>not</i>
+algebraic decision trees, e.g. compute non-algebraic functions, or make k-way choices for k large,
+rather than merely 2-way or 3-way choices.
+As a relevant example, consider the 
+</p><p>
+<b>"IS IT A PERMUTATION" PROBLEM:</b>
+Given as input N real numbers.  Decide whether those numbers happen to be a permutation of
+the N-element integer set {1,2,3,...,N}.
+</p><p>
+This problem requires at least order NlogN steps to decide 
+via any algebraic decision tree algorithm (and that is achievable by sorting
+the inputs then checking X<sub>j</sub>=j for all j=1,...,N).
+The proof is essentially the same as Ben-Or's Theorem 1 that the "element distinctness"
+problem requires NlogN steps; for us the permutation-condition  is that 
+max<sub>j</sub>X<sub>j</sub>=N and
+min<sub>j</sub>X<sub>j</sub>=1 (both checkable in linear time) and that
+(X<sub>j</sub>-X<sub>k</sub>)<sup>2</sup>&ge;1 if 1&le;j&lt;k&le;N,
+which is an algebraic set containing exactly N! connected components (each a single point) in 
+N dimensional space.
+</p><p>
+However, if we are allowed to employ non-algebraic functions such as sin(&pi;x),
+which is zero if and only if x is an integer, or the floor function; and if
+we are allowed to make N-way choices such as effectively
+happen using indirect array accesses
+within an N-element read-and-writable array,
+then it is trivial to solve the "is it a permutation" problem in O(N) steps:
+</p><pre>
+   if(max<sub>j</sub>X[j]&ne;N){ report("No."); quit; }
+   if(min<sub>j</sub>X[j]&ne;1){ report("No."); quit; }
+   for(j=1 to N){ Y[j] &larr; 0; }
+   for(j=1 to N){
+     if( sin(&pi;X[j])&ne;0 ){ report("No."; quit; }
+     if( Y[X[j]]&ne;0 ){ report("No."); quit; } 
+     Y[X[j]] &larr; 1; 
+   }
+   report("Yes, X[1..N] was a permutation.");
+</pre>
+<p>
+In view of this example, there might be some reasonable way to evade our lower bound 
+theorem/proof. And indeed, we 
+<a href="#envyexistalg">earlier</a> gave an O(N)-step <i>non-algebraic</i>
+algorithm 
+which <i>does</i> solve the envy-free-allocation non-constructive existence yes/no problem!
+More precisely, the reason that particular algorithm can "accomplish the impossible" 
+is it assumes <i>pre-sorted</i> input (the task of sorting it is NlogN-hard 
+in ADT models).
+</p><p>
+However, our lower bound
+cannot be evaded by algorithms on a <i>pointer</i> machine which only make binary 
+"if" decisions based only on <i>algebraic</i> functions of the input.
+The construction algorithm we gave in 
+<a href="#nlognalg">&sect;5</a>
+(based on link/cut paths data structure) was
+in that class and hence within that class is an "optimal" algorithm.
+</p>
+
+<a name="conclu"></a>
+<h3>8. Conclusions </h3>
+
+<p>
+One might have thought, initially, 
+that envy-free allocations were going to be an excellent
+way to, e.g, divide up possessions in divorces.  
+But the fact
+(<a href="https://rangevoting.org/powerlaw">&sect;4</a>)
+that real husbands and wives tend to have similar
+(not independent random) preference orders makes it much less likely that any
+envy-free allocation exists.   Therefore, I now suspect that the whole 
+envy-free allocation concept is mainly of <i>mathematical</i> importance 
+(as testified by all the beautifully rich structure revealed throughout this paper), 
+not <i>practical</i> importance.   
+</p><p>
+If we had a goodly source of real-world preference-order-pair data for large N, 
+then it would be <a href="#envyexistalg"">easy</a> to 
+find out how often envy-free allocations exist, thereby confirming or denying this.
+</p><p>
+But I want to point out that envy-freeness can be much easier to attain, if, in
+addition to the indivisible items, there exists one continuum-divisible item called "money."
+Suppose Alice and Bob provide money-prices for each of the items, not just a preference
+ordering.  I.e. A[j] and B[j] and Alice's and Bob's prices for item j.
+Ignoring the money for the moment,
+run the O(N)-step <a href="#envyexistalg">algorithm</a>.
+Let us suppose that at some point it announces failure, i.e.
+discovers some odd K such that both Bob and Alice have the same top-K item sets.
+In that case, 
+if A[K]&ne;B[K] then
+we can overcome this failure by creating a new fake "item," namely a pot of money
+with value &epsilon;+min(B[K],A[K]), and continuing on.  
+(Here &epsilon;&gt;0 is arbitrarily small.)
+In this way we either eventually overcome all failures, or run out of money.
+If the money supply is unbounded (e.g. if going into debt is permitted) then
+failure can be entirely eliminated.
+The precise minimal threshold amount of money needed to prevent failure,
+can be output by the resulting modified O(N)-step algorithm.
+</p><p>
+In particular, one piece of evidence showing the Power of Money is that our
+almost-sure failure <a href="#asft">theorem</a> is falsified (the failure probability
+shrinks strictly <i>below</i> 1) if the available amount of money is <i>any</i> positive real.
+</p><p>
+Other open problems now include:
+</p><ol><li>
+What if instead of just "Alice and Bob" there are K players, and NK indivisible items
+must be allocated in a way such that no player envies any other?
+"No envy" now is defined by (K-1)K matchings, each involving 2N items.
+</li><li>
+Our O(NlogN) time algorithm for finding an envy-free allocation produces a 
+<i>random</i> example.
+What if, instead, we want the "optimum" example (as explained in 
+<a href="#tulp">&sect;1</a>)?   Although we have shown that the optimum envy-free allocation,
+with "optimality" defined by any given vector c, may be found in polynomial time, we have not
+stated any appealing algorithm, and in particular have not shown an O(NlogN) time bound.
+</li></ol>
+<p>
+Our data structure is probably very useful re both these open problems.
+</p>
+
+
+<a name="refs"></a>
+<h3>9. References </h3>
+
+<blockquote>
+(See also the 
+<a href="#econsubbib">sub-bibliography</a> about power laws in economics.)
+</blockquote><p>
+Michael Ben-Or:
+<a href="http://pdf.aminer.org/000/212/028/lower_bounds_for_algebraic_computation_trees_with_integer_inputs.pdf">Lower bounds for algebraic computation trees</a>,
+ACM Sympos. Theory of Computing (STOC) 15 (1983) 80-86.
+</p><p>
+Steven J. Brams, D. Marc Kilgour, Christian Klamler:
+<a href="http://www.ams.org/notices/201402/rnoti-p130.pdf">Two-Person 
+Fair Division of Indivisible Items: An Efficient, Envy-Free Algorithm</a>,
+Notices Amer. Math'l. Soc. 61,2 (Feb. 2014) 130-141.
+</p><p>
+Thomas H. Cormen, Charles E. Leiserson, Ronald L. Rivest, Clifford Stein:
+Introduction to Algorithms, MIT press 2009.
+</p><p>
+Dima Grigoriev, Marek Karpinski, Friedhelm Meyer auf der Heide, Roman Smolensky:
+A lower bound for randomized algebraic decision trees,
+Computational Complexity 6,4 (1996/1997) 357-375.
+Also an earlier 
+<a href="http://theory.cs.uni-bonn.de/~marek/publications/stoc96.ps.gz">version</a>
+was in ACM STOC 28 (1996) 612-619.
+</p><p>
+Thomas Koshy: Catalan Numbers with Applications, Oxford University Press 2008.
+</p><p>
+Friedhelm Meyer auf der Heide:
+Simulating probabilistic by deterministic algebraic computation trees,
+Theoretical Computer Science 41 (1985) 325-330.
+</p><p>
+Albert Nijenhuis &amp; H.S.Wilf:
+<a href="http://www.math.upenn.edu/%7Ewilf/website/CombAlgDownld.html">Combinatorial 
+Algorithms</a>, Academic Press 1978.
+</p><p>
+Alexander Schrijver:
+<a href="http://books.google.com/books?id=zEzW5mhppB8C&printsec=frontcover#v=onepage&q&f=false#v=onepage&q&f=false">
+Theory of Linear and Integer Programming</a>,
+John Wiley &amp; Sons 1998.  (Chapters 19-21 are about totally unimodular matrices.)
+</p><p>
+D.D.Sleator &amp; R.E.Tarjan:
+<a href="http://www.cs.cmu.edu/~sleator/papers/self-adjusting.pdf">Self adjusting 
+binary search trees</a>, Journal of the ACM 32,3 (1985) 652-686.
+</p><p>
+D.D.Sleator &amp; R.E. Tarjan:
+<a href="http://www.cs.cmu.edu/~sleator/papers/dynamic-trees.pdf">
+A Data Structure for Dynamic Trees</a>, 
+J. Computer &amp; System Sciences 26,3 (1983) 362-391.
+</p><p>
+Eva Tardos: A strongly polynomial algorithm to solve combinatorial linear programs,
+Operations Research 34,2 (1986) 250-256.
+</p><p>
+Robert E. Tarjan: Data structures and network algorithms, SIAM 
+(CBMS-NSF Regional Conference Series in Applied Mathematics #44) 1983.
+</p><p>
+Oswald Veblen &amp; Philip Franklin:
+On matrices whose elements are integers, 
+Annals of Maths. (Ser. 2) 23,1 (Sept. 1921) 1-15. 
+[Reprinted with minor changes as appendix II, which is pages 170-189, in O.Veblen: 
+<a href="http://trove.nla.gov.au/version/49991950">Analysis situs</a>, 
+Amer. Math'l Soc. 2nd ed. 1931 (#30), 194 pages.  But our and Schrivjer's rewrites
+are far superior to this original.]
+</p><p>
+Andrew Chi-Chih Yao:
+<a href="http://cadadr.org/act/ayao.pdf">Decision Tree Complexity and Betti Numbers</a>,
+J. Computer &amp; System Sciences 55,1 (1997) 36-43.
+</p>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

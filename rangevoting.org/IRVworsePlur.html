@@ -1,0 +1,87 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Can Instant Runoff (IRV) be worse than plain plurality voting?
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Can Instant Runoff (IRV) be worse than plain plurality voting? </H2>
+<p><small> By Brian W. Goldman 
+(PhD in computer science from Michigan State University, East Lansing) </small>
+</p><p>
+It is possible for IRV to produce clearly worse election results than plain plurality voting, in
+an election with the same ballots for both systems.
+Here is an example election with 5 candidates, 24 voters, and voting compatible with
+a "1-dimensional political spectrum":
+</p><table bgcolor="#FFFF99">
+<tr bgcolor="pink"><th>#voters</th><th>Their Vote</th></tr>
+<tr><td>7</td><td>Centrist &gt; Left &gt; Right &gt; FarLeft &gt; FarRight </td></tr>
+<tr><td>6</td><td>Left &gt; Centrist &gt; Right &gt; FarLeft &gt; FarRight </td></tr>
+<tr><td>6</td><td>Right &gt; Centrist &gt; Left &gt; FarRight &gt; FarLeft </td></tr>
+<tr><td>2</td><td>FarLeft &gt; Left &gt; Centrist &gt; Right &gt; FarRight </td></tr>
+<tr><td>3</td><td>FarRight &gt; Right &gt; Centrist &gt; Left &gt; FarLeft </td></tr>
+</table>
+<p>
+With plain plurality, the results are 
+</p><center>
+<b>Centrist=7</b>, Left=6, Right=6, Far Left=2, Far Right=3, 
+</center><p>
+meaning Centrist wins. 
+</p><p>
+Centrist is also the "beats-all (Condorcet) winner" as Centrist&gt;Left 
+on 7+6+2=15 versus 6+3=9 ballots, Centrist&gt;Right on 7+6+2=15 versus 6+3=9 ballots, 
+and the "Far" candidates are only better than Centrist on 2 and 3 ballots.
+</p><p>
+However, in this election Centrist is <i>not</i>
+the IRV winner. 
+FarLeft has the fewest first-round top-rankings and hence is eliminated, giving us:
+</p><table bgcolor="#FFFF99">
+<tr bgcolor="pink"><th>#voters</th><th>Their Vote</th></tr>
+<tr><td>7</td><td>Centrist &gt; Left &gt; Right &gt; FarRight </td></tr>
+<tr><td>8</td><td>Left &gt; Centrist &gt; Right &gt; FarRight </td></tr>
+<tr><td>6</td><td>Right &gt; Centrist &gt; Left &gt; FarRight </td></tr>
+<tr><td>3</td><td>FarRight &gt; Right &gt; Centrist &gt; Left  </td></tr>
+</table>
+<p>
+for round 2; then FarRight has the fewest and is eliminated to get
+</p><table bgcolor="#FFFF99">
+<tr bgcolor="pink"><th>#voters</th><th>Their Vote</th></tr>
+<tr><td>7</td><td>Centrist &gt; Left &gt; Right  </td></tr>
+<tr><td>8</td><td>Left &gt; Centrist &gt; Right  </td></tr>
+<tr><td>9</td><td>Right &gt; Centrist &gt; Left  </td></tr>
+</table>
+<p>
+for round 3; now Centrist is eliminated to yield in the 4th and final round
+</p><table bgcolor="#FFFF99">
+<tr bgcolor="pink"><th>#voters</th><th>Their Vote</th></tr>
+<tr><td><b>15</b></td><td> Left &gt; Right  </td></tr>
+<tr><td>9</td><td>Right &gt; Left  </td></tr>
+</table>
+<p>
+so IRV elects <b>Left</b> even though the voters preferred Centrist&gt;Left by 15:9,
+<i>and</i> Centrist also won with plain plurality.
+</p>
+<p>
+I also have constructed such examples with only 4 candidates
+(here's <a href="IRVpereira.html">one</a>;
+see also <a href="CoreSupp.html">this</a>), but they did not
+seem as realistic as this 5-candidate example.
+</p>
+
+
+<br>
+<p><a href="FreqIRVworsePlur.html">How often does this happen?</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

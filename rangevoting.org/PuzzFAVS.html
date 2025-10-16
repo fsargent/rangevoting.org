@@ -1,0 +1,164 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - Answer to puzzle 40
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to Puzzle #40 &ndash;
+Feel alike &rArr; vote same?
+</H2>
+
+<p><b>Puzzle:</b>
+A single-winner voting system satisfies FAVS if the best strategy for any set of "feel alike"
+voters is for all members of the set to vote in the same manner.
+<br><b>(a)</b>
+Show that instant runoff voting (IRV) fails FAVS.
+<br><b>(b)</b>
+Show that Borda voting fails FAVS.
+<br><b>(c)</b>
+Show that the Schulze beatpaths Condorcet method (with Simpson-Kramer min max as
+a tiebreaker, i.e. of two tied Schulze winners, the one with a milder worst-defeat
+is preferred) fails FAVS.
+<br><b>(d)</b>
+Show that Approval voting satisfies FAVS &ndash; but not if we allow 
+incomplete-information scenarios
+(i.e. in which the strategic-voter-set does not have complete information about all
+the other votes).
+<br><b>(e)</b>
+Show that range voting always satisfies FAVS in both complete and incomplete information
+scenarios.
+<br>
+(It is not clear whether satisfying FAVS is desirable, but this result is of interest
+for refuting the vague claim that strategy in range
+voting is comparatively 
+"complicated" or "messy.")
+</p>
+
+<p><b>Answer:</b>
+<br>
+
+<p>
+<b>(a)</b>
+In this <b>IRV</b> election, if 4 additional voters (all of whom want to elect A) vote:
+If all 4 vote A top: C wins.
+If all 4 vote C top: C wins.
+If all 4 vote B top: B wins.
+Best group strategy is 2 vote A and 2 vote B &ndash; then A wins.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" rules="rows">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 8 </td>
+<td> A>B>C </td>
+</tr>
+<tr>
+<td> 6 </td>
+<td> B>C>A </td>
+</tr>
+<tr>
+<td> 4 </td>
+<td> C>B>A </td>
+</tr>
+<tr>
+<td> 3 </td>
+<td> C>A>B </td>
+</tr>
+</table>
+
+<p>
+<b>(b)</b>
+If the current <b>Borda</b> totals are as shown, then 7 more voters
+can elect "Good" by voting (2,1,0) thrice and (2,0,1) four times, but
+any 7 copies of the <i>same</i>
+vote will fail to elect Good.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" rules="rows">
+<tr>
+<th> Candidate </th>
+<th> their current total </th>
+</tr>
+<tr>
+<td> Good </td>
+<td> 0 </td>
+</tr>
+<tr>
+<td> Lousy </td>
+<td> 9 </td>
+</tr>
+<tr>
+<td> Cruddy </td>
+<td> 9 </td>
+</tr>
+</table>
+
+<p>
+<b>(c)</b>
+Here is an example to show
+that Schulze beatpaths (or Tideman ranked pairs) Condorcet voting,
+with "Simpson Kramer minmax" used as tiebreaker in both cases,
+fails FAVS.
+</p><p>
+There are 7 candidates, labeled 0,1,...,6.
+There are 3 strategic voters who wish to elect 0.
+Suppose <i>after</i> these 3 voters cast 3 votes of the form
+0>1=2=4>3=5=6
+the situation is as follows:
+every candidate X beats X+1, X+2, and X+4 (mod 7)
+by a 5-vote margin.
+</p><p>
+In this situation, everything is completely symmetrical and every
+candidate would
+have an equal chance to win. Perfect tie. That is good (since without
+these 3 votes, candidate-0 would have lost for sure) but not
+good enough since only 1/7 chance that 0 will win.
+</p><p>
+The 3 voters can do better by reasoning as follows:
+"1,2, and 4 form a Condorcet cycle.
+So do 3,5, and 6. By changing our "=" to appropriately devised
+">" and "<" we can strengthen or weaken
+these two Condorect cycles (if we so choose)."
+</p><p>
+Suppose they strengthen them both. 
+(This cannot be done by all voting the same,
+but can be done by a mixture of 3 kinds of votes, e.g. 1>2>4, 2>4>1, 4>1>2.)
+In that case, no member of
+either of these cycles can win, because each has a worse defeat than
+usual and hence by the worst-defeat-severity tiebreaking, must lose.
+Hence, 0 must be the winner.
+</p>
+
+<p>
+<b>(d)</b>
+With approval voting, the feel-alike voters can (collusively) figure out the best candidate
+they are capable of electing, then approve him 
+(and those candidates they regard as superior) only.  
+</p><p>
+But in an <i>incomplete information</i> scenario, the 
+<a href="RVstrat1.html#examples">first example here</a> scaled up by a factor of 10
+can be used to see that 10 identical approval-style votes will be less good
+than a mixture of 5 and 5 approval-type votes of two different types.
+</p>
+
+<p>
+<b>(e)</b>
+Range voting satisfies FAVS because suppose it didn't, then just have all the N voters
+use the average of whatever N vote-vectors they used in their supposedly 
+better-than-all-voting-same voting strategy
+&ndash; to prove it actually <I>wasn't</i> "better."
+</p>
+
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+

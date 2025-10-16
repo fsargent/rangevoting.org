@@ -1,0 +1,590 @@
+<html>
+<head>
+<title>
+RangeVoting.org - experimental ballot spoilage rates for different voting systems
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Spoilage and Error Rates with Range Voting versus other Voting Systems </H2>
+
+<p>(<a href="SPRatesSumm.html">Executive Summary</a>)
+&nbsp;&nbsp;
+(<a href="#conclusions">skip to conclusions</a>)
+</p>
+
+<H3> Theoretical expectations </H3>
+
+<p>
+With plurality voting, your ballot can be invalidated by voting for two candidates
+(overvoting).
+</p>
+
+<p>
+With instant runoff voting, there are more ways to go wrong.  E.g. you can co-rank two candidates
+at any level of the ranking, skip a ranking-level, etc.  
+So it seems "obvious" there are going to be <i>higher</i> ballot
+spoilage rates with IRV than with plurality.
+</p>
+
+<p>
+With range and approval voting, there are fewer ways, 
+in fact many would say <i>no</i> ways, to go wrong,
+because <i>every</i> way to vote or to fill out numbers within the permitted range,
+is a valid vote.  So you similarly might expect range and approval voting to have <i>lower</i>
+spoilage rates than plurality.
+</p>
+
+<p>
+All that, however, is just a theory.  The real proof of the pudding is the 
+experiment.  As PhD advisors are fond of saying to their poor graduate students,
+"Show me the data!".
+</p>
+
+
+<H3> Plurality (real data) </H3>
+
+<p>
+According to official plurality-vote totals:
+Florida's ballot spoilage rate in 2000 was <b>3%</b>, and
+for the US nationwide 2000 presidential election, 
+1.9 million ballots were spoiled and hence uncounted
+versus 105 million that were counted, for a spoilage rate of <b>1.8%</b>.
+</p>
+
+<p>
+However, the distribution of invalid ballots in the USA is <i>uneven</i>:
+<i>USA Today</i> reported that voters in Florida's majority-black precincts
+were four times
+as likely to have their 2000 ballots invalidated than white precincts:
+8.9% versus 2.4%. 
+Among the 100 precincts with the highest numbers of
+disqualified ballots, 83 were majority-black.
+Allan Lichtman (history professor at American University)
+conducted a study of ballot rejection
+rates in Florida for the US Commission on Civil Rights.
+He found that overall, there was
+enormous difference in the rate of white votes and African-American votes
+counted in Florida.
+When one looks at the variation in the ballot spoilage rates for each
+Florida county,
+about one-fourth of the variation can be explained solely by knowing how many
+African American voters were registered there. 
+Controlling for the
+number of high
+school graduates and literacy failed to diminish this relationship.
+For the entire
+state, the rate of spoiled ballots for African Americans was 14.4%
+while it was 1.6% for non-African Americans.
+The US Commission on Civil Rights subsequently claimed that, in 2000 Florida,  
+54% of the ballots discarded as "spoiled" were cast by
+African Americans, who were only 11% of the voters.
+</p>
+
+<p>
+And here are some spoilage rates from other countries:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> Country </th>
+<th> %invalid </th>
+</tr>
+<tr>
+<td> <a href="Mexico06.html">Mexico 2006 presidential (5 major candidates)</a> </td>
+<td> 2.16% </td>
+</tr>
+<tr>
+<td> <a href="Yugo00.txt">Yugoslavia 2000 (5 major candidates)</a> </td>
+<td> 3.03% </td>
+</tr>
+<tr>
+<td>  Taiwan 2004 </td>
+<td> 2.5% </td>
+</tr>
+<tr>
+<td>  Taiwan 2000 </td>
+<td> 1% </td>
+</tr>
+<tr>
+<td> Russia 1996 </td>
+<td> 1.0 to 1.6% </td>
+</tr>
+<tr>
+<td> France 2002 Presidential </td>
+<td> 3.5% </td>
+</tr>
+<tr>
+<td> France 2007 Presidential </td>
+<td> 2.9% </td>
+</tr>
+</table>
+
+<p>
+In <b>California</b>,
+1.59% of ballots for governor went uncounted in 1997,
+and 1.8% of presidential ballots went uncounted in 2000, but only
+0.97% of ballots for governor went uncounted in 2001.   The
+2001 decrease was attributed to new voting machine protocols which
+immediately
+<i>reported</i> invalid ballots to voters to give them 
+the option of correcting them.
+</p>
+
+
+<H3> Range, aka Score, Voting
+(data from 2004 US presidential election "exit poll" study of human voters) </H3>
+<p>
+Although in our 2004 range voting exit-poll study
+(#82 <a href="WarrenSmithPages/homepage/works.html">here</a>)
+we did not collect enough
+data to get a statistically significant prediction of ballot-spoilage rates,
+nevertheless we shall report our data for whatever it is worth.
+It <i>is</i> possible to draw <i>some</i> statistically significant conclusions.
+</p>
+
+<p>
+Out of 54 range vote ballots in which we demanded the voters fill in every score slot
+with a numeric score (no Xs &ndash; intentional blanks &ndash; allowed) one score on
+one ballot was unclear.  That is a total ballots-with-problems rate of
+<b>1.9%</b>.  However, by using all the other 6 scores on that 7-candidate ballot and
+regarding the unclear one as an X, our unused-score rate is only <b>0.026%</b>.
+</p>
+<p>
+Out of 68 range vote ballots in which we allowed
+blank scores, there were zero errors (but 5 voters refused to fill in their ballots
+at all for privacy reasons).
+That is a total ballots-with-problems rate of
+<b>0%</b>.  (Of course, it makes sense that allowing blanks would reduce the error rate.)
+</p>
+
+<p>
+<small> Despite the paucity of our data,
+it is actually possible to turn the per-entry error figure into a 
+<i>statistically significant</i>
+weakened conclusion by using Poisson statistics.
+The calculations are as follows.  First, our observed per-entry range error rate based
+on a single error in 117 ballots each with 7 entries,
+was 1/(117&times;7) which is a factor of 14.8 smaller than the US nationwide
+1.8% plurality per-race spoilage rate.  Second, if our true error rate were 3
+(or fewer) times smaller than the plurality rate, the probability we would have observed
+at most one error, would have been at most 5.93e<sup>-4.93</sup>=4.2%.  Third, if
+our true error rate were 2
+(or fewer) times smaller than the plurality rate, the probability we would have observed
+at most one error, would have been at most 8.4e<sup>-7.4</sup>=0.51%.
+Therefore, with 96% confidence we can say that the range per-entry error rate
+is at least <b>three</b> times smaller than the plurality per-race error rate,
+and with 99.5% confidence we can say that the range per-entry error rate
+is at least <b>twice</b> as small as the plurality per-race error rate.
+</small>
+</p>
+
+<p>
+<i>Why</i> does range-voting have a much smaller per-entry error rate than plurality's
+per-race error rate?  One might conjecture that the very "complexity" of having to fill
+in a <i>number</i> for each candidate makes the voter pay more attention; another
+conjecture would be that the repetition involved &ndash; you fill in a number next to
+<i>every</i> candidate &ndash; makes errors less likely. (In contrast, in many US
+punch-card-based plurality elections, the voter has to find  punch-hole 53,  randomly located
+somewhere on a card, corresponding to a candidate on a separate ballot where it says:
+"punch hole 53."  This is a <i>one-time</i>, error-prone operation.)  Range voting may seem
+more "complicated" than plurality at first glance, but what the data is saying is, that
+impression is misleading, since the so-called complexity in this case
+actually <i>helps</i> voters.
+</p>
+
+<H3> Range, aka Score, Voting (data from 2007 French presidential election "exit poll" 
+<a href="French2007studies.html">study</a> of human voters) </H3>
+
+<P>
+Much more range voting data &ndash; 1752 ballots &ndash;
+became available thanks to the government-sponsored
+<a href="OrsayTable.html">French Range Voting study</a>.  It entirely confirmed
+all the conclusions discussed here from our own smaller and less-good study above,
+and now is enough data to make all the conclusions statistically significant.
+</p><ul>
+<li>
+With 19 out of 1752 range ballots deemed invalid, the ballot-spoilage rate was
+<b>1.1%</b>.
+For a simultaneous approval voting study they 
+<a href="French2007studies.html">found</a> <b>0.81%</b> spoilage
+and in simultaneous rank-order-ballot study they got <b>7.0%</b> spoilage.
+</li><li>
+Meanwhile 
+in the <a href="http://en.wikipedia.org/wiki/French_presidential_election,_2007">official</a> 
+French 2007 
+presidential election conducted via <a href="Plurality.html">plurality</a> voting at the same time
+as this study, the "spoilt and null votes" amounted to <b>1.44%</b>  in round #1
+and <b>4.20%</b> in the second and final round (i.e. the runoff between Sarkozy &amp; Royal),
+i.e.
+<b>2.9%</b> in all.
+</li><li>
+In the preceding French (2002) 
+presidential election conducted via <a href="Plurality.html">plurality</a> voting, the
+spoilage rates were
+<b>2.5%</b> of the registered voters
+in round #1 and <b>4.5%</b> in the second and final round
+ (i.e. the runoff between Chirac &amp; Le Pen), i.e.
+<b>3.5%</b> in all.
+</li><li>
+In that 2002 election an exit-poll study of thousands of voters was done using
+<a href="FrenchStudy.html">approval voting</a>.
+That study obtained an <b>0.4%</b> spoilage rate.
+</li></ul>
+
+
+<a name="aust"></a>
+<H3> Instant Runoff Voting in Australian House of Representatives Elections 2004 
+(and Irish Presidential elections) &ndash; real data </H3>
+
+<a href="AustralianPol.html">Australia</a> 
+House of Representatives elections are IRV and have been
+since 1918.  Australia has conducted  more IRV elections than any other country.
+Official data from recent elections is available from
+<a href="http://elections.uwa.edu.au/">http://elections.uwa.edu.au/</a>.
+In the House of Representatives
+election of 9 Oct. 2004 (this site indicates) they had the following 
+percentages of invalid votes:
+</p>
+<a name="Aus04"></a>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> Place </th>
+<th> %invalid </th>
+</tr>
+<tr>
+<td> Victoria </td>
+<td> 4.10% </td>
+</tr>
+<tr>
+<td> Northern Territory </td>
+<td> 4.45% </td>
+</tr>
+<tr>
+<td> New South Wales </td>
+<td> 6.12% </td>
+</tr>
+<tr>
+<td> Queensland </td>
+<td> 5.16% </td>
+</tr>
+<tr>
+<td> Western Australia </td>
+<td> 5.32% </td>
+</tr>
+<tr>
+<td> South Australia </td>
+<td> 5.56% </td>
+</tr>
+<tr>
+<td> Tasmania </td>
+<td> 3.59% </td>
+</tr>
+<tr>
+<td> Australian Capital Territory </td>
+<td> 3.44% </td>
+</tr>
+<tr>
+<th> Nationwide average </th>
+<td> 5.18% </td>
+</tr>
+</table>
+
+<p> 
+<b>Later note:</b>
+I do not have state-based data for other years, but
+it may be that 2004 was an atypically bad year for ballot spoilage in Australia,
+since the nationwide average figures for other years were
+</P><pre>
+  election        invalid-ballot rate
+=============     ===================
+24 Nov. 2007      3.95% national invalid rate,
+10 Nov. 2001      4.82%
+ 3 Oct. 1998      3.78%
+ 2 March 1996     3.2%   (turnout 95.77%)
+13 March 1993     2.97%  (turnout 95.75%)
+<b>Time-avg (93-07)  3.98%</b>
+</pre>
+<p>
+But it seems even a good year for Australia has comparable ballot spoilage to a pretty bad
+year for a plurality-voting country.
+</p>
+
+<p>
+<b>Ireland</b> holds its presidential elections using the IRV system, an event of
+low interest because the position is largely powerless and ceremonial in nature, and
+often only one candidate runs unopposed.  (7 year terms.)
+In the 1997 election, which was the last contested one
+(according to <a href="http://www.electionsireland.org">http://www.electionsireland.org</a>
+and the 
+<a href="http://www.binghamton.edu/cdp/era/index.html">Binghampton elections archive</a>),
+Mary McAleese won in a 5-candidate race.
+(In the first rounds 3 candidates were eliminated and then McAleese beat
+Banotti in the final round by 706259 to 497516.)
+The total number of votes which <i>failed</i> to transfer to
+these two final candidates, i.e. which were not counted in the final round,
+was 66061 out of 1269836 cast, i.e. 5.2% invalid.  Also, there were 0.80% "spoilt" ballots
+(which could not even be used in the first round)
+for a total of 6.0% ballots unuseable at some stage of the election process.
+However, this 6.0% figure
+is not really a true measure of the rate of invalid ballots because 
+some of those 5.2% perhaps <i>intentionally</i> did not wish to
+specify a preference between McAleese and Banotti, as opposed to having it discarded due
+to an <i>error</i>.  
+In <a href="Ireland1990.html">1990</a> the same websites report Mary Robinson won
+in a 3-candidate election with 1574651 "valid" and 9444 "spoilt" votes, which
+is a tiny 0.60% spoilage rate.  But in addition to these "spoilt" votes there were 25548 votes
+which failed to transfer, i.e. failed to specify a preference between the final
+contenders 
+Robinson and Lenihan, which is 1.62% and makes 2.22% when both kinds of spoilage are
+summed.
+All of these 1990 and 1997 numbers were larger than the exceedingly tiny
+spoilage rate (0.56%) in the 1973  election, which effectively
+was a plurality election since there
+were only 2 candidates.
+</p>
+
+<p>
+Conclusion:  Australia IRV ballots have 
+<i>far</i> higher invalidity rates
+than
+the USA's and other countries' rates for plurality ballots above &ndash;
+every Australia area listed here did worse than every plurality country
+listed there.  Also, although our Irish data may not be what you really want,
+as far as it goes it also indicates larger invalid-ballot rates 
+in IRV than plurality contests <i>within</i> Ireland.
+</p>
+
+<a name="sf"></a>
+<H3> Instant Runoff Voting (versus Plurality) in San Francisco 2004 &ndash; real data </H3>
+
+<p><b>Table 1. Valid votes, overvotes and undervotes (also known as DROP-OFF) in IRV races:</b>
+<br><i>Final official results from the SF Dept of Elections (www.sfgov.org/elections)</i></p>
+
+<table width="663" border="1" cellpadding="0" cellspacing="0" bgcolor="#FEFFDF">
+<tr><td width="104"><p><b>District<br></b></p></td><td width="103"><b>Total Voters<br></b></td><td width="106"><b>Overvotes&nbsp;&nbsp;&nbsp; +<br></b></td><td width="166"><b><nobr>Undervotes/dropoff&nbsp;&nbsp;&nbsp; =&nbsp;</nobr><br></b></td><td width="75"><b>Invalid ballots&nbsp;&nbsp;&nbsp;&nbsp; <br></b></td><td width="109"><b>Total valid ballots<br></b></td></tr><tr><td width="104">1<br></td><td width="103">30,721<br></td><td width="106">156 (0.508%)<br></td><td width="166">1,778&nbsp;&nbsp;&nbsp; (5.8%) <br></td><td width="75">1934&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="109">27,787<br></td></tr><tr><td width="104">2<br></td><td width="103">39,462<br></td><td width="106">95&nbsp;&nbsp; (0.241%)<br></td><td width="166">4,879&nbsp;&nbsp;&nbsp; (12.4%)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="75">4974&nbsp;&nbsp; <br></td><td width="109">34,488<br></td></tr><tr><td width="104">3<br></td><td width="103">28,317<br></td><td width="106">74&nbsp;&nbsp; (0.261%)<br></td><td width="166">2,338&nbsp;&nbsp;&nbsp;(8.3%)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="75">2412&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="109">25,905<br></td></tr><tr><td width="104">5<br></td><td width="103">39,255<br></td><td width="106">394&nbsp; (1.004%)<br></td><td width="166">3,752&nbsp;&nbsp;&nbsp;(9.6%)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="75">4146&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="109">35,109<br></td></tr><tr><td width="104">7<br></td><td width="103">34,905<br></td><td width="106">236&nbsp; (0.676%)<br></td><td width="166">3,030&nbsp;&nbsp;&nbsp; (8.7%)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="75">3266&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="109">31,639<br></td></tr><tr><td width="104">9<br></td><td width="103">26,275<br></td><td width="106">172&nbsp; (0.655%)<br></td><td width="166">1,235&nbsp;&nbsp;&nbsp; (4.7%)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="75">1407&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="109">24,868<br></td></tr>
+<tr><td width="104">11<br></td><td width="103">24,902<br></td><td width="106">219&nbsp; (0.879%)<br></td><td width="166">1,507&nbsp;&nbsp;&nbsp; (6.1%)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="75">1726<br></td><td width="109">23,176<br></td></tr>
+<tr bgcolor="#dfffcc"><td width="104"><b>Total</b><br></td><td width="103">223,837<br></td><td width="106">1347&nbsp; (0.602%)<br></td><td width="166">18,519&nbsp;&nbsp;&nbsp; (8.3%)&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; <br></td><td width="75">19866<br></td><td width="109">203,971<br></td></tr>
+</table>
+<p><b>(Total voters &ndash; Invalid ballots = valid ballots)&nbsp; <br></b>
+<b>Overvote means a voter selected two or more candidates for their <i>top</i> 
+IRV ranking.<br></b><b>Undervote/drop-off means voter ranked <i>nothing</i> on their ballot.</b>
+</p>
+
+<p>
+<b>Table 2.&nbsp; Undervotes/dropoff and overvotes in non-IRV (i.e. plurality) 
+San Francisco races:</b>
+<br><i>Based on official data released 5 Nov. 2004.&nbsp; The report lacks about 80,000 absentee and provisional ballots that had not yet been counted.</i></p>
+<table width="658" border="1" cellpadding="0" cellspacing="0" bgcolor="#FEFFDF">
+<tr><td width="111"><p><b>Race<br></b></p></td><td width="77"><b>Voters<br></b></td><td width="97"><b>Undervotes/ Drop-off<br></b></td><td width="94"><b>Overvotes<br></b></td><td width="101"><b>% Overvote<br></b></td><td width="128"><b>Total valid ballots<br></b></td><td width="50">&nbsp;<br></td></tr>
+<tr><td width="111"><p>President</p></td><td width="77"><p align="right">283,462</p></td><td width="97"><p align="right">0.9%</p></td><td width="94">312<br></td><td width="101">0.110%<br></td><td width="128">280,581<br></td><td width="50">&nbsp;<br></td></tr>
+<tr><td width="111"><p>US Senate</p></td><td width="77"><p align="right">283,462</p></td><td width="97"><p align="right">7.0%</p></td><td width="94">273<br></td><td width="101">0.096%<br></td><td width="128">263,229<br></td><td width="50">&nbsp;<br></td></tr>
+<tr><td width="111"><p>US Rep &ndash; 8</p></td><td width="77"><p align="right">229,483</p></td><td width="97"><p align="right">7.5%</p></td><td width="94">169<br></td><td width="101">0.074%<br></td><td width="128">212,047<br></td><td width="50">&nbsp;<br></td></tr>
+<tr><td width="111"><p>US Rep &ndash; 12</p></td><td width="77"><p align="right">53,979</p></td><td width="97"><p align="right">11.4%</p></td><td width="94">29<br></td><td width="101">0.054%<br></td><td width="128">47,776<br></td><td width="50">&nbsp;<br></td></tr>
+<tr><td width="111"><p>State Sen &ndash; 3</p></td><td width="77"><p align="right">160,873</p></td><td width="97"><p align="right">13.0%</p></td><td width="94">99<br></td><td width="101">0.062%<br></td><td width="128">139,826<br></td><td width="50">&nbsp;<br></td></tr>
+<tr><td width="111"><p>State Ass &ndash; 12</p></td><td width="77"><p align="right">122,445</p></td><td width="97"><p align="right">15.9%</p></td><td width="94">94<br></td><td width="101">0.077%<br></td><td width="128">102,910<br></td><td width="50">&nbsp;<br></td></tr>
+<tr><td width="111"><p>State Ass &ndash; 13</p></td><td width="77"><p align="right">161,017</p></td><td width="97"><p align="right">12.0%</p></td><td width="94">86<br></td><td width="101">0.053%<br></td><td width="128">141,551<br></td><td width="50">&nbsp;<br></td></tr>
+<tr bgcolor="#dfffcc"><td width="111"><p><b>Total</b></p></td><td width="77"><p align="right">1,294,721</p></td><td width="97" align="right">8.1%</td><td width="94">1062<br></td><td width="101">0.0820%<br></td><td width="128"><br></td><td width="50">&nbsp;<br></td></tr>
+</table>
+
+<p>
+<i>Overvote means a voter selected two or more candidates for the same office.
+Undervote/drop-off means voter selected no candidate for that race.  In either
+IRV or plurality voting,
+undervoting has the same effect as not voting at all in that race.  
+<!-- Overvoting spoiled both
+plurality and IRV (if top) ballots in San Francisco and such ballots were not counted at all in
+that race.   Undervoting/drop-off could only partially spoil an IRV ballot.
+-->
+</i></p>
+
+<p>
+So from this we see that the <b>overvote error rates</b>
+in San Francisco &ndash; same place, same time, same voters,
+just IRV versus plurality races &ndash;
+ranged from 3 to 11 
+times higher
+with IRV than with plurality voting, <b>typically 7 times higher.</b>
+<small>
+(If double-ranking a <i>non</i>-top candidate 
+in IRV were also considered &ndash; we haven't &ndash;
+then IRV overvote error rates would have been even higher.)</small>
+And this conclusion is fully statistically significant.
+</p><p>
+Meanwhile, the undervotes and dropoffs probably mostly were "intentional" rather than "errors,"
+but anyhow were comparable for both Plurality and IRV.
+</p>
+
+<img src="SFovervoteRates2004.png" width="99%"/>
+
+<a name="aspen"></a>
+<H3> Instant Runoff Voting (versus Plurality) in Aspen 2009 &ndash; real data </H3>
+<p>
+After <b>Aspen Colorado</b> adopted instant runoff voting for its Mayoral Election,
+the <i>Aspen Times</i> led off its article about the election 
+[Janet Urquhart: Aspen's instant runoff voting quick but confusing, 6 May 2009]
+with
+</p><blockquote>
+Aspen chose a mayor and two City Council members Tuesday in an election that left plenty of voters confused at the polls and equally mystified as the ballots were tallied in televised proceedings late into the evening.
+<br> &nbsp;&nbsp;&nbsp;
+The city's first use of instant runoff voting, which eliminated the need for a June runoff election, got mixed reviews at the polls. And the whirlwind runoffs after three hours of tallying votes left plenty of observers at a loss to explain exactly how the results were tabulated.
+</blockquote><p>
+and quoted City Clerk Kathryn Koch as saying
+</p><blockquote>
+There were 168 spoiled ballots Tuesday; two is typical.
+</blockquote>
+
+<a name="minn"></a>
+<H3> Instant Runoff Voting (versus Plurality) in Minneapolis 2009 &ndash; real data </H3>
+
+<p>
+Minneapolis MN adopted "ranked choice voting" (instant runoff in single-seat elections)
+holding the first such elections in 2009.  To quote from the 
+<a href="MinnepolisRCVreptJune2010.pdf">report</a>
+Minneapolis commissioned to assess the results:
+</p><blockquote>
+Of the 45,968 total ballots
+cast, there were 1,888 spoiled ballots and 2,958 voter error ballots,
+which indicates ballots with voter
+errors specific to Ranked Choice Voting, including overvote, repeat
+candidate, skipped ranking and undervote.
+Comparatively, during
+the general municipal election in 2005 [plurality voting], there were 755 spoiled ballots
+of the total 70,987 absentee and in-person voters...
+<br>&nbsp;&nbsp;&nbsp;
+The above numbers mean that in 2005 1.06% of all ballots cast were
+spoiled, as opposed to 4.1% in 2009.
+<i>Additionally</i>, 6.43% (2,958) of the ballots cast had errors specific to
+RCV. These ballots were ultimately counted [at least in the first IRV "round"]
+because voter intent could be
+ascertained. <!--However, there [remains] concern [because of these] nearly 6.5% of the voters
+[who] appeared not to cast a vote properly using RCV.-->
+<br>&nbsp;&nbsp;&nbsp;
+...combined the two accounted for 7.49% of all the ballots cast...
+errors on nearly 7.5% of all the ballots cast are potentially troubling. 
+Such a high error rate is significant enough that should it 
+persist it could affect the outcome of elections in the future. 
+</blockquote>
+
+<p>
+Here's some of the report's spoilage rate data split up by ward-by-ward 
+comparing the spoilage rate before (2005) and after (2009) ranked-choice voting was enacted,
+in graphical form:
+</p>
+<img src="MinneapolisSpRates059.png" alt="Minneapolis spoilage rate data" width="99%"/>
+<p><small>
+We thank Joyce McCloy for giving us this report, "SJVoter" for the ward-by-ward part
+of the graphic (from Minneapolis election dept data),
+and here's blogger <a href="RedCrayon.html">Dale Sheldon-Hess</a> ranting 
+about continued mis-representation
+of this truth about Minneapolis by ranked-choice-voting propagandists.
+</small></p>
+
+
+<a name="kinder"></a>
+<H3> Kindergarten </H3>
+
+<p>
+Prof. Alan Sherman conducted an 'election' in a 
+<a href="ShermanPetElection.pdf">kindergarten</a> 
+using three different voting methods.  41 children voted in each.
+With plurality voting, there were 6 invalid ballots, i.e. 15%, or
+with a 1&sigma; error bar (16&plusmn;7)%.
+But both approval and range voting yielded no errors, i.e. (2&plusmn;2)% each.
+("Dog" won with all three voting methods.)
+</p>
+
+<a name="german"></a>
+<H3> German approval voting study </H3>
+
+<p>
+This exit-poll 
+<a href="GermanApprovalStudies.html">study</a>
+of a few thousand real voters in two towns in several German elections 
+in January 2008 and September 2009
+found ballot spoilage rates of 0.07%, 0.14%, and 0.62%.
+</p><p>
+These compare favorably with the official nationwide spoilage rates
+of 1.7% in Sept. 2009 and 1.4% in 2005.
+</P>
+
+<a name="conclusions"></a>
+<H3> Conclusions </H3>
+
+<p>
+Based on our data,
+the ballot spoilage rate with
+range voting would be about <i>one third</i> of what it now is with plurality, 
+in terms of the count
+of ballots-with-problems, and below <i>10%</i> of what it now is,
+in terms of the entries-affected rate. 
+These are fully
+statistically significant conclusions.
+And keep in mind that our voters had never
+range-voted before in their lives and did not have the benefit of voting machines
+&ndash; with experience and machines, range error rates 
+presumably would improve even further.  
+</p>
+<p>
+With IRV in San Francisco 2004, 
+the ballot spoilage rates were 7 times larger
+than under plurality voting, while in Minneapolis 2009 it got multiplied by a factor of 
+4 (and the rate of <i>errors</i>, i.e. including <i>both</i> spoiled and not-fully-spoiled ballots,
+got multiplied by a factor of over 10)
+&ndash; and these too are fully statistically significant.
+Australia in IRV races reports higher spoilage rates everywhere, than every entry in our
+collection of plurality countries' spoilage rates, but the increase is
+not a factor of 7, it is more like a factor of 2-to-6.   One might conjecture this
+improvement versus San Francisco is due to the greater level of IRV experience
+the Australians possess.
+</p><p>
+One would expect <a href="rangeVapp.html">Approval Voting</a>
+also to be better than plurality since
+"overvoting" is a form of ballot spoilage that is no longer possible.  
+And indeed due to its greater simplicity one might further expect (although one should beware of 
+theoretical expectations) approval's error rates
+would also be below those for range voting.
+The only
+approval-voting spoilage-rate data I have &ndash; 
+the <a href="FrenchStudy.html">French study</a>
+and 
+<a href="GermanApprovalStudies.html">German study</a>
+&ndash; had in the French case 10 spoiled ballots out of 2597 for an extremely low 
+(0.385 &plusmn 0.122)% spoilage rate.
+The German rates ranged from 0.07% to 0.62%.
+Those rates are an order of magnitude smaller than the 
+spoilage rate in the official French 2002 plurality+top-2-runoff election happening simultaneously
+with the French exit-poll study (and also are 2 to 23 times better than the official
+German spoilage rates) and they are lowest spoilage rates
+ever observed among all the elections 
+and studies recounted on this page.
+So these results certainly are consistent with our optimistic expectations.
+</p>
+<h3> Bottom Line </h3>
+<p>
+In short: 
+<i><a href="Approval.html">Approval Voting</a> is better than 
+<a href="RangeVoting.html">Range Voting</a> is better than 
+<a href="Plurality.html">Plurality</a> is better than 
+<a href="rangeVirv.html">IRV</a></i>
+with respect to ballot spoilage rates.
+</p><p>
+Each "better" here appears to represent a multiplicative factor between about 2 and 10 under
+otherwise-similar conditions.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

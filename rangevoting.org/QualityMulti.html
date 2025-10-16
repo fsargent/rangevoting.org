@@ -1,0 +1,2544 @@
+
+<html>
+<head>
+<title>
+RangeVoting.org - Optimal proportional representation
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> "Optimal proportional representation" multiwinner voting systems I:
+methods, algorithms, advantages, and inherent flaws </H2>
+
+<p><small>
+Warren D. Smith. Feb 2014 &amp; Oct 2015.  SLIGHTLY INCOMPLETE.
+</small></p>
+<p><b>Abstract.</b>
+One way to design a multiwinner voting system is to define a
+"quality function" Q which examines the votes, voters,
+candidates, and winner-set, and outputs a <i>number</i>.
+Then the "optimum voting system" would simply be to choose the winner-set
+<i>maximizing</i> Q.
+We <a href="#qualdefn">define</a>
+an infinite number of quality functions whose maximization (we show) automatically
+yields "proportional representation" (PR).
+We then <a href="#psibest">argue</a> for both principled and practical reasons
+that the best among them is "Psi voting" in which the 
+quality function is
+</p><center>
+  Q<sub>Psi</sub> = 
+&sum;<sub>1&le;v&le;V</sub>
+ &Psi;( &Delta; + &sum;<sub>1&le;j&le;W</sub>
+  [score awarded to winner<sub>j</sub> by voter v on her ballot] ).
+</center>
+<p>
+Here &Delta; is a positive constant pre-chosen by the voting system designer
+(we recommend &frac12;&le;&Delta;&le;1 and conjecturally &Delta;=&frac12; is best),
+V is the number of voters, C is the number of candidates and W the number of winners (0&lt;W&lt;C),
+scores are assumed to lie in the real interval [0,1], 
+and &Psi;(x) denotes the <a href="#psiapp">digamma</a>
+function. We then give algorithms implementing this.
+On a single 2.0GHz processor the <a href="#algapp">run</a> time to perform the 
+optimization by brute force exhaustive search is about 
+4V&middot;Binomial(C,W) nanoseconds.
+We then realize that the alternative quality function ("harmonic voting")
+</p><center>
+  Q<sub>Harmonic</sub> = 
+&sum;<sub>1&le;v&le;V</sub>
+ &sum;<sub>1&le;j&le;W</sub>
+ (j<sup>th</sup> greatest S<sub>v,c</sub> among winning c) / (j-1+&Delta;) 
+</center><p>
+(where S<sub>v,c</sub> is the score voter v awards candidate c)
+may yield even <i>better</i> voting systems!
+This, despite appearances, actually requires <i>less</i> computational
+work if 2<sup>C</sup>&lt;V, because the Psi and Harmonic systems
+are related by a 
+&quot;<a href="#pertrans">Kotze-Pereira transformation</a>.&quot;
+</p><p>
+We <a href="#compcomp">argue</a> that it is NP-hard to
+determine the winner-set in "optimum PR" multiwinner 
+elections &ndash; indeed even approximate optimality is NP-hard &ndash;
+and that when W is large all such elections 
+become immensely vulnerable to "strategic voting."  Therefore we only recommend these 
+methods when W is small.  We state various important properties that multiwinner voting
+systems could satisfy (our Q<sub>Psi</sub> system satisfies all except UFC, CRC, SFC)
+then formulate what at the present time seems to be the most important
+theoretical <a href="#openprob">open question</a> about them.
+</p><p>
+This is part I of a multi-part <a href="NonlinQuality.html">paper</a> with at least two parts.
+</p>
+
+<h3> Table of contents </h3>
+<ol><li>
+<a href="#overview">Overview</a>
+(and <a href="#ovconclu">conclusions</a>)
+</li><li>
+<a href="#qualdefn">Definition of our quality functions Q</a>
+</li><li>
+<a href="#psibest">"Psi PR" &ndash; the "best" among our infinity of "optimal" PR voting systems?</a>
+</li><li>
+<a href="#bestdel"> What is the best value of &Delta; in &Psi;(x+&Delta;) voting?</a>
+</li><li>
+<a href="#pertrans">The "Kotze-Pereira transformation" converts psi voting into harmonic voting</a>
+</li><li>
+<a href="#stratvote">Strategic voting: a severe problem when electing committees</a>
+</li><li>
+<a href="#compcomp">Computational complexity</a>
+</li><li>
+<a href="#faildesid">Failed (and satisfied) desiderata </a>
+</li><li>
+<a href="#acknow">Acknowledgments. And: was this a rediscovery?</a>
+</li><li>
+<a href="#refbib">References</a>
+</li><li>
+<a href="#algapp">Appendix: algorithm for "psi PR" optimum multiwinner voting</a>
+</li><li>
+<a href="#psiapp">Appendix about Psi function (sometimes also called "digamma function")</a>
+</li></ol>
+
+<a name="overview"></a>
+<h3> Overview </h3>
+<p>
+One way to design a multiwinner voting system is to define a
+"quality function" which examines the votes, voters,
+candidates, and winner-set, and outputs a <i>number</i>.
+Then the "optimum voting system" would simply be to choose the winner-set
+yielding <i>maximum</i> quality.
+</p><p>
+But <i>finding</i> that best subset might be computationally infeasible if the number of 
+candidates and winners is too large &ndash; e.g.
+with 50 candidates and 25 winners the number of possible winner-sets would be
+50!/25!<sup>2</sup>=126410606437752&asymp;1.26&times;10<sup>14</sup>
+which, if we just employed the brute force approach of computing the
+quality-function for all of them, would take 4 years even at a rate of
+10<sup>6</sup> sets per second.
+That is a different question, about computational complexity.
+</p><p>
+We shall begin by proposing a highly general class of possible quality functions, which
+immediately yields an infinity of new <b>PR</b> 
+(<a href="PropRep.html">proportional representation</a>)
+multiwinner voting systems, albeit not necessarily having any computationally efficient
+implementation.  
+</p><p>
+All our systems work most naturally with 
+<b><a href="RangeVoting.html">score</a>-style</b>
+ballots, in which each voter, on her ballot, <i>rates</i> each candidate on a fixed
+numerical scale (for example from 0=worst to 9=best).
+Also, none of our systems involve <b>political parties</b> in any way; they
+are solely candidate-based.  
+For our systems
+it is irrelevant
+whether parties exist or not, or have various internal properties or not.
+This stands in stark contrast to "party list" PR systems 
+(the most popular kind worldwide at the present time).  
+Any voting system which inherently involves political parties
+and needs them to function 
+will of necessity hurt independent candidates and presumably independent thinking
+itself.  To quote professor Marcus Pivato (in email) about that:
+<blockquote>
+Personally, I think political parties are a pernicious element of government. 
+Ideally, we would dispense with them altogether. 
+But probably, they are inevitable and a necessary evil. 
+But in any case, their power should be minimized.
+</blockquote>
+Another problem is that parties can contain subfactions.  For example,
+the USA Republican party as of year 2015 is really two parties masquerading as one,
+according to Warren Buffett in several media <a href="Buffett3Party.html">interviews</a>.
+(In 2008, Buffett was the richest person in the world, and his
+father was a Republican congressman from Nebraska.)
+If PR is a good idea, shouldn't it also be a good idea for "effective" parties as well as
+"real" parties?  You cannot get that effect with "party list" PR, but can with
+party-free PR schemes.
+</li>
+</p><p>
+Among our infinity, there are reasons to argue that a particularly 
+<a href="#algapp">simple</a> subtype 
+we call the "psi PR" voting systems, are the "best of the best."
+But after happily reaching that verdict, the concept of the 
+<a href="https://rangevoting.org/pertrans">Kotze-Pereira transform</a>
+of a voting system was shown to me by Toby Pereira.  And there are reasons to believe that
+the Kotze-Pereira transform of Psi voting is better still.
+The resulting system enjoys a better combination of provable properties than
+all previous PR voting system proposals for electing committees... <i>provided</i>
+we have enough computational power to run the election.
+</p><p>
+We then will examine the computational complexity question
+and will produce enough evidence to generate the strong suspicion that
+efficient algorithms to find the optimum-quality winner-set are <i>impossible</i>!
+Namely, we have 
+<a href="https://en.wikipedia.org/wiki/NP-hardness">NP-hardness</a>
+theorems plus results showing that
+for <i>all</i> our quality functions we expect the associated optimization problem to be
+highly nonconvex.  Optimizing quality actually would be an entirely feasible
+"convex programming" problem if certain things were a little different, but they aren't,
+and demands for PR are the underlying reason they aren't.
+This all suggests that unless the number of C of candidates in the election is small
+enough so that the number C!/([C-W]!W!) of W-winner-subsets is small enough so that we can
+exhaustively examine all of them, "optimum proportional representation" is 
+not going to be computationally feasible.
+</p><p>
+Intuitively speaking, this makes sense.  There is a fundamental <i>conflict</i> involved in 
+proportional representation.  PR can force some country to elect MPs whom it individually
+does not like in comparison with other options.  For example, the Nazi party 
+might be popular with 2% of the population, but the other 98% hates them; with PR
+2% of the seats in parliament need to be Nazi.  
+</p><blockquote>
+Related paradox:
+If voters were asked to <i>choose</i> between two parliaments, one of them proportional,
+the other 100% Whig, then a 51%-Whig electorate might well chose the latter
+by simple majority vote!
+</blockquote><p>
+On the other hand, without PR,
+the country also suffers, for example 
+<a href="CanadaSeatsVotes.html">Canada</a> in 2008 
+voted 6.8% for the Green party, but zero Green MPs were elected because
+each riding gave more votes to a non-Green.
+At that time Canada was using a non-PR system of simply 
+electing the <a href="Plurality.html">plurality</a>-voting winner 
+in each riding.  That also amplified this 
+problem due to strategic voting imperatives &ndash; it was strategically <i>foolish</i> 
+to vote Green because your vote then would be "wasted" (could not affect the main contenders
+for your riding's seat).  Probably if this strategy conundrum had not existed (which it 
+would not have, if Canada instead had used a suitable better-than-plurality voting system, 
+such as <a href="RangeVoting.html">score</a> voting, within each riding) the Greens would
+have gotten a lot more than 6.8% of the votes.
+Proportionally speaking based on their 6.8% vote share, the Greens "deserved"
+21 seats; and without plurality's strategy-caused distortion
+they quite likely would have deserved considerably more.
+In any case, it probably was not beneficial
+for Canada's environment to shut out all Greens from parliament during that era.
+</p><p>
+This fundamental conflict causes what physicists have called "frustration."
+That is, in solid state physics, various materials "want" to crystallize to reach their 
+"ground energy state" but due to geometrical obstacles all the "nice" crystal forms which 
+might have hoped to be optimal, cannot quite exist.  
+So then the material solidifies into a 
+glassy "amorphous" state
+and is unable to reach the truly optimum ground state essentially 
+because it is too computationally
+hard  to find.  (In theory with extremely slow annealing for aeons,
+it might be able to crystallize.)
+In some cases physics "frustration" has been modeled with simple mathematical models
+and then it has been proven mathematically that finding the true energy minimum in those
+models is an "NP-complete" computational task.  (Examples: the "spin glass" model
+and "Wang tiling problems.")
+</p><p>
+Our investigation here shows that the same phenomenon happens with 
+"optimum proportional representation."  
+Is there any way to escape from this conclusion of doom?
+</p><p>
+<b>1.</b>
+One escape is that it <i>is</i> computationally
+feasible to find the exact optimum winner-committee, <i>if</i> 
+<nobr>C!/([C-W]!W!)</nobr>
+is small enough for exhaustive search &ndash; such as in elections with
+C&le;20 candidates, for which at most 184756 winner-sets need to be tried.
+Or in elections with at most W&le;5 winners, for which
+<nobr>&le;(C-4)(C-3)(C-2)(C-1)C/120&lt;(C-2)<sup>5</sup>/120</nobr>
+sets need be tried, which for C&le;32 implies we need to try &le;201376 sets.
+</p>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="pink">
+<tr><th>2N</th>
+<td>2</td><td>4</td><td>6</td><td>8</td><td>10</td><td>12</td><td>14</td><td>16</td><td>18</td><td>20</td>
+</tr>
+<tr><th>(2N)!/N!<sup>2</sup></th>
+<td>2</td><td>6</td><td>20</td><td>70</td><td>252</td><td>924</td><td>3432</td><td>12870</td><td>48620</td><td>184756</td>
+</tr>
+</table>
+<table border="1" cellspacing="0" cellpadding="5">
+<tr><th>2N</th>
+<td>22</td><td>24</td><td>26</td><td>28</td><td>30</td>
+</tr>
+<tr><th>(2N)!/N!<sup>2</sup></th>
+<td>
+ 705432</td><td>
+ 2704156</td><td>
+ 10400600</td><td>
+ 40116600</td><td>
+ 155117520
+</td>
+</tr>
+</table>
+<table border="1" cellspacing="0" cellpadding="5" bgcolor="pink">
+<tr><th>2N</th>
+<td>32</td><td>34</td><td>36</td><td>38</td><td>40</td>
+<tr><th>(2N)!/N!<sup>2</sup></th>
+<td>
+ 601080390</td><td>
+ 2333606220</td><td>
+ 9075135300</td><td>
+ 35345263800</td><td>
+ 137846528820
+</td>
+</tr>
+</table>
+<p>
+<b>2.</b>
+Forest Simmons suggests the following brilliantly simple  (?)
+trick for dodging the computational roadblock:
+ask the candidates, voters, and/or other interested entities (anybody who wants)
+to <i>suggest</i>
+winner sets.  (An automated web site could accept submissions.)
+If anybody succeeds in finding a new-record higher quality set,
+we switch to it.  If not, then we just tell the disgruntled candidates "if you lost but think
+you should have won, it is your own damn fault for not suggesting a better winner
+set than you did."
+<p>
+<b>3.</b>
+Another possible escape is that
+the present discussion suggests the hopelessness only of good quality
+PR voting systems in which the winners are a function 
+of the <i>votes</i>, and of them alone.  
+PR voting systems, such as <a href="Asset.html">asset voting</a>,
+in which the winner set is <i>not</i>
+a function purely of the votes, still could have hope.
+</p><p>
+<b>4.</b>
+Our final
+escape hatch is to "cheat" by devising PR notions based on explicit 
+<a href="OptimumPartyAssign.html">party names</a>,
+not just purely on the votes for different candidates.
+But any such system would likely treat independent candidates unfairly
+and/or would require laws preventing MPs from switching parties 
+(since otherwise they could "game the system";
+such laws have been enacted for this reason in, e.g, New Zealand).
+Both of those seem dangerous.
+</p><p>
+One particularly concrete and embarrassing
+kind of PR "frustration" was pointed out by Toby Pereira
+and we will <a href="https://rangevoting.org/faildesid">explain</a> it later.
+Pereira's problem affects some multiwinner voting systems worse than others &ndash;
+it seems to afflict STV ("single transferable vote") systems particularly
+<a href="PRcond.html">severely</a> &ndash; but it might be unavoidable.
+Essentially that is an
+<a href="#openprob">open question</a>.
+</p><p>
+But even if we may assume that we have more than enough computational power
+to perform optimum PR elections... there then would be other problems.
+Our systems are "optimal" only for <i>honest</i> voters.  What if the voters
+try to "game the system" by voting dishonestly?  We have 
+<a href="#stratvote">arguments</a> that our
+"psi PR" systems, and probably <i>every</i> committee-election system that
+tries to achieve near-optimal results for honest voters, <i>inherently</i>
+are very vulnerable to strategic voting.   The larger the committee
+we elect, the more vulnerability there generally will be.
+Also, the more <i>incentive</i> each voter would have to be strategic, because, e.g.
+in our example at the start with 1.26&times;10<sup>14</sup> winner sets to consider,
+obviously at least half of these sets must have quality-value lying within about
+10<sup>-13</sup> 
+of some other set's quality (in units such that the quality range has width 1).  Therefore
+in an election with a mere 10<sup>4</sup>-10<sup>9</sup> voters, any particular voter 
+would quite plausibly be able to alter the election result singlehandedly.
+This is in contrast to large single-winner elections where almost all of the time, all voters
+are individually powerless.
+</p>
+<a name="ovconclu"></a>
+<p>
+The <b>conclusion</b> of all these thoughts is simple:
+<b>avoid multiwinner elections that elect large committees.</b>
+Only elect <i>small</i> committees, or (most simply) single winners.
+Elections of large committees, even with our optimal methods,
+inherently suffer major problems related to both strategic voting, and 
+computational complexity.    If you are going to elect a small committee,
+then our "Pereira-transformed &Psi; voting"  &ndash; aka "harmonic voting" &ndash;
+scheme with &Delta;=1/2 seems the best 
+method currently known that is completely based on the votes.
+(<a href="https://rangevoting.org/Asset.thml">Asset voting</a> is another approach in which the candidates, 
+not just the voters, play roles.)
+</p>
+
+<a name="qualdefn"></a>
+<h3> Definition of our quality functions Q </h3>
+<p>
+Let C=#candidates, V=#voters, W=#winners, 0&lt;W&lt;C&lt;V,
+and let <b>S<sub>v,c</sub></b> be the real-valued <b>score</b> given by voter v to candidate c
+on her ballot.  Then here is our <b>highly general class of quality measures Q:</b>
+</p><center>
+  Q = 
+&sum;<sub>1&le;v&le;V</sub>
+ F( &sum;<sub>1&le;j&le;W</sub>
+ [j<sup>th</sup> greatest S<sub>v,c</sub> among winning c] &middot;  A<sub>j</sub> )
+</center><p>
+where A<sub>1</sub>, A<sub>2</sub>, A<sub>3</sub>, ...  are real numbers specified by the
+voting system designer, 
+and F(x) is a function also specified by the voting system designer.
+</p><p>
+<!--
+[Incidentally if F(x)=x, and A<sub>1</sub>=1 and A<sub>j</sub>=0 for j&gt;1, then this
+quality measure would be maximizable in <a href="MonroeMW.html">polynomial</a>(V) time
+if C were bounded.]
+</p><p>
+[Incidentally if F(x)=x, and A<sub>j</sub>=1 for 1&le;j&le;C and A<sub>j</sub>=0 for j&gt;C, 
+then this
+quality measure would be maximizable in polynomial(V) time if C were bounded
+by solving a max-summed-weight bipartite degree-constrained-subgraph problem,
+with voter valences W each, winning-candidate-valences each V, losing-candidate valences each 0.]
+-->
+I call these quality function "linear" because the innermost sum is a linear function of the scores
+on the ballots.  "Nonlinear" quality functions will be studied in a different
+<a href="NonlinQuality.html">paper</a>.
+</p><p>
+Obviously, if the real number F(x) is regarded as
+computable in a constant amount of time from its real number input x,
+and if the W winners all are known (and all the scores S<sub>v,c</sub>),
+then Q can be computed in time O(VWlogW) by sorting the W winners by score
+as regarded by each voter, and computing the sums.
+Hence, the <i>best</i> W-element winner-set (maximizing Q) can be computed
+in polynomial(V,C) time <i>if</i> C is <i>bounded</i>, by just brute force examination of
+every possible W-element winner-subset.
+<a name="PRdef"></a>
+<p>
+<b>Our definition of "proportional representation" (PR):</b>
+if all voters and candidates are different "colors" and each voter
+scores each same-color candidate 1, rest 0,
+then the proportion of color-X winners must come out the same as the
+proportion of
+color-X voters, for all X, up to at most constant additive errors in #winners
+(provided enough candidates of each color are running &ndash; obviously
+you cannot have 3 red winners if only 2 reds run).
+</p><a name="VSexamples"></a><p>
+Examples:
+</p>
+<ol type="A"><li>
+("<b>Harmonic voting</B>.")
+If F(x)=x, then  
+PR will be assured by choosing
+<nobr>A<sub>j</sub> = 1/(j-1+&Delta;)</nobr>
+where &Delta; is any positive constant.
+</li><li>
+("<b>Psi voting</B>.")
+If A<sub>j</sub>=1 for all j, then we can instead obtain PR by using
+<nobr>F(x)=K<sub>1</sub>+K<sub>2</sub>&Psi;(x+&Delta;)</nobr>
+where K<sub>1</sub>,K<sub>2</sub>,&Delta; are any real constants with 
+K<sub>2</sub>>0 and &Delta;>0,
+and <nobr>&Psi;(x)=&Gamma;'(x)/&Gamma;(x)</nobr> is the 
+&quot;<a href="http://en.wikipedia.org/wiki/Digamma_function">psi</a>
+<a href="http://en.wikipedia.org/wiki/Harmonic_number">function</a>,&quot;
+which behaves much like
+the more commonly known 
+&quot;<a href="http://en.wikipedia.org/wiki/Log_function">logarithm</a>&quot;
+function.  [For example &Psi;(x) and ln(x) are asymptotic when 
+x&rarr;&infin;.]
+See the
+<a href="#psiapp">second appendix</a> for more information on the psi function.
+</li></ol><p>
+But those were only two special cases.  More generally, 
+<b>we can assure PR by choosing the  A<sub>j</sub>&gt;0  and  F()  such that</b>
+</p><center>
+ F(&sum;<sub>1&le;j&le;m</sub> A<sub>j</sub>) = K<sub>1</sub>+K<sub>2</sub>&Psi;(m+&Delta;)
+</center><p>
+to good enough approximation,
+where again K<sub>1</sub>,K<sub>2</sub>,&Delta; are any real constants with 
+K<sub>2</sub>>0 and &Delta;>0.
+It seems intuitively preferable for the
+A<sub>j</sub> to be positive and
+nonincreasing with  j  and   F(x) to be increasing with x,  so below
+I'll only give
+examples obeying those.  
+</p><p>
+Then an <b>infinite number of such examples</b> include:
+</p><ol type="A" start="3"><li>
+   A<sub>j</sub> = j<sup>-1</sup>  and   F(x) = x.
+</li><li>
+   A<sub>j</sub> = (2j-1)<sup>-1</sup>  and   F(x) = x.  (Actually C &amp; D are just the special cases of A 
+with &Delta;=1 and &Delta;=&frac12; respectively.)
+</li><li>
+   A<sub>j</sub> = j<sup>-P</sup>  for any fixed real P with 0&le;P&lt;1, and   F(x) &asymp; ln(x).
+</li><li>
+   A<sub>j</sub> = [j ln(j+1)]<sup>-1</sup>  and  F(x) &asymp; exp(x).
+</li><li>
+   A<sub>j</sub> = j<sup>-1</sup>ln(j+1)<sup>P-1</sup>  for any fixed real P with 0&lt;P,  and
+F(x) &asymp; x<sup>1/P</sup>.
+</li></ol><p>
+This class of quality functions is a large generalization of an idea of Forest Simmons
+yielding a class of PR voting systems we had called "logarithmic penalty voting."
+The <b>reason this works</b> &ndash; i.e. yields PR &ndash; is that
+if some "red" winner were replaced by a  "blue" winner
+in a PR party-line-voting situation, then, essentially, that is favored (increases Q) if and
+only if the blue/red voter ratio exceeds the blue/red winner ratio.
+This happens essentially because of the property &Psi;(x+1)=&Psi;(x)+1/x
+of the psi function.  The constants
+K<sub>1</sub>, K<sub>2</sub>, &Delta;
+give us a certain bounded amount of control over the precise proportionality guarantee,
+but essentially PR should be accurate to within an additive constant number of winners
+provided enough candidates of each color run.
+</p><p>
+To look at that in slow motion, consider example A (harmonic voting).
+Suppose there are R currently-winning red candidates and G
+currently-winning green candidates.
+Suppose there are r red voters and g green voters.
+The summands within Q affected
+by electing one particular green or one particular red candidate, neither of
+whom has been elected yet
+(we ignore all the others, since their contributions will stay fixed for our purpose)
+would be r/(R+1+K) or g/(G+1+K) respectively.  
+So depending on which is greater, evidently the new red, or the new green, will be elected
+next to maximize Q.  So any winner-set maximizing Q automatically must obey
+<nobr>r/(R+1+K)&asymp;g/(G+1+K)</nobr>
+since otherwise we could swap a red winner for a green loser (or vice versa) to
+increase Q.  (This approximate equality necessarily 
+will hold to better precision than the change 
+caused by such a swap.)
+This is exactly a proportionality statement about reds and greens: 
+if Q is maximum, then the winner color
+fractions must approximately equal the voter color fractions, up to altering
+seat counts by at most an additve constant (here K+1, naturally we would like to keep
+the absolute value of such a constant small when we choose K).
+And this of course automatically
+happens not just for "red" and "green" but for all possible pairs of colors.
+</p><p>
+We similarly can consider 
+<a name="#VSexamples">example B</a>
+above.  The exact same reasoning (which also
+works for the general case) shows that if Q is maximum then
+<nobr>K<sub>2</sub>r/(R+&Delta;)&asymp;K<sub>2</sub>g/(G+&Delta;).</nobr>
+</p>
+
+<a name="psibest"></a>
+<h3> "Psi PR" &ndash; the "best" among our infinity of "optimal" PR voting systems? </h3>
+<p>
+An argument can be made that one quality function, among the infinite
+number defined above, is the "best" one,  or
+anyhow better than others.
+</p><p>
+Namely, I suggest that the psi-function-based 
+schemes in <b>"<a name="#VSexamples">example B</a>"</b> above &ndash; succinct definition in
+<a href="#algapp">appendix</a> &ndash; are <b>b</b>est
+&ndash; the "optimal optimal" system &ndash;
+for several reasons:
+</p><ol><li>
+The equality of the A<sub>j</sub>'s among the W winners
+makes it "fairest."
+</li><a name="lkptrick"></a><li>
+This equality also allows
+<i>greatly speeding up</i> all computations
+since then no sorting is needed and small edits to the winner set
+(e.g. replacing one winner by another) allow "incremental updating"
+to compute the new Q value in only O(1) computational steps per voter.
+That is, the <b>total computational work</b> can be upper bounded by order
+<nobr>V&middot;C!/([C-W]!W!)</nobr>
+steps in a V-voter, C-candidate, W-winner election.
+An algorithm achieving this is given in
+the <a href="#algapp">first appendix</a>.
+In contrast, if the A<sub>j</sub>'s were unequal then algorithms presumably would be
+slower by a factor of order&ge;W.
+</li><li>
+The A-equality also allows
+a <i>second</i> large speed up, if the allowed scores on each ballot are discrete and 
+equispaced &ndash; for example if the allowed scores are 
+the single-digit numbers {0,1,2,3,4,5,6,7,8,9}.
+And that is:
+take advantage of the fact that the argument x of F(x) will always be one of, at most, WS numbers,
+if we are electing W winners using S allowed score levels.  We can simply <i>pretabulate</i>
+all the possible F values and then, whenever we want one, 
+simply retrieve it from a lookup table with
+no computation needed.  
+<br>
+<small>
+But an annoying issue with the lookup table when we permit
+voters intentionally to leave a candidate <i>unscored</i>, is that each of those blank scores 
+then should be reckoned as his average score (among those voters who <i>did</i> 
+score him).  That way, that blank
+leaves that candidate's average unaffected, as the voter intended.
+The problem is this average usually will <i>not</i> be an integer.
+However, we can more or less dodge this problem something like this:
+<br>&nbsp;&nbsp;&nbsp;
+Use a (larger) lookup table that computes F(x) accurate to only &plusmn;0.0002.
+Whenever a candidate-set is found with approximate Q within 0.0002V of
+the record high (V=#voters), then recompute its Q to full accuracy.
+Although this recomputation will be slow, it is only done rarely.  
+(If direct lookup would require too large
+a table to get enough accuracy, then instead use linear interpolation
+in a lookup table &ndash;
+that definitely will be good enough and is still quite fast.)
+<br>&nbsp;&nbsp;&nbsp;
+<a href="#statspeedup">Further</a>
+speedup: by running with only small random subsamples of the ballots, we can find
+approximate election results much more quickly; and then for the full run
+with the full ballot set, only try "promising" winner sets (which got
+high scores in the preliminary runs using subsamples, e.g. 
+falling short of the record high by &le;3 standard deviations).  Tricks of
+that ilk could allow usually finding the final winner set much more quickly,
+i.e. early output of "preliminary election results," and still with probability&ge;99.9%
+of correctness.
+</small>
+</li><li>
+The psi-based resulting system obeys the following pleasant <b>"monotonicity"</b> property:
+<blockquote>
+If a voter increases her score for X, while leaving
+all other scores (for candidates other than X) on her ballot unaltered, that will
+increase the Q's for all X-containing committees while leaving the Q's for 
+all X-omitting committees unaltered.  [Same sentence also true with
+all instances of "increase" changed to "decrease."]
+</blockquote>
+This property (and the next) 
+actually is true for <i>all</i> election systems of our <a href="#qualdefn">class</a>
+(provided the A<sub>j</sub> are positive and decreasing and F is increasing),
+not just the Psi system from 
+<a href="#VSexamples">example B</a>.
+In contrast,
+many other PR voting systems, such as STV (single transferable vote, currently used in
+Ireland, Australia, and Malta) are <a href="Monotone.html"><i>non</i>monotonic</a>,
+e.g. a voter by <i>de</i>creasing X's score on her ballot, can actually cause X to <i>win</i>.
+</li><li>
+It also will obey this <b>"clone-immunity"</b> 
+<a href="CandCloneSumm.html">property</a>: if additional candidates run, each of
+which is a "clone" of some candidate already in the race (clones are scored the 
+same, to within &plusmn;&epsilon;, by all voters, in the limit &epsilon;&rarr;0+)
+then any two
+clone-equivalent committees will have equal Q scores in the &epsilon;&rarr;0+ limit.
+</li><li>
+It also enjoys <b>immunity to "Woodall free riding"</b>, 
+a known kind of strategic voting that happens under the Hare/Droop STV system
+(which has rank-order ballots).
+In such voting systems, a voter can find it advantageous to rank 
+some bad candidate B &ndash; nearly unanimously agreed 
+to be poor &ndash; artificially top.
+This works because of STV's policy of
+not transferring votes to candidates who have already garnered
+their quotas of votes required for election.
+Our voter's ploy is predicated on the notion that the election will proceed as follows:
+<ol type="i"><li>
+Certain very popular candidates
+(Y and Z, say) will be elected with quota.
+</li><li>
+<i>Then</i> B will be eliminated.
+</li><li>
+Then, our voter's vote of the form "B&gt;U&gt;..."
+will exert <i>full strength</i> effect on trying to elect U
+(whose election our voter regards as <i>u</i>ncertain).
+</li></ol>
+If instead our voter had honestly voted "X&gt;Y&gt;U&gt;...&gt;B"
+then the STV protocol would have <i>deweighted</i> his vote because of
+X's and Y's victories.
+That would have left her less able to help elect U.
+</li>
+</ol><p>
+Woodall free ridership (Woodall 1983)
+is a very serious flaw in a voting system because when it
+backfires due to too many voters adopting this strategy,
+the result not only is the failure to elect some good candidate such as X,
+but also the election of a very bad candidate such as B.
+</p><p>
+Brian Meek proposed (Meek 1969-70, Hill et al 1987; 
+STV systems generally are reviewed by Tideman 1995) 
+a very complicated variant form of STV voting
+(requiring a computer)
+which enjoyed immunity to Woodall free ridership.
+A variant by Hugh Warren also does.
+However, Britain's electoral reform society (ERS) 
+eventually decided to recommend plain Hare/Droop STV
+in spite of this superior property of Meek-STV,
+because it considered Meek's &amp; Warren's variants too complicated.
+</p><p>
+<small>
+My own <a href="RRV.html">RRV</a>  system is both simpler than STV and
+immune to Woodall free ridership because it has no "elimination" steps.
+</small>
+</p>
+
+<a name="bestdel"></a>
+<h3> What is the best value of &Delta; in &Psi;(x+&Delta;) voting? </h3>
+
+<p>
+Among the Psi-PR voting systems involving a quality function based on the function 
+<nobr>F(x)=K<sub>1</sub>+K<sub>2</sub>&Psi;(x+&Delta;)</nobr>
+the parameters 
+K<sub>1</sub> and K<sub>2</sub>&gt;0
+have no interest.  Only &Delta; actually matters.
+That is, any two psi-PR systems with the same &Delta; value will yield identical
+election results regardless of their
+K<sub>1</sub> and K<sub>2</sub>&gt;0 values because those can merely be regarded as 
+"defining the scale of measurement" for quality.  Hence in
+the 
+<a href="#algapp">appendix</a>  I have ignored 
+K<sub>1</sub> and K<sub>2</sub>.
+</p><p>
+But now a genuine question arises: what is the best choice of &Delta;?
+</p><p>
+First, I believe that the interval &frac12;&le;&Delta;&le;1 
+contains the right answer, and is the only defensible range
+based on the mathematics within the proportionality proof above.
+Second, roughly speaking,
+</p><ul><li>
+ &Delta;=1 corresponds to 
+&quot;<a href="https://en.wikipedia.org/wiki/D%27Hondt_method">d'Hondt</a>&quot; and
+"Jefferson" notions of proportionality, tending to favor fewer and larger political parties
+when used for party-list PR elections
+(or tending to favor larger US states when 
+used for &quot;<a href="Apportion.html">apportionment</a>&quot;
+in the USA).
+</li><li>
+Meanwhile &Delta;=&frac12; corresponds to
+&quot;<a href="https://en.wikipedia.org/wiki/Sainte-Lagu%C3%AB_method">Sainte-Lagu&euml;</a>&quot;
+and "Webster" notions, tending to favor more and smaller political parties (or smaller US states).
+</li></ul><p>
+I believe that the latter are superior.  
+My reason is that large political parties tend to have <i>advantages</i> in real world
+political campaigns, that threaten to cause them to over-dominate the scene
+above and beyond what they "really" proportionately "deserve."
+Webster/Sainte-Lagu&euml; tries to counteract that, but (I conjecture) it
+does not fully succeed &ndash; in the sense that, I suspect, in the real world,
+large parties still will tend to have advantages despite
+Webster/Sainte-Lagu&euml;.   Anyhow Webster is not terribly favoring to the smalls, since
+it actually is
+&quot;<a href="Apportion.html#splitincent">limit unbiased</a>&quot;
+(Janson 2014),
+and since computer <a href="BishopSim.html">simulations</a> of USA-apportionment indicate that
+even Webster actually still  has a small pro-<i>big</i> bias, so that indeed one theoretical 
+<a href="NewAppo.html">model</a> would actually claim the best &Delta;
+value should actually be slightly smaller than &frac12;, such as 0.498.
+</p>
+<table border="1" cellpadding="3" cellspacing="0">
+<caption><b>Recent parliamentary elections in countries using party-list PR systems.</b>
+</caption>
+<tr bgcolor="pink"><th>&Delta;</th><th>Country</th><th>Date</th><th>Party seat-fractions</th></tr>
+<tr><td>1/3</td><td>Denmark</td><td>June 2014</td>
+<td>26.9%, 21.1%, 19.4%, 8.0%, 7.4%, 5.1%, 4.6%, 4.0%, 3.4%</td></tr>
+<tr><td>1/2 (Sainte-Lagu&euml;)</td><td>Latvia</td><td>Oct. 2014</td>
+<td> 24%, 23%, 21%, 17%, 8%, 7% </td></tr> <!--zerod: <1.6% votes. -->
+<tr><td>1/2 (Sainte-Lagu&euml;)</td><td>Sweden</td><td>Sep. 2014</td>
+<td>32.4%, 24.1%, 14.0%, 7.2%, 6.3%, 6.0%, 5.4%, 4.6%</td></tr> <!--zerod: <4% votes. -->
+<tr><td>1/2 (Sainte-Lagu&euml;)</td><td>Norway</td><td>Sep. 2013</td>
+<td>32.5%, 28.4%, 17.2%, 5.9%, 5.9%, 5.3%, 4.1%, 0.6%</td></tr> <!--zerod: <2% votes. -->
+<!-- Also Sainte-Lague:
+Iraq 2015: 92,34,29,25,23,21,21,10,9,8,6,6,5,4,3,3,3,3,2,2,2,2 plus 16 goofy seats = 328
+Latvia 2014: 24,23,21,17,8,7 sum=100; note 0 for various parties with <1.6% votes each.  0 indpts.
+-->
+<tr><td>1 (d'Hondt)</td><td>Finland</td><td>Apr. 2015</td>
+<td>24.5%, 19.0%, 18.5%, 17.0%, 7.5%, 6.0%, 4.5%, 2.5%, 0.5%</td></tr>
+<tr><td>1 (d'Hondt)</td><td>Austria</td><td>Sep. 2013</td>
+<td>28.4%, 25.7%, 21.9%, 13.1%, 6.0%, 4.9%</td></tr>
+<tr><td>1 (d'Hondt)</td><td>Portugal</td><td>Oct. 2014</td>
+<td>44.3%, 37.4%, 8.3%, 7.4%, 2.2%, 0.4%</td></tr>
+<tr><td>1 (d'Hondt)</td><td>Cambodia</td><td>July 2013</td>
+<td>55.3%, 44.7%</td></tr>
+<tr><td>1 (d'Hondt)</td><td>Turkey</td><td>Nov. 2015</td>
+<td>57.6%, 24.4%, 10.7%, 7.3%</td></tr>
+<!-- Also d"Hondt:
+Finland 2015: 24.5, 19.0, 18.5, 17.0, 7.5, 6.0, 4.5, 2.5, 0.5, seats=200
+Austria 2013: 52, 47, 40, 24, 11, 9, total=183, five zeroed parties with <4% of votes each.
+Cambodia 2013: 68, 55, six parties zeroed with <4% votes each, 123 seats total.
+Portugal 2015: 102, 86, 19, 17, 5, 1, many zerod <1.3% of vote, 230 seats in all.
+-->
+<tr><td>2 (Imperiali)</td><td>Ecuador</td><td>Mar. 2013</td>
+<td>73.0%, 8.0%, 4.4%, 3.6%, 3.6%, 3.6%, 2.2%, 0.7%, 0.7%</td></tr>
+</table>
+<blockquote>
+<!--The reason
+<a href="https://en.wikipedia.org/wiki/Elections_in_Brazil#Election_results_1982.E2.80.932014">Brazil</a>
+is not listed in this table as another d'Hondt entry is 
+because of allegations that their 2014 election was frauded.-->
+In Sweden's 2014 election using
+Sainte-Lagu&euml; party-list PR, 8 parties won seats, but over 56% of
+the seats went to the top two parties.  Evidently, these two parties
+are not frantically trying to fission into smaller fragments 
+in order to "take advantage" of any alleged theoretical
+"benefits" of fissioning conveyed by Sainte-Lagu&euml;.
+Similar but stronger remarks could be made about Norway 2013.
+Meanwhile in Turkey, which uses d'Hondt, only 4 parties won seats in 2015,
+with the top party taking 57.6% of the seats all by itself, and the next party 24.4%.
+<!--There also exist countries using systems corresponding to
+intermediate &Delta; values with &frac12;&lt;&Delta;&lt;1? -->
+Denmark actually "goes beyond Sainte-Lagu&euml;" to try to favor party-fissioning even <i>more</i>,
+corresponding to &Delta;=1/3, and apparently (based on comparing their 2014 election
+results versus Sweden's &amp; Norway's) that worked.
+Meanwhile, Ecuador 
+goes in the other direction ("beyond d'Hondt")
+to try to favor party-<i>fusion</i> even more than d'Hondt does
+&ndash; this would correspond to &Delta;=2 for us &ndash;
+and that also apparently worked, based on their 2013 election
+results, which gave 73% of the seats to the top party.
+Of these countries, it looks
+to me that the Sainte-Lagu&euml; parliaments presently are the healthiest.
+(<a href="SomeParls.html">Data</a>.)
+</blockquote><p>
+If my conjecture is correct, then it would follow
+that <b>&Delta;=1/2 is the best choice</b>, yielding the "best of the best of the optimal" systems.
+</p><p>
+Forest Simmons then told me 
+both he and S.J.Brams both had reached this same conjectural conclusion 
+of the optimality of &Delta;=&frac12;.   Indeed, see Benoit 2000
+for analysis of several thousand real-world elections again concluding
+(unmodified) Sainte-Lagu&euml; yields the best proportionality of all the roundoff methods he
+considered.  Then Simmons went a bit further to
+propose the especial elegance of
+also then choosing K<sub>1</sub> and K<sub>2</sub> to yield
+</p><center>
+F<sub>Simmons</sub>(x) = [&Psi;(x+&frac12;)-&Psi;(&frac12;)]/2 
+= H(x-&frac12;)/2+ln(2)
+= [&Psi;(x+&frac12;)+&gamma;+ln(4)]/2
+= &int;<sub>0&le;t&le;1</sub> (1-t<sup>2x</sup>)/(1-t<sup>2</sup>) dt.
+</center>
+<a href="FsimmonsPlot3.png">
+<img align="right" alt="plot of Simmons function" src="Fsimmons.png">
+</a><p>
+The point of this translation and scaling is that it causes F(0)=0 and F(1)=1, and
+the shift-by-1 recurrence becomes
+<nobr>F(x+1)=F(x)+1/(2x+1),</nobr>
+and the doubling formula becomes
+<nobr>2F(2x)=F(x-1/4)+F(x+1/4)+ln(2),</nobr>
+all making life a little more pleasant for everybody.  
+For more, see the <a href="#psiapp">appendix</a>.
+</p><p>
+<b>Why we say &Delta;=&frac12; is like "Sainte-Lagu&euml;"
+and &Delta;=1 like "d'Hondt":</b>
+</p><p>
+For "party list voting," we quote wikipedia's <b>definition</b> of the Sainte-Lagu&euml; method:
+</p><blockquote>
+After all the votes have been tallied, successive 
+quotients are calculated for each party. The formula for the quotient is 
+<center>
+quotient = V / (2S+1) 
+</center>
+where:
+<ul><li>
+V is the total number of votes that party received, and
+</li><li>
+S is the number of seats that party has been allocated so far, initially 0 for all parties.
+</li></ul>
+Whichever party has the highest quotient gets the next seat allocated, and their quotient is 
+recalculated given their new seat total. The process is repeated until all seats have been allocated.
+<br> &nbsp;&nbsp;
+D'Hondt is the same except with quotient=V/(S+1).  
+More generally for <b>"classical divisor methods"</b>
+quotient=KV/(S+&Delta;)
+where the value of K&gt;0 does not matter.
+</blockquote>
+<p>
+<b>A quite different, but known to be equivalent, way of <a href="Apportion.html">viewing</a>
+d'Hondt and Sainte-Lagu&euml;:</b>
+If party j has V<sub>j</sub> votes, then the number of seats they deserve
+is Round(V<sub>j</sub>C), where
+Round is the round <i>to nearest integer</I> function for Sainte-Lagu&euml;,
+and is the <i>floor (downward rounding)</i> function for d'Hondt,
+and C&gt;0 is any real number which causes the correct total number of seats (summed over all parties)
+to be gotten.
+</p><p>
+To examine the connection between those classical methods and &Psi;(x+&Delta;) voting, let us first
+suppose (to make everything maximally simple)
+that there are exactly two political parties &ndash;
+Red and Blue &ndash; and that each voter is maximally partisan, 
+i.e. scoring her party 1 and the other 0;
+and that we are electing exactly W=2 seats.  
+Suppose a fraction Y&ge;&frac12; of the voters are Red.
+Then all divisor methods give the first seat to the Reds. The only question is which
+party gets the second seat.  The answer is the Reds also win the second seat if Y is above
+some threshold, but the Blues win it if Y is below that threshold. 
+</p><table>
+<tr><th>System</th><th>Threshold</th></tr>
+<tr><td>Sainte-Lagu&euml;, &Delta;=&frac12;</td><td align="center">3/4</td></tr>
+<tr><td>d'Hondt, &Delta;=1</td><td align="center">2/3</td></tr>
+<tr><td>General &Delta;</td><td align="center">(&Delta;+1)/(2&Delta;+1)</td></tr>
+</table><p>
+Now, the proof of the theorem that exactly these same thresholds happen with &Psi;(x+&Delta;)
+voting as with the classical party-list divisor methods (in this simple 2-seat, 2-party scenario)
+is that 
+</p><center>
+Q<sub>RR</sub>=Y&Psi;(2+&Delta;)+(1-Y)&Psi;(0+&Delta;)
+and
+Q<sub>RB</sub>=Y&Psi;(1+&Delta;)+(1-Y)&Psi;(1+&Delta;)=&Psi;(1+&Delta;)
+</center><p>
+are exactly equal, if and only if,
+Y lies precisely at threshold: &nbsp; Y=(&Delta;+1)/(2&Delta;+1). &nbsp;
+(And yes, this is a true identity obeyed by the &Psi; function.)
+</p><p>
+Now let us examine a more general scenario. Suppose using a classical divisor method,
+with exactly two parties Red and Blue, maximally-partisan voters,
+that the Reds have won R and the Blues B seats,
+and exactly one more seat must be filled.  Who wins it?
+With classical divisor methods, the answer again is that if the Red voter fraction Y
+exceeds a threshold, then the Reds win it. The formula for the threshold is
+<nobr>Y=(&Delta;+R)/(R+B+2&Delta;),</nobr>
+which I obtained by solving
+<nobr>(1-Y)/(B+&Delta;)=Y/(R+&Delta;)</nobr> for Y.
+Meanwhile with &Psi;(x+&Delta;) voting, the threshold Y occurs when
+</p><center>
+Y&Psi;(1+R+&Delta;)+(1-Y)&Psi;(B+&Delta;)
+=
+Y&Psi;(R+&Delta;)+(1-Y)&Psi;(1+B+&Delta;)
+</center><p>
+with solution
+</p><center>
+Y =  [&Psi;(B+&Delta;+1)-&Psi;(B+&Delta;)] /
+[&Psi;(B+&Delta;+1)-&Psi;(B+&Delta;)+&Psi;(&Delta;+R+1)-&Psi;(&Delta;+R)]. 
+</center><p>
+which can be rewritten with the aid of the &Psi;(x+1)=&Psi;(x)+1/x identity as
+</p><center>
+Y = [1/(B+&Delta;)] / [1/(B+&Delta;)+1/(R+&Delta;)] = (R+&Delta;)/(R+B+2&Delta;)
+</center><p>
+which is the <i>same formula</i>.   This proves that the analogy between &Psi;(x+&Delta;) voting
+and classical divisor methods with divisor=&Delta;, is quite a good analogy.
+</p><p>
+<b>A second way</b> in which &Delta;=&frac12; can be claimed to yield
+Sainte-Lagu&euml; style proportionality
+&ndash; I won't explain the details of why here, but see the second paper in this series'
+discussion of "logarithmic" voting &ndash;
+arises from the fact that the asymptotic series
+</p><center>
+&Psi;(x+&Delta;) - ln(x) 
+= (&Delta;-&frac12;)/x 
+- [6(&Delta;-1)&Delta;+1]/(12x<sup>2</sup>)
++ (2&Delta;-1)(&Delta;-1)&Delta;/(6x<sup>3</sup>)
++ ...
+</center><p>
+has <i>zero</i> x<sup>-1</sup> term (indeed, all odd-power terms x<sup>-3</sup>,
+x<sup>-5</sup>,... vanish)
+exactly when &Delta;=&frac12;.  This causes
+Sainte-Lagu&euml; like behavior for parties with large numbers of voters and seats.
+</p><p>
+<b>A myth.</b>
+It was suggested to me that, if all voters provided "approval style" scores
+(all scores either 0 or 1 with no intermediate values such as &frac12;)
+then psi-voting would become identical to <a href="RRV.html">RRV</a>.
+Although this suggestion is correct in simple "colored voters &amp; candidates,
+plus universally-approved uncolored candidates"  scenarios
+with "maximally racist" voters, overall it
+is <i>wrong</i> <a href="#compcomp">unless</a> P=NP (and even then, it still would be wrong
+due to specific counterexample elections).
+</p>
+
+<a name="pertrans"></a>
+<h3> The "Kotze-Pereira transformation" converts  <a href="#VSexamples">psi voting</a>
+into <a href="#VSexamples">harmonic voting</a></h3>
+<p>
+The "Kotze-Pereira transform" is as follows.
+<i>Replace</i> any ballot which rates the C candidates with scores
+</p><center>
+S<sub>1</sub>&ge;S<sub>2</sub>&ge;S<sub>3</sub>&ge;...&ge;S<sub>C</sub>
+</center><p>
+by these C weighted approval ballots 
+</p><pre>
+(1,1,1,...,1,1) with weight S<sub>C</sub>
+(1,1,1,...,1,0) with weight S<sub>C-1</sub>-S<sub>C</sub>
+    ...
+(1,1,0,...,0,0) with weight S<sub>2</sub>-S<sub>3</sub>
+(1,0,0,...,0,0) with weight S<sub>1</sub>-S<sub>2</sub>.
+</pre><p>
+Note: the candidates were ordered by decreasing scores on the ballot under consideration.
+That assures that all the weights come out positive.  
+For <b>example</b> the score ballot (9,5,3) in a three-candidate election would be replaced by
+</p><center>
+3&times;(1,1,1) + 2&times;(1,1,0) + 4&times;(1,0,0)
+</center><p>
+and hence the score ballot (5,9,3) by
+</p><center>
+3&times;(1,1,1) + 2&times;(1,1,0) + 4&times;(0,1,0).
+</center><p>
+This "replacement of score ballots with weighted approval ballots" idea was invented 
+by Toby Pereira.
+</p><p>
+<b>Theorem.</b> The Kotze-Pereira transform converts the psi voting system in <a href="#VSexamples">example B</a>, 
+into the inequivalent harmonic voting system of
+<a href="#VSexamples">example A</a> (both systems' Q-formulas
+were stated in the Abstract).
+</p><p>
+This is interesting for several reasons:
+<ol><li>
+The harmonic voting system naively had appeared
+to involve a factor of order&ge;W more computational work than psi voting from example B.  
+However, if after
+the Kotze-Pereira transformation, we <i>merge</i> any 
+two approval ballots with the same sets of approvals
+and disapprovals into one ballot (the weights on the ballots sum when they merge) then there will
+only be at most 2<sup>C</sup> weighted ballots in all.
+Hence the harmonic voting system in example A actually is 
+<b><i>less</i> computational work</b>, if 2<sup>C</sup>&lt;V.
+</li><li>
+The harmonic system in example A is <b>unaffected by <i>scaling</i> all scores</b> by any 
+single overall positive scaling factor.  
+(E.g. halving all scores for all candidates from all voters
+will leave the winner-set, and the quality ordering among potential winner-sets, unaltered.)
+The psi-voting system, in contrast, does not enjoy scaling invariance.
+</li><li>
+The harmonic voting system, in the single-winner case W=1,
+is <b>identical to plain <a href="RangeVoting.html">score voting</a></b>.
+But example B's voting system, is <i>not</i>
+identical to plain <a href="RangeVoting.html">score voting</a>, although it nevertheless is 
+equivalent to it via a morphism of scores arising from the functional inverse of the psi function.
+</li><li>
+We can define the quality function Q<sub>Harmonic</sub>, and hence the voting system,
+<i>without knowledge</i> of the &Psi; function,
+which is more digestible for math-phobic people.
+</li></ol>
+<p>
+In view of that, I think we should consider harmonic voting superior to psi voting,
+at least when the number of candidates is small enough for computational feasibility.
+</p>
+<a name="stratvote"></a>
+<h3>Strategic voting: a severe problem when electing committees </h3>
+<p>
+It appears that in a lot of multiwinner systems like ours (whose goal is
+to "elect a committee"), a natural kind of strategic voting is as follows.
+(Here I'll assume the voter has infinite computational resources, or anyhow large enough to
+be able to compute this strategy or at least guess something plausibly similar to it.)
+</p><ol><li>
+ Determine the two leading committees, i.e. the one that probably will win,
+and the one coming next, with everybody else's votes. (For our proposal, these would be the two committees 
+yielding the two greatest values of Q.)
+Call these two committees A and B.  Among those two, let's assume you (the voter) prefer A.
+</li><li>
+On your ballot, score everybody on A who is not on B, MAX.
+Score everybody on B who is not on A, MIN.
+Finally, score everybody who is a member of <i>both</i> A and B, or in <i>neither</i>, MIN.
+</li></ol><p>
+This tries to maximize your ballot's impact on deciding between
+committees A and B.
+Observe that with large committees, this kind of voting becomes
+highly likely to be highly dishonest!  And the larger the committee-size W,
+the more plausible ways there are to vote strategically dishonestly.
+If a lot of voters behaved this way, that could be devastatingly harmful!
+</p><p>
+This suggests to me that (even without worrying about computational obstacles,
+for which see next section) <b>all voting schemes striving to elect committees 'optimally'
+or nearly are inherently in deep trouble when those committees become large.</b>
+This objection pertains to all of our proposals here, as well as such previous
+proposals as STV and <a href="RangeVoting.html">RRV</a>.
+If so, then single-winner representation (e.g. each district 
+elects a single MP using a <i>single-winner</i>
+voting system), perhaps with a small
+number of "top ups" to approach PR, is a considerably safer approach in the presence of
+strategic voters.  Or: if one does insist on using multiwinner voting systems,
+then only elect <i>small</i> numbers of winners, e.g. each district electing exactly 3 MPs.
+</p><p>
+Optimists might hope we might be saved 
+from this fate because voters might feel too stupid to apply
+such strategies  &ndash;
+and hence would, as a last resort, vote honestly. 
+Indeed, this hope has been stated by STV advocates (e.g. the reliably
+evidence-ignoring STV propagandists and pseudo-scientists
+from "FairVote," as well as the more scholarly Barber 2000)
+based mainly on intuition with little or no evidence. 
+(Although see Van der Straeten et al 2010 for some experiments with 
+mild relevance to this which might be regarded as mildly supporting the view of the optimists.)  
+But I claim those optimists are <i>wrong</i>:
+</p><ol><li>
+Political
+parties have access to more computational power than a typical voter. 
+And in Australia they print and distribute  "how to vote" strategic advice cards. 
+Also, it is known that in at least one case, such advice cards were prepared according to
+a rather sophisticated randomized strategy [CITE Lakeman 1955??]
+because in that particular election with the voting system it used, no single way to fill in
+the ballots, would have accomplished the goals of the party involved, only a <i>mixture</i>
+of ballot types was capable of "gaming the system."
+</li><li>
+Exactly the sort of strategic voting we are presently worrying about 
+<i>was</i> perceived to happen on a large scale in
+<ul><li>
+Kalamazoo Michigan in 1919 [Hatton 1920; Kalamazoo eventually repealed STV-PR], 
+</li><li>
+the Hamilton Ohio
+city council 1927-1959 [Weaver 1995; Hamilton eventually repealed their PR system by
+a greater vote than had ever occurred during its many years of use!],
+</li><li>
+and in many places and times since then, e.g. Canada
+and on the Isle of Man (where it indeed led to the abandonment of STV-PR in 1995).  
+</li><li>
+Also, a theoretical discussion of a voting strategy of this ilk 
+was given by
+Hylland 1992 (he had STV voting systems in mind and used terminology associated with them; 
+all of them, he demonstrates, are vulnerable to his strategic idea).
+</li></ul>
+</li></ol>
+<p>
+When faced with experimental evidence of strategic voting
+dating back to 1920 reported in real-world elections
+by the foremost STV
+<i>proponents</i> of their time, I recommend admitting that strategic voting indeed does 
+happen with STV &ndash; although it usually takes more than one election before the voters 
+start using these strategies in large numbers, which is why the 
+Van der Straeten et al 2010 study was irrelevant.  Incidentally, Van der Straeten did not
+cite any of our actual-historical-evidence papers, proving the adage that
+"those unaware of history are doomed to repeat it."
+</p><p>
+In any case, the next section will show
+that <b>small committees will be forced upon us</b> by computational limitations,
+if we seek optimal ones.
+Also, in many applications it would be considered 
+<b>inhumane</b> to make voters
+vote in races containing more than <b>25</b> candidates. 
+In that case elections with W&ge;4 winners 
+would probably be inhumane, 
+since in <a href="CanadaSeatsVotes.html">Canada</a>'s 1993 election,
+an average of 7.3 candidates competed for each single-winner MP seat,
+so that presumably 21.9 would have competed if Canada had instead employed 3-winner elections
+in 3&times; larger ridings, and there would have been 29.2 candidates with 4-winner elections.
+Admittedly I chose 1993 for this example because it featured the most candidates per
+seat among Canada's 10 federal elections 1980-2015; but even the election of 1984,
+which had the fewest at only 5.14 candidates per seat, still would exceed
+our inhumanity threshold with 25.7 candidates running on average
+if 5-winner ridings were used.
+And that 25.7 pertains for the <i>average</i> 5&times;riding; the extreme cases 
+would be even worse.
+</p><p>
+Barber 2000 says that Irish Dial seats are elected in W-winner districts 
+(using an STV PR system) where originally 3&le;W&le;9 but
+over time the larger-W districts were eliminated so that now
+3&le;W&le;5 in all cases, mostly 3s.
+According to her Ireland has developed "quite stable 3-party domination"
+(Fine Gael, Labour, and Fianna Fail)
+although as of Sep. 2015 nine parties held nonzero numbers of seats plus
+11% of the seats are independent (not party-affiliated) MPs.
+</p><p>
+The Australian Federal Senate also is elected via an STV PR system
+in which each of the six states elects 12 winners,
+plus each of the two mainland territories elects 2, for 76=12&times;6+2&times;2 seats in
+all.  During 2014-2017 nonzero numbers of seats were held by 10 parties
+(with zero independent MPs holding seats), but only the top three parties
+(LibNat, Labor, and Greens) were of any importance, i.e. only those held
+more than 3 seats.
+</p>
+
+
+<a name="compcomp"></a>
+<h3> Computational complexity </h3>
+<p>
+<b>Remarkable polynomial time convex programming theorem &ndash; which fails.</b>
+Suppose the A<sub>j</sub>&ge;0 are nonincreasing with j&ge;1 and that 
+F(x) is increasing and concave-&cap; for all real x&gt;0.  Let e<sub>j</sub> be the
+"electedness" of candidate j, 
+that is e<sub>j</sub>=0 if j loses and
+e<sub>j</sub>=1 if j wins.
+Let
+</p><center>
+  Q = 
+&sum;<sub>1&le;v&le;V</sub>
+ F( &sum;<sub>1&le;j&le;C</sub>
+ [j<sup>th</sup> greatest e<sub>c</sub>S<sub>v,c</sub> among candidates c] 
+    &middot; A<sub>j</sub>)
+</center><p>
+Then it would be great if this Q were a concave-&cap; function of the e<sub>j</sub>.
+In that case the problem of maximizing Q subject to 0&le;e<sub>j</sub>&le;1 and 
+&sum;<sub>1&le;j&le;C</sub> e<sub>j</sub>=W
+would be a "convex programming problem" in C-dimensional space
+and hence soluble (to determine the
+optimal vector of e<sub>j</sub>'s to D decimal places of accuracy) 
+in polynomial(C,D,V) time.
+</p><p>
+<b>But that doesn't happen:</b>
+</p><ol><li>
+Each of the V arguments of the F's individually are concave-&cup;
+functions of the e<sub>j</sub>'s (because along any line 
+these arguments each are concave-&cup; continuous piecewise-linear functions,
+as you can see by considering a "crossover" yielding a "corner").
+This lovely fact is caused by the nonincreasing nature of the A<sub>j</sub>.
+</li><li>
+A sum of concave-&cap; functions, also is concave-&cap;.
+</li><li>
+The second derivative of F(G(x)) equals
+<nobr>G'(x)<sup>2</sup>F"(G(x))+G"(x)F'(G(x)).</nobr>
+Therefore, Q is indeed going to be concave-&cap; yielding a polytime-soluble 
+"convex programming" Q-maximization problem, in the following cases:
+</p><ol type="i"><li>
+F concave-&cap; (or linear), and F decreasing, and G concave-&cup;.
+</li><li>
+F concave-&cap; (or linear), and F increasing, and G concave-&cap;.
+</li></ol>
+</li></ol>
+<p>
+It is certainly possible to design F(x) and the A<sub>j</sub> to make case i or ii happen.
+<i>But</i> neither happens, and neither <i>can</i> happen, for any F and A<sub>j</sub>
+corresponding to reasonable voting systems, especially any obeying our PR condition above.
+(Think until you realize this.)
+So, sadly,  we generally instead expect Q to be a sum of a large number of terms many of
+which are going to <i>fail</i> to be nice concave-&cap; functions in
+the C-dimensional space.  I.e, a mess.   
+</p><p>
+Nobody currently knows how to efficiently find the global maximum of messy functions in 
+C-dimensional space
+when C  is large, and there are many known cases where this has been proved to be "NP-complete."
+For example, maximizing a general quadratic polynomial in a hypercube is NP-complete
+("quadratic programming").  Indeed, even if the quadratic has only one
+negative eigenvalue, the minimization problem is still NP-hard
+[Pardalos &amp; Vavasis 1991].
+And 
+Bellare &amp; Rogaway 1995
+showed even <i>approximately</i> solving quadratic programs is impossible
+(unless NP=quasiP).
+</p><p>
+[A book discussing convex programming and its polynomiality is
+Gr&ouml;tschel, Lovasz, Schrivjer 1988.
+A book on 
+<a href="https://en.wikipedia.org/wiki/NP-hardness">NP-completeness</a>
+Garey &amp; Johnson 1979.]
+</p><p>
+Furthermore, even if that failed theorem had succeeded brilliantly, then
+the optimal vector of e<sub>j</sub>'s arising from that theorem 
+might not consist of exactly W values 1 and exactly C-W values 0.
+It instead might contain values <i>within</i> the interval (0,1) &ndash; "fractional winners."
+We still would have no known efficient way to find the optimum 01 solution
+with only full-winners and full-losers. 
+</p><p>
+And indeed 
+&quot;<a href="https://en.wikipedia.org/wiki/Integer_programming#Proof_of_NP-hardness#Proof_of_NP-hardness">01 integer programming</a>&quot; 
+is known to be NP-complete
+even in the simplest case where the function to be maximized is linear
+subject to linear inequality constraints.  Indeed, re wikipedia's linked
+proof of that by simply noting that the "minimum vertex cover"
+problem for a graph is an 01 integer program: this also
+can be regarded as an optimum multiwinner voting problem,
+and proves solving it is NP-complete.
+And indeed minimum vertex cover is 
+&quot;<a href="https://en.wikipedia.org/wiki/APX">APX</a>-complete,&quot; a stronger
+unsolvability statement indicating that even <i>approximating</i> the min is not possible
+in polynomial time (unless P=NP) to within approximation factors arbitrarily near 1.
+(More on this soon.)
+</p><p>
+So far, we have merely offered heuristic reasons to suspect that optimum-PR
+might be NP-hard.  But in fact, we can <b>prove</b> that by cooking up a
+set of artificial elections in which the optimum winner set is both completely clear,
+and NP-complete to find.  We employ
+another classic NP-complete problem
+regardable as a multiwinner voting problem:
+</p><a name="X3C"></a><blockquote>
+<b>Exact cover by 3-sets (X3C):</b>
+Given a set V, with |V|=3q (i.e. the size of V is a multiple of 3), 
+and a collection C of 3-element subsets of V.  Question: does there exist
+a subset W of C such that each element of V occurs in exactly one member of W?  
+(Then, |W|=q and W is an "exact cover" of V.)
+</blockquote><p>
+Regard C as the set of candidates in an election, each of whom "satisfies" exactly 3 voters.
+The question then is equivalent to whether a set W of q winning candidates
+can exist providing "perfect representation," i.e. causing
+each voter to be satisfied.  
+</p><p>
+<b>Hardness Theorem I:</b>
+It is NP-hard to find such a "perfect PR" winner-set,
+or even to decide whether one exists.  
+</p><p>
+Further remarks: X3C is known to remain NP-complete
+even if the input is restricted such that each element of V 
+appears in exactly three triples
+and 
+<a href="http://cstheory.stackexchange.com/questions/20386/restriction-of-exact-cover-by-3-sets">indeed</a>
+even if, further, no two of the input triples share more than a single element.
+X3C originally was proved NP-complete by Karp in 1972
+and is discussed by Garey &amp; Johnson on pages 53 and 221.
+</p><p>
+An even better impossibility result arises from the following problem, for regular graphs:
+</p><a name="MVC"></a><blockquote>
+<b>Minimum vertex cover:</b>
+Given a graph G (set of vertices and edges): 
+find a min-cardinality subset of the vertices, that "covers" every edge, i.e. such that each
+G-edge has at least one endpoint in the set.
+</blockquote><p>
+This is a well known NP-hard optimization problem.
+There is an incredibly simple and fast "greedy" method which is
+guaranteed to get within a factor 2 of optimum:
+</p><blockquote>
+While(graph still has edges){
+<ol><li> Pick an edge (u,v) of the graph.
+</li><li>   Add both its endpoints to the vertex-cover set.
+</li><li>  Remove all edges incident to either of those two endpoints, from the graph.
+</li></ol>
+}
+</blockquote><p>
+(The reason this assures factor&le;2 approximation:
+every vertex cover must have at least one of the two vertices chosen in each round.)
+But despite much
+effort nobody has managed to provably decrease "2," even to 1.99.  It
+is conjectured that is because doing so is impossible.
+Dinur &amp; Safra 2005 (building on
+Arora et al 1998, Bar-Yehuda &amp; Even 1985,
+Berge 1978, Charikar 2002, Crescenzi et al 2001)
+showed guaranteeing approximation factor&le;59/(21+10&radic;5)&asymp;1.3606...
+is NP-complete.
+Feige 2003 showed this remains true even if we restrict attention 
+to "regular" graphs, i.e. in which every vertex has equal valency.
+(Experimentally, however, 
+Asgeirsson &amp; Stein 2005 
+were able to achieve approximation factors&le;1.5 on every instance in
+a large collection of test graphs.)
+Also, Khot &amp; Regev 2008 
+showed guaranteeing approximation factor&le;2-&epsilon; 
+was NP-complete (for any &epsilon;&gt;0) <i>provided</i> Khot's
+<a href="https://en.wikipedia.org/wiki/Unique_games_conjecture">unique games conjecture</a>
+(UGC) is true. 
+As Klarreich 2011 makes clear,
+UGC is now playing a fairly central role in computational complexity theory.
+It won its inventor, Subhash Khot,
+the 2014 Rolf Nevanlinna 
+<a href="http://www.mathunion.org/general/prizes/2014/prize-citations/">Prize</a>,
+and a result of astonishingly grand scope by Ragavendra 2008 and 
+Ragavendra &amp; Steurer 2009
+indicates that if true, the UGC tells us the exact best-achievable
+approximation factor for <i>every</i> "constraint satisfaction problem."
+Hence many smart people have worked on the UGC over the 14 years of its existence,
+so far without proving or disproving it.
+I personally take no stance on whether UGC is true, but it is clear that 
+<i>deciding</i> whether it is true, is difficult.
+</p><p>
+<b>Hardness Theorem II:</b>
+With <a href="Approval.html">approval</a>-style voting,
+finding a min-cardinality
+parliament such that each MP is approved by at least 1 voter, is
+NP-hard, and it also is NP-hard to get within 1.3606
+factor of minimum, and under the
+unique games conjecture it is NP-hard to get within factor 2-&epsilon;.
+This all pertains to elections where each voter approves exactly 2 candidates,
+and each candidate is approved by a number N of voters not depending on
+the candidate.
+</p><p>
+Therefore, forget about "sequential" or "heuristic" polynomial-time 
+algorithms hopefully producing
+approximately-optimum PR, unless you are willing to settle for factor&gt;1.36
+worse-than-optimum results in at least some elections &ndash;
+<i>and</i> unless you either
+</p><ol><li>
+Are willing to settle for factor&gt;1.99
+worse-than-optimum results in at least some elections, or
+</li><li>
+Are at least smart enough to disprove the unique games conjecture
+(and no human, up to year 2016, has been that smart).
+</li></ol>
+<p>
+Zuckerman 1996 showed that "constrained max set cover" (CMSC) 
+cannot be approximated to within a factor N<sup>&epsilon;</sup>
+(for some &epsilon;&gt;0)
+by any polynomial(N)-time algorithm, unless P=NP.
+Further, CMSC is "absurdly inapproximable" under
+an assumption NP-complete problems are not solvable in slightly-superpolynomial time
+by randomized machines, meaning even its k-fold 
+<i>iterated logarithm</i> cannot be approximated to within some constant factor c
+(for any fixed k&ge;0, and some c depending on k).
+</p><a name="CMSC"></a><blockquote>
+<b>Constrained max set cover (CMSC):</b>
+Given a family S<sub>1</sub>, S<sub>2</sub>, ..., S<sub>N</sub>
+of N finite sets, and a subset T of {1,2,3,...,N}, and an integer W with 0&lt;W&lt;N
+such that the union of some W of the sets equals the union of all of them
+(those W "cover"),
+find W of the S<sub>i</sub> 
+which (a) cover, and (b) whose indices i include the maximum
+possible number of entries from T.
+</blockquote><p>
+This can be regarded as a proportional representation problem as follows.
+Let set S<sub>i</sub>
+be the voters who "like" candidate i.   A W-element set cover is a set of
+W candidates such that every voter likes at least one of them.
+Also, in addition to liking and disliking candidates, let us now suppose it is possible
+to give candidates an intermediate score (a 3-level scoring system), 
+and let T be the set of "acceptable" candidates who each 
+are universally considered good enough to get at least that intermediate score.
+Given that we know that W-member "covering" parliaments exist,
+</p><p>
+<b>Hardness Theorem III:</b>
+The question of finding a W-member parliament which (a) covers, i.e. each voter
+likes at least one MP, and (b) contains the maximum possible number of "acceptable" MPs, 
+is absurdly inapproximable in the same sense as Zuckerman 1996's theorem about CMSC.
+</p><p>
+This makes the point even more strongly that good PR election performance 
+<i>cannot</i> be obtained by polynomial-time algorithms (unless the
+entire computer science community is very wrong about P and NP).  
+Therefore,  good performance in C-candidate elections 
+presumably is <i>only</i> attainable by brute force
+computations having exponential(C) time-complexity.
+</p><p>
+Finally, let us note that I am not the only one who has complained about intractability for
+PR voting.  Procaccia et al 2008 gave NP-completeness proofs showing 
+"that winner selection in two previously proposed proportional
+representation voting systems 
+(one by <a href="MonroeMW.html">Monroe</a> and Pothoff &amp; Brams, the other by
+Chamberlin &amp; Courant)
+both are computationally intractable
+problems, implying that these systems are impractical when the assembly is large."
+These two previous proposals both had required solving large "integer programs."
+</p>
+
+<a name="faildesid"></a>
+<h3> Failed (and satisfied) desiderata </h3>
+<p>
+But even if we ignore computational complexity (assume we have infinitely powerful computers
+and can afford to maximize any Q we want)
+we'd still face another issue.
+None of our example Q's, and apparently no quality function of our PR class,
+satisfies Toby Pereira's "Universal-Liking Condition (ULC):</b>
+</p><a name="ULCdefn"></a><blockquote>
+<b>ULC:</b>
+   <i>After</i> universally-liked candidates win, then there
+   must be proportionality about the <i>remaining</i> winners.
+</blockquote><p>
+So I think there is a theorem lurking here (conjecture for present)
+that no quality function of our quite-wide-seeming "linear" class, is capable
+of <i>both</i> PR and ULC.
+</p><p>
+We also could consider several more-refined forms of ULC, all
+of which appear to be failed by all election methods arising from maximizing
+the present paper's kind of quality function.
+</p><p>
+<b>CRC</b> (common rating condition):
+If all voters are colored, and all candidates are either colored or uncolored;
+all voters rate candidates of their same color 1 but rate all candidates of other colors 0;
+and uncolored candidates always are rated with a score that depends on the candidate alone
+and not on the voter; then:
+the elected parliament should exhibit the same color-composition as the electorate 
+among colored-MPs only.
+</p><p>
+<b>SFC</b> (sub-faction condition):
+After candidates universally liked among Pink voters only win,
+then the subfactions of the Pinks should then
+get proportional representation about all additional Pink winners.
+</p><p>
+In another paper I <a href="NonlinQuality.html">constructed</a>
+voting methods based on <a href="RangeVoting.html">score</a>-style ballots and
+"nonlinear" quality functions which satisfy ULC and CRC.  Unfortunately,
+my nonlinearity "cure" was worse than the disease in the sense that those methods all
+failed &ndash; while the present papoer's psi and harmonic voting methods both satisfy
+</p><p>
+<b>Monotonicity:</b> 
+Voters, by raising the score of a candidate X, should help him win.  
+In particular,
+if parliament A has greater or equal scores (MP-wise) on each ballot than parliament B,
+with some greater, then B should not win.
+</p><blockquote>
+Proof that psi and harmonic voting both satisfy monotonicity:
+The quality function Q increases for all X-containing parliaments, while
+the Q's for X-omitting parliaments remain unaltered.
+</blockquote><p>
+<b>Participation:</b> 
+A voter by honestly voting, cannot worsen the result of the election, where
+"worsen" means "decrease Q."  
+In particular, by voting, you cannot cause X to be elected instead of Y 
+(with all other winners staying the same) if you scored Y higher than X.
+</p><blockquote>
+Proof that psi and harmonic voting both satisfy participation:
+The <i>v</i>th summand in the Psi
+(or harmonic) quality function, i.e. the summand controlled by voter-v's ballot,
+always "pulls in the correct direction," i.e. increasing Q for parliaments that voter-v
+thinks have greater Q versus parliaments that voter-v considers to have lesser Q.
+</blockquote><p>
+The <b>sum structure</b> 
+of the psi quality function formula, i.e.  as a <i>sum</i>, over voters v, of the 
+parliament-quality in the view of that voter &ndash; which summand depends 
+for any given parliament on that voter's ballot <i>alone</i> &ndash;
+guarantees the participation property.  Other-structured
+Q-formulas cannot say that.
+</p>>p>
+In contrast, 
+STV systems <a href="IRV1519.html">fail</a> that criterion even in the single winner case;
+and for the <a href="RRV.html">RRV</a> (reweighted range voting) system (which satisfies
+monotonicity and participation in the single-winner case), 
+I had constructed a
+140-voter 3-candidate 2-winner election
+<a href="RRV.html#particfail">example</a> in which,
+before you vote, {Z,Y} win, but after your "Y&gt;X&gt;Z" vote,
+instead {Z,X} win.
+</p><p>
+It is technically possible to satisfy ULC, SFC, and CRC by "cheating"
+as follows.  Observe that our
+<a href="#PRdef">definition</a> of "PR"
+(and of ULC, etc) all are  silly in the sense that they only apply
+when voters &amp; candidates are split
+into exactly-disjoint "colored" factions; and Pereira's definition of "universally-liked"
+also is silly.
+Here "silly" means that, in reality, these requirements would essentially
+never be exactly satisfied.
+The idea is to exploit/abuse that silliness because the silly
+situations where these definitions apply do not overlap and hence cannot contradict.   
+So insert special rules into the voting system design that detect all such situations and 
+respond to them appropriately.  Then, what the voting method 
+does in the vast bulk of realistic (non-silly)
+situations technically is irrelevant &ndash; as far as satisfying these conditons is
+technically concerned &ndash; so do anything, we do not care what.
+</p><p>
+<i>But</i> the kind of quality measure Q we've proposed in the present paper
+does not exploit this silliness and hence
+cannot particularly abuse it, and then we conjecturally get a
+contradiction &amp; impossibility.   An attempt to formalize the notion of "not cheating"
+would be the
+</p><p>
+<b>Continuity condition:</b>
+The voting method must be expressible in such a way that each possible W-winner set has
+a real-valued "quality" which is a <i>continuous</i> and <i>smooth</i>
+function of the scores on the ballots (which with monotonicity 
+may be demanded to be a <i>monotonic</i> function of any one score varied in isolation), 
+and such that the maximum-quality parliament is the one
+that wins.
+</p><a name="openprob"></a><p>
+Which leads us to the <b>open question:</B> is it even possible for <i>any</i> quality
+measure, or <i>any</i> voting system, to satisfy all these criteria simultaneously?
+</p><p>
+The continuity condition makes it plausible
+that the impossibility of satisfying all these conditions
+(if it is impossible) is <i>topological</i>.
+</p><p>
+Forest Simmons also points out our quality functions Q could also be used to find
+"<i>constrained</i>-optimal winner-sets," e.g. if some 
+subset of the W winners were pre-chosen by some other method,
+then we still could find the Q-maximizing W-winner set <i>among those containing
+the pre-chosen subset</i>.
+</p>
+
+<!--
+<h3>Open Questions</h3>
+
+<ol type="A"><li>
+ Which among our quality functions is "the best"?
+</li><li>
+ Is it possible to generalize this still further in some reasonable way so
+   that not only PR, but also 
+<a href="#ULCdefn">ULC</a>) (Toby Pereira's Condition)
+is satisfied?
+</li><li>
+Can we produce explicit NP-hardness or APX-hardness proofs for the precise quality measures
+we've introduced here?  Preferably all of them?
+</li></ol>
+
+<a name="conclu"></a>
+<h3> Conclusions </h3>
+-->
+
+<a name="acknow"></a>
+<h3>  Acknowledgments. And: was this a rediscovery? </h3>
+
+<p>
+Forest Simmons was the original inventor of "logarithmic penalty voting" 
+which can be regarded as the seed from which this all sprang.
+NYU politics professor Steven J. Brams informed me he agrees with the idea advanced in our
+<a href="#stratvote">strategic voting</a> section that 
+all committee-electing methods which seek optimum PR are inherently severely
+vulnerable to strategic voting when the committee size becomes large.
+Bill Gosper invented his brilliant "matrix product path invariance framework" for
+discovering mathematical identities, of
+which his amazing 
+<sub>5</sub>F<sub>4</sub>
+<a href="#gosperamaze">formula</a> is merely one instance.
+Toby Pereira invented what I have called the "Kotze-Pereira transform" and
+pointed out that it improves (at least in his view) the 
+behavior of psi voting on certain election examples;
+I then realized that it just yields the harmonic voting system in 
+<a href="#VSexamples">example A</a>.
+Pereira also suggested the ULC, CRC, and SFC conditions.
+(We later found out that the idea of the "Kotze-Pereira transform" had earlier &ndash; in 
+<a href="http://www.revleft.com/vb/showpost.php?p=2030744&postcount=12">2010</a> &ndash;
+been posted by somebody calling themself "Kotze.")
+</p><p>
+I only realized this after all this was done (being unable to read Danish...)
+but Thiele in his 1895 
+"Om flerfoldsvalg" starting p.424 actually more or less 
+<i>stated</i> our "harmonic voting" and "psi voting" methods in
+the special case where  
+(1) <a href="Approval.html">approval</a>-style ballots are employed (note, in this case
+Harmonic and Psi voting are identical)
+and (2) the "d'Hondt" case &Delta;=1!
+Thiele then quickly dismissed this idea as computationally infeasible in
+the pre-computer age, because the number of possible winner-sets could
+be enormous. <!-- e.g. 30!/(20!10!)=30045015. -->
+Thiele therefore invented (his special case of) <a href="RRV.html">RRV</a> as a "greedy"
+add-one-more-winner-at-a-time 
+approach to <i>approximately</i> maximize  Q<sub>Psi</sub>=Q<sub>Harmonic</sub>.
+That is, RRV always adds the new winner who increases Q the most.
+(And Thiele was aware that greed could produce suboptimal winner-sets.)
+Incidentally, Thiele did not call Q a "quality function" but rather
+the "satisfaction" ("Tilfredshed").
+Thiele gave little or no explanation of why
+he considered this particular Q formula desirable &ndash; although 
+the obvious speculation is that it was because
+he knew at least some of what we know!
+Thiele also suggested a "reverse greedy" way to <i>remove</i> winners one at a time, 
+removing the one that caused the smallest decrease in Q.  One also could, I suppose, imagine 
+interspersed greedy-add and greedy-remove steps.
+</p>
+
+<a name="refbib"></a>
+<h3>  References </h3>
+
+<p>
+Milton Abramowitz and Irene A. Stegun (eds.):
+<a href="http://people.math.sfu.ca/~cbm/aands/">
+Handbook of Mathematical Functions</a>,
+U.S. Government Printing Office 1972 with corrections (first printing June 1964).
+</p><p>
+Horst Alzer:
+<a href="http://www.ams.org/journals/mcom/1997-66-217/S0025-5718-97-00807-7/">
+On some inequalities for the gamma and psi functions</a>,
+Maths of Computation 66,217 (Jan. 1997) 373-389.
+</p><p>
+Douglas J. Amy: 
+<a href="https://www.mtholyoke.edu/acad/polit/damy/Bibliography/history_of_pr_in_the_united_stat.htm">Online 
+bibliography about proportional representation</a>,
+<tt>https://www.mtholyoke.edu/acad/polit/damy/Bibliography/history_of_pr_in_the_united_stat.htm</tt>.
+</p><p>
+S.Arora, C.Lund, R.Motwani, M.Sudan, M.Szegedy:  Proof verification
+and hardness of approximation problems, JACM 45,3 (1998) 501-555.
+</p><p>
+Eyjolfur Asgeirsson &amp; Cliff Stein:
+<a href="AsgeirssonStein_VertexCoverApproximations_2005.pdf">Vertex
+Cover Approximations: Experiments and Observations</a>,
+Proceedings of the 4th International Workshop on Experimental and
+Efficient Algorithms (WEA 2005) 545-567;
+Springer Lecture Notes in Computer Science #3503.
+</p><p>
+Kathleen L. Barber:
+A right to representation: proportional election systems for the twenty-first century
+Ohio State University Press, Columbus OH, 2000. JF1071.B37
+</p><p>
+R. Bar-Yehuda &amp; S. Even:  A local  ratio theorem for approximating the
+weighted vertex cover problem, Annals of Discrete Mathematics  25 (1985) 27-45.
+</p><p>
+Mihir Bellare &amp; Phillip Rogaway:
+The complexity of approximating a nonlinear program,
+Mathematical Programming 69, 1 (July 1995) 429-441.
+</p><p>
+Kenneth Benoit:
+<a href="PA84-381-388.pdf">Which Electoral Formula Is the Most
+Proportional? A New Look with New Evidence</a>, Political Analysis 8,4 (2000) 381-388.
+</p><p>
+Claude Berge:  Regularizable graphs,  Annals Discrete Maths  3 (1978) 11-19.
+</p><p>
+David M. Bradley:
+<a href="http://arxiv.org/abs/math/0505125">
+Ramanujan's formula for the logarithmic derivative of the gamma function</a>,
+Mathematical Proceedings of the Cambridge Philosophical Society 120,3 (Oct. 1996) 391-401.
+</p><p>
+Moses Charikar:  On semidefinite programming relaxations for graph colorings
+and vertex cover, Proc. 13th Symposium on Discrete Algorithms (SODA 2002) 616-620.
+</p><p>
+W.J.Cody, A.J.Strecock, H.C.Thacher Jr:
+<a href="http://www.ams.org/journals/mcom/1973-27-121/S0025-5718-1973-0326986-3">Chebyshev
+approximations of the Psi function</a>,
+Maths of Computation 27,121 (Jan. 1973) 123-127. 
+</p><p>
+P.Crescenzi, R.Silvestri, L.Trevisan:  On weighted versus unweighted
+versions of combinatorial optimization problems,
+Information and Computation 167,1 (2001) 10-26
+<!--
+</p><p>
+G. Davis, S. Mallat, M. Avellaneda:
+Adaptive greedy approximations,
+Constructive Approximation 13,1 (March 1997) 57-98.
+The problem of optimally approximating a function with a linear expansion over a redundant dictionary of waveforms is NP-hard.
+The greedy matching pursuit algorithm and its orthogonalized variant produce suboptimal function expansions by iteratively choosing dictionary waveforms that best match the function’s structures. A matching pursuit provides a means of quickly computing compact, adaptive function approximations.
+Numerical experiments show that the approximation errors from matching pursuits initially decrease rapidly, but the asymptotic decay rate of the errors is slow. We explain this behavior by showing that matching pursuits are chaotic, ergodic maps.
+-->
+</p><p>
+Irit Dinur &amp; Shmuel Safra:
+<a href="DinurSVC.pdf">On the Hardness of Approximating Minimum Vertex-Cover</a>,
+Annals of Mathematics 162,1 (2005) 439-485.
+</p><p>
+Uriel Feige: 
+<a href="FeigeVertexCover2003.ps">Vertex cover is hardest to approximate on regular graphs</a>,
+Technical report MCS 03-15 of the Weizmann Institute, 2003.
+</p><p>
+Michael R. Garey &amp; David S. Johnson: 
+Computers and Intractability: A Guide to the Theory of NP-Completeness,
+Freeman 1979.
+</p><p>
+R. William Gosper:
+<a href="AIM-304.pdf">Acceleration of series</a>,
+MIT artificial intelligence lab memo #304, March 1974.
+</p><p>
+L.Gr&ouml;tschel, L.Lovasz, A.Schrivjer:
+The ellipsoid method and its consequences in combinatorial optimization,
+Springer 1988.
+</p><p>
+Augustus R. Hatton: The second proportional representation election in Kalamazoo, 
+National Municipal Review 9,2 (Feb. 1920) 84-92.
+<!--  SB Main Library Stacks JS39 .N3  Holdings: v. 1-10,20-47 (1912-1921,1931-1958)  -->
+See p.81: "The small number of first choices he received was apparently due to the 
+expectation of a large majority of voters that his re-election was a matter of course..."
+<!--
+</p><p>
+Ferdinand A. Hermens: Demokratie oder Anarchie?, 
+Untersuchung &uuml;ber die Verh&auml;ltniswahl,
+mit einem Vorwort von Alfred Weber und einer Einf&uuml;hrung von Carl J. Friedrich.
+Westdeutscher Verlag,
+K&ouml;ln/Cologne 1968.
+JF1071.H434.
+-->
+</p><p>
+I.D.Hill, B.A.Wichmann, D.R.Woodall:
+<a href="meekm.pdf">
+Algorithm 123 &ndash; Single transferable vote by Meek's method</a>,
+Computer Journal 30,3 (1987) 277-281.
+</p><p>
+Aanund Hylland:
+Proportional representation without party lists,
+pp.126-153 in
+<i>Rationality and Institutions: Essays in honour of Knut Midgaard on the 
+occasion of his 60th birthday, February 11, 1991</i> ed. Raino Malnes &amp; Arild Underda,
+published 1992 by Universitetsforlaget AS, Oslo.
+See quote beginning "Both for groups and for individual voters it could be advantageous
+not to vote for a candidate who is considered certain of winning
+election, even if that candidate is one's first choice..."
+</p><p>
+Svante Janson:
+<a href="http://arxiv.org/abs/1110.6369">Asymptotic bias of some election methods</a>,
+Annals of Operations Research 215,1 (2014) 89-136.  
+</p><p>
+Hans-Heinrich Kairies: 
+<a href="http://link.springer.com/article/10.1007%2FBF01350316">&Uuml;ber die logarithmische Ableitung der Gammafunktion</a>,
+Math. Annalen 184,2 (July 1970) 157-162.
+</p><p>
+Richard M. Karp:
+<a href="Karp1972.pdf">Reducibility among combinatorial problems</a>, pp.85-103 in
+R.E. Miller &amp; J.W. Thatcher (eds.) <i>Complexity of Computer Computations</i>,
+Proc. Sympos. on the Complexity of Computer Computations. New York: Plenum 1972.
+</p><p>
+Subhash Khot &amp; Oded Regev: Vertex cover might be hard to
+approximate to within 2-&epsilon;, Journal of Computer and System
+Sciences 74,3 (2008) 335-349.
+</p><p>
+Erica Klarreich:
+<a href="https://www.simonsfoundation.org/mathematics-and-physical-science/approximately-hard-the-unique-games-conjecture/">Approximately Hard: The Unique Games Conjecture</a>,
+A new conjecture has electrified computer scientists,
+Oct. 2011, Simons Foundation website. Also a later more-popular version
+<a href="https://www.quantamagazine.org/20140812-a-grand-vision-for-the-impossible/">
+The Unique Games Conjecture, A Grand Vision for the Impossible</a>
+by Thomas Lin &amp; Klarreich (with accompanying video), was published in
+<i>Quanta Magazine</i>, August 2014.
+</p><p>
+Donald E. Knuth: Art of computer programming, volume 4 (book not yet published).
+</p><p>
+Enid Lakeman &amp; James Lambert: Voting in Democracies ???1955, only one edition of
+the book has the randomized how-to-vote cards strategy story in it, other editions omit it
+</p><p>
+S.Lewanowicz &amp; S.Paszkowski:
+<a href="http://www.ams.org/journals/mcom/1995-64-210/S0025-5718-1995-1277769-6/">
+An analytic method for convergence acceleration of certain hypergeometric series</a>,
+Maths. of Computation 64,210 (April 1995) 691-713.
+</p><p>
+Yudell L. Luke: 
+<a href="http://www.tandfonline.com/doi/abs/10.1080/00036817108839007">Rational 
+approximations for the logarithmic derivative of the gamma function</a>, 
+Applicable Analysis 1,1 (1971) 65-73.
+</p><p>
+Brian L. Meek: Une nouvelle approche du scrutin
+transferable, Mathematiques et sciences humaines
+25 (1969) 13-23, and 29 (1970) 33-39.
+Also reprinted in
+Voting Matters 1 (1994) translated into English as
+A new approach to the single transferable vote, parts 
+<a href="MeekSTV1.html">I</a>
+and
+<a href="MeekSTV2.html">II</a>.
+There also is a paper titled "Meek versus Warren"
+in <a href="http://www.votingmatters.org.uk/ISSUE20/ISSUE20.PDF">Voting Matters 20 (2005)</a>
+contrasting Brian Meek's 
+complicated STV variant versus Hugh Warren's similarly motivated complicated STV variant.
+Two attempts to explain Meek STV, from the PR society of Australia, are
+by <a href="HillMeek.pdf">Hill</a> and
+<a href="KitchenerMeek.pdf">Kitchener</a>.
+</p><p>
+<!--
+B.K.Natarajan: Sparse Approximate Solutions to Linear Systems,
+SIAM J. Comput., 24,2 (1995) 227-234. 
+The following problem is considered: given a matrix A in ${\bf R}^{m\times n}$, (m rows and n columns), a vector b in ${\bf R}^m$, and $\epsilon > 0$, compute a vector x satisfying $\|Ax - b\|_{2} \leq \epsilon $ if such exists, such that x has the fewest number of non-zero entries over all such vectors. It is shown that the problem is NP-hard, but that the well-known greedy heuristic is good in that it computes a solution with at most $\lceil 18 \operatorname{Opt}(\epsilon/2)\|{\bf A}^{+}\|_{2}^{2} \ln ({\| b \|_{2}/\epsilon})\rceil$ non-zero entries, where $\operatorname{Opt}(\epsilon/2)$ is the optimum number of nonzero entries at error $\epsilon/2$, ${\textbf{A}}$ is the matrix obtained by normalizing each column of A with respect to the $L_{2}$ norm, and $\textbf{A}^{+}$ is its pseudo-inverse.
+-->
+Panos M. Pardalos &amp; Stephen A. Vavasis:
+Quadratic programming with one negative eigenvalue is NP-hard,
+J. Global Optimization 1,1  (1991) 15-22.
+</p><p>
+Lars Edvard Phragm&eacute;n: 
+<a href="PhragmenVoting1899.pdf">Till
+fr&aring;gan om en proportionell valmetod</a>
+[On the Question of a
+Proportional Election Method], Statsvetenskaplig Tidskrift 2,2 (1899) 87-95.
+Phragm&eacute;n also mentions
+that his method was first described in "Proportionella val" [Proportional
+Elections], Svenska sp&ouml;rsm&ahat;l 25 (1895) Stockholm.
+<!-- 
+Lars Edvard Phragm&eacute;n (1863-1937), a Swedish mathematician.
+Thorvald Thiele (1838-1910), professor of astronomy at Copenhagen
+University. In his method, the value of a ballot is 1/n for the nth
+candidate elected that the ballot elects. The ballot is not preferential.
+The method is intended to be a generalization of d'Hondt's rule.
+Phragmen gives the reference "Om flerfoldsvalg" [On multiple election],
+Overs. over d. K. Danske Vidensk. Selskabs Forh. 1895.
+Gustav Cassel 1903 criticizes?
+Olli Salmi 2002? digs these all up.
+https://groups.yahoo.com/neo/groups/election-methods-list/conversations/topics/10276
+-->
+</p><p>
+Ariel D. Procaccia, Jeffrey S. Rosenschein, Aviv Zohar:
+<a href="ProcacComplexityPR.pdf">
+On the complexity of achieving proportional representation</a>,
+Social Choice &amp; Welfare 30,3 (April 2008) 353-362.
+<!-- http://arxiv.org/pdf/1407.3247v1.pdf also gives NP-completeness proofs for approval-ballot PR methods -->
+</p><p>
+Feng Qi &amp; Bai-Ni Guo:
+<a href="http://arxiv.org/abs/0902.2524">Sharp
+inequalities for the psi function and harmonic numbers</a>,
+Analysis  34,2 (June 2014) 201-208.
+</p><p>
+Prasad Raghavendra:
+<a href="http://www.cs.berkeley.edu/~prasad/Files/extabstract.pdf">
+Optimal Algorithms and Inapproximability Results for Every CSP?</a>,
+Proceedings of the 40th annual ACM symposium on Theory of computing
+(STOC 2008) 245-254.
+</p><p>
+Prasad Raghavendra &amp; David Steurer:
+<a href="http://www.cs.berkeley.edu/~prasad/Files/roundcspfocs.pdf">How to round any CSP</a>,
+Proc. Sympos. Foundations of computer science
+(FOCS 2009). 
+</p><p>
+Karine Van der Straeten, J-F.Laslier, N.Sauger, A.Blais:
+<a href="StraetenLaslierVotStrat.pdf">
+Strategic, sincere, and heuristic voting under four election rules: an
+experimental study</a>,
+Social Choice and Welfare 35,3 (September 2010) 435-472.
+</p><p>
+Nore B. Tenow:
+Felaktigheter i de Thieleska valmetoderna [problems with Thiele's methods], 
+Statsvetenskaplig Tidskrift [Swedish state scientific journal 
+published by Fahlbeckska Foundation of Political Science in Lund] (1912) 145-165.
+</p><p>
+Thorvald N. Thiele:
+<a href="https://books.google.com/books?id=oAMXAAAAYAAJ&pg=PA415&lpg=PA415&dq=Thiele+Om+flerfoldsvalg&source=bl&ots=_AFoEKMdA8&sig=IcJya-OQrToFYzVtLW1mnCXQqy0&hl=en&sa=X&ved=0ahUKEwii5be_6J_JAhVIjz4KHW6KDLwQ6AEIKjAD#v=onepage&q=Thiele%20Om%20flerfoldsvalg&f=false#v=onepage&q=Thiele Om flerfoldsvalg&f=false">Om
+flerfoldsvalg</a> [On multiple election],
+Oversigt over Det Kongelige danske videnskabernes selskabs forhandlinger
+=
+Bulletin de L'Acad&eacute;mie royale des sciences et des lettres de Danemark,
+Copenhague Kongelige Danske Videnskabernes Selskab 
+= 
+Royal Danish Academy of Sciences and Letters 3,4  (1895-6) 415-441.
+</p><p>
+Nicolaus Tideman:
+<a href="TidemanSTVJEconPersp195.pdf">The Single Transferable Vote</a>, 
+J. Economic Perspectives 9,1 (winter 1995) 27-38.
+</p><p>
+Leon Weaver &amp; James L. Blount: Hamilton: PR defeated by its own success,
+pp.209-240 in Kathleen L. Barber: <i>Proportional Representation and Election Reform in
+Ohio</i> (with a foreword by John B. Anderson), Ohio State University Press, Columbus OH, 1995.
+JS451.O35 B37.
+See p.230 "As in most elections, strategic voting appears to have affected outcomes...
+over time surpluses of popular candidates seemed to shrink as their supporters learned to give
+their first-choice votes to candidates less assured of election..."
+</p><p>
+Douglas R. Woodall: Computer counting in STV elections, Representation
+23 (1983) 4-6 [<a href="WoodallComputerCountingSTV.html">Reprinted</a> in 
+Voting Matters 1 (1994) 11-12.]  Second paragraph discusses "Woodall free ridership"
+strategy.
+</p><p>
+Douglas R. Woodall: 
+<a href="WoodallVotSystProperties1994.html">
+Properties of Preferential Election Rules</a>,
+Voting Matters 3,4 (Dec. 1994).
+There also was a later paper by Woodall with considerable overlap with this one:
+<a href="Woodall97.pdf">Monotonicity of single-seat preferential election rules</a>,
+Discrete Applied Mathematics 77 (1997) 81-98.
+<!--
+Woodall. An impossibility theorem for electoral
+systems. Discrete Mathematics, 66 (1987) 209–211. 
+An impossibility theorem is proved for electoral systems that has something of the flavour 
+of Arrow's General Possibility Theorem [1], but is logically unrelated to it. 
+The implications for the Single Transferable Vote are discussed.
+-->
+</p><p>
+David Zuckerman:
+<a href="ZuckUnapprox.ps">
+On Unapproximable Versions of NP-Complete Problems</a>,
+SIAM J. Computing 25,6 (1996) 1293-1304.
+</p>
+
+<a name="algapp"></a>
+<h3> Appendix: algorithm for "psi PR" optimum multiwinner voting </h3>
+<p>
+Everything is for a
+V-voter C-candidate W-winner election, 0&lt;W&lt;C, 0&lt;V.
+</p><p>
+The following pseudocode is based on working C-language code. 
+It employs "algorithm R" from Knuth volume 4's &sect;7.2.1.3 to generate all
+W-element subsets.
+</p><p>
+On my 2 GHz single core machine (made in 2006), the <b>runtime</b> is about
+<nobr>&kappa; (V+30) C! / ([C-W]! W!)</nobr>
+where &kappa;&asymp;200 nanoseconds 
+using the &Psi;(x) algorithm at the end of the next <a href="#psiapp">appendix</a>,
+and &kappa;&asymp;4 nanoseconds 
+when computing &Psi;(x) via <a href="#lkptrick">lookup</a>
+table.
+The latter speed means 
+my machine would be able to find the optimum winning
+committee for a 10<sup>6</sup>-voter, 29-candidate, 8-winner
+election in &le;3.5 hours and would be able to handle any election in present-day <b>Ireland</b>
+optimally in minutes at most (since they all have V&le;200000 and W&le;5).  However, 
+the largest-population state in <b>Australia</b> &ndash; New South Wales with 7.5 million 
+people (and compulsory voting!) &ndash;
+elects W=12 senators, and C=110 candidates ran for those 12 seats in 2013.
+</p><blockquote>
+By the way, it is rather absurd for voters to be asked to rank-order 110 candidates.
+Instead about 98% of Australian Senate-voters  just regurgitate 
+a pre-defined rank order recommended by
+one party or another.  That moots the whole goal of even having the preference-ordering system.
+But we'll pretend that our voters really did geneuinely rank-order all 110, in which case...
+</blockquote><p>
+That would take my computer 1-4 million years via the
+brute force algorithm below.  
+<!-- So, obviously, it is crucial to optimize your &Psi;(x) and ln(x) functions. -->
+</p><p>
+Its <b>mission</b>
+is, from among all W-element subsets of the C candidates, to find the one maximizing
+</p><center>
+  Q = 
+&sum;<sub>1&le;v&le;V</sub>
+ &Psi;( &Delta; + &sum;<sub>1&le;j&le;W</sub>
+  [score awarded to winner[j] by voter v on her ballot] ).
+</center>
+<p>
+Here &Delta; is a positive constant pre-chosen by the voting system designer
+(&frac12;&le;&Delta;&le;1 is recommended and conjecturally &Delta;=&frac12; is the best choice),
+and &Psi;(x) is the "psi function" discussed in the preceding appendix.
+</p><p>
+The indices of the winning candidates are returned in the array winner[0..W-1].
+Each such index lies in the integer interval [0, C-1].
+The algorithm employs the real array S[0..V-1] and the uint (unsigned integer)
+array x[0..W], as workspace. 
+The input ballot-data is the array score[0..CV-1] where
+score[jV+k] is the score awarded to candidate j by voter k, where 0&le;k&lt;V and 0&le;j&lt;C.
+It is <i>assumed</i> all these scores
+have been <i>prescaled</i> to lie within the real interval [0, 1]
+where 0 is the score a voter would award to a hated candidate and 1 to an excellent candidate.
+For voters who do not score some candidate, that blank entry of the score array must be filled
+in with that candidate's average score (among those voters who <i>did</i> score him).
+In that way the abstaining voters will leave that candidate's average unaffected.
+The value Q of the quality function for the optimum winner-set, is returned directly.
+</p>
+<table bgcolor="lightblue"><tr><td><pre><pre>
+real OptVote(uint V, uint C, uint W, real score[], real &Delta;, //the inputs
+       uint x[], real S[],   //used as workspace
+       uint winner[]){   //winner[0..W-1] and the returned value are the outputs
+  uint k, j, prv=0, scc=0;
+  ulong ctr=0;
+  real A, Q, Qrecord = -&infin;;
+  assert(0.0&lt;&Delta;);  assert(&Delta;&le;2.0);
+  assert(0&lt;W);  assert(W&lt;C);  assert(0&lt;V);
+  for(j=0; j&lt;W; j++){ x[j] = j; } x[j]=C; //initial subset: {0,1,2,...,W-1}.
+  for(k=0; k&lt;V; k++){ 
+    A = &Delta;; 
+    for(j=0; j&lt;C; j++){  
+      assert(0&le;score[j*V+k] && score[j*V+k]&le;1.0);
+      if(j&lt;W){ A += score[j*V+k]; }
+    }
+    S[k] = A;
+  }
+ R2:  
+  ctr++;  Q = 0.0;  scc *= V;  prv *= V;
+  for(k=0; k&lt;V; k++){  //inner loop
+    S[k] += score[scc+k] - score[prv+k];  
+    Q += &Psi;(S[k]);
+  }
+  if(Q &gt; Qrecord){ //winner set with highest quality yet seen:
+    Qrecord = Q;   //print Q then the indices of the winners:
+    printf("%16.8f:", Q);
+    for(k=0; k&lt;W; k++){ winner[k]=x[k]; printf(" %2d", x[k]); }
+    printf("\n");
+  }
+  if(W&1){ //W is odd
+    if(x[0]+1 &lt; x[1]){ prv=scc=x[0]; scc++; x[0]=scc; goto R2; }else{ j=1; goto R4; }
+  }else{ //W is even
+    if(  x[0] &gt; 0   ){ prv=scc=x[0]; scc--; x[0]=scc; goto R2; }else{ j=1; goto R5; }
+  }
+ R4: 
+  if(x[j] &ge; j+1){ prv=x[j]; x[j]=x[j-1]; scc=j-1; x[j-1]=scc; goto R2; }else{ j++; }
+ R5:
+  if(x[j]+1 &lt; x[j+1]){ prv=x[j-1]; x[j-1]=x[j]; scc=x[j]; scc++; x[j]=scc; goto R2; }
+  else{ j++; if(j&lt;W){ goto R4; }}
+  printf("Exhaustively searched %llu subsets.\n", ctr);
+  return(Qrecord);
+}
+</pre></td></tr></table>
+<a name="statspeedup"></a>
+<p>
+This algorithm should be susceptible to large speedup if we are willing to sacrifice
+100% confidence of correctness.
+The idea is to use random subsets of voters, not the whole set. 
+Then whenever the current voter-subset thinks some
+some winner-set is unusually good, investigate it using a larger voter-subset...
+and so on, eventually employing the full voter-set.
+The point is that low-quality candidate-sets are dismissed from consideration without
+computing their quality Q exactly; we instead rely on a fast and noisy estimate of their Q,
+This can be made "rigorous" in the sense that via statistics
+we can estimate the probability that any such "pruning" decision is going to be
+erroneous, and design the algorithm to keep those probabilities below some safety threshold.
+Then you won't be 100% sure your election winner set was right, but
+you will be 99.99999% sure (or whatever) and save a lot of time; and the algorithm
+could keep raising its probability estimate over time, thus rapidly reporting
+election results which, however, might be incorrect, and then
+more slowly producing more confident results.  Note that, for example, if
+N runs of this algorithm (using independent randomness each time!) all
+produced the same conclusions, then the failure probability would be raised to the
+Nth power; this makes it apparent that extremely
+small failure probabiities are attainable in this fashion.
+</p>
+
+<a name="psiapp"></a>
+<h3> Appendix about Psi function (sometimes also called "digamma function") </h3>
+<a href="HighResPsiFn.png">
+<img alt="psi function plot" src="PsiFunctionPlot.png" align="right"></a>
+<p>
+The <i>natural logarithm</i> is defined by
+<center>
+ln(x) = &int;<sub>1&lt;u&lt;x</sub> u<sup>-1</sup> du.
+</center><p>
+But if we want to understand the <i>sum</i> 
+<nobr>H(n)=&sum;<sub>1&le;k&le;n</sub> k<sup>-1</sup></nobr>
+rather than the <i>integral</i> of u<sup>-1</sup>,
+then the function we get &ndash; the "discrete analogue of the natural log" &ndash;
+is the <b>psi function</b>, discussed in
+&sect;6.3 of Abramowitz &amp; Stegun.
+It is defined in terms of
+the <a href="https://en.wikipedia.org/wiki/Gamma_function">Gamma</a> function by
+</p><center>
+&Psi;(x) &equiv; &Gamma;'(x)/&Gamma;(x).
+</center><p>
+It is possible to define &Psi;(x) without any knowledge of calculus via 
+</p><p>
+<b>Characterization:</b>
+&Psi;(x) is the unique real-valued function of
+positive-real argument x obeying i, ii, and either iii or iv:
+</p><ol type="i"><li>
+&Psi;(1)=-&gamma;,
+</li><li>
+&Psi;(x)+1/x=&Psi;(x+1),
+</li><li>
+&Psi;(x) is concave-&cap; for all x&gt;0,
+</li><li>
+&Psi;(x) is increasing for all x&gt;0.
+</li></ol>
+<p><b>Proof:</b>
+The characterization from i,ii,iii is Satz 1 in
+Kairies 1970. From i,ii,iv:
+let Z(x) denote the integral of &Psi;(x), which if we cheat we know is
+Z(x)=ln&Gamma;(x)+C.
+This integral must exist because &Psi;(x) is by i, ii, iv
+well-behaved enough to integrate.
+By integrating ii we get that Z(x) obeys Z(x+1)=Z(x)+ln(x).
+By iv we see that Z(x) is concave-&cup;.
+Hence by the <a href="https://en.wikipedia.org/wiki/Bohr%E2%80%93Mollerup_theorem">Bohr-Mollerup theorem</a>
+Z(x) is uniquely determined
+except for the constant of integration C.
+So by differentiating Z(x) we get that &Psi;(x) is uniquely determined.
+QED. 
+</p><p>
+Tremendous speed in computing the psi function (or anyhow the "F" function)
+is essential for our voting scheme; trillions of F-evaluations might be
+made to handle one election.  The F implementation is the speed bottleneck, and
+elections are infeasible to handle if too large.
+</p><p>
+The x-derivative &Psi;'(x) obeys &Psi;'(x)&gt;0 for all x&gt;0,
+meaning the psi function is monotone increasing for all x&gt;0 from 
+&Psi;(0<sup>+</sup>)=-&infin; to &Psi;(&infin;)=+&infin;.
+The second derivative is negative: &Psi;"(x)&lt;0 for all x&gt;0,
+meaning the psi function is concave-&cap; for all x&gt;0.
+Its relation to the "harmonic sum" is that, for integer n&ge;0,
+</p><center>
+H(n) &equiv; &sum;<sub>1&le;k&le;n</sub> k<sup>-1</sup> = &Psi;(n+1) + &gamma;
+</center><p>
+where -&Psi;(1)=&gamma;=0.5772156649...
+is the 
+<a href="http://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant">Euler-Mascheroni 
+constant</a>.  To prove this, it suffices to show the 
+<b>shift-by-1 recurrence</b> &Psi;(n)+1/n=&Psi;(n+1),
+which arises from &Gamma;(x+1)=x&Gamma;(x) so that 
+<nobr>
+&Gamma;'(x)/&Gamma;(x)+1/x=&Gamma;'(x+1)/&Gamma;(x+1).
+</nobr>
+</p><p>
+The <b>doubling formula</b> is 
+<nobr>2&Psi;(2x)=&Psi;(x)+&Psi;(x+&frac12;)+ln(4).</nobr>
+</p><p>
+There also is a nice relationship to the "odd harmonic sum" (A&amp;S 6.3.4):
+</p><center>
+2&sum;<sub>1&le;k&le;n</sub> (2k-1)<sup>-1</sup> = &Psi;(n+&frac12;) + &gamma; + ln(4),
+&nbsp;&nbsp;
+for integer n&ge;0.
+</center><p>
+Dan Asimov pointed out to me that we can interpolate the following "generalized harmonic sum"
+by an analytic function:
+</p><center>
+H<sup>(s)</sup>(n) &equiv;
+&sum;<sub>1&le;k&le;n</sub> k<sup>-s</sup> 
+= 
+&Gamma;(s)<sup>-1</sup>
+&int;<sub>0&lt;x&lt;1</sub>
+ (1-x<sup>n</sup>) (1-x)<sup>-1</sup> ln(1/x)<sup>s-1</sup>
+dx.
+</center><p>
+(Asimov claims he discovered this but then realized it was already
+known and mentioned  somewhere in Whittaker &amp; Watson's <i>Modern Analysis</i>.  
+To prove it expand the first two terms inside
+the integrand as a terminating power
+series in x, then integrate it term by term.)
+The original harmonic sum arises as the special case s=1 and is equivalent to the psi function
+interpolation.  From it we see
+</p><center>
+H(x) - H(y) 
+=
+&Psi;(x+1) - &Psi;(y+1) 
+=
+&int;<sub>0&lt;u&lt;1</sub> (u<sup>y</sup>-u<sup>x</sup>) (1-u)<sup>-1</sup> du
+</center><p>
+which might be useful for evaluating &Psi;(x+1) when x&asymp;1 is near some y such
+that &Psi;(y+1) is already known.
+Its integrand 
+<nobr>(u<sup>y</sup>-u<sup>x</sup>)/(1-u)</nobr>
+is smooth and bounded on the half open interval 0&le;u&lt;1 
+where it is defined.  
+And if 
+we use <a href="https://en.wikipedia.org/wiki/L%27H%C3%B4pital%27s_rule">L'Hopital</a>
+to see that 
+<nobr>lim<sub>u&rarr;1</sub>(u<sup>y</sup>-u<sup>x</sup>)/(1-u)=x-y</nobr>
+to extend its domain to the end point u=1,
+then the integrand is bounded and continuous for all u&ge;0. 
+However, that is not good enough to make it highly amenable to 
+numerical integration methods like
+<a href="http://mathworld.wolfram.com/RadauQuadrature.html">Radau quadrature</a>
+because the integrand is nonanalytic (and only finite-order differentiable)
+at u=0 whenever x&ne;y and at least 
+one of them is non-integer.
+</p><p>
+Two other integrals (the first is A&amp;S 6.3.21, the second I derived myself in a
+parallel manner) are
+</p><center>
+&Psi;(x) 
+=
+ln(x)
+- (2x)<sup>-1</sup> 
+- 2 &int;<sub>0&lt;u&lt;&infin;</sub>
+u du / [(u<sup>2</sup>+x<sup>2</sup>)(e<sup>2&pi;u</sup>-1)],
+<br>
+&Psi;(x+&frac12;)
+=
+ln(x) 
++ 2  &int;<sub>0&lt;u&lt;&infin;</sub>
+u du / [(u<sup>2</sup>+x<sup>2</sup>)(e<sup>2&pi;u</sup>+1)],
+</center>
+<!-- First integral:
+I checked that for x=1 and 1/2 we get  
+psi(1) = -0.57721 and  
+psi(1/2) = -1.96351 = -EulerMasch-ln(4).
+Second integral:
+the 2*integral alone when x=1/2 yields 0.115931515658, which when add ln(1/2) yields psi(1)
+to 13 decimals.
+When x=1 the 2*integ yields 0.036489973978576520559023667=2-EulerMasch-ln(4)=psi(3/2) exactly.
+-->
+<p>
+If either integral is evaluated numerically using N-node Gauss-Laguerre 
+integration 
+(but based on the weight function e<sup>-2&pi;u</sup> rather than the standard e<sup>-u</sup>;
+actually for the second integral one could base it on the 
+weight function ue<sup>-2&pi;u</sup> instead),
+then the result is <i>rational</i> approximations of &Psi;(x) of the form
+</p><center>
+&Psi;(x) &asymp;
+ln(x)
+- (2x)<sup>-1</sup> 
+- &sum;<sub>1&le;k&le;N</sub>
+C<sub>k</sub><sup>(-)</sup> / (x<sup>2</sup>+A<sub>k</sub><sup>2</sup>),
+<br>
+&Psi;(x+&frac12;) &asymp;
+ln(x)
++ &sum;<sub>1&le;k&le;N</sub>
+C<sub>k</sub><sup>(+)</sup> / (x<sup>2</sup>+A<sub>k</sub><sup>2</sup>)
+</center><p>
+where
+</p><center>
+A<sub>k</sub> = x<sub>k</sub>/(2&pi;)
+&nbsp;&nbsp;
+and
+&nbsp;&nbsp;
+C<sub>k</sub><sup>(&plusmn;)</sup> 
+= 
+2<sup>-1</sup>&pi;<sup>-2</sup>w<sub>k</sub>x<sub>k</sub> / [1&plusmn;exp(-x<sub>k</sub></sup>)]
+</center><p>
+where the N abscissae x<sub>k</sub> and weights w<sub>k</sub>, for N-node Gauss-Laguerre
+quadrature with standard weight function e<sup>-u</sup> are
+given in table 25.9 of Abramowitz &amp; Stegun as well as other 
+<a href="http://keisan.casio.com/exec/system/1329114617">sources</a>.
+Other rational approximations have been stated by Luke, Cody et al, and
+Lewanowicz &amp; Paszkowski.
+</p><p>
+The &Psi;(x+1) and &Psi;(x) and ln(x) functions all are within
+&plusmn;O(x<sup>-1</sup>) of each other,  for large x. Indeed
+Alzer proved
+</p><center>
+ln(x) - x<sup>-1</sup> &lt; &Psi;(x) &lt; ln(x) - (2x)<sup>-1</sup>
+&nbsp;&nbsp; for all x&gt;0
+</center><p>
+while Qi &amp; Guo proved
+</p><center>
+ln(x+0.5) - x<sup>-1</sup> &lt; &Psi;(x) &lt; ln(x+e<sup>-&gamma;</sup>) - x<sup>-1</sup>
+&nbsp;&nbsp; for all x&gt;0; here e<sup>-&gamma;</sup>&lt;0.56146
+</center><p>
+which brackets &Psi;(x) between bounds at most ln(2)-&gamma;&lt;0.1156 apart.
+<!--
+Gamma'(x+1/2)/Gamma(x+1/2)-ln(A+x^2)/2 
+solve for A so get 0 at x=0 and x=infinity: 
+A=exp(2psi(1/2))=exp(-2gamma)/16=0.019702296980449587378813756022214965761080846209772885674181
+A=1/49 approximately
+Gamma'(x+1/2)/Gamma(x+1/2)=ln(exp(-2*EulerGamma)/16+x^2)/2+Error
+where Error>0 always, =0 at x=0 and x=infinity, and max Error=0.219556 at x=0.11496.
+series Gamma'(x+1/2)/Gamma(x+1/2)-ln(A+x^2)/2 at x=infinity has only even powers of x. 
+We make the coeff of x^(-8) be 0 by A=(127/15)^(1/4)/4=0.42645000530342743973
+We make the coeff of x^(-10) be 0 by A=(5110/67584)^(1/5)=(2555/33)^(1/5)/4=0.596644170328897
+We make the coeff of x^(-12) be 0 by A=(1414477/1365)^(1/6)/4=0.79527478901910
+If we want our approx to be good in [B, infinity) then
+we then can make the coeff C of X^(-2P) become 0 by subtracting 
+ChebyshevT[P, 2*(B/x)^2-1]*C*2^(1-P).  
+The final error will be about 2*C*(4*B)^(-2*P).
+If B=8 and 2P=10 then errest=1.3e-17.
+If B=8 and 2P=8 then errest=7.5e-15.
+If B=6 and 2P=8 then errest=7.2e-12.
+series Gamma'(x+1/2)/Gamma(x+1/2)-ln((5110/67584)^(1/5)+x^2)/2
+
+(1/24-A/8)r^2+(1/64 A^2-7/960)r^4+(31/8064-1/384 A^3)r^6
++(A^4/2048-127/30720)r^8-2^(-7)*ChebyshevT(4,128r^2-1)*(A^4/2048-127/30720),
+
+A=(2555/33)^(1/5)
+
+-Gamma'(x+1/2)/Gamma(x+1/2)+ln(A/4+x^2)/2
+-A^4/262144
++r^2 (A (A^3/128-1/8)
++r^2 ((1/64-(5 A^2)/2) A^2
++r^2 ((142047087/2048-(16777215 A^4)/2048) r^2
++(256 A-1/384) A^3-87392101/40320)+6771/320)-47/1920)+127/3932160
+
+-Gamma'(x+1/2)/Gamma(x+1/2)+ln(0.596644170328897+x^2)/2
+-0.00012375468518616146251945
++r^2 ( -0.04487248990318993892896435241
++r^2 ( -81.01487441710591154481169794265
++r^2 ( -196402.21776085112281961780848581212556 r^2
++  ~6137.53811577745097822007740840222504023689)
++6771/320)
+-47/1920)
++127/3932160
+
+for r<1/8, s=r*r<1/64:
+ln(0.596644170328897+1/s)/2-0.000123754685186+s (-0.04487248990319+s (-81.0148744171059+s (-196402.2177608511228 s+6137.538115777451)+6771/320)-47/1920)+127/3932160
+-Gamma'(s^-0.5+1/2)/Gamma(s^-0.5+1/2)
+-->
+
+By using the Euler-Maclaurin summation formula with error bound, one may show
+</p><center>
+ln(x) - (2x)<sup>-1</sup> - x<sup>-2</sup>/12
++ x<sup>-4</sup>/120
+- x<sup>-6</sup>/252
+<!-- that was an asymptotic series, the next two terms are
++ x<sup>-8</sup>/240
+- x<sup>-10</sup>/132
+and the general term is
+-B<sub>2n</sub>x<sup>-2n</sup>/(2n).
+--> 
+&lt; 
+&Psi;(x) 
+&lt; 
+ln(x) - (2x)<sup>-1</sup> - x<sup>-2</sup>/12
++ x<sup>-4</sup>/120
+&nbsp;&nbsp;&nbsp; for all &nbsp;&nbsp; x&gt;0
+</center><p>
+and more generally that, for any particular x&gt;0,
+any truncation of the divergent asymptotic series
+</p><center>
+&Psi;(x) = ln(x) - (2x)<sup>-1</sup> - &sum;<sub>n&ge;1</sub> B<sub>2n</sub>x<sup>-2n</sup>/(2n)
+</center><p>
+(where the B<sub>2n</sub> are Bernoulli numbers)
+yields an approximation whose error is of the same sign as, 
+and less in magnitude than, the first neglected term.
+Similar remarks apply for 
+</p><center>
+&Psi;(x+&frac12;) &sim;
+ ln(x) + x<sup>-2</sup>/24 
+- 7x<sup>-4</sup>/960
++ 31x<sup>-6</sup>/8064
+- 127x<sup>-8</sup>/30720
++ 511x<sup>-10</sup>/67584
+- 1414477x<sup>-12</sup>/67092480
++ ...
+</center><p>
+For <i>small</i> x&gt;0, the behavior instead is
+</p><center>
+&Psi;(x) = - x<sup>-1</sup> - &gamma; - &sum;<sub>n&ge;1</sub> &zeta;(n+1) (-x)<sup>n</sup>
+<!--
++ (&pi;<sup>2</sup>/6) x  - &zeta;(3) x<sup>2</sup>
++ (&pi;<sup>4</sup>/90) x<sup>3</sup> - &zeta;(5) x<sup>5</sup> + ...
+-->
+</center><p>
+where this series converges when 
+|x|&lt;1 and
+&zeta;(s)=&sum;<sub>1&le;n</sub>n<sup>-s</sup> denotes the 
+<a href="https://en.wikipedia.org/wiki/Riemann_zeta_function">Riemann zeta</a> function
+with
+</p><center>
+&zeta;(2)=&pi;<sup>2</sup>/6, &nbsp;
+&zeta;(3)&asymp;1.202056903159594285399738, &nbsp;
+&zeta;(4)=&pi;<sup>4</sup>/90.
+<!--
+&zeta;(5)&asymp;1.036927755143369926331365.
+-->
+</center>
+<a name="chebrt"></a>
+<p>
+Actually, for anybody wanting to evaluate &Psi;(x) within some particular 1-wide
+subinterval [B, B+1] of the positive reals, it would be better to base things on
+a series expansion of
+<nobr>x&psi;(x)</nobr> in powers not of x, but rather of
+<nobr>y=(x-A)/(x+A+2).</nobr>
+For any positive constant A, this new series will converge for all 
+complex x with Re(x)&ge;-1, a much larger region.  
+We have <nobr>x=([A+2]y+A)/(1-y).</nobr>
+Choosing
+<nobr>A=(B<sup>2</sup>+3B+2)<sup>1/2</sup>-1</nobr>
+optimizes convergence rate;
+the asymptotic |term|-ratio in the series will be
+<nobr>(A-B)/(B+A+2).</nobr>
+Even faster convergence rates occur if we instead use the 
+<a href="https://en.wikipedia.org/wiki/Chebyshev_polynomials">Chebyshev</a> series
+</p><center>
+x&Psi;(x) = &sum;<sub>n&ge;0</sub> C<sub>n</sub> T<sub>n</sub>(z),
+<br> where &nbsp; z=(B+A+2)(x-A)/[(x+A+2)(B-A)], 
+&nbsp; x=([A+B+2]A-[A+2][A-B]z)/(Az-Bz+A+B+2)
+</center><p>
+now with 
+</p><center>
+lim<sub>n&rarr;&infin;</sub> 
+|C<sub>n</sub>/C<sub>n+1</sub>|
+=
+|w&plusmn;(w<sup>2</sup>-1)<sup>1/2</sup>)|<sup>-1</sup>
+&nbsp;&nbsp; where &nbsp; w=(B+A+2)(1+A)/[(A+1)(B-A)].
+</center><p>
+For example with B=1 we have A=&radic;6-1 and 
+asymptotic |term|-ratio 1/(5+&radic;24)&asymp;0.10102 for the power
+series and 
+<!-- substitute  w=(A+3)/(1-A) and A=sqrt(6)-1  into 1/(w-sqrt(w^2-1))  -->
+&asymp;0.05064 for the Chebyshev series.
+</p><p>
+C.F.Gauss showed that the value of H(x) could be expressed in closed form whenever
+x=p/q is <i>rational</i> with 0&lt;x&lt;1 (and hence, via the shift-by-1 recurrence,
+for any rational x):
+</p><center>
+H(p/q) = &Psi;(1 + p/q) + &gamma; 
+=
+(q/p)
+- (&pi;/2)cot(&pi;p/q)
+- ln(2q)
++ 2&sum;<sub>1&le;n&lt;q/2</sub>
+cos(2&pi;np/q) ln sin(&pi;n/q).
+</center>
+</p><p>
+In particular
+</p><center>
+&Psi;(1)    = -&gamma; ,<br> 
+&Psi;(1/2) = -ln(4) - &gamma; ,<br>
+&Psi;(1/3) = -&pi;/&radic;12 - (3/2)ln(3) - &gamma; ,<br> 
+&Psi;(1/4) = -&pi;/2 - ln(8) - &gamma; ,<br>
+&Psi;(1/5) = 
+(&radic;5-1)ln(L<sup>-</sup>)/4
+- (&radic;5+1)ln(L<sup>+</sup>)/4
+- ln(10)
+- &pi;/(8&radic;L<sup>-</sup>)
+- &radic;5 &pi;/(8&radic;L<sup>+</sup>)
+ - &gamma; &nbsp; where L<sup>&plusmn;</sup>=(5&plusmn;&radic;5)/8,<br>
+&Psi;(1/6) = -(&pi;/2)&radic;3 - ln(4) - (3/2)ln(3) - &gamma; ,<br>
+&Psi;(1/8) = -&pi;/2 - 4ln(2) - 2<sup>-1/2</sup>[&pi;+ln(2+&radic;2)-ln(2-&radic;2)] - &gamma;.
+</center>
+<a name="gosperamaze"></a>
+<p>
+R.W.Gosper in 1974 
+showed how to express H(x) as a different series.
+His sum terminates for integer x&ge;0
+and "converges faster" than the original (also terminating) sum.
+For non-integer x 
+Gosper's series does not terminate, but it always converges:
+</p><center>
+H(x) = -&sum;<sub>j&ge;1</sub>
+j<sup>-1</sup>
+(j+x)<sup>-1</sup>
+(3j+x) 
+binomial(j-x-1, j)
+binomial(2j, j)<sup>-1</sup>.
+</center>
+<!-- 
+Gosper: acceleration of series
+http://dspace.mit.edu/bitstream/handle/1721.1/6088/AIM-304.pdf
+-->
+<p>
+Each summand in Gosper's series is a 
+rational function of x with denominator=j+x and having numerator 
+which is a polynomial(x)
+of degree=j+1.
+With a little cleverness, the first N terms in
+Gosper's series can all be computed in O(N) arithmetic operations in total.
+In 2015 Gosper, at my request, found this more general identity in less than 1 day:
+</p><center>
+&Psi;(&eta;+x)-&Psi;(&eta;)
+=
+(2&eta;)<sup>-1</sup>(&eta;+x)<sup>-1</sup>(1+2&eta;+x)x
+<sub>5</sub>F<sub>4</sub>(1,1,1-x,[4+2&eta;+x]/3,1+x;
+3/2,1+&eta;,[1+2&eta;+x]/3,1+&eta;+x;   1/4)
+</center>
+<p>
+Here <sub>5</sub>F<sub>4</sub> denotes a 
+<a href="http://mathworld.wolfram.com/GeneralizedHypergeometricFunction.html">hypergeometric</a>
+<a href="https://en.wikipedia.org/wiki/Generalized_hypergeometric_function">series</a>.
+Gosper's older formula for H(x) arises from the special case &eta;=1, 
+but notice that &eta;=&frac12; also is nice.
+This series is a thing of beauty.
+It converges for all real or complex x and &eta; for which the left hand side is finite.
+</p><p>
+Here is a simple <b>algorithm</b>
+to compute &Psi;(x) accurate to within &plusmn;10<sup>-15</sup>
+for any x&gt;0 (except that the discreteness of the floating point computer-representable
+subset of real numbers prevents any method from achieving that accuracy for very small x).
+If one also wanted x&lt;0 (which we, for election purposes, do not)
+then one could use the reflection identity 
+<nobr>&Psi;(x)=&Psi;(1-x)-&pi;cot(&pi;x)</nobr>
+to get there.
+</p><table bgcolor="yellow"><tr><td><pre>
+#define EulerMasch  0.57721566490153286061
+#define Zeta2       1.64493406684822643647   
+#define Zeta3       1.20205690315959428540
+#define Zeta4       1.08232323371113819152
+
+real &Psi;(real x){ // &Psi;(x) = &Gamma;'(x)/&Gamma;(x).  We ASSUME x&gt;0. 
+  if(x &lt; 0.000287){ return((Zeta2-x*(Zeta3-x*Zeta4))*x-EulerMasch-1.0/x); }
+  for(y=x, p=0.0; y&lt;14.9; y += 1.0){ p -= 1.0/y; }
+  r = 0.5/y;
+  p += ln(y) - r;
+  r *= r;
+  p -= r * (1/3.0 - r * (2/15.0 - r * (16/63.0 - r * (16/15.0 - r * 256/33.0))));
+  return(p);
+}
+</pre></td></tr></table>
+<p>
+More efficient and/or accurate algorithms could be based on
+Cody et al 1973.
+Here's a faster ad hoc psi algorithm 
+which has been tested to yield accuracy within &plusmn;9&times;10<sup>-12</sup>
+for all x&ge;0.0001, and within
+&plusmn;7&times;10<sup>-12</sup>
+(which ought to be enough accuracy for any country's elections)
+for all x&ge;0.0003:
+</p><table bgcolor="lightgreen"><tr><td><pre>
+real &Psi;(real x){ // &Psi;(x) = &Gamma;'(x)/&Gamma;(x).  We ASSUME x&gt;0. 
+  real p, y, r;
+  if(x &lt; 0.00017){ return((Zeta2-Zeta3*x)*x-EulerMasch-1.0/x); }
+  p = 3.7934&times;10<sup>-12</sup>;  
+  for(y=x; y&lt;7.01; y += 1.0){ p = p - 1.0/y; }
+  r = 0.5/y;
+  p = p + ln(y) - r;
+  r = r*r;
+  p = p - r*((0.24441724*r-0.1333077274)*r+0.33333331683);
+  return(p);
+}
+</pre></td></tr></table>
+<!--
+The last 4 lines in the algorithm had been:
+  r = 1.0/y;
+  p = p + ln(y) - 0.5*r;
+  r = r*r;    
+  p = p - r * ( 1.0/12.0 - r * ( 1.0/120.0 - r * ( 1.0/252.0 - r * 1.0/240.0 )));
+Where in the final line this poly is added to p:
+r^4/240-r^3/252+r^2/120-r/12   for 0<r<1/64; 
+now let s=r*64 so that 0<s<1 and r=s/64 and economize:
+(s/64)^4/240-(s/64)^3/252+(s/64)^2/120-(s/64)/12-ChebyshevT[4, s*2-1]/(128*240*64^4)
+=
+-(619*s^3)/42278584320+(10921*s^2)/5368709120-(20971519*s)/16106127360-1/515396075520
+Now rewrite the last 4 lines:
+  r = 8.0/y;
+  p = p + ln(y) - (1.0/16)*r;
+  r = r*r;    
+  p = p - ((1.0/338228674560)*r*(r*(4952*r-688023)+440401899)+(1.0/515396075520));
+--
+then Remez
+-->
+<p>
+This algorithm runs in roughly 240 clock cycles on my machine, on average for random-uniform x
+in the real interval [0,5].
+<!--
+It might well be possible to double its speed.
+First of all, on many machines the main time consumer is the evaluation of
+ln(y).  I looked at how ln(x) was implemented in several math-functions libraries, and all
+were susceptible to considerable speedup as follows.
+Assume 1&le;x&lt;2 wlog.  Split the interval [1,2] into (say) 128 equal subintervals.
+Via lookup in a 128-item table, find the reciprocal 1/A and the logarithm ln(A)
+of a number A within x's subinterval.  Now return ln(x/A)+ln(A).
+This reduces the problem to the evaluation of ln(z) where |z-1|&lt;1/128,
+which since this interval is so narrow, may rapidly be done using, e.g, the series
+A&amp;S 4.1.27.  Or, one could use a second table in the same manner to
+reduce to a 64-times narrower interval still, before resorting to a series.
+</p><p>
+Second, for &frac12;&le;x&le;7
+our &Psi;(x) routine could be sped up by table lookup.
+Split [&frac12;,7] into, say, 128 unequal subintervals and
+based on which we are in (computed using the "floor" function on a quadratically
+transformed x), branch to one
+of 128 different &Psi;(x)-computing subroutines each based on
+the "Chebyshev series of rational-transformed argument"
+technique <a href="#chebrt">above</a>;
+typically 5-6 terms of the series would be needed.
+-->
+</p><p>
+Regarding the "Simmons function"
+<nobr>F<sub>Simmons</sub>(x)=[&Psi;(x+&frac12;)-&Psi;(&frac12;)]/2,</nobr>
+we have the nice special values
+</p><center>
+F(0)=0, &nbsp;
+F(1)=1, &nbsp;
+F(2)=4/3, &nbsp;
+F(3)=23/15, &nbsp;
+F(4)=176/105, &nbsp;
+F(5)=563/315, 
+<br>
+F(1/2)=ln(2), &nbsp;
+F(3/2)=ln(2)+1/2, &nbsp;
+F(5/2)=ln(2)+3/4, 
+<br>
+F(1/3)=[&pi;&radic;3-ln(27)]/4, &nbsp;
+F(2/3)=3-[&pi;&radic;3+ln(27)]/4, &nbsp;
+F(4/3)=[&pi;&radic;3-ln(27)]/4+3/5, 
+<br>
+F(1/4)=[&pi;-ln(4)]/4, &nbsp;
+F(3/4)=2-[&pi;+ln(4)]/4, &nbsp;
+F(5/4)=[&pi;-ln(4)]/4+2/3, &nbsp;
+<br>
+F(1/6)=[&pi;/&radic;3+ln(16)-ln(27)]/4, &nbsp;
+F(5/6)=[6-&pi;/&radic;3+ln(16)-ln(27)]/4
+</center><p>
+and these derivatives
+</p><center>
+F'(0)=&pi;<sup>2</sup>/4&asymp;2.4674, &nbsp; 
+F"(0)=-7&zeta;(3)&asymp;-8.4144, &nbsp; 
+F'(1/2)=&pi;<sup>2</sup>/12&asymp;0.8225, &nbsp; 
+F"(1/2)=-&zeta;(3)&asymp;-1.2021.
+</center><p>
+The Gosper <sub>5</sub>F<sub>4</sub>
+formula is
+<p><center>
+F<sub>Simmons</sub>(x) =  (2+x)x/(1+2x) <sub>5</sub>F<sub>4</sub>(1,1,1-x,(5+x)/3,1+x; 3/2,3/2,(2+x)/3,3/2+x; 1/4)
+= <br> 
+x(2+x) / (1+2x) - <br>
+ 2((x-1)x(x+1)(5+x)) / (9((1+2x)(3+2x))) + <br>
+ 8(x-2)(x-1)x(x+1)(x+2)(8+x) / (225(1+2x)(3+2x)(5+2x)) - <br>
+ 16((x-3)(x-2)(x-1)x(x+1)(x+2)(x+3)(11+x)) / 3675((1+2x)(3+2x)(5+2x)(7+2x))) + <br>
+ 128(x-4)(x-3)(x-2)(x-1)x(x+1)(x+2)(x+3)(x+4)(14+x) / (297675(1+2x)(3+2x)(5+2x)(7+2x)(9+2x)) - <br>
+ ...
+</center><p>
+The pattern behind the rational sequence is
+</p><center>
+1/1, &nbsp;
+2/9=(1! 2<sup>1</sup>) / (3)<sup>2</sup>, &nbsp;
+8/225 = (2! 2<sup>2</sup>) / (3&middot;5)<sup>2</sup>, &nbsp;
+16/3675 = (3! 2<sup>3</sup>) / (3&middot;5&middot;7)<sup>2</sup>, &nbsp;
+128/297675 = (4! 2<sup>4</sup>) / (3&middot;5&middot;7&middot;9)<sup>2</sup>, &nbsp;
+256/7203735 = (5! 2<sup>5</sup>) / (3&middot;5&middot;7&middot;9&middot;11)<sup>2</sup>.
+</center>
+<p>
+Working C language code for the algorithms discussed in this paper is
+available here:
+<a href="CleanOptPRVote.c">/CleanOptPRVote.c</a>.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

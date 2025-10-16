@@ -1,0 +1,190 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Example of severe IRV misbehavior
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Example of severe IRV (<a href="rangeVirv.html">Instant Runoff</a> Voting) misbehavior </H2>
+
+<p><small>By Stephen Unger (emeritus professor, Columbia University, NY)</small></p>
+
+<p>
+Previous dramatic IRV 
+<a href="IrvParadoxProbabilities.html">pathologies</a>
+have included the following:
+</p><ol><li>
+The IRV winner is top-ranked by exactly 2 voters (out of 2<sup>k</sup>+1 for
+any k&gt;1; there are k+1 candidates running). 
+For every other candidate, with one exception, a large supermajority of
+voters prefers that candidate over the winner. The IRV
+winner is preferred over exactly one other candidate, and this by a
+1-vote margin. 
+<blockquote>
+<small>
+E.g. see
+<a href="http://www.electology.org/irv-worst-case-scenario">http://www.electology.org/irv-worst-case-scenario</a>.
+</small>
+</blockquote>
+</li><li>
+The IRV winner would still be the winner if every voter's expressed
+preferences were reversed! 
+<blockquote><small>
+E.g. see 
+<a href="IrvRevFail.html">/IrvRevFail.html</a>.
+</small></blockquote>
+</li><li>
+And here's a nasty combination of many other IRV pathologies all in a single simple
+election example:
+<blockquote><small>
+<a href="CompleteIdioticIRV.html">/CompleteIdioticIRV.html</a>.
+</small></blockquote>
+</li></ol>
+<p>
+The contribution of this page is to show how <i>both</i> pathologies of types (1) and (2)
+can happen simultaneously in a single election example with k+1 candidates
+and 2<sup>k</sup>+1 voters.
+The simplest example, with k=2,
+is shown below, where <b>A wins</b> with either the IRV 
+votes shown, or if all votes are reversed.
+There are 5=2<sup>2</sup>+1 voters and 3=2+1 candidates (named "A," "B," and "C").
+Actually, we scaled up the number of voters to 5000 just to make the point that the problems
+here have nothing to do (as one nationally prominent IRV-proponent claimed!)
+with the "unrealistically small number of voters," since that can be arbitrarily scaled.
+(Similarly one can perturb the numbers, e.g. changing 2000 to 2137, and the pathologies
+will still happen.)
+Nevertheless this is not a very interesting example.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 2000 </td>
+<td align="center"> C &gt; B &gt; A </td>
+</tr>
+<tr>
+<td align="center"> 1000 </td>
+<td align="center">  B &gt; A &gt; C  </td>
+</tr>
+<tr>
+<td align="center"> 2000 </td>
+<td align="center">  A &gt; C &gt; B   </td>
+</tr>
+</table>
+
+<p>
+Two examples are shown below where the numbers are large enough to be
+interesting, and to demonstrate how to extend them to arbitrarily higher
+numbers. In all cases, A is the winner.
+</p>
+
+<p>
+<b>For k=6 &nbsp; (7 candidates, 65 voters.</b>
+The X's represent "don't care" candidates, i.e. all those
+not shown explicitly in
+the row.  These can be in any order &ndash; it does not matter which, since the
+IRV procedure never examines them.)
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th><th> their vote </th>
+</tr><tr>
+<td align="center"> 32 </td><td align="center"> G>F>E>D>C>B>A </td>
+</tr><tr>
+<td align="center"> 16 </td><td align="center">  F>E>D>C>B>A>G </td>
+</tr><tr>
+<td align="center"> 8 </td><td align="center">  E>D>C>B>A>G>F   </td>
+</tr><tr>
+<td align="center"> 4 </td><td align="center">  D>C>B>A>G>F>E   </td>
+</tr><tr>
+<td align="center"> 2 </td><td align="center"> C>B>A>X>X>F>D    </td>
+</tr><tr>
+<td align="center"> 1 </td><td align="center"> B>A>X>X>F>D>C    </td>
+</tr><tr>
+<td align="center"> 2 </td><td align="center">  A>X>X>X>X>F>B   </td>
+</tr></table>
+
+<p>
+<b>What happens:</b>
+Starting with IRV round #1, candidates B, C, D, E, F, and G are eliminated
+in that order, leaving <b>A</b> the winner over G by 33-32 in the final round. 
+But in any <i>two</i>-candidate A-versus-somebody IRV election with the preferences
+shown above, voters would prefer anybody except G over the winner A
+&ndash; indeed always by large majorities, for example D is preferred
+over A by 60-to-5.   (A beats G by a single vote.)
+</p><p>
+For the reverse election (whose purpose is to determine the <i>worst</i> candidate), 
+reverse all the "&gt;" signs. 
+C is eliminated in IRV round #1, then B, D, and E (as
+the votes for F accumulate).  Then G is eliminated, making <b>A</b> the
+"winner" by 48-17 over F.  (According to IRV, the "best" candidate is the same as the 
+"worst" candidate, refuting claims IRV "elects majority winners" etc.)
+In all cases, elimination starts with the next-to-bottom line, 
+then proceeds to the bottom line, and then up to
+the 3rd line from the bottom and up from there a line at a time until
+we skip over the 3rd line from the top to eliminate the second row and
+terminate. This should make it clear how larger examples can be
+constructed.
+</p><p>
+Now here is the <b>k=7 case, with 129 voters:</b>
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th><th> their vote </th>
+</tr><tr>
+<td align="center"> 64 </td><td align="center"> H>G>F>E>D>C>B>A </td>
+</tr><tr>
+<td align="center"> 32 </td><td align="center">  G>F>E>D>C>B>A>H  </td>
+</tr><tr>
+<td align="center"> 16 </td><td align="center"> F>E>D>C>B>A>H>G  </td>
+</tr><tr>
+<td align="center"> 8 </td><td align="center">  E>D>C>B>A>H>G>F   </td>
+</tr><tr>
+<td align="center"> 4 </td><td align="center">  D>C>B>A>X>X>G>E  </td>
+</tr><tr>
+<td align="center"> 2 </td><td align="center"> C>B>A>X>X>X>G>D  </td>
+</tr><tr>
+<td align="center"> 1 </td><td align="center"> B>A>X>X>X>G>D>C   </td>
+</tr><tr>
+<td align="center"> 2 </td><td align="center"> A>X>X>X>X>X>G>B   </td>
+</tr></table>
+
+
+<p>
+Every candidate except H would have defeated IRV winner A by a large
+margin in a 2-candidate election.  For example B would have defeated A
+by 127-2. 
+A's only pairwise victory would be a 65-64 win over H.
+</p><p>
+For determining the biggest loser, the candidates eliminated are, in
+order, C, B, D, E, F, H before A "defeats" G by 96-33.
+</p><p>
+Pathologies such as these (many of which, 
+<a href="IrvParadoxProbabilities.html">simulations</a> show, can occur
+with probabilities far above microscopic) should be enough to persuade
+any reasonable person that IRV is off the wall and so should be off
+the table. 
+And this is apart from the need for <a href="IrvNonAdd.html">central tabulation</a>,
+which in my opinion by itself should make IRV unacceptable because it destroys 
+election transparency,
+thus helping fraudsters.
+</p>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

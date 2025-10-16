@@ -1,0 +1,141 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Michael Rouse's idea for
+Rivest-3ballot  Condorcet & Borda voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> 
+Michael Rouse's idea for making Condorcet &amp; Borda voting secure using Rivest's 3ballot plan
+</H2>
+
+<p><small>By Michael A. Rouse &amp; Warren D. Smith</small></p>
+
+<H3> Summary </H3>
+<p>
+Michael Rouse, in a 2 October Electorama post,  figured out how to apply 
+<a href="Rivest3B.html">Rivest's &quot;3ballot&quot; secure voting idea</a>
+for use in <a href="rangeVcond.html">Condorcet</a> and <a href="rangeVborda.html">Borda</a>
+rank-order ballot voting methods.
+However, the Rouse-Rivest scheme is very vulnerable to the "selected pattern attack"
+and hence cannot be regarded as providing protection against vote-buying and coercion in 
+elections with a large number of candidates.
+<small>If C!&gt;V where C is the number of candidates and V the number of voters,
+then the Rouse-Rivest scheme is severely affected by this attack. If C!&lt;&lt;V then
+it is only mildly affected.
+</small>
+</p>
+
+<H3> Rouse's idea </H3>
+<p>
+One authentic ballot, one random (or voter-picked) order, and one the reverse
+of that order.
+</p>
+<p>
+For example, let's say my true preference is A>B>C. Some political
+operative wants to buy the vote B>A>C. I would simply pick the following:
+</P>
+<table bgcolor=lightyellow align="center"><tr><td>
+<pre>
+Ballot 1: A>B>C (true preference)
+Ballot 2: B>A>C ("bought" vote)
+Ballot 3: C>A>B (reverse of "bought" vote)
+</pre>
+</td></tr></table>
+<p>
+Now, I can choose to copy ballot 2 and bring it to the buyer/coercer 
+as my "proof." I can pick any order I want
+for ballot 2, and simply reverse that order for ballot 3. (Of course, I can
+put the fake and reverse-fake ballots at any position I want and my
+"true" ballot in the remaining position.)
+</p>
+<p>
+Of course, it would be rather tedious. If it were a computer/printer
+combination, we could have a selection that would automatically randomize
+one ballot and reverse this for another, and then print out the triplet.
+(But the voter would have to <i>trust</i> that machine and that randomness,
+so this is probably a bad idea.)
+</p>
+
+<H3> How the "specified pattern attack" hurts the Rouse-Rivest plan </H3>
+
+<p>
+The attacker (vote buyer or coercer) says to the voter
+(in a 33-candidate race like the Congo September 2006 presidential race)
+<blockquote>
+I want you to vote A>B>C>...>Z as your 'true' vote,
+and X>Q>F>...>B and its reverse as your 'fake' vote.
+</blockquote>
+<p>
+There are 33!  possible kinds of votes (which far exceeds the population of the Congo),
+so the coercer can uniquify easily.  Then the coercer, if he does not see all three
+demanded patterns posted on the bulletin board, exacts horrific
+punishment on the voter.
+</p>
+<p>
+This is an excellent illustration of the tremendous devastation the
+"3-pattern attack"
+(also called the "selected pattern attack") can wreak.
+But in <a href="RangeVoting.html">range</a> and 
+<a href="AppExec.html">approval</a> voting, all candidate scoring decisions are independent
+and can be on separate "ballots" so there <i>is no</i> pattern, so for those
+voting systems (and apparently those alone), the selected pattern attack is 
+simply not a problem.
+With 
+<a href="rangeVcond.html">Condorcet</a>,
+<a href="rangeVborda.html">Borda</a>, and
+<a href="Plurality.html">Plurality</a> voting,
+etc, the individual candidate-scores <i>depend</I> and hence <i>cannot</i> 
+be separated
+without making ballot-validity-checking impossible.
+</p>
+
+<p>
+<small>
+Attempts to fix this by separating the rank order ballot A>B>C>D>... into A>B, B>C, C>D
+etc don't work because they omit the implied A>C, A>D, B>D, etc relations.
+Attempts to fix it by making the voter vote individually on all possible candidate-pairs
+runs into the problem that there are an enormous number of candidate-pairs (990 in
+a 45-candidate election) &ndash; far too much information to reasonably ask voters to provide
+&ndash; and also the candidate-pair decisions again <i>depend</i> on each other,
+e.g. if you say A>B and B>C you are not allowed to say C>A.    Anytime a voting
+system features such dependence, the ballot validity check becomes complicated
+because, in a 45-candidate election, it needs to examine all 45*3=135 individual
+chunks of information (or more).   Whenever it is complicated, a computer is
+probably needed, destroying the whole Rivest idea of allowing computers to be <i>avoided</i>,
+and also
+raising the horrible possibility (probably very easily possible with future computer technology)
+that computer is <i>remembering</i> the 3ballots, which would also completely destroy
+the Rivest 3ballot scheme's claim that undetected
+cheating by the election counters would be impossible.
+Whenever a large "bundle" of dependent-information is needed in a vote because
+of the definition of the voting system (such as in
+rank-order ballots, or in plurality ballots) the very size of the bundle makes it
+possible for a voter to "insert a lot of information" into his 3ballot, which
+enables the selected-pattern attack.  
+<a href="AppExec.html">Approval</a> 
+and
+<a href="RangeVoting.html">range</a> 
+voting, and them alone among commonly proposed voting methods, avoid
+that difficulty because all the chunks of information in their votes are <i>independent</i>.
+</small>
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

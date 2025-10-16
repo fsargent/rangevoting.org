@@ -1,0 +1,935 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - Apportionment and rounding schemes
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H2>  Apportionment and rounding schemes  </H2>
+<p><small>By Warren D. Smith Jan 2007</small></p>
+<p>
+The same difficulty arises in two different guises in democracy: 
+</p>
+<ol type="I">
+<li>
+How many congressmen
+should each US state have (given that the state populations are known)? 
+</li><li>
+In "party list" <a href="PropRep.html">PR</a> voting systems, how many
+seats should each party get (given that the number of votes for each party is known)?
+</li><li>
+And it also arises in pure math in the area of simultaneous diophantine approximation.
+</li>
+</ol>
+<p>
+In both cases, the problem is that you cannot have 3.7 congressmen &ndash; it is necessary to
+round to <i>integers</i>.
+<small>Actually, by giving congressmen unequal vote-weights in the legislature, 
+"3.7 congressmen" <i>would</i>
+be possible in some sense.  But we shall ignore that.</small>
+</p>
+<p>
+Let P<sub>k</sub> be the (known) population of state k, and let S<sub>k</sub> be
+its number of congressmen, where the total number
+S=&sum;<sub>k</sub>S<sub>k</sub> 
+of congressmen is fixed by US law to be 
+S=435.
+</p>
+<p>
+The question is: what should the S<sub>k</sub> be?
+</p>
+
+<a name="hamvint"></a>
+<H3>  Hamilton/Vinton method  </H3>
+
+<p>
+Let P=&sum;<sub>k</sub> P<sub>k</sub> be the total population.
+Start with S<sub>k</sub> = &lfloor;P<sub>k</sub> &middot; S/P&rfloor;
+(rounding every ratio <i>down</i>).
+Then if the total number of seats is too small, start awarding extra seats
+to the states pre-sorted in decreasing order by rounded-off fractional parts, until
+the correct total number of seats is achieved.
+Hamilton's method has a very appealing "quota property":
+Each state gets either its "lower quota"
+<nobr>&lfloor;P<sub>k</sub> &middot; S/P&rfloor;</nobr>
+or its "upper quota"
+<nobr>&lceil;P<sub>k</sub> &middot; S/P&rceil;</nobr>
+worth of seats.
+</p>
+<p>
+The USA abandoned the Hamilton/Vinton method  after the 
+"Alabama paradox" arose.  That is:
+With fixed population proportions, 
+Hamilton's method can cause a state to <i>lose</i> a seat as a consequence of
+an <i>increase</i> in the total number of seats.
+I.e. it violates "house size monotonicity."
+While that may not matter now that the US House has its size fixed at 435 seats...
+Hamilton also violates <i>population-pair monotonicity</i>, i.e.
+it can cause state A to lose seats relative to
+state B even though A's population expands and B's contracts!
+Here are some examples of that:
+</p>
+
+<!--
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>Hamilton disobeys house monotonicity ("Alabama paradox").
+If we increase the total number of seats from 30 to 31, state C
+<i>loses</i> a seat.
+</caption>
+<tr>
+<th> State </th>
+<th> Population </th>
+<th> #seats(30) </th>
+<th> #seats(31) </th>
+</tr>
+<tr>
+<td> A </td>
+<td> 489 </td>
+<td> 16 </td>
+<td> 17 </td>
+</tr>
+<tr>
+<td> B </td>
+<td> 250 </td>
+<td> 8</td>
+<td> 9 </td>
+</tr>
+<tr>
+<td> C </td>
+<td> 161 </td>
+<td> 6 </td>
+<td bgcolor="#ff8888"> 5 </td>
+</tr>
+</table>
+-->
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>The following may be the simplest example where
+Hamilton disobeys house monotonicity ("Alabama paradox").
+If we increase the total number of seats from 4 to 5, state C
+<i>loses</i> a seat.
+</caption>
+<tr>
+<th> State </th>
+<th> Population </th>
+<th> #seats(4) </th>
+<th> #seats(5) </th>
+</tr>
+<tr>
+<td> A </td>
+<td> 5 </td>
+<td> 2 </td>
+<td> 3 </td>
+</tr>
+<tr>
+<td> B </td>
+<td> 3 </td>
+<td> 1 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> C </td>
+<td> 1 </td>
+<td> 1 </td>
+<td bgcolor="#ff8888"> 0 </td>
+</tr>
+</table>
+
+<p>
+The Alabama paradox was discovered in 1880, when it was found that increasing the total 
+number of seats would decrease Alabama's number from 8 to 7. 
+It is expected to occur about once every 8 apportionments
+in a <a href="NewAppo.html#sec6">model</a> involving
+exponentially distributed state populations.
+</p>
+<!--
+THE PROBABILITY OF THE ALABAMA PARADOX
+SVANTE JANSON AND SVANTE LINUSSON
+http://arxiv.org/pdf/1104.2137v1
+http://arxiv.org/abs/1104.2137 (to appear in J. of applied prob.)
+expected number of states that will suffer Alabama paradox is asymptotically
+bounded above by 1/e and for uniform random pop sizes it converges to
+0.335/e=0.123 as #states&rarr;&infin;.
+-->
+
+<a name="PopPairExampleHV"></a>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>Hamilton disobeys population-pair monotonicity.
+After people move around,
+state C gains 5.1% population (largest % gain) while state B is the only decreaser; <i>but</i>
+C <i>loses</i> a seat (only seat-loser) while B keeps the same number of seats.
+</caption>
+<tr>
+<th> State </th>
+<th> Population(I) </th>
+<th> #seats(I) </th>
+<th> Population(II) </th>
+<th> #seats(II) </th>
+<th> Pop.Change% </th>
+</tr>
+<tr>
+<td> A </td>
+<td> 554 </td>
+<td> 5 </td>
+<td> 566 </td>
+<td> 6 </td>
+<td> +2.2% </td>
+</tr>
+<tr>
+<td> B </td>
+<td> 290 </td>
+<td> 3 </td>
+<td> 270</td>
+<td> 3 </td>
+<td> -6.9% </td>
+</tr>
+<tr>
+<td> C </td>
+<td> 156</td>
+<td> 2 </td>
+<td> 164 </td>
+<td bgcolor="#ff8888"> 1 </td>
+<td> +5.1% </td>
+</tr>
+<tr bgcolor="aqua">
+<td> total </td>
+<td> 1000</td>
+<td> 10</td>
+<td> 1000 </td>
+<td> 10</td>
+<td> 0% </td>
+</tr>
+</table>
+
+<!--
+WRONG: 58+28+17=103
+5, 2, 1
+6, 3, 1
+-->
+
+<p>
+Balinski &amp; Young 
+[Fair Representation: Meeting the Ideal of One Person, One Vote (2nd edition), 
+Brookings Institution Press 2001]
+pointed out that, in the year 1900, Hamilton/Vinton gave
+Virginia  10 seats and Maine 3,
+whereas in 1901, Virginia would have gotten 9 seats and Maine 4,
+<i>despite</i>
+the fact that the Virginia/Maine population ratio was 2.67 in 1900 and 2.68 in 1901.
+<small>[1901 populations based on linear interpolation between 1900 and 1910].</small>
+</p>
+
+<a name="DesProp"></a>
+<H3> Desirable-sounding Properties which an apportionment method may or may not satisfy </H3>
+
+<p>
+<b>House monotonicity:</b>
+if population of whole country goes up (preserving proportions) no state can
+lose seats.  [No longer matters much for US congress since total #seats now fixed at 435.]
+</p><p>
+<b>Population-pair monotonicity:</b>
+If population of state A increases but state B decreases, then
+A should not lose seats while B stays the same or gains seats.
+More generally, if A's percentage population change exceeds B's, then 
+A should not lose seats while B stays the same or gains seats.
+</p><p>
+<b>Quota:</b>
+Always should give a state either A or A+1 seats (where the ideal ratio lies between).
+</p><p>
+Theorem (Balinski &amp; Young): 
+All "<i>divisor methods</i>" (and, essentially, <i>only</i> divisor methods)
+are both House and population-pair <i>monotone</i>; 
+but they all disobey quota.
+(However, these disobeyals can be <i>rare</i>.  Webster, Dean, and the Huntington-Hill method
+have never violated quota on any US  states dataset so far, and according to
+some vaguely-described computer experiments by B&amp;Y would be 
+expected to do so only with probability 0.00061, 0.00154, and 0.000286 respectively,
+which in the case of Webster would be once every 1600 apportionments, i.e. once every 16000 years.
+My own <a href="BishopSim.html">computer experiments</a>
+agree Webster is by far the least likely of the 5 classic
+divisor methods to suffer a quota violation, and also agrees Hill and Dean are
+in second and third places
+respectively, <i>but</i> estimates the quota-violation
+probability for Webster as 0.0016, which far exceeds
+B&amp;Y's estimate but still is 6300 years between violations.
+Meanwhile Hamilton exhibits a monotonicity paradox about once every 18 apportionments
+in B&amp;Y's same model.
+B&amp;Y also showed that
+divisor methods avoid paradoxical results when new states are added.)
+Webster also satisfies quota <i>if</i> there are &le;3 states (but the others among
+the classic five divisor methods only do so if there are &le;2 states).
+</p><p>
+Meanwhile, Hamilton satisfies quota but disobeys both monotonicity properties.
+That leads to the question of whether an apportionment method exists that satisfies all three
+properties. The answer 
+is "no" &ndash; the last two
+properties are incompatible &ndash;  but
+"yes" if we only ask for the first and third properties
+(new method found by Balinski &amp; Young in 1974).
+</p><p>
+Here's Balinski &amp; Young's 1974 apportionment method which is both house-monotone and
+obeys quota: 
+Let P<sub>k</sub>
+denote the population, and S<sub>k</sub> the number of seats assigned so far, to state k.
+We initially assign all states 0 seats: S<sub>k</sub>=0.
+We now repeatedly award a new seat to whichever state maximizes  P<sub>k</sub>/(1+S<sub>k</sub>)
+<i>subject</i> to the constraint that adding this new seat not violate the "upper quota" condition,
+i.e. seats are not awarded that cause
+S<sub>k</sub>&le;&lceil;P<sub>k</sub>&sum;S<sub>k</sub>/&sum;P<sub>k</sub>&rceil;
+to be violated.
+We just keep awarding new seats in this way, never violating quota (which B&amp;Y proved trivially
+can always be done), until the correct
+total number &sum;S<sub>k</sub> results.
+Although Balinski &amp; Young initially recommended this method, ultimately they
+rejected their own invention 
+because it fails population-pair monotonicity.
+Also G.D.Birkhoff in 1976, and Cyril Carter in 1982, both claimed
+based on empirical numerical experiments, that this method was "biased"
+in favor of large-population states.  (Birkhoff and Carter's claims were
+not very convincing because the
+number of their experiments were very small.)
+Jonathan W. Still [SIAM J. Applied Math. 37,2 (1979) 401-418]
+then found an infinite class &ndash; in fact the entire class &ndash; of house-monotonic and
+quota-obeying apportionment methods (Balinski &amp; Young's method is just one
+member of Still's class).  All of Still's methods are of the following form:
+<ol>
+<li>
+Start with all seat-counts S<sub>k</sub>=0.
+</li><li>
+Find the "eligibility set" E (which, Still proved, is always nonempty)
+of states for which (a) you can give that state another seat without violating quota, and (b)
+a tricky "lookahead condition" explained by Still
+assures that if you do so, it will not force a quota violation
+later (throughout the infinite future of seat awards).
+</li><li>
+Pick a member of E (in any way at all, including random, or to maximize some arbitrary
+"quality function")
+and award that state an additional seat (increment S<sub>k</sub> for that k).
+</li><li>
+Go back to step 2 until the total number of seats reaches the desired value S.
+</li>
+</ol>
+Still eventually recommended a house-monotone version of Hamilton's method in which the state
+you award an extra seat to in step 3, is the one that currently is
+the largest additive amount below its upper-quota.
+</p><p>
+Why is it impossible for any method to satisfy <i>both</i> quota
+and population-pair monotonicity?  
+Consider the following 18-seat apportionment
+problem in which both
+Webster and Huntington-Hill give the same seat-counts &ndash;
+but both violate quota (violation shown in red) &ndash; actually <i>every</i> "divisor method"
+violates quota in this scenario:
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>
+</caption>
+<tr>
+<th> State </th>
+<th> Population </th>
+<th> Quota </th>
+<th> #seats(Webster&amp;Hill, use divisor=8.43) </th>
+</tr>
+<tr>
+<td> A </td>
+<td> 13 </td>
+<td> 1.625 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> B </td>
+<td> 13 </td>
+<td> 1.625</td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> C </td>
+<td> 13 </td>
+<td> 1.625 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> D </td>
+<td> 105 </td>
+<td> 13.125 </td>
+<td bgcolor="#ff8888"> 12 </td>
+</tr>
+<tr bgcolor="aqua">
+<th> Total </th>
+<td> 144 </td>
+<td> 18 </td>
+<td> 18 </td>
+</tr>
+</table>
+<p>
+Now consider any method which tries to satisfy quota by means of A, B, or C giving up
+a seat to D.
+We claim that whichever one you pick (since they are all the same), you can use it to
+construct a population-pair paradox: say you picked A.  Now move the people
+around so as to decrease A's and D's populations and increase B's and C's
+(with A having the largest decrease, percentagewise).  Then the obvious apportionment
+will yield a population "paradox" since D would give
+up a seat to A despite A's faster population decrease.  To exhibit that in detail:
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>
+</caption>
+<tr>
+<th> State </th>
+<th> Population </th>
+<th> Quota </th>
+<th> #seats(Any quota-obeying method) </th>
+</tr>
+<tr>
+<td> A </td>
+<td> 130 </td>
+<td> 1.625 </td>
+<td> 1 </td>
+</tr>
+<tr>
+<td> B </td>
+<td> 130 </td>
+<td> 1.625</td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> C </td>
+<td> 130 </td>
+<td> 1.625 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> D </td>
+<td> 1050 </td>
+<td> 13.125 </td>
+<td> 13 </td>
+</tr>
+<tr bgcolor="aqua">
+<th> Total </th>
+<td> 1440 </td>
+<td> 18 </td>
+<td> 18 </td>
+</tr>
+</table>
+<p>
+and then after 60 people move (decreasing D's population by 5.0% and A's by 5.4%):
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>
+</caption>
+<tr>
+<th> State </th>
+<th> Population </th>
+<th> Quota </th>
+<th> #seats(Hamilton, Hill, Webster, Dean, Adams) </th>
+</tr>
+<tr>
+<td> A </td>
+<td> 123 </td>
+<td> 1.5375 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> B </td>
+<td> 160 </td>
+<td> 2 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> C </td>
+<td> 160 </td>
+<td> 2 </td>
+<td> 2 </td>
+</tr>
+<tr>
+<td> D </td>
+<td> 997 </td>
+<td> 12.4625 </td>
+<td> 12 </td>
+</tr>
+<tr bgcolor="aqua">
+<th> Total </th>
+<td> 1440 </td>
+<td> 18 </td>
+<td> 18 </td>
+</tr>
+</table>
+<p>
+...which is a population-pair paradox in the sense that D lost a seat to A despite
+A's largest-percentage population decrease.  This does not actually <i>prove</i>
+that <i>every</i> quota-obeying method must exhibit such a paradox &ndash; for that see
+theorem 6.1 of B&amp;Y's book &ndash; but it at least makes it plausible.
+</p>
+
+<a name="splitincent"></a>
+<p>
+<b>Splitting &amp; combining incentives:</b>
+Jefferson's method (which is equivalent to d'Hondt's method)
+"encourages mergers" because by merging into one,
+two states can gain seats but
+never lose them.
+<br>
+Theorem (see Balinski &amp; Young thms 9.1 &amp; 9.2)
+Jefferson is indeed the <i>unique</i> population-pair-monotonic
+<!-- house mono suffices? I do not see that claimed in B&Y -->
+apportionment method 
+that offers such a combining-incentive (and as a free bonus, Jefferson also always obeys
+the "lower quota" condition).
+<br>
+(B&amp;Y proposition 6.4):
+Adams is exactly the opposite: with Adams, states can gain seats by splitting,
+but never lose seats (except once the number of states exceed the number of seats,
+Adams becomes undefined), and it is the unique population-pair monotone method
+that thus-offers splitting-incentive (and as a free bonus, Adams 
+also always obeys the "upper quota" condition).
+</p><p>
+<b>Bias:</b>
+Vaguely speaking, if a method "tends to favor small-population states"
+(or large-population ones) it is "biased."
+There are, however,  many different possible formulas for assessing such
+"bias" and "favortism."
+<!--
+apparently great results here:
+SVANTE JANSON
+"Asymptotic bias of some election methods"
+http://arxiv.org/abs/1110.6369
+-->
+</p><p>
+Theorem:
+Hamilton, Webster, Dean, and Hill all are "limit unbiased."  That is,
+if the state populations are selected independently at random from some continuous and
+bounded probability density, the number of states is held fixed,
+and the total #seats is taken to infinity, then
+(almost surely) the bias (measured as a correlation coefficient)
+will tend to 0.  But Jefferson and Adams are <i>not</i>
+limit unbiased; they favor large- and small-population states, respectively.
+</p><p>
+<b>Near the quota:</b>
+A method is "near the quota" if no transfer of a seat from one state to another
+can bring both states nearer to their exact ratios.  (Birkhoff 1976
+instead called this "binary consistency.")
+Balinski &amp; Young (their theorem 6.2) proved Webster to
+be the unique population-pair-monotone method that is always "near the quota."  
+Further, they proved this regardless of whether "nearer" is measured <i>either</i> in terms of
+additive or relative difference.
+But Ernst (his theorem 4.3)
+countered with an analogous theorem indicating that Huntington-Hill was "near the ideal"
+in the sense that for it, no transfer of a seat from one state to another
+can diminish certain other measures of departure from ideality.
+Hamilton/Vinton also is "near the quota," but (Birkhoff 1976 pointed out)
+Balinski &amp; Young's quota-obeying method is not.
+</p><p>
+<b>Uniformity:</b>
+Balinski &amp; Young [Proc. Nat'l. Acad. Sci. USA 73 (1980) 684-686] 
+defined an apportionment method to be "uniform"
+if when we restrict to a state-subset, the apportionment within this sub"country" still is a valid
+apportionment under the same apportionment rule.  They showed every method which is both
+uniform and population-pair monotone, must be a "divisor method."
+They also showed no method exists that obeys both uniformity and quota.
+</p>
+
+<a name="Classic5"></a>
+<H3> The 5 classic "divisor methods" </H3>
+
+<p>
+A "divisor method" gives a state S<sub>k</sub> = r(P<sub>k</sub>/Q)
+seats where r is the appropriate rounding function for that method, and Q is a
+"divisor," i.e. a number chosen to make the total number 
+&sum;<sub>k</sub> S<sub>k</sub>  of seats come out right.
+(Here r is a monotonic-increasing integer-valued function of the real numbers.)
+</p>
+<p>
+<small>ADAMS' METHOD</small>: r(x) = &lceil;x&rceil;    &nbsp;&nbsp; [most favorable to small-pop states]<br>
+</p><p>
+<small>DEAN'S METHOD</small>: r(x) = if x > hmean then &lceil;x&rceil; else &lfloor;x&rfloor;  where hmean=2/(1/&lceil;x&rceil; + 1/&lfloor;x&rfloor;)=2&lceil;x&rceil;&lfloor;x&rfloor;/(&lceil;x&rceil;+&lfloor;x&rfloor;)<br>
+</p><p>
+<small>HUNTINGTON-HILL'S METHOD</small>: r(x) = if x > gmean then &lceil;x&rceil; else &lfloor;x&rfloor;  where gmean=&radic;(&lceil;x&rceil;&lfloor;x&rfloor;)<br>
+</p><p>
+<small>WEBSTER'S METHOD</small>: r(x) = &lfloor;x+&frac12;&rfloor;;
+equivalently
+r(x) = if x > amean then &lceil;x&rceil; else &lfloor;x&rfloor;  where 
+<nobr>amean=(&lceil;x&rceil;+&lfloor;x&rfloor;)/2</nobr><br>
+
+</p><p>
+<small>JEFFERSON'S METHOD</small>: r(x) = &lfloor;x&rfloor;   &nbsp;&nbsp; [most favorable to large-pop states]<br>
+</p><p>
+Note Hill, Dean, and Adams
+"naturally" enforce 
+a one-seat minimum.
+E.V.Huntington in 1928 
+[The Apportionment of Representatives in Congress,
+Transactions Amer. Math'l. Soc. 30,1 (Jan 1928) 85-110
+<a href="Hunti28.pdf">(pdf)</a>; this method had however also been considered earlier
+by Sainte-Lagu&euml;
+in 1910]
+showed that these "classic five" were the <i>only</i> divisor methods
+in which no transfer of a seat from one state to another can decrease
+some "measure of inequity" where this measure was required by Huntington to
+be an absolute value of the difference of two rational functions
+of the two state's populations and seat counts, with degree&le;1
+numerator or denominator in each, and such that equal seat/population ratio would
+zero this difference.  However, Huntington did <i>not</i> show
+(contrary to misleading claims in B&amp;Y's book) this for more-general "measures of inequity"
+such as more-complicated rational functions or non-rational functions.
+Therefore I deny the idea that these classic five methods are somehow uniquely favored
+and all other divisor methods should be excluded from consideration.
+</p>
+
+<p>
+Although it is not a "divisor method,"
+Hamilton/Vinton can be thought of in a similar way to those methods
+if we use an <i>additive</i> rather than multiplicative, "divisor."  That is,
+you find a real value &Delta; such that if it is <i>added</i> to all
+the ideal (non-integer) seat-counts, then they are rounded off to nearest integers, you get the
+correct total number of seats.
+</p>
+
+<p>
+Unfortunately, the divisor methods can <i>fail</i> &ndash;
+that is, a divisor that leads to the right total number of seats can simply fail to exist.
+Hamilton's method (if rephrased as a pseudo-divisor method as above) also can fail.
+For a simple example, consider 5 seats to be divided among 2 states with 
+<i>exactly equal</i> populations.
+Any apportionment will necessarily be unfair (e.g. 3 and 2) and the divisor methods 
+simply cannot
+do that.  But with some random tiebreaking in such circumstances, we are ok; and in practice
+exact population ties are extremely <i>rare</i>
+and have never occurred, so this has not been an issue.
+[In our <a href="BishopSim.html">computer simulations</a> no such failure ever occurred.]
+</p>
+
+<H3> Connection to d'Hondt, Droop, and Sainte-Lagu&euml; methods </H3>
+
+<p>
+J.Q.Adams, T.Jefferson, A.Hamilton, and D.Webster were famous statesmen in early US history
+and devised the methods named after them.  
+Edward V. Huntington,
+Joseph Hill, and James Dean were American mathematicians.
+The Europeans later encountered the same
+mathematical problem but in guise II, and their mathematicians and politicians
+invented their own solutions.  Some of
+the European solutions were equivalent to the American ones:
+</p>
+<p>
+Jefferson = d'Hondt (idea also known to Henry Droop): <!--Victor d'Hondt 1878-->
+After all the votes have been tallied, successive quotients 
+are calculated for each list. The formula for the quotient is V/(s+1), where:
+<ul>
+<li>
+V is the total number of votes that party received; and
+</li>
+<li> 
+s is the number of seats that party has been allocated so far 
+(initially 0 for all parties)
+</li>
+</ul>
+Whichever party has the highest quotient gets the next seat allocated,
+and their quotient is recalculated given their new seat total, i.e. its s is incremented.
+The process is repeated until all seats have been allocated.
+</p><p>
+Webster = Sainte-Lagu&euml; = "method of odd numbers": <!--Andr&eacute; Sainte-Lagu&euml; 1910 -->
+like the d'Hondt method, but with a different denominator in the quotient formula, 
+namely 2s+1 in place of s+1.  (Incidentally, Webster could instead be defined using s+&frac12;
+as the denominator.  Rescaling a denominator sequence by any positive constant scale factor,
+does not change the system.)
+</p><a name="DenomSeqTable"></a><p>
+Other denominator sequences have been suggested:
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr><th>Estonia (non-proportional)</th>
+<td>1</td><td>2<sup>0.9</sup>&asymp;1.866</td><td>3<sup>0.9</sup>&asymp;2.688</td>
+<td>4<sup>0.9</sup>&asymp;3.482</td>
+<td>5<sup>0.9</sup>&asymp;4.257</td>
+<td>6<sup>0.9</sup>&asymp;5.016</td>
+</tr>
+<tr><th>d'Hondt=Jefferson(s+1)</th>
+<td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td></tr>
+<tr><th>Sainte-Lagu&euml;=Webster=Odd numbers(2s+1) (used in Latvia)</th>
+<td>1</td><td>3</td><td>5</td><td>7</td><td>9</td><td>11</td></tr>
+<tr><th>Modified Sainte-Lagu&euml; (Norway, Sweden, Nepal)</th>
+<td>1.4</td><td>3</td><td>5</td><td>7</td><td>9</td><td>11</td></tr>
+<tr><th>Danish</th>
+<td>1</td><td>4</td><td>7</td><td>10</td><td>13</td><td>16</td></tr>
+<tr><th>Imperiali (used in Ecuador)</th>
+<td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td></tr>
+<tr><th>Adams=Smallest divisor</th>
+<td>0+</td><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td></tr>
+<tr><th>Huntington-Hill=Equal proportions</th>
+<td>0+</td><td>&radic;2&asymp;1.414</td><td>&radic;6&asymp;2.449</td>
+<td>&radic;12&asymp;3.464</td><td>&radic;20&asymp;4.472</td>
+<td>&radic;30&asymp;5.477</td></tr>
+<tr><th>Dean=Harmonic mean</th>
+<td>0+</td><td>4/3&asymp;1.333</td>
+<td>12/5&asymp;2.400</td>
+<td>24/7&asymp;3.429</td>
+<td>40/9&asymp;4.444</td><td>60/11&asymp;5.455</td></tr>
+<tr><th>Macau (non-proportional)</th>
+<td>1</td><td>2</td><td>4</td><td>8</td><td>16</td><td>32</td>
+<tr><th><a href="NewAppo.html">New</a>(d) based on r(x)=&lceil;x-d&rceil; rounding function</th>
+<td>d</td><td>d+1</td><td>d+2</td><td>d+3</td><td>d+4</td><td>d+5</td>
+</table>
+<p>
+Of these, Imperiali is very favoring to large-population states (strictly more than Jefferson).
+Modified Sainte-Lagu&euml; favors large states and disfavors small ones slightly 
+versus ordinary Sainte-Lagu&euml;; it differs from it only for
+states (or parties, in the party-list usage) having &le;1 congressman.
+Danish favors small states.
+The Estonia and Macau methods actually are nonproportional and favor large and small states
+respectively.
+Every divisor method can be rewritten as an algorithm of d'Hondt type; you simply
+make the d'Hondtian denominator sequence be the same as 
+(or any positive constant multiple of)
+the sequence of "rounding thresholds"
+for the divisor method.
+</p>
+
+<H3> Pairwise optimality properties </H3>
+<p>
+Let S<sub>k</sub> be the number of seats for state k and
+P<sub>k</sub> be its population.
+</p><p>
+For all j,k, Adams minimizes |S<sub>j</sub> - S<sub>k</sub> P<sub>j</sub>/P<sub>k</sub>|.
+</p><p>
+Dean minimizes  |P<sub>j</sub>/S<sub>j</sub>  - P<sub>k</sub>/S<sub>k</sub>|
+</p><p>
+Huntington-Hill minimizes  |S<sub>j</sub> P<sub>k</sub>/(S<sub>k</sub> P<sub>j</sub>) - 1|
+</p><p>
+Webster minimizes  |S<sub>j</sub>/P<sub>j</sub>  - S<sub>k</sub>/P<sub>k</sub>|
+</p><p>
+Jefferson minimizes  |S<sub>j</sub> P<sub>k</sub>/P<sub>j</sub> - S<sub>k</sub>|
+</p>
+
+<a name="globopt"></a>
+<H3> Global optimality properties </H3>
+<p>
+Among all possible ways to assign non-negative integers to the S<sub>k</sub> summing to the 
+desired value S,
+<ol>
+<li>
+For any fixed power q&ge;1, 
+Hamilton/Vinton minimizes &sum;<sub>k</sub> |S<sub>k</sub> - P<sub>k</sub> S/P|<sup>q</sup>,
+i.e. the "L<sub>q</sub> distance."
+<!-- as Owens mentions bottom of page 964 in the q=2 case -->
+</li><li>
+Webster minimizes
+&sum;<sub>k</sub>P<sub>k</sub>(S<sub>k</sub>/P<sub>k</sub>-S/P)<sup>2</sup>
+which corresponds to the idea
+that individual people have "as equal shares (of congress) as possible," in the sense
+of minimizing the <i>variance</i> of the seat-share, according to 
+Andr&eacute; Sainte-Lagu&euml; 1910 and F.W.Owens in 1921 (who both argued this independently)
+[Owens: On the Apportionment of Representatives, 
+Quarterly Pub. Amer. Statist. Assoc. 17,136 (Dec 1921) 958-968, 
+this theorem about "method W" minimizing the "total injustice" is stated without proof
+on his page 964].
+<br> &nbsp;&nbsp;&nbsp;
+Equivalently,
+given that S=&sum;<sub>k</sub>S<sub>k</sub>,
+P=&sum;<sub>k</sub>P<sub>k</sub>,  and the P<sub>k</sub> 
+are regarded as fixed,
+Webster minimizes
+&sum;<sub>k</sub>P<sub>k</sub>(S<sub>k</sub>/P<sub>k</sub>)<sup>2</sup>=&sum;<sub>k</sub>(S<sub>k</sub>)<sup>2</sup>/P<sub>k</sub>.
+</li><li>
+Huntington-Hill minimizes 
+&sum;<sub>k</sub>S<sub>k</sub>(P<sub>k</sub>/S<sub>k</sub>-P/S)<sup>2</sup>
+which corresponds to the idea
+that district populations should
+be as equal as possible (in the sense of minimizing their variance), 
+according to Huntington 1928, also stated by Owens on his p.965.
+Comparing this objective function versus Webster's, it seems to me that Huntington-Hill's is
+"morally wrong."  That is, according to Huntington-Hill's, leaving a single person unrepresented
+is "infinitely bad."  In reality it is only finitely bad.  That suggests to me 
+that Huntington-Hill's
+minimization is morally distorted.
+(The same criticism may be made of Adams below.)
+</li><li>
+Jefferson minimizes max<sub>k</sub>S<sub>k</sub>/P<sub>k</sub>, i.e.
+minimizes the largest individual share of congress.
+(Balinski&amp;Young).  Actually, it is stronger than this; it is not just the single max 
+that matters; if we remove the maxes, then the next max also gets 
+minimized by Jefferson's apportionment
+of the remaining seats, and so on recursively.
+</li><li>
+Jefferson also minimizes &sum;<sub>k</sub>(S<sub>k</sub>/P<sub>k</sub>-S/P)<sub>+</sub>
+where (x)<sub>+</sub>&equiv;max(x,0).
+</li><li>
+Adams minimizes max<sub>k</sub>P<sub>k</sub>/S<sub>k</sub>, i.e.
+minimizes the largest district-population.
+(Balinski&amp;Young).  Actually, it again is stronger than this in the same way.
+</li>
+</ol>
+<p>
+Lemma 7.1 (p.117), lemma 6.1 (p.94) and theorem 6.1 (p.95) of
+the book
+<i>Evaluation and Optimization of Electoral Systems</i>, 
+by Pietro Grilli di  
+Cortona, Cecilia Manzi, Aline Pennisi, Federica Ricca, and Bruno  
+Simeone [SIAM Monographs on Discrete Mathematics and Its  
+Applications, Philadelphia, 1999] are powerful tools for devising and proving more
+global optimality theorems.
+<i>Assuming</i> they are correct 
+and I've used them correctly (which is not certain so please regard the 
+following as preliminary), we can prove the following new results:
+</p>
+<ol>
+<li>
+Let H(n)=&sum;<sub>1&le;m&le;n</sub>(1/m) be the "Harmonic numbers."
+Then Dean maximizes &sum;<sub>k</sub>[2H(S<sub>k</sub>)-1/S<sub>k</sub>]P<sub>k</sub>.
+</li><li>
+Also Dean minimizes
+&sum;<sub>k</sub>S<sub>k</sub>[S<sub>k</sub> - Q<sub>k</sub> - &radic;(1+Q<sub>k</sub>&sup2;)]
+where Q<sub>k</sub>=P<sub>k</sub>S/P is state k's ideal (albeit perhaps noninteger) seat count.
+Equivalently (up to an additive and multiplicative constant that have no real effect),
+Dean minimizes
+<center>
+&sum;<sub>k</sub>[2S<sub>k</sub> - &radic;(1+Q<sub>k</sub>&sup2;) - Q<sub>k</sub>]&sup2;
+</center>
+</li><li>
+The <a href="NewAppo.html">new</a>
+divisor method based on the rounding function r(x)=&lceil;x-d&rceil;
+where d is an arbitrary
+constant with 0&le;d&le;1
+(the case d=&frac12; is Webster, d=0+ is Adams, and d=1- is Jefferson),
+minimizes
+<center>
+&sum;<sub>k</sub>(S<sub>k</sub> - Q<sub>k</sub> + d - &frac12;)<sup>2</sup>/Q<sub>k</sub>.
+</center>
+</li>
+</ol>
+<p>
+In 2016 Toby Pereira conjectured something more complicated than, but equivalent to,
+the following &ndash; and I confirmed it in the nonrigorous
+sense that my computer failed to find 
+a counterexample &ndash; the following new optimality property of Jefferson=d'Hondt:
+</p><center>
+Jefferson minimizes &nbsp;&nbsp;
+&sum;<sub>k</sub>P<sub>k</sub>[(S<sub>k</sub>+&frac12;)/P<sub>k</sub>]<sup>2</sup>=&sum;<sub>k</sub>(S<sub>k</sub>+&frac12;)<sup>2</sup>/P<sub>k</sub>.
+</center>
+<p>
+Then I realized this conjecture is implied by the statement #3 just above it,
+in the case d=1-.  Indeed, given that S=&sum;<sub>k</sub>S<sub>k</sub>,
+P=&sum;<sub>k</sub>P<sub>k</sub>,  and the P<sub>k</sub> 
+are regarded as fixed,
+more generally it implies that
+</p>
+<center>
+&sum;<sub>k</sub>(S<sub>k</sub> - Q<sub>k</sub> + d - &frac12;)<sup>2</sup>/P<sub>k</sub>
+&nbsp;&nbsp; and &nbsp;&nbsp;
+&sum;<sub>k</sub>(S<sub>k</sub>+d-&frac12;)<sup>2</sup>/P<sub>k</sub>
+</center>
+<p>
+both are globally minimized by the 
+divisor method arising from the rounding function r(x)=&lceil;x-d&rceil;
+where d is an arbitrary
+constant with 0&le;d&le;1.
+</p>
+<p>
+Balinski &amp; Young in their 1982 book <i>Fair representation</i>,
+and 
+Sainte-Lagu&euml; 1910, both provided proofs of the Owens 1921 
+theorem about Webster. 
+When I looked them up I immediately saw that
+their arguments generalize immediately to prove this general-d
+theorem.  The resulting proofs have
+the same validity (or lack thereof) as their original proofs.
+</p>
+
+<H3> Geometric interpretations </H3>
+<p>
+Geometric interpretation of Webster:
+The vector V of ideal (albeit not necessarily integer) seat-counts for the N states is
+an N-vector constrained to lie on the hyperplane with sum=#seats.
+We wish to replace it with a <i>lattice point</i>, i.e. all-integer N-vector,
+which also lies on this hyperplane.
+Webster chooses the hyperplane lattice point nearest to the <i>line</i> that passes
+through both V and the origin 0.
+</p><p>
+Geometric interpretation of Hamilton/Vinton:
+It simply finds the closest hyperplane lattice point to V
+(actually not only in the usual L<sub>2</sub> distance, but also in any L<sub>q</sub> distance
+for any q&ge;1).
+<!-- observed without prof by G.D.Birkhoff: House-monotone apportionment schemes,
+Proc. Nat'l Acad. Sci. USA 73 (1976) 684-686 -->
+</p><p>
+Here's another method (the "Hilbert method" to put a name on it): 
+find the nearest hyperplane lattice point, but "nearest" in
+the <i>Hilbert projective metric</i>
+rather than the usual Euclidean metric.  This metric's
+distance function is
+</p><center>
+HPdist(X, Y) = log max<sub>j,k</sub> (X<sub>j</sub> Y<sub>k</sub>) / (X<sub>k</sub> Y<sub>j</sub>).
+</center><p>
+giving the Hilbert distance between two N-vectors X and Y with all-positive entries.
+In other words, for all j,k, Hilbert minimizes 
+<nobr>
+|log (P<sub>j</sub> S<sub>k</sub>) / (P<sub>k</sub> S<sub>j</sub>)|.
+</nobr>
+</p><p>
+New claim: the Hilbert and Huntington-Hill methods are equivalent.
+(Incidentally, it is better than this, in the sense that it is not only the max that matters;
+if we remove that max, then the next max also gets 
+minimized by Huntington-Hill's apportionment
+of the remaining seats, and so on recursively.)
+</p>
+
+<H3> Truly Unbiased Methods </H3>
+
+<p>
+Based on <a href="BishopSim.html">computer numerical experiments</a>,
+Webster seems to be, on average over a large number of different randomized situations, 
+the "least biased" of the above divisor methods...
+and we have a <a href="NewAppo.html">new</a> method which can argue to be even less biased...
+but <i>all</i> of the methods discussed above, including Webster and the new one,
+are "biased" in <i>some</i> situations.
+That is, we can always set up an artificial scenario in which the 
+"small states" always get more than their fair share of seats and the "big states" always get
+less (or the reverse) with any of these methods.
+</p>
+<p>
+However, it is possible to devise a <i>truly unbiased</i> method by using
+<b>randomized rounding</b>.
+</p>
+<p>
+Randomized rounding refers to the idea of rounding a number like 3.7 
+upward to 4 with probability 0.7
+and downward to 3 with probability 0.3.
+(More generally you round a number with fractional part x, 0&lt;x&lt;1 upward with probability x.)
+Note that this <i>preserves</I> the expected value (here 3.7) of
+the original number, i.e, in that sense is exactly unbiased.
+We can choose the quantity we wish to be unbiased, round it in (an appropriate
+version of) this manner for every state,
+and then if the right total number of seats results, we quit (otherwise we do it
+again with new randomness).
+</p>
+<p>
+This idea will truly be unbiased &ndash;
+but unfortunately it is randomized, not deterministic.
+</p>
+<p>
+Another idea, suggested to me by Raphfrk, is
+to make corrections <i>over time</i>.  That is, we keep track for each state of
+its historical "bias budget."  If that state has historically had too many seats, we
+round it down next time; if it has historically had too few seats, we
+round it up next time.  There are various ways to do that, but the point
+is that averaged over time (and assuming the state-population changes are not insanely wild)
+such a technique guarantees exact unbiasedness.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

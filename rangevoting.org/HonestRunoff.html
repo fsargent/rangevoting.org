@@ -1,0 +1,227 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Delayed versus Instant runoff
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Delayed versus Instant runoff </H1>
+
+<p>
+In the usual runoff system ("delayed runoff") 
+the election is carried out in two stages.  The first stage is
+a regular <a href="Plurality.html">plurality</a> election.
+If nobody gets over 50% of the votes, then there is a second ("runoff")
+election, which is a 2-contender election between the two candidates who had
+the top two vote counts in the first round.
+</p>
+<p>
+The instant runoff system (<a href="rangeVirv.html">IRV</a>)
+attempts to compress those two rounds into only one round, but 
+at the cost of increased complexity, and also at the cost that the
+resulting system is really <i>not</i> equivalent to the old one.
+The voters supply <i>rank order ballots</I> as their votes,
+e.g. "Bush>Gore>Nader" could be a vote.  The candidates with
+the fewest voters top-ranking them, are eliminated (both from the
+election and from all votes).  For example, if Gore were eliminated, that
+vote would become "Bush>Nader."
+We continue doing these eliminations until only one
+candidate (the winner) remains.
+</p>
+
+<H3> Where are they used? </H3>
+
+<p>
+Instant runoff is currently (2006) used in Australia to elect House members,
+Ireland to elect the President, and in Malta in perhaps some situations.
+(A recent addition to this list was
+<a href="FijiPol.html">Fiji</a> but it ceased to be democratic after a 2006 coup.)
+Also some bastardized forms of IRV are currently used to elect 
+London's mayor and in 
+<a href="IrvExhaustionSF.html">San Francisco</a>. 
+<!--<a href="http://www.sfgov.org/site/election_index.asp?id=47578">San Francisco</a>. -->
+IRV was used to elect the mayor of 
+<a href="Burlington.html">Burlington</a>, Vermont, but it was repealed after a bad experience.
+It was also used (or similar systems used) 
+in numerous USA cities during the 1900-2000 century but repealed 
+in almost all of them.
+</p>
+
+<p>
+Delayed runoff is used in France to elect the president.  
+(It also is used for many city elections in
+the USA, e.g. New York, Chicago, and Denver mayoral; city council, etc.)
+It is also used for
+presidential elections in numerous other countries, e.g:
+Argentina,
+Brazil,
+Central African Republic,
+Chile,
+Colombia,
+Congo,
+Cyprus,
+Finland,
+Gabon,
+Ghana,
+Iran, 
+Liberia,
+Macedonia,
+Mali,
+Mauritania,
+Moldova,
+Monaco,
+Nicaragua (but runoff only used if winner got below 35% in first round),
+Niger,
+Peru, 
+Poland,
+Portugal,
+Romania,
+Senegal,
+Slovakia,
+and
+Uruguay.
+Of these 27 countries, 21-23 have broken free of 2-party domination
+according to my <a href="TTRvIRVstats.html">reckoning</a> in 2006.
+</p>
+
+
+<H3> Which is better? </H3>
+
+<p>
+Proponents of IRV seem to have the idea that IRV is "obviously" superior
+to delayed runoff, because one round must be better (i.e. cheaper, higher typical voter turnouts)
+than two.
+</p>
+
+<p>
+We agree one round is better than two if you just look at that factor in isolation.
+But there nevertheless are good reasons to prefer delayed
+runoff over instant runoff, and we dispute any assertion of "obvious" IRV superiority.
+(Indeed, we regard the repeated
+efforts of a certain US pro-IRV group to replace delayed runoff
+by IRV elections wherever they can &ndash; as opposed to
+the course, which would be a far larger and genuine improvement,
+of trying to replace single-round <a href="Plurality.html">plurality</a>
+elections by IRV or delayed runoff &ndash; as insane.  Why are they wasting their
+time on such an incredibly minor issue, whose payoff may actually be <i>negative</i>?)
+</p>
+
+<p> 
+<a name="mainr"></a>
+The main reasons we know to prefer delayed runoff over IRV are 
+</p>
+<ol>
+<li>
+IRV <a href="TarrIrv.html">leads</a>
+to stifling <a href="Strangle.html">2-party domination</a>,
+whereas delayed runoff encourages the formation of many stable political parties,
+offering voters more choices.  <a href="TTRvIRVreasons.html">Why does that happen?</a>
+Regardless of why that is,  it
+is hard to dispute: all the IRV countries listed above are 2-party dominated
+in their IRV seats,
+whereas 21-23 of the delayed runoff countries listed above have multiparties.
+And this is true <i>despite</i> the fact most of these delayed-runoff 
+countries have strong presidents (unlike the IRV countries), 
+a factor that normally would enhance 2-party-domination.
+<small>Is the goal of that pro-IRV group we alluded to, to destroy USA's third parties?</small>
+</li>
+<li>
+<small>
+For the statistics nerds in the audience who are wondering 
+how statistically significant that was:
+consider a total of 31 countries, 27 TTR and 4 IRV, and
+ask: "what are the chances that the 4 IRV ones,
+by pure chance, would just so happen to coincide with
+the 10-12 that are (&le;2)-party dominated, if there were no actual
+political forces causing IRV to yield 2-party domination."
+The chances are (X choose 4)/(31 choose 4)
+where X=10-12.   This is 0.66% to 1.57%.
+In other words with about 99% statistical confidence we can assert
+that IRV leads to 2-party domination and TTR
+does not &ndash; or at least that the two differ significantly
+in that respect...
+While that is not 99.999999%, 
+still, it is pretty convincing.  Also, the TTR countries here usually have strong presidents
+(and the IRV countries not), which
+is a factor that tends to encourage 2-party domination, and they <i>still</i> avoid it &ndash;
+a fact which <i>strengthens</i>
+our case that IRV leads to 2-party domination while TTR avoids it.
+</small>
+</li>
+<li>
+Yes, one round is cheaper and easier than two, <i>but</i> with IRV,
+that one round is more complicated and it cannot be done on
+ordinary "dumb totalizing" voting machines, whereas both
+rounds in delayed runoff can be done with such machines;
+and IRV is
+<a href="IrvNonAdd.html">non-additive</a> 
+(no such thing as "precinct subtotals") and
+<a href="Monotone.html">non-monotonic</a>;
+<i>and</i> the second round in delayed runoff often does not happen.
+(<small>Top-two runoff also is non-monotonic, but each of its two rounds, in isolation,
+of course is monotonic.</small>)
+In view of those facts, it is not at all clear to us that IRV actually saves money.
+And in any event, the money spent on elections is negligible compared
+to other government expenditures, so it is more
+important to get quality in elections, than to save money.  
+Thus "saving" money would be a false economy that surely would actually cost more
+in bad government than it saved in election expenditures.
+<small> <a name="OakFin"></a>
+For example (2006), a pro-IRV group was recently arguing that Oakland California
+should switch to IRV because each runoff election under the old
+delayed-runoff scheme cost Oakland "hundreds of thousands of dollars," which was their
+way of saying $200,000.
+However, they did not mention that Oakland's annual budget is over $1 <i>billion</i>
+so that the "cost savings" they were lobbying for was of order 0.02% fractionally.
+Surely there are superior ways to save Oakland's money!
+Also they did not mention that it cost (neighboring, comparable size) San Francisco
+$1,600,000 to upgrade its voting machines to run IRV two years before.
+So the payback time required to justify this cost "savings,"
+as you can see, would be very large, perhaps 30-40 years assuming 
+elections every 2 years and runoffs required half the time.
+Quite probably Oakland would be re-replacing its machines before that time, in which
+case the costs <i>never</i> would be repaid.
+</small>
+</li>
+<li>
+IRV is more complicated for both voters and talliers.  Thus when 
+San Francisco
+adopted IRV in 2004, they 
+<a href="SPRates.html#sf">experienced</a> 7-times-higher voter error rates leading
+to invalid ballots, than in plurality races.
+</li>
+</ol>
+<p>
+On the other hand,
+Chris Benham points out that instant runoff would have shown superior behavior
+to delayed runoff in
+<a href="FunnyElections.html#France2002">France's 2002 presidential election</a>.
+Also (Benham continues) IRV enjoys certain logical criteria which top-2-runoff
+does not enjoy, such as "dominant mutual third"
+(which says 
+"if more than a third of the voters rank [in any order] the members
+of a subset S of candidates above all others, and all the
+members of S pairwise-beat all the non-members; then the
+winner must come from S").
+So we certainly cannot argue that one system is better than the other under 
+<i>all</i> circumstances.
+</p>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

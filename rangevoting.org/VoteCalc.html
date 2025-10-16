@@ -1,0 +1,118 @@
+<html>
+<head>
+<title>
+RangeVoting.org - IEVS voting calculator
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Voting calculator (alpha version) BUGGY! </H2>
+
+<p>
+Powered by <a href="IEVS/IEVS.c">IEVS</a>. 
+You select your format for ballots, input the names of the candidates, and input your ballots.
+IEVS then will compute the election winners in all the voting systems it
+knows about (over 60 systems).
+</p>
+<br>
+
+<body bgcolor="#d3ffd3">
+<form action="https://rangevoting.org/cgi-bin/VotCalcer" method="post">
+
+<p>
+Fill in the slot with
+the names of the candidates in order (with white space and/or commas between).
+<br>
+<input type="text" name="canddts" value="A B C" size="80" maxlength="80">
+<br>
+Candidate names can be either a single letter like K or two letters like Qu or MP.
+</p>
+
+<p>	
+Which ballot format do you want: <br>
+&nbsp;
+<input type="radio" name="bfo" value="0">
+Ratings like 99 54 32 in same order as candidates
+<br>
+&nbsp;
+<input type="radio" name="bfo" value="1">
+Name=rating equalities like Na=99 Bb=54 Ka=32
+<br>
+&nbsp;
+<input type="radio" name="bfo" value="2" checked="checked">
+Rank-ordering like Aa>Bb>Qu>Zz
+	<br>
+Please enter the ballots in the selected format, 1 per line;
+use 7 stars as the last line to signify end of input:<br>
+<br>
+<textarea name="ballots" rows="20" cols="80" maxlength="16000">
+2: A>B
+*******
+</textarea><br>
+<p><input type="submit" name="submit" value="Compute"> <input type="reset"></p>
+<br>
+<b>About ballot formats:</b>
+There are three main formats: (i) ratings, (ii) equalities with ratings, and (iii) rank-ordering.
+Every format is 1 vote per line.
+We explain them by example:
+<br>
+<b>i.</b>
+<pre>
+54: 95 32 11
+2: 9 0 3
+1 1 5
+3: 55,6, 2
+</pre>
+would mean 54 identical votes of (95,32,11); 2 identical votes of (9,0,3); one vote (1,1,5),
+and 3 identical votes (55,6,2).
+You can use white space and/or commas.  Number before a colon (if any) is number of identical
+votes.  These would all be in a 3-candidate election.
+<br>
+<b>ii.</b>
+<pre>
+54: A=95 B=32 C=11
+2: B=0 C=3 A=9
+B=1,A=1 C=5
+3: A=55,B=6, C=2
+</pre>
+Same votes, shown here in different format.
+<br>
+<b>iii.</b>
+<pre>
+54: A>B>C
+2:  A>C>|>B
+C>A>B
+3: A>|>B>C
+</pre>
+Rank-order votes with candidates named A,B,C.  The | symbol is an "approval threshold"
+and if omitted then all candidates are considered approved by that voter.
+In truncated ballots unmentioned candidates are regarded as ranked last 
+and in random order (or co-equal last for some methods).
+</p>
+<p>
+IEVS will report input errors and allow you to try again.
+Don't use more than 30 candidates and 2000 voters.
+</P>
+<hr>
+<p><small>
+This site is for general use in the hope that it will be useful, but WITHOUT ANY WARRANTY;
+without even the implied warranty of MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.
+</small></p>
+</p>
+
+<br>
+
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

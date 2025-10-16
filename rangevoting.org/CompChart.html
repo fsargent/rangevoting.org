@@ -1,0 +1,424 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
+<!-- saved from url=(0037)/COlecture.html -->
+<HTML><HEAD><TITLE>RangeVoting.org - Single winner voting system comparison chart</TITLE>
+<META http-equiv=Content-Type content="text/html; charset=windows-1252">
+<META content="MSHTML 6.00.2900.3157" name=GENERATOR></HEAD>
+<BODY style="FONT-FAMILY: Arial, sans-serif"><!--currently about 29 slides-->
+<H1><a href="RangeVoting.html">Range Voting</a> versus other voting systems </H1>
+
+
+<H2>SUMMARY CHART of voting system <a href="#properties">properties</a> </H2>
+<p><small>Please view widescreen.</small></p>
+
+<TABLE borderColor=red cellPadding=5 bgColor=aqua border=3>
+  <TBODY>
+  <TR>
+    <TH><a href="#votsysts">Voting system</a> </TH>
+    <TH>Expressive </TH>
+    <TH>Participation (avoids "no show paradoxes") </TH>
+    <TH>Favorite-<BR>Safe </TH>
+    <TH>Clone-<BR>Safe </TH>
+    <TH>Monotonic </TH>
+    <TH>Remove-<BR>Loser-<BR>Safe </TH>
+    <TH>Precinct-<BR>Countable </TH>
+    <TH>Dumb-<BR>Machines </TH>
+    <TH>Extremist/<BR>Centrist<BR>Bias </TH>
+    <TH>Enactability </TH>
+    <TH>Simplicity </TH></TR>
+  <TR>
+    <TH>Plurality </TH>
+    <TD bgColor=red>The Worst </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>Extremist </TD>
+    <TD>(already enacted) </TD>
+    <TD>good </TD></TR>
+  <TR>
+    <TH>Approval </TH>
+    <TD><nobr><img src="thumbs-up.gif"> or <img src="thumb_down_48.png"></nobr>
+<br>on each canddt </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD bgColor=lightblue>partial </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD bgColor=lightblue>voter-<BR>behavior-<BR>dependent<br>(pro-centrist<BR>or unbiased) </TD>
+    <TD>good </TD>
+    <TD bgcolor="green">best (excellent for meetings)</TD></TR>
+  <TR>
+    <TH>Condorcet systems </TH>
+    <TD>rank order </TD>
+    <TD bgColor=red>FAILS! (2.5%?) </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>yes &amp; no<br>(some obey it) </TD>
+    <TD>yes &amp; no<br>(some obey it) </TD>
+    <TD bgColor=red>FAILS! 9% </TD> 
+    <TD>yes &amp; no<br>(some obey it) </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>unbiased </TD>
+    <TD bgColor=red>probably bad </TD>
+    <TD bgColor=red>complex </TD></TR>
+  <TR>
+    <TH>Borda </TH>
+    <TD>rank order </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD>ok </TD>
+    <TD>? </TD>
+    <TD>medium </TD></TR>
+  <TR>
+    <TH>Instant Runoff (IRV) </TH>
+    <TD>rank order </TD>
+    <TD bgColor=red>FAILS! 16.2% </TD>
+    <TD bgColor=red>FAILS!<BR>19.6-100% </TD>
+    <TD>yes </TD>
+    <TD bgColor=red>FAILS!<BR>14.7% </TD>
+    <TD bgColor=red>FAILS! (13%?)</TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD bgColor=red>FAILS! </TD>
+    <TD bgColor=red>Extremist </TD>
+    <TD bgColor=red>bad </TD>
+    <TD bgColor=red>complex </TD></TR>
+  <TR>
+    <TH>Range </TH>
+    <TD  bgcolor="green">The Best </TD>
+    <TD bgColor=lightblue>yes (if no "blanks") </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>yes </TD>
+    <TD>surprisingly yes </TD>
+    <TD>ok (bias, if any, small) </TD>
+    <TD  bgcolor="green">best </TD>
+    <TD>surprisingly good </TD></TR></TBODY>
+</TABLE>
+
+<BR><BR>
+<HR>
+
+<a name="votsysts"></a>
+<H2>Definitions of the common Single-Winner Voting Systems in one crib sheet </H2>
+<TABLE cellPadding=17 align=center>
+<!--   <CAPTION><B>What is a "vote"? And how do votes determine winner?</B> 
+</CAPTION> -->
+  <TBODY>
+
+  <TR>
+    <TD><FONT size=+2>
+      <TABLE cellPadding=7 bgColor=#ccffcc border=1>
+        <TBODY>
+        <TR bgColor=pink>
+          <TH>System</TH>
+          <TH>What is a "Vote"?</TH>
+          <TH>Who wins?</TH></TR>
+
+        <TR>
+          <TD>Plurality </TD>
+          <TD align=right>Name one candidate then shut up ("Nader")</TD>
+          <TD align=right>The most-named candidate. </TD></TR>
+        <TR>
+          <TD>Runoff </TD>
+          <TD align=right>"Name one candidate" again &ndash; except there might be 
+            <I>two</I> elections</TD>
+
+          <TD align=right>Top-two from 1st round get to be in 2nd (but only 1 
+            election needed if "majority winner")</TD></TR>
+        <TR>
+          <TD>Borda </TD>
+          <TD align=right>Rank ordering of all candidates ("Nader<SUB><FONT 
+            color=red>2</FONT></SUB>&gt;Bush<SUB><FONT 
+            color=red>1</FONT></SUB>&gt;Gore<SUB><FONT 
+          color=red>0</FONT></SUB>")</TD>
+
+          <TD align=right>"Borda Score"=Get K points for each voter who ranks 
+            you K slots above bottom. Highest summed score wins.</TD></TR>
+        <TR>
+          <TD>Condorcet </TD>
+          <TD align=right>Rank ordering of all candidates 
+            ("Nader&gt;Bush&gt;Gore")</TD>
+          <TD align=right><I>If</I> someone exists who beats every rival 
+            <I>pairwise</I>, then wins (else tricky; numerous 
+rule-flavors)</TD></TR>
+
+        <TR>
+          <TD>"Instant Runoff" (IRV) </TD>
+          <TD align=right>Rank ordering of all candidates 
+            ("Nader&gt;Bush&gt;Gore")</TD>
+          <TD align=right>Eliminate "loser" candidate top-ranked by fewest 
+            voters (eliminated both from election, and from all ballots). Now 
+            repeat that over &amp; over until only one remains (who wins). 
+</TD></TR>
+        <TR>
+
+          <TD>Approval = Range1 </TD>
+          <TD align=right>The <I>set</I> of candidates you 'approve' e.g. 
+            <NOBR>{Bush, Nader}</NOBR></TD>
+          <TD align=right>The most-approved candidate.</TD></TR>
+        <TR>
+          <TD>Range9 </TD>
+
+          <TD align=right>Award score in 0-9 range to each and every 
+            candidate, e.g. "Bush=5, Gore=9, Nader=9" </TD>
+          <TD align=right>Candidate with highest average score.</TD></TR>
+        <TR>
+          <TD>Range99 </TD>
+          <TD align=right>Award score in 0-99 range to each and every 
+            candidate, e.g. "Bush=50, Gore=99, Nader=99" </TD>
+          <TD align=right>Greatest average score 
+  wins.</TD></TR></TBODY></TABLE></TD></TR></TBODY></TABLE>
+
+<HR>
+
+<H3>There are many other voting systems too...  Also there are many <I>Variant Rules</I> for these systems... </H3>
+<P>Australia forces IRV voters to rank-order <I>every</I> candidate. Other 
+places allow voters only to order <I>some</I> &amp; omit others (automatically 
+last-ranked). Some places force voters to rank their top K choices (for some 
+fixed value K, such as 2 or 3) but no more. In range-voting, "no opinion" ("X") 
+scores can also be permitted; these do not affect a candidate's average (then is 
+common to refuse to permit somebody to win if he has too-few genuine, i.e. 
+numerical, scores). 
+</P>
+
+<HR>
+
+
+<H2>Example Election </H2>
+<TABLE cellPadding=17 align=left>
+  <TBODY>
+  <TR>
+    <TD>
+      <TABLE cellPadding=5 bgColor=yellow border=1>
+        <TBODY>
+        <TR>
+          <TH>#voters</TH>
+
+          <TH>Their Vote</TH></TR>
+        <TR>
+          <TD>4 </TD>
+          <TD><FONT color=red>A</FONT>&gt;D&gt;E&gt;C&gt;B&gt;F </TD></TR>
+        <TR>
+
+          <TD>3 </TD>
+          <TD><FONT color=red>B&gt;E&gt;D&gt;F</FONT>&gt;C&gt;A </TD></TR>
+        <TR>
+          <TD>2 </TD>
+          <TD><FONT color=red>C&gt;B&gt;E&gt;D&gt;F</FONT>&gt;A </TD></TR>
+
+        <TR>
+          <TD>1 </TD>
+          <TD><FONT color=red>D&gt;C&gt;F</FONT>&gt;A&gt;E&gt;B </TD></TR>
+        <TR>
+          <TD>1 </TD>
+
+          <TD><FONT color=red>F</FONT>&gt;C&gt;E&gt;D&gt;B&gt;A </TD></TR>
+        <CAPTION>An 11-voter, 6-candidate election (candidates A,B,C,D,E,F) 
+        </CAPTION></TABLE></TD></TR></TBODY></TABLE>
+<P><B>Plurality:</B> A wins (most top-rank votes with 4). 
+<BR><B>Plurality+Runoff among top two:</B> B wins over A in the runoff, 6-to-5. 
+
+<BR><B>Instant Runoff (IRV):</B> C wins (eliminate E, D, F, and B in that order 
+&ndash; doesn't matter which way you break DF tie &ndash; then C beats A in final round 7 to 
+4). IRV repeatedly deletes the candidate with fewest top-rank votes, then the 
+remaining one wins. <!-- Note, when F is eliminated, there
+is a tie between F and C which we assume is broken in favor of C because
+all the F-voters have C as their second choice at that point, whereas the C-voters
+rank F near last place.  (If 
+you are morally opposed to this tie-breaking gimmick, then a 19-voter solution with
+7,5,4,2,1 in the #voters column does the job.) --><BR><B>Borda:</B> 
+D wins. (D's Borda score is 16+9+4+5+2=36 versus E with 12+12+6+1+3=34 and with 
+lower scores for A, B, C, and F.) In the Borda system a candidate gets awarded 0 
+points if ranked last, 1 if ranked second-last, 2 if... and the candidate with 
+the greatest score-sum ("Borda count") wins. <BR><B>Condorcet:</B> E wins. 
+(Since E pairwise-beats each other candidate, e.g. beating A 6:5, B 6:5, C 7:4, 
+D 6:5, and F 9:2.) <BR><B><A 
+href="rangeVapp.html">Approval</A> Voting:</B> If all the 
+
+<FONT color=red>red</FONT> candidates are "approved," then F wins with 7 
+approvals (versus A=4, B=5, C=3, D=6, E=5). </P>
+<P>And with 0-99 <B>Range Voting</B>, it would in fact be possible to make 
+<I>any</I> of the 6 candidates win, depending on how the voters chose the scores 
+compatibly with the orderings above. In Range Voting each voter awards a score 
+from 0 to 99 to each candidate; greatest average score wins. (<A 
+href="https://rangevoting.org/RangeVoting.org">Fancier rules</A> allow also 
+scoring a candidate with X = intentional blank = "no opinion" &ndash; only numerical 
+scores incorporated into averages.) </P>
+<HR>
+
+<br>
+
+<a name="properties"></a>
+<H2>Properties voting systems may or may not have </H2>
+
+<p>
+<b>Expressiveness:</b>
+The more kinds of votes you can cast, the more expressivity you have.
+With plurality voting in an N-candidate election, you have N possible votes
+(or N+1 if "not voting" is allowed and we count it as an additional option).
+That is a lot less expressivity than approval voting with 2<sup>N</sup> possible
+votes.   
+With rank-order voting systems you have N!
+(although in such rules-variants as <a href="IRV3.html">top-3-IRV</a> there are
+much fewer
+legal votes; e.g. approval voting is more expressive than top-3-IRV if there are more
+than 8 or 9 candidates, such as in San Francisco's top-3-IRV mayoral election of 2002
+with 12 candidates plus 6 more running as write-ins)
+and with 0-99 range voting you have 100<sup>N</sup>
+(or 101<sup>N</sup> if "no opinion" scores permitted for each candidate).
+</p>
+
+<p>
+<b>Participation:</b>
+If casting an honest vote can
+never cause the election result to get worse (in that voter's view) than if she hadn't voted
+at all,
+then that voting system satisfies the "participation property."
+(Some voting systems like Condorcet and IRV 
+<a href="PuzzIrvPartic.html">fail</a> this &ndash; they exhibit "no-show paradox" 
+elections
+where some class of voters would have been better off "not showing up.")
+</p>
+
+<p>
+<b><a href="FBCsurvey.html">Favorite-safe:</a></b>
+If it never is more strategic to vote a non-favorite ahead of your favorite,
+then the voting system is "favorite-safe."  
+(So-called because it is "safe" to vote for your favorite.)
+</p>
+
+<p>
+<b><a href="CandCloning.html">Clone-safe</a>:</b>
+If a "clone" of a candidate (rated almost identical to the original by
+every voter) enters or leaves the race, that should not affect the winner
+(aside from possible replacement by a clone).
+We call voting systems obeying this "clone-safe."  
+Borda and plurality voting severely fail this property.
+</p>
+
+<p>
+<b><a href="Monotone.html">Monotonicity</a></b>
+is the property of a voting system that
+<ol type="I">
+<li>
+If somebody increases their vote for candidate C (leaving the rest of their vote unchanged)
+that should not worsen C's chances of winning the election.
+</li><li>
+If somebody decreases their vote for candidate B (leaving the rest of their vote unchanged)
+that should not improve B's chances of winning the election.
+</li>
+</ol>
+</p>
+
+<p>
+<b>Remove-loser safe:</b>
+If some losing candidate X is found to be a criminal and ineligible to run, 
+then the same ballots should still be usable to conduct
+an election with X removed, and should still elect the same winner.
+(But if X's departure changes the winner, the property fails.  
+In several voting systems, e.g. Borda,
+X's departure can actually <a href="scoreVborda.html#JohnsonEx">reverse</a> 
+the finish-order of all the other candidates,
+a <i>dramatic</i> failure.)
+</p>
+
+<p>
+<b><a href="IrvNonAdd.html">Precinct-countable</a>:</b>
+If each precinct can publish a succinct summary of the vote (sub)total in that precinct,
+and the overall country-wide winner can be determined from those precinct subtotals,
+then the voting system is "precinct-countable."   Precinct-countable 
+systems allow greater election transparency to reduce risk of undetected fraud.
+</p>
+
+<p>
+<b><a href="VotMach.html">Dumb machines</a>:</b>
+Are "dumb" (i.e. non-computerized) totalizing voting machines, designed only to support
+<a href="Plurality.html">plurality</a> voting, usable for this voting system?
+</p>
+
+<p>
+<b>Extremist/Centrist bias:</b>
+Suppose the candidates are positioned along a line (1-dimensional)
+or in a plane (2-dimensional) and voters prefer candidates located nearer to them.
+In some voting systems, it is usually difficult or impossible for "centrists"
+(centrally located relative to the other candidates) to win.
+Those systems "favor extremists."
+Other voting systems "favor centrists."
+We apologize for defining this property rather vaguely, but in practice it is often
+quite clear which category a voting system belongs in.
+For example,
+check <a href="IrvExtreme.html">these pictures</a> (especially "note #2")
+to see that Instant Runoff (IRV) voting strongly favors extremists; more such pictures
+for many other voting systems 
+<a href="IEVS/Pictures.html">here</a> showing that,
+e.g, plurality voting also has built in pro-extremist bias.
+</p>
+
+
+<p>
+<a href="WhatVotersWant.html">Relative <b>Enactability:</b></a>
+This is judged from poll studies about voter preferences.
+(Click the link for details.)
+These show range voting is the most enactible 
+(with 10 score-<a href="RateScaleResearch.html">levels</a> apparently most preferred),
+approval voting next, plurality next, and instant runoff is the
+least enactible (and most likely to be repealed) among these four.
+</p><p>
+Also, historically: approval, score, plurality and instant runoff all have been enacted
+in various countries.  (Borda was enacted just once, but soon repealed.)
+As far as we know Condorcet was never enacted and also never was put to
+a referendum to <i>try</i> to be enacted. But considering it is even more complicated
+than IRV its chances seem probably poor.
+</p>
+
+<p>
+<b>Simplicity:</b>
+Voting systems with simpler rules, simpler counting algorithms, and found to be simpler
+by human voters are "simpler."
+If you want to be precise about this, then we point out you can objectively measure 
+the "simplicity" of the rules and vote-counting algorithm as the length of the 
+shortest computer program that inputs, checks-validity-of, and counts the votes to determine 
+the winner.  And you can objectively measure how simple humans find it to vote by e.g,
+comparing ballot <a href="SPRates.html">spoilage rates</a> under different voting systems,
+or comparing the average <a href="ManyChoices.html#hot">time</a> it takes humans to cast their vote
+or for other humans (or computers) to count them, or
+asking voters for their <a href="Comprehension.html">self-assessed comprehension level</a>.
+The latter two actually indicate, surprisingly,
+that <i>range=score voting is the <u>best</u>-comprehended</i> among
+{score, approval, instant runoff} *&ndash; and perhaps even if we include plurality too!
+&ndash; i.e. the situation is
+better for range voting than our chart indicates.
+</p>
+
+
+
+
+<br>
+<hr>
+<p><a href="QuirkeVotingSystemChart.html">Another voting system chart, by Robin Quirke</a></p>
+<p><a href="YeeVotingComparison.pdf">Another voting system chart, by Ka-Ping Yee (pdf, does not include score voting among methods compared)</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

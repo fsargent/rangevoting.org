@@ -1,0 +1,849 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 strict //EN">
+<html>
+<head>
+<title>
+Voting matters, Issue 3: pp 8-15
+</title>
+</head>
+<body>
+<B>Up:</B> <A HREF="https://rangevoting.org/INDEX.HTM"> Issue 3 </A>
+<B>Previous:</B> <A HREF="https://rangevoting.org/P4.HTM"> Paper 4 </A>
+<BR><P>
+<H1>Voting matters - Issue 3, December 1994</h1>
+
+
+<H2>Properties of Preferential Election Rules</h2>
+
+<h4>D R Woodall</h4>
+
+<p>
+Douglas Woodall is Reader in Pure Mathematics at Nottingham University.
+
+<p>
+In this article, he argues that more attention should be paid to properties
+of electoral systems, and less to procedures. He lists many properties that
+a preferential election rule may or may not have, and discusses them with
+reference to STV.
+
+<h3>1.  Introduction</h3>
+
+I have often been struck-and never more than in the last year-by how much
+the types of argument used by the supporters of the Single Transferable Vote
+(STV) differ from those used by its opponents. When it comes to the details
+of the count, the supporters of STV almost invariably try to defend its
+procedures directly, on the grounds that they follow certain principles, or
+that they do with each vote exactly what the voter would want done with it,
+if the voter were able to be present at the count and to express an opinion.
+Unfortunately, there is no guarantee that adopting sensible procedures, at
+each stage of the count, will lead to a system with sensible properties, and
+the opponents of STV often emphasize its less desirable properties. In
+particular, it is now well known that STV is not monotonic: that is, that
+increased support, for a candidate who would otherwise have been elected,
+can prevent that candidate from being elected. It was ostensibly because of
+this and related anomalies that the Plant Report rejected STV.
+
+<p>
+Properties of electoral systems can be thought of as "performance
+indicators", and like any other performance indicators they need to be used
+with care. If one chooses a set of performance indicators in advance, it may
+well be possible to manufacture a high score on those indicators in an
+artificial way, which does not represent good performance in any real sense.
+Nevertheless, it seems to me that the Electoral Reform Society needs to pay
+more attention to properties if it is not to be sidelined in the electoral
+debate. In particular, since different desirable properties often turn out
+to be mutually incompatible, it is important to discover which sets of
+properties can hold simultaneously in an electoral system. Only then will it
+be possible to decide whether there are electoral systems that retain what
+is essential in STV while avoiding some of the pitfalls.
+
+<p>
+The purpose of this article is to introduce a long list of technical
+properties that an election rule may or may not have, to invent snappy
+descriptive names for them all, and to discuss them with special reference
+to STV. Except where otherwise indicated, statements made about STV apply
+equally well to the Newland-Britton and Meek versions of STV. In a later
+article I hope to address the question of monotonicity in more detail.
+
+<h3>2.  Notation and terminology</h3>
+
+As is usual in the Social Choice literature, I shall use lower-case letters
+<i>a, b, c</i>,... to denote candidates (or choices). Each voter casts a
+<i>ballot</i> containing a <i>preference listing</i> of the candidates,
+which is written as (for example) <i>abc</i>, to denote that the voter
+places <i>a</i> first, <i>b</i> second and <i>c</i> third, with no fourth
+choice being expressed. A preference listing is <i>complete</i> if all
+candidates are included in it and <i>truncated</i> if some are left out. (A
+preference listing that leaves out just one candidate will be treated by
+most election rules, including STV, as if it were complete; but one should
+not call it complete, since some election rules may not treat it as such.) A
+<i>profile</i> is a set of preference listings, such as might represent the
+ballots cast in an election. Profiles may be represented in either of the
+forms shown for Elections 1 and 2 below, indicating either the proportion,
+or the absolute number, of ballots of each type cast.
+
+<p>
+The term <i>outcome</i> will be used in the sense of "possible outcome"
+(assuming there are no ties). Thus in an election to fill two seats from
+four candidates <i>a, b, c, d</i>, there are six outcomes, corresponding to
+the six possible ways of choosing the two candidates to be elected:
+{<i>a</i>, <i>b</i>}, {<i>a</i>, <i>c</i>}, {<i>a</i>, <i>d</i>}, {<i>b</i>,
+<i>c</i>}, {<i>b</i>, <i>d</i>} and {<i>c</i>, <i>d</i>}.
+
+<pre>
+Election 1        Election 2
+  (1 seat)          (2 seats)
+ab   0.17         a   9    ea   4
+ac   0.16         b   9    eb   4
+bac  0.33         c  10    fc   1
+cb   0.34         d  10    fd   1
+                           fe   6
+</pre>
+An <i>election rule</i> is usually thought of as a method that, given a
+profile, chooses a corresponding outcome-or, in the event of a tie, chooses
+two or more outcomes, one of which must then be selected in some other way
+(such as by tossing a coin). However, this description is not quite adequate
+to deal with the complexities of ties. Consider Election 1 above, with the
+votes counted by STV (or, rather, by the Alternative Vote (AV), which is the
+rule to which STV reduces in a single-seat election). No candidate reaches
+the quota of 0.5, and there is an initial tie for exclusion between <i>a</i>
+and <i>b</i>. If <i>b</i> is excluded then <i>a</i> is immediately elected,
+whereas if <i>a</i> is excluded then <i>b</i> and <i>c</i> tie for election.
+Thus <i>a</i> is elected with probability &frac12;, and <i>b</i> and <i>c</i>
+are elected with probability &frac14; each.
+
+<p>
+A similar situation arises in Election 2, again under STV. There are 54
+votes cast, so the quota is 18, and there is an initial tie for exclusion
+between <i>e</i> and <i>f</i>. If <i>e</i> is excluded then <i>f</i>,
+<i>c</i> and <i>d</i> must also be excluded, and <i>a</i> and <i>b</i> are
+elected; whereas, if <i>f</i> is excluded, then <i>a</i> and <i>b</i> must
+also be excluded, and then <i>e</i> is elected and <i>c</i> and <i>d</i> tie
+for second place. Thus the outcome {<i>a</i>, <i>b</i>} is chosen with
+probability 1/4, and the outcomes {<i>c</i>, <i>e</i>} and {<i>d,</i>
+<i>e</i>} are chosen with probability &frac12; each.
+
+<p>
+Because of examples like these, I define a (preferential) <i>election
+rule</i> to be a procedure that, given a profile, associates a corresponding
+non-negative probability with each outcome, in such a way that the
+probabilities associated with all possible outcomes add up to 1. The
+"normal" situation is that all the outcomes are given probability 0 except
+for one, which has probability 1 (meaning that that outcome is chosen
+unequivocally). If anything else happens, then we say that the result is a
+<i>tie</i> between all the outcomes that have non-zero probability.
+
+<h3>3.  Axioms</h3>
+
+There are so many properties that an election rule may have, that it is
+useful to categorize them in some way. Four in particular seem sufficiently
+basic to deserve to be called <i>axioms</i>. The first is more or less
+implicit in the above definition of an election rule; but it has a name, and
+so for completeness I include it here.
+
+<p>
+<i>Anonymity</i>. The result should depend only on the number of ballots of
+each possible type in the profile (and not, for example, on the order in
+which they are cast, or on extraneous information such as the heights of the
+candidates).
+
+<p>
+<i>Neutrality</i>. If some permutation is applied to the names of all the
+candidates on all the ballots in the profile, then the same permutation
+should be applied to the result. For example, since STV is neutral, if
+<i>a</i> is replaced by <i>c</i> and <i>c</i> by <i>a</i> on every ballot in
+Election 2 above, then STV would choose {<i>b</i>, <i>c</i>} with
+probability &frac12; and {<i>a</i>, <i>e</i>} and {<i>d</i>, <i>e</i>} with
+probability 1/4 each. One consequence of neutrality is that a tie in a
+single-seat election cannot be resolved simply by electing the first in
+alphabetical order among the tied candidates.
+
+<p>
+A rule that is both anonymous and neutral is called <i>symmetric</i>.
+
+<p>
+<i>Homogeneity</i>. The result should depend only on the <i>proportion</i>
+of ballots of each possible type. In particular, if every ballot is
+replicated the same number of times, then the result should not change. It
+is this property that enables us to describe profiles as in Election 1
+above, showing the proportion, rather than the absolute number, of ballots
+of each type cast.
+
+<p>
+<i>Discrimination</i>. If a particular profile <i>P</i>0 gives rise to a
+tie, then it should be possible to find a profile <i>P</i> that does not
+give rise to a tie and in which the proportion of ballots of each type
+differs from its value in <i>P</i>0 by an arbitrarily small amount. This
+rules out, for example, the following method of electing one candidate from
+three: elect the candidate who beats both of the others in pairwise
+comparisons, if there is such a candidate, and otherwise declare the result
+a three-way tie. For in that case, not only would the profile in Election 3
+below give rise to a tie, but anything at all close to it would also give a
+tie, contrary to the axiom of discrimination.
+
+<pre>
+                abc  1/3
+Election 3:     bca  1/3
+(1 seat)        cab  1/3
+</pre>
+A <i>proper</i> election rule is one that satisfies the above four axioms;
+that is, one that is anonymous, neutral, homogeneous and discriminating. The
+term "axiom" is used rather freely in the literature as a synonym for
+"property", but I shall restrict its use to these four, which I regard as
+genuinely axiomatic, in the sense that I am not interested in any rule that
+does not satisfy them.
+
+<p>
+A word of warning is needed about homogeneity. In any practical election
+where the count is carried out by computer, there will be a limit to the
+number of decimal places that the computer can hold accurately. Thus there
+are bound to be situations in which two numbers that are not really equal
+are regarded as equal by the computer program, because they become equal
+when rounded to the appropriate number of decimal places. In this case, if
+every ballot were replicated the same, sufficiently large, number of times,
+then the difference between the two numbers of votes would become
+significant, and the computer might give a different result. However, this
+is a minor problem, introduced by the practical need to round numbers; the
+axiom of homogeneity should be applied to the underlying theoretical rule,
+with no rounding.
+
+<p>
+With this interpretation, STV is a proper election rule.
+
+<h3>4.  Global or absolute properties</h3>
+
+It is convenient to divide properties into <i>global</i> or <i>absolute</i>
+properties on the one hand, and <i>local</i> or <i>relative</i> properties
+on the other. The former say something about the result of applying an
+election rule to a single profile, whereas the latter say something about
+how the result should (or should not) change when certain changes are made
+to the profile. Not all properties fall unambiguously into one of these two
+classes, but sufficiently many do for the distinction to be useful.
+
+<p>
+The most important single property of STV is what I call the <i>Droop
+proportionality criterion</i> or <i>DPC</i>. Recall that if <i>v</i> votes
+are cast in an election to fill <i>s</i> seats, then the quantity
+<i>v</i>/(<i>s</i> + 1) is called the <i>Droop quota</i>. 
+
+<ul>
+<li><b>DPC.</b> If, for some whole numbers <i>k</i> and <i>m</i>  satisfying
+0 &lt; <i>k</i> &lt;= <i>m</i>, more than <i>k</i> Droop quotas of voters
+put the same <i>m</i> candidates (not necessarily in the same order) as the
+top <i>m</i> candidates in their preference listings, then at least <i>k</i>
+of those <i>m</i> candidates should be elected. (In the event of a tie, this
+should be interpreted as saying that every outcome that is chosen with
+non-zero probability should include at least <i>k</i> of these <i>m</i>
+candidates.)
+</ul>
+
+<p>
+In statements of properties, the word "should" indicates that the property
+says that something should happen, not necessarily that I personally agree.
+However, in this case I certainly do: DPC seems to me to be a <i>sine qua
+non</i> for a fair election rule. I suggest that any system that satisfies
+DPC deserves to be called a <i>quota-preferential</i> system and to be
+regarded as a system of proportional representation (within each
+constituency)-an STV-lookalike. Conversely, I assume that no member of the
+Electoral Reform Society will be satisfied with anything that does not
+satisfy DPC.
+
+<p>
+The property to which DPC reduces in a single-seat election should hold (as
+a consequence of DPC) even in a multi-seat election, and it deserves a
+special name.
+
+<ul>
+<li><b>Majority.</b> If more than half the voters put the same set of
+candidates (not necessarily in the same order) at the top of their
+preference listings, then at least one of those candidates should be
+elected.
+</ul>
+
+<p>
+The following rather weak property was formulated with single-seat elections
+in mind, but it makes sense also for multi-seat elections and, again, it
+clearly holds for STV.
+
+<ul>
+<li><b>Plurality.</b> If some candidate <i>a</i> has strictly fewer votes in
+total than some other candidate <i>b</i> has first-preference votes, then
+<i>a</i> should not have greater probability than <i>b</i> of being elected.
+</ul>
+
+The next property has been suggested to me by Brian Wichmann in the light of
+his experiences reported in the last issue of <i>Voting matters</i><a
+href="#r6">[6]</a>.
+
+<ul>
+<li><b>No-support.</b> A candidate who receives no support at all (that is,
+who is not listed by any voters in their preference listings) should not be
+elected unless every candidates who receives some support is also
+elected.
+</ul>
+
+This is not satisfied by STV with the Newland-Britton rules. For example, if
+<i>x</i> receives no support at all, and the only support that <i>y</i>
+receives is on ballots marked <i>ay</i>, where <i>a</i> reaches the quota as
+a result of transfers from other candidates, then <i>x</i> and <i>y</i> will
+both be recorded throughout as having no votes (since the <i>ay</i> ballots
+are not re-examined when <i>a</i> reaches the quota), and so <i>y</i> is as
+likely to be excluded as <i>x</i>. It seems that <b>no-support</b> is
+satisfied by Meek's version of STV, although I do not have a formal proof of
+this.
+
+<p>
+The remaining three global properties consist of <i>Condorcet's
+principle</i>, which was proposed by M. J. A. N. Caritat, Marquis de
+Condorcet (1743-1794), and two modern strengthenings of it. We say that a
+voter, ballot or preference listing <i>prefers</i> <i>a</i> to <i>b</i> if
+he, she or it lists <i>a</i> above (before) <i>b</i>, or lists <i>a</i> but
+not <i>b</i>. Let <i>p</i>(<i>a</i>, <i>b</i>) denote the number of voters
+who prefer <i>a</i> to <i>b</i>. We say that <i>a</i> <i>beats</i> <i>b</i>
+(in pairwise comparisons) if <i>p</i>(<i>a</i>, <i>b</i>) >
+<i>p</i>(<i>b</i>,<i> a</i>); that is, if the number of voters who prefer
+<i>a</i> to <i>b</i> is greater than the number who prefer <i>b</i> to
+<i>a</i>. We say that <i>a</i> <i>ties with</i> <i>b</i> (in pairwise
+comparisons) if <i>p</i>(<i>a</i>, <i>b</i>) = <i>p</i>(<i>b</i>, <i>a</i>).
+A <i>Condorcet winner</i> is a candidate who beats every other candidate in
+pairwise comparisons. A <i>Condorcet non-loser</i> is a candidate who beats
+or ties with every other candidate in pairwise comparisons; note that if
+there is more than one Condorcet non-loser then all the Condorcet non-losers
+must tie with each other.
+
+<p>
+Note that there need not be a Condorcet winner, or even a Condorcet
+non-loser. In the profile shown in Election 3 above, <i>a</i> beats
+<i>b</i>, <i>b</i> beats <i>c</i> and <i>c</i> beats <i>a</i>, all by the
+same margin of 2/3 to 1/3. This is the so-called <i>Condorcet paradox</i> or
+<i>paradox of voting</i>: even though each voter provides a linear ordering
+of the candidates, the result when the votes are totalled can be a cyclical
+ordering. The <i>Condorcet top tier</i> is the smallest nonempty set of
+candidates such that every candidate in that set beats every candidate (if
+any) outside that set. In Election 3, the Condorcet top tier consists of all
+three candidates. If there is a Condorcet winner, then the Condorcet top
+tier consists just of the Condorcet winner. If there is a Condorcet
+non-loser, then the Condorcet top tier contains all the Condorcet
+non-losers, but it may possibly contain other candidates as well.
+
+<p>
+Condorcet's principle and the two strengthenings of it given below were
+formulated originally for single-seat elections in which every voter
+provides a complete preference listing; but I have reworded them here so
+that they make sense (although they are not necessarily sensible) for all
+preferential elections.
+
+<ul>
+<li><b>Condorcet</b>.<a href="#r1">[1]</a> If there is a Condorcet winner,
+then the Condorcet winner should be elected.
+
+<li><b>Smith-Condorcet</b>. <a href="#r4">[4]</a> At least one candidate
+from the Condorcet top tier should be elected.
+
+<li><b>Exclusive-Condorcet</b> (see Fishburn<a href="#r2">[2]</a>). If there
+is a Condorcet non-loser, then at least one Condorcet non-loser should be
+elected.
+</ul>
+
+Note that <b>Smith-Condorcet</b> and <b>exclusive-Condorcet</b> both imply
+<b>Condorcet</b>, and <b>Smith-Condorcet</b> also implies <b>majority</b>.
+<b>Smith-Condorcet</b> seems a very natural extension of <b>Condorcet</b>.
+<b>Exclusive-Condorcet</b> is also very natural, but it is of much less
+importance since it differs from <b>Condorcet</b> only when there is a "tie"
+for first place under pairwise comparisons, and that will not happen very
+often.
+
+<pre>
+Election 4      Election 5
+(1 seat)        (2 seats)
+abc     0.30    ad      0.36
+bac     0.25    bd      0.34
+cab     0.15    cd      0.30
+cba     0.30
+</pre>
+
+STV does not satisfy <b>Condorcet</b>, and so it certainly does not satisfy
+either of the above two extensions of it. This can be seen in Election 4
+above. Under STV (AV), <i>b</i> is excluded and <i>a</i> is elected.
+However, <i>b</i> is the Condorcet winner, beating both <i>a</i> and
+<i>c</i> by the same margin of 0.55 to 0.45. This example highlights a
+fundamental difference in philosophy between STV and Condorcet-based rules.
+Loosely speaking, STV tries to keep votes near the tops of the ballots. Thus
+the preferences of the <i>cba</i> voters for <i>b</i> over <i>a</i> will not
+even be considered under STV until <i>c</i> is excluded, which means that in
+this example they are not considered at all, since <i>b</i> is excluded
+before <i>c</i>. In contrast, Condorcet's principle requires that, right
+from the outset, the preferences of the <i>cba</i> voters for <i>b</i> over
+<i>a</i> should be given equal weight with the similar preferences of the
+<i>bac</i> voters. However, despite this difference in philosophy,
+<b>Condorcet</b> and <b>majority</b> are not actually incompatible in
+single-seat elections: if one wishes, one can use AV (or any other system of
+one's choice) to select a candidate from the Condorcet top tier. Any such
+rule clearly satisfies <b>Smith-Condorcet</b>, and hence satisfies both
+<b>majority</b> and <b>Condorcet</b>, although it is a moot point whether it
+is really any better than AV on its own.  In multi-seat elections,
+<b>Condorcet</b> is undesirable, in my opinion, because it is incompatible
+with DPC, as shown by Election 5 above. Here the quota is 0.333...., and so
+DPC requires that <i>a</i> and <i>b</i> should be elected, whereas <i>d</i>
+is the Condorcet winner.
+
+<h3>5. Local or relative properties: monotonicity</h3>
+
+Local or relative properties are concerned with what happens when a profile
+is changed in some way. We shall say that a candidate is <i>helped</i> or
+<i>harmed</i> by a change in the profile if the result is, respectively, to
+increase or to decrease the probability of that candidate being elected.
+
+<p>
+As we saw in Election 4, under STV the later preferences on a ballot are not
+even considered until the fates of all candidates of earlier preference have
+been decided. Thus a voter can be certain that adding extra preferences to
+his or her preference listing can neither help nor harm any candidate
+already listed. Supporters of STV usually regard this as a very important
+property, although it has to be said that not everyone agrees; the property
+has been described (by Michael Dummett, in a letter to Robert Newland) as
+"quite unreasonable", and (by an anonymous referee) as "unpalatable". There
+are really two properties here, which we can state as follows.
+
+<ul>
+<li><b>Later-no-help.</b> Adding a later preference to a ballot should not
+help any candidate already listed.
+
+<li><b>Later-no-harm.</b> Adding a later preference to a ballot should not
+harm any candidate already listed.
+</ul>
+
+We come now to the different versions of monotonicity. The basic theme is
+that a candidate <i>x</i> should not be harmed by a change in the profile
+that appears to give more support to <i>x</i>; but one gets different
+flavours of monotonicity if one specifies different ways in which the
+profile might be changed.
+
+<p>
+<b>Monotonicity.</b> A candidate <i>x</i> should not be harmed if:
+
+<ul>
+<li>(<b>mono-raise</b>) <i>x</i> is raised on some ballots without changing
+the orders of the other candidates;
+
+<li>(<b>mono-raise-delete</b>) <i>x</i> is raised on some ballots and all
+candidates now below <i>x</i> on those ballots are deleted from them;
+
+<li>(<b>mono-raise-random</b>) <i>x</i> is raised on some ballots and the
+positions now below <i>x</i> on those ballots are filled (or left vacant) in
+any way that results in a valid ballot;
+
+<li>(<b>mono-append</b>) <i>x</i> is added at the end of some ballots that
+did not previously contain <i>x</i>;
+
+<li>(<b>mono-sub-plump</b>) some ballots that do not have <i>x</i> top are
+replaced by ballots that have <i>x</i> top with no second choice;
+
+<li>(<b>mono-sub-top</b>) some ballots that do not have <i>x</i> top are
+replaced by ballots that have <i>x</i> top (and are otherwise arbitrary);
+
+<li>(<b>mono-add-plump</b>) further ballots are added that have <i>x</i> top
+with no second choice;
+
+<li>(<b>mono-add-top</b>) further ballots are added that have <i>x</i> top
+(and are otherwise arbitrary);
+
+<li>(<b>mono-remove-bottom</b>) some ballots are removed, all of which have
+<i>x</i> bottom, below all other candidates.
+</ul>
+
+There is also the following property, which is not strictly a form of
+monotonicity but is very close to it. It is an extension to multi-seat
+elections of a property proposed by Moulin<a href="#r3">[3]</a> for
+single-seat elections.
+
+<ul>
+<li><b>Participation</b>. The addition of a further ballot should not, for
+any positive whole number <i>k</i>, reduce the probability that at least one
+candidate is elected out of the first <i>k</i> candidates listed on that
+ballot.
+</ul>
+
+These properties are not all independent. For example,
+
+<ul>
+<li><b>mono-raise-random</b> implies both <b>mono-raise</b> and
+<b>mono-raise-delete</b>;
+
+<li><b>mono-raise</b> and <b>later-no-help</b> together imply
+<b>mono-raise-delete</b>;
+
+<li><b>mono-raise-delete</b> and <b>later-no-harm</b> together imply
+<b>mono-raise-random</b>;
+
+<li><b>mono-sub-top</b> implies <b>mono-sub-plump</b>;
+
+<li><b>mono-sub-plump</b> and <b>later-no-harm</b> together imply
+<b>mono-sub-top</b>;
+
+<li><b>mono-append</b> and <b>mono-raise-delete</b> together imply
+<b>mono-sub-plump</b>;
+
+<li><b>mono-append</b> and <b>mono-raise-random</b> together imply
+<b>mono-sub-top</b>;
+
+<li><b>mono-add-top</b> implies <b>mono-add-plump</b>;<b>
+
+<li>mono-add-plump</b> and <b>later-no-harm</b> together imply
+<b>mono-add-top</b>;
+
+<li><b>participation</b> implies <b>mono-add-top</b>.
+</ul>
+
+Moreover, in single-seat elections,
+
+<ul>
+<li><b>participation</b> implies <b>mono-remove-bottom</b>.
+</ul>
+
+Also, if truncated preference listings are not allowed, then 
+<b>mono-raise-random</b> implies <b>mono-sub-top</b>.
+
+<pre>
+                      ab     10
+    Election 6:       bca     8
+      (1 seat)        ca      7
+</pre>
+
+STV satisfies <b>mono-append</b> but none of the other properties, although
+in single-seat elections AV satisfies <b>mono-add-plump</b> and
+<b>mono-add-top</b>.  To see that AV does not satisfy <b>mono-raise</b>,
+<b>mono-raise-delete</b>, <b>mono-raise-random</b>, <b>mono-sub-plump</b>,
+<b>mono-sub-top</b> or <b>mono-remove-bottom</b>, consider its effect in
+Election 6 above.   As it stands, <i>c</i> is excluded and <i>a</i> is
+elected. But if two of the <i>bca</i> ballots are removed, or replaced by
+<i>a</i> or by <i>abc</i> or by anything else starting with <i>a</i>, then
+<i>b</i> is excluded and <i>c</i> is elected instead of <i>a</i>.
+
+<pre>
+     Election 7      Election 8
+     (2 seats)       (2 seats)
+     ab      30      ac      207
+     ac      90      bd      198
+     bd      59      bdac     12
+     cb      51      cd      105
+     d       70      dc      105
+</pre>
+
+To see that STV does not satisfy <b>mono-add-plump</b> or
+<b>mono-add-top</b>, consider Election 7. The quota is 300/3 = 100, so that
+<i>a</i> is elected with a surplus of 20. This is divided 5 to <i>b</i>, 15
+to <i>c</i>, and so <i>b</i> has 64 votes to <i>c</i>'s 66, <i>b</i> is
+excluded, and <i>d</i> is elected. Suppose now that we add a further 24
+ballots with <i>d</i> top. The quota is now 324/3 = 108, so that <i>a</i>'s
+surplus is now only 12. This is divided 3 to <i>b</i>, 9 to <i>c</i>, and so
+<i>b</i> has 62 votes to <i>c</i>'s 60, <i>c</i> is excluded, and <i>b</i>
+is elected instead of <i>d</i>.
+
+<p>
+Although all the monotonicity properties look attractive, I do not think
+that <b>mono-remove-bottom</b> is desirable in multi-seat elections.
+Consider Election 8. The quota is 627/3 = 209, and so DPC requires that we
+elect <i>b</i> and either <i>c</i> or <i>d</i>. It seems to me that
+{<i>b</i>, <i>c</i>} is clearly the better result (although STV gives
+{<i>b</i>, <i>d</i>}). But if we now remove the 12 <i>bdac</i> ballots, then
+the quota drops to 205, so that we must elect <i>a</i> and either <i>c</i>
+or <i>d</i>. It seems to me that now {<i>a</i>, <i>d</i>} is the better
+result (although STV gives {<i>a</i>, <i>c</i>}). Thus the removal of the 12
+ballots that have <i>c</i> bottom <i>should</i>, in my opinion, harm
+<i>c</i>.
+
+<p>
+All the monotonicity properties seem desirable in single-seat elections.
+However, I proved<a href="#r7">[7]</a> that no rule simultaneously
+satisfies <b>mono-sub-plump</b>, <b>later-no-help</b>, <b>later-no-harm</b>,
+<b>majority</b> and <b>plurality</b>. Since I do not think anyone would
+seriously consider a rule that did not satisfy both <b>majority</b> and
+<b>plurality</b>, this shows that in order to have <b>mono-sub-plump</b> one
+must sacrifice either <b>later-no-help</b> or <b>later-no-harm</b> (or
+both). Whether or not this is desirable may depend on what other properties
+one can gain at the same time.
+
+<p>
+<b>Mono-raise-random</b>, <b>mono-sub-top</b> and <b>participation</b> are
+very strong properties, and it is possible that they are incompatible with
+DPC. If one could find a reasonable-looking "STV-lookalike" rule that
+satisfied all the other monotonicity properties (except for
+<b>mono-remove-bottom</b> when there is more than one seat), then I
+personally might well prefer it to STV itself. But we are a long way from
+finding such a rule at the moment.
+
+<p>
+While on the subject of monotonicity, I should mention one other
+monotonicity property, if only to dismiss it immediately.
+
+<ul>
+<li><b>House-monotonicity</b>. No candidate should be harmed by an increase
+in the number of seats to be filled, with no change to the profile.
+</ul>
+
+This seems to me to be plain wrong. Consider the profile in Election 5, for
+example, which is a very slight modification of one suggested to me by David
+Hill. If one were using this profile to fill a single seat, then clearly
+<i>d</i> should be elected (although that is not the result achieved by AV).
+But if this same profile were used to fill three seats, then clearly
+<i>a</i>, <i>b</i> and <i>c</i> should be elected; thus <i>d</i> is harmed
+by the increase in the number of seats.
+
+<p>
+Another property that is related to monotonicity is known in the literature
+as <i>consistency</i><a href="#r8">[8]</a> or <i>reinforcement</i><a
+href="#r3">[3]</a>, but I prefer to call it by its mathematical name:
+
+<ul>
+<li><b>Convexity</b>. If the voters are divided into two districts and the
+ballots from each district are processed separately and the results in the
+two districts are the same, then processing the ballots of all voters
+together should give the same result.
+</ul>
+
+<pre>
+                    (a)    (b)   (a)+(b)
+              ab     6      3      9
+Election 9:   bc     4      4      8
+(1 seat)      cb     3      6      9
+</pre>
+
+STV does not satisfy <b>convexity</b>. Again, I cannot do better than to
+quote an example of David Hill's (Election 9). In district (a), <i>c</i> is
+excluded and <i>b</i> is elected. In district (b), <i>a</i> is excluded and
+<i>b</i> is elected. But when the ballots from the two districts are
+processed together, <i>b</i> is excluded and <i>c</i> is elected.
+
+<p>
+<b>Convexity</b> is one of the best-understood of all properties. Young<a
+href="#r8">[8]</a> proved that a symmetric preferential election rule for
+single-seat elections satisfies <b>convexity</b> if and only if it is
+equivalent to a point scoring rule (in which one gives each candidate so
+many points for every voter who puts them first, so many for every voter who
+puts them second, and so on, and elects the candidate with the largest
+number of points). Since no point scoring rule can possibly satisfy DPC, it
+follows that <b>convexity</b> and DPC are mutually incompatible. This is a
+pity, because <b>convexity</b> implies several of the monotonicity
+properties; but, sadly, it is of no use to us.
+
+<p>
+Of course, the absence of convexity will hardly ever be noticed in practice,
+since elections are not counted both in separate districts and together as a
+whole. But it is worrying inasmuch as it may suggest that something odd is
+going on.
+
+<h3>6.  Further properties</h3>
+
+A question that is sometimes asked about STV is, is a truncated preference
+listing treated as if all the remaining candidates were placed equal last?
+Since STV (in its usual formulation) does not allow for equality of
+preference, the question does not really make sense. But one can make sense
+of it as follows. The <i>symmetric completion</i> of a truncated preference
+listing is obtained by taking all possible completions of it with equal
+weight, chosen so that the total weight is 1. For example, suppose that
+there are five candidates, <i>a, b, c, d, e</i>. Then 
+
+<ul>
+<li>the symmetric completion of a ballot marked <i>abcd</i> is a single
+ballot marked <i>abcde</i>, with weight 1;
+
+<li>the symmetric completion of a ballot marked <i>abc </i>consists of two
+ballots, each with weight &frac12;, one marked <i>abcde</i> and the other
+marked<i> abced</i>;
+
+<li>the symmetric completion of a ballot marked <i>ab</i> consists of six
+ballots, each with weight 1/6, completed in the six different possible ways:
+that is, <i>abcde, abced, abdce, abdec, abecd </i>and<i> abedc</i>; 
+
+<li>the symmetric completion of a ballot marked <i>a</i> consists of 24
+ballots, each with weight 1/24, completed in the 24 different possible ways;
+and so on.
+
+<li><b>Symmetric-completion.</b> A truncated preference listing should be
+treated in the same way as its symmetric completion.
+</ul>
+
+
+<p>
+It is not difficult to see that AV satisfies <b>symmetric-completion</b>.
+Although AV is usually described in terms of a quota, it can alternatively
+be described as follows: repeatedly exclude the candidate with the smallest
+number of votes, until there is only one candidate left. The effect of
+replacing truncated preference listings by their symmetric completions is
+simply that, at each stage in the count, the votes of all non-excluded
+candidates are increased by the same amount. It follows that the order of
+exclusions is not affected, nor therefore is the eventual winner.
+
+<pre>
+                a       60
+Election 10:    ab      60
+(2 seats)       b       14
+                c       46
+</pre>
+
+To see that STV does not satisfy <b>symmetric-completion</b> in general,
+consider Election 10. The quota is 180/3 = 60, so that <i>a</i> is elected
+with a surplus of 60. Under the Newland-Britton rules, the whole of
+<i>a</i>'s surplus goes to <i>b</i>, who is elected. Under Meek's method,
+the transfer of <i>a</i>'s surplus ends with the quota reduced to (180 -
+36)/3 = 48, with 36 non-transferable votes going to 'excess', and 36 votes
+transferred to <i>b</i>. Either way, <i>a</i> and <i>b</i> are elected.
+However, if each ballot is replaced by its symmetric completion, then, of
+<i>a</i>'s surplus of 60 votes, 45 go to <i>b</i> and 15 to <i>c</i>, and
+<i>c</i> is elected instead of <i>b</i>.
+
+<pre>
+Election 11     Election 12
+(2 seat)        (3 seats)
+ab      40      ab      40
+ba       2      ba       2
+cd      12      cd      12
+dc       6      dc       6
+                e      180
+</pre>
+David Hill has sent me an example, which I have modified slightly above, to
+show that quota reduction is preferable to symmetric completion in STV. In
+Election 11 the quota is 60/3 = 20, and so <i>a</i> and <i>b</i> are
+elected. In Election 12 the quota is 240/4 = 60, so that <i>e</i> is elected
+with a surplus of 120. Under symmetric completion, this would be used to
+increase the votes of the remaining candidates by 30 each, so that <i>a</i>
+would be elected first, after which <i>d</i> would be excluded and <i>c</i>
+would be elected. However, if the quota is reduced to 20 after the election
+of <i>e</i> then <i>a</i> and <i>b</i> are elected as in Election 11. To
+paraphrase David's comments slightly, "Election 12 has one extra candidate,
+one extra seat, and a large number of extra voters whose sole wish
+(apparently) is to put that extra candidate into that extra seat. It is
+nonsense that the original 60 voters should get <i>a</i> and <i>c</i>
+elected in Election 12 instead of the <i>a</i> and <i>b</i> they would have
+got from Election 11."
+
+<p>
+The remaining properties are all concerned with the avoidance of "wrecking
+candidates".  A "wrecking candidate" is a candidate who is not elected but
+who, by standing for election and so "splitting the vote", prevents someone
+else from being elected. One might naively hope to avoid wrecking candidates
+altogether, which would result in the Independence of Irrelevant
+Alternatives, or <b>IIA</b>:
+
+<ul>
+<li><b>IIA</b>. If a candidate <i>x</i> is not elected, then the result of
+the election should be as if <i>x</i> had not stood for election.
+</ul>
+
+However, it is easy to see that no discriminating election rule can satisfy
+both <b>IIA</b> and <b>majority</b>. For, consider Election 3 above. By the
+axiom of discrimination, there must be a profile arbitrarily close to this
+one that does not give rise to a tie. If this profile results in the
+election of <i>a</i>, then <i>b</i> is a wrecking candidate: for, if
+<i>b</i> had not stood for election, then <i>c</i> would have been elected
+(by <b>majority</b>, since roughly two thirds of the voters prefer <i>c</i>
+to <i>a</i>); thus the result of the election is not as if <i>b</i> had not
+stood. In a similar way, if <i>b</i> is elected then <i>c</i> is a wrecking
+candidate, and if <i>c</i> is elected then <i>a</i> is a wrecking candidate.
+
+<p>
+In an attempt to find a property weaker than <b>IIA</b> but expressing a
+similar idea, I came up with the following.
+
+<ul>
+<li><b>Weak-IIA</b>. If <i>x</i> is elected, and one adds a new candidate
+<i>y</i> ahead of <i>x</i> on some of the ballots on which <i>x</i> was
+first preference (and nowhere else), then either <i>x</i> or <i>y</i> should
+be elected.
+</ul>
+
+Unfortunately I do not know of any sensible election rule that satisfies
+even this. Certainly STV does not. For example, if there are 15 ballots
+marked <i>x</i> and 14 marked <i>z</i>, then AV (and any sensible rule) will
+elect <i>x</i>; but if 10 of the 15 <i>x</i> ballots are now changed to read
+<i>yx</i>, then AV will exclude <i>x</i> and elect <i>z</i> instead.
+
+<p>
+An alternative weakening of <b>IIA</b> has been proposed by Tideman<a href="#r5">
+[5]</a>. In his terminology, a number of candidates form a <i>set of
+clones</i> if every preference listing that contains one of them contains
+all of them, in consecutive positions (but not necessarily always in the
+same order). He says that a single-seat election rule is <i>independent of
+clones</i> if it satisfies the following properties, which I have
+reformulated here so that they make sense for multi-seat elections as well.
+
+<ul>
+<li><b>Clone-in</b>. The expected number of candidates elected from any
+given set of clones should not increase if one member of the set is deleted
+from every ballot containing it.
+
+<li><b>Clone-no-help</b>. Replacing a candidate <i>x</i> by a set of clones
+should not help any other candidate <i>y</i>.
+
+<li><b>Clone-no-harm</b>. Replacing a candidate <i>x</i> by a set of clones
+should not harm any other candidate <i>y</i>.
+</ul>
+
+<pre>
+                xx'a    13
+                x'xa    11
+Election 13:    abc     10
+(2 seats)       bc      12
+                c       14
+</pre>
+
+It is not difficult to see that AV satisfies all the <b>clone</b>
+properties. I am fairly sure that STV also satisfies <b>clone-in</b> in
+multi-seat elections, although I do not have a formal proof of this. To see
+that STV does not satisfy the other two <b>clone</b> properties, consider
+Election 13. The quota is 60/3 = 20. Nobody having reached the quota,
+<i>a</i> is excluded and <i>b</i> is elected; then <i>x</i>' is excluded and
+<i>x</i> is elected. However, if the clones <i>x</i> and <i>x</i>' are
+replaced by a single candidate <i>x</i>, then <i>x</i> has 24 votes
+initially and so is elected, and the surplus of 4 votes goes to <i>a</i>;
+therefore <i>b</i> is excluded, and <i>c</i> is elected instead of <i>b</i>.
+So replacing <i>x</i> by a pair of clones helps <i>b</i> and harms
+<i>c</i>.
+
+<p>
+<b>Clone-no-harm</b> is actually incompatible with DPC. To see this, note
+that if only two candidates stand in a 2-seat election, where the voting is
+(say) <i>x</i> 70, <i>y</i> 30, then both must be elected. But if <i>x</i>
+is replaced by a pair of clones and the voting is now <i>xx</i>' 35,
+<i>x'x</i> 35, <i>y</i> 30, then DPC requires that <i>x</i> and <i>x</i>'
+should both be elected. This suggests that <b>clone-no-harm</b> is not a
+desirable property for multi-seat elections-and Tideman never suggested that
+it was. But <b>clone-in</b> and <b>clone-no-help</b> both look sensible to
+me, even for multi-seat elections.
+
+<h3>References</h3>
+
+<ol>
+<li> <a name="r1">Marquis de Condorcet, <i>Essai sur l'Application de
+l'Analyse &agrave; la Probabilit&eacute; des D&eacute;cisions Rendues
+&agrave; la Pluralit&eacute; des Voix</i>, Paris, 1785. </a>
+
+<li> <a name="r2">P. C. Fishburn, Condorcet social choice functions, <i>SIAM
+Journal on Applied Mathematics</i> 33 (1977), 469-489. </a>
+
+<li> <a name="r3">H. Moulin, Condorcet's principle implies the no show
+paradox, <i>Journal of Economic Theory</i> 45 (1988), 53-64. </a>
+
+<li> <a name="r4">J. H. Smith, Aggregation of preferences with variable
+electorate, <i>Econometrica</i> 41 (1973), 1027-1041. </a>
+
+<li> <a name="r5">T. N. Tideman, Independence of clones as a criterion for
+voting rules, <i>Social Choice and Welfare</i> 4 (1987), 185-206. </a>
+
+<li> <a name="r6"><a href="https://rangevoting.org/ISSUE2/P3.HTM">B. A. Wichmann,</a> Two STV
+Elections, <i>Voting matters</i> (The Electoral Reform Society) 2 (1994),
+7-9. </a>
+
+<li> <a name="r7">D. R. Woodall, An impossibility theorem for electoral
+systems, <i>Discrete Mathematics</i> 66 (1987), 209-211. </a>
+
+<li> <a name="r8">H. P. Young, Social choice scoring functions, <i>SIAM
+Journal on Applied Mathematics</i> 28 (1975), 824-838. </a>
+
+</ol>
+
+<hr>
+<B>Up:</B> <A HREF="https://rangevoting.org/INDEX.HTM"> Issue 3 </A>
+<B>Previous:</B> <A HREF="https://rangevoting.org/P4.HTM"> Paper 4 </A>
+</body>
+</html>

@@ -1,0 +1,766 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Burlington Vermont 2009 IRV mayoral election
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Burlington Vermont 2009 IRV <a href="BurlMayors.txt">mayor</a> election  </H1>
+<H2> Thwarted-majority, non-monotonicity  &amp; other failures (oops) </H2>
+
+<p><small>By 
+<a href="http://www.uvm.edu/~polisci/faculty/gierzynski_bio.html">Anthony Gierzynski</a>,
+Wes Hamilton, 
+&amp;
+<a href="WarrenSmithPages/homepage/works.html">Warren D. Smith</a>,
+March 2009.
+&nbsp;&nbsp;
+(<a href="#summary">skip to summary</a>)
+&nbsp;&nbsp;
+(<a href="http://bolson.org/~bolson/2009/20090303_burlington_vt_mayor.html">
+Brian Olson's independent analysis</a>)
+&nbsp;&nbsp;
+(<a href="RangeVoting.html">Return to main page</a>)
+</small></p>
+<!-- http://www.uvm.edu/~vlrs/IRV.html 
+Gierzynski: Associate Professor Old Mill Room 513
+(802) 656-7973
+Anthony.Gierzynski AT uvm.edu
+
+Montroll:
+409 S. Union St. Burlington VT 05401
+Telephone: 802-658-2478 
+
+Burlington elections:
+http://www.ci.burlington.vt.us/ct/elections/
+-->
+<h2> The Propaganda </h2>
+<p>
+Instant Runoff Voting (<a href="rangeVirv.html">IRV</a>)
+advocates, especially FairVote's Terrill G. Bouricius 
+<small>
+(who lives in Burlington,
+formerly served there as alderman,
+also formerly served as a Vermont state legislator, calls himself a "political scientist,"
+was instrumental in making IRV happen in Burlington starting in 2006, is denoted a "senior analyst" by
+FairVote, and in 2005 received a contract to design Burlington's
+IRV voter education program)</small>,
+often hail Burlington's adoption of IRV for its mayoral election
+as a "great success."  
+Bouricius has also contended in various online posts, print media, and interviews
+that IRV always elects a "majority winner." E.g.
+</p>
+<table bgcolor="#00ff88" cellpadding="5">
+<caption>
+Claims made by T.G.Bouricius and FairVote (IRV advocates)
+</caption>
+<tr><td>
+<blockquote>
+<!--Since the two-round runoff election system widely used in the U.S. that
+involves counting votes in two rounds is said to always elect a "majority
+winner," meaning a majority of votes from those voters who chose to
+express a preference between the two candidates who made it into the final
+runoff, then by the identical logic, an IRV winner is also a "majority
+winner" who ALSO has a majority of votes from those voters who chose to
+express a preference between the two candidates who made it into the final
+runoff. Both methods define a majority by excluding from the basis for
+calculating the majority threshold all of the voters who may have voted
+for a candidate in the first round but abstain (do not indicate any
+preference) in the final round. In sum...If two round runoffs result in
+"majority winners" so does IRV.
+&ndash; Terrill Bouricius, January 2009 web post.
+<br><br>
+Another example was TGB's Science Magazine article.
+-->
+1. Under <b>instant runoff voting</b>, if there is no majority winner, you're not 
+done yet. You have a runoff. But instead of calling voters back to the polls, you just 
+declare the bottom candidates defeated, look at those ballots, and transfer those ballots to 
+those voters' second choice. <b>So you determine which candidate is actually preferred by a 
+majority of voters.</b> 
+&ndash; Terrill Bouricius, January 1999 published interview by Labor Party.
+<br><br>
+2. Districts with plurality election laws face the prospect of <b>"spoiler"</b> candidates 
+throwing an election to a candidate that is not the most preferred by the majority. 
+<b>IRV solves [this problem]</b> and offers additional advantages...
+IRV also <b>allows voters to vote their true preference without any need for calculating which 
+candidate has the best chance.</b> You can vote for the candidate you want most, without any fear 
+that you will inadvertently help elect the candidate you can't stand. 
+&ndash; Terrill Bouricius, endorsement letter for IRV in Vancouver.
+<br><br>
+3. Burlington's instant runoff voting (IRV) election went off <b>without a hitch in 2009.</b>
+If anything, it was even more successful [than 2006]. 
+<b>IRV clearly worked as intended to avoid the
+"spoiler" dynamic</b>...
+While Sore losers in Burlington are complaining about sour grapes, 
+instant runoff voting has proven itself again as a bulwark of democracy.
+&ndash;
+FairVote blog post by Terrill Bouricius 6 March 2009 titled 
+"Some Analysis of the 2009 Burlington IRV Election."
+This "analysis" contains no mention of any of the
+numerous pathologies we shall point out below.
+<br><br>
+4. The Burlington election was a model of clean, open debate <b>without "spoiler" concerns</b>...
+&ndash;
+FairVote official <a href="FairVoteHuffPostBurlington.png">press release</a> dated 3 March 2009 titled
+<b>"Burlington Holds Second Highly Successful IRV Election."</b>
+<!--
+the "center squeeze" scenario -- in which IRV may fail to elect the Condorcet winner. In this scenario, the presence of a candidate with strong core support causes a Condorcet winner with little core support to lose. Fortunately, despite the theoretical possibility of this scenario, the empirical evidence suggests that it is vanishingly rare in practice. In fact, if you look at the ballot data that is publicly available for the IRV elections held in the US (San Francisco, CA, Burlington, VT, and Pierce County, WA), for instance, you'll see that IRV and Condorcet agree on the winner every single time.  22 Nov 2008 GregDennis.com and FairVote,org
+-->
+
+</blockquote>
+</td></tr></table>
+<p>
+However, there are <a href="IrvRevFail.html">reasons</a>
+to believe otherwise...   We shall show by considering Burlingon's 2009 Mayor election that all
+the claims by Bouricius and FairVote in bold print above are false.
+</p>
+<h2> The votes </h2>
+<p>
+This was the second IRV election conducted in Burlington
+and it
+was won by Progressive Bob Kiss.
+<small>
+(The other 4 candidates were
+Andy Montroll[Dem], James Simpson[Green], Dan Smith[Indpt], and Kurt Wright[Repub].
+Kiss also won the <i>first</I> election, held in 2006; in 
+<a href="Burlington06.html">that election</a> Kiss had 
+been both the plain-plurality and IRV winner, and almost certainly also a
+"beats-all" and <a href="rangeVborda.html">Borda</a>
+winner &ndash; won by a "landslide" &ndash;
+so there was little basis to dispute his enthronement.)
+</small>
+</p>
+
+<table bgcolor="lightblue" cellspacing="7">
+<tr><td>
+<a href="BurlOfficialTallies.html">Official</a>
+Burlington Mayoral 2009 IRV race results (election held 3 March)
+from 
+<a href="http://www.burlingtonvotes.org/20090303/">http://www.burlingtonvotes.org/20090303/</a>.
+8980 valid ballots (also 4 "invalid" ballots were left uncounted).
+Smith, Simpson, and Write-ins were eliminated immediately &amp; simultaneously since
+their "defeat was mathematically inevitable."
+Then Montroll was dropped. 
+That left Wright vs Kiss in the final round, which was won by Kiss.
+</td><td>
+Unofficial Burlington 2009 Mayoral race vote data. 
+Votes <a href="JLburl09.txt">counted</a>  by Juho Laatu.
+Also counted independently 
+<a href="UVMburl09.pdf">(pdf)</a> by Univ. Vermont students
+in the <a href="http://www.uvm.edu/~vlrs/">Vermont Legislative Research Shop</a>
+supervised by professor Anthony Gierzynski.
+(All 8980 ballots included in these counts, 
+but candidates other than Kiss, Wright, and Montroll are ignored.  
+<small>
+Further data processing by W.D. Smith. 
+There are <i>disagreements</i> among the Laatu, UVM, and official counts
+by up to 5 votes.
+</small>)
+</td><td valign="bottom">
+[Sample ballot <a href="BurlVTmayorIRV.pdf">(pdf)</a>]
+<br><br><br><br>
+Pairwise-defeats matrix:
+entry says how many voters preferred canddt in that row
+over canddt in that column.
+</td></tr>
+
+
+<tr><td>
+
+<table bgcolor="yellow" border="1" cellpadding="1">
+<tr bgcolor="pink"><th>Candidate(Party)</th><th>1st Rd</th><th>2nd Rd</th><th>Final</th></tr>
+<tr><th>Bob KISS(Progr)</th><td>2585(29%)</td><td>2981</td><td bgcolor="#00FFCC">4313 (wins)</td></tr>
+<tr><th>Kurt WRIGHT(Repub)</th><td>2951(33%)</td><td>3294</td><td>4061</td></tr>
+<tr><th>Andy MONTROLL(Dem)</th><td>2063(23%)</td><td>2554</td></tr>
+<tr><th>Dan SMITH(Indpt)</th><td>1306(15%)</td></tr>
+<tr><th>James SIMPSON(Green)</th><td>35 (0.4%)</td></tr>
+<tr><th>(Write-ins)</th><td>36 (0.4%)</td></tr>
+</table>
+
+</td><td>
+
+<table bgcolor="yellow" border="1" cellpadding="1">
+<tr bgcolor="pink"><th>#Voters</th><th>Their Vote</th></tr>
+<tr><td>1332</td><td>M>K>W</td></tr>
+<tr><td>767</td><td>M>W>K</td></tr>
+<tr><td>455</td><td>M</td></tr>
+<tr><td>2043</td><td>K>M>W</td></tr>
+<tr><td>371</td><td>K>W>M</td></tr>
+<tr><td>568</td><td>K</td></tr>
+<tr><td>1513</td><td>W>M>K</td></tr>
+<tr><td>495</td><td>W>K>M</td></tr>
+<tr><td>1289</td><td>W</td></tr>
+</table>
+
+</td><td>
+
+<table  bgcolor="#cccccc" border="2">
+<tr><td>Canddt</td><td align="center">K</td><td align="center">M</td><td align="center">W</td></tr>
+<tr><td align="center">K</td><td bgcolor="#000000">*</td><td bgcolor="#CCCCFF">3477</td><td bgcolor="#00FFCC">4314</td></tr>
+<tr><th>M</th><td bgcolor="#00FFCC">4067</td><td bgcolor="#000000">*</td><td bgcolor="#00FFCC">4597</td></tr>
+<tr><td align="center">W</td><td bgcolor="#CCCCFF">4064</td><td bgcolor="#CCCCFF">3668</td><td bgcolor="#000000">*</td></tr>
+</table>
+
+</td></tr></table>
+
+<!--However, M defeats every rival pairwise by at least 589 votes.  
+(In contrast, K beat W in the final IRV round by a 252-vote official margin 
+http://www.burlingtonvotes.org/20090303/  .)
+http://www.uvm.edu/~vlrs/IRV.html
+-->
+<p>
+<b>Remarks on the counts:</b>
+Unfortunately, the Official, Laatu, and U.Vermont counts all <i>disagree</i>;
+but never by more than 5 votes (which is small enough that none of our
+conclusions below will be affected, no matter which count you trust).
+Laatu's count (done by software inputting official ballot files) 
+is the most complete of the three and is the one we shall use below.  
+The official count (which we downloaded various times, the latest on 27 March 2009
+from Burlington's web site; it had not changed)
+was also done by computer using
+the same input files; but the U.Vermont count was done manually.
+We believe we understand the reason for the Laatu-vs-Official discrepancy:
+it is that the official count treated ballots involving equal-rankings in a 
+stupid manner.  Specifically, the official method apparently <i>discarded</i>
+the 4 ballots ranking their top-two candidates equal; but did <i>not</i> discard
+ballots ranking other candidate-pairs equal.
+This approach is a holdover from the olden pre-computer days when a ballot had to be 
+put in one or the other pile.   
+Since this election was counted by computer there was nothing
+stopping the computer from putting <i>half</i> of the vote in <i>both</i> piles.  
+That, it seems to us,
+would have more-accurately reflected what the voter wanted (versus just discarding her 
+vote entirely).  This <a href="JLburl09.txt">subpage</a> gives
+full details about these discrepancies (as well as the full set of votes, plus
+many other calculations, e.g. full pairwise table).
+</p>
+<h2> The pathologies </h2>
+<p>
+<b>1.</b>
+According to the pairwise table,
+Democrat Andy Montroll 
+was favored over Republican Kurt Wright 56% to 44% (930-vote margin) and over
+Progressive Bob Kiss 54% to 46% (590-vote margin) 
+majorities in both cases.
+In other words, in voting terminology, Montroll was a <b>"beats-all winner,"</b>
+also called a
+"Condorcet winner" &ndash; and a fairly convincing one.
+</p><p>
+However, in the <i>IRV</i> election, Montroll came in <i>third!</i>
+Kiss beat Wright in the final IRV round with 51.5% (252-vote official margin).
+</p><p>
+We repeat: According to the preferences stated by the voters on their ballots, 
+if Montroll had gone head-to-head with either Kiss or Wright (or anybody else) 
+in a two-man race, he
+would be mayor.   This <b>refutes</b> Bouricius's claim that IRV "determines which candidate 
+is actually preferred by a majority of voters."
+</p>
+<blockquote><small>
+Indeed, the electorate expressed a clear ordering among the candidates:
+<center>
+Montroll &gt; Kiss &gt; Wright &gt; Smith &gt; Simpson
+</center>
+with a majority preferring every candidate higher in the ordering, 
+over every candidate lower in it. 
+And the "Montroll vs X" counts were
+<ul><li>
+ Montroll was preferred vs Kiss by a voter Majority,  4067-3477, margin 590.
+</li><li> Montroll was preferred vs Wright by a voter Majority, 4597-3668, margin 929.
+</li><li> Montroll was preferred vs Smith by a voter Majority, 4573-2998, margin 1575.
+</li><li> Montroll was preferred vs Simpson by a voter Majority,6267-591, margin 5676.
+</li><li> Montroll was preferred vs All Write-Ins Combined by a voter
+Majority, 6658-104, margin 6554.
+</li><li> There were no other candidates.
+</li><li> 
+Note that even Montroll's weakest margin (590 over Kiss) was  7.8% as a percentage,
+which is a pretty clear win. 7.8% was a greater victory margin than in 6 of the
+the 7 USA presidential elections 1988-2012.
+</li></ul>
+IRV elected Kiss, not Montroll, based on Kiss's "majority" (margin 250) versus Wright.
+</small></blockquote>
+<!--
+<p>The <i>full</i> pairwise matrix:</p>
+<p><table border="1" cellpadding="3" bgcolor="yellow">
+<tr align="center"><td colspan="2" rowspan="2"></td><th colspan="6">against</th></tr>
+<tr align="center"><td>H</td><td>K</td><td>M</td><td>N</td><td>R</td><td>W</td></tr>
+<tr align="center"><th rowspan=6>for</th><td class="for">H</td><td bgcolor="#000000">*</td><td class="loss">4305&frac12;</td><td class="loss">3702&frac12;</td><td class="win">6916</b></td><td class="win">7460</b></td><td class="loss">4399</td></tr>
+
+<tr align="center"><td class="for">K</td><td class="win">4674&frac12;</b></td><td bgcolor="#000000">*</td><td class="loss">4195</td><td class="win">6826</b></td><td class="win">7506&frac12;</b></td><td class="win">4615</b></td></tr>
+<tr align="center"><td class="for">M</td><td class="win">5277&frac12;</b></td><td class="win">4785</b></td><td bgcolor="#000000">*</td><td class="win">7328</b></td><td class="win">7767</b></td><td class="win">4954&frac12;</b></td></tr>
+<tr align="center"><td class="for">N</td><td class="loss">2064</td><td class="loss">2154</td><td class="loss">1652</td><td bgcolor="#000000">*</td><td class="win">6076&frac12;</b></td><td class="loss">2507&frac12;</td></tr>
+<tr align="center"><td class="for">R</td><td class="loss">1520</td><td class="loss">1473&frac12;</td><td class="loss">1213</td><td class="loss">2903&frac12;</td><td bgcolor="#000000">*</td><td class="loss">1540</td></tr>
+<tr align="center"><td class="for">W</td><td class="win">4581</b></td><td class="loss">4365</td><td class="loss">4025&frac12;</td><td class="win">6472&frac12;</b></td><td class="win">7440</b></td><td bgcolor="#000000">*</td></tr>
+</table></p>
+<p>M is the Condorcet winner.</p>
+-->
+<table bgcolor="#ff8844" cellpadding="5">
+<tr><td>
+<blockquote>
+Of course it was a huge success! No voting machines exploded or burst
+into flames. A majority of voters did not suffer from paper cuts.
+<br><br>
+A majority of the voters expressed a second preference. We'll assume
+they were glad to have that opportunity.
+<br><br>
+Hmm, I wonder if the W>M>K voters would be pleased to know that their
+second choices <i>weren't counted</i>, or that they could have elected M if
+they had voted for M as their first choice?
+I wonder if the Montroll supporters would be pleased to know that
+the voters preferred Montroll over every other candidate &ndash; including
+the winner that IRV chose?
+<br>
+&ndash; Jan Kok, responding to FairVote's claims this IRV election had been a "big success" like usual.
+</blockquote>
+</td></tr></table>
+<p>
+<small>
+(Montroll, incidentally, was endorsed by both
+former VT governor Howard Dean and the <i>Burlington Free Press.</i>
+It is <a href="IRVamp.html">possible</a>
+in principle for IRV to yield even more dramatic thwarted-majority pathologies,
+e.g. X defeating every rival pairwise by 99:1 or larger majorities, yet still IRV eliminates X
+in its first round.)
+</small>
+</p>
+<p>
+<b>2.</b>
+Despite that, IRV still seems to have performed better in this election than plain 
+<a href="Plurality.html">plurality</a>
+voting, which (based on top-preference votes) would have elected Wright.
+That would have been even worse, since Wright actually was a "lose-to-all loser" 
+among the Big Three,
+i.e. would have lost head-to-head races versus either Kiss or Montroll.
+</p><p>
+<small>
+Incidentally, 
+<a href="Plurality.html">plurality</a>
+also elects Wright with <i>reversed</I> ballots (M,K,W only),
+i.e. paradoxically regards Wright as <i>both</I> the best winner <i>and</i> worst
+loser among the Big Three!  
+IRV can <a href="IrvRevFail.html">also</a> exhibit such "reversal failures" but did not 
+in this particular race.
+</small>
+</p><p>
+<b>3.</b>
+Also, in this IRV election, Wright was a  <a href="IRVcs.html"><b>"spoiler"</b></a>; 
+if Wright had not been in the race then 
+Montroll would have won
+(which the Wright voters would have preferred:                                                                        
+1513 were for Montroll versus 495 for Kiss).
+Any voters who voted for Wright
+as their favorite
+"without any fear of inadvertently electing Kiss" were foolish to lack such fear,
+because, in fact, if they instead had "calculated" right, they could have strategically
+voted Montroll and
+thus avoided electing Kiss.  
+(That's an example of <b>"favorite-betrayal."</b>)
+This <b>refutes</b> Bouricius's &amp; FairVote's
+other claims shown in bold print.
+</p><p>
+<b>4.</b>
+Another problem with IRV is the fact that it <a href="IrvNonAdd.html">cannot</a> 
+be counted in precincts because there is no such thing as a "precinct subtotal."
+That's bad because it forces centralized (or at least centrally-directed) counting,
+thus making the election more vulnerable to fraud and communication outages.
+This election also exhibited this kind of <b>nonadditivity paradox</b>.
+There were 7 <a href="Burl09wards.pdf">wards</a>.  Apparently, 
+the ward-winners (if IRV had been done in each ward independently)
+would have been
+</p>
+<table border="1">
+<tr><th>Ward</th><td>Ward#1</td><td>Ward#2</td><td>Ward#3</td><td>Ward#5</td><td>Ward#6</td><td>Ward#7</td><td>Ward#4</td></tr>
+<tr><th>IRV Winner</th><td>KISS</td><td>KISS</td><td>KISS</td><td>MONTROLL</td><td>MONTROLL</td><td>WRIGHT</td><td>WRIGHT</td></tr>
+<tr><th>#Valid Ballots</th><td>836</td><td>691</td><td>1035</td><td>1530</td><td>1225</td><td>1715</td><td>1944</td></tr>
+<tr><th>Total Ballots</th><td align="center" colspan="3">2562</td><td align="center" colspan="2">2755</td><td align="center" colspan="2">3659</td></tr>
+</table>
+<p>
+Let's just say that it is hard to infer from this that Kiss "should" be the overall IRV winner &ndash; 
+most people would guess
+Wright or Montroll before guessing Kiss, especially if they knew that Wright voters 
+expressed a preference for Montroll over Kiss by more
+than a 3:1 ratio. <!-- (while Montroll voters preferred Kiss over Wright but by only a 12:7 ratio). -->
+</p>
+<p>
+<small>
+It is possible in principle for IRV to yield more-dramatic such pathologies, for example X can be the
+IRV winner in <i>every</I>
+district, with Y the IRV winner in the whole country.
+</small>
+<p>
+<b>5.</b>
+If we assume that the "W" voters who expressed no preference for K&gt;M or M&gt;K
+are regarded as (really) favoring one or the other with 50% chance &ndash;
+e.g. if "W"s are regarded as half W&gt;M&gt;K and half W&gt;K&gt;M (or any realistic ratio of 
+W&gt;K&gt;M and W&gt;M&gt;K besides 50-50)
+&ndash; then
+this election also  featured
+(what voting theorists call)
+a <b>"<a href="IRVpartic.html">no-show paradox</a>."</b>
+That is:
+If 753 Wright voters who favored Montroll over Kiss had simply <i>stayed home</i>
+and refused to vote, they would have gotten, in their view, a better election winner (Montroll) 
+than they got by honestly voting.   So for them,
+a better "calculation" than voting honestly, was
+<i>not</i> voting!  
+(<small>More <a href="BurlResponses.html#noshow">details</a></small>.)
+</p><p>
+<b>Was that "hypothetical" and depending on "cooked data"?</b>
+No.  Unfortunately some have acquired that mis-impression,
+either due to IRV-propagandists attacking me and trying to muddy the waters,
+and/or my failure to write clearly enough.  So let me now re-state the situation more clearly.
+The no-show paradox in Burlington was viewable as follows:
+</p><ol><li>
+All votes were of these 9 forms
+   <center>
+      M&gt;K&gt;W, M&gt;W&gt;K, M&gt;K=W, W&gt;M&gt;K, W&gt;K&gt;M, W&gt;M=K, K&gt;W&gt;M, K&gt;M&gt;W, K&gt;M=W
+   </center>
+if restricted to Burlington's top-3 candidates {W,K,M} only.
+     </li><li>
+If we modify that election to remove some ballots of form W&gt;M=K
+as well as some ballots of form W&gt;M&gt;K
+(note all of these ballots ranked K either sole bottom or coequal bottom):
+that causes K to stop winning and M to win.
+  </li><li>
+That was a paradox. Nothing hypothetical needed: just use the
+actual, entirely un-hypothetical, ballots.
+ </li><li>
+Now we <i>optionally</i> can go further by <i>hypothesizing</i> that the W&gt;M=K
+ballots really were
+W&gt;M&gt;K and/or W&gt;K&gt;M secret preferences, and that there were enough of the former
+so that all the removed ballots really did rank K sole-bottom either
+explicitly or secretly.  That hypothesis strikes me as very plausible, and if true
+arguably would make this paradox a bit "worse."  But if you don't like
+hypothesizing, then fine &ndash; just get rid of it entirely and we still
+have a genuine bottom-remove kind of paradox.
+</li></ol><p>
+I hope that clarifies this. And the same unhypotheticalness applies to the non-monotonicity paradox we are about to explain.
+And there was no need to "restrict to Burlington's top-3 candidates {W,K,M} only";
+you can also redo all that with the full ballots, including
+candidates Smith &amp; Simpson too, but I will not give the full details
+of that since they would be too voluminous.
+</p><p>
+<b>6.</b>
+Finally &ndash; and probably craziest of all &ndash;
+this election also featured <a href="Monotone.html"><b>non-monotonicity</b></a>.
+If 753 of the W-voters (specifically, all 495 of the W&gt;K&gt;M voters plus
+258 of the 1289 W-only voters) had instead decided to vote for K,
+then W would have been eliminated (not M) and then 
+M would have beaten K in the final IRV round by 4067 to 3755.
+In other words, 
+<i>Kiss won, but if 753 Wright-voters had switched their vote to Kiss, that would have made Kiss
+<u>lose</u>!</i>
+</p><p>
+<small>
+With non-monotonicity we can be <i>100% certain</I> that IRV <i>must</i> 
+have delivered the "wrong winner" in either the
+election, or in the altered election got by changing the 753 votes (or both) &ndash;
+there is no way to contend both winners were sensible choices.  (And the same sort
+of remark can also be made about no-show paradox elections.)
+</small>
+</p>
+
+<table bgcolor="#00ff88" cellpadding="5">
+<caption>
+Further false claims made by T.G.Bouricius and FairVote (IRV advocates).
+</caption>
+<tr><td>
+<blockquote>
+In terms of the <a href="Monotone.html#summary">frequency</a>
+of <b>non-monotonicity</b> in real-world elections: there is <b>no evidence</b>
+that this has <b>ever played a role in any IRV election</b> &ndash;
+not the IRV presidential elections in <a href="Ireland1990.html">Ireland</a>, 
+nor the literally thousands of hotly contested IRV federal elections that have taken place for generations in 
+Australia, nor in any of the IRV elections in the United States...
+Monotonicity has little if any real world impact.
+&ndash; FairVote web page on "monotonicity" downloaded 15 March 2009 and again Feb. 2011
+and again July 2013
+(still makes this claim).
+<!-- http://www.fairvote.org/monotonicity-and-instant-runoff-voting -->
+<br><br>
+Burlington just conducted an election for mayor using Instant Runoff Elections.
+This method quickly produced a candidate with a <b>majority</b> vote in a field of <b>four</b>
+candidates.
+&ndash; Letter by Adam Kleppner
+to <i>Caledonian Record</I> published 13 March 2009 and featured on FairVote web page.
+<small>
+Amazingly enough (which was not mentioned in this letter)
+<i>Caleb</i> Kleppner is yet another "FairVote senior analyst" and the 
+vice president of TrueBallot, Inc. and co-founder with Bouricius
+of Election Solutions Inc, both IRV-voting companies.
+</small>
+</blockquote>
+</td></tr></table>
+
+<h2>Who would other voting methods have elected? </h2>
+
+<table border="1">
+<tr><th>Method</th><td>Winner (full vote set)</td><td>Winner (M,K,W only)</td></tr>
+<tr><td>Nanson-Baldwin,
+Black,
+<a href="BtrIrv.html">BTR-IRV</a>,
+Raynaud,
+Schulze-beatpaths,
+Simpson-Kramer minmax,
+Tideman-ranked-pairs,
+<a href="TidemanRev.html#WBSIRV">WBS-IRV</a>,
+Copeland,
+Heitzig-River,
+Arrow-Raynaud,
+Borda (if combine all write-in canddts into "one" or omit them),
+Dodgson,
+Keener-Eigenvector, 
+Brian Olson's IRNR method, 
+Sinkhorn,
+Bucklin,
+and (<a href="AppCW.html">probably</a>)
+Range &amp; Approval 
+</td><td>MONTROLL</td><td>MONTROLL</td></tr>
+<tr><td>AntiPlurality and Coombs</td><td align="center">?</td><td>MONTROLL</td></tr>
+<tr><td>IRV</td><td>KISS</td><td>KISS</td></tr>
+<tr><td>Plain Plurality</td><td>WRIGHT</td><td>WRIGHT</td></tr>
+</table>
+
+<p>
+<small>
+Notes: 
+There really is no sensible way to run Borda, Coombs, or AntiPlurality elections if there are write-in candidates. 
+</small>
+</p>
+<a name="UngerApp"></a>
+<P>
+We do not know who <b>Range &amp; Approval voting</b>
+would have elected because we only have rank-order ballot data &ndash;
+depending on how the voters chose their "approval thresholds" or numerical range-vote scores,
+they could have made <i>any</i> of the Big Three win (also Smith).
+However it seems <a href="AppCW.html">likely</a>
+they would have elected Montroll.
+Here's an <b>analysis</b> supporting that view:
+Suppose we assume that voters who ranked exactly <i>one</i> candidate among the big
+three would have approved him alone; voters who ranked exactly <i>two</i>
+would have approved both,
+and voters who ranked all <i>three</i> would have approved the top-two
+a fraction <b>X</b> of the time (otherwise approve top-one alone).
+<small>
+The point of this analysis, suggested by Stephen Unger, is that
+voters were allowed to vote "A&gt;B," which while <i>mathematically</i>
+equivalent to "A&gt;B&gt;C"
+among the three candidates A,B,C, was <i>psychologically</I> different; by
+"ranking" a candidate versus "leaving him unranked" those voters in some sense were 
+<i>providing</I>
+an "approval threshhold."
+</small>
+Then the total approval counts would be
+</p>
+<center>
+Montroll=4261+1849X, Kiss=3774+1035X, and Wright=3694+741X.
+</center>
+<p>
+Note that Montroll is the most-approved (and Wright the least-approved)
+<i>regardless</i> of the value of X for <i>all</i> X with 0&le;X&le;1.
+</p><p>
+Hence:
+pretty much every voting method mankind ever invented would elect MONTROLL 
+&ndash; making this a pretty easy election to call &ndash;
+<i>except</I> that IRV elects KISS and plurality elects WRIGHT.
+This election thus <i>singles out IRV &amp; plurality as
+nearly-uniquely bad performers.</i>
+</p>
+<p>
+<b>Another</b> way of looking at it is: 
+among the Big Three, <i>all</i> these voting methods, 
+<a href="IrvLogicBogus.html">including</a> IRV,
+unanimously agree that Wright is the <i>worst</i> choice, i.e,
+they all would elect Wright using <i>reversed</i> ballots.
+(The exceptions: AntiPlurality would select Montroll and Coombs would select Kiss as "worst.")
+If we agree Wright is clearly worst,
+then it comes down to Kiss vs Montroll.  
+And the voters prefer MONTROLL over Kiss by
+4067 to 3477.
+</p>
+
+<h2>How will the IRV-propagandists respond? </h2>
+
+<p>
+Our observation is that IRV-propagandists generally follow this 4-step procedure.
+</p>
+<ol>
+<li>
+Contend IRV is the most amazing, best-possible voting method in all sorts of (unfortunately
+demonstrably <a href="Irvtalk.html">false</a>) ways.
+This tends to impress those who think about it for &le;3 minutes
+or know little about voting theory.
+</li><li>
+When confronted with counterexamples to their claims, sneer those were mere "semantics" of interest only
+to "mathematicians."   (Unfortunately, as we've just seen, these counterexamples have very real 
+democracy-denying consequences.)
+</li><li>
+When that doesn't work (because now they're talking to somebody who actually knows something), 
+contend such counterexamples, while <i>admittedly</i> making IRV look bad,
+only arise incredibly rarely.
+(E.g. FairVote "senior analyst"
+Stephen Hill, quoted in W.Poundstone's <a href="PoundstoneRev.html">book</a> <i>Gaming the Vote</i>,
+compared the rate of occurrence of IRV pathologies like non-monotonicity to that of a "major meteorite strike.")
+Hill must be amazed how not only non-monotonicity, but 5 other pathologies <i>as well</i>, all managed to
+occur in only the second IRV election Burlington ever tried!  What an incredible fluke! This must be
+like the annihilation of the entire <i>galaxy</I>!
+The amazingness increases to even greater astronomical levels when you realize the 
+number of times
+such phenomena have already been seen when surveying the
+<a href="LAgovs.html">Louisiana governor runoff elections</a> (such
+as the notorious
+&quot;<a href="LizVwiz.html">Lizard vs. Wizard</a>&quot; race),
+or the
+<a href="Aus07.html">Australia 2007</a> IRV races; and
+in the (also continually touted by these same IRV propagandists as a "great success" &ndash; as usual
+they never mention its pathologies when they do that) 
+<a href="Ireland1990.html">1990 Irish presidential</a>  election,
+<a href="Frome2009.html">Frome 2009</a>, ...
+</li><li>
+When <i>that</i> too has fallen to the ground, they generally claim the pathology actually was no problem, e.g.
+it was just <i>great</i>
+that Kiss won this election, and they see no problem with any of the vast number
+of pathologies here (course, they'd perceived problems back 
+when it was a "rare" artificial election example in
+step 3, but that was <i>then</i>);  
+or contend that better and simpler voting systems 
+such as <a href="RangeVoting.html">range</a> or 
+<a href="Approval.html">approval</a> are somehow bad and/or 
+unobtainable 
+for <a href="RVcrit.html">mysterious reasons</a>
+that only they possess, but which cannot be divulged or clearly explained;
+or falsely contend that somehow <a href="ArrowThm.html">Arrow's theorem</a> means that nothing
+can avoid these problems, so IRV is doing as well as anything could;
+or flail around trying to distract attention with some red herring.
+</li>
+</ol>
+
+<p>
+(When with a new audience, they revert back to step 1.)
+</p>
+
+<p>
+(<b>Update</b> 27 March 2009)
+IRV propagandists indeed responded roughly as predicted above:
+Extensive
+<a href="BurlResponses.html">discussion</a> &amp; compressed
+<a href="BurlResponses.html#alldone">summary</a>.
+</p>
+
+<p>
+(<b>Update:</b> March 2010)
+Burlington by referendum voted to 
+<a href="http://www.cctv.org/watch-tv/programs/instant-runoff-voting-interviews">repeal</a> 
+IRV.  Unfortunately the only choices the 
+referendum provided were (a) IRV or (b) a plurality+runoff scheme;  no 
+particularly good voting-system choice (c) was available.
+A year later still (March 2011), 
+Mayor Kiss attempted to bring back IRV by a "backdoor" method &ndash;
+or his critics interpreted it that way &ndash; but this attempt was rejected by
+Burlington's voters by a 58-42 margin.
+<!--
+[<a href="http://www.burlingtonfreepress.com/article/20110301/NEWS03/303010003/Burlington-voters-decisively-defeat-two-key-proposals-backed-by-Mayor-Bob-Kiss">Burlington voters decisively defeat two key proposals backed by Mayor Bob Kiss</a>, 
+<i>Burlington Free Press</i> article by John Briggs 1 March 2011].
+-->
+There were several
+<i>Burlington Free Press</i> 
+<a href="BurlRepeal.html">articles</a> on this repeal by John Briggs.
+</p>
+
+<table bgcolor="#00ff88" cellpadding="5">
+<caption>
+Claims made by T.G.Bouricius and FairVote (IRV advocates)
+</caption>
+<tr><td>
+<blockquote>
+My own city of Burlington VT, has used IRV with <b>great success</b> since 2006.
+As a political scientist I am quite familiar with the characteristics of various election 
+methods...
+&ndash; Terrill Bouricius, letter published in <i>Aspen Times</i> (Colorado) 9 June 2009,
+i.e. 3 months after this election and shortly before the
+Burlington's IRV repeal.
+</blockquote>
+</td></tr>
+</table>
+
+
+<hr>
+
+<a name="summary"></a>
+<h2>The truth </h2>
+<p>
+As shown in this election,
+IRV does <i>not</I> "solve the spoiler problem," does <i>not</i> 
+"allow voters to vote their true preference without fear of inadvertently electing
+a candidate they cannot stand," and it does <i>not</i> elect candidates "actually preferred 
+by a majority."  
+These and other (e.g. non-monotonicity) <a href="IrvPathologySurvey.html">pathologies</a>
+are <a href="IrvParadoxProbabilities.html"><i>not</i></a> rare.
+IRV in this election did <i>not</i> serve as a "bulwark of democracy" 
+&ndash; rather
+the opposite.
+Our belief is that <a href="RangeVoting.html">range voting</a>, also known as 
+"score voting," (and probably also <a href="Approval.html">approval</a> voting)
+would 
+<i>not</i> have exhibited any of these problems and 
+in the present example would have elected Montroll, with Kiss second.
+(Indeed range voting <i>never</i> exhibits non-monotonicity or 
+<a href="Glossary.html#spoiler">spoilers</a>, and 
+it is <a href="AppCW.html">rare</a> that it refuses to elect beats-all winners.)
+<small>
+Kiss would probably have done better (relatively speaking) with range than with approval,
+though &ndash; based on general principles.  Specifically, we can simplistically regard
+Kiss as "leftist," Montroll as "centrist," and Wright as "rightist" in this election.
+IRV tends to <a href="IrvExtreme.html">favor</a> extremists while approval voting tends
+to favor centrists; but range voting has little or no built-in favortism for or against either.
+</small>
+</p>
+<!--
+<p>
+<small>
+(With <a href="rangeVborda.html">Borda<a> voting
+ <i>among the Big Three</i> Montroll also would have won with
+9588 as opposed to Kiss's 8659.5 and Wright's 8239.5;
+however Borda <i>among all 5 candidates</i> might have acted differently and indeed there
+really is no way to run Borda elections at all if there are write-in candidates.
+Montroll also would have won huge under <i>antiPlurality</i> voting among the Big Three
+although again that might have changed with the full 5-candidate field and again there           
+really is no way to run antiPlurality elections at all if there are write-in candidates.)
+</small>
+
+--    Adam Kleppner  (802) 896-6311  256 Kleppner Rd,  Wardsboro, VT 05355 --
+-->
+
+<h3> Some references </h3> <!-- suggested by Gierzynski -->
+<small>
+<p>
+Anthony Quas:
+Anomalous Outcomes in Preferential Voting,
+Stochastics and Dynamics 4,1 (2004) 95-105; 
+</p><p>
+William H. Riker &amp; Peter C. Ordeshook: An Introduction to Positive Political Theory 
+(Englewood Cliffs, NJ: Prentice-Hall, Inc., 1973); 
+</p><p>
+Peter Fishburn &amp; Steven Brams:
+Paradoxes of Preferential Voting: 
+What Can Go Wrong with Sophisticated Voting Systems Designed to Remedy Problems of Simpler Systems,
+Mathematics Magazine 56,4 (September 1983) 207-214.
+</p>
+</small>
+<p>
+</p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

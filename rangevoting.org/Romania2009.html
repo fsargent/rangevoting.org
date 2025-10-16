@@ -1,0 +1,1727 @@
+<html>
+<head>
+<title>
+RangeVoting.org - The Romanian 2009 presidential election featured Condorcet cycles
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> The Romanian 2009 presidential election featured one or more high Condorcet cycles </H1>
+
+<p><small>By Warren D. Smith, final draft 13 Dec 2009.
+<!-- first draft 7 Dec 2009; 2nd draft 9 Dec.
+3rd draft with more stats and redone confidence #s 11 Dec.   -->
+<br>
+Email comments to warren.wds AT gmail.com.
+&nbsp;&nbsp;
+Skip to <a href="#conclu">conclusions</a>.</small></p>
+
+<p><b>Abstract.</b>
+With confidence&asymp;99.7%,
+the Romanian 2009 presidential election included the "Condorcet cycle"
+Geoana&sup;Oprescu&sup;Basescu&sup;Geoana where "&sup;" means "majority-preferred."
+B (followed by G) was the official winner.  Other cycles also may have occurred;
+in all there is 99.9% confidence at least one existed that contained both B &amp; G.
+With "<a href="Approval.html">approval voting</a>" 
+(and probably also "<a href="RangeVoting.html">range voting</a>") Oprescu would have
+been the most likely winner, even though he officially finished 6th.
+This marks the first time a Condorcet Cycle has been detected high in
+a large national election.
+</p>
+
+<h2>1. Introduction </h2>
+<p>
+It has been well known since the days of the 
+Marquis de Condorcet (1743-1794)
+&ndash;
+and previously clearly had been
+understood by Ramon Llull (1232-1315)
+&ndash;
+that <a href="CondorcetCycles.html">Condorcet cycles</a> can exist in elections.
+That is, the preferences of the voters can be such that
+every candidate has at least one rival preferred over him by a voter majority.
+For example, consider this 19-voter election:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<caption>
+Table 1.
+Example election with 19 voters and three candidates A,B,C, exhibiting
+a "Condorcet cycle."
+</caption>
+<tr>
+<th> #voters </th>
+<th> Their Preference Order </th>
+</tr>
+<tr>
+<td align="center">
+    8
+</td>
+<td align="center">
+B>C>A
+</td>
+</tr>
+<tr>
+<td align="center">
+    6
+<td align="center">
+C>A>B
+</td>
+</tr>
+<tr>
+<td align="center">
+    5
+<td align="center">
+A>B>C
+</td>
+</tr>
+</table>
+
+<p>
+Should candidate B win?  One could argue "No, since
+A is preferred over B by 11 out of 19 voters."
+So should A win?
+"No, since
+C is preferred over A by 14 out of 19 voters."
+So C must be the right winner?
+"Still no, since
+B is preferred over C by 13 out of 19 voters."
+</p>
+
+<p>
+Condorcet cycles are tremendously important morally and philosophically since
+they show that "naive majoritarianism" is logically untenable, since
+self-contradictory.  That is, it is <i>untenable</i> to claim 
+"if there are a finite number of choices and choice A is preferred by a voter majority 
+over choice B, then A is 'better' than B."  The whole idea of "majority rule" therefore
+seems to need to be discarded as a basis for "democracy."
+Condorcet cycles also underlie, e.g. 
+<a href="ArrowThm.html">Arrow's impossibility theorem</a>
+for rank-order-ballot voting systems.
+</p>
+
+<p>
+This can be considered a good reason to prefer <i>non</i>-rank-order-ballot voting systems 
+not afflicted by this kind of logical paradox, unaffected by Arrow's theorem, and
+obeying a different (and now logically consistent) notion of "majority rule,"
+e.g. <a href=https://rangevoting.org/RangeVoting.html">range voting</a>.
+</p>
+
+<p>
+All that was fine as a matter of abstract philosophy
+&ndash; but in <i>"real world" elections</i>
+Condorcet cycles  seem to be quite rare.   
+</p><blockquote><small>
+Although they seem to arise considerably more
+frequently in <i>legislative votes</I> than in single-winner  public elections,
+because legislators often strive to create them intentionally, e.g. they form the basis
+for the "poison pill" legislative tactic.
+Many examples have been documented in the writings of William H. Riker,
+and see also <a href="KurrildKendnote3.txt">endnote 3</a>
+of Kurrild-Klitsgaard 2001.
+</small></blockquote>
+
+<p>
+Indeed, in the 750 years since Llull, apparently not a single Condorcet top-cycle
+has ever been clearly documented in any large governmental election!
+Which leads to the question: <i>how frequent are Condorcet cycles?</i>
+Some attempted answers are in table 2.
+</p>
+
+<table bgcolor="yellow" border="1">
+<caption>
+Table 2. 
+The
+probability of a Condorcet top cycle (i.e the probability that no "Condorcet Winner"
+exists) in various probabilistic models of elections.
+</caption>
+<tr><th>#Canddts</th>
+<th>Probabilistic model</th>
+<th>Prob(No Condorcet winner)</th>
+<th>Source</th><tr>
+<tr>
+<td>3</td>
+<td><a href="RandElect.html">Random election model</a> 
+aka "Impartial Culture" (all 3!<sup>V</sup> rank-order-ballot elections with V voters 
+equally likely, in limit V&rarr;&infin;)</td><td>
+G = [3arcsec(3)-&pi;]/[4&pi;] = [3arctan(&radic;8)-&pi;]/[4&pi;] &asymp; <b>8.78%</b>
+</td><td>
+G.Gilbaud (stated in footnote without proof) 1952.
+</td></tr>
+<tr>
+<td>4</td>
+<td><a href="RandElect.html">Random election model</a> 
+aka "Impartial Culture" (all 4!<sup>V</sup> elections with V voters 
+equally likely, in limit V&rarr;&infin;)</td><td>
+2G &asymp; <b>17.55%</b>
+</td><td>
+"R.May's theorem," reproven very simply by P.Fishburn 1973.
+</td></tr>
+<tr>
+<td>C</td>
+<td><a href="RandElect.html">Random election model</a> 
+aka "Impartial Culture" (all C!<sup>V</sup> elections with V voters and C candidates
+equally likely, in limit V&rarr;&infin;)</td><td>
+Exact formula as 1D integral known, yields Prob(no CW)&asymp;51.125% when C=10 and
+Prob&rarr;<b>100%</b> when C&rarr;&infin;,
+indeed Prob(Cond.Winner exists)&lt;C<sup>-0.99</sup> for all sufficiently large C.
+</td><td>
+W.D.Smith Jan. 2009, see
+<a href="PuzzlePage.html#p102">CRV Puzzle #102</a>.
+</td></tr>
+<tr>
+<td>3</td>
+<td><a href="Glossary.html#Dirichlet">Dirichlet model</a> 
+[the 3! kinds of vote-total, using rank-order-ballots,
+are uniformly distributed on 5-simplex; V&rarr;&infin; voters]
+</td><td>
+1/16 = <b>6.25%</b>
+</td><td rowspan="2">
+W.D.Smith, see 
+<a href="PuzzlePage.html#p85">CRV Puzzle #85</a>.
+and <a href="PuzzlePage.html#p42">#42</a>.
+</td></tr>
+<tr>
+<td>4</td>
+<td><a href="Glossary.html#Dirichlet">Dirichlet model</a> 
+[the 4! kinds of vote-total are uniformly distributed on 23-simplex]
+</td><td>331/2048=<b>16.162109375%</b>
+<!--16.1620389</b>&plusmn;0.0000607)%
+based on 3.69&times;10<sup>11</sup> Monte Carlo elections;
+perhaps 331/2048 ?  yes!  
+315/1949  diff=0.000000955279118  pr=0.000020
+331/2048  diff=0.000000704750000  pr=0.000033
+347/2147  diff=0.000000477325105  pr=0.000045
+363/2246  diff=0.000000269949243  pr=0.000052
+379/2345  diff=0.000000080083156  pr=0.000054
+774/4789  diff=0.000000008962414  pr=0.000025
+shitt
+32768*5000000: 83.83787360
+ 8192*5000000: 83.83805351
+32768*5000000: 83.83802554
+weighted mean: 83.83796112 = (83.83787360*4 + 83.83802554*4 + 83.83805351)/9 
+stddev = sqrt(.162*.838/(8192*9*5000000)) = 0.0000006068
+-->
+</td></tr>
+<tr>
+<td>C</td>
+<td><a href="Glossary.html#Dirichlet">Dirichlet model</a> 
+[the C! kinds of vote-total are uniformly distributed on (C!-1)-simplex]
+</td><td>
+Goes to <b>100%</b> when C&rarr;&infin;,
+indeed Prob(Cond.Winner exists)&lt;C<sup>-0.99</sup> for all sufficiently large C.
+</td><td>
+A.Quas 2004.
+</td></tr>
+<tr>
+<td>3</td>
+<td><a href="RandElect.html">Random election model</a> 
+aka "Impartial Culture" (all 12<sup>V</sup> elections with V voters 
+equally likely, rank-orderings <i>with equalities</i> allowed as "votes"
+in limit V&rarr;&infin;)</td><td>
+[3arccos(2/5)-&pi;]/[4&pi;]  &asymp; <b>2.68%</b>
+</td><td>
+W.D.Smith 2004, see
+<a href="PuzzlePage.html#p7">CRV Puzzle #7</a>.
+</td></tr>
+<tr>
+<td>C</td>
+<td>Candidates are distinct points on a real line and each voter's utility function for the 
+candidates is an increasing-then-decreasing function of position on that line; 
+voting honest &amp; odd number of voters</td>
+<th>0</th><td>
+D.Black's <a href="BlackSingle.html">singlepeakedness</a> theorem from 1948
+</td></tr>
+<tr>
+<td>C&ge;1</td>
+<td>"Random tournament" model where every pairwise victory is decided by a fair coin toss
+(independent coins for all pairs A,B)
+</td><th>1-2<sup>1-C</sup>C</th><td>
+easy
+</td></tr>
+<tr>
+<td>3</td>
+<td>Data-fit statistical model of "real world"
+</td><th>(1.2&plusmn;0.2)%</th><td rowspan="3">
+T.N.Tideman 2006, 
+<a href="TidemanElModel.html">recalculated</a> by W.D.Smith 2009
+</td></tr>
+<tr>
+<td>4</td>
+<td>Data-fit statistical model of "real world"
+</td><th>(2.5&plusmn;0.4)%</th>
+</td></tr>
+<tr>
+<td>30</td>
+<td>Data-fit statistical model of "real world"
+</td><th>(25.1&plusmn;1.7)%</th></tr>
+</table>
+
+<p>
+This absence,
+<!--of clearly documented Condorcet cycles in 750 years of
+large public governmental elections,-->
+however, does not necessarily prove
+cycles rare.  They might have been quite common but merely escaped notice!
+[Actually, all it proves is that Condorcet cycles <i>easily provable from the
+usually-small subset of the full preference dataset that manages to become
+publicly available</i>,
+are rare.]
+Why?  
+Because in order to prove a Condorcet cycle exists in some election, you need to have either
+<ol>
+<li>
+rank-order-ballots,
+</li><li>
+or extensive "A versus B" pairwise-preference polling.
+</li></ol>
+In fact, in the last 750 years, it is doubtful that
+there have even been 100 major government
+elections where 
+it even was <i>possible to hope</i> to detect a Condorcet cycle.  In all the
+other major government elections, the necessary
+data simply was never collected, or never made public.  To explain that:
+</p><p>
+<b>1.</b> 
+Elections with rank-order ballots are rare since almost all countries employ
+"name one candidate" (<a href="Plurality.html">plurality</a>-voting-style) ballots.
+<!--And in almost every rank-order-ballot election in world history 
+thousands have been conducted in-->
+But in Ireland and Australia, the top two countries using
+"single transferable vote" rank-order-ballot schemes) 
+their governments have
+<i>refused to publish</i> the ballot data and indeed refused even to publish
+the table of pairwise-preference counts.  Instead, they merely publish
+certain incomplete summaries of the ballots inadequate to reconstruct these things.
+These countries also will not give this data to researchers who request it.
+<!--at least not whenever I've tried over the last 5 years.-->
+There have been about 3 experiments 
+in which Ireland or Australia <i>did</i> publish a
+full set of ballots, but in those few cases no Condorcet top-cycle arose.
+</p><p>
+<b>2.</b> 
+In countries (and there are many)
+which conduct two-round "plurality+top-two-runoff" presidential
+elections, it has become common
+for pre-election and/or exit-polling agencies to ask pairwise questions of the form
+"if it comes down to a top-2-runoff between A and B, who would you vote for?"
+<!--However, this practice has only become common in the last 20-30 years, seems not to
+occur in Australia and Ireland, and only tends to occur
+in especially important elections such as national presidential.-->
+But it only becomes possible to 
+see a Condorcet cycle if
+these questions are asked for enough candidate-pairs (A,B).  
+And usually they are not.
+</p><p>
+Our purpose here is to report the first ever observation (via the second method) of
+a Condorcet cycle high in an important government election: 
+namely in the 2009 Romanian presidential election.   
+</p><blockquote><small>
+I detected this cycle
+about 30 seconds after the official results were announced early in the morning of
+Monday 7 Dec 2009 Romanian time, 
+and had been eagerly awaiting and expecting its appearance for about 5 hours.
+</small></blockquote>
+<!-- 
+Unfortunately the situation is not quite
+as clearcut as I originally thought it was going to 
+be; for why, see 
+<a href="#polls">section 3 on polls</a>.
+
+<b>Remark:</b>
+After writing this paper, I found the paper by Kurrild-Klitgaard 2001 
+presenting evidence for another Condorcet cycle in a poll of 
+Danish voter preferences for their prime minister.  That
+was not, however, a real election, since the Danish PM is not directly elected by the people.
+</p>
+-->
+
+<h2>2. The Romanian 2009 Presidential election &ndash; results </h2>
+
+<table bgcolor="yellow" border="1">
+<tr>
+<caption>
+Table 3. 
+Summary of 2009 Romanian presidential election
+(round 1 on 22 Nov; round 2 on 6 Dec)
+from
+Biroul Electoral Central
+(<a href="http://www.bec2009p.ro/rezultate.html">http://www.bec2009p.ro/rezultate.html</a>)
+</caption>
+<tr>
+<th>Candidate</th><th>Party</th>
+<th>1st Round Votes</th><th>Runoff Votes</th>
+</tr>
+<tr bgcolor="pink">
+<td>Traian Basescu</td>
+<td>Democratic Liberal Party (PDL)</td>
+<td>3153640=32.44%</td>
+<td>5275808=50.33% (wins)</td>
+</tr>
+<tr>
+<td>Mircea Geoana</td>
+<td>Social Democ (PSD) &amp; Conservative Ptys (PC)</td>
+<td>3027838=31.15%</td>
+<td>5205760=49.66%</td>
+</tr>
+<tr>
+<td>Crin Antonescu</td>
+<td>National Liberal Party (PNL)</td>
+<td>1945831=20.02%</td>
+<td>&nbsp;</td>
+</tr><tr>
+<td>Corneliu V. Tudor</td>
+<td>Greater Romania Party</td>
+<td>540380=5.56%</td>
+<td>&nbsp;</td>
+</tr><tr>
+<td>Hunor Kelemen</td>
+<td>Democ'c Union of Hungarians in Romania</td>
+<td>372764=3.83%</td>
+<td>&nbsp;</td>
+</tr><tr>
+<td>Sorin Oprescu</td>
+<td>Independent (i.e, no party)</td>
+<td>309764=3.18%</td>
+<td>&nbsp;</td>
+</tr><tr>
+<td>George Becali</td>
+<td>New Generation / Christian Democratic Ptys</td>
+<td>186390=1.91%</td>
+<td>&nbsp;</td>
+</tr><tr>
+<td>Remus Cernea</td>
+<td>Green Party</td>
+<td>60539=0.62%</td>
+<td>&nbsp;</td>
+</tr><tr>
+<td>Constantin Rotaru</td>
+<td>Socialist Alliance Party</td>
+<td>43684=0.45%</td>
+<td>&nbsp;</td>
+</tr><tr>
+<td>Gheorghe-Eduard Manole</td>
+<td>Ecologist Party</td>
+<td>22515=0.23%</td>
+<td>&nbsp;</td>
+</tr><tr>
+<td>Constantin-Ninel Potirca</td>
+<td>Independent</td>
+<td>21306=0.21%</td>
+<td>&nbsp;</td>
+</tr>
+<tr bgcolor="pink">
+<td colspan="2">Invalid votes</td>
+<td>227446=2.28%</td>
+<td>138476=1.30%</td>
+</tr>
+<tr>
+<td colspan="2"><b>Totals</b></td>
+<th>9946748=100% (54.4% turnout)</th>
+<th>10620116=100% (58.0% turnout)</th>
+</tr>
+</table>
+
+<p>
+<b>Comments:</b>
+The "totals"
+given by the <a href="http://www.bec2009p.ro/rezultate.html">Biroul</a>
+are not exactly equal to the column sums.  <!--I do not know what they are.-->
+Also 50.33+49.66=99.99&ne;100, which is another error made by the Biroul.
+<!--which I merely repeat here.-->
+Geoana contested his loss in constitutional court,
+<a href="RomaniaFraud2.html">accusing</a> Basescu of electoral fraud.
+On 11 December the court decided to recount all 138476 invalid votes.
+This recount actually slightly increased Basescu's lead
+(it found 2247 ballots actually <i>were</i> valid,
+1260 for Basescu and 987 for Geoana).
+On December 14 the court
+declared Basescu the victor, and Geoana conceded
+defeat.
+<!--
+http://www.reuters.com/article/idUSLDE5BD25V20091214
+14 Dec Reuters says Court says Basescu won, Geoana concedes.
+-->
+</p><blockquote><small>
+There is <a href="RomaniaFraud1.txt">evidence</a>
+that some fraud occurred, although it does not amount to a large quantity; Geoana
+suggests those with more evidence send it to <tt>fraudarealegeri2009@gmail.com</tt>.
+I personally am convinced based on exit polls that
+the fraud, if any, was small in percentage terms
+&ndash; but unfortunately, only a small fraud was needed.
+</small></blockquote><p>
+<a href="rangeVirv.html">'Instant' runoff (IRV)</a>
+would immediately have eliminated everybody except Basescu, Geoana, and Antonescu
+(since the sum of all their top-preference votes failed to exceed Antonescu's 20.02%).
+However, it is not obvious whom IRV would have eliminated next.
+<a href="Asset.html">Asset voting</a> would presumably have elected Geoana since &ndash;
+somewhat unexpectedly &ndash;
+Antonescu, Marko, and Becali all endorsed Geoana in the G vs B runoff.
+(Antonescu called Geoana the "lesser evil" and denounced Basescu as a
+"demagogue and a populist." Oprescu also argued Geoana was the lesser evil, but
+refused to fall into the trap of [therefore] endorsing him, since in Oprescu's view both G and B
+were "false Romanians.")
+Evidently, though,  Romania's voters were mostly unmoved by those endorsements.
+</p>
+
+<a name="polls"></a>
+<h2>3. Pairwise Polls </h2>
+<p>
+The principal pollsters and their pairwise-style pre-election polls are reported
+in the following tables.
+</p><p>
+Unfortunately, the media simply invented some fake "results" for "polls"
+which never actually happened.  E.g. CURS and CCSB both
+posted warnings on their web pages about that.
+Multiple media coverage of the same "poll" does not necessarily prove that poll existed since 
+different media outlets copy each other.
+It is preferable to check primary sources 
+(i.e. the polling firms) in all cases and distrust media accounts &ndash;
+or at least, only
+rely on the media which actually sponsored that poll!
+Unfortunately, I have not always been able to do that, but I have done it
+for all the polls in the most important and critical tables 7, 9, and 11, the online
+polls, and the Gallup polls in &sect;5.
+<p>
+
+<table bgcolor="yellow">
+<tr>
+<caption>
+Table 4. 
+Important polling firms in Romania, and media or political 
+entities that sponsored their efforts in 2009.
+</caption>
+<tr>
+<th>Pollster</th><th>Known Media or Political Sponsors</th>
+</tr>
+<tr><td>CURS: Center for Urban &amp; Rural Sociology
+<a href="http://www.curs.ro/">http://www.curs.ro/</a></td><td>
+Evenimentul Zilei &amp; Televiziunea Romana
+</td></tr>
+<tr><td>INCOR:
+Institutul pentru Cooperare Regionala si Prevenirea Conflictelor,
+<a href="http://www.incor.ro/">http://www.incor.ro/</a></td><td>PNL</td></tr>
+<tr><td>CCSB:
+Compania de Cercetare Sociologica si Branding,
+<a href="http://www.ccsb.ro/">http://www.ccsb.ro/</a></td><td>
+inpolitics.ro, Antena 3</td></tr>
+<tr><td>CSOP:
+<a href="http://www.csop.ro/">http://www.csop.ro/</a></td><td>PDL</td></tr>
+<tr><td>IOP: Institutul Operations Research,
+<a href="http://www.operationsresearch.ro/">http://www.operationsresearch.ro/</a> ??</td>
+<td>inpolitics.ro</td></tr>
+<tr><td>INSOMAR:
+<a href="http://www.insomar.ro/">http://www.insomar.ro/</a></td><td>
+Realitatea TV</td></tr>
+<tr><td>BCS</td><td>
+Statele Unite</td></tr> <!-- BCS 19 oct with 1200 people -->
+<tr><td>Gallup Romania
+<a href="http://eu.gallup.com/bucharest/118432/about.aspx">http://eu.gallup.com/bucharest/118432/about.aspx</a></td><td>PNL? <!--dubious?--></td></tr>
+</table>
+
+<p>
+<b>Comments:</b>
+Sometimes pollsters conduct and publicize polls without being paid for it by anybody,
+for public relations, self-calibration, and/or advertising purposes.
+</p><blockquote><small>
+Some Romanian conspiracy-theorist bloggers and media have insinuated that
+INSOMAR is supported by 
+Sorin Ovidiu Vantu (the "media mogul" who owns Realitatea TV and who was linked
+with Geoana) while CCSB is 67% owned by
+Camelia Voiculescu, the daughter of another media "mogul" whom Basescu also accused 
+(during a G-vs-B debate)
+of associations with Geoana and a founder of the PC 
+&ndash; and therefore, their polls should not be
+trusted.  (And indeed, the CCSB and INSOMAR polls comparing Geoana versus Basescu were
+the ones with the most outrageous pro-Geoana errors, while Gallup, CURS, and 
+CSOP basically got correct answers.)
+Fortunately, the reader may verify that even if all CCSB and INSOMAR polls are discarded 
+from our dataset, the main conclusions of this paper will not be greatly affected.
+<br><br>
+The problem in a nutshell is this:
+there are <i>two</i> different voter-populations (a) the voters in the official B-vs-G runoff
+and (b) the pollsters' attempts to get representative samples (with different pollsters
+using different techniques).
+Our statistical analyses will all be predicated on the assumption that (a) and (b)
+are the same.   But at least in the case of the largest INSOMAR polls, table 5
+indicates differences existed.
+<br><br>
+The usual patter about why such conspiracy theories are dubious
+is that pollsters are very motivated by market forces
+&ndash; <i>especially</i> in the case of publicly-released "showcase" 
+polls like these &ndash; against delivering wrong/inaccurate answers; and
+further, there is little motivation to fake poll results anyhow
+(since, e.g, there is no logical reason why a poll wrongly predicting a Geoana victory,
+would motivate anybody to vote Geoana in a G-vs-B election).
+Indeed, I would expect that CCSB and INSOMAR will now be punished by
+having fewer market research 
+customers.
+<!--  However, it remains possible my "usual thinking" is naive. -->
+</small></blockquote>
+</p><p>
+The fact that, in some cases, different polls disagreed, means 
+that anybody aware of only a subset of those polls, risks being deluded.
+</p>
+
+<table bgcolor="yellow">
+<tr>
+<caption>
+Table 5. 
+Head-to-head pre-election polls (listed in chronological order): Basescu vs Geoana.
+</caption>
+<tr>
+<th>Pollster</th><th>Date 2009</th>
+<th>Sample</th><th>Bas</th><th>Geo</th>
+</tr>
+<tr><td>INCOR</td><td>19-28 June</td><td>?</td><td>52%</td><td>48%</td></tr>
+<tr><td>CCSB</td><td>27 July</td><td>?</td><td>53%</td><td>47%</td></tr>
+<tr><td>IOP</td><td>18-25 Sep</td><td>1200 adult interviews</td><td>47%</td><td>53%</td></tr>
+<tr><td>CCSB</td><td>2-3 Oct</td><td>?</td><td>47%</td><td>53%</td></tr>
+<tr><td>CSOP</td><td>7 Oct</td><td>?</td><td>53%</td><td>47%</td></tr>
+<tr><td>CCSB</td><td>10-11 Oct</td><td>996 adults</td><td>48%</td><td>52%</td></tr> 
+<tr><td>INSOMAR</td><td>8-11 Oct</td><td>?</td><td>49.4%</td><td>50.6%</td></tr>
+<tr><td>CSOP</td><td>14-15 Oct</td><td>513 telephone</td><td>52%</td><td>48%</td></tr>
+<tr><td>IOP</td><td>20-23 Oct</td><td>1355 telephone &amp; face to face</td><td>45%</td><td>55%</td></tr>
+<tr><td>CURS</td><td>15-22 Oct</td><td>1110 face-to-face interviews in their homes, but only 73% responded</td><td>50%</td><td>50%</td></tr>
+<tr><td>INSOMAR</td><td>1 Nov</td><td>1207 over age 18, but only 767 answered</td><td>46.9%</td><td>53.1%</td></tr>
+<tr><td>IOP</td><td>1-3 Nov</td><td>1200</td><td>47%</td><td>53%</td></tr>
+<tr><td>CCSB</td><td>3 Nov</td><td>1528 adult interviews</td><td>46%</td><td>54%</td></tr>
+<tr><td>Gallup Romania</td><td>31Oct-2Nov</td><td>1014</td><td>50%</td><td>50%</td></tr>
+<tr><td>Gallup Romania</td><td>5-8 Nov</td><td>1253 adults</td><td>50%</td><td>50%</td></tr>
+<tr><td>INSOMAR</td><td>6-9 Nov</td><td>1206 people over 18, but only 807 answered</td><td>46.8%</td><td>53.2%</td></tr>
+<!-- <tr><td>CCSB</td><td>7-11 Nov</td><td>1348</td><td>42%</td><td>52%</td></tr> -->
+<tr><td>CURS</td><td>7-12 Nov</td><td>1500 voters</td><td>49%</td><td>51%</td></tr>
+<tr><td>CCSB</td><td>13-14 Nov</td><td>1195</td><td>47%</td><td>53%</td></tr>
+<tr><td>INSOMAR</td><td>13-15 Nov</td><td>11973 interviews</td><td>46%</td><td>54%</td></tr>
+<tr><td>IOP</td><td>15-17 Nov</td><td>1259</td><td>46%</td><td>54%</td></tr>
+<tr><td>CSOP</td><td>15-18 Nov</td><td>2064 over age 18</td><td>51%</td><td>49%</td></tr>
+<tr><td>INSOMAR</td><td>28-29 Nov</td><td>11971 interviews</td><td>46%</td><td>54%</td></tr>
+<tr bgcolor="pink"><td>Official Runoff</td><td>6 Dec</td><td>10620116</td><td>50.33%</td><td>49.66%</td></tr>
+</table>
+
+<p>
+<b>Comments:</b>
+The polls in table 5 are unnecessary for the purposes of this paper,
+since they all are trumped by the official runoff election count, which is allegedly exact.
+We give this table purely as a <i>check</i> on the non-fraudulence of the official count or on the 
+abilities of the pollsters. <!--(whichever way you prefer to interpret it).-->
+The CURS, CSOP, and Gallup polls got the right answer.
+The two large INSOMAR polls at the end both were far outside their expected margins of
+error, suggesting either (a) election fraud by Basescu, or (b) some kind
+of sampling bias by the pollsters relative to the true voter distribution, or (c)
+the pollsters lied.
+Probably the reason is mostly (b) because 4 <i>exit</i> polls 
+of the runoff (which presumably has greatly reduced biased-sampling problems)
+found: INSOMAR 48.8%, CSOP 50.4%, CURS 49.3%, CCSB 49% respectively for Basescu.
+These exit polls overall still wrongly predicted a Geoana victory, but much less
+dramatically than the pre-election polls, indeed their errors seem within
+the margin of error; and Basescu claims his victory was due to the 146876 valid votes from
+Romanian voters residing in <i>foreign</i>
+countries (who voted in B's favor about 78.9% and presumably were never polled).
+Note that Basescu's official winning margin over Geoana from table 3 was 70048 votes
+(0.66%);
+and without the foreign voters, B actually would have <i>lost</i> to Geoana
+by 14738 votes (0.14%).
+</p>
+
+<table bgcolor="yellow">
+<tr>
+<caption>
+Table 6. 
+Head-to-head polls (listed in chronological order): Basescu vs Antonescu.
+Antonescu wins (or in one case ties) all polls after mid-october except for the
+final CSOP poll.
+</caption>
+<tr>
+<th>Pollster</th><th>Date 2009</th>
+<th>Sample</th><th>Bas</th><th>Ant</th>
+</tr>
+<tr><td>INCOR</td><td>19-28 June</td><td>?</td><td>53%</td><td>47%</td></tr>
+<tr><td>CCSB</td><td>27 July</td><td>?</td><td>55%</td><td>45%</td></tr>
+<tr><td>IOP</td><td>18-25 Sep</td><td>1200 adult interviews</td><td>47%</td><td>53%</td></tr>
+<tr><td>CCSB</td><td>2-3 Oct</td><td>?</td><td>46%</td><td>54%</td></tr>
+<tr><td>CSOP</td><td>7 Oct</td><td>?</td><td>57%</td><td>43%</td></tr>
+<tr><td>CCSB</td><td>10-11 Oct</td><td>996 adults</td><td>49%</td><td>51%</td></tr> 
+<tr><td>CSOP</td><td>14-15 Oct</td><td>513 telephone</td><td>52%</td><td>48%</td></tr>
+<tr bgcolor="pink"><td>CURS</td><td>15-22 Oct</td><td>1110 face-to-face interviews in their homes, but only 73% responded
+</td><td>49%</td><td>51%</td></tr>
+<tr bgcolor="pink"><td>IOP</td><td>20-23 Oct</td><td>1355 telephone &amp; face to face</td><td>44%</td><td>56%</td></tr>
+<tr bgcolor="pink"><td>INSOMAR</td><td>1 Nov</td><td>1207 over 18, but only 741 answered</td><td>49.4%</td><td>50.6%</td></tr>
+<tr bgcolor="pink"><td>Gallup Romania</td><td>31Oct-2Nov</td><td>1014 adults</td><td>46%</td><td>54%</td></tr>
+<tr bgcolor="pink"><td>IOP</td><td>1-3 Nov</td><td>1200</td><td>47%</td><td>53%</td></tr>
+<tr bgcolor="pink"><td>Gallup Romania</td><td>5-8 Nov</td><td>1253 adults</td><td>46%</td><td>54%</td></tr>
+<tr bgcolor="pink"><td>CCSB</td><td>3 Nov</td><td>1528 adult interviews</td><td>49%</td><td>51%</td></tr>
+<tr bgcolor="pink"><td>INSOMAR</td><td>6-9 Nov</td><td>1206 people over 18, but only 779 answered</td><td>46.7%</td><td>53.3%</td></tr>
+<!-- <tr bgcolor="pink"><td>CCSB</td><td>7-11 Nov</td><td>1348</td><td>50%</td><td>50%</td></tr> -->
+<tr bgcolor="pink"><td>CURS</td><td>7-12 Nov</td><td>1500 voters</td><td>50%</td><td>50%</td></tr>
+<tr bgcolor="pink"><td>INSOMAR</td><td>13-15 Nov</td><td>11973 interviews</td><td>48%</td><td>52%</td></tr>
+<tr bgcolor="pink"><td>CCSB</td><td>13-14 Nov</td><td>1195</td><td>48%</td><td>52%</td></tr>
+<tr bgcolor="pink"><td>IOP</td><td>15-17 Nov</td><td>1259</td><td>44%</td><td>56%</td></tr>
+<tr><td>CSOP</td><td>15-18 Nov</td><td>2064 over age 18</td><td>52%</td><td>48%</td></tr>
+</table>
+
+<!--
+amount over 50% for Ant =
+1110*.73*.01 + 1355*.64*.06 + 741*.006 + 1014*.64*.04 + 1200*.64*.03 + 1253*.64*.04 + 1528*.64*.01 + 779*.033 + 1500*0 + 11973*.64*.02 + 1195*.64*.02 + 1259*.64*.06 - 2064*.64*.02
+= 371.6 people
+= 52.07% margin
+total pollees =
+1110*.73 + 1355*.64 + 741 + 1014*.64 + 1200*.64 + 1253*.64 + 1528*.64 + 779 + 1500*.64 + 11973*.64 + 1195*.64 + 1259*.64 + 2064*.64
+= 17909 people
+stddev = .5 * sqrt(17909) = 66.9 people = 0.37%
+ratio = 371.6 / 66.9 = 5.55 stddevs
+-->
+<p>
+<b>Comments:</b>
+<i>If</i> the samples were independent and from the correct voter distribution,
+and <i>if</i> we were allowed to ignore the annoying rounding of the pollsters' figures,
+then, based on the polls after mid-october,
+the confidence Antonescu was genuinely majority-preferred over Basescu would be
+over 5.5&sigma;,  <a href="NHack.html">that is</a>
+over 99.999998% confidence. 
+By the use of "optimally weighted stratified sampling" techniques 
+(see <a href="PuzzlePage.html#p101">CRV Puzzle #101</a>; at least some pollsters, 
+e.g. Gallup, have claimed they employ these techniques)
+pollsters should achieve error bars actually <i>below</i> the Bernoulli variance
+formula we are employing,
+therefore our conclusions <i>ought</i> to be valid.
+</p><blockquote><small>
+According to Bernoulli,
+given N pollees a fraction p of whom answer "yes" and q=1-p of whom answer "no,"
+the estimated mean-yes fraction in the larger universe is p and the estimated variance
+in that estimate is &sigma;&sup2;=pq/N.  
+Concerning the value of N, note that in 14 poll-questions
+mentioned in this paper whose response rates were provided by the  pollster,
+the mean response rate was 64%.  Therefore I employ N=0.64T
+where T is the total number of pollees, as my estimate of N for polls where the pollster
+did <i>not</i> inform us of the response rate.
+</small></blockquote><p>
+However, the poor performance of some of the pollsters 
+in table 5 at predicting the official runoff result
+contradicts that and casts some doubt on their expertise and on all our conclusions.
+</p>
+<blockquote><small>
+Indeed, the B-vs-G polls tabulated after mid-October would 
+have yielded about 10&sigma; "confidence" of a majority-preference for G over B.
+The official count actually <i>found</i> 
+a slight G&gt;B majority among the <i>non-foreign</i> (i.e the polled)
+Romanian voters &ndash; Basescu won due to foreign voters &ndash; but 
+the polls found about 9.6&sigma; "confidence" it should have been larger than it was.
+</small></blockquote>
+<!-- 
+computing "confidence" G>B:
+MARG ABOVE 50 =
+-.02*.64*513 + .05*.64*1355 + 0*.73*1110 + .031*767 + .03*.64*1200 + .04*.64*1528 + 0*.64*1014 + 0*.64*1253 + .032*807 + .01*.64*1500 + .03*.64*1195 + .04*.64*11973 + .04*.64*1259 + -.01*.64*2064 + .04*.64*11971
+= 813.1 = 10.09 sigma
+N =
+.64*513 + .64*1355 + .73*1110 + 767 + .64*1200 + .64*1528 + .64*1014 + .64*1253 + 807 + .64*1500 + .64*1195 + .64*11973 + .64*1259 + .64*2064 + .64*11971
+= 25952.3
+-->
+
+<table bgcolor="yellow">
+<tr>
+<caption>
+Table 7. 
+Head-to-head polls (listed in chronological order): Geoana vs Antonescu.
+Split results.  <!--I have checked that all these polls were genuine.-->
+</caption>
+<tr>
+<th>Pollster</th><th>Date 2009</th>
+<th>Sample</th><th>Ant</th><th>Geo</th>
+</tr>
+<tr><td>CURS</td><td>15-22 Oct</td><td>1110 face-to-face interviews in their homes, but only 66% responded
+</td><td>52%</td><td>48%</td></tr>
+<tr><td>INSOMAR</td><td>1 Nov</td><td>1207 over age 18, but only 662 answered</td><td>52.0%</td><td>48.0%</td></tr>
+<tr><td>INSOMAR</td><td>6-9 Nov</td><td>1206 people over 18, but only 685 answered</td><td>47.6%</td><td>52.4%</td></tr>
+</table>
+<!--
+amount over 50% for Ant =
+1110*.66*.02 + 662*.02 - 685*.024 = 11.45 people = +0.55%
+662*.02 - 685*.024 = -3 people = -0.22%
+total pollees =
+1110*.66 + 662 + 685 = 2080 people
+662 + 685 = 1347 people
+stddev = .5 * sqrt(2080) = 22.80 people = 1.10%
+stddev = .5 * sqrt(1347) = 18.35 people = 1.36%
+ratio = 11.45/22.80 = 0.833 stddevs
+ratio = -3/18.35 = -0.163 stddevs
+-->
+
+<p>
+<b>Comments:</b>
+<i>If</i> the samples were independent and from the correct voter distribution,
+and <i>if</i> we were allowed to ignore the annoying rounding of the pollsters' figures,
+then, based on the above 3 polls,
+we get about 0.5&sigma; confidence that Antonescu was
+majority-preferred over Geoana,
+<a href="NHack.html">which is</a>
+only 70% confidence.
+On the other hand if we <i>only</i> 
+employ the November polls (which both were available rounded to 
+&plusmn;0.05% accuracy, unlike the CURS poll) then it is Geoana who wins, albeit
+with  only 56% confidence.  We shall do the latter.
+The habit of pollsters of rounding to the nearest integer
+percent may be naively appealing (if, say, their error bar is &plusmn;2.6%)
+but is a <i>very bad practice</i> since it severely handicaps efforts to compute
+confidence values or to combine data from different polls. CURS did not
+respond to requests for more accurate data.
+</p>
+
+<table bgcolor="yellow">
+<tr>
+<caption>
+Table 8. 
+Head-to-head polls (listed in chronological order): Basescu vs Oprescu.
+Oprescu wins (or in one case ties) all polls after mid-October except for the INSOMAR poll.
+</caption>
+<tr>
+<th>Pollster</th><th>Date 2009</th><th>Sample</th><th>Bas</th><th>Opr</th></tr>
+<tr><td>IOP</td><td>18-25 Sep</td><td>1200 adult interviews</td><td>49%</td><td>51%</td></tr>
+<tr><td>CCSB</td><td>2-3 Oct</td><td>?</td><td>43%</td><td>57%</td></tr>
+<tr><td>CCSB</td><td>10-11 Oct</td><td>996 adults</td><td>47%</td><td>53%</td></tr> 
+<tr><td>CSOP</td><td>14-15 Oct</td><td>513 telephone</td><td>53%</td><td>47%</td></tr>
+<tr bgcolor="pink"><td>CURS</td><td>15-22 Oct</td><td>1110 face-to-face interviews in their homes, but only 76% responded
+</td><td>48%</td><td>52%</td></tr>
+<tr bgcolor="pink"><td>IOP</td><td>20-23 Oct</td><td>1355 telephone &amp; face to face
+</td><td>47%</td><td>53%</td></tr>
+<tr><td>INSOMAR</td><td>1 Nov</td><td>1207 over age 18, but only 709 answered</td><td>53.2%</td><td>46.8%</td></tr>
+<tr bgcolor="pink"><td>Gallup Romania</td><td>31Oct-2Nov</td><td>1014</td><td>44%</td><td>56%</td></tr>
+<tr bgcolor="pink"><td>IOP</td><td>1-3 Nov</td><td>1200</td><td>49%</td><td>51%</td></tr>
+<tr bgcolor="pink"><td>CCSB</td><td>3 Nov</td><td>1528 adult interviews</td><td>49%</td><td>51%</td></tr>
+<tr bgcolor="pink"><td>Gallup Romania</td><td>5-8 Nov</td><td>1253 adults</td><td>45%</td><td>55%</td></tr>
+<tr bgcolor="pink"><td>CCSB</td><td>7-11 Nov</td><td>1348</td><td>49%</td><td>51%</td></tr>
+<tr bgcolor="pink"><td>CCSB</td><td>13-14 Nov</td><td>1195</td><td>50%</td><td>50%</td></tr>
+<tr bgcolor="pink"><td>IOP</td><td>15-17 Nov</td><td>1259</td><td>48%</td><td>52%</td></tr>
+</table>
+<!--
+amount over 50% for Opr =
+1110*.76*.02 + 1355*.64*.03 - 709*.032 + 1014*.64*.06 + 1200*.64*.01 + 1528*.64*.01 + 1253*.64*.05
+ + 1348*.64*.01 + 1195*.64*0 + 1259*.64*.02
+= 141.4 people = 1.76%
+total pollees =
+1110*.76 + 1355*.64 + 709 + 1014*.64 + 1200*.64 + 1528*.64 + 1253*.64
+ + 1348*.64 + 1195*.64 + 1259*.64
+= 8050 people
+stddev = .5 * sqrt(8050) = 44.9 people = 0.56%
+ratio = 141.4 / 44.9 = 3.15 stddevs
+-->
+
+<p>
+<b>Comments:</b>
+<i>If</i> the samples were independent and from the correct voter distribution,
+and <i>if</i> we were allowed to ignore the annoying rounding of the pollsters' figures,
+then, based on the above after-mid-october polls,
+the confidence Oprescu was genuinely majority-preferred over Basescu would be
+3.15&sigma;,  
+<a href="NHack.html">that is</a>
+99.92% confidence. 
+Press coverage of the
+CURS poll commented that "<i>paradoxically</i>, Geoana has the best chances to
+get in the runoff but [once there] would have smaller chances than either Antonescu or 
+Oprescu to defeat 
+Basescu."  This paradox is highly related to the <i>Condorcet cycles.</i>
+</p>
+
+
+<table bgcolor="yellow">
+<tr>
+<caption>
+Table 9. 
+Head-to-head polls (listed in chronological order): Geoana vs Oprescu.
+All polls agree Geoana wins this matchup.
+<!--I have confirmed the CURS and INSOMAR polls were genuine.-->
+There also was a press report of a "subjective estimate" by Gallup Romania that
+Geoana and Oprescu would each get 50% in a head-to-head runoff, but
+I could not find any actual Gallup poll backing that estimate with genuine data.
+</caption>
+<tr>
+<th>Pollster</th><th>Date 2009</th>
+<th>Sample</th><th>Geo</th><th>Opr</th>
+</tr>
+<tr><td>CURS</td><td>15-22 Oct</td><td>1110 face-to-face interviews in their homes, but only 66% responded
+</td><td>53%</td><td>47%</td></tr>
+<tr><td>INSOMAR</td><td>1 Nov</td><td>1207 over age 18, but only 653 answered</td><td>54.8%</td><td>45.2%</td></tr>
+<!-- <tr><td>Gallup Romania "subjective estimate"</td><td>31Oct-2Nov</td><td>1014</td><td>50%</td><td>50%</td></tr> -->
+</table>
+<!--
+amount over 50% for Geo =
+1110*.66*.03 + 653*.048 = 53.3 people = 3.84%
+total pollees =
+1110*.66 + 653 = 1386 people
+stddev = .5 * sqrt(1386) = 18.6 people = 1.34%
+ratio = 53.3 / 18.6 = 2.97 stddevs
+-->
+
+<p>
+<b>Comments:</b>
+<i>If</i> the samples were independent and from the correct voter distribution,
+and <i>if</i> we were allowed to ignore the annoying rounding of the pollsters' figures,
+then, based on the above 2 polls,
+the confidence Geoana was genuinely majority-preferred over Oprescu would be
+about 2.86&sigma;,  
+<a href="NHack.html">that is</a>
+99.79% confidence. 
+</p>
+
+<p>
+Finally, there appears to have been no reputable
+polling organization that did a head-to-head comparison between
+Oprescu and Antonescu.  
+But there were two online internet polls (anybody on the
+internet could participate)
+addressing this question.
+</p>
+
+<pre>
+<b>Results of online poll</b> of 519 evidently extremely pro-Antonescu people,
+(poll started "21/03/2009" but it remains possible to add your new vote, even now!)
+http://www.petitieonline.ro/sondaj-s25710044.html
+<!--http://www.petitieonline.ro/sondaj/rezultate/traian_basescu_versus_sorin_oprescu_versus_crin_antonescu-s25710044.html-->
+<b>Q1.</b> Daca maine ar fi alegeri, pe care dintre urmatorii potentiali candidati ati pune stampila?
+Traian Basescu   10.6%     55 raspunsuri
+Sorin Oprescu    10.98%    57 raspunsuri
+Crin Antonescu   78.42%   407 raspunsuri
+<b>Q2.</b> Daca in turul 2 ar ajunge Traian Basescu si Sorin Oprescu, pe cine ati vota?
+Traian Basescu   15.03%    78 raspunsuri
+Sorin Oprescu    84.97%   441 raspunsuri
+<b>Q3.</b> Daca in turul 2 ar ajunge Traian Basescu si Crin Antonescu, pe cine ati vota?
+Traian Basescu   11.37%    59 raspunsuri
+Crin Antonescu   88.63%   460 raspunsuri
+<b>Q4.</b> Daca in turul 2 ar ajunge Sorin Oprescu si Crin Antonescu, pe cine ati vota?
+Sorin Oprescu    18.69%    97 raspunsuri
+Crin Antonescu   81.31%   422 raspunsuri
+</pre>
+
+<pre>
+<b>Results of online poll</b> of 1291 evidently extremely pro-Antonescu people,
+(poll started "27/10/2009" but it remains possible to add your new vote, even now!)
+http://www.petitieonline.ro/sondaj-s64940048.html
+<!--http://www.petitieonline.ro/sondaj/rezultate/alegeri_prezidentiale_2009-s64940048.html-->
+<b>Q1.</b> Cu cine veti vota in TURUL 1?
+Traian Basescu            14.64%   189 raspunsuri
+Crin Antonescu            35.48%   458 raspunsuri
+Mircea Geoana              4.18%    54 raspunsuri
+Sorin Oprescu              1.16%    15 raspunsuri
+Kelemen Hunor              1.01%    13 raspunsuri
+Corneliu Vadim Tudor       3.02%    39 raspunsuri
+Gheorge Becali             0.23%     3 raspunsuri
+Remus Cernea              39.97%   516 raspunsuri
+Constantin Ninel Potarca   0.08%     1 raspunsuri
+Altcineva                  0.23%     3 raspunsuri
+<b>Q2.</b> Cu cine veti vota in TURUL 2 dintre BASESCU si ANTONESCU?
+Traian Basescu            17.66%   228 raspunsuri
+Crin Antonescu            82.34%  1063 raspunsuri
+<b>Q3.</b> Cu cine veti vota in TURUL 2 dintre BASESCU si GEOANA?
+Traian Basescu            23.86%   308 raspunsuri
+Mircea Geoana             76.14%   983 raspunsuri
+<b>Q4.</b> Cu cine veti vota in TURUL 2 dintre BASESCU si OPRESCU?
+Traian Basescu             21.3%   275 raspunsuri
+Sorin Oprescu              78.7%  1016 raspunsuri
+<b>Q5.</b> Cu cine veti vota in TURUL 2 dintre ANTONESCU si GEOANA?
+Crin Antonescu            90.47%  1168 raspunsuri
+Mircea Geoana              9.53%   123 raspunsuri
+<b>Q6.</b> Cu cine veti vota in TURUL 2 dintre ANTONESCU si OPRESCU?
+Crin Antonescu             84.9%  1096 raspunsuri
+Sorin Oprescu              15.1%   195 raspunsuri
+<b>Q7.</b> Cu cine veti vota in TURUL 2 dintre GEOANA si OPRESCU?
+Mircea Geoana              20.06%  259 raspunsuri
+Sorin Oprescu              79.94% 1032 raspunsuri
+</pre>
+
+<p>
+These polls obviously cannot be taken seriously because they both were from extremely
+unrepresentative, pro-Antonescu biased, samples which would have
+Antonescu defeating all rivals (except perhaps Cernea!)
+by huge margins, e.g. in the first poll defeating Basescu pairwise by 88.6% to 11.4%.
+However, it is perhaps of interest that Antonescu would according to
+the first poll defeat Oprescu by smaller margins than those by which either O or A
+defeated Basescu.
+In the second poll, Antonescu defeats Oprescu by a smaller margin than he defeats
+Geoana (albeit by a slightly larger margin than his defeat of Basescu).
+These facts suggest that in an <i>unbiased</i> sample, Oprescu might defeat
+Antonescu.  This same speculation also is supported by Gallup's approval-voting-style 
+poll discussed in our <a href="#apprv">&sect;5</a>.
+Therefore we shall estimate (because this is the estimate arising from the Gallup approval poll)
+that Oprescu would win a matchup against
+Antonescu with probability 89%.  Observe that in that poll (restricting attention to
+the 72-73% pollees who provided a response) at least 1.55% approved Oprescu but not
+Antonescu, and at least 1.55% disapproved A but not O.   Hence 
+in a pairwise A-vs-O contest, we suspect that
+O would win by at least (as our mean estimate of a lower bound)
+51.55-to-48.44%.
+</p>
+
+<a name="pairtab"></a>
+<h2>4. The Condorcet Cycles and Pairwise Table </h2>
+
+<table cellpadding="15">
+<tr><td>
+<table bgcolor="yellow" border="1" cellpadding="4">
+<tr>
+<caption>
+Table 10a. 
+Pairwise-margins table (best estimates) for Antonescu, Basescu, Geoana, and Oprescu.
+Figures represent the estimated vote percentage for the 
+candidate in that row, in a head-to-head matchup with the one in that column.
+They are based on polls after mid-october only, and in the Geo-vs-Ant and Geo-vs-Opr cases
+only on polls whose genuineness has been confirmed;
+the Bas-vs-Geo result is the exact 
+official runoff result.
+Apparently there was no Ant-vs-Opr poll but indirect 
+evidence suggests Opr would have had better chances (estimate 89%)
+in that matchup and won it by at least 51.55%.
+Error bars are 1 standard deviation.
+</caption>
+<tr>
+<th>&nbsp;</th><th>Ant</th><th>Bas</th><th>Geo</th><th>Opr</th>
+</tr>
+<tr><th>Ant</th>
+<td align="middle" bgcolor="black">***</td><td align="middle">52.07&plusmn;0.37</td><td align="middle">49.78&plusmn;1.36</td><td align="middle">&le;48.44</td></tr>
+<tr><th>Bas</th>
+<td align="middle">47.93&plusmn;0.37</td><td align="middle" bgcolor="black">***</td><td align="middle">50.33&plusmn;0</td><td align="middle">48.24&plusmn;0.56</td></tr>
+<tr><th>Geo</th>
+<td align="middle">50.22&plusmn;1.36</td><td align="middle">49.66&plusmn;0</td><td align="middle" bgcolor="black">***</td><td align="middle">53.85&plusmn;1.34</td></tr>
+<tr><th>Opr</th>
+<td align="middle">&ge;51.55</td><td align="middle">51.76&plusmn;0.56</td><td align="middle">46.15&plusmn;1.34</td><td align="middle" bgcolor="black">***</td></tr>
+</table>
+</td>
+<td>
+<table bgcolor="yellow" border="1" cellpadding="4">
+<tr>
+<caption>
+Table 10b. 
+Pairwise-defeat-confidence table for Antonescu, Basescu, Geoana, and Oprescu.
+Figures P<sub>RC</sub> represent the confidence the
+candidate R in that row would win a vote-majority versus the
+candidate C in that column, in a head-to-head matchup.
+From now onward (for better or worse) we shall regard these probabilities P<sub>RC</sub>
+as <i>independent</i> of each other.
+</caption>
+<tr>
+<th>&nbsp;</th><th>Ant</th><th>Bas</th><th>Geo</th><th>Opr</th>
+</tr>
+<tr><th>Ant</th>
+<td align="middle" bgcolor="black">***</td><td align="middle">99.999998%</td><td align="middle">44%</td><td align="middle">11%</td></tr>
+<tr><th>Bas</th>
+<td align="middle">0.000002%</td><td align="middle" bgcolor="black">***</td><td align="middle">100%</td><td align="middle">0.08%</td></tr>
+<tr><th>Geo</th>
+<td align="middle">56%</td><td align="middle">0%</td><td align="middle" bgcolor="black">***</td><td align="middle">99.79%</td></tr>
+<tr><th>Opr</th>
+<td align="middle">89%</td><td align="middle">99.92%</td><td align="middle">0.21%</td><td align="middle" bgcolor="black">***</td></tr>
+</table>
+</td></tr>
+</table>
+
+<p><b>What about the foreign voters?</b>
+Foreign voters boosted Basescu's margin over Geoana by 0.80% 
+(from -0.14% to +0.66%).
+According to
+Alina Mungiu-Pippidi 
+(Democracy Studies Chair at
+Hertie School of Governance in Berlin, and a Romanian)
+expatriate Romanians automatically vote heavily
+against parties linked to the old communist regime,
+which in this case means they automatically vote against Geoana.  
+However, this presumably would not have motivated voting against either Antonescu or Oprescu.
+A different theory about the expatriates is that many live in Moldova, and since
+Basescu has loudly championed the right of Moldovan Romanians to get Romanian citizenship,
+they support Basescu.   
+Presumably <i>that</i> motivation to vote for Basescu <i>would</i> still apply.
+<i>If</i> one guesses (which we shall not) that the same
+boost would have occurred for Basescu versus either Antonescu or Oprescu, then
+that would have diminished the Ant&sup;Bas vote from 52.07% to 51.67%
+and decreased the confidence of the "&sup;" to 4.5&sigma; (99.9997%);
+and it would have diminished the
+Opr&sup;Bas margin from 51.76% to 51.36% 
+and diminished the confidence to 2.43&sigma; (99.25%).
+This is not enough diminishment to hurt the main conclusion
+of this paper, i.e. that a B&amp;G-containing cycle existed with confidence&asymp;99.9%.
+</p>
+
+<p><b>Cycle analysis:</b>
+Two possible Condorcet 3-Cycles are
+</p>
+<center>
+Cycle #1: &nbsp;&nbsp; 
+A&sup;B&sup;G&sup;A
+</center>
+<center>
+Cycle #2: &nbsp;&nbsp; 
+O&sup;B&sup;G&sup;O
+</center>
+<p>
+where "&sup;" means "is preferred by a voter majority over."
+Let P<sub>k</sub> for k=1,2 denote our statistical confidence levels
+that cycle #k genuinely existed.
+We claim
+</P>
+<center>
+P<sub>1</sub> &asymp; 0.56 &asymp; 0.99999998 &times; 1 &times; 0.56
+, &nbsp;&nbsp;&nbsp;
+P<sub>2</sub> &asymp; 0.9971 &asymp; 0.9992 &times; 1 &times; 0.9979.
+</center>
+<p>
+From this we conclude with confidence <b>99.87%</b> that at least one of these two cycles
+genuinely exists, i.e. with confidence 99.87% the official winner Basescu,
+and the official runner-up Geoana, both were
+members of at least one of these two cycles.   
+Also there are additional possible cycles (such as B&sup;G&sup;O&sup;A&sup;B,
+which has estimated 89% chance of being genuine, almost independently
+of P<sub>1</sub>), which pushes
+the probability of at least one G&amp;B-containing cycle really existing up 
+<b>over 99.9%</b>.
+</p><p>
+To be precise about this, the exact formula (got by writing it
+as a sum of 64
+monomial terms, each a product of 6 probabilities and
+expressing the probability of a directed-graph configuration
+among the 4 vertices {A,B,G,O}, where all configurations not including a cycle are
+multiplied by zero; then simplifying using P<sub>BG</sub>=1)
+for 
+the probability that <i>at least one</i> of the three cycles
+O&sup;B&sup;G&sup;O
+<i>or</i>
+A&sup;B&sup;G&sup;A
+<i>or</i>
+A&sup;B&sup;G&sup;O&sup;A
+is present is
+</p><center>
+Prob(B&amp;G-containing cycle) 
+&nbsp; = &nbsp;
+[P<sub>GA</sub>                   
++
+([1+P<sub>OB</sub>P<sub>GA</sub>-P<sub>GA</sub>-P<sub>OB</sub>]P<sub>OA</sub>              
+- P<sub>OB</sub>P<sub>GA</sub>)P<sub>GO</sub>]P<sub>AB</sub>                
++ P<sub>GO</sub>P<sub>OB</sub>                                              
+</center>
+<!--
+pc :=  (PGA + ((1+POB*PGA-PGA-POB)*POA - POB*PGA)*PGO)*PAB + PGO*POB;
+subs( PAB = .99999998, PGA = .56, POB = .9992, POA = .89, PGO = .9979, pc ); #0.9990373613
+subs( PAB = .999997,   PGA = .56, POB = .9925, POA = .89, PGO = .9979, pc ); #0.9987137374
+note,
+expression arose by simplifying
+  PAB*POA*PGO*PBG*(1-POB)*(1-PGA)
++ (1-PAB)*(1-POA)*PGO*PBG*POB*(1-PGA)
++ PAB*(1-POA)*PGO*PBG*POB*(1-PGA)
++ (1-PAB)*POA*PGO*PBG*POB*(1-PGA)
++ PAB*POA*PGO*PBG*POB*(1-PGA)
++ PAB*(1-POA)*(1-PGO)*PBG*(1-POB)*PGA
++ PAB*POA*(1-PGO)*PBG*(1-POB)*PGA
++ PAB*(1-POA)*PGO*PBG*(1-POB)*PGA
++ PAB*POA*PGO*PBG*(1-POB)*PGA
++ PAB*(1-POA)*(1-PGO)*PBG*POB*PGA
++ PAB*POA*(1-PGO)*PBG*POB*PGA
++ (1-PAB)*(1-POA)*PGO*PBG*POB*PGA
++ PAB*(1-POA)*PGO*PBG*POB*PGA
++ (1-PAB)*POA*PGO*PBG*POB*PGA
++ PAB*POA*PGO*PBG*POB*PGA;
+above was for 3 cycles, if also add 4th GAOB then get (which is not the same)
+  PAB*POA*PGO*PBG*(1-POB)*(1-PGA)
++ (1-PAB)*(1-POA)*PGO*PBG*POB*(1-PGA)
++ PAB*(1-POA)*PGO*PBG*POB*(1-PGA)
++ (1-PAB)*POA*PGO*PBG*POB*(1-PGA)
++ PAB*POA*PGO*PBG*POB*(1-PGA)
++ PAB*(1-POA)*(1-PGO)*PBG*(1-POB)*PGA
++ PAB*POA*(1-PGO)*PBG*(1-POB)*PGA
++ PAB*(1-POA)*PGO*PBG*(1-POB)*PGA
++ PAB*POA*PGO*PBG*(1-POB)*PGA
++ (1-PAB)*(1-POA)*(1-PGO)*PBG*POB*PGA
++ PAB*(1-POA)*(1-PGO)*PBG*POB*PGA
++ PAB*POA*(1-PGO)*PBG*POB*PGA
++ (1-PAB)*(1-POA)*PGO*PBG*POB*PGA
++ PAB*(1-POA)*PGO*PBG*POB*PGA
++ (1-PAB)*POA*PGO*PBG*POB*PGA
++ PAB*POA*PGO*PBG*POB*PGA
+simplify with PBG=1:
+p4 := 
+-PGO*POB*PGA-PAB*PGA*POB-POB*PGA*POA+PAB*POA*PGO-PAB*POA*PGO*PGA-PAB*POA*PGO*POB+PGO*POB+PGO*POB*
+POA*PGA+PAB*PGA+PAB*PGA*POA*POB+POB*PGA;
+subs( PAB = .99999998, PGA = .56, POB = .9992, POA = .89, PGO = .9979, p4 ); #99.90373613
+subs( PAB = .999997,   PGA = .56, POB = .9925, POA = .89, PGO = .9979, p4 ); #99.87137378
+which differs only in the final decimal place.
+-->
+</p><p>
+With the P<sub>XY</sub> in table 10b this yields <b>Prob(BGcycle)=99.904%</b>;
+and even if we instead use the decreased values
+P<sub>AB</sub>=99.9997% and P<sub>OB</sub>=99.25% 
+due to a postulated foreign pro-Basescu vote, we still get 
+Prob(BGcycle)=99.871%.
+It's important to realize that <i>despite</i> the unclarity about the pairs A-vs-O and
+A-vs-G, we still get high confidence of cycles, mainly
+because the leading cycle candidate
+O&sup;B&sup;G&sup;O
+does not involve either unclear pair.
+</p><p>
+The confidence that no Condorcet winner existed is at least 56%.
+Almost all of the remaining 44% probability would represent the chance that Antonescu was
+really the Condorcet winner.   However, that estimate of "44%" is ignoring the possibility that
+Antonescu would lose in a head-to-head comparison with Oprescu.
+Although I am unaware of any 
+reputable polling  directly
+addressing that question,
+from the online polls corrected to remove pro-Antonescu bias, and also from the 
+Gallup approval-style <a href="#apprv">poll</a>,
+it appears that Oprescu would have 89%
+chances in an A-vs-O matchup.  (There also is a small chance
+Antonescu might also lose pairwise versus any
+of the other candidates such as Tudor, Kelemen, etc.)
+In view of this, we reduce this 44% chance to 
+5%&asymp;P<sub>AO</sub>P<sub>AG</sub>P<sub>AB</sub>.  
+(More precisely, we find a 5.02% chance that a Condorcet winner exists, in which case there is
+96% chance it is Antonescu, 4% chance it is Oprescu, and negligible chance it is anybody else.
+P<sub>AO</sub>P<sub>AG</sub>P<sub>AB</sub> is the exact probability it is Antonescu,
+P<sub>OA</sub>P<sub>OG</sub>P<sub>OB</sub> is the exact probability it is Oprescu,
+[among [A,B,G,O}],
+etc. and these probabilities may be added since they represent <i>disjoint</i> events.)
+So our final estimate of the chance 
+that no Condorcet winner existed is <b>95%.</b>
+</p>
+
+<a name="Laatu"></a>
+<p><b>What sort of Condorcet cycles were these? "Laatu types":</b>
+Juho Laatu (after reading an earlier draft of this paper)
+proposed classifying Condorcet cycles in large elections into three types:
+</p>
+<blockquote>
+<dl>
+<dt><b>I.
+"Weak" cycle (aka random cycle or noise-generated cycle):</b>
+</dt><dd>
+<ul>
+<li>
+the looped candidates are almost tied
+</li><li>
+can be a result of some almost random variation in the votes
+</li><li>
+one could say that this kind of a loop is one special version of a tie
+</li><li>
+any of the looped candidates could be the winner (with no big violation
+of any of the majority opinions)
+against any
+</li><li>
+the expected winner may change from day to day in the polls
+</li></ul></dd>
+<dt><b>II.
+"Strong" cycle (stable cycle, rational cycle, cycle with a stable identifiable reason):</b>
+</dt><dd>
+<ul>
+<li>
+there is some specific, in principle describable,
+<i>reason</i> that has led to the formation of this
+loop (not random variation in the votes)
+</li><li>
+the cycle / opinions are strong enough to that they are unaffected by
+daily/weekly random opinion fluctuations 
+</li></ul></dd>
+<dt><b>III.
+"Strategic" cycle:</b>
+</dt><dd>
+<ul>
+<li>
+artificially generated by strategies employed by some voters to
+"game the election"
+</li><li>
+not based on sincere opinions
+</li></ul></dd></dl>
+<!--Strong cycles are more
+interesting than weak ones
+since [they have] some specific reason behind them and the opinion is stable and clear.
+[I believe] there are such situations but [that] they are uncommon in real life.-->
+</blockquote>
+
+<p>
+Which kind of cycle do we have here in Romania 2009?
+I do not believe the O&sup;B&sup;G&sup;O cycle is "weak" and "noise-generated"
+because, if the votes were just the results of 10<sup>7</sup>
+voters tossing independent identical coins we would expect margins
+(and "noise levels") of order &plusmn;3162 votes, i.e. &plusmn;0.03%.
+The vote-margins in this cycle instead were about
+3.5%, 0.66%, and 7.7% respectively &ndash; far larger. 
+I believe this cycle was stable from day to day and there were some
+underlying rational reasons behind it.
+Indeed, <i>any</i> cycle detected via <i>polls</i> rather than exact vote counts
+will necessarily (if its detection is statistically significant) not be "weak"
+in Laatu's sense.
+</p><p>
+It also seems not "strategic" since its pairwise claims are based
+on <i>2-choice</i> polls and elections, in which it is difficult or
+impossible to see any strategic reason for the pollees/voters to be
+dishonest.  
+</p><blockquote><small>
+On the other hand, obviously the huge distortions in the official
+round-1 plurality-counts away from the underlying truth, were mostly caused by
+strategic decisions by voters arising because of the well-known flaws in
+<a href="Plurality.html">plurality</a> as a voting method.  With the plurality+top2
+method employed, voting for anybody not perceived to be in the "leading three"
+in terms of election chances, was a "wasted vote."   When the decision was made (almost
+certainly as part of a deal between the major political parties and media moguls) 
+that only Antonescu, Basescu, and Geoana
+would be allowed to participate in a widely publicized and televised debate, they
+immediately became the leading three, <i>regardless</i> of whether
+anybody else was felt by Romania to be a superior candidate, and Oprescu's doom
+was sealed.  Then:
+Because Basescu had a large lead in plurality-style polls going into round 1
+(but clearly not large enough to get a majority and thus avoid the runoff)
+while (pairwise poll data showed) 
+Antonescu was more likely than Geoana to defeat him in the runoff,
+it became strategically the smart move for many Basescu supporters to vote for
+Geoana in the first round, <i>even if they honestly felt Geoana was the worst candidate</i>.
+Meanwhile, anti-Basescu voters would have been motivated to vote Antonescu, even
+if they honestly preferred Geoana.
+</small></blockquote>
+<p>
+Therefore, the cycle was "strong" (Laatu type II).
+Nevertheless, it was not <i>very</i> "strong," since
+0.66%, 3.5%, and 7.7% represent small to moderate margins.
+</p><p>
+All of Laatu's three types do occur:
+Bochsler 2008 found a preference cycle
+<pre>
+     {P or A}&sup;S    by 109812 to 102796    (51.6% majority)
+            S&sup;P    by 106832 to 104144    (50.6% majority)
+            P&sup;A    by 106863 to 101586    (51.1% majority)
+</pre>
+in a 3-choice referendum about changing a law about state employees
+held on 28 November 2004 in the Swiss Canton of Bern.
+(This election was held using unusual "decision tree" style ballots, which
+was the reason the cycle was detectable.)
+Bochsler in his paper explained the reasons he believed
+this cycle was Laatu type III, i.e. was mostly caused by "strategic voters"
+trying to "game" the decision-tree election.  
+</p><p>
+Kurrild-Klitsgaard 2001 found a cycle 
+<pre>
+     E&sup;J   by 50.6% majority    among the 77% respondents among the 1169 pollees
+     J&sup;R   by 51.1% majority    among the 92% respondents among the 1169 pollees
+     R&sup;E   by 52.8% majority    among the 89% respondents among the 1169 pollees
+</pre>
+among the three candidates {Hans <b>E</b>ngell, Uffe Ellemann-<b>J</b>ensen,
+and Poul Nyrup <b>R</b>asmussen} for Danish Prime Minister in mid-May 1994.
+Note that (a) the Danish PM is not elected by the people, hence this poll had nothing to do
+with any real election, (b) the &plusmn;1&sigma; margin of error for this poll was 
+&plusmn;(15-16) votes,
+i.e. &plusmn;(1.52% to 1.67%),
+so that the statistical confidences that these "majority" preferences
+genuinely existed, were respectively 64%, 76%, and 96%.
+This is of course laughable for the purpose of drawing any conclusion about the 
+"reality" of this cycle in the Danish electorate.  But it <i>is</i> legitimate to remark
+that among these 1169 pollees <i>alone</i> there was a cycle.  But if so, there is
+no evidence it was not merely "noise-generated," i.e. of Laatu type I.  Similarly, in
+the June 2008 election by the 
+Wikimedia Foundation to fill a vacant seat on its Board of
+Trustees (Schulze's beatpath
+Condorcet method with rank-order ballots was employed), 
+there were 15 candidates, about 26000 eligible
+voters, and 3019 valid ballots. 
+Ting Chen was the clear Condorcet
+winner hence won the seat, but there was a cyclic tie for sixth
+to ninth position between J.Heiskanen, R.Postlethwaite, S.Smith, and
+R.Saintonge: JH&sup;RP&sup;SS&sup;RS&sup;JH.
+However <!--, this was not a <i>government</i> election and -->
+<i>reversing only 5
+pair-preferences
+on ballots would have eliminated the cycle.</i>
+Thus, again, there was no evidence this cycle was not
+"noise generated," i.e. Laatu type I.
+</p><p>
+<b><i>What were</i> the underlying rational reasons behind our
+cycles?</b>
+That is very difficult to ascertain
+(or even merely to verify), especially for a foreigner like me unfamiliar with the
+Romanian language.  <!--(And even if some oracle were to <i>tell</i> me the reasons, it
+would be almost impossible for me to confirm their correctness.)-->
+But it is not hard to invent a plausible-sounding story "explaining" a cycle.
+There is a comparative sketch of
+the candidates here: 
+<a href="Romania2009MainCanddts.txt">/Romania2009MainCanddts.txt</a>.
+Consider these three issue-sets (call them
+T<sub>1</sub>, T<sub>2</sub>, T<sub>3</sub>):
+</p><ol><li>
+Foreign relations &amp; diplomacy.  Pensions and unemployment benefits.
+</li><li>
+Accusations of corruption and cozy relations with media moguls &amp;
+wealthy businessmen; worries about trampling constitutional limits on power;
+best for hospitals &amp; schools; feeling that 
+Romania's current leaders doing poor job so need a change.
+</li><li>
+Desires to cut government size and budget;
+racist preferences for Christianity over Islam; 
+Moldovans who want an easy path to Romanian citizenship;
+expatriate Romanians who automatically vote against parties linked to the old communist regime.
+</li></ol>
+<p>
+Voters caring mostly about
+T<sub>1</sub> would have preference order  G>B>O.
+Voters caring mostly about
+T<sub>2</sub> would have preference order  O>G>B.
+Finally, voters caring mostly about
+T<sub>3</sub> might have preference order  B>O>G
+and apparently B was felt to have won his final debate with G.
+</p>
+<p>
+If these three kinds of voters were roughly equinumerous, that would produce
+an O&sup;B&sup;G&sup;O cycle.  I do not claim this is the right, true,
+or only explanation; I merely say it is one possible hypothesis.
+</p>
+
+
+
+<a name="apprv"></a>
+<h2>5. Approval- and range-voting style polls </h2>
+
+<p>
+Gallup Romania during 5-8 November
+conducted both an <a href="Approval.html">Approval-voting</a>-style poll 
+and a <a href="Plurality.html">Plurality-voting</a>-style poll (1253
+adults [age&ge;18] representative of the Romanian voter population; "stratified sampling"
+techniques used; face-to-face interviews at their homes),
+and the two graphics (provided by Gallup) give the results.
+</p>
+<img src="Gallup58Nov09app.png" width="49%">
+<img src="Gallup58Nov09plur.png" width="49%">
+<p>
+<b>Comments:</b>
+Oprescu and Antonescu are clearly ahead of everybody else in the approval-style
+poll. Oprescu had
+more approvals than any rival <i>despite</i> having the fewest (only 72%) pollees 
+giving an opinion about him; and Oprescu also had the fewest disapprovals even 
+<i>after</i> rescaling to discard all no-opinion votes.   
+Antonescu is second, and Geoana third; all others are statistically-significantly behind,
+i.e. they would all lose with confidence exceeding 99.9%.
+To assess this more precisely,
+I did a Monte Carlo calculation.  It indicated that the Gallup data predicts
+that, with confidence&asymp;89.5%, 
+Oprescu would defeat Antonescu in an approval-voting election;
+and with confidence&asymp;99.4%
+Oprescu would defeat Geoana.
+</p>
+<!--
+The Monte Carlo code:
+with(stats):
+ctA := 0; ctG := 0;
+for i from 1 to 10000 do
+   OprA := 40*100/72 + stats[random, normald]() * 1.191;
+   OprD := 100.0 - OprA;
+   AntA := 39*100/73 + stats[random, normald]() * 1.204;
+   AntD := 100.0 - AntA;
+   if( OprA*AntD > AntA*OprD ) then ctA := ctA+1; fi;
+   GeoA := 39*100/76 + stats[random, normald]() * 1.231;
+   GeoD := 100.0 - GeoA;
+   if( OprA*GeoD > GeoA*OprD ) then ctG := ctG+1; fi;
+od;
+print("Opr beats Ant with prob=", ctA/100.0, "percent.");
+print("Opr beats Geo with prob=", ctG/100.0, "percent.");
+#Ant:  89.85, 89.00, 89.65
+#Geo:  99.46, 99.35, 99.25
+-->
+<p>
+But with <i>plurality</i> voting the poll predicts Basescu wins 
+(also with confidence&gt;99.9%), which, of course, indeed happened in round 1.
+Observe that switching from approval to plurality voting <i>swaps</i> the
+fourth and first place finishers Oprescu and Basescu.
+I.e, Oprescu comes top and Basescu bottom among {A,B,G,O}
+in the approval-voting poll, exactly the opposite of the official results
+using plurality + top-2-runoff voting.
+</p>
+
+<!--
+<table bgcolor="yellow">
+<tr>
+<caption>
+Table 11XX.  now replaced by graphic direct from Gallup. 
+Gallup Romania conducted both an <a href="Approval.html">Approval-voting</a>-style poll 
+and a <a href="Plurality.html">Plurality-voting</a>-style poll, and here are the results 
+according to
+news articles on 5 and 16 Nov. 
+(Actually the pollees were asked if they had a "positive opinion" of candidate X.)
+I have not confirmed the genuineness of these poll results!?!??
+</caption>
+<tr>
+<th>Candidate</th><th>Approve</th><th>DisApprove</th>
+<th>Plurality</th>
+</tr>
+<tr><td>Oprescu</td><td>40%</td><td>34%</td><td>11%</td></tr>
+<tr><td>Antonescu</td><td>39%</td><td>34%</td><td>23%</td></tr>
+<tr><td>Geoana</td><td>39%</td><td>39%</td><td>22%</td></tr>
+<tr><td>Basescu</td><td>35%</td><td>53%</td><td>32%</td></tr>
+<tr><td>Tudor</td><td>24%</td><td>&nbsp;</td><td>5.5%</td></tr>
+<tr><td>Becali</td><td>26%</td><td>&nbsp;</td><td>4.0%</td></tr>
+<tr><td>Hunor</td><td>&nbsp;</td><td>&nbsp;</td><td>2.5%</td></tr>
+</table>
+-->
+
+<p>
+I am unaware of any <a href="RangeVoting.html">range-voting</a>-style polls.
+However, a
+poll by IOP (1355 telephone &amp; face to face interviews, 20-23 October)
+asked a range-voting-like question "How much do you trust politician X?"
+("Cata incredere aveti in X?") for many different X on an 0-100 trust scale.   
+The most-trusted
+among the presidential candidates again was found to be Oprescu (37%).
+Oprescu had also been the most-trusted (48%) in an earlier (18-25 Sept) IOP poll
+asking the same question.
+<p>
+
+<table bgcolor="yellow" border="1" cellpadding="5">
+<tr>
+<caption>
+Table 11. 
+IOP's "trust level" range-voting-like polls.
+(Also involved in these polls were the presidential non-candidates 
+Emil Boc, Elena Udrea, and Klaus Johannis.)
+<!--I have verified these polls were genuine.-->
+</caption>
+<tr>
+<th>Candidate</th><th>Trust% 20-23 Oct</th><th>Trust% 18-25 Sept</th>
+</tr>
+<tr bgcolor="pink"><td align="middle">Oprescu</td><td align="middle">37</td><td align="middle">48</td></tr>
+<tr><td align="middle">Antonescu</td><td align="middle">35</td><td align="middle">35</td></tr>
+<tr><td align="middle">Geoana</td><td align="middle">35</td><td align="middle">35</td></tr>
+<tr><td align="middle">Basescu</td><td align="middle">34</td><td align="middle">36</td></tr>
+<tr><td align="middle">Tudor</td><td align="middle">20</td><td align="middle">25</td></tr>
+<tr><td align="middle">Becali</td><td align="middle">19</td><td align="middle">25</td></tr>
+<tr><td align="middle">Hunor</td><td align="middle">7</td><td align="middle">5</td></tr>
+</table>
+
+
+<p>
+<b>Other remarks:</b>
+The polls I examined revealed no sign of a "gender gap."
+But there was an "age gap" with older voters favoring Geoana and younger ones Basescu.
+<!-- How would the pairwise polls have been affected by the (unpolled) foreign votes
+(which altered the official B-vs-G margin by 0.8%)?? -->
+</P>
+
+<a name="conclu"></a>
+<h2>6. Conclusions</h2>
+<ol><li>
+The 2009 Romanian Presidential Election probably exhibited 
+two or more different
+<a href="CondorcetCycles.html">Condorcet cycles</a>.  
+I find about 99.9% confidence (assuming 
+valid polls) that both of the
+top two official finishers Geoana &amp; Basescu were members of at 
+least one cycle.   
+</li><li>
+There either was no Condorcet winner (95% confidence) or it was the official third-placer
+Antonescu (4.8%) or 6th-placer Oprescu (0.2%).
+</li><li>
+The official plurality+top2runoff (2 round) method used, elected 
+Basescu who would have lost head-to-head versus either O or A by 
+comparatively clear margins; B did beat G pairwise but only by an
+0.66% margin.  So, <i>based on the pairwise table alone</i>, B overall was 
+probably the worst choice among {A,B,G,O}, but was elected; while A or O were
+probably the best choices, but finished third and sixth, respectively,
+in the official count.
+</li><li>
+The truth was this was a close 4-way race between {O, A, G, B} 
+but the 
+election method distorted that hugely and made it look like (and effectively be)
+a 2-way race  between G &amp; B, with O &amp; A far behind.
+</li><li>
+The only <a href="Approval.html">approval-voting</a>-style 
+poll I have found says if it had 
+been approval voting 
+then O, A, and G all would have placed clearly ahead of B.  So again, the 
+official winner B appears to have been the worst choice. The approval 
+poll, and also two <a href="RangeVoting.html">range</a>-like 
+"trust level" polls, all gave the top spot to O 
+<!-- (but not by a statistically significant margin over A and G?),  -->
+despite the fact that Oprescu
+officially finished last among these four (and 6th overall) with only 
+3% of the vote. 
+So approval and the officially-employed plurality+top2runoff method
+featured <i>reversed</i> results for the top 
+and bottom candidates among these 4. 
+</li><li>
+With 
+<a href="rangeVirv.html">instant runoff voting (IRV)</a>,
+one of {A,B,G} would have won, but it is unclear who.
+With 
+<a href="Asset.html">asset voting</a>, presumably Geoana would have won.
+I thank Ronald Rivest for informing me that (with the central estimates of the pairwise margins
+in table 10a) under both Borda Count and Schulze's "beatpath" Condorcet method, 
+Geoana would have won.
+</li></ol>
+
+<h2>7. Acknowledgments </h2>
+
+<p>
+I thank
+Daniel Bochsler,
+Juho Laatu, 
+Alina Mungiu-Pippidi,
+Diana Viasiu,
+as well as some other Romanians who wish to remain anonymous, for useful comments.
+</p>
+
+<h2>8. Literature References </h2>
+<!--
+<p>
+CCSB Nov 7-11 poll:
+http://www.jurnalul.ro/stire-politic/sondaj-ccsb-basescu-antonescu-un-tur-doi-indecis-527303.html
+http://www.actmedia.eu/top+story/ccsb+poll:+basescu+seen+getting+35+pct,+geoana+31+pct,+antonescu+18+pct+in+first+round+of+voting+/24218
+
+primary source  of oct poll, 996 adults 10-11 oct, sponsor inpolitics.ro
+http://www.slideshare.net/inpolitics/sondaj-de-opinie-naional-ccsb-octombrie-2009?src=related_normal&rel=2458774
+</p>
+<p>
+CURS: 
+this is not a sponsor, do not trust
+http://www.bucharestherald.com/politics/34-politics/6788-basescu-and-geoana-neck-to-neck-for-presidential-elections-curs-poll-says
+
+this is a real sponsor, 1110 people
+http://prezidentiale.evz.ro/emain/articolul/873136/CURS-Basescu-si-Geoana-umar-la-umar
+
+http://www.curs.ro/images/pdf/sondaj%20jurnalul%20national%20oct.pdf
+1602 face-to-face interviews with rep voters 25 sept - 7 oct for Jurnalul National
+did a plurality poll
+
+sponsors
+Evenimentul Zilei.  Televiziunea Romana.   
+</p>
+<p>
+CSOP:
+http://www.hotnews.ro/stiri-politic-6314126-sondaj-csop-mircea-geoana-crescut-trei-procente-sondaj-traian-basescu-doar-unul.htm
+2064 on 15-18 nov
+http://www.gazetadebistrita.ro/citeste/1665-sondaj-csop-basescu-invingator-si-in-turul-ii?n=1
+</P>
+<p>
+INSOMAR: 
+1207 http://www.insomar.ro/documente/alte_cercetari/2009_11_Sondaj_INSOMAR_29-31_oct.pdf
+1206 http://www.insomar.ro/documente/alte_cercetari/2009_11_Sondaj_INSOMAR_6-9_nov.pdf
+11973 http://www.insomar.ro/documente/alte_cercetari/2009_11_Sondaj_INSOMAR_13-15_nov.pdf
+11971 http://www.insomar.ro/documente/alte_cercetari/2009_11_Sondaj_INSOMAR_28-29_nov.pdf
+</p>
+<p>
+Gallup Romania:
+31Oct-2Nov poll
+http://www.slideshare.net/inpolitics/sondaj-national-gallup-31-octombrie-2-noiembrie?src=related_normal&rel=2458774
+
+http://prezidentiale.evz.ro/emain/articolul/874445/Crin-il-loveste-pe-Geoana-cu-un-sondaj/
+http://mariusmina.blogspot.com/2009/11/sondaj-gallup-geoana-cade-sub-crin.html
+http://www.informatia-zilei.ro/new/2009/11/05/gallup-poll-antonescu-si-geoana-se-lupta-pentu-turul-ii-basescu-33-antonescu-–-22-geoana-–-22-oprescu-–-11/
+
+http://mariusmina.blogspot.com/2009/11/sondaj-gallup-geoana-cade-sub-crin.html  
+nov9 rept of 5-8 nov poll of 1253 rep've adults. Age thresh=18. Stratified sampling I think.
+Plur: B=32, A=23, G=22, O=11, T=5.5, Becali=4, H=2.5. (76% responded, this is slide 8)
+B-v-O 45-55
+B-v-A 46-54
+B-v-G 50-50
+O 40 opinii pozitive, actually it says "opinie favorabila" or "nefavorabila." 
+A 39 opinii pozitive
+G 39 opinii pozitive
+B 35 opinii pozitive (but the other multicnddt slide says 37) 53 dezaproba, 12 did not say
+Bec 28 opinii pozitive
+T 22 opinii pozitive
+H not-asked. 
+Ok, actually, Gallup gives a new slide 13 with all canddts and also with both + and -:
+O 40+, 32-, 6+22=28 not saying
+A 39+, 34-, 7+20=27 x
+G 39+, 37-, 5+19=24 x
+B 37+, 49-, 3+11=14 x
+Bec 28+, 50-, 4+18=22 x
+T 22+, 55-, 4+19=23 x
+H not-asked. 
+proof this gallup poll existed, and I am using this primary source:
+http://www.slideshare.net/inpolitics/sondaj-naional-gallup
+
+</p>
+<p>
+Exit polls:
+7 December 2009 | 01:10 | FOCUS News Agency story
+Three exit-polls show Geoana victor in Romanian presidential election, one shows
+Basescu winning,
+http://groups.yahoo.com/group/RangeVoting/message/12793
+</p>
+
+
+CCSB = Compania de Cercetare Sociologica si Branding
+
+CURS = Centre of Urban and Regional Sociology http://www.curs.ro/  no NOv 3 poll!
+exit poll on rd1 was 18540 voters at 312 locations
+-->
+<p>
+Daniel Bochsler:
+The Marquis de Condorcet goes to Bern (2008),
+Public Choice (to appear).
+</p><p>
+Steven J. Brams &amp; Peter C. Fishburn: Approval Voting, Birkhauser, Boston 1983.
+</p><p>
+Peter C. Fishburn: A proof of May's theorem, Behav. Sci. 18 (1973) 212.
+Also explained in
+<a href="PuzzlePage.html#p42">CRV Puzzle #42</a>.
+</p>
+<p>
+Wm.V.Gehrlein: 
+Condorcet's paradox, Springer Theory and Decision Library 2006.
+[See also his paper
+<!--
+William V. Gehrlein:-->
+Condorcet's paradox and the likelihood of its 
+occurrence: different perspectives on balanced preferences,
+Theory &amp; Decision 52,2 (March 2002) 171-199.]
+</p>
+<p>
+G.Th.Gilbaud: Economie Apliquee 5 (1952) 501-584. 
+Also explained in <a href="PuzzlePage.html#p7">CRV Puzzle #7</a>
+and by Gehrlein.
+</p>
+<p>
+Peter Kurrild-Klitgaard:
+An empirical example of the Condorcet paradox of voting in a large electorate,
+Public Choice 107,1-2 (2001) 135-145.
+<!-- http://en.wikipedia.org/wiki/Peter_Kurrild-Klitgaard 
+http://www.bochsler.eu/publ.html
+-->
+</p><p>
+Wm.H.Riker: The paradox of voting and congressional rules for voting on
+amendments, American Political Science Review 52 (1958) 349-366.
+</p><p>
+Anthony Quas:
+Anomalous outcomes in preferential voting (<a href="QuasPaper23.pdf">pdf</a>),
+Stochastics &amp; Dynamics 4,1 (2004) 95-105.
+See also <a href="PuzzlePage.html#p102">CRV Puzzle #102</a>.
+</p>
+<p>
+Warren D. Smith:  Explanation of "optimally weighted stratified sampling,"
+<a href="PuzzlePage.html#p101">CRV Puzzle #101</a>.
+</p>
+<p>
+Warren D. Smith:  Condorcet cycle probability (Dirichlet model), 
+<a href="PuzzlePage.html#p85">CRV Puzzle #85</a>.
+</p>
+<p>
+Warren D. Smith: 
+Exact formula for Probability Condorcet Winner exists in C-candidate random election model,
+<a href="PuzzlePage.html#p102">CRV Puzzle #102</a>.
+</p>
+<p>
+Warren D. Smith et al: 
+"Center for Range Voting"
+website
+<a href=""></a>.
+</p>
+<p>
+Nicolaus Tideman: Collective Decisions and Voting: The Potential for Public Choice, Ashgate 2006.
+For my recalculations of his cycle-probability estimates in chapter 9, see
+<a href="TidemanElModel.html">
+/TidemanElModel.html</a>.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

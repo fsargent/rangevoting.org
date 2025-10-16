@@ -1,0 +1,324 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Voting machines
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Which voting machines can handle which election systems? </h2>
+
+<p>
+<a href="#botline">(Skip to bottom line)</a> &nbsp;
+<a href="VMSumm.html">(Executive summary)</a>
+</p>
+
+<p> 
+Both <i>single-digit Range</i> (permitted scores 0,1,2,3,4,5,6,7,8,9, and X)
+and <i>Approval</i> elections
+can be handled by any kind of voting machine capable of handling multiple plurality
+elections, i.e. every voting machine in the USA, without modification.
+The underlying reason for this is Jan Kok's <a href="kokidea.txt">mathematical transformation</a>.
+<font size="-1">An extension of this
+method can also be used (as is explained in more generality <a href="kok2ndlevel">here</a>)
+to handle two-digit range voting elections (i.e. range 0-99 rather than 0-9)
+on plurality machines, <i>but</i> only if the voter's
+"X (intentional blank)" option is sacrificed.</font>
+Here are <a href=BallotPict.html>examples</a>
+of how sample ballots would look on different voting machine types,
+and here is a <a href="presdemo/PresBallot.html">demo</a> range election  
+you can participate in yourself (try it!) a 
+<a href="quickdemo/PresBallot.html">quicker demo</a> and a version of the quicker demo
+that demonstrates 
+<a href="quickdemo/PresRadio.html">
+what range voting would be like on a plurality-style voting machine.</a>
+</p>
+
+<H3> But wait... </H3>
+
+<p><b>Q.</b>
+But, I asked some voting machine manufacturers 
+"Do your machines support range voting?" and they said "No."
+</p>
+
+<p><b>A.</b>
+Try asking them this way instead: 
+<ol>
+<li>
+"Do your machines support ordinary plurality voting?" (Answer: "Yes.")
+</li><li>
+"There is a <a href="kokidea.txt">theorem</a> that, given a black box that does plurality voting, 
+we can use it to do range voting.  Do you dispute this theorem?"
+</li>
+</ol>
+
+<H3> Is this inconvenient? </H3>
+
+Depends on the voting machine type and the election.
+With <i>optical scan</i> machines, the best and most common type in the 2004 USA,
+range voting is maximally easy and convenient.
+(Check <a href="VotSystMap.html">this map</a> to see how many Americans vote on
+what kinds of machines and where.)
+</p>
+
+<p>
+With range ballots
+run on ordinary plurality voting machines, slots (e.g. "levers" on
+New York style machines) get "chewed up" 10 times faster than
+with plain plurality voting.  (Assuming 10 allowed scores.
+With 100 allowed scores, 20 times faster.  With L
+allowed socres for 1&lt;L&lt;10, L times faster.)
+
+Consequently if it is a large enough election or if there are too many elections, 
+you'd run out of levers and more
+machines would be needed (or you'd have to use range voting with fewer levels).
+Which would not be so fun.
+
+On the other hand with say, optical scan machines, you'd instead "chew up 
+those little pen-fill blobs on the piece of paper" which seems far
+less of a limitation. (Indeed, range voting on such machines actually strikes
+us as <i>more</i> convenient and clear than plurality voting.)
+Ditto with many kinds of punch card machines.
+
+So we are not saying range voting is wonderful to run on
+all plurality machines.  We <i>are</i> saying, it can be done on
+every plurality machine in the USA, with varying levels
+of convenience or inconvenience depending on the machine type 
+and the election.   (The most inconvenience occurs on certain kinds of punch card machines,
+but fortunately these <a href="VotSystMap.html">are rare</a> and their use-fraction 
+is declining.)
+
+We do not especially recommend running range elections in this style.
+We would much prefer to have voting machines <i>specifically designed</i>
+for range voting.  However, because range voting <i>can</i> be done on
+plurality machines as a stopgap measure, that makes it a lot
+more smoothly adoptable than many other forms of voting, for
+example IRV and Condorcet, which simply
+<i>cannot</i> be done on many kinds of plurality machines.
+
+<H3> What we recommend </H3>
+
+<ol type="A">
+<li>
+For use with dumb plurality machines, and in Iowa'08 (pen &amp; paper ballots with
+manual totalling), we advocate 0-9 and X
+single-digit range voting.
+</li>
+<li>
+For rare especially horrible types of plurality machines (perhaps levers or, worst of all,
+all-punches-in-a-row "butterfly ballot" punch card types) on which 0-9 is too nasty, we
+advocate 0-1 and X, e.g. "trinary approval." But there should be a law demanding these
+machines all be phased out by some deadline.  This will not be a serious issue
+because most ballot-initiative states (i.e. the states in which we plan to make
+a play to get Range Voting after Iowa '08 hopefully adopts range voting) 
+do not use these worst kinds of plurality
+machines, and by that time (2010) even fewer states and counties will. 
+You can confirm this by checking
+this <a href="VotSystMap.html">2004 machine-types map of the USA</a>
+and the
+<a href="BallInit.html#ballstatelist">
+list of ballot-initiative states</a>.
+</li>
+<li>
+For use with future machines specifically designed for range voting, we advocate
+0-99 and X (or perhaps even 0-99999 and X), with
+multiplication
+of the 0-9 results by 11 to get compatibility with coexisting 0-99
+machines.
+</li>
+<li>
+This all will have the advantage that it permits <i>easy migration</i> to the
+range system
+<i>without</i> needing to buy all new machines, but at the same time provides continual
+<i>incentive</i> to <i>upgrade</i> to 0-99 machines actually designed for range voting, since
+some voters will want the extra fineness (about 5% in our polls used votes like
+98 and 73, and about 30% employed numbers like 75 and 35, both with an 0-100 permitted score
+range).
+</li>
+<li>
+The smaller ranges like 0-9 and 0-1 will be mandated to be phased out by
+a certain date,
+resulting in uniformity with all machines at the maximum range.
+</li>
+</ol>
+
+<H3> What kinds of voting machines are the best? </H3>
+
+<p>
+Since you asked, there is a general "consensus"
+<font size="-1">(The
+word "consensus" is from Andrew Gumbel's <a href="RVPapers.html">book</a>.)</font>
+being reached that 
+<b>precinct-based "optical scan"</b> 
+voting machines are (as of 2005) the best kind available measured
+by a combination of the following: 
+<ol>
+<li>
+Value for money (i.e. they are cheap, as opposed to "DRE" machines which are by contrast 
+extremely expensive)
+</li>
+<li>
+Simplicity, <a href="pressrelease_2006_0828.html">security</a>,
+reliability, and durability (as opposed to DRE machines which are
+by contrast very complex and unreliable and fragile and subject to hacking &ndash; and whatever you
+do, do not be a total idiot by getting one with wireless communication capability)
+</li>
+<li>
+Small size, weight, and storage space requirements 
+(as opposed to DRE machines which are
+by contrast very large; mechanical lever machines are very heavy)
+</li>
+<li>
+Recountable/auditable "paper trail" produced as inherent side-effect of use
+(as opposed to many DRE machines, and to lever machines; punch card machines
+are innaccurate and have problems with "hanging chads" and easy overvote-fraud;
+even those DRE machines which do produce paper trails do it with a printer which means
+big unreliability, complexity, and expense compared to voters filling in the paper themselves as
+in optical scan)
+</li>
+<li>
+Work well for use with range voting &ndash; not just plurality voting.
+</li>
+<li>
+<a href="pressrelease_2006_0828.html">More accurate</a>
+(lower <a href="Spoiled.html">lost-vote</a> rates) than punch card and full face DRE systems.
+</li>
+<li>
+Opscan machines process far more voters (so you need fewer of them).
+A 2006 study by NY Verified Voting estimated
+that a DRE machine can handle only 200 registered voters, while a single precinct based
+optical ballot scanner, with sufficient numbers of inexpensive marking booths,
+can serve up to 4000 registered voters.  The point is that slow part of opscan voting &ndash;
+filling out the ballot &ndash; is done away from the machine.
+On the DRE the slow part is done at the machine.
+</li>
+</ol>
+Optical scan machines are currently the most popular type in the USA
+probably for exactly these reasons &ndash; but
+DRE machines are the most popular type among people trying to <i>sell</i> us
+these machines so they can make lots of money, also for exactly these reasons.
+(Read <a href="MiamiDadePC.html">story</a>
+of Florida's  Miami-Dade County,  which got suckered into buying DRE machines from ES&amp;S
+and now wants to discard them all and switch to optical scan as the cheapest way out
+of the mess they got themselves into.  Later note:
+It <a href="FLswitch.html">now appears</a> as though
+Florida will be switching over to optical-scan statewide and abandoning all its DRE machines.)
+However, the USA is unfortunately an
+outrageous  totally
+nonuniform <a href="VotSystMap.html">crazy quilt</a> of different machine
+types and standards.
+</p>
+
+<H3> What about Condorcet and IRV? </H3>
+
+<p>
+Sorry, considerably fewer kinds of present-day voting machines can handle them.
+</p>
+
+<p>
+You might <i>naively</i> think something like
+"optical scan machines are just an optical input device connected to a computer.
+Therefore, we can program it to perform any kind of election.
+Unlike, say, mechanical-counter based lever machines, which can only be used
+for additive kinds of elections, such as range, approval, and plurality."
+</p>
+
+<p>
+However, the truth is messier.
+See, the great advantage of mechanical lever machines is precisely that they do
+<i>not</i>
+contain computers and therefore tampering is fairly hard to do and easy to
+detect.
+(Low-tech is better, many voting advocates say, and we think with some justification...)
+</p>
+
+<p>
+Now for this reason, we think many punch card machines and optical scan
+machines are intentionally designed <i>not</i> to have computers,
+i.e. to have counters, mechanical or electromechanical or
+hardwired electrical.  Or if they do have computers, they are designed
+to be computers ultrahard to reprogram, e.g. soldered-in
+single chip computers with 
+program in built-in ROM.
+(Perhaps somebody knows more
+than I do re that? Help appreciated.)
+</p>
+
+<p>
+If you want to know the answers to these questions for any particular machine type,
+good luck.
+Basically, the voting machine manufacturers <a href="VMLies.html">lie constantly</a> and make up
+different stories depending who they think is listening. 
+(Check this about how their <a href="AviRubinITA.html">creation of the myth</a>
+of "independent testing authorities" for voting machines, and 
+<a href="DieboldSuit.html">this</a> about a lawsuit against Diebold Inc. for telling lies.)
+If they think the listener wants security and incredible tamperproofness, meet story number 1...
+So you generally cannot
+trust what they say. There are numerous examples of that.
+</p>
+
+<p>
+For IRV, the situation is even <a href="IrvNonAdd.html">worse still</a>.
+Even if your machines have computers, and even if those computers are
+totally programmable, then those machines <i>still</i> cannot handle counting
+IRV votes, <i>unless</i> they are all connected together in a giant network,
+or unless just one machine <i>has</i> all
+the votes, i.e. all the ballots in the whole state
+are first shipped to a single central counting agency.
+(That is
+because, in IRV, one machine needs to know the totals from all the <i>others</i>
+just in order to count its <i>own</i> personal stash of votes.  In  contrast, in
+Range voting, a machine can total its own personal stash without knowing anything
+about the rest of the world.)
+Either way, this is asking for trouble!  Think about this in an
+adversarial environment with people demanding recounts and tracking all votes back to 
+their original precincts, and other bad people trying to screw up the network.
+IRV is an election administrator's nightmare 
+waiting to happen.
+</p>
+
+<hr>
+<a name="botline">
+<p>
+<b>The bottom line:</b>
+We know range and approval can be handled even
+by machine types designed only for plurality voting,
+that cannot be reprogrammed, that have no computers, that
+are not all connected in a network, and that are located in
+individual precincts.
+Some machine types make this pleasant for the voter, 
+other less, but all can do it. 
+But Condorcet, Borda, and <a href="IrvNonAdd.html">IRV</a>
+cannot be handled unless there is reprogramming
+and in the IRV case unless there is networking or centralized counting instead of
+precincts
+(<a href="CondTot.html">Deeper look</a>).
+</p>
+
+<p>
+That is a significant
+adoptability edge for range and approval and it <i>alone</i> should be enough to convince all
+serious voting-reformers to forget about Condorcet, Borda, and IRV.
+(Not convinced?  The cost of buying new voting machines USA-wide would be
+of order $50 billion.  The cost of buying such machines for just <i>one</i> typical
+<i>county</i> far exceeds the entire 
+nationwide budgets all of the USA's "third parties" <i>combined</i>.  
+Based on this monetary comparison: Who do you think
+has more power &ndash; voting machine stick-in-the-muds, or voting-method reformers?)
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

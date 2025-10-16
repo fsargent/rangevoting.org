@@ -1,0 +1,358 @@
+<html>
+<head>
+<title>
+RangeVoting.org - nonApproval range voting style can be uniquely strategically best
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Examples in which best Range Voting strategy is not "approval style" voting </H2>
+
+<H3> Before we begin... a note about the "generic" situation... </H3>
+
+<p>
+..."approval style"
+range voting (where you give every candidate either the max or min possible score)
+is strategically optimum (or at least, the utility of the best approval-style vote is
+only smaller than that of the truly-best range vote by a negligibly small amount)
+<i>if</i> we can <i>assume</i> that the probability of an election-leading 
+near-tie
+(which your vote can hope to alter) between two of the candidates is very unlikely 
+and the probability of
+a 3-or-more-way near-tie is very <i>very</i>, i.e. neglectibly, unlikely.
+</p>
+
+<p>
+<small>
+Proof sketch: 
+We <i>assume</i> your probability of breaking an AB tie is <I>proportional</I> to your 
+vote's A-B
+score difference.  
+Give maximum score to some subset of candidates A and minimum to the complementary subset B.
+Why would you want any other vote?  You might want to lower some A's score by
+some amount Q if by so doing you
+could increase the vote difference for some other pair (or pairs) by Q (in <i>total</i>);
+but if that other pair (or pairs) has (have) less
+utility
+(where "utility" of a pair of candidates
+is the probability of that tie times candidate-quality difference)
+then that move would be bad for you for <i>any</i> Q>0.  
+In other words, assuming situation is "generic" so that <i>exact</I> ties do not happen,
+the best maxxing-and-minning-only vote, is in fact your best vote, period.
+Hence your best vote (maximizing expected utility)
+then  always maxes-out or mins-out
+every score you can.  &nbsp; Q.E.D.
+</small>
+</p>
+
+<p>
+<i>A different assumption</i> which also suffices seems to be that the candidates can
+be pre-ordered in decreasing likelihood of election chances, and that each's chance is
+hugely greater than the next one's.
+</p>
+
+<p>
+<small>
+Proof: 
+In this case you can assign your scores to the candidates one by one in order,
+only basing your decision on a candidate's score on information about him
+and the <i>previous</i>
+candidates &ndash; the later ones are irrelevant to that decision.
+Then, for each candidate X you score, his score cannot affect the winning
+chances of
+the previously-scored ones if X does not win.  X's score then
+can only affect the chance X wins, not the chances for previous candidates if
+X does not win.  And it does so in a monotonic manner.
+Hence the decision on X should be purely based on whether X
+is superior or inferior in utility to the expected utility among the previous
+winners given your previous votes: if it is larger, give X the maximum,
+otherwise the minimum score.
+Q.E.D.
+</small>
+</p>
+
+<small>
+<p>
+<b>Forest Simmons</b> also points out the following argument that in "large" elections,
+best range voting strategy is approval-style, at least up to statistical "noise"
+(which, he argues, ought to be negligibly small in most circumstances in large elections):
+</p>
+<blockquote>
+For each candidate each voter uses dice
+to pick a random number between the min and max possible rating, and approves
+or disapproves that candidate depending on whether or not the random
+number is less than the voter's ideal rating for the candidate.
+<br>
+According to the "law of large numbers," if all approval voters use
+this technique, then the approval proportions for the candidates are
+asymptotically the same as the range proportions.
+</blockquote>
+<p>
+But the reader is warned to be careful; this Simmons argument actually does not work
+in the large election of <a href="PuzzlePage.html#prob19">puzzle 19</a> because
+in that scenario the "noise" would dominate the intentional effects.
+</p>
+</small>
+
+<p>
+However, those assumptions, while plausible in large real
+elections, usually are false in small ones.
+</p>
+
+<p>
+<small>
+Also if you have <i>complete knowledge</i> of all the other votes then an optimum range vote
+is always trivial to determine, and without loss of generality is an "honest approval-style"
+(or one could also demand it be a "plurality-style"), vote.
+E.g. give the maximum score to the best candidate who can win and to all better candidates,
+and the minimum score to all others.  (This strategy's validity to a large degree
+forms the basis for
+the "first argument" in the <a href="PleasantSurprise.html">pleasant surprise</a> claim.)
+</small>
+<hr>
+
+<a name="examples">
+<H3> First example: ignorance </H3>
+<p>
+In a 3-voter (or more voter) [0,1]-range-voting
+election, assume the totals of the votes of the other two (or more) voters are either
+</p><center>
+(1, 1.1, 1.2)
+ &nbsp;&nbsp; &nbsp;&nbsp;
+or
+ &nbsp;&nbsp; &nbsp;&nbsp;
+(0, 1.1, 1.2)
+</center>
+<p>
+<i>but</i> you do not know which.
+Call the candidates A,B, and C.
+Your candidate-utilities: 
+<center>
+U<sub>A</sub>=10,
+&nbsp;
+U<sub>B</sub>=5
+&nbsp;
+U<sub>C</sub>=0.
+</center>
+</p>
+
+<ul>
+<li>
+If you vote (1, 0, 0) approval-style, then A wins in scenario #1 but C wins in scenario #2.
+</li>
+<li>
+If you vote (1, 1, 0) approval-style, then B wins in scenario #2 and B wins in scenario #1.
+</li>
+<li>
+If you vote (1, 1, 1) approval-style, or (0, 0, 0), then C wins in both scenarios.
+</li>
+<li>
+If you vote (1, 0.5, 0), a <i>genuine range vote</i>, 
+then A wins in scenario #1 and B wins in scenario #2,
+which is the best you can hope for in either case
+(and is <i>strictly better</i> than
+any approval-style vote)
+so that this "honest" vote here also happens to be the strategic vote
+giving you the best possible expected utility.
+</li>
+</ul>
+
+<hr>
+
+<H3> Second example: you, a known, and a random voter </H3>
+<p>
+In the following 3-voter election,
+call the candidates A,B, and C.
+We assume [0,1] range voting.
+Let R<sub>j</sub> denote independent
+uniform random numbers in [0,1], so that voter#2 is regarded as completely unknown to you,
+while voter#1 is regarded as completely known.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> Voter </th>
+<th> A </th>
+<th> B </th>
+<th> C </th>
+</tr>
+<tr>
+<td> voter#1 </td>
+<td> 0 </td>
+<td> 0.798 </td>
+<td> 0.618 </td>
+</tr>
+<tr>
+<td> voter#2 </td>
+<td> R<sub>1</sub> </td>
+<td> R<sub>2</sub> </td>
+<td> R<sub>3</sub> </td>
+</tr>
+<tr>
+<td> you(voter#3) </td>
+<td> 1 </td>
+<td> V </td>
+<td> 0 </td>
+</tr>
+</table>
+
+<p>
+<small>
+(Or, what might be more realistic &ndash; but is entirely equivalent &ndash; is to 
+replace voter #2 with <i>three</i> random voters each of whom votes 1 for one candidate,
+0 for another, and a random value for the third as 10R, R10, 0R1.)
+</small>
+Assume the election-utilities (for you) of the
+three candidates are    
+</p><center>
+U<sub>A</sub> = <b>+</b>200,
+&nbsp;&nbsp;
+U<sub>B</sub> = <b>+</b>32,    
+&nbsp;&nbsp;
+U<sub>C</sub> = <b>&ndash;</b>800
+</center>
+<p>
+Then here are the expected utilities of various possible votes you could make
+(result of 25 million Monte Carlo experiments):
+<small>It is in fact possible to evaluate the exact rational utility answers by evaluating the
+volumes of certain 3-dimensional polyhedra, but we did not try.
+</small>
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> Vote V </th>
+<th> Utility </th>
+</tr>
+<tr>
+<td> 1(exaggerated) </td><td> 35.4 </td>
+</tr>
+<tr>
+<td> 0.83(honest) </td><td> 43.6 </td>
+</tr>
+<tr>
+<td> 0.58(best?) </td><td> <b>51.2</b> </td>
+</tr>
+<tr>
+<td> 0(exaggerated) </td><td> 35.9 </td>
+</tr>
+</table>
+
+<p>
+As you can see, neither the honest range vote, nor either of the two "approval style"
+exaggerated ones, is strategically best.  
+</p>
+
+<hr>
+
+<H3> Third example: you, a known, and two random voters </H3>
+<p>
+In the following 4-voter election,
+call the candidates A,B, and C.
+We assume [0,1] range voting.
+Let R<sub>j</sub> denote independent
+uniform random numbers in [0,1].
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> Voter </th>
+<th> A </th>
+<th> B </th>
+<th> C </th>
+</tr>
+<tr>
+<td> voter#1 </td>
+<td> 0 </td>
+<td> 0.896 </td>
+<td> 0.219 </td>
+</tr>
+<tr>
+<td> voter#2 </td>
+<td> R<sub>1</sub> </td>
+<td> R<sub>2</sub> </td>
+<td> R<sub>3</sub> </td>
+</tr>
+<tr>
+<td> voter#3 </td>
+<td> R<sub>4</sub> </td>
+<td> R<sub>5</sub> </td>
+<td> R<sub>6</sub> </td>
+</tr>
+<tr>
+<td> you(voter#4) </td>
+<td> 1 </td>
+<td> V </td>
+<td> 0 </td>
+</tr>
+</table>
+
+<p>
+Assume the election-utilities (for you) of the
+three candidates are    
+<center>
+U<sub>A</sub> = <b>+</b>60,
+&nbsp;&nbsp;
+U<sub>B</sub> = 0,    
+&nbsp;&nbsp;
+U<sub>C</sub> = <b>&ndash;</b>940
+</center>
+Then here are the expected utilities of various possible votes you could make
+(result of 25 million Monte Carlo experiments):
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> Vote V </th>
+<th> Utility </th>
+</tr>
+<tr>
+<td> 1(exaggerated) </td><td> 3.5 </td>
+</tr>
+<tr>
+<td> 0.94(honest) </td><td> 4.1 </td>
+</tr>
+<tr>
+<td> 0.46(best?) </td><td> <b>7.8</b> </td> 
+</tr>
+<tr>
+<td> 0(exaggerated) </td><td> 0.9 </td>
+</tr>
+</table>
+
+<p>
+Again, neither the honest range vote, nor either of the two "approval style"
+exaggerated ones,
+is strategically best.
+</p>
+
+<hr>
+<H3> Fourth example: <a href="RVstrat5.html">&quot;range2&quot; zero-info strategy</a> </H3>
+
+<hr>
+<H3> Fifth example: you and N random voters </H3>
+
+<p>
+See <a href="PuzzlePage.html#prob19">puzzle 19</a>.
+</p>
+
+<p>
+<small>
+I thank Boris Alexeev for stimulating correspondence.
+</small>
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

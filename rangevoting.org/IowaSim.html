@@ -1,0 +1,110 @@
+<html>
+<head>
+<title>
+RangeVoting.org
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Some Simple Computer Simulations of Iowa 2008 </H2>
+
+<H3>
+How often do the Range Voting and Approval Voting
+winners differ?
+</H3>
+
+<p>
+We consider a maximally simple model in which each voter regards each of the C candidates as
+having a random number as his election utility.
+There are V voters, and a percentage F of them
+are "strategic" with the rest honest.
+On <i>this</i> page, by
+"strategic range voter" we mean "honest approval voter using
+threshholding based on the mean candidate utility."  Thus with F=100
+Range and Approval act identically.
+The results of running the program are:
+</p>
+<pre>
+C    V    F    %where winner differs    #elections simulated
+--  ---  ---   ---------------------    --------------------
+10  101  100      0                         65536
+10  101   50     32.6                       65536
+10  101    0     40.6                       65536
+
+10 100001 50     30.9                         256   *
+10 100001  0     35.5                         256   
+
+3  101    50     19.6                       65536
+3  101     0     23.4                       65536
+
+3  100001 50     23.0                         256
+3  100001  0     23.4                         256
+</pre>
+<p>
+The line with the "*" is the closest approximation to Iowa 2008 situation.
+As you can see, the Approval Voting and Range Voting winners differed in 31% of
+those simulations.
+</p>
+
+<H3>
+How often do the Range Voting and Approval Voting
+winners differ from the Plurality winner?
+</H3>
+
+<p>
+We again consider the
+maximally simple model in which each voter regards each of the C candidates as
+having a random number as his election utility.
+There are V voters, and a percentage F of them
+are "strategic" with the rest honest.  On <i>this</i> page, by
+"strategic range voter" we mean "honest approval voter using
+threshholding based on the mean candidate utility" and by
+"strategic plurality voter" we mean "always votes for one of the first two candidates,
+whichever has greater utility."
+The results of running the program are:
+</p>
+
+<pre>
+C    V    F    %where winner differs    #elections simulated
+--  ---  ---   ---------------------    --------------------
+10  101  100     90.0                       65536
+10  101   50     83.3                       65536
+10  101    0     69.1                       65536
+
+10 100001 100    84                         256   *
+10 100001 50     86                         256   *
+10 100001  0     75                         256
+
+3  101   100     43.1                       65536
+3  101    50     46.4                       65536
+3  101     0     32.2                       65536
+
+3  100001 100    40                         256
+3  100001 50     48                         256
+3  100001  0     37.6                       256
+</pre>
+
+<p>
+The lines with the "*" are the closest approximations to Iowa 2008 caucus situation.
+</p>
+
+<p>
+At least in this model it is clear that the chances of a visibly different result
+in Iowa 2008 from adopting range instead of plurality, are large, and if <i>both</i> the
+Dem and Repub primaries are considered, the probability that a winner will differ
+in at least <i>one</i> of the <i>two</i> party's cases, is very large.
+</p>
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

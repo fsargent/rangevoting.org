@@ -1,0 +1,1805 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Random Normal Elections (computer results)
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> "Random normal elections" model &ndash; computer (and human) results </H1>
+<!--files RVS.out & CondARN.c -->
+<p>
+<b>The model.</b>
+There are C candidates and V voters. 
+Each voter has a "utility value" for the election of each candidate.
+All V&middot;C of these values are independent standard normal random numbers.
+For voting systems based on rank-order ballots, all voters give their
+honest ordering as their vote.
+If range voting is used,
+then each voter gives the best candidate 100, the worst 0, and the rest
+are honestly linearly interpolated.
+If approval voting is used,
+then each voter approves of candidates above the midway point between
+the best and worst candidates.
+</p>
+<blockquote><small>
+Of course, in the real world, voters do not have to act these ways.
+We are assuming they act these ways only for the purpose of generating
+the tables below.  If they act other ways, or if the underlying
+probablistic model were different,
+then different tables would result.
+</small></blockquote>
+<p>
+This model in some sense gives a uniform sampling of all mathematically-possible elections.
+It is not claimed to be especially politically realistic.
+Instead its main goals are <i>simplicity</i> and <i>reproducibility</i> of the 
+computer results below.
+(This model has been called the "Impartial Culture" in the literature.)
+There is a lot to be learned from this data despite the 
+considerable amount of political realism that it lacks.
+Determining this data via Monte Carlo simulation required about a <i>month</i> of computer time.
+To understand our terminology, it may help to consult the <a href="Glossary.html">glossary</a>.
+</p>
+<p>
+If you want computer simulations that seem more politically-realistic, try papers #56 and #95 
+<a href="WarrenSmithPages/homepage/works.html">here</a>, or you could examine our
+<a href="FunnyElections.html">list</a> of genuine national presidential elections, or
+you could check out our election-simulator <a href="IEVS/IEVS.c">IEVS</a> or
+the  
+<a href="BayRegDum.html">Bayesian Regret framework</a>.
+</p>
+<p>
+If you want <i>theorems</i> in this model, see the bottom of this web page.
+</p>
+
+</p>
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>1. How often do "Condorcet winners" exist?  (A CW is a candidate who beats each opponent pairwise.)</b></caption>
+<!-- apparently goes to 0 when C goes to infinity, like some negative power of C times a const. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+<th> 500 </th>
+<th> 999 </th>
+<th> 2000 </th>
+<th> 5000 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 92% </td>
+<td> 84% </td>
+<td> 77% </td>
+<td> 71% </td>
+<td> 66% </td>
+<td> 61% </td>
+<td> 58% </td>
+<td> 54% </td>
+<td> 52% </td>
+<td> 49% </td>
+<td> 47% </td>
+<td> 45% </td>
+<td> 43% </td>
+<td> 36% </td>
+<td> 20% </td>
+<td> 12% </td>
+<td>  7% </td>
+<td> &nbsp; </td>
+<td>  2% </td>
+<td> &nbsp; </td>
+<td> &nbsp; </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 91% </td>
+<td> 82% </td>
+<td> 75% </td>
+<td> 68% </td>
+<td> 63% </td>
+<td> 58% </td>
+<td> 55% </td>
+<td> 51% </td>
+<td> 48% </td>
+<td> 45% </td>
+<td> 43% </td>
+<td> 41% </td>
+<td> 39% </td>
+<td> 32% </td>
+<td> 16% </td>
+<td> 9% </td>
+<td> 5% </td>
+<td> &nbsp; </td>
+<td> &nbsp;  </td>
+<td> &nbsp; </td>
+<td> &nbsp; </td>
+</tr>
+<th> &infin; voters </th>
+<!--
+N=2 tries=10000 tied=0 untied=10000 tie2=0 tie3=0 tie(>=3)=0 MxPerc=100.000000 cw%=100.000000
+N=3 tries=10000 tied=912 untied=9088 tie2=0 tie3=912 tie(>=3)=912 MxPerc=95.440000 cw%=90.880000
+N=4 tries=10000 tied=1700 untied=8300 tie2=832 tie3=868 tie(>=3)=868 MxPerc=94.333333 cw%=83.000000
+N=5 tries=10000 tied=2180 untied=7820 tie2=1489 tie3=679 tie(>=3)=691 MxPerc=93.687500 cw%=74.870000
+N=6 tries=10000 tied=2367 untied=7633 tie2=1756 tie3=562 tie(>=3)=611 MxPerc=93.574000 cw%=68.640000
+N=7 tries=10000 tied=2422 untied=7578 tie2=1823 tie3=497 tie(>=3)=599 MxPerc=93.498333 cw%=63.330000
+N=8 tries=10000 tied=2510 untied=7490 tie2=1909 tie3=501 tie(>=3)=601 MxPerc=93.472857 cw%=58.390000
+N=9 tries=10000 tied=2343 untied=7657 tie2=1819 tie3=444 tie(>=3)=524 MxPerc=93.652500 cw%=55.240000
+N=10 tries=10000 tied=2477 untied=7523 tie2=1969 tie3=431 tie(>=3)=508 MxPerc=93.668889 cw%=50.980000
+N=11 tries=10000 tied=2446 untied=7554 tie2=1954 tie3=422 tie(>=3)=492 MxPerc=93.764000 cw%=47.730000
+N=12 tries=10000 tied=2402 untied=7598 tie2=1916 tie3=411 tie(>=3)=486 MxPerc=93.930909 cw%=46.290000
+N=13 tries=10000 tied=2405 untied=7595 tie2=1905 tie3=405 tie(>=3)=500 MxPerc=93.905833 cw%=43.370000
+N=14 tries=10000 tied=2409 untied=7591 tie2=1929 tie3=394 tie(>=3)=480 MxPerc=94.026923 cw%=41.190000
+N=15 tries=10000 tied=2426 untied=7574 tie2=1915 tie3=433 tie(>=3)=511 MxPerc=94.042857 cw%=38.950000
+N=16 tries=10000 tied=2353 untied=7647 tie2=1885 tie3=386 tie(>=3)=468 MxPerc=94.197333 cw%=37.780000
+N=17 tries=10000 tied=2379 untied=7621 tie2=1903 tie3=398 tie(>=3)=476 MxPerc=94.228125 cw%=36.240000
+N=18 tries=10000 tied=2394 untied=7606 tie2=1941 tie3=383 tie(>=3)=453 MxPerc=94.227647 cw%=33.470000
+N=19 tries=10000 tied=2321 untied=7679 tie2=1894 tie3=362 tie(>=3)=427 MxPerc=94.463889 cw%=33.910000
+N=20 tries=10000 tied=2278 untied=7722 tie2=1858 tie3=349 tie(>=3)=420 MxPerc=94.365263 cw%=30.830000
+N=50 tries=10000 tied=1803 untied=8197 tie2=1528 tie3=235 tie(>=3)=275 MxPerc=95.794490 cw%=15.530000
+N=100 tries=10000 tied=1390 untied=8610 tie2=1244 tie3=129 tie(>=3)=146 MxPerc=96.783636 cw%=9.040000
+N=200 tries=10000 tied=1073 untied=8927 tie2=978 tie3=79 tie(>=3)=95 MxPerc=97.576784 cw%=4.730000
+N=500 tries=10000 tied=767 untied=9233 tie2=720 tie3=43 tie(>=3)=47 MxPerc=98.406293 cw%=2.080000
+N=1000 tries=10000 tied=544 untied=9456 tie2=520 tie3=24 tie(>=3)=24 MxPerc=98.845135 cw%=1.300000
+N=2000 tries=10000 tied=415 untied=9585 tie2=404 tie3=11 tie(>=3)=11 MxPerc=99.181616 cw%=0.550000
+N=5000 tries=1000 tied=26 untied=974 tie2=25 tie3=1 tie(>=3)=1 MxPerc=99.469254 cw%=0.100000
+N=5000 tries=10000 tied=273 untied=9727 tie2=264 tie3=9 tie(>=3)=9 MxPerc=99.479702 cw%=0.320000
+--
+N=2 tries=1000000 tied=0 untied=1000000 tie2=0 tie3=0 tie(>=3)=0 MxPerc=100.000000 cw%=100.000000
+N=3 tries=1000000 tied=87915 untied=912085 tie2=0 tie3=87915 tie(>=3)=87915 MxPerc=95.604250 cw%=91.208500
+N=4 tries=1000000 tied=175733 untied=824267 tie2=90680 tie3=85053 tie(>=3)=85053 MxPerc=94.142233 cw%=82.426700
+N=5 tries=1000000 tied=217732 untied=782268 tie2=148394 tie3=67932 tie(>=3)=69338 MxPerc=93.663100 cw%=74.793000
+N=6 tries=1000000 tied=233745 untied=766255 tie2=173798 tie3=54075 tie(>=3)=59947 MxPerc=93.536980 cw%=68.529300
+N=7 tries=1000000 tied=242461 untied=757539 tie2=184800 tie3=49223 tie(>=3)=57661 MxPerc=93.488850 cw%=63.101400
+N=8 tries=1000000 tied=245363 untied=754637 tie2=189077 tie3=47275 tie(>=3)=56286 MxPerc=93.520314 cw%=58.567200
+N=9 tries=1000000 tied=247174 untied=752826 tie2=192191 tie3=46147 tie(>=3)=54983 MxPerc=93.577450 cw%=54.602200
+N=10 tries=1000000 tied=247577 untied=752423 tie2=193490 tie3=45348 tie(>=3)=54087 MxPerc=93.636578 cw%=51.127400
+N=11 tries=1000000 tied=246285 untied=753715 tie2=193095 tie3=44606 tie(>=3)=53190 MxPerc=93.717320 cw%=48.171600
+N=12 tries=1000000 tied=245335 untied=754665 tie2=193490 tie3=43569 tie(>=3)=51845 MxPerc=93.791345 cw%=45.437800
+N=13 tries=1000000 tied=243389 untied=756611 tie2=192526 tie3=42600 tie(>=3)=50863 MxPerc=93.880108 cw%=43.147700
+N=14 tries=1000000 tied=240502 untied=759498 tie2=191152 tie3=41437 tie(>=3)=49350 MxPerc=93.978985 cw%=41.034700
+N=15 tries=1000000 tied=238547 untied=761453 tie2=190230 tie3=40645 tie(>=3)=48317 MxPerc=94.054993 cw%=39.183100
+N=16 tries=1000000 tied=237508 untied=762492 tie2=190021 tie3=40057 tie(>=3)=47487 MxPerc=94.122733 cw%=37.360900
+N=17 tries=1000000 tied=234548 untied=765452 tie2=188656 tie3=38685 tie(>=3)=45892 MxPerc=94.208438 cw%=35.823300
+N=18 tries=1000000 tied=232378 untied=767622 tie2=187419 tie3=37930 tie(>=3)=44959 MxPerc=94.290788 cw%=34.391800
+N=19 tries=1000000 tied=229231 untied=770769 tie2=185347 tie3=37099 tie(>=3)=43884 MxPerc=94.364900 cw%=33.105400
+N=20 tries=1000000 tied=228199 untied=771801 tie2=185020 tie3=36659 tie(>=3)=43179 MxPerc=94.433232 cw%=31.836700
+-->
+<td> 100% </td>
+<td> 91% </td>
+<td> 82% </td>
+<td> 75% </td>
+<td> 69% </td>
+<td> 63% </td>
+<td> 59% </td>
+<td> 55% </td>
+<td> 51% </td>
+
+<td> 48% </td>
+<td> 45% </td>
+<td> 43% </td>
+<td> 41% </td>
+<td> 39% </td>
+<td> 32% </td>
+<td> 16% </td>
+<td> 9% </td>
+<td> 5% </td>
+<td> 2% </td>
+<td> 1% </td>
+<td> 0.6% </td>
+<td> 0.3% </td>
+</tr>
+</table>
+
+
+<a name="CWvRV"></a>
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>2. Given that a CW (beats-all winner) exists &ndash; how often is it the range-voting winner?</b></caption>
+<!-- apparently goes to 1 when C goes to infinity. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 85% </td>
+<td> 84% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 78% </td>
+<td> 78% </td>
+<td> 79% </td>
+<td> 83% </td>
+<td> 91% </td>
+<td> 92% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 84% </td>
+<td> 80% </td>
+<td> 78% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 77% </td>
+<td> 78% </td>
+<td> 78% </td>
+<td> 78% </td>
+<td> 78% </td>
+<td> 83% </td>
+<td> 87% </td>
+<td> 92% </td>
+</tr>
+</table>
+
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>3. Given that a CW exists &ndash; how often is it the approval-voting winner?</b></caption>
+<!-- apparently goes to 1 when C goes to infinity. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+<th> 999 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 76% </td>
+<td> 68% </td>
+<td> 64% </td>
+<td> 61% </td>
+<td> 59% </td>
+<td> 58% </td>
+<td> 57% </td>
+<td> 56% </td>
+<td> 55% </td>
+<td> 54% </td>
+<td> 54% </td>
+<td> 53% </td>
+<td> 53% </td>
+<td> 51% </td>
+<td> 46% </td>
+<td> 43% </td>
+<td> 42% </td> <!-- with 10000 electns: 43.69 & 41.01; with 20000: 41.01, with 40000 avg=41.68 rd to 42 -->
+<td> 33% </td> <!-- (1+1+8+8+0+2+5+8+8+71+118)/(2+5+23+23+1+3+5+20+33+204+374)=230/693=(33 +- below2.2)% -->
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 76% </td>
+<td> 69% </td>
+<td> 65% </td>
+<td> 63% </td>
+<td> 61% </td>
+<td> 60% </td>
+<td> 60% </td>
+<td> 59% </td>
+<td> 59% </td>
+<td> 59% </td>
+<td> 58% </td>
+<td> 58% </td>
+<td> 58% </td>
+<td> 57% </td> <!--10000: 57.28, 58.20, 20000: 56.99 ==> (57.36 +- below1)%  from 40000 elections -->
+<td> 60% </td> <!--10000: 60.39, 57.85, 20000: 60.16 ==> 59.64 from 40000 elections -->
+<td> 61% </td> <!--10000: 61.71, 57.77, 20000: 61.46 ==> 60.60 from 40000 elections -->
+<td> 64% </td> <!--10000: 64.89, 59.70, 20000: 65.41 ==> (63.85 +- below2)% from 40000 elections -->
+<td> &nbsp; </td> <!-- so there genuinely appears with high confid to be a rise -->
+</tr>
+</table>
+
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>4. Given that a CW exists &ndash; how often is it the plurality-voting winner?</b></caption>
+<!-- apparently goes to 0 when C goes to infinity, like some negative power of C times a const. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 81% </td>
+<td> 71% </td>
+<td> 64% </td>
+<td> 58% </td>
+<td> 54% </td>
+<td> 50% </td>
+<td> 47% </td>
+<td> 45% </td>
+<td> 42% </td>
+<td> 40% </td>
+<td> 38% </td>
+<td> 36% </td>
+<td> 35% </td>
+<td> 29% </td>
+<td> 15% </td>
+<td>  9% </td>
+<td>  4% </td>
+</tr>
+<tr>
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 76%</td>
+<td> 64% </td>
+<td> 56% </td>
+<td> 50% </td>
+<td> 45% </td>
+<td> 41% </td>
+<td> 37% </td>
+<td> 34% </td>
+<td> 32% </td>
+<td> 30% </td>
+<td> 28% </td>
+<td> 26% </td>
+<td> 25% </td>
+<td> 20% </td>
+<td> 7% </td>
+<td> 2% </td>
+<td> 1% </td>
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>5. Given that a CW exists &ndash; how often is it the best (greatest utility sum) winner?</b></caption>
+<!-- apparently goes to 1 when C goes to infinity. -->
+<tr>
+<th> #candidates: </th>
+<th> 2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr>
+<th> 13 voters </th>
+<td> 80% </td>
+<td> 75% </td>
+<td> 73% </td>
+<td> 73% </td>
+<td> 73% </td>
+<td> 73% </td>
+<td> 73% </td>
+<td> 73% </td>
+<td> 74% </td>
+<td> 74% </td>
+<td> 75% </td>
+<td> 75% </td>
+<td> 75% </td>
+<td> 76% </td>
+<td> 77% </td> <!-- 20000: 5045/6492, 10000: 2441/3203, 2473/3200; tot in 40000 elns: 9959/12895=77.23% -->
+<td> 82% </td>
+<td> 89% </td>
+<td> 92% </td>
+</tr>
+<tr>
+<th> 5123 voters </th>
+<td> 79% </td>
+<td> 74% </td>
+<td> 72% </td>
+<td> 72% </td>
+<td> 72% </td>
+<td> 72% </td>
+<td> 72% </td>
+<td> 73% </td>
+<td> 73% </td>
+<td> 73% </td>
+<td> 74% </td>
+<td> 75% </td>
+<td> 75% </td>
+<td> 76% </td>
+<td> 77% </td>
+<td> 83% </td>
+<td> 89% </td>
+<td> 93% </td>
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>6. How often do the range and best (greatest utility sum) winners agree?</b></caption>
+<!-- tends to 1 as C to infinity? -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 80% </td>
+<td> 78% </td>
+<td> 78% </td>
+<td> 79% </td>
+<td> 79% </td>
+<td> 79% </td>
+<td> 80% </td>
+<td> 80% </td>
+<td> 80% </td>
+<td> 80% </td>
+<td> 81% </td>
+<td> 81% </td>
+<td> 81% </td>
+<td> 81% </td>
+<td> 81% </td>
+<td> 84% </td>
+<td> 85% </td>
+<td> 86% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 79% </td>
+<td> 78% </td>
+<td> 78% </td>
+<td> 78% </td>
+<td> 78% </td>
+<td> 78% </td>
+<td> 79% </td>
+<td> 79% </td>
+<td> 79% </td>
+<td> 79% </td>
+<td> 80% </td>
+<td> 80% </td>
+<td> 80% </td>
+<td> 80% </td>
+<td> 81% </td> <!-- (8031+16214+8035)/40000 = 80.70% -->
+<td> 83% </td>
+<td> 85% </td>
+<td> 85% </td>
+</tr>
+</table>
+
+
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>7. How often do the range and approval winners agree?</b></caption>
+<!-- apparently goes to 0 when C goes to infinity, like some negative power of C times a const. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 85% </td>
+<td> 76% </td>
+<td> 71% </td>
+<td> 66% </td>
+<td> 62% </td>
+<td> 60% </td>
+<td> 57% </td>
+<td> 55% </td>
+<td> 53% </td>
+<td> 52% </td>
+<td> 50% </td>
+<td> 49% </td>
+<td> 48% </td>
+<td> 44% </td>
+<td> 33% </td>
+<td> 27% </td>
+<td> 22% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 86% </td>
+<td> 78% </td>
+<td> 72% </td>
+<td> 67% </td>
+<td> 64% </td>
+<td> 61% </td>
+<td> 59% </td>
+<td> 57% </td>
+<td> 55% </td>
+<td> 54% </td>
+<td> 52% </td>
+<td> 51% </td>
+<td> 50% </td>
+<td> 46% </td>
+<td> 37% </td>
+<td> 32% </td>
+<td> 27% </td>
+</tr>
+</table>
+
+<br>
+<a name="RangePlur"></a>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>8. How often do the range and plurality winners agree?</b></caption>
+<!-- apparently goes to 0 when C goes to infinity, like some negative power of C times a const. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 74% </td>
+<td> 63% </td>
+<td> 55% </td>
+<td> 50% </td>
+<td> 46% </td>
+<td> 42% </td>
+<td> 40% </td>
+<td> 37% </td>
+<td> 35% </td>
+<td> 33% </td>
+<td> 32% </td>
+<td> 30% </td>
+<td> 29% </td>
+<td> 24% </td>
+<td> 14% </td>
+<td>  9% </td>
+<td>  5% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 73% </td>
+<td> 61% </td>
+<td> 52% </td>
+<td> 47% </td>
+<td> 42% </td>
+<td> 38% </td>
+<td> 35% </td>
+<td> 32% </td>
+<td> 30% </td>
+<td> 28% </td>
+<td> 26% </td>
+<td> 25% </td>
+<td> 24% </td>
+<td> 19% </td>
+<td> 8% </td>
+<td> 4% </td>
+<td> 2% </td>
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>9. How often do the approval and plurality winners agree?</b></caption>
+<!-- apparently goes to 0 when C goes to infinity, like some negative power of C times a const. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 69% </td>
+<td> 55% </td>
+<td> 46% </td>
+<td> 39% </td>
+<td> 34% </td>
+<td> 30% </td>
+<td> 27% </td>
+<td> 25% </td>
+<td> 23% </td>
+<td> 21%</td>
+<td> 20% </td>
+<td> 18% </td>
+<td> 17%</td>
+<td> 14% </td>
+<td>  6% </td>
+<td>  3% </td>
+<td>  2% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 67% </td>
+<td> 53% </td>
+<td> 43% </td>
+<td> 37% </td>
+<td> 32% </td>
+<td> 28% </td>
+<td> 25% </td>
+<td> 22% </td>
+<td> 20% </td>
+<td> 19% </td>
+<td> 17% </td>
+<td> 16% </td>
+<td> 15% </td>
+<td> 11% </td>
+<td> 4% </td>
+<td> 2% </td>
+<td> 1% </td>
+</tr>
+</table>
+
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>10. How often do the approval and best (greatest utility sum) winners agree?</b></caption>
+<!-- apparently goes to 0 when C goes to infinity, like some negative power of C times a const. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 80% </td>
+<td> 74% </td>
+<td> 69% </td>
+<td> 65% </td>
+<td> 61% </td>
+<td> 58% </td>
+<td> 56% </td>
+<td> 54% </td>
+<td> 52% </td>
+<td> 51% </td>
+<td> 49% </td>
+<td> 48% </td>
+<td> 47% </td>
+<td> 46% </td>
+<td> 42% </td>
+<td> 32% </td>
+<td> 26% </td>
+<td> 22% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 79% </td>
+<td> 74% </td>
+<td> 69% </td>
+<td> 65% </td>
+<td> 62% </td>
+<td> 60% </td>
+<td> 57% </td>
+<td> 55% </td>
+<td> 54% </td>
+<td> 53% </td>
+<td> 51% </td>
+<td> 50% </td>
+<td> 49% </td>
+<td> 48% </td>
+<td> 45% </td> <!-- (4492+4473+9011)/40000 = 44.94% -->
+<td> 37% </td>
+<td> 32% </td>
+<td> 28% </td>
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>11. How often do the plurality and best (greatest utility sum) winners agree?</b></caption>
+<!-- apparently goes to 0 when C goes to infinity, like some negative power of C times a const. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 80% </td>
+<td> 67% </td>
+<td> 59% </td>
+<td> 53% </td>
+<td> 48% </td>
+<td> 45% </td>
+<td> 42% </td>
+<td> 39% </td>
+<td> 37% </td>
+<td> 35% </td>
+<td> 33% </td>
+<td> 32% </td>
+<td> 30% </td>
+<td> 30% </td>
+<td> 25% </td>
+<td> 14% </td>
+<td> 9% </td>
+<td> 5% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 79% </td>
+<td> 66% </td>
+<td> 57% </td>
+<td> 50% </td>
+<td> 45% </td>
+<td> 41% </td>
+<td> 37% </td>
+<td> 34% </td>
+<td> 32% </td>
+<td> 30% </td>
+<td> 28% </td>
+<td> 26% </td>
+<td> 25% </td>
+<td> 24% </td>
+<td> 19% </td>
+<td> 8% </td>
+<td> 4% </td>
+<td> 2% </td>
+</tr>
+</table>
+
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>12. How often do the plurality and plur+top2-runoff winners agree?</b></caption>
+<tr> 
+<th> #candidates: </th>
+<!-- apparently approaches 50% when C goes to infinity. -->
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 84% </td>
+<td> 78% </td>
+<td> 74% </td>
+<td> 70% </td>
+<td> 68% </td>
+<td> 67% </td>
+<td> 65% </td>
+<td> 64% </td>
+<td> 64% </td>
+<td> 63% </td>
+<td> 62% </td>
+<td> 62% </td>
+<td> 61% </td>
+<td> 58% </td>
+<td> 58% </td>
+<td> 55% </td>
+<td> 54% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 81% </td>
+<td> 73% </td>
+<td> 70% </td>
+<td> 67% </td>
+<td> 65% </td>
+<td> 63% </td>
+<td> 61% </td>
+<td> 61% </td>
+<td> 60% </td>
+<td> 59% </td>
+<td> 58% </td>
+<td> 58% </td>
+<td> 58% </td>
+<td> 56% </td>
+<td> 53% </td>
+<td> 52% </td>
+<td> 51% </td>
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>13. How often do the plur+top2-runoff and best (greatest utility sum) winners agree?</b></caption>
+<!-- apparently goes to 0 when C goes to infinity, like some negative power of C times a const. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 80% </td>
+<td> 69% </td>
+<td> 63% </td>
+<td> 59% </td>
+<td> 55% </td>
+<td> 51% </td>
+<td> 49% </td>
+<td> 46% </td>
+<td> 44% </td>
+<td> 42% </td>
+<td> 41% </td>
+<td> 39% </td>
+<td> 38% </td>
+<td> 37% </td>
+<td> 31% </td>
+<td> 19% </td>
+<td> 12% </td>
+<td>  7% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 79% </td>
+<td> 68% </td>
+<td> 61% </td>
+<td> 56% </td>
+<td> 52% </td>
+<td> 48% </td>
+<td> 44% </td>
+<td> 42% </td>
+<td> 40% </td>
+<td> 38% </td>
+<td> 36% </td>
+<td> 35% </td>
+<td> 33% </td>
+<td> 32% </td>
+<td> 26% </td>
+<td> 13% </td>
+<td> 7% </td>
+<td> 4% </td>
+</tr>
+</table>
+
+<a name="cwirv"></a>
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>14. Given that a CW exists &ndash; how often is it the IRV winner?</b></caption>
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 96% </td>
+<td> 92% </td>
+<td> 89% </td>
+<td> 86% </td>
+<td> 83% </td>
+<td> 81% </td>
+<td> 78% </td>
+<td> 76% </td>
+<td> 74% </td>
+<td> 71% </td>
+<td> 70% </td>
+<td> 69% </td>
+<td> 68% </td>
+<td> 61% </td>
+<td> 43% </td>
+<td> 29% </td>
+<td> 19% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 96% </td>
+<td> 93% </td>
+<td> 90% </td>
+<td> 87% </td>
+<td> 85% </td>
+<td> 83% </td>
+<td> 81% </td>
+<td> 79% </td>
+<td> 78% </td>
+<td> 77% </td>
+<td> 76% </td>
+<td> 75% </td>
+<td> 73% </td>
+<td> 68% </td>
+<td> 51% </td>
+<td> 38% </td>
+<td> 29% </td>
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>15. How often do the IRV and range winners agree?</b></caption>
+<!-- apparently goes to 0 when C goes to infinity, like some negative power of C times a const. -->
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 79% </td>
+<td> 70% </td>
+<td> 65% </td>
+<td> 60% </td>
+<td> 57% </td>
+<td> 54% </td>
+<td> 52% </td>
+<td> 50% </td>
+<td> 49% </td>
+<td> 46% </td>
+<td> 45% </td>
+<td> 44% </td>
+<td> 43% </td>
+<td> 38% </td>
+<td> 27% </td>
+<td> 20% </td>
+<td> 14% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 79% </td>
+<td> 70% </td>
+<td> 65% </td>
+<td> 61% </td>
+<td> 57% </td>
+<td> 55% </td>
+<td> 53% </td>
+<td> 52% </td>
+<td> 50% </td>
+<td> 49% </td>
+<td> 48% </td>
+<td> 46% </td>
+<td> 45% </td>
+<td> 42% </td>
+<td> 30% </td>
+<td> 24% </td>
+<td> 18% </td>
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>16. How often do the IRV and best (greatest utility sum) winners agree?</b></caption>
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 80% </td>
+<td> 71% </td>
+<td> 65% </td>
+<td> 61% </td>
+<td> 57% </td>
+<td> 54% </td>
+<td> 52% </td>
+<td> 50% </td>
+<td> 49% </td>
+<td> 47% </td>
+<td> 46% </td>
+<td> 45% </td>
+<td> 44% </td>
+<td> 43% </td>
+<td> 39% </td>
+<td> 28% </td>
+<td> 21% </td>
+<td> 14% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 79% </td>
+<td> 70% </td>
+<td> 65% </td>
+<td> 60% </td>
+<td> 57% </td>
+<td> 55% </td>
+<td> 53% </td>
+<td> 52% </td>
+<td> 50% </td>
+<td> 49% </td>
+<td> 48% </td>
+<td> 47% </td>
+<td> 45% </td>
+<td> 44% </td>
+<td> 41% </td>
+<td> 30% </td>
+<td> 24% </td>
+<td> 18% </td>
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>17. How often do the IRV and plur+top2-runoff winners agree? (Reason not 100% when C=3 is: different tiebreaking?? or bug?)</b></caption>
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 95% </td>
+<td> 84% </td>
+<td> 77% </td>
+<td> 72% </td>
+<td> 68% </td>
+<td> 65% </td>
+<td> 62% </td>
+<td> 60% </td>
+<td> 57% </td>
+<td> 55% </td>
+<td> 54% </td>
+<td> 52% </td>
+<td> 51% </td>
+<td> 46% </td>
+<td> 36% </td>
+<td> 34% </td>
+<td> 28% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 90% </td>
+<td> 78% </td>
+<td> 70% </td>
+<td> 63% </td>
+<td> 57% </td>
+<td> 53% </td>
+<td> 50% </td>
+<td> 47% </td>
+<td> 44% </td>
+<td> 41% </td>
+<td> 38% </td>
+<td> 37% </td>
+<td> 35% </td>
+<td> 29% </td>
+<td> 14% </td>
+<td> 8% </td>
+<td> 5% </td>
+</tr>
+</table>
+
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>18. Given that a CW exists &ndash; how often is it the plur+top2 runoff winner?</b></caption>
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+</tr>
+<tr> 
+<th> V=13 voters </th>
+<td> 100% </td>
+<td> 92% </td>
+<td> 86% </td>
+<td> 80% </td>
+<td> 76% </td>
+<td> 71% </td>
+<td> 68% </td>
+<td> 64% </td>
+<td> 61% </td>
+<td> 58% </td>
+<td> 55% </td>
+<td> 53% </td>
+<td> 52% </td>
+<td> 50% </td>
+<td> 42% </td>
+<td> 23% </td>
+<td> 13% </td>
+<td>  7% </td>
+</tr>
+<tr> 
+<th> 5123 voters </th>
+<td> 100% </td>
+<td> 91% </td>
+<td> 82% </td>
+<td> 74% </td>
+<td> 68% </td>
+<td> 63% </td>
+<td> 59% </td>
+<td> 54% </td>
+<td> 51% </td>
+<td> 49% </td>
+<td> 45% </td>
+<td> 42% </td>
+<td> 41% </td>
+<td> 39% </td>
+<td> 30% </td>
+<td> 12% </td>
+<td> 4% </td>
+<td> 2.5% </td>
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>19. Given that a CW exists &ndash; how often is it the Borda winner?</b></caption>
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 31 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+<th> 500 </th>
+</tr>
+<tr> 
+<th> 1021 voters </th>
+<td> 100% </td>
+<td> &nbsp; </td>
+<td> 87% </td>
+<td> &nbsp; </td>
+<td> &nbsp; </td>
+<td> &nbsp; </td>
+<td> &nbsp; </td>
+<td> &nbsp; </td>
+<td> &nbsp; </td>
+<td> 85% </td>
+<td> &nbsp; </td>
+<td> 88% </td>
+<td> &nbsp; </td>
+<td> &nbsp; </td>
+<td> &nbsp; </td>
+<td> &nbsp; </td>
+</tr>
+<tr> 
+<th> &infin; voters </th>
+<td> 100% </td>
+<td> 90% </td>
+<td> 87% </td>
+<td> 85% </td>
+<td> 85% </td>
+<td> 84% </td>
+<td> 84% </td>
+<td> 84% </td>
+<td> 84% </td>
+<td> 85% </td>
+<td> 86% </td>
+<td> &nbsp; </td>
+<td> 90% </td>
+<td> 93% </td>
+<td> 96% </td> <!-- 95.74% based on 20000 montes. -->
+<td> &asymp;98% </td> <!--98.2 based on 11000 montes. -->
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>20. How often is the Borda winner also a Condorcet Winner?</b></caption>
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+<th> 500 </th>
+<th> 1000 </th>
+</tr>
+<tr> 
+<th> &infin; voters </th>
+<td> 100% </td>
+<td> 82% </td>
+<td> 72% </td>
+<td> 64% </td>
+<td> 57% </td>
+<td> 54% </td>
+<td> 49% </td>
+<td> 46% </td>
+<td> 43% </td>
+<td> 40% </td>
+<td> 39% </td>
+<td> 37% </td>
+<td> 34% </td>
+<td> 33% </td>
+<td> 27% </td>
+<td> 14% </td>
+<td> 8% </td>
+<td> 5% </td>
+<td> 2% </td>
+<td> 1% </td>
+</tr>
+</table>
+
+<br>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ffcc">
+<caption><b>21. How often is the Borda winner an untied-Copeland winner?</b></caption>
+<tr> 
+<th> #candidates: </th>
+<th> C=2 </th>
+<th> 3 </th>
+<th> 4 </th>
+<th> 5 </th>
+<th> 6 </th>
+<th> 7 </th>
+<th> 8 </th>
+<th> 9 </th>
+<th> 10 </th>
+<th> 11 </th>
+<th> 12 </th>
+<th> 13 </th>
+<th> 14 </th>
+<th> 15 </th>
+<th> 20 </th>
+<th> 50 </th>
+<th> 100 </th>
+<th> 200 </th>
+<th> 500 </th>
+<th> 1000 </th>
+</tr>
+<tr> 
+<th> &infin; voters </th>
+<td> 100% </td>
+<td> 82% </td>
+<td> 72% </td>
+<td> 66% </td>
+<td> 63% </td>
+<td> 62% </td>
+<td> 61% </td>
+<td> 60% </td>
+<td> 59% </td>
+<td> 59% </td>
+<td> 58% </td>
+<td> 58% </td>
+<td> 58% </td>
+<td> 58% </td>
+<td> 58% </td>
+<td> 61% </td>
+<td> 64% </td>
+<td> 68% </td> <!-- 68.26% based on 122000 montes -->
+<td> 73% </td> <!-- 72.92% based on 12000 montes -->
+<td> &asymp;76% </td>
+</tr>
+</table>
+
+<h3> Want even more such data? </h3>
+
+<p>
+Look <a href="ReasAssump.html#app">here</a> for more such data (from more-recent programs);
+and for the alternative
+"<a href="Glossary.html#Dirichlet">Dirichlet</a>" probability model, see the 
+<a href="PuzzlePage.html">puzzles</a> including
+<a href="PuzzlePage.html#p88">puzzle #88</a>.
+</p>
+
+<a name="thms"></a>
+<H3>Some theorems on Condorcet winners:</H3>
+<blockquote>
+<p>
+Jerry S. Kelly: 
+<a href="https://rangevoting.org/KellyCW.pdf">Voting Anomalies, the Number of Voters, and the Number of Alternatives</a>,
+Econometrica 42,2 (1974) 239-251.
+<br>
+Robert M. May: Some mathematical remarks on the paradox of voting,
+Behavioral Science 16 (1971) 143-151.
+<br>
+Richard Niemi &amp; Herbert Weisberg: A mathematical solution for the probability
+of the paradox of voting, 
+Behavioral Science 13 (1968) 317-323.
+<br>
+M.B.Garmen &amp; M.Kamien: The paradox of voting, probability calculations,
+Behavioral Science 13 (1968) 306-316.
+<br>
+Frank DeMeyer &amp; Charles R. Plott:
+The Probability of a Cyclical Majority,
+Econometrica 38,2 (March 1970) 345-354. 
+<br>
+B.Jones, B.Radcliff, C.Taber, R.Timpone:
+Condorcet winners and the Paradox of voting: probability calculations for weak preference orders,
+Amer.Polit.Sci.Review 89,1 (1995) 137-144.
+</p>
+</blockquote>
+<p>
+These authors consider the probability P(V,C) that there will not be a Condorcet winner
+in a C-candidate, V-voter election.  Kelly (theorems 9 and 10)
+proves that P(V+2,C)&lt;P(V+1,C)&gt;P(V,C) whenever V&ge;2 is even 
+for all C&ge;3.  
+Kelly conjectures P(V+2,C)&gt;P(V,C) 
+for all V&ge;3 (and also V=1) for all C&ge;3.
+Kelly also conjectures P(V,C+1)&gt;P(V,C) 
+for all V&ge;5 (and also V=3) for all C&ge;2.
+May gives a rather sketchy and erroneous "proof" that
+</p><center>
+P(&infin;,C) = 1 - 2<sup>1/2</sup>8&pi;e<sup>-2</sup> (lnC)<sup>1/2</sup>/C + lower order terms
+</center><p>
+as C&rarr;&infin;, except he had the wrong constant factor.  
+<small>May's ideas are definitely correct and good;
+I just am skeptical of his
+execution in view of the sketchiness of his paper and the fact, as I will soon
+demonstrate, that it contains a large number of errors.  I believe this particular
+result was wrong and my correction of his constant factor has been confirmed by my own much
+simpler <a href="PuzzCondProb.html">re-derivation</a> and numerical tests.</small>
+More importantly for us, May also proves P(3,C)&rarr;1.
+That proof is definitely incorrect, but can be repaired.
+By combining Kelly's conjecture with May's corrected result,
+we would get
+lim<sub>C&rarr;&infin;</sub> P(V,C)=1  for each odd V with 3&le;V&le;&infin;.
+May seems to think he proved this, but I only think he proved it for V=3 and V=&infin;,
+not the numbers between (although I have no doubt it is true).
+</p>
+<p>
+May's claim that P(3,C)&rarr;1 can be shown as follows.  Let P(3,C)=1-C&middot;Q(3,C)
+[May stated this formula incorrectly with a 3 incorrectly replacing the middle C]
+where Q(3,C) is the probability that in a 3-voter, C-candidate election, candidate #1 
+is a Condorcet winner.  Next, we have the exact formula
+</p><center>
+Q(3,N) = (1/N) (1/N!)<sup>2</sup> &sum;<sub>0&le;a,b,c; a+b+c&le;N-1</sub>
+(N-1-a)! (N-1-b)! (N-1-c)! / (N-1-a-b-c)!
+</center><p>
+[May stated this formula incorrectly, omitting the final "-1"]
+which can be derived as follows: candidate 1 wins if and only if, for each
+other candidate X, X beats 1 in either 0 or 1 votes.  That happens
+in 
+</p><center>
+(N-1 choose a,b,c,d)&middot;a!b!c!(N-1-a)!(N-1-b)!(N-1-c)! 
+</center><p>
+ways
+summed over a,b,c,d&ge;0 with a+b+c+d=N-1.
+The inner sum in the triple sum can be done in close form, reducing to
+a double sum
+</p><center>
+Q(3,N) = 1/(N! N)  &sum;<sub>0&le;a,b; a+b&le;N-1</sub>
+(N-1-a)! (N-1-b)! / [(1+a+b)&middot;(N-1-a-b)!].
+</center><p>
+[May did not notice this summability.]
+Now, if we want to understand the asymptotic behavior of Q(3,N) for N&rarr;&infin;,
+we realize that the sum can be regarded as Riemann and hence
+approximated as a double integral over a triangle.  We use Stirling's formula and do the
+integral to get an asymptotic:
+</p><center>
+Q(3,N) = (1/2) (&pi;/N)<sup>3/2</sup> [ 1 - 0.75/&radic;N + O(N<sup>-1</sup>) ]
+</center><p>
+where the "0.75" and everything after it is empirical and is not necessarily an exact result.
+[May had the same claimed result except he believed the error term would
+be larger, of order ln(N)/&radic;N.  I doubt that.  My Q-formula here empirically is good
+enough for 10% accuracy for every N&ge;2.]
+Obviously, N&middot;Q(3,N)&rarr;0 when N&rarr;&infin;, proving P(3,N)&rarr;1.
+</p>
+<p>
+<b>Partial repair:</b>
+A correct proof that P(&infin;,C)&rarr;1 when C&rarr;&infin; was provided by
+Colin E. Bell: 
+A random voting graph almost surely has a Hamiltonian cycle when the
+number of alternatives is large,
+Econometrica 49,6 (Nov. 1981) 1597-1603.
+Another very simple proof by me is <a href="PuzzCondProb.html">here</a>. 
+<p>
+Various specific exact-rational (and approximate decimal) values of P(V,C) include
+P(V,2)=P(V,1)=P(1,C)=0,
+P(3,3)=1/18&asymp;0.05556, 
+P(3,4)=1/9&asymp;0.1111, 
+P(3,5)=4/25&asymp;0.1600,
+P(3,6)=91/450&asymp;0.2022,
+P(3,15)&asymp;0.417,
+P(5,3)=5/72&asymp;0.06944,
+P(5,4)=5/36&asymp;0.1389,
+P(5,5)=7981/40000&asymp;0.1995,
+P(5,6)&asymp;0.252,
+P(5,15)&asymp;0.504,
+P(7,3)=875/11664&asymp;0.07502,
+P(7,4)=875/5832&asymp;0.1500,
+P(7,5)&asymp;0.21533,
+P(7,6)&asymp;0.270,
+P(7,15)&asymp;0.536,
+P(9,3)=65485/839808&asymp;0.07798,
+P(9,4)=65485/419904&asymp;0.1560,
+P(9,5)&asymp;0.224,
+P(9,6)&asymp;0.282,
+P(9,15)&asymp;0.554,
+P(&infin;,3)&asymp;0.08774,
+P(&infin;,4)=2P(&infin;,3)&asymp;0.17548,
+P(&infin;,5)&asymp;0.25131,
+P(&infin;,6)&asymp;0.31524,
+P(&infin;,7)&asymp;0.36918,
+P(&infin;,10)&asymp;0.4887,
+P(&infin;,20)&asymp;0.6811,
+P(&infin;,30)&asymp;0.7648,
+P(&infin;,40)&asymp;0.8123,
+P(&infin;,50)&asymp;0.843,
+and conjecturally P(V,&infin;)=1.
+</p>
+<p>
+<blockquote>
+Wm. V. Gehrlein &amp; Peter C. Fishburn:
+Probabilities of election outcomes for large electorates,
+J. Economic Theory 19 (1978) 38-49, 
+</blockquote>
+give
+exact expressions as definite integrals for P(&infin;,5) and
+P(&infin;,6).  They also evaluate as definite integrals these probabilities:
+<br>
+Prob(entire social ordering is transitive) = P(&infin;,3)&asymp;0.08774
+for three candidates and = 0.73946 with four candidates.
+<br>
+Prob(Borda and Plurality winners are the same) 
+= 1 for two candidates, and 
+= (123/144) + (3/(4&pi;&sup2;)) arcsin( &radic;(13)/4 )&sup2; &asymp; 0.758338
+with three candidates.
+<br>
+Prob(a Condorcet winner exists and it is the Borda winner) =
+3/2 - (3/(2&pi;)) [arccos(&radic;(8)/3) + arccos(&radic;(2)/3)] &asymp; 0.822119
+with three candidates.  Consequently,
+Prob(The Borda winner is the CW given that a CW exists) 
+= 0.822119/[1-P(&infin;,3)] &asymp; 0.9012.
+<br>
+Prob(a Condorcet winner exists and it is the Plurality winner)&asymp;0.690763
+with three candidates.  Consequently,
+Prob(The Plurality winner is the CW given that a CW exists) 
+= 0.690763/[1-P(&infin;,3)] &asymp; 0.7572.
+</p>
+<p>
+Jones et al. 1995 also calculate (by Monte-Carlo simulation) these probabilities
+in a model in which voters are allowed to express <i>indifference</i> between
+two candidates.  With a fixed number of candidates (either 3, 4, or 5), 
+they find that greater indifference tends
+to decrease the probability of a Condorcet winner if the number of voters is small (&lt;501)
+but to increase it if the number of voters is large (&ge;501).  That was only
+a crude description; the true behavior is more complicated than just stated.
+These increases and decreases can be considerable.
+</p>
+<a name="irvthms"></a>
+<h3> Theorems on Instant Runoff Voting (IRV) </h3>
+<p>
+<b>Theorem:</b>
+In the random elections model, when the number V of voters tends to infinity, and
+then the number C of candidates tends to infinity, the probability P that the IRV
+and plurality voting winners differ, tends to 100%.
+</p>
+<p>
+<b>Proof sketch:</b>
+Consider the last K rounds of IRV where K is large but the number C of
+candidates is much larger (both C/K&sup2; and K &rarr;&infin;).
+If the plurality winner has not made
+it into the final K rounds, we are done.  So assume it has.
+Then ask: what is the probability P it will survive the remaining K
+rounds?  The probability of survival is
+</p><center>
+&prod;<sub>2&le;k&le;K</sub>
+(1-1/k)
+ = &prod;<sub>2&le;k&le;K</sub>
+(k-1)/k
+ = 1/K  &nbsp;&nbsp; since the product "telescopes"
+</center><p>
+which goes to zero when K is made large.
+This product is only valid if 
+<ol><li>
+the plurality winner has chance
+1/k of getting eliminated in a round with k contestants,
+and
+</li><li>
+ if these probabilities are independent in each of the first K
+rounds.
+</li></ol>
+Neither is true, but both become true in the limit
+we are talking about in the probabilistic model we speak of because
+the effect of all of the vote transfers from the C-K
+previously-eliminated candidates is going to act like a very large
+amount of random noise.
+This argument should suffice to prove that the (100%-P) goes to zero
+when <nobr>C&rarr;&infin;</nobr> like
+<nobr>C<sup>&epsilon;-1/3</sup></nobr>
+for any fixed &epsilon;&gt;0 no matter how small, but it is a weak argument, i.e. probably
+a statement considerably stronger than this is true.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+
+

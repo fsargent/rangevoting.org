@@ -1,0 +1,249 @@
+<html>
+<head>
+<title>
+RangeVoting.org -  Halving Lines
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h1> Halving Lines </h1>
+
+<p>
+A <i>halving line</i> of an <i>n</i>-point set in the plane (<i>n</i> even), shall mean a line
+through 2 of the points, with exactly 
+<nobr>(<i>n</i>-1)/2</nobr> 
+of the points lying on each side of it.
+</p>
+
+<h2>Tamal Dey's proof that there are <i>O</i>(<i>n</i><sup>4/3</sup>) halving lines</h2>
+
+<p><small>This section by Jeff Erickson with a few updates by Warren D. Smith 2011 to
+compute constants explicitly.</small></P>
+
+<p>
+The <i>crossing number</i> of a graph is the minimum possible number of intersecting
+pairs of edges in any planar drawing.
+</p>
+
+<p><b>Crossing Lemma (Ajtai, Chv&aacute;tal, Newborn, and Szemer&eacute;di; 
+also indepedently by F.T.Leighton):</b>
+Any graph with <i>n</i> vertices and <i>e</i> &gt; 4<i>n</i> edges has crossing number&gt;
+<i>e</i><sup>3</sup>/(64<i>n</i><sup>2</sup>).
+</p>
+
+<p><b>Proof:</b>
+Consider a planar embedding of a graph with <i>n</i> vertices, <i>e</i> edges, and
+<i>c</i> pairs of crossing edges.
+<a href="http://www.ics.uci.edu/~eppstein/junkyard/euler/">Euler's formula</a> implies
+that <i>c</i> &gt; <i>e</i>-3<i>n</i>.  (In fact <i>c</i>&ge;<i>e</i>-3<i>n</i>+6.)
+Take a random subset of the vertices, each vertex
+with probability <i>p</i>.  The expected number of vertices, edges, and crossings in the
+induced subgraph are at least <i>pn</i>, <i>p</i><sup>2</sup><i>e</i>, and
+<i>p</i><sup>4</sup><i>c</i>, respectively.  Thus, <i>p</i><sup>4</sup><i>c</i> &gt;
+<i>p</i><sup>2</sup><i>e</i> - 3<i>pn</i>, which implies <i>c</i> &gt;
+<i>e</i>/<i>p</i><sup>2</sup> - 3<i>n</i>/<i>p</i><sup>3</sup>.  Taking <i>p</i> =
+4<i>n</i>/<i>e</i> gives us <nobr><i>c</i> &gt;
+<i>e</i><sup>3</sup>/64<i>n</i><sup>2</sup></nobr>, <b>QED</b>.
+</p>
+
+<blockquote><small>
+According to J&aacute;nos Pach, this ultra-simple probabilistic proof has been independently
+rediscovered several times, by Lov&aacute;sz, Matousek, F&uuml;redi, Alon, Seidel, and
+many others, but was not published since it is essentially equivalent to the original
+counting argument of Ajtai et al.  The proof was first published by
+L.Sz&eacute;kely.  Using a more
+complicated probabilistic argument, 
+J.Pach and G.T&oacute;th (Proc. Graph Drawing '96, Springer LNCS 1190, 1997,
+pp. 345-354) 
+recently improved the constant from 1/64 to 4/135.
+</small>
+</blockquote>
+
+<p>
+<b>Theorem (Dey):</b> Any set of <i>n</i> points in the plane has at most
+2<sup>5/3</sup><i>n</i><sup>4/3</sup> halving lines.
+</p>
+
+<p><b>Proof (Dey):</b>
+Let <i>S</i> be a set of
+<i>n</i> points in the plane.  Let <i>H</i> be the set of line segments with endpoints
+<i>p</i>,<i>q</i> in <i>S</i>, such that the line through <i>pq</i> is a halving line.
+</p>
+<p>
+The segments in <i>H</i> can be decomposed into &le;<i>n</i>/2 convex chains as follows.
+Start with a vertical line through one of the <i>n</i>/2 leftmost points <i>p</i> in
+<i>S</i>, and rotate this line clockwise around <i>p</i> until it contains a segment
+<i>pq</i> in <i>H</i>.  Initially, there are less than <i>n</i>/2 points above the line;
+this number goes down whenever the line hits a point to the left of <i>p</i>, and goes up
+whenever it hits a point to the right of <i>p</i>.  It follows that <i>q</i> must lie to
+the right of <i>p</i>.  Continue rotating the line clockwise around <i>q</i> until it hits
+another segment in <i>H</i> (which will lie to the right of <i>q</i>), and so on, until
+the line is vertical again.  The sequence of segments hit by the rotating line forms a
+convex chain, and every segment in <i>H</i> is in exactly one convex chain.  (These convex
+chains are <i>dual</i> to the concave chains studied by
+<a href="http://www.cs.duke.edu/~pankaj/papers/plane-level.ps.gz">Agarwal, Aronov, and
+Sharir</a>.)
+</p>
+
+<p><center><small>
+<img src="chains.gif" height=216 width=366><br>
+A set of 14 points with 14 halving lines, split into 7 convex chains
+</small></center>
+
+<p>The number of intersections between any two convex chains is no more than the number of
+upper common tangents between the same two chains.  Any line between two points in
+<i>S</i> is an upper common tangent of at most one pair of chains.  Thus, there are 
+&lt;<i>n</i><sup>2</sup>/2 intersections between the segments in <i>H</i>.  By the
+Crossing Lemma, any graph with <i>n</i> vertices and crossing number
+<i>c</i>&lt;<i>n</i><sup>2</sup>/2 
+has 
+<i>e</i>&lt;2<sup>5/3</sup><i>n</i><sup>4/3</sup>
+edges, so
+<i>S</i> has at most 2<sup>5/3</sup><i>n</i><sup>4/3</sup> halving lines, 
+<b>QED</b>.
+</P>
+
+<p>
+More generally, Dey's argument
+can also be made to show an upper bound of
+4<i>k</i><sup>1/3</sup><i>n</i>
+on the number of "<i>k</i>-sets,"
+i.e. lines through two of our <i>n</i> points
+with exactly <i>k</i>-1 points on one side and <i>n</i>-1-<i>k</i> on the other.
+<!--
+is almost this
+simple.  The only other result he needs is that the maximum number of &lt;<i>k</i>-sets is
+<i>n</i>(<i>k</i>-1), which was proved by Alon and Gy&otilde;ri.
+-->
+</p>
+
+<p>
+Tamal K. Dey: Improved bounds for planar k-sets and related problems,
+Discrete &amp; Computational Geometry 19,3 (1998) 373-382.
+</p>
+
+<h2>What about "dense" (i.e. "realistic") point sets? </h2>
+
+<p>
+A "&delta;-dense" <i>n</i>-point set in the plane has the ratio of its furthest divided by
+its closest interpoint distance, upper bounded by &delta;&radic;<i>n</i>.
+</p><p>
+H. Edelsbrunner, P. Valtr, and E. Welzl:
+<a href="http://www.cs.duke.edu/~edels/Papers/1997-J-02-CuttingDenseHalf.pdf">Cutting
+dense point sets in half</a>, Discrete &amp; Comput. Geom. 17,3 (1997) 243-255
+</p><p>
+showed that any upper bound 
+O(<i>n</i><sup>1+c</sup>)
+for
+the number of halving lines could be converted into a stronger
+upper bound of 
+O(&delta;<sup>2+c</sup> <i>n</i> <i>k</i><sup>c/2</sup>) 
+for the number of k-sets in a &delta;-dense <i>n</i>-point set.
+Hence from Dey's bound we see that
+</p>
+<blockquote>
+For a &delta;-dense <i>n</i>-point set in the plane, the number of halving lines is 
+O(&delta;<sup>7/3</sup><i>n</i><sup>7/6</sup>).
+</blockquote>
+<p>
+Also, Nivasch notes that an upper bound O(n<sup>1+c</sup>)
+on the number of halving lines implies an upper bound O(n k<sup>c</sup>)
+on the number of k-sets (for this, no assumption about denseness is needed), shown by
+</p><p>
+P.K. Agarwal, B. Aronov, T.M. Chan, M. Sharir: On levels in arrangements of lines,
+segments, planes, and triangles, Discrete Comput. Geom. 19,3 (1998) 315-331.
+</p>
+
+<h2>Constructions of <i>n</i>-point sets with many halving lines</h2>
+
+<p>
+Given <i>n</i> points with <i>h(n)</i> halving lines,
+place three very stretched copies of that set at the vertices of a very very large
+equilateral triangle (each stretched in the direction from the triangle center).
+This shows 
+<nobr>h(<i>n</i>)&ge;3h(<i>n</i>)+3<i>n</i>/2,</nobr>
+which, applied inductively starting with h(2)=1, shows h(6)&ge;6, h(18)&ge;27, h(54)&ge;198,
+h(162)&ge;405, ..., and
+</p><center>
+h(<i>n</i>) &ge; (<i>n</i>/2) [log<sub>3</sub>(<i>n</i>/2)+1]
+</center>
+<p>
+for an infinite set of even <i>n</i>&gt;0.
+A different recurrence (which arises
+by considering replacing each point in the <i>a</i>-point set by a tiny 
+stretched-in-a-suitable-direction <i>b</i>-point set) is
+h(<i>ab</i>)&ge;<i>b</i>h(<i>a</i>)+<i>a</i>h(<i>b</i>)
+from which we deduce starting from
+h(4)=3   
+that
+h(16)&ge;24,
+h(256)&ge;768,
+h(65536)&ge;393216, ..., and
+</p><center>
+h(<i>n</i>) &ge; (3/8) <i>n</i> log<sub>2</sub><i>n</i>
+</center><p>
+for another infinite set of even <i>n</i>&gt;0.
+</p><p>
+Gabriel Nivasch: 
+<a href="many_halving_edges.pdf">An 
+improved simple construction of many halving edges</a>,
+pp.299-305 in
+<i>Surveys on Discrete and Computational Geometry: Twenty Years Later</i> 
+(J.E. Goodman et al. editors), Contemporary Mathematics #453, AMS 2008
+</p>
+<p>
+constructed (for an infinite set of <i>n</i>&gt;0 and some positive constant <i>c</i>)
+a set of <i>n</i> points in the plane 
+with
+</p><center>
+&ge; c <i>n</i> exp(&radic;ln4 &radic;ln<i>n</i>) / &radic;ln<i>n</i>)
+</center><p>
+halving lines. 
+</p><p>
+Edelsbrunner, Valtr, Welzl constructed 
+1.5-dense <i>n</i>-point sets with 
+&ge;(<i>n</i>/12)log<sub>3</sub><i>n</i>-<i>n</i>
+halving lines for each even <i>n</i>&ge;2.
+</p>
+
+<!--
+F(3*n) >= 3*F(n) + 3*n/2     yields NlogN 
+F(a*b) >= F(a)*b + F(b)*a    also yields NlogN
+-->
+
+<h2>What is the ultimate truth?</h2>
+
+<table>
+<tr><th>n (# points)</th>
+<td>2</td><td>4</td><td>6</td><td>8</td><td>10</td>
+<td>12</td><td>14</td><td>16</td><td>18</td><td>20</td>
+<td>22</td><td>24</td><td>26</td><td>28</td><td>30</td></tr>
+<tr><th>max # halving lines</th>
+<td>1</td><td>3</td><td>6</td><td>9</td><td>13</td>
+<td>18</td><td>22</td><td>27</td><td>33</td><td>38</td>
+<td>44</td><td>51</td><td>57</td><td>?</td><td>?</td></tr>
+</table>
+<p>
+(See <a href="http://oeis.org/A076523">A076523</a>.)
+Erd&ouml;s, Strauss, Lovasz, and Simonovits were the ones who originally
+invented this whole problem, and in 1973 they conjectured that
+the number of halving lines for an <i>n</i> point set in the plane is always upper bounded by 
+<i>n</i><sup>1+o(1)</sup>, i.e. by a constant times <i>n</i><sup>1.001</sup>.
+As of the year 2016, this conjecture remains open.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

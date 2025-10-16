@@ -1,0 +1,150 @@
+<html>
+<head>
+<title>
+RangeVoting.org - A difficult proportional representation election example
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> A difficult proportional representation election example </H2>
+
+<p>
+Here is a 102-voter 6-candidate election. (The candidates are named A,B,M,X,Y,Z
+and the votes are rank-orderings with unranked candidates to be regarded as co-equal last.)
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #Voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 16 </td>
+<td>  X>A>M>B
+  </td>
+</tr>
+<tr>
+<td> 15 </td>
+<td>  X>B>M>A
+  </td>
+</tr>
+<tr>
+<td> 17 </td>
+<td> Y>A>M>B
+  </td>
+</tr>
+<tr>
+<td> 16 </td>
+<td> Y>B>M>A
+  </td>
+</tr>
+<tr>
+<td> 16 </td>
+<td> Z>A>M>B
+  </td>
+</tr>
+<tr>
+<td> 18 </td>
+<td> Z>B>M>A
+  </td>
+</tr>
+<tr>
+<td> 4 </td>
+<td>  M>A>B
+  </td>
+</tr>
+</table>
+
+<p>
+If this is a <b>1-winner</b> election, then it seems fairly clear that <b>M</b>
+should win.  That is because M is a "Condorcet winner," i.e. beats every rival in a head-to-head
+contest (M beats A by 53:49, B by 53:49, X by 71:31, Y by 69:33, and Z by 68:34).
+<a href="IrvExec.html">Instant Runoff Voting</a>, would, however, 
+declare Z the winner &ndash; probably a bad decision.
+</p><p>
+If this is a 
+<b>2-winner</b> election, then it seems fairly clear that <b>A &amp; B</b>
+should be the winners:   Every voter ranks A or B as their second choice,
+and no other candidate-pair can say that.
+(STV as used in Ireland and Australia, would, however, not see it that way.
+It would make Z win, with Y as the second winner.)
+</p><p>
+If this is a 
+<b>3-winner</b> election, then Bram Cohen has argued that the winners ought
+to be <b>X, Y, and Z</b>.
+(And that is what STV would do.)
+That is because 96% of the voters have either X,Y, or Z as top choice.
+No other candidate-triple can say that.  On the other hand, one could also argue
+that the winners ought to be <b>A, B, and M</b>.
+That is because every voter has one of them as their second or top choice,
+and no
+other candidate-triple can say <i>that</i>.  Cohen would presumably riposte that
+only 4% of the voters would then be switching the winner-set from {X,Y,Z} to {A,B,M}
+and it is not right to pay attention to only 4% of the voters in such a situation
+because they'd be overruling too many top-choices.
+</p><p>
+This example is interesting because the "correct" winner-sets are totally disjoint
+if there are to be 1, 2, or 3 winners.   <i>No</i> vote-handling method 
+(including STV and <a href="RRV.html">RRV</a>) which 
+chooses the winners one-by-one without knowing how many there are to be in all,
+can do a good job.
+</p>
+<h3> How would "<a href="Asset.html">Asset Voting</a>" handle this? </h3>
+<p>
+If we were using Simmons's (or <a href="AssetCLD.html">Lewis Carroll's</a>)
+<b>simplified</b> version of asset voting in which each vote just names one candidate,
+then the assets would be X=31, Y=33, Z=34, M=4, rest=0.  
+X and Y, realizing they could not win,
+might agree to give their assets to A.  If so, A would win.
+If X and Y regarded M as a better compromise than either A or B, then they could
+make M win.
+All in all, it seems unlikely that M would
+be the winner if this were a single-winner election.  
+If so, this is an example of <i>failure</i> for simplified-Asset voting.
+</p><p>
+With full asset voting, it seems more likely that M would win.
+For example, if each voter gave 3, 2, and 1 points
+to her top, 2nd, and 3rd choices, then M would have the most asset-points.
+If the first 98 voters gave 4,3,2,1 points to their top, 2nd, 3rd, 4th choices
+while the last two voters each gave 5,3,2 to their top, 2nd, 3rd choices,
+then also M would (more clearly) have the most asset-points.
+So M would be in the strongest negotiating position.
+</p><p>
+Now let's instead suppose this were a 2-winner election.
+Presumably X,Y,Z would be willing to donate
+to A and B but not to anybody else
+in which case A &amp; B would indeed win.
+However, if even a single one among {X,Y,Z}
+wanted to give it all to M, he could
+could force M to be a winner.
+It seems likely to me that not both of {A,B} would win, with
+simplified asset voting.  
+But with full asset voting, I think it more likely
+A and B could both win.
+</p><p>
+We also should note that
+some of our original claims about who "should" be the winners might change if
+<i>strengths</i>
+of preferences were taken into account.  Full asset voting
+and <a href="RRV.html">RRV</a> can do that but
+STV and simplified asset voting cannot.
+</p><p>
+Thus this election illustrates how full asset voting might be superior both to 
+its simplified version, and also to other forms of 
+<a href="PropRep.html">proportional representation</a>.
+</p>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

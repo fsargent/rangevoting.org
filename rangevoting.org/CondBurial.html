@@ -1,0 +1,342 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Burial" strategy in Condorcet methods
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> "Burial" strategy in Condorcet methods  </H2>
+
+<p><small> By Warren D. Smith, Feb 2008 
+&nbsp;&nbsp;&nbsp;&nbsp; (<a href="#conc">skip to conclusion</a>)
+</small></p>
+<p>
+We report on some computer Monte-Carlo simulations and theorems
+about how often the "burial" strategy works in Condorcet methods.
+</p><p>
+My simulations were for 4-candidate elections, 
+but the theorems hold for any number
+N&ge;3 of candidates.
+The program supports either the "random election model" or the
+"Dirichlet model" (see <a href="Glossary.html">glossary</a>
+for definitions of those probability models).
+</p><p>
+An interesting computer finding, which I then backed up with a
+human proof, is the following. "Black's
+Condorcet method" is to use Borda if there is no Condorcet winner.
+It has generally been looked-down-on by internet Condorcet advocates.
+But it turns out to have a nice property.
+</p><p>
+<b>THEOREM (BLACK BURIAL-RESISTANCE):</b>
+In N-candidate elections (N&ge;3 fixed) in the <a href="RandElect.html">random elections model</a>,
+using pure-rank-orderings as votes,
+consider the "burial" strategy where everybody who voted X=top
+C=second, now artificially votes C=bottom (but aside from that,
+all votes unchanged). Here C denotes the Black-winner with honest
+votes. Then: with <b>probability&rarr;100%</b> in the #voters&rarr;&infin; limit,
+the new winner will be neither C nor X.
+And when it is not X, that means burial "does not work."
+</p><p>
+<b>PROOF:</b>
+<ol type="I">
+<li> 
+If C originally was a Condorcet winner:
+The new election will with probability 100% have no Condorcet winner
+since X will still be beaten pairwise by C, but C will with
+probability&rarr;100% be beat by the others thanks to the burial.
+(All the "&rarr;100%" statements we make arise easily from standard Gaussian
+statistics in the limit of large #voters.  The point is that the amount
+of typical statistical variation away from "all vote-counts equal"
+is of order &radic;V, and variations larger than that are arbitrarily unlikely;
+meanwhile the strategy
+pushes stuff by a far larger amount of order V, in the limit V&rarr;&infin;.)
+So Black goes to Borda. But the burial raises the Borda scores of
+all rivals Y,Z,... of C and X, while leaving X's Borda-score unaltered
+and lowering C's. Hence with probability&rarr;100% one of those rivals
+will win. 
+</li><li>
+If there originally was no Condorcet winner (so C was the Borda winner):
+The new election will with probability&rarr;100% have Borda winner&isin;{Y,Z,...}.
+This will be the Black-winner too because the only way to avoid that is
+if the burial creates a Condorcet winner.  The burial causes the Y:C and Z:C comparisions
+to improve for Y,Z and worsen for C, but does not affect any other pairwise
+comparisons.  Hence it cannot create a Condorcet winner except if that winner is among
+{Y,Z,...}.
+</li></ol>
+<b>Q.E.D.</b>
+</p><p>
+In the <i>Dirichlet model</i>, however, <i>burial still works</i> with
+Black voting. My simulation finds, in fact, that it works
+(29.50&plusmn;0.03)%                                                  
+of the time for X (where X is the candidate who would have
+won if C were disallowed) with 4 candidates; as opposed to tending to 0% in
+the Random Elections Model.
+</p><p>
+Note that the BURIAL-RESISTANCE THEOREM is <i>not</i>
+going to have a nice analogue for most other commonly proposed
+Condorcet variants. It is pretty special to Black's method.
+</p><p>
+In particular(!), we have the exact <i>opposite</i> property for
+Nanson-Baldwin's Condorcet method (which consists in repeatedly
+eliminating the Borda-loser):
+</p><p>
+<b>THEOREM (BURIAL-VULNERABILITY FOR NANSON-BALDWIN):</b>
+In the same scenario but now using "Nanson-Baldwin's Condorcet
+method," burying C works for the X=top C=second voters (where X is the
+candidate who would have won with honest votes if C had not been in
+the race) with <b>probability&rarr;100%</b> to make X become the winner.
+</p><p>
+<b>PROOF:</b>
+Because C will with probability&rarr;100% have the lowest Borda score hence
+be eliminated first in the modified election.
+Then all the rankings among X, Y, Z,... (<i>after</i> C's elimination)
+are unaltered by the strategy
+and hence X still will beat the others with certainty.
+<b>Q.E.D.</b>
+</p><p>
+But (again) if we switch to the alternative <i>Dirichlet</i> model, 
+then burial no longer reliably works, albeit the computer finds it works at least about 17.1% of
+the time in 4-candidate situations (this figure is only a lower bound).
+<!--
+Monte-Carlo indicates that burying the winner works to make him become the Borda loser
+(17.057&plusmn;0.06)% of the time in 4-candidate elections
+-->
+</p><p>
+Most common Condorcet-methods proposals are somewhere in between the two extremes
+represented by Black and Nanson-Baldwin.
+For example, 
+N.Tideman in his book and D.Woodall both have recommended (two different) variants
+of a Condorcet method one might call "Smith-IRV."  It involves eliminating both candidates
+not in the "Smith set" as well as eliminating those top-ranked the least.
+(<a href="SmithIRV.html">Woodall's version</a> makes more sense to me, but
+those details will not matter for our purposes here.)
+In this method, burial works, in the 4-candidate random elections model,
+with some probability which tends to a nonzero limit as #voters&rarr;&infin;.
+(Proof sketch: In pretty much any situation where C was the Condorcet winner but
+would be eliminated early in IRV voting, we have vulnerability to C-burial.) 
+</p><p>
+As another example, the "Simpson-Kramer min-max" Condorcet method consists in
+electing the candidate whose strongest-pairwise-defeat, is the weakest.
+My Monte-Carlo simulations indicate that burying C works for the X-top voters (where X is the
+second-place candidate, i.e. who has the second-weakest strongest-pairwise-defeat)
+with 
+probability (27.40&plusmn;0.11)% in the Dirichlet and
+(42.89&plusmn;0.07)%
+in the random-election model
+with 4 candidates.
+</p><p>
+The "Copeland" method is to elect the candidate who defeats the most rivals pairwise. 
+(We shall break ties by using a random fixed candidate-ordering.)	
+My Monte-Carlo simulations indicate that burying C works for the X-top voters (where X is the
+second-place candidate)
+with 
+probability (32.28&plusmn;0.1)% in the Dirichlet and
+(82.18&plusmn;0.1)%
+in the random-election model
+with 4 candidates.
+</p><p>
+If we instead break Copeland ties using <i>Borda</i>,
+then 
+Monte Carlo shows 
+the Dirichlet burial-works probability shrinks to (29.9&plusmn;0.1)%,
+and (we prove in <a href="PuzzlePage.html#p86">puzzle 86</a>)
+the 
+random-election model
+probability shrinks to &rarr;0 in the 4-candidate case, but
+stays 
+a positive constant if there are at least 5 candidates.
+</p>
+
+<h2> Chris Benham points out things may not be so cut-and-dried </h2>
+
+<p>
+<i>Despite</i> the fact Black is asymptotically 
+100% burial-resistant in the random-elections model,
+while some other Condorcet methods like Smith-IRV and Schulze are not
+(and Nanson-Baldwin is asymptotically 100% burial-vulnerable),
+Chris J.  Benham points out
+that in the following election (the "B>C>A" votes are insincere and arise from
+a strategic decision to "bury" A; they honestly would be "B>A>C")...
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #Voters </th>
+<th> Their Vote </th>
+</tr>
+<tr><td> 46 </td><td> A>B>C </td></tr>
+<tr><td> 44 </td><td> B>C>A (*) </td></tr>
+<tr><td>  5 </td><td> C>A>B </td></tr>
+<tr><td>  5 </td><td> C>B>A </td></tr>
+</table>
+
+<p>
+... Black 
+awards the victory to <b>B</b>, the one who orchestrated the burying.
+(A>B>C>A cycle; Borda scores: A=97,  B=139,  C=64.
+(Also saying <b>B</b> wins:
+Tideman ranked-pairs, Schulze-beatpaths, Simpson-Kramer min-max,
+and basic Condorcet.)
+Meanwhile Nanson-Baldwin and Smith-IRV both elect the honest-votes winner, <b>A</b>!
+</p>
+
+<p>
+The main reason for this discrepancy is that the "random elections model" is
+not a terribly realistic probability model for elections &ndash;
+at least not for the elections Benham 
+mainly cares about involving only two strong candidates.
+(The Dirichlet model comes closer.)
+On the other hand in a hypothetical future world in which elections are run using
+Condorcet voting, perhaps the random elections model would become a better statistical
+model than it is now.
+</p>
+<p>
+Benham favors Woodall's Smith-IRV Condorcet method above the others.  As an example
+of its superiority, Benham gives
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #Voters </th>
+<th> Their Vote </th>
+</tr>
+<tr><td> 49 </td><td> C>B>A (*) </td></tr>
+<tr><td> 31 </td><td> A>C>B </td></tr>
+<tr><td> 17 </td><td> B>A>C </td></tr>
+<tr><td>  3 </td><td> A>B>C </td></tr>
+</table>
+
+<p>
+where the (*) votes insincerely bury A.  Almost every Condorcet method known to man
+elects <b>C</b> due to the burial-strategy employed by C-voters.   That includes Black's method
+(since the Borda scores are A=85, B=86, C=129 and we have an A>C>B>A cycle).
+But not Woodall's Smith-IRV method, which
+successfully elects <b>A</b> (the honest-vote Condorcet winner).
+<p>
+<a name="conc"></a>
+<h2> Conclusion </h2>
+
+<p>
+<p>
+Our results greatly-contradict the usual previous thinking that the differences between
+Condorcet methods in  vulnerability to strategy, are small.
+That's interesting and new.  However, as Benham points out, just because that result holds 
+in the 
+"random elections model" does not necessarily mean it should be taken too seriously in
+real life.
+</p><p>
+So maybe the internet Condorcet community should now re-evaluate which
+Condorcet variants they prefer. (As well as re-evaluate how well they claim to
+have "understood" Condorcet strategy. It appears they were
+overconfident in their assertions of understanding.)  Or maybe not.
+</p><p>
+In the random elections model,
+some Condorcet variants are highly
+burial-resistant (Black); others are
+highly vulnerable (Nanson-Baldwin);
+and most are in between (Simpson-Kramer min-max, 
+Smith-IRV, and I presume also
+Tideman ranked pairs, Schulze,
+etc.; I <a href="CondStratProb.html#estim">estimate</a>
+crudely that these too have burial-works probabilities 
+on the order of 50% in the 4-candidate random elections model).
+</p><p>
+These results are also relevant to the following important debate.
+I had <b>contended</b> that real voters, if made to use Condorcet voting, would usually
+artificially rank the two major-party candidates top and bottom.
+They would do this for psychological/strategic reasons to maximize the impact of their vote
+(reasons include: the effectiveness of "burial";
+the usefulness of "<a href="IncentToExagg.html">favorite betrayal</a>" in 
+<a href="VenzkePf.html">every</a> Condorcet method; also the theorem that
+the "rank the major threat bottom and the most-likely-to-win better rival top"
+strategy is usually near-maximally
+effective in a <a href="ConitzerSmanipEasy.pdf">very wide class</a> of
+single-winner election methods).  If enough of that behavior
+occurred, a third-party candidate could never win.
+Thus, Condorcet voting might lead to 
+<b>self-reinforcing 2-party domination</b> in which every voter
+robotically followed the recommendations of the "how to vote" cards from
+the two major-parties, since history kept proving
+no other course was worth bothering with.
+</p><p>
+But given that voters only ever had 2 real choices, the "improvement" 
+caused by having Condorcet voting versus plain Plurality, wouldn't
+be much of an improvement, since every voting method is essentially
+the same as plain plurality in the 2-candidate case.
+</p><p>
+So if and when this contention is correct, Condorcet voting is practically 
+<b>dead on arrival.</b>
+But <i>is</i> it correct?  Nobody really knows, but here are arguments pro and con:
+<table bgcolor="black" cellpadding="3" celspacing="2">
+<tr bgcolor="#ffffcc"><th>Pro:</th><th>Con:</th></tr>
+<tr><td bgcolor="#88ff88">
+Yes, based on <a href="AusAboveTheLine07.html">data</a> that 
+a huge percentage of Australian voters behave this way even though burial
+actually makes less strategic sense in Australia's IRV system than with
+Condorcet methods, even Black's.
+(That is: with IRV, the "X>C>others" voters can <i>never</i> make X win by voting "X>others>C."
+With Condorcet, they sometimes can; indeed even with Black's Condorcet method, they sometimes
+can &ndash;
+the probability&rarr;0% result only happens in a limit which is never actually achieved in
+a probabilistic model which does not correspond perfectly to reality.)
+</td><td bgcolor="#ff8888">
+<i>No</i>, the contention is severely undercut <i>provided</i> we use
+<i>Black's</i> method, by the fact that 
+Burial is highly strategically ineffective with Black
+under the Random Elections Model.  (Of course, you'd need to believe Joe Voter would
+appreciate this theorem and method-flavor-distinction.  Which seems doubtful in view of 
+the Australian facts at left.)
+</td></tr><tr><td bgcolor="#88ff88">
+Yes, <i>rationally</i>, based on theoretical analysis indicating Burial works
+in a lot of Condorcet situations for a lot of Condorcet methods
+(about 20-80% of the time depending on the probability model and
+the Condorcet variant); if this percentage greatly
+exceeds the percentage of the time third-parties win, then the 
+exaggeration strategy is worth it  overall.
+</td><td bgcolor="#ff8888">
+Despite the huge percent of Australians who just follow the major party
+"how to vote" recommendations, these majors-top-and-bottom
+votes can still lead to third-party Condorcet winners
+if the two majors are precisely-balanced-enough and there is a small percentage of
+votes that rank the third-party candidate top.  That just might happen 
+<a href="Aus07.html">often enough</a> that
+two-party domination will <i>not</i> ensue with Condorcet.  (Certainly, Condorcet is more likely
+to avoid duopoly, than IRV; but unfortunately
+IRV experimentally <a href="AustralianPol.html#indep">does</a> 
+lead to self-reinforcing 2-party domination.)
+</td></table>
+
+<br><br>
+
+<a name="successprob"><?a>
+
+<table bgcolor="#ccffcc" border="1" cellpadding="1">
+<caption>Probability that "burying" the honest-voter winner C,
+by those who'd honestly voted "X>C>..." 
+causes X to win (4-candidate elections).
+Here
+X denotes the candidate who "finished second" with one
+particular definition of "finished second"; with the alternative
+definition which maximized the
+probability burial would work, we would have gotten at least as large numbers.
+</caption>
+<tr><th>Condorcet variant&rarr;<br>Prob Model&darr;</th><th>Black</th><th>Nanson-Baldwin</th><th>Simpson-Kramer min-max</th><th>Copeland (fixed pref-order tiebreak)</th><th>other (Tideman, Schulze, Smith-IRV etc)</th></tr>
+<tr><th>Random Elections (#voters&rarr;&infin;)</th><td align="center">&rarr;0%</td><td align="center">&rarr;100%</td><td align="center">42.9%</td><td align="center">82.2%</td><td align="center">&asymp;50%?</td></tr>
+<tr><th>Dirichlet</th><td align="center">29.5%</td><td align="center">&ge;17.1%</td><td align="center">27.4%</td><td align="center">32.3%</td><td align="center">&asymp;30%?</td></tr>
+</table>
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

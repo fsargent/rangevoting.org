@@ -1,0 +1,156 @@
+<html>
+<head>
+<title>
+RangeVoting.org - BTR-IRV voting system
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Explanation of the (not recommended) "BTR-IRV" voting system </H2>
+
+<p>
+Each "vote" is a rank-ordering of all the N candidates, for example
+"Nader>Gore>Bush>Buchanan" would be a possible vote (with N=4).
+After collecting the votes, the N-candidate election proceeds in a sequence
+of N-1 "rounds."
+In each round one candidate is eliminated
+and he is erased from all votes.  For example, if "Bush" were eliminated,
+then the above vote would become
+"Nader>Gore>Buchanan."
+</p>
+
+<p>
+The one to eliminate is
+found as follows.
+Find the two candidates A and B whom the fewest voters top-rank.
+Now, ignoring all candidates except A and B in all the votes,
+i.e. based solely on the A>B and B>A relations in those votes,
+perform a 2-candidate majority election among A and B only.
+The loser of that "election" is the one we eliminate.
+</P>
+
+<p>
+After N-1 rounds only one candidate remains standing.  He is the
+one that BTR-IRV elects.
+</P>
+
+<p>
+<b>Warning.</b>
+Like a lot of voting system proposals, this sounds on its face like a pretty good
+method.  (Heck, every voting system ever seriously proposed sounds at first like
+it is a pretty good method.)  Two properties that sound good are that BTR-IRV always
+elects a Condorcet winner if one exists (and indeed always elects a "Smith set" member;
+IRV cannot claim either);
+and BTR-IRV, like IRV, is immune to the <a href="WinningVotes.html#DH3">DH3 pathology</a>.
+Nevertheless, a lot of good-sounding methods have bad properties.
+And indeed, BTR-IRV has some bad properties:
+<ol>
+<li>
+It quite likely <a href="IncentToExagg.html">will lead</a> to 
+<a href="Duverger.html">self-reinforcing 2-party domination</a> just
+like the plurality and IRV systems it was intended to "improve."
+If so, third-parties would be <a href="SuicidalIdiot.html">suicidal idiots</a> to want it.
+</li>
+<li>
+Like IRV, it suffers from "<a href="AddTopFail.html">add-top failure</a>."
+(On the other hand: like IRV, if you add new votes that rank the current winner W top and
+all others co-equal bottom, then W still wins; and if you alter votes that used to
+rank W co-equal bottom, so that they now rank W one rung above bottom but below
+all others, then W
+still wins.)
+</li>
+<li>
+It abandons a known alleged-advantage of IRV called "later no harm."  That is, in IRV,
+by casting a vote "later" in your top-to-bottom candidate ordering,
+you cannot hurt the election chances of somebody you ranked "earlier."
+This advantage is supposed to be important because it encourages voters
+to rank, i.e. give their opinion of, every candidate, as opposed to
+just "truncating" their ballot and say voting for only
+one ("plurality style").  This was a clear "selling point" for IRV over plurality voting.
+Supposedly
+the main reason the "Bucklin system" (which was used in the early 1900s to elect Governors 
+in several US states) was jettisoned, was that it failed later-no-harm in a major way so that most
+voters just voted plurality-style, defeating the whole purpose of the Bucklin system.
+[Actually, I am skeptical of these alleged and supposed claims; and in IRV it can be
+strategic to "truncate" your ballot in <i>spite</i> of IRV's later-no-harm property.]
+BTR-IRV abandons that selling point.
+</li>
+<li>
+While IRV is immune to <a href="CandCloning.html">candidate-cloning</a>,
+BTR-IRV is not:
+
+<table cellpadding="19">
+<tr>
+<td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow"
+<caption>
+Chris Benham's BTR-IRV cloning-failure example
+(before cloning D). Winner is <b>A</b> after B,C,D eliminated in that order.
+</caption>
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 2 </td>
+<td> B>A>D>C </td>
+</tr>
+<tr>
+<td> 3 </td>
+<td> D>C>B>A </td>
+</tr>
+<tr>
+<td> 4 </td>
+<td> A>C>B>D </td>
+</tr>
+</table>
+</td>
+<td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow"
+<caption>
+Benham's BTR-IRV cloning-failure example
+(after cloning D). Winner is <b>B</b> after C,D<sub>1</sub>,D<sub>2</sub>,A eliminated in that order.
+</caption>
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 2 </td>
+<td> B>A>D<sub>1</sub>>D<sub>2</sub>>C </td>
+</tr>
+<tr>
+<td> 2 </td>
+<td> D<sub>1</sub>>D<sub>2</sub>>C>B>A </td>
+</tr>
+<tr>
+<td> 1 </td>
+<td> D<sub>2</sub>>D<sub>1</sub>>C>B>A </td>
+</tr>
+<tr>
+<td> 4 </td>
+<td> A>C>B>D<sub>2</sub>>D<sub>1</sub> </td>
+</tr>
+</table>
+</td>
+</tr>
+</table>
+
+</li>
+</ol>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

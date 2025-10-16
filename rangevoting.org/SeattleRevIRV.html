@@ -1,0 +1,166 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Seattle's 2022 proposal for "top 2 IRV open primary"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> "Best is Worst" problem with Seattle's 2022 proposal for "top 2 IRV open primary" </H2>
+
+<p><small>by Warren Smith, Oct 2022.
+</small></p>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/Seattle"><b>Seattle</b></a> in 2022 proposed ("ballot proposition <b>1B</b>")
+this system:
+</p><ol><li>
+a "primary" election would be held using rank-order  ballots (every voter
+permitted to rank every candidate regardless of party)
+to select <b>two</b> winners via an Instant Runoff (IRV) procedure.
+</li><li>
+Those two then
+would compete against each other is a later "general election"
+to elect just one of them.
+</li></ol><p>
+The Instant Runoff procedure is:
+The candidate with fewest top-rankings is eliminated, reducing a C-candidate election to <nobr>C-1.</nobr>
+We then eliminate again to reach <nobr>C-2</nobr>, and so on, until only 2 candidates remain: Seattle's two
+primary-winners.
+</p><p>
+Now let's look at an <b>example</b> of that process in action.
+There are 20 voters and 4 candidates named "A," "B," "C," and "D."
+Here are <b>the rank-order ballots:</b>
+</p>
+    
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr><td align="middle"> 9 </td><td> A&gt;D&gt;C&gt;B </td></tr>
+<tr><td align="middle"> 7 </td><td> B&gt;D&gt;C&gt;A </td></tr>
+<tr><td align="middle"> 3 </td><td> D&gt;B&gt;A&gt;C </td></tr>
+<tr><td align="middle"> 1 </td><td> C&gt;A&gt;B&gt;D </td></tr>
+</table>
+
+<p>
+C has the fewest top-rankings (1, as opposed to D=3, B=7, A=9)
+hence the IRV procedure eliminates C.
+Next, D has the fewest top-rankings (3, as opposed to A=10, B=7)
+so IRV next eliminates D.
+We are left with
+a perfect 10-10 tie between A and B, and the general election contenders
+thus are <b>A and B</b>.
+</p><p>
+The proponents of this IRV<sup>2</sup> primary system contend  these two candidates A and B are
+(by far) the two best choices for Seattle, while C and D therefore are its two worst choices.
+Wonderful: Seattle gets good leaders, namely A or B.
+</p><p>
+But now let's
+investigate what would happen if all 20 voters <i>reversed</i> their preference orders.
+They sadly are now ordering their four choices worst-first instead of best-first.
+Hence then 
+the IRV process presumably sadly will pick the two worst choices for Seattle.
+<b>The reversed rank-order ballots:</b>
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="pink">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr><td align="middle"> 9 </td><td> B&gt;C&gt;D&gt;A </td></tr>
+<tr><td align="middle"> 7 </td><td> A&gt;C&gt;D&gt;B </td></tr>
+<tr><td align="middle"> 3 </td><td> C&gt;A&gt;B&gt;D </td></tr>
+<tr><td align="middle"> 1 </td><td> D&gt;B&gt;A&gt;C </td></tr>
+</table>
+
+<p>
+Now the IRV process eliminates D, then C, again leaving a perfect 10-10 tie
+between A and B for "first" place.
+</p><p>
+The proponents of this IRV<sup>2</sup> primary system contend  these two candidates A and B are
+(by far) the two worst choices for Seattle, while C and D therefore are its two best choices.
+This would be terrible: Seattle would get bad leaders, namely A or B.
+</p>
+
+<!--  
+fwd:
+9: A>D>C>B
+7: B>D>C>A
+3: D>B>A>C
+1: C>A>B>D
+
+rev:
+9: B>C>D>A
+7: A>C>D>B
+3: C>A>B>D
+1: D>B>A>C
+ -->
+
+<p>
+Wait. What?
+</p><p>
+This bass-ackwards example &ndash; and this sort of phenomenon seems entirely realistic &ndash;
+shows one way Seattle's proposed
+IRV<sup>2</sup> primary system can <b>contradict itself</b>.
+As you can see, it can equally well deliver the two best choices for Seattle, or the two worst,
+to the general election, with no clue which is which.
+</p><p>
+If my election system delivers sub-optimal winners, I at least want to hope they aren't
+going to be the <i>worst</i>.  But then if that <i>same</i> election system <i>itself</i>
+says they are the worst, but crams them down my throat <i>anyway</i>, that's really a bit much.
+</p><p>
+Good luck with that, Seattle!
+</p><hr><p>
+You might want to decide who <i>you</i> think should be the 2 winners in the original election.
+If you care about my personal opinion, it is: the best pair 
+actually would have been <b>A &amp; D</b>, and the worst B &amp; C.
+<!-- These are the "<a href="Glossary.html#SmithSet">Schwarz sets</a>" for the original
+and reversed elections. No {A} is. -->
+The "Pairwise preference matrix" is
+</p>
+<table  bgcolor=#cccccc border=2>
+  <tr><td>Option</td><td align=center>A</td><td align=center>B</td><td align=center>C</td><td align=center>D</td></tr>
+  <tr><td align=center>A</td><td bgcolor=#CCCCCC">0</td><td bgcolor=#FFCCFF">10</td><td bgcolor=#FFFFCC">12</td><td bgcolor=#FFCCFF">10</td></tr>
+  <tr><td align=center>B</td><td bgcolor=#FFCCFF">10</td><td bgcolor=#CCCCCC">0</td><td bgcolor=#FFCCFF">10</td><td bgcolor=#CCCCFF">8</td></tr>
+  <tr><td align=center>C</td><td bgcolor=#CCCCFF">8</td><td bgcolor=#FFCCFF">10</td><td bgcolor=#CCCCCC">0</td><td bgcolor=#CCCCFF">1</td></tr>
+  <tr><td align=center>D</td><td bgcolor=#FFCCFF">10</td><td bgcolor=#FFFFCC">12</td><td bgcolor=#FFFFCC">19</td><td bgcolor=#CCCCCC">0</td></tr>
+</table>
+<p>
+showing that each member of {A,D} beats each member of {B,C} by at least a 12:8 majority,
+except that A doesn't "beat" B, but rather merely is pairwise-tied 10:10 with B.
+(Also A is pairwise-tied with D, and B with C.)
+No other candidates besides A and D enjoy this "beats or ties all others" property.
+</p><p>
+My view also is supported by the fact "Borda scoring" ranks the candidates in this order: D&gt;A&gt;B&gt;C
+with scores
+D=41,
+A=35,
+B=28,
+C=19.
+Also, if we were to employ "approval voting" where each voter "approved" her top two candidates and
+disapproved her bottom two, then A+D would get 29 approvals, more than any other pair.
+</p><p>
+One reason IRV was unable to realize all that was the fact IRV always massively
+<a href="IgnoreExec.html">ignores</a> much information on the ballots, while Borda and the Pairwise Matrix do not.
+This was a 2-winner
+example of IRV <a href="IrvRevFail.html">reversal failure</a>.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

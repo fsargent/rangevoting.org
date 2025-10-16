@@ -1,0 +1,112 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org -- answer to puzzle 63
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to Puzzle #63: Optimum size for legislature </H2>
+
+<p><b>Puzzle (<a href="http://www.aceproject.org">ACE</a>):</b><br>
+Consider the amount of
+communication a congressman has to do with both his constituency and
+with his fellow legislators.
+<ol type="a">
+<li>
+Argue that it is minimized if the size of the legislature is proportional 
+to the <i>square root</i>
+of the country's population P.
+</li>
+<li>
+But can you argue for other "optimal legislature size"
+functions such as P<sup>1/3</sup> or P<sup>2/5</sup> or log(P)?
+</li>
+</ol>
+</p>
+
+<h3>Answer(a):</h3>
+<p>
+Some constant fraction of the constituency probably wants to communicate with the legislator,
+which is c&middot;P/L communication with him
+where c is a constant, P is the population of the country,
+and L is the cardinality of the legislature.
+</p><p>
+Meanwhile each legislator needs to communicate with all the others (or anyhow a constant fraction
+of them) to get things done (e.g. convince them to enact something he wants).
+That's about k&middot;L communication for each legislator per thing he wants to do
+(where k is another constant).
+</p>
+<p>
+If we now <i>minimize</i> 
+<center>
+c&middot;P/L + k&middot;L
+</center>
+by choice of L, we get the square-root law
+<center>
+L = (P &middot c/k)<sup>1/2</sup>, &nbsp;&nbsp; i.e. &nbsp;&nbsp; L &prop; &radic;P
+</center>
+which is the "optimum" legislature size that minimizes total communication to
+make something that
+legislator wants, get done.
+The above formula is "optimum" if we assume each legislator aims for some
+constant number of goals
+per (fixed length) term.
+</p>
+<h3> Answer(b):</h3>
+<p>
+Suppose the communication with the constituents is by mail or e-email or telephone;
+but the communication with fellow legislators is 
+face-to-face 1-on-1 meetings in random order.
+Further, all the legislators are along one long corridor.  Then Joe Legislator typically must
+walk distance L to reach a random target legislator.  Then the difficulty of communication
+with the L-1 others is then not proportional to L, but rather to its square.  In that case
+we need instead to optimize by minimizing
+<center>
+c&middot;P/L + k&middot;L<sup>2</sup>
+</center>
+by choice of L, now getting the <i>cube</i>-root law
+<center>
+L &prop; P<sup>1/3</sup>.
+</center>
+(One can also get the cube-root law 
+if we assume each legislator monitors communications between all
+pairs of other legislators, although that does not seem realistic to me.)
+If instead of one corridor, they sit in a 2-dimensional grid, then the typical walk-distance is
+proportional to &radic;L. 
+In that case optimizing is instead to minimize
+<center>
+c&middot;P/L + k&middot;L<sup>1.5</sup>
+</center>
+by choice of L, now getting the <i>two-fifths power</i> law
+<center>
+L &prop; P<sup>2/5</sup>.
+</center>
+</p><p>
+Similarly if we had assumed a <i>three</i>-dimensional grid we would have found
+L&prop;P<sup>3/7</sup>.
+If we had assumed his constituents had to travel distances proportional to (P/L)<sup>1/2</sup>
+to meet with the legislator, then...
+</p><p>
+So it seems that, no matter which assumption we make, some <b>power law</b>
+is the "right answer" &ndash; albeit it perhaps now is less
+clear what the correct power is!  The <b>best power</b> seems fairly clearly to
+lie within the real interval [1/4, 1/2].
+</p><p>
+[I do not see any good argument for L&prop;log(P).]
+</p><p>
+ACE claims they did a survey of cross-country data, finding a good fit of L to
+the cube root of 2&middot;P&middot;W&middot;A
+where P=population, W=fraction of it of "working age", and A=literacy fraction.
+"Very few countries have assemblies that are larger than twice the size 
+predicted by this equation and only a few have assemblies that are smaller than half [of it]."
+</p>
+
+
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

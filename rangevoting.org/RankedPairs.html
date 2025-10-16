@@ -1,0 +1,89 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Tideman "Ranked Pairs" Condorcet voting system
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Explanation of Tideman "Ranked Pairs" Condorcet voting system </H2>
+
+<p>
+Each "vote" is a rank-ordering of all the N candidates, for example
+"Nader>Gore>Bush>Buchanan" would be a possible vote (with N=4).
+We then find
+the candidate pair AB with the largest pairwise margin of victory A>B
+(this is the pairwise victory we are "most sure is valid")
+and "lock it in" by drawing an arrow from A to B.
+We proceed through all victories in decreasing-magnitude order,
+"locking them in" if so doing does not create a directed cycle in the directed graph
+we are drawing.  The root of the resulting directed-graph
+(the only candidate
+with no arrows pointing to him)
+then is the winner.
+</p>
+
+<p>
+Tideman Ranked Pairs (TRP) has some enjoyable properties:
+</p>
+<ol>
+<li>
+TRP is <b>monotonic</b>; raising your vote's ranking of some candidate 
+cannot hurt his election chances (and similarly, lowering it cannot help his chances).
+</li>
+<li>
+<b>Smith set</b> and <b>Condorcet</b> properties:
+TRP always elects  "Condorcet winner" (who beats all opponents pairwise) whenever one
+exists; and it always elects a member of the "Smith set" (each of whose members 
+beats every nonmember pairwise).
+</li>
+<li>
+<b>Winner &ne; Loser:</b>
+The TRP winner (candidate with no arrows pointing to him at the end of the procedure)
+is never the same candidate as the TRP loser 
+(candidate with no arrows pointing away from him).
+</li>
+<li>
+TRP is fairly simple to describe and program, although not nearly as simple as range voting.
+</li>
+</ol>
+
+<p>
+Unfortunately, TRP also has some not-so-enjoyable
+properties:
+</p>
+<ol>
+<li>
+<b>Add-top failure:</b>
+An honest voter's vote can cause his favorite candidate to be defeated, whereas, if
+that voter had stayed home, his favorite would have been elected.
+</li>
+<li>
+<b>Add-bottom failure:</b>
+An honest voter's vote can cause his most-hated candidate to be elected, whereas, if
+that voter had stayed home, he would have been defeated.
+</li>
+<li>
+<b>Favorite betrayal:</b>
+It <a href="IncentToExagg.html">can be</a>
+best strategy for a voter to dishonestly rank his true favorite below top
+("betraying" him in order to cause the election of a "lesser evil").
+</li>
+</ol>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

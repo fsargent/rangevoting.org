@@ -1,0 +1,492 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Skew Hadamard matrices
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H1> Constructions of nXn skew-Hadamard matrices for n=4,8,12,...,96,100 </H1>
+
+<p>(<a href="RangeVoting.html">Return to main page</a>)</p>
+
+<H2> Circulant constructions of nXn skew-Hadamard matrices for 
+n=4,8,12,20,24,32,44,48,60,68,72,80,84 </H2>
+
+<p>
+<small>
+by Warren D. Smith  Aug 2006.
+</small>
+</p>
+
+<p>
+An nXn matrix H is "Hadamard" if
+all its entries are &plusmn;1
+and
+H<sup>T</sup>H=HH<sup>T</sup>=nI<sub>n</sub>,
+i.e. all its rows are orthogonal.
+It is "skew-Hadamard" if, in addition, H+H<sup>T</sup>=2I<sub>n</sub>.
+The simplest example is the 2x2 matrix
+<pre>
++-
+++
+</pre>
+It is a very old and famous (but still unproven)
+conjecture that Hadamard, indeed skew Hadamard, matrices
+exist for every n divisible by 4.  
+(As of August 2006: 
+Skew Hadamard matrices are known to exist for
+for all n&lt;188 with n divisible by 4; non-skew Hadamards
+are known to exist for
+for all n&lt;668 with n divisible by 4.)
+</p>
+
+<p>
+P=n-1 is prime in the cases n=4,8,12,24,32,44,48,60,68,72,80,84...
+Then the PxP matrix M with entries M<sub>ij</sub>=+1 if
+j-i is a square mod P (otherwise use -1), can be augmented with
+an all + top-row and all - (except for the diagonal entry) left-column
+to get a skew-Hadamard matrix.
+For example, take n=8=1+7 (and the squares mod 7 are 0,1,2,4) to get 
+this 8x8 skew-Hadamard matrix (where - stands for -1 and + for +1):
+</p>
+<pre>
+H8 = ++++++++
+     -+++-+--
+     --+++-+-
+     ---+++-+
+     -+--+++-
+     --+--+++
+     -+-+--++
+     -++-+--+
+</pre>
+
+<H2> Doubling </H2>
+
+<p>
+If H is an nXn
+skew Hadamard matrix while A is an nXn symmetric Hadamard matrix (i.e. A<sup>T</sup>=A), 
+then here is a 2nX2n
+skew Hadamard matrix:
+<pre>
+ H  A
+-A  H.
+</pre>
+</p>
+<p>
+All the skew-Hadamard H-constructions above are (if we discard the first row and column)
+(n-1)X(n-1) circulant anti-symmetric.  
+Therefore, if each of their (n-1)-long rows is reverse-ordered, they then
+become (n-1)X(n-1) <i>back</i>-circulant (and symmetric, since back-circulant matrices are
+always symmetric).
+If we then border them with an all - row and an all - column,
+we get a symmetric Hadamard A.
+We can then use this H and A in the doubling construction.
+That yields sizes  n=8,16,24,40,48,64,88,96.
+</p>
+<p>
+For a specific example, use the H8 we gave above, and 
+<pre>
+A8 = ++++++++
+     +--+-+++
+     +-+-+++-
+     ++-+++--
+     +-+++--+
+     ++++--+-
+     +++--+-+
+     ++--+-++
+</pre>
+to get this 16x16 skew Hadamard:
+<pre>
+ ++++++++ ++++++++
+ -+++-+-- +--+-+++
+ --+++-+- +-+-+++-
+ ---+++-+ ++-+++--
+ -+--+++- +-+++--+
+ --+--+++ ++++--+-
+ -+-+--++ +++--+-+
+ -++-+--+ ++--+-++
+
+ -------- ++++++++
+ -++-+--- -+++-+--
+ -+-+---+ --+++-+-
+ --+---++ ---+++-+
+ -+---++- -+--+++-
+ ----++-+ --+--+++
+ ---++-+- -+-+--++ 
+ --++-+-- -++-+--+
+</pre>
+</p>
+
+
+<H2> Yamada-Williamson constructions of nXn skew-Hadamard matrices for 
+n=4,12,20,28,36,44,52,60,68,76,84,92,100 </H2>
+
+<p>
+<small>
+This section
+by <a href="http://www.math.ntua.gr/people/ckoukouv/">Dr. Christos Koukouvinos</a>
+[ckoukouv(AT)cc.uoa.gr]  Nov 1999.
+</small>
+</p>
+
+<p>
+This list contains the so-called good matrices of order m, i.e.
+one circulant and three back circulant (1,-1) matrices A,B,C,D of order
+m where A is circulant and 
+skew-type (i.e. A+A<sup>T</sup>=I<sub>m</sub>)
+while B,C,D are symmetric 
+(i.e. B=B<sup>T</sup>)
+back-circulant and they all satisfy the matrix
+equation
+</p><p>
+AA<sup>T</sup> + BB<sup>T</sup> + CC<sup>T</sup> + DD<sup>T</sup> = 4m I<sub>m</sub>
+</p><p>
+Then using A,B,C,D, where A is circulant and B,C,D are backcirculant,
+in the following Williamson array, we can construct the
+<b>skew Hadamard matrix H of order n=4m:</b>
+<pre>
+        A   B   C   D
+H =    -B   A   D  -C
+       -C  -D   A   B
+       -D   C  -B   A
+</pre>
+In the following list, - stands for -1 and n=4m.  We only give the first rows of
+A,B,C,D since the rest of them follow from cyclic shifting to the right
+in the case of A and to the left in the cases of B,C,D.
+</p><p>
+m=1, 4m=4=1<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>,  one solution:<pre>
+      1
+      1
+      1
+      1
+</pre></p>
+<p>
+That leads to this 4x4 skew Hadamard:
+<pre>
+++++
+-++-
+--++
+-+-+
+</pre>
+</p>
+<p>
+m=3, 4m=12=3<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>,  one solution:<pre>
+      11-
+      1--
+      1--
+      111
+</pre></p><p>
+That leads to this 12x12 skew Hadamard:
+<pre>
+++-+--+--+++
+-++--+--++++
++-+-+--+-+++
+-++++-+++-++
+++--+++++++-
++-++-+++++-+
+-++---++-+--
+++-----++--+
++-+---+-+-+-
+---+---++++-
+-----+++--++
+----+-+-++-+
+</pre>
+</p>
+<p>
+m=5, 4m=20=3<sup>2</sup>+3<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>,  one solution:<pre>
+      111--
+      1-11-
+      1----
+      1----
+           </pre></p><p> 
+m=7, 4m=28=5<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>,  one solution:<pre>
+      1111---
+      1-1--1-
+      1--11--
+      1------
+     </pre></p><p> 
+m=7, 4m=28=3<sup>2</sup>+3<sup>2</sup>+3<sup>2</sup>+1<sup>2</sup>,  two solutions:<pre>
+      111-1--
+      111--11
+      11-11-1
+      1-1111-
+</pre></p><p><pre>
+      1111---
+      11-11-1
+      11-11-1
+      1-1111-
+</pre></p><p>
+m=9, 4m=36=5<sup>2</sup>+3<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>,  one solution:<pre>
+      1111-1---
+      11-1--1-1
+      1---11---
+      111-11-11
+</pre></p><p>
+
+m=11, 4m=44=5<sup>2</sup>+3<sup>2</sup>+3<sup>2</sup>+1<sup>2</sup>,  three solutions:<pre>
+      11-1--11-1-
+      1111----111
+      1-111--111-
+      1---1--1---
+</pre></p><p><pre>
+      11--1-1-11-
+      111--11--11
+      11-1-11-1-1
+      11--------1
+</pre></p><p><pre>
+      11----1111-
+      111--11--11
+      1-1-1111-1-
+      1--1----1--
+</pre></p><p>
+
+m=13, 4m=52=7<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>,  two solutions:<pre>
+      11-1---111-1-
+      1---111111---
+      11-1--11--1-1
+      1----1--1----
+</pre></p><p><pre>
+      11--1-1-1-11-
+      1--111--111--
+      111-1----1-11
+      1-----11-----
+</pre></p><p>
+m=13, 4m=52=5<sup>2</sup>+5<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>,  four solutions:<pre>
+      11----1-1111-
+      11-11----11-1
+      1-1111--1111-
+      1-111-11-111-
+</pre></p><p><pre>
+      11----1-1111-
+      11-1-1--1-1-1
+      111--1111--11
+      111-11--11-11
+</pre></p><p><pre>
+      11111--11----
+      1-11--11--11-
+      1111-1--1-111
+      11-1-1111-1-1
+</pre></p><p><pre>
+      11-----11111-
+      1--111--111--
+      111-1-11-1-11
+      1-111-11-111-
+</pre></p><p>
+From now on we cease giving all solutions and only give one.<br>
+m=15, 4m=60=5<sup>2</sup>+5<sup>2</sup>+3<sup>2</sup>+1<sup>2</sup>, four solutions:<pre>
+111111--11-----
+1-11--1111--11-
+1----1-11-1----
+1-1---1--1---1-
+</pre></p><p>
+m=17, 4m=68=7<sup>2</sup>+3<sup>2</sup>+3<sup>2</sup>+1<sup>2</sup>, two solutions:<pre>
+11--11-1-1-1--11-
+11--1--------1--1
+111----1--1----11
+11---1-1--1-1---1
+</pre></p><p>
+m=19, 4m=76=7<sup>2</sup>+5<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>, five solutions:<pre>
+1-1-----11--11111-1
+11-11111----11111-1
+1-1----11--11----1-
+1--1-1-11--11-1-1--
+</pre></p><p>
+m=21, 4m=84=9<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>, four solutions:<pre>
+11--1111111-------11-
+111--1111-11-1111--11
+1--11-1-1-11-1-1-11--
+1---111-1-11-1-111---
+</pre></p><p>
+m=23, 4m=92=9<sup>2</sup>+3<sup>2</sup>+1<sup>2</sup>+1<sup>2</sup>, six solutions:<pre>
+111-1-------1111111-1--
+11----1--1----1--1----1
+11-1--11---11---11--1-1
+1--11-1-1-1111-1-1-11--
+</pre></p><p>
+m=25, 4m=100=9<sup>2</sup>+3<sup>2</sup>+3<sup>2</sup>+1<sup>2</sup>, three solutions:<pre>
+11-----1-1---111-1-11111-
+11-1111-1-11--11-1-1111-1
+1---1--1111----1111--1---
+1--1-111--1----1--111-1--
+</pre></p>
+<p>
+Koukouvinos indeed has a larger list giving
+at least one solution for each odd m&le;35,
+and every solution for each odd m&le;31;
+and in
+[S.Georgiou, C.Koukouvinos, S.Stylianou:
+On good matrices, skew Hadamard matrices and optimal designs,
+Comput. Statist. Data Anal. 41,1 (2002) 171-184]
+that was extended to give every solution with m&le;39.
+Also for m=37 and m=43 see
+[D.Z.Dokovic: Skew Hadamard Matrices of orders 4x37 and 4x43,
+J. Combinatorial Theory A 61,2 (1992) 319-321].
+</p>
+
+<H2> Filling the missing spots </H2>
+<!-- 4,8,12,16,20,24,28,32,36,40,44,48,52,*,60,64,68,72,76,80,84,88,92,96,100 done -->
+<p>
+The only size below 100 not covered by the above constructions is 56.
+For that, the doubling construction would work if we
+had a symmetric 28x28 Hadamard to use as input,
+and here is one (from N.J.A.Sloane)
+<pre>
+++++++++++++++-+++++++++++++
++++-++----++-++-+-++----++-+
+++++-++----++-++-+-++----++-
++-+++-++----+++-+-+-++----++
+++-+++-++----+++-+-+-++----+
++++-+++-++----+++-+-+-++----
++-++-+++-++---+-++-+-+-++---
++--++-+++-++--+--++-+-+-++--
++---++-+++-++-+---++-+-+-++-
++----++-+++-+++----++-+-+-++
+++----++-+++-+++----++-+-+-+
++++----++-+++-+++----++-+-+-
++-++----++-++++-++----++-+-+
+++-++----++-++++-++----++-+-
+-+++++++++++++--------------
++-+-++----++-+---+--++++--+-
+++-+-++----++-----+--++++--+
++-+-+-++----++-+---+--++++--
+++-+-+-++----+--+---+--++++-
++++-+-+-++-------+---+--++++
++-++-+-+-++----+--+---+--+++
++--++-+-+-++---++--+---+--++
++---++-+-+-++--+++--+---+--+
++----++-+-+-++-++++--+---+--
+++----++-+-+-+--++++--+---+-
++++----++-+-+----++++--+---+
++-++----++-+-+-+--++++--+---
+++-++----++-+---+--++++--+--
+</pre>
+<!--
+here are two sym 36x36, and 40x40, 
+Hadamard matrices
+(from N.J.A.Sloane)
+<pre>
+++++++++++++++++++-+++++++++++++++++
+++++-+---++---+-+++-++-+---++---+-++
++++++-+---++---+-+++-++-+---++---+-+
+++++++-+---++---+-+++-++-+---++---+-
++-+++++-+---++---++-++-++-+---++---+
+++-+++++-+---++---++-++-++-+---++---
++-+-+++++-+---++--+-+-++-++-+---++--
++--+-+++++-+---++-+--+-++-++-+---++-
++---+-+++++-+---+++---+-++-++-+---++
+++---+-+++++-+---+++---+-++-++-+---+
++++---+-+++++-+---+++---+-++-++-+---
++-++---+-+++++-+--+-++---+-++-++-+--
++--++---+-+++++-+-+--++---+-++-++-+-
++---++---+-+++++-++---++---+-++-++-+
+++---++---+-+++++-++---++---+-++-++-
++-+---++---+-++++++-+---++---+-++-++
+++-+---++---+-++++++-+---++---+-++-+
++++-+---++---+-++++++-+---++---+-++-
+-+++++++++++++++++------------------
++-++-+---++---+-++----+-+++--+++-+--
+++-++-+---++---+-+-----+-+++--+++-+-
++++-++-+---++---+-------+-+++--+++-+
++-++-++-+---++---+-+-----+-+++--+++-
+++-++-++-+---++-----+-----+-+++--+++
++-+-++-++-+---++---+-+-----+-+++--++
++--+-++-++-+---++--++-+-----+-+++--+
++---+-++-++-+---++-+++-+-----+-+++--
+++---+-++-++-+---+--+++-+-----+-+++-
++++---+-++-++-+------+++-+-----+-+++
++-++---+-++-++-+---+--+++-+-----+-++
++--++---+-++-++-+--++--+++-+-----+-+
++---++---+-++-++-+-+++--+++-+-----+-
+++---++---+-++-++---+++--+++-+-----+
++-+---++---+-++-++-+-+++--+++-+-----
+++-+---++---+-++-+--+-+++--+++-+----
++++-+---++---+-++----+-+++--+++-+---
+</pre>
+<pre>
+++++++++++++++++++++++++++++++++++++++++
+++++++++++----------++++++++++----------
++++++-----+++++-----+++++-----+++++-----
+++++-+----+----++++-++++-+----+----++++-
++++---++---++--++--++++---++---++--++--+
+++-+--++-----++--+++++-+--++-----++--+++
+++--++--+--+-+-+-+-+++--++--+--+-+-+-+-+
+++--++---+--+-+-+-++++--++---+--+-+-+-++
+++----+-++++--+-++--++----+-++++--+-++--
+++-----++++-++-+--+-++-----++++-++-+--+-
++-++----++-+--++--+++-++----++-+--++--++
++-+-+-+-+-+-+----++++-+-+-+-+-+-+----+++
++-+-+--+-+-+-+--+++-+-+-+--+-+-+-+--+++-
++-+--++--+--++++-+--+-+--++--+--++++-+--
++-+--+-++-+--++-+--++-+--+-++-+--++-+--+
++--++-+--++--+-++--++--++-+--++--+-++--+
++--++--++---+-++++--+--++--++---+-++++--
++--+-++-+--+++--+-+-+--+-++-+--+++--+-+-
++--+-+-+-++++----+-++--+-+-+-++++----+-+
++---++++--++--++--+-+---++++--++--++--+-
+++++++++++++++++++++--------------------
+++++++++++--------------------++++++++++
++++++-----+++++----------+++++-----+++++
+++++-+----+----++++-----+-++++-++++----+
++++---++---++--++--+---+++--+++--++--++-
+++-+--++-----++--+++--+-++--+++++--++---
+++--++--+--+-+-+-+-+--++--++-++-+-+-+-+-
+++--++---+--+-+-+-++--++--+++-++-+-+-+--
+++----+-++++--+-++----++++-+----++-+--++
+++-----++++-++-+--+---+++++----+--+-++-+
++-++----++-+--++--++-+--++++--+-++--++--
++-+-+-+-+-+-+----+++-+-+-+-+-+-+-++++---
++-+-+--+-+-+-+--+++--+-+-++-+-+-+-++---+
++-+--++--+--++++-+---+-++--++-++----+-++
++-+--+-++-+--++-+--+-+-++-+--+-++--+-++-
++--++-+--++--+-++--+-++--+-++--++-+--++-
++--++--++---+-++++---++--++--+++-+----++
++--+-++-+--+++--+-+--++-+--+-++---++-+-+
++--+-+-+-++++----+-+-++-+-+-+----++++-+-
++---++++--++--++--+--+++----++--++--++-+
+</pre>
+-->
+<p>
+We have now constructed a skew Hadamard nXn matrix for every n divisible by
+4 with n&le;100.
+The number of equivalence classes of 4mX4m skew Hadamard matrices is exactly known
+for m=1-7: it is
+1, 1, 1, 2, 2, 16, 54.
+[Edward Spence:
+Classification of Hadamard matrices of order 24 and 28,
+Discrete Math. 140, 1-3 (1995) 185-243].
+Indeed, Spence just emailed me a file containing <a href="SpenceMat.html">all of them</a>.
+</p>
+
+<H2> More known info </H2>
+<p>
+More known info is surveyed in
+<br>
+J.Seberry &amp; M.Yamada: 
+Hadamard matrices, sequences, and block designs, pp. 431-560 in 
+<i>Contemporary Design Theory, a collection of surveys</i> 
+(J.H.Dinitz &amp; D.R.Stinson eds.), Wiley 1992, and
+<br>
+S.Georgiou, C.Koukouvinos, J.Seberry:
+Hadamard matrices, orthogonal designs and construction algorithms,
+pp. 133-205  in
+<i>DESIGNS 2002: Further computational and constructive design theory</i>,
+Kluwer 2003.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

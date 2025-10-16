@@ -1,0 +1,113 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle ?? - Independence from covered alternatives & monotonicity
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+Puzzle #??: Independence from covered alternatives &amp; monotonicity
+</H2>
+
+<p>
+Prove it is impossible for a single-winner voting method based on rank-order ballots
+(either deterministic or randomized) to exist
+simultaneously satisfying i, ii, iii, iv:
+</p><ol type="i">
+<li> 
+"Independence from covered alternatives":
+the winner is always a member of the 
+<a href="Glossary.html#Uncovered">uncovered set</a> &ndash;
+and who it is, depends only on
+the voter-preferences among the uncovered candidates.
+</li><li>
+"Monotonic": 
+if a voter raises candidate
+X above Y (and makes no other changes, and no other voter changes their ballot), 
+that cannot decrease X's winning chances.
+</li><li>
+"Perfect-symmetry tiebreak responsiveness":
+In a C-candidate election featuring a
+perfect symmetrical C-way tie, if identical additional votes are added,
+then the candidate those extra votes top-rank, should then have the
+greatest winning chances.
+</li><li>
+Immune to candidate-renamings: if X wins with probability P,
+then upon renaming the candidates renamed-X should still win with probability P.
+</li></ol>
+<p>
+<a href="RangeVoting.html">Score voting</a>, 
+which is <i>not</i> a rank-order ballot system, satisfies
+ii, iii, iv and independence from all alternatives besides the winner. 
+<small> 
+(It does not necessarily elect a member of the uncovered set, albeit if
+we change the definition of "X covers Y" to incorporate preference <i>strengths</i> 
+instead of ignoring them &ndash; which seems more sensible if one has a score-based ballot
+&ndash; then it does, indeed then the score voting winner is the <i>only</i> uncovered candidate.)
+</small>
+</p>
+
+<h2> Answer </h2>
+<h3> (Both Puzzle &amp; Answer by Forest W. Simmons, July 2010) </h3>
+
+<p>
+We shall prove impossibility by deducing a contradiction.
+</p><p>
+<b>Scenario I:</b>
+<table border="1" cellspacing="2" cellpadding="2" bgcolor="#ccffcc">
+<tr><th>#voters</th><th> their vote</th></tr>
+<tr><td>2</td><td>B>C>A</td></tr>
+<tr><td>1</td><td>C>A>B</td></tr>
+<tr><td>1</td><td>A>B>C</td></tr>
+</table>
+<b>Scenario II:</b>
+<table border="1" cellspacing="2" cellpadding="2" bgcolor="#ccffcc">
+<tr><th>#voters</th><th> their vote</th></tr>
+<tr><td>2</td><td>D>B>C</td></tr>
+<tr><td>1</td><td>B>C>D</td></tr>
+<tr><td>1</td><td>C>D>B</td></tr>
+</table>
+Our method must
+give greater winning probability to alternative B in scenario I than II.
+[Because if we 
+rename A&rarr;C, B&rarr;D, C&rarr;B in scenario I then 
+we get scenario II; hence our claim is equivalent to claiming
+that in scenario I considered alone, B wins with greater probability than C;
+and that in turn follows from perfect tiebreak responsiveness.]
+</p><p>
+Now consider the <b>scenario III:</b>
+<table border="1" cellspacing="2" cellpadding="2" bgcolor="#ccffcc">
+<tr><th>#voters</th><th> their vote</th></tr>
+<tr><td>2</td><td>D>B>C>A</td></tr>
+<tr><td>1</td><td>C>A>D>B</td></tr>
+<tr><td>1</td><td>A>B>C>D</td></tr>
+</table>
+The uncovered set is {A,B,C} and so by independence from covered alternatives 
+the winner is chosen 
+according to scenario I.
+</p><p>
+Now switch A and B in the last voter's ballot to get
+<table border="1" cellspacing="2" cellpadding="2" bgcolor="#ccffcc">
+<tr><th>#voters</th><th> their vote</th></tr>
+<tr><td>2</td><td>D>B>C>A</td></tr>
+<tr><td>1</td><td>C>A>D>B</td></tr>
+<tr><td>1</td><td><font color="red">B>A</font>>C>D</td></tr>
+</table>
+The uncovered set becomes {D,B,C},
+and so by independence from covered alternatives the winner is 
+chosen according to scenario II.
+</p><p>
+In summary, solely by raising B relative to A on a ballot,
+the winning probability of B decreased.
+This contradicts monotonicity.
+<b>Q.E.D.</b>
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+

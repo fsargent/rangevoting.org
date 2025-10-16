@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Example illustrating Instant Runoff Voting's clear insanity
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Example of Instant Runoff Voting insanity </H2>
+
+<p>
+Let there be 15 voters and  four candidates named A, B, C, and D.
+</p>
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr><th>#voters</th><th>their vote</th></tr>
+<tr><td align="center">3</td><td align="center"> A>D>C>B </td></tr>
+<tr><td align="center">3</td><td align="center"> B>D>C>A </td></tr>
+<tr><td align="center">2</td><td align="center"> C>D>A>B </td></tr>
+<tr><td align="center">2</td><td align="center"> D>A>B>C </td></tr>
+<tr><td align="center">1</td><td align="center"> A>C>B>D </td></tr>
+<tr><td align="center">1</td><td align="center"> B>C>D>A </td></tr>
+<tr><td align="center">1</td><td align="center"> C>B>D>A </td></tr>
+<tr><td align="center">1</td><td align="center"> C>D>B>A </td></tr>
+<tr><td align="center">1</td><td align="center"> D>B>C>A </td></tr>
+</table>
+
+<p>
+With <a href="rangeVirv.html">Instant Runoff (IRV)</a> voting,
+<b>A wins</b> this election.
+(First D is eliminated, then C, then B.)
+Thus IRV is saying that 
+A is the best candidate, followed by B, C, and D in that order.
+</p>
+
+<p>
+But now suppose C drops out.
+Now the results are completely reversed: 
+<b>D wins</b>, followed by
+B and A.
+</p>
+<p>
+If instead B drops out, then
+<b>D wins</b>, followed by
+C and A.
+</p>
+<p>
+Finally if A drops out, then
+<b>D wins</b>, followed by
+C and B.
+</p>
+<p>
+In short, Instant Runoff says A>B>C>D &ndash;
+but if anybody besides D drops out, then it orders the candidates in exactly reversed order.
+IRV can say somebody is the best candidate, 
+then <a href="IrvRevFail.html">turn around</a>
+and say that same person is the worst.
+It must have been wrong at least one of those times.
+And the consequence can be that we elect the worst 
+instead of the best candidate, which is very bad news for your country.
+</p>
+<p>
+You might want to consider 
+<a href="RangeVoting.html">range voting</a> instead.
+</p>
+<p>
+<small>
+Actually in this election, there are good arguments that <b>D</b> is the best (not the worst
+as IRV says) candidate: namely D beats every rival pairwise by at least a 9-to-6 majority
+and D also is the <a href="rangeVborda.html">Borda</a> winner and the winner with
+<a href="Approval.html">approval</a> voting if each voter approves her top-two choices.
+You can also <a href="PlurBadRemove.html">see</a> a related insanity but 
+instead for plurality voting, and <a href="rangeVborda.html#JohnsonEx">another</a>
+of similar ilk for Borda voting.
+</small>
+</p>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

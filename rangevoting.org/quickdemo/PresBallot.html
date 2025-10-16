@@ -1,0 +1,69 @@
+<html>
+<head>
+<title>
+RangeVoting quick demo
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<H2> VOTE for best leader (Range voting demo)
+<br>
+(<a href="PresRadio.html">See what this range-voting election instead
+would be like on Plurality machine</a>)</H2> 
+
+<p>
+Award each candidate a <i>numerical score</i> between 0 and 99.
+Advise giving your favorite candidate 99 and the worst one 0.
+If you intentionally wish to express <i>no opinion</i> about that candidate, then please leave 
+their slot <i>blank</i> (or even better fill it with an "X" to denote "intentional blank";
+that prevents fraud); only nonblank scores will be incorporated into the averaging.
+</p>
+
+
+<table>
+<tr><td>
+<form method="post" action="http://RangeVoting.org/cgi-bin/addQvote">
+<table border="3" cellspacing="6" bordercolor="red" bgcolor="yellow">
+<tr><td> George Washington </td> <td> <input type="text" name="vt1" value="" size="2" maxlength="2"> </td> </tr>
+<tr><td> Mahatma Gandhi </td> <td> <input type="text" name="vt2" value="" size="2" maxlength="2"> </td> </tr>
+<tr><td> Jesus Christ </td> <td> <input type="text" name="vt3" value="" size="2" maxlength="2"> </td> </tr>
+<tr><td> Abraham Lincoln </td> <td> <input type="text" name="vt4" value="" size="2" maxlength="2"> </td> </tr> 
+<tr><td> Ronald Reagan </td> <td> <input type="text" name="vt5" value="" size="2" maxlength="2"> </td> </tr>
+<tr><td> Muhammad </td> <td> <input type="text" name="vt6" value="" size="2" maxlength="2"> </td> </tr>
+<tr><td> Theodore Roosevelt </td> <td> <input type="text" name="vt7" value="" size="2" maxlength="2"> </td> </tr>
+<tr><td> Franklin D. Roosevelt </td> <td> <input type="text" name="vt8" value="" size="2" maxlength="2"> </td> </tr>
+<tr><td> Winston Churchill </td> <td> <input type="text" name="vt9" value="" size="2" maxlength="2"> </td> </tr>
+<tr><td> Nelson Mandela </td> <td> <input type="text" name="vt10" value="" size="2" maxlength="2"> </td> </tr>
+<tr><td> Martin Luther King </td> <td> <input type="text" name="vt11" value="" size="2" maxlength="2"> </td> </tr>
+</table>
+<!-- br  -->
+&nbsp;
+<table>
+<tr><td> <input type="submit" value="Submit Vote!"> 
+ &nbsp;  &nbsp; 
+<input type="reset" value="Clear All">    </td></tr>
+</form>
+<tr><td>   </td> </tr>
+<tr><td>  
+<form method="post" action="http://RangeVoting.org/cgi-bin/fillQvotes">
+<input type="text" id="genericv" name="genericv" value="" size="2" maxlength="2"> 
+ <input type="submit" value="<-- Fill all vote-slots with this value">  
+</form>
+</td></tr>
+</table>
+</td>
+</tr>
+</table>
+
+<p>
+<a href="../presdemo/PresBallot.html">Larger demo - vote for best US president ever</a>
+</p>
+<br>
+
+
+<p><a href="../RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+
+

@@ -1,0 +1,176 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle 46
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> 
+Puzzle 46: Probability of unclear election winners
+</H2>
+
+<p><b>Puzzle:</b><br>
+In the <a href="RandElect.html">random election model</a>, with 3 candidates and
+rank-order votes from V&rarr;&infin; voters, 
+</p>
+<ol type="a">
+<li>
+What is the probability that some two weighted positional voting methods
+will disagree on the winner? 
+</li><li>
+And what is the probability that <i>every</i>
+weighted positional voting method's winner will agree <i>but</i>
+disagree with the Condorcet winner?
+</li><li>
+Prove the latter problem cannot happen if 
+the model of voters instead is that voters and candidates are points on a line
+and voters prefer candidates located closer to them.
+</li></ol>
+
+
+<p><b>Answer:</b>
+<br>
+(a) D.G.Saari &amp; M.M.Tataru:
+The probability of dubious election winners,
+<i>Economic Theory</i> 13 (1999) 345-363,
+claimed the answer was &asymp;69%.  
+<br>
+But I don't understand their paper and my computer disagrees.
+My computer found 
+47% disagreement between the plurality and antiplurality winners in 3-candidate
+random elections, in which case the answer should instead be 53%.
+(Saari and Tataru claimed these two probabilities should be the same.)
+Who is right?
+<br>
+William V. Gehrlein &amp; Dominique Lepelley:
+The probability that all weighted scoring rules elect the same winner,
+Economic Lett. 66,2 (2000) 191-197 did the same computer simulation I did and found the same
+answer, so it appears I was right.
+</p><p>
+(b) Vincent Merlin, Maria Tataru, Fabrice Valognes:
+On the likelihood of Condorcet's profiles,
+Social Choice &amp; Welfare 19,1 (2002) 193-206,
+said the probability of a situation such as the example below
+in which <i>every</i> weighted-positional scoring voting system simultaneously
+elects some unique winner different than the CW (and that CW exists) is about 1.808%
+in 3-candidate random elections with a large number of voters.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>
+13-voter Condorcet vs WP example by Warren D. Smith. 
+<b>A</b> is the unique Condorcet-Winner.
+But <b>B</b> wins in every weighted-positional voting system such as Plurality, Borda, and 
+AntiPlurality.
+</caption>
+<tr> 
+<th> #Voters </th>
+<th> their vote </th>
+</tr>
+<tr> 
+<td> 5 </td>
+<td> A>B>C </td>
+</tr>
+<tr> 
+<td> 4 </td>
+<td> B>C>A </td>
+</tr>
+<tr> 
+<td> 2 </td>
+<td> B>A>C </td>
+</tr>
+<tr> 
+<td> 2 </td>
+<td> C>A>B </td>
+</tr>
+</table>
+
+</p><p>
+(c) The possible votes are ABC, CBA, BCA, and BAC for three candidates A,B,C
+located on a line in that order.
+Suppose the numbers of these votes are respectively x,y,z and t.
+The proof is then to consider the linear program
+<center>
+x&ge;0,
+y&ge;0,
+z&ge;0,
+t&ge;0,
+x+y+z+t=100
+</center>
+supplemented with either
+<center>
+2x+Qt&ge;2y+Qz,
+2x+Qt&ge;Qx+Qy+2z+2t,
+z+t+y&ge;x,
+z+t+x&ge;y
+</center>
+(specifying that B is the Condorcet winner while A is the winner with a
+weighted-positional system
+with weights 2, Q, 0; there are an infinite set of Q-containing inequalities,
+one for each real Q with 0&le;Q&le;2)
+or
+<center>
+2x+Qt&ge;2y+Qz,
+2x+Qt&ge;Qx+Qy+2z+2t,
+y+z&ge;x+t,
+y&ge;x+z+t
+</center>
+(same but C is the Condorcet winner)
+or
+<center>
+2t+2z+Qy+Qx&ge;2y+Qz,
+2t+2z+Qy+Qx&ge;2x+Qz,
+z+t+y&ge;x,
+z+t+x&ge;y
+</center>
+(specifying that C is the Condorcet winner while B is the winner with a
+weighted-positional system).
+Either way, the linear program has only x=y=z=t=0 as a solution even if
+we only employ Q in the set {0,1,2} rather than the full infinite set of Q.
+In other words, we have proven that, in "1-dimensional politics," it is impossible for Borda,
+plurality, and antiPlurality voting all to agree on a winner, unless it is
+a Condorcet winner.
+<!--
+ maximize( s, {
+ x>=0, y>=0, z>=0, t>=0, 
+ x+y+z+t=1,
+ 2*x+Q1*t>=s+2*y+Q1*z,
+ 2*x+Q1*t>=s+Q1*x+Q1*y+2*z+2*t,
+ 2*x+Q2*t>=s+2*y+Q2*z,
+ 2*x+Q2*t>=s+Q2*x+Q2*y+2*z+2*t,
+ 2*x+Q3*t>=s+2*y+Q3*z,
+ 2*x+Q3*t>=s+Q3*x+Q3*y+2*z+2*t,
+ z+t+y>=s+x,
+ z+t+x>=s+y } );
+
+ maximize( s, {
+ x>=0, y>=0, z>=0, t>=0, 
+ x+y+z+t=1,
+ 2*x+Q1*t>=s+2*y+Q1*z,
+ 2*x+Q1*t>=s+Q1*x+Q1*y+2*z+2*t,
+ 2*x+Q2*t>=s+2*y+Q2*z,
+ 2*x+Q2*t>=s+Q2*x+Q2*y+2*z+2*t,
+ 2*x+Q3*t>=s+2*y+Q3*z,
+ 2*x+Q3*t>=s+Q3*x+Q3*y+2*z+2*t,
+ y+z>=s+x+t, y>=s+x+z+t } );
+
+ maximize( s, {
+ x>=0, y>=0, z>=0, t>=0, 
+ x+y+z+t=1,
+ 2*x+Q1*t+s<=2*t+2*z+Q1*y+Q1*x,
+ 2*y+Q1*t+s<=2*t+2*z+Q1*y+Q1*x,
+ 2*x+Q2*t+s<=2*t+2*z+Q2*y+Q2*x,
+ 2*y+Q2*t+s<=2*t+2*z+Q2*y+Q2*x,
+ 2*x+Q3*t+s<=2*t+2*z+Q3*y+Q3*x,
+ 2*y+Q3*t+s<=2*t+2*z+Q3*y+Q3*x,
+ y+z>=s+x+t, y>=s+x+z+t } );
+-->
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

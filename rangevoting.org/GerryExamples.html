@@ -1,0 +1,429 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Gerrymandering and a cure - shortest splitline algorithm
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Examples of our unbiased district-drawing algorithm in action / comparisons
+with gerrymandered districts drawn by politicians </h2>
+
+<p>
+<a href="GerryExec.html">(Executive summary)</a> &nbsp;
+<a href="RangeVoting.html">(Return to main page)</a> &nbsp;
+(<a href="SplitLR.html">splitlining pictures for all 50 states</a>)
+</p>
+
+<H3> Advantages </H3>
+<p>
+The advantage of having our simple splitting
+algorithm draw the congressional districts is obvious.
+There is one and only one drawing possible given 
+the number of districts
+wanted, the map of the state, 
+and the distribution of people inside it.  Which of those people are Liberal,
+Conservative, Republican, Democrat, Black, White, Christian, Jewish, polka-dotted,
+or whatever has <i>absolutely zero</i>
+effect on the district shapes that come out.  So you know the maps are
+going to be completely unbiased.  Get politicians to draw the maps and
+you know that not only are they going to be completely biased, they
+are also going to be a heck of a lot more
+complicated-shaped and they are going to use up a lot of
+your taxpayer money figuring out how
+to best-rob you of your vote.  Which do you prefer?  It has been over 200 years.
+Isn't it time to make gerrymandering a thing of the past?
+</p>
+
+<H3> The shortest-splitline <font face="fantasy">algorithm</font> for drawing N congressional
+districts (part of our <a href="BallInit.html">ballot initiative</a>) </H3>
+
+<p><small><a href="SSArecursive.txt">Formal recursive formulation</a></small></p>
+
+<ol>
+<li>
+Start with the boundary outline of the state. 
+</li>
+<li>
+Let N=A+B where A and B are as nearly equal whole numbers as possible.
+<br>
+(For example, 7=4+3.  
+<small>More precisely, A = &lceil;N/2&rceil;, B=&lfloor;N/2&rfloor;.</small>)
+</li>
+<li>
+Among all possible dividing lines
+that split the state into two parts with population ratio A:B,
+choose the <i>shortest</i>.  
+(Notes: since the Earth is round, when we say "line" we more precisely mean
+"great circle."  If there is an exact length-tie for "shortest" then break that tie by using
+the line closest to North-South orientation, and if it's still a tie, then use the Westernmost of
+the tied dividing lines.  "Length" means distance between the two furthest-apart points on
+the line, that both lie within the district being split.)
+</li>
+<li>
+We now have two hemi-states, each to contain a specified number (namely A and B)
+of districts.  Handle them recursively via the same splitting procedure.
+</li>
+</ol>
+
+<FONT SIZE="-1">
+<!-- Pleasant fact:
+The districts produced by this method always can be colored in only two colors
+so no two neighboring districts have the same color.  That saves printing costs.
+Later note: False: 4 colors can be required! -->
+<p>
+<b>Asterisk:</b>
+If anybody's residence is split in two by one of the splitlines (which would happen, 
+albeit very very rarely)
+then they are automatically declared to lie in 
+the most-western (or if line is EW, then northern)
+of the two districts.  
+</p>
+</FONT>
+
+<H3> Pictures, Video </h3>
+
+<p>
+C.G.P. Grey's 3.5-minute youtube 
+<a href="http://www.youtube.com/watch?v=kUS9uvYyn3A">video</a> 
+attempting to describe the shortest splitline method.
+</p><p>
+<a href="SplitLR.html">High-precision computer-generated pictures</a>
+for all 50 states, with commentary and analysis.
+</p>
+
+
+<H3> Compare the pictures </H3>
+<p>
+<b>Tennessee</b>'s 9 congressional districts
+<a href="TN_CDloc.pdf"> (pdf; as they were in 2004)</a>
+Don't you love the incredibly gerrymandered shapes of districts 3 and 7?
+(No House member from Tennessee ever lost a bid for re-election during 1980-2005.)
+</p>
+
+<p>
+Great.  Now <i>compare</i> with our 
+approximate sketch
+<a href="Tennessee.png"> (png <font size="-1">fastest</font>)</a> 
+<a href="Tennessee.tiff"> (tiff <font size="-1">second best</font>)</a> 
+<a href="Tennessee.pdf"> (pdf
+<font size="-1">third</font>)</a> 
+<a href="Tennessee.ps"> (ps)</a> 
+of how they'd instead look
+as drawn by our completely bias-free automatic splitting algorithm.
+</p>
+
+<p>
+<b>Arizona</b>'s 8 congressional districts
+<a href="AZ_CDloc.pdf"> (pdf; as they were in 2004)</a>
+Yes! We have a new champion for most incredible gerrymander: district 2.
+</p>
+
+<p>
+Great.  Now <i>compare</i> with our 
+approximate sketch
+<a href="Arizona.png"> (png <font size="-1">fastest</font>)</a> 
+<a href="Arizona.tiff"> (tiff <font size="-1">second best</font>)</a> 
+<a href="Arizona.pdf"> (pdf)</a> 
+<a href="Arizona.ps"> (ps)</a> 
+of how they'd instead look
+as drawn by our algorithm.
+</p>
+
+<p>
+<b>North Carolina</b>'s 13 congressional districts
+<a href="NC_CDloc.pdf"> (pdf; as they were in 2004)</a>;
+love that
+district 12, and hello, district 3 actually is divided into two or three pieces since it goes
+out to sea and comes back to land!  Or maybe two of them are connected at low tide?
+(Was that what Paul Revere had in mind when he
+said "one if by land, two if by sea"?)
+And ooh, check district 1!
+</p>
+
+<p>
+Great.  Now <i>compare</i> with our 
+approximate sketch
+<a href="NorthCaro.png"> (png  <font size="-1">fastest</font>)</a> 
+<a href="NorthCaro.tiff"> (tiff <font size="-1">second best</font>)</a> 
+<a href="NorthCaro.pdf"> (pdf)</a> 
+<a href="NorthCaro.ps"> (ps)</a> 
+of how they'd instead look
+as drawn by our algorithm.
+</p>
+
+<p>
+<b>Massachusetts'</b>'s 10 congressional districts (map from Adam Carr's Psephos archive)
+(<a href="MApsephos.gif">gif fastest</a>)
+(<a href="MApsephos.gif">png middle</a>)
+(<a href="MApsephos.gif">jpg slowest</a>)
+versus approximate sketch of how it would look redrawn with our
+algorithm:
+(<a href="MAsplitline.png">png fastest</a>)
+(<a href="MAsplitline.jpg">jpg slower</a>)
+It was Massachusetts governor Elbridge Gerry who is credited with inventing gerrymandering in
+1812.   
+He was voted out of office immediately by outraged voters, but his legacy evidently lives on.
+Massachusetts has 100% Democratic congressmen and has for at least the last three
+election cycles, despite having
+a Republican governor (you can't gerrymander the governor race, since it is a statewide
+election).  Here's a <a href="BGWed.html">Boston Globe Editorial</a>
+on the subject.
+</p>
+
+<p>
+<b>Texas</b>'s 32 congressional districts (side-by-side comparative chart
+from the <i>Associated Press</i> as printed in the <i>Houston Chronicle</i> 9 Oct. 2003)
+showing district shapes before and after the extraordinary
+redistricting in 2003.
+<a href="TexasRedist.jpg"> (jpg)</a>
+<!-- after is also  TX03map.jpg  in multicolor  -->
+(And <a href="TXtravis24.png"> here [png]</a> is a closeup on what they did to Austin to 
+split up those annoying Austin voters.)
+The gerrymandering was not inconsiderable before the redistricting, e.g. check district 4
+near Dallas.
+But, after it &ndash; after it &ndash; aaah, for total statewide brazenness 
+Texas really takes the cake.
+Check district 19 (Lubbock in the north West) 
+and the <i>whole East half of the state</i> is made of those
+long thin districts.  And for extra amazement check those
+closeups on Houston, and Tom DeLay's personal district 22.
+Yup, definitely Texas is an unbelievable new champion.
+(Check the 127-page <a href="TexasCourtDecn.pdf">Texas Court decision</a>
+declaring this totally legal.  Before re-gerrying: Texas had 17 Democrat and 15 Republican
+congress.  After, it was 11-to-21 the other way.  
+Christian Science Monitor <a href="Reding03.html"> editorial</a> on this.)
+</p>
+
+<p>
+(You can make your own sketch of what Texas would look like with
+the new scheme.  Have fun.  Much nicer, no?)
+</p>
+
+<a name="MD">
+<p>
+<b>Maryland's</b> 8 congressional districts
+<a href="maryland.GIF"> (gif; as they were in 2004)</a>.
+Holy sea of rattlesnakes Batman!
+<i>Numerous</i> go out to sea and come back to land districts, <i>amazingly</i> 
+squirelly boundary shapes.
+Here's approximately how it would look redistricted via shortest splitline
+<a href="maryland.png"> (png)</a>.
+</p>
+
+<a name="IL">
+<p>
+<b>Illinois</b>' 19 congressional districts
+<a href="IL_CDloc.pdf"> (pdf; as they were in 2004)</a>.
+Wow.  I thought Texas was bad, but Illinois may be the new champ.
+District 17 is just <i>awesome</i>.
+But then again districts 19, 15, and 11 are no slouches.
+You cannot actually see a lot of the small Chicago districts without a magnifying
+glass, so here is a 
+<a href="ChicagoCloseup.gif">closeup view (gif)</a>
+[this picture is from Adam Carr's <a href="http://psephos.adam-carr.net/">psephos</a>
+database] 
+color coded by party control in 2004.
+Districts 1, 10, 8, 5, and 7 are pretty bad, but district 4 is a <i>wowser!</i>
+(Notice it looks pretty bad... but then you realize it actually <i>continues</i> west
+past the point you thought it had ended... going along
+a thin strip lying entirely inside a highway... which loops around until expanding
+to enclose a <i>second</i> bad-looking region.)
+</p>
+
+<p>
+Great.  Now <i>compare</i> with our 
+approximate sketch
+<a href="Illinois.png"> (png  <font size="-1">fastest</font>)</a> 
+<a href="Illinois.tiff"> (tiff <font size="-1">second best</font>)</a> 
+<a href="Illinois.pdf"> (pdf)</a> 
+<a href="Illinois.ps"> (ps)</a> 
+of how they'd instead look
+as drawn by our algorithm.
+</p>
+
+<p>
+<b>California?</b>
+<!--
+Jill Stewart: Terminator vs Gerrymander, pA23, Nov 7 2005 NY Times,
+supports prop 77 claiming it has to be better than the system California has
+now. -->
+In 2004, <i>not one</i> of CA's 173 state legislative and federal congressional seats
+changed party-hands.  In 2002, <i>every</i> incumbent won re-election, on average with
+69% of the vote.
+California may be the new gerrymandering
+champion, perhaps even worse than Illinois and Texas, but unlike them its gerrymandering is
+"bipartisan" that is, arranged by agreement among the Democrats and Republicans to 
+"design their own districts" to make every office holder  "safe."
+(Later note: see <a href="CaliforniaDistrictRandom.html">this</a> about the new random-commission
+system CA adopted in 2010-2011!)
+(<small>
+Specifically, CA state law causes any redistricting not approved by at least
+2/3 of the state legislature to be challengeable by the voters in a referendum.
+That forces the Democrats in control of California to
+gerrymander for at least some Republican legislators too.  
+Republican Assemblyman Roy Ashburn, vice-chair of the redistricting committe, 
+told the <i>San Diego Union-Tribune</i> in May 20-01
+"I think it is very possible... we can achieve a bipartisan redistricting... 
+it takes openness and willingness to compromise."  And indeed the deal that was struck 
+was to protect almost all
+incumbents from both parties, allowing Democrats to keep all their seats but
+also the Republicans could do so, plus the Democrats would draw one new district
+&ndash; mandated by population growth &ndash; in such a way that they would
+get that new one too. Only a few were troubled by the result, e.g.
+Republican Assemblyman Tim Leslie told the <i>LA Times</i> "We won't 
+have to worry about elections for six, eight, ten years because [the districts] are all 
+pre-set.  Everybody wins... What happened to drawing lines
+for the people of the state rather than ourselves?"
+</small>)
+The devil's jigsaw puzzle (gifs from Adam Carr's
+<a href="http://psephos.adam-carr.net/">psephos</a>
+database):
+<a href="california1.gif">Northern Calif</a>,
+<a href="california2.gif">Calif Bay Area</a>,
+<a href="california3.gif">Central Calif</a>,
+<a href="california4.gif">Los Angeles area</a>,
+<a href="california5.gif">Southern Calif</a>.
+All of Los Angeles is amazing  but district 53 in Southern Calif. (San Diego)
+is especially neat since it actually goes out to sea and comes back to land.
+</p>
+
+<p>
+<b>Florida?</b>
+Holy cow, Florida (especially Eastern) may be even worse than California!
+<a href="FlCong.pdf">(color pdf)</a>, 
+<a href="florida1.gif">(Northern FL, gif from Psephos)</a>, 
+<a href="florida2.gif">(Southern FL, gif from Psephos with closeups)</a>.
+The district 22 &amp; 23 tandem team
+is just beyond belief trying to neutralize as many Democrats as possible
+so that Florida as a whole can be safely massively Republican-dominated;
+you really need the closeup map to see its full glory.
+[Alcee Hastings, an
+<a href="http://www.sourcewatch.org/index.php?title=Alcee_Hastings">impeached</a>
+Federal judge convicted of multiple counts of bribery,
+was re-elected by the 23rd.  Gee, I wonder why.]
+</p>
+
+<p>
+<a href="http://en.wikipedia.org/wiki/List_of_United_States_Congressional_districts">
+Many more US state district maps at Wikipedia (jpgs)</a>;
+Ohio, Massachusetts, Oklahoma, and Pennsylvania all are amazing.
+And <a href="http://www.melissadata.com/lookups/mapCD.asp">
+http://www.melissadata.com/lookups/mapCD.asp</a> gives you district maps on demand &ndash;
+but I just tried it for my New York district 1 and it was not a very good drawing.
+</p>
+
+<p>
+<b>Colorado?</b>
+The <i>New York Times</i> found a
+<a href="ColoradoFair.html">non-gerrymandered district</a> there
+and expressed incredulity.
+</p>
+
+<p>
+And here's a <a href="GerryGal.html">USA Gerrymandering art gallery (gifs)</a>.
+</p>
+
+<blockquote>
+"There is no issue that is more sensitive to politicians of all colors and ideological 
+persuasions than redistricting. It will determine who wins and loses for eight years." 
+&ndash; Ted Harrington, political science chair, UNC-Charlotte, 
+quoted during Shaw v. Hunt trial, March 1994
+</blockquote>
+
+<blockquote>
+Only two things are infinite, the universe and human stupidity, and I'm not sure about the former. 
+&ndash; Albert Einstein 
+</blockquote>
+
+<H3> Does our redistricting method have any <i>dis</i>advantages? </H3>
+
+<p>
+Yes, but they are tiny compared to its benefits.  Our district shapes
+ignore geographic features such as rivers and highways, and political features
+such as country boundaries inside state maps.  
+As you can see from
+the example-pictures above, 
+the old approach of 
+politicians drawing districts sometimes used those things, sometimes misused them,
+and  other times conveniently ignored them, all with the principal aim of
+maximally denying you fair representation.
+</p>
+
+<p>
+The advantage of having a purely <i>mathematical</i> definition of the district shapes
+is that there is absolutely no room whatsoever for bias or
+any freedom of choice at all by district drawers.  That shuts the gerrymanderers down.
+Period.   
+</p>
+
+<p>
+We admit you may pay a small price for this, both financially, and occasionally
+(in some areas) in convenience.  But the financial price is tiny compared to the
+amount you will save from having a less-corrupt, more democratic government.
+And actually,
+considering you'll no longer have to pay an unwanted small army of
+super-biased nerds to figure out how to draw and print those crazy maps, all lot of money 
+will actually be <i>saved</i> with our scheme.
+<small>
+In 2001, California State Democrats paid political consultant 
+Michael Berman $1.36 million
+to draw the US House district map for California, with incumbent Democratic members
+of Congress paying him collectively about $600,000.
+"Twenty thousand is nothing to keep your seat,"
+Democratic Congresswoman Loretta Sanchez told the <i>Orange County Reporter</i>.
+"I spend $2  million [campaigning] every election. 
+If my colleagues are smart, they'll pay their $20,000
+and Michael will draw the district they can win in.  Those who have refused to pay?   
+God help them."
+See chapter 1 of <a href="RVPapers.html">Overton's book</a> for this story.
+In contrast, our high-res computerized
+splitline districting <a href="SplitLR.html">computation</a> for all 50 states <i>combined</i> 
+cost us approximately 10 cents worth of electricity and less than 1 day worth of time.
+</small>
+And the inconvenience will usually actually be "convenience" because it
+will be much easier to figure out which district you are in if
+the maps are simple, as opposed to looking like a  salamander-octopus mutant
+diseased with severe hives.
+</p>
+
+<H3> Find out more </H3>
+
+<p> 
+Gerrymandering can lead to self-reinforcing 
+<a href="OneParty.html"><i>one</i> party domination</a>.
+</p>
+
+<p> 
+<a href="CrossCountryG.html">Cross-country survey</a> &ndash; 
+which countries seem the best and the worst
+as far as gerrymandering is concerned?  And how do they do it?
+</p>
+
+<p> 
+Do "independent" or "bi-partisan" district-drawing 
+<a href="GerryComm.html">commissions</a> work?
+</p>
+
+<p> 
+The (somewhat related)
+<a href=" http://www.fraudfactor.com/ffgerrymander.html">fraudfactor.com</a> site.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+
+

@@ -1,0 +1,1633 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Best voting systems in D-dimensional politics models
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h1>
+Best voting systems in D-dimensional politics models
+</h1>
+<p>
+By Warren D. Smith.  First Draft 16 Oct. 2008. Declaring it final 27 January 2009.
+Email comments to: warren.wds AT gmail.com.
+</p>
+
+<h3>Abstract</h3>
+<p>
+Regard this paper as "Part III" of the previous
+<a href="BestVrange.html">The Best Rank-Order Voting System versus Range Voting</a>.
+The same key definitions and notions
+such as "Bayesian regret" (BR) are re-used (see the glossary in that paper).
+Part I had mostly analysed the "random normal elections model" (RNEM),
+but noted that the underlying idea in its section 1 allowing us
+to identify "best voting systems" did not depend on the RNEM
+and was valid much more generally.
+We now attempt to break free of the limitations of the RNEM and/or of the kind
+of voter "strategy" considered in Parts I and <a href="Best4.html">II</a>, by
+considering other models, e.g.
+"D-dimensional politics." 
+<b>We find:</b>
+<ol>
+<li>
+In "D-dimensional issue-based politics models" 
+instead of the RNEM, most of Part I's theoretical techniques now fail because they had
+relied on the massive amount of statistical independence inside the RNEM.
+But nevertheless we are able in a very particular 
+D-dimensional model involving exact spherical symmetry, to prove that
+<i>Condorcet</i> voting methods are optimum in the limit of 
+an infinite number of wholy-honest voters, in the
+sense that they achieve asymptotically zero regret with probability&rarr;1.  
+(Meanwhile, range voting and every weighted positional system have positive regret.)
+</li><li>
+In the same spherically-symmetric model, 
+certain kinds of honest and strategic
+<i>approval voting</i>
+also are asymptotically optimum.
+But the optimality of Condorcet and these flavors of approval voting both
+are artifacts of exact spherical symmetry destroyed by even 
+slight asphericity.
+</li><li>
+A different D-dimensional politics model, this time with <i>binary</i>
+(yes/no) rather than continuum issues, is advanced, the "YN model."
+We show that range voting <i>always</I> delivers the max-utility winner
+in this model, i.e. always has zero regret for any number V of honest voters.
+In contrast we show that many other voting systems  such as approval, Borda, 
+instant runoff, and Condorcet can exhibit horrible pathologies in
+contrived sitations inside this model.
+More importantly, many of them exhibit significantly positive regret in 
+more realistic <i>randomized</i> settings.
+</li></ol>
+<p>
+We shall also <a href="#Sec5">prove</a>
+that <i>median</i>-based range voting can outperform (exhibit lower BR than)
+ordinary average-based range voting in a certain contrived model involving 
+1-sided strategists and sharply-peaked honest utility distributions.
+All our computer simulations involving <i>un</i>biased strategists, however, have not 
+detected any advantage for medians (indeed, generally they
+show lower BRs for average-based range).
+</p>
+
+<a name="Sec1"></a>
+<h3>1. Core ideas, overview, and plan</h3>
+
+<p>
+In Part I, the key property of the RNEM which allowed our analytic machinery to 
+crank out exact formulas for Bayesian Regrets, was the massive amount of statistical 
+independence available.  As we shall explain near the start of 
+<a href="#Sec2">section 2</a>, 
+that resource is no longer available in models of
+"D-dimensional politics."
+Hence it naively seems as though any computations of regret in
+D-dimensional politics models would need to be far more difficult, 
+requiring doing integrals with far greater dimensionality.
+<i>However</i>, fortunate miracles occur.
+</p><p>
+This paper proposes two mildly-realistic-seeming kinds of 
+D-dimensional politics models:
+<ol type="A">
+<li>
+Continuum issue space; candidate-utilities 
+based on the Euclidean voter-to-candidate distance;
+V voters distributed according to a spherically symmetric normal density
+in the V&rarr;&infin; limit. 
+(See <a href="#Sec2">section 2</a> for precise definitions.)
+</li><li>
+Binary yes/no issues; utilities based on the number of issues on
+which the voter and candidate agree; V voters; full "democratic marketplace" i.e.
+a candidate exists with every possible issue-stance.
+(See <a href="#Sec4">section 3</a> for precise definitions.)
+</li></ol>
+In both models,
+miraculously we are able to show 
+that certain
+already-known voting methods 
+(with probability&rarr;1 in the V&rarr;&infin; limit for model A)
+have <i>zero</i> regret.  Because regret by definition is nonnegative,
+those voting methods are optimal in this limit. 
+Meanwhile we can show that various other methods have positive regret hence are non-optimal.
+</p><p>
+It appears that the optimality of, e.g, Condorcet voting systems
+in model A is an <i>artifact</i> of our assumption of
+exact spherical symmetry.  Under perturbations, no matter how slight, away from
+spherical symmetry,
+we shall show the optimality instantly vanishes.
+In contrast, range's superiority over 
+every rank-order voting system in 
+<a href="BestVrange.html">Part I</a> 
+and 
+<a href="Best4.html">Part II</a>, 
+is robust to small perturbations.
+Also, the optimality of range voting in model B is an
+artifact of its assumption that a "full democratic marketplace" exists.
+</p><p>
+The fact that our voting-system-optimality theorems can be regarded
+as artifacts of our models, constitutes a legitimate criticism of the present paper
+(although not of Parts I &amp; II).   
+As a defense, we note that the models employed nevertheless do
+<i>seem</i> somewhat realistic and uncontrived.
+</p><p>
+The two main nonobvious mathematical techniques employed are 
+<ol type="i">
+<li>
+What Erd&ouml;s calls 
+"the probabilistic method in combinatorics";
+</li><li>
+The "Boolean Fourier Transform" (BFT).
+</li></ol>
+The former is discussed in Alon &amp; Spencer's book. 
+We shall only employ it in 
+comparatively-elementary ways.
+<a href="https://rangevoting.org/AppBF">Appendix B</a> provides
+facts about (ii).
+</p><p>
+<b>Background:</b>
+We shall assume a fairly sophisticated reader,
+who understands and is familiar with 
+several standard techniques of statistical argumentation
+and related facts, e.g. "binomial distribution,"
+"central limit theorem,"
+"laws of large numbers," and Chernoff and Chebyshev "tail bounds"; since
+we intend to use them without providing the details.  
+(We take a small amount of mercy on the reader by providing
+an abbreviated <a href="#AppPR">appendix A</a>
+summarizing some of that.)
+For a reader who can just do 
+those details in her head (or see that they will work) this is no obstacle,
+but a reader unfamiliar with these things will probably find some parts of our
+proofs mysterious.
+The reader should also know some linear algebra ("orthogonal matrices,"
+"linear transformations").
+We also shall assume more understanding of voting-method jargon than Part I assumed.
+Finally,  understanding all about Fourier transforms 
+and orthogonal polynomials would help; we shall not explicitly use either, but will use
+reasoning analogous to well-trod logic-trails in those areas.
+</p>
+
+<a name="Sec2"></a>
+<h3>2. Some continuum models of D-dimensional politics</h3>
+<p>
+At first I thought almost exactly the same theorems and 
+proofs we devised in the RNEM 
+would also work for certain models of <i>issue-based</i> politics.  
+However, as we shall see, they do not; and most of
+the techniques Part I was able to throw at the problem under the RNEM,
+now become inapplicable.
+</p>
+
+<p>
+<b>DEFINITION</b> 
+of <i>NORMAL ISSUE-BASED-POLITICS MODEL:</i>
+For some fixed integer D&ge;1,
+each voter and each candidate get assigned an "issue stance vector"
+from a D-dimensional standard normal distribution.
+Then voter X has, as her
+election-utility for candidate Y, a decreasing function of the
+<i>distance</i> S between them, which is differentiable as a function of
+the locations of X and Y, and which
+tends sufficiently quickly to
+a constant when S&rarr;&infin;.
+</p><p>
+<b>REMARK:</b> One specific utility formula which I have successfully 
+used in computer
+investigations is U=1/(0.6D+S<sup>2</sup>).
+This was chosen to behave like a generic smooth peak
+[locally quadratic with height 5/(3D)]
+for S&asymp;0; it is a decreasing function of |S|, and
+falls to a constant value (namely 0) as S&rarr;&infin;.
+However, this formula actually may not fall off fast enough as S&rarr;&infin;
+for some of our proof techniques.
+</p><p>
+<b>DEFINITION</b> 
+of <i>HYPERCUBE ISSUE-BASED-POLITICS MODEL:</i>
+Same thing except use "uniform in the interval <nobr>[-1,+1]</nobr>"
+not "standard normal."
+</p><p>
+<b>REMARK ON TIES:</b> In some proofs below,
+we shall assume that there are enough voters that perfect-tie elections can be 
+regarded as neglectibly uncommon.
+</p><p>
+<b>REMARK ON INFINITE DIMENSIONAL LIMIT:</b> In the D&rarr;&infin; limit, both 
+issue-based politics models become equivalent (up to scaling factors which have no real effect)
+to the RNEM.  (Note, this kind of development of statistical independence in the large-D limit
+is a useful mental tool in other contexts, including some later in this paper.)
+</p><p>
+Do theorems 1, 2, 3, etc from <a href="BestVrange.html">part I</a>
+still hold when transplanted into the
+normal and hypercube issue-based politics models?
+<i>No</i> (although for a brief shining moment I naively thought "yes"). 
+The reason is that now voters' utilities (and hence votes too) are <i>dependent.</i>
+Consider a decision by the election system to do something beneficial for voter #1.
+Or voter #2.  
+Now one might naively say "due to linearity of expectation, the expected summed-utility for 
+both voters together, is got by maximizing expectation #1 plus expectation #2,
+and this is true <i>regardless</i> of any dependencies."
+That naive statement is, in fact, true.  The problem is not the truth of that statement &ndash; it
+is that it is invalid to apply it at all.  Because: The best voting system does
+<i>not</i> maximize expected summed-utility;
+it maximizes <i>conditional</I> expected summed-utility,
+conditioned on the votes.
+And <i>that</i>, with general dependencies,
+is <i>not</i> the same thing as the sum of utility #1 conditioned on vote #1,
+plus utility #2 conditioned on vote #2.   (It just happens, due to total independence of
+everything from everything else, as well as total even-symmetry, that this 
+equality <i>is</i> valid in the RNEM; but it is not valid
+for the D-dimensional issue-based politics models here with D finite.)
+</p><p>
+This devastates most of Part I's theorems,
+although
+the overall conceptual idea from its section 1
+for identifying "best"
+voting systems, remains true.  
+</p>
+
+<h3> 2.1. Optimality of <i>Condorcet</i> voting systems 
+in certain spherically symmetric D-dimensional politics models 
+</h3>
+
+<p>
+<i>Despite</i>
+the total failure of our RNEM-friendly techniques (which had all relied heavily on independence)
+in, e.g. the hypercube and normal issues-based politics models, we <i>still</I>
+can identify an asymptotically optimum voting system in the latter model
+<i>provided</i> we restrict ourselves to the special case where the normal distribution
+of the voters in issue-space is <i>spherically symmetric</i>!
+The reason is simple: regret is always non-negative. 
+We shall prove Condorcet voting
+methods achieve (with probability&rarr;1 in the V&rarr;&infin;
+limit) <i>exactly zero</i> regret, and further infer that they have 
+zero <i>expected</i> regret.  Therefore, Condorcet 
+must be optimal in the infinite-voter limit.
+</p>
+
+<a name="Thm1"></a>
+<p>
+<b>THEOREM 1 (Condorcet optimality):</b>
+Let the V voters and N candidates each be points in a D-dimensional issue space
+with N&ge;1 and D&ge;1 fixed.
+Let the utility of each candidate for each voter be a fixed decreasing function of the
+Euclidean <i>distance</i> between them, which decreases to zero sufficiently quickly
+at &infin; (or it is acceptable for it to tend to any other constant, of course).
+Suppose the <i>voters</i> are distributed according to a
+radially-decreasing probability density spherically symmetric
+about some centerpoint C,
+with each voter chosen independently from that density (and again we need this density to
+decrease sufficiently quickly at &infin;; it will suffice if it is a normal distribution
+or has compact support).
+But <i>no assumption</i> is made about the locations of the <i>candidates</i> aside
+from supposing their locations are sufficiently generic
+that the N distances from the candidates to C are distinct.
+Then in the limit V&rarr;&infin;:
+</p>
+<ol>
+<li>
+A Condorcet winner (with honest rank-order votes) will exist with
+probability&rarr;1.
+</li><li>
+This winner will, with probability&rarr;1, be the candidate closest to C.
+</li><li>
+That will be the candidate with greatest social utility, i.e. regret=0,
+with probability&rarr;1.
+</li><li>
+In this model, every Condorcet voting method is optimal
+(i.e. exhibits regret&rarr;0 in the V&rarr;&infin; limit).
+</li><li>
+In contrast, under the same assumptions
+(if D&ge;1 and N&ge;3) 
+honest range voting, instant runoff voting (IRV),
+and every weighted positional
+rank-order ballot system 
+have regrets
+bounded <i>above</i> zero, because we can exhibit situations 
+in which they elect "wrong winners"
+with probability&rarr;1.
+</li></ol>
+
+<p>
+<b>Proof:</b>
+</p><p>
+<b>1 &amp; 2.</b>
+The theorem that for any centrosymmetric configuration of honest voters,
+when utility is a decreasing function of voter-candidate distance, a
+Condorcet winner always exists and is the closest candidate to the center
+of symmetry, apparently was first proved by
+Davis, DeGroot, and Hinich 1972 (their
+theorems 1 and 4 and corollary 2).
+Our probability&rarr;1 result in the V&rarr;&infin; limit then follows
+from the "strong law of large numbers" (SLLN) from probability theory applied to the
+pairwise-preference counts.  Each pairwise preference count is a sum of random variables
+whose <i>expectations</I> arose from a precisely centrosymmetric density and
+which thus obey the DDH 1972 theorems.  The SLLN causes those expectations to be approached
+arbitrarily closely with probability&rarr;1 in the V&rarr;&infin; limit.   
+That causes a Condorcet winner to exist and be the closest to C,
+yielding zero regret, with probability&rarr;1.  Thanks to Chernoff tail bound,
+nonzero regret occurs with probability 
+going to zero faster than <nobr>V<sup>-1</sup></nobr>
+with large V, i.e. sufficiently quickly so that the 
+expectation value is exactly zero in this limit.
+</p><p>
+<b>3.</b>
+Beckner 1975 (on his pages 171-172) proves that
+"convolution preserves the class of radial decreasing functions" in any dimension.  
+His proof requires the functions to be sufficiently well behaved, e.g. decreasing quickly 
+enough at &infin;, that
+their Fourier transforms exist.
+Hence, the <i>expected</i> utility of a candidate for a random voter, is a
+radially-decreasing function.
+From this and the SLLN again, the candidate closest to C will,
+with probability&rarr;1
+in the V&rarr;&infin; limit, have the greatest (summed over the voters) utility.
+</p><p>
+<b>4.</b>
+Immediate from combining 1, 2 and 3 (at least, provided the probability&rarr;1 in
+those claims converges quickly enough to 1; certainly that is valid
+in situations where the Chernoff bound
+is applicable).
+</p><p>
+<b>5.</b>
+We construct 1-dimensional 3-candidate examples in this model
+in which both range voting and every weighted positional method deliver 
+"wrong winners" with probability&rarr;1
+in the V&rarr;&infin; limit:
+<a name="ex1Dbad"></a>
+ <ul>
+<li>
+Range voting: consider the 1-dimensional standard normal distribution of voters, 
+place three candidates at &plusmn;0.01 and 0, and use the utility 
+function U=&epsilon;/(&epsilon;<sup>2</sup>+S<sup>2</sup>)
+which is a concave-&cup;
+function of voter-candidate distance S except in a 
+O(&epsilon;)-wide region near S=0.
+If &epsilon;&gt;0 is sufficiently small,
+then 
+honest (<i>normalized</i>) range voting will (with probability&rarr;1)
+<i>not</i> elect 0.
+</li><li>
+Plurality voting: same three candidates &ndash; the one located at 0 will almost
+surely finish in last place.
+This same example also works for any weighted positional system
+with weights (2, x, 0) with x&lt;1 (if x is sufficiently close to 1, the example
+may have to be shrunk, but with enough shrinking it will always work).
+</li><li>
+IRV also will fail to elect the Condorcet Winner
+0 (eliminates it in the first round since it is the plurality loser).
+</li><li>
+AntiPlurality voting: candidates at 0, 0.1, and 0.2: the winner will almost surely 
+be 0.1 and <i>not</i> 0.
+</li><li>
+Borda voting: candidates at -0.1, 0.11, and 0.12: the winner will almost surely 
+be 0.11.  This example also works for any weighted positional system
+with weights (2, x, 0) with x&ge;1 (also x slightly below 1 will work).
+</li>
+</ul>
+Note the full set of weighted positional voting systems, i.e. every x from 0 to 2,
+is covered by our examples.
+</p><p>
+We also remark that in 2 dimensions with 14 randomly located candidates in a square,
+usually some of the candidates are found to lose under Borda, Range, IRV,
+Plurality, or AntiPlurality voting (which candidate, may change with the voting system)
+even for a Gaussian circularly symmetric voter distribution
+centered exactly <i>at</i> that candidate.
+</p><P>
+<b>QED.</b>
+</p>
+<p>
+Before the reader rushes to adopt Condorcet and abandon range voting, though, 
+let us make the following points.
+<ol>
+<li>
+The superiority of Condorcet voting appears to be an artifact of exact spherical symmetry.
+The proof depends on regret being exactly zero, which is
+destroyed by even a slight perturbation.  
+(In contrast, the superiority of range voting over every rank-order voting 
+method in the RNEM
+from parts 
+<a href="BestVrange.html">I</a>
+and 
+<a href="Best4.html">II</a>, 
+is
+<i>not</i> destroyed by slight perturbations, e.g. to slight non-normality.)
+If the voter distribution is normal but <i>ellipsoidal</i> rather than spherically symmetric,
+then the theorem breaks down.  Specifically claim 2 breaks:
+If we convolve the normal distribution
+with principal axes 1 in the X-direction and &epsilon; in the Y-direction, with
+a radial function, e.g. R<sup>4</sup>, that does <i>not</i> yield a radial function;
+in fact in this example it yields
+<center>
+R<sup>4</sup> +  2(1+&epsilon;<sup>2</sup>)R<sup>2</sup>
++ 3&epsilon;<sup>4</sup>+2&epsilon;<sup>2</sup>+3
++ <table border="1" bgcolor="pink" cellspacing="0" cellpadding="0" align="center"><tr><td>
+4&epsilon;<sup>2</sup>Y<sup>2</sup> + 4X<sup>2</sup>
+</td></tr></table>
+&nbsp; where &nbsp; R<sup>2</sup>=X<sup>2</sup>+Y<sup>2</sup>.
+</center>
+The boxed terms are spherically unsymmetric.
+Indeed, <i>any</i> perturbation away from precise circular symmetry,
+<i>no matter how slight</i>,
+to get an ellipsoidal normal
+distribution in the XY plane, will yield a scenario in which, with
+probability&rarr;1, range voting has
+lower regret than Condorcet voting, provided we design
+the geometry and utility function to make that happen. We prove that in 
+<a href="#Thm2">theorem 2</a>.
+</li><li>
+Also (relatedly), Condorcet's optimality depends on the utility function being based on
+<i>L<sub>2</sub></i> distance.  If it instead is based on
+L<sub>1</sub> distance (which is probably more realistic) then Condorcet
+winners will <i>not</i> necessarily minimize regret (and then Range Voting
+experimentally usually seems to have better BR
+than Condorcet).
+</li><li>
+The alert reader may be asking "in your old (1999-2000) BR experiments, range was the 
+BR-champion in every one of 720 different modeling assumptions.  So why didn't 
+those old experiments
+see the circumstances (in theorem 1 here) where <i>Condorcet</i>
+is the BR-champion?"  
+The answer is that the old experiments involving multidimensional 
+issue-spaces
+had employed a utility function <i>not</i> based on voter-candidate <i>distance</i>, 
+but rather based on the 
+voter-candidate <i>vector dot-product</i>.
+One can argue about which is more "realistic," distance or inner product.
+Probably some combination of both ingredients would be more realistic than either alone.
+Inner product is more realistic in at least this sense: it permits different issues to 
+have different "importances" whereas with unweighted distance, all issues unrealistically have
+the "same" importance.
+</li><li>
+<a href="#Thm1">Theorem 1</a>
+only works for <i>honest</i> voters. Strategic voters can, e.g,
+create Condorcet cycles by "burying" top rivals, invalidating it.
+</li><li>
+Even with honest voters and exact spherical symmetry, range voting usually
+empirically seems to be
+only slightly outperformed by Condorcet. 
+With non-spherical, e.g. ellipsoidal-normal, multimodal,
+or "skew," voter distributions, range voting
+empirically usually exhibits lower regret than Condorcet voting.
+And with strategic voters range tends to have
+lower regret.  Indeed in computer experiments involving voters some of whom are strategic,
+range voting often is found to be <i>more</i> likely to
+elect an (honest-voter) Condorcet winner, than Condorcet methods!
+</li><li>
+There are many different Condorcet voting methods, all co-optimal
+in the sense of <a href="#Thm1">theorem 1</a>.  Furthermore, some 
+<i>non</i>Condorcet methods also are
+co-optimal in the same sense, e.g: "If the first V/10 voters
+unanimously rank some candidate top, elect him; otherwise employ
+a Condorcet method on the full set of voters."   (We shall see some 
+more-interesting
+examples in <a href="https://rangevoting.org/Sec22">section 2.2</a>.)
+</li><li>
+With any <i>finite</i> number V of voters, the probability will <i>not</i> be 1
+that a Condorcet winner exists, and also will not be 1 that it is the candidate
+closest to C, and finally the probability will not be 1 that is the regret-minimizing
+candidate.   I have no idea what the optimum voting system is in this model
+if V is finite.
+</li>
+</ol>
+
+<a name="Thm2"></a>
+<P>
+<b>THEOREM 2 (sensitivity to perturbation):</b>
+If the voters are <i>not</i> distributed according to an exactly circularly symmetric
+normal density, but instead according to an ellipsoidal one with principal axes 1 and 1+&epsilon;,
+then <i>no matter how small</i> &epsilon;&ne;0 is, Condorcet voting will no longer
+be optimal and
+indeed range voting will have less regret (with probability&rarr;1 in the V&rarr;&infin; limit).
+This is all provided that the locations of the N candidates and the utility function are
+appropriately designed.
+</p>
+<p>
+<b>Proof:</b>
+We shall employ some sufficiently large number N of
+candidates distributed circularly symmetric normally
+<i>outside</i>
+of a circular "hole"
+with radius A, for some small constant A with 0&lt;A&lt;1/2.
+We make this normal density have characteristic width 1/A.
+Then (as we saw in the preceding theorem)
+Condorcet will elect the candidate closest to C, which is the center of both the 
+hole and the voter-Gaussian and the candidate-Gaussian, with
+probability&rarr;1 in the V&rarr;&infin; limit.
+Make the utility function of voter-candidate distance S have utility=1 if 
+0&le;S&lt;2A and then decrease smoothly toward 0 as S increases, in fact 
+having utility=0 if S&gt;1/A.
+If N is large,
+then with high probability the Condorcet candidate will both exist
+(by Davis et al.) and
+lie near the inner (radius=A) circle
+and at a uniformly random angle.
+It therefore will have mean
+regret bounded below by a <i>positive number</i>
+which depends on &epsilon;.
+</p><p>
+This particular scenario has been set up,
+meanwhile, to cause honest
+range voting to act like "honest utility voting" because
+(with probability&rarr;1) essentially 
+<i>every</i> voter's min- and max-utility candidates will 
+have utilities 0 and 1 respectively, so that every voter rescales her utility with 
+the <I>same</I> scale factor to generate her range vote.
+Range voting therefore will (with probability&rarr;1 in the V&rarr;&infin; limit)
+deliver the optimum-utility winner, i.e. achieving <i>zero</i> regret.
+<b>QED.</b>
+</P>
+
+<a name="Sec22"></a>
+<h3> 2.2. Optimality of certain kinds of <i>Approval</i> Voting 
+in the same spherically symmetric D-dimensional politics models 
+</h3>
+
+<a name="Thm3"></a>
+<p>
+<b>THEOREM 3 (Honest approval's optimality with independent distance-threshholds):</b>
+Let the V voters and N candidates each be points in a D-dimensional issue space
+with N&ge;1 and D&ge;1 fixed.
+Let the utility of each candidate for each voter be a fixed decreasing function of the
+Euclidean <i>distance</i> between them, which decreases to zero sufficiently quickly
+at &infin; (or it is acceptable for it to tend to any other constant, of course).
+Suppose the voters are distributed according to a
+radially-decreasing probability density spherically symmetric
+about some centerpoint C,
+with each voter chosen independently from that density (and again we need this density to
+decrease sufficiently quickly at &infin;, but never reaching 0).
+Suppose the distances from the candidates to C are distinct.
+Suppose we employ "approval voting" where each voter 
+approves all 
+candidates Euclidean distance&lt;R away from her location (and if the distance exactly
+equals R, then she tosses a fair coin to decide whether to approve him).
+Here R can be a positive constant, or 
+each voter independently chooses R at random 
+according to some fixed probability density on the positive reals.
+(Either assumption yields a valid theorem.)
+Then in the limit V&rarr;&infin;, the best (i.e. regret-minimizing) candidate
+will be elected with probability&rarr;1.
+</p>
+
+<p>
+<b>Proof.</b>
+Employ the same Beckner theorem as in part 3 of the 
+proof of <a href="#Thm1">theorem 1</a>
+to see that
+expected number of approvals garnered by a candidate will be a decreasing radial function
+of his position.
+Then by the strong law of large numbers
+the closest candidate to C (the center of symmetry of the voter distribution) will
+win, which as we proved before is the one with least regret &ndash; both claims
+holding with probability&rarr;1 in the V&rarr;&infin; limit.
+<b>QED.</b>
+</p>
+
+<a name="Thm4"></a>
+<p>
+<b>THEOREM 4 (Optimality of <i>iterated</i> strategic approval voting):</b>
+Same assumptions as the preceding theorem, 
+<i>except</i> now we repeatedly <i>redo</i> the approval voting election 
+until the winner stops changing;
+each voter strategically changes her distance-threshhold R each election to be 
+the distance to the winner of the preceding round.
+Then in the limit V&rarr;&infin;, the procedure will terminate after a finite
+number of rounds, whereupon it will 
+elect the best (i.e. regret-minimizing) candidate &ndash;
+both with probability&rarr;1.
+</p>
+
+<p>
+<b>Proof.</b>
+From <a href="#Thm1">theorem 1</a> we know that a Condorcet winner W exists with
+probability&rarr;1.
+Because W is pairwise-preferred over each rival X,
+W will,
+in every round after the first, get more approvals than the preceding round's winner
+(with probability&rarr;1).  Hence the winner must keep changing from round to round
+until the winner <i>is</i> W at which point it must stay there, whereupon
+the process terminates.
+Since each round the winner changes (with probability&rarr;1) 
+to somebody pairwise-preferred, and since we know from Davis, DeGroot, and Hinich 1972
+and the strong law of large numbers
+that (with probability&rarr;1)
+no <i>cycles</i> exist in the pairwise-preference digraph, the process must
+terminate.
+<b>QED.</b>
+
+<p>
+<b>REMARK.</b>
+The optimality of these kinds of approval voting also are <i>artifacts</i>
+of spherical symmetry
+and the exact same <a href="#Thm2">theorem 2</a> 
+and proof show that.
+</p>
+
+<!--
+<p>
+<b>DEFINITION:</b>
+Arrow-Raynaud voting is the following rank-order ballot method.
+We repeatedly eliminate the candidate <i>k</i> with the 
+least "score" Q<sub>k</sub>,
+where
+Q<sub>k</sub> is
+the maximum (over j) of the pairwise margin of victory
+of k over j
+(and 
+Q<sub>k</sub>&le;0 if k was unable to defeat any rival pairwise).
+Eventually only one candidate remains &ndash; the winner.
+</p>
+
+<p>
+<b>REMARKS:</b>
+Arrow-Raynaud is <i>not</i> a Condorcet voting method
+because it can eliminate a Condorcet winner (i.e. a candidate who pairwise
+defeats every rival) with small Q.  E.g, imagine that W defeats every rival
+by a 1-vote margin, but the other three candidates A,B,C form a "Condorcet cycle"
+with A defeating B, B defeating C, and C defeating A all by (&ge;10)-vote margins.
+Then Arrow-Raynaud will eliminate W.
+</p><p>
+Indeed, the reader may enjoy showing how
+Arrow-Raynaud can eliminate a candidate ranked top by 99% of the voters.
+</p>
+
+<a name="xxx"></a>
+<p>
+<b>THEOREM xxx (Arrow-Raynaud optimality):</b>
+Same assumptions as the preceding theorem,
+except now the election is via Arrow-Raynaud voting with honest voters.
+Then in the limit V&rarr;&infin;, the best (i.e. regret-minimizing) candidate
+will be elected with probability&rarr;1.
+</p>
+
+<p>
+THIS IS WRONG!
+In 1D std normal,
+A=0, B=1, C=1.1
+and A is the CW but ArrowRaynaud eliminates A.
+-->
+
+<a name="Sec3"></a>
+<h3>3. The YN model of binary issues
+</h3>
+
+<p>
+The "YN-model" is a simple model of voting
+(with a fair amount of realism) in which range voting
+performs optimally with "honest voters."  
+</p>
+<p>
+<b>DEFINITION:</b>
+There are <i>D</i> independent "issues"
+and 2<sup>D</sup> "candidates"; each candidate announces
+a clear yes or no stance on each issue, and by some benificent miracle we have a full
+democratic marketplace, i.e, every possible issue-stance is
+represented.  Hence in the case D=4 we could
+name the 16 candidates YYYY
+("yes" on all 4 issues), YYYN, YYNY,..., NNNN.
+We shall suppose, for each voter, the <i>utility</i> of electing
+any given candidate is just the 
+<i>number of issues</i>
+on which that candidate agrees with the voter.
+Finally, we suppose without loss of generality
+that all <i>D</i> issues each would win if put to a single-issue
+yes/no vote, therefore the objectively best candidate is YYYY.
+</p>
+<p>
+(The "without loss of generality" is because we could just 
+rename the issues to make "yes" become "no" for that issue, e.g. the issue
+"raise taxes?" becomes "do not raise taxes," so with such canonical
+renaming we can always cause
+the best candidate to be named YYYY.)
+</p>
+<p><b>REMARK:</b>
+Most previous
+analyses of voting system "properties" ignore the fact  that "issues" exist and candidates
+have stances on them.  The YN model is approximately the simplest and most natural 
+possible voting model which <i>doesn't</I> ignore that.   It turns out that honest range voting
+is always optimal in the YN model and is "self consistent."  But most other commonly
+proposed voting methods
+turn out to be both "self contradictory" and non-optimal (indeed they can
+even behave pessimally)
+in the YN model.
+</p>
+<a name="Thm5"></a>
+<p>
+<b>THEOREM 5 (Optimality of Range versus pessimality of various other voting systems in YN model):</b>
+<ol type="a">
+<li>
+<b>Range</b> voting, with "honest voters" (who always score their
+favorite <i>D</i>, their least-favorite 0, and everybody else linearly-interpolated
+between according to their utility) 
+will <i>always elect the best</i> candidate in the YN model (i.e,
+here, YYYY).
+This more generally is true even if the utility is a <i>weighted sum</i>
+where issue <i>k</i> has weight W<sub>k</sub>, for an <i>arbitrary</i> set
+of D positive constants 
+W<sub>1</sub>,
+W<sub>2</sub>,&hellip;
+W<sub>D</sub>,
+with &sum;<sub>1&le;k&le;D</sub>W<sub>k</sub>=D.
+</li><li>
+But <b>plurality</b> voting can
+unambiguously elect the <i>worst</i> candidate (here NNNN)
+while causing the best candidate (YYYY) to have <i>zero</i> votes.
+</li><li>
+Hence <b>Instant Runoff</b> (and <b>Coombs</b> voting),
+in such an election,
+would fail to elect YYYY.  
+Indeed, Instant Runoff can 
+elect the worst candidate.
+</li><li>
+<b>Condorcet Cycles</b> can happen in the YN model.
+</li><li>
+All <b>Condorcet</b> methods (with honest voters)
+can elect the worst candidate NNNN 
+<i>and</i> can mis-order the finishers 
+exactly backwards so that candidates with more Ns always are majority-preferred 
+over those with fewer!
+</li><li>
+<b>Borda</b> voting (with honest voters)
+both can elect the worst candidate NNNN and order the candidates exactly backwards.
+</li><li>
+<b>Approval</b> voting (with honest voters who approve the top F percent
+of the available candidates and disapprove the rest, 
+where F is any fixed value with 0&lt;F&lt;100%)
+can elect the worst candidate
+(and range voting can also do this with <i>strategic</i> voting).
+</li>
+</ol>
+
+<p>
+<b>Proof:</b>
+
+<p><b>a.</b>
+With honest range voters, "Y" (on the first issue) can be regarded as
+getting a 1-vote
+or a 0-vote (for those voters who support or oppose issue #1), and ditto
+for each other issue, as a contribution to each candidate's range score.
+This view is mathematically equivalent thanks to our postulate the honest range voters 
+linearly interpolate their range votes (between the best 
+and the worst candidates getting the max and min
+range votes D and 0) based on utilities.
+Since we have postulated that Y beats N on each issue, the candidate YYYY beats every
+other candidate.  In other words, range voting always delivers the best possible winner
+in the YN model.
+</p><p>
+To put it a different way: since all range votes have the same max-score D and min-score 0
+they all are compatibly scaled utilities and hence the greatest-utility candidate must be elected.
+</p>
+<p><b>b.</b>
+Say 71% of the voters each have ideologies consisting of 71% Ys
+(all such ideologies equinumerous)
+while 29% have the NNN...NN ideology.
+Then 50.4%=71%&sup2; of the voters prefer Y on any given issue, so by majority vote,
+Y would win on each issue individually.
+But NNN..NN is the plurality-vote winner with 29% of the vote,
+while YYY..YY gets zero top-rank votes, and indeed every candidate besides NNN..NN gets
+(in the D&rarr;&infin; limit) zero percent of the votes &ndash; almost the 
+ultimate in "vote splitting."
+Note: throughout this proof, when we say "in the D&rarr;&infin; limit" we actually mean
+"for every sufficiently large D."
+</p><p>
+As a very concrete example of this kind of idea with D=4
+(this election 
+data was created artificially by S.J.Brams
+for the purpose of solving this problem),
+let the plurality votes for each candidate be as follows in a
+31-voter, 4-issue, 16-candidate election 
+</p>
+<table bgcolor="aqua">
+<tr><th>candidate</th><th>votes</th><th bgcolor="yellow">candidate</th><th bgcolor="yellow">votes</th>
+</tr>
+<tr bgcolor="#ffcccc"><td>YYYY</td><td><b>0</b></td><td>YNYY</td><td>4</td></tr>
+<tr bgcolor="#ffcccc"><td>YYYN</td><td>4</td><td>YNYN</td><td>1</td></tr>
+<tr bgcolor="#ffcccc"><td>YYNY</td><td>4</td><td>YNNY</td><td>1</td></tr>
+<tr bgcolor="#ffcccc"><td>YYNN</td><td>1</td><td>YNNN</td><td>1</td></tr>
+
+<tr bgcolor="#ffffcc"><td>NYYY</td><td>4</td><td>NNYY</td><td>1</td></tr>
+<tr bgcolor="#ffffcc"><td>NYYN</td><td>1</td><td>NNYN</td><td>1</td></tr>
+<tr bgcolor="#ffffcc"><td>NYNY</td><td>1</td><td>NNNY</td><td>1</td></tr>
+<tr bgcolor="#ffffcc"><td>NYNN</td><td>1</td><td>NNNN</td><td><b>5</b></td></tr>
+</table>
+<p>
+Then on each issue Y beats N by 16 to 15.
+(For example, just look at the first letter of each candidate's name to see Y on
+the first issue wins by 16:15 over N.)
+But nevertheless YYYY gets zero votes and NNNN
+wins a plurality election
+with 5 votes.
+</p>
+<p>
+<b>c.</b> Instant runoff (IRV) never elects a candidate with zero top-rank votes
+(since it always eliminates that candidate in the first round).
+[Also <i>Coombs</i>,which is like IRV except that it
+eliminates the candidate with the <i>most</i> bottom-rank votes each round,
+cannot elect YYYY since it eliminates it immediately.]
+Professional IRV-advocate Rob Richie once pronounced this an "advantage"
+of IRV.  However, in the present example,
+it is clearly a disadvantage, because the clearly best
+candidate YYYY gets zero top-rank votes.
+</p>
+<p>
+A fully explicit example with 83 voters, created by Abd ul-Rahman Lomax and myself, is
+shown in the table. The top-preference of each voter is, of course, the issue-stance
+of that voter and we have ranked all 16 candidates 
+consistently with that top ranking,
+but breaking utility-ties somewhat arbitrarily.
+</p>
+<table bgcolor="yellow">
+<tr bgcolor="pink"><th>#voters</th><th>Their honest vote</th></tr>
+<tr><td>32</td><td><small>
+YYYY&gt;YYYN&gt;YYNY&gt;YNYY&gt;NYYY&gt;YYNN&gt;YNYN&gt;YNNY&gt;NYYN&gt;NYNY&gt;NNYY&gt;YNNN&gt;NYNN&gt;NNYN&gt;NNNY&gt;NNNN
+</small>
+</tr><tr><td>10</td><td><small>
+YNNN&gt;YNNY&gt;YNYN&gt;YYNN&gt;NNNN&gt;YNYY&gt;YYNY&gt;YYYN&gt;NNNY&gt;NNYN&gt;NYNN&gt;YYYY&gt;NNYY&gt;NYNY&gt;NYYN&gt;NYYY
+</small>
+</tr><tr><td>10</td><td><small>
+NYNN&gt;NYNY&gt;NYYN&gt;NNNN&gt;YYNN&gt;NYYY&gt;NNNY&gt;NNYN&gt;YYNY&gt;YYYN&gt;YNNN&gt;NNYY&gt;YYYY&gt;YNNY&gt;YNYN&gt;YNYY
+</small>
+</tr><tr><td>10</td><td><small>
+NNYN&gt;NNYY&gt;NNNN&gt;NYYN&gt;YNYN&gt;NNNY&gt;NYYY&gt;NYNN&gt;YNYY&gt;YNNN&gt;YYYN&gt;NYNY&gt;YNNY&gt;YYYY&gt;YYNN&gt;YYNY
+</small>
+</tr><tr><td>10</td><td><small>
+NNNY&gt;NNNN&gt;NNYY&gt;NYNY&gt;YNNY&gt;NNYN&gt;NYNN&gt;NYYY&gt;YNNN&gt;YNYY&gt;YYNY&gt;NYYN&gt;YNYN&gt;YYNN&gt;YYYY&gt;YYYN
+</small>
+</tr><tr><td>11</td><td><small>
+NNNN&gt;NNNY&gt;NNYN&gt;NYNN&gt;YNNN&gt;NNYY&gt;NYNY&gt;NYYN&gt;YNNY&gt;YNYN&gt;YYNN&gt;NYYY&gt;YNYY&gt;YYNY&gt;YYYN&gt;YYYY
+</small>
+</tr>
+</table>
+<p>
+In this election
+Y wins on issue #1 by 42-to-41 majority (and ditto for any other issue).  
+But NNNN is the election winner
+using any of these Condorcet methods
+{Basic Condorcet, Schulze beatpaths, Tideman Ranked Pairs, Nanson-Baldwin,
+Simpson-Kramer min-max} and also Bucklin and IRV.
+<p>
+<!-- But NNNN is not a Condorcet winner.
+I currently am unsure what the simplest "IRV-elects-NNNNN" example is.-->
+
+<p><b>d.</b>
+The YN model with D=6 can exhibit a Condorcet cycle
+among the three candidates named<br>
+YYNNNN, NNYYNN, and NNNNYY.<br>
+This will happen if there are three equinumerous types of voters whose
+ideologies are<br>
+YYYNNN, NNYYYN, and YNNNYY.
+</p>
+
+<a name="CondBackwardsPf"></a>
+<p><b>e.</b>
+Let 51% of the voters have ideologies which are 49% Y.
+The remaining
+49% of the voters have ideologies which are 60% Y.
+(All such ideologies equinumerous.)
+Then Y beats N on every individual issue.
+Now compare a candidate with fraction-P of Ys in its name, versus
+a candidate with fraction-Q of Ys in its name, 0&le;P&lt;Q&le;1.
+The former candidate is preferred arbitrarily-near-unanimously within
+the 51%-bloc of voters, hence by an overall majority, if 
+<center>
+<nobr>0.49(1-P)+0.51P&lt;0.49(1-Q)+0.51Q</nobr>
+</center>
+[since
+these formulae give the expected number of letters-changed between the voter and the candidate
+for a random voter in the 51% bloc, and the distribution becomes arbitrarily sharply peaked about
+its expectation value in the D&rarr;&infin; limit thanks to the "strong law of large numbers"]
+i.e. if
+P&lt;Q.
+Therefore, a candidate with fewer Ys in its name, is always majority-preferred
+over one with more Ys in its name if D is sufficiently large!
+[Actually, the same analysis also works for the 49%-voter-bloc too, but in reverse, so that
+we see that the majority preference here is always a 51-49 majority to within &epsilon;.]
+Hence NNN..NN is the Condorcet winner and there are no cycles.
+This proves that every Condorcet voting method
+will elect the worst candidate NNN..NN and will order the finishers in exactly the reverse
+of the "right" ordering. 
+Indeed every voting method based purely on the "pairwise matrix" 
+&ndash; Borda is another &ndash; will get everything
+totally backwards.
+(A candidate's Borda score is the sum of his pairwise-victory margins,
+up to an overall additive constant.)
+</p>
+<p>
+This idea
+also will usually cause IRV to elect the worst candidate NNN...NN
+if <i>D</i> is large enough,
+and we throw in enough NNN...NN voters to make sure that NNN...NN does not
+get eliminated in an early round for having zero top-rank votes,
+and we randomly pre-perturb the vote-counts slightly to break ties.
+</p>
+
+</p>
+<p><b>f.</b>
+As a wholy-explicit 
+Borda example
+with D=4, take 21 YYYY voters versus
+10 each for YNNN, NYNN, NNYN, NNNY (and use Borda score
+<i>expectation value</i> among all random honest orderings of the candidates); then 
+the unique Borda winner is NNNN
+even though any individual issue is won by Y by a 31-to-30 majority.
+</P>
+<p><b>g.</b>
+If 70% of the voters each have ideologies consisting of 70% Ns
+(all such ideologies equinumerous)
+while 30% have the YYY...YY ideology, then the worst candidate NNN...NN is majority-preferred
+over the best candidate YYY...YY, and NNN..NN is
+the Approval Voting
+winner if <i>D</i> is large enough for any fixed F with 0&lt;F&lt;100%.
+Note 49%=70%<sup>2</sup>
+of the voters prefer N on any given issue, so by 51-49 majority vote,
+Y would win on each issue individually.
+</p><p>
+<b>More-concrete examples:</b>
+Also, of course, the Brams D=4 example for plurality voting is also valid
+for approval voting if the voters only approve their top choice, i.e. the top 1/16 of the
+candidates.  
+In that example Abd ul-Rahman
+Lomax also notes that voters approving only their favorite if
+he is a "frontrunner" but approving both their favorite and successive candidates worse than
+him until they reach a "frontrunner"... will sadly still elect NNNN
+if we regard "frontrunners" as those with 4 or more plurality votes.
+</p><p>
+Further, in the 61-voter concrete D=4 example in item "f",
+if voters approve their top 5 candidates, then NNNN wins with 40 approvals; no rival
+gets more than 30.  
+</p><p>
+Finally we note that <i>range voting</i> can elect NNNN if
+the voters are <i>strategic exaggerators</i> rather than "honest," i.e. if we assume they
+vote in "<i>approval style</i>."   Also, if voters have different strengths of feeling,
+e.g. if the NNNN voters were extra passionate (this <i>differs</i> from the utilities
+assumed in the theorem statement), then range can elect NNNN, albeit
+in that case this might be "good behavior," not a "malfunction."
+</P>
+<p>
+<b>QED.</b>
+</p>
+
+<p>
+<b>REMARK:</b>
+The perfect behavior of range voting in the YN model can be regarded as
+an artifact of the YN model's simplistic assumption that all
+voters have equal "strength of feeling," combined with the assumption of
+a "full democratic marketplace."
+</p>
+
+<p>
+Incidentally, in the contemporary USA the plurality voting system has 
+engendered "two-party domination" (via "Duverger's law," see, e.g, Riker 1982)
+in which there are only 2 politically-feasible issue-stance vectors not 2<sup>D</sup>.  
+E.g, in 2006 USA, a candidate who is 
+against "gay rights" will also nearly-automatically be against abortion rights,
+for lower taxes for the rich, and for the Iraq War,
+even though, logically speaking, there seems little connection between these.
+</p>
+
+<a name="Sec4"></a>
+<h3>4. YN model for random voters </h3>
+
+<p>
+<a href="#Thm5">Theorem 5</a> 
+totally settles the 
+worst-case behavior of the most-common voting system proposals in the YN model.
+However, 
+these
+pathologies all may have little <i>practical</i> interest because
+<ol>
+<li>
+Fairly large <i>D</i> values seem needed to make the proof-examples work.
+(A reply to this criticism is that 
+it is unclear what the smallest examples are; we used large D purely because
+it made proofs easier, but examples with small D might well also exist.)
+</li><li>
+The theorem is  about <i>worst case</i> behavior (which is rare?)
+&ndash; in other words the examples in the proof were specifically invented to make the various
+non-range voting systems behave pessimally.
+Meanwhile there are no examples that make range voting
+behave badly since it always behaves perfectly in the YN model.
+</li></ol>
+
+<p>
+To dodge the latter criticism, we now examine the YN model for <i>random</i> voters.
+</p>
+<p>
+<b>DEFINITION:</b>
+In the <i>RANDOM-VOTER YN MODEL</i>
+every possible
+issue-stance (from among the 2<sup>D</sup>)
+is equally likely and we pick some large number V (far exceeding the number
+2<sup>D</sup> of candidates)
+of such random voters. 
+[This contrasts with the original YN model, where the voters 
+could be distributed in a nonrandom, indeed adversarially chosen, manner.]
+Again we assume a full democratic marketplace: all 2<sup>D</sup> possible candidates exist.
+We then <i>canonize</i> the issues by reversing some of their signs
+so that for each issue considered alone, "Y" is the majority winner.
+(This canonical-renaming is purely for convenience and has no genuine effect.)
+</p>
+<a name="Thm6"></a>
+<p>
+<b>THEOREM 6 (BRs in random YN model):</b>
+In the random YN model,
+call a candidate "bad" if he has
+over 50%, and "regrettable" if he has more than a constant positive fraction, of Ns
+in his name.
+<ol type="a">
+<li>
+"Honest" range voting 
+(as defined as in the preceding theorem) always elects the best candidate YYY...YY.
+</li><li>
+With honest plurality voting with D&ge;4 issues, a "bad" candidate 
+will be elected with chance greater than some absolute positive constant C.  
+(Further, in the D&rarr;&infin; limit, C  may be taken arbitrarily close to 1/2.)
+</li><li>
+With honest approval voting 
+with D&ge;4 issues, 
+where voters approve 
+candidates who disagree with them on fraction&le;F of the issues
+(for any fixed F with 0&le;F&lt;50%) a bad candidate
+will be elected with chance greater than some absolute positive constant C.
+</li><li>
+That is also true (albeit for a "regrettable" rather than "bad" candidate)
+if F=50% in the V/2<sup>D</sup>&rarr;&infin; limit.
+</li><li>
+The preceding point also is true for honest Borda voting.
+</li></ol>
+
+<p>
+<b>Proof sketches:</b>
+<br>
+<b>a.</b> Same proof as in the preceding theorem.
+</p><p>
+<b>b.</b> 
+Consider 
+<ol>
+<li>
+the identity W of the the plurality-voting winner, and 
+</li><li>
+the canonizing renaming (i.e. flipping the signs of the issues to that YYY...YY
+is the "best winner").  
+</li></ol>
+We argue that it is almost <i>irrelevant</i> who the plurality winner is,
+in the sense that, if enough of that voter-type were obliterated to make it become
+the second-most-popular &ndash; while at the same time enough votes
+for some arbitrary loser L were added to make it become the winner &ndash; this would
+with high probability in the D&rarr;&infin; and V/2<sup>D</sup>&rarr;&infin; limits
+not be enough to affect the canonizing renaming.
+</p><p>
+Specifically (using Chernoff), the gap in vote-count between the winningest and losingest
+<i>candidates</i> will
+with high probability be 
+<nobr>O(V<sup>1/2</sup>D<sup>1/2</sup>2<sup>-D/2</sup>).</nobr>
+Meanwhile, the |gap| in vote count between the "Y" and "N" votes on any one issue
+&ndash; even the issue with the smallest |gap| &ndash; will with probability&rarr;1 as
+D&rarr&infin;
+exceed  
+V<sup>1/2</sup>D<sup>-1.01</sup>.   
+Since, when D becomes large, the latter gap greatly exceeds the former,
+the claim is proven.
+</p><p>
+<b>c.</b> 
+We use the same argument as in (b), 
+altered appropriately to make it work for approval voting
+where each voter approves candidates disagreeing with her on at most a fraction F of
+the issues.
+The number of candidates approved by each voter is, 
+for any fixed F with 0&le;F&lt;50%, exponentially tiny 
+compared to the number 2<sup>D</sup> of
+candidates (for D large).
+To be precise, the total number of approved candidates
+is
+</p>
+<center>
+A = &sum;<sub>0&le;k&le;FD</sub> binomial(D, k).
+</center>
+<p>
+which, while large, is exponentially tiny compared to 2<sup>D</sup>, i.e.
+a random candidate has a tiny chance 
+2<sup>-D</sup>A
+of being approved by a random voter.
+The expected number of approvals got by any particular candidate then is
+</p>
+<center>
+2<sup>-D</sup>VA.
+</center>
+<p>
+The variance in this number (easily computed since all voter-locations were independent)
+then is 
+essentially the same as the number itself and by the
+Chernoff bound it has exponentially-small tails.
+Further, the correlation between the approval counts for two
+candidates further than F issues apart, is essentially nil.
+We can conclude from this that if we obliterate enough voters to stop
+the approval-winner winning while adding enough to make an arbitrary far-away
+loser become the winner, we will with high probability need to mess with
+O(V<sup>1/2</sup>A<sup>1/2</sup>D<sup>1/2</sup>2<sup>-D/2</sup>)
+voters.   
+And as we argued before, this will with high probability in the D&rarr;&infin; 
+and V/2<sup>D</sup>&rarr;&infin; limits
+not be enough to affect the canonizing renaming.
+</p>
+In both (b) and (c),
+note that the argument about removing voters for W while adding voters for L works for 
+<i>any</I> set of voters {supporting L and not W} of that cardinality.  The same argument
+could then be re-used to go backwards, and this works for <i>any</i> L.   
+The point of those remarks
+is their complete symmetry: the canonizing renaming yields essentially <i>no</i> 
+constraint on who wins.
+<p>
+<b>d &amp; e.</b>
+These are going to be consequences of a more general theory.
+Range voting in the random YN model 
+(which is optimal)
+is equivalent to a certain weighted positional voting system.
+Specifically, the top weight is D, the next D weights are D-1,
+the next binomial(D,2) weights are each D-2,..., the next binomial(D,k) weights
+are each D-k,...  the last (2<sup>D</sup>th) weight is 0.
+But Borda and "approve the top half of the candidates" both are weighted
+positional systems with
+quite different, and non-optimal, weights.
+Consider the candidates and voters as D-bit binary words (defining their issue-stances).
+With range voting the range vote score of the candidates is a <i>linear</i> function of
+the candidate-defining binary vector.  
+With some other voting system
+we instead get a nonlinear
+function.  
+</p><p>
+Any such function can be thought of as the sum of its best 
+(under the L<sup>2</sup> norm) linear approximation,
+plus nonlinear terms.
+The best linear approximation of the Borda or 
+50%-approval weights 
+is (by symmetry) the <i>same</i> as the range-voting weight function (up to a
+scaling factor which is irrelevant).   The nonlinear terms are therefore the sole reason
+they fail to deliver always-optimum results.   
+</p><p>
+In fact, in the jargon of the "Boolean Fourier transform" (BFT, see 
+<a href="https://rangevoting.org/AppBF">appendix B</a>), the vote-totals for the candidates are, as a function
+of the D-bit candidate-defining word, precisely given by the <i>convolution</i>
+of the weight-function defining that voting system, 
+with the voter-population-function defining how many voters of type T there are,
+for each D-bit word T.
+</p><p>
+Because of theory in
+<a href="#AppBF">appendix B</a>, 
+the best linear approximation is given by the 1+D
+linear terms in
+the Boolean Fourier series, while the remaining 2<sup>D</sup>-D-1 terms, 
+all of which are <i>orthogonal</i>,
+are nonlinear.
+</p><p>
+Now the convolution of two functions arises from multiplying their BFTs.   
+By the central limit theorem
+the voter-population-function
+just becomes a vector of  2<sup>D</sup> identical independent
+random-normal deviates in the large-V/2<sup>D</sup> limit.
+The same is true of its Boolean Fourier Transform because the BFT is an <i>orthogonal</i>
+linear transformation in 2<sup>D</sup>-dimensional space.
+So when we multiply this by the BFT of the voting system's weight function,
+we leave the weight-function's
+BFT-coefficients unaffected in the sense that all coefficients are being
+multiplied by
+<i>identical</i> Gaussian random deviates, hence their <i>relative magnitudes</i>
+do not change in any <i>systematic</i> way.
+</p><p>
+Our idea is that if the sum-of-squares of the nonlinear Fourier coefficients
+is large enough compared to the sum-of-squares for the D nonconstant linear coefficients,
+then it becomes <i>improbable</i> that the voting system will deliver an optimum winner
+or one agreeing with it on more than a constant fraction of issues.
+</p><P>
+The function of bit-sum that arises as the weight function
+for 50%-approval voting is a step function, while for Borda voting it 
+resembles the "error function" rescaled so that its
+rise has characteristic width of order
+D<sup>1/2</sup>.   
+For either,
+we can see immediately from Parseval's equality that
+in the large-D limit, 
+the L<sub>2</sub> norm of the nonlinear terms <i>vastly</i> swamps that of the
+linear terms in the weight function's Fourier series, by, indeed, exponential(D) factors.
+</p>
+<p>
+The result, <i>in the V/2<sup>D</sup>&rarr;&infin; limit</i> where
+the BFT is just taking an orthogonal transformation of normal randoms,
+is that the nonlinear terms in the Fourier series of the vote-total function of 
+candidate-defining-binary-word Q, all added together and evaluated
+at all 2<sup>D</sup> locations,
+form a 2<sup>D</sup>-dimensional vector of identical independent random normals
+<i>conditioned</i> on having sum=0 and exactly zero correlation with each bit of Q.
+The amplitudes each of these normals is within a constant factor
+of the <i>maximum</i> of the linear function arising from the linear terms.
+In view of this, the probability&rarr;1
+that the resulting normal randoms will include some with arbitrarily great-factor
+larger magnitude
+than the maximum of the linear part.
+</p><p>
+Knowing that, one finally can argue that, for a sufficiently small but fixed &epsilon;&gt;0,
+the probability&rarr;1 that the maximum vote will be for a candidate with at least a fraction 
+&epsilon; of "Ns" in his name.
+<b>QED.</b>
+</p>
+
+<p>
+<b>CONJECTURE:</b>
+With probability&rarr;1,
+no Condorcet winner exists in the random-voter YN model
+in the limit where D is large and V/2<sup>D</sup>&rarr;&infin;; 
+in that case the worth of Condorcet voting methods would
+seem to depend entirely on the worth of their "backup" methods intended to provide a winner 
+when a "beats-all" winner does not exist.
+</p>
+
+<!-- ??? WHAT DOES IRV do???  random-YN experiments??? -->
+
+<a name="Sec5"></a>
+<h3> 5. Median-based range voting </h3>
+
+<p>
+M.Balinski &amp; R.Laraki (2008) have recently advocated (essentially) range voting <i>but</i>
+with the winner chosen to be the candidate with the greatest <i>median</i> score.
+(The usual form of range voting elects the one with greatest <i>average</I> score.)
+Since it might be expected to be common (in the presence of a nonzero fraction of
+strategic voters) for two candidates to be <i>tied</i> 
+for the greatest median score, B&amp;L also advocate
+a specific tie-breaking method.
+</p>
+<p>
+In 1999-2000 and since, I have done many computer simulations.  In those simulations,
+median-based range voting <i>never</I> exhibited smaller BR than average-based range voting,
+for any modeling assumptions tried and any mixture of honest and strategic voters.
+Also, median-based range voting fails many logical properties which average-based obeys,
+for discussion see 
+<a href="MedianVrange.html">/MedianVrange.html</a>.
+In my mind, this had seemed to clearly show the inferiority of median.
+(Incidentally, we should remark that median and average-based range are the endpoints of the
+continuum <i>family</I>  of "trimmed mean" range voting methods where some specified fraction T
+of "outlier" scores are discarded for each candidate and then the mean taken.  With
+T&rarr;100% from below we get median, while with T&rarr;0+ we get average-based range.)
+</p>
+<p>
+However, in 2009 Balinski was quoted by <i>Wall Street Journal</I>
+reporter Carl Bialik  as stating that average-based range voting
+was "a ridiculous method" because
+it can be manipulated by strategic voters.
+</p>
+<p>
+To understand what Balinski could have meant by that, I suggest reading his paper.
+My personal view that Balinski & Laraki's "optimality" and "vulnerability to strategy"
+definitions were contrived &ndash;
+with other (but reasonable) definitions, their theorems would fail.
+And despite their "optimality" result for the vulnerability to strategy
+median-based range voting, typically
+about 50% of voters have incentive to exaggerate their votes on the two frontrunners maximally,
+as opposed to casting honest votes for them.
+(For example a voter whose honest opinions of A and B are both sub-median, finds
+it advantageous to dishonestly score one max and the other min.)
+This is assuming each voter possesses excellent
+information, i.e. knows what the median scores are going to be to high accuracy; 
+under the analogous assumption 100% of average-based range voters would find it strategic
+to thus-exaggerate.  With however <i>less</i>-perfect information, 100% of median-based range 
+voters would find it advantageous to thus-strategize (thus-strategizing does not hurt, 
+but can help, a voter). So I fail to see much if any advantage, in realistic political-election
+practice, for median-based range voting.
+</p>
+<p>
+However, as we shall now show, under a model perhaps approximating the situation for 
+<i>judging figure-skating events</i> (e.g. the Olympics),
+median-based or trimmed-mean-based range voting
+<I>can</i> outperform ordinary average-based range voting.  Here "outperform" means
+"has lower Bayesian regret than," of course.
+Here is the model. 
+</p>
+<ol><li>
+<b>"Sharp-peaked":</b>
+Assume the honest utility distributions
+for each candidate (among all voters) are <i>sharply peaked</I>,
+that is, almost all voters have the same utilities to within &plusmn;&epsilon;
+for that candidate.
+<blockquote>
+(This seems unrealistic for most political elections, where utilities tend
+to be distributed more broadly or exhibit multimodal distributions.  For sample range-voting
+polls in USA political elections see 
+<a href="RangePolls.html">/RangePolls.html</a>.
+Indeed, Balinski &amp; Laraki's <i>own</I> exit-poll range-voting study in Orsay
+France 2007, see
+<a href="OrsayTable.html">/OrsayTable.html</a>,
+also failed either to find sharp-peakedness or to exhibit any visible difference in strategic
+voting behavior in median- versus in average-based range voting elections.
+But this assumption might be realistic for figure skating judging.)
+</blockquote>
+</li><li>
+<b>"Biased strategy":</b>
+Assume that some constant fraction S, bounded within a real interval that is a subset of (0,1),
+of the voters are <i>strategic</I>, and that all of those voters are <i>one-sided</i>,
+i.e. all the strategic voters favor <i>one</i> of the two frontrunners B over the other A.
+The rest are honest, i.e. deliver their honest utility values, linearly transformed so the
+best (in that voter's view) candidate gets the high-endpoint and the worst gets the low-endpoint
+or the allowed-score range, as their votes.
+<blockquote>
+(This again seems unrealistic for most political elections. Indeed in the
+2004 USA presidential election, an exit poll study I was a co-author of found no evidence
+Bush- or Kerry-supporters were more or less strategic than the other.
+All my computer simulations alluded to above had assumed strategicness of a voter was
+<i>independent</I> of her politics, so this biased-strategy
+assumption it seems <i>essential</i> to justify the
+below theorem.  Again this assumption seems plausibly realistic 
+in the case of figure skating judging.)
+</blockquote>
+</li></ol>
+<a name="Thm7"></a>
+<p>
+<b>THEOREM 7 (Median's superiority under this model):</b>
+In this sharp-peaked biased-strategy model with V&rarr;&infin; voters,
+median-based range voting (and also trimmed-mean range voting with any 
+sufficiently large fraction of outliers trimmed before computing the mean)
+delivers regret&le;2&epsilon;.   However, average-based range voting can deliver
+regret of order S/2 times full range.
+<p>
+<p>
+The proof is trivial.
+</p>
+
+<h3> 6. Is Range Voting better than <i>any</i> rank-order ballot method? </h2>
+<p><b>THEOREM 8:</b>
+In the YN model, the answer is "no":
+there exists a rank-order voting method which also always delivers zero regret.
+</p><p>
+<b>PROOF:</b>
+It is not one of the usual rank-order methods you can find in political science papers/books,
+although it is in the well known "weighted positional" subclass of rank-order voting methods.
+Here is the method.
+Consider the (D+1)<sup>th</sup> row (which has D+1 entries with sum 2<sup>D</sup>) of
+<a href="http://en.wikipedia.org/wiki/Pascal%27s_triangle">Pascal's triangle</a>:
+</p><pre>
+                           1
+                         1   1
+                       1   2   1
+                     1   3   3   1
+                   1   4   6   4   1
+                 1   5  10  10   5   1
+               1   6  15  20   15  6   1
+             1   7  21  35  35   21  7   1
+           1   8  28  56  70   56  28  8   1
+         1   9  36  84 126  126  84  36  9   1
+</pre><p>
+Each voter produces an honest rank-ordering of the C=2<sup>D</sup> candidates.
+If D=6 (say), then our voting system awards the first candidate in the ordering 6 "points",
+the next 6 candidates get 5 points each,
+the next 15 get 4 each,
+next 20 get 3 each,
+next 15 get 2 each,
+next 6 get 1 each,
+and finally the last candidate in that voter's 
+ordering gets zero points.  (This is based on the 7th row 1,6,15,20,15,6,1 of the triangle;
+it should be obvious how to generalize this to any D&ne;6.)
+The "winner" is the candidate with the most points.
+The reason this works is that, in the YN model (more precisely, its version with "unweighted issues"),
+this rank-order voting system happens to be <i>equivalent</i> (for honest voters)
+to <a href="RangeVoting.html">score</a> voting, which we
+already established was a perfect voting system in this model (regret=0 always).
+</p><p>
+The answer still is "<b>no</b>" for the more general "YN model with arbitrarily-<i>weighted</i> issues"
+(for any particular D fixed issue-weights) by an analogous but more complicated construction.
+The point is that although the number V of voters can vastly exceed the number C=2<sup>D</sup> of candidates,
+that can only happen if many voters are identical since there are at most 2<sup>D</sup> different <i>kinds</i> of voters.
+And the 2<sup>D</sup> allowed voter-types all are equivalent under one of the
+2<sup>D</sup> symmetries of the D-dimensional hyper-rectangle.  Consequently for any particular voter-type,
+if she uses honest range voting, then re-orders the
+2<sup>D</sup> scores on her ballot to sort them from greatest to least, the result always is the
+<I>same</I> 2<sup>D</sup> dimensional vector, regardless of the voter &ndash;
+and this vector gives the
+2<sup>D</sup> weights defining our "weighted positional" rank-order voting system,
+which cause it (in that YN model) to be <i>equivalent</i> for honest voters to range voting.
+<b>Q.E.D.</b>
+</p><p>
+That theorem will disappoint readers who wanted to see range voting proven
+superior to <i>every</i> rank-order-ballot voting system.
+However, here is a modification of the YN model that likely can accomplish that:
+</P>
+<p><b>DEFINITION</b> of the "<b>YN plus jokers</b>" model:
+In the YN model, add J additional candidates, called "jokers," to the list &ndash; so that
+there are C=2<sup>D</sup>+J candidates in all.  Jokers have utilities (for each voter) that
+are almost-arbitrary real numbers,
+Hence in a V-voter election there will be JV additional utility numbers.
+The only constraints the model imposes on these numbers are:  
+</p><ol type="i"><li>
+No voter regards any joker as better than all non-jokers;
+</li><li>
+No voter regards any joker as worse than all non-jokers.
+</li></ol>
+<p>
+<b>THEOREM 9:</b>
+In the YN model <i>with added jokers</i>,
+honest score voting still remains an optimal voting method
+(always delivers exactly zero regret).
+<i>But</i> no weighted-positional rank-order system can say that.
+Indeed, with a bit of evilly-clever
+design of the VJ joker voter-candidate utilities, we can (with random voter issue-preference vectors)
+systematically bias things to make the voters almost certainly elect any candidate the evil designer chooses
+(in an approriate limit involving C, J, and V all going to &infin;).
+</p><p>
+<b>PROOF SKETCH:</b>
+The point is that there are only 2<sup>D</sup>+J weights,
+but there are VJ+D numbers defining the utilities, and the latter can be made far greater than the former
+by making V and J large enough.
+So with jokers there simply are not enough degrees of freedom available to enable
+any weighted-positional voting system to always effectively compute the true society-wide utility
+of electing each candidate.  (Versus: Honest-voter range voting still can, and will.)
+And furthermore, it is not hard to see that it is not possible for any weighted-positional system even
+to <i>approximately</i> compute them well enough to always be able to know the best.
+To show this, you set up some scenarios where having weights enabling you to
+get some right, forces you to get others wrong &ndash; the proof can then be automated since it just comes
+down to showing a linear program has no solution, a feat available "simplex methpd" computer packages will do.
+We can with randomized voters in the original (no jokers) election, evilly nonrandomly design
+the joker utilities to systematically bias the weighted-positional voting system in favor
+of whatever candidate X we want &ndash; simply make the jokers have utilities (in the view of each voter) mostly
+slightly <i>below</i> X's.  It is easy to see this necessarily creates large-enough statistical biases 
+to ensure X wins with probability&rarr;1 in appropriate limits.
+<b>Q.E.D.</b>
+</p><p>
+<b>CONJECTURE:</b>
+The preceding theorem is true not only for the "weighted positional" subclass  of
+rank-order-ballot election methods, but in fact for <i>all</i> rank-order methods.
+</p>
+
+<h3> Acknowledgment </h3>
+
+<p>
+I thank Abd ul-Rahman Lomax for contributing some helpful computations (noted in the text).
+</p>
+
+<h2> References </h2>
+<p>
+Noga Alon &amp; Joel Spencer:
+The Probabilistic Method, 3rd ed. J.Wiley 2008.
+<br>
+Michel Balinski &amp Rida Laraki:
+A theory of measuring electing and ranking,
+Proc. National Acad. Sci. USA 104,21 (May 2007) B720-725.
+<br>
+William Beckner: Inequalities in Fourier Analysis, Annals of Maths 102 (1975) 159-182.
+<br>
+Steven J. Brams: Mathematics and Democracy,
+Princeton Univ. Press 2008.
+<br>
+Patrick Billingsley: Probability and Measure, Wiley (3rd ed. 1995).
+<br>
+Otto A. Davis, Morris H. DeGroot, Melvin J. Hinich:
+Social Preference Orderings and Majority Rule, Econometrica 40,1 (Jan. 1972) 147-157.
+<br>
+William Feller:
+An Introduction to Probability Theory and Its Applications, Wiley, 2 vols, 1968.
+<!-- Strong law of large numbers in sec 10.7. -->
+<br>
+T.Hagerup &amp; C.R&uuml;b: 
+A guided tour of Chernoff bounds, Information Processing Letters 33,6 (1990) 305-308. 
+<!--
+Devdatt Dubhashi:
+Simple proofs of occupancy tail bounds,
+Random Struct. Algorithms 11, No.2, 119-123 (1997).
+
+Ross, Sheldon M.
+Using the importance sampling identity to bound tail probabilities,
+Probab. Eng. Inf. Sci. 12, No.4, 445-452 (1998).
+-->
+<br>
+E.J.Gumbel: Statistics of Extremes, Columbia University Press 1958.
+<br>
+Hannu J. Nurmi: Comparing Voting Systems, Kluwer 1987. 
+<br>
+William H. Riker: 
+The Two-party System and Duverger's Law: An Essay on the History of Political Science, 
+Amer. Polit. Sci. Review 76 (December 1982) 753-766.
+<br>
+Sheldon M. Ross: Probability models for computer science, 
+Academic Press 2002. 
+(Chapter 3 is a low-level introduction to tail bounds.)
+<br>
+Warren D.Smith, Jacqueline N. Quintal, Douglas S. Greene:
+What if the 2004 US presidential election had been held using Range or Approval voting?,
+paper #82 here
+<a href="WarrenSmithPages/homepage/works.html">/WarrenSmithPages/homepage/works.html</a>.
+<br>
+Nicolaus Tideman: Collective Decisions and Voting: The Potential for Public Choice, Ashgate 2006.
+</p>
+
+<hr>
+
+
+
+<a name="AppPR"></a>
+<h3> Appendix A: Some abbreviated probability theory</h3>
+
+<p>
+<b>Central limit theorem</b>: the sum of N identically distributed
+independent random variables,
+each with finite mean and variance, will in the limit N&rarr;&infin;
+if rescaled to have unit variance and translated to have zero mean, 
+has probability CDF which pointwise approaches the standard normal CDF.
+</p><p>
+<b>Chernoff bound:</b> <i>If</i> the summands X
+have finite expectation of exp(kX) for any real constant k,  <i>then</i> the
+rescaled sum will have a density bounded by an <i>exponentially-declining</i> function
+of the number of standard deviations we are away from the mean.
+</p><p>
+<b>Chebyshev bound:</b> If X is a random variable with
+finite mean &mu; and variance &sigma;<sup>2</sup>, then
+</p>
+<center>
+Prob[|X-&mu;|&ge;t] &nbsp; &le;  &nbsp; &sigma;<sup>2</sup>/t<sup>2</sup>
+</center>
+<p>
+<b>Strong law of large numbers:</b>
+The mean of N identically distributed
+random variables is a random variable which, when N&rarr;&infin;
+has probability&rarr;1 of being within &plusmn;&epsilon; of
+the expected value  of each summand (and this is true for any &epsilon;&gt;0, no matter 
+how small).
+</p>
+
+<a name="AppBF"></a>
+<h3> Appendix B: The "Boolean Fourier transform" (BFT) </h3>
+
+<p>
+We define and recount known results about (what some people call)
+the Boolean Fourier transform.
+(This has also been called the "Walsh transform," the "Hadamard transform,"
+the "Hadamard-Walsh transform,"
+and "expansion into Boolean polynomials.")
+</p>
+<p>
+Let F(x) be a function mapping binary n-bit words to real numbers.
+It is always possible to write F(x) as a polynomial in the n bits 
+x<sub>1</sub>, x<sub>2</sub>,&hellip;, x<sub>n</sub>.
+Because b<sup>2</sup>=b if b is a bit (and this would also be true for
+{-1,+1} bits as well as our convention of
+{0,1} bits) we may regard the polynomial as <i>multilinear</i> and with degree&le;n,
+and with at most 2<sup>n</sup> terms.  One way to write this is
+</p>
+<center>
+F(x) = &sum;<sub>n-bit words u</sub> f(u) (-1)<sup>u&middot;x</sup>
+</center>
+<p>
+and then F(x) is the "Walsh transform" of f(u).
+If we instead were using {-1,+1} bits then we could replace
+our
+<nobr>(-1)<sup>u&middot;x</sup></nobr>
+with &prod;<sub>j&isin;u</sub>x<sub>j</sub> which makes it clear 
+the terms really are multilinear polynomials.
+This transform is a linear bijection.  
+Because the different terms in the sum all are <b>orthogonal</b> functions of x
+and all
+with the same L<sup>2</sup> norm,
+the <b>inverse</b> transform
+is the same as the forward transform divided by 2<sup>n</sup>.
+The Walsh transform enjoys the <b>Parseval equality</b>
+relating the L<sup>2</sup> norms of f(x) and F(x):
+</P>
+<center>
+&sum;<sub>x</sub> F(x)<sup>2</sup> 
+=
+2<sup>n</sup> 
+&sum;<sub>x</sub> f(x)<sup>2</sup>.
+</center>
+<p>
+Like the usual (1-dimensional real) Fourier transform, the Walsh transform enjoys a 
+<b>convolution theorem.</b>
+Define the convolution 
+</p>
+<center>
+f&lowast;g(x)  = &sum;<sub>n-bit words w</sub> f(w) g(x-w).
+</center>
+<p>
+Then the Walsh transform of f&lowast;g is FG.
+</p><P>
+The uniquely best (in the L<sup>2</sup> norm) linear approximation of a Boolean function
+F(x) is got by employing only the constant and linear terms in the sum,
+i.e. arising from the "n-bit words u" with at most a single nonzero bit.
+Due to Parseval's equality the summed-squared-error in this approximation 
+is just the sum of the squares of all the other 2<sup>n</sup>-n-1 Fourier coefficients f(u).
+</p>
+<p>
+<b>Functions of bit-sum:</b>
+If a function f of binary n-bit words depends only on the <i>bit-sum</i> s of that word
+(in which case it can be alternatively be viewed as an ordinary 1-dimensional function)
+then its BFT also does, and its best linear approximation also does.
+[This inspires a common abuse of notation where we write "f(s)" instead of f(u).]
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<p><a href="BestVotSumm.html">Page summarizing all 3 papers in this series</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

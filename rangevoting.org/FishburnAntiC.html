@@ -1,0 +1,145 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Condorcet property desirable?
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Is the Condorcet property desirable? </H1>
+
+<p>
+At first, it seems "obvious" that it is desirable for
+a voting system to obey the "Condorcet property"
+that, whenever any candidate X exists who would be preferred over any opponent
+by more voters in a pairwise election
+(deducing the X versus Y preferences from the ballots),
+then X must always win.
+</p>
+<p>
+But Peter Fishburn [<i>Paradoxes of Voting</i>, Amer. Political Science Review 68 (1974) 537-546]
+pointed out the following.  He constructed an election with 9 candidates and
+101 voters (each providing a full
+rank order ballot) in which the candidates named "X" and "Y" received the following numbers of
+kth-rank votes:
+</p>
+<table bgcolor="lightyellow" cellpadding="4">
+<tr bgcolor="aqua"><th>k</th><td>1</td><td>2</td><td>3</td><td>4</td><td>5</td><td>6</td><td>7</td><td>8</td><td>9</td>
+<th align="right">total</th>
+</tr>
+<tr><th>X</th>
+<td bgcolor="#88ff88">0</td><td bgcolor="#88ff88">30</td><td bgcolor="#88ff88">0</td><td bgcolor="#88ff88">21</td><td bgcolor="#88ff88">0</td>
+<td bgcolor="#ff8888">31</td><td bgcolor="#ff8888">0</td><td bgcolor="#ff8888">0</td><td bgcolor="#ff8888">19</td>
+<td align="right">101</td>
+</tr>
+<tr><th>Y</th>
+<td bgcolor="#88ff88">50</td><td bgcolor="#88ff88">0</td><td bgcolor="#88ff88">30</td><td bgcolor="#88ff88">0</td><td bgcolor="#88ff88">21</td>
+<td bgcolor="#ff8888">0</td><td bgcolor="#ff8888">0</td><td bgcolor="#ff8888">0</td><td bgcolor="#ff8888">0</td>
+<td align="right">101</td>
+</tr>
+</table>
+</p>
+<p>
+In this election, it seems "obvious" that Y should be preferred over X.
+After all, no matter where you draw the line, Y gets more votes than X above that line.
+(For example: draw the line at the top rank? Y gets 50 top-rank votes, versus X gets 0.
+Draw the line at the third rank? Y gets 50+30=80
+top-thru-third-rank votes, versus X gets 30.) 
+And not just "more,"
+but indeed "a lot more" &ndash; always at least 23% more, which is generally regarded as
+a strong and convincing victory.
+(And indeed, pretty much every non-Condorcet voting method ever invented, would elect Y here.)
+</p>
+<p>
+<i>However,</i> in Fishburn's election X was the beats-all winner.
+Therefore, your two "obvious" perceptions <i>conflict</I> and hence at least one
+of them must be wrong.
+Fishburn concluded that the Condorcet property is <i>not</i> an always-desirable one.
+Therefore,
+"non-Condorcet" voting systems 
+that do not always elect beats-all winners,
+should not be downgraded or dismissed.
+</p>
+
+<H3> Details </H3>
+<p>
+Fishburn did not actually write down the ballots in his election, so we shall.
+Here's an election that does the job:
+</p>
+<table bgcolor="lightyellow" cellpadding="4">
+<tr bgcolor="#88FF88"><th>#voters</th><th>their vote</th></tr>
+<tr><td>19</td><td>Y>A>B>C>D>E>F>G>X</td></tr>
+<tr><td>31</td><td>Y>A>B>C>D>X>F>G>E</td></tr>
+<tr><td>10</td><td>E>X>Y>G>F>D>C>B>A</td></tr>
+<tr><td>10</td><td>F>X>Y>G>E>D>C>B>A</td></tr>
+<tr><td>10</td><td>G>X>Y>E>F>D>C>B>A</td></tr>
+<tr><td>21</td><td>G>F>E>X>Y>D>C>B>A</td></tr>
+</table>
+<p>
+Its defeats matrix is:
+</p>
+<table "bgcolor=#cccccc" border=2>
+<tr><td>Canddt</td>
+<td align="center">A</td><td align="center">B</td><td align="center">C</td><td align="center">D</td><td align="center">E</td><td align="center">F</td><td align="center">G</td><td align="center">X</td><td align="center">Y</td></tr>
+<tr><td align="center">A</td><td bgcolor="#CCCCCC">*</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">0</td></tr>
+<tr><td align="center">B</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#CCCCCC">*</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">0</td></tr>
+<tr><td align="center">C</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#CCCCCC">*</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">0</td></tr>
+<tr><td align="center">D</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#CCCCCC">*</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">0</td></tr>
+<tr><td align="center">E</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#CCCCCC">*</td><td bgcolor="#CCCCFF">39</td><td bgcolor="#CCCCFF">29</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">31</td></tr>
+<tr><td align="center">F</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">62</td><td bgcolor="#CCCCCC">*</td><td bgcolor="#FFFFCC">60</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">31</td></tr>
+<tr><td align="center">G</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">72</td><td bgcolor="#CCCCFF">41</td><td bgcolor="#CCCCCC">*</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCFF">31</td></tr>
+<tr><td align="center">X</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#FFFFCC">51</td><td bgcolor="#CCCCCC">*</td><td bgcolor="#FFFFCC">51</td></tr>
+<tr><td align="center">Y</td><td bgcolor="#FFFFCC">101</td><td bgcolor="#FFFFCC">101</td><td bgcolor="#FFFFCC">101</td><td bgcolor="#FFFFCC">101</td><td bgcolor="#FFFFCC">70</td><td bgcolor="#FFFFCC">70</td><td bgcolor="#FFFFCC">70</td><td bgcolor="#CCCCFF">50</td><td bgcolor="#CCCCCC">*</td></tr>
+</table>
+<p>
+X beats every opponent pairwise by a 51-to-50 margin.
+Should this really force X's victory and should it really outweigh the huge 
+apparent preference for Y over X? 
+Keep in mind, the sole reason X beats Y pairwise is due to a <i>single</i> voter.
+Meanwhile, Y beats every opponent besides X by a huge landslide margin
+(70-to-51 or 101-to-30) and only loses to X by a tiny 51-to-50 margin in
+votes, and Y has a huge advantage over X in <i>strength</I> of preference &ndash;
+as indicated both by the table at the very top, and also by the fact that
+the 51 voters who prefer X over Y all do so by the tiniest amount possible (adjacent rankings),
+while the 50 who prefer Y over X all do so by large amounts.  
+If you agree, even in this election <i>alone</i>,
+that X is not the best winner, then you have <i>admitted</i> that the
+Condorcet criterion is undesirable.  That is because the Condorcet criterion states
+that in <i>every</I> election where a beats-all winner exists, it must win.
+Condorcet brooks <i>no</i> exceptions.  (Any voting method that fails to elect
+a Condorcet winner, in even a single case, is not a "Condorcet method.")
+So if you admit even a <i>single</i>
+exception, then you have admitted Condorcet's criterion is not right.
+And I think we <i>do</i> have to admit that this election <i>is</i> an exception.
+</p>
+<p>
+Condorcet's error was in assuming that something that usually sounds 
+good, must <i>always</i> be good.  Actually, something that is usually good, is exactly that
+&ndash; usually good &ndash; and therefore we should want, or at least not exclude,
+voting systems like range voting that <a href="RandElect.html#CWvRV">usually</a>,
+but not always, yield
+beats-all winners when they exist.
+(<a href="https://rangevoting.org/RamgeVoting.html">Range Voting</a>
+with <a href="AppCW.html">strategic</a> voters yields Condorcet winners 
+under reasonable assumptions, but that is a different issue; this page has only been about
+honest voters.)
+</p>
+
+<br>
+<p>
+<a href="TobyCondParadox.html">Condorcet self-contradiction</a> example #1 and
+<a href="CondCoursera.html">#2</a>.</p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

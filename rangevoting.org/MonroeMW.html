@@ -1,0 +1,508 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Multiwinner election method based on optimum constrained-degree-subgraph problem
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Multiwinner election method based on optimum constrained-degree-subgraph problem </h2>
+<p><small>By Warren D. Smith February 2010, updated July 2011 &amp; Nov. 2015.</small></p>
+
+<p>
+In 1995, B.L.Monroe invented a new multiwinner voting system he called "full
+proportional representation."   Unfortunately, this system was formulated as an 
+"integer program" (and Monroe left it at that) and
+general integer programming problems are "NP-complete."
+</p>
+<blockquote><small>
+Solving "low order polynomial-time" problems is generally considered to be practical.  
+High order polynomial-time problems are worse.  NP-complete problems are still worse
+and are generally believed to be insoluble by any polynomial-time algorithm
+(Garey &amp; Johnson 1978).
+</small></blockquote>
+<p>
+To my knowledge no non-silly natural NP-complete problem has ever been solved at the size scales
+relevant to large elections, which might at the high end mean
+10<sup>9</sup> voters and 100 candidates.
+So unless a miracle occurred, we would expect Monroe's integer programs to be beyond the
+capabilities of forseeable computers and 
+his voting system to be of little to no practical interest. 
+</p><p>
+Indeed, Potthoff &amp; Brams 1998 re-examined Monroe and formulated it as an integer program
+with VC+C integer variables in a V-voter, C-candidate election, 
+which for any V and C with VC+C&gt;1000 was just absolutely
+absurd for any practical purpose.  
+</p><p>
+My purpose here is:
+</p><ol>
+<li>
+I point out that a miracle <i>does</i> occur:
+<i>If</i> the number of candidates is <i>bounded</i> then
+Monroe's core problem can be formulated as a bounded number of
+"maximum weight degree-constrained subgraph" problems
+(indeed, even "bipartite" ones) and hence solved in low-order polynomial time.
+This means that his voting system <i>is</i> worth examining as, quite-possibly,
+somewhat practical.
+Probably more importantly, if the set of winners is <i>specified</i> then there is a
+low-order polynomial time algorithm to compute Monroe's "quality measure" for that set of winners.
+Thus although using Monroe as an <i>election method</i> can be infeasible,
+it is always feasible to use Monroe as a <i>thermometer</i> to measure how "good"
+any other multiwinner election method is.
+</li><li>
+We show that when the number of candidates is made large, Monroe's subclass of integer programs 
+<i>are</i> NP-complete, i.e. it is NP-complete to determine a Monroe-optimal winner set.
+</li><li>
+Another way to look at it (essentially) is this:
+What Potthoff, Brams, and Monroe did not realize is that
+actually their integer program can be regarded as a MILP (mixed integer linear program)
+with VC real variables and 
+only C integer variables, because the VC real variables aumotically come out
+integer without need to demand that explicitly.  That is a tremendous work savings.
+</li></ol>
+<p>
+These realizations may be important for political scientists and democracies, and also
+might be important to computer scientists as a real-world source of important large
+degree-constrained subgraph problems.
+</p>
+
+<h3> Monroe's voting system (reformulated our new way) </h3>
+
+<p>
+Let there be V voters and C candidates, from whom we are to elect W winners, 0&lt;W&lt;C.
+Each voter, as her "vote," provides a real number "score" to each candidate, e.g. let 
+S<sub>ij</sub> be the score awarded the <i>j</i>th candidate by the <i>i</i>th voter.
+</p>
+<blockquote><small>
+There could be various rules about what scores are permitted, for example
+each score might be required to lie in the real interval [0, 1000].
+One could also consider imposing additional restrictions on "allowed scores,"
+but we shall not.
+</small></blockquote>
+<p>
+We then can regard there as being a complete bipartite graph G
+with V red vertices and 
+C blue vertices
+(and hence VC edges) with the edge from voter <i>i</i> to candidate <i>j</i>
+having real "weight" S<sub>ij</sub>.
+We shall assume for simplicity that V is an exact multiple of W.
+</p>
+<blockquote><small>
+If not, we may add a number &lt;W of additional artificial "voters" each of whom is completely
+apathetic about who wins the election, to force the new augmented V to be divisible by W.
+It also is possible to stay with V that is not an exact multiple of W, with some slight additional
+algorithmic pain.
+</small></blockquote>
+</p><p>
+We then find the subgraph H of G which
+</p><ol type="a">
+<li>
+Has valency either V/W or 0 at each candidate-vertex.
+</li><li>
+Has valency 1 at each voter-vertex.
+</li><li>
+Has maximum possible sum of edge-weights.
+</li></ol>
+<p>
+The W election-winners are then the candidates with nonzero valency in H.
+Each voter is said to be "represented" by the unique candidate she is joined to by an H-edge.
+</p><p>
+How difficult is the task of finding such a subgraph H?
+</p><p>
+<b>THEOREM (NP-completeness):</b>
+Even in the "approval<sup>3</sup>"
+case where each voter scores each candidates exactly 1 or exactly 0
+and each candidate is approved by exactly three voters,
+the question
+"does there exist a set of V/3 winners with each voter approving
+at least one winner?" is NP-complete.
+</p><p>
+<b>PROOF:</b>
+Consult Garey &amp; Johnson page 221 problem SP2
+"exact cover by 3-sets."
+<b>Q.E.D.</b>
+</p><p>
+<b>REMARK:</b> Garey &amp; Johnson's problems SP3 (set packing) and SP5 (minimum set cover) also
+are useful for proving results of this ilk, see also Dyer &amp; Frieze 1986 for another useful 
+NP-complete problem.  Also Skowron et al 2015 go further by showing and/or citing
+various "inapproximability" results for "minimizing misrepresentation."
+</p><p>
+<b>THEOREM (Polynomial time if C bounded or winners pre-specified):</b>
+Given the V&times;C matrix S as input,
+there is an algorithm which runs in binomial(C,W)&middot;O((V+W)VWlog(V+W))
+steps to find a Monroe-optimal W-element winner-subset of the C candidates.
+That is because there is an algorithm to determine the Monroe quality-measure
+of any specified W-winner set in
+O((V+W)VWlog(V+W)) steps, and there are
+binomial(C,W) possible W-element subsets of C candidates.
+</p><p>
+<b>PROOF:</b>
+If the W winners are pre-specified, then restricting attention
+to the V voters and W winners we have a complete bipartite graph 
+with V and W red and blue vertices and a V&times;W submatrix of S is all that matters.
+Then the subgraph H has valency V/W at each blue vertex and valency 1 at each red vertex.
+Among all such subgraphs we are to find the one with 
+maximum possible sum of edge-weights.
+This is a "degree-constrained subgraph" problem known to be soluble in
+low-order polynomial time, e.g. see Szabo 2009, Lovasz &amp; Plummer 1986,
+etc.   
+Known techniques solve this problem in the time bound stated.
+Indeed this time bound probably is not best possible, and 
+the techniques of Gabow &amp; Tarjan 1991 may be better if the edge costs
+are integers none of which are absurdly large.
+[Also there are efficient techniques to generate all the binomial(C,W) subsets
+of binomial(C,W) steps, see Nijenhuis &amp; Wilf.]
+<b>Q.E.D.</b>
+</p>
+
+<h3> A very short review about the degree-constrained subgraph (DCS) problem </h3>
+
+<p>
+Given a graph G the DCS existence problem is to find a subgraph H 
+satisfying certain "constraints" on the allowed valencies of H at each G-vertex v
+(or prove no such H exists).
+If the valence of v in H is demanded to be in some specified <i>set</i> of
+integers (a possibly-different set being specified for each G-vertex v)
+then this existence problem is well known to be NP-complete.
+</p><p>
+But if each of the sets happens to be a set of consecutive integers 
+then this problem is known to be 
+soluble in low-order polynomial time.
+Of particular importance is the special case where every H-valence is demanded to be exactly
+equal to 1; then this is called the "matching problem."
+Matching problems are a lot easier to deal with if G is a <i>bipartite</i>, rather than a general
+graph.   
+</p><p>
+These problems are also formulable as optimization rather than mere yes/no existence questions.
+The optimization problem is to find the H with maximum possible sum of edge weights 
+(or minimum possible).   These problems also are known to be 
+soluble in low-order polynomial time.
+In particular, there
+is a known algorithm by Dinic to solve the maximum-cardinality bipartite matching problem
+in a V-vertex E-edge graph, in O(V<sup>1/2</sup>E) operations.
+(The "cardinality" version involves edge weights which are 0 or 1 only.)
+The fastest algorithms for the other problem-variants all ultimately
+are based on Dinic's algorithm.
+</p><p>
+There also are slower and simpler algorithms.  A quite simple algorithm
+similar to the 
+&quot;<a href="http://en.wikipedia.org/wiki/Hungarian_algorithm">Hungarian method</a>&quot; 
+for solving the "assignment problem" will work to solve
+the Monrovian optimized weighted-DCS problem instead in O(V<sup>3</sup>) steps.
+Versions of this which incorporate 
+"sparse graph" and "fibonacci heap priority queue" data structures
+are known which run in O(V<sup>2</sup>logV + EV) steps.
+</p><p>
+If we are <i>given</i> the solution to a maximum-weight matching 
+or DCS problem and all we are asked
+to do is to <i>verify</I> its optimality, even faster speeds are 
+possible; essentially, we need only to run the final step of the augmenting paths algorithm to 
+verify there are none.
+This can be done in O(V<sup>2</sup>) steps or indeed O(E+VlogV) steps.
+</p><p>
+
+<h3> Connection to "range voting" </h3>
+
+<p>
+In the single-winner special case W=1, Monroe's voting method becomes 
+<a href="RangeVoting.html">range voting</a>.
+</p>
+
+<h3> How fast? </h3>
+
+<p>
+Dinic's algorithm solves a simpler problem (unweighted bipartite matching).
+Its runtime bound is O(V<sup>1/2</sup>E) operations.
+The Gabow-Tarjan "scaling" approach can be used to achieve this time bound
+(times slow-growing log, inverse-Ackermann, and log-cost factors)
+for all the more general problem variants provided the 
+integer edge-costs are not absurdly large.
+This is <i>tremendously</i> faster than all known algorithms for general
+integer programming problems (they take time <i>exponential</i> in the input size).
+<!--
+A 10<sup>9</sup>-voter election with 100 candidates would yield a bipartite graph with
+V&asymp;10<sup>9</sup> vertices and E=10<sup>11</sup> edges.   This would fit
+into the main memory of a rather-enhanced 2010-era computer (my personal computer
+has only 2 GBytes; about 100 times that memory would be required).
+If the constant hidden inside the "O" were
+10<sup>1.5</sup>, this would be 10<sup>17</sup> operations.
+On a 1 GHz machine that would consume about 3 compute-years.
+So to complete the task in a reasonable amount of time, i.e. 1 day, would
+require somehow achieving a speedup factor of 1000 (by means of parallelism
+and/or faster hardware).
+Unfortunately it actually is more difficult than that because our graph
+problem is harder than Dinic's problem.   Assuming it is 100&times; harder
+would mean the speedup factor would instead need to be 10<sup>5</sup>.
+Unfortunately network flow and linear programming problems are 
+not believed to be massively parallelizable, although the matching problem is
+(there is an "NC" algorithm based on parallel determinant computation) albeit
+at great cost in total-work.
+It still is not clear, therefore, that this computation would be feasible,
+but it is certainly much closer to feasibility than it seemed before it was realized this
+is a polyomial-time computation.
+</p><p>
+The "Hungarian" simpler-to-program
+method would take O(V<sup>3</sup>) steps, i.e. O(10<sup>27</sup>) steps.
+This seems out of reach.
+However one using sparse-graph data structures it might be made to
+run CITE??? in O(VElog(VE)) steps which
+is perhaps O(10<sup>22</sup>).   
+</p><p>
+<i>If</i> it is possible to parallelize the algorithm enough, <i>then</i>
+10<sup>17</sup> or perhaps even 10<sup>22</sup>
+computation could be done with the resources 
+currently available to the US government.  However, it is not 
+a trivial computation and not a trivial algorithm.  The considerable complexity
+of the algorithm and the computation would be valid grounds for any critic wishing to attack 
+this voting method.
+</p>
+-->
+
+<h3> How good? </h3>
+
+<p>
+Assume for the purposes of argument that it is feasible to compute the W winners, nobody cares
+how complicated and slow the software and hardware are, and everybody trusts the computation.
+It then also is interesting to enquire: How good a voting method is this?
+</p><p>
+Monroe was trying to make his voting method be "optimal."
+However, there are two reasons to attack that:
+</p><ol type="a">
+<li>
+What if the voters vote "strategically" rather than "honestly"?
+</li><li>
+The quantity Monroe is optimizing probably is the wrong thing to optimize.
+It only considers what each voter thinks of her one unique "representative"
+and ignores what each voter thinks about the other W-1 winners (and also of
+the C-W losers).  Thus for example, some excellent candidate X preferred by a large supermajority
+pairwise versus every rival candidate, could remain unelected if he were, e.g. almost
+everybody's second choice.   For another example, almost all of the winning
+candidates might advocate killing the "Jews" (a minority
+of the electorate) yet nevertheless Monroe would claim the winner-set "optimal" because
+the Jews had a "representative" winner they were happy with (advocated sparing the lives of Jews)
+and Monroe ignores what the Jews think about all the other winners; and the non-Jewish voters
+also had representatives they were happy with.
+We postulate the non-Jewish voters do not care nearly as tremendously as Jewish voters care
+about whether Jews live or die (they care about lots of other issues too), 
+albeit overall, all else being equal, a majority of voters prefer that Jews live.
+<br> &nbsp;&nbsp;
+In particular, one argument that Monroe's is a horribly bad voting method is the way it is
+embarrassed by
+<a href="PRintLinprog.html#perdefect">this</a> simple election example.
+</li></ol>
+<p>
+I believe the correct thing to optimize is "Bayesian Regret" and 
+<a href="BRmulti.html">have</a> a multiwinner generalization.
+Although BR does appear to be somewhat related to Monroe's measure, it clearly is different.
+</p>
+ 
+<h3> Generalization </h3>
+
+<p>
+<b>Generalization of Monroe to involve parameter K:</b>
+Let K be an integer with 1&le;K&le;W.
+Associate with each voter-candidate edge,
+that voter's score for that candidate.  Assume each voter has
+valence K, that is,
+is joined by graph edges to exactly K winners.
+Further, assume each candidate is joined to exactly VK/W voters.
+Choose, among all possible such subgraphs, the one with the greatest
+sum-of-edge-scores.
+</p><p>
+This idea, or something very similar,  also was discussed by Potthoff &amp; Brams 1998.
+Monroe's system is the special case K=1 of this.
+The case K=W is "naive multiwinner range voting" (i.e, the top W finishers
+in ordinary <a href="RangeVoting.html">range voting</a>
+become the W winners) which I do not recommend for most purposes
+because it can be highly disproportional:  E.g. with a 51% Democratic electorate, you
+could get 100% Democratic winners.
+</p><p>
+<b>Andrew Jennings' greedy method:</b>
+Let T=V/W.
+The candidate whose <i>T</i>th highest score is the greatest, wins.  We now eliminate
+him and the T voters who scored him highest from the election,
+and continue on to elect the next winner
+(until W have been elected).
+</p>
+<p>
+Jennings notes that this can be regarded as a <a href="PropRep.html">PR</a>
+voting method.  Each candidate is matched with the voters he "represents."
+(This matching, however, becomes less justifiable for later winners.)
+Jennings's same argument would also argue that Monroe's is a PR voting method too.
+One could try to argue the generalized-Monroe method with K=2 is PR also, but as we increase
+K any such attempts become shakier and shakier, until when K=W we clearly do not have PR anymore.
+</p><p>
+<b>Skowron et al's approximation methods:</b>
+Skowron et al 2015 invented and tested methods of approximately optimizing Monroe's
+quality measure, finding for problem sizes equivalent to Poland's parliament that 
+it was feasible to obtain 99% or 96% of optimality.
+I am somewhat dubious that any complicated algorithm containing many arbitrary choices, which does
+<i>not</i> find the optimum, but only finds a parliament 
+"guaranteed to be within 70% of optimum, and in practice often 96% or 99%"
+could be politically acceptable.
+Another problem is Skowron et al regard the ballots as rank-orderings, not 
+<a href="https://rangevoting.org/RangeVoting,html">ratings</a> ballots,
+and use a scoring notion like
+<a href="https://rangevoting.org/scoreVborda.htm">Borda</a> voting.  That was just stupid because it instantly makes their
+voting system massively vulnerable to <a href-"CandCloning.html">cloning</a>.
+</p>
+
+
+<h3> Pereira's complaints about Monroe</h3>
+
+<p>
+Toby Pereira in 2016
+pointed out that in this 2-winner, 2N-voter election:
+</p><pre>
+    N voters:  A, B, C   each scored 1, all other candidates scored 0
+    N voters:  A, B, D   each scored 1, all other candidates scored 0
+</pre>
+<p>
+Monroe would regard any of the following 2-winner sets: AB, AC, AD, BC, BD, CD
+(i.e. every possible 2-candidate subset) as equally good.  However, in Pereira's view,
+AB clearly should have been regarded as the unique best.  Pereira also points out that
+Monroe would elect CD in the following 
+2-winner, 2(x+1)N-voter election:
+</p><pre>
+   #voters     approved candidates 
+    xN          A, B, C
+    xN          A, B, D
+     N          C      
+     N          D      
+</pre>
+<p>
+<i>regardless</i> of the value of x&gt;0.  Pereira regards that as clearly silly in the
+limit x&rarr;&infin;.   In view of these examples, Monroe's method seems clearly not
+to be the best possible multiwinner voting method, even if we did not need to
+worry about computational effort because of assuming the existence of arbitrarily
+fast computers.
+</p>
+
+<h3> Acknowledgments</h3>
+<p>
+I thank Andrew Jennings for bringing Monroe 1995 to my attention and thus stimulating me
+to produce this report.  
+There is nothing really original here in the sense that 
+our result arises instantly by combining Monroe's idea
+with work on the "degree-constrained subgraph problem" done by a large community of graph-theorists
+and algorithmicists during 1960-2010.
+My sole contribution was bridging the gap between these people and
+the political scientists (represented by Monroe)
+&ndash; neither set had been aware of the other.
+</p>
+
+<h3> References</h3>
+<p>
+Ravindra K. Ahuja, Thomas L. Magnanti, James B. Orlin:
+Network flows: theory, algorithms, and applications,
+Prentice Hall 1993.
+<!--Math/Physics/Astronomy Lib T57.85 .A3 reserve-->
+</p><p>
+Vasek Chvatal:
+Edmonds polyhedra and a hierarchy of combinatorial problems,
+Discrete Mathematics 4 (1973) 305-337.
+</p><p>
+Vasek Chvatal:
+Cutting planes in combinatorics, Europ. J. Combinatorics 6 (1985) 217-226.
+</p><p>
+V.Chvatal, W.Cook, M.Hartmann:
+On cutting-plane proofs in combinatorial optimization,
+Linear Algebra and its Applications 114/115 (1989) 455-499.
+</p><p>
+Gerard Cornuejols: General factors of graphs, 
+J. Combinatorial Theory B 45,2 (Oct. 1988) 185-198.
+</p><p>
+Gerard Cornuejols &amp; David Hartvigsen:
+An extension of matching theory, J. Combinatorial Theory B 40,3 (June 1986) 285-296.
+</p><p>
+Yefim Dinitz: 
+<a href="Dinitz_alg.pdf">Dinitz's Algorithm: The Original Version and Even's Version</a>,
+pp. 218-240 in
+Oded Goldreich, Arnold L. Rosenberg, and Alan L. Selman. 
+Theoretical Computer Science: Essays in Memory of Shimon Even. Springer 2006.
+</p><p>
+M.E.Dyer &amp; A.M.Frieze: Planar 3-dimensional matching is NP-complete, 
+J.Algorithms 7 (1986) 176-184.
+</p><p>
+Jack Edmonds: Paths, trees, and flowers,
+Canad. J. Maths. 17 (1965) 449-467.
+<!--http://www.cs.dartmouth.edu/~ac/Teach/CS105-Winter05/Handouts/tarjan-blossom.pdf -->
+</p><p>
+Jack Edmonds &amp; Ellis L. Johnson: 
+Matchings, A Well-Solved Class of Integer Linear Programs,
+pp.89-92 in <i>Combinatorial Structures and Their Applications</i> (Gordon &amp; Breach NY 1970);
+also in Springer LNCS #2570 pp.27-30.  Results stated with no proofs.
+</p><p>
+Harold N. Gabow &amp; Robert E. Tarjan: 
+Faster scaling algorithms for general graph-matching problems,
+J. Assoc. Comput. Machinery 38,4 (1991) 815-853.
+</p><p>
+M.R. Garey &amp; D.S. Johnson:
+Computers and Intractability: A Guide to the Theory of NP-completeness, 
+W.H. Freeman 1979.
+</p><p>
+Andrew V. Goldberg &amp; Satish Rao:
+Beyond the flow decomposition barrier,
+J. Assoc. Computing Machinery 45,5 (1998) 783-797.
+</p><p>
+L. Lovasz &amp; M.D. Plummer:
+Matching theory,
+Elsevier Science Pub. Co. 1986.
+<!--Math/Physics/Astronomy Lib QA1 .N855 no.121-->
+</p><p>
+L.Lovasz: The factorization of graphs II, Acta Math. Acad. Sci. Hungarica 23 (1972) 223-246.
+</p><p>
+Burt L. Monroe:
+Fully Proportional Representation,
+The American Political Science Review 89,4 (Dec. 1995) 925-940.
+</p><p>
+Albert Nijenhuis &amp; Herbert S. Wilf:
+<a href="http://www.math.upenn.edu/~wilf/website/CombAlgDownld.html">Combinatorial Algorithms</a>,
+Academic Press 1978.
+</p><p>
+Richard F. Potthoff &amp; Steven J. Brams:
+Proportional Representation: Broadening the Options,
+Journal of Theoretical Politics 10,2 (April 1998) 147-178.
+</p><p>
+Yossi Shiloach:
+Another look at the degree constrained subgraph problem,
+Information Processing Letters 12,2 (1981) 89-92.
+</p><p>
+Piotr Skowron, Piotr Faliszewski, Arkzadii Slinko:
+<a href="SkowronFSvoteApproximability2015.pdf">
+Achieving fully proportional representation: Approximability results</a>,
+Artificial Intelligence 222 (May 2015) 67-103.
+</p><p>
+Arkadii Slinko &amp; Shaun White:
+<a href="SlinkoWhite.pdf">Proportional Representation and Strategic Voters</a>,
+Journal of Theoretical Politics 22,3 (July 2010) 301-332.
+</p><p>
+Jacint Szabo:
+Good characterizations for some degree constrained subgraphs,
+J. Combinatorial Theory B 99,2 (2009) 436-446.
+</p><p>
+W.T.Tutte:
+A short proof of the factor theorem for finite graphs, 
+Canadian J. Maths. 6 (1954) 347-352;
+The factors of graphs, Canadian J. Maths. 4 (1952) 314-328;
+The factorization of linear graphs, J.London Maths Soc. 22,2 (April 1947) 107-111.
+</p>
+
+<!--
+see also http://arxiv.org/abs/1301.6400
+-->
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

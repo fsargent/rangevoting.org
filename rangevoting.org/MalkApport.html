@@ -1,0 +1,801 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Essay about Apportionment
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Apportionment </H1>
+<p>
+By Prof. Joseph Malkevitch,
+York College (CUNY)
+</p>
+
+<h2> Introduction </h2>
+
+<p>
+  Who would have thought that the United States Constitution would be the source of so much work for mathematicians! The reason stems from two strands of thought in the Constitution and at times these two separate threads of interest for mathematicians have coalesced.<br>
+  <br>
+  The first strand of mathematics grows out of Article 1, Section 2 ( now amended) where it states that:<br>
+  <br>
+  <i>Representatives and direct Taxes shall be apportioned among the several States which may be included within this Union, according to their respective Numbers, which shall be determined by adding to the whole Number of free Persons, including those bound to Service for a Term of Years, and excluding Indians not taxed, three fifths of all other persons.</i><br>
+  <br>
+  Somewhat further in Section 2 it states:<br>
+  <br>
+  <i>The Number of Representatives shall not exceed one for every thirty thousand, but each State shall have at least one Representative;</i><br>
+  <br>
+  This leads to a fascinating mathematical question which has come to be known as the apportionment problem (AP), and the related specific problem raised by the constitution which I will refer to as the constitutional apportionment problem (CAP).<br>
+  <br>
+  We can formulate the AP mathematically as follows:<br>
+  <br>
+  Given states s<sub>1</sub>, ..., s<sub>n</sub> with populations P<sub>1</sub>, ..., P<sub>n</sub> and a positive integer h (think of h as the number of seats in the legislature), determine non-negative integers a<sub>1</sub>, ..., a<sub>n</sub> where a<sub>1</sub> + ... + a<sub>n</sub> = h. (It is customary to think of the value h as given in advance and fixed, since currently the size of the House of Representatives is fixed; however, for some applications one might have the freedom to vary h as part of solving the problem.)<br>
+  <br>
+  The CAP problem differs from the one above in requiring that each a<sub>i</sub> be greater than or equal to 1, or more generally (mathematicians like to generalize!) greater than or equal to b<sub>i</sub> where b<sub>i</sub> is some positive integer. The Constitution does not specify the h which started at 65 in 1790 and has grown to the now permanent value of 435, though when Alaska and Hawaii were admitted to the Union the value of h rose temporarily to 437.<br>
+  <br>
+  At first glance the AP problem does not seem hard. If a state has 10 percent of the population and there are 37 items (seats in the parliament, computer systems, libraries, etc.) to apportion, then .10 (37) equals 3.7. In a parliament interpretation, the problem is we can not send 3.7 people to the legislature (though some feel they do not get full representation from whole bodies); 3.7 is not an integer! What should be done with those nuisance fractions? The quota principle (fairness rule) would say, in this example, that 3 or 4 representatives be assigned. With 3 representatives a state would be underrepresented, with 4 it would be over represented, but the method we currently use to apportion the House of Representatives could assign fewer than 3 or more than 4 representatives!<br>
+  <br>
+  An additional mathematical strand grows out of Article 1, Section 2 of the Constitution (and picks up exactly where the first italicized section above ends), which states:<br>
+  <br>
+  <i>The actual enumeration shall be within three years after the first meeting of the Congress of the United States, and within every subsequent term of ten years, in such a manner as they shall by law direct.</i><br>
+  <br>
+  The first census was made in 1790 and has occurred regularly at 10-year intervals, the most recent having been carried out in 2000. As the population of the United States has grown, as more Americans live for extended periods of time in other countries, and as people travel within the United States away from home for long periods, the problem of picking one day as the day to determine the official population of the United States and successfully counting all Americans on that day has become very complex. (Generally speaking federal employees who are either civilians or in the military, and their accompanying dependents are counted for apportionment purposes and assigned to a home state but employees of private firms stationed abroad are not counted for the purposes of apportionment.) It is widely agreed that it is especially hard to avoid undercounting the urban poor and migrant workers, for example, but there has been both political controversy and scholarly debate about what is to be done to deal with the situation. Whereas statistical sampling and adjustment techniques are in widespread use as tools for related situations, the highly charged political atmosphere associated with the census has resulted in a variety of court challenges and legislative restrictions to the way the Census Bureau has attempted to carry out its mandate to count all residents in America whether or not they are citizens). There is even debate about, for example, about how to define accuracy for the census since there are different reasonable approaches which vary in political consequences! Many mathematicians are employed by the Census Bureau to assist directly with the Census and related issues in applying the census data to such problems as apportionment, both at the federal and the state level.<br>
+  <br>
+  You may find the apportionment population data for the <a href="http://www.census.gov/population/cen2000/tab01.pdf">2000 census</a>, 
+<a href="http://www.census.gov/population/cen2000/map03.gif">a graphic</a> 
+showing changes in the number members of the House of Representatives for each state based on the 2000 census, the United States
+<a href="http://www.census.gov/population/cen2000/tab03.pdf">overseas</a> population, and 
+<a href="http://www.census.gov/dmd/www/resapport/states/unitedstates.pdf">US 
+population growth data</a> of interest.<br>
+  <br>
+  There is another mathematical consequence of the CAP problem. When each state is assigned its number of the seats in the House of Representatives for the next 10 years, sometimes this number of seats is different from the assignment in the previous 10 years. This means that the congressional districts must be redrawn to either increase or decrease the number of representatives. (Even when the number of seats assigned to a state has not changed, population movement within a state might call for redistricting.) Building on a practice which began in England a long time earlier, many state legislatures, when redistricting, practice gerrymandering. This refers to the drawing of district lines in an exotic way to achieve some political goal, typically maximizing the number of seats which will be won by the same party as the one which controls the state legislature. In recent years, the Supreme Court has had to deal with many cases which were gerrymandered to achieve a particular racial goal, such as guaranteeing the election of at least one minority representative from a particular state with high minority population. Many states have turned to mathematicians to design districts which obey compactness criteria or other equity or political goals. Mathematical experts can also play a role in assisting with redistricting, whatever the goals.<br>
+  <br>
+  The two strands mentioned above come together because the data from the census is used, among other things, as input to the procedure that has been developed to decide how many seats each state gets in the House of Representatives. It is also important to notice that apportionment ideas come into play in a wide variety of applied problems, many of which grow out of operations research. These problems arise whenever some collection of indivisible objects are to be distributed (or taken away) on the basis of data about the entities which are to share the objects. Thus, one might be distributing or cutting faculty lines in the different schools of a large university, assigning secretaries to the divisions of a new company, etc.<br>
+  <br>
+  We will continue with a discussion of some of the rich and fascinating history of the apportionment problem, followed by a discussion of some of the mathematical questions to which it has given rise. We will also describe some of the mathematical issues that have arisen in conjunction with the census.<br>
+
+<hr>
+
+<h2> The History of Apportionment in America </h2>
+<p>
+The history of the way that the House of Representatives in the United States has been apportioned is fascinating. It involves many colorful and powerful figures in United States history. The United States is very unusual in having a legislative branch with two independent parts, the Senate and the House of Representatives. This somewhat unique situation came about because the people responsible for creating the United States needed a way to compromise concerning their views about the new country they were forming. On the one hand, there were people from relatively unpopulated states where there were many landowners and there were people from relatively highly populated states with large urban populations. By having one legislative branch in which each former colony would have equal numbers of representatives (two senators for each state) and one legislative branch based on population, a compromise was reached. However, from the very start, people from different states were anxious to protect their own interests in the House of Representatives. The more seats one had, the safer it would be for one's point of view. It is useful to remember that during the early days of the United States no one foresaw the effect of having two dominant political parties at nearly all times of the country's history. The Constitution, in fact, makes no mention of political parties.<br>
+<br>
+Among the very first causes of friction between the people who created the new country was how to apportion the House of Representatives. Right from the beginning there were various proposals. The reason for the difference was the observation that different methods resulted in different numbers of seats for the different former colonies. Using the principle more is better, the protagonists involved typically came down in support of that method which did the best for their personal interests. Furthermore, it was also true that one could defend different choices of how to apportion with reasonable sounding arguments. After the 1790 census, rival methods emerged for how to apportion the House of Representatives, using what today have come to be called Hamilton's method and Jefferson's method, which will be described below. George Washington, faced with a bill which gave rise to an apportionment that he was unable to support, vetoed the bill that Congress presented. This was the first time in the history of the new country that the veto power of the President was used and only one of two times that Washington used the veto power.<br>
+<br>
+Jefferson's method was used for the 1790 apportionment (h=105) and continued to be used until 1840, when a method suggested by Daniel Webster was adopted. During this period the debate centered around the statistical fact that Jefferson's method was systematically giving large states more than their share, that is, the method is biased in favor of large population states. In 1850 Vinton's method, in essence Hamilton's method, became law and this method remained on the books until the turn of the 20th century. Yet for complicated reasons filled with political wrangling, ad hoc approaches to apportionment were used. In 1901 Webster's method was used, reacting in part to the realization that Hamilton's method was subject to allowing a state to lose seats when the House of Representatives increased in size, the so-called Alabama paradox, and strange behavior when a new state was added to the union (known as the new state paradox). In 1911 Webster's method was used with special provision for what to do if a new state entered the Union. Astonishingly, in 1920, despite the new census, no new apportionment of the House of Representatives occurred, in essence, because Congress could not agree on a way to carry out an apportionment which could be enacted into law! For the 1930 census Webster's method was used.<br>
+<br>
+Of particular interest to mathematicians is the work of Edward Vermilye Huntington (1874-1952). Huntington was associated with Harvard University for much of his career, having been appointed there as an instructor in 1901 and having retired in 1941. In addition to his work on apportionment he is known for his work in axiomatic geometry. (Huntington served as President of MAA, vice-President of AMS, and President of AAAS, a remarkable accomplishment!) During the years of the First World War, when Huntington did work for the military in the area of statistics, or shortly thereafter, he learned of the apportionment ideas of Joseph A. Hill. He revised ideas of Hill to obtain a rigorous apportionment method, which he referred to as the Method of Equal Proportions. Huntington's method was a member of the same family of methods as those of Jefferson, Webster, President John Quincy Adams and James Dean (not the actor), who was a Professor of Mathematics at the University of Vermont. Although Dean's method and that of Adams have never been used in America, they have been part of the debate and of court cases that deal with the best method to use.<br>
+<br>
+Extensive debate among experts about which of the many methods that might be used for apportionment simmered in the background as Congress was unable to decide on an apportionment during the first part of the 20th century. The Speaker of the House, Nicholas Longworth, suggested that the National Academy of Sciences make an objective study of the problem. A committee of mathematicians consisting of G.A. Bliss (1876-1951), 
+<a height="109" href=http://www.ams.org/samplings/featurecolumn/images/apportion21.jpg" width="90">E.W. Brown (1866-1938)</a>,
+<a height="109" href=http://www.ams.org/samplings/featurecolumn/images/apportion22.jpg" width="90">L.P. Eisenhart (1876-1965)</a> 
+and 
+<a height="167" href=http://www.ams.org/samplings/featurecolumn/images/apportion23.jpg" width="120">Raymond Pearl (1879-1940)</a> 
+was formed to investigate the situation.<br>
+<br>
+Their report indicated support for Huntington's method. Rather later an even more prestigious group of mathematicians provided a report to the President of the National Academy of Sciences on apportionment methods. The report was signed by 
+<a height="109" href=http://www.ams.org/samplings/featurecolumn/images/apportion24.jpg" width="90">Harold Marston Morse (1892-1977)</a>, 
+<a height="109" href=http://www.ams.org/samplings/featurecolumn/images/apportion25.jpg" width="90">John Von Neumann (1903-1957)</a>, 
+and Luther Eisenhart (who had been involved with the 1929 report also). The report again supported the Huntington-Hill method.<br>
+<br>
+Some have claimed that these reports show more loyalty to Huntington than to fairness principles for solving the CAP problem. In any case, the political wrangling of the period, with the economic realities of the Depression and the war situation in Europe as a background, resulted in congressional approval of a bill in 1941, which was signed by President Roosevelt, of an apportionment based on the 1940 census. This bill was noteworthy in that it stated that apportionment built into the bill, Huntington's Equal Proportions Method, was to be used regularly in the future, thereby avoiding the battles that had occurred every 10 years in the past after each new census. Furthermore the House size h was fixed at 435 (except for the ad hoc consequences of when new states were added to the United States). In essence, the consequence of this law was to exchange battles within Congress for battles between the states, members of Congress, the administrative agencies carrying out the law (Census Bureau and Department of Commerce) and the <a href="http://www.senate.leg.state.mn.us/departments/scr/redist/redsum2000/redsum2000.htm">courts</a>. Many cases eventually reached the Supreme Court where, so far, the Huntington-Hill method has survived and continues to be used to apportion the House of Representatives, though apportionment cases arising from the 2000 census (not specifically involving Huntington-Hill) are still not resolved. For 2000, Huntington-Hill and Webster would give the same apportionment; Dean's method would give Montana one more seat and North Carolina one less (other states the same) than Huntington-Hill; and Hamilton's method would give California one fewer seat and Utah one more seat than Huntington-Hill. Adams' method and Jefferson's Method would give California a number of seats that violates the quota fairness rule.
+</p>
+
+<hr>
+
+<h2> Apportionment in Europe (and Other Democracies) </h2>
+<p>
+  Although European parliaments (and other democracies) evolved in a very different way from the legislative branch of the US government, ironically, Europeans also needed to solve apportionment problems as a consequence of the way elections for parliament were held. In Europe (and elsewhere), many countries are divided into multiseat regions where parties competed for seats in the national parliament by running as members of particular parties in these multimember districts. The number of candidates to be elected can be represented by the integer h, which can again be thought of as the size of the parliament. Each party (analogous to the s<sub>i</sub> above) gets a certain percentage of the vote (the analog of the P<sub>i</sub>). The goal (in light of obtaining proportional representation ) again is that one wants to assign non-negative integer numbers of seats to the parties that sum to h. There is a practical detail here that plays a role, analogous to the practical detail in the United States House of Representatives problem of needing to give each state one seat. This detail is the fact that prevailing wisdom is that one does not want to give a seat to a party that gets too small a portion of the total vote. Thus, many countries have a cut-off, and if a party does not get more than this cut off value, say 5 percent of the vote, they can not be given a seat. Many of the methods that were proposed to solve the CAP were independently discovered in attempts to solve apportionment problems in Europe. However, some of the methods developed in the United States, which automatically give each state one seat, were not investigated in Europe because in that context, giving each claimant one seat did not seem to match what was desired for a good apportionment system. (These methods are Dean, Adams, and Huntington-Hill. However, easy modifications of these systems that do not give each party one seat automatically might be of interest in the European context.)
+</p>
+
+<hr>
+
+<h2> Apportionment systems </h2>
+
+<p>
+  The methods below go under a surprisingly large number of names, partly because the methods were independently discovered for a variety of reasons. 
+Here is a <b>table of equivalency</b> for these names:
+</p><blockquote>
+"Hamilton's method": by Alexander Hamilton &amp; Samuel F. Vinton = "Largest remainders"
+<br>
+"Jefferson's Method": Thomas Jefferson &amp; Victor d'Hondt = "Greatest divisors"
+<br>
+"Webster's Method": Daniel Webster &amp; Andre Sainte-L&auml;gue = "Major fractions"
+<br>
+"Huntington's method": Edward V. Huntongton &amp; Joseph A. Hill = method of "geometric mean"
+<br>
+"Dean's Method": James Dean = method of "harmonic mean"
+<br>
+"Adams Method": method of "Smallest divisors."
+</blockquote>
+
+<p>
+  <i>Hamilton's Method</i></p>
+<p>
+  Hamilton's method (for AP) conceptually starts by relaxing the requirement that the number of seats assigned to each state be an integer and looking at what the exact quota that each state is entitled to would be. This exact quota q<sub>i</sub> for state i can be computed by either of two calculations, each of which gives one a slightly different perspective. In the first instance, we can think of state i's share as the percent of the population state i has times the number of seats available. In the second instance one computes the number of people per seat (P/h) (i.e. the size of an ideal district) and divides this into the population of state i, to see its share<br>
+  <br>
+  <br>
+  &nbsp;</p>
+<div align="center">
+  q<sub>i</sub> = (P<sub>i</sub> /P)h = p<sub>i</sub> /(P/h)</div>
+<br>
+<p>
+  One can think of q<sub>i</sub> as consisting of an integer part plus a fractional part. This integer part is referred to as lower quota, since intuitively each state should get at least this number of seats, and one more than this integer part is referred to as upper quota. Hamilton's method for the AP problem works by giving each state its lower quota. If there are any seats that have not been distributed, these are given out in the order of largest remainder, that is, in order of the size of the fractional parts. Obviously, there is a need for tie-breaking rules in the case that states have equal population. However, both with Hamilton's method and other methods we will discuss later, ties can result from other circumstances than equality of population. (Of course, in the case of CAP, the large numbers involved reduce the chance of such ties. Also, for the CAP problem, the discussion above must be modified so that the requirement that each state get one or more seats be dealt with.) Hamilton's method has a very appealing property. Each state gets either its lower quota or upper quota, that is, the number of seats that a state gets in the House of Representatives is either the largest integer less than or equal to a states' quota q<sub>i</sub> or one more than this number. Yet, as mentioned in the historical section Hamilton's method can fail, using a fixed set of populations, to guarantee that as the house size goes up, a state will not lose(!) a seat. Thus, Hamilton's method violates the sensible requirement, for some AP problems, of house size monotonicity.<br>
+  <br>
+  <b>Example 1: </b><br>
+  &nbsp;</p>
+<div align="center">
+  <table align="center" border="1" cellpadding="5" cellspacing="2" width="400">
+    <tbody>
+      <tr>
+	<th valign="middle">
+	  States</th>
+	<td width="100">
+	  <div align="center">
+	    A</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    B</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    C</div>
+	  </td>
+	</tr>
+      <tr>
+	<th width="13">
+	  Populations</th>
+	<td width="100">
+	  <div align="center">
+	    657000</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    237000</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    106000</div>
+	  </td>
+	</tr>
+      <tr>
+	<th valign="middle" width="13%">
+	  States</th>
+	<td width="100">
+	  <div align="center">
+	    A</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    B</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    C</div>
+	  </td>
+	</tr>
+      <tr>
+	<th height="32" width="13">
+	  Populations</th>
+	<td height="32" width="100">
+	  <div align="center">
+	    660000</div>
+	  </td>
+	<td height="32" width="100">
+	  <div align="center">
+	    245100</div>
+	  </td>
+	<td height="32" width="100">
+	  <div align="center">
+	    104900</div>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+</div>
+<p>
+  The table above shows the results of two consecutive censuses where there are three regions and 100 seats to distribute to the three states in a regional legislature. Note that the population of A has gone up and the population of B has gone up, while the population of C has gone down between the two censuses.<br>
+  <br>
+  Let us apply Hamilton's method to these two data sets. For the first data set, the total population is 1,000,000, so the exact quota values of A, B, and C are 65.7, 23.7, and 10.6, respectively. Assigning each state its lower quota gives A<br>
+  65 seats, B 23 seats, and C 10 seats. These number a total of 98, so the two remaining seats are given to the two states with the largest fractional parts, A and B. The final result is that A gets 66 seats, B gets 24 seats, and C gets 10 seats. In the later census, the total population has risen to 1,010,000. A, B, and C's exact quotas are now 65.346, 24.267, and 10.386. Now initially, A gets 65 seats, B gets 24 seats, and C gets 10 seats for a total of 99. The one remaining seat is assigned to C because its fractional part is largest. The result is that A gets 65 seats, B gets 24 seats, while C gets 11 seats. Thus, although A and B's populations went up and C's went down, A's number of seats went down, B's stayed the same, and C's went up. Note also what happens for the second census data if it was decided to distribute 101 seats instead of 100 seats. The exact quota for A, B, and C would become: 66.00, 24.51, and 10.49, respectively. Thus, initially A would get 66 seats, B would get 24 seats, and C would get 10 seats. Since only 100 seats have been distributed, one more seat would go to B, which has the largest remainder. Thus, A gets 66 seats, B gets 25 seats and C gets 10 seats. As a result, C gets fewer seats in a larger house! This example illustrates that Hamilton's method allows the population paradox and the Alabama paradox.<br>
+  <br>
+  <i>Other Methods</i><br>
+  <br>
+  The next example will examine a very different approach to dealing with the fractional parts of exact quotas when trying to get a reasonable apportionment.<br>
+  <br>
+  <b>Example 2:</b><br>
+  <br>
+  &nbsp;</p>
+<div align="center">
+  <table align="center" border="1" cellpadding="5" cellspacing="2" width="400">
+    <tbody>
+      <tr>
+	<th valign="middle">
+	  States</th>
+	<td width="100">
+	  <div align="center">
+	    A</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    B</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    C</div>
+	  </td>
+	</tr>
+      <tr>
+	<th width="126">
+	  Populations</th>
+	<td width="100">
+	  <div align="center">
+	    684</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    276</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    140</div>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+</div>
+<p>
+  We will suppose that we have 10 seats to distribute and note that the total population of all the states is 1100.<br>
+  <br>
+  We will illustrate Webster's method of apportionment by using the data in this example. We can begin by computing the exact quota that each state is entitled to:<br>
+  &nbsp;</p>
+<div align="center">
+  <table border="0" cellspacing="5" width="400">
+    <tbody>
+      <tr>
+	<td>
+	  <div align="center">
+	    A's value is given by (684/1100)(10) = 6.22</div>
+	  </td>
+	</tr>
+      <tr>
+	<td>
+	  <div align="center">
+	    B's value is given by (276/1100)(10) = 2.51</div>
+	  </td>
+	</tr>
+      <tr>
+	<td>
+	  <div align="center">
+	    C's value is given by (140/1100)(10) = 1.27</div>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+</div>
+<p>
+  In grade school you probably learned how to round decimal numbers to the nearest integer. This procedure required that if the fractional part were .5 or more, one rounded up to the next largest integer; if the fractional part was smaller than .5, then you rounded down. If we apply this approach to the numbers in the example above we would give 6 seats to A,o B, and 1 seat to C. Since these numbers add to 10, we can use these values to apportion the 10 seats.<br>
+  <br>
+  However, we were lucky in this case. The rounding distributed exactly 10 seats. This will not always happen. We might wind up distributing fewer than h seats or more than h seats if we use the usual rounding rule. To illustrate what to do in these other situations we will consider the example below. Note how little the numbers have been changed from Example 2.<br>
+  <br>
+  <br>
+  <b>Example 3:</b><br>
+  &nbsp;</p>
+<div align="center">
+  <table align="center" border="1" cellp696</div>
+	 </td>
+<td width="100">
+  <div align="center">
+    268</div>
+  </td>
+<td width="100">
+  <div align="center">
+    136</div>
+  </td>
+</tr>
+</tbody>
+</table>
+</div>
+<p>
+  Again we will suppose that we have 10 seats to distribute and note that the total population of all the states is 1100. Since there are 1100 people and 10 seats to distribute, ideally we would like to be able to have one district for every 110 people (i.e. 1100/10). This number 110 is known as the ideal district size. Notice that it usually will not be an integer, but we allow this. Using this ideal district size we can compute each state's exact quota.<br>
+  &nbsp;</p>
+<table align="center" border="0" cellspacing="5" width="400">
+  <tbody>
+    <tr>
+      <td valign="top">
+	<div align="center">
+	  A's value is given by (696/110) = 6.33</div>
+	</td>
+      </tr>
+    <tr>
+      <td>
+	<div align="center">
+	  B's value is given by (268/110) = 2.43</div>
+	</td>
+      </tr>
+    <tr>
+      <td>
+	<div align="center">
+	  C's value is given by (136/110) = 1.28</div>
+	</td>
+      </tr>
+    </tbody>
+</table>
+<p>
+  Using the grade school approach to rounding we would give 6 seats to A, 2 seats to B, and 1 seat to C, which adds up to only 9 seats, one short of the 10 we must distribute. The Webster method approach to handling this problem is that one can modify the ideal district size to obtain a modified district size (MDS). By dividing the state populations by the MDS one gets modified quotas which hopefully, when rounded in the usual way, will distribute h seats. Since in our example we distributed too few seats, we must use a smaller MDS, which will increase the size of the fractional parts, so when we round them we distribute more seats (but not too many). We will use a MDS of 107.2. (Can you figure out from the calculation below why that value was chosen?) Generally there will be an interval of >
+    Computing modified quotas based on the MDS gives:<br>
+    &nbsp;</p>
+<table align="center" border="0" cellspacing="5" width="450">
+  <tbody>
+    <tr>
+      <td valign="top">
+	A's modified quota value is given by (696/107.2) = 6.493</td>
+      </tr>
+    <tr>
+      <td>
+	B's modified quota value is given by (268/107.2ys rounding it down, no matter how small the fractional part may be. Adams' method is based on taking the fractional part of the exact quota or modified exact quota and always rounding it up, no matter how small the fractional part may be. If the result does not apportion the correct number of seat/tr>
+	<tr>
+	  <td>
+	    <div align="center">
+	      C's modified quota is 136/98 = 1.38</div>
+	    </td>
+	  </tr>
+	</tbody>
+</table>
+<p>
+  Rounding all the fractions down gives the assignment of 7 seats to A, 2 seats to B, and 1 seat to C, which gives the desired total of 10.<br>
+  <br>
+  If we apply Adams' method to the exact quotas, we round all the fractions up so we give 7 seats to A, 3 seats to B, and 2 seat to C. This distributes too many seats, 12 seats instead of the 10 we need to distribute. Rounding all the fractions down gives the assignment of 6 seats to A, 2 seats to B, and 2 seats to C, which gives the desired total of 10.<br>
+  <br>
+  The three methods we have used have given rather different results, as summarized in the chart below:<br>
+  <br>
+  &nbsp;</p>
+<div align="center">
+  <table align="center" border="1" cellpadding="5" cellspacing="2" width="400">
+    <tbody>
+      <tr>
+	<th width="100">
+	  State</th>
+	<td width="100">
+	  <div align="center">
+	    A</div>
+	  </td>
+	<td width="100">
+	  <div align="center">
+	    ign="center">
+	    2</div>
+	  </td>
+	<td>
+	  <div align="center">
+	    1</div>
+	  </td>
+	</tr>
+      <tr>
+	<td width="141">
+	  Adams</td>
+	<td width="100">
+	  <div align="center">
+	    6</div>
+	  </td>
+	<td>
+	  <div align="center">
+	    2</div>
+	  </td>
+	<td>
+	  <div align="center">
+	    2</div>
+	  </td>
+	</tr>
+      </tbody>
+    </table>
+</div>
+<p>
+  Note that in this example all three methods give each state either its lower or upper quota. However, it is importan terms of rounding rules. Dean's method is based on the harmonic mean of two numbers and Huntington's is based on the geometric mean of the two nroot" height="15" src=http://www.ams.org/samplings/featurecolumn/images/root.gif" width="9" />(xy). For our purposes the important thing is that the harmonic mean and geometric mean of q and q + 1 are numbers between q and q +1. The situations in which different means arise is an interesting subject in its own right which will not be explored here.<br>
+  <br>
+  The five methods we have looked at, Adams, Dean, Huntington-Hill, Jefferson, and Webster were introduced here as based on different rounding rules. They are usistributed as being distributed all at once, imagine that they are being given away one at a time until we reach h. In this dynamical setting, we give the seats away until they are all gone. The idea is that one can prepare in advance a priority table of numbers for each of the five historical methods. This table is used to assign seats to states one after another in a remarkably simple way: give the first seat 
+&radic;((3(3+1)) = &radic;12 and enter the result in the 4th row. If substitution of 0 in the formula involves division by zero, we indicate this by writing the infinity symbol in the table. This will be shorthand for saying that this method automatically gives each state one seat. (Methods which do not have the infinity symbol in the top row must be modified for use in the CAP problem, because they will not automatically meet the constitutional provision of giving each state at least one seat.) The formulas to construct a priority table are:<br>
+  <br>
+  &nbsp;</p>
+<table align="center" border="1" cellspacing="2" cellpadding="2" align="center" width="469">
+<tr>
+			<td valign="top" width="136">
+				Adams</td>
+			<td width="317">
+				a (rows obtained by dividing by 0,1 and 2,...)<br />
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td valign="top" width="136">
+				Dean</td>
+			<td valign="baseline" width="317">
+				2a (a + 1) / (2a +1)<br />
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td valign="top" width="136">
+				Huntington-Hill</td>
+			<td width="317">
+[(a+1)a]<sup>1/2</sup>
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td valign="top" width="136">
+				Webster</td>
+			<td width="317">
+				(2a + 1) / 2<br />
+				&nbsp;</td>
+		</tr>
+		<tr>
+			<td valign="top" width="136">
+				Jefferson</td>
+			<td width="317">
+				a + 1<br />
+				&nbsp;</td>
+		</tr>
+</table>
+<p>
+	<b>Example 3 (continued)</b><br />
+	&nbsp;</p>
+<table align="center" border="1" cellpadding="5" cellspacing="2" width="50%">
+	<tbody>
+		<tr>
+			<td width="13%">
+				&nbsp;</td>
+			<td width="30%">
+				<div align="center">
+					A</div>
+			</td>
+			<td width="30%">
+				<div align="center">
+					B</div>
+			</td>
+			<td width="30%">
+				<div align="center">
+					C</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="13%">
+				&nbsp;</td>
+			<td width="32%">
+				<div align="center">
+					696</div>
+			</td>
+			<td width="27%">
+				<div align="center">
+					268</div>
+			</td>
+			<td width="28%">
+				<div align="center">
+					136</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="13%">
+				1</td>
+			<td width="32%" align="center">
+&infin;
+			</td>
+			<td center="" width="27% &gt;       &lt;div align=">
+				<div align="center">
+&infin;</div>
+			</td>
+			<td width="28%" align="center">
+&infin;
+			</td>
+		</tr>
+		<tr>
+			<td width="13%">
+				2</td>
+			<td width="30%">
+				<div align="center">
+					696</div>
+			</td>
+			<td width="30%">
+				<div align="center">
+					268</div>
+			</td>
+			<td width="30%">
+				<div align="center">
+					136</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="13%">
+				3</td>
+			<td width="32%">
+				<div align="center">
+					348</div>
+			</td>
+			<td width="27%">
+				<div align="center">
+					134</div>
+			</td>
+			<td width="28%">
+				<div align="center">
+					72</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="13%">
+				4</td>
+			<td width="32%">
+				<div align="center">
+					232</div>
+			</td>
+			<td width="27%">
+				<div align="center">
+					89.3</div>
+			</td>
+			<td width="28%">
+				<div align="center">
+					45.3</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="13%">
+				5</td>
+			<td width="32%">
+				<div align="center">
+					174</div>
+			</td>
+			<td width="27%">
+				<div align="center">
+					67</div>
+			</td>
+			<td width="28%">
+				<div align="center">
+					34</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="13%">
+				6</td>
+			<td width="32%">
+				<div align="center">
+					139.2</div>
+			</td>
+			<td width="27%">
+				<div align="center">
+					53.6</div>
+			</td>
+			<td width="28%">
+				<div align="center">
+					27.2</div>
+			</td>
+		</tr>
+		<tr>
+			<td width="13%">
+				7</td>
+			<td width="32%">
+				<div align="center">
+					116</div>
+			</td>
+			<td width="27%">
+				<div align="center">
+					44.7</div>
+			</td>
+			<td width="28%">
+				<div align="center">
+					22.7</div>
+			</td>
+		</tr>
+	</tbody>
+</table>
+
+
+<hr>
+
+<h2> Fairness and apportionment </h2>
+
+<p>
+The Constitution does not specify what fairness criteria should be used in comparing two different proposed ways to solve an apportionment problem. From the beginning there were both political and equity considerations in choosing an apportionment system but there are some principles that one can call attention to in evaluating apportionment systems. One fairness idea is that each state should get either its lower quota or upper quota. A second approach to fairness is to look at pairwise equity between states. The empirically discovered Alabama paradox (one can get fewer seats in a larger house, with fixed population) called to the attention of politicians and others interested in apportionment that one had to worry about the fairness properties of the methods that one might use to solve the apportionment problem. However, little seems to have been done in a systematic way to see what the consequences for fairness were of adopting different apportionments. In the United States, what became a matter of concern was the perception that different methods of apportionment might display bias. The idea of bias is that a method might systematically reward states with specific characteristics or groups of such states. For example, were some methods more likely to give smaller states more than their fair share of seats, say, as measured by exact quota? One way to try to answer this question was to turn to statistics. It is not hard to see that the different methods of apportionment treat small and large states in different ways. This can be seen in contrived artificial examples as well as using data that has arisen from the censuses. However, there are many different ways of thinking and models for deciding what constitutes bias of an apportionment method. As just one example, the Constitution itself has a bias in favor of small states because it will give every state one seat regardless of how undeserving the state might be. In computing bias of a method, how should this &quot;minimum of one seat&quot; condition be taken into account?<br>
+<br>
+Huntington was a pioneer in using mathematical ideas to compare the different apportionment from a fairness point of view. His writings have an attractive conversational style, though like many good debaters he does not shy from leaving out things that do not help his case. Huntington realized that there were two major approaches to evaluating fairness:<br>
+<br>
+1. Global optimization<br>
+<br>
+This approach sets up a measure of fairness and for a given apportionment method sums up this measure for all the states. The goal is to select that method which minimizes the sum for the given measure over all the states. This approach involves various discrete optimization techniques and has not been pursued vigorously until relatively recently. Some of the optimization problems that one is led to may be computationally very difficult. Huntington rejects such methods but they are mathematically interesting nonetheless.<br>
+<br>
+2. Pairwise comparison for states.<br>
+<br>
+This approach involves making sure that switching a seat from one state to another does not diminish the fairness of the apportionment as given by some measure of fairness. Huntington championed the study of this way of approaching the apportionment problem. He showed, rather surprisingly, that each of the historic methods was best under at least one fairness measure. This created the troublesome situation that one had to make a value judgment as to which of these fairness criteria was the best in order to justify the choice of a particular method, and it is not clear on mathematical grounds how to do this.<br>
+<br>
+First, Huntington observed that for each measure of equity between states one could look at this measure in absolute terms or in relative terms. Here is an example illustrating this, taken from one of Huntington's papers using data from the 1940 census: Using all of the census data, it turns out that Webster assigned Michigan (population 5,256,106) 18 seats and Huntington-Hill assigned it 17 seats, while Webster assigned Arkansas (population 1,949,387) 6 seats and Huntington-Hill assigned Arkansas 7 seats. The two methods agree except for the number of seats that they give to these two states. With these numbers, the size of the congressional district for Michigan under Webster was 292,006, while the size under Huntington-Hill was 309,183. The equivalent figures for Arkansas were 324,898 (Webster) and 278,484 (Huntington-Hill). Thus, the absolute difference between the two states for Webster was 32,892 (324,898-292,006). The absolute difference between the two states for Huntington-Hill was 30,699. By this measure Huntington-Hill did a better job. However, there is also the perspective of the size of the difference relative to the size of the populations of the states involved. Michigan is a much bigger state than Arkansas. In relative terms the Webster method resulted in a relative difference of 11.26 percent, while Huntington-Hill resulted in a relative difference of 11.02 percent. The relative difference for u and v is given by |u-v|/(min (u, v)). This example should not mislead one into thinking that Huntington-Hill always does a better job. Measuring the absolute difference in representatives per person would be the basis for defending why the Webster apportionment is better. I use this example only to illustrate the distinction between relative and absolute difference ideas.<br>
+<br>
+Here is a summary of what Huntington discovered:<br>
+<br>
+a. For relative differences, Huntington-Hill is the optimal method for <i>all</i> the fairness measures about to be listed. Recall that a<sub>i</sub> and P<sub>i</sub> are the number of seats for state i and its population, respectively. For a fixed divisor method, the formula can be used to compare whether or not giving the next seat to state i or state j is more justified, as measured by the the given fairness formula.<br>
+<br>
+b. 
+<ul><li>
+For the measure 
+|a<sub>i</sub> - a<sub>j</sub>(P<sub>i</sub>/P<sub>j</sub>)|
+Adams method is optimal.
+</li><li>
+For the measure 
+|P<sub>j</sub>/a<sub>j</sub>-P<sub>i</sub>/a<sub>i</sub>|
+Dean's method is optimal.
+</li><li>
+For the measure 
+|(a<sub>i</sub>/a<sub>j</sub>)(P<sub>i</sub>/P<sub>j</sub>)-1|
+Huntington-Hill is optimal.
+</li><li>
+For the measure 
+|a<sub>i</sub>/P<sub>i</sub> - a<sub>j</sub>/P<sub>j</sub>|
+Webster is optimal.
+</li><li>
+For the measure 
+|a<sub>i</sub>(P<sub>j</sub>/P<sub>i</sub>) - a<sub>j</sub>|
+Jefferson's method is optimal.<br>
+</li></ul>
+<p>
+Again, it might not be obvious that these seemingly similar measures of absolute pairwise fairness would give rise to such different methods to achieve optimality. Yet Huntington showed that if one is concerned with relative differences, all the criteria formulas are optimal only for Huntington-Hill.
+</p>
+<hr>
+
+<h2> Balinski and Young's Contribution </h2>
+
+<p>
+In 1982, two mathematicians, 
+<a alt="Picture of Michel Balinski" height="263" href="https://rangevoting.org/images/balinski.jpg" width="168">Michel Balinski</a>
+and 
+<a alt="Picture of H. Peyton Young" height="120" href=http://www.ams.org/samplings/featurecolumn/images/apportion61.jpg" width="138">H. Peyton Young</a>, 
+published the very important book, <i>Fair Representation: Meeting the Ideal of One Man, One Vote</i>, in which they reported in detail on the history of the apportionment problem and described work of their own on the mathematics of the apportionment problem that had appeared in a variety of research papers. This work built on the earlier work of Huntington but carried the mathematical theory of apportionment much further. In particular, they followed in the footsteps of Kenneth Arrow's work in understanding fairness in voting and elections by looking in detail at fairness issues growing out of apportionment problems. Specifically, they noted the tension between different views of the essential fairness questions. These fairness questions take the form of stating various axioms or rules that an apportionment method should obey. Many of these issues are quite technical but an intuitive overview follows. There are now many variants of similar sounding axioms which differ in their details.<br>
+<br>
+Here are some fairness issues that might be raised: Is an apportionment method house monotone (i.e. avoids giving fewer seats to a state in a larger house)? Does an apportionment method obey quota? Is an apportionment method biased (in the sense that when used to decide many apportionment problems, it tends to be unfair to small or large states in a systematic way)? Is an apportionment method population monotone? (For example, in comparing the results of applying the same apportionment method to two consecutive censuses, could a state whose population went down get more seats than it did previously, while at the same time a state whose population went up lose seats?) Does an apportionment avoid the new states paradox? They also examined the consequences of a state splitting into two states to get more seats. (This is an important issue for the AP in the European context.)<br>
+<br>
+Balinski and Young showed that these fairness conditions do not mix well. Informally their results (some of which were known to earlier researchers) can be stated:<br>
+<ul><li>
+If a method is well behaved with regard to changes in population, then it must be a divisor method (rounding rule method). Balinski and Young reject the use of an ingenious method they developed referred to as the quota method. This method, though it obeys quota and is house monotone, does not avoid the population paradox.:<br>
+</li><li>
+No divisor methods guarantee giving each state its lower or upper quota. (In fact, no method which avoids the population paradox guarantees giving every state its lower or upper quota.)<br>
+</li><li>
+ Divisor methods are house monotone.<br>
+</li><li>
+ Divisor methods (rounding rule methods) avoid paradoxical results when new states are added to the apportionment mix.<br>
+</li></ul><p>
+Balinski and Young also call attention to the issue of bias of an apportionment method which involves the consequences of using this method time after time. If a method tends to give more seats to large states or more seats to small states this might be deemed a strike against it. The difficulty is arriving at either a theoretical or empirical framework for analyzing bias. The issues involved here are a classic example of the difficulties in the interface between theoretical results in mathematics and how they are applied.<br>
+<br>
+It is worthwhile to note that sometimes one can take advantage of the unfairness that mathematics shows is there, either from a theoretical or empirical point of view. For example, Jefferson's method (known also as d'Hondt) is clearly generous to large states. However, in the European democracy context, if a country uses d'Hondt, then parties which get relatively large votes are likely to get more than their fair share of seats. This tendency, some believe, means trading stability to some extent for equity. If it is more likely that a single party gets a majority in parliament, or can more easily form a coalition of parties to govern, this may be better for society than having unstable coalitions form. Coalitions with many partners may result in many changes of government, which may not be healthy in the long term. Political scientists have done a variety of empirical studies related to these issues.
+</p>
+
+<hr>
+
+<h2> Where to next? </h2>
+
+<p>
+Mathematical and empirical studies of apportionment problems continue to receive intensive investigation. Due to perceived unfairness in the way seats have been apportioned or in which districts are created on the basis of census data, American courts continue to have to examine the issues involved. Even though the Supreme Court upheld the constitutionality of the use of Huntington-Hill relatively recently (1992), this does not mean that if new ideas show that Huntington-Hill is not the best choice available, that the Court will not in some future case conclude that Huntington-Hill is unconstitutional. The apportionment problem and its many relatives will no doubt continue to intrigue mathematicians for a long time to come.
+</p>
+
+<hr>
+<h2> References</h2>
+
+<p>
+  Abeles, F., C.L. Dodgson and apportionment for proportional representation, Bull. Ind. Soc. History of Math., 3 (1981) 71-82.<br>
+  <br>
+  Anderson, M. and S. Fienberg, Who Counts? The Politics of Census-Taking in Contemporary America, Russell Sage Foundation, New York, 2001.<br>
+  <br>
+  Baily, W., Proportional Representation in Large Constituencies, Ridgeway, London, 1872.<br>
+  <br>
+  Balinski, M., The problem with apportionment, J. OR Society of Japan, 36 (1993) 134-148.<br>
+  <br>
+  Balinski, M. and S. Rachev, Rounding proportions: rules of rounding, Numerical Functional Analysis and Optimization 14 (1993) 475-501.<br>
+  <br>
+  Balinski, M. and S. Rachev, Rounding proportions: methods of rounding, The Mathematical Scientist 22 (1997) 1-26.<br>
+  <br>
+  Balinski, M. and V. Ramirez, Parametric methods of apportionment, rounding and production, Mathematical Social Sciences 37 (1999) 107-122.<br>
+  <br>
+  Balinski, M. and V. Ramirez, Mexico's 1997 apportionment defies its electoral law, Electoral Studies 18 (1999 117-124.<br>
+  <br>
+  Balinski, M. and H. Young, A new method for congressional apportionment, Proc. Nat. Acad. Sci., 71 (1974) 4602-4606.<br>
+  <br>
+  Balinski, M. and H. Young, The quota method of apportionment, Amer. Math. Monthly 82 (1975) 701-730.<br>
+  <br>
+  Balinski, M. and H. Young, The Jefferson method of apportionment, SIAM Review 20 (1978) 278-284.<br>
+  <br>
+  Balinski, M. and H. Young, On Huntington methods for apportionment, SIAM J. Applied Math. 33 (1977) 607-618.<br>
+  <br>
+  Balinski, M. and Young, Apportionment schemes and the quota method, Amer. Math. Monthly 84 (1977) 450-455.<br>
+  <br>
+  Balinski, M. and H. Young, Stability, coalitions, and schisms in proportional representation schemes, Amer. Pol. Science Rev. 72 (1978) 848-858.<br>
+  <br>
+  Balinski, M. and H. Young, Criteria for proportional representation, Operations Research 27 (1979) 80-95.<br>
+  <br>
+  Balinski, M. and H. Young, Quotatone apportionment methods, Math. of Operations Research, 4 (1979) 31-38.<br>
+  <br>
+  Balinski, M. and H. Young, The Webster method of apportionment, Proc. Nat. Acad. Sci., 77 (1980) 1-4.<br>
+  <br>
+  Balinski, M. and H. Young, Apportioning the United States House of Representatives, Interfaces 13 (1983) 35-43.<br>
+  <br>
+  Balinski, M. and H. Young, Apportionment, in Operations Research and the Public Sector, S. Pollack, M. Rothkopf, and A. Barnett, (eds.), Handbooks in Operations Research and Management Science, Volume 6, North-Holland, Amsterdam, p. 529-556.<br>
+  <br>
+  Balinski, M. and H. Young, Fair Representation, Yale University Press, New Haven, 1982, (2nd. ed.), Brookings Institution, 2001.<br>
+  <br>
+  Balinski, M. and H. Young, The Apportionment of Representation, in Fair Allocation, H. Young, (ed.), Proceedings of Symposia in Applied Mathematics, Volume 33, American Mathematical Society, Providence, 1985.<br>
+  <br>
+  Bennett, S., et al, The Apportionment Problem, COMAP (Consortium for Mathematics and its Applications), Lexington, 1986.<br>
+  <br>
+  Birkhoff, G., House monotone apportionment schemes, Proc. Nat. Acad. Sciences, 73 (1976) 684-686.<br>
+  <br>
+  Bliss, G., and E. Brown, L. Eisenhart, R. Pearl, Report to the President of the National Academy of Sciences, Feb. 9, 1929, in Congressional Record, 70th Congress, 2nd session, 70 (March 2, 1929) 4966-67.<br>
+  <br>
+  d'Hondt, V., La R&eacute;presentation Proportionnelles des Partis par un Electeur, Ghent, 1878.<br>
+  <br>
+  Dixon, R., Democratic Representation: Reapportionment in Law and Politics, Oxford U. Press, London, 1968.<br>
+  <br>
+  Dodgson, C., The Principles of Parliamentary Representation, Harrison and Sons, London, 1884 (Supplement, 1885, Postscript to Supplement, 1885.)<br>
+  <br>
+  Droop, H., On Methods of Electing Representatives, Macmillan, London, 1868.<br>
+  <br>
+  Eisner, M.,, Methods of Congressional Apportionment, UMAP Module 620, COMAP (Consortium for Mathematics and its Applications), Lexington.<br>
+  <br>
+  Ernst, L, Apportionment methods for the House of Representatives and the court challenges, Management Science 40 (1994) 1207-1227.<br>
+  <br>
+  Halacy, D., Census: 190 Years of Counting America, Elsevier, New York, 1980.<br>
+  <br>
+  Hare, T., The Election of Representatives, Parliamentary and Municipal, London, 1859.<br>
+  <br>
+  Hart, J., Proportional representation: Critics of the British electoral system 1820-1945, Oxford U. Press, Oxford, 1992.<br>
+  <br>
+  Hoag, C. and G. Hallett, Proportional Representation, Macmillan, New York, 1926.<br>
+  <br>
+  Humphreys, J., Proportional Representation,, Methuen, London, 1911.<br>
+  <br>
+  Huntington, E., The mathematical theory of the apportionment of representatives, Proc. of the National Academy of Sciences, 7 (1921) 123-127.<br>
+  <br>
+  Huntington. E., A new method of apportionment of representatives, Quart. Publ. Amer. Stat. Assoc, 17 (1921) 859-1970.<br>
+  <br>
+  Huntington, E., The apportionment of representatives in Congress, Transactions of the American Mathematical Society 30 (1928) 85-110.<br>
+  <br>
+  Huntington, E., Discussion: The Report of the National Academy of Sciences on Reapportionment, Science, May 3, 1929, pp. 471-473.<br>
+  <br>
+  Huntington, E., The Role of Mathematics in Congressional Apportionment, Sociometry 4 (1941) 278-282.<br>
+  <br>
+  Lucas, W., The Apportionment Problem, in Political and Related Models, Springer-Verlag.<br>
+  <br>
+  Mayberry, J. Quota methods for congressional apportionment are still non-unique, Proc. Nat. Acad. Sci. 74 (1978) 3537-3539.<br>
+  <br>
+  Morse, M. and J. Von Neumann, L. Eisenhart, Report to the President of the National Academy of Sciences, May 28, 1948, Princeton, N.J.<br>
+  <br>
+  Owens, F., On the apportionment of representatives, Quart. Publ. of Amer. Stat. Assoc. 17 (1921) 958-968.<br>
+  <br>
+  Oyama, T., On a parametric divisor method for the apportionment problem, J. Operations Research of Japan 34 (1991) 187-221.<br>
+  <br>
+  Oyama, T. and T. Ichimori, On the unbiasedness of the parametric divisor method for the apportionment problem, J. Operations Research of Japan 38 (1995) 301-325.<br>
+  <br>
+  Poston, The U.S. Census and Congressional Apportionment, <u>Society</u>, (1997), 34(3): 36-44<br>
+  <br>
+  Rae, D., The Political Consequences of Electoral Law, Rev. Ed., Yale University Press, New Haven, 1971.<br>
+  <br>
+  Saari, D., Apportionment methods and the House of Representatives, Amer. Math. Monthly,, 85 (1978) 792-802.<br>
+  <br>
+  Saari, D., The Geometry of Voting, Springer-Verlag, New York, 1994.<br>
+  <br>
+  Stevens, J., Opinion in United States Department of Commerce v. Montana, 112 Supreme Court 1415, 1992.<br>
+  <br>
+  Stiill, J. A class of new methods for congressional apportionment, SIAM J. Applied Math. 37 (1979) 401-418.<br>
+  <br>
+  Willcox, W., The apportionment of representatives, Amer. Econ. Rev. 6 (1916) 3-16<br>
+  <br>
+  Young, H., Equity, Princeton U. Press, Princeton, 1994.<br>
+  &nbsp;</p>
+
+<hr>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

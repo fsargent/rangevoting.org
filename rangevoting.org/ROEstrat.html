@@ -1,0 +1,450 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Strategy in monotone majority-top-respecting voting methods
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2> Range voting's superiority versus every tie-avoiding
+monotone majority-top-respecting rank-order(equalities permitted) 
+voting method
+</h2>
+
+<p><small>By Warren D. Smith, June 2009 </small></p>
+
+<p>
+In a previous
+3-part paper, I had proved various results of the form that "range voting" was a superior
+single-winner voting method (measured by "Bayesian Regret") to every rank-order voting method.
+E.g. this was shown for N=3 candidates, for any mixture of "honest" and "strategic" voters,
+under the RNEM ("random normal elections model") with V&rarr;&infin; voters, 
+and also for honest voters for
+N=4,5,...,31 candidates.
+</p>
+
+<p>
+However, one criticism of those results was that they pertained only to voting systems based on
+<i>strict</i> rank-order ballots.
+What if equalities are permitted in the rank orderings?  For example, an allowed
+vote in a 5-candidate election might then be "A&gt;B=C&gt;D=E."
+In internet voting-method discussion groups over the last 15 years, a consensus has arisen
+that permitting equalities is very important to allow good performance in the presence of
+strategic voters.
+</p>
+<p>
+We shall now give some extremely <i>simple</i> arguments indicating
+range voting's superiority 
+(with V&rarr;&infin; voters, either all-honest or all-strategic) 
+over every such voting method
+which satisfies
+</p>
+<blockquote>
+<b>P1.</b> &nbsp; Monotonicity: worsening the rank of X in a ballot
+(leaving the rest of the ballot unaltered) cannot
+increase X's winning chances; and improving the rank of X cannot decrease them.
+<br>
+<b>P2.</b> &nbsp; Respects Majority-Top:
+if X is ranked unique-top by a majority of the voters, then X must win.
+<br>
+<b>P3.</b>  &nbsp; No "dictator" (voter who singlehandedly can always control the winner) exists.
+<br>
+<b>P4.</b>  &nbsp; Ties and near-ties (in which a single vote can alter the winner)
+have likelihood approaching 0 when the number of voters is made very large;
+and (&ge;3)-way ties and near-ties have likelihood approaching 0 faster (i.e. approach 0
+<i>relative</i> to the 2-way tie+near-tie likelihoods).
+<!-- </li><li>
+Deterministic. -->
+</blockquote>
+<p>
+Of these properties, almost every voting method seriously proposed by mankind satisfies
+P3 &ndash; indeed satisfies the stronger demands of
+"anonymity" and "neutrality" (permuting the voters has no effect on the winner; 
+permuting the candidates has no effect aside from same-permuting the winner).
+Also P3 is, strictly speaking, not really needed at all because it is implied by P2.
+We confess that really P4 is about the
+voting method <i>and</I> some underlying probabilistic model
+describing how the voters generate their votes.
+P4 is also usually satisfied automatically,
+so only properties P1 &amp; P2 have much interest.
+Examples of voting methods satisfying all these properties (all these voting methods
+that we do not define here, are defined in Tideman's book):
+<ul><li>
+Plurality, 
+</li><li>
+Black (Condorcet with Borda as fallback, 
+where note Borda has to be defined
+in such a way it remains monotonic when rank-equalities are permitted),
+</li><li>
+Schulze-beatpaths Condorcet,
+</li><li>
+Tideman ranked-pairs Condorcet,
+</li><li>
+Simpson-Kramer minmax Condorcet.
+</li></ul>
+Examples of voting methods <i>failing</I> to satisfy the full set of properties:
+<ul><li>
+Instant Runoff Voting (IRV), Coombs-elimination, Nanson-Condorcet, 
+and Woodall 1997's WBS-IRV-Condorcet method &ndash; all these are not monotone.
+(The rules of IRV are 
+that the candidate with the fewest votes is repeatedly eliminated [both from the election 
+and from all ballots], where a ballot co-equally ranking K different candidates top 
+is regarded as giving them each 1/K "votes"; the rules of WBS-IRV are the same except 
+that as soon as a "beats-all" winner appears among the still-remaining candidates, the 
+process ceases and he wins.)
+However, our main theorem below would still apply even to these systems if their voters
+<i>acted like</i> they <i>thought</i> these methods were monotone.
+</li><li>
+Borda count (does not respect majority-top)
+</li><li>
+Copeland's Condorcet system (with the number N of candidates fixed and the number V of
+voters taken to &infin;, the tie-probability approaches a nonzero <i>constant</i>;
+for proof of this, see 
+<a href="PuzzlePage.html#p100">puzzle #100</a>
+on the
+<a href="https://rangevoting.org/RangeVoting.org">RangeVoting.org</a> puzzle page
+<a href="PuzzlePage.html">/PuzzlePage.html</a>).
+However, Copeland <i>would</i> satisfy the conditions if it were modified to
+adjoin a suitable tie-breaking method which did not destroy monotonicity.
+</li></ul>
+<p>
+We shall soon state the argument.  
+Throughout we assume the number of voters is V&rarr;&infin; and
+the number of candidates is some fixed integer N&ge;3.
+Our model of strategy will be
+(as is common in the literature)
+"hindsight-based." Specifically, we do the election with honest votes
+(each voter voting in isolation), then each voter is now granted
+full information about the results and is permitted (in isolation acting under the
+assumption the other votes will change in a randomized manner but
+are unlikely to change much) to alter her vote;
+and finally we consider the result of the modified election.
+</p>
+<h2>Honest voters</h2>
+<p>
+In a probabilistic model such as the RNEM, the probability that any  
+voter regards any two candidates as having exactly-equal utility values, is zero.
+Therefore, honest voters will  <i>never use</I> equal rankings.
+Therefore, our extension to permit equalities in rankings, has no effect, 
+and the previous papers'
+results about range voting's superiority versus rank-order voting methods, remain in effect.
+</P>
+<h2>Strategic voters</h2>
+<p>
+<b>1.</b> With high probability, your vote (in an election with a large number V of voters) is
+going to have no effect &ndash; you cannot change the winner since you cannot
+create or break a tie because
+the election is too far away from being a tie. 
+In this case, how you
+vote is irrelevant.
+</p><p>
+<b>2.</b>
+ In the unlikely event your vote <i>can</I> have an effect, it is most
+likely to be because you have a chance to create or break a tie
+between <i>two</i> candidates &ndash; call them A &amp; B &ndash; 
+the two "frontrunners."
+More precisely, you have an opportunity to make either win.
+(Without loss of generality we shall assume you prefer A over B.)
+</p><p>
+<b>3.</b>
+Much less likely still is the situation where your vote actually
+has the power to make one of <i>three</i> or more candidates win (you choose
+which).  
+Due to P4 we shall 
+<i>neglect</I> that as just too incredibly unlikely in the 
+V&rarr;&infin; limit.
+</p><p>
+<b>4.</b>
+If in range voting the two frontrunners are A &amp; B, your
+strategically best vote is
+scoring A max, B min.  
+Now your scores for the others are irrelevant if only A &amp; B can win, but
+to help yourself maximally in the ultra-unlikely 3-way-tie case in (3), you'd want to
+(semi-honestly) score everybody you prefer over A, also max,
+everybody you hate worse than B, also min, and everybody you think lies
+between A &amp; B, ordered in some non-dishonest manner (which we shall not specify any more
+precisely).  This strategic
+vote then is "semi-honest," that is, never
+orders X&gt;Y for any X,Y for which you honestly feel Y&gt;X.
+</p><p>
+<b>5.</b>
+In a monotone rank-order voting method
+you cannot go wrong, i.e. cannot make your vote strategically suboptimal,
+by ranking A unique-top and B unique-bottom &ndash; both of
+which, in general, will be dishonest, but this is always strategically
+correct.   [Proof of that by contradiction: if you like some other
+vote, then I will alter your vote by raising A to unique-top and dropping B to unique-bottom, 
+and by monotonicity (P1) and the assumption (3) that only A or B can win,
+these alterations can only make the vote more strategic. Q.E.D.]
+How one should vote about the candidates <i>other</I> than A and B is, 
+however, much more mysterious.   For example, it could be that some magic 
+ordering of the others does the job and gives A the win.  
+</p><p> 
+Remark: Voting "honestly" (or even merely "semi-honestly" where you sometimes dishonestly rank
+candidates equal but never opposite-order them)
+is known to be incorrect strategy
+for any deterministic rank-order 
+voting method in our class.
+(In general. Of course in <i>some</i> elections for some voters, honesty is best strategy.)
+This is the "Gibbard-Satterthwaite theorem."
+This remark will not be needed for our argument, but nevertheless is illuminating and hence 
+we shall illustrate it with several concrete examples (whose details will only be sketched;
+the king-chicken theorem is described and proven by Maurer 1980 and extended by me as described
+in that citation):
+</p>
+<small>
+<ol type="a">
+<li>
+Consider the Simpson-Kramer minmax Condorcet voting method
+where only two of the candidates (A &amp; B)
+have a chance of victory because they are the only two 
+whose largest-defeats are small (and we shall assume
+they are almost equally small so that your vote can decide
+the issue).  Then if the two key pairwise defeats are C-beats-A and D-beats-B, you will want to 
+rank D strictly above B and A strictly above C <i>even if you honestly feel the opposite in both 
+cases</i>.  Clearly in many situations this and only this can assure A's victory.
+</li><li>
+In Tideman's ranked-pairs Condorcet voting method:
+Here the crucial tie might be between a C-over-A defeat and a D-over-E defeat,
+and now you may need to strictly-dishonestly-rank {D,E} in order to allow A to win.
+</li><li>
+To get <i>quantitative</I> about it,
+consider the Schulze-beatpaths method in a probabilistic model where the (N-1)N/2 
+pairwise victory margins are i.i.d. 0-centered normal deviates.  In that case,
+by my strengthening (the proof is essentially the same as the original)
+of Maurer's "king chicken theorem" we know that
+for every ordered pair (X,Y) of candidates,
+X <!-- perhaps directly defeats Y, and  -->
+"defeats" Y via at least N/5 different 2-defeat chains (such as "X beats Q and Q beats Y"),
+with probability&rarr;1 exponentially as N&rarr;&infin;.   
+From this it follows that <i>if</i> some single ballot has the power to alter the election winner,
+then with probability&rarr;1 as V&rarr;&infin; it can only lead to <i>two</i> winners 
+(call them A &amp; B);
+and with probability&ge;C, for some positive
+constant C (depending on N) which approaches at least 3/4 when N&rarr;&infin;,
+at least one of the two crucial pairwise defeats will fail to involve A or fail to involve B
+(call the pair involved {D,E} where D&ne;E and <nobr>{D,E}&ne;{A,B}).</nobr>
+This implies that strictly-dishonest ordering of {D,E} will be strategically forced
+(for any given voter)
+in Schulze voting in which that voter ranks A unique top and B unique bottom, 
+with  probability&ge;K where K is a positive constant 
+(approaching at least 3/8 when N&rarr;&infin;), in situations where any lone
+voter has any power.   
+</li><li>
+By a further extension of Maurer's king chicken theorem now involving L-long "defeat paths"
+instead of 2-long (where now L is of order logN), one can indeed demonstrate that,
+<i>
+with probability exponentially approaching 1 as N&rarr;&infin; in N-candidate "random elections,"
+at least a constant fraction K
+of Schulze voters in random elections 
+will feel strategically forced to <u>strictly</u>-misorder at least
+one pair of candidates in their vote, where K&rarr;3/4 when N&rarr;&infin;.
+"Feel strategically forced" means that if they do not do this, their expected
+utility will decrease.</i>
+</li><li>
+More generally, 
+Friedgut, Kalai, and Nisan 2008 gave a <i>quantitative</i>
+version of the Gibbard-Satterthwaite theorem.
+It yields results of the above kind in very general settings, but their bounds are
+rather weak compared to (c) and (d) above.
+<!--
+at least a positive absolute 
+constant fraction of voters
+will feel strategically forced to be dishonest, in any anonymous,
+strict-rank-order voting method,
+in random (N=3)-candidate elections respecting majority-top, with probability greater than
+a positive absolute constant divided by V.  
+ This sucks since it is weak. -->
+</li>
+<!-- <li>
+If the voting system obeys property P4 in the sense that we can neglect 
+(&ge;3)-way-near-ties,
+then it follows from the random-elections assumption and anonymity that 
+at least a positive absolute
+constant fraction of voters
+will feel strategically forced to be dishonest, in any anonymous,
+strict-rank-order voting method,
+in random (N=3)-candidate elections respecting majority-top, with 
+(conditional) probability greater than
+a positive absolute constant,
+<i>restricted to those elections in which any voter has any power.</i>
+??OH? Priblem is, semi-dishonesty could still work.
+</li> -->
+</ol>
+</small>
+<p>
+We shall not specify how our voters rank the others besides A and B (aside from pointing
+out that ranking A unique-top and B unique-bottom cannot sacrifice strategic optimality).
+</p><p>
+<b>6.</b>
+If all voters cast votes of the type in (5), then
+(in the absence of a perfect tie, which P4 says has likelihood&rarr;0)
+by P2 we know that A or B must win.
+Furthermore, all our voting methods will yield the <i>same</I> winner, namely the same winner
+as we get from strategic plurality voting.  Hence in this sense, no voting method of
+this form improves over plurality voting (contrary to advertising!)
+&ndash; all have the same Bayesian regret &ndash;
+for voters of the strategic ilk in (5).  
+</p><p>
+<b>7.</b>
+However, <i>approval voters</i> will approve one (but not both, if they
+want to be strategic) of {A,B} and then as we discussed in (4), it then, when all
+the voters act this way,
+becomes entirely possible that (contrary to pre-election 
+expectation) somebody other than A and B will win.
+Strategic approval (and range) voting thus is <i>inequivalent</i>
+to strategic plurality voting, and  indeed results in my previous papers indicate
+approval's superiority
+(measured by Bayesian Regret under the RNEM).
+To be a bit more general about it, we conclude:
+</p><p>
+<b>THEOREM:</b>
+<i>In every probabilistic setting in which all-strategic approval voting yields
+a better Bayesian regret than all-strategic plurality voting of the form described in (5) above,
+it also is better than <u>every</u> other rank-order(equalities permitted) voting method
+satisfying properties P1-P4, assuming the 100%-strategic-voters in the
+rank-order-method  all take advantage of
+the theorem that ranking A and B unique-top and unique-bottom, is always optimally
+strategic in a situation where your vote cannot hope to make the winner be anybody else.
+</i>
+</P>
+<p>
+In view of our previous papers' 
+experience and also in view of range voting's superiority-results
+with either 100%-honest or 100%-strategic voters, it now seems plausible that
+claims also could be formulated arguing range is superior
+for any honest+strategic voter <b>mixture</b>.  
+But I have no proof of that.
+Re that, the following <b>mini-theorem</b>
+perhaps also is of some interest: in the event the rank-order(equalities permitted)
+voters were to cast only "approval style" ballots (of form like A=B&gt;C=D=E involving at most
+<i>one</i> "&gt;") then every Condorcet voting method, the Borda count,
+and approval voting, all elect the same winner; but IRV's winner can differ.
+[For proof of this mini-theorem, see <a href="PuzzlePage.html#p113">puzzle #113</a> on the 
+<a href="https://rangevoting.org/RangeVoting.org">RangeVoting.org</a> puzzle page
+<a href="PuzzlePage.html">/PuzzlePage.html</a>.]
+</p>
+<h2> About strategy in real life </h2>
+<p>
+The "naive exaggeration strategy" of (in rank-order ballot methods)
+ranking one of the two frontrunners artificially top and the other artifically bottom,
+in fact seems to be what about 80-95% of the voters in Australia do (at least if "bottom"
+is weakened to "bottom or second-from-bottom in, say, a 7-choice field").  
+This is true even though
+the rank-order-ballot voting methods used in Australia (Instant Runoff Voting IRV 
+for the single-winner
+House elections, and Hare-Droop reweighted STV for multiwinner Senate elections) are not monotonic
+&ndash;
+and even though with IRV, lowering a candidate B in a ballot never helps his rival A
+whom you ranked higher.  
+We conclude from this that the naive exaggeration strategy is very attractive in real life &ndash;
+perhaps to an even greater extent than is logically justified.
+</p>
+<p>
+Critics have asked me whether I considered it plausible that many
+voters would vote dishonestly even though the expected payoff for doing so, might
+be extremely small.  My answer is "yes."
+I also comment that
+</p>
+<ol>
+<li>
+Many millions of voters in the USA vote, even though the expected payoff
+for doing so (considering the chances your vote will alter the election outcome, 
+and the time and transport costs required for you to vote) is not merely "small" but in fact
+<i>negative</i>.
+</li><li>
+Barry C. Burden has estimated from NES data that about 90% of the voters whose honest favorite
+in the 2000 US presidential contest was
+Ralph Nader, actually voted (strategically) for somebody else.
+</li><li>
+The Australian 80-95%-naive-strategy figure arises mainly from official party-recommended
+strategic ballot rank-orderings ("how to vote" cards).   Note that since parties have
+access to computers, experts, pollsters, etc, even complicated strategies do not 
+necessarily pose an obstacle.   This rate (80-95%) while not 100% still is so great that 
+our theorem <i>effectively</i> applies for IRV &ndash; meaning IRV
+victories by candidates not in one of the two major parties
+are almost impossible under normal circumstances.  
+Indeed, in the 150 year-2007 Australian 
+House elections,
+zero candidates won who were running under the flag of a third party (same as in the preceding
+election cycle).  Apparently there were at least 9 cases where the Green-party candidate was
+a beats-all "Condorcet winner" but nevertheless lost. 
+That indicates that even with 95% naive-strategy rate,
+a noticeable number of third-party victors still might occur with Condorcet voting, 
+even though not with IRV.  The difference is because in situations where the two frontrunner
+have an almost even split of the top-rank votes (say 47% versus 48%) a third-party
+candidate can be a beats-all winner &ndash; but could never win with IRV.
+</li></ol>
+<p>
+Somewhat surprisingly, in all of the (&asymp;10)
+studies of <i>range voting</i> in real life that I am aware of,
+have found remarkably high rates (e.g. &ge;75%) of manifestly non-strategic voting,
+e.g. votes <i>not</i> maxing and minning the scores of all the candidates.
+A partial explanation for this is that after one maxes and mins the scores for the two 
+frontrunners,
+the payoff for doing the same to the remaining N-2
+candidates (as opposed to being honest about them)
+is usually far smaller in comparison.   
+Another hypothesis would be that voters experience a 
+certain amount of joy (i.e. utility payoff) merely from
+the <i>act</i> of voting honestly and feeling they are doing something socially useful.
+This psychological payoff is ultimately a consequence of Darwinian evolution on <i>tribes</i>.
+And (we speculate further) it is greater in voting systems permitting greater expressivity, 
+i.e. greater opportunity for a voter to be honest.   
+Range voting has greater expressivity than all common
+rival schemes.   If this speculation is correct, then range voting will enjoy an
+<i>additional</i> advantage over 
+those rival voting schemes, <i>beyond</i> that predictable by cold mathematics
+about inhuman "voting entities" alone.
+</p>
+
+<h2> References </h2>
+<p>
+Allan F. Gibbard:
+Manipulation of Schemes That Mix Voting with Chance,
+Econometrica 45,3 (1977) 665-681.
+</p><p>
+Ehud Friedgut, Gil Kalai, Noam Nisan:
+<a href="mani-focs.pdf">Elections can be manipulated often</a>,
+49th FOCS conference [Foundations of Computer Science 2008] 243-249.
+</p><p>
+Stephen B. Maurer: <a href="MaurerKingChicken.pdf">The king chicken theorems</a>, 
+Mathematics Magazine 53,2 (1980) 67-80.
+[Maurer's results are re-proven and extended in
+<a href="PuzzlePage.html#p26">puzzle 26</a>
+at the
+<a href="https://rangevoting.org/RangeVoting.org">RangeVoting.org</a> puzzle page
+<a href="PuzzlePage.html">/PuzzlePage.html</a>.]
+</p><p>
+Warren D. Smith:
+The Best Rank-Order Voting System versus Range Voting, etc (3-part paper)
+papers #101, #102, #103 at
+<a href="WarrenSmithPages/homepage/works.html">
+/WarrenSmithPages/homepage/works.html</a>.
+One may also find a great deal of information about range voting and other voting systems at
+<a href=""></a>.
+</p><p>
+T.N.Tideman: Collective decisions and Voting, Ashgate 2006.
+</p><p>
+Douglas R. Woodall: 
+Monotonicity of single seat preferential election rules, Discrete Applied Maths. 77,1 (1997) 81-98.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+
+
+

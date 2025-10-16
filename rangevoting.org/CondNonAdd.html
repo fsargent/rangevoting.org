@@ -1,0 +1,300 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Example of Condorcet Non-additivity
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Example of Condorcet Non-additivity </H2>
+
+<p>
+Consider the following example.
+</p>
+
+<table align="center" cellpadding="15">
+<tr><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" align="left">
+<caption>District I</caption>
+<tr bgcolor="white">
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+3
+</td>
+<td align="center">
+A>B>C>D
+</td>
+</tr>
+<tr>
+<td align="center">
+2
+</td>
+<td align="center">
+B>C>A>D
+</td>
+</tr>
+<tr>
+<td align="center">
+2
+</td>
+<td align="center">
+C>A>B>D
+</td>
+</tr>
+</table>
+</td><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" align="right">
+<caption>District II</caption>
+<tr bgcolor="white">
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+3
+</td>
+<td align="center">
+A>D>C>B
+</td>
+</tr>
+<tr>
+<td align="center">
+2
+</td>
+<td align="center">
+D>C>A>B
+</td>
+</tr>
+<tr>
+<td align="center">
+2
+</td>
+<td align="center">
+C>A>D>B
+</td>
+</table>
+</td></tr></table>
+
+<p>
+In district I, A wins (in most Condorcet methods, anyhow).
+In district II, (same as district I but the roles of B and D are swapped),
+<b>A also wins</b>.
+But in the combined 2-district country,
+<b>C</b> is the Condorcet winner (beats A by 8:6, beats B and D by 9:5).
+</p>
+
+<p>
+<b>Consequently</b>,
+some Condorcet methods <i>cannot</i> be "counted in Precincts."
+For example, the <a href="SmithIRV.html">Smith,IRV method</a>
+invented by <a href="RVPapers.html">Woodall</a>
+is Condorcet but I see no
+efficient way to count it in precincts if there are a large number
+of candidates (say 100 candidates, if you want something concrete to
+think about &ndash; see any feasible way to count it other
+than a centralized count? I don't).
+</p>
+
+<p>
+However, the Condorcet methods that depend only on the matrix of "pairwise totals"
+<i>can</i> be counted in precincts (despite the nonadditivity paradox illustrated above!)
+in the sense that each precinct can find and publish its pairwise matrix
+and the summed matrix
+will be used for the whole country.
+</p>
+
+<hr>
+
+<p>
+Here is a <b>second example</b> now with only 3 candidates:
+</p>
+
+<table align="center" cellpadding="15">
+<tr><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="aqua" align="left">
+<caption>District I</caption>
+<tr bgcolor="white">
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+30
+</td>
+<td align="center">
+A>B>C
+</td>
+</tr>
+<tr>
+<td align="center">
+20
+</td>
+<td align="center">
+B>C>A
+</td>
+</tr>
+<tr>
+<td align="center">
+20
+</td>
+<td align="center">
+C>A>B
+</td>
+</tr>
+<tr>
+<td align="center">
+20
+</td>
+<td align="center">
+B>A>C
+</td>
+</tr>
+</table>
+</td><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="aqua" align="right">
+<caption>District II</caption>
+<tr bgcolor="white">
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+21
+</td>
+<td align="center">
+A>C>B
+</td>
+</tr>
+<tr>
+<td align="center">
+20
+</td>
+<td align="center">
+C>B>A
+</td>
+</tr>
+<tr>
+<td align="center">
+20
+</td>
+<td align="center">
+B>A>C
+</td>
+</tr>
+</table>
+</td></tr></table>
+
+<p>
+<b>A</b> wins in district I with every Condorcet method since
+A beats B pairwise 50:40 and also beats C pairwise 50:40. 
+</p><p>
+In district II, the situation is completely symmetric between A, B, and C
+except for a single extra ballot of type "A>C>B."  Therefore, <b>A</b> wins
+in every Condorcet method ever seriously proposed, although
+A is not a "beats-all winner" because there is a cycle.
+</p><p>
+But in the combined country, <b>B</b> wins
+with every Condorcet method since
+B beats A pairwise 80:71 and also beats C pairwise 90:61.
+</p>
+
+<hr>
+
+<p>
+For those who cannot get enough, here is a <b>third example</b> again with only 3 candidates:
+</p>
+
+<table align="center" cellpadding="15">
+<tr><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="orange" align="left">
+<caption>District I</caption>
+<tr bgcolor="white">
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+3
+</td>
+<td align="center">
+A>B>C
+</td>
+</tr>
+<tr>
+<td align="center">
+4
+</td>
+<td align="center">
+B>C>A
+</td>
+</tr>
+<tr>
+<td align="center">
+3
+</td>
+<td align="center">
+C>A>B
+</td>
+</tr>
+</table>
+</td><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="orange" align="right">
+<caption>District II</caption>
+<tr bgcolor="white">
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+2
+</td>
+<td align="center">
+A>B>C
+</td>
+</tr>
+<tr>
+<td align="center">
+3
+</td>
+<td align="center">
+B>A>C
+</td>
+</tr>
+</table>
+</td></tr></table>
+
+<p>
+In district I, the situation is completely symmetric between A, B, and C
+except for a single extra ballot of type "B>C>A."  Therefore, <b>B</b> wins
+in every Condorcet method ever seriously proposed, although
+B is not a "beats-all winner" because there is a cycle.
+</p><p>
+In district II, <b>B</b> is ranked top by 60% of the voters hence
+wins in
+in every Condorcet method.
+(Also wins with Borda and virtually every other voting method.)
+</p><p>
+But in the combined country, <b>A</b> wins
+with every Condorcet method since
+A beats B pairwise 8:7 and also beats C pairwise 8:7.
+</p>
+
+<br>
+<p><a href="CondNonAdd.html">Analogous non-additivity problem for IRV system</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

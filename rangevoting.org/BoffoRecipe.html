@@ -1,0 +1,233 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Rivest 3ballot & WD Smith's Boffo secure voting schemes - Recipe only
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> The recipe for  Rivest's "3ballot" and Smith's "boffo" schemes for secure voting </H2>
+
+<p><small>By Warren D. Smith 3 Oct 2006</small></p>
+
+<p>
+Here we just describe the bare bones procedures.
+To understand the ideas behind it and to understand exactly what is "secure" about it,
+check the <a href="Rivest3B.html">detailed exposition</a>.
+For the recipe for Sleator's "cheapo" semi-secure plan 
+(which is simpler but less secure than these) click this:
+<a href="SleatorCheapo.html">cheapo plan</a>.
+</p>
+
+<H3>Secure Approval Voting via 3-ballot:</H3>
+
+<ol>
+<li>
+Voter decides (for some given candidate "Gladstone") whether she approves
+Gladstone or not.
+</li><li>
+Voter submits 3 ballots about Gladstone, 2 of which agree with her
+decision and one of which disagrees.  (e.g. If approve, then do two approves and one disapprove.)
+Simultaneously she signs a form saying "I, <u>Jill Voter</u>, 
+address <u>57 Bogus Road, Baloney Town</u> certify that I just voted
+about Gladstone."  (And shows ID to the polling officials...)
+</li><li>
+Trivially simple machine (a) checks that these 3 ballots obey the 2+1 rule,
+(b) drops them into a bin in random order, and (c) spits out a government-certified 
+official ballot copy ("receipt") of <i>one</i> of the three ballots, for the voter to take home
+and keep in a safe place.  
+It is important that (i) this machine be so simple that it cannot possibly be
+<i>remembering</i> the ballot-triple and (ii) it is the <i>voter</i> 
+who chooses which of the three to copy.
+</li><li>
+Government posts all ballots in all bins onto a world-readable bulletin board.
+For example, if you voted for Gladstone, then up there on that bulletin board,
+somewhere, will be your 3 ballots saying "I approve Gladstone,"
+"I approve Gladstone" ,
+and
+"I disapprove Gladstone"
+respectively.  
+Also posted (on another list) will be the names &amp; addresses of all the voters who voted
+about Gladstone.
+</li><li>
+Anybody can now total the votes to find out who is the most-approved candidate (election winner).
+</li><li>
+The voter can check that her vote was used in unaltered form
+by simply going to the bulletin board and looking
+up ballot number 16674568703  (Or whatever her ballot number is; it says the
+number on her official copy)  and comparing it with her official copy.
+[If differs, raise hell.]
+</li><li>
+Voter can also check that her name is on the list (lookup "Jill Voter").
+</li><li>
+Reporters can check that the names posted on the list really are of real people
+who live at their addresses and who agree that they voted about Gladstone.
+[If not, raise hell.]
+</li></ol>
+
+<H3>Secure Range Voting via 3-ballot:</H3>
+
+<ol>
+<li>
+Voter decides (for some given candidate "Gladstone") what score S, on an 0-9 scale, to
+award Gladstone.
+</li><li>
+Voter submits 3 ballots about Gladstone, with scores A,B,C where
+A+B+C=S+9 and 0&le;A&le;9 and 0&le;B&le;9 and 0&le;C&le;9.
+Simultaneously she signs a form saying "I, <u>Jill Voter</u>, 
+address <u>57 Bogus Road, Baloney Town</u> certify that I just gave 
+Gladstone a score."   (And shows ID to the polling officials...)
+</li><li>
+Trivially simple machine (a) checks that these 3 ballots obey the 9&le;A+B+C&le;18
+and 0&le;A,B,C&le;9 rules.
+(b) drops them into a glass-walled
+bin in random order, and (c) spits out a government-certified 
+official ballot copy ("receipt") of <i>one</i> of the three ballots, for the voter to take home
+and keep in a safe place.  
+It is important that (i) this machine be so simple that it cannot possibly be
+<i>remembering</i> the ballot-triple &ndash; preferably <i>not</i> computerized &ndash;
+and (ii) it is the <i>voter</i> 
+who chooses which of the three to copy.
+<blockquote>
+Worried that this might be too complicated for voters (especially
+Florida voters) or for a <i>non</i>computerized
+checking machine?  Check <a href="JKMechAdd.html">this out</a>.
+</blockquote>
+</li><li>
+Government posts all ballots in all bins onto a world-readable bulletin board.
+For example, if you voted for Gladstone, then up there on that bulletin board,
+somewhere, will be your 3 ballots saying "Gladstone=7,"
+"Gladstone=3" ,
+and
+"Gladstone=5" (or whatever)
+respectively.  
+Also posted (on another list) will be the names &amp; addresses of all the voters who voted
+about Gladstone.
+</li><li>
+Anybody can now total the votes to find out who is the candidate with the 
+highest average score (election winner).
+</li><li>
+The voter can check that her vote was used in unaltered form
+by simply going to the bulletin board and looking
+up ballot number 16674568703  (Or whatever her ballot number is; it says the
+number on her official copy)  and comparing it with her official copy.
+[If differs, raise hell.]
+</li><li>
+Voter can also check that her name is on the list (lookup "Jill Voter").
+</li><li>
+Reporters can check that the names posted on the list really are of real people
+who live at their addresses and who agree that they voted about Gladstone.
+[If not, raise hell.]
+</li></ol>
+
+<H3>Secure Plurality Voting via BOFFO (and incorporating defenses against collusive attacks):</H3>
+
+<p>
+We shall assume it is an N-candidate election for some N&ge;2.
+</p>
+
+<ol>
+<li>
+Voter decides for which of the N candidates she wishes to vote.
+Suppose the candidate she chooses is <i>B</i>ozo.
+</li><li>
+Voter also chooses two other candidates, call them for concreteness
+<i>O</i>sbert and <i>F</i>oo.  These could be anybody.   It is also allowed
+for Osbert and Bozo to be the same (or Osbert and Foo to be the same, or
+all three the same, or all three different).
+</li><li>
+Voter submits these 5 ballots:
+<table border="2" cellpadding="1">
+<tr bgcolor="#ffeeee"><td>FOR Bozo</td></tr>
+<tr bgcolor="#ffeeee"><td>FOR Osbert</td></tr>
+<tr bgcolor="#ffeeee"><td>FOR Foo</td></tr>
+<tr bgcolor="aqua"><td>AGAINST Foo</td></tr>
+<tr bgcolor="aqua"><td>AGAINST Osbert</td></tr>
+</table>
+Simultaneously she signs a form saying "I, <u>Jill Voter</u>, 
+address <u>57 Bogus Road, Baloney Town</u> certify that I just voted."
+(And shows ID to the polling officials...)
+</li><li>
+Trivially simple machine (a) checks that these 5 ballots obey the BOFFO format
+rules above (i.e. there are exactly 3 FOR and 2 AGAINST votes (in some order,
+not necessarily the order shown) and the AGAINST
+votes each are paired with a FOR vote that it cancels out),
+(b) drops them into a bin in random order, and (c) spits out a government-certified 
+official ballot copy ("receipt") of (A) <i>one</i> or (B) <i>two</i> or
+(C) <i>two-copies-of-the-same-one</i>
+of the five ballots, for the voter to take home
+and keep in a safe place.  
+It is important that (i) this machine be so simple that it cannot possibly be
+<i>remembering</i> the ballot-quintuple and (ii) it is the <i>voter</i> 
+who chooses which one (or two) of the five to copy, although we can allow it to
+be an <i>obviously-random device</i> (rather than the voter) which decides among
+possibilities A, B, or C.   A random device can at this point also decide
+to make the voter be a "lucky" voter who also gets a take-home official copy of some
+previously-cast ballot randomly selected from the bin.
+</li><li>
+Government posts all ballots in all bins onto a world-readable bulletin board.
+For example, with this vote, up there on that bulletin board,
+somewhere, will be your 5 ballots saying "FOR Bozo", "FOR Osbert", "AGAINST Osbert" etc.
+Also posted (on another list) will be the names &amp; addresses of all the voters who voted
+in this race.
+</li><li>
+Anybody can now total the votes to find out who is the candidate with the 
+largest number of votes (election winner) where each FOR vote counts as +1 and each AGAINST 
+vote as -1.
+</li><li>
+The voter can check that her vote was used in unaltered form
+by simply going to the bulletin board and looking
+up ballot number 16674568703  (Or whatever her ballot number is; it says the
+number on her official copy)  and comparing it and with her official copy.
+[If differs, raise hell.]
+</li><li>
+Voter can also check that her name is on the list (lookup "Jill Voter").
+</li><li>
+Reporters can check that the names posted on the list really are of real people
+who live at their addresses and who agree that they voted in that race.
+[If not, raise hell.]
+</li></ol>
+
+<H3> Why the talliers cannot alter your vote and cheat </H3>
+<p>
+Yes, an evil government <i>could</i> alter the two (or four)
+votes/scores Jill Voter cast that she does <i>not</i>
+have a certified copy of, but the government does not <i>know which</i> those two (or four) were
+&ndash;
+so if it tries, it is liable to mess with the one that she does have a copy of, 
+enabling her to prove the cheating happened.
+If any substantial number of votes are altered, detection of
+the cheating becomes essentially certain.
+</p>
+
+<H3> Why you can't sell your vote or be coerced </H3>
+<p>
+Because your vote is secret.  So the vote-buyer or coercer cannot be sure you really
+voted the way he wanted.  Even if you intentionally show the vote-buyer your receipt
+(even all of them if you have more than one),
+the vote-buyer still has absolutely no idea how you really voted 
+in total because
+he cannot see the other parts of your vote (for which you have no receipt) &ndash; all
+possibilities are still open.  Even if you swear a sacred oath that you voted
+for Bozo in those other parts, you have no way to prove it to the vote buyer.  (You might
+swear another oath to another buyer tomorrow, that you voted for Clodnik!)
+</p>
+
+
+<br>
+<p><a href="http://theory.csail.mit.edu/%7Erivest/Rivest-TheThreeBallotVotingSystem.pdf">Link to Rivest's original paper/notes (pdf)</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+

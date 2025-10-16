@@ -1,0 +1,144 @@
+<html>
+<head>
+<title>
+RangeVoting.org - STV (single transferable vote) example election
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> An STV (single transferable vote) example election </H2>
+
+<p><small>By Stephen H. Unger
+(Professor Emeritus, Computer Science and Electrical Engineering,
+Columbia University, NY)
+</small></p>
+<p>
+In order to check my understanding of how STV works in a 
+<a href=https://rangevoting.org/PropRep.html">proportional representation</a>
+(PR) election, I made up a fairly simple example. This
+was essentially a random example just to see what the computation is
+like. I did not try to rig it to prove or demonstrate anything. But it
+turned out to be quite interesting in that it makes STV look bad (the
+way <a href="rangeVirv.html">IRV</a> looks bad) in several ways. The example follows:
+</p><p>
+Assume 99 voters, 6 candidates, with 3 seats to be filled. 
+The names of the candidates are A,B,C,D,E, and F.
+Using the
+Droop formula for the quota, Q=1+&lfloor;v/(s+1)&rfloor;, 
+where s=#seats to be filled, v=#voters, we get Q=25=1+&lfloor;99/4&rfloor;. Assume the
+votes are:
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #Voters </th>
+<th> Their Vote </th>
+</tr>
+<tr><td>20</td><td>A>B>C>D</td></tr>
+<tr><td>20</td><td>B>D>E>F</td></tr>
+<tr><td>20</td><td>F>A>C</td></tr>
+<tr><td>20</td><td>D>C>E>F</td></tr>
+<tr><td>19</td><td>C>D>B</td></tr>
+</table>
+<p>
+E is  immediately eliminated, and then C, with all 19 votes
+going to D. So D is elected with 39 votes, 14 over the quota. These
+surplus votes are assigned to F and B (7 to each). That's enough
+to elect both F and B. So the 3 <b>winners</b> are <u>D, F, and B</u>.
+</p><p>
+<b>Now note</b> that C, one of the 3 losers, was preferred by the voters (by
+large margins) over <i>all</i> of the winners:
+C beats D by 59-40, beats F by 59-40, and beats B by 59-40!
+(If a candidate is not ranked by a
+voter, I assume that those candidates are coequally-bottom-ranked.) 
+Indeed, the eliminated candidate C falls
+just short of being a "Condorcet (beats-all) winner,"
+in that C beats all other
+candidates except A, who barely beats C (40-39).
+<small>Also <a href="PRcond.html">here</a> is an election example where a genuine
+beats-all winner
+is rejected by PR-STV.</small>
+</p><P>
+It is also interesting that every candidate is involved in at least
+one <a href="CondorcetCycles.html">cycle</a>; 
+cycles include A>C>F>A, A>B>E>F>A, and C>D>A>C.
+Hence another problem is that the
+immediately-eliminated E is preferred over the winner F by a 40-20 majority.
+</P><p>
+This election also <b>incentivized voter-dishonesty.</b>
+For example, the voters in the top line would have been better off
+dishonestly ranking C top ahead of their true favorites A and B.  That way
+the winners would have been C, D, and B
+(an outcome they would have preferred).   This is also an example of the
+<b>wasted vote</b> problem in action: these voters "wasted" their honest vote for A
+and thus got a worse election outcome than if they'd voted dishonestly.
+STV proponents sometimes wrongly claim STV "solves" the wasted vote problem because 
+honest votes for losers are not "lost" but rather transferred.  Not necessarily so!
+(Indeed if the voters in the top line had
+simply <i>refused to vote</I> at all, then the winners would still have been D, B, and F,
+confirming that their honest A-votes indeed were a waste.)
+</P><p>
+Another example of <b>voter-dishonesty paying</b> were the voters in the middle line.  
+If they'd dishonestly voted A top instead of their true favorite
+F, then A, B, and C would have won (probably an improved result in their view).
+These voters also could have (even-more-dishonestly) voted C top, in which case the winners
+would have been C, A, and D (also probably an improved result in their view).
+</P><p>
+This election also illustrates at least one <b>"no-show paradox."</b>
+Suppose 2 of the 20 F&gt;A&gt;C voters in the middle line had simply refused to vote.
+In that case E then F would have been eliminated, with the 18 F-votes going to A.
+Then A would have won with 38 votes (13 above quota).  These surplus votes would have 
+transferred 7 to B and 6 to C, 
+who then both would have won.  I.e. the new winners would be A, B, and C,
+an improved result in the view of these voters.  
+In other words for these two voters <i>not voting was a better strategy
+than voting honestly</i>! Their act of casting honest votes actually <i>hurt</I> them!
+</P><p>
+So STV does not look very good to me for PR elections (no better than
+IRV for single-winner elections) at least based on this one example. 
+STV is also very hard to tabulate,
+<a href="IrvNonAdd.html">requiring</a>, as does IRV, central tabulation.
+</p><P>
+I suspect that <a href="RangeVoting.html">range/score voting</a> and 
+<a href="Approval.html">approval voting</a> could be redone to 
+adapt them to PR with fewer problems of all kinds.
+Has this been done?
+</p><hr><h3> Editor's note:</h3> 
+<p><small>By Warren D. Smith</small></p>
+<p>Yes, it has been done, see
+<a href="Asset.html">asset voting</a>
+and
+<a href="RRV.html">reweighted range voting (RRV)</a>.
+</p><P>
+Unger's example also suggests an interesting new 
+<b>"multiwinner Condorcet property"</b> that multiwinner methods might (or might not) enjoy:
+</p><blockquote>
+There should never exist a loser preferred by a voter-majority
+versus every winner.
+</blockquote>
+<p>
+As (a slight modification of) the example above shows,
+STV disobeys this property.
+<a href="RRV.html">RRV</a>
+satisfies the score-ballot-based analogue of this property in
+which "preferred by a voter majority versus" is replaced by
+"has a higher average score than".   Majority-preference (as we just saw) 
+can exhibit self-contradictory "<a href="CondorcetCycles.html">cycles</a>," 
+but "higher average score" always yields
+a self-consistent ordering.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

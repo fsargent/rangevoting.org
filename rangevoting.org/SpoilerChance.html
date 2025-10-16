@@ -1,0 +1,423 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Does IRV reduce chance of "spoiled election" versus plain plurality voting?
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Does IRV reduce chance of "spoiled election" versus plain plurality voting? </H2>
+<p><small>By Warren D. Smith, Oct. 2016</small></p>
+
+<h3>Introduction</h3>
+<p>
+IRV (<a href="rangeVirv.html">instant runoff</a>) 
+proponents unfortunately have often claimed that
+switching from plain <a href="Plurality.html">plurality</a>
+voting to IRV will "eliminate" the "spoiler problem."  
+</p><p>
+That claim is false.  
+(Here is a useful <a href="CompleteIdioticIRV2.html">counterexample election</a>
+for refuting many common false claims about IRV.)
+</p><p>
+Not only can spoilers still occur with IRV, in some ways they
+can actually be worse.  For example, with IRV, an "obvious" spoiler
+candidate can occur, meaning one that can be proven to be a spoiler by
+simply examining the ballots.  In contrast with plain plurality voting,
+spoilers always are "non-obvious," meaning you need to know information
+beyond that available on the ballots alone, in order to be sure he was
+a spoiler.  For example, in a distorted and oversimplified version of USA
+presidential Florida 2000 race
+</p><pre>
+ #voters   their preferences
+   23        Nader&gt;Gore&gt;Bush
+   28        Gore&gt;Nader&gt;Bush
+   49        Bush&gt;Gore&gt;Nader
+</pre><p>
+both Nader and Gore are spoilers using plurality voting, but
+this is due to the 2nd preferences of the voters, which simply are
+not written on plurality ballots.   Meanwhile, in an IRV-spoiler election
+like
+</p><pre>
+ #voters   their preferences
+   23        Nader&gt;Bush&gt;Gore
+   28        Gore&gt;Nader&gt;Bush
+   49        Bush&gt;Gore&gt;Nader
+</pre><p>
+Gore would be a spoiler (if he dropped out, Nader would win,
+but by running, he causes Bush, the most-hated candidate in the view
+of Gore voters, to win) and this is knowable from the ballots alone.
+</p><p>
+But we shall focus on a lesser claim/hope.  Is it the case that with
+IRV, spoiled elections become <i>less frequent</i>?
+</p>
+
+<h3> Summary of results </h3>
+<p>
+We are going to consider both IRV and plurality elections in each of the 
+3 different probability models defined 
+<a href="IrvParadoxProbabilities.html">here</a> 
+(all involving a number of voters V
+tending to infinity with C held fixed)
+where there are C candidates; and 
+we shall consider both the case where C=3
+and the limit C&rarr;&infin;.
+</p><p>
+A "spoiler" candidate shall mean
+a nonwinner who by dropping out of the race, would alter the winner.
+A "spoiled election" means an election containing at least one spoiler candidate.
+</p><p>
+In the 3-candidate case we shall show with computer aid that in all 3 models, 
+the chance of a spoiled election is smaller with IRV than for plain plurality voting.
+In fact it is approximately 
+</p><ul><li>
+2.0000 times smaller in Quas' "1D political spectrum" model
+(suggesting this ratio is exactly 2)
+</li><li>
+2.54 times smaller in the Random Elections Model
+</li><li>
+4.538 times smaller in the Dirichlet model
+(suggesting this ratio might be exactly 59/13&asymp;4.53846).
+<!--
+simple approximate values?  
+x=1/(2-1/6)+4   
+x=(5-1/3)-1/8  
+x=1/9+4+3/7   
+x=1/(1/(1/7-7)+2)+4
+x=1/(1/(1/8-7)+2)+4
+x=1/(2-1/7)+4
+x=1/(1/(7*7)+1/5)
+x=((1/5-1/8)+9)/2
+x=1/(1/-(1/8+7)+2)+4
+-->
+</li></ul>
+</p><p>
+In the C-candidate case in the limit when C becomes large
+we shall outline a proof that in all 3 models, 
+the chance of a spoiled election goes to 100% with 
+plain plurality voting.  We then shall outline an argument
+which is not fully rigorous 
+(at least not at present) but nevertheless I find it convincing,
+that the same is true
+in all 3 models with instant runoff voting.
+</p><p>
+So in this limit instant runoff has no advantage (as far as reducing the chance
+your election has spoilers is concerned) 
+over plain plurality &ndash; or more precisely its advantage
+tends to zero.  
+</p><p>
+One might then enquire whether that tiny advantage, tending to zero,
+actually always has the "correct sign," i.e. favors IRV over plain plurality
+for every C=3,4,5,...  in all three probability models.
+I do not know the answer to that question, and do not even advance a conjecture.
+</p>
+
+<h3> Analysis with 3 candidates </h3>
+
+<p>
+Consider the general 3-candidate ranked ballot election
+</p><pre>
+ #voters   their preferences
+  t        A&gt;B&gt;C
+  u        A&gt;C&gt;B
+  v        B&gt;A&gt;C
+  w        B&gt;C&gt;A
+  y        C&gt;A&gt;B
+  z        C&gt;B&gt;A
+</pre><p>
+where t,u,v,w,y,z all are nonnegative not all zero.
+An election is said to be "spoiled" if it contains at least one spoiler.
+A "spoiler" is a nonwinner who, by dropping out, changes the winner.
+</p><p>
+Warning: with IRV we can have "nonmonotonicity" where
+some voters can cause X to win by voting dishonestly against X.
+This perhaps could be viewed as an additional kind of
+"spoiler" (X "spoils himself"!) but for simplicity we will not take
+that view here.
+Also with IRV X can by losing some but not all votes, sometimes change
+the winner,
+e.g. to himself(!), but we for simplicity will not count those as
+spoilers either.
+</p><p>
+Wlog the IRV winner is A, and C is eliminated first, meaning
+y+z&lt;v+w, y+z&lt;t+u, y+t+u&gt;v+w+z.
+Then an IRV spoiler (who necessarily is B) occurs if and only if
+w+y+z&gt;t+u+v.
+Meanwhile in this election, the plain plurality winner must be
+either A or B. We have that
+<ul><li>
+   A wins and C=spoiler iff: t+u&gt;v+w and  z+v+w&gt;t+u+y
+</li><li>
+   A wins and B=spoiler iff: t+u&gt;v+w and  w+y+z&gt;t+u+v
+</li><li>
+   B wins and A=spoiler iff: t+u&lt;v+w and  u+y+z&gt;t+v+w
+</li><li>
+   B wins and C=spoiler iff: t+u&lt;v+w and  y+t+u>v+w+z.
+</li></ul>
+<p>
+So... trying it on a computer
+(the three probability models described <a href="IrvParadoxProbabilities.html">here</a> )
+four independent runs each model
+</p>
+<table>
+<tr bgcolor="pink"><th>Election Prob. Model</th><th>#elections tried</th>
+<th>#spoiled IRV</th><th>#spoiled Plur</th><th>ratio</th></tr>
+<tr><td>Dirichlet</td><td>10<sup>10</sup></td><td>902778540</td><td>4097213715</td><td>4.53845</td></tr>
+<tr><td>Dirichlet</td><td>10<sup>9</sup></td><td>90282798</td><td>409733353</td><td>4.53833</td></tr>
+<tr><td>Dirichlet</td><td>10<sup>9</sup></td><td>90266216</td><td>409694306</td><td>4.53873</td></tr>
+<tr><td>Dirichlet</td><td>10<sup>9</sup></td><td>90276472</td><td>409739388</td><td>4.53872</td></tr>
+<tr bgcolor="aqua"><td>R.E.M.</td><td>10<sup>8</sup></td><td>12155926</td><td>30918546</td><td>2.54350</td></tr>
+<tr bgcolor="aqua"><td>R.E.M.</td><td>10<sup>7</sup></td><td>1217051</td><td>3092980</td><td>2.54137</td></tr>
+<tr bgcolor="aqua"><td>R.E.M.</td><td>10<sup>7</sup></td><td>1217752</td><td>3093316</td><td>2.54019</td></tr>
+<tr bgcolor="aqua"><td>R.E.M.</td><td>10<sup>7</sup></td><td>1217786</td><td>3092975</td><td>2.53983</td></tr>
+<tr><td>Quas1D</td><td>10<sup>10</sup></td><td>1944426007</td><td>3888899123</td><td>2.000024</td></tr>
+<tr><td>Quas1D</td><td>10<sup>9</sup></td><td>194454013</td><td>388905437</td><td>1.999987</td></tr>
+<tr><td>Quas1D</td><td>10<sup>9</sup></td><td>194436146</td><td>388893244</td><td>2.000108</td></tr>
+<tr><td>Quas1D</td><td>10<sup>9</sup></td><td>194453186</td><td>388909920</td><td>2.000018</td></tr>
+</table>
+<!--
+<blockquote>
+Dirichlet model:<br>
+tried 10000000 elections; spoiled IRV=902896; spoiled Plur=4098732; ratio=4.54<br>
+tried 10000000 elections; spoiled IRV=902621; spoiled Plur=4096433; ratio=4.54<br>
+tried 100000000 elections; spoiled IRV=9026857; spoiled Plur=40974944;  ratio=4.53922<br>
+tried 100000000 elections; spoiled IRV=9028887; spoiled Plur=40970575;  ratio=4.53772<br>
+tried 100000000 elections; spoiled IRV=9028815  Plur=40971815  ratio=4.53790
+tried 1000000000 elections; spoiled IRV=90282798; spoiled Plur=409733353; ratio=4.53833<br>
+tried 1000000000 elections; spoiled IRV=90266216; spoiled Plur=409694306; ratio=4.53873<br>
+tried 1000000000 elections; spoiled IRV=90276472; spoiled Plur=409739388; ratio=4.53872
+<br>
+Random Election Model:<br>
+tried 1000000 elections; spoiled IRV=121881; spoiled Plur=309295; ratio=2.54<br>
+tried 1000000 elections; spoiled IRV=121953; spoiled Plur=309548; ratio=2.54
+tried 1000000 elections; spoiled IRV=121756  Plur=308794  ratio=2.54<br>
+tried 1000000 elections; spoiled IRV=121811  Plur=309027  ratio=2.54
+tried 1000000 elections; spoiled IRV=121428  Plur=309695  ratio=2.55
+tried 10000000 elections; spoiled IRV=1217051; spoiled Plur=3092980; ratio=2.54137<br>
+tried 10000000 elections; spoiled IRV=1217752; spoiled Plur=3093316; ratio=2.54019
+tried 10000000 elections; spoiled IRV=1217786  Plur=3092975  ratio=2.54
+tried 10000000 elections; spoiled IRV=1216881  Plur=3093908  ratio=2.54
+<br>
+Quas1D model:<br>
+tried 100000000 elections; spoiled IRV=19442452; spoiled Plur=38885241; ratio=2.00<br>
+tried 100000000 elections; spoiled IRV=19438229; spoiled Plur=38886530; ratio=2.00<br>
+tried 1000000000 elections; spoiled IRV=194436146; spoiled Plur=388893244; ratio=2.00011<br>
+tried 1000000000 elections; spoiled IRV=194453186; spoiled Plur=388909920; ratio=2.000018<br>
+tried 1000000000 elections; spoiled IRV=194454013; spoiled Plur=388905437; ratio=1.999987<br>
+tried 10000000000 elections; spoiled IRV=1944426007; spoiled Plur=3888899123; ratio=2.000024.
+</blockquote>
+-->
+<p>
+<b>Conclusion:</b>
+<i>Yes</i>, IRV does reduce "spoiled" 3-candidate elections versus plain
+plurality, making spoiled elections 2.00 to 4.54 times rarer
+depending on which of these three probability models we use.
+</p><p>
+If I had included nonmonotone "self spoilers" and partial spoilers too,
+then 3-candidate IRV would look a little (perhaps 10%)
+worse, not enough to change the conclusion that 3-candidate IRV does
+improve over
+plain plurality about spoilers.  (The reason this has little effect is
+in the large majority of instances where these problems happen,
+garden-variety spoilage also happens, so that election was already
+counted.)
+</p>
+
+<h3> Analysis for plain plurality voting with C&rarr;&infin; candidates </h3>
+
+<p>
+Warning: we shall use "extreme value statistics" without much explanation or care.
+However, I claim the amount of care &amp; precision I use, is sufficient
+to see the results, at least for
+readers with enough mathematical and statistical maturity so that
+I do not need to explain a lot of basic stuff.
+The 3 probability models are described 
+<a href="IrvParadoxProbabilities.html">here</a>.
+</p><p>
+The results of the present analysis are:
+With plurality voting,
+in Random Elections Model, Dirichlet, and Quas1D models (all three)
+the chance a spoiler exists goes to 100%.
+</p><p>
+Now for the analyses.
+</p><p>
+In the random elections model, the total number of votes for each candidate
+is (or rather can equivalently be regarded as, after appropriate rescale
+and translate) i.i.d. standard normal deviates:
+</p><center>
+Density(x) = exp(-x<sup>2</sup> / 2) / &radic;(2&pi;)
+<br>
+Cumulative(x) = [1+erf(x/&radic;2)]/2
+  &sim; 1 - exp(-x<sup>2</sup> / 2) / (x &radic;(2&pi;)) 
+ &nbsp; when  &nbsp; x&rarr;+&infin;
+</center><p>
+Hence the candidate with the most votes among C candidates is almost surely
+going to get about
+&radic;(2lnC)
+votes, and the runner-up is almost surely going to get about
+&radic;(2ln(C-1))
+with the difference being about
+1/(C&radic;(2lnC)).
+Meanwhile, the second-preference vote-totals among the fraction&asymp;1/C
+voters for any
+particular candidate S (who is not either the winner or runner-up) are going to
+be normally distributed with variance=1/C not 1.
+The difference between the two frontrunners' vote-totals among this fraction
+is thus normally distributed with variance=2/C.
+The chance S is a spoiler is the chance a normal random variable with
+variance=2/C i.e. StdDeviation=&radic;(2/C) is going to exceed 1/(C&radic;(2lnC)).
+That is the same as the chance a standard normal (with unit variance) is
+going to exceed 1/(2&radic;(ClnC)).  But this chance in the limit C&rarr;+&infin;
+is 1/2.   So each non-frontrunner candidate is a spoiler with chance&rarr;50%
+in the limit, so the likelihood a spoiler exists should go to 100%.
+</p><p>
+This same reasoning also works in the alternative "Dirichlet model" of
+random elections
+(since central limit theorem can be used to see normalities for
+appropriate vote-total
+quantities).
+</p><p>
+Now in the Quas1D model, the number of votes a candidate gets is the
+area of his 1D
+Voronoi region on the real interval [0,1].  These areas have mean about 1/C but
+are distributed (in the limit) like the sum of two i.i.d. exponential deviates.
+(This is a consequence of limit Poisson statistics.)  Without loss of generality
+(after scaling vote-counts by C) we may regard these as the sum of two
+standard exponential deviates, i.e. having
+</p><center>
+   Density(x) = x exp(-x)  &nbsp; for &nbsp; x&gt;0
+<br>
+   Cumulative(x) = 1 - exp(-x) (1+x)
+</center><p>
+The winning candidate will almost surely have about ln(C) votes,
+and runner-up ln(C-1), the difference being about 1/C.
+If a candidate neighboring the runner-up is eliminated, then the
+runner-up's Voronoi
+region will expand, i.e. he will get more votes, in fact typically (on
+this scale)
+order 1 more votes.   Hence the chance&rarr;100% that each neighbor of
+the runner-up
+will be a spoiler.
+</p><p>
+Q.E.D.
+</p><p>
+You may ask how quickly the chance of a spoiled plurality election
+goes to 100% as C&rarr;&infin;.
+That more precise answer seems to be roughly  1-2<sup>2-C</sup>
+for the R.E.M. and Dirichlet models, and a lower bound of about  1-k/C   for some
+positive constant k, for the Quas1D model (although it should be possible to
+improve that lower bound a lot by also considering the 3rd-placer, the 4th-placer, etc 
+as potential new-winners, not just the runner-up).
+</p>
+
+<h3> Analysis for instant runoff voting with C&rarr;&infin; candidates </h3>
+
+<p>
+In this section I will attempt to examine the frequency of spoilers in
+IRV elections in the limit which the number C of candidates becomes large
+(and the number of voters is assumed to tend to infinity much faster).
+I will use a "mass deletion" trick which looks valid but I
+have not proven that, so you might want to regard this as an
+imperfectly-rigorous, but still pretty convincing, proof.
+The 3 probability models are described
+<a href="IrvParadoxProbabilities.html">here</a>.
+</p><p>
+The results of the present analysis are:
+With instant runoff voting (IRV),
+in Random Elections Model, Dirichlet, and Quas1D models (all three)
+the chance a spoiler exists goes to 100% in the limit
+where the number C of candidates becomes large.
+</p><p>
+Now for the analyses.
+</p><p>
+The "mass deletion trick" is this.  Let there be C candidates
+with C large.  Delete all but &radic;C of them at random.
+[You may prefer to replace &radic;C by, e.g, C<sup>0.49</sup>
+if that makes it easier to rigorize the argument.]
+Then claim that the winner of the resulting much-smaller IRV election
+is essentially random among those &radic;C candidates.
+More precisely, claim that if those &radic;C included the IRV-winner of
+the original
+(all C candidates) IRV election, then the chance he still wins, goes to 0
+as C&rarr;&infin;.
+</p><p>
+This claim is supposed to be pretty obvious in all three models &ndash; so I'm
+not going to prove it here, I'm just going to claim/hope it is pretty
+obvious to those
+familiar with behaviors... e.g. consider
+the <a href="IrvParadoxProbabilities.html#QuasDistrib">Quas distribution</a>,
+the model-independent <a href="IgnoreExec.html">"100% ignoring" theorem for IRV</a>,
+and the
+<a href="RandElect.html">fact</a> 
+that asymptotically 100% of elections contain no Condorcet winner and
+the IRV winner differs from the Condorcet winner (even when the latter exists)
+asymptotically 100% of the time
+...
+and then <i>assume</i> it as the starting point of our
+main argument.
+</p><p>
+Now this claim does not directly prove the existence of a single "spoiler"
+candidate; it merely proves there exists a <i>large set</i> of candidates
+whose collective
+deletion changes the winner, and indeed claims in our limit that almost every
+candidate-subset of cardinality C-&radic;C (which does not
+include the IRV-winner of the original election) is such a "collective spoiler."
+</p><p>
+But what this tells us is: as we delete those candidates one by one, there will
+come a time (maybe many times) when the winner changes.  In that
+particular reduced
+election, that candidate was a (genuine) spoiler.  The total number of
+(reduced and partly reduced) elections we are talking about is
+</p><center>
+    &sum;<sub>0&le;M&le;C-&radic;C-1</sub>  binomial(C-1, M)
+</center><p>
+which sum is dominated by the terms with M&asymp;C/2.
+The other terms, even combined, are relatively
+negligible in the limit C&rarr;&infin;.
+And the total number of genuine "spoiler events", meaning a time when
+a single candidate is deleted from one of those elections to change its winner,
+in aggregate over all those elections, is at least 1-o(1) per "deletion path."
+But note the total number of "deletion <i>paths</i>" in "election space"
+is far greater than the number of elections themselves, indeed
+in each election with K candidates we have K-1 choices about who to delete next
+so the total number of paths is  C!/(&radic;C)!.
+Indeed, this number of paths also in our limit,
+is far greater than the <i>square</i> (or any fixed power)
+of the number of elections themselves 
+(the number of elections is less than 2<sup>C</sup>).
+And each path is short (only C-&radic;C long).
+</p><p>
+But now comes the trick: all these reduced and intermediate
+elections actually are statistically
+speaking the <i>same</i> as the original election
+(maybe with different but always-large C, but always sampled from the exactly correct
+distribution for that C; this works in all 3 probability models)!
+Therefore the chance an IRV spoiler-event is available in an
+election  randomly chosen from our set of elections must go to 100%.
+</p><p><small>
+This reasoning actually works even <i>better</i> if, say, the spoilers
+tended to occur nonuniformly mainly at the high-#candidates end (or
+prefer to occur mainly near the low-#candidates end) of the paths;
+then we'd conclude the elections near one end of our set had to 
+include spoilers with probability&rarr;1, which would suffice for
+our purposes.
+</small>
+</p><p>
+Therefore, the chance should go to 100% in all three models
+that a C-candidate IRV election contains an IRV-spoiler.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

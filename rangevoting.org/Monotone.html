@@ -1,0 +1,1192 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Monotonicity and Instant Runoff Voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> (non)Monotonicity and Instant Runoff Voting </h1>
+
+<p>
+<small>
+By Warren D. Smith; heavily revised March 2009 after learning about paper by Anthony Quas.
+&nbsp;&nbsp;
+(<a href="#summ">Skip to summary</a>) &nbsp;
+(<a href="http://webhostinggeeks.com/science/runoff-voting-rm">Romanian translation</a>)
+</small>
+</p>
+
+<p>
+<b>Monotonicity</b> is the property of a voting system that both
+<ol type="I">
+<li>
+If somebody increases their vote for candidate C (leaving the rest of their vote unchanged)
+that should not worsen C's chances of winning the election.
+</li><li>
+If somebody decreases their vote for candidate B (leaving the rest of their vote unchanged)
+that should not improve B's chances of winning the election.
+</li>
+</ol>
+
+<p>
+One can also consider <i>sets</i> of voters increasing their vote for C in (I), 
+causing (if monotonicity fails) C to stop winning, etc.  
+We can also, even <b>more generally</b>,
+still, ask for 
+</p>
+<ol type="I">
+<li>
+If some set of voters increase their votes for candidate C and
+either leave the rest of their vote unchanged, or decrease their
+votes for C-rivals, then:
+that should not worsen C's chances of winning the election.
+</li><li>
+If some set of voters decrease their vote for candidate B 
+(and either leave the rest of their vote unchanged, or
+increase their votes for B-rivals), then:
+that should not improve B's chances of winning the election.
+</li>
+</ol>
+<!-- International Encyclopedia of the Social Sciences.
+Ed. William A. Darity, Jr. 2nd ed. Detroit: Macmillan Reference USA 2008. 9 vols.
+
+Handbook of Social Choice and Welfare, Elsevier 2002.
+
+The Mathematics of Voting and Elections -- a hands-on approach
+By Jonathan K. Hodge, Richard E. Klima,
+American Math'l Society 2005, also available electronically ("google books")
+p49:
+6: G>M>D>S
+5: M>G>D>S
+4: D>S>M>G
+2: S>D>G>M
+p50:
+G wins, but if the last 2 voters swap G & D ("improving" G) then
+M wins.  This illustrates non-monotonicity of IRV.
+p51:
+1: A>B>C
+2: B>A>C
+2: C>A>B
+With IRV B wins, but A is a beats-all winner.  Illustrates failure
+for IRV of Condorcet criterion (thwarted-majority failure).
+p3:
+Definition 1.8:
+A voting system is said to be monotone if it is impossible for a winning candidate
+to become a losing candidate  by gaining votes (while not losing any others)
+or for a losing candidate to become a winning candidate by losing votes 
+(while not gaining any others).
+-->
+
+<p>
+Unfortunately,
+<a href="rangeVirv.html">Instant Runoff Voting</a> (IRV) is not monotonic;
+indeed, it fails  <i>both</i> criteria.   Two real-world IRV elections (both held in 2009)
+illustrating this were
+<a href="Burlington.html">Burlington VT (USA)</a>
+and
+<a href="Frome2009.html">Frome Australia</a>.
+</p>
+
+<h3> Examples demonstrating nonmonotonicity of IRV </h3>
+
+<table cellspacing="10" width="90%" bgcolor="#ffcccc">
+<tr><td>
+<p>
+<b>Criterion I fails:</b>
+when two voters change their vote to C, that stops
+C from winning.   
+</p><p><b>Details:</b>
+<b>C</b> wins this 17-voter IRV election
+(B is eliminated and 1 more of his 5 votes transfer to C than to A, causing
+C to win 9:8 over A).
+But after the two A>C>B voters
+instead give their vote to C, then <b>B</b> wins.  
+(In the new election, A is eliminated
+and his 4 votes transfer to B, causing
+B to win 9:8 over C.)
+</p>
+<p>
+<b>This occurred</b> in the 
+<a href="LizVwiz.html">Louisiana 1991 governor election</a>,
+which was a (non-instant) runoff election with 12 candidates but only the top 3 got
+over 410,000 votes each; the remaining 9 candidates each got under 83,000 individually and
+under 125,000 in the aggregate.
+It also occurred in 
+<a href="Burlington.html">Burlington Vermont 2009</a> (a genuine IRV election
+for which we have full set of ballots) and
+<a href="Peru06.html">Peru 2006</a> (a top-2 runoff election in which the 
+top 3 candidates got 79% of the votes).
+</p>
+</td><td>
+<table border="1" cellspacing="2" cellpadding="2" bgcolor="#ccffcc">
+<tr><th>#voters</th><th> their vote</th></tr>
+<tr><td>6</td><td>C>A>B</td></tr>
+<tr><td>2</td><td>B>A>C</td></tr>
+<tr><td>3</td><td>B>C>A</td></tr>
+<tr><td>4</td><td>A>B>C</td></tr>
+<tr><td>2</td><td>A>C>B</td></tr>
+</table>
+</td></tr>
+<tr><td bgcolor="white">
+<p>
+<b>Criterion II fails:</b>
+when two voters change their vote away from B, that causes B to win.
+</p><P><b>Details:</b>
+<b>C</b> wins this 17-voter IRV election (A is eliminated and his 4 votes transfer to C 
+so that C wins 9:8 over B).
+But after 2 of the B>A>C voters
+instead give their vote to A, then <b>B</b> wins.  (In the new election, C is eliminated
+and his votes transfer to B
+so that B wins 11:6 over A.) 
+</p>
+<p>
+<b>This occurred</b> in <a href="Frome2009.html">Frome Australia 2009</a> and also
+(in an altered form, with extra Currie voters added, of) the 
+<a href="Ireland1990.html">Irish 1990 presidential election</a>,
+which was an IRV election with 3 candidates.
+</p>
+</td><td>
+<table cellspacing="2" cellpadding="2" border="1" bgcolor="yellow">
+<tr><th>#voters</th><th> their vote</th></tr>
+<tr><td>5</td><td>C>B>A</td></tr>
+<tr><td>4</td><td>A>C>B</td></tr>
+<tr><td>8</td><td>B>A>C</td></tr>
+</table>
+</td></tr>
+</table>
+
+<p>
+The two particular election examples above
+both feature "Condorcet cycles" C>A>B>C and C>B>A>C respectively.
+However, both these kinds of nonmonotonicity can also occur <b>without a cycle:</b>
+</p>
+
+<table cellspacing="10" width="90%" bgcolor="#ffcccc">
+<tr><td>
+<p>
+<b>Criterion I fails:</b>
+when two voters change their vote to C, that stops
+C from winning.   
+</p><p><b>Details:</b>
+<b>C</b> wins this 17-voter IRV election.
+But after the two A>C>B voters
+instead give their vote to C, then <b>B</b> wins.  
+</p>
+<p>
+</td><td>
+<table border="1" cellspacing="2" cellpadding="2" bgcolor="#ccffcc">
+<tr><th>#voters</th><th> their vote</th></tr>
+<tr><td>4</td><td>C>B>A</td></tr>
+<tr><td>2</td><td>C>A>B</td></tr>
+<tr><td>2</td><td>B>A>C</td></tr>
+<tr><td>3</td><td>B>C>A</td></tr>
+<tr><td>4</td><td>A>B>C</td></tr>
+<tr><td>2</td><td>A>C>B</td></tr>
+</table>
+</td></tr>
+<tr><td bgcolor="white">
+<p>
+<b>Criterion II fails:</b>
+when two voters change their vote away from B, that causes B to win.
+</p><P><b>Details:</b>
+<b>C</b> wins this 17-voter IRV election.
+But after 2 of the B>A>C voters instead give their vote to A, then <b>B</b> wins.
+</p>
+</td><td>
+<table cellspacing="2" cellpadding="2" border="1" bgcolor="yellow">
+<tr><th>#voters</th><th> their vote</th></tr>
+<tr><td>5</td><td>C>B>A</td></tr>
+<tr><td>4</td><td>B>C>A</td></tr>
+<tr><td>4</td><td>B>A>C</td></tr>
+<tr><td>4</td><td>A>C>B</td></tr>
+</table>
+</td></tr>
+</table>
+
+<p>
+In all the examples above, <b>C</b> was the IRV winner 
+while the plain-<a href="plurality.html">plurality</a> winner
+was somebody else (or it was a tie).  Type-II (but not type-I)
+failure can also occur in situations (both with or
+without a Condorcet cycle) where <b>C</b> simultaneously
+is <i>both</i> the IRV and plurality winner:
+</p>
+
+<table cellspacing="10" width="90%" bgcolor="#ffcccc">
+<tr><td>
+<p>
+<b>Criterion II fails:</b>
+when two voters change their vote away from B, that causes B to win.
+There is a Condorcet cycle in this example: C>A>B>C.
+</p><p><b>Details:</b>
+<b>C</b> wins this 21-voter IRV election. (Also the plain-plurality winner.)
+But after 2 of the B>A>C voters instead give their vote to A, then <b>B</b> wins.
+</p>
+<p>
+</td><td>
+<table border="1" cellspacing="2" cellpadding="2" bgcolor="#ccffcc">
+<tr><th>#voters</th><th> their vote</th></tr>
+<tr><td>8</td><td>C>A>B</td></tr>
+<tr><td>3</td><td>B>A>C</td></tr>
+<tr><td>3</td><td>B>C>A</td></tr>
+<tr><td>5</td><td>A>B>C</td></tr>
+<tr><td>2</td><td>A>C>B</td></tr>
+</table>
+</td></tr>
+<tr><td bgcolor="white">
+<p>
+<b>Criterion II fails:</b>
+when two voters change their vote away from B, that causes B to win.
+This example has no cycle.
+</p><P><b>Details:</b>
+<b>C</b> wins this 21-voter IRV election.
+(Also the plain-plurality winner.)
+But after 2 of the B>A>C voters instead give their vote to A, then <b>B</b> wins.
+</p>
+</td><td>
+<table cellspacing="2" cellpadding="2" border="1" bgcolor="yellow">
+<tr><th>#voters</th><th> their vote</th></tr>
+<tr><td>3</td><td>C>A>B</td></tr>
+<tr><td>5</td><td>C>B>A</td></tr>
+<tr><td>3</td><td>B>C>A</td></tr>
+<tr><td>3</td><td>B>A>C</td></tr>
+<tr><td>2</td><td>A>C>B</td></tr>
+<tr><td>5</td><td>A>B>C</td></tr>
+</table>
+</td></tr>
+</table>
+
+<p>
+There is one saving grace for IRV, though:
+it is not possible for <i>both</i> type-I and type-II failure to occur in the same election
+at the same time in the same way.
+That is, there is no IRV election in which X, by giving away some
+votes to the current IRV-winner W, can cause X to win  and W to stop winning.
+This <i>disjointness</i> is easy to see and will implicitly underlie our probability
+calculations below.
+</p>
+
+
+<h3> How often do such monotonicity failures happen in instant runoff elections? </h3>
+
+<p>
+For now, let's consider only 3-candidate IRV elections.  (We shall consider
+IRV elections with more than 3 candidates <a href="#manycand">later</a>; in them
+monotonicity failures presumably are more frequent.  
+If there are two or fewer candidates, failure
+is impossible.  In the limit of a large number of candidates, we shall see failure 
+becomes overwhelmingly likely.)
+In the <a href="RandElect.html">&quot;random elections model&quot;</a>
+[which has also been called the "Impartial Culture" in the literature,
+see, e.g.  Ilia Tsetlin, Michel Regenwetter, Bernard Grofman:
+<i>The impartial culture maximizes the probability of majority cycles</i>,
+Social Choice and Welfare 21,3 (Dec 2003) 387-398;
+William V. Gehrlein:
+<i>Weighted scoring rules, the impartial culture condition, and homogeneity</i>,
+Quality and Quantity 20,1 (1986) 85-107;
+etc.]
+monotonicity failures of type (I) occur about once per 45 elections and of type (II)
+occur once per 8.2 elections.   In total, monotonicity failure occurs
+<b>once every 6.9 elections, i.e. 14.5% of the time.</b>
+</p>
+<p>
+IRV advocates have falsely claimed that non-monotonicity in IRV elections is very rare.
+</p>
+<small>
+<p>
+One reason was a published
+paper by Crispin Allard in which he made an incorrect calculation of these numbers.
+Allard made at least 3 different errors, <i>all</i> of which pushed his number erroneously too small.
+</p>
+<ol>
+<li>
+Wrongly forgot to multiply by 6; Allard reduced the problem to computing a certain volume, but
+there really were 6 copies of that volume because of 6 ways to rename the 3 candidates.
+</li><li>
+Then when he computed that (6 times too small) volume, he did it wrong, getting a far-smaller number
+even than the factor-6 too-small number he should have gotten.
+</li><li>
+Allard only examined type-II nonmonotonicity and apparently was unaware that type-I also existed.
+</li>
+</ol>
+<p>
+As a result of these errors, Allard got a number about 1000 times smaller than the truth.  His
+incorrect paper was 
+<a href="http://www.mcdougall.org.uk/VM/ISSUE5/P1.HTM">
+Estimating the Probability of Monotonicity Failure in a UK General Election,</a>
+Voting Matters 5 (January 1996).   
+</p>
+<p>
+A second reason was the perception by IRV advocates that if phenomena like non-monotonicity
+occurred in an important real election, then the press would shout all about it;
+since they were unaware of
+the press ever doing that, therefore, it must never occur in real life.
+Since we have mentioned very important real-world elections above in which monotonicity (and
+other properties too!) failed (and the press, as far as I can tell, never mentioned that even once)
+we know that perception was erroneous.   IRV property failure is 
+<a href="Aus07.html">quite common</a> in real life &ndash; it occurs at rates comparable to
+those predicted by the 
+<a href="RandElect.html">random elections</a> and Dirichlet models
+&ndash;
+despite the lack of mention of that in the press.
+</p>
+</small>
+<h3> How do we know that? </h3>
+<p>
+It actually is possible to derive exact formulas for these probabilities
+using "Schl&auml;fli functions" (see 
+<a href="PuzzlePage.html#p4">puzzle #4</a>).
+But a simpler approach is just to perform "Monte Carlo experiments" where
+you simply try lots of random elections to see how often these phenomena occur.
+</p>
+<p>
+See this web page:
+<a href="IrvParadoxProbabilities.html">
+/IrvParadoxProbabilities.html</a>
+for far more about that.
+<!--
+Here is a simple computer program which does this for type-I nonmonotonicity:
+</p>
+<table bgcolor="#ccffcc"> <tr><td>
+<pre>
+for NNL from 2 to 5 do
+NN := 6*10^NNL;   #NN = no. of experiments to try = 600, 6000, 60000, 600000
+FailCt := 0;               #counter initially zero
+CAwinsCt := 0;             #this counter also initially zero
+for i from 1 to NN do      #perform NN experiments
+   #step 1: generate random normal numbers as the 6 kinds of vote count
+   ABC := RandomNormal();
+   ACB := RandomNormal();
+   BAC := RandomNormal();
+   BCA := RandomNormal();
+   CAB := RandomNormal();
+   CBA := RandomNormal();
+   if(CAB+CBA > BAC+BCA and       #B elimd in original IRV election
+      ABC+ACB > BAC+BCA and       #B elimd in original IRV election
+      CAB+CBA+BCA > ABC+ACB+BAC   #C wins original IRV election
+   ) then   
+      CAwinsCt := CAwinsCt+1;   #to simplify, we only examine elections which "C" won with "A" second
+      <font color="red">t := min(BAC+BCA, 0.5*(CAB+CBA+ACB+ABC), ABC);    #CORRECTION added March 2009
+      if( #after ACB votes (plus ABC-t votes of form ABC) moved from A to C then A elimd...
+         t+BCA+BAC > CAB+CBA+ACB+ABC-t       #...whereupon B wins the new IRV election
+      )</font> then
+         FailCt := FailCt+1:   #increment counter since mono-I failure example seen
+      fi;
+   fi;
+od;
+print(FailCt, " out of ", CAwinsCt, " type-I mono failures where C won but stops winning if given ACB votes");
+od;
+</pre>
+</td></tr></table>
+<p>
+Note the correction (in <font color+"red">red<?font>) added March 2009.  The old uncorrected code had
+read
+</p>
+<table bgcolor="#ccffcc"> <tr><td>
+<pre>
+      if(ABC < BAC+BCA and         #after ACB votes moved from A to C then A elimd...
+         ABC < CAB+CBA+ACB and         
+         ABC+BCA+BAC > CAB+CBA+ACB       #...whereupon B wins the new IRV election
+      ) 
+</pre>
+</td></tr></table>
+<p>
+This old code underestimated the type-I non-monotonicity probability because it erroneously thought
+that it was only worth converting ACB votes to C votes to stop C winning.  In fact, it sometimes also helps
+to convert some ABC votes too.
+</p><p>
+The output of this program (two runs, using any
+normal distribution with <i>much larger</i> positive 
+mean than its standard deviation) was:
+</p>
+<table bgcolor="yellow"> <tr><td>
+<pre>
+   13 out of 92 type-I mono failures where C won but stops winning if given ACB votes
+  125 out of 1015 type-I mono failures where C won but stops winning if given ACB votes
+ 1278 out of 9985 type-I mono failures where C won but stops winning if given ACB votes
+12134 out of 100008 type-I mono failures where C won but stops winning if given ACB votes
+
+    8 out of 89 type-I mono failures where C won but stops winning if given ACB votes
+  123 out of 1021 type-I mono failures where C won but stops winning if given ACB votes
+ 1240 out of 10003 type-I mono failures where C won but stops winning if given ACB votes
+12088 out of 99549 type-I mono failures where C won but stops winning if given ACB votes
+</pre>
+</td></tr></table>
+<p>
+Hence we conclude the type-I failure probability for IRV 3-candidate elections is
+<blockquote>
+(13+125+1278+12134 + 8+123+1240+12088)/(92+1015+9985+100008 + 89+1021+10003+99549)  <br>
+= 27009/221762 <br>
+= 12.18% 
+</blockquote>
+which with a generous error bar is (12.2&plusmn;0.1)%, or 1 failure per 8.2 elections.
+</p>
+<p>
+Here is the analogous program for type-II monotonicity failure; it yields 
+(2.312&plusmn;0.001)%
+failure rate.
+</p>
+
+<table bgcolor="#ccccff"> <tr><td>
+<pre>
+for NNL from 2 to 5 do
+NN := 6*10^NNL;   #NN = no. of experiments to try = 600, 6000, 60000, 600000
+FailCt := 0;                #counter initially zero
+CBwinsCt := 0;              #this counter also initially zero
+for i from 1 to NN do       #perform NN experiments
+   #step 1: generate random normal numbers as the 6 kinds of vote count
+   ABC := RandomNormal();
+   ACB := RandomNormal();
+   BAC := RandomNormal();
+   BCA := RandomNormal();
+   CAB := RandomNormal();
+   CBA := RandomNormal();
+   if(CAB+CBA > ABC+ACB and       #A elimd in original IRV election
+      BAC+BCA > ABC+ACB and       #A elimd in original IRV election
+      CAB+CBA+ACB > BCA+BAC+ABC   #C wins original IRV election
+   ) then
+      CBwinsCt := CBwinsCt+1;   #to simplify, we only examine elections which "C" won with "B" second
+      x := min(BCA+BAC-CAB-CBA, 0.5*(CBA+BCA+BAC -ABC-ACB-CAB) );
+      if( x>0 and CAB+CBA < ABC+ACB+x and CAB+CBA < BAC+BCA-x  
+           #after x BAC (andor BCA) votes moved from B to A then C elimd & B wins
+           #in older work years back, I forgot this last condition and hence got "4.9% failure rate";
+           #when the older program is corrected, it agrees with this one.
+      ) then
+         FailCt := FailCt+1:   #increment counter since mono-II failure example seen
+      fi;
+   fi;
+od;
+print(FailCt, " out of ", CBwinsCt, " type-II mono failures where C won but B wins if B gives A votes");
+od;
+</pre>
+</td></tr></table>
+
+<p>
+Fortunately
+this program seems not to exhibit any error analogous to the one I corrected (March 2009) in the first program.
+</p>
+
+<h3> A different probabilistic model (Dirichlet) </h3>
+<p>
+A different probabilistic model
+is sometimes proposed in which the 6 vote-numbers
+(for the 6 vote types ABC, ACB, BAC, BCA, CAB, CBA) are to be chosen uniformly in the
+5-dimensional simplex 
+</p>
+<center>
+ABC+ACB+BAC+BCA+CAB+CBA=100,
+&nbsp;
+ABC&ge;0, ACB&ge;0, BAC&ge;0, BCA&ge;0, CAB&ge;0, CBA&ge;0
+</center>
+<p>
+(using 3-letter variable names).
+I call this the "Dirichlet model."
+If you replace "RandomNormal()" in the above computer programs by 
+"RandomExponential()" then you get that effect (as Dirichlet was the first to 
+point out).
+</p>
+-- 
+with(stats);
+randomize();
+for NNL from 2 to 5 do
+NN := 6*10^NNL;   #NN = no. of experiments to try = 600, 6000, 60000, 600000
+FailCt := 0;               #counter initially zero
+CAwinsCt := 0;              #this counter also initially zero
+for i from 1 to NN do      #perform NN experiments
+   #step 1: generate random normal numbers as the 6 kinds of vote count
+   ABC := -log( stats[random, uniform](1) );
+   ACB := -log( stats[random, uniform](1) );
+   BAC := -log( stats[random, uniform](1) );
+   BCA := -log( stats[random, uniform](1) );
+   CAB := -log( stats[random, uniform](1) );
+   CBA := -log( stats[random, uniform](1) );
+   if(CAB+CBA > BAC+BCA and       #B elimd in original IRV election
+      ABC+ACB > BAC+BCA and       #B elimd in original IRV election
+      CAB+CBA+BCA > ABC+ACB+BAC   #C wins original IRV election
+   ) then
+      CAwinsCt := CAwinsCt+1;   #to simplify, we only examine elections which "C" won with "A" second
+      if(ABC < BAC+BCA and         #after ACB votes moved from A to C then A elimd...
+         ABC < CAB+CBA+ACB and
+         ABC+BCA+BAC > CAB+CBA+ACB       #...whereupon B wins the new IRV election
+      ) then
+         FailCt := FailCt+1:   #increment counter since mono-I failure example seen
+      fi;
+   fi;
+od;
+print(FailCt, " out of ", CAwinsCt, " type-I mono failures where C won but stops if given ACB votes");
+od;
+
+output:
+   1, " out of ", 108, " type-I mono failures where C won but stops winning if given ACB votes"
+  13, " out of ", 1012, " type-I mono failures where C won but stops winning if given ACB votes"
+  223, " out of ", 9860, " type-I mono failures where C won but stops winning if given ACB votes"
+ 1120, " out of ", 50913, " type-I mono failures where C won but stops winning if given ACB votes"
+total:
+  237 out of 10980 type-I mono failures where C won but stops winning if given ACB votes
+which is (2.16&plusmn;0.14)%.
+
+TRYING AGAIN WITH CORRECTION:
+with(stats);
+randomize();
+for NNL from 2 to 5 do
+NN := 6*10^NNL;   #NN = no. of experiments to try = 600, 6000, 60000, 600000
+FailCt := 0;               #counter initially zero
+CAwinsCt := 0;              #this counter also initially zero
+for i from 1 to NN do      #perform NN experiments
+   #step 1: generate random normal numbers as the 6 kinds of vote count
+   ABC := -log( stats[random, uniform](1) );
+   ACB := -log( stats[random, uniform](1) );
+   BAC := -log( stats[random, uniform](1) );
+   BCA := -log( stats[random, uniform](1) );
+   CAB := -log( stats[random, uniform](1) );
+   CBA := -log( stats[random, uniform](1) );
+   if(CAB+CBA > BAC+BCA and       #B elimd in original IRV election
+      ABC+ACB > BAC+BCA and       #B elimd in original IRV election
+      CAB+CBA+BCA > ABC+ACB+BAC   #C wins original IRV election
+   ) then
+      CAwinsCt := CAwinsCt+1;   #to simplify, we only examine elections which "C" won with "A" second
+      t := min(BAC+BCA, 0.5*(CAB+CBA+ACB+ABC), ABC);    #CORRECTION added March 2009
+      if( #after ACB votes (plus ABC-t votes of form ABC) moved from A to C then A elimd...
+         t+BCA+BAC > CAB+CBA+ACB+ABC-t       #...whereupon B wins the new IRV election
+      ) then
+         FailCt := FailCt+1:   #increment counter since mono-I failure example seen
+      fi;
+   fi;
+od;
+print(FailCt, " out of ", CAwinsCt, " type-I mono failures where C won but stops if given ACB votes");
+od;
+OUTPUT:
+       1, " out of ", 103, " type-I mono failures where C won but stops if given ACB votes"
+       40, " out of ", 959, " type-I mono failures where C won but stops if given ACB votes"
+     469, " out of ", 10112, " type-I mono failures where C won but stops if given ACB votes"
+    4378, " out of ", 99821, " type-I mono failures where C won but stops if given ACB votes"  (4.39%)
+--
+<p>
+In the Dirichlet model, for 3-candidate IRV elections 
+I found in this way using the <i>uncorrected</I> program that
+the probability of type-I monotonicity failure was
+(2.2140&plusmn;0.0057)%
+which agrees mildly well with
+Eivind Stensholt's finding 
+[<small><a href="http://www.mcdougall.org.uk/VM/ISSUE15/P2.HTM">Nonmonotonicity in AV</a>,
+Voting Matters 15 (June 2002)</small>]
+that "2.17% of the profiles are nonmonotonic."
+(<small>
+Incidentally, Stensholt perhaps 
+erroneously thinks the Dirichlet model is the same as 
+the Impartial Culture
+model, and erroneously is unaware of type-II failure.
+Stensholt did not cite the erroneous Allard paper, 
+which if he had seen it would have let
+him know about type-II.
+</small>)
+<i>However, this was wrong!</i>
+I thought it was right for several years because of 
+the agreement with Stensholt, but then I found a 
+paper
+by Anthony Quas in which he found a substantially larger number, and soon after I found the error 
+(which Stensholt and
+I had both made)!  After running the <i>corrected</i> program, I find that
+</p>
+<blockquote>
+The probability of type-I monotonicity failure is
+(4.5133&plusmn;0.0008)%.
+</blockquote>
+<p>
+This agrees with Quas's <i>exact</i> finding of
+13/288=4.513888...%
+</p>
+<blockquote>
+<small>
+Anthony Quas:
+Anomalous outcomes in preferential voting (<a href="QuasPaper23.pdf">pdf</a>),
+Stochastics &amp; Dynamics 4,1 (2004) 95-105.
+</small>
+</blockquote>
+<p>
+and the independently computed (also exactly) finding of 13/288 also by
+</p>
+<blockquote>
+<small>
+D.Lepelley, F.Chantreuil, S.Berg:
+The likelihood of monotonicity paradoxes in run-off elections
+Mathematical Social Sciences 31,3 (June 1996) 133-146.
+</small>
+</blockquote>
+<p>
+It is surprising how greatly the number changes when we change the underlying
+probabilistic model in this way: 12.2% in the first model versus only 4.5% in the second.
+</p><p>
+For type-II monotonicity, while we in our original Impartial Culture model found a 
+2.312% monotonicity-failure rate,
+--<b>WARNING:</b> I just re-did this with a different Monte Carlo program and found (2.47&plusmn;0.04)%,
+usd to be 4.9% but I found the bug in the 4.9 old program now.--
+in the Dirichlet model we get
+(0.98&plusmn;0.094)%.
+A computer program I had written independently years before for the purpose
+of correcting Allard's calculation had found
+(1.050&plusmn;0.001)%
+which agrees fine with, and confirms our present
+(0.98&plusmn;0.094)%; 
+but unfortunately a later longer run of my present program found
+(0.90935&plusmn;0.0001)%.
+Allard's incorrect number was 0.025%.
+<br>
+(<small>Actually it ought to be possible in the Dirichlet model to express all these 
+probabilities as exact rational numbers
+arising from polytope-volume ratios, as opposed to our approximate Monte-Carlo results.
+Perhaps the present number is 1/110=0.0090909...
+</small>)
+</p>
+-- 
+with(stats):
+randomize();
+for NNL from 2 to 5 do
+NN := 6*10^NNL;   #NN = no. of experiments to try = 600, 6000, 60000, 600000
+FailCt := 0;               #counter initially zero
+CBwinsCt := 0;              #this counter also initially zero
+for i from 1 to NN do      #perform NN experiments
+   #step 1: generate random normal numbers as the 6 kinds of vote count
+   ABC := 10+stats[random, normald](1);
+   ACB := 10+stats[random, normald](1);
+   BAC := 10+stats[random, normald](1);
+   BCA := 10+stats[random, normald](1);
+   CAB := 10+stats[random, normald](1);
+   CBA := 10+stats[random, normald](1);
+   if(CAB+CBA > ABC+ACB and       #A elimd in original IRV election
+      BAC+BCA > ABC+ACB and       #A elimd in original IRV election
+      CAB+CBA+ACB > BCA+BAC+ABC   #C wins original IRV election
+   ) then
+      CBwinsCt := CBwinsCt+1;   #to simplify, we only examine elections which "C" won with "B" second
+      x := min(BCA+BAC-CAB-CBA, 0.5*(CBA+BCA+BAC -ABC-ACB-CAB) );
+      if( x>0 and CAB+CBA < ABC+ACB+x and CAB+CBA < BAC+BCA-x  #after x BAC votes moved from B to A then C elimd & B wins
+           #in my older works years back, I forgot this last condition and hence got "4.9% failure rate"
+      ) then
+         FailCt := FailCt+1:   #increment counter since mono-II failure example seen
+      fi;
+   fi;
+od;
+print(FailCt, " out of ", CBwinsCt, " type-II mono failures where C won but B wins if B gives A votes");
+od;
+
+Output:
+       3, " out of ", 106, " type-II mono failures where C won but B wins if B gves A votes"
+      18, " out of ", 994, " type-II mono failures where C won but B wins if B gves A votes"
+     242, " out of ", 9926, " type-II mono failures where C won but B wins if B gves A votes"
+total=263/11026=(2.385 +- 0.147)%
+
+New run:
+       3, " out of ", 101, " type-II mono failures where C won but B wins if B gives A votes"
+      24, " out of ", 988, " type-II mono failures where C won but B wins if B gves A votes"
+     209, " out of ", 9977, " type-II mono failures where C won but B wins if B gves A votes"
+total=236/11066=(2.13 +- 0.14)%
+
+New run:
+       4, " out of ", 98, " type-II mono failures where C won but B wins if B gives A votes"
+      27, " out of ", 953, " type-II mono failures where C won but B wins if B gives A votes"
+     256, " out of ", 10049, " type-II mono failures where C won but B wins if B gives A votes"
+     438, " out of ", 16325, " type-II mono failures where C won but B wins if B gives A votes"
+
+New run:
+      2, " out of ", 105, " type-II mono failures where C won but B wins if B gives A votes"
+      18, " out of ", 990, " type-II mono failures where C won but B wins if B gives A votes"
+     261, " out of ", 9978, " type-II mono failures where C won but B wins if B gives A votes"
+    2452, " out of ", 99928, " type-II mono failures where C won but B wins if B gives A votes"
+
+combined 1505/60590 = (2.47&plusmn;0.064)%,
+combined 3957/160518 = (2.4651&plusmn;0.039)%
+
+----
+
+for NNL from 2 to 5 do
+NN := 6*10^NNL;   #NN = no. of experiments to try = 600, 6000, 60000, 600000
+FailCt := 0;               #counter initially zero
+CBwinsCt := 0;              #this counter also initially zero
+for i from 1 to NN do      #perform NN experiments
+   #step 1: generate random normal numbers as the 6 kinds of vote count
+   ABC := -log( stats[random, uniform](1) );
+   ACB := -log( stats[random, uniform](1) );
+   BAC := -log( stats[random, uniform](1) );
+   BCA := -log( stats[random, uniform](1) );
+   CAB := -log( stats[random, uniform](1) );
+   CBA := -log( stats[random, uniform](1) );
+   if(CAB+CBA > ABC+ACB and       #A elimd in original IRV election
+      BAC+BCA > ABC+ACB and       #A elimd in original IRV election
+      CAB+CBA+ACB > BCA+BAC+ABC   #C wins original IRV election
+   ) then
+      CBwinsCt := CBwinsCt+1;   #to simplify, we only examine elections which "C" won with "B" second
+      x := min(BCA+BAC-CAB-CBA, 0.5*(CBA+BCA+BAC -ABC-ACB-CAB) );
+      if( x>0 and CAB+CBA < ABC+ACB+x and CAB+CBA < BAC+BCA-x  #after x BAC votes moved from B to A then C elimd... B wins
+      ) then
+         FailCt := FailCt+1:   #increment counter since mono-II failure example seen
+      fi;
+   fi;
+od;
+print(FailCt, " out of ", CBwinsCt, " type-II mono failures where C won but B wins if B gves A votes");
+od;
+
+output:
+   3, " out of ", 84, " type-II mono failures where C won but B wins if B gves A votes"
+   9, " out of ", 1011, " type-II mono failures where C won but B wins if B gves A votes"
+  97, " out of ", 9961, " type-II mono failures where C won but B wins if B gves A votes"
+total:
+  109 out of 11056 type-I mono failures where C won but stops winning if given ACB votes
+which is (0.98&plusmn;0.094)%.
+
+new run:
+       2, " out of ", 101, " type-II mono failures where C won but B wins if B gves A votes"
+       6, " out of ", 982, " type-II mono failures where C won but B wins if B gves A votes"
+      89, " out of ", 9982, " type-II mono failures where C won but B wins if B gves A votes"
+total:
+97/11065=(0.87&plusmn;0.089)%.
+-->
+
+<h3> Still another probabilistic model (1-dimensional "political spectrum") </h3>
+
+<p>
+In this model, the N candidates are random-uniform points on the real interval (0,1).
+The voters are the uniform distribution on this same interval.  Each voter
+orders the candidates best-to-worst in order of increasing <i>distance</i> away from her.
+</p>
+<p>
+Quas says that he has evaluated the probability of a  type-I monotonicity failure
+when N=3 in this model and it is exactly 
+5/72=6.9444...%.
+My computer (Monte-Carlo calculation) finds (6.945&plusmn;0.002)%, confirming Quas.
+Quas [after some clarification of his wording] claims the following characterization of 3-candidate
+type-I-nonmonotonic IRV elections in the political spectrum model:
+</p><blockquote>
+There is a non-monotonic [type I] allocation of votes if and
+only if the
+central candidate gets more than 25% of the vote
+and is the first to be eliminated.  
+(In this case, the centrist automatically is a 
+"<a href="CondorcetCycles.html">Condorcet winner</a>.")
+To see this, note that in this case, the non-winning outer candidate can
+give the winner
+enough of her vote to have slightly fewer votes than the centrist.
+She then is eliminated (now having the fewest votes) and all
+her votes transfer to the centrist rather than to the more extreme winner,
+allowing the centrist to become the new winner.
+</blockquote>
+<p>
+That was, in fact, exactly what happened in <a href="Burlington.html">Burlington 2009</a>.
+</p><p>
+Apparently 3-candidate
+type-II-nonmonotonic IRV elections <i>are impossible</I> in this model.
+We thank Peter J. Sloan for pointing this out.  
+</p><blockquote>
+At first, confusedly, I had thought the following
+election was non-monotonic [type II].
+<!-- if and
+only if the IRV winner is also 
+the central candidate and also a <a href="CondorcetCycles.html">Condorcet Winner</a>, but is
+<i>not</i> the plurality winner...  and if
+the plurality winner can give just enough votes to the other extremist
+to cause the centrist to be eliminated, and (if she does so) then wins. -->
+<b>[As a picture:</b>
+<pre>
+      0==============P=======M===============E=1
+</pre>
+With Instant Runoff Voting (IRV with honest voters), 
+E is eliminated, then M wins (versus P).
+With <a href="Plurality.html">plurality</a>, P just wins.
+<br>
+But if some P supporters dishonestly &amp; strategically
+give their P votes to E (i.e change their honest votes P&gt;M&gt;E to E&gt;M&gt;P), 
+then M is eliminated 
+in IRV, whereupon P wins.
+That's nonmonotonicity:  fewer P votes cause P to win.<b>]</b>
+<br><br>
+My computer finds the frequency of occurrence of that kind of failure is 
+(2.7778&plusmn;0.0003)%,
+which suggests to me that the exact answer is 1/36=2.7777...%.
+<i>However</i> this does not meet the technical definition of nonmonotonicity!
+This election is an example of <i>strategic ballot reversal</I> which is actually an
+even crazier pathology than nonmonotonicity &ndash; maximally lying about your
+preferences causes your favorite to win, while honest voting would cause him to lose.
+But because the strategists are <i>also</i> being dishonest about M vs E,
+this strictly speaking is not "nonmonotonicity" which would involve dishonesty about P only.
+</blockquote>
+<p>
+Peter Sloan's impossibility proof (sketch): 
+</p><blockquote>
+Let's call the
+plurality winner P, the central candidate M, for moderate, and the other
+candidate E ("extremist"). The only honest ranking for P's voters allowed under the 1D
+political spectrum is P&gt;M&gt;E. 
+Now to get a nonmonotonicity type-II paradox, we need some IRV voters to demote P in their
+vote, causing P to win.   This will not work if the voters honestly ranked P second or third
+since it will not alter the IRV elimination order (except perhaps by eliminating P).
+So we must have some P voters switching
+from P&gt;M&gt;L to either L&gt;M&gt;P or L&gt;P&gt;M, 
+paradoxically causing P to win. That's disallowed since 
+this does <i>not</i> leave the relative rankings of the rest (i.e. L and M) 
+unchanged. The honest ranking is M&gt;L.
+Or finally, 
+P&gt;M&gt;L could switch to M&gt;L&gt;P or M&gt;P&gt;L, but
+this will not help eliminate M, so it won't work.
+Conclusion: type-I non-monotonicity is the only kind allowed in a
+three-candidate race under the political spectrum model. Q.E.D.
+</blockquote>
+
+<a name="manycand"></a>
+<h2> Limit of a large number of candidates </h2>
+
+<p>
+<b>THEOREM:</b>
+Consider N-candidate elections in either
+<ol><li>
+The <a href="RandElect.html">&quot;random elections model&quot;</a>
+(all N! votes equally likely
+for each of V voters independently, V&rarr;infinity voters) or
+</li><li>
+The Dirichlet model (the N! kinds of vote-counts sum to
+100% and each are &ge;0, and all such N!-tuples equally likely; Quas calls 
+this the "simplex model").
+</li></ol>
+Then:
+the probability that the resulting IRV election is "non-monotonic" in the type-I sense
+that switching votes from X to Y (where Y is the IRV winner)
+will cause Y to <i>stop</i> winning...
+approaches 100% as N becomes large.  
+Indeed, the probability of monotonicity is &lt;N<sup>-0.99</sup>
+for all sufficiently large N.
+Indeed, further, this non-monotonicity almost surely
+happens in a huge number of ways simultaneously, i.e. for a huge number
+(growing to infinity with N)
+of possible replacement-winner candidates X.
+</p>
+<p>
+<b>PROOF SKETCH:</b>
+The Dirichlet case of this theorem was proved by Quas 
+(in the <a href="QuasPaper23.pdf">article</a> we cited)
+as his "theorem 1."  The other case can be proved by a 
+parallel argument pointed out by Warren D. Smith in 2009.  
+In both cases the argument proceeds roughly
+as follows.
+</p><p>
+Let X be the IRV winner and let Y be preferred over X by a majority (earlier
+lemmas by Smith &amp; Quas had shown Y exists with probability&rarr;1
+since X is a Condorcet winner with probability&rarr;0 since indeed with probability&rarr;1
+no Condorcet Winner
+exists; see <a href="PuzzCondProb.html">this puzzle</a>
+for the proofs of those lemmas).
+Change votes saying "X&gt;Y" to now vote X top
+(apparent "improvement" for X).
+Now slightly less than half the
+ballots say X is top.
+But Y is now the IRV winner with probability &rarr;1
+since it is ranked top by about 1/N of the voters
+(versus about 0.5/N for
+everybody else besides X) hence with probability &rarr;1
+Y survives to the final IRV round then beats X.
+(That, to be solid, really required some estimates, but Quas made them.)
+So the "improvement" stopped X winning.
+</p>
+<p>
+<b>More details:</b>
+In case 1 (the random election model with V&rarr;&infin;), 
+Quas's beta distributions become normal distributions
+(correlated ones
+with known correlations).
+Quas's finding (at top of p.104 in his published article) that 
+<nobr>"1-Prob(S<sub>1</sub>&cap;S<sub>2</sub>)=O(n<sup>-0.99</sup>)"</nobr>
+is also true in the Random Elections Model: the S<sub>2</sub> part is because of
+<a href="PuzzCondProb.html">this puzzle</a> and the S<sub>1</sub> part is trivial since 
+in the V&rarr;&infin; limit the variance in each vote-total is <i>zero</i>.
+(Incidentally, Quas's argument for S<sub>1</sub> in the Dirichlet model
+can be simplified greatly if you know that when N&rarr;&infin;
+"almost all of the mass of a regular N-simplex
+with unit edges lies in a ball of <nobr>radius&prop;N<sup>-1/2</sup></nobr>.")
+The rest of Quas's argument proving his theorem 1 then goes through unaltered 
+(as sketched above) to
+prove our theorem.
+<br>
+<b>Q.E.D.</b>
+</p>
+<p>
+<b>REMARK:</b>
+The above theorem and proof (with slight changes) should also work for 
+<a href="TidemanRev.html#WBSIRV">WBS-IRV</a> instead of IRV.
+For <a href="BtrIrv.html">BTR-IRV</a>
+it will work <i>provided</i> that once the BTR-IRV process winnows it down to 3 survivors,
+either the final two besides X both pairwise-defeat X, or the one that doesn't is pairwise-defeated
+by the other one.  Those requirements are not necessarily going to be satisfied
+by themselves (although they should be satisfied with a decent probability, say 0.4 or so), 
+but can presumably be assured with probability&rarr;1 with some slight
+amount of malice aforethought &ndash; the undesired survivors need to be eliminated
+in earlier rounds because X gets raised ahead of them in ballots a little more often.
+</p>
+<p>
+<b>CONJECTURE:</b>
+In the 1D political spectrum model with N candidates,
+the IRV election is non-monotonic (type-I failure) with 
+<nobr>probability&ge;1-N<sup>-0.2</sup></nobr>
+for all sufficiently large N. 
+</p>
+<p>
+<b>PROOF SKETCH:</b>
+We now sketch a proof of Quas's conjecture that the IRV election in
+the 1D political spectrum model is nonmonotone with probability&rarr;1
+when N=#candidates&rarr;&infin;.
+I'm optimistic this proof sketch is, in fact, convertible into a
+genuine proof, but (as of 20 March 2009) not yet willing to say I'm sure.
+<p></p>
+By Black's <a href="BlackSingle.html">singlepeakedness theorem</a>,
+a Condorcet winner Y exists and is the candidate located nearest to 1/2.
+Let X be the IRV winner.
+<p></p>
+Let us select a candidate C somewhat nearer to 1/2 than X (but on the same side)
+and (say) having a comparatively large initial Voronoi region (i.e. comparatively 
+large initial number of top-rank votes).   [We shall need a lemma here that
+with probability&gt;1-O(&epsilon;), the distance between X and 1/2 exceeds
+&epsilon; and there are numerous candidates located between 1/2 and X.]
+<p></p>
+Consider a cabal, organized by me, of
+voters who raise X in their votes and whose strategic
+goal is to create a "buffer zone of safety" for C.  
+That is, some of the voters who prefer Z&gt;C&gt;X,
+will raise X above Z.
+The point is this will cause C's nearby rivals (Z) to be eliminated before
+C is eliminated (even though C would normally have been eliminated
+because squeezed between two rivals).  In this way it seems to me we
+can keep C alive.
+In the same way it seems to me we can enhance the survival of other
+selected candidates.  The goal is to induce a specific configuration
+to approximately appear at each stage of the IRV process,
+essentially independently of the initial candidate-locations.
+We make IRV winnow the candidates down according to a <i>fixed</I>
+time-evolution of the distribution, and with the survivors artificially
+uniformly-spaced.  
+(The point of uniform spacing is small changes tip the balance;
+it gives us more control for fewer "bucks expended.")
+Eventually C will become the IRV winner, entirely due to voters raising the old IRV-winner
+X in their votes with no other change.
+<p></p>
+Suppose at the stage where there are M
+survivors, all the inter-candidate spacings are uniformly 
+const/M but with additive "noise" of
+order &plusmn;(N/M)<sup>P</sup>/M
+for some constant exponent P with 0&lt;P&lt;1.  
+(I think this all will work with P=2/3.)
+Then we ought to be able to control
+things to eliminate the even-numbered candidates, 
+thus getting M/2 survivors also highly-uniformly spaced,
+while expending
+about const&middot;(N/M)<sup>P</sup> 
+vote-alterations (i.e. raising X in that fraction of the votes).
+</p><p>
+Before starting the above argument,
+we let the IRV process run normally (unperturbed) until
+it has winnowed down the field to, say,  N<sup>4/5</sup>
+survivors, and only <i>after</i> that point try to perturb the process.
+IRV naturally, since it eliminates candidates with small Voronoi regions,
+will tend to uniformize inter-candidate spacings.  Indeed, believe it can be shown as a lemma
+that (with probability&rarr;1 when N&rarr;&infin;), 
+after IRV has winnowed down the field to O(N<sup>&kappa;</sup>)
+candidates with 0&lt;&kappa;&lt;1, the spacings between the remaining candidates automatically
+will be uniform to within a constant factor.
+If we select a clump of all the candidates within, say N<sup>-3/5</sup> of the N<sup>1/5</sup>-spaced
+lattice points and make sure (via vote manipulation) there is one survivor in each clump then
+we get a situation with near-uniform spacing.
+</p><p>
+After that, the ballot alterations ("raising X above Z") can be done to manipulate each of the IRV
+process <i>without affecting</i> preceding stages.  For example, suppose we have a ballot
+of the form 
+"Q&gt;Q&gt;Q&gt;Q&gt;Z&gt;C&gt;...&gt;X&gt;..."
+where the Qs stand for candidates eliminated in preceding IRV rounds. We can then raise X above Z
+to get
+"Q&gt;Q&gt;Q&gt;Q&gt;X&gt;Z&gt;C&gt;..."
+and all the preceding elimination decisions are <i>unaffected.</i>
+(We can pledge never to raise X to top-rank; with probability&rarr;1
+that will not sacrifice enough control to
+hurt anything.)  This way, if we work out manipulations to make the field after
+IRV round #2<sup>57</sup> (say) come out
+the way we want, we then can also add manipulations to make field #2<sup>58</sup> 
+come out as desired without destroying
+the preceding gambits that had manipulated the fields after rounds 2<sup>57</sup>, 2<sup>56</sup>, etc.
+</p><p>
+The total expenditure (i.e. #ballots altered)
+over the whole IRV process is then upperbounded by about
+const&middot;&sum;<sub>k</sub>(N/2<sup>k</sup>)<sup>P</sup>
+which is a convergent geometric series with 
+sum=const&middot;N<sup>P</sup>.
+This has been a sketch of (basically) an inductive proof that we can
+control the whole history of the 
+IRV election (with success probability&rarr;1) 
+by raising X within const&middot;N<sup>P</sup> ballots.
+In that case at the end of the day the IRV process will have winnowed
+it down to X versus C.
+Thereupon C will have a larger Voronoi region than
+X and hence will win because the
+extra votes X got, namely const&middot;N<sup>P</sup>, 
+is sublinear and not enough to
+alter the conclusion that C is majority-preferred over X (with success
+probability&gt;1-N<sup>P-1</sup> 
+or so, anyhow &ndash; e.g. if X unluckily were located very
+near to 1/2 this scheme wouldn't work).
+</p><p>
+It appears than <i>many</i> (say at least N<sup>0.1</sup>) 
+choices of "C" would be possible in this argument, proving 
+not only that nonmonotonicity
+almost-surely happens, but it also almost surely happens in a huge number of 
+simultaneous ways.
+<b>Q.E.D.</b>
+</p><p>
+<b>REMARK:</b>
+The above conjecture and proof sketch will <i>not</i> 
+work for
+<a href="TidemanRev.html#WBSIRV">WBS-IRV</a> and
+For <a href="BtrIrv.html">BTR-IRV</a>
+instead of IRV, becasue they both always elect Condorcet winners, one exists with
+probability&rarr;1 in this model, and raisng a Condrocet winner in votes always still leaves him
+a Condorcet winner.
+</p><p>
+Quas had in mind a <b>different proof-argument</b> for this conjecture
+[he gives it just before the start of section 3 of his paper].
+His idea would be for X-raising voters to try to enhance the survival of
+candidates located near to X who would normally have been eliminated.
+Then at some point X will find itself surrounded by two surprisingly-still-alive
+rivals, and hence will be eliminated.  
+<small>
+Quas notes the <i>lemma</i> that,
+in this 1D model,
+any candidate who, at any stage in the IRV process, is a "local minimum,"
+i.e. whose neighbors each have more top-rank votes than it does, 
+cannot win.
+</small>
+Thus, raising X in votes
+stops X winning.
+</p><p>
+Regardless of whether we can prove it, the conjecture seems to be true since Quas 
+tells me he has
+"convincing computer evidence" for it.
+</p><p>
+<b>Another open problem &ndash; what about "no-show paradoxes"?</b>
+It is an open question whether an analogue of this "&rarr;100% failure theorem" holds not only
+for nonmonotonicity, but also for "participation failure." (Conjecturally, it does.) See
+<a href="PuzzlePage.html#p55">puzzle#55c</a>.
+</p>
+
+<a name="summ"></a>
+<h2> Summary </h2>
+<a name="summary"></a>
+
+<table border="1" cellspacing="2" cellpadding="2" bgcolor="#ccffcc">
+<caption>3-candidate IRV elections</caption>
+<tr><th>Probabilistic model</th>
+<th>type-I failure prob</th>
+<th>type-II failure prob</th>
+<th>monotonicity failure prob</th>
+</tr>
+<tr><td>Random-elections = Impartial culture</td>
+<td>(12.157&plusmn;0.001)%</td>
+<td>(2.3119&plusmn;0.0005)% 
+<!-- (2.47&plusmn;0.04)% -->
+</td>
+<td>(<b>14.469&plusmn;0.002</b>)%</td>
+</tr>
+<tr><td>Dirichlet [uniform in 5-simplex]</td>
+<td>13/288=4.513888...%</td>
+<td><!-- (1.050&plusmn;0.001)% -->
+(0.90935&plusmn;0.0001)%
+</td>
+<td>(<b>5.4232&plusmn;0.0001</b>)%</td>
+</tr>
+<tr><td>1D "Political spectrum"</td>
+<td>5/72=6.9444...%</td>
+<td>(2.7778&plusmn;0.0003)%* or 0</td>
+<td>(<b>9.7222&plusmn;0.0003</b>)% or 5/72</td>
+</tr>
+</table>
+<blockquote>
+* UPDATE/APOLOGY:
+Actually the 2.7778% is for "ballot reversal" strategy and not type-II nonmonotonicity.
+Strictly speaking the latter is impossible.  Furthermore, the whole "type-II"
+column here contains somewhat-wrong numbers, see
+<a href="IrvParadoxProbabilities.html#SummTable">
+/IrvParadoxProbabilities.html</a>
+for the correct ones.
+</blockquote>
+<p>
+The best approximation of reality
+probably lies somewhere <i>between</i> the Dirichlet and Impartial Culture models... and Quas's
+"1D political spectrum" model evidently does.
+</p>
+
+<table border="1" cellspacing="2" cellpadding="2" bgcolor="#ccffcc">
+<caption>N-candidate IRV elections in N&rarr;&infin; limit</caption>
+<tr><th>Probabilistic model</th>
+<th>type-I failure prob</th>
+<th>monotonicity failure prob</th>
+</tr>
+<tr><td>Random-elections = Impartial culture</td>
+<td>&rarr;100%</td>
+<td>&rarr;100%</td>
+</tr>
+<tr><td>Dirichlet [uniform in (N!-1)-simplex]</td>
+<td>&rarr;100%</td>
+<td>&rarr;100%</td>
+</tr>
+<tr><td>1D "Political spectrum"</td>
+<td>&rarr;100% (conjectured)</td>
+<td>&rarr;100% (conjectured)</td>
+</tr>
+</table>
+<p>
+Also note that <i>multi</i>winner STV elections can be approximately regarded as a sequence of IRV 
+single-winner elections, and multiwinner elections tend to have a lot of candidates.
+Therefore, it would seem <i>practically guaranteed</i> that such STV elections will exhibit 
+non-monotonic embarrassments &ndash; with more winners and more candidates making these
+embarrassments more likely.
+</p>
+
+<p>
+<small>
+Please notify warren.wds AT gmail.com of any improved/corrected values.
+</small>
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+
+
+
+
+<!--
+Chris Benham: 2010-02-21 05:01:48 GMT 
+"Does nonmonotonicity in three-candidate IRV only happen when the 
+Condorcet winner is eliminated?"
+ 
+No.
+
+47: A>C>B
+26: B>A
+02: C>A>B
+25: C>B
+ 
+There is no Condorcet winner. 
+ 
+IRV elects A but if the two C>A>B ballots are changed to A>C>B then
+there is still no Condorcet winner and now IRV elects B, a failure of
+mono-raise.
+ 
+49: A>C>B
+26: B>A
+25: C>B
+-->

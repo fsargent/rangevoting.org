@@ -1,0 +1,259 @@
+<html>
+<head>
+<title>
+RangeVoting.org - A completely idiotic Instant Runoff Voting election 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> A completely idiotic Instant Runoff Voting (IRV) election </H2>
+<p><small>By Warren D. Smith, 14 Aug 2010 </small></p>
+
+<p>
+Here's a simple <a href="rangeVirv.html">IRV</a> election 
+with 57 voters and 3 candidates named "A", "B", and "C".
+</p>
+<!--
+simultaneously exhibiting both kinds of
+monotonicity failure, both kinds of participation failure, favorite-
+betrayal, district-consistency failure,
+and "winner=loser" reversal paradox too.
+
+The only(?) major missing IRV paradox is Condorcet-winner-elimination
+(since this election has a Condorcet cycle A>B>C>A, there is no Condorcet-winner
+to eliminate). However even that
+problem is still there in the weakened sense that B sure looks like
+the "right" winner, not IRV's choice A.
+[Pairwise table: AB=33 vs BA=24; AC=18 vs CA=39; BC=42 vs CB=15.]
+-->
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 18 </td>
+<td align="center">  A>B>C </td>
+</tr>
+<tr>
+<td align="center"> 24 </td>
+<td align="center"> B>C>A </td>
+</tr>
+<tr>
+<td align="center"> 15 </td>
+<td align="center"> C>A>B </td>
+</tr>
+</table>
+<p>
+Instant runoff eliminates C, then <b>A wins</b> by 33 to 24 over B.<br>
+</p><blockquote><small>
+Notation: A vote "Jim>Amy>Bob" means that voter prefers Jim more than Amy more than Bob,
+and says so as her vote.
+</small></blockquote><p>
+FAILURE OF THE SNIFF TEST:
+First of all, without any analysis at all, who do you think ought to win this election?
+It sure looks to me like B is the "most correct" and "most democratic"
+winner.  (B has the most top- and fewest bottom-rankings.)
+But IRV elects A.
+</p><blockquote><small>
+<a href="RangeVoting.html">Score voting</a>
+considers this election an easy call. 
+It would elect B if all voters gave score X to their first choice, Y to their
+second, and Z to their third, for <i>any</i> scores X&ge;Y&ge;Z, not all equal.
+</small></blockquote><p>
+IF WE REVERSE all ballots: then A still wins (but now after B eliminated). 
+So the uniquely "best" candidate according to IRV is the same as the 
+uniquely "worst" candidate according to IRV! (FairVote, the pro-IRV advocacy group,
+<a href="Burlington.html">describes</a> this as "IRV elects a majority winner.")
+</p><blockquote><small>
+To "reverse" the ballot "Jim>Amy>Bob" we would change it to "Bob>Amy>Jim,"
+i.e. now ranking Jim bottom instead of top.
+</small></blockquote><p>
+LESS IS MORE: If 4-5 BCA voters <i>lower</i> the current loser B, that makes B
+<i>win</i> under IRV rules (IRV begins by eliminating A).
+</p><blockquote><small>
+To "lower" Jim in the ballot "Jim>Amy>Bob" we would change it to "Amy>Jim>Bob,"
+or (to lower Jim even further, all the way to rock bottom) we could change it to
+"Amy>Bob>Jim."
+</small></blockquote><p>
+NO, MORE IS LESS: <i>Raising</i> the current winner A from bottom to top in 10
+BCA votes <i>stops</i> A winning (causes C, the new bottom-ranked guy in all
+these votes, to win).
+</p><p>
+YOU POOR SUCKERS VOTED <i>AGAINST</i> YOUR ENEMY? BIG MISTAKE:
+If 10 BCA voters instead of voting maximally-against the hated A, dishonestly 
+vote maximally-<i>for</i> him (or just refuse to vote at all), that would have 
+<i>prevented</i> A 
+from winning and made their lesser-evil C win.  
+(Same thing as the last one, just different viewpoint. Point is, IRV in this
+election incentivized voters to lie in their votes and made voting honestly be stupid.
+Rob Richie, head of FairVote,
+the pro-IRV advocacy group,
+<a href="Irvtalk.html#RBMscience">described</a>
+this as "A[n IRV] voter's best strategy is to sincerely rank the candidates.")
+</p><p>
+IT SURE WASN'T WISE TO VOTE A-BOTTOM, YOU CHUMPS SHOULD HAVE STAYED HOME:
+If we delete 10-20 BCA voters, then the old winner A loses (and C
+wins).   So it was very foolish of them to vote A-bottom and honestly say they regarded A as
+the worst choice &ndash; that made A win &ndash;
+they should either have refused to vote, or lied in their vote.
+(FairVote, the pro-IRV advocacy group,
+describes this as "IRV eliminates the 'wasted vote' problem.")
+</p><p>
+IT SURE WAS CLEVER OF THOSE B-BOTTOM VOTERS TO STAY HOME:
+If 4-26 more CAB voters came, that'd make B win. Good job for them
+they stayed home and didn't let anybody know they hated B.
+</p><p>
+YOU PATSIES VOTED <i>FOR</i> YOUR FAVORITE? BIG MISTAKE:
+3-24 BCA voters could have prevented their greatest evil A from
+winning by dishonestly lowering their favorite B (including in some cases thus 
+making their favorite B win!) .
+</p><p>
+WHOO-WHEE, I'M A KINGMAKER (also known as a <a href="Glossary.html#Spoiler">SPOILER</a>):
+After the voters had voted, it was belatedly discovered that B was a convicted criminal
+and hence ineligible to run.  
+Fortunately, B had not (embarrassingly) won; and since all
+voters provided their full preference orders for all candidates, 
+this didn't matter &ndash; we can now just erase B from all 
+ballots and redo the instant runoff 
+count, which will of course still verify that A won and C finished 
+in last place.  Right?  Wrong... now C wins.
+(FairVote, the pro-IRV advocacy group,
+describes this as "IRV eliminates the 'spoiler' problem.")
+</p><p>
+SOME OTHER WAYS TO LOOK AT THAT LAST ONE:
+B is a spoiler since by the act of running, he altered the winner from C to A; 
+while if B drops
+out of the race at the last minute, he can alter the winner from A back to C.
+Also, this can be viewed as a tactical opportunity for B-voters: instead of honestly voting
+for their favorite B, they could dishonestly vote for their second choice C.  
+The latter move works out better for them.
+(And here's another IRV spoiler <a href="IRVpereira.html">example</a>.)
+</p><p>
+PRECINCT TOTALS? DON'T MAKE ME LAUGH:
+If we split up the country into 3 districts in various ways, e.g.
+</P>
+<table width="99%">
+<tr><th>East:</th><th>North:</th><th>South:</th></tr>
+<tr><td align="center">
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 5 </td>
+<td align="center">  A>B>C </td>
+</tr>
+<tr>
+<td align="center"> 7 </td>
+<td align="center"> B>C>A </td>
+</tr>
+<tr>
+<td align="center"> 7 </td>
+<td align="center"> C>A>B </td>
+</tr>
+</table>
+
+</td><td align="center">
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 4 </td>
+<td align="center">  A>B>C </td>
+</tr>
+<tr>
+<td align="center"> 7 </td>
+<td align="center"> B>C>A </td>
+</tr>
+<tr>
+<td align="center"> 8 </td>
+<td align="center"> C>A>B </td>
+</tr>
+</table>
+
+</td><td align="center">
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 9 </td>
+<td align="center">  A>B>C </td>
+</tr>
+<tr>
+<td align="center"> 10 </td>
+<td align="center"> B>C>A </td>
+</tr>
+<!-- <tr>
+<td align="center"> 0 </td>
+<td align="center"> C>A>B </td>
+</tr> -->
+</table>
+
+</td></tr>
+</table>
+<p>
+Then:
+<ul><li>
+B is the IRV winner in the East.
+</li><li>
+B is the IRV winner in the North.
+</li><li>
+B is the IRV winner in the South.
+</li><li>
+There are no other districts.
+</li></ul>
+<p>
+So "obviously" B wins the whole country, right? Wrong &ndash; A wins.
+</p><p>
+<small>
+You cannot count IRV elections in precincts for this reason, you have to count the whole
+election centrally.  No such thing as a precinct "subtotal."
+(More <a href="IrvNonAdd.html">discussion</a>.)  
+That is a big change in counting procedures in many places
+and makes the election more susceptible to a centrally organized fraud.
+</small>
+</p><p>
+YOU WANT <i>COMPLEXITY</i>?
+That was only a 3-candidate election with only 3 kinds of voters.  Simple.
+(FairVote describes this as "as simple as 1-2-3.")
+If you want something more complicated, think about how IRV behaves with 4, 5 or 6 candidates
+and a million voters.
+</p>
+<blockquote><small>
+If, on the other hand, you want a bit more simplicity:
+if you replace the numbers (18,24,15) in the election table we started with
+by
+(12,17,11) or (9,12,8) 
+then you should still get all the same paradoxes 
+(with the numbers appropriately changed)
+but with only 40 or 
+<a href="CompleteIdioticIRV2.html">29</a> 
+voters instead of 57.  Readers may enjoy working those elections out for themselves.
+</small></blockquote>
+
+<br>
+<p><a href="IrvParadoxProbabilities.html">Probabilities of
+IRV "paradoxes'</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

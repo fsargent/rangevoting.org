@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Saari example illustrating Plurality Voting's clear insanity
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Example of plurality voting's total insanity </H2>
+<p>
+<small>
+This example was created by professor Donald G. Saari and is from his 
+2001 book <i>Decisions and Elections</i>.
+</small>
+</p>
+<p>
+Let there be 30 voters and  four candidates named A, B, C, and D.
+We display both the first and second choices of each voter.
+</p>
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr><th>#voters</th><th>their vote</th></tr>
+<tr bgcolor="pink"><td align="center">6</td><td align="center"> A>D </td></tr>
+<tr bgcolor="pink"><td align="center">3</td><td align="center"> A>C </td></tr>
+<tr><td align="center">5</td><td align="center"> B>D </td></tr>
+<tr><td align="center">3</td><td align="center"> B>C </td></tr>
+<tr><td align="center">5</td><td align="center"> C>D </td></tr>
+<tr><td align="center">2</td><td align="center"> C>B </td></tr>
+<tr><td align="center">4</td><td align="center"> D>C </td></tr>
+<tr><td align="center">2</td><td align="center"> D>B </td></tr>
+</table>
+<p>
+With <a href="Plurality.html">plurality</a> voting,
+<b>A wins</b> this election
+with 9 votes (shown pink), followed by B=8, C=7, D=6.
+</p>
+
+<p>
+But now suppose the losingest candidate D drops out.
+Of course, that'll make no difference, right? Wrong.
+Now the results are completely reversed: <b>C wins</b> with 11, followed by
+B=10, A=9.
+</p>
+<p>
+In fact, <i>no matter which</i> candidate drops out, the result-order among the others
+gets totally reversed.
+</p>
+<p>
+The point of this example is that plurality voting is totally self-contradictory.
+It can say somebody is the best candidate, 
+then turn around and say that same person is the worst.
+It must have been wrong at least one of those times.
+And the consequence can be that we elect the worst 
+instead of the best candidate, which is very bad news for your country.
+</p>
+<p>
+You might want to consider 
+<a href="RangeVoting.html">range voting</a> instead.
+</p>
+
+<!--
+maximize(s, {
+ ACD+ADC+BCD+BDC+CBD+CDB+DBC+DCB=30,
+ ACD>=0, ADC>=0, BCD>=0, BDC>=0, CBD>=0, CDB>=0, DBC>=0, DCB>=0,
+ ACD+ADC >= s+BCD+BDC,
+ BCD+BDC >= s+CBD+CDB,
+ CBD+CDB >= s+DBC+DCB,
+ ACD+ADC+s <= BCD+BDC+DBC,
+ BCD+BDC+DBC+s <= CBD+CDB+DCB,
+ DBC+DCB+CDB >= s+BCD+BDC+CBD,
+ BCD+BDC+CBD >= s+ACD+ADC,
+ DBC+DCB+BDC >= s+CBD+CDB+BCD,
+ CBD+CDB+BCD >= s+ACD+ADC 
+}
+);
+-->
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

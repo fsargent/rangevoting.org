@@ -1,0 +1,93 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Rivest 3ballot system (Executive summary)
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Rivest's 3ballot scheme for verifiable secret ballot elections (summary) </H2>
+
+<p>
+A revolutionary new protocol called "3ballot" was introduced in September 2006 by MIT's
+Turing-award-winning cryptographer Ron Rivest. 
+It accomplishes the seemingly incompatible goals of
+</P>
+
+<ol>
+<li>
+ Each voter's vote is secret, preventing vote-selling and coercion.
+</li>
+<li>
+Each voter can verify that his vote was not discarded, and was correctly used and not altered, in the computation of the election result. 
+(And if not, the voter is in a position to 
+<i>prove</i> the vote counters cheated.)
+</li>
+<li>
+Everybody can verify the election result was computed correctly.
+</li>
+<li>
+Everybody can verify that extra fake "voters" were not added, and the full list of voters is publically known.
+</li>
+<li>
+The whole protocol can be done <i>without</i>
+computers or cryptography &ndash; only low-tech devices like paper and pens are 
+needed &ndash; and is so simple it can be understood by children. 
+(It is, however, also possible to put in computers and cryptography; several flavors are possible.)
+</li>
+</ol>
+
+<p>
+Interestingly, 3ballot turns out to work most naturally, securely, and simply, 
+for <a href="AppExec.html">approval voting</a> and
+<a href="RangeVoting.html">range voting</a>. 
+It still works &ndash;
+but less naturally, securely, and simply for
+<a href="Plurality.html">plurality</a> voting 
+(the kind of voting currently most common throughout the USA and world) &ndash;
+and it essentially does not work at all for voting methods based on rank-order ballots 
+such as <a href="rangeVirv.html">instant runoff voting</a>.
+</p>
+<p>
+<small>
+Actually, Rivest's original plan was intended for plurality voting,
+but it turned out not to work because it permitted vote-buying.
+I pointed out to Rivest, though, that (a) it <i>did</i> work for approval and for
+range voting, and (b) a certain modification of his idea, called BOFFO, works for
+plurality voting.  I presume later versions will appear of the Rivest paper
+which will incorporate these improvements and fixes.  They are, at any rate,
+described in these here CRV pages.
+<br>
+&ndash;Warren D. Smith 4 Oct 2006.
+</small>
+<p>
+<b>Later note (November 2006):</b> Rivest &amp; I have
+agreed to produce a joint paper.  These here web pages at CRV will be <b>obsoleted</b> by that
+paper (you are warned). 
+The paper is now described in <a href="Press.html">press releases</a> and
+is available as <a href="WarrenSmithPages/homepage/tb8.pdf">pdf</a>
+and 
+<a href="RivSmiTB.html">html</a>
+and there is also an
+<a href="RivSmiTBadd.html">addendum</a>.
+</p>
+
+<br>
+<p><a href="Rivest3B.html">The details</a></p>
+<p><a href="BoffoRecipe.html">Just the recipes, without too many details</a></p>
+<p><a href="SleatorCheapo.html">Sleator's &quot;cheapo&quot; semi-secure plan</a></p>
+<p><a href="PresFraud.html">US Presidents and fraud</a></p>
+<p><a href="MDLecture.html">Lectures at CMU (2nd lecture discusses this secure voting stuff)</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

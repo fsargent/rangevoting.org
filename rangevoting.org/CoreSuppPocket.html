@@ -1,0 +1,112 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Richie "Core support" Notion 
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> "Pocket size" IRV example refuting Richie's "Core support" theory </H2>
+
+<p><small>by Clay Shentrup</small></p>
+<p>
+Here is a 4-candidate Instant Runoff Voting election (candidates named A,B,C,D):
+</P>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td>  35% </td>
+<td> A > C > D > B </td>
+</tr>
+<tr>
+<td>  17% </td>
+<td> B > C > D > A </td>
+</tr>
+<tr>
+<td>  32% </td>
+<td> C > D > B > A </td>
+</tr>
+<tr>
+<td>  16% </td>
+<td> D > B > C > A </td>
+</tr>
+</table>
+
+<p>
+Instant Runoff Voting selects candidate
+<b>B</b> as the winner, beating A in the final round, 65% to 35%.
+</p><p>
+But wait!
+</p><p>
+A huge 67% majority of voters would rather have candidate C than
+candidate B. And candidate C received nearly twice as many first-place
+votes as candidate B, 32% to 17%. And an even larger 83%
+super-majority of voters would rather have candidate D than B (and D
+got just a little fewer first-place votes than B). So the claim that
+IRV "elects majority winners" is seriously misleading.
+Also...
+</p>
+<ul>
+<li> A is a spoiler (if he would drop out of the race, C would win
+instead of B).
+</li><li>
+ The first row of voters have an incentive to betray candidate A by
+pretending candidate C is their actual favorite - then they get their
+second choice instead of their last.
+</li><li>
+ The third row of voters have an incentive to betray candidate C by
+pretending candidate D is their favorite &ndash; then they get their 
+second choice instead of their third.
+</li><li>
+ The first row of voters made a big mistake by voting honestly.
+Suppose of the 35 first-row voters, 20 had simply refused to vote.
+That move (not voting) would actually have been <i>better</i> for them than voting honestly
+because it would have caused C to win (whom they prefer over B).  Their honest
+"B is worst" votes
+actually <i>caused</i> B to win!
+</li></ul>
+<p>
+Also, C is the Condorcet "beats-all" winner, but doesn't make it to the final
+round:
+65% majority says C&gt;A;
+67% majority says C&gt;B;
+84% majority says C&gt;D.
+</p><p>
+And A is the Condorcet "lose-to-all" loser, but makes it to the final round
+(65% majorities say others&gt;A).
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+<!--
+w x y z t
+maximize( s,  { 
+ w+x+y >= z+t+s,  #C beats P,M
+ x+y+z+t >= w+s,  #C beats G
+ t+s <= z,        #P elimd 1st rd
+ t+s <= x+y,      #P elimd 1st rd
+ t+s <= w,        #P elimd 1st rd
+ w+x+y+z+t=28, w>=0, x>=0, y>=0, z>=0, t>=0,
+ x+y+s <= w,      #C elimd 2nd rd
+ x+y+s <= z+t,    #C elimd 2nd rd
+ w+x+s <= y+z+t,  #G elimd 3rd rd so M wins IRV
+ x+y >= z+s  } ); #C more core supp than M 
+-->
+

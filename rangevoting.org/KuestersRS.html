@@ -1,0 +1,236 @@
+<html>
+<head>
+<title>
+RangeVoting.org - A bust to Rivest-Smith ThreeBallot and VAV "anti-fraud voting" protocols?  
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> A bust to Rivest-Smith ThreeBallot and VAV "anti-fraud voting" protocols?  </H2>
+<p><small>By Warren D. Smith 16 May 2011</small></p>
+<p>
+Ralf K&uuml;sters, Tomasz Truderung, and Andreas Vogt
+(all at University of Trier, Germany) in a preliminary (2011) paper titled
+<a href="index.html%3F%3F.html">Verifiability, Privacy, and Coercion-Resistance: New
+Insights from a Case Study</a>,
+found an unexpected bust of the 
+<a href="RivSmiPRshort.html">Rivest-Smith</a> low-tech
+"secure/antiFraud voting" schemes "ThreeBallot" and "VAV." 
+</p><p>
+However, in practice this "bust" looks to be not as severe a problem
+as it might at
+first seem, and at present it still looks likely that Rivest-Smith
+would, if implemented,
+raise voting in <i>large</i> elections to new levels of security far beyond
+what humanity ever
+accomplished previously.   Unfortunately the KTV attack seems serious in
+<i>small</i> secret-ballot elections.
+</p><p>
+I will now try to explain the bust, and then explain considerations which
+appear, for large elections, to "bust the bust."
+
+<h3> The KTV attack </h2>
+<p>
+They assume there are a large (but minority) set of dishonest voters and
+(collaborating with them) a dishonest central election authority. The
+dishonest voters each cast (in an A versus B election using "ThreeBallot")
+</p><center>
+   <tt>xo, ox, ox</tt> &nbsp;&nbsp;&nbsp;
+  [which would have been a vote for B and against A]
+</center><p>
+keeping the first SingleBallot for receipt purposes.   Dishonest Voter
+phones her
+dishonest contact at the central authority to inform them of her SingleBallot's
+serial number.
+The dishonest central authority uses that information to mispost her   <tt>xo</tt>
+SingleBallot as  <tt>ox</tt>,  but the dishonest voter agrees never to complain
+about that
+mispost.   The corrupt central authority counts this as three
+votes for B, not (which it honestly should have been) one vote for B (in the form,
+more precisely, of 2 for B and 1 for A).
+That is, the dishonest voter effectively is permitted to submit
+</P><center><tt>
+   ox, ox, ox
+</tt></center><p>
+as her vote (which if she'd tried that directly, would have been
+rejected by the checker machine).
+</p><p>
+The full set of SingleBallots that the corrupt election authority then
+falsely claims exists remains a valid set provided the minority
+of colluding cheating pro-B voters is smaller than
+the set of pro-A honest voters.
+</p><p>
+So... it looks to me like they are right: this is a valid attack.
+</p>
+
+<h3> Various "election verifiability" criteria </h3>
+<p>
+KTV then point out that there are different criteria for (what they
+call) "election verifiability".
+Rivest &amp; Smith's protocols satisfied the criteria that
+<ol><li>
+ any voter can check her ballot appears correctly on the bulletin board
+</li><li>
+ anybody can verify the bulletin-board-posted votes total to the
+officially-claimed total
+</li></ol>
+<p>
+Those seemed good to Rivest+Smith, <i>but</I> as KTV point out
+are not good enough to grant (what they call) "global"
+verifiability, which means
+</p><ol start="3">
+<li> if the published election result is not correct, that has to be
+publicly detected. [I presume this only is possible if the set of
+colluding cheaters is small enough as a fraction of the population.]
+</li></ol>
+<p><b>Question:</b>
+Is global verifiability achievable at all?
+(Apparently Kuesters et al do not offer an opinion on this question?)
+</p>
+<h3> Is this really a bust, for practical purposes?</h3>
+<p>
+Frauding elections must be considered from a cost and benefit point of view.
+E.g. consider the "Tweed Ring" which used election fraud to take
+over New York City (and to a lesser extent New York State) during
+about 1865-1872.
+These fraudsters were easily and reliably able
+to accomplish numerically-enormous frauds, and
+the rewards for these fraudsters were tremendous.  Tweed 
+diverted a large
+fraction of New York City's finances into his own and his friends and
+co-conspirators'
+pockets, becoming one of the richest men in the country.  
+(He founded his own bank in order to 
+store his loot.)  Furthermore,
+he was able to commit the frauds with the aid of a fairly small number of
+conspirators.   The number of
+<a href="http://en.wikipedia.org/wiki/William_M._Tweed">Boss Tweed's</a>
+co-conspirators is not clear and depends on definitions...
+arguably there were only 8 or so key conspirators, but
+also arguably perhaps as many as 1000 participated.  Tweed
+eventually was jailed, escaped, but re-jailed and died in jail.
+</p><p>
+In the KTV attack, to shift the B-over-A margin by 2M votes, you need at least M
+colluding conspirators.   That is a very small
+</P><center>
+VoteShift <big>/</big> #Conspirators
+</center><p>
+ratio (2),
+compared to the Tweed ring (more like 60000).
+That makes the risks much larger and
+the benefits much
+smaller for KTV's Fraudsters.   Furthermore, suppose even just one of KTV's
+colluding cheating voters, happened to be an agent provacateur (or
+just later had a
+change of heart).  She tells the corrupt election authority
+"I'll be happy to join in your election rigging scheme."
+She submits her vote as per Kuester et al's instructions,
+sends them her serial number so they can modify her vote...
+and all is fine... <i>except</i> then she reneges on the deal and complains
+that they altered her SingleBallot!
+</p><p>
+Even if she sends them her SingleBallot for verified destruction by
+them, she still could keep a copy of it (thanks to digital
+signatures)... which alone would suffice to prove the fraud in court!!!
+</p><p>
+So it seems to me, <i>yes</i>, the Kuesters collusion-attack works, <i>but</i> they
+all must have total trust in each other.   If just one
+collaborator actually is a double agent... then they're busted.
+And, they have to worry about that risk even if there is no double agent.
+</p><p>
+Therefore, this attack in practice may not hurt much.
+I doubt it is possible for any Tweedlike Fraud Ring to have total
+trust in more than 1000
+colluders, so they could shift at most 2000 votes from A to B.
+That's a tiny vote-shift
+in New York City, accomplished at great risk to them.  It would be able to
+alter only a tiny fraction of elections, and a fraction not
+predictable in advance. 
+</p>
+<blockquote><small>
+During 1897-2011, no New York City mayor election has been decided by fewer than
+50,000 votes, and only two by fewer than 250,000.
+</small></blockquote><p>
+ From a cost-benefit point of view this whole
+fraud was not even worth trying.   The KTV attack in this setting
+seems almost no threat.
+On the other hand, in a vote with only 20 voters of which, say,
+5 (plus the tallier) were corrupt
+colluders, the KTV attack would be a serious problem.  Fortunately, most
+such small high-stakes votes (e.g. corporate boards, votes on bills in Congress,
+etc) are <i>not</i> secret ballot, hence for them you could get total
+security by simply
+publishing the list of all the (named) voters and their votes.
+</p><p>
+And we already knew Rivest-Smith was vulnerable to very small
+vote-total-altering
+frauds (the probability of detection had been thought to rise with the size of
+the fraud to approach 100% exponentially, but for a tiny fraud could easily
+escape detection).   So the KTV attack makes that known issue in small
+elections, worse.  For large elections, the KTV attack, at least as currently formulated,
+seems not really a credible threat, or anyhow a small enough threat
+that even if every
+large election fraudable in this way (i.e. every large election with honest
+margin&lt;2000) was, in fact, frauded, it would not hurt humanity by any
+detectable amount.
+</p><p>
+In comparison, I point out that Florida in the Bush-Gore presidential contest 2000, 
+altered the vote by &asymp;30,000 or more by simply falsely
+declaring/defining (before the election began)
+a large number of (predominantly Democrat) voters
+not to <i>be</i> voters since they were "felons."  
+</p><p>
+Elections in <i>small towns</i>
+or small secret-ballot elections such as the conclaves electing the Catholic Pope,
+seem the type most hurt by the KTV attack.
+</p>
+
+<h3> A defensive suggestion by Bruno Parga (3 Nov. 2011)</h3>
+
+<p>
+Bruno Parga writes:
+</p><blockquote>
+I was reading [this webpage] and
+I have a doubt you might be able to answer. The key to the attack, it
+seems, is this: "Dishonest Voter phones her dishonest contact at the
+central authority to inform them of her SingleBallot's serial number.
+The dishonest central authority uses that information to mispost her
+xo SingleBallot as ox, but the dishonest voter agrees never to
+complain about that mispost." Wouldn't that be made a lot harder, hard
+enough for the attack never to be worth it, if every precinct published
+its own ballots instead of letting a central authority do that?
+</blockquote>
+<p>
+Bruno Parga's point is, the "dishonest contact at the central
+authority" would now
+need to be multiple dishonest contacts, one in each precinct the dishonest
+voters are in.  That makes it harder.   In my (W.D.Smith's) opinion (pending
+comments by others) this would make the KTV attack less effective for large elections 
+(I've argued it already was not a useful attack on large elections, but with
+Parga's defense that is even more true).  Also, individual-precinct publication
+was a good idea anyhow with Rivest-Smith since it would mean that when a fraud does happen
+and is detected, we get to know, with somewhat more confidence, 
+<i>where</i> the fraud was happening.  (We'd already know that pretty well by
+knowing which voters were the ones complaining about their receipts disagreeing with the 
+votes posted on the bulletin board, but not if those complainer-voters tried hard to remain
+anonymous.  With precinct-stating bulletin boards, we'd know where the fraud was happening
+even with entirely-anonymous complainer-voters.)
+However, unfortunately, KTV remains a good attack on
+small secret ballot elections.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

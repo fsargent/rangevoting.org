@@ -1,0 +1,500 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Canada: seat and vote counts
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Canada: seat and vote counts by party. Data. </H1>
+<p><small>
+Warren D. Smith, Oct 2015
+</small></p>
+
+<p>
+For each federal election in Canada, 1980-2015 (which is 11 elections in all), 
+we tabulate the number (and percentage)
+of seats won by each party, the popular-vote-percentage obtained by that party,
+and the number of "top up seats" that would be required to bring that party's seat count
+up to proportionality (to within &plusmn;1 seat) if among the W seats in parliament
+T were top-up seats while W-T were elected directly using the same seat-percentages as 
+officially happened.  
+For each election we compute the <i>minimal</i> total number T of top up seats needed
+to reach proportionality (the resulting T values differ from election to election).
+We also state the total number C of candidates and V of voters.
+(0&le;T&lt;W&le;C&lt;V.)
+And the gap (difference in vote percentages) between the top and 2nd top party.
+</p><p>
+Observe that in 8 out of 11 cases, the governing party was given <i>zero</i> top-up seats.
+That is because, usually, 
+single-winner voting systems (especially <a href="Plurality.html">plurality</a>)
+tend to yield <i>over</i>representation
+(and also the <i>most</i> overrepresentation)
+by the top party in parliament.  In such cases a minimal top-up would only give seats to the
+<i>non</i>governing parties.  However, that over-representation is only a trend, not
+a guarantee; sometimes (e.g. 2008) the top party would deserve top-up seats.
+</p><p>
+Also note that in 9 out of 11 cases, making 33% (or fewer) seats be top-ups would have been enough
+to obtain proportionality.  And one might conjecture that if 
+<a href="RangeVoting.html">score voting</a> &ndash; a better single-winner system &ndash;
+had been used instead of
+<a href="Plurality.html">plurality</a> voting, then this 33% could safely be decreased 
+(to, perhaps, 25%?).
+If Canada had had a fixed 33% top-up 67% local-MP composition for parliament,
+then the average fraction of parliament consisting of MPs elected from
+the top party and via top-up (simultaneously) would have been about 2%.
+</p>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_2015">2015</a> J.Trudeau (W=338, C=1792, V=17592778; this is the largest number of voters ever; Gap=7.58%):
+<!--C/W=5.30-->
+<pre>
+PARTY      SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=92=27.22%)
+Liberal      184     54.44     39.47     -0.9
+Conservative  99     29.29     31.89     35.9
+NewDemocratic 44     13.02     19.71     35.0
+BlocQuebecois 10      2.96      4.66      8.7
+Green          1      0.30      3.45     11.3
+(Independent)  0      0.00      0.28      1.0
+</pre>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_2011">2011</a> S.Harper (W=308, C=1587, V=14720580, Gap=8.99%):
+<pre>
+PARTY       SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=80=25.97%)
+Conservative  166     53.90     39.62     -0.9
+NewDemocratic 103     33.44     30.63     17.8
+Liberal        34     11.04     18.91     32.8
+BlocQuebecois   4      1.30      6.04     16.0
+Green           1      0.32      3.91     11.3
+(Independent)   0      0.00      0.49      2.0
+</pre>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_2008">2008</a> S.Harper (W=308, C=1601, V=13834294. This election featured the lowest turnout ever, 58.8%. Gap=9.39%):
+<pre>
+PARTY        SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=107=34.74%)
+Conservative   143     46.43     37.65     22.7
+Liberal         77     25.00     28.26     36.8
+BlocQuebecois   49     15.91      9.98     -1.0
+NewDemocratic   37     12.01     18.18     31.9
+(Independent)    2      0.65      0.69      0.7
+Green            0      0.00      6.78     21.0
+</pre>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_2006">2006</a> S.Harper (W=308, C=1634, V=14817159, Gap=6.04%):
+<pre>
+PARTY        SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=109=35.39%)
+Conservative   124     40.26     36.27     31.9
+Liberal        103     33.44     30.23     26.5
+BlocQuebecois   51     16.56     10.48     -1.0
+NewDemocratic   29      9.42     17.48     35.3
+(Independent)    1      0.32      0.55      1.4
+Green            0      0.00      4.48     14.0
+</pre>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_2004">2004</a> P.Martin (W=308, C=1683, V=13564702, Gap=7.10%):
+<pre>
+PARTY        SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=86=27.92%)
+Liberal        135     43.83     36.73     15.7
+Conservative    99     32.14     29.63     19.6
+BlocQuebecois   54     17.53     12.39     -0.9
+NewDemocratic   19      6.17     15.68     34.3
+(Independent)    1      0.32      0.48      0.3
+Green            0      0.00      4.29     13.0
+</pre>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_2000">2000</a> J.Chretien (W=301, C=1808, V=12857773, Gap=15.36%):
+<!--C/W=6.01-->
+<pre>
+PARTY        SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=85=28.24%)
+Liberal        172     57.14     40.85     -0.4
+Alliance        66     21.93     25.49     29.6
+BlocQuebecois   38     12.62     10.72      4.7
+NewDemocratic   13      4.32      8.51     16.7
+ProgrConserv    12      3.99     12.19     28.4
+Green            0      0.00      0.81      2.0
+</pre>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_1997">1997</a> J.Chretien (W=301, C=1672, V=12985974, Gap=19.11%):
+<pre>
+PARTY        SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=76=25.25%)
+Liberal        155     51.50     38.46      0.1
+Reform          60     19.93     19.35     13.1
+BlocQuebecois   44     14.62     10.67     -0.9
+NewDemocratic   21      6.98     11.05     17.3
+ProgrConserv    20      6.64     18.84     42.0
+(Independent)    1      0.33      0.46      0.3
+Green            0      0.00      0.43      1.0
+</pre>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_1993">1993</a> J.Chretien 
+(W=295, C=2155, V=13667671; 
+this election
+features the greatest average number C/W&asymp;7.31 of candidates per seat during the period 1972-2015
+and probably ever.
+Also 14 parties contested this election, which 
+was at the time a record high. Gap=22.55%, also highest at least within our data-years.
+Note also that Reform got more votes but fewer seats than BlocQuebecois):
+<!--C/W=7.31-->
+<pre>
+PARTY        SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=91=30.85%)
+Liberal        177     60.00     41.24     -0.4
+BlocQuebecois   54     18.31     13.52      2.7
+Reform          52     17.63     18.69     19.0
+NewDemocratic    9      3.05      6.88     13.8
+ProgrConserv     2      0.68     16.04     45.6
+(Independent)    1      0.34      0.73      1.3
+National         0      0.00      1.38      4.0
+</pre>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_1988">1988</a> B.Mulroney (W=295, C=1573, V=13175494. Highest turnout 75.3% among elections tabulated here, tied with 1984.
+ Gap=11.10%):
+<pre>
+PARTY        SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=72=24.41%)
+ProgrConserv   169     57.29     43.02     -0.8
+Liberal         83     28.14     31.92     31.3
+NewDemocratic   43     14.58     20.38     27.5
+Reform           0      0.00      2.09      6.0
+</pre>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_1984">1984</a>  B.Mulroney 
+(W=282, C=1449, V=12548862;
+this election
+features the least average number 1449/282&asymp;5.14 of candidates per seat. 
+Highest turnout 75.3% among elections tabulated here, tied with 1988.
+Gap=22.01%):
+<pre>
+PARTY        SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=93=32.98%)
+ProgrConserv   211     74.82     50.03     -0.4
+Liberal         40     14.18     28.02     52.2
+NewDemocratic   30     10.64     18.81     32.9
+(Independent)    1      0.35      0.31      0.3
+Rhinoceros       0      0.00      0.79      2.0
+</pre>
+<a href="https://en.wikipedia.org/wiki/Canadian_federal_election,_1980">1980</a>  P.Trudeau (W=282, C=1497, V=10949536, Gap=11.89%):
+<!--C/W=5.31-->
+<pre>
+PARTY        SEATS     SEAT%     VOTE%   TOP-UP-SEATS(T=41=14.54%)
+Liberal        147     52.13     44.34     -0.6
+ProgrConserv   103     36.52     32.45      4.0
+NewDemocratic   32     11.35     19.77     28.7
+SocialCredit     0      0.00      1.70      5.0
+</pre>
+
+<p>
+Although 1984 and 1988 featured the highest turnouts at 75.3% among the elections 
+tabulated here, these fell short of the greatest turnout ever,
+which was 79.4% in 1958. 
+I am not sure whether the 22.55% vote-percentage gap in 1993 was the greatest ever.
+It might be.
+</p>
+
+<a name="mostcanddts"></a>
+<h3>Record high numbers of candidates each year</h3>
+<table>
+<tr bgcolor="pink"><th>year</th><th>Avg #canddts</th>
+<th>Max #canddts</th><th>#ridings with maximal #canddts</th><th>Which ridings</th></tr>
+<tr><td>2015</td><td>1792/338=5.30177</td>
+<!--<td align="center">8</td><td align="center">2</td><td>Hochelaga, EdmontonMillWoods.</td>-->
+<td align="center">10</td><td align="center">2</td><td>Papineau, EdmontonStrathcona.</td></tr>
+<tr><td>2011</td><td>1587/308=5.15259</td>
+<td align="center">9</td><td align="center">4</td><td>Surrey-Sud/WhiteRock/Cloverdale, Laurier/Sainte-Marie,
+HamiltonEast/StoneyCreek, WestVancouver/SunshineCoast/SeaToSkyCountry.
+</td></tr>
+<tr><td>2008</td><td>1601/308=5.19805</td><td align="center">10</td><td align="center">1</td><td>Guelph.</td></tr>
+<tr><td>2006</td><td>1634/308=5.30519</td><td align="center">11</td><td align="center">1</td><td>Outremont.</td></tr>
+<tr><td>2004</td><td>1683/308=5.46428</td><td align="center">9</td><td align="center">4</td><td>Papineau, OttawaCentre, VancouverSouth, Saint-Laurent/Cartierville.</td></tr>
+<tr><td>2000</td><td>1808/301=6.00664</td><td align="center">10</td><td align="center">14</td><td>?</td></tr>
+<tr><td>1997</td><td>1672/301=5.55482</td><td align="center">11</td><td align="center">2</td><td>?</td></tr>
+<tr><td>1996 (by-election)</td><td></td><td align="center">13</td><td align="center">1</td><td>HamiltonEast.</td></tr>
+</table>
+<p>
+<small>
+(Table for years 2004-2015 computed by Brian Goldman from <a href="#endata">datafiles</a>
+supplied by Elections Canada. For years 1996-2004 extracted from 
+<a href="http://www.elections.ca/home.aspx">Elections Canada</a> reports.)
+</small>
+<p>
+There also were at least three ridings
+in the 1993 general election 
+(Vancouver Quadra won by E.W. "Ted" McWhinney;
+Vancouver East won by Anna Terrana;
+Vancouver South won by Herb Dhaliwal)
+featuring at least <b>13</b> candidates,
+which might be the all-time record and probably is the record among the elections
+1980-2015.  
+(Also at least one riding in 1988 featured 12 candidates.)
+In any case it seems that ridings have &ge;13 candidates only about 1 time in 1000.
+</p>
+
+
+
+<h3> Closer look at the 2015 and 2011 (and other) elections </h3>
+
+<p>
+<b>Parties vs Independents:</b>
+In 1997, 95% of candidates ran under the flag of a party, only 5% were unaffiliated.
+</p>
+
+<p>
+(Much of the year-2015 notes below stolen from a CBC News piece.)
+</P>
+<p><b>2015:</b>
+Turnout=69%.
+(The highest-turnout single riding was Ottawa Centre with 85%.)
+</p><p>
+24 parties ran candidates (plus there were unaffiliated candidates)
+but only 4 parties won seats &ndash; Liberals, Conservative, NDP, and Bloc Quebecois &ndash;
+and no unaffiliated MPs won.
+</p><p>
+The ridings with the greatest number of candidates apparently were
+Edmonton Mill Woods with 8
+(Jasvir Deol,
+Peter Downing,
+Ralph McLean,
+Allen KW Paley,
+Naomi Rankin,
+Amarjeet Sohi,
+Colin Stubbs,
+Tim Uppal)
+and Hochelaga with 8
+(Marjolaine Boutin-Sweet,
+Marianne Fontaine,
+Christine Dandenault,
+Alexandre Dang,
+Nicolas Lemay,
+Simon Marchand,
+Marwah Rizqy,
+Anne-Marie Saint-Cerny).
+Warning: my software hack may have been confused by data formatting issues in the 
+<a href="Canada2015detailedResults.txt">2015 results file</a>, so these "8"s are only
+lower bounds. 
+</p><p>
+In 22 ridings, the margin of victory was 1.5% or less. 
+The narrowest margin was in Winnipeg's Elmwood-Transcona, where, as of Oct. 21,
+the NDP's Daniel Blaikie won by 51 votes, 0.1%,
+over his Conservative opponent, Lawrence Toet, the MP since 2011.
+</p><p>
+Liberal Judy Foote won the highest share of the vote, 81.8%, 
+in Bonavista-Burin-Trinity. 
+(She'd represented the Newfoundland south shore riding since 2008.)
+</p><p>
+The winning candidate with the smallest share of the vote 
+&ndash; just 28.5% &ndash;
+was newcomer Brigitte Sansoucy, running for the NDP in Quebec's Saint-Hyacinthe-Bagot riding.
+</p><p>
+Niagara Falls riding had more people on the voters list than any other with 102602, 
+with Edmonton-Wetaskiwin next at 98502.
+Canada's largest electoral district by area, Nunavut, had the smallest number of voters 
+listed, 19223. (The median size for a riding is about 78600 voters.)
+</p><p>
+Thirty candidates received 40% or more of the votes but still lost. In St. John's East, 
+incumbent NDP MP Jack Harris got 45.3% of the popular vote, but Liberal Nick Whalen won.
+</p><p>
+Two candidates with more than 30 per cent of the popular vote finished in third place: 
+Liberal Steve Powrie in B.C.'s Kamloops-Thompson-Cariboo, with 30.5 per cent, and in 
+Desnethe-Missinippi-Churchill River, Saskatchewan's most northerly riding, 
+Conservative Rob Clarke finished third with 30.2 per cent of the votes. 
+He had represented the area  &ndash; a new constituency &ndash; since 2008.
+</p><p>
+Brian Goldman asked:
+How many seats were won without a majority? The answer is: 'most of them':
+<ul><li>
+Liberal 97 of 184 = 53%
+</li><li>
+Conservative 57 of 99 = 58%
+</li><li>
+NDP-New Democratic Party 42 of 44 = 95%
+</li><li>
+Bloc Quebecois 10 of 10 = 100%
+</li><li>
+Green Party 0 of 1 = 0%
+</li></ul>
+In total 206 of 338=61% of seats were won without a majority and therefore (perhaps)
+would not have had the same winner under alternative voting systems.
+(<a href="http://enr.elections.ca/National.aspx?lang=e">source</a>.)
+</p>
+
+
+<p><b>2011:</b>
+Turnout=61%.
+</p><p>
+How many seats were won without a majority? The answer is: 'most of them':
+<ul><li>
+Conservative 59 of 166 = 36%
+</li><li>
+NDP-New Democratic Party 67 of 103 = 65%
+</li><li>
+Liberal 32 of 34 = 94%
+</li><li>
+Bloc Quebecois 4 of 4 = 100%
+</li><li>
+Green Party 1 of 1 = 100%
+</li></ul>
+In total 163 of 308=53% of seats were won without a majority and therefore (perhaps)
+would not have had the same winner under alternative voting systems.
+(<a href="http://www.elections.ca/scripts/resval/ovr_41ge.asp?prov=&lang=e">source</a>.)
+</p>
+
+<p><b>Women:</b>
+In 2015: 88 women MPs were elected out of 338 total (26%, highest ever); 
+about 33% of the candidates were women.
+In 2011: 77 women MPs were elected out of 308 total (25%); 
+about 33% of the candidates were women.  
+1988 
+was the first time women were above 10%, and
+1997 was the first time women were above 20%, of
+parliament; and in both cases they have exceeded those levels ever since.
+24.4% of the candidates were women in 1997.
+</p>
+
+<p>
+<b>Number of parties running at least 3 MP candidates:</b>
+("Independent" and "unaffiliated" also counted as "parties" for present purpose
+provided at least 3 independent candidates ran nationwide)
+</p><pre>
+YEAR    #parties
+2015    18
+2011    18
+2008    17
+2006    15
+2004    13
+2000    13
+1997    12
+1993    16
+1988    14
+1984    13
+1980    12
+</pre>
+
+<h3> The 23 registered political parties as of year 2015 </h3>
+
+<pre>
+Alliance of the North
+Animal Alliance Environment Voters Party of Canada
+Bloc Quebecois
+Canada Party
+Canadian Action Party
+Christian Heritage Party of Canada
+Communist Party of Canada
+Conservative Party of Canada
+Democratic Advancement Party of Canada
+Forces et Democratie
+Green Party of Canada
+Liberal Party of Canada
+Libertarian Party of Canada
+Marijuana Party
+Marxist-Leninist Party of Canada
+New Democratic Party
+Party for Accountability, Competency and Transparency
+Pirate Party of Canada
+Progressive Canadian Party
+Rhinoceros Party
+Seniors Party of Canada
+The Bridge Party of Canada
+United Party of Canada
+</pre>
+
+<h3> The 10 registered political parties as of year 1997 </h3>
+
+<pre>
+Bloc Quebecois
+Reform Party of Canada
+The Green Party of Canada
+New Democratic Party
+Natural Law Party of Canada
+Christian Heritage Party of Canada
+Liberal Party of Canada
+Marxist-Leninist Party of Canada
+Progressive Conservative Party of Canada
+Canadian Action Party
+</pre>
+
+<p>
+In 1972 there were only 4 registered parties, which was the lowest count during 1972-2015.
+</p>
+
+
+
+<h3> Other facts about Canada </h3>
+
+<p>
+Population: 35.2 million (year 2013).
+<br>
+[Compare: 
+China 1357M,
+India 1252M ,
+USA 319M,
+Brazil 200M,
+Russia 144M, 
+Germany 80.6M, 
+UK 64.1M, 
+Australia 23.1M,
+Netherlands 16.8M,
+Israel 8.1M, 
+Ireland 4.6M,
+Malta 0.42M.]
+</p><p>
+Land area: 10.0 million km&sup2;.
+<br>
+[Compare:
+Russia 17.1,
+USA 9.9,
+China 9.6,
+Brazil 8.5,
+Australia 7.7,
+Germany 0.36,
+UK 0.24,
+Ireland 0.084,
+Netherlands 0.042,
+Israel 0.021,
+Malta 0.00032.]
+</p><p>
+Capital: in 1857, Ottawa become the capital.  
+It is slightly on the Ontario side of the
+Ontario-Quebec border (actually extends over that border, if
+you count Gatineau), and also lies only about 50-100 km from the USA (New York state)
+border.
+In 2011, the populations of the City of Ottawa and the Ottawa-Gatineau census 
+metropolitan area (CMA) were 883,391 and 1,236,324 respectively, making it both the
+4th largest city and 4th largest CMA by population in Canada.
+</p><p>
+Provinces &amp; Territories:
+As of year 2015 there are 10 provinces and 3 territories:
+</p>
+<table>
+<tr bgcolor="pink"><th>Province</th><th>Abbrev</th><th>Population(millions)</th><th>Area (thousand km&sup2;)</th></tr>
+<tr><td>Ontario</td><td>ON</td><td>13.7</td><td>1076</td></tr>
+<tr><td>Quebec</td><td>QC</td><td>8.2</td><td>1542</td></tr>
+<tr><td>British Columbia</td><td>BC</td><td>4.6</td><td>945</td></tr>
+<tr><td>Alberta</td><td>AB</td><td>4.1</td><td>661</td></tr>
+<tr><td>Manitoba</td><td>MB</td><td>1.3</td><td>648</td></tr>
+<tr><td>Saskatchewan</td><td>SK</td><td>1.1</td><td>651</td></tr>
+<tr><td>Nova Scotia</td><td>NS</td><td>0.94</td><td>55</td></tr>
+<tr><td>New Brunswick</td><td>NB</td><td>0.75</td><td>73</td></tr>
+<tr><td>Newfoundland+Labrador</td><td>NL</td><td>0.53</td><td>405</td></tr>
+<tr><td>Prince Edward Island</td><td>PE</td><td>0.15</td><td>5.7</td></tr>
+<tr bgcolor="pink"><th>Territory</th><th>Abbrev</th><th>Population(millions)</th><th>Area (thousand km&sup2;)</th></tr>
+<tr><td>Northwest</td><td>NT</td><td>0.041</td><td>1183</td></tr>
+<tr><td>Yukon</td><td>YT</td><td>0.034</td><td>474</td></tr>
+<tr><td>Nunavut</td><td>NU</td><td>0.032</td><td>1936</td></tr>
+</table>
+<p>
+
+<a name="endata"></a>
+<h3> Links to some data files </h3>
+
+<pre>
+<a href="Canada2000candidateList.csv">Canada2000candidateList.csv</a>,
+<a href="Canada2004candidateList.csv">Canada2004candidateList.csv</a>,
+<a href="Canada2004candidateList.txt">Canada2004candidateList.txt</a>,
+<a href="Canada2006candidateList.txt">Canada2006candidateList.txt</a>,
+<a href="Canada2008candidateList.txt">Canada2008candidateList.txt</a>,
+<a href="Canada2011candidateList.txt">Canada2011candidateList.txt</a>,
+<a href="Canada2015detailedResults.txt">Canada2015detailedResults.txt</a>
+</pre>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; v
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

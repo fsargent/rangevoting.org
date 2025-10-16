@@ -1,0 +1,655 @@
+<html>
+<head>
+<title>
+RangeVoting.org - "Measurement theory"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2> "Measurement theory" and its mis-application to attack 
+<a href="RangeVoting.html">Range Voting</a>
+</h2>
+<h3>
+(Or: are voting methods <a href="#numbersallowed">allowed</a> to use numbers?)
+</h3>
+<p><small>Warren D.Smith, May 2013. 
+&nbsp;&nbsp;
+(Skip to
+<a href="#endsummary">summary</a>)
+</small></p>
+
+<h3> Genesis </h3>
+<p>
+The British Association for Advancement of Science in 1932 tasked a committee 
+to report on "quantitative measurement of sensory events."
+It produced its final report in 1940.
+This was stimulated by the "sone scale of loudness" 
+purported to measure "objective scale of [subjective] auditory sensation." 
+</p><blockquote>
+<b>Encyclopedia Brittanica, "Sone":</b>
+Loudness is a subjective characteristic of a sound (as opposed to the sound-pressure level in decibels, which is objective and directly measurable). Consequently, the sone scale of loudness is based on data obtained from subjects who were asked to judge the loudness of pure tones and noise. One sone is arbitrarily set equal to the loudness of a 1,000-hertz tone at a sound level of 40 decibels above the standard reference level (i.e., the minimum audible threshold). A sound with a loudness of four sones is one that listeners perceive to be four times as loud as the reference sound.
+</blockquote><p>
+Such scales are crucially important for
+purposes such as telephony, computer speech synthesis, audio compression, etc.
+But one member of the BAAS committee
+claimed any such quantitative scale "is not merely false but
+in fact meaningless unless and until a meaning can be given to the concept of
+addition as applied to sensation." (Final report p.245.)
+Meanwhile other members had extremely opposite views!
+</p><blockquote>
+You can already tell that that quote was hogwash.  A counterexample is
+<b>"temperature,"</b> an apparently obscure and little known concept 
+unfamiliar to eminent members of the British Association for Advancement of Science.
+Temperature is meaningful and measurable, <i>despite</i>
+the fact that the  "sum of two temperatures" seems meaningless and
+you <a href="FeynTexts.html#temp">never</a>
+do that ("what is the total temperature of this apple and this cup of coffee?").
+</blockquote><p>
+S.S.Stevens, who'd co-invented the Sone scale, tried to resolve this controversy in
+his influential paper
+</p><blockquote>
+<i>On the Theory of Scales of Measurement</i>,
+SCIENCE magazine 103,2684 (June 1946) 677-680
+</blockquote><p>
+by proposing four "scale" notions, which he named
+'nominal', 'ordinal', 'interval' and 'ratio'. 
+[Interval and Ratio scales automatically are Ordinal also, which in turn automatically are Nominal
+also.]
+Stevens claimed that "the statistical manipulations that can be
+[meaningfully] applied to empirical data depend on the type of scale" &ndash;  and some kinds
+of scales make sense in certain situations while others do not and would be meaningless.
+Here is Stevens' table, but we have added two additional rows to it at bottom.
+</p><table bgcolor="PapayaWhip" border="1" cellpadding="3" cellspacing="0">
+<tr><th>Scale name</th><th>Basic empirical operations</th><th>Mathematical group</th><th>Some "permissible" statistics</th></tr>
+<tr><td>Nominal</td><td>Equality testing only</td><td>Permutation group of 1-to-1 bijections x'=f(x) among scale elements</td><td>Number of cases. Mode. Contingency correlation.</td></tr>
+<tr><td>Ordinal</td><td>also: x&lt;y and x&gt;y testing</td><td>
+"Isotonic" group, x'=f(x) where f monotonic increasing</td><td>Median. Quantiles.
+<i>Dis</i>allowed: determining the midpoint (x+y)/2 of two scale values x,y.</td></tr>
+<tr><td>Interval</td><td>also: comparing differences</td><td>
+"General linear" group x'=ax+b, [a>0, b both real]</td><td>Ordinal stuff, and also:
+Mean. Standard deviation.
+Rank-order correlation. Product-moment correlation.
+</td></tr>
+<tr><td>Ratio</td><td>"ordinal" operations and also: comparing ratios</td><td>
+"Similarity" group x'=ax, [a>0 real]</td><td>Ordinal stuff, and also: Coefficient of variation.
+</td></tr>
+<tr bgcolor="aqua"><td>Angular (new)</td><td>Comparing pair-differences</td>
+<td>"Modular additive" group x'=x+a mod 360, where a is any real</td>
+<td>Ordinal stuff, and also: mean squared difference.
+<i>Dis</i>allowed: multiplying by constants.</td></tr>
+</td></tr>
+<tr bgcolor="pink"><td>Range (new)</td><td>"interval" operations and also computing
+and comparing convex linear combinations &alpha;x+(1-&alpha;)y where 0&le;&alpha;&le;1;
+see text for more</td><td>
+<td>Ordinal stuff, and also: Weighted and unweighted means.
+<i>Dis</i>allowed in general: multiplying by constants&gt;1.</td></tr>
+</td></tr>
+<table>
+<p>
+Stevens in later work introduced a 5th kind of scale, the 'log-interval' scale, which form
+interval scales upon taking logarithms and hence is not really an <i>additional</i> scale type.
+These have invariantive group containing
+maps of form x'=bx<sup>a</sup> where a,b are positive reals.
+</p>
+<h3> A Criticism </h3>
+<p>
+We here want to argue that Stevens <b>missed at least one kind of scale</b> which we have 
+christened <b>'range'</b> and added to the bottom of Stevens' table.
+(Actually, he also missed <b>'angular'</b> scale, which I adjoined just to make the point
+that range was not the only one he missed.)
+All we need to do to show this is to name some quantity (such as "temperature" above) which
+is meaningful and measurable, but does not fit into Stevens' 4 categories, however does fit
+into our new category.
+</p><p>
+To do this, consider "the probability P that some bit-outputting randomized
+procedure A, outputs '0'."
+Obviously, for any given A, we can measure P(A) to arbitrary accuracy.
+So it is measurable and  meaningful.   Also obviously, 0&le;P&le;1 always.
+This tells us that P is not an interval or ratio scale because those necessarily involve 
+<i>all</i> real numbers and all positive real numbers as scale elements, respectively.
+Now further, a convex combination 
+S=&alpha;Q+(1-&alpha;)R
+of two probabilities Q and R
+(where 0&le;&alpha;&le;1)
+has a natural meaning, since if Q=P(A) and R=P(B) then 
+</p><center>
+S = P(use A with probability=&alpha; and B with probability=1-&alpha;).
+</center><p>
+So <i>it is simply wrong to contend that Stevens' four scales are the only possibilities.</i>
+</p><p>
+Means, and more generally weighted means, have meaning for Range scales (since they
+can be computed using convex combinations only).
+</p>
+Range scales based on the real interval [0,1] &ndash; since any finite interval can be
+regarded as [0,1] after a renormalization, we might as well only consider it &ndash;
+could permit even more natural/meaningful operations.  For example, consider the operation x'=1-x.
+That arises naturally via P(B)=1-P(A) where 
+B&equiv;"use A except complement its output bit."
+If this is permissible then Stevens' "invariantive group" would include x'=x and x'=1-x.
+</p><p>
+For another example,
+consider the <i>squaring</i> operation x'=x<sup>2</sup>.
+In our probabilistic algorithm example, replace method A with
+"run A twice (with independent randomness) and output the logical OR of the two outputs."
+The probability that <i>this</i> outputs 0 is P(A)<sup>2</sup>.
+More generally we can <i>multiply</i> two scale elements: consider
+C&equiv;"run 
+both A and B (with independent randomness) and output the logical OR of the two outputs."
+Then P(C)=P(A)&middot;P(B).
+</p>
+<h3>Subsequent &ndash; altogether too much &ndash; philosophical mumbo jumbo and pseudoscience</h3>
+<p>
+ David H. Krantz, R. Duncan Luce, Amos Tversky, and Patrick Suppes in their book
+</p><blockquote>
+<i>Foundations of Measurement volume I</i>
+(Academic Press 1971, 577 pages plus at least 2 more volumes came out later)
+</blockquote><p>
+set themselves the goal of developing a mathematical theory of this
+crud. Which sometimes could be very complicated. 
+But still later Louis Narens claimed that
+their theory "has never been satisfactorily justified" hence proposed in his own book
+<i>Measurement Theory</i> (MIT Press 1985)
+to redo the whole area himself
+axiomatically.
+But Narens' entire book, as far as I can see, is 100% divorced from experiment. It
+never mentions even a single experiment. It is entirely pure mathematics
+resting on foundations of set theory.
+The Krantz et al book is also pretty divorced from experiment, but not 100%.
+More like 97%. It includes this obnoxious quote on p.419:
+</p><blockquote>
+In summary... expected-utility theory is neither entirely adequate nor entirely
+inadequate... it does not provide a complete description of
+individual decision making under uncertainty [apparently they here are referring
+to experiments in which confused human subjects made choices which are
+clearly not utility-optimal for any utility function]... but cannot
+be discounted as a descriptive model... the conscious attempt to behave
+rationally is... a significant fact about man.
+</blockquote><p>
+Even later, Jose A. Diez produced a 2-part paper 
+</p><blockquote>
+Jose A. Diez: 
+A Hundred Years of Numbers. An Historical Introduction to Measurement Theory 1887-1990,
+<a href="DiezMeas1.pdf">part I</a> and 
+<a href="DiezMeas2.pdf">part II</a>,
+Stud. History Philosophy of Science 28,1 (1997) 167-185 and 28,2 (1997) 237-265
+</blockquote>
+<p>
+purporting to review the whole subject, since he claims it is now a "mature theory."
+<p><p>
+I have a low opinion of those Narens and Krantz tomes and this entire field. 
+It involves a tremendous amount of
+formalism (over 1000 pages worth) actually accomplishing nearly nothing,
+combined with an absolutely appalling ignorance and apathy about  science generally and
+the most important developments in the real world related to measurement.
+</p><p>
+The "range scale" is certainly not the only omission from Stevens' list.  For example,
+apparently he had never heard of 
+<i>Einstein</i>, whose (apparently little-known
+and largely irrelevant) contributions "special and general relativity" introduced new kinds of
+"invariantive groups" (as Stevens calls them) into science.
+(Einstein is never mentioned by Stevens, never mentioned by Diez,
+and only mentioned once in <i>FoM</i> and that only 
+in passing.  Even more incredibly, 
+essentially the same is true about <i>quantum mechanics</i>!)
+Thus, e.g, <b>"speed"</b>
+is another kind of measurable meaningful quantity that is bounded (by the speed of light).
+And there are still more things in heaven and earth that are undreamt of in their philosophy. 
+For example it is nowadays well known that
+"mass density" is upperbounded by the Planck density, while "length" is unmeasurable 
+below the Planck length.  ("Planck" is yet another scientist whose "minor"
+contributions to measurement are unmentioned in Diez's review!)
+</p><p>
+And apparently none of these works proposes our "range scale" concept.  Indeed
+Narens, with Alper, even attempted to prove it does not exist!  Specifically, Narens
+later produced yet more books
+</p><blockquote>
+<i>Theories of Meaningfulness</i>, Lawrence Erlbaum Associates, 2002
+<br>
+<i>Introduction to the Theories of Measurement and Meaningfulness and the Use of Invariance in Science</i>, Lawrence Erlbaum Associates, 2007
+</blockquote><p>
+and in Narens' 2002 book he remarked on pages 53-55 (we quote, with slight editing)
+</p><blockquote>
+It is natural to ask what kinds of scales there are up to conjugation [i.e. equivalence]
+and whether the ones listed by Stevens are the only interesting ones.
+Narens (1981a, 1981b)
+developed a classification system to investigate this issue 
+and his results together with those of
+Alper(1983, 1987) indicate that Stevens' classification covers most &ndash;
+but not all &ndash; of the theoretically interesting... scale types.  Their main result is...
+<br>
+<b><u>Theorem 2.3.1:</u></b> Suppose S is a homogeneous, finitely point
+unique, ordered scale with real image.  Then S is equivalent to a "super-ratio scale,"
+i.e. whose invariantive group G obeys R&subseteq;G&subseteq;L
+where L is the invariantive group for the 
+the log-interval scales while R
+is the invariantive group for the ratio scales.
+</blockquote><p>
+Note that neither our "range scales" or "angular scales" are 
+permitted by the Narens-Alper classification theorem &ndash;
+Narens and Alper cleverly created enough artificial conditions to exclude them.  Oops.
+</p><p>
+<small>
+Narens then goes on to discuss (pp. 60-68) 
+Luce's "possible psychophysical laws" 
+[R.D.Luce: Psychological Review 66,2 (March 1959) 81-95]
+which <i>again</i> (we see from Narens' tables p.62) fail to admit range scales!
+<p><p>
+...but Narens thankfully comes to the conclusion Luce had over-reached
+&ndash; e.g. "Rozeboom's criticism" p.62 pointed out the slight problem that
+the law of radioactive decay would
+according to Luce be "impossible."
+We might also mention that Luce apparently would outlaw trigonometry.
+On pp.81-86 Narens discusses the alleged improvement/update of Luce's "possible laws" by
+Roberts &amp; Rosenbaum 1986, but according to Narens' tables p.82 and 85
+these too disallow range scales, special relativistic velocity, etc.
+Finally, pp.68-81
+discusses Falmange &amp; Narens' "meaningful quantitative laws."
+I suspect range scales would not be permitted in these either, and in any case
+Narens' discussion does not mention them.
+</small>
+</p><p>
+We disembark this runaway train here.
+</p>
+<a name="numbersallowed"></a>
+<h3> What does this have to do with <a href="RangeVoting.html">Range voting</a>? </h3>
+<p>
+The present essay was stimulated by an insanely wrong-headed attack on 
+range voting &ndash; actually, incredibly,
+an attack on <i>every voting method that uses numbers</i>!! &ndash;
+by M.Balinski &amp; R.Laraki.
+They prefer
+an alternative and more complicated,
+but related voting system &ndash; which they invented and
+called <a href="MedianVrange.html">majority judgment</a> (MJ) &ndash;
+based not on "greatest <i>average</i> score wins" 
+but rather on "greatest <i>median</i> score wins, with
+an additional tie-breaking scheme."  MJ also uses, not a numerical score-set, but
+rather a set of 6 <i>verbal</i> scores
+</p><center>
+Excellent / Bien / Assez Bien / Passable / Insuffisant / a Rejeter.
+</center><p>
+<!--Tres Bien omitte by B&L-->
+We quote the attack from Balinski &amp; Laraki's 
+paper
+</p><blockquote>
+<a href="ElectionByMajorityJudgmentExptEvidenceFinal.pdf">Election by Majority Judgment: 
+Experimental Evidence</a>, pages 13-54 in
+Bernard Dolez, Bernard Grofman, Annie Laurent:
+Studies In Public Choice: In Situ and Laboratory Experiments On Electoral Law
+Reform: French Presidential Elections, Springer 2011.
+</blockquote><p>
+We have numbered their paragraphs for later reference (verbatim quotes, but
+sometimes with comments by me in [square brackets]):
+</p>
+<table bgcolor="lightgreen"><tr><td>
+<p>
+<b>1.</b>
+Is it reasonable to use numerical scales in voting? The answer is a resounding 
+<b>no,</b> for several reasons:
+</p><p>
+<b>2.</b>
+The numbers mean nothing unless they are defined: proposals to use weights give them no definition. Their only real "meaning" is found in their strategic use. This induces comparisons, which immediately leads to <a href="ArrowThm.html">Arrow's paradox</a>... E.g. with these actual 
+ballot instructions
+</p><blockquote>
+Give a grade to each of the twelve
+candidates: either 0, or 1, or 2 (2 the best grade, 0 the worst). 
+To do so, place a cross in the corresponding box etc. The candidate elected with [this] 
+method is the one who receives the highest number of points.
+</blockquote><p>
+<b>3.</b>
+nothing is said concerning the <i>meaning</i> of 0, 1, or 2. The numbers induce relative, 
+so strategic, behavior. Other numbers could have been given. For example, with
+{-1,0 +1}
+mathematically there is no difference, 
+but were these numbers used the behavior of the voters would almost surely have been different.
+[In fact, this experiment later 
+was <a href="France2012.html">tried</a> and voter behavior <i>was</i>
+significantly different.]
+<p></p>
+<b>4.</b>
+When numbers are used, they may well not be used in the same way at all: when a 0-100 
+scale is used, some voters may view 80 to be an excellent grade, others may see it as merely 
+middling.
+<p></p>
+<b>5.</b>
+Even if the numbers <i>did</i> provide a common language, they will almost certainly not 
+be a proper interval measure [in the sense of Stevens &ndash; it is 
+here that Balinski &amp; Laraki invoke "measurement theory"] &ndash;
+that depends on who the candidates are and how the voters give their grades. 
+For example, the 0-20 scale used in France is a common language, 
+but an 18, 19, or 20 is unheard of in philosophy or literature, so the scale is not an 
+interval measure. Once the distribution of the grades is known 
+&ndash;
+after many elections (or many examinations) &ndash;
+it is possible to determine whether the scale is an interval measure and, if not, 
+to correct it (as did the Danes). 
+But then it is too late, since the weights must be announced ahead of time.
+<p></p>
+<b>6.</b>
+Even if it turned out that the scale <i>did</i>
+approximate an interval measure, the procedure 
+depends on irrelevant alternatives, [hence] is subject to Arrow's paradox: for if one or 
+several candidates drop out, the distribution of the remaining grades 
+will almost certainly be different, so the scale is no longer an interval measure.
+[For example, in the French 2007 presidential election, the counts of
+the number of times each of their 6 verbal scores was used, changed considerably
+when all scores for the 8 "unimportant" among the 12 candidates were removed.]
+</p>
+</td><tr></table>
+<p>
+Balinski and Laraki also attack <a href="Approval.html">approval voting</a>.
+After noting that in their MJ experiment in Orsay France 2007,
+approval voting would have elected 
+Bayrou if scores&ge;"assez bien" were approved, but Sarkozy if only scores&ge;"bien"
+were, they complained:
+</P>
+<table bgcolor="lightgreen"><tr><td>
+<p>
+<b>7.</b>
+Approval voting is extremely sensitive to the question posed. 
+Imagine what would have happened if the threshold had been either higher or lower. 
+This shows that approval voting's two-word language is insufficient and arbitrary.
+</p>
+</td><tr></table>
+<p>
+OK, we've had enough.  It is time to respond to these attacks.
+</p>
+<p>
+<b>1a.</b> It is rather strange to see the mathematician Balinski 
+rejecting the use of "numbers" as "meaningless" since "undefined."
+Numbers are certainly more concise, and I would think better defined (especially for
+voters some of whom might be poor French speakers or come from different cultures), 
+than essentially all adjectives such as "excellent," "passable," and "assez bien."
+Indeed, if it were me voting, I would have thought "assez bien" and "passable" meant 
+<i>exactly the same thing</i>, 
+even though Balinski &amp; Laraki think the first is clearly superior!
+No such difficulty happens with "3&gt;2"; <i>that</i> is agreed by everybody from every culture.
+</p>
+<blockquote>
+Several French&rarr;English dictionaries (e.g. 1982 Harrap's) 
+say "assez bien" means "good enough" and
+"passable"&rarr;"passable."  The 2013 Merriam-Webster English&rarr;English dictionary says
+"passable"="good enough."
+<br>
+<small>
+We also warn the reader that "bien assez" has a third meaning 
+("quite enough") different from "assez bien."
+After consulting several French speakers I <i>agree</i> with Balinski &amp; Laraki that
+"assez bien" is commonly regarded as superior to "passable"; I am just pointing out its
+non-obviousness to a non-native speaker like me, even with aid from dictionaries.
+</small>
+</blockquote>
+<a name="quantadj"></a>
+<p>
+Indeed, the question of <i>quantifying</i> the strength of adjectives has been examined by
+the psychometricians Jones &amp; Thurstone 1955.
+They examined the semantic meanings, to respondents, of 51 scale-point descriptors 
+using numerical scales, and subsequently presented a listing of 
+words and phrases ranging from those expressing "greatest like" to those conveying 
+"greatest dislike." That is, they succeeded in constructing a "continuum of meaning"
+ranging between the end points "best of all" to its extreme opposite "despise" (p.33),
+providing the mean scale value and standard deviation of each of the tested words and phrases.
+Myers &amp; Warner 1968 and later teams such as
+Bartram &amp; Yelding 1973, Vidali 1975, Wildt &amp; Mazis 1978, and
+Braunsberger &amp; Gates 2009
+all redid the same sort of study over again.   They declared a 
+high degree of success in the sense that their numbers were
+"surprisingly consistent among very diverse groups of people."  However, they were <i>not</i>
+completely consistent. Thus 
+Myers &amp; Warner 1968 showed there are statistically significant differences
+between the quantified meanings of various words, as perceived by housewives versus
+students:
+<!--
+"unacceptable" was rated 2.64&plusmn;2.04
+(mean&plusmn;standard deviation)
+by 25 housewives but 
+5.56&plusmn;3.06 by 25 undergraduate students
+3.98&plusmn;2.79 by 40 graduate students, which is a 3.97&sigma; difference.
+-->
+"slightly poor"
+was rated 8.48&plusmn;1.83
+(mean&plusmn;standard deviation)
+by 25 undergraduate students
+but
+5.92&plusmn;1.96 
+by 25 housewives,
+which is a 4.77&sigma; discrepancy, i.e. taken by itself would
+have 99.9999% <a href="NormTble.html">confidence</a>
+of being genuine.  But actually since this was "cherrypicked" as
+one of the largest among about 100-200 such discrepancies,
+the confidence really should be only about 99.98% that it is real.
+</p>
+<blockquote><small>
+P.Bertram &amp; D.Yelding:
+The development of an empirical method of selecting phrases used in verbal rating scales,
+Journal of the Market Research Society 15 (1973) 151-156.
+<br>
+Karin Braunsberger &amp; Roger Gates:
+Developing inventories for satisfaction and Likert scales in a service environment,
+J. of Services Marketing 23,4 (2009) 219-225.
+<!-- https://www.dssresearch.com/Download/likert_scales.pdf -->
+<br>
+L.V.Jones &amp; L.L.Thurstone:
+The psychophysics of semantics: an experimental investigation,
+Journal of Applied Psychology 39,1 (1955) 31-36.
+<br>
+J.H.Myers &amp; W.G.Gregory Warner:
+Semantic properties of selected evaluation adjectives, 
+J. Marketing Research 5,4 (November 1968) 409-412.
+<br>
+J.J.Vidali:
+Context effects on scaled evaluatory adjective meaning,
+J. Market Research Society 17,1 (1975) 21-25.
+<br>
+A.R.Wildt &amp; M.B.Mazis:
+Determinants of scale response: label versus position,
+J. Marketing Research 15,2 (May 1978) 261-267.
+</small></blockquote>
+<p>
+Is it democratically fair to partially disenfranchise (say) housewives because they interpret 
+some word differently?  Or is it more fair to provide a numerical scale
+whose meaning is <i>unambiguously</i> defined by the rules of the voting system?
+</p>
+<p>
+<b>1b.</b> Why must vote-scores have some sort of Balinski-approved "meaning" at all?
+Why must they be "measurable" according to Stevens' notions at all?
+Voting systems input "votes" (which are information packets, e.g. bitstrings)
+and output a winner.  Full stop.
+</p><p>
+Voting is an <i>exercise of power</i>, not a sentiment.
+The votes need not be "measured" ala Stevens, they merely must be "transmitted."
+The only <i>true meaning</i> of a vote, in this general setting, is defined &ndash; and wholy, 
+completely, and mathematically defined &ndash; 
+by the rules the voting system uses to deduce the winner from the votes.
+</p><p>
+<b>1c.</b>
+However, there could be additional
+(untrue) "meaning" carried around by humans as psychological baggage.
+For example, within the MJ voting system, the true meaning of "assez bien" is defined solely
+by the MJ winner-determining-algorithm.   
+The untrue meaning that "assez bien"="passable" is carried around by me,
+and by various dictionaries,
+as psychological baggage.  Naturally, we wish that the 'baggage' and 'true'
+meanings of votes should correspond as closely as possible for as many people as possible!
+I also contend (and apparently Balinski &amp; Laraki agree, since they approvingly
+use
+Stevensian "measurement theory") 
+that more humans would be happier the more Stevens-like properties 
+votes have. 
+I.e. while it is not necessary that votes viewed as "quality measures"
+be addable, multiplyable, &lt;/=/&gt;-comparable, or whatever,
+the more of that kind of stuff
+approximately-works, the better a lot of humans will probably feel about it,
+and the better the voting system will probably work in practice.
+</p><p>
+<b>1d.</b>
+For standard greatest-average-wins range voting using numerical scores,
+the baggage/true meanings-correspondence seems close, 
+and the "range" Stevensian properties exactly work.
+In contrast, Balinski &amp; Laraki contend that their 6 verbal MJ scores merely form
+an "ordinal scale," enjoying a <i>strictly smaller</i> set of Stevensian properties.
+I.e. with MJ only "=", "&gt;" and "&lt;" have "meaning."  With MJ, taking the midpoint
+(x+y)/2 of two scores "has no meaning" unlike in standard range voting (using the real
+interval [0,1] as the score-set) 
+in which the meaning of m=(x+y)/2  is precisely this: two votes m are
+equivalent to one x and one y vote.
+</p><p>
+Now Balinski &amp; Laraki's contention that MJ scores form an "ordinal scale" is
+substantially justified by the fact that the MJ voting system 
+is <a href="Monotone.html">monotonic</a>, i.e. a voter increasing her score for Sarkozy
+can help, but cannot hurt, Sarkozy's winning chances. Thus "&gt;" has its
+naively expected meaning. Standard range voting
+also is monotonic, hence also forms an ordinal scale, and my stronger contention that
+range voting's scores form a range scale is justified by the
+"true meaning" of convex combination for any rational &alpha; with 0&le;&alpha;&le;1:
+if &alpha;=a/b then <nobr>m=&alpha;x+[1-&alpha;]y</nobr> has the "meaning" that a+b votes m
+are equivalent to a votes x and b votes y.
+In a <i>non</i>monotonic voting system like 
+<a href="rangeVirv.html">instant runoff voting (IRV)</a>, this kind of "ordinal meaning" of "&gt;"
+is more dubious and arguably (which I think Stevens would have contended) absent.
+</p><p>
+<b>1e.</b>
+But in order for a vote to have "meaning" in the eyes of a voter
+it also would seem desirable for the 
+"participation property" to hold: you, by casting an honest vote, cannot worsen the election 
+winner  (with your view
+of "worsen") versus if you had not voted at all.
+Without this property, your vote could be "less meaningful" than nothing!
+And MJ <a href="MedianVrange.html#partic">fails</a> the participation property while
+average-based range voting obeys it!  (IRV 
+<a href="IRVpartic.html">also fails</a> it.)
+</p>
+<p>
+<b>1-SUMMARY:</b>
+At this point it is clear that standard
+range voting scores have strictly <i>more</i> meaning than MJ scores
+both according to Balinski &amp; Laraki's very own preferred bludgeon &ndash; measurement theory
+&ndash; as well as the participation criterion.
+In short, their whole attack was exactly wrong, is refuted, shows the opposite of
+what they thought, and lies completely in ruins.
+</p><p>
+But wait, there is more.
+</p><p>
+<b>Contradiction 2 versus 3:</b>
+Balinski &amp; Laraki began their attack by immediately
+contradicting themselves.  They assert the only true meaning of
+numerical voting scores lies in their strategic use, i.e. as defined by the rules the voting system
+uses to elect winners.  (I devoutly agree, for general voting systems and whether or not the
+votes are numerical.)
+And they then correctly claim voter behavior empirically
+differs when <nobr>{-1, 0, +1}</nobr> and {0, 1 , 2} score sets are employed.
+This contradicts their original assertion.
+(The resolution of this paradox is, as we said, the presence of psychological baggage
+distorting "true meaning," but Balinski &amp; Laraki simply left it there as a 
+unresolved self-contradiction.)  
+</p><p>
+<b>Non-logical 4:</b>
+This exact "argument" can be used against Balinski/Laraki MJ, not for it.  So it has 
+<i>no logical impact at all</i>.   
+E.g. I could equally well have said  (using their exact same sentence
+but with a few items swapped)
+"When adjectives are used, they may well not be used in the same way at all: when an 
+'Excellent'&harr;'A Rejeter'
+scale is used, some voters may view "Bien" to be a 90 while others may see it as merely 60."
+</p><p>
+<b>Just wrong 5:</b>
+Balinski &amp; Laraki here implicitly assume (or act as though)
+the only possible Stevensian scales 
+are the four originally proposed by Stevens.  As we have shown there is at least one further
+such notion, the "range" type scale.  (Also the question of whether "18 is unheard 
+of in philosophy or literature" has absolutely nothing to do with it &ndash;
+Stevens in his paper nowhere mentions philosophical or literature use as a criterion &ndash;
+plus we anyhow are rather surprised to hear that 18 has never been used in literature.)
+</p><p>
+<b>Absurd garbage 6:</b>
+Both standard range voting and MJ <a href="ArrowThm.html">evade</a>
+Arrow's "impossibility theorem." <i>But</i> the crux of the matter is
+"Arrow's IIA condition" which says, essentially, that removing candidates should leave the
+voting systems's output-ordering of the remaining candidates unaffected.
+<i>If</i>, after we remove some candidates we allow 
+voters to <i>change</i> their ballots to make them more strategic, <i>then</i> the
+winner could change.   In that case, we still get "Arrow's paradox" with both MJ
+and average-based range voting.   For example, in a 3-candidate race where
+a voter scores Sarkozy="A Rejeter", Bayrou="Insuffisant", and Royal="Excellent",
+after Royal drops out, that voter, if allowed to do so, might modify her vote to
+still score Sarkozy="A Rejeter" but Bayrou="Excellent."
+Balinski &amp; Laraki seem to think that due to the magic-meaning property of
+their magic words, no voter would ever do that, whereas, if we instead were
+using average-based range voting with score set {0,1,2,3,4,5} with Sarkozy=0, Bayrou=1, Royal=5,
+then voters <i>would</i> change to Bayrou=5.
+That contention is absurd garbage.
+</p><p>
+<b>Strange 7:</b>
+It is quite odd that Balinski &amp; Laraki attack 
+<a href="Approval.html">approval</a> voting but not MJ, 
+because approval voting
+<i>is</i> the special case of MJ voting when there only are two allowed scores
+"approve" and "disapprove"!  
+(It also coincides with standard range voting using score set {0,1}.)
+They complain that the election results could be sensitive to the 
+baggage-meaning of the word "approve."
+Well, of course!
+And in MJ, the election results would similarly be sensitive to the baggage-meaning 
+of any and all the 6
+Balinski-approved magic words. (For example, if "assez bien", "passable", "insuffisant" and
+"a rejecter" all meant the same, then the winner in their Orsay MJ study would change.) 
+So what?
+Apparently, Balinski &amp; Laraki believe that some words, such as "assez bien,"
+have magic meanings, while others, such as "approve" and "3 on an 0-5 scale," do not.  
+</p><p>
+Oh.
+</p><p>
+I would say that unfortunately humans can and do attach strange time-varying culture-varying
+baggage meanings  to words, albeit I would guess that "3" will probably remain
+comparatively unambiguous across all cultures at all future times.
+The question of which verbal or numerical scales work the best in the presence of
+such stresses (and how badly they are hurt) is an <b>experimental</b>
+question, which simply is not answerable by abstract mathematical "theories of measurement"
+such as Narens 2002, and not by Balinski and Laraki by Proclamation either.
+</p><p>
+For example, {-1, 0, +1} score voting was used for centuries to elect
+the <a href="VeniceExec.html">Venetian doge</a>.   It seems to have worked well, and
+we are unaware of any complaints that their votes all were meaningless and undefined.
+For another example, the "meaningless" {0,1,2} score voting and approval voting systems elected the
+president France <a href="France2007.html#stance">wanted</a> &ndash; Bayrou &ndash; in 2007
+(as did {0,1,2,3,4,5} score voting using Balinski &amp; Laraki's own vote data),
+while the MJ system extrapolated from Balinski &amp; Laraki's data to all France
+(here I am using their <a href="France2007.html#aboutMJ">own</a> extrapolation)
+instead elected Sarkozy.  How can it be that two meaningless voting systems outperformed their MJ
+system in their own experiment?!?!
+</p><p>
+A tremendous amount of experimental evidence and literature exists about
+different verbal and numerical scales
+(e.g. Balinski &amp; Laraki's 
+"too late" claim in their 5 is <i>also</i> false), which
+Balinski &amp; Laraki almost entirely ignored.
+We  shall discuss it, but
+on a <a href="RateScaleResearch.html">different web page</a>.
+</p>
+
+<a name="endsummary"></a>
+<h3> Summary </h3>
+<p>
+Stevensian "measurement theory" is clearly incomplete, wasn't needed, and to the extent we do
+complete and apply it, shows precisely the opposite of Balinski &amp; Laraki's contentions.
+Balinski and Laraki's entire attack on all voting methods that use numbers
+(e.g. average-based range voting)
+has been completely busted from start to finish.
+</p>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

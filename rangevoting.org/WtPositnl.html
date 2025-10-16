@@ -1,0 +1,321 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Theorems on Weighted Positional systems
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1>
+Theorems on Weighted Positional voting systems
+</H1>
+
+<p>
+A "weighted positional" voting system inputs rank-orderings as votes.
+It elects the candidate with the greatest "score" where 
+in the 3-candidate case,
+you get 1 point for
+being first ranked, 0 points for being last-ranked,
+and <i>t</i> points for being middle-ranked for some 0&le;t&le;1.
+(More generally for N-candidate elections with perhaps N&gt;3, you get score 
+W<sub>1</sub> for being first-ranked in a vote, 
+W<sub>2</sub> for being second-ranked in a vote, 
+and so on, with
+W<sub>1</sub>&ge;W<sub>2</sub>&ge;&hellip;&ge;W<sub>N</sub>&ge;0.)
+</p>
+
+<p><b>Important special cases (in the 3-candidate case):</b>
+The <a href="Plurality.html">plurality</a>
+voting system arises when t=0.
+<a href="rangeVborda.html">Borda</a>
+arises when t=&frac12;.
+AntiPlurality voting
+arises when t=1.
+</p>
+
+
+<p>
+In this web page we show that every weighted positional voting system,
+in the 3-candidate case, automatically
+</p>
+<ul>
+<li>
+Exhibits <a href="FBCsurvey.html">favorite betrayal</a> (except for antiplurality voting)
+</li>
+<li>
+Violates "clone immunity"
+</li>
+</ul>
+
+<p>
+On the bright side, though, all weighted positional voting systems 
+trivially satisfy monotonicity (increasing your vote for X cannot decrease X's winning chances), 
+"participation" (voting honestly is never strategically worse 
+for you than not voting),  and consistency when partitioning country
+into districts (if X wins in all districts, then X must win in combined country).
+</p>
+
+<H2> 
+An election example
+</H2>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+4
+</td>
+<td align="center">
+M>W>B
+</td>
+</tr>
+<tr bgcolor="#ccffcc">
+<td align="center">
+2
+<td align="center">
+W>B>M
+</td>
+</tr>
+<tr>
+<td align="center">
+ 1
+<td align="center">
+B>M>W
+</td>
+</tr>
+<tr bgcolor="#ccffcc">
+<td align="center">
+ 2
+<td align="center">
+M>B>W
+</td>
+</tr>
+<tr>
+<td align="center">
+ 4
+<td align="center">
+B>W>M
+</td>
+</tr>
+</table>
+
+<p>
+In this "Milk Wine Beer" election example by Don Saari (analysis added by Jack Rudd),<br>
+B scores 5+4t, 
+M scores 6+t,
+and
+W scores 2+8t.
+</p><p>
+Hence for 0&le;t&lt;1/3, M wins; 
+for 1/3&lt;t&lt;3/4, B wins;
+and for 3/4&lt;t&le;1, W wins.
+</p>
+
+
+<H2> 
+All weighted positional systems (but one!)  exhibit "favorite betrayal"
+</H2>
+
+<p><b>THEOREM:</b>
+Every weighted positional voting system <i>except</i>
+anti-plurality voting
+exhibits
+<a href="FBCsurvey.html">favorite betrayal</a> in some 3-candidate election
+situation.
+</p>
+
+<p>
+<b>Proof:</b>
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+    N+1
+</td>
+<td align="center">
+B>C>A
+</td>
+</tr>
+<tr bgcolor="#ccffcc">
+<td align="center">
+    N
+<td align="center">
+C>A>B
+</td>
+</tr>
+<tr>
+<td align="center">
+    N  
+<td align="center">
+A>B>C
+</td>
+</tr>
+</table>
+
+<p>
+In this (3N+1)-voter example 
+<b>B wins</b>
+in every weighted positional voting system with 0&le;t&lt;1, because the
+scores are
+B=N+1+Nt &gt; A=N+(N+1)t = C=N+(N+1)t.
+But if the <i>N</i> C>A>B voters insincerely switch to A>C>B ("betraying their favorite" C) 
+then the "lesser evil" <b>A</b> becomes the winner under all these voting systems 
+(and is the Condorcet-winner), which in their view is a better election result.
+(New scores:
+A=2N &gt; B=N+1+Nt &gt; C=(2N+1)t  where the "&gt;"s are valid for all sufficiently large N.)
+Any change which did not betray C (i.e. to C>B>A) would, however, not work, i.e,
+B still would win.
+<br>
+<b>Q.E.D.</b>
+</p>
+
+<p>
+Actually, we can say more &ndash; we can totally classify all weighted positional
+voting systems for any number of candidates that obey Favorite Betrayal:
+</p>
+
+<p><b>THEOREM:</b>
+For each number C&ge;3, every weighted positional voting system
+exhibits
+<a href="FBCsurvey.html">favorite betrayal</a> in some C-candidate election
+situation <i>except</i> if the top two weights are equal.
+</p>
+
+<p>
+<b>Proof sketch:</b>
+Similar to the above, except we now make a C-cycle rather than a 3-cycle, with N voters
+in each of the C cyclic classes except for N+1 voters in one class breaking the perfect tie
+so that A (say) wins the election.  Now consider the class of N voters which consider 
+candidate A to be third-ranked.   These voters honestly rank (say) B second.
+If they promote B insincerely to first place, betraying their true favorite, then
+they (for all sufficiently large N, if the top two weights differ) 
+will cause B to win, a result they prefer versus
+A winning.  They can't do that unless they promote B to top (forcing favorite-betrayal, since they
+already honestly had B ranked second).  Any insincere voting move that doesn't promote
+B will cause A or somebody even worse in their view, to win, so favorite betrayal
+was strategically forced.   Of course this was a group decision to strategize not
+a single isolated voter decision, but by considering altering the votes one voter at a time
+in this group, the first one that changes the election result is a situation where it's a single
+voter's betrayal decision that does the job.
+<b>Q.E.D.</b>
+</p>
+
+<h2>
+All weighted positional systems are vulnerable to <a href="CandCloning.html">candidate cloning</a>
+</h2>
+
+<p>
+<b>Proof:</b>
+In this situation, B beats A by 1 vote:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+    N-1
+</td>
+<td align="center">
+A>B
+</td>
+</tr>
+<tr bgcolor="#ccffcc">
+<td align="center">
+    N
+<td align="center">
+B>A
+</td>
+</table>
+
+<p>
+Clone A into two clones A<sub>1</sub>
+and A<sub>2</sub>.  Every A-voter prefers both A-clones over B,
+and every B voter prefers B over both A-clones, and all voters
+prefer A<sub>1</sub> over A<sub>2</sub>. 
+The scores that result are
+A<sub>1</sub> = (N-1)(t+1),
+A<sub>2</sub> =  Nt,
+and
+B = N.
+In other words (taking N sufficiently large) cloning
+A converts A's loss into a win for A<sub>1</sub>
+for each t&gt;0.
+</p>
+<p>
+In this situation, A beats B by 2 votes:
+</p>
+
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+    2N
+</td>
+<td align="center">
+A>B
+</td>
+</tr>
+<tr bgcolor="#ccffcc">
+<td align="center">
+    2N-2
+<td align="center">
+B>A
+</td>
+</table>
+
+<p>
+Clone A into two clones A<sub>1</sub>
+and A<sub>2</sub>.  Every A-voter prefers both A-clones over B,
+and every B voter prefers B over both A-clones, and half of
+(each kind of) voter
+prefers A<sub>1</sub> over A<sub>2</sub>,
+the other half prefer  A<sub>2</sub> over A<sub>1</sub>. 
+The scores that result are
+A<sub>1</sub> = N+2Nt-t,
+A<sub>2</sub> = N+2Nt-t,
+and
+B = 2N-2.
+In other words (taking N sufficiently large) cloning
+A converts A's win into a loss for both A-clones
+for each t&lt;&frac12;.
+</p>
+<p>
+The combination of both these examples has covered the entire range of allowable t,
+namely all t with 0&le;t&le;1, showing that for each such t, cloning can either convert
+a winner into two losers, or convert a loser into a winner, 
+or (which happens if 0&lt;t&lt;&frac12;) both.
+<br>
+<b>Q.E.D.</b>
+</p>
+
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

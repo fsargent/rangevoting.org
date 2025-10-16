@@ -1,0 +1,317 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Delayed versus Instant runoff, reasons behind differences
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Why does Instant Runoff
+<a href="TTRvIRVstats.html">lead</a>
+to 2-party domination, while (delayed) Top-Two Runoff 
+leads to multiparties? </H2>
+
+<p>
+We don't completely
+know why.
+But here are some factors that probably have something to do with the answer.
+Probably the first and last ones are the major reason, but the middle ones
+are at least related.
+</p>
+
+
+<table cellspacing="14" bgcolor="#ffffdd">
+<tr bgcolor="#ff8888">
+<th> Instant Runoff (IRV) </th>
+<th> Top-two runoff (T2R) </th>
+</tr>
+
+<tr>
+<td> 
+In a 3-candidate IRV election, if voters strategically
+rank the two major-party candidates top and bottom
+to try to maximize their vote's impact (and we claim real world voters will do that
+a lot of the time, no matter how many IRV advocates tell them not to; 80-95% of 
+Australian IRV voters exhibit this sort of behavior)
+then <i>theorem:</i>  the same winner will be elected as strategic voters
+("always vote for a major-party candidate so as not to waste my vote")
+would have elected under plain old plurality voting.  This is a major defect in IRV
+and a big reason IRV leads (experimentally), 
+just like plurality voting, to 2-party domination.
+</td>
+<td>
+With T2R in a 3-candidate election, strategic voters will <i>not</i> necessarily
+elect the same winner  as the strategic-voter plain-plurality-voting
+winner.  (Because of the second round, featuring honest voting only.)
+This is a major success of T2R and 
+a big part of the reason it experimentally (in the <a href="TTRvIRVstats.html">countries</a> in which T2R is used)
+leads to multiparties and avoids
+2-party domination.
+<br>&nbsp;&nbsp;&nbsp;
+It is a <a href="TTRvsIRVrevdata.html">fact</a>
+that the "flip rate" of T2R winners away from plain-plurality winners is over 3 times
+IRV's flip rate.
+</td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<td> 
+Good IRV voter strategy can involve dishonesty about pair-comparisons occurring 
+in <i>every</i> IRV round.  <a href="IRVpartic.html">Often</a>, 
+it is strategically good to "betray" your favorite
+third-party candidate by not voting him top.
+In contrast, in top-two runoff, voting for the third-party true favorite
+usually won't hurt you in the first round, since that way he may make it
+to the second round and the honesty of voters in that second round may suffice
+to elect him; whereas if he fails to make it, then usually the major-party
+candidates will make it and you'll still have the opportunity to
+vote honestly on them next round.
+</td>
+<td>
+Good T2R voter strategy is always to be <i>honest</i> in the second (final) round.
+However, T2R voters might reasonably choose to be dishonest in the first round by intentionally
+voting for somebody horrible:
+If it's A versus B versus C with
+the other candidates D,E,... unlikely to make it into the second round;
+you want A and are fairly confident A is going to be in first-place in the initial round;
+and you are fairly confident either B or A would beat the horrible C
+in a head-to-head runoff; then your best strategy is to vote C.
+</td>
+</tr>
+
+<tr>
+<td> 
+IRV can involve a very large number of rounds.
+</td>
+<td>
+T2R only involves 2 rounds.  So the two are not equivalent even for "honest" voters.
+(Also a different set of voters might participate in the second round, another kind
+of inequivalence.)
+</td>
+</tr>
+
+<tr bgcolor="#ffffff">
+<td> 
+IRV elects a winner different from the plain plurality
+winner <a href="TTRvsIRVrevdata.html">about</a> 5.8% of the time,
+but T2R differs from plurality about 16% of the time.
+(And, of course, plain plurality is <a href="Duverger.html">well known</a>
+to yield 2-party domination.)
+</td>
+<td>
+With T2R, Prof. Steven J. Brams speculates that the "underdog effect" may be the reason
+more plurality-winners are overturned by the runoff.
+("Underdog effect" = "The desire to vote for an expected loser.")
+Brams refers to chapter 3 of
+his book <i>Paradoxes in politics: an introduction to the nonobvious in political science</i> 
+(Free Press, 1976) for discussion.
+</td>
+</tr>
+
+<tr>
+<td> 
+With IRV,
+if the top two vote-getters from the first round include the Condorcet ("beats-all")
+winner, then there is no guarantee that he will be elected.  He might be
+eliminated in the very next round.
+</td>
+<td>
+With T2R, if the top two vote-getters from the first round include the Condorcet ("beats-all")
+winner, then he is guaranteed to be elected.
+</td>
+</tr>
+
+<tr  bgcolor="#ffffff">
+<td> 
+In IRV, 2-party domination causes the media to focus mainly on the candidates from the two 
+major parties, which reinforces... 2-party domination!
+</td>
+<td>
+In T2R <a href="TTRvIRVstats.html">countries</a>, 
+(a) the media often runs polls of the form "in a hypothetical 2-contender runoff 
+between X and Y,
+who would you vote for?"  which often generates
+media focus on good third-party candidates.
+And (b) if a third-party candidate does manage to make it into the second round, the
+media gives plenty of attention to both from then on, 
+giving the third-party one an equal shot.
+</td>
+</tr>
+</table>
+
+<H2> Let's explore an explicit numerical example </H2>
+
+<p>
+Suppose A and B are the major party candidates and C the third party.
+To avoid the possible IRV "C is spoiler" scenario 
+voters who honestly favor C, instead <i>strategically exaggerate</i>
+to vote either A or B top (and the other
+one bottom), with C middle, in IRV.
+(Voters know from
+past experience that the IRV spoiler scenario occurs with probability considerably greater
+than the historical probability C will win &ndash;
+<a href="IRVStratPf.html">probability estimates</a> &ndash;
+and <a href="IRVpartic.html">here</a>
+and 
+<a href="IRVcs.html">here</a> are
+typical IRV spoiler scenarios
+intended to be simple, whereas
+<a href="TarrIrv.html">this one</a> is intended to be realistic
+of the sort that arises in "1-dimensional politics.")
+
+</p>
+<p>
+Suppose the electorate's honest votes would be
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 16 </td>
+<td align="center">  C>A>B </td>
+</tr>
+<tr>
+<td align="center"> 17 </td>
+<td align="center">  C>B>A </td>
+</tr>
+<tr>
+<td align="center"> 35 </td>
+<td align="center">  A>C>B   </td>
+</tr>
+<tr>
+<td align="center"> 32 </td>
+<td align="center">   B>C>A </td>
+</tr>
+</table>
+
+<p>
+where the bottom two lines are due to most A- or B-supporters
+viewing C as the "lesser evil,"  e.g. consider that C is a "centrist."
+</p>
+
+<p>
+Then the strategic IRV votes are:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 51 </td>
+<td align="center">  A>C>B </td>
+</tr>
+<tr>
+<td align="center"> 49 </td>
+<td align="center">  B>C>A </td>
+</tr>
+</table>
+
+<p>
+And <b>A wins</b>.
+This illustrates the damning fact that
+with strategic voters (who act this way) in a 3-candidate
+election, the IRV winner is always the same as the plurality
+(strategic voter) winner.
+</p>
+
+<p>
+(And no matter what IRV advocates say, I'll still believe 
+based on my polling experience that a lot of voters are 
+going to act this way.  Believe it.  It is <a href="AusAboveTheLine07.html">reality</a>.)
+</p>
+
+<p>
+The top-2-runoff voters vote (in the first round):
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 33 </td>
+<td align="center">  C </td>
+</tr>
+<tr>
+<td align="center"> 35 </td>
+<td align="center">  A </td>
+</tr>
+<tr>
+<td align="center"> 32 </td>
+<td align="center">   B </td>
+</tr>
+</table>
+
+<p>
+and then in the second round it is A versus C and
+of course strategic and honest voting are the same thing in
+this round, so
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td align="center"> 65 </td>
+<td align="center">  C </td>
+</tr>
+<tr>
+<td align="center"> 35 </td>
+<td align="center">  A </td>
+</tr>
+</table>
+
+<p>
+And <b>C wins</b> hugely.
+This illustrates the fact that with strategic voters, 3-candidate
+IRV and T2R elections are
+<i>not</i> the same thing, and T2R <i>can</i> elect third-party candidates.
+</p>
+
+<p>
+Of course in our analysis above, we were assuming the first-round T2R voters
+voted honestly.
+Thinking strategically, the A-supporters based on history figure the main
+threat is B.  They will vote A, or conceivably (if they are 
+convinced A is going to make it to the 2nd round regardless) they might vote C.
+Same reasoning reversed applies to the B-supporters.  
+Finally, the C-supporters figure C has little chance but can
+only get a chance if they vote C; and if C does not
+make it to the second round, then fine with them, they'll be able to 
+express their A versus B preference next round and haven't hurt themselves.
+All of these strategic considerations only make everything
+we just said <i>more true</i> &ndash; i.e. C will win <i>even more</i>.
+</p>
+
+<p>
+This kind of scenario and voter thinking
+presumably happens often enough to account
+for the <a href="HonestRunoff.html#mainr">observed fact</a>
+that IRV countries are 2-party dominated 
+(in IRV seats) whereas T2R countries have multiparties.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

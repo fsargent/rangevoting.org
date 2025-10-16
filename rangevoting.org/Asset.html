@@ -1,0 +1,724 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Asset voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Asset voting &ndash; an interesting and very simple <i>multi</i>winner voting system </H2>
+
+<p>
+(<a href="AssetSumm.html">Executive summary</a>)
+&nbsp;
+(<a href="RangeVoting.html">Return to main range voting page</a>)
+</p>
+
+<p>
+<b>Asset voting</b>
+is an "unconventional" voting system in which <i>both</i>
+the voters and the candidates participate.  (Warning: this bothers a lot of people,
+and also it prevents asset voting from being used <i>at all</i> in abstract scenarios with
+candidates that are not people, such as voting to choose pizza flavors.)
+It's designed for situations where <i>several</i> (not just one) "winner" is
+to be selected from a field of candidates.
+</p><p>
+<b>Inventors:</b>
+Several people invented versions of this system independently, each thinking they were the first
+inventor.
+The first inventor I am currently aware of was
+<a href="AssetCLD.html">Lewis Carroll</a> in 1884, but it then was pretty much forgotten
+for 85 years.
+It then was invented by me (Warren D. Smith)
+and independently by Forest Simmons.
+Smith invented the <i>name</i> "Asset voting" which seems the best
+name so we'll stay with it.
+</p><p>
+Asset voting has been proven to be (in terms of certain criteria) superior to <i>any</i>
+"conventional" system,
+see paper #91
+<a href="WarrenSmithPages/homepage/works.html">here</a>.
+How does it work?
+</p>
+
+<p>
+<b>Asset voting to elect W winners from C candidates, 0 &lt; W &lt; C:</b>
+</p>
+<ol>
+<li>
+In a C-candidate asset election,
+each vote is:
+<ul>
+<li>
+In Simmons' version: just the name of a single candidate.
+</li><li>
+In Smith's version:
+a real C-vector (i.e list of C numbers),
+each entry of which is nonnegative
+and with all the entries summing to 1.
+For example a legal vote would be (0.4, 0.3, 0, 0.3)
+in a 4-candidate election, since 0.4+0.3+0+0.3=1.
+Simmons' version is the same as Smith's provided only vectors of the form (0,0,0,1,0,0)
+are permitted (a single 1 for the selected candidate, all other entries 0).
+</li><li>
+In Carroll's version:
+an integer C-vector
+each entry of which is nonnegative
+and with all the entries summing to some fixed pre-specified integer.
+For example a legal vote could be (7, 0, 3, 2)
+in a 4-candidate election, if the pre-specified sum were 12.
+</li></ul>
+</li><li>
+Compute the sum-vector S, that is, the list of
+each of the C candidates' totals.
+</li><li>
+Now regard each S<sub>n</sub> as
+the amount of an "asset" now owned by candidate <i>n</i>.
+The candidates now negotiate; any subset
+of them may redistribute their assets among themselves.
+</li><li>
+After all negotiations and redistributions end, the W "wealthiest"
+candidates win.
+</li>
+</ol>
+<p>
+<small>
+In variants, only certain kinds of redistributions are permitted, for example the
+candidates  drop out <i>in increasing order of "wealth"</i>, redistributing their assets among
+the remaining ones as they do so.
+This "poorest first"
+variant has the advantage that it forces the procedure to
+<i>end</i> quickly and everybody <i>knows</i> when it has ended.
+But I prefer unrestricted negotiations and instead assuring
+termination by simply declaring a pre-specified deadline 
+"all negotiations end at midnight November 7."
+S.J.Brams suggested the refinement that in addition to some
+fixed deadline at midnight after (say) 5 days, there also be intermediate deadlines each 
+prior midnight; if the winner-set has not changed since the last one
+then the negotiations end (early) then.
+And it would be beneficial to have some kind of publicly-readable bulletin board 
+announcing at all times the current status, i.e. how much assets 
+each candidate currently owns, and the terms of any inter-candidate deals.
+</small>
+</p>
+
+<p>
+Note that Forest Simmons's variant is the simplest for the voter,
+since they can use Plurality-style ("name one candidate") ballots (the named
+candidate gets 100% of that voter's assets).
+</p><p>
+You could also compromise between Smith's and Simmons' approach
+by, e.g, providing the voter with <i>three</i> plurality-style
+ballots, enabling her to split up her vote three
+ways &ndash; or fewer by using more than one of her three
+ballots to vote for the same candidate. This "compromise" approach is exactly Carroll's
+version (here with prespecified sum "3").
+</p>
+
+
+<a name="ngbbex"></a>
+<h3>2. Example </h3>
+
+<p>
+In this example, we suppose for maximum simplicity (or because we are using
+Simmons' variant) that
+each voter votes for just one candidate.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #Voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 38 </td>
+<td> Bush  </td>
+</tr>
+<tr>
+<td> 37 </td>
+<td> Gore  </td>
+</tr>
+<tr>
+<td> 20 </td>
+<td> Nader  </td>
+</tr>
+<tr>
+<td> 5 </td>
+<td> Buchanan  </td>
+</tr>
+</table>
+
+<p>
+This is a make-believe analogue of the 2000 US presidential election.
+It's unrealistic in several ways, the most obvious being that
+it was a <i>one</i>-winner election, not a multiwinner election (asset
+voting <i>can</i> be used for single-winner elections but is <i>intended</i>
+for more-than-one-winner
+elections).  Ignore the unreality. We are just trying to illustrate
+how it might work in a simple and familiar way.
+</p>
+
+<p>
+In this election, Nader could decide to drop out of the picture and award his 20 asset points
+to Gore.  (Both Bush and Gore would, no doubt, try to make deals with Nader to try to get
+his assets.  But, let us suppose that Nader, after considering his options, the offered deals,
+and the fact he considered his views closer to Gore's than to Bush's, preferred Gore.)
+In that case, Gore would win with 37+20=57 asset points to Bush's 38.
+(Buchanan could <i>also</i> decide to give his assets to some candidate, but in the 
+particular scenario here, Buchanan's decision would not be able to change the winner.)
+</p>
+
+<p>
+Now if this <i>were</i> a 2-winner election, then both Bush and Gore would
+be winners no matter what Nader and Buchanan decided to do (albeit either Bush or Gore
+could in theory cause either Nader or Buchanan to be a winner by sacrificing their
+own chances &ndash; not likely).
+</p>
+
+<a name="weightcong"></a>
+<h3>3. Possible extension to have "Weighted Congressmen" </h3>
+
+<p>
+An optional
+possible extension of asset voting which could yield even finer proportionality still, is this.
+The W winners (now "congressmen") can be made <i>unequal</i> 
+in the parliament.  Instead, they each
+will have a "voting weight" proportional to the asset-count that elected them.
+For example, we could imagine having equipopulous
+districts, each of which elects three (not one) members of parliament;
+and then after those three MPs are elected with (say) 37, 31, and 26% of the assets,
+we rescale to 39.36, 32.98, 27.66 so the sum is 100%, and these become their respective voting
+weights in parliament.
+</p><p>
+<b>Disadvantages of weighted congressmen:</b>
+More complicated.  Need computerized voting system inside parliament (most already have one).
+Should they be paid unequally and have unequal staff?
+</p><p>
+<b>Advantages of weighted congressmen:</b>
+<br><b>1.</b>
+If every voter were matched up with "her personal representative" in parliament,
+who agreed with her on all issues, and if the MPs each had voting weight equal to the number
+of "their" voters, then the resulting representative government would be 
+<i>optimal</i> in the sense that
+</p><blockquote>
+For every binary decision, the parliament's weighted vote would yield the same result
+as would have been got by a simple majority vote of the entire voter population.
+</blockquote><p>
+This is the <b>ideal</b> of <a href="PropRep.html">proportional representation</a>.
+Asset voting with weighted congressmen seems to come <b>closer</b> to meeting that ideal than 
+all or almost all rival PR systems (including plain asset voting), and 
+does so very simply.
+</p><p>
+<b>2.</b>
+With random-seeming weights, <b>tied</b> votes in congress would essentially never happen anymore.
+</p><p>
+<b>3.</b>
+The chemist Dave Robinson, and the University of Wisconsin math professor Anatole Beck,
+and economics and law professor Gordon Tullock (1922- ; this was in ch.10 of his book
+<i>Towards a mathematics of Politics</i>, Univ. of Michigan Press, Ann Arbor 1967), 
+all independently invented a PR scheme that Robinson called
+<a href="http://en.wikipedia.org/wiki/Direct_representation">direct representation</a> 
+(<b>DR</b>),
+albeit I think a better name might be "weighted congressmen."  (But DR does have the advantage
+that it coincides with Dave Robinson's initials.)
+Robinson, tracking it back through history,
+found that similar proposals had been invented already in the USA in the 1860s
+by 
+Joshua Francis Fisher (1807-1873, author of 
+<i>The degradation of our representative system and its reform</i>, C.Sherman Son &amp; Co. 
+Philadelphia 1863,
+and <i>Reform in our municipal elections</i>,
+Kildare, Philadelphia 1866),
+and <a href="http://en.wikipedia.org/wiki/Simon_Sterne">Simon Sterne</a> (1839-1901,
+author of <i>On representative government and personal representation</i>,
+J.B.Lippincott &amp; Co. Philadelphia 1871).
+Robinson set up a web site 
+<a href="http://www.directrep.org/">http://www.directrep.org</a>
+to promote his idea.
+<!-- also may be relevant:
+John R. Chamberlin &amp; Paul N. Courant:
+Representative Deliberations and Representative Decisions: 
+Proportional Representation and the Borda Rule,
+American Political Science Review 77,3 (Sept. 1983) 718-733.
+-->
+</p><p>
+In their scheme, everybody votes for their congressman using plain 
+<a href="Plurality.html">plurality</a> voting, but then <i>all</i> candidates win, not
+just the one with the most votes &ndash; but they
+obtain voting weight in the parliament equal to their number of votes.
+This scheme again sought to approximate the ideal of "proportional representation,"
+and also you as a voter would nearly always have a representative 
+to approach who'd be interested in fighting
+for what you want, and who tended to be sympatico with you.
+</p><p>
+Although that goal is laudable and this plan initially sounds simple
+&ndash; when you think about it,  several annoying issues crop up, which have to be dealt with
+in ugly ways:
+</p><ol type="a">
+<li>
+Since "everybody wins," a huge number of people, say 101, might want to run,
+which would make life difficult for the voters, and also yield an enormous parliament.
+That would be ridiculous.
+</li><li>
+We could cure that problem by, e.g. only allowing those with at least 26% of the vote 
+(or some such threshold) to win... but that would not work because then <i>zero</i> 
+people might win!
+</li><li>
+OK, trying again, we could instead insist on having exactly min(3,C) winners if
+C candidates run (the three with the most votes).  
+<small>
+I'm using "three" for concreteness while explaining, 
+but have no special attachment to that particular value.
+</small>
+But that would destroy the 
+perfect representation ideal, for example with C=101 and the top three getting
+a few percent each, 90% of the voters would be left "unrepresented," a huge
+failure of the sought-for "all are represented" ideal!  
+Plus plurality-voting pathologies like "vote splitting"
+then would rise out of their coffins like vampires to damage democracy.
+</li><li>
+OK, trying yet again, we could also demand that C&le;10, i.e. at most 10 are allowed to run,
+in an effort to limit that kind of damage.   But then: who would be the favored
+10 allowed to run, versus the 91 not allowed to run?  They would have to be selected using some
+unfair process, or perhaps by a fairer one such an an extra preliminary election using,
+say, <a href="RRV.html">RRV</a>.   That would,
+at the very least, ruin the simplicity of the scheme.
+</li><li>
+Perhaps with DR congress would contain a lot of "extremists" who (since they only need
+to please "their own" voters) would not 
+compromise &rArr; gridlock.
+</li>
+</ol>
+<p>
+At this point the reader should be seeing the virtues of our alternate plan of
+just using asset voting with weights=assets!
+It implements <b>"DR without the ugly kludges":</b>
+</p><ol type="a">
+<li>
+There is no problem if a huge number of candidates want to run and no need for a 
+preliminary election (or some unfair process)
+to winnow the field &ndash; the asset voting process itself takes care of that.
+</li><li>
+No thresholds are needed.
+</li><li>
+It is no problem to make the number of winners be min(C,3).
+</li><li>
+Plurality voting problems like "vote splitting" no longer arise and the "finer representation"
+and "asset transfer" properties of asset voting mean that everybody is represented &ndash; unlike
+those who voted for non-winners in the Tullock plurality-voting scheme being
+left unrepresented with no ability to affect the election outcome.
+</li><li>
+Asset-voting's "negotiation" stage would tend to select for those willing to 
+compromise (i.e with proven negotiation ability).   If polarized gridlock congress
+would be a risk with original-plan DR, that risk might now be reduced or avoided.
+</li>
+</ol>
+<p>
+<b>Possible Census suggestion by F.Simmons:</b>
+For USA use, the exact count by the Census of the district population, could be used when weighting
+congressmen by assets, thus further ironing out inequalities.
+</p>
+
+<h3>4. What is good about Asset voting? </h3>
+
+<p>
+It is <i>extremely simple</i> &ndash; especially Simmons's variant.
+The Simmons-variant works on 
+<a href="VMSumm.html">every voting machine</a> in the USA, including
+noncomputerized ones, right
+now, with no reprogramming and no modifications required.
+And it can be "counted in precincts," i.e. a sensible notion of "subtotals" exists
+(<a href="IrvNonAdd.html">unlike</a> for some rival voting systems such as STV).
+</p>
+
+<p>
+Asset is <a href="PropRep.html">proportional</a>.
+That is, if 40% of the voters are "red,"
+35% are "blue," and the remaining
+25% are "green," then &ndash; provided candidates always  award their assets
+to other candidates of their same color-type &ndash;
+the result of the election will be 40% red, 30% blue, and 25% green
+winners (up to perturbations caused by the requirement to round to <i>integer</i> numbers
+of winners of each type; with 20 winners these percentages will be exact,
+but if there are 19 winners then exactness is not achievable; albeit this round-to-integers 
+defect is removed with the "weighted congressmen" variant).
+</p>
+
+<p>
+That's usually considered better than <i>disproportional</i> systems in which, e.g. 51% red
+voters versus 49% green ones, will yield 100% red winners and 0% green winners.
+In contrast, e.g. the "<a href="rangeVcumulative.html">cumulative</a>" 
+voting system can yield highly disproportional results
+in which, say, 51% "red" voters elect only a <i>single</i> red winner, while meanwhile
+the 49% green voters elect 9 green winners.
+</p>
+
+<p>
+<b>
+There is no other voting system in the world, which is simultaneously 
+<ol type="a">
+<li>
+this simple and
+</li><li>
+proportional.
+</li></ol>
+</b>
+</p><p>
+Indeed, arguably nothing else even comes close.   And if you want a system that 
+</p>
+<ol type="A">
+<li>
+can be used on "dumb" voting machines, 
+</li><li>
+is "proportional," and 
+</li><li>
+involves voting for people (not "voting for parties"
+which is what "party list" PR systems instead involve)
+</li></ol>
+<p>
+then again, Asset arguably has zero competition.
+</p><p>
+Asset is "monotonic," i.e. giving more of your vote to candidate X 
+can help, but not hurt, X (at least insofar as we are talking about the
+<i>pre</i>negotiation stage of asset voting).  Some other systems like STV
+disobey that.  
+</p>
+
+<p>
+Asset is "participatory," i.e. voting honestly is never worse for you than not voting at all
+(again, at least insofar as we are talking about the
+<i>pre</i>negotiation stage of asset voting). 
+Some other systems like STV disobey that.
+</p>
+
+<p>
+Asset is "fair" in the sense it treats all candidates equally, regardless of their
+membership (or lack thereof) in political parties.  (Some other systems like
+"party list voting" are not at all fair in that sense.)
+</p>
+
+<p>
+Asset has considerable immunity to "strategic voting," i.e. it tends to be in your
+best interests as a voter to vote honestly.  For example, in the fake-2000
+election <a href="#ngbbex">above</a>, 
+voters who voted for Nader or Buchanan were not "wasting their votes," since
+they expected Nader or Buchanan to <i>use</i> their votes the way that voter would 
+herself have wanted
+to use them if Nader or Buchanan were not in the race.  So it was not strategically
+foolish to vote Nader or Buchanan even if those candidates could not win.
+Indeed, (a) Nader <i>might</i> win, so it is foolish for Nader-favoring voters
+not to vote for him, (b) Nader, even without winning,
+could gain negotiating leverage and hence possible deals from
+Gore and Bush (e.g. a cabinet seat, policy concessions), in which case Nader votes
+would be generating <i>genuine</i> power.
+In this sense Asset delivers a <i>finer degree</i> of
+proportionality than any conventional
+voting system &ndash; even candidates with too few votes to win a seat
+still often get some power.
+</p>
+
+<p>
+In contrast, e.g, with cumulative voting any vote for a candidate with no chance to win is
+simply wasted.  Such votes are strategically stupid even if that candidate is your true
+favorite, giving you the voter a distressing choice between being a "fool" and being a "liar,"
+and also causing small political parties to get smaller and die over time, leading
+to fewer choices for voters and a worse democracy.
+With asset voting, you are much less likely to be forced into such a "Sophie's Choice."
+</p>
+
+<p>
+With asset it is easy to allow "weighted voting" where some voters have more votes than others.
+</p>
+
+<p>
+Asset may tend to encourage inter-candidate cooperation and reduce "negative advertising"
+and bullshit aspersions 
+(since you might need to make a deal with candidate X, it does not pay to alienate her!).
+Also
+it may reduce legislative "gridlock" since those in congress would consist (to
+a greater extent) of those with proven
+negotiating capability, and also legislators could depend on each other in future
+to be elected (whereas right now, they have no electoral incentive whatever to cooperate).
+<small>
+Warning: this paragraph, although it may be entirely true, is also speculative;
+i.e. it is supported by some intuition, but not by actual evidence.
+</small>
+</p>
+
+<h3>5. What's bad about Asset Voting? </h3>
+
+<p>
+<small>
+Note: the discussions of many of the below
+criticisms of asset voting have now been heavily revised in view of points made by
+Gabe Bodeen in 2013, who pointed out some criticisms of the criticisms that everybody 
+(including asset-inventors Simmons and Smith) had managed not to notice for years.
+Bodeen's points largely or entirely refute the criticisms.  Hence
+asset voting is now looking a lot better even than its inventors
+Smith and Simmons had realized.
+</small>
+
+<p>
+Some people are bothered by the fact that "deals" could decide an Asset election.  On the other
+hand, other people consider that <i>good</i>.  For example, if you vote for Snodgrass,
+presumably it is because you want Snodgrass to have power.  Why are you then complaining
+if Snodgrass then exercises that power to try to alter policy, get cabinet post, etc?
+Wasn't that your goal?  And if Snodgrass uses his assets differently than you expected
+(yikes!) then presumably Snodgrass, if he had been elected, would have acted differently
+than you expected too.  In that case, again, we don't see why you are complaining &ndash;
+it's your own fault for misjudging your candidate.  Not the fault of Asset Voting &ndash;
+your fault.  Voter misjudgements happen.  
+(But presumably you as a voter feel <i>less likely</i> to
+make a misjudgement about a candidate if it is your favorite candidate, than if it is somebody
+you do not actually like or trust, but feel forced by an unfair voting system 
+like <a href="Plurality.html">plurality</a>
+to vote for anyhow.)
+</p>
+
+<p>
+Warren Smith (one of the asset voting inventors) suspects that 
+the worries about "deal making" with Asset Voting will be more serious if it were
+used as a single-winner voting system (which is not recommended &ndash; Smith only
+recommends for multiwinner elections) and hopefully less serious and/or less common in multiwinner
+scenarios.   But this suspicion is not currently supported by any solid evidence.
+</p><p>
+Here is an <b>example by Raphfrk</b> aimed at 
+demonstrating Asset Voting dealmaking misbehavior in a single-winner scenario.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #Voters </th>
+<th> their vote </th>
+</tr>
+<tr>
+<td> 38 </td>
+<td> Rightist  </td>
+</tr>
+<tr>
+<td> 25 </td>
+<td> Centrist  </td>
+</tr>
+<tr>
+<td> 37 </td>
+<td> Leftist  </td>
+</tr>
+</table>
+
+<p>
+In this situation, had we been using a more conventional good-quality voting system such
+as <a href="RangeVoting.html">range voting</a> or a
+<a href="rangeVcond.html">Condorcet system</a>,
+quite likely Centrist would have won, because the Left and Right voters would each prefer
+the Centrist over the Other Side.   But with Asset Voting, it is highly unlikely the
+Leftist and Rightist will place the common good over their personal careers and power,
+hence one of them (whichever one the Centrist prefers) will win the election.
+That's an example of a plausible scenario in which the Asset Voting result would
+presumably be less good for society. <small><a href="IrvExec.html">IRV</a> also
+would malfunction in this situation by refusing to elect Centrist.</small>
+</p>
+
+<p>
+But in 2013, <b>Gabe Bodeen criticized that criticism.</b>
+Bodeen argues that it is probably <i>wrong</i> to believe that Centrist
+will give his assets to one of the extremists.   That prediction was based on 
+the view that Centrist, as the asset-poorest, would think 
+"I have no chance to win, so I might as well serve as kingmaker during
+negotiation-stage."
+</p><p>
+<b>Bodeen's negotiation hypothesis:</b>
+Bodeen instead thinks that the candidate who will give up his assets to serve as kingmaker
+will be the one <i>under the most political pressure to do so</i>.
+Other wordings: "with the most to lose" or "with the most at stake."
+That, he contends, is how concessions in negotiations <i>really</i> work!
+</p><p>
+And in Raphfrk's scenario, Bodeen predicts that "blinks first" candidate will be Leftist,
+who hence will act as kingmaker to enthrone Centrist.  This, happily, will
+be the best choice for society, voiding Raphfrk's criticism.
+Why?
+</p>
+<ul><li>
+Centrist (if truly a centrist) will (if he's motivated by idealism) 
+see little political advantage to
+preferring Leftist over Rightist (or vice versa).
+And if he's instead motivated by political pressure:
+the trouble is that
+Centrist will experience pressures to swing the election one way or the other,
+but those pressures are in both directions and will largely cancel themselves out.
+</li><li>
+Meanwhile, Leftist experiences a lot of pressure that is mostly 1-way, i.e. not 2-way and
+hence cancelling out.   His supporters are screaming at him: "if you just sit there,
+the hated Rightist will win, the worst possible event.  Since you are going to lose
+anyway, why not save us from that fate by enthroning Centrist?"
+Centrist voters (who are not his direct supporters but still important possible
+future friends/supporters) 
+also want him to give it to Centrist.
+</li><li>
+Finally Rightist is under no pressure.  His supporters are saying "Hang onto your assets;
+you will win unless the evil rivals make a deal, but there is nothing you can do about that
+except try to urge Centrist to give you even more.  You can also urge Centrist to Hold Firm,
+but then if Leftist enthrones him, you have no reason to, and if not, then you just win."
+</li><li>
+Centrist's supporters will recognize the above and urge Centrist to hold firm, forcing
+the higher-pressured Leftist to give him the Gold.  To the extent Centrist feels
+unlikely to win, that
+also works to relieve the pressure on him.  Might as well just sit there and hope for victory.
+</li></ul>
+<p>
+I currently suspect Bodeen is right, or anyway more right than alternative hypotheses,
+in which case Raphfrk's criticism is refuted.
+</p>
+
+<!--
+I suspect asset behave the worst with respect to dealmaking worries, in single-winner elections,
+and those worries tend to be less important in multiwnner elections.???
+-->
+
+<p>
+Asset <b>might tend to encourage lock-step party-loyalty</b>.  Or it might not.  Hard to tell.
+</p>
+<a name="brg"></a>
+<p>
+Here is a <b>second "Asset is bad" example by Bruce R. Gilson</b> 
+for asset voting used for single-winner elections, inspired by
+the <a href="Races2009.html#ny23">2009 NY district-23 congress race</a>:
+</p><blockquote>
+Suppose the following situation.
+There are three candidates, <font color="blue">A</font>, <font color="blue">B</font>. and <font color="blue">C</font>, and two
+salient issues, <font color="red">X</font> and <font color="red">Y</font>, for simplicity. Suppose I agree with <font color="blue">A</font> on
+both issues <font color="red">X</font> and <font color="red">Y</font>, I agree with <font color="blue">B</font> on issue <font color="red">X</font> but not <font color="red">Y</font>, and I
+agree with <font color="blue">C</font> on <font color="red">Y</font> but not <font color="red">X</font>.
+<br><br>
+Also, suppose I consider <font color="red">X</font> much more important than <font color="red">Y</font>, but <font color="blue">A</font> considers
+<font color="red">Y</font> more important than <font color="red">X</font>.
+<br><br>
+I (as a voter)
+would best be represented by <font color="blue">A</font> (who agrees with me on both issues)
+in a legislature; <font color="blue">A</font> would vote "my way" on both. She (I'm thinking of
+Scozzafava in NY-23, that's why the feminine pronoun!) might not be as
+enthusiastic when <font color="red">X</font> comes up for a vote as I would be, but she'd vote
+my way on both, so she'd represent me best.
+<br><br>
+<i>However</i>, if <font color="blue">A</font> found herself to be an untenable candidate, she would cede
+her votes to <font color="blue">C</font> &ndash; who would be the <i>worst</I> choice from my point of view
+(exactly what Scozzafava did in that election, by dropping out and
+endorsing Owens). She considers <font color="red">Y</font> (on which she agrees with <font color="blue">C</font>) more
+important than <font color="red">X</font> (on which she agrees with <font color="blue">B</font>). So in an asset-voting
+situation, she'd delegate her votes to <font color="blue">C</font>.
+<br><br>
+I'm not saying Scozzafava was, in fact, perfect from my point of view
+&ndash; I'm sure there are a lot of issues that divide us. I'm talking
+about an idealized situation, and while I think of <font color="blue">A</font> as Scozzafava, <font color="blue">B</font>
+as Hoffman, and <font color="blue">C</font> as Owens, I don't know the candidates well enough to
+be certain they really fit. But somewhere, in some election, this
+situation would crop up.   <a href="RangeVoting.html">Range voting</a> would work better 
+in this kind of situation.
+</blockquote>
+<p>
+Note that Gilson unhappily
+feels some incentive <i>to vote dishonestly</i> in such an asset election,
+i.e. <i>not</i> to give his assets to his true favorite A.
+</p><p>
+<b>Multiwinner escape hatch:</b>
+Both Raphrk's and Gilson's problems vanish (or at least "diminish" or
+"become less frequent") if asset is 
+used only for <i>multiwinner</i> elections, 
+which since they involve more winners also involve more candidates,
+and hence there is more chance there is some candidate (or several)
+closely resembling you.
+I suspect asset misbehavior-examples like these are only common 
+when it is a single-winner election (or maybe also 2-winner) but uncommon if 3 or more winners.
+</p><p>
+But again, <b>Gabe Bodeen criticized Gilson's whole criticism</b> and without
+need of the multiwinner escape hatch.
+Again, Bodeen argues that the first person to pay during negotiations is going to be
+the one "with the most to lose," <i>not</i>
+the one "poorest in assets" or "with the least chance to win."
+In Gilson's scenario, 
+A is not under a lot of uni-directed pressure.  The pressures on her partially cancel out.
+But again, whoever among {B,C} is not leading (say B), <i>would</i> be under a lot
+of uni-directed pressure to improve the situation by enthroning A, who is not as bad
+(from the perspective of B and B's supporters) as C.
+So Bodeen predicts that in this situation B would "blink first"
+and hence A would win the election.  And hence Gilson <i>was</i> best off voting honestly for A.
+</p><p>
+So again, to the extent Bodeen is right, this criticism is refuted.
+</p><p>
+<b>Corruption?</b> The asset system might encourage corruption in which the candidates misuse 
+their power as elected officials (once they win, or if they already are in office 
+running for re-election) to pay off rivals for their 
+"assets" using <i>real</i> public assets, such as "a million dollars."
+Actually practically every voting system encourages cheating and corruption; the fear 
+with asset is that somehow perhaps the corruption-incentive is greater and hence the problems will
+be greater. I find it very hard to quantify whether and how much that fear is true.
+
+</p><p>
+<b>Another comment by Stephen Unger:</b> I see one serious
+problem with Asset Voting. Asking voters to cast vector votes that sum to some fixed
+amount is asking too much. I doubt if more than three out of four
+votes would be valid!
+The simpler Simmons idea of just one vote per voter of
+course avoids this. 
+</p>
+<p>
+<small>
+The reason we cannot
+just have a more-simple ordinary range-style vote,
+without the sum constraint, is this.
+That could lead to highly disproportional results.
+E.g.  there are 5 Democratic clones running versus 1 Republican.
+37% of the voters vote (1,1,1,1,1,0).
+The other 63% vote (0,0,0,0,0,1).
+Then the Democrats, highly unfairly, win by a landslide!
+So it is essential to have the sum constraint which causes "assets" to be 
+conserved and fungible rather like "money," so that we get proportionality.
+(A lot of naive multiwinner voting-system designs can lead to highly disproportional
+results, this asset-misdesign is just one example of that.)
+</small>
+</p><p>
+<small>
+Why would we want to use the more-complicated sum-idea as opposed to Simmons's simpler 
+voting style?  Well, perhaps we would not (since simplicity is important)!
+But there can be reasons to prefer vector-style voting over Simmons's simpler approach,
+if simplicity is not a concern; we know of several scenarios 
+where <a href="AssetBC.html">it appears to help</a>.
+How common or important such scenarios are, is not known.
+</small>
+</p><p>
+<b>Response to Unger by William Waugh:</b>
+Voters could simply cast vector-votes 
+assigning any <i>nonnegative</i> numbers to the candidates.  
+(Failure to mention a candidate counts as assigning zero to him.)
+Then each such vector-vote could be automatically "normalized" (by dividing each number by that
+voter's total sum).  The voter then would not have to compute the sum nor worry about
+making sure it was right, since this automatically would be done for her.
+</p><p><small>
+Waugh also suggests:
+Assigning zero to <i>all</i> candidates could be regarded as
+a "vote of no confidence" in the candidate list.  If a majority of the voters
+do that, then we could redo the nominations, campaign, and election.
+</small></p>
+<p>
+<b>A rather different response to Unger by Curmudgeon:</b>
+I <i>like</i> the idea of discarding votes like (0.3, 0.5, 0, 0.4, 0)
+which fail to meet the sum-constraint.  Serves as a mild intelligence-test or preparedness-test
+for voters, thus enriching the electorate in smarter, more prepared, or more competent voters.
+</p>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

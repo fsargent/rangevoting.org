@@ -1,0 +1,287 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - answer to puzzle 74
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to Puzzle #74: How bad can "Shortest Splitline" districts be? </H2>
+
+<p><b>Puzzle</b><br>
+<ol type="a">
+<li>
+Suppose we have a rectangular "country" (on a flat Earth)
+and suppose the population distribution inside it is uniform.
+If we partition it into N districts 
+using the <a href="GerryExamples.html">shortest splitline algorithm</a>,
+then how much worse (in terms of total length of cutting) can it be than
+the hypothetical optimum districting which minimizes  cutting length?
+In particular: prove the worst (i.e. maximum)
+possible ratio in the limit N&rarr;&infin;
+is 
+K=(3<sup>1/2</sup>+3<sup>-1/2</sup>)/12<sup>1/4</sup>&asymp;1.24080647880279946525.
+</li><li>
+One might now boldly conjecture that the 
+shortest splitline algorithm never produces cutlength
+exceeding the optimum by more than some constant factor C no matter how the initial
+country is shaped, and no matter how the population is distributed inside the country.
+Disprove that conjecture with uniform population density.
+</li><li>
+Also disprove the conjecture for a square-shaped country.
+</li><li>
+This "Approximation Conjecture"
+is, however, reborn if we restrict attention to <i>convex</i> countries with
+<i>uniform</i> population densities.
+(I believe in this conjecture.)
+Prove the shortest splitline algorithm applied to a convex country will only employ
+all-internal splitlines, and will only produce convex districts.
+</li><li>
+Prove the Approximation Conjecture with C=K for rectangular countries
+with uniform population density in the N&rarr;&infin; limit.
+</li><li>
+Prove the Approximation Conjecture in the case of convex planar countries
+with arbitrary smooth population densities which are
+everywhere bounded below and above by positive constants,
+in the N&rarr;&infin; limit.
+</li></ol>
+</P>
+
+<h3> Answers </h3>
+
+<p>
+<b>a.</b>
+Let F(N) denote the worst (greatest) possible ratio of splitline-length
+to optimum cut-length.
+We know from
+<a href="http://private.mcnet.ch/baumann/EqAreaOverview.htm"> 
+Baumann's conjectured optimal configurations for N=1,2,3,4,5,6 when the rectangle
+is a square</a> (see also our
+<a href="PuzzlePage.html#p66">puzzle 66</a>)
+that 
+<nobr>F(1)=F(2)=1</nobr>,
+<nobr>F(3)&ge;1.0265</nobr>,
+<nobr>F(4)&ge;1.0124</nobr>,
+<nobr>F(5)&ge;1.0391</nobr>,
+and
+<nobr>F(6)&ge;1.0175</nobr>.
+<!--
+We can get a better lower bound on F(3)&ge;1.0220 by employing a 3&times;2 rectangle rather than
+a square??? Sorry but this is a worse bound. -->
+Also, Baumann's min-cut-length partition of a unit-side regular hexagon into 4 equal-area
+pieces
+(<a href="PuzzlePage.html#p66">puzzle 66</a>)
+has length 2&radic;3 whereas the shortest-splitline algorithm
+produces length 2+&radic;3, for a cut-length-ratio of 1.07735,
+and Baumann's partition of a unit-side equilateral triangle into two pieces by using
+a circular arc has cut-length (3&pi;&radic;3)<sup>1/2</sup>/6&asymp;0.67338684
+(whereas splitlining gives cut length 1/&radic;2)
+for ratio 1.050075.
+</p><p>
+<!--
+In the limit N&rarr;&infin; we shall now demonstrate that
+limsup F(N)&ge;(2<sup>1/4</sup>+2<sup>-1/4</sup>)/12<sup>1/4</sup>&asymp;1.0907.
+To see this, consider a 1&times;&radic;2
+initial rectangle being divided into a large power of 2 pieces.
+The result with shortest splitline algorithm is a grid consisting of
+identical rectangles each with the proportions 
+1&times;&radic;2 (or
+&radic;2&times;1).  
+The half-perimeter of such a rectangle with unit area is
+2<sup>1/4</sup>+2<sup>-1/4</sup>.
+Meanwhile the optimum partitioning is known by a result of Thomas C. Hales
+to be asymptotically the same length as
+the regular-hexagon "honeycomb," and note a unit-area regular hexagon
+has half-perimeter
+12<sup>1/4</sup>. 
+(We did not actually need Hales's result, we merely needed the trivially easier
+result that the honeycomb
+<i>upper bounds</i> the optimum.)
+Q.E.D.
+</p><p>
+We can get the better bound
+limsup F(N)&ge;(2<sup>1/2</sup>+2<sup>-1/2</sup>)/12<sup>1/4</sup>&asymp;1.13975
+by almost exactly the same reasoning.
+Consider a square
+being divided into N=2&middot;4<sup>k</sup> pieces.
+The result with shortest splitline algorithm is a grid consisting of
+identical 2&times;1 rectangles.
+The half-perimeter of such a rectangle with unit area is
+2<sup>1/2</sup>+2<sup>-1/2</sup>.
+Meanwhile Hales' optimum hex-honeycomb partitioning
+has unit-area hexagons with half-perimeter
+12<sup>1/4</sup>. 
+Q.E.D.
+</p><p>
+-->
+In the limit N&rarr;&infin; we shall now demonstrate that
+limsup F(N)&ge;(3<sup>1/2</sup>+3<sup>-1/2</sup>)/12<sup>1/4</sup>&asymp;1.24086.
+To see this, consider a square
+being divided into N=3&middot;4<sup>k</sup> pieces.
+The result with shortest splitline algorithm is a grid consisting of
+identical rectangles each with the proportions 
+3&times;1.
+The half-perimeter of such a rectangle with unit area is
+3<sup>1/2</sup>+3<sup>-1/2</sup>.
+Meanwhile the optimum partitioning is known by a result of Thomas C. Hales
+to be asymptotically the same length as
+the regular-hexagon "honeycomb," and note a unit-area regular hexagon
+has half-perimeter
+12<sup>1/4</sup>. 
+(We did not actually need Hales's result, we merely need the trivially easier
+result that the honeycomb
+<i>upper bounds</i> the optimum.)
+Q.E.D.
+</p><p>
+We can also show 
+liminf F(N)&ge;2/12<sup>1/4</sup>&asymp;1.0745699
+by noting that no matter what N is (power of 2, or not)
+the final rectangles will always have perimeter at least as large as a square with 
+the same area.  (Which follows from the fact L+W is minimized with LW=1 and L,W&gt;0
+when L=W=1.)
+</p><p>
+In the same limit we now shall demonstrate the matching upper bound
+limsup F(N)&le;(3<sup>1/2</sup>+3<sup>-1/2</sup>)/12<sup>1/4</sup>&asymp;1.24081,
+thus demonstrating <i>equality</i> &ndash; we know the limsup's exact value.
+This will solve problem <b>e.</b>
+Suppose we have an A&times;B rectangle, A&ge;B.  (We say its "aspect ratio" is A/B.)
+The shortest splitline will have length B and the new two rectangles will
+each have aspect ratios 2B/A if N is even and if 2B&gt;A.
+Even in the worst case where N=3, the aspect ratios will be
+3B/A and 3B/(2A).
+The point of this is that
+</p>
+<ol>
+<li>
+If we are exactly bisecting area each time then
+the aspect ratio, once it becomes &le;2
+can never rise above 2, no matter how many further
+bisections occur to that rectangle.
+</li><li>
+Even if not, then still we can conclude that
+the aspect ratio, once it becomes &le;3
+can never rise above 3, no matter how many further
+bisections occur to that rectangle.
+</li><li>
+The aspect ratio <i>will</i> get below  3 if N is large enough (in fact, if 3N><i>a</i>
+where <i>a</i> is the aspect ratio).
+</li></ol>
+<p>
+In view of the second and third points, 
+the final splitline districting will consist entirely
+of equal-area rectangles, all with aspect ratio&le;3, in the N&rarr;&infin; limit;
+this in combination with Hales's honeycomb-optimality theorem implies our upper bound.
+</p>
+
+<!-- <p>
+There is a gap between our asymptotic lower bounds 1.0745, 1.13975,
+and our upper bound 1.24081.
+It definitely is possible to improve all of these bounds, narrowing the gap.
+But precisely how much we can narrow the gap, and what then happens &ndash;
+are <b>open questions.</b>
+</p>
+-->
+<p>
+I conjecture this limit-constant 1.2408 works not only for rectangular countries
+but in fact for <i>every</i> convex country-shape. (The intuition behind the conjecture is that
+in the N&rarr;&infin; limit, splitlined districts will almost all be almost-rectangular.)
+</p>
+<p>
+<b>b.</b>
+A country consisting of three equal-area blobs joined by a "Y" of
+thin filaments, is a counterexample.
+Another is:
+</p>
+<img src="TwoRectSplitExample.png" />
+<p>
+The country (shaped like two rectangles of slightly-unequal size joined by a short thin neck)
+can be divided in half by either (A) a short circular arc, or (B) a much longer line segment.
+</p><p>
+<b>c.</b>
+A square country with a high-population-density city near the midpoint of its East edge,
+and low-density rural everywhere else 
+(total rural&asymp;total urban population), is a counterexample with N=2.  
+A tiny semicircle chopping
+off the city (or a tiny circle, if the city instead is located internally)
+has far smaller cutlength than the shortest splitline.
+</p><p>
+<b>d.</b>
+Splitlines are all-internal for a convex country by the definition of
+convexity and the inductive production of convex hemi-countries in all such splits.
+</p><p>
+<b>f.</b>
+Define the "aspect ratio" of a convex plane region R
+to be its diameter D
+(furthest point-pair separation) divided by its width W
+(minimum separation between two parallel lines enclosing R).
+The shortest splitline for any given population ratio always has
+length&le;W.
+It is not hard to see that once our convex region has aspect ratio&le;C,
+for <i>some</i> appropriate constant C depending roughly linearly on the ratio
+of upper to lower bounds for the
+allowed-population-density window,
+then it will never rise above C no matter how much further splitting
+is done to it.  This aspect ratio bound
+in turn may be used to see that the Approximation Conjecture
+is true (again for <i>some</i> ratio-constant) in the N&rarr;&infin; limit.
+</p><p>
+<b>Other remarks.</b>
+Raphfrk points out
+this lower bound 
+<center>
+CutLength > sqrt(N&pi;A) - S.
+</center>
+for a convex original shape with area=A and semiperimeter=S=P/2.
+(This could only be achieved if the shape were partitioned into equal circles,
+which is not possible so the bound is strict.)
+Unfortunately this bound can be negative, in which case it is useless.
+</p><p>
+One can argue that the
+shortest curve-length L cutting a convex area=A width=W
+body into two parts while exactly bisecting area, obeys
+<center>
+W/&radic;2 &lt; L &le; W.
+</center>
+(The lower bound is tight for a circular pie-wedge in the limit of tiny apex-angle;
+the upper bound is tight for a rectangle.)
+That proves the Approximation Conjecture in the case N=2, uniform
+population density, arbitary convex body,
+with the approximation ratio &radic;2&asymp;1.414.
+</p><p>
+For an equilateral triangle with SideLength=1,
+Baumann's optimal cut (via an arc)
+into two pieces has cut length &radic;(3&pi;&radic;3)/6&asymp; 0.6733868440
+whereas the shortest splitline algorithm produces a cut-line with length
+1/&radic;2&asymp;0.7071067812
+for an approximation ratio of about 1.050075.
+One perhaps could prove the <b>N=2</b> uniform case <i>has</i> this approximation ratio
+in the worst case?
+</p><p>
+For an equilateral triangle with SideLength=1,
+the optimal cut (via three line segments)
+into three pieces has cut length (&radic;3)/2&asymp;0.8660254040
+whereas the shortest splitline algorithm produces cut-length
+(5&radic;3 - 3)/6&asymp;0.9433756730,
+for an approximation ratio of about 1.089316.
+Perhaps this too is the worst possible ratio when <b>N=3</b>?
+</p><p>
+The shortest splitline 
+sliceup of an equilateral triangle into <b>N=4</b> equiareal pieces has length
+(1+&radic;3+&radic;2)/2 + (&radic;6)/4 &asymp; 1.460759749
+as opposed to the conjectured minimal-length splitup (by J.Hall &amp; E.Baumann)
+with cut-length&asymp;1.305113032,
+for ratio&asymp;1.119259185.
+[This is the greatest ratio I currently know for any convex shape with N&le;6.]
+</p><p>
+A.Heppes remarked the following. If you decompose the surface of a sphere into N equal-area
+regions for any N&gt;0 with N&ne;{2,3,4,6,12}, then the shortest net that
+does the job necessarily contains a <i>nonconvex</i> cell (because it will have
+a circular arc as part of its boundary).
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>

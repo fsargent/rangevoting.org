@@ -1,0 +1,71 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Voting cost calculator - which cheaper, machine or manual count?
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Voting cost calculator - which is cheaper, machine or manual count? </H2>
+
+<p>
+<small>This was contributed by <a href="http://bolson.org/">Brian Olson</a></small></p>
+</p>
+
+<p>
+Which is cheaper, manual vote vounting, or machine vote counting?  The answer may surprise
+you.  Type your assumptions into the slots, hit "submit," and see what conclusions result.
+(The numbers shown are for our default assumptions and the conclusion they lead to.)
+Note: this calculator is somewhat incomplete in that it
+does not include maintenance, testing, transport, and storage costs for the machines,
+nor does it include training costs for the people (and on the other hand, people have to 
+be trained to use the machines...).  When entering numbers,
+keep in mind that with human counting,
+ballots often have to be counted by more than one human as part of "don't trust you" protocols.
+</p>
+
+<table><tr><td valign="top">
+<p><a href="http://bolson.org/">Brian Olson...</a></p>
+<p><a href="http://bolson.org/voting/">On voting and election reform</a></p>
+<p><a href="http://bolson.org/voting/machines.html">On voting machines</a></p>
+</td><td bgcolor="#ddddff" style="padding: 1ex;">
+
+A machine must last at least <b>7.5</b> elections to break even vs. hand counted ballots
+and possibly as many as <b>685.714285714286</b> .
+</p><p>Human cost per ballot counted <b>$0.0583333333333333-$0.333333333333333</b>.<br>
+Machine cost per ballot counted (over 10 elections) <b>$0.25-$4</b>.
+</p><p>
+<form action="https://rangevoting.org/cgi-bin/VoteCostOlson.pl">
+<input type="text" name="hcmin" value="7"> Minimum cost per human counting hour (dollars)<br>
+<input type="text" name="hcmax" value="10"> Maximum cost per human counting hour (dollars)<br>
+<input type="text" name="htmin" value="30"> Minimum seconds per human counted ballot<br>
+<input type="text" name="htmax" value="120"> Maximum seconds per human counted ballot<br>
+<input type="text" name="mmin" value="500"> Minimum cost per voting machine (dollars)<br>
+<input type="text" name="mmax" value="4000"> Maximum cost per voting machine (dollars)<br>
+<input type="text" name="mvmin" value="100"> Minimum votes counted per voting machine<br>
+<input type="text" name="mvmax" value="200"> Maximum votes counted per voting machine<br>
+<input type="submit">
+</td></tr></table>
+<p><b>Santa Barbara, CA example (in 2001):</b><br>
+$1,300,000 spent on a 200-machine system to count 100,000 votes per election.<br>
+Try <a href="cgi-bin/VoteCostOlson.pl%3Fhcmin=7&hcmax=10&htmin=30&htmax=120&mmin=6000&mmax=7000&mvmin=500&mvmax=1000.html">$6500 per machine, counting 500 votes each.</a></p>
+<!-- <p><a href="?getsource">View vote_tco source (perl)</a></p> -->
+</BODY>
+</HTML>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

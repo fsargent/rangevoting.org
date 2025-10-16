@@ -1,0 +1,205 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Optimality theorems
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Theoreticians' attempts to find "optimal" voting systems. (Haven't worked well...) </H2>
+
+<p><b>Condorcet &asymp;1780:</b>
+Consider this probability model.  There is some true God-given quality-ordering
+among the N candidates.  Each voter if asked "who is better, candidate A or B?"
+gets the wrong answer with some fixed probability <i>p</i>.  All voters and all answers
+are independent.
+Then: Condorcet's "least reversal" voting system elects candidate most-likely to be 
+"true" winner.
+</p>
+
+<p><b>Flaws:</b> 
+a&rArr;Condorcet did not understand prob. theory?
+e&rArr;theorem lives in some other world.
+<ol type="a">
+<li>
+
+<table cellpadding="17" align="right"><tr><td>
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+   3
+</td>
+<td align="center">
+A>B>X>C
+</td>
+</tr>
+<tr>
+<td align="center">
+    3
+<td align="center">
+C>A>X>B
+</td>
+</tr>
+<tr>
+<td align="center">
+    3  
+<td align="center">
+B>C>X>A
+</td>
+</tr>
+<tr>
+<td align="center">
+    2  
+<td align="center">
+A>X>B>C
+</td>
+</tr>
+<tr>
+<td align="center">
+    2  
+<td align="center">
+C>X>A>B
+</td>
+</tr>
+<tr>
+<td align="center">
+    2  
+<td align="center">
+B>X>C>A
+</td>
+</tr>
+</table>
+</td></tr></table>
+
+Actually, your answers (in a single rank-ordering vote) <i>depend</i>.
+(C.L.Dodgson attempted to fix that flaw...)
+</li><li>
+All systems that always elect Condorcet winners suffer "no show" paradoxes in which
+voter gets a better election result (in her view) by refusing to vote than
+by casting an honest vote.
+</li><li>
+They also always are "inconsistent" in the sense that if W wins in district 1 and
+in district 2, that does not imply W wins in combined country.
+</li><li>
+The least-reversal system can declare X "the unique best" candidate... while
+simultaneously declaring X "the unique worst" candidate. 
+</li><li>
+Real human voters use strategy.  They are not honest idiots.
+</li>
+</ol>
+
+
+<p><b>D.G.Saari &asymp;1990:</b>
+Among "weighted positional" voting systems,
+Borda uniquely has
+the "fewest paradoxes."
+Also, Borda is the unique WP system satisfying both "fairness" and
+"reversal symmetry."
+</p>
+
+<p><b>Flaws:</b> 
+a,b&rArr;<i>who cares</i> about WP systems?
+d&rArr;theorem lives in some other world.
+<ol type="a">
+<li>
+It can be shown that <i>all</i> WP voting systems can act <i>arbitrarily crazily</i>
+in the sense that (a) for any pair (X, Y) of nontrivial WP systems, and any two orderings
+(A, B) among C and C-1 candidates respectively, and any k&isin;{1,2,...,C}
+there is an election in which system X outputs societal ordering A,
+but after deleting candidate <i>k</i>
+and using the same votes, system Y outputs ordering B.
+</li><li>
+
+<table cellpadding="17" align="right"><tr><td>
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+   5
+</td>
+<td align="center">
+C>B>A
+</td>
+</tr>
+<tr>
+<td align="center">
+    4
+<td align="center">
+B>A>C
+</td>
+</tr>
+<tr>
+<td align="center">
+    2  
+<td align="center">
+B>C>A
+</td>
+</tr>
+<tr>
+<td align="center">
+    2  
+<td align="center">
+A>C>B
+</td>
+</tr>
+</table>
+</td></tr></table>
+
+Range voting and Condorcet systems and IRV and approval are not WP systems.
+</li><li>
+<i>Every</i> WP system elects B and not the Condorcet winner C in pictured situation
+(C>B by 7:6, C>A by 7:6).
+<small>But Gehrlein, Fishburn, &amp; van Newenhizen 
+showed that the probability (assuming each vote is random permutation)
+that Borda elects a non-Condorcet-Winner (conditioned on a CW existing)
+is about 10% if N=3 and #voters&rarr;&infin;.
+They showed Borda <i>minimizes</i> this conditional
+probability over all WP systems, for each N&ge;3.</small>
+</li><li>
+Real human voters use strategy.  They are not honest idiots.
+</li></ol>
+
+
+<p><b>W.D.Smith 1999:</b>
+Range voting 
+<a href="RVstrat.pdf">is</a>
+the unique COAF voting system (Compact, One-vote, Additive, Fair)
+with "maximum voter expressivity" subject to  "avoiding favorite betrayal."
+Also has "max-measure strategically accessible vote-sets."
+</p>
+<p>
+Related theorems, but cleaned up and nicer,
+were shown by <a href="PivatoChar.html">Marcus Pivato</a> in 2011-2013.
+</p>
+
+<p><b><a href="SimmonsSmithPf.html">W.D.Smith 2007:</a></b>
+Range features both "immunity to cloning" and
+"avoiding favorite betrayal"; but no rank-order system does.
+</p>
+
+<p><b><a href="DhillonM.html">Dhillon &amp; Mertens 1999:</a></b>
+Range voting is the unique voting system satisfying certain Arrow-like axioms.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

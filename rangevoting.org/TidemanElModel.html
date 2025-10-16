@@ -1,0 +1,217 @@
+
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org - Tideman election model
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1>
+Tideman's Election Model
+</H1>
+
+<p>
+Nicolaus Tideman used 
+<a href="TidemanData.html">data</a> from 87 real-world rank-order-ballot elections to
+fit a <i>statistical model</i> of elections.
+It is described in chapter 9 of his <a href="TidemanRev.html">book</a>
+<i>Collective decisions and voting</I> (Ashgate 2006)
+and we will describe it again here.
+Our description is more concise and we shall also redo some of Tideman's calculations.
+</p>
+<h3> Incomplete beta function </h3>
+<p>
+For &alpha;&ge;1 and &beta;&ge;1 let 
+</p><center>
+I<sub>x</sub>(&alpha;,&beta;)
+&nbsp; = &nbsp; 
+&Gamma;(&alpha;+&beta;)/[&Gamma;(&alpha;)&Gamma;(&beta;)]
+&middot;
+&int;<sub>0&lt;u&lt;x</sub>u<sup>&alpha;-1</sup>(1-u)<sup>&beta;-1</sup>du
+</center><p>
+denote the "normalized incomplete beta function."   Many properties of this
+function are described in &sect;26.5 (pages 944-945 of my copy)
+of M.Abramowitz &amp; I.A.Stegun:
+<i>Handbook of Mathematical Functions</I>, NBS (10th corrected printing) 1972.
+For example, it gives series and continued fraction expansions.
+And here is an alleged
+<a href="http://www.danielsoper.com/statcalc/calc37.aspx">calculator</a>.
+I<sub>x</sub>(&alpha;,&beta;)
+is the probability that a Beta(&alpha;,&beta;)-distributed
+random variable u obeys 0&le;u&lt;x; note 
+</p><center>
+I<sub>1</sub>(&alpha;,&beta;)=1, &nbsp; &nbsp; &nbsp;
+I<sub>0</sub>(&alpha;,&beta;)=0,  &nbsp; &nbsp; and &nbsp; &nbsp; &nbsp;
+I<sub>x</sub>(&alpha;,&beta;)+I<sub>1-x</sub>(&beta;,&alpha;)=1.
+</center><p>
+Letting &eta;=&alpha;+&beta;,
+the expected value of u is r=&alpha;/&eta;
+and the variance of u is (1-r)r/(&eta;+1).
+</p>
+<h3> The model </h3>
+<p>
+There are C candidates numbered 1,2,...,C.
+There also are V voters, V&rarr;&infin;, who each cast rank-order ballots.
+We shall mostly be interested in the V&rarr;&infin; limit.
+If 1&le;i&lt;j&le;C then Tideman's model is that
+a random voter ranks candidate i below candidate j with probability u
+which is a "beta-distributed random variable" on the real interval
+(0,1) where the beta distribution
+is defined by parameters &alpha; and &beta;
+calculable from i and j with 1&le;i&lt;j&le;C by this procedure:
+</p><center>
+x=(j-i)/(C+1), &nbsp;
+y=1-(j+i)/(C+1), &nbsp;
+r=(1/2)exp([a<sub>1</sub> + a<sub>2</sub>x + a<sub>3</sub>y<sup>2</sup>]x), &nbsp;
+&eta;=[(1-2r)r/2]<sup>a<sub>4</sub></sup>, &nbsp;
+&alpha;=r&eta;, &nbsp;
+&beta;=&eta;-&alpha;
+</center><p>
+where Tideman's preferred parameter values (designed to best-fit data from 87 real-world 
+ranked-ballot elections)
+are
+</p><center>
+a<sub>1</sub> = -0.532&plusmn;0.028
+, &nbsp;
+a<sub>2</sub> = -0.789&plusmn;0.055, 
+&nbsp;
+a<sub>3</sub> = -2.486&plusmn;0.010, 
+&nbsp;
+a<sub>4</sub> = -1.281&plusmn;0.011.
+</center><p>
+(We have also given &plusmn;1&sigma; error bars on Tideman's fit-values.)
+Note that if i&lt;j then this causes r&lt;1/2 and hence &alpha;&lt;&beta;
+and hence i is more likely to defeat j than the reverse.
+(If i&gt;j then swap i and j, compute &alpha; and &beta; as above, and finally swap them.)
+</P>
+<h3> Pairwise defeat-probability matrix D </h3>
+<p>
+From this it follows (in the V&rarr;&infin; limit) that the probability
+D<sub>ij</sub> that candidate
+i will defeat candidate j pairwise by voter-majority, is the same as the probability that
+0&le;u&lt;1/2, which is
+</p><center>
+D<sub>ij</sub> &nbsp; = &nbsp; I<sub>1/2</sub>(&alpha;<sub>ij</sub>, &beta;<sub>ij</sub>).
+</center>
+<h3>Warning</h3>
+<p>
+Tideman's model does <i>not</i> easily allow you to generate a single random rank-order ballot!
+</p>
+<p>
+But it does allow you to easily generate a random C&times;C pairwise-margins
+matrix (sampled from his distribution) arising from V voters in the limit V&rarr;&infin;.
+</p>
+<h3>Numerical calculations</h3>
+<p>
+Tideman, in the bottom row of table 9.11 page 118 of his book
+<i>Collective decisions and voting</i> (Ashgate 2006)
+calculates 
+his best estimate
+of the real-world probability of a Condorcet winner existing
+in a C-candidate, (V&rarr;&infin;)-voter election.  
+Unfortunately, when I calculated these numbers myself, I got slightly different
+results than Tideman. 
+(Also Tideman himself emailed me some numbers 
+extending the tables in his book up to C=320, and these tables also disagree slightly both
+with those in his book and with my own computations.)
+The exact probability, in this model, that a "Condorcet winner"
+(who defeats every rival pairwise by voter majority) exists is
+</p><center>
+Prob(undefeated winner exists) = 
+2&sum;<sub>A=1..C</sub>
+&prod;<sub>B=1..C</sub>
+D<sub>AB</sub>.
+</center><p>
+I wrote a (rather slow, but apparently accurate to 8 significant digits)
+<a href="TidemanModel.map">computer program</a> to compute the D<sub>ij</sub>
+and then the sum-of-products above.
+</p>
+<p>
+The table below gives my calculations of 
+<ol><li>
+The probability (based on
+Tideman's central estimates of 
+a<sub>1</sub>,a<sub>2</sub>,a<sub>3</sub>,a<sub>4</sub>)
+that a Condorcet winner exists in C-candidate elections
+</li><li>
+The same probability, but now written as mean&plusmn;stddev,
+based on Tideman's error-bar-equipped estimates of those
+same fitting parameters, and under the assumption these 4 errors
+are independent.
+</li></ol>
+<table bgcolor="yellow">
+<tr bgcolor="pink">
+<th>C</th><th>Prob(Cond.Winner exists)</th><th>With error bar</th></tr>
+</tr>
+<tr><td>1</td><td>1</td><td>1.0000000000&plusmn;0.0000000000</td></tr>
+<tr><td>2</td><td>1.000000000</td><td>1.0000000000&plusmn;0.0000000000</td></tr>
+<tr><td>3</td><td>0.9882900822</td><td>0.9881513238&plusmn;0.001994394165</td></tr>
+<tr><td>4</td><td>0.9748959071</td><td>0.9746722419&plusmn;0.003549113867</td></tr>
+<tr><td>5</td><td>0.9648583618</td><td>0.9645768206&plusmn;0.004620496654</td></tr>
+<tr><td>6</td><td>0.9568101798</td><td>0.9564885975&plusmn;0.005407542225</td></tr>
+<tr><td>7</td><td>0.9496298494</td><td>0.9492788131&plusmn;0.006047017500</td></tr>
+<tr><td>8</td><td>0.9426984300</td><td>0.9423242788&plusmn;0.006614385888</td></tr>
+<tr><td>9</td><td>0.9357101189</td><td>0.9353168500&plusmn;0.007147770799</td></tr>
+<tr><td>10</td><td>0.9285237742</td><td>0.9281141056&plusmn;0.007665731809</td></tr>
+<tr><td>11</td><td>0.9210820434</td><td>&nbsp;</td></tr>
+<tr><td>12</td><td>0.9133700949</td><td>&nbsp;</td></tr>
+<tr><td>13</td><td>0.9053945858</td><td>&nbsp;</td></tr>
+<tr><td>14</td><td>0.8971727514</td><td>&nbsp;</td></tr>
+<tr><td>15</td><td>0.8887266352</td><td>0.8882590394&plusmn;0.01019604600</td></tr>
+<tr><td>16</td><td>0.8800799963</td><td>&nbsp;</td></tr>
+<tr><td>17</td><td>0.8712566469</td><td>&nbsp;</td></tr>
+<tr><td>18</td><td>0.8622795708</td><td>&nbsp;</td></tr>
+<tr><td>19</td><td>0.8531704841</td><td>&nbsp;</td></tr>
+<tr><td>20</td><td>0.8439496372</td><td>0.8434511869&plusmn;0.01262449172</td></tr>
+<tr><td>21</td><td>0.8346357628</td><td>&nbsp;</td></tr>
+<tr><td>22</td><td>0.8252460951</td><td>&nbsp;</td></tr>
+<tr><td>23</td><td>0.8157964365</td><td>&nbsp;</td></tr>
+<tr><td>24</td><td>0.8063012426</td><td>&nbsp;</td></tr>
+<tr><td>25</td><td>0.7967737172</td><td>0.7962656662&plusmn;0.01484845837</td></tr>
+<tr><td>26</td><td>0.7872259066</td><td>&nbsp;</td></tr>
+<tr><td>27</td><td>0.7776687941</td><td>&nbsp;</td></tr>
+<tr><td>28</td><td>0.7681123896</td><td>&nbsp;</td></tr>
+<tr><td>29</td><td>0.7585658089</td><td>&nbsp;</td></tr>
+<tr><td>30</td><td>0.7490373550</td><td>0.7485375062&plusmn;0.01680625596</td></tr>
+<tr><td>40</td><td>0.6561162156</td><td>0.6556738400&plusmn;0.01985794091</td></tr>
+<tr><td>50</td><td>0.5701347282</td><td>0.5697865061&plusmn;0.02181859904</td></tr>
+<tr><td>60</td><td>0.4927833349</td><td>0.4925483674&plusmn;0.02285077960</td></tr>
+<tr><td>70</td><td>0.4243160899</td><td>0.4242004911&plusmn;<b>0.02313931045</b></td></tr>
+<tr><td>80</td><td>0.3643342743</td><td>0.3643351016&plusmn;0.02285682763</td></tr>
+<tr><td>90</td><td>0.3121537138</td><td>0.3122648049&plusmn;0.02215455082</td></tr>
+<tr><td>100</td><td>0.2670204459</td><td>0.2680084049&plusmn;0.02182221980</td></tr>
+<tr><td>150</td><td>&nbsp;</td><td>0.1262199699&plusmn;0.01483359052</td></tr>
+<tr><td>200</td><td>0.05589104742</td><td>0.05635966735&plusmn;0.008921947048</td></tr>
+<tr><td>300</td><td>0.01485059262</td><td>&nbsp;</td></tr>
+</table>
+
+<p>
+I also wrote <a href="TidemanElectionSim.c">another computer program</a>
+which generates random Tideman-statistics elections (in the form
+of a pairwise margins matrix sampled from the exactly correct distribution)
+and also does the same for the simpler (but presumably less realistic)
+<a href="RandElect.html">random elections model</a>.
+Using these matrices, the program can carry out Monte Carlo simulations to
+answer questions about election behavior for Tideman-statistics and random-election-model 
+statistics elections, for any election method that depends only on the pairwise
+matrix.  
+</p><blockquote><small>
+Example eligible election 
+methods: Borda, Nanson-Condorcet, Least-Reversal-Condorcet, Copeland-Condorcet.
+Example election methods that <i>cannot</i> be handled: Instant Runoff, 
+Plurality, Approval, least-median-rank, and  Range Voting.
+</small></blockquote><p>
+One interesting result found by this simulator is that 
+in Tideman elections with large numbers of candidates, the Smith set
+tends to be the <i>entire</i> set of candidates.
+The probability of that approaches 100%.
+</p>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
+

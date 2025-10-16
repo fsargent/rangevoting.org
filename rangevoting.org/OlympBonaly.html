@@ -1,0 +1,201 @@
+<html>
+<head>
+<title>
+RangeVoting.org - What happened when the Figure Skaters decided not to use range voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> What happened when the Olympics decided <i>not</i> to use range voting </H1>
+
+<p>
+Normally, we think of 
+<a href="OlympCover.html">Olympic judges</a> as using 
+<a href="https://rangevoting.org/RangeVting.html">range voting</a> &ndash; the highest average score wins.
+(Albeit with some alterations such as dismissing the two highest and lowest "outlier"
+scores each performance, but the principle remains just averaging.)
+</p>
+<p>
+But in 1995 at the World Figure Skating Championships, they used a different procedure.
+Here's Journalist Lila Guterman's recounting:
+</p>
+<blockquote>
+The U.S. champion, Nicole Bobek, had skated into second place behind Chen Lu of China. 
+In third place after her final performance was Surya Bonaly from France. 
+Then, a relatively unknown skater, 14-year-old Michelle Kwan, took the 
+audience and judges by storm with a performance that catapulted her into fourth place.
+<br><br>
+Ms. Kwan's skate did not alter any of the judges' scores for Ms. Bobek or Ms. Bonaly. 
+<i>But after the votes were tallied, their positions flipped.</i>
+Ms. Bonaly went home with the silver, and Ms. Bobek won bronze!
+<br><br>
+That's because the scoring rules called for each judge to rank the skaters
+and then for the group to determine winners by using a modified plurality vote 
+based on those rankings. 
+Ms. Bobek had had more second-place rankings than Ms. Bonaly until Ms. Kwan 
+skated, but got bumped out of second in enough judges' rankings to give the silver 
+medal to Ms. Bonaly.
+</blockquote>
+<p>
+Moral: switch from just using scores and averaging (range voting) to using 
+<i>ranking</i> (first, second, third)?  <i>Big mistake,</i>
+which made the figure skaters' association look stupid.
+</p>
+
+<small><p>
+[The following postscript comes from W.Poundstone's book <i>Gaming The Vote</i>:]
+Then something very similar happened at the 1997 European men's championships.
+The top three were Urmanov, Zogorodniuk, and Candeloro, in that order.
+They all were done with all their skating.
+Then Vlascenko skated and came in <i>sixth.</i>    Surprise! 
+Vlascenko,
+just by skating badly, <i>reversed</i> Zogorodniuk versus Candeloro, causing Candeloro to
+end up with the silver medal.
+After that, the International Skating Union had had enough. Its chair Ottavio
+Cinquanta rolled out a new scoring system in 1998, promising "if you are in front of me, then
+you will stay in front of me!" 
+</p><p>
+But that was a lie &ndash; <a href="Skating1998.html">counterexamples</a>
+were constructed almost immediately.
+But note,
+there actually was no need to <i>construct</i> a counterexample &ndash; any
+voting theorist could tell <i>immediately</i>,
+with almost no thought whatever, 
+that it had to be a lie,  because of <a href="ArrowThm.html">Arrow's theorem</a>.
+</p>
+</small>
+
+
+<hr>
+<p>
+<a href="CondorcetCycles.html">Condorcet</a>, 
+IRV, and <a href="rangeVborda.html#JohnsonEx">Borda</a>
+are examples of voting systems in which removing or adding a candidate C, can
+cause the relative order of two <i>other</i> candidates A, B to flip even though
+not a single voter changes her relative order for A and B.   With Range Voting,
+that can't happen.
+</p>
+
+<hr>
+
+<h3> Sources </h3>
+
+<p>
+To learn more about the insane evolution of
+voting systems used for scoring skaters, we recommend
+</P>
+<blockquote>
+Maureen T. Carroll, Elyn K. Rykken, Jody M. Sorensen:
+The Canadians Should Have Won!?,  MAA Math Horizons 10 (February 2003) 5-7
+(<a href="skating-full.pdf">pdf</a>).
+</blockquote>
+
+<a name="trim"></a>
+<p>
+For skating, I personally would recommend the following "trimmed mean"
+system (which actually, I had <i>thought</i>, 
+based on casually listening to talking heads on TV yakking about the Olympic 
+skating, diving, and/or gymnastics,
+was the system they <i>were</i> using, but in fact at least sometimes, it wasn't...):
+</p>
+<ol>
+<li> Judges rate skates on 0-to-10 scale (using any real number from 0 to 10).
+And note here we do <i>not</i> support anonymous judges (secret ballots) &ndash;
+we want all scores to be public.
+</li><li> The top K and bottom K scores for each skate are discarded 
+(where K is some pre-agreed constant)
+</li><li> The skater's score is the mean of her un-discarded judge-scores 
+</li><li> Highest scoring skater wins the gold.
+</ol>
+<p>
+This system is exactly the same as <a href="rangevoting.html">range voting</a>,
+<i>except</i> that "trimmed mean" is used instead of mean, i.e. "outlier" judges are
+discarded.  It has these advantages:
+<p>
+<ol type="a">
+<li> 
+It's simple to explain.  Olympic head Juan Antonio Samaranch was quoted as saying
+systems not simple enough for the public to understand easily, were unacceptable for
+the Olympics (leaving it a mystery how the heck the tremendously complicated
+OBO-with-random-ignored-judges system was accepted for use in 1998-2004)
+</li><li> If all except for K judges are honest (on each skate) then each skater
+will get an honest score.  I.e. the system is almost immune to "coalitions of
+&le;K colluding dishonest judges."
+</li><li> 
+All judges are treated a priori the same.
+</li><li> 
+If skater C is added or removed from the competition, or does well, or does badly, that
+<i>cannot affect</i> the relative rankings of any two other skaters A and B.
+Int'l Skater's Union head Ottavio Cinquanta was quoted as saying such embarrassing
+"flip-flops" 
+were unacceptable (leaving it a mystery why he soon-after chose 
+a system which generates multitudes of them).  I'd agree with Cinquanta that
+flip-flops are a public relations disaster.
+</li><li> 
+There is no "dictator" judge.
+Hence note this system obeys all three of  <a href="ArrowThm.html">Arrow's</a>
+"impossible" desiderata.  That is possible because Arrow's impossibility
+theorem applies only to voting systems
+based on <i>rank orderings</i> 
+whereas the system we just described is based on <i>numerical ratings</i>.
+</li><li>
+The "trimmed mean" system by discarding ("trimming off") the K+K outlier judges
+for each skate, unfortunately can thereby discard some important honest judgements.
+(Not all outliers represent corrupt judges.)   We admit that is sad.  However, in riposte,
+note that the trimmed mean system <i>takes into account</i> the actual numerical scores,
+e.g. regards a 9.9 skate as worth far more than a 5.4 skate.  Rival systems which
+ignore the numerics and thus regard the advantage of a 9.9 
+over a 5.4 as the <i>same</i> as the advantage of a 5.5 over 5.4,
+<i>also</i> discard a lot of information, and it seems probable this has a much
+more-injurious effect than the information-discarding done by trimmed-mean.
+</li></ol>
+<p>
+Note that being "immune to  coalitions of K strategic voters" is totally
+antithetical to "democracy" (!!)
+and hence I do <i>not</i> recommend trimmed-mean range voting for political applications.
+(Imagine saying to black, or Jewish, or gay, or third-party voters "sorry, the voting system 
+has decided to ignore your votes because you are 'outliers'.")
+But it does seem a good idea in the skating application.
+The value of K can be adjusted anywhere from 0 to &lfloor;(N-1)/2&rfloor;
+where there are N judges.
+</p>
+
+<p>
+We give a fairly precise description of the 1995 BOM and 1998 OBO scoring systems
+<a href="Skating1998.html">here</a> &ndash;
+with "flip-flop" examples for each from the 1998 Olympics.
+</p>
+
+<p>
+For two popular articles about skating scoring difficulties, see
+<blockquote>
+Lila Guterman: <a href="GutermanCHE.html">When Votes Don't Add Up</a>, 
+Chronicle of Higher Education 47,10 (3 Nov. 2000) page A18 (2 pages plus 2 photos).
+<br><br>
+Richard Monastersky: 
+<a href="MonasterskyCHE.html">Mathematicians Find Problems With New System for
+Scoring Figure Skating</a>,
+Chronicle of Higher Education 49,2 (31 Jan. 2003) page A16.
+</blockquote>
+The Bobek-Bonaly "great flip-flop" is also mentioned
+in 
+<blockquote>
+Farhad Manjoo: <a href="FarhadMS.html">Your presidential candidate: Hot or not?</a>, 
+for <a href="http://salon.com">Salon.com</a>.
+</blockquote>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

@@ -1,0 +1,309 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Apportionment methods
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Numerical experiments with Apportionment methods </h2>
+
+<p><small>By Dan Bishop with some contributions by Warren D. Smith</small></p>
+
+<p>H.Peyton Young
+argued in his book
+[M.L. Balinski &amp; H. Peyton Young:
+<a href="http://www.brookings.edu/press/books/fair_representation.htm">
+Fair Representation: Meeting the Ideal of One Person, One Vote (2nd edition)</a>,
+Brookings Institution Press 2001]
+and (more accessibly) in his
+<a href="pb88.html">essay here</a> 
+that the best apportionment method was Webster's.
+</p>
+<p>
+We now do computer simulations that reach the same conclusion as Young.
+The simulations assumed:
+</p>
+<ul>
+<li>  There are 50 states and 435 seats.
+</li><li>  
+A state with population p 
+is given max(m, r(p/q)) seats, where r is the appropriate rounding 
+function for that apportionment method, m is the minimum number of seats a state can have
+(in our simulations we always take either m=0 or m=1) and q is chosen so that the total 
+number of seats comes out to 435.
+</li><li>  State population is a uniformly-distributed, or exponentially-distributed
+(there were two kinds of simulations)
+positive random variable.
+</li><li>  Bias is defined in three ways:
+<ol>
+<li>
+Pearson's [centered] correlation coefficient between the 
+states' populations and log(seats/population). 
+</li><li>
+Spearman's [rank-based centered] correlation coefficient between the 
+states' populations and their seats/population ratios.  A Spearman bias of +1 
+means that a high-population state will always be better-represented 
+than a low-population state, and a bias of -1 means vice versa.
+</li><li>
+Pearson's [centered] correlation coefficient between the 
+states' populations and their seats/population ratios.
+</li>
+</ol>
+(Whether Spearman is log-based or ratio-based makes no difference since Spearman is simply
+the Pearson correlation of the integer rank vectors and hence is invariant under
+monotonic function transformations of either data vector.)
+</li><li>  10,000 simulations were performed for each method.
+</li><li>  Each bias-measurement datapoint given as mean&plusmn;std.error.
+</li>
+</ul>
+<H3>Definitions of the apportionment methods (for noninteger 2x)</H3>
+<p>
+<small>ADAMS' METHOD</small>: r(x) = &lceil;x&rceil;    &nbsp;&nbsp; [most favorable to small-pop states]<br>
+</p><p>
+<small>DEAN'S METHOD</small>: r(x) = if x > hmean then &lceil;x&rceil; else &lfloor;x&rfloor;  where hmean=2/(1/&lceil;x&rceil; + 1/&lfloor;x&rfloor;)<br>
+</p><p>
+<small>HUNTINGTON-HILL'S METHOD</small>: r(x) = if x > gmean then &lceil;x&rceil; else &lfloor;x&rfloor;  where gmean=&radic;(&lceil;x&rceil;&lfloor;x&rfloor;)<br>
+</p><p>
+<small>NEW METHOD</small>: r(x) = &lceil;x-0.495&rceil;;
+or more generally the magic constant "0.495" can be replaced by one chosen to 
+yield the best retrospective performance (least "bias") over past history
+(0.495 is optimal in a certain theoretical model with the parameters used in the contemporary USA;
+I discuss that <a href="NewAppo.html">elsewhere</a>.)<br>
+</p><p>
+<small>WEBSTER'S METHOD</small>: r(x) = &lfloor;x+&frac12;&rfloor;;
+equivalently
+r(x) = if x > amean then &lceil;x&rceil; else &lfloor;x&rfloor;  where amean=(&lceil;x&rceil;+&lfloor;x&rfloor;)/2<br>
+</p><p>
+<small>JEFFERSON'S METHOD</small>: r(x) = &lfloor;x&rfloor;   &nbsp;&nbsp; [most favorable to large-pop states]<br>
+</p><p>
+We write "WebsterM" (where M=0 or M=1) for the Webster method with minimum number of
+seats m=0 or 1, etc.
+For Hill, Dean, and Adams it does not matter whether m=0 or m=1 because these
+methods "naturally" enforce 
+the one-seat minimum.
+</p>
+
+<h3> Uniform Distributions for State-Populations: </h3>
+
+<table cellpadding="2" bgcolor="#ffffdd">
+<tr>
+<th bgcolor="pink"> Apportionment Method </th>
+<th> Log-based Pearson bias </th>
+<th bgcolor="pink"> Spearman bias </th>
+<th> Ratio-based Pearson bias </th>
+</tr>
+<tr>
+<th> Adams0=Adams1 </th>
+<td> -0.538738 &plusmn; 0.00092</td>
+<td> -0.651305 &plusmn; 0.00101</td>
+<td> -0.451043 &plusmn; 0.00125</td>
+</tr>
+<tr>
+<th> Dean0=Dean1 </th>
+<td> -0.343019 &plusmn; 0.00120</td>
+<td> -0.231386 &plusmn; 0.00161</td>
+<td> -0.319941 &plusmn; 0.00101</td>
+</tr>
+<tr>
+<th> HuntingtonHill0=HH1 </th>
+<td> -0.303224 &plusmn; 0.00139</td>
+<td> -0.173667 &plusmn; 0.00166</td>
+<td> -0.294303 &plusmn; 0.00114</td>
+</tr>
+<tr>
+<th> New0(0.495) </th>
+<td> &infin; </td>
+<td bgcolor="#8888ff"> +0.036963 &plusmn; 0.00171</td>
+<td bgcolor="#8888ff"> +0.135006 &plusmn; 0.00219</td>
+</td>
+</tr>
+<tr>
+<th> Webster0 </th>
+<td> &infin; </td>
+<td bgcolor="aqua"> +0.040412 &plusmn; 0.00172</td>
+<td bgcolor="aqua"> +0.141884 &plusmn; 0.00217</td>
+</tr>
+<tr>
+<th> Webster1 </th>
+<td> -0.263111 &plusmn; 0.00160</td>
+<td bgcolor="aqua"> -0.119540 &plusmn; 0.00168</td>
+<td> -0.261334 &plusmn; 0.00139</td>
+</tr>
+<tr>
+<th> Jefferson0 </th>
+<td> &infin; </td>
+<td> +0.651469 &plusmn; 0.00101</td>
+<td> +0.584829 &plusmn; 0.00059</td>
+</tr>
+<tr>
+<th> Jefferson1 </th>
+<td bgcolor="aqua"> -0.018986 &plusmn; 0.00271</td>
+<td> +0.354741 &plusmn; 0.00162</td>
+<td bgcolor="aqua"> -0.099855 &plusmn; 0.00275</td>
+</tr>
+</table>
+
+<h3> Exponential Distributions for State-Populations: </h3>
+<table cellpadding="2"  bgcolor="#ffffdd">
+<tr>
+<th bgcolor="pink"> Apportionment Method </th>
+<th> Log-based Pearson bias </th>
+<th bgcolor="pink"> Spearman bias </th>
+<th> Ratio-based Pearson bias </th>
+<th> Probability of "quota violation" </th>
+</tr>
+<tr>
+<th> Adams0=Adams1 </th>
+<td> -0.406676 &plusmn; 0.00077 </td>
+<td> -0.775441 &plusmn; 0.00076 </td>
+<td> -0.300975 &plusmn; 0.00102 </td>
+<td> 98% </td>
+</tr>
+<!-- <tr>
+<th> Adams1 </th>
+<td> -0.408394 &plusmn; 0.00077 </td>
+<td> -0.776076 &plusmn; 0.00076 </td>
+<td> -0.299549 &plusmn; 0.00100 </td>
+</tr> -->
+<tr>
+<th> Dean0=Dean1 </th>
+<td> -0.281804 &plusmn; 0.00067</td>
+<td> -0.345293 &plusmn; 0.00155</td>
+<td> -0.233027 &plusmn; 0.00061</td>
+<td> 9.2% </td>
+</tr>
+<tr>
+<th> HuntingtonHill0=HH1 </th>
+<td> -0.258760 &plusmn; 0.00074</td>
+<td> -0.287029 &plusmn; 0.00161</td>
+<td> -0.222645 &plusmn; 0.00061</td>
+<td>  4.4% </td>
+</tr>
+<tr>
+<th> New0(0.495) </th>
+<td> &infin; </td>
+<td bgcolor="#8888ff"> +0.076093 &plusmn; 0.00173</td>
+<td bgcolor="#8888ff"> +0.129916 &plusmn; 0.00131</td>
+<td bgcolor="#8888ff">  (0.13 &plusmn; 0.012)% </td>
+</tr>
+<tr>
+<th> Webster0 </th>
+<td> &infin; </td>
+<td bgcolor="aqua"> +0.079859 &plusmn; 0.00174</td>
+<td bgcolor="aqua"> +0.138316 &plusmn; 0.00129</td>
+<td bgcolor="aqua"> (0.16 &plusmn; 0.013)% </td>
+</tr>
+<tr>
+<th> Webster1 </th>
+<td> -0.232864 &plusmn; 0.00083</td>
+<td bgcolor="aqua"> -0.224715 &plusmn; 0.00167</td>
+<td> -0.210107 &plusmn; 0.00065</td>
+<td> (2.0 &plusmn; 0.05)% </td>
+<td>  </td>
+</tr>
+<tr>
+<th> Jefferson0 </th>
+<td> &infin;</td>
+<td> +0.772881 &plusmn; 0.00075</td>
+<td> +0.483876 &plusmn; 0.00054</td>
+<td> 98% </td>
+</tr>
+<tr>
+<th> Jefferson1 </th>
+<td bgcolor="aqua"> -0.083986 &plusmn; 0.00143</td>
+<td> +0.229443 &plusmn; 0.00179</td>
+<td bgcolor="aqua"> -0.139785 &plusmn; 0.00122</td>
+<td> 78% </td>
+<td>  </td>
+</tr>
+</table>
+<p>
+Notation: a "quota violation" is said to occur if some state gets X seats,
+as opposed to its ideal fractional number Y, where |X-Y|&gt;1.
+Every "divisor method" is known to suffer quota violations in some circumstances,
+although the Hamilton/Vinton method (which is not a divisor method) can boast
+that it never violates quota.     The best "classic divisor method" in terms of
+suffering quota violations the most rarely, evidently is Webster.
+</p>
+<p>
+If we employ 9380 seats instead of 435 (with m=1;
+and with either exponential or uniform; both work; note
+9380 is the largest House
+size currently constitutionally permitted &ndash; 1 person per 30,000
+residents), then:
+</p>
+<ul>
+<li>
+ Webster1 is still the least-biased (using Spearman bias).
+</li><li>
+Webster1, Hill, and Dean all are an order of magnitude less biased than
+they were with only 435 seats; 
+also, they all have an order of magnitude (or more) smaller chance of having a quota violation.
+But that's <i>not</i> the case with Jefferson0, Jefferson1 and
+Adams, whose biases <i>increase</i> or stay about the same, and whose chances of
+quota-violation remain high (over 97%).
+</li></ul>
+<p>
+In view of these facts we advocate  Webster, in general, as the best of these 5
+divisor-based methods, albeit the <a href="NewAppo.html">new</a> method seems even better.
+</p>
+
+<p>
+The order of small-state favoritism is 
+Adams>Dean>Hill>Webster>Jefferson, and Webster's method 
+is (at least in the large #seats limit) the 
+least biased.  These results are identical to 
+<a href="pb88.html">Young's</a>, despite our
+different definitions of bias.  Also, Walter F. Willcox, in 1916, did 
+the first similar numerical experiments (which was very laborious since that
+was before computers!)
+which also ended up supporting Webster's method and not Huntington-Hill.
+This conclusion was unfortunately not agreed to by the National Academy of Sciences,
+which ignored  numerical experiments and preferred Huntington-Hill based on
+misleading purely theoretical considerations.
+</p><p>
+The <i>moral</i> is that this is really an <i>experimental</i> question
+that is <i>not</i> soluble purely by theorizing.  That is because the best quality
+measures and most realistic population distributions
+are beyond the reach of theorem proving &ndash;  but fully within
+the reach of computer simulation.
+</p>
+
+<H3>Remaining to do???</H3>
+
+<p>
+Our <a href="NewAppo.html">new</a> apportionment 
+method appears to do even better than Webster (see table above, "new" is now
+included).  Should discuss that.  
+(And 0.495 does not appear to be the best value; can do even better?)
+</p>
+
+<p>
+It would be good also to add the Hamilton-Vinton and Balinski-Young 
+apportionment methods to our computer simulations above and to redo them all with
+millions, not merely 10000, Monte-Carlo experiments.
+Also of interest might be "subset" versions of Webster, e.g. where you do Webster
+separately on the different subsets of 
+states that fall into different population ranges.
+</p>
+
+<br>
+<p><a href="MalkApport.html">
+Joe Malkevitch "AMS feature" article on apportionment schemes</a></p>
+<p><a href="Apportion.html">
+Our own article on apportionment schemes</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

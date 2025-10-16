@@ -1,0 +1,335 @@
+<html>
+<head>
+<title>
+RangeVoting.org - IRV winner=loser failure - how common is it?
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> IRV winner=loser failure &ndash; how common is it?  </H2>
+
+<p>
+In Instant Runoff Voting (<a href="rangeVirv.html">IRV</a>),
+it can occur that the winner is the <i>same</i> candidate as the winner
+would have been if all voters reversed all rank orderings ("trying to elect the
+worst").
+Here's a simple <a href="IrvRevFail.html">example</a>.
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" align="right">
+<tr>
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr><td>2</td><td>B>C>A</td></tr>
+<tr><td>2</td><td>A>B>C</td></tr>
+<tr><td>1</td><td>C>A>B</td></tr>
+</table>
+<p>
+At right is the simpl<i>est</i>
+example (in the sense of having the fewest candidates and voters):
+<br>
+In this 5-voter 3-candidate
+IRV election, <b>A wins</b> (after C is eliminated).  But if we <i>reverse</I> all votes
+(trying to determine the worst candidate rather than the best!) then <b>A still "wins"</b>
+(after B is eliminated).
+</p>
+
+<p>
+That is one reason it is rather hard to maintain (as IRV propagandists Rob Richie and S. Hill
+unfortunately often nevertheless do) the bogus claim
+that "IRV always produces 'true-majority winners'."
+</p><p>
+[<small>
+In some Condorcet methods, winner=loser can also occur; but it is never
+possible
+for a beats-all Condorcet winner to be the same as the loses-to-all Condorcet
+loser if both exist; and in some Condorcet methods such as Schulze beatpaths,
+"reversal
+failure" i.e. winner=loser is <i>never</i> possible, at least if ties are disregarded. 
+Ditto
+in <a href="RangeVoting.html">range</a> and 
+<a href="Approval.html">approval</a> voting: winner=loser is <i>never</i> possible if ties
+disregarded.
+</small>]
+</p><p>
+How often does IRV reversal failure actually happen? In the usual
+simplistic probabilistic "<a href="RandElect.html">random elections</a>" model 
+(all elections equally likely &ndash; that is,
+all
+voters independently choose a rank-order at random, all orders equally likely),
+the answer (<small>each datapoint based on &ge;20K Monte 
+Carlo elections, but <b>bold</b> datapoints based on &ge;100K; probably I give
+too many significant figures in percentages</small>) is:
+</p>
+
+<table cellspacing="10">
+<tr><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<caption>
+With <b>5123</b> voters per election, % of IRV elections in which winner=loser is:
+</caption>
+<tr> 
+<th> #candidates </th>
+<th> percentage </th>
+</tr>
+<tr><td>2</td><td>0%</td></tr>
+<tr><td>3</td><td><b>2.63%</b></td></tr>
+<tr><td>4</td><td><b>2.04%</b></td></tr>
+<tr><td>5</td><td>1.44%</td></tr>
+<tr><td>6</td><td>1.25%</td></tr>
+<tr><td>7</td><td>0.99%</td></tr>
+<tr><td>8</td><td>0.68%</td></tr
+<tr><td>9</td><td>0.58%</td></tr>
+</table>
+</td><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="aqua">
+<caption>
+With <b>13</b> voters per election, % of IRV elections in which winner=loser is:
+</caption>
+<tr> 
+<th> #candidates </th>
+<th> percentage </th>
+</tr>
+<tr><td>2</td><td>0%</td></tr>
+<tr><td>3</td><td><b>2.24%</b></td></tr> 
+<tr><td>4</td><td><b>2.13%</b></td></tr> 
+<tr><td>5</td><td>1.76%</td></tr>
+<tr><td>6</td><td>1.31%</td></tr>
+<tr><td>7</td><td>1.17%</td></tr>
+<tr><td>10</td><td>0.86%</td></tr>
+</table>
+</td></tr>
+</table>
+
+<!--
+randomize(); 
+for NNL from 1 to 5 do
+  N :=  10^NNL;  Awins := 0; Aloses := 0;
+  for t from 1 to N do
+    ABC := -log(0.000000000001*rand());
+    ACB := -log(0.000000000001*rand());
+    BAC := -log(0.000000000001*rand()); 
+    BCA := -log(0.000000000001*rand());
+    CAB := -log(0.000000000001*rand());
+    CBA := -log(0.000000000001*rand()); 
+    if( ABC+ACB>BAC+BCA and BAC+BCA>CAB+CBA and   #C elimd...then A wins
+        ABC+ACB+CAB>BAC+BCA+CBA ) then 
+       Awins := Awins+1;
+       if( BCA+CBA>BAC+ABC and BAC+ABC>CAB+CBA and   #rev B elimd...then A revwins
+       BCA+CBA+CAB>BAC+ABC+ACB ) then 
+          Aloses := Aloses+1;
+       fi;
+    fi;
+ od;
+ print("N=", N, " and Awins=", Awins, " and Aloses=t=", Aloses, 
+    " for percent=", (100.0*Aloses)/Awins, " errbar=", 100.0*sqrt(Aloses+0.00001)/Awins);
+od;
+
+bytes used=3000331460, alloc=4979824, time=161.63
+"N=", 60000, " and Awins=", 8678, " and Aloses=t=", 143, " for 
+percent=", 1.647845126, " errbar=", 0.1377997368
+"N=", 100000, " and Awins=", 14644, " and Aloses=t=", 250, " for percent=", 1.707183830,
+    " errbar=", 0.1079717879
+combined=(1.685 +- 0.085)%
+
+randomize(); 
+for NNL from 1 to 5 do
+  N :=  10^NNL;  Awins := 0; Aloses := 0;
+  for t from 1 to N do
+    ABC := stats[random, normald]();
+    ACB := stats[random, normald]();
+    BAC := stats[random, normald](); 
+    BCA := stats[random, normald]();
+    CAB := stats[random, normald]();
+    CBA := stats[random, normald](); 
+    if( ABC+ACB>BAC+BCA and BAC+BCA>CAB+CBA and   #C elimd...then A wins
+        ABC+ACB+CAB>BAC+BCA+CBA ) then 
+       Awins := Awins+1;
+       if( BCA+CBA>BAC+ABC and BAC+ABC>CAB+CBA and   #rev B elimd...then A revwins
+       BCA+CBA+CAB>BAC+ABC+ACB ) then 
+          Aloses := Aloses+1;
+       fi;
+    fi;
+ od;
+ print("N=", N, " and Awins=", Awins, " and Aloses=t=", Aloses, 
+    " for percent=", (100.0*Aloses)/Awins, " errbar=", 100.0*sqrt(Aloses+0.00001)/Awins);
+od;
+"N=", 1000, " and Awins=", 134, " and Aloses=t=", 2, " for 
+   percent=", 1.492537313, " errbar=", 1.055385894
+"N=", 10000, " and Awins=", 1292, " and Aloses=t=", 31, " for 
+  percent=", 2.399380805, " errbar=",  0.4309415837
+"N=", 100000, " and Awins=", 12589, " and Aloses=t=", 338, " for 
+   percent=", 2.684883629,    " errbar=", 0.1460384191
+combined=2.47% +- 0.14%
+
+maximize( s, {
+ ABC+    ACB+    BAC+    BCA+    CAB+    CBA=9,
+ ABC>=0,  ACB>=0,  BAC>=0,  BCA>=0,  CAB>=0,   CBA>=0,
+ ABC+ACB>=s+BAC+BCA, BAC+BCA>=s+CAB+CBA,
+        ABC+ACB+CAB>=s+BAC+BCA+CBA,
+ BCA+CBA>=s+BAC+ABC, BAC+ABC>=s+CAB+CBA,
+       BCA+CBA+CAB>=s+BAC+ABC+ACB } );
+
+maximize( s, {
+ ABC+    ACB+    BAC+    BCA+    CAB+    CBA=5,
+ ABC>=0,  ACB>=0,  BAC>=0,  BCA>=0,  CAB>=0,   CBA>=0,
+ ABC+ACB>=BAC+BCA, BAC+BCA>=s+CAB+CBA,
+        ABC+ACB+CAB>=s+BAC+BCA+CBA,
+ BCA+CBA>=BAC+ABC, BAC+ABC>=s+CAB+CBA,
+       BCA+CBA+CAB>=s+BAC+ABC+ACB ,
+#CBA=0 #ACB=0 #, CBA=0
+0=0
+} );
+ {BAC = 0, CBA = 0, ACB = 0, s = 1, BCA = 2, CAB = 1, ABC = 2}
+-->
+<p>
+This particular probablistic model of course is usually politically unrealistic
+but in my
+<a href="FunnyElections.html">experience</a>
+(perhaps surprisingly) it nevertheless usually delivers estimates of
+frequencies
+of goofy phenomena, which happen to be pretty close to the frequency estimates
+you get
+by trying to look at real elections throughout history.
+So until further evidence comes along, use this as your frequency estimate.
+</p>
+
+<p>
+I have also done two Monte Carlo simulations each using an infinite number of voters.
+They find:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="lightgreen">
+<caption>
+With <b>&infin;</b> voters per election, % of <b>3</b>-candidate 
+IRV elections in which winner=loser is:
+</caption>
+<tr> 
+<th> probabilistic model </th>
+<th> percentage </th>
+</tr>
+<tr><td><a href="Glossary.html#Dirichlet">Dirichlet Model</a></td><td>(<b>1.69</b>&plusmn;0.09)%</td></tr>
+<tr><td><a href="RandElect.html">Random Elections Model</a></td><td>(<b>2.47</b>&plusmn;0.14)%</td></tr>
+</table>
+
+<H2> IRV eliminates a "Condorcet winner"? &ndash; how common is <i>that</i>?  </H2>
+
+<p>
+This is the question of the frequency of the "Peru Scenario"
+(we call it that because this happened in the <a href="Peru06Exec.html">Peru 2006</a>
+presidential election)
+in which a candidate who would beat every opponent in a head-to-head race,
+is eliminated by IRV.  
+(Same thing <a href="FunnyElections.html">also happened</a>
+in the France 2007 and Chile 1970 Presidential elections.)
+This is a different phenomenon which again makes it rather hard to maintain
+that  "IRV always produces 'true-majority winners'."  (!)
+</p><p>
+In the same probabilistic model, we showed in
+<a href="PuzzlePage.html#puzz17">puzzle 17</a>, this has frequency
+<b>3.71%</b> in 3-candidate races 
+(and <b>3.23%</b> in the Dirichlet model).  
+However in "1-dimensional" politics it
+is more like <a href="IrvPathologySurvey.html#csqueeze">25-33% common</a>.
+</p>
+
+<H2> Should we care about problems that are this rare?  </H2>
+
+<p>
+Although the winner=loser and eliminated-Condorcet-winner phenomena
+both are very embarrassing for IRV, they
+are fairly uncommon. Nevertheless in the <b>659-member UK house of commons</b>,
+if elected via IRV we would expect a <b>dozen</b> or so of the races each election to
+be winner=loser races, and even more to be eliminated-Condorcet-winner races.
+Then there would be consequent screaming (unless of
+course they made the votes a secret so nobody knew to scream, which in the
+past has been the usual method of preventing screaming in IRV elections &ndash; but
+in the last few years there has started to be a trend toward actually posting
+IRV election
+data on the internet)...
+</p>
+
+<p>
+So this is not a neglectible problem.
+However, it <i>is</i> fairly rare.
+</p><p>
+What is much more common is the IRV "favorite-betrayal
+pathology" where ranking your true favorite top is strategically unwise,
+so therefore you (not being a strategic idiot) vote dishonestly.  That problem 
+<a href="IRVStratPf.html#irv">happens</a>
+in 19.6% of 3-candidate elections in this model.  But if
+<i>all</i> a voter knows is that third-party
+candidates win a lot more rarely than 19.6%, then that voter is <b>always</b> strategically
+better off dishonestly betraying her favorite in her vote.  We repeat.  Always.
+I.e. in 100% of elections in this model.     <i>This</i> problem is <i>not</i> rare.
+</p><P>
+<small>
+(Note: it has sometimes been wrongly claimed by IRV advocates that you cannot vote strategically
+without knowing how all the other IRV voters are voting, and without doing a tremendous
+amount of difficult thinking.  False.  The truth is, you don't need to know a damn thing besides
+"third party candidates rarely win" and you don't need to think at all.)
+</small>
+</p>
+
+<H3> Postscripts </H3>
+
+<p>
+So is there <i>any</i> sense in which it is true that
+"IRV always produces 'true-majority winners'."?
+</p>
+
+<p>
+Well, you could just <i>define</i> "true-majority winner" to <i>mean</i> "IRV winner"
+and then it would be true.  That'd be laughable.  We could similarly define 
+ "true-majority winner" to <i>mean</i> "<a href="Plurality.html">plurality</a> winner"
+and then the plurality voting system, instead, would always deliver a true-majority winner.
+Or the Coombs voting system.  Or whatever (a random-winner dice-roll system...).
+This is a joke.  
+</p><p>
+Another joke is to note that IRV's final round (A versus B) always makes A win over B
+exactly when a majority of the voters prefer A over B.  (That is 
+<a href="IrvExhaustionSF.html">false</a> in the <a href="IRV3.html">top-3</a> 
+variant of IRV used in San Francisco, but never mind that.) Therefore 
+"A is a true-majority winner."  By that logic, <i>every</i> candidate not a lose-to-all
+loser, would be a "true majority winner"!  I.e, in the <a href="RandElect.html">limit</a>
+of a large number of
+candidates, <i>every</i> candidate in almost every election would be a
+"true majority winner"!  That'd be happy for them all &ndash; but totally ridiculous.
+</p><p>
+The truth is, for this to be a meaningful assertion we need to
+agree with what political scientists normally mean when they say "majority winner" &ndash;
+one whom, a majority would agree, should win in a race versus any opponent.
+And then, sorry, our counterexamples show the statement is just false.  
+(Here's <a href="IRVamp.html#bad">another interesting counterexample</a>.)
+</p>
+
+<p>
+<small>
+PS: If you think I use this "random elections" model for my <a href="IEVS">simulations</a>
+generally, you are
+confused;
+the <a href="BayRegDum.html">Bayesian Regret</a>
+studies that make range voting look good compared to other systems, are based on
+trying a
+very <i>large</i> number of different probability models that are mostly not at all as
+simplistic
+as this one, and Range's superiority is highly robust across models.
+</small>
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

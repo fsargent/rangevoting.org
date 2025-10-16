@@ -1,0 +1,418 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Splitline districtings of all 50 states + DC + PR
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Splitline districtings of all 50 states + DC + PR  </h2>
+
+<p><small><a href="RangeVoting.html">Return to main page</a></small></p>
+
+<p>
+The 
+<a href="GerryExamples.html">shortest splitline algorithm</a> 
+(<small><a href="SSArecursive.txt">formal statement</a></small>)
+for
+districting was implemented as a 
+<a href="http://autodistrict.cvs.sourceforge.net/autodistrict/">computer program</a> 
+by Ivan Ryan.
+</p>
+<p>
+The program <b>inputs</b> standard US government Census Bureau files describing
+the shape of each state and the population distribution inside it.
+</p>
+<p>
+It <b>outputs</b> a multicolored picture (.bmp file) depicting the state,
+its splitline-method districting (different colors for different districts), 
+and the population density inside the state (brightness-level map).
+</p>
+
+<h3> The maps (click 2-letter symbol to see map as .png graphics file; try MA or IL) </h3>
+<!--
+<p>
+<a href="SSHR/ak_final.png">AK</a> 
+<a href="SSHR/al_final.png">AL</a><a  href="SSHR/
+ar_final.png">AR</a><a  href="SSHR/
+az_final.png">AZ</a><a  href="SSHR/
+ca_final.png">CA</a><a  href="SSHR/
+co_final.png">CO</a><a  href="SSHR/
+ct_final.png">CT</a><a  href="SSHR/
+dc_final.png">DC</a><a  href="SSHR/
+de_final.png">DE</a><a  href="SSHR/
+fl_final.png">FL</a><a  href="SSHR/
+ga_final.png">GA</a>
+<br>
+<a  href="SSHR/
+hi_final.png">HI</a><a  href="SSHR/
+ia_final.png">IA</a><a  href="SSHR/
+id_final.png">ID</a><a  href="SSHR/
+il_final.png">IL</a><a  href="SSHR/
+in_final.png">IN</a><a  href="SSHR/
+ks_final.png">KS</a><a  href="SSHR/
+ky_final.png">KY</a><a  href="SSHR/
+la_final.png">LA</a><a  href="SSHR/
+ma_final.png">MA</a>
+<br>
+<a  href="SSHR/
+md_final.png">MD</a><a  href="SSHR/
+me_final.png">ME</a><a  href="SSHR/
+mi_final.png">MI</a><a  href="SSHR/
+mn_final.png">MN</a><a  href="SSHR/
+mo_final.png">MO</a><a  href="SSHR/
+ms_final.png">MS</a><a  href="SSHR/
+mt_final.png">MT</a><a  href="SSHR/
+nc_final.png">NC</a><a  href="SSHR/
+nd_final.png">ND</a>
+<br>
+<a  href="SSHR/
+ne_final.png">NE</a><a  href="SSHR/
+nh_final.png">NH</a><a  href="SSHR/
+nj_final.png">NJ</a><a  href="SSHR/
+nm_final.png">NM</a><a  href="SSHR/
+nv_final.png">NV</a><a  href="SSHR/
+ny_final.png">NY</a><a  href="SSHR/
+oh_final.png">OH</a><a  href="SSHR/
+ok_final.png">OK</a><a  href="SSHR/
+or_final.png">OR</a>
+<br>
+<a  href="SSHR/
+pa_final.png">PA</a><a  href="SSHR/
+pr_final.png">PR</a><a  href="SSHR/
+ri_final.png">RI</a><a  href="SSHR/
+sc_final.png">SC</a><a  href="SSHR/
+sd_final.png">SD</a><a  href="SSHR/
+tn_final.png">TN</a><a  href="SSHR/
+tx_final.png">TX</a><a  href="SSHR/
+ut_final.png">UT</a><a  href="SSHR/
+va_final.png">VA</a>
+<br>
+<a  href="SSHR/
+vt_final.png">VT</a><a  href="SSHR/
+wa_final.png">WA</a><a  href="SSHR/
+wi_final.png">WI</a><a  href="SSHR/
+wv_final.png">WV</a><a  href="SSHR/
+wy_final.png">WY</a> 
+</p>
+-->
+<p><b> (Now with new spiffier 2009 program version!) </b></p>
+<p>
+<a href="Splitline2009/ak.png">AK</a> 
+<a href="Splitline2009/al.png">AL</a> 
+<a  href="Splitline2009/ar.png">AR</a> 
+<a  href="Splitline2009/az.png">AZ</a> 
+<a  href="Splitline2009/ca.png">CA</a> 
+<a  href="Splitline2009/co.png">CO</a> 
+<a  href="Splitline2009/ct.png">CT</a> 
+<a  href="Splitline2009/dc.png">DC</a> 
+<a  href="Splitline2009/de.png">DE</a>
+<a  href="Splitline2009/fl.png">FL</a> 
+<a  href="Splitline2009/ga.png">GA</a>
+<br>
+<a  href="Splitline2009/hi.png">HI</a> 
+<a  href="Splitline2009/ia.png">IA</a> 
+<a  href="Splitline2009/id.png">ID</a> 
+<a  href="Splitline2009/il.png">IL</a> 
+<a  href="Splitline2009/in.png">IN</a> 
+<a  href="Splitline2009/ks.png">KS</a> 
+<a  href="Splitline2009/ky.png">KY</a> 
+<a  href="Splitline2009/la.png">LA</a> 
+<a  href="Splitline2009/ma.png">MA</a>
+<br>
+<a  href="Splitline2009/md.png">MD</a> 
+<a  href="Splitline2009/me.png">ME</a> 
+<a  href="Splitline2009/mi.png">MI</a> 
+<a  href="Splitline2009/mn.png">MN</a> 
+<a  href="Splitline2009/mo.png">MO</a> 
+<a  href="Splitline2009/ms.png">MS</a> 
+<a  href="Splitline2009/mt.png">MT</a> 
+<a  href="Splitline2009/nc.png">NC</a> 
+<a  href="Splitline2009/nd.png">ND</a>
+<br>
+<a  href="Splitline2009/ne.png">NE</a> 
+<a  href="Splitline2009/nh.png">NH</a> 
+<a  href="Splitline2009/nj.png">NJ</a> 
+<a  href="Splitline2009/nm.png">NM</a> 
+<a  href="Splitline2009/nv.png">NV</a> 
+<a  href="Splitline2009/ny.png">NY</a> 
+<a  href="Splitline2009/oh.png">OH</a> 
+<a  href="Splitline2009/ok.png">OK</a> 
+<a  href="Splitline2009/or.png">OR</a>
+<br>
+<a  href="Splitline2009/pa.png">PA</a> 
+<a  href="Splitline2009/pr.png">PR</a> 
+<a  href="Splitline2009/ri.png">RI</a> 
+<a  href="Splitline2009/sc.png">SC</a> 
+<a  href="Splitline2009/sd.png">SD</a> 
+<a  href="Splitline2009/tn.png">TN</a> 
+<a  href="Splitline2009/tx.png">TX</a> 
+<a  href="Splitline2009/ut.png">UT</a> 
+<a  href="Splitline2009/va.png">VA</a>
+<br>
+<a  href="Splitline2009/vt.png">VT</a> 
+<a  href="Splitline2009/wa.png">WA</a> 
+<a  href="Splitline2009/wi.png">WI</a> 
+<a  href="Splitline2009/wv.png">WV</a> 
+<a  href="Splitline2009/wy.png">WY</a> 
+</p>
+
+<p>
+You can also download a <a href="Splitline2009/all_states.zip">zip archive</a> 
+with all of the above image files
+in one package.
+</p><P>
+<a href="USsplitLine.png">Entire USA (lower 48) districted in 1 go</a>.
+</p>
+<p>
+<small>We give <b>permission</b> to all to re-use these images <i>provided</i> they
+cite the Center for Range Voting, this web page, and us; the Shortest Splitline algorithm
+was invented by Warren D. Smith and the program that produced the images was written by
+Ivan Ryan; the underlying data is from the US Census Bureau, e.g. see
+  <a href="http://www.census.gov/geo/www/cob/bg2000.html">
+http://www.census.gov/geo/www/cob/bg2000.html</a>.
+</small>
+</p>
+
+<p>
+<table>
+<caption>
+Indiana 2007: official vs splitlined districtings.
+</caption>
+<tr><td><img src="IN.gif"></td><td><img src="IN9eq.png"></td></tr>
+</table>
+</p>
+
+<p>
+<table>
+<caption>
+Alabama 2007: official vs splitlined districtings.
+</caption>
+<tr><td><img src="SSHR/AL.gif"></td><td><img src="alRS.png"></td></tr>
+</table>
+</p>
+
+<h3> Notes &amp; Caveats (11 July 2007; updated 2009): </h3>
+
+<ol>
+<li>
+The "shortest" splitline is computed using true
+spherical distance.  The map shown is a 
+<a href="http://en.wikipedia.org/wiki/Gnomonic_projection">gnomonic projection</a>
+onto a plane, on which geodesics (great-circle arcs) exactly correspond to
+line segments.
+<small>
+(If flat-map "distance" were wrongly used instead, the maps 
+you get usually would be visually indistinguishable from ours, but
+sometimes not.)
+</small>
+</li><li>
+In this program, the "line length" is defined as the distance between the two points that are part
+of the district being split that are furthest apart along the line.
+<small>
+If the line makes multiple cuts, then this is longer than the old obsolete official
+definition which only counted the in-state parts of this line segment, since
+our definition now includes the out-of-district/state parts of the line segment.
+Since this was easier to program, and since it is probably better in the sense it disfavors 
+divisions that split a district into multiple parts, the official definition has been
+<a href="SSArecursive.txt">changed</a> to correspond with ours!
+</small>
+</li><li>
+Rare length ties between two equally-long shortest splitlines, are not currently handled correctly.
+[Specifically, we cannot even recognize a tie unless using "exact" arithmetic.  But actually
+we are using "double-precision floating point arithmetic" which is contaminated by
+slight random-seeming "roundoff errors."  These cause ties (if any) to be broken
+in a random-seeming manner.  Because double-precision arithmetic measures 3000-mile distances
+accurate to below a <i>nano</i>meter, this is not exactly a huge problem.]
+</li><li>
+The districts created by the program are not as accurate as they could be in
+terms of population balancing. The numbers are generally &plusmn;1% fractionally. That's
+because the current pixel size is approaching the limit of
+what the computer can process while keeping the entire map in RAM at
+once, and also without creating enormous image files, and a single pixel in a dense city 
+can contain 10,000 people. 
+<br><small> (A Pennsylvania districting with maximum population
+deviation of 0.4% 
+was allowed by a federal court 535 F.Supp. 191, M.D. Penn. 1982;
+but the <a href="SupremeCt.html">supreme court</a>
+in KARCHER v. DAGGETT 1983 invalidated a New Jersey districting 
+with a maximum deviation of 0.698% as "too unequal." 
+Judge M.McConnell criticized that because,
+he argued, the statistical error in the Census's population estimates, exceeded 0.698% anyway.)
+</small>
+</li><li>
+It is conceivable that for some state we may have accidentally
+typed in the wrong <a href="StateEVs.html">number of congressmen 
+(remember to subtract 2 from #EVs!)</a>
+on some states.  If so, the districting is
+still correct, just for that wrong number of congressmen.
+</li><li>
+Conceivably our program has some bugs.  It certainly mostly and usually works, and we
+don't know of anything wrong, and it ran successfully for all 52 "states" (50 + PR + DC); 
+we just are not 
+currently ready to swear it is <i>always</i> bug-free.
+</li><li>
+The entire set of runs for all 52, took under 1 day (combined) on a single PC
+from circa 2005.
+</li><li>
+If one wanted we could give high-precision coordinates for all the vertex-points
+in our maps. (An N-district map has at most 2N-2 vertex-points.)
+That small set of numbers by itself would exactly define the entire map.  So don't
+worry if you think our maps do not have high enough resolution.  Worry instead that
+the official maps now, do not have high enough resolution and are <i>not</i> exactly definable
+with a few numbers.
+We can make ultra-hi-resolution maps using svg (vector graphics) formats.
+For example, check this one of <a href="TXstate.svg">Texas (2.2 Mbytes)</a> if you dare.
+</li><li>
+Kari Chisholm (and several others) have suggested that district boundaries should not be
+<i>lines</i> but rather <i>zigzags</i> made of census-tract boundaries (a slight perturbation
+off the line &ndash; see her <a href="census-zigzag.gif">illustrative gif</a>).
+This has the advantages that (a) our program's input was census tract data anyhow;
+(b) this way lines will not cut through houses, etc.  But on the other hand, 
+(c) notions like
+rivers, highways, bridges, county lines, and census tracts are <i>human</i>-defined notions,
+hence can be <i>re</i>defined by gerrymanderers at any time; 
+meanwhile lines are <i>mathematically</i>-defined notions;
+(d) this makes the computer program more complicated and more vulnerable to bugs in the census
+data (although not out of reach, we could still do it);
+(e) at least for urban situations as in the gif, the difference between our lines and her zigzag
+would be imperceptibly small (below 1 pixel) anyway on most or all of our maps here, so don't worry
+about it at least for now;
+(f) right now the only way to tell which district you live in, is to consult a map,
+and if you live near the boundary, it has to be a very high resolution map.   That will still
+be true with any districting method whatever.  But our method with straight
+lines is better in the sense
+that you could also tell by using a GPS device and some arithmetic 
+(without any need
+to consult a map).
+If the line splits your house, that is still OK, we do not see that as an obstacle;
+there are easy cures such as defining all split houses to lie on the west side, etc.
+</li>
+</ol>
+<p>
+<b>Q. What about "majority minority districts"? Somebody told me they were legally required
+by the VRA.</b>
+<br>
+A. <a href="MajMin.html">Not so.</a>
+</p>
+
+<h3>How good are they?</h3>
+<p>
+Compared with hypothetical perfection, we can see occasional flaws.  
+These are present in about 15% of all states.
+</p><p>
+Compared with the <i>official</i>
+US districtings as of 2007, 
+our algorithm appears to generate <b>as good or
+better</b> &ndash; often a <i>lot</i> better
+&ndash; districtings about 98% of the time.  
+The only state we know of where the official districting
+seems arguably better than the splitline algorithm's, is <a href="ColoMap.gif">Colorado</a>.
+(Year-2013  official CO maps:
+<a href="COdists2013A.jpg">jpg</a>,
+<a href="COdists2013B.gif">gif</a>.)
+And even there, <a href="SSHR/co_final.png">ours</a> is arguably better too.
+(<small>The official districting is "better" in the sense it follows county lines more and
+subjectively "looks good to the eye."
+However it remains "worse" in the
+objective sense that it has at least 50% longer "cut length" of all the
+inter-district boundaries. Also, the key official high-population-density district 7, 
+while it may look ok in the
+low-res map we gave, looks substantially more gerrymandered shown in yellow at
+<a href="cd7.png">hi-res</a>.</small>)
+Why? 
+</p>
+
+<h3>What is so special about Colorado?</h3>
+</p>
+<ol>
+<li>
+On the one hand:
+The distribution of Colorado's population happens, by pure bad luck, to be concentrated near
+a vertical line hence was particularly
+badly suited to the Shortest Splitline Algorithm.
+</li><li>
+On the other hand:
+Colorado's districts were <i>not</i> produced by the usual gerrymandering process. 
+In both CO and TX, the legislative houses were in split control in 2001, causing
+them to gridlock and be unable to settle on an acceptable redistricting plan.
+Therefore, CO's redistricting instead was eventually performed by a panel of federal <i>judges</i>
+&ndash; who in CO may actually have been interested in 
+<a href="ColoradoFair.html">fairness</a>, for an astonishingly refreshing change &ndash;
+and the resulting districts were used for the 2002 congressional elections.
+</li><li>
+But the Republicans
+gained control of both CO houses in 2002 and promptly produced a 
+re-redistricting plan to give themselves a congressional majority.
+This, as with their similar Texas gerrymander,
+broke with the 200-year-old practice of redrawing congressional district
+boundaries only in 10-year multiples, after the decennial census.
+</li><li>
+But the Republican gerrymander was thrown out by a CO supreme court ruling on 1 December 2003.
+This court demanded the court-drawn 2002 districts be re-used in the 2004 elections,
+because Colorado's constitution demanded decennial redistrictings only.
+(The Republicans <i>did</i> succeed in gerrymandering Texas, though, which had a different
+constitution.)
+</li><li>
+Republican plaintiffs then appealed to the US federal supreme court to make their 
+gerrymandering happen.  But the supremes decided 6-3 (Scalia, Rehnquist, and Thomas
+dissenting) not to take the case, causing the court-ordered districts to stand for the 2006
+elections.   Then CO Republicans again sued, again taking it all the way to the US supreme court
+to get the court-ordered plan replaced by the Republican gerrymander.  This time the supremes
+<i>unanimously</i>
+ruled against the plaintiffs 
+(<a href="http://caselaw.lp.findlaw.com/cgi-bin/getcase.pl?court=US&vol=000&invol=05-555">
+LANCE v. DENNIS</a>, 05-555 &amp;
+<a href="http://caselaw.lp.findlaw.com/scripts/getcase.pl?court=US&vol=000&invol=06-641">
+LANCE v. COFFMAN</a> 06-641), noting
+<blockquote>
+This injury is precisely the kind of undifferentiated, generalized grievance about the
+conduct of government that we have refused to countenance in the past.
+</blockquote>
+so the districts will again be used in CO's 2008 elections.
+</li>
+</ol>
+
+<br>
+<h3> Other Interesting Links </h3>
+<p><a href="http://bolson.org/dist/">Brian Olson's computer districtings</a>,
+(different algorithm; more complicated, tunable,
+and runtime <i>much</I> longer; 
+but arguably produces "better" districts).
+<a href="Olson2000list.html">Local copy of Olson's 2000-census districtings</a>;
+note these pictures include <i>both</i> the official districting and Olson's
+algorithm's, and with our splitline pictures in the links near the top of the present page
+your eyeball can do a 3-way comparison. (Note Olson's graphics use maritime bogo-boundaries
+of states within water areas, this does not matter for his purposes and
+don't be confused by the "strange state outlines" he therefore sometimes has.)
+<a href="OlsonWholeUSA.jpg">See</a> entire USA (lower 48) districted by Olson state-by-state
+(published in Washington Post 
+<a href="https://www.washingtonpost.com/news/wonk/wp/2016/01/13/this-is-actually-what-america-would-look-like-without-gerrymandering/">WonkBlog</a>
+13 January 2016).
+Review of <a href="TheorDistrict.html">theoretical questions</a> in districting.
+C.G.P.Grey's 3.5-minute youtube
+<a href="http://www.youtube.com/watch?v=kUS9uvYyn3A">video</a>
+attempting to describe the shortest splitline method.
+</p><p>
+New "min-variance splitline" algorithm suggested (April 2016) by Noam Yorav-Raphael.
+May be better than my "shortest splitline algorithm." Other variants suggested by Brian Langstraat and
+Roy Minet.  Now discussed on
+<a href="Splitlining.html">splitline variants page</a>.
+</p>
+<p><a href="KnudsonMathGerry.html">Math professor Kevin Knudson nice article on Gerrymandering &amp; math</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+
+<!-- http://www.wsws.org/articles/2003/dec2003/colo-d06.shtml -->
+<!-- ColoradoFair.html -->

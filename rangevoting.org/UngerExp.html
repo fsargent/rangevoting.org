@@ -1,0 +1,185 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Quantitativeness helps[2]
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2> Professor Stephen Unger (Columbia University, NY) 
+explains why range voting has, and approval voting can have,
+greater expressive power than ranked voting methods
+</h2>
+
+<p>
+Assume 5 voters and 3 candidates A, B, C.
+<br>
+Suppose the ranked votes are:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+2
+</td>
+<td align="center">
+A>B>C
+</td>
+</tr>
+<tr> 
+<td align="center">
+1
+</td>
+<td align="center">
+B>A>C
+</td>
+</tr>
+<tr> 
+<td align="center">
+1
+</td>
+<td align="center">
+C>B>A
+</td>
+</tr>
+<tr> 
+<td align="center">
+1
+</td>
+<td align="center">
+C>A>B
+</td>
+</tr>
+</table>
+
+<p>
+Then the "Condorcet winner" (beats all rivals in man-to-man two-choice elections) 
+is <b>A</b>.
+</p><p>
+Suppose we interpret the first and third voting patterns to mean that
+the sincere evaluations of the 3 candidates are "excellent," "very good,"
+"terrible," and assign corresponding weights 9, 8, 0, and that we
+interpret the second and fourth patterns to mean "excellent," "terrible,"
+"worst," then the weights might be 9, 1, 0.
+</p><p>
+The corresponding range votes would be:
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+2
+</td>
+<td align="center">
+A=9, B=8, C=0
+</td>
+</tr>
+<tr> 
+<td align="center">
+1
+</td>
+<td align="center">
+A=1, B=9, C=0
+</td>
+</tr>
+<tr> 
+<td align="center">
+1
+</td>
+<td align="center">
+A=0, B=8, C=9
+</td>
+</tr>
+<tr> 
+<td align="center">
+1
+</td>
+<td align="center">
+A=1, B=0, C=9
+</td>
+</tr>
+</table>
+<p>
+Then the <a href="RangeVoting.html">Range Voting</a>
+winner is <b>B</b> (summed-score 33=2&times;8+9+8+0).
+</p><p>
+For <a href="Approval.html">Approval Voting</a>
+it would be reasonable to consider 8 as approval and 1 as not
+approved, so the Approval Vote would look like:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+2
+</td>
+<td align="center">
+A=1, B=1, C=0
+</td>
+</tr>
+<tr> 
+<td align="center">
+1
+</td>
+<td align="center">
+A=0, B=1, C=1
+</td>
+</tr>
+<tr> 
+<td align="center">
+1
+</td>
+<td align="center">
+A=0, B=0, C=1
+</td>
+</tr>
+</table>
+<p>
+The Approval Voting winner is <b>B</b>.
+</p><p>
+But if we took the <i>same</i> ranked votes and, for lines 1 and 3 considered
+the rankings to be "excellent," "terrible," "worse," and line 2 to mean
+"excellent," "very good," and "terrible," we would find, when the weights
+are changed appropriately, that <b>A</b> would win both the Range  and Approval
+elections.
+</p><p>
+This illustrates how <i>both</i> Range and Approval can have more discriminating power
+then any ranked system. Or we could say that Approval and Range both allow the voter
+to be more precise.
+</p><p>
+For ranking systems where equal ranking is permitted (at present, most do not permit that),
+then we can think of Approval as the simplest case of such systems and
+therefore such ranking systems are more powerful than Approval (but remain
+weaker than Range). 
+But then we have to look at complexity. 
+For both
+voters, and, more important, for the tallying process, Range and Approval both are
+much simpler.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

@@ -1,0 +1,497 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Louisiana Governor Races 1975-2007
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Louisiana Governor Races 1975-2007 as a testbed for runoff pathologies </H2>
+
+<p><small>By Warren D. Smith, April 2008.  Please send me <a href="HowToImprove.html">improvements</a>
+or corrections. </small></p>
+<p>
+We look at all LA governor races from 1975 to now.
+(The cutoff date 1975 was selected because that seems to have been
+the first time they employed the runoff system. As far as I know, LA
+is the only US state to elect governors with such a runoff.)
+We shall examine each race with the benefit of hindsight to see what pathologies
+happened.  In some cases we will not have enough information to be certain a pathology
+occurred and then we shall have some varying <i>degree</i> of certainty.
+<!-- If I'm wrong on that please correct me??? -->
+</p><p>
+
+<h2> The 9 LA Governor races 1975-2007 &ndash; Summary </h2>
+
+<table bgcolor="#ccffcc">
+<tr><td>
+Won by landslide majority hence no runoff needed
+</td><td>
+2007, 1999, 1983, 1975
+</td></tr>
+
+<tr><td>
+No runoff since candidate withdrew
+</td><td>
+1987
+</td></tr>
+
+<tr><td colspan="2" bgcolor="#ffcccc">
+(Hence were 4 races in which a runoff happened.  In every one,  turnout was
+higher in the runoff than in the first round, contradicting the claim commonly made
+by FairVote that runoffs have low turnout.)
+</td></tr>
+
+<tr><td>
+Probably favorite-betrayal pathologies
+</td><td>
+2003, 1995, 1991, 1979
+</td></tr>
+
+<tr><td>
+Non-monotonic
+</td><td>
+1991 (and 1995? and 2003?)
+</td></tr>
+
+<tr><td>
+Beats-all-winner loses
+</td><td>
+1995, 1991 (and 1979?)
+</td></tr>
+
+<tr><td>
+Exhibiting "no-show paradox"
+</td><td>
+2003, 1991 (and 1995? and 1979?)
+</td></tr>
+</table>
+
+</p><p>
+To summarize this even more concisely (counting uncertain cases
+fractionally via a somewhat-subjective probability estimate &ndash; the figure is the percentage of races
+in which that phenomenon occurred):
+</p><p>
+
+<table bgcolor="#ccccff">
+<tr><th>What happened</th><th bgcolor="#ffcccc">Experimental data</th><th>Theor. model</th></tr>
+<tr><td>Landslide majority win</td><td bgcolor="#ffcccc">44%</td><td>0</td></tr>
+<tr><td>No runoff due to withdraw</td><td bgcolor="#ffcccc">11%</td><td>(model not applicable)</td></tr>
+<tr><td>Favorite-betrayal pathologies</td><td bgcolor="#ffcccc">40%</td><td>20%</td></tr>
+<tr><td>Non-monotonicity</td><td bgcolor="#ffcccc">20%</td><td>15%</td></tr>
+<tr><td>"No show" paradox</td><td bgcolor="#ffcccc">40%</td><td>16%</td></tr>
+<tr><td>Beats-all winner loses pathology</td><td bgcolor="#ffcccc">28%</td><td>4%</td></tr>
+</table>
+</p><p>
+where I use as the "<a href="IrvPathologySurvey.html">theor.model</a>" 
+the <a href="RandElect.html">random election model</a> for
+3-candidate Instant Runoff races. 
+As you can see, the theor. model in spite of its
+crudity didn't do too badly.
+Its main errors are the first and last predictions.
+The last one is due to the fact
+<a href="IrvPathologySurvey.html#csqueeze">1D</a> and 
+<a href="IrvExtreme.html">2D</a> 
+politics models are better than random election model for
+this purpose (at least in my experience).
+The first one is due to fact the 
+<a href="Glossary.html#Dirichlet">Dirichlet model</a> is clearly better
+than the random elections model for that purpose (since it predicts a
+nonzero value!).
+</p><p>
+
+<p>
+<small>
+<a href="PuzzlePage.html#p89">Nice math puzzle</a>: The Dirichlet model
+predicts (in a 3-candidate race) that a majority-top winner exists, hence no
+need for runoff, with probability=56.25%.
+</small>
+</p>
+
+<h2> LA Governor races 1975-2007 &ndash; Details </h2>
+<!-- (FROM WIKIPEDIA AND NEWSPAPER STORIES) -->
+<p>
+<b>2007:</b>
+Republican Bobby Jindal wins with 54%; closest opponent has 17%.
+</p><p>
+
+<b>2003:</b>
+First Round:
+<table bgcolor="#ccffcc">
+<tr><td>Bobby Jindal(R)</td><td> 32.54% <td></tr>
+<tr><td>Kathleen B. Blanco(D)</td><td> 18.36% <td></tr>
+<tr><td>Richard Leyoub(D)</td><td> 16.40% <td></tr>
+<tr><td>Claude Leach(D)</td><td> 13.79% <td></tr>
+<tr><td>Randy Ewing(D)</td><td>9.10% <td></tr>
+<tr><td>Hunt Downer(R)</td><td> 6.22% <td></tr>
+<tr><td>others</td><td> &lt;1% each <td></tr>
+</table>
+
+Runoff round: &nbsp; K.Blanco wins with 51.95%, Jindal has 48.05%.
+
+</p><p>
+This is an example of success of Louisiana's runoff system in the sense
+that Blanco won the runoff despite a big loss in the plurality election.
+(But she became very unpopular during her term due to perceived poor handling of the 
+Hurricane Katrina disaster and declined to run for re-election.)
+Most of the voters for the 3rd,4th, etc candidates in round 1, evidently
+went for Blanco, not too surprisingly since the other high finishers all were
+in her party. (Also note the <i>turnout was higher in the runoff</i>
+round than the first
+round, contrary to IRV-advocates' common assertion runoff turnout is
+lower. Same thing
+happened in 1991 and 1995 and 1979, i.e. it happened every time it
+possibly could.)
+</p><p>
+Runoff however may have exhibited some pathologies. For example, suppose
+in round 1 that 2% of the electorate (6% of Jindal's voters) had
+decided to
+strategically vote for Leyoub instead of Jindal. That would have
+made the
+runoff be Leyoub vs. Jindal, which probably would have resulted in Jindal's victory
+unlike in the Blanco vs. Jindal runoff which actually happened. 
+[Can anybody find poll data on that question?]
+That's somewhat speculative, but if so, it would have been an example of dishonesty paying.
+</p><p>
+Indeed, quite possibly that would have worked even if those Jindal voters
+had defected to Leyoub in <i>both</i> the 1st and 2nd rounds.
+That's more speculative, but if so, this race was an
+example of <a href="Monotone.html">non-monotonicity</a> &ndash; voting <i>against</i>
+Jindal causes Jindal victory.
+</p><p>
+There's another pathology which definitely happened &ndash; <a href="FBCexecSumm.html">favorite betrayal</a>.
+<small>
+If in an election, some subset of
+voters would have gotten a better result (in their view) by <i>not</i> voting for
+their favorite top, then we here call that a "favorite betrayal scenario."
+(Also, in every such scenario on this page, voting their favorite below top
+was the <i>only</i> way that voter subset could get a better 
+election result.)
+</small>
+Undoubtably at least 6% of Jindal's
+voters (i.e. 2% of the total electorate)  preferred Leyoub over Blanco.
+<small>
+(In the USA, it is <i>extremely</i> rare for an election result between two near-equal candidates
+to be biased 94-6 or more.)
+</small>
+They would have been better off betraying their favorite
+Jindal by
+voting Leyoub in round 1 (or, for that matter, in both rounds).
+This would have caused either Jindal or Leyoub to win, either way (in their view) an improvement.
+Also, there seems
+little or no question at
+least 14% of Jindal's voters must have preferred Leach over Blanco,
+hence this
+race also exhibited a <i>second</i> "favorite betrayal" 
+pathology.
+</p><p>
+Finally, there was a <b>"no show paradox."</B>  Suppose an extra contingent (equivalent to 12.2% of
+the electorate) of voters had magically appeared, all ranking Hunt Downer top and Jindal
+dead last.  Then it would have been a Jindal vs Downer runoff, which Jindal would have easily won.
+Thus these extra voters, by ranking Jindal <i>last</I>, cause him to <i>win.</i>
+They would be better off not voting (as in fact, they didn't).
+</p><p>
+
+<b>1999:</b>
+Mike Foster wins with 62.17%, closest opponent (Bill Jefferson) has 29.53%.
+</p><p>
+
+<b>1995:</b>
+First Round:
+</p>
+<table bgcolor="#ccffcc">
+<tr><td>Mike Foster(R)</td><td>385267</td><td>26%</td></tr>
+<tr><td>Cleo Fields(D)</td><td>280921</td><td>19%</td></tr>
+<tr><td>Mary Landrieu(D)</td><td>271938</td><td>18%</td></tr>
+<tr><td>Buddy Roemer(R)</td><td>263330</td><td>18%</td></tr>
+<tr><td>Phil Preis(D)</td><td>133271</td><td>9%</td></tr>
+<tr><td>Melinda Schwegmann(D)</td><td>71288</td><td> 5%</td></tr>
+<tr><td>Robert Adley(D)</td><td>27534</td><td>2%</td></tr>
+<tr><td>Arthur D. "Jim" Nichols(I)</td><td>16616</td><td> 1%</td></tr>
+<tr><td>others</td><td> &lt;5700 each</td><td> 0%</td></tr>
+</table>
+
+<p>
+Runoff round:
+Foster wins over Fields 64-to-36 percent.
+</p><p>
+At naive first glance, the magnitude of Foster's final-round
+victory makes you think this race could not have 
+exhibited any pathologies.  But a closer look leaves me almost-convinced of the opposite!
+</p><p>
+Only 20,000 votes would have put either
+(former governor) Roemer or (congresswoman, state treasurer, and soon to be senator) 
+Landrieu into the runoff instead of Fields.
+Both had led in the polls until nearly election time.
+</p><p>
+Fields was black (indeed, the first black candidate for LA governor in over 100 years)
+and felt to have no chance of election against the white old-wealth multi-millionaire
+Foster in a state which
+had last election put Neo-Nazi Ku Klux Klan Wizard David Duke into the runoff.   
+(As part of this 1995 campaign, Foster paid more than $150,000  to 
+David Duke for his mailing list of supporters.   Duke also endorsed Foster.
+After failing to report the purchase as a campaign expenditure, Foster became the first 
+Louisiana governor to admit and pay a fine for violating the state's ethics code... 
+a distinction which
+of course set him
+up for a landslide re-election win.
+Fields' support was very narrow; exit polls indicated he got all but 2% of
+his votes from blacks in the first round.)
+Hence many
+Democrats felt Fields running at all was therefore a stupid act, strategically speaking (and
+they were proven right in the end) but naturally this view was not popular with Fields
+supporters.
+</p><p>
+Fields wasn't 100% dead since a Mason-Dixon poll on October 17 found that Louisianans thought
+(by 75%-to-18% margin) "a black" <i>could</i> theoretically
+win &ndash; and they even thought that <i>Fields</i> probably would win 
+(by 45%-to-21%, with 34% undecided, said a 27 Feb. Mason-Dixon poll) &ndash;
+<i>provided</i> his opponent was David Duke!  Against pretty much
+anybody else, though, Fields was going to lose 
+a head-to-head race (see polls below) by a huge margin.
+</p><p>
+Fields also was involved in a mini-scandal when he abused his congressional "franking"
+privileges to bill taxpayers  $46,000 for
+sending out gubernatorial-campaign 
+literature.  In 1997 the FBI videotaped him stuffing about $20,000
+in cash from Edwin W. Edwards into his pockets, but that happened after this race ended and
+hence did not affect it.
+</p><p>
+Former Democrat governor Roemer now ran as a conservative 
+Republican with an anti-crime anti-welfare platform.
+Foster switched from Democrat to Republican <i>during</i> the race and spent $2 million of
+his own money to move slightly ahead of 
+Roemer in the Republican vote.
+</p><p>
+But it seemed likely that either white (Roemer or Landrieu) would have beaten
+Foster in the runoff since either was more centrist.  The poll data (below) support that
+speculation for Roemer, but not for Landrieu.
+So if just 9000 Fields voters had voted Roemer instead (or
+if just 5000 had voted Landrieu instead?) they would have gotten a winner they preferred.
+</p><p>
+Thus this race probably exhibited one (and perhaps two) <i>favorite betrayal</i> pathologies
+(and <i>no-show paradoxes</i> too
+&ndash; since those Fields voters would have been better off either "staying home" or voting for Roemer;
+ditto many Landrieu voters).
+It also may have been <i>non-monotonic</i>:  if about 20,000 Fields and 10,000
+Landrieu voters had voted for Foster, that
+would have put Roemer into the runoff, whereupon he probably would have beaten Foster  
+(perhaps 
+even if these defecting voters <i>still</i> voted Foster even in the runoff, although that is more speculative).
+</p><p>
+Fields was definitely a lose-to-all loser (among the top four) &ndash; 
+and probably Roemer was a beats-all Condorcet winner.
+Louisianans were asked in several Mason-Dixon telephone polls how they would vote in 
+hypothetical 2-person runoffs. The results were:
+</p>
+<table bgcolor="#ffcccc" cellspacing="3">
+<tr><th>Hypothetical Runoff</th><th>Poll result %s</th><th>Poll date</th><th>Sample</th>
+<tr><td>Roemer v. Fields</td><td><b>Roemer 54</b>, Fields 27</td><td>17 Oct 1995</td><td>826</td></tr>
+<tr><td>Roemer v. Fields</td><td><b>Roemer 55</b>, Fields 26</td><td>25 Sep 1995</td><td>827</td></tr>
+<tr><td>Roemer v. Fields</td><td><b>Roemer 61</b>, Fields 22</td><td>28 Aug 1995</td><td>828</td></tr>
+<tr><td>Roemer v. Fields</td><td><b>Roemer 59</b>, Fields 24</td><td>8 July 1995</td><td>826</td></tr>
+<tr><td>Roemer v. Fields</td><td><b>Roemer 58</b>, Fields 26</td><td>8 May 1995</td><td>818</td></tr>
+<tr><td>Landrieu v. Fields</td><td><b>Landrieu 51</b>, Fields 21</td><td>17 Oct 1995</td><td>826</td></tr>
+<tr><td>Roemer v. Landrieu</td><td><b>Roemer 43</b>, Landrieu 42</td><td>17 Oct 1995</td><td>826</td></tr>
+<tr><td>Roemer v. Landrieu</td><td><b>Roemer 43</b>, Landrieu 42</td><td>25 Sep 1995</td><td>827</td></tr>
+<tr><td>Roemer v. Landrieu</td><td><b>Roemer 45</b>, Landrieu 40</td><td>28 Aug 1995</td><td>828</td></tr>
+<tr><td>Roemer v. Landrieu</td><td><b>Roemer 43</b>, Landrieu 38</td><td>8 July 1995</td><td>826</td></tr>
+<tr><td>Roemer v. Landrieu</td><td><b>Roemer 45</b>, Landrieu 41</td><td>8 May 1995</td><td>818</td></tr>
+<tr><td>Foster v. Landrieu</td><td><b>Foster 42</b>, Landrieu 39</td><td>17 Oct 1995</td><td>826</td></tr>
+<tr><td>Foster v. Fields</td><td><b>Foster 53</b>, Fields 24</td><td>17 Oct 1995</td><td>826</td></tr>
+<tr><td>Roemer v. Foster</td><td>Roemer 40, <b>Foster 44</b></td><td>17 Oct 1995</td><td>826</td></tr>
+<tr><td>Roemer v. Foster</td><td><b>Roemer 47</b>, Foster 32</td><td>25 Sep 1995</td><td>827</td></tr>
+<tr><td>Roemer v. Foster</td><td><b>Roemer 43.5</b>, Foster 38</td><td>(avg of both above)</td><td>1653</td></tr>
+</table>
+
+<p>
+
+<b>1991:</b>
+The famous "Lizard versus Wizard" race replete with pathologies.
+It was so utterly insane that it has a 
+<a href="LizVwiz.html">web page of its own</a>!
+</p><p>
+
+<b>1987:</b>
+First round:
+</p>
+
+<table bgcolor="#ccffcc">
+<tr><td>
+Buddy Roemer(D)</td><td> 33% </td></tr>
+<tr><td>
+E.W.Edwards(D)</td><td>28% </td></tr>
+<tr><td>
+Robert L.Livingston(R)</td><td>18% </td></tr>
+<tr><td>
+Billy Tauzin(D [became R in 1995])</td><td>10% </td></tr>
+<tr><td>
+J.H. "Jim" Brown(D)</td><td>9% </td></tr>
+<tr><td>
+...</td><td> &nbsp; </td></tr>
+</table>
+
+</p><p>
+Runoff round: did not happen since Edwards withdrew.  
+(This race was the only time Edwards finished
+other than first in an election.)
+This withdrawal was generally believed to have been an intentional <i>strategic
+masterstroke</i> designed to
+allow Edwards to come back and win the <i>next</i> governor race!
+<small>(Wikipedia:
+"[Edwards] was cleverly setting a trap for Roemer. By withdrawing, 
+Edwards denied Roemer the opportunity to build a governing coalition in the 
+general election race, and denied him the decisive majority victory that he 
+surely would have attained. In one stroke, Edwards made Buddy Roemer a minority governor.")</small>
+Both Roemer &amp; Edwards were from the same party (Democrat) at the time,
+although Roemer and Tauzin later switched to the Republican Party.
+It was felt by many (including Edwards) that to win this race, he had to go against
+<i>Livingston</i> in the runoff.  
+Edwards talked up Livingston during the campaign but it did not
+work.
+</p><p>
+Based on all this craziness, one might think pathologies <i>must</i> have been
+present in this race! But I do not see any! <small>(I suppose one could argue that maybe
+some Livingston supporters intentionally-dishonestly voted Roemer because they thought
+Livingston could not win the runoff. The Republican Livingston later resigned from the US House 
+[even though speaker-elect at the time] due to a sex scandal  [in 1999].)</small>
+</p><p>
+
+<b>1983:</b>
+Edwards wins with 62% of the vote in round 1, closest opponent (Treen)
+has 36%.
+</p><p>
+
+<b>1979:</b>
+First Round:
+</p>
+<table bgcolor="#ccffcc">
+<tr><td>David C. Treen(R)<td><td> 297674</td></tr>
+<tr><td>Louis Lambert(D)<td><td> 283266</td></tr>
+<tr><td>Jimmy Fitzmorris(D)<td><td>280760</td></tr>
+<tr><td>Paul Hardy(D)<td><td>227026</td></tr>
+<tr><td>E.L."Bubba" Henry(D)<td><td>135769</td></tr>
+<tr><td>Ed.G."Sonny" Mouton Jr.(D)<td><td> 124333</td></tr>
+<tr><td>Luther D. Knox(D)<td><td>6327</td></tr>
+<tr><td>Ken Lewis(D)<td><td> 5942</td></tr>
+<tr><td>Greg Nelson (no party)<td><td> 4783</td></tr>
+</table>
+
+<p>Runoff round:
+Treen wins by 690691 to Lambert's 681134.
+
+</p><p>
+Story behind this race:
+After 102 straight years of Democrats as Louisiana governors (the last Republican was
+the Vermont "carpetbagger" W.P.Kellog in 1873-1877), the Republican Treen was elected.
+Treen, a 51-year-old lawyer, had begun his political career as a segregationist and counted on 
+white votes to propel him to victory, whereas his Democratic opponent Lambert hoped
+for Black votes and was endorsed by organized Labor.
+Treen had pledged to keep misleadingly-titled "right to work" laws outlawing unionized shops,
+thus drawing the ire of labor unions.
+Treen had a reputation for personal honesty and 
+(amazingly for a Louisiana politician at that time) <i>disclosed</i> his personal finances.
+That contrasted well with the fact governor 
+E.W.Edwards and Lt.Gov. J.Fitzmorris were both involved in an FBI bribery investigation &ndash;
+but this was not widely known until after the election was over and hence probably did not
+affect it.
+[Edwards explained to the press that he had "played games" with an FBI undercover informant
+trying 
+to bribe him after "it became obvious the conversation was being recorded." 
+Later he explained how $10,000 from Korean businessman Tongsun Park was <i>not</i> a gift to
+him but rather to his wife.  After the election,
+E.G.Mouton Jr. (who was named "executive counsel" by Treen and had received an unrecorded
+$15,000 contribution) also was subpoenaed by
+the grand jury, as was Treen's Lt.Gov. Robert E. Freeman.]
+There were dozens of major errors found when rechecking voting
+machines in the first round.  
+Fitzmorris initially led Lambert but a retabulation put Lambert ahead of Fitzmorris by
+about 2506 votes. 
+</p><p>
+<b>Fitzmorris sued</b>, alleging Lambert had benefited from 
+fraudulent votes and improper counting procedures (thousands of alleged fraudulent 
+acts and irregularities were listed in the suit; in a few days Fitzmorris magically lost about 2000
+votes while Lambert gained about 2000). The court "sympathized" with
+Fitzmorris but refused
+to let him in the runoff because he'd 
+only clearly proven a few hundred votes bogus, which wasn't enough.
+That all stimulated Treen to play it safe by
+hiring guards and 1000s of volunteers to help guard and observe the machines and ballots
+in the runoff round.  That worked when Treen won by a tiny 9557-vote margin out of 1.4 million votes cast
+(50.3% to 49.7%) over Lambert.  About $20M was spent campaigning for this $50K/year job.
+Treen became unpopular during his term which is why he was resoundingly defeated by Edwards
+next election.
+</p><p>
+Treen was the only Republican in the race. All other major contenders were Democrats.
+Fitzmorris, Hardy, Henry, and Mouton all crossed party lines to  endorse Treen, and
+Hardy later switched to the Republican party (and became Lt.Gov. 1988-1992; also Treen once
+elected appointed
+Fitzmorris as his "special assistant for industrial development").
+Lambert blamed his defeat mainly on Fitzmorris' suit: 
+"If it hadn't been for that lawsuit, I would have beat him 55 percent to 45 percent."
+</p><p>
+<b>Probable pathologies:</b>
+If just a few thousand of Lambert's supporters had switched their votes to Fitzmorris
+(or if there really was a fraud and that fraud were undone), then, considering how close
+Treen's victory was even over the scandalized Lambert, Fitzmorris would
+probably have defeated Treen.  
+(Wikipedia: "Treen realized that he was fortunate in that Fitzmorris may well have been a stronger 
+opponent than Lambert.")
+Indeed, if enough Lambert voters had switched
+their votes to either Fitzmorris or Hardy to get them into the runoff, then they
+too probably would have beaten Treen, which those voters would have preferred.  (There is little
+doubt that at least 60,000 Lambert voters existed who preferred Hardy over Treen, and
+certainly at least 2,000 existed who preferred Fitzmorris over Treen.)
+</p><p>
+In other words this election (probably) exhibited a 
+<i>favorite betrayal</i> pathology (in fact probably several).
+</p><p>
+It also exhibited <i>no-show paradoxes</i>, e.g. if 
+sufficiently many Lambert-top Treen-bottom voters had "stayed home"
+then a candidate they preferred probably would have won &ndash; their act of 
+voting honestly Treen bottom caused Treen to win.
+(If Fitzmorris would
+have beaten Treen, then only a few thousand would have needed to stay home, and almost
+certainly they could also have stayed home during the runoff round also.)
+</p><p>
+It also is plausible &ndash; although this is more speculative &ndash;
+that Fitzmorris or perhaps Hardy was actually the "beats-all"
+<i>Condorcet winner</i> (e.g. presumably Hardy, as a future Republican, would have been preferred by 
+Treen supporters over Lambert, and also the usual thinking was that the Democrats
+would normally beat a Republican and Treen only beat Lambert due to the lawsuit
+and associated higher-than-usual scandal).
+</p><p>
+Luther Devine Knox, tired of getting few votes, 
+had his name legally changed to "None Of The Above."
+However,the Secretary of State refused to let him on even as "L.D. 'None of the Above' Knox"
+and the legal name change came through too late (ruled a judge)
+to get him on the ballot under that name.
+</p>
+<b>1975:</b>
+Edwin Edwards wins with 62.35% (closest rival has 24.29%).
+</p>
+
+<h2> Sources </h2>
+
+<p>
+Would be nice to add details, but...
+Wikipedia, State of Louisiana, Newspaper articles, and Polls.
+</p>
+
+<br>
+<p><a href="LAgov2015.html">The 2015 LA governor election and Rob Richie's 
+false argument about it</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

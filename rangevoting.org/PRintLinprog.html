@@ -1,0 +1,119 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Optimal proportional representation
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> "Optimal proportional representation" via mixed linear/integer programming </H2>
+
+<p><small>
+Warren D. Smith. Nov 2015.  UNDER MODIFICATION.
+</small></p>
+<p><b>Abstract.</b>
+We show how some  proportional representation (PR) election
+ideas dating to Lars Edvald <a href="Phragmen.html">Phragmen</a> 1895,
+and Bjarke Dahl 
+<a href="https://www.mail-archive.com/election-methods-electorama.com%40electorama.com/msg01084.html">Ebert</a> 
+<!-- bde AT trebe.dk -->
+in October 2003 can be
+written as  solving a mixed linear/integer program (MILP) to optimality
+to find the "optimal" PR parliament.
+</p>
+
+<h3> The voting system </h3>
+<p>
+Let C=#candidates, V=#voters, W=#winners, 0&lt;W&lt;C&lt;V.
+Let <b>S<sub>v,c</sub></b> be the real-valued <b>score</b> given by voter v to candidate c
+on her ballot. 
+Consider the bipartite grqph with V red vertices corrsponding to the  V voters
+and C blue vertices corresponding to the C candidates.
+The edge from voter v to candidate c shall be associated with 
+a real variable x<sub>vc</sub>.  There will also be one additional real variable p.
+There also will be an <i>integer</i> variable e<sub>c</sub> associated with each candidate c.
+Here is a mixed linear/integer program involving those variables.
+</p><p>
+Linear constraints:
+</p><center>
+&sum;<sub>1&le;c&le;C</sub>x<sub>vc</sub> &le; p,
+&nbsp;&nbsp;
+&sum;<sub>1&le;v&le;V</sub>x<sub>vc</sub>S<sub>vc</sub>
+ = e<sub>c</sub>,
+&nbsp;&nbsp;
+&sum;<sub>1&le;c&le;C</sub>e<sub>c</sub> = W,
+&nbsp;&nbsp;
+0 &le; e<sub>c</sub> &le; 1,
+&nbsp;&nbsp;
+0 &le; x<sub>vc</sub> &le; 1,
+</center><p>
+Optimization: minimize p by choice of all the variables.
+The W election winners then are the c such that e<sub>c</sub>=1. 
+The C-W losers are the c with e<sub>c</sub>=0.
+</p><p>
+The total number of real variables is VC+1, and of integer variables is C.
+The total number of 01-interval-containment linear inequality constraints is 2VC+2C.
+The total number of other linear inequality constraints is V.
+The total number of linear equality constraints is C+1.
+</p><p>
+This has formalized a score-using version of Ebert's description of a Phragmen-like system
+that is an optimization problem.    (Phragmen's original system was not optimizing anything.)
+Ebert has his own PR voting system &ndash; or at least, it is hoped to be PR,
+I have not seen any proof that it is, only incompletely convincing heuristic arguments &ndash;
+which cannot be formalized in this manner because it would require a <i>non</i>linear 
+objective function.   There are many possible nonlinear objective functions.
+To explain them, replace the single variable p with V variables p<sub>v</sub>,
+replace the first constraint by
+</p><center>
+&sum;<sub>1&le;c&le;C</sub>x<sub>vc</sub> &le; p<sub>v</sub>,
+</center><p>
+and replace the optimization goal by "minimize &sum;<sub>1&le;v&le;V</sub>F(p<sub>v</sub>)"
+where F is some nonlinear function &ndash; for example Ebert suggested F(x)=x&sup2;
+for no particularly convincing reason.
+If we use F(x)=x<sup>&mu;</sup> in the limit &mu;&rarr;&infin; then
+we get a more-unique version of the "Phragmen" method I began with.
+By "more unique" I mean that the method I described could produce ties and
+this limit-method  presumably would experience ties less often.
+</p>
+
+<h3> Computational complexity </h3>
+<p>
+I'd guess this program can usually be solved to optimality in a number of steps of order 
+2<sup>C</sup>+(V+C)<sup>3</sup>.
+This is not a theorem, but merely a heuristic runtime estimate, 
+and not a very convincing one; and perhaps the first + sign should be changed to "multiply"
+which would make a rather large difference.
+</p>
+
+<a name="perdefect"></a>
+<h3> Major defect pointed out by Toby Pereira </h3>
+<p>
+In this 4-candidate 20-voter 2-winner election
+</p><pre>
+   10 voters:  A=1 B=1 C=1 D=0
+   10 voters:  A=1 B=1 C=0 D=1
+</pre><p>
+both Ebert's L<sub>2</sub>-norm proposal, and the MILP at top, both would
+give p<sub>v</sub>=1/10 to every voter if the winner-set was AB, but
+also if the winner set were CD.  I.e. both AB and CD are regarded
+by these voting systems as "equally good" winner-duos.
+That is foolish since obviously AB is superior.
+</p><p>
+This same simple election example embarrasses <a href="MonroeMW.html">Monroe's</a>
+election method for the same reason.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

@@ -1,0 +1,271 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Two-party domination, NESD and Majority-Winner
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h1> A theory of 2-party domination </h1>
+<h2> "NESD" and "NESD*" properties obeyed by some (but disobeyed by other)
+single-winner voting systems </h2>
+<p><small>
+PRELIMINARY web page. By Warren D. Smith, Nov. 2009.
+</small></p>  
+
+<h3><u> Abstract </u></h3>
+<p>
+Which voting systems tend to cause a country to degenerate into a state of "2-party domination"
+(2PD &ndash; or even worse, 1-party domination)? 
+Note, this degeneration may happen gradually over a long time, perhaps more than 100 years,
+during which many elections happen;
+but once it happens it tends to be permanent.
+We propose a tentative answer to that question: voting systems failing the "NESD property,"
+or the closely related "NESD* property,"
+are the ones that fall into 2PD.  
+Further, the systems obeying NESD not only are the ones avoiding 2PD, they also
+are the ones in which the influence of money on elections, inherently is greatly diminished.
+It is pointed out that NESD is <i>incompatible</i> with the "majority-top property," and we
+claim that (contrary to many careless claims by many people) the latter
+actually is an undesirable voting system demand.
+</p>
+
+<h3><u> Definition </u></h3>
+
+<p>
+A single-winner voting system obeys the <b>"NESD property"</b> if, when every
+voter (all voters assumed initially honest)
+changes her ballot to "exaggerate about A &amp; B," i.e. to
+now rank A top and B bottom (or B top and A bottom;
+which depends on the voter and is "honest" about that voter's preference between
+A and B alone), leaving it otherwise
+unaltered &ndash; these alterations constitute NES, 
+<a href="ConitzerSmanipEasy.pdf"><i>n</i>aive <i>e</i>xaggeration <i>s</i>trategy</a> &ndash;
+that exaggeration-behavior does not <i>always</i> (ignoring very rare "exact tie" situations) 
+cause A or B to win.
+</p><p>
+We also define the "NESD*" property (note the star) to be the same as NESD except A
+and B are to be <i>solely</i>-top-rated or ranked by all voters;
+we forbid coequal top.
+</p>
+<h3><u> Hypothesis </u></h3>
+Voting systems failing NESD will tend to cause a country
+to become 2-party dominated (or at least, will make that fate likely).
+</p>
+
+<h3><u> Voting systems failing and obeying NESD and NESD* </u></h3>
+
+<p>
+<b>Systems failing NESD:</b>
+IRV (instant runoff voting), <a href="Plurality.html">plurality</a>, 
+Bucklin, and all Condorcet systems.
+[By the latter I here mean, with pure-rank-order ballots &ndash;
+no rank-equalities permitted.]
+Also, for score-style ballots the
+"greatest median score wins" system fails NESD... unless a third-party candidate is
+given the maximum allowed score by a (larger) voter majority.
+</p><p>
+It also is possible to consider <i>multi</i>winner voting systems and ask whether
+heavy use of NES (naive exaggeration strategy) voting will force them to deliver
+2-party domination.  Then STV-PR systems (using rank-order ballots)
+and PR systems based on plurality-style voting
+such as "party list" and Simmons' flavor of <a href="https://rangevoting.org/Asset.htnl">asset</a> voting
+both fail NESD.
+</p><p>
+<b>
+Systems obeying NESD:
+</b>
+Borda, approval and <a href="RangeVoting.html">range</a> voting.
+The two-round genuine runoff system 
+(but <i>not</i> any one-election-only "instant" approximation).
+Incidentally, one similarly would predict a priori that with top-2 runoff,
+<i>three</i>-party domination should develop, since votes
+for the 4th-leading candidate are likely to be "wasted" and hence
+will be artificially diminished with strategically-aware voters, whereas
+votes for the leading three candidates are much more likely to be able to have an effect.
+</p>
+<p>
+However: Borda <i>restricted</i> to 3-candidate elections fails NESD.
+</p>
+<p>
+If we <i>modify</i> IRV to permit rank equalities by counting a ballot with K
+candidates co-equal top as 1/K votes for each, then the resulting system passes
+NESD, although I still feel uncomfortable about it because being
+co-equal top is plainly a lot worse and more vulnerable than being
+sole-top (there is kind of a "discontinuity," unlike in range voting
+where it is "continuous" as you move across the top score), so strategic
+voters might not do the former.
+</P><p>
+This is made clearer via an analogy. 
+Consider plurality voting with "equal votes" permitted
+(i.e. you can vote "half" for Jefferson and "half" for Adams).
+This would
+clearly be stupid, i.e. would clearly be essentially equivalent
+strategically to plain plurality.   Why?
+Consider each of your half-votes
+one at a time.  If for the first, your best move was to vote
+Jefferson; then for the second, the same reasoning should apply. Hence
+you'd vote 100% for Jefferson and essentially <i>never use</i> the equality feature
+(unless you were a strategic idiot).   Plurality with
+equals permitted, does technically pass NESD, but this reasoning suggests that
+is a misleading perception.  Really, to avoid being misled, one instead
+should consider the NESD* property.
+</P><p>
+If we consider Condorcet systems with rank-equalities permitted, these
+also technically pass NESD but
+again there is that worrying "discontinuity."  So we now enquire which voting systems
+pass NESD*:
+</P>
+<p><b>Fail NESD*:</b>
+IRV, plurality, Condorcet (all with rank-equalities permitted or
+forbidden, both ways they fail NESD*).
+</p><p><b>Pass NESD*:</b> Range voting.</p>
+<p><b>NESD* not applicable:</b> Approval voting.
+</p>
+
+<h3><u> Motivation behind NESD </u></h3>
+<p>
+NESD stands for "Naive Exaggeration Strategy &rArr; Duopoly."
+</p><p>
+"NES" refers to the voter strategy of
+</p><ol><li>
+identify the "top two" candidates most likely to win;
+</li><li>
+Exaggerate your (otherwise honest) vote to rank one top
+and the other bottom. (With NESD*, unique-top; with NESD, permitted to be
+co-equal top.) It appears that, in the real world, this is a pretty
+close approximation of
+what a very large percentage of voters in large well publicized+polled
+elections actually do (it does not necessarily always make complete
+sense that they do that, but the data indicates about 85% of Australian rank-order voters
+do it anyway CITE???, plus Swedish voters given <a href="RangeVoting.html">score</a>-voting-style
+ballots in a nationwide survey-<a href="Lewin1998ScandinavianPoliticalStudies.pdf">study</a> 
+also did it).
+</li></ol>
+<p>
+The "D" part means: if all (or merely a sufficiently large percentage) of voters
+exhibit NES behavior, then one of the apparent-top-two frontrunners
+will always win (except
+in exceedingly unlikely "perfect-tie" scenarios), yielding 2-party <i>d</i>omination.
+</p><p>
+And in fact, the same winner will arise as in strategic plurality
+voting, so any system failing NESD or NESD* can be accused (perhaps not with
+full justification, but certainly with some) of being "equivalent in the real world"
+to plain plurality voting.  If so, it presumably
+over historical time will <a href="Duverger.html">yield</a>
+"duopoly," aka "2-party domination" where voters effectively only
+get one of two choices (or no choice) every election. 
+This severely diminishes voter
+choice and "democracy"  (as opposed to some system with more
+than 2 choices).
+</p><p>
+It's an interesting property (or two properties if we count NESD* also) and I think worth
+consideration.
+</p><blockquote><small>
+You can now ask yourself other interesting questions, like "how can I
+design good voting systems passing NESD or NESD*?" etc.
+</small></blockquote>
+
+<h3><u> Conflict with "Majority-Top" property </u></h3>
+
+<p>
+<b>Definition:</b> A voting system obeys "Majority-Top" if, whenever a voter-majority
+ranks X unique-top in their vote, then X must win the election.
+</P><p>
+Jonathan Lundell pointed out the (obvious, once you see it) fact that
+the (apparently desirable) NESD* property, <i>conflicts</i> with the 
+(also apparently desirable) Majority-Top property:
+It is impossible for a voting system to obey both.
+</p>
+
+<h3><u> Lesson: the demise of Majority-Top  </u></h3>
+
+<p>
+My personal lesson from this: Majority-Top is <i>not</i> an always-desirable property
+for voting systems, despite the common perception that it "obviously" is.
+Indeed, consider a <a href="RangeVoting.html">range voting</a> (0 to 9) election like this:
+</p>
+<table bgcolor="lightyellow">
+<tr><th>#voters</th><th>Their Vote</th></tr>
+<tr><td>40</td><td>A=9, B=0, C=7</td></tr>
+<tr><td>51</td><td>A=0, B=9, C=7</td></tr>
+<tr><td> 9</td><td>A=0, B=0, C=9</td></tr>
+</table>
+<p>
+A 51% voter-majority scores B unique-top. 
+Therefore, in any voting system obeying Majority-Top,
+B must win.
+However, it seems pretty clear in this situation that C would generally be the best winner
+for society. And it is the range voting winner (totals: <b>C=718</b>, B=459, A=360)
+and also the one who would probably be elected by
+<a href="Approval.html">approval</a> voting.
+</p><p>
+This situation often arises where there are two power-groups, the A-ites and the B-ites,
+each of whom wishes to destroy the other.   If the A-ites gain a slight majority,
+game over.   However, it could be there is some middle course ("C") which everybody,
+regardless of their  power-group,
+finds reasonably attractive, although comparatively few regard C
+as the <i>best</i> option for them.
+Should it really be demanded, as a core principle of voting systems, that 
+this middle course must, under all circumstances, <i>always</i> lose?  I think not.
+</p><p>
+Another election example worth thinking about re this
+(devised by Balinski &amp; Laraki) is <a href="CondorcetCycles.html#demiseNM2">here</a>.
+</p><p>
+If you agree, even in a single election instance,
+then you must drop the Majority-Top property as a demand.  (Remember, this
+logical property brooks no exceptions.  You, by agreeing with even a single exception,
+disagree with the logical property.)
+</p>
+<blockquote><small>
+An analogous example-election in the rank-order-ballot world might be
+<br>
+<table bgcolor="lightyellow">
+<tr><th>#voters</th><th>Their Vote</th></tr>
+<tr><td>40</td><td>A>C>P>Q>R>S>B</td></tr>
+<tr><td>51</td><td>B>C>S>R>Q>P>A</td></tr>
+<tr><td> 9</td><td>C</td></tr>
+</table>
+Do you agree with me that declaring C, not B, winner would usually be better for society?
+</small></blockquote>
+
+<h3><u> Proof? </u></h3>
+
+<p>
+I do not see any feasible way to prove this whole theory.  It would seem
+to require enacting lots of voting systems in lots of countries, then waiting 200
+years to see what happens.  That is not feasible.  Nor probably ethical either.
+It looks to me that this theory is arguably supported by, or at
+least not refuted by, all evidence so far
+(from all countries using various voting systems so far).
+(The theory <i>is</i> falsifiable in principle.)
+</p><p>
+These same complaints unfortunately 
+could be made about <i>any</i> theory of which voting systems
+engender 2-party domination.
+I'm not convinced my theory is correct, but do suspect it is going in
+the right direction, and largely approximately correct (all in some admittedly vague
+sense).
+</p>
+
+<!--
+William Roberts Clark &amp; Matt Golder:
+<a href="cps2.pdf">Rehabilitating Duverger’s Theory: Testing the Mechanical and Strategic
+Modifying Effects of Electoral Laws</a>,
+Comparative Political Studies 39 (2006) 679-708.
+-->
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

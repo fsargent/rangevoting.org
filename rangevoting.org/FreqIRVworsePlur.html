@@ -1,0 +1,328 @@
+
+<html>
+<head>
+<title>
+RangeVoting.org - How often is Instant Runoff (IRV) worse than plain plurality voting?
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+How often is Instant Runoff (IRV) worse than plain plurality voting?
+</H2>
+<p><small> By Warren D. Smith, August 2015
+</small>
+</p>
+<p>
+In general, one intuitively would expect the IRV winner to be better than the 
+plain plurality winner 
+(when they differ) more often than the reverse.  This is since all rounds of
+the IRV process after the first,
+use additional information from the voters, beyond that perceived or
+perceivable by the plurality process; and use it in a way that seems likely to "improve"
+things.
+</p><p>
+However, as we shall show by example, the plain plurality winner <i>can</i> be superior
+to the IRV winner, and indeed sometimes in a very clear way.  
+We then enquire how often those phenomena happen.
+</p><p>
+We will not fully answer that question.
+But we shall be able to make it pretty clear that the IRV 
+and plurality winners become equally likely to be the better in the
+<i>limit</i> of a large number C of candidates.  In other words,
+IRV's advantage diminishes as C increases, ultimately to arbitrarily small 
+values.  This "no advantage in limit" conclusion holds in a very wide class of settings.
+Meanwhile the 3-candidate situation is pretty much fully 
+understood and can simply be looked up in our <a href="IrvParadoxProbabilities.html">tables</a>.
+The C=3 and C&rarr;&infin; 
+results then are
+</p>
+<table>
+<tr bgcolor="pink"><th>#Candidates</th><th>Probability Model</th>
+<th>IRV winner better</th><th>Plur winner better</th>
+<th>Winners same</th></tr>
+<tr><td>C=3</td><td>REM</td><td>22.1884%</td><td>2.2777%</td><td>75.5339%</td></tr>
+<tr><td>C=3</td><td>Dirichlet</td><td>10.7637%</td><td>1.5625%</td><td>87.6737%</td></tr>
+<tr><td>C=3</td><td>Quas 1D</td><td>25.0000%</td><td>0.0000%</td><td>75.0000%</td></tr>
+<tr bgcolor="yellow"><td>C&rarr;&infin;</td><td>Any of above</td><td>50.0000%</td><td>50.0000%</td>
+<td>&nbsp;0.0000%</td></tr>
+</table>
+<p>
+We also argue that our 5-candidate example structure occurs often enough
+to show that the Plurality winner
+is not merely better, but actually <i>clearly visibly</i> better, than the IRV winner,
+at least some fraction F of the time, where in "1-dimensional politics" with 5 candidates
+F is somewhere between about 0.38% and 1.25%.
+</p>
+
+<h3>The 5-candidate example</h3>
+<p>
+The following election based on <a href="IRVworsePlur.html">one</a>
+by Brian W. Goldman, illustrates how
+it is possible for IRV to produce clearly worse election results than plain plurality voting, in
+an election with the same ballots for both systems, in a hopefully-realistic scenario arising
+from "one dimensional politics."
+The example has 5 candidates named
+C,L,R,F,G (Centrist, Leftist, Rightist, FarLeft, FarRight respectively along
+a "one dimensional spectrum"), and 14 voters:
+</p><table bgcolor="#FFFF99">
+<tr bgcolor="pink"><th>#voters</th><th>Their Vote</th></tr>
+<tr><td>4</td><td>C &gt; L &gt; R &gt; F &gt; G </td></tr>
+<tr><td>3</td><td>L &gt; C &gt; R &gt; F &gt; G </td></tr>
+<tr><td>3</td><td>R &gt; C &gt; L &gt; G &gt; F </td></tr>
+<tr><td>2</td><td>F &gt; L &gt; C &gt; R &gt; G </td></tr>
+<tr><td>2</td><td>G &gt; R &gt; C &gt; L &gt; F </td></tr>
+</table>
+<p>
+With plain plurality, the results are 
+</p><center>
+<b>C=4</b>, L=3, R=3, F=2, G=2, 
+</center><p>
+meaning C wins. 
+</p><p>
+C is also the "beats-all (Condorcet) winner" because: C&gt;L 
+on 4+3+2=9 versus 3+2=5 ballots, C similarly beats R by 9:5,
+and C beats F by the even huger margin 12:2, 
+and finally C beats G similarly by 12:2.
+</p><p>
+C also would be the <a href="https://rangevoting.org/RangeVoting,html">score voting</a> winner
+with <i>any</i> scores 
+S<sub>1</sub>&ge;S<sub>2</sub>&ge;S<sub>3</sub>&ge;S<sub>4</sub>&ge;S<sub>5</sub>,
+(with
+S<sub>1</sub>,S<sub>2</sub>,S<sub>3</sub>
+not all equal), being given by each voter to her 1st, 2nd, ..., 5th choice.
+<!--
+1st choice:  C=4, L=3, R=3, F=2, G=2, 
+2nd choice:  C=6, L=6, R=2, F=0, G=0, 
+3rd choice:  C=4, L=3, R=7, F=0, G=0, 
+4th choice:  C=0, L=2, R=2, F=7, G=3, 
+5th choice:  C=0, L=0, R=0, F=5, G=9
+-->
+Indeed, the final finish order with score voting under <i>any</i> such
+circumstance would always be "C&gt;L&gt;R&gt;F&gt;G," where the letters here
+denote that candidate's summed-score.
+You can see all that after first realizing
+that the summed scores for each candidate would be given by
+</p><table align="center">
+<tr><td>C = 4S<sub>1</sub>+6S<sub>2</sub>+4S<sub>3</sub></td><tr>
+<tr><td>L = 3S<sub>1</sub>+6S<sub>2</sub>+3S<sub>3</sub>+2S<sub>4</sub></td><tr>
+<tr><td>R = 3S<sub>1</sub>+2S<sub>2</sub>+7S<sub>3</sub>+2S<sub>4</sub></td><tr>
+<tr><td>F = 2S<sub>1</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++7S<sub>4</sub>+5S<sub>5</sub></td><tr>
+<tr><td>G = 2S<sub>1</sub>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
++3S<sub>4</sub>+9S<sub>5</sub></td><tr>
+</table>
+<p>
+So we contend it is pretty clear that in this election
+C is the "best" winner, in addition to being the winner
+under plain plurality voting.
+</p><p>
+However, in this election C is <i>not</i> the
+instant runoff voting (IRV) winner, but rather finishes third!
+The IRV election proceeds thusly:
+</p><center>
+Round #1: &nbsp; C(4) - <b>F(2)</b> - <b>G(2)</b> - L(3) - R(3); &nbsp; eliminate G
+<br>Round #2: &nbsp; C(4) - <b>F(2)</b> - G(X) - L(3) - R(5); &nbsp; eliminate F
+<br>Round #3: &nbsp; <b>C(4)</b> - F(X) - G(X) - L(5) - R(5); &nbsp; eliminate C
+<br>Round #4: &nbsp; C(X) - F(X) - G(X) - L(9) - <b>R(5)</b>; &nbsp; eliminate R
+<br><b>Winner: &nbsp; L</b>
+</center><p>
+If IRV breaks the tie between F and G the other way in round 1 (i.e. eliminating F first)
+that does not matter; the top three according to instant runoff voting still are L,R,C
+in that order.
+</p><p>
+So plainly in our example election the IRV winner is worse than the winner under
+plain plurality voting, with both voting systems seeing the same ballot set.
+</p>
+<h3>How often that happens</h3>
+<p>
+The event that the IRV winner is "worse" than the plurality winner is 
+somewhat undefined, in general.  We have designed the above example  to make it
+<i>very clear</i> its IRV winner is worse, but there are also many election situations in which the
+IRV (or plurality) winner is worse, <i>but</i> that is not <i>clear</i> to observers.
+</p><p>
+We now point out that in our example election if we were to change the top-rank vote counts
+C=4, L=3, R=3, F=2, G=2 in the first column of the defining table at the start
+to <i>any</i> other positive numbers C,L,R,F,G
+obeying:
+</p><ol type="i"><li>
+The numbers are distinct and ordered (from most to least) 
+according to one of these 6 orderings:
+CLRFG, CRLFG, CLRGF, CRLGF, CLFRG, CRGLF,
+</li><li>
+  F+L&gt;C, 
+</li><li>
+  G+R&gt;C.
+</li></ol>
+<p>
+then the same thing will happen: the plain-plurality winner will be C,
+who also will defeat every rival pairwise, <i>but</i> the IRV winner will
+not be C (he instead will either be L or R) and indeed C necessarily will finish
+in third place or worse under IRV.
+(Also, if we only allowed the first 4 of those 6 orderings, then in addition C will be
+the winner under score voting 
+with <i>any</i> scores 
+S<sub>1</sub>&gt;S<sub>2</sub>&gt;S<sub>3</sub>&gt;S<sub>4</sub>&gt;S<sub>5</sub>,
+being given by each voter to her 1st, 2nd, ..., 5th choice. 
+Call this strengthened condition "i.b"
+to distinguish it from the weaker condition "i.")
+</p><p>
+What are the chances that our two necessary conditions i and ii
+will both be satisfied?
+</p><ol type="a"><li>
+If the 5 numbers C,L,R,F,G are chosen independently from <i>any</i> probability density
+then condition i will be satisfied with chance 6/120=1/20, but the stronger condition i.b only with
+chance 4/120=1/30.  (Note 5!=120.)
+</li><li>
+If F and L were selected independently <i>uniformly</i> from the real interval [0,C]
+and similarly 
+for G and R, then the chance condition ii would be satisfied would be exactly 1/2,
+and similarly 1/2 for condition iii (and 1/4 for both).
+</li><li>
+If instead C,L,R,F,G were identically <i>exponentially</i> distributed
+(e.g. we chose 3 independent samples from the exponential density e<sup>-x</sup> on x&gt;0,
+then denoted the maximum by C and the other two by L, F)
+then the chance condition ii would be satisfied would be
+<nobr>
+(e-1)<sup>-2</sup>&asymp;0.3386969
+</nobr>
+<!--
+integrate exp(-y-z) dy dz for 1-z<y<1, 0<z<1  /  integrate exp(-y-z) dy dz for 0<y<1, 0<z<1.
+-->
+and similarly for condition iii, with the chance of both ii and iii being satisfied being
+<nobr>
+(e-1)<sup>-4</sup>&asymp;0.1147156.
+</nobr>
+</li></ol>
+<h3> Conclusion (1D politics, clear "IRV worse" scenarios with 5 candidates) </h3>
+<p>
+This all somewhat vaguely and approximately suggests that the frequency of 5-candidate elections,
+in "1-dimensional politics" situations, in which the IRV winner is
+worse than the plurality winner (same ballot set for both voting systems), 
+<i>and</i> worse in a <i>very clearly observable</i> way,
+ought to be lower bounded by some number somewhere between about
+<nobr>
+(e-1)<sup>-4</sup>(1/30)&asymp;0.38%
+</nobr>
+and 
+<nobr>
+(1/4)(1/20)=1/80=1.25%.
+</nobr>
+</p>
+<h3> What if we try to count both clear <i>and</i>
+unclear (but valid) "IRV worse" scenarios? </h3>
+<h3> I. 3-Candidate scenarios </h3>
+<p>
+Meanwhile, in 3-candidate elections,
+the IRV winner is <i>never</i> "clearly worse" than the plain plurality winner
+(if the same ballot set is used for both voting processes).
+These two winners differ, according to
+<a href="IrvParadoxProbabilities.html">these tables</a>,
+with chances
+</p><center>
+<!--T: Plurality and IRV winners differ-->
+24.4661%, &nbsp;
+12.3263%, &nbsp;
+25.0000%
+</center><p>
+in the three different probability models defined there; and whenever 
+they differ the IRV winner
+usually arguably is "better" than the plain plurality winner.
+Since the IRV winner defeats the plurality winner pairwise
+in the final IRV round, the only way to try to argue the plurality winner 
+is better is in situations
+with a <a href="CondorcetCycles.html">Condorcet cycle</a>.
+In those same three probability models, the chances that Condorcet cycles exist
+(given that the IRV &amp; plurality winners differ) are respectively
+</p><center>
+<!--S: Condorcet cycle-->
+18.6193%, &nbsp;
+25.3526%, &nbsp;
+0.0000%.
+</center><p>
+So if we assume the IRV and plurality winners are equally likely to be better 
+in 3-candidate situations where 
+(a) they differ
+and (b) there is a condorcet cycle, we get the results summarized at the start of this page.
+</p>
+<h3> II. C-candidate Scenarios in the limit C&rarr;&infin; </h3>
+<p>
+See puzzle 34 <a href="PuzzlePage.html#p34">here</a>,
+to realize that in any
+limit where
+#candidates=C&rarr;&infin; and #voters=V&rarr;&infin; with V<sup>0.51</sup>&le;C&le;V:
+<p><ol type="a">
+<li>
+IRV <i>never</i> examines a more than a fraction
+of the number CV of "cell entries" on the V ballots,
+that goes to <i>zero</i>;
+</li><li>
+IRV fails to elect Condorcet winners (even when they exist) in a fraction
+of elections  that goes to 100%.
+</li></ol>
+<p>
+Those arguments also work (more simply too) for plurality winners &ndash;
+the plain plurality voting system never examines more than V of the CV cell entries, 
+i.e. a fraction 1/C which goes to zero (since it only examines each voter's top choice, ignoring
+all others); and due to this huge-ignoring, plurality also will virtually always
+guess wrong about who is the Condorcet winner.
+</p><p>
+We will now argue that the IRV winner is better than the plurality winner
+(when they differ) slightly more than half the time 
+(albeit not necessarily "clearly visibly better," just "better")
+which in our
+limit-scenario goes to exactly half.
+</p><p>
+To explain my (somewhat nonrigorous given the lack of a definition,
+but I still like it) reasoning behind that:
+</p><p>
+IRV ignores fewer ballot data than plurality but both ignore
+asymptotically 100% of
+the data on the ballots as was shown in puzzle 34A. Hence the reason the plurality
+winner is better than the IRV winner (in cases when it is), or vice versa, generally
+arises from the parts of the ballots that both IRV and plurality
+ignore.  Since these ignored parts are asymptotically 100%, we can
+expect the question "who is better -- IRV winner or plurality
+winner?"
+to have answer that simply cannot be determined from 
+the few ballot cells that the IRV and plain plurality processes examine,
+and which simply cannot even be guessed with correctness probability above
+K, if K&gt;50%.
+The answer to the question of which winner is "better" is
+effectively
+dominated by random noise in a random election (i.e.
+regarding the parts of the ballots IRV and plurality ignore as random and unknown,
+while the parts that are not ignored are solid and known).  Therefore
+answer frequency should be near 50-50, with a bias in favor of IRV
+which should diminish toward 0 in the limit.
+</p><p>
+This claim should hold in <i>any</i> setting in which the question of "who is better, X or Y?"
+cannot be guessed by examining only a vanishingly small fraction of the VC data cells 
+on the V ballots &ndash; or at least, in which any such guess can achieve correctness
+fraction tending at best to 50% in our limit.
+</p><p>
+The reason IRV and plurality both become nearly useless and approximately equivalent
+in quality in the large #candidates limit, is the fact they both always 
+ignore a fraction &rarr;100%
+of the input vote (full ranking) data.  
+Meanwhile, voting methods such as Condorcet  and Score voting
+ignore nothing.
+</p>
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

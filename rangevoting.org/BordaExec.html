@@ -1,0 +1,66 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Borda Count voting system (Executive summary)
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>  Borda Count voting system (Executive summary) </H2>
+<blockquote>
+<b>Borda system:</b>
+Each vote is an ordering of the N candidates from best to worst. 
+(Voters are not allowed to omit a candidate they know nothing about, and are 
+not allowed to regard two candidates as equal.) 
+The top ranked candidate gets a score of N-1, the bottom ranked 0, and more generally the 
+Kth-ranked gets a score of N-K. All scores are summed and the candidate with the 
+highest total score wins.
+</blockquote>
+<ol>
+<li>
+Range voting offers more expressivity to voters than Borda voting.
+</li>
+<li>
+Range voting can be done on regular 
+plurality-style <a href="VotMach.html">voting machines</a> &ndash; Borda cannot
+<!--
+(Well, maybe it can &ndash; depends what you are willing to put up with as the 
+number of candidates vary?  How to detect errors?)
+-->
+</li>
+<li>
+Range voting is simpler than Borda voting.
+</li>
+<li>
+Borda <i>commonly</i> exhibits <a href="https://rangevoting.org/DGH3.html">horrible</a> 
+pathologies such as electing the candidate 
+<i>unanimously</i> agreed to be <i>worst</i>, if voters act "strategically."
+But range voting reacts only mildly to strategic voting.
+</li><li>
+Similar pathologies <a href="FunnyElections.html#kiri91">happened</a> immediately
+in the only government (Kiribati) ever to employ Borda voting.
+Therefore Kiribati abandoned Borda voting.
+</li><li>
+The withdrawal of a seemingly-irrelevant loser
+candidate from the race, can cause the Borda election results to
+<a href="rangeVborda.html#JohnsonEx">reverse</a>, but
+such a withdrawal has <i>no effect</i> on a range voting election.
+</li>
+</ol>
+
+
+<br>
+<p><a href="rangeVborda.html">Detailed examination &amp; comparison with range voting</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

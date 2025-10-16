@@ -1,0 +1,155 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Trying to understand Dhillon & Mertens's characterization of (normalized) range voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Trying to understand Dhillon &amp; Mertens's characterization of (normalized) range voting </H2>
+
+<p>
+As of July 2010 I unfortunately have been unable to fully-understand the theorem+proof
+by Dhillon &amp; Mertens.
+This page consists of an attempt to at least understand their theorem <i>statement</i>.
+</p>
+<p>
+<b>THEOREM claimed by Dhillon &amp; Mertens 
+[<a href="DhillonMrelUtil.pdf"><i>Relative Utilitarianism</i>,
+Econometrica 67,3 (May 1999) 471-498</a>]:</b>
+Normalized 
+continuum-score
+<a href="RangeVoting.html">Range Voting</a>
+("normalized" meaning that every voter scores her favorite with the maximum
+allowable score and her most-hated candidate with the minimum)
+is the <i>unique</i> voting system (in situations with at least 3 voters and at least 5 candidates)
+obeying the following axioms:
+</p>
+<blockquote><small>
+See also the more-precise theorem statement at <a href="#moreprec">bottom</a>.
+<br>
+Note on mysterious names:
+INDIV, NONT, NOILL, ANON, MON, IRA, CONT are the names of
+their 7 axioms; they used made-up axiom-names instead of
+somewhat less-informatively saying, e.g, "axiom 3."
+</small></blockquote>
+<dl>
+<dt><b>INDIV:</b></dt>
+<dd>
+If all voters are totally indifferent, so is society (note: "society" means
+the <i>output</i> of the voting system).
+</dd>
+<dt><b>NONT:</b></dt>
+<dd>
+Society is not <i>always</i> indifferent.
+</dd>
+<dt><b>NOILL:</b></dt>
+<dd>
+If every voter is indifferent <i>except</i> for one voter,
+then society is not always opposed to her.
+</dd>
+<dt><b>ANON:</b></dt>
+<dd>
+Permuting the voters has no effect.
+</dd>
+<dt><b>IRA:</b></dt>
+<dd>
+If a "candidate" which happens to be a lottery among some subset S of candidates, is removed, 
+then the election result (as a full ordering of lotteries among S) is unaltered. 
+[At least, I think that is what they meant.  The wording of their axiom actually simply does
+not parse as valid English, so I am going by the commentary they wrote after their statement 
+of the IRA axiom and in other places.]
+</dd>
+</dl>
+<p>
+<b>Notation</b> for below: 
+"&sim;" denotes societal indifference, 
+i.e. X&sim;Y if and only if X&ge;Y AND Y&ge;X;
+and X&ge;Y if and only if NOT Y&gt;X, and finally "&gt;" denotes societal preference.
+</p>
+<dl>
+<dt><b>MON:</b></dt>
+<dd>
+("Monotonicity.")
+For any three "candidates" (which are lotteries) P, Q, and R, consider two possible
+elections with the same sets of voters and candidates, but with exactly one voter (say,
+for concreteness,  the last) perhaps changing her vote between the two elections. 
+IF  in election#1  R &sim; P &ge; Q  AND this last voter is totally indifferent AND  
+in election #2 this last voter changes her opinion on P,Q, and R to  P &sim; Q &gt; R,
+THEN:
+<center>
+       if election #2 says  Q&sim;R, then election #2 also says   P&ge;Q.
+</center>
+</dd>
+</dl>
+<p>
+<b>Utility/vote numerical assumptions for use below:</b>
+Assume each voter has a real-valued utility for each candidate.   Regard a particular voter's
+utility vector as only defined up to positive rescaling factors and additions of a constant, 
+e.g. (2,3,5) is the "same" as both (4,6,10) and (1,2,4).    
+Therefore we can always regard a utility-vector as "normalized" so
+max entry is 1 and min is -1, except for the single un-normalizable vector (0,0,...,0)
+which expresses total indifference and note is quite separate.
+</p><p><b>Definition of "weak convergence":</b>
+Consider an infinite sequence of utility vectors 
+U<sub>1</sub>, 
+U<sub>2</sub>, 
+U<sub>3</sub>, ...
+We shall say this sequence "weakly converges" to a given vector (call it U<sub>&infin;</sub>)
+if 
+<ol type="i">
+<li>
+whenever  A&gt;B  according to  U<sub>&infin;</sub>, then A&gt;B according to every 
+U<sub>k</sub> with k sufficiently large;
+</li><li>
+the full set of pairwise preference "&sim;" or "&gt;" relations is the same for 
+U<sub>j</sub> as it is for U<sub>k</sub> 
+if both j and k are sufficiently large.
+</li></ol>
+<dl>
+<dt><b>CONT:</b></dt>
+<dd>
+("Continuity.")
+Consider an infinite sequence of elections #1, #2, #3, ... 
+in which all votes by all voters are exactly the same <i>except</i> for one special voter V
+who gets to change her opinions between elections.
+Suppose V's  utility vectors <i>weakly converge</i>
+to something (which we shall call "election #&infin;"). 
+THEN:  if the societal results in elections #1, 2, 3, ... weakly converge to anything,
+then the societal result of election #&infin; either is that limit result,
+or is complete indifference.
+[Their explanation of CONT is unclear because they employ a notation "C(a<sub>0</sub>)" 
+which was nowhere
+defined previous to this point in the paper. They also, e.g. employ the word "even" in a way 
+that makes no sense to me.  So I was reduced to guessing what they meant by CONT and
+the above is my guess.]
+</dd>
+</dl>
+
+ <a name="moreprec"></a>
+<p>
+<b>Dhillon &amp; Mertens' claimed THEOREM (more precisely stated):</b>
+<ol  type="i">
+<li> Normalized range voting satisfies all 7 of the above axioms
+{INDIV, NONT, NOILL, ANON, MON, IRA, CONT}.
+</li><li>
+ If #voters>=3 and #candidates>=5  then any voting system obeying all
+the above axioms is equivalent to normalized range voting whenever there exist some two
+voters whose preferences are not exactly equal-but-opposite (i.e. whenever 
+not all voters express utter indifference)
+</li></ol>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

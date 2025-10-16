@@ -1,0 +1,387 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Gibbard-Satterthwaite theorem
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> The Gibbard-Satterthwaite theorem about honest &amp; strategic voting </H2>
+
+<p>
+This theorem, first proven in the mid-1970s
+(and re-proven in slicker ways many times since then)
+is probably the most famous and important theorem in all of voting theory
+(although, unfortunately, it was the less-important 
+<a href="ArrowThm.html">Arrow's theorem</a> that got the Nobel prize).
+</p>
+
+<p>
+It states 
+that <i>no single-winner voting method exists</i>
+(in which the votes are rank-order ballots)
+satisfying all of the following short list of conditions:
+<ol>
+<li>
+There is no "dictator."
+</li><li>
+If every voter ranks X top, then X wins the election.
+</li><li>
+The voting system is deterministic, i.e. its decision about who wins is
+based purely on the votes, not on random chance.
+</li><li>
+There are at least three candidates running.
+</li><li>
+Honest and strategic voting are the same thing, i.e.
+it never "pays for a voter to lie," i.e. (more precisely) there is no election
+situation in which a voter, by submitting a dishonest vote claiming A&gt;B
+when really she <!-- feels B is better than A -->
+does not agree that A is a better candidate than B, 
+can make the election result come out better 
+(from her point of view) than
+if she had voted honestly.
+</li>
+</ol>
+
+<p>
+<b>In other words:</b>
+In every 
+"reasonable" rank-order voting system, there are situations in which <i>lying pays.</i></b>
+</p>
+<p>
+<b>Remark 1:</b>
+If there are only two candidates, then many voting systems 
+satisfy all the (other) GS criteria.   The life of a voting-system designer only
+gets tough when there are &ge;3 candidates.
+</p>
+
+<p>
+<b>Remark 2:</b>
+<a href="IncentToExagg.html">Here</a>
+is a helpful election example illustrating how dishonest voting pays.
+(It alone is good enough to prove the GS theorem for most of the voting systems
+humankind has seriously proposed, although not good enough to prove it
+for <i>all possible</i> voting systems.)
+</p>
+
+<p>
+<b>Remark 3:</b>
+In the 3-candidate case, this theorem can be equivalently reworded:
+"In a deterministic 
+nondictatorial rankorder-ballot voting system that always elects unanimous-top winners,
+there always is an election situation in which you, by honestly voting A&gt;B&gt;C
+(as opposed to some dishonest vote), cause
+A to stop winning or C to start winning."
+</p>
+
+<p>
+<a name="extension"></a>
+<b>Extension 1:</b>
+Furthermore, even if we allow <i>non</i>deterministic voting methods in which chance
+plays a role, then the Gibbard-Satterthwaite theorem remains true <i>except</i>
+for this list of voting methods (which are the only probabilistic
+rank-order voting methods satisfying all the GS criteria):
+<dl>
+<dt>
+Random-voter:
+</dt>
+<dd>
+Pick a vote at random and do whatever it says (ignoring all other votes).
+</dd>
+<dt>
+Random-pair:
+</dt>
+<dd>
+Pick two candidates (call them A and B)
+at random.  Eliminate all the other candidates (both from the 
+election and from all rank-order ballots).
+Now elect whichever of A and B would
+have won a head-to-head election using those ballots.
+</dd>
+<dt>
+Probabilistic mixture of the preceding two:
+</dt>
+<dd>
+Based on a dice roll, use random-voter or random-pair.
+</dd>
+</dl>
+
+Unfortunately, these voting methods are (in Gibbard's words)
+unacceptable because they "leave too much to chance."
+</p>
+<small><p>
+Or are they?  In 2011, David R. 
+<a href="http://www.drmaciver.com/2011/04/a-perfect-voting-system/">MacIver</a>
+pointed out that random-voter, in addition to 
+inspiring honest voting, also is one of the few (only?) single-winner voting methods
+which yields <a href="PropRep.html">proportional representation</a>.
+E.g, with 70% honestly-Republican voters and 30% Democrats, random-voter will
+elect (up to random noise) 70% Republican and 30% Democratic winners.  (Meanwhile, almost
+every other voting method would elect 100% Republican winners.)
+</p><p>
+Still: it seems very bothering that, say, some Republican with 20 years experience, who's 
+done a great job, and gets 70% support, would just get randomly kicked out by a dice roll
+with his career in tatters.  Past performance?  Largely irrelevant under the random-voter
+system.
+There are deterministic proportional representation systems which (a) assure proportional
+representation and (b) also take into account candidate quality.   They seem (subjectively)
+to be better than random-voter.  For example, consider <a href="RRV.html">RRV</a>.
+The known systems with this property all are <i>multi</i>winner election systems and all
+are considerably more complicated than random-voter.
+</p></small>
+
+<p>
+<b>Extension 2:</b>
+Herve Moulin found a 
+<a href="CondPF.html">stronger</a> version
+of this theorem for <a href="Glossary.html#condmeths"><i>Condorcet</i></a>-type 
+voting systems.
+</p>
+
+<!--
+<p>
+<b>Extension #3:</b>
+Also works for voting systems in which rank-orderings <i>with equalities</i> are permitted,
+e.g. a permitted vote could be "A>B=C=D>E>F=G>H" ... yes, but how to word it exactly?
+</p>
+-->
+
+<H3> Does Range Voting accomplish the impossible?? </H3>
+
+<p>
+<b>Wait a minute.</b>
+Doesn't <a href="RangeVoting.html">Range voting</a> (in the &le;3-candidate case)
+satisfy all GS criteria,
+accomplishing the "impossible"?!
+Huh?  Let's check that in slow-mo:
+<ol>
+<li>
+There is no dictator, that is, there exists no 
+single range voter who, no matter what the other voters say, always gets the winner he
+wants.
+Check.
+</li>
+<li>
+If every range voter scores X top, then X wins the election.
+Check.
+</li>
+<li>
+Range voting is deterministic, i.e. its decision about who wins is
+based purely on the votes, and not on random chance.
+Check.  (Although we'd have to have some pre-determined method of
+breaking ties, such as alphabetically first tied candidate wins.)
+</li>
+<li>
+Range voting has no problems handling any number of candidates whether three, more,
+or fewer.   Check.
+</li>
+<li>
+In range voting elections
+with <b>3-or-fewer candidates</b>, it never pays 
+to submit a dishonest vote claiming A>B
+when you really feel B&ge;A.  
+P<small>ROOF:</small>
+(using 0-99 scale)
+Score your favorite 99 and your most-hated 0.
+It should be obvious that doing those two things can never hurt you.
+Now, <i>no matter what score you give</i> the remaining candidate,
+it can never be above 99 or below 0. Q.E.D.
+</li>
+</ol>
+
+<p>
+How can this be?
+The explanation is simple.
+The Gibbard-Satterthwaite theorem
+only applies to <i>rank-order-ballot</i> voting systems.
+(A fact that mentioners of this theorem in the popular press, generally forget to mention, thus
+creating a false impression in the public mind of the "overpowering and final"
+nature of this theorem.)
+</p><p>
+Range voting does not use that kind of ballot.
+</p>
+
+<p>
+So range voting is superior to <i>every</i> voting system based on rank-order ballots
+when it comes to encouraging voter honesty in 3-candidate elections.
+</p>
+
+<p>
+<small>
+<b>To repeat ourselves:</b>
+I.e. no matter what dishonestly-ordered range-vote you invent in a 3-candidate election,
+there is a <I>not</i>-dishonest vote that would have been 
+at least as good for you (and less stupid!).
+In contrast, with instant runoff, Condorcet, or Borda voting,
+(or, in fact, with any rank-order voting system at all!)
+there are 3-candidate elections in which <i>the only</i> way
+for you (a voter) to improve the election result, is to
+misorder.   No honestly-ordered vote <i>whatever</i>, will
+do the job; <i>only</i> misordering will.  
+That is a way Range Voting is superior to those other voting systems.
+With range voting, <i>no</i> dishonesty-forcing
+3-candidate election situation exists.  With the other systems, 
+they do exist.
+</small>
+</p>
+
+<p>
+But now, some obvious questions suggest themselves:
+</p>
+<ol>
+<li>
+What about if we consider situations with any number N
+(e.g. possibly more than three) candidates?
+</li>
+<li>
+What about if we attempt (more finely than Gibbard &amp; Satterthwaite) to
+distinguish between voter "honesty," voter "semi-honesty," and
+plain "lying"?   That is, if a voter feels A&gt;B, then voting A&gt;B is honest,
+voting A=B is semi-honest, and voting A&lt;B is lying.  (<small>
+Also, if you feel A=B, then 
+saying A&gt;B is lying; our definition of "semi-honest" is if the vote
+you produce would be honest for a <i>limit</i> of candidates that obey
+your honest &gt;,=,and &lt; relations.  A better name might have been
+"limit-honesty."</small>)
+</li>
+<li>
+What about if we consider "incomplete information scenarios" where
+the voter is not assumed to know everybody else's vote?
+</li>
+</ol>
+
+<p>
+Warren D. Smith in 2006 
+(paper #97 <a href="WarrenSmithPages/homepage/works.html">here</a>)
+was able to <i>extend</i> Gibbard &amp; Satterthwaite's work to answer those 
+questions.  Here are Smith's results:
+</p>
+
+<ol>
+<li>
+<b>Theorem (semi-honesty in range voting):</b> 
+In range voting, if a voter knows every other range vote,
+then, <i>no matter how many candidates there are</i>, there is always a 
+strategically-best way for
+that voter to vote which is semi-honest.  [Proof: trivial.]
+</li>
+<li>
+<b>Theorem (3-candidate range voting):</b> 
+In <i>3</i>-candidate range voting elections, 
+if a voter knows every other range vote (complete information) <i>or</i>
+knows less (incomplete information, such as probability estimates)
+then  there is always a 
+strategically-best way for
+that voter to vote which is semi-honest.    [Proof: trivial.]
+</li>
+<li>
+<b>Theorem (impossibility theorem for voters with <i>imperfect</i> information):</b> 
+No deterministic single-winner voting system exists 
+(based on either rank-order ballots,
+rank-order ballots with equalities permitted, or range-style ratings ballots)
+in which 
+<ol type="a">
+<li> 
+there are 4 or more candidates,
+</li><li>
+the voting system is
+"reasonable" (i.e. in a certain specified set of election situations
+in which the number of voters of certain types is taken to infinity, certain
+specified winners must happen; for details see the paper), 
+</li><li>
+some semi-honest or honest vote must exist that is strategically optimal (in
+the sense of maximizing expected payoff).
+</li></ol>
+</li>
+</ol>
+
+<p>
+I.e. in range voting with &ge;4 candidates it
+<a href="RVstrat2.html">can occasionally pay</a> for a voter to lie without even being
+semi-honest (in incomplete information scenarios), but that, while sad, is not a defect
+in the design of range voting, since it was impossible for any reasonable
+voting system to do better.
+</p>
+
+<p>
+Also in another even-more-recent paper (2008) by
+Friedgut, Kalai, and Nisan, they
+give a <i>quantitative</i> version of
+the Gibbard-Satterthwaite theorem.  
+They prove: 
+</P>
+<p>
+<b>Theorem:</b>
+Let E be a neutral (meaning invariant under permuting
+the names of the candidates)
+rank-order-ballot voting system for  3-candidate elections.
+Suppose E is at least "&epsilon;-far from being a dictatorship,"
+meaning at least &epsilon;&gt;0 fraction of the winners, in the giant table
+defining E (stating the winners for each vote-configuration) 
+need to change to make it become a
+dictatorship.
+Let the probability (in the 
+<a href="RandElect.html">random elections model</a>)
+be P<sub>v</sub>
+that voter v will be able to dishonestly alter
+her vote in order to get an improved (for her) election-winner.
+Then: 
+<nobr>&sum;<sub>v</sub> P<sub>v</sub>&ge;C&epsilon;&sup2;</nobr>
+for some absolute positive constant C.
+</p>
+
+<h3> News flash! Gibbard-Satterthwaite impossibility <i>entirely</i> circumvented! </h3>
+
+<p>
+In 2009 Forest W. Simmons invented the first class of voting system both:
+</p><ol><li>
+Entirely evading 
+Gibbard-Satterthwaite's impossibility, i.e. "accomplishing the impossible," and
+</li><li>
+Good enough as a voting system to be (perhaps) of practical interest.
+</li></ol>
+<p>
+One member of Simmons's class, called <b>double range voting</b> (invented by Warren D. Smith)
+is particularly interesting.
+Both are described (in draft form) in this <a href="PuzzRevealU2.html">puzzle-answer</a>.
+</p>
+
+
+<h3> References </h3>
+<p>
+<small>
+Allan F. Gibbard: Manipulation of voting schemes: a general result, 
+Econometrica 41,4 (1973) 388-410.
+<br>
+Allan F. Gibbard:
+Manipulation of Schemes That Mix Voting with Chance,
+Econometrica 45,3 (1977) 665-681.
+<br>
+Mark Satterthwaite: Strategyproofness and Arrow's conditions, 
+Journal of Economic Theory 10 (1975) 187-217.
+<br>
+Ehud Friedgut, Gil Kalai, Noam Nisan:
+<a href="mani-focs.pdf">Elections can be manipulated often</a>,
+(49th FOCS conference [Foundations of Computer Science] 2008) 243-249.
+Later expanded journal version (with Nathan Keller as additional author)
+<a href="FKKN.pdf">A Quantitative Version of the Gibbard-Satterthwaite
+theorem for Three Alternatives</a>,
+SIAM Journal of Computation 40,3 (2011) 934-952.
+</small>
+</p>
+
+<br>
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

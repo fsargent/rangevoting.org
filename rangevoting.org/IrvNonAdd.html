@@ -1,0 +1,365 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Example to demonstrate why IRV cannot be counted in precincts
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Example to demonstrate why IRV cannot be counted in precincts </H2>
+<h3> (Demonstration that IRV is not "additive") </h3>
+
+<p>
+Counting votes in precincts (or counties), then sending the precinct totals to
+the statewide election office &ndash; it has been a way of life in almost all US states
+for as long as any of us have lived.
+</p>
+
+<p>
+But if we were to switch to IRV (instant runoff) voting, that would no longer be possible.
+All the votes, en masse, would have to be given to statewide central tabulating for <i>them</i> to count;
+there simply could no longer <i>be such a thing</i> as a "county subtotal."
+</p>
+
+<p>
+Is that an insuperable obstacle to adopting IRV voting?  No.  It'd be a huge change in US
+election procedures, financing, and organization,
+and it might make everything much more easily vulnerable to huge
+centrally-organized election frauds &ndash; you won't be able to observe 
+your and your neighbors'  own votes being counted anymore &ndash; but it
+won't be fatal to IRV, since central counting
+is certainly possible.
+</p>
+
+<p>
+To make it clearer why there is no such thing as a district "subtotal" 
+anymore if we use IRV voting,
+consider the following example.
+</p>
+
+<table align="center" cellpadding="15">
+<tr><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" align="left">
+<caption>District I: B wins</caption>
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+6
+</td>
+<td align="center">
+A
+</td>
+</tr>
+<tr>
+<td align="center">
+4
+</td>
+<td align="center">
+B
+</td>
+</tr>
+<tr>
+<td align="center">
+3
+</td>
+<td align="center">
+C>B>A
+</td>
+</tr>
+</table>
+</td><td>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" align="right">
+<caption>District II: B wins</caption>
+<tr>
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr>
+<td align="center">
+6
+</td>
+<td align="center">
+C
+</td>
+</tr>
+<tr>
+<td align="center">
+4
+</td>
+<td align="center">
+B
+</td>
+</tr>
+<tr>
+<td align="center">
+3
+</td>
+<td align="center">
+A>B>C
+</td>
+</table>
+</td></tr></table>
+
+<p>
+In district I, IRV eliminates C, then B wins 7:6.
+In district II (same as district I but the roles of A and C are reversed),
+B also wins 7:6.
+But in the combined 2-district country,
+B has 8 top-rank votes,
+A and C have 9 each, so <b>B is eliminated</b> and either A or C wins.
+Thus merging two districts both won by Bush under IRV, can produce an IRV
+victory for Gore.
+</p>
+
+<a name="irvcheat"></a>
+<H2> Wait &ndash; Can't IRV be counted in precincts (and on old-style plurality machines)
+in this other way? </H2>
+
+<p>
+IRV <i>can</i> be done on plurality machines, and counted in precincts, by simply
+making each permutation (rank ordering) be a "candidate."
+</p>
+
+<p>
+<b>Our response:</b>
+That's true but practically infeasible.
+In a C-candidate race,
+each voting machine would have to have C! pseudo-candidates
+and each precinct would have to pass C!
+"subtotal" counts on to the central tabulator.
+If C is large this is infeasible:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow">
+<tr>
+<th> C </th>
+<td>3</td>
+<td>4</td>
+<td>5</td>
+<td>6</td>
+<td>7</td>
+<td>8</td>
+<td>9</td>
+<td>10</td>
+<td>11</td>
+<td>12</td>
+<td>13</td>
+<td>14</td>
+<td>15</td>
+</tr><tr>
+<th> C! </th>
+<td>6</td>
+<td>24</td>
+<td>120</td>
+<td>720</td>
+<td>5040</td>
+<td>40320</td>
+<td>362880</td>
+<td>3628800</td>
+<td>39916800</td>
+<td>479001600</td>
+<td>6227020800</td>
+<td>87178291200</td>
+<td>1307674368000</td>
+</tr>
+</table>
+
+<p>
+<small>
+(<b>Aside:</b>
+Actually, it is even worse than this if voters are allowed to "truncate" their preferences &ndash;
+then even <i>more</i> than C! ballot types become possible, namely
+&lfloor;C!e&rfloor; where e=2.71828&hellip; and note, if you do not count an all-blank ballot
+as a "ballot type," then subtract one. See <a href="PuzzlePage.html#p91">puzzle #91</a>.)
+</small>
+</p>
+
+<p>
+Note, 13! is about equal to the present world population.
+Heck, you could
+just pass all the V votes to the central tabulator,
+and that'd be easier than passing the subtotals (if C!&gt;V) which 
+defeats the purpose of <i>having</i> subtotals.
+(A typical precinct has V=2000 voters.
+But 7! = 5040.  Also if the IRV rules allow "ballot truncation" then the true number of
+ballot types actually would be
+much <i>larger</i> than C!.)
+</p>
+<p>
+So "counting in precincts" is <i>silly</i> if precincts have to pass an exponentially large amount
+of information
+along &ndash; larger than just not totalling at all and just sending all the votes in 
+unprocessed form!
+</p>
+<p>
+Also, more to the point, I want precinct totals to be <i>published</i>.
+That's not going to happen if a precinct is going to
+have to publish 6!=720 "totals" in one race.  And even if that did happen, then this publishing
+would defeat ballot secrecy and open the door to vote-selling and coercion.
+</p>
+
+
+<H2> Wait &ndash; Can't IRV be counted in precincts via <i>Two-Way Communication</i>? </h2>
+
+<p>
+Yes.
+IRV <i>can</i> be counted in precincts if there is <i>two-way communication</i> between
+precincts and headquarters &ndash; headquarters informs all precincts who to eliminate next,
+then precincts report their top-rank totals (among remaining candidates) and then the cycle
+repeats.   
+</p>
+<p>
+But this basically <i>is</i> centralized counting.
+If you have counting in one central location directed by some "director,"
+what is the difference versus having it in, say, <i>ten</i> central location<i>s</i>,
+directed by that same director using modern two-way communication technology?
+</p>
+<p>
+So yes, it will still work. 
+And according to Rob Richie (June 2008 web post), "In Ireland
+there are 43 counting centers in the presidential race. 
+Election administrators count ballots and report their totals to a national office 
+that in turn instructs the administrators at each counting center on what to do next. 
+The entire process takes less than a day even though more than a million ballots are cast."
+</p><p>
+There are several problems with the rosy picture Richie here tries to paint.
+First, doing this <i>requires</i> modern communication technology, e.g. computer networks.
+(E.g. Richie suggests 
+"If ballot images are recorded on optical scan equipment, the data from 
+those images can be collected centrally.")
+It won't work if that communication technology is disabled, broken, misused, or attacked.
+That's a step backwards (increased vulnerability, reduced simplicity, reduced
+transparency) versus voting systems like plurality and approval where precinct
+subtotals exist and no two-way communication is needed.
+</p><p>
+Second, this <i>is</i> a centrally-directed scheme.  There still is no such thing as a 
+"district subtotal."  If a district counts its ballots locally under 
+central direction, then <i>it cannot publish its subtotals</I>
+because there is no such thing as a district subtotal.  
+That reduces the transparency and checkability of elections.
+</p><p>
+And doing this could require
+all  workers at <i>every</i> location to keep counting and recounting
+until every single last vote everywhere gets counted, which'd be a very long workday
+(or perhaps a better word than "day" is "month"...).  
+</p><blockquote><small>
+The problem is if central doesn't <i>know</i> whom to eliminate next because that depends
+on a very close vote which depends on every last absentee ballot, missing chad, debate
+over who intended what on some unclearly-marked ballot, etc.
+And even if this particular elimination-decision might between two "no hopers"
+who have only 1% of the vote each, each elimination decision can 
+<a href="IRVamp.html"> amplify</a> arbitrarily much and thus alter the ultimate winner, so Central
+can't just
+"ignore the issue and move on."  And then everybody everywhere has to remain at work waiting 
+a month for Central's next announcement.
+And in principle such a chad-counting nightmare could 
+happen in <i>every</i> IRV round.   So the worst case scenario is really very bad.
+</small></blockquote><p>
+If indeed, every precinct in the USA (I think there are over 100,000 of them)
+were to try to count ballots under central direction
+as Richie has in mind, that could require every precinct-worker in the entire USA to keep 
+counting for 1 month.  That would raise the cost of elections astronomically.
+So in fact (to avoid that) really the counting would need to happen at a much higher
+level than "precinct," such as "statewide."   Which is fine &ndash; 
+but then it is not local anymore
+and it is a big change from today's organization of elections with local, not central, counting.
+</p><p>
+The way many IRV countries actually do it
+is, they do a single pass making a <i>probabilistic model</i> of who is likely to be eliminated
+and in what order.
+If the model turns out to be correct, then
+everything goes smoothly.  If it turns out to be wrong,
+then they get into trouble and have to start recalling the election workers and
+doing more counts...  If it gets it wrong in more than one way we can really get into huge
+difficulties...
+but fortunately this in practice seems rare, probably
+because all IRV countries so far have been 2-party dominated.
+In Australia's 24 November 2007 elections,
+the Election Commission was unable to determine the composition of parliament
+until over 1 month later because of numerous races which were difficult for them to count.
+</p>
+
+<a name="dopp"></a>
+<h2> Here's what happened when North Carolina <i>tried</i> to do IRV with precinct counting... </h2>
+
+<p>
+The <a href="IRVcountingProced.pdf">enormously complicated official rules (pdf)</a>
+boggled everybody's mind.
+</P><ul><li>
+This "opti-scan" machine IRV counting method requires (to accomplish just this one simple counting round for only 
+<i>one</i> election contest) feeding each ballot one at a time by hand through the precinct opti-scanners up to 
+<i>four</I> times with the optical scanner needing a differently programmed PCMCIA card in it 
+for each of these four "counts," during which poll workers must pay close attention to whether or not each 
+ballot is "rejected" or "accepted" and put each ballot in a correct pile depending on which stack it comes from 
+and whether it is rejected or accepted by the M100.
+Note this procedure is used to only count <i>one</i> IRV counting round since the first 
+round is assumed to be previously counted at the central county office and announced to all the 
+polling locations first only after all the candidates except for the top two 1st choice 
+vote-getters have been 
+"eliminated" by the central county office counts. 
+</li><li>
+The local scanners, the M100s, or the PCMCIA cards (or both) must be reprogrammed by
+poll workers 
+between each of the four times that ballots are fed into the optical-scanners. 
+The PCMCIA cards seem to need to be "burned" in three separate configurations 
+(to count each of the three 
+ballot rankings) at the poll locations 
+only after the two winning/continuing candidates are announced. 
+The instructions left out the exact details of how to "burn" the PCMCIA cards.
+</li><li>
+The ballots must be resorted and re-fed one at a time into the optical scanner four (4) times the number of 
+IRV election contests. E.g. If there are three IRV contests on the ballots, then many individual ballots 
+could be scanned and resorted up to twelve (12) times each! 
+</li><li>
+I.e. the ballots would have to be accurately sorted into four piles during the first feed 
+(one ballot at a time) into the precinct scanners... 
+</li><li>
+and then sorted into five piles (sorted to four piles coming out of the optiscanner plus one pile
+not run through it) during the second feed (one ballot at a time) into the precinct scanners...
+</li><li>
+and then sorted into six total piles (sorted to three piles coming out of the optical scanner plus three 
+piles not run through it this time) during the third feed (one ballot at a time) into the precinct scanners...
+</li><li>
+and then sorted into seven total piles (sorted to two piles coming out of the optiscanner plus 
+five piles not run through it this time (one ballot at a time) into the precinct scanners.
+</ul><p>
+<small>
+We thank 
+<a href="http://kathydopp.com/serendipity/index.php?/archives/41-NC-BOE-figures-out-how-to-count-IRV-with-todays-precinct-opti-scanners.html">Kathy Dopp</a> 
+for contributing this info about North Carolina. 
+(She also wrote a paper summarizing
+<a href="http://electionmathematics.org/ucvAnalysis/US/RCV-IRV/InstantRunoffVotingFlaws.pdf">18 flaws in IRV</a>.)
+She concludes:
+"It will be nothing short of a praise the Lord miracle if this process is performed accurately in all polling 
+locations."  Note that even <i>after</i> adopting this hugely-complex procedure, 
+North Carolina <i>still</i>
+failed in the sense that if some IRV decision made <i>before</i> its 
+final round (for example, its <i>first</I> round)
+were a close one, then 
+even this procedure quite likely would not work &ndash; the IRV counts would have to be restarted
+from the beginning and counted centrally.
+Even early-round subcontests between candidates who might naively seem to have no hope of election,
+<a href="IRVamp.html">can</a> have ballooning effects which alter the ultimate winner.
+</small>
+</p>
+
+
+<br>
+<p><a href="CondNonAdd.html">Analogous problem for Condorcet voting systems</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

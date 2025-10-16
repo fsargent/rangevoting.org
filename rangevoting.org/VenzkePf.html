@@ -1,0 +1,353 @@
+<html>
+<head>
+<title>
+RangeVoting.org - all Condorcet methods suffer from "favorite betrayal"
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Kevin Venzke's brilliantly simple demonstration that "favorite betrayal" is
+sometimes "strategically forced"
+in <i>every</i> Condorcet voting method
+(whether rank-equalities are allowed or not) </H2>
+
+<p>
+<b>Assumptions.</b>
+We shall only consider "Condorcet voting methods" which 
+are "anonymous" and "neutral"
+and in which a ballot has the form FrGsH  where each relator r and s is selected from the set
+{=,>} and F,G,H is a permutation of the three candidates.
+(As we shall see, the 
+anonymity and neutrality assumptions may be dropped. 
+Also in two places we shall depend on certain additional "reasonableness assumptions.")
+</p>
+
+<p>
+A method is "Condorcet" if it elects the <a href="Glossary.html">Condorcet winner</a>
+whenever one exists.
+We shall allow randomized ("lottery") voting methods in our proof.
+"Favorite betrayal" means dishonestly ranking your favorite candidate strictly below top
+in your vote, and it being "strategically forced" means that if you ranked your favorite top
+or coequal-top, then a strictly worse election result would always
+happen (from your point of view).
+</p>
+
+<p><b>Proof:</b>
+The election-table below shows an election with 15 voters.
+Because this is a 
+A>C>B>A cycle and the scenario is symmetrical,
+any anonymous and neutral method must elect each candidate with 1/3
+probability.
+</p>
+
+<table border="3" cellspacing="4" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr bgcolor="#FFCC88"> 
+<td align="center">
+    3 
+</td>
+<td align="center">
+A=B>C
+</td>
+</tr>
+<tr> 
+<td align="center">
+    3 
+</td>
+<td align="center">
+C=A>B
+</td>
+</tr>
+<tr> 
+<td align="center">
+    3 
+</td>
+<td align="center">
+B=C>A
+</td>
+</tr>
+<tr>
+<td align="center">
+   2
+<td align="center">
+A>C>B
+</td>
+</tr>
+<tr>
+<td align="center">
+   2
+<td align="center">
+B>A>C
+</td>
+</tr>
+<tr>
+<td align="center">
+   2
+<td align="center">
+C>B>A
+</td>
+</tr>
+</table>
+
+<p>
+Now suppose the A=B>C voters change their vote to A>B>C, thus <i>betraying</i>
+their true co-favorite B.
+This turns A into the Condorcet winner, who would have to win with 100% 
+probability since it is a Condorcet method.
+Votes A=B>C and A=B=C which do not betray B, cause either the original 
+3-way-tie scenario, or cause C to be the Condorcet winner
+which is even worse
+from this voter's point of view.  So: betrayal is strategically forced.
+<b>Q.E.D.</b>
+</p>
+
+<p>
+<font size="-1">Proof ultimately based on an 
+<a href="http://wiki.electorama.com/wiki/Election-methods_mailing_list">electorama</a>
+web post by Kevin Venzke in June 2005.
+I would like to thank Abd ulRahman Lomax and Kevin Venzke for some combination
+of confusing, harassing, and unconfusing me about this until I got it right.
+This proof has been criticized because it depends for its operation on
+a symmetric election-tie; the critic would prefer a proof involving no ties.
+See below for some remarks about that... we can (nearly) fully satisfy this criticism...
+</font>
+</p>
+
+<p>
+<b>Objection:</b>
+This proof involved 3 identical voters simultaneously changing their vote. I
+want only one voter to change his vote.
+</p>
+
+<p>
+<b>Response:</b>
+Consider the 3 voters changing their votes one at a time.
+Focus on the first voter whose vote-change actually has a beneficial effect,
+and the scenarios immediately before and after he does his change.
+That gives a favorite-betrayal election example with only a single voter changing.
+(This same trick is useable all over voting theory, incidentally.)
+WARNING: This response only is valid under the <i>reasonableness assumption</i> 
+that this critical voter could not get the same or better effect by instead changing his
+A=B>C vote to A=B=C, or that the vote "A=B=C" is forbidden, or defining any
+time to need to vote "A=B=C" to <i>be</i> a favorite-betrayal.
+However, at least part of
+this extra assumption
+can be dropped thanks to the following argument: if it were really true that
+the change to A=B=C had a beneficial effect for this honestly-A=B>C voter, then the 
+inverse change would have had a beneficial effect for a voter who honestly felt C>A=B,
+which would have been a single-voter favorite-betrayal scenario of a different kind.
+</p>
+
+<p>
+<b>First extension of the proof:</b>
+The demand that the voting method be anonymous &amp; neutral may be avoided by
+a 3-case argument:
+<ol>
+<li>
+Suppose that, due to privileged voters or candidates, the
+winner is A. Then the B=C>A voters have incentive to rank B
+above C.
+</li>
+<li>
+Suppose that the winner is B. Then the C=A>B voters have incentive
+to rank C above A.
+</li>
+<li>
+If we suppose the winner is C, then we have the original situation,
+in which the A=B>C voters have incentive to rank A above B.
+</li>
+</ol>
+Q.E.D.
+</p>
+
+<p>
+<b>Second extension of the proof:</b>
+If equalities are disallowed in rankings, then
+this even simpler election yields a 3-way tie (1/3 probability of each of A,B,C winning):
+</p>
+
+<table border="3" cellspacing="4" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+    1
+</td>
+<td align="center">
+A>B>C
+</td>
+</tr>
+<tr> 
+<td align="center">
+    1
+</td>
+<td align="center">
+C>A>B
+</td>
+</tr>
+<tr> 
+<td align="center">
+    1
+</td>
+<td align="center">
+B>C>A
+</td>
+</tr>
+</table>
+
+<p>
+Now if the A>B>C voter changes her vote to B>A>C, betraying A, then
+B becomes the Condorcet winner, with 100% victory probability.
+This is a superior outcome from this voter's point of view if
+the utilities are 
+U<sub>A</sub>=12, U<sub>B</sub>=9, U<sub>C</sub>=0
+since it increases the expected utility from 7 to 9.
+The possible votes which did not betray A, namely the original A>B>C and 
+A>C>B, both are worse from this voter's point of view (the latter turns C into 
+the Condorcet winner &ndash; utility=0) so that the betrayal is strategically forced.
+(And we can similarly make a 3-case argument extending this proof to avoid
+having to assume anonymity
+&amp; neutrality.)
+Q.E.D.
+</p>
+
+<p>
+<b>Third extension of the proof:</b>
+The criticism that the scenarios above are highly symmetric <i>ties</i>
+may be avoided in the following way to get a proof not involving a tied-scenario, or
+at least not really depending essentially on needing ties.
+(There are many variants of the following "random perturbation" trick; 
+we only exhibit the simplest.)
+</p>
+
+<table border="3" cellspacing="4" bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr> 
+<td align="center">
+    30
+</td>
+<td align="center">
+A=B>C
+</td>
+</tr>
+<tr> 
+<td align="center">
+    30
+</td>
+<td align="center">
+C=A>B
+</td>
+</tr>
+<tr> 
+<td align="center">
+    30 
+</td>
+<td align="center">
+B=C>A
+</td>
+</tr>
+<tr>
+<td align="center">
+   20
+<td align="center">
+A>C>B
+</td>
+</tr>
+<tr>
+<td align="center">
+   20
+<td align="center">
+B>A>C
+</td>
+</tr>
+<tr>
+<td align="center">
+   20
+<td align="center">
+C>B>A
+</td>
+</tr>
+<tr>
+<td align="center">
+   1
+<td align="center">
+unknown
+</td>
+</tr>
+</table>
+
+<p>
+In this 150-voter election (which is just 10 times the original one),
+we have a symmetrical 3-way tie, <i>except</i> for the 151st voter, called the "tiebreaker,"
+whose vote is unknown to us until after the election is over.  (In realistic elections, one
+usually does not have full knowledge of other voters' votes until afterwards.)
+We therefore model that extra voter as possibly casting any of the 6 
+possible nontrivial equality-containing votes
+A=B>C, A=C>B, C=B>A, A>B=C, B>A=C, C>A=B
+<!-- A>B>C, A>C>B, B>A>C, B>C>A, C>A>B, C>B>A -->
+with equal likelihood.
+(Also, one could merely assume the <i>last three</i> of these six
+to get another proof that would also work...)
+Then the election generally will <i>not</i> be tied.
+However, from the point of view of any particular among the 150 voters working from
+the incomplete information available to him,
+the winners A,B,C (due to symmetry &amp; anonymity) are each equally likely to be elected.
+</p>
+
+<p>
+Now (as before) we consider the 30 A=B>C voters.
+They are motivated to betray their true co-favorite B
+by changing their vote to A>B>C.
+That turns A into the Condorcet winner among the first 150 voters.  That causes
+A to have a greater than 1/3 probability of winning the 151-voter full election &ndash;
+in fact the probability is at least 2/3 because
+in 4 out of the 6 cases A is the Condorcet winner.
+This situation is at least as good, and if there is a nonzero win probability for A or
+B in the 2 cases
+where A is not the Condorcet winner, <i>better</i>, in the eyes
+of these 30 voters.  Personally I find it "unreasonable" for a
+Condorcet method not to give A the victory with at least some
+nonzero probability in at least one of those 2 cases.
+That proves that this betrayal is strategically forced, in this kind of partial information
+scenario, if the Condorcet method obeys this "reasonableness" condition.
+Q.E.D.
+</p>
+
+<p>
+<font size="-1">
+Again it is probably possible to drop this extra assumption, at least partially,
+if some extra arguments are put in.  You would try to argue that any "unreasonable" Condorcet
+method would have to exhibit favorite betrayal of another sort.  For example,
+clearly in each of the two unreasonable C-always-wins scenarios, a single B>A>C voter
+could betray B by voting A>B>C to make A the Condorcet Winner, which would be
+an improvement from his point of view.
+</font>
+</p>
+
+<br>
+<p><a href="VenzkeFBC3.html">Another Venzke Proof</a></p>
+<p><a href="VenzSimp.html">Another</a></p>
+<p><a href="IncentToExagg.html">And if we forbid ranking-equalities</a></p>
+
+
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

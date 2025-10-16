@@ -1,0 +1,371 @@
+<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
+<html><head><META http-equiv="Content-Type" content="text/html; charset=utf-8">
+<title>   GDP growth rate prediction-fit by Robert Barro </title>
+<style type="text/css" media="print">.hide{display:none}</style></head><body style="margin:0;padding:0"><div class="hide"><div style="background:#ffffcc;padding:4 8;border-bottom:thin solid #eeeeee;font-family:Arial,sans-serif">
+</div></div><div style="margin:1ex">
+
+<H2> Barro's latest GDP growth rate prediction fit </H2>
+
+<p>
+Harvard University  economics professor Robert Barro, in his book
+<ul><li>
+Robert J. Barro: 
+<a href="http://mitpress.mit.edu/catalog/item/default.asp?ttype=2&tid=7087">
+Determinants of Economic Growth: A Cross-Country Empirical Study</a>, 
+MIT Press, Cambridge MA 1997,
+ISBN=0-262-02421-7.
+</li></ul>
+attempted to predict the annual GDP growth rate in a country from various
+facts about that country, based on least squares fitting to data.
+I emailed Barro to ask him for his scatterplot of country GDP-growth data,
+plus his fit of it to "democracy index" that is pictured on page 60 of his book.
+Barro replied in June 2006
+that that data was 10 years old and here was his <i>latest</i> fit.
+The fit shows (see picture) that a country becomes better off economically
+(as measured by annual GDP growth rate, which increases additively by 2.6%)
+as its "democracy index of political rights" increases from 0
+to 5.6 on an 0-10 scale.
+<i>However</i>, Barro finds that the GDP growth rate then
+<i>decreases</i> by 1.6%
+if the country is made still more democratic up to a maximum democratic rights level
+of 10.  It appears that being "too democratic" is economically bad!
+</p>
+
+<p>
+Details of Barro's latest fits are below.
+The two coefficients that determine the parabolic curve shown, are
+C(21) and C(22) where DEMOCDC1 is on an 0-1 scale (in the picture this
+has been redefined to be a 0-10 scale).  
+Note their error bars are fairly small so
+these effects apparently are genuine.
+The curve has a peak and then curves back down, provided 
+C(21)+2&times;C(22)&lt;0.
+The statistical confidence that this is true (if we regard the two errors
+as uncorrelated), is about 97-98%.
+</p>
+
+<div>
+
+   <br><a name="0.1_table01"></a>
+<div align="left">
+<table width="460">
+<tr valign="top"><td width="66%" colspan="3" height="13"><font size="2" face="Arial">System: 
+  GROWTHCH</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">Estimation 
+  Method: Iterative Three-Stage Least Squares</font></td></tr>
+<tr valign="top"><td width="66%" colspan="3" height="13"><font size="2" face="Arial">Date: 
+  06/19/06   Time: 16:04</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="48%" colspan="2" height="13"><font size="2" face="Arial">Sample: 
+  3 182</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="66%" colspan="3" height="13"><font size="2" face="Arial">Included 
+  observations: 85</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="84%" colspan="4" height="13"><font size="2" face="Arial">Total 
+  system (unbalanced) observations 235</font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">Simultaneous 
+  weighting matrix &amp; coefficient iteration</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">Convergence 
+  achieved after: 6 weight matrices, 7 total coef iterations</font></td></tr>
+<tr valign="top"><td width="29%" height="5"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="7"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial">Coefficient</font></td>
+  <td width="18%"><font size="2" face="Arial">Std. Error</font></td>
+  <td width="18%"><font size="2" face="Arial">t-Statistic</font></td>
+  <td width="15%"><font size="2" face="Arial">Prob.  </font></td></tr>
+<tr valign="top"><td width="29%" height="5"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="7"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(1)</font></td>
+  <td width="18%"><font size="2" face="Arial">0.267699</font></td>
+  <td width="18%"><font size="2" face="Arial">0.030522</font></td>
+  <td width="18%"><font size="2" face="Arial">8.770672</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0000</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(2)</font></td>
+  <td width="18%"><font size="2" face="Arial">-0.023433</font></td>
+  <td width="18%"><font size="2" face="Arial">0.002806</font></td>
+  <td width="18%"><font size="2" face="Arial">-8.350675</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0000</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(4)</font></td>
+  <td width="18%"><font size="2" face="Arial">0.003285</font></td>
+  <td width="18%"><font size="2" face="Arial">0.001579</font></td>
+  <td width="18%"><font size="2" face="Arial">2.080098</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0387</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(7)</font></td>
+  <td width="18%"><font size="2" face="Arial">0.005626</font></td>
+  <td width="18%"><font size="2" face="Arial">0.004455</font></td>
+  <td width="18%"><font size="2" face="Arial">1.262774</font></td>
+  <td width="15%"><font size="2" face="Arial">0.2080</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(9)</font></td>
+  <td width="18%"><font size="2" face="Arial">-0.069270</font></td>
+  <td width="18%"><font size="2" face="Arial">0.027732</font></td>
+  <td width="18%"><font size="2" face="Arial">-2.497830</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0132</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(10)</font></td>
+  <td width="18%"><font size="2" face="Arial">-3.294103</font></td>
+  <td width="18%"><font size="2" face="Arial">0.556276</font></td>
+  <td width="18%"><font size="2" face="Arial">-5.921708</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0000</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(12)</font></td>
+  <td width="18%"><font size="2" face="Arial">0.305493</font></td>
+  <td width="18%"><font size="2" face="Arial">0.053068</font></td>
+  <td width="18%"><font size="2" face="Arial">5.756623</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0000</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(15)</font></td>
+  <td width="18%"><font size="2" face="Arial">0.017065</font></td>
+  <td width="18%"><font size="2" face="Arial">0.005872</font></td>
+  <td width="18%"><font size="2" face="Arial">2.906110</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0040</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(16)</font></td>
+  <td width="18%"><font size="2" face="Arial">-0.015226</font></td>
+  <td width="18%"><font size="2" face="Arial">0.005260</font></td>
+  <td width="18%"><font size="2" face="Arial">-2.894837</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0042</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(19)</font></td>
+  <td width="18%"><font size="2" face="Arial">-0.017748</font></td>
+  <td width="18%"><font size="2" face="Arial">0.009878</font></td>
+  <td width="18%"><font size="2" face="Arial">-1.796769</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0737</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(20)</font></td>
+  <td width="18%"><font size="2" face="Arial">0.058623</font></td>
+  <td width="18%"><font size="2" face="Arial">0.023416</font></td>
+  <td width="18%"><font size="2" face="Arial">2.503550</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0130</font></td></tr>
+<tr valign="top" bgcolor="#ffffcc"><td width="29%" height="13"><font size="2" face="Arial">C(21)</font></td>
+  <td width="18%"><font size="2" face="Arial">0.093966</font></td>
+  <td width="18%"><font size="2" face="Arial">0.029231</font></td>
+  <td width="18%"><font size="2" face="Arial">3.214647</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0015</font></td></tr>
+<tr valign="top" bgcolor="#ffffcc"><td width="29%" height="13"><font size="2" face="Arial">C(22)</font></td>
+  <td width="18%"><font size="2" face="Arial">-0.083979</font></td>
+  <td width="18%"><font size="2" face="Arial">0.024726</font></td>
+  <td width="18%"><font size="2" face="Arial">-3.396414</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0008</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(31)</font></td>
+  <td width="18%"><font size="2" face="Arial">-0.008037</font></td>
+  <td width="18%"><font size="2" face="Arial">0.002807</font></td>
+  <td width="18%"><font size="2" face="Arial">-2.862892</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0046</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">C(32)</font></td>
+  <td width="18%"><font size="2" face="Arial">-0.012793</font></td>
+  <td width="18%"><font size="2" face="Arial">0.003316</font></td>
+  <td width="18%"><font size="2" face="Arial">-3.857506</font></td>
+  <td width="15%"><font size="2" face="Arial">0.0002</font></td></tr>
+<tr valign="top"><td width="29%" height="5"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="7"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="48%" colspan="2" height="13"><font size="2" face="Arial">Determinant 
+  residual covariance</font></td>
+  <td width="18%"><font size="2" face="Arial">1.52E-11</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="5"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="7"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">Equation: 
+  LINGRDEC1=C(1)+C(2)*LINGDP65L<WBR>+C(4)*UYRM65+C(7)</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        *OPRESDEC1+C(9)<WBR>*GVLINDEC1+C(10)*LIFE60INV+C<WBR>(12)</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        *TOTOPDEC1+C(15)<WBR>*RULELAW+C(16)*FERTL65+C(19)</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        *DPDEC1+C(20)*INVLINDEC<WBR>1+C(21)*DEMOCDC1+C(22)</font></td></tr>
+<tr valign="top"><td width="66%" colspan="3" height="13"><font size="2" face="Arial">        *DEMOCDC1S </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">Instruments: 
+  C LINGDP60L UYRM65 OPRESDEC1 TOTOPDEC1</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        RULELAW 
+  FERTL65 SPANPOR OTHCOL INVLIN6064</font></td></tr>
+<tr valign="top"><td width="84%" colspan="4" height="13"><font size="2" face="Arial">        GVLIN6064 
+  LIFE60INV DEMOC65R DEMOC65RS</font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="66%" colspan="3" height="13"><font size="2" face="Arial">Observations: 
+  70</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">R-squared</font></td>
+  <td width="18%"><font size="2" face="Arial">0.634778</font></td>
+  <td width="36%" colspan="2"><font size="2" face="Arial">    Mean dependent 
+  var</font></td>
+  <td width="15%"><font size="2" face="Arial">0.025466</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">Adjusted 
+  R-squared</font></td>
+  <td width="18%"><font size="2" face="Arial">0.557890</font></td>
+  <td width="36%" colspan="2"><font size="2" face="Arial">    S.D. dependent 
+  var</font></td>
+  <td width="15%"><font size="2" face="Arial">0.020532</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">S.E. 
+  of regression</font></td>
+  <td width="18%"><font size="2" face="Arial">0.013652</font></td>
+  <td width="36%" colspan="2"><font size="2" face="Arial">    Sum squared 
+  resid</font></td>
+  <td width="15%"><font size="2" face="Arial">0.010624</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">Durbin-Watson 
+  stat</font></td>
+  <td width="18%"><font size="2" face="Arial">1.449268</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="5"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="7"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">Equation: 
+  LINGRDEC2=C(1)+C(31)+C(2)<WBR>*LINGDP75L+C(4)*UYRM75</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        +C(7)*OPRESDEC2+C(9)<WBR>*GVLINDEC2+C(10)*LIFE70INV+C<WBR>(12)</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        *TOTOPDEC2+C(15)<WBR>*RULELAW+C(16)*FERTL75+C(19)</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        *DPDEC2+C(20)*INVLINDEC<WBR>2+C(21)*DEMOCDC2+C(22)</font></td></tr>
+<tr valign="top"><td width="66%" colspan="3" height="13"><font size="2" face="Arial">        *DEMOCDC2S </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">Instruments: 
+  C LINGDP70L UYRM75 OPRESDEC2 TOTOPDEC2</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        RULELAW 
+  FERTL75 SPANPOR OTHCOL INVLIN7074</font></td></tr>
+<tr valign="top"><td width="84%" colspan="4" height="13"><font size="2" face="Arial">        GVLIN7074 
+  LIFE70INV DEMOC75 DEMOC75S</font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="66%" colspan="3" height="13"><font size="2" face="Arial">Observations: 
+  84</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">R-squared</font></td>
+  <td width="18%"><font size="2" face="Arial">0.497837</font></td>
+  <td width="36%" colspan="2"><font size="2" face="Arial">    Mean dependent 
+  var</font></td>
+  <td width="15%"><font size="2" face="Arial">0.015558</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">Adjusted 
+  R-squared</font></td>
+  <td width="18%"><font size="2" face="Arial">0.404578</font></td>
+  <td width="36%" colspan="2"><font size="2" face="Arial">    S.D. dependent 
+  var</font></td>
+  <td width="15%"><font size="2" face="Arial">0.024569</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">S.E. 
+  of regression</font></td>
+  <td width="18%"><font size="2" face="Arial">0.018958</font></td>
+  <td width="36%" colspan="2"><font size="2" face="Arial">    Sum squared 
+  resid</font></td>
+  <td width="15%"><font size="2" face="Arial">0.025159</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">Durbin-Watson 
+  stat</font></td>
+  <td width="18%"><font size="2" face="Arial">2.540857</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="5"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="7"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">Equation: 
+  LINGRDEC3=C(1)+C(32)+C(2)<WBR>*LINGDP85L+C(4)*UYRM85</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        +C(7)*OPRESDEC3+C(9)<WBR>*GVLINDEC3+C(10)*LIFE80INV+C<WBR>(12)</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        *TOTOPDEC3+C(15)<WBR>*RULEDEC3+C(16)*FERTL85+C(19)</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        *DPDEC3+C(20)*INVLINDEC<WBR>3+C(21)*DEMOCDC3+C(22)</font></td></tr>
+<tr valign="top"><td width="66%" colspan="3" height="13"><font size="2" face="Arial">        *DEMOCDC3S </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">Instruments: 
+  C LINGDP80L UYRM85 OPRESDEC3 TOTOPDEC3</font></td></tr>
+<tr valign="top"><td width="100%" colspan="5" height="13"><font size="2" face="Arial">        RULE85 
+  FERTL85 SPANPOR OTHCOL INVLIN8084 GVLIN8084</font></td></tr>
+<tr valign="top"><td width="84%" colspan="4" height="13"><font size="2" face="Arial">        LIFE80INV 
+  DEMOC85 DEMOC85S</font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="66%" colspan="3" height="13"><font size="2" face="Arial">Observations: 
+  81</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">R-squared</font></td>
+  <td width="18%"><font size="2" face="Arial">0.482747</font></td>
+  <td width="36%" colspan="2"><font size="2" face="Arial">    Mean dependent 
+  var</font></td>
+  <td width="15%"><font size="2" face="Arial">0.014303</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">Adjusted 
+  R-squared</font></td>
+  <td width="18%"><font size="2" face="Arial">0.382385</font></td>
+  <td width="36%" colspan="2"><font size="2" face="Arial">    S.D. dependent 
+  var</font></td>
+  <td width="15%"><font size="2" face="Arial">0.025853</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">S.E. 
+  of regression</font></td>
+  <td width="18%"><font size="2" face="Arial">0.020317</font></td>
+  <td width="36%" colspan="2"><font size="2" face="Arial">    Sum squared 
+  resid</font></td>
+  <td width="15%"><font size="2" face="Arial">0.027658</font></td></tr>
+<tr valign="top"><td width="29%" height="13"><font size="2" face="Arial">Durbin-Watson 
+  stat</font></td>
+  <td width="18%"><font size="2" face="Arial">2.279647</font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="5"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+<tr valign="top"><td width="29%" height="7"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="18%"><font size="2" face="Arial"> </font></td>
+  <td width="15%"><font size="2" face="Arial"> </font></td></tr>
+</table>
+</div>
+<p><font size="2" face="Arial"> <br>
+</font> <br> <br> <br> <br> <br> <br>
+ <br> <br> <br> <br> <br> <br>
+ <br> <br> <br> <br> <br> <br>
+ <br> <br> <br> <br> <br> <br>
+ <br> <br> <br> <br> <br></p>
+
+
+</div>
+
+</div></body></html>

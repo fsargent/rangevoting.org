@@ -1,0 +1,520 @@
+<html>
+<hea>
+<title>
+RangeVoting.org - Blanks (Xs)
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Blanks (Xs) </H2>
+
+<p><small><a href="BlankSumm.html">Executive Summary</a></small></p>
+
+<p>
+Voters can leave a candidate's
+numeric score <i>intentionally blank</i> by writing in X in that slot
+(or on a voting machine, pushing an "intentional blank" button instead of a numeric button).
+They might want to do that to express <i>no opinion</i> about that candidate,
+perhaps because they feel ignorant about him.
+</p>
+
+<p>
+Only non-blank votes are incorporated into the average.
+<small>
+For example if there were 5 voters and they gave 
+scores to candidate Alice of 9, 15, "X", 72, and "X",
+then Alice's total would be (9+15+72)/3 = 96/3 = 32.
+The division by 3 is because there were 3 non-blank votes for Alice,
+i.e. 3 voters who wished to express an opinion about Alice.
+</small>
+</p>
+
+<p>
+Note that X <i>truly</i> has the desired effect of expressing "no opinion":
+If you vote X, then the societal-score for that candidate will be exactly the same as
+if you had never existed, i.e. will be purely determined by
+the <i>other</i> voters without you.
+</p>
+
+<p>
+Some people have told me that they would have preferred 0 or 50, not X.  But
+0 and 50 do <i>not</i> express "no opinion" since they <i>do</i> affect that candidate's
+score.  Indeed, 0 is equivalent to rating that candidate as "ultra bad"
+and is expressing a very strong opinion.  But if you <i>do</i> want to
+express 0, 50, or any other opinion, go right ahead and do it.  Nothing
+forces you to use "X"; only use X if you want to express <i>no</i> opinion.
+</p>
+
+<H3> Note on format </H3>
+
+<p>
+It has been suggested that writing an X is actually a very <i>bad</i> way to do it
+since voters may confusedly think
+X represents their vote for one candidate ("X marks the spot").  
+A better format to avoid that worry is to have something like this
+where the voter is to circle one entry per row:
+</p>
+<table cellpadding="2" cellspacing="3">
+<tr bgcolor="pink"><td>Joe Q. Candidate</td><td>No_Opinion 0 1 2 3 4 5 6 7 8 9</td><td>&larr; circle one entry in this row</td></tr>
+<tr bgcolor="aqua"><td>Jill Politician </td><td>No_Opinion 0 1 2 3 4 5 6 7 8 9</td><td>&larr; <i>and</i> circle one entry in this row</td></tr>
+<tr bgcolor="pink"><td>Mortimer Snerd  </td><td>No_Opinion 0 1 2 3 4 5 6 7 8 9</td><td>&larr; <i>and</i> circle one entry in this row</td></tr>
+</table>
+
+<H3> Why we <i>must</i> have blanks </H3>
+
+<p>
+Permitting
+blanks is absolutely necessary to avoid <a href="Spoiled.html">spoiled ballots</a>.
+Namely, suppose you enter an illegible score in some candidate's slot.
+(Which probably would happen a few percent of the time.)   Would you prefer that
+<ol>
+<li>
+Your illegible score be interpreted as a "zero" thus maximally voting against
+that candidate (likely contrary to your intention &ndash; if you wrote something
+illegible, it was probably not a zero), 
+</li>
+<li>
+Or should
+it be <i>dropped</i> from that candidate's average ("blanked"), thus not biasing it in any way?
+</li>
+</ol>
+<font size="-1">Kent Van Cleave also suggests (essentially)
+that if a voter writes a numerical score of "9*"
+where the * denotes an "illegible digit" then we should agree to  reckon that score as "95."
+</font>
+</p>
+
+<H3> Why we prefer that voters write an "X" (something explicit, anyhow) &ndash; not just leave it blank </H3>
+
+<p>
+By forcing voters to write an "X", we force 
+them to make it extra clear that they really <i>meant</i>
+it when they selected intentional blank.  Also, as
+Andrew Gumbel pointed out in his excellent book <i>Steal this vote</i>,
+allowing voters to leave it blank is an <i>invitation to fraud</i> &ndash; some fraudster
+could just fill in the blank slot with whatever value they preferred, arousing
+<i>little or no suspicion</i>.  (Of course, a fraudster could still try to alter ballots
+even with the X requirement, e.g. by rendering entries illegible, trying to erase them,
+or Xing them out, but if that happened a lot it would <i>arouse suspicion</i>.
+</p>
+
+<H3> How many voters are ignorant, or wish to express ignorance/indifference? </H3>
+
+<p>
+<b>Australia:</b>
+Australia has reweighted STV 10-winner senate elections and IRV
+single-winner house elections.  In both, expressing a full preference order is
+compulsory.
+A national survey in 1979 showed that 72% of Australian voters favored
+the "optional" version of IRV, in which naming a single top-ranked candidate
+("plumping")
+is permitted instead of a full ranking of all of them;
+only 26% favored forcing everybody to provide full-preference rankings.
+With plumping, the voters intentionally express total indifference or ignorance about all the
+non-top candidates.  (They might also have wished to express knowledge or desires about several
+candidates, not just one, e.g. rank A top, B bottom, and C middling,
+and <i>then</i> express ignorance/indifference about the <i>rest</i>, but
+the Australian survey did not offer them that choice.)
+</p>
+
+<p>
+In most of Australia, voting, and providing a full preference ranking for every candidate in
+every race is compulsory
+(monetary penalty if you do not).  
+But IRV with optional plumping is used for state elections in New South Wales
+(introduced by the Wran Labor government in 1981)
+and in Queensland (1992).
+The plumping rate
+has increased over time in both these regions.
+The decision to express preferences also appears to be closely
+related to the recommendations made by parties on their 'how-to-vote' cards.
+In a survey conducted at two by-elections in 1992, fully 75% of voters
+followed party voting directions, resulting in plumping rates of 43%
+in one district (Gordon) and 63% in another (Kuring-gai).
+In the Kuring-gai case, less than 33% of electors filled in all squares on the
+ballot paper.
+In Queensland, plumping rates were 23% at the first OPV election in 1992.
+Since these rates are considerably smaller than the 72% rate of voters who wanted
+the <i>option</i> of plumping, we conclude that Australian voters wanted the ability
+to express maximum ignorance but apparently also want the ability to
+express maximum knowledge and presumably also would enjoy the ability to
+express intermediate levels of knowledge.
+</p>
+
+<p>
+<b>USA self-confessed ignorance levels:</b>
+In 1958, constituents in congressional districts in which there was
+a Democrat v Republican contest going on admitted to knowing nothing about that race
+as follows:
+</p>
+
+<p>
+A = have read or heard something about incumbent<br>
+B = have read or heard something about challenger<br>
+results:<br>
+&nbsp;&nbsp;&nbsp;
+A &amp; B: 24%<br>
+&nbsp;&nbsp;&nbsp;
+A but not B: 25%<br>
+&nbsp;&nbsp;&nbsp;
+B but not A: 5%<br>
+&nbsp;&nbsp;&nbsp;
+neither (never read or heard anything about either one): 46%.<br>
+</p>
+
+<p>
+A majority of the US public in 1958 was unable to say which party had controlled
+congress for the last 2 years. [Data from W.E. Miller &amp; D.E. Stokes:
+Constituency influence in Congress,
+Amer. Polit. Sci. Review 57,1 (March 1963) 45-56.]
+</p>
+
+<p>
+Moving forward to 1988:
+74% of the US public did not know the
+name and party of even one local congressional candidate.
+</p>
+
+<p>
+A 1996 Washington Post/Harvard survey found that
+over 50% of Americans agreed with this statement: "Politics and government are
+so complicated that a person like me can't really understand what's going on."
+In particular only 26% knew the term of office of a U.S. senator was 6 years
+and less than half that a Congressman
+serves a 2-year term.
+</p>
+
+<p>
+<b>Conclusions:</b>
+The rates of self-admitted ignorance ("heard and read nothing about either candidate")
+are large!
+Voter desire to have a voting system that allows expression of ignorance or indifference,
+is overwhelmingly large (72%) <i>even</i> if that voter is forced to express either <i>total</i>
+knowledge or
+<i>maximal</i> ignorance/indifference i.e. about <i>all</i> candidates except one,
+with no middle ground permitted.  So for sure, voters by an overwhelming majority would
+want to have the "leave blank" option in range voting.
+</p>
+
+<a name="dice"></a>
+<H3> For math nerds: An argument about "unbiased estimators" </H3>
+
+<p>
+Suppose you roll 5000 (perhaps biased) dice and want to know what their total sum is.
+But you can only see 1000 of the dice; the other 4000 rolled under the couch.
+<ul>
+<li>
+Method 1: assume the 5000 dice have the same average as the 1000 you can see.
+That is what statisticians call an "unbiased estimator."
+</li>
+<li>
+Method 2 (far worse): just sum the 1000 dice with no effort made
+to estimate the effects of the 4000 dice you cannot see.
+That is what statisticians call a "very biased estimator."  Obviously,
+the unbiased estimator is going to be right a heck of a lot more often.
+</li>
+</ul>
+</p>
+
+<p>
+Refusing to have blanks, and thus forcing ignorant voters to guess, or to write "zero,"
+results in a very biased estimate!  The right way to estimate what voters
+ignorant about a candidate would have thought once they learned about him,
+is <i>not</i> to <i>pretend</i> they all would have thought "zero" or "a guess."
+The right way is to <i>allow</i>
+them not to express an opinion (<i>if</i> they so desire) in which case
+their vote is extrapolated from the voters who <i>did</I> vote and <i>did</i>
+choose to express an opinion about that voter.  
+</p>
+
+
+
+<H3> Worried that totally-unknown candidates might get elected (thanks to blanks)? </H3>
+
+<p>
+Don't be.  First of all, thanks to complaints about this issue, our current recommendation
+includes a 
+<a href="RuleD.html">"safety valve" rule</a>
+on top of range voting that refuses to elect a candidate with
+less than 50% of the score <i>sum</i> of the sum-maximizing candidate, i.e,
+basically, candidates unknown to over 50% of the population
+cannot be elected (unless even the best knwon is virtually unknown so that we cannot avoid it).
+</p>
+
+<p>
+Second, even without the safety valve rule,
+it would have been <i>practically</i> impossible anyhow, as we shall now argue,
+and also see <a href="Averaging.html#unlikely">this mathematical analysis</a>.
+</p>
+
+<p>
+<b>Q.</b>
+Suppose I get on the ballot, but I don't campaign and nobody has heard 
+of me so they leave me unspecified.  Suppose my friends and family 
+give me a 99.  Does that mean I get elected?
+</p>
+
+<p>
+<b>A.</b> Without the <a href="RuleD.html">safety-valve rule d</a>:
+Yes it does!  <i>But</i>, this is not a problem in practice,
+our polling studies in the real world conclusively
+show.  That is because in practice, a lot of the people who
+might want to put "unspecified" actually put "zero."
+(By "a lot" I mean, a lot.  Somewhere between 20 and 90% for sure.
+In our 7-candidate range election study, we received nearly 3 zero-scores,
+on average, per ballot.  Zero was by far the most popular score to give a candidate,
+exceeding every other number's popularity by a factor of over 10, and with
+over 70% more zero-scores received than blank scores.
+Paper describing the study is
+#82 <a href="WarrenSmithPages/homepage/works.html"> here</a>.)
+</p>
+
+<p>
+Due to this effect, there is a heavy built-in <i>bias</i> against 
+little-known candidates.  Range voting, by allowing
+blanks, merely reduces that bias, but does not come
+close to eliminating it.
+This is exactly the right thing to do.
+</p>
+
+<p>
+So in any reasonably large range election where your friends &amp; family voted for you
+but nobody else had ever heard of you, you can forget about
+winning.
+</p>
+
+<p>
+However, if 50% of the population absolutely loved you and 50%
+had not heard of you, you might be able to get elected.  I admit
+that seems implausible, but it does suffice to illustrate the
+beneficial bias-reducing effects we can get from this,
+which allow good candidates who are little-known, to get better
+vote totals.  This would not allow them to win, but it would get them
+the attention they deserve for use in a future election.
+</p>
+
+<H3> Still Worried? </H3>
+
+<p>
+<b>Q.</b> I'm still worried about some "stealth candidate" getting elected via blanks.
+I'd like to give him zeros, not blanks.
+</P>
+
+<p>
+<b>A.</b> Well, the thing is, there are a lot of conservative voters like you out there,
+and there always will be. Those voters can and will choose to intentionally put
+0, where those of us who felt less conservative, would put blank.
+This leads to an enormous pit that stealth candidates have to climb out of.
+</p>
+
+<p>
+Realistically, a stealth candidate loved by 5% of
+society and unknown to the rest,  would get zeroed by at least
+50% of the rest, leading to an
+average nonblank score for him of 9.4, placing him far in the rear.
+Check <a href="Averaging.html#unlikely">this probability calculation</a>
+to estimate the chances your nightmare will come true.
+</P>
+
+<a name="stealthDR">
+<p>
+If you want to worry about stealth candidates, you should worry about
+the plurality system, not range. Right now some wacko can often
+get elected, even though nobody knows a damn thing about him,
+simply because he managed, either through luck, apathy, or
+an inside deal, to get to be either the Democrat or Republican candidate.
+This in fact happens constantly with the election of, e.g, judges.
+(I recall an article in the <i>Trenton Times</I> [New Jersey] in about 2000 
+explaining how, if
+you wanted to be a Trenton judge, you should come up with $100,000 to contribute
+to the party boss, and then you'd get the nomination.  This was standard
+procedure.  
+Similar accusations &ndash;
+that Democratic-Party judgeship-nominations were for sale for $50,000 in Brooklyn &ndash;
+<a href="NewYorkPostJudge.html">were recently made on the front page
+of the <i>New York Post</i></a>, etc.)
+</p>
+
+<p>
+With range voting, the importance of the major parties and deal-making party "power brokers"
+will diminish and so I think that won't happen as much.
+</P>
+
+<p>
+Also, I should add, if we <i>eliminated</i> the "leave blank" X-option,
+here are the bad things that would happen:
+The voters who would have
+wanted to put blanks, will be frustrated. 
+There are a lot of them,
+and their desire to be honest, is being frustrated, and they don't like it.
+(I'm not just blowing smoke here. This all is based on my
+actual experience conducting a range election as a 2004 exit poll,
+paper #82 <a href="WarrenSmithPages/homepage/works.html"> here</a>.)
+</p>
+
+<p>
+Also it won't work anyway, because those voters will simply
+award unknown candidates a score of 50, or whatever they
+think the average score is, or some intermediate value,
+or a guess, anyhow not zero. (Which in fact can lead to
+a lot <i>more</i> distortion and noise.)
+</p>
+
+<H3> An argument about why we need blanks somewhat related to (but also somewhat unrelated to)
+ the abortion debate: </H3>
+
+
+<p>
+There is an analogy to the abortion debate.
+Recall: The "pro-choice" camp says we should be free to choose to have an abortion.
+The "anti-choice" (or "pro-life" as they prefer) camp says: nobody should get
+that choice
+because of an overriding moral imperative: They must choose "no abortion"
+because
+that is the only morally acceptable choice. Now in the present day USA and most
+of the democratic world, the pro-choice side is ahead in the polls and the law, but
+their opponents remain a substantial minority.
+</p>
+
+<p>
+Fine. Now to return to range voting, the "pro-choice" camp would say:
+those who want blanks to be blank, can have that option. If they prefer
+blanks to be zeros, then we allow them to put 0s. If they prefer, say, 25s, put
+25. It is your (the voter's) choice.
+</p>
+
+<p>
+The "anti-choice" camp says "no. You do not get to choose. I insist you do it
+my way, which is zeros. Because I am definitely right, and everybody who says
+otherwise
+is definitely wrong."
+</p>
+
+<p>
+But unlike in the abortion debate, here there is no moral imperative.
+In the range voting setting there is no reason to call the anti-choice side the
+"pro-life" side &ndash; since there is no pro-life issue here!
+In the range voting setting, they are simply "anti-choice"! 
+So I do not
+see the rationale for demanding blanks be zeros and for insisting on the
+God-given
+rightness of only this choice.
+I see a rationale for letting voters <i>choose</i> what they want, and if they want
+to express "no opinion" by putting an X (intentional blank score) I say let them.
+</p>
+
+<H3> Two other arguments for why blanks are a good thing to have </H3>
+
+<p>
+Having Xs totally 
+prevents problems arising from the
+<a href="ManyChoices.html">too-many choices paradox</a>.
+</p>
+
+<p>
+Also, there is justification found in the
+<a href="BibVt.html#chapter4">bible</a> (see the quote from Samuel)
+for preferring the Xs=blanks option.
+</p>
+
+<H3> How it looks from the candidate view instead of the voter view </H3>
+
+<p>
+Put the shoe on the other foot, I say to those who want blanks
+automatically to be scored as 0s. (An old principle for judges: try to see it from both sides
+of the case.)
+</p>
+
+<p>
+Suppose <i>you</i> were the candidate about whom <i>I</i> am ignorant.
+(Or, more likely, you are just a random person about whom I am ignorant.)
+Would you want me to say to you "I have never heard of you.
+<i>Therefore</i>, I will automatically assume that you are exactly on par with Adolf
+Hitler, I intend to give you zero score and pay absolutely no credence
+to anything you ever say. Simply because I have not heard of you before."
+</p>
+
+<p>
+Well, I suggest to you, that you might not appreciate me taking that view.
+[But oddly, those in the "blanks must be automatically converted to zeros"
+school seem to have no problem taking the same view...]
+</p>
+
+<p>
+I think you would prefer it if I instead
+take the initial view that you are probably an
+average
+person, not a Hitler, and I will assume that until proven otherwise.
+In fact,  more precisely, I will take the view that my 
+opinion of you is the same as the average opinion 
+of the people who <i>do</i> know you &ndash; until proven otherwise.
+This is exactly what the "blanks" option in range voting accomplishes.
+</p>
+
+<p>
+But the blanks option <i>in no way prevents</i> those who <i>do</i> prefer zeros, or 25s, or
+whatever,
+from exercising that preference. Unlike the must-be-zero-camp, which truly <i>does</i> want to
+prevent
+the blanks camp from exercising <i>their</I> preference.
+</p>
+
+<H3> How it looks if we get rid of blanks: </H3>
+
+<p>
+If you do range-vote exit polling as I have, then it quickly becomes apparent to you that 
+many US voters do not know, and say right to your face they do not know,
+anything about various candidates, and they say right to your face they want to leave
+those slots blank for that reason.
+</p>
+
+<p>
+Now you as the pollster then have two choices. You can tell them they are
+negligent irresponsible jerks and tell them it is absolutely ridiculous
+that they are voting in any election, and you want nothing whatever to do
+with them.  Oh, and if you do vote, you irresponsible jerk, then I insist
+you fill in that slot with your total guess.
+Or, you can tell them, ok, fine. Please leave the slot blank.
+</p>
+
+<p>
+Which approach seems more likely to yield better results for society?
+Not to mention, which approach seems more likely to gain more support
+for voting reform? 
+</p>
+
+<p>
+Another problem is those people actually may not actually <i>be</i>
+irresponsible jerks.  For example, I challenge you to find out data about 
+judges (there are many USA elections for judges).  It is hard.
+<a href="JudgeElections.html">Usually you cannot</a>.  Only a fairly small fraction of society
+(e.g. those who have been in his courtroom) really have much of a clue
+how good that judge is.  So there you are, a voter, participating in a 10-choice
+election for a judgeship.   You heard judge A recently took bribes and is
+an alcoholic running
+from jail.
+OK, vote zero for him.  You heard judge B sounds pretty bad but not as bad as judge A.
+Give him 30 out of a possible 99.
+OK, there are 8 judge-candidates left you know nothing about.  What do you do?
+Leaving their scores blank could be a good idea.  Giving them all zero
+is definitely a bad idea.  Seems to us that many voters, in that situation, want the opportunity
+to say what they do know about the judges A&amp;B they do know something about,
+and say nothing about the judges they know nothing about.  What good does it do to
+deny them their desire?
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

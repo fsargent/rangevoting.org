@@ -1,0 +1,467 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Condorcet voting systems
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Why Range Voting is better than Condorcet methods </H2>
+
+<p>
+<a href="CondorcetExec.html">(Executive Summary)</a> &nbsp;
+<a href="RangeVoting.html">(Return to main page)</a>
+</p>
+
+<p>
+Well, first of all, what <i>is</i> a "Condorcet method"?
+</p>
+
+<p>
+There are two possible answers.  With the first definition
+of "Condorcet method," range voting <i>is</i> Condorcet, in which case
+debate over &ndash; issue moot.  
+
+<p>
+<b>First definition:</b>
+A "Condorcet method" is any voting method that obeys the "Condorcet property" that
+it always elects a "beats-all-winner" if one exists.  A "beats-all-winner"
+is a candidate who would beat every other candidate in the two-choice
+head-to-head election got by erasing
+every other candidate from all votes.
+</p>
+
+<p>
+Well, according to <i>that</i> definition, Range Voting <i>is</i> a Condorcet method,
+since if you erase all candidates and all numerical votes for them in all range votes &ndash; except
+for two candidates A and B &ndash; then A will beat B in the resulting 2-choice range election
+if and only if A beat B in the original election.  Because erasing the votes for the others
+has no effect on A and B's individual totals.
+</p>
+
+<H3> Second (subtly different and more traditional) definition </H3>
+
+<p>
+Therefore we shall concentrate on this  different <b>second definition</b> from now on:
+(<a href="CondDQ.html">quibbles about this</a>)
+<br>
+A "Condorcet-winner"
+is a candidate who would beat every other candidate in a two-choice
+head-to-head election
+with every other candidate killed, <i>and</i> the voters now get to <i>re</i>-vote on 
+just the  two live candidates 
+<i>knowing</i> that the other candidates are now dead (but remaining consistent in
+the sense they never reverse a previously-stated
+preference relation "A>B" if A and B are the two live candidates).
+Now a "Condorcet method" is any voting method that 
+always elects a "Condorcet-winner" if one exists. 
+</p>
+
+<p>
+The two definitions actually are the same if we only are considering methods that
+take as input votes that are exactly <i>rank-orderings of all the candidates</i>
+such as "A>C>B>D>E" in a 5-candidate election among {A,B,C,D,E}.
+Condorcet had not considered methods with more expressive 
+kinds of votes than just a rank ordering (such as range voting
+where you can express different <i>intensities</i> of preferences, not
+just the bare fact you prefer A over B) hence the distinction between these two
+definitions did not arise as an issue in his mind.  
+</p>
+
+<p>
+The reason this slight definitional change makes a difference is because a range voter who had
+originally voted A=56, B=57, could (and we assume would)
+now in the new shrunk 2-choice election <i>change</i> that
+vote to A=0, B=99.  So with the new definition, range voting is <i>not</i> a
+Condorcet method.
+</p>
+
+<a name="slaves"></a>
+<p>
+<b>"Free the slaves" example illustrating the fact range is not Condorcet:</b>
+Consider a multi-option range voting election in which two of the choices were
+<ol>
+<li>
+Free the slaves and ban slavery.
+</li>
+<li>
+Make no change to the status quo, i.e. keep having slavery.
+</li>
+<li>
+...
+</li>
+</ol>
+Suppose the votes were: 40% say "ban slavery" rating it 99 points higher than keeping
+slavery; the other 60% say to "keep slavery" rating it 50 points higher than banning slavery.
+(These numbers are
+fairly realistic assuming the slaves are allowed to vote and the votes are honest.)
+In that case "free slaves" beats "keep them" by a lot.
+But now if the election were redone <i>restricted</i> to these two choices only, and
+every voter in the <i>new</i> election
+maxed out his votes to 99 and 0, then
+"keep slavery" would win over "ban it" by 60-40.  
+(<a href="CondRangeExample.html">Another example</a>.)
+</p>
+
+<p>
+<b>Remark:</b> This example also illustrates the fact that obeying the traditional
+definition of the Condorcet
+property is not necessarily always good!  This is an example of the "tyranny of the majority"
+where a majority of voters who prefer something by a little, cause immense harm to a minority
+of voters who prefer the opposite by a lot.  Although range voting can still cause
+tyranny of the majority, it at least offers the <i>hope</i> &ndash;
+if enough voters <i>choose</i> to
+be honest about the situation &ndash; of escaping from it.  With Condorcet methods,
+there simply is no hope for such escape.
+</p>
+
+<p>
+Although range voting is not one of them, there <i>are</i> many
+known Condorcet methods that do obey
+this second definition.  
+They vary from "more complicated to describe than range voting" to 
+"<i>way</i> more complicated to describe than range voting."
+(If you don't believe me, try writing a computer program to do both.
+The range voting program will be shorter.)
+The first such method was invented by Condorcet himself in 1785.
+One of the latest and greatest such methods is 
+<a href="http://www.mcdougall.org.uk/VM/ISSUE17/I17P3.PDF">Markus Schulze's beatpath method</a>,
+invented in 1997, and my own "maxtree method" which still has not been published as of
+2005.
+</p>
+
+<p>
+The fact that all Condorcet methods are more complicated to describe than range voting,
+is a bad thing.
+But aside from the issue of complexity, we want to know &ndash; 
+</p>
+
+<H3> Which method is better? </H3>
+
+<p>
+That depends how you measure "better."  
+First, measured by the "<a href="BayRegDum.html">Bayesian regret</a>" yardstick,
+range voting is robustly better than every Condorcet method so far tested,
+both for honest voters and especially for strategically-exaggerating voters.
+(To me, that
+<a href="PropDiatribe.html">
+says it all</a> and we need not go further.  But some people, oddly,
+remain unconvinced,
+so we shall go further!)
+</p>
+
+<p>
+Second, yes, obeying the "elects Condorcet-winner if exists" property, sounds good, 
+at first.
+<i>But</i> unfortunately it is
+known to automatically cause the voting system to <i>disobey</i> a lot
+of properties which also sound good!  Once you realize these non-obvious
+logical implications, then you realize that Condorcet's property isn't as "good" as it sounds.
+Four examples:
+</p>
+
+<H3> Four known theorems about Condorcet methods: </H3>
+<ol>
+<li>
+<b>Votes are orderings Theorem:</b>
+Any voting method that always elects a Condorcet-winner if one exists, automatically
+uses votes that are exactly
+partial-orderings of all the candidates (with equalities optionally allowed).
+That is, your "vote" is a set of preference binary relations such as "A>B, B>C, A>D, D=E,
+F>G" which are mutually consistent (i.e. acyclic)
+and hence in which it is <i>impossible</i> for a voter to
+express the idea that he prefers A over B <i>more strongly</i> than he prefers B over C.
+</li>
+<li>
+<b>Honest votes hurt Theorem:</b>
+A voting method that always elects a Condorcet-winner if one exists, automatically
+<i>disobeys</i> the property that by casting an honest preference-ordering
+vote, you cannot make the
+election outcome get worse from your point of view.  
+Specifically, in every Condorcet method there is either 
+an election in which by adding a new
+vote ranking the current-winner top, you cause him 
+to <i>lose</i> ("<a href="AddTopFail.html">add-top failure</a>")
+or  in which by adding a new
+vote ranking the current-maximum-loser bottom, you cause him 
+to <i>rise</i> in the rankings ("add-bottom failure"), or (usually) both.
+Meanwhile: range voting obeys this "honest votes can't hurt you" property and
+can never exhibit add-top failure or add-bottom failure.
+(There might be higher voter turnout with systems in which staying home and not voting, 
+is never strategically superior to voting!) [<a href="CondPF.html">Proof</a>.]
+</li>
+<li>
+<b>Strategic voters kill you Theorem:</b>
+A voting method that always elects a Condorcet-winner if one exists, automatically
+elects the candidate whom all voters unanimously agree is the <i>worst</i>,
+in any scenario where (a) there are 3 kinds of voters: A-fans, B-fans, and C-fans,
+in roughly equal numbers; (b) there is at least one other candidate W they all agree to be
+worse and hence not in contention; (c) the voters strategically exaggerate in their
+votes to try to "make them have more impact" by claiming their favorite
+candidate is best and his 2 main rivals "worst".  This is a very
+common scenario and the result it yields is worst possible.  We call it the
+<a href="DH3.html">DH3 pathology</a>.
+</li>
+<li>
+<b>Subdistrict inconsistency Theorem:</b>
+With range voting, in a "country" divided into two
+"districts,"
+if candidate A wins in both districts, then he necessarily
+wins in the country as a whole.
+Any voting method that always elects a Condorcet-winner if one exists, automatically
+fails to obey this "subdistrict consistency property."
+</li>
+<li>
+<b><a href="VenzkePf.html">Favorite Betrayal Theorem</a>:</b>
+With a voting method that always elects a Condorcet-winner if one exists, automatically
+there are 
+<a href="VenzSimp.html">situations</a>
+in which voting your favorite candidate top, is strategically
+stupid.  (With range voting, this is <i>never</i> strategically stupid.)
+</li>
+</ol>
+Consequently
+<ol>
+<li>
+Condorcet methods automatically sacrifice a lot of voter-expressivity compared to
+range voting.
+</li>
+<li>
+This means that Condorcet voters can feel strategically forced to "betray their favorite"
+because honestly ranking him top in their vote, can be strategically stupid and cause
+the "greater evil" to win.
+In range voting, honestly ranking your favorite top, is never strategically stupid
+and can never affect the race between the "greater evil" and the "lesser evil."
+(<a href="OssiDelusion.html">An appealing delusion about this</a>.)
+This was a big part of the reason range voting was better than plurality voting:
+In plurality voting, third parties tend to get shut out because voters feel it
+is strategically stupid to vote for them, even if they honestly
+consider them best.  Range voting cured that disease &ndash;
+why would you want to risk re-infection by going with Condorcet methods?
+</li>
+<li>
+Range voting does not behave very badly when voters decide
+to strategically exaggerate.  In the scenario described in theorem 3, the
+most popular among {A,B,C} would win with range voting, not W, so everything would be fine.
+The point is that Condorcet methods <i>often</i> react <i>extremely</i> badly
+to strategic voters.  And voters have lots of 
+<a href="IncentToExagg.html">incentive to strategically exaggerate</a>:
+In the theorem-3 scenario if the A- and B-fans decided to vote honestly
+while the C-fans exaggerated, then C certainly would win.  So the A- and B-supporters
+would figure "we can't just stand idly by
+and let the C-supporters do that to us &ndash; we have
+to fight fire with fire."
+But then W gets elected and everybody suffers!  That is because 
+all Condorcet methods are extremely allergic to the kinds of dishonest exaggeration
+typically employed by voters, whereas range voting is comparatively immune.
+Range voting is designed to be good for <i>both</i> honest and strategic voters.
+(Think by allowing rank-equalities  and basing everything on 
+&quot;<a href="WinningVotes.html">winning votes<a>&quot;  rather than 
+"margins," Condorcet methods can be saved from this criticism?  
+<a href="VenzkeFBC3.html">Wrong</a>; in fact
+<a href="VenzkePf.html">nothing works</a>.)
+</li>
+</ol>
+
+<p>
+Another problem with Condorcet methods &ndash; especially the more complicated ones
+in which your vote is allowed to be a <i>partial</i> ordering and/or is
+is allowed to express optional
+<i>equalities</i> (e.g. a vote in such a system might be "A>B=C>D=E>F, G>C") &ndash;
+is: you <i>can't run them on most voting machines in use today.</i>
+You'd need to design and build new kinds of voting machines.
+(And the Condorcet methods that allow equalities or partial orderings
+are even <i>more</i> complicated
+to describe than the ones that just accept ordinary full rank-orderings
+with equalities disallowed!)
+</p>
+
+<p>
+So the question is: do you consider all these disadvantages to outweigh
+the advantage of obeying Condorcet's property?  If you do,
+then Condorcet methods are not for you.
+</p>
+
+<p>
+<i>If</i> we, striving for simplicity, demand voters produce <i>full</i> rank orderings,
+and disallow partial orderings, then
+all Condorcet methods have the
+severe disadvantage  that they do not allow
+a voter to express ignorance.  In a large election like the 2003 California
+Governor Recall election with 135 candidates,  a Condorcet voter would be forced to 
+provide a full rank ordering of all 135 candidates.  Meanwhile, a range voter
+could just rate the candidates he understands, and then conveniently say "leave the rest blank"
+or "make the rest all have score S, where S=32 (or whatever other common 
+value that voter prefers)."
+</P>
+
+<H3>
+Strategy and 2-party domination in Condorcet methods with orderings as votes </H3>
+
+<p>
+Most people, in an election like Bush v Gore v Nader 2000,
+exaggerate their good and bad opinions of Bush and Gore by artificially ranking
+them first and last, even if they truly feel Nader is best or worst.
+They do this in order to give their vote the "maximum possible impact"
+so it is not "wasted."  Once they make this decision, with any Condorcet method
+based on rank-orderings as votes (with equalities disallowed)
+Nader automatically
+must go in the middle slot, they have no choice about him.  If all
+voters behave this way, then automatically the winner will be either
+Bush or Gore.  Nader can <i>never</i> win a 3-way Condorcet
+election with this kind of strategic voters.
+<small>(Unless it is an exact 3-way tie and the tie-break goes Nader's way,
+which'll never happen in reality.)</small>
+</p>
+
+<p>
+In <i>every</i> Condorcet method based on full rank-orderings as votes,
+in <a href="IncentToExagg.html">this scenario </a>
+this kind of exaggeration is the <i>only</i> strategically-effective vote.
+There was once some hope that
+by going to Condorcet methods <i>not</i> demanding 
+full rank orderings &ndash; i.e. permitting
+rank-equalities &ndash; and based on 
+&quot;<a href="WinningVotes.html">winning votes<a>&quot; rather than "margins,"
+such exaggeration would no longer be strategically useful.
+However, 
+<a href="VenzkeFBC3.html">this example</a>
+nixed that hope.
+</p>
+
+<p>
+Meanwhile, in range voting, if the voters exaggerate and give Gore=99 and Bush=0 
+(or the reverse) in order to get maximum impact and not waste their vote, then 
+they are still free to give the third-party candidate
+Nader 99 or 0 or anything in between.
+Consequently, it would still be <i>entirely possible</i> for a third-party candidate
+such as  Nader to win with range,
+and without need of any kind of tie.
+In range voting, exaggerating the major-party candidates A and B to
+pretend A>C>B (when you really think C>A>B in a 3-candidate election) is <i>never</i>
+best strategy.
+</p>
+
+<p>
+In view of this, <i>third parties would be silly to push any Condorcet method
+that uses candidate orderings (with equalities disallowed) as votes.</i>
+They should advocate range.
+</p>
+
+<p>
+Think this kind of strategic thinking won't matter much?  Wrong:
+<ol>
+<li>
+The "National Election Study" showed that in 2000, among voters who honestly liked
+Nader better than every other candidate, fewer than 1 in 10 actually voted
+for Nader.  That was because of precisely this sort of strategic ploy &ndash; these
+voters did not wish to "waste their vote" and wanted "maximum impact"
+so they pretended either Bush or Gore was their favorite. (Same thing happened
+with voters whose true favorite was Buchanan.)  In short, strategy
+has an enormous impact in the real world, and over 90% of real plurality
+voters act strategically and not honestly, given the chance.
+That is exactly why third parties always die out and the USA is
+stuck with 2-party domination.
+</li>
+<li>
+Click <a href="IRVStratPf.html">here</a> for a proof that 
+this kind of insincere-exaggerating voter-strategy can be
+strategically-optimal
+asymptotically 100% of the time in a mathematical model of a "large random electorate" 
+with Condorcet voting.  This suggests those Condoret methods will lead to
+2-party domination.
+</li>
+<li>
+Another (admittedly weak) piece of evidence for the conjecture that Condorcet methods will
+lead to 2-party domination:  The National Election Study has collected data about
+supposedly-honest voter feelings about various candidates (and about other things and people) on
+a 0-100 subjective scale during
+every presidential election year since the 1940s.  Based on that data, it
+has been inferred that <i>in every presidential
+election since NES started in the 1940s, the plurality winner has been a
+Condorcet winner.</i>  (Asterisk: in 2000, Gore was the plurality and Condorcet winner!)
+If Condorcet always yields the same result as plurality then Condorcet certainly
+would lead to 2-party domination!  <small>[However, warning: just because it has happened
+14 times or so in a row is not a huge amount of evidence it always happens, and
+also the story conceivably would have differed with <i>strategic</i> Condorcet voting.]</small>
+</li>
+</ol>
+</p>
+
+<h3> Could it be that Approval Voting is, in practice,
+more likely to produce Condorcet Winners than "official" Condorcet methods?! </H3>
+
+<p>
+Counterintuitively, we can prove that under reasonable assumptions Approval and Condorcet voting
+actually are <i>not</i> in conflict
+(<a href="AppCW.html">no-conflict theorem</a>) and it is plausible that approval voting
+will actually be <i>more likely</i> in practice to elect honest-voter 
+Condorcet winners, than "official"
+Condorcet methods!
+</p>
+<p>
+And because strategic range voters generally vote approval-style, the same would
+be true of <a href="RangeVoting.html">range voting</a> elections with strategic voters.
+In other words:
+<ul>
+<li>
+To the extent range voters are <i>strategic</i> they will elect
+Condorcet winners (indeed quite likely doing so <i>better</i> than
+"official" Condorcet methods);
+</li><li>
+whereas to the extent they are <i>honest</i>,
+range voting should perform <a href="#slaves">better</a> than Condorcet.
+</li>
+</ul>
+Even if you don't quite buy all that, we think you still will agree that
+in practice, one should expect no great advantage for Condorcet methods over the
+simpler range voting system.
+</p>
+
+<h3> Further reading </H3>
+
+<p>
+Herve Moulin:
+Condorcet's Principle Implies the No Show Paradox,
+J. Economic Theory 45 (1988) 53-64.
+</p>
+
+<p>
+Joaquin Perez:
+The Strong No Show Paradoxes are a common flaw in Condorcet voting  correspondences,
+Social Choice &amp; Welfare 18 (2001) 601-616.
+</p>
+
+<p>
+Markus Schulze:
+A New Monotonic and Clone-Independent  Single-Winner Election Method,
+Voting Matters 17 (Oct. 2003) 9-19.
+(Later expanded version available from Schulze.)
+</p>
+
+<p>
+Warren D. Smith:
+The voting impossibilities of Arrow, Gibbard &amp; Satterthwaite, and Young,
+(survey) paper #79 <a href="WarrenSmithPages/homepage/works.html">here</a>.
+</p>
+
+<p>
+H.P.Young:
+Condorcet's theory of voting,
+American Political Science Review 82 (1988) 1231-1244.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

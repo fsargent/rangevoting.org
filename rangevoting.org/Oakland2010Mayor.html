@@ -1,0 +1,1227 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Oakland California: 2010 Mayor Election (Instant Runoff Voting)
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h1> Oakland California's 2010 Mayor Election </h1>
+<h2> (IRV3 top3-only-restricted Instant Runoff Voting) </h2>
+<p>
+<b>Election held:</b> 2 Nov. 2010.
+The count (being IRV3) was difficult and it was not possible for Oakland 
+to report official results until over 1 week later.  (As of 10 Nov. we still are waiting.  This page is based
+on a ballot file released by Oakland but not "certified" as final.)
+The initial reports led the press to 
+state (wrongly) that Perata had
+(almost certainly) won.
+</p><p>
+<b>11 Candidates:</b>
+CANDELL,
+FIELDS,
+HARLAND,
+HODGE,
+KAPLAN,
+MACLEAY,
+PERATA,
+QUAN,
+TUMAN,
+YOUNG,
+and "WriteIn" (we have agglomerated all WriteIn votes into
+a "single 11th candidate," which is not really correct).
+</p><p>
+<b><a href="Oakland2010.txt">The votes</a>:</b>
+97970 votes in all. 1150 vote-types. 1469 totally unusable "spoiled" ballots 
+(plus more were partially spoiled and hence only partially usable).
+</p><p>
+<b>Winners:</b>
+Oakland's official winner computed via <i>instant runoff</i> voting (IRV3) was <b>Quan.</b>
+Quan also won under pseudo<i>Borda</i> count.
+Quan also was the unambiguous 
+<i>Condorcet</i> ("beats-all") winner, if unranked candidates are regarded as ranked coequal last.
+</p><p>
+But if unranked candidates are regarded as &ndash; literally &ndash; unranked,
+then <b>Perata</b> was the unambiguous Condorcet ("beats-all") winner 
+(a thwarted-majority paradox).
+Perata also was the plain-<i>plurality</i> winner (i.e. won IRV3's first round).
+</p><p>
+<b>Participation-failure paradox:</b>
+If 3135 new identical ballots of the form "KAPLAN&gt;QUAN&gt;...&gt;PERATA" were added (which note, all
+rank Quan second and Perata dead last)... that (according to IRV) would make Perata <i>win</i>!
+(And make Quan lose.)
+</p><p>
+It is fortunate for them that those Perata-hating voters stayed home!
+</p><p>
+<b>Verdict on IRV3:</b>
+This election seems to be a success for IRV3: plain plurality would have elected Perata,
+but IRV3 successfully elected
+the Condorcet winner Quan.  
+That is good in the sense the voters seem to have preferred Quan over Perata.
+Plain top-2 runoff (two rounds) presumably also would have elected Quan.
+However it is not possible to tell for sure if plain runoff would have elected Quan, nor whether the voters
+really preferred Quan over Perata, because over 7000 voters did not rank either.  Depending
+on how those 7000+ voters felt about them relatively, a Quan-v-Perata head-to-head race could have gone either way
+(7000 was far more than required to swing it).
+</p><p>
+Despite the apparent success of IRV3, it is disturbing that it suffered a
+"participation paradox" (which also would have afflicted plain top-2 runoff):
+3135 Perata-hating voters, by the act of <i>not voting</i>, caused Perata's defeat.
+(If they'd voted against him, Perata would have won.)
+</p><p>
+It also is disturbing that <i>full</i>
+IRV might well have returned a different result than the IRV3 process actually used.  
+In other words, the rule forcing voters to rank at most <i>three</i> candidates, may have backfired and may have
+prevented the true IRV winner (who, e.g, might be Perata) from winning.
+</p><p>
+<b>Approval &amp; Score=Range voting:</b>
+It is not possible to tell for sure from this data whom <a href="Approval.html">Approval</a>
+and <a href="RangeVoting.html">Score</a> voting would have elected.
+But my current guess is <b>Quan</b> under both. <b>Why?</b>
+<br>First reason:
+</p><ul>
+<li>
+ Suppose every voter who ranked exactly 1 candidate, would have approved him alone.
+</li><li>
+ Suppose every voter who ranked exactly 2 candidates, would have approved 
+<i>either</i> only her top choice, <i>or</i> both,
+with a fraction G of these votes doing the former and fraction 1-G the latter.
+</li><li>
+ Suppose every voter who ranked exactly 3 candidates (the maximum number Oakland permitted her
+to rank),
+would have approved <i>either</i> only her top 2, <i>or</i> all 3,
+with a fraction F of these votes doing the former and fraction 1-F the latter.
+</li></ul>
+<blockquote>
+Then: Quan would have won an approval-voting election no matter what the values of F and G
+with 0&le;F&le;1 and  0&le;G&le;1.
+</blockquote>
+<p>
+Second reason:
+if the voters had realized the two most likely to win contenders were Quan &amp; Perata,
+and hence to strategically make their votes have more "impact" always approved one
+and not the other, then (as far as can be told from the IRV3 ballots) Quan would have won.
+</p>
+<p>
+Note that these two systems [Approval &amp; Score/Range]
+can never suffer participation paradox 
+&ndash; adding extra votes all rating A below B can never cause A to win and B to lose &ndash;
+and 
+also cannot suffer thwarted majority paradox in the sense that
+if A beats B (with range or approval voting) with all the other candidates
+erased from all the ballots, then A will beat B, period.   
+Unfortunately IRV can suffer both of those paradoxes, and it did in this election
+(although the second paradox was only suffered in Oakland 2010 if we regard unranked candidates as 
+literally unranked).
+</p>
+
+<!--
+fgrep PERATA Oaklan*txt | wc
+    323    1892    9033
+[crv@boojum docs]$ fgrep QUAN Oakl*txt | wc
+    318    1862    8323
+[crv@boojum docs]$ fgrep KAPLAN Oakl*txt | wc
+    317    1856    8829
+[crv@boojum docs]$ fgrep TUM Oakl*txt | wc
+    312    1828    8407
+-->
+</p>
+
+<!--
+<b>Non-monotonicity-failure paradox I:</b>
+Attempted to make Perata win by changing X of his votes to KAPLAN.  Attempt failed.
+X=2066: quan wins.
+X=2067: kaplan wins.
+</p><p>
+<b>Participation-failure paradox II:</b>
+deleting perata votes or deleting any candidate: quan still wins.
+-->
+
+<table  bgcolor=#cccccc border=2>
+<caption>
+Pairwise matrix if unranked candidates regarded as literally unranked
+</caption>
+<tr><td>Option</td><td align=center>CA</td><td align=center>FI</td><td align=center>HA</td><td align=center>HO</td><td align=center>KA</td><td align=center>MA</td><td align=center>PE</td><td align=center>QU</td><td align=center>TU</td><td align=center>Wr</td><td align=center>YO</td></tr><tr><td align=center>CA</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#FFFFCC">8308</td><td style="background-color:#FFFFCC">8270</td><td style="background-color:#CCCCFF">7727</td><td style="background-color:#CCCCFF">6883</td><td style="background-color:#FFFFCC">8385</td><td style="background-color:#CCCCFF">5400</td><td style="background-color:#CCCCFF">6204</td><td style="background-color:#CCCCFF">7365</td><td style="background-color:#FFFFCC">8535</td><td style="background-color:#FFFFCC">8220</td></tr><tr><td align=center>FI</td><td style="background-color:#CCCCFF">3457</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#CCCCFF">3391</td><td style="background-color:#CCCCFF">3491</td><td style="background-color:#CCCCFF">2884</td><td style="background-color:#CCCCFF">3551</td><td style="background-color:#CCCCFF">2527</td><td style="background-color:#CCCCFF">2799</td><td style="background-color:#CCCCFF">2828</td><td style="background-color:#FFFFCC">3714</td><td style="background-color:#CCCCFF">3572</td></tr><tr><td align=center>HA</td><td style="background-color:#CCCCFF">4243</td><td style="background-color:#FFFFCC">4295</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#CCCCFF">4358</td><td style="background-color:#CCCCFF">3827</td><td style="background-color:#CCCCFF">4395</td><td style="background-color:#CCCCFF">3015</td><td style="background-color:#CCCCFF">3627</td><td style="background-color:#CCCCFF">2991</td><td style="background-color:#FFFFCC">4559</td><td style="background-color:#CCCCFF">4467</td></tr><tr><td align=center>HO</td><td style="background-color:#FFFFCC">12674</td><td style="background-color:#FFFFCC">13299</td><td style="background-color:#FFFFCC">13285</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#CCCCFF">9842</td><td style="background-color:#FFFFCC">13314</td><td style="background-color:#CCCCFF">8262</td><td style="background-color:#CCCCFF">8484</td><td style="background-color:#CCCCFF">11689</td><td style="background-color:#FFFFCC">13446</td><td style="background-color:#FFFFCC">13113</td></tr><tr><td align=center>KA</td><td style="background-color:#FFFFCC">56862</td><td style="background-color:#FFFFCC">57389</td><td style="background-color:#FFFFCC">57327</td><td style="background-color:#FFFFCC">55934</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#FFFFCC">56377</td><td style="background-color:#CCCCFF">41664</td><td style="background-color:#CCCCFF">37497</td><td style="background-color:#FFFFCC">48137</td><td style="background-color:#FFFFCC">57618</td><td style="background-color:#FFFFCC">57190</td></tr><tr><td align=center>MA</td><td style="background-color:#CCCCFF">4956</td><td style="background-color:#FFFFCC">4918</td><td style="background-color:#FFFFCC">4802</td><td style="background-color:#CCCCFF">4918</td><td style="background-color:#CCCCFF">3576</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#CCCCFF">4120</td><td style="background-color:#CCCCFF">3500</td><td style="background-color:#CCCCFF">4222</td><td style="background-color:#FFFFCC">5100</td><td style="background-color:#FFFFCC">4994</td></tr><tr><td align=center bgcolor="red"><b>PE</b></td><td style="background-color:#FFFFCC">58316</td><td style="background-color:#FFFFCC">58917</td><td style="background-color:#FFFFCC">58801</td><td style="background-color:#FFFFCC">57798</td><td style="background-color:#FFFFCC">49568</td><td style="background-color:#FFFFCC">58933</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#FFFFCC">47830</td><td style="background-color:#FFFFCC">53745</td><td style="background-color:#FFFFCC">59086</td><td style="background-color:#FFFFCC">58802</td></tr><tr><td align=center>QU</td><td style="background-color:#FFFFCC">62588</td><td style="background-color:#FFFFCC">63326</td><td style="background-color:#FFFFCC">63177</td><td style="background-color:#FFFFCC">61922</td><td style="background-color:#FFFFCC">43781</td><td style="background-color:#FFFFCC">62283</td><td style="background-color:#CCCCFF">46384</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#FFFFCC">53959</td><td style="background-color:#FFFFCC">63483</td><td style="background-color:#FFFFCC">63199</td></tr><tr><td align=center>TU</td><td style="background-color:#FFFFCC">38700</td><td style="background-color:#FFFFCC">38876</td><td style="background-color:#FFFFCC">38737</td><td style="background-color:#FFFFCC">38509</td><td style="background-color:#CCCCFF">24948</td><td style="background-color:#FFFFCC">38819</td><td style="background-color:#CCCCFF">29714</td><td style="background-color:#CCCCFF">25663</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#FFFFCC">39147</td><td style="background-color:#FFFFCC">38946</td></tr><tr><td align=center>Wr</td><td style="background-color:#CCCCFF">822</td><td style="background-color:#CCCCFF">830</td><td style="background-color:#CCCCFF">821</td><td style="background-color:#CCCCFF">801</td><td style="background-color:#CCCCFF">671</td><td style="background-color:#CCCCFF">828</td><td style="background-color:#CCCCFF">451</td><td style="background-color:#CCCCFF">601</td><td style="background-color:#CCCCFF">683</td><td style="background-color:#CCCCCC">0</td><td style="background-color:#CCCCFF">823</td></tr><tr><td align=center>YO</td><td style="background-color:#CCCCFF">4475</td><td style="background-color:#FFFFCC">4797</td><td style="background-color:#FFFFCC">4878</td><td style="background-color:#CCCCFF">4219</td><td style="background-color:#CCCCFF">3721</td><td style="background-color:#CCCCFF">4828</td><td style="background-color:#CCCCFF">3075</td><td style="background-color:#CCCCFF">3549</td><td style="background-color:#CCCCFF">4301</td><td style="background-color:#FFFFCC">4951</td><td style="background-color:#CCCCCC">0</td></tr></table>
+
+<br>
+
+<table cellspacing="0" cellpadding="2" border="1" class="t1">
+<caption>
+The pairwise matrix if unranked candidates are regarded as ranked coequal last:
+</caption>
+  <tbody>
+    <tr>
+      <td rowspan="2" colspan="2" valign="middle" class="td1">
+        <p class="p2"><br></p>
+      </td>
+      <td colspan="11" valign="middle" class="td2">
+        <p class="p3"><b>against</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td3">
+        <p class="p4">CANDELL</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p4">FIELDS</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p4">HARLAND</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p4">HODGE</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p4">KAPLAN</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p4">MACLEAY</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p4">PERATA</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p4">QUAN</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p4">TUMAN</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p4">WriteIn</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p4">YOUNG</p>
+      </td>
+    </tr>
+    <tr>
+      <td rowspan="11" valign="middle" class="td5">
+        <p class="p3"><b>for</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p4">CANDELL</p>
+      </td>
+      <td valign="middle" class="td7">
+        <p class="p2"><br></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>50481</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>50077&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">45791</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">23724&frac12;</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>49757</b></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">24580</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">21195&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">32757</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>51953</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>49971&frac12;</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td6">
+        <p class="p4">FIELDS</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">46020</p>
+      </td>
+      <td valign="middle" class="td9">
+        <p class="p2"><br></p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">47806</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">43555</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">21658&frac12;</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">47553&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">23035</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">19321</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">30597&frac12;</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>49733</b></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">47678</p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td6">
+        <p class="p4">HARLAND</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">46423&frac12;</p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>48695</b></p>
+      </td>
+      <td valign="middle" class="td7">
+        <p class="p2"><br></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">43990</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">22156</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">48024&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">23330&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">19801&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">30741</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>50151&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">48079&frac12;</p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td6">
+        <p class="p4">HODGE</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>50710</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>52946</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>52511</b></p>
+      </td>
+      <td valign="middle" class="td9">
+        <p class="p2"><br></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">25656</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>52225&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">26258</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">22658&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">35001</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>54404&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>52530</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td6">
+        <p class="p4">KAPLAN</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>72776&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>74842&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>74345</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>70845</b></p>
+      </td>
+      <td valign="middle" class="td9">
+        <p class="p2"><br></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>73977</b></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">46631&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">45803&frac12;</p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>59546</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>76100&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>74366</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td6">
+        <p class="p4">MACLEAY</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">46744</p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>48947&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>48476&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">44275&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">22524</p>
+      </td>
+      <td valign="middle" class="td7">
+        <p class="p2"><br></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">23835&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">20204</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">31334</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>50441</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>48388</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td6">
+        <p class="p4">PERATA</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>71921</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>73466</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>73170&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>70243</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>49869&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>72665&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td9">
+        <p class="p2"><br></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">47312&frac12;</p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>57646</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>74600&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>73173</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td6" bgcolor="red">
+        <p class="p4"><b>QUAN</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>75305&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>77180</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>76699&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>73842&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>50697&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>76297</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>49188&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td9">
+        <p class="p2"><br></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>61431</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>78389</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>76783</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td6">
+        <p class="p4">TUMAN</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>63744</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>65903&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>65760</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>61500</b></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">36955</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>65167</b></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">38855</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">35070</p>
+      </td>
+      <td valign="middle" class="td9">
+        <p class="p2"><br></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>67145</b></p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>65245</b></p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td6">
+        <p class="p4">WriteIn</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">44548</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">46768</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">46349&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">42096&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">20400&frac12;</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">46060</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">21900&frac12;</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">18112</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">29356</p>
+      </td>
+      <td valign="middle" class="td7">
+        <p class="p2"><br></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">46187</p>
+      </td>
+    </tr>
+    <tr>
+      <td valign="middle" class="td6">
+        <p class="p4">YOUNG</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">46529&frac12;</p>
+      </td>
+      <td valign="middle" class="td8">
+        <p class="p3"><b>48823</b></p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>48421&frac12;</b></p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">43971</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">22135</p>
+      </td>
+      <td valign="middle" class="td3">
+        <p class="p3">48113</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">23328</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">19718</p>
+      </td>
+      <td valign="middle" class="td4">
+        <p class="p3">31256</p>
+      </td>
+      <td valign="middle" class="td6">
+        <p class="p3"><b>50314</b></p>
+      </td>
+      <td valign="middle" class="td9">
+        <p class="p2"><br></p>
+      </td>
+    </tr>
+  </tbody>
+</table>
+
+<br>
+
+<table class="ResultsTable" cellPadding="2" cellSpacing="0" border="1" width="100%">
+<caption>
+Oakland IRV round-by-round (unofficial, downloaded from 
+<a href="http://www.acgov.org/rov/rcv/results/rcvresults_2984.htm">
+http://www.acgov.org/rov/rcv/results/rcvresults_2984.htm</a>)
+</caption>
+		<tr>
+			<th bgcolor="yellow">Canddt</th>
+			<th bgcolor="blue" colspan="3">Round 1</th>
+			<th bgcolor="blue" colspan="3">Round 2</th>
+			<th bgcolor="blue" colspan="3">Round 3</th>
+			<th bgcolor="blue" colspan="3">Round 4</th>
+			<th bgcolor="blue" colspan="3">Round 5</th>
+			<th bgcolor="blue" colspan="3">Round 6</th>
+			<th bgcolor="blue" colspan="3">Round 7</th>
+			<th bgcolor="blue" colspan="3">Round 8</th>
+			<th bgcolor="blue" colspan="3">Round 9</th>
+			<th bgcolor="blue" colspan="3">Round 10</th>
+		</tr>
+		<tr>
+			<td bgcolor="aqua">&nbsp;</td>
+			<td bgcolor="aqua">Votes</td>
+			<td bgcolor="aqua">%</td>
+			<td bgcolor="aqua">Transfer</td>
+			<td bgcolor="aqua">Votes</td>
+			<td bgcolor="aqua">%</td>
+			<td bgcolor="aqua">Transfer</td>
+			<td bgcolor="aqua">Votes</td>
+			<td bgcolor="aqua">%</td>
+			<td bgcolor="aqua">Transfer</td>
+			<td bgcolor="aqua">Votes</td>
+			<td bgcolor="aqua">%</td>
+			<td bgcolor="aqua">Transfer</td>
+			<td bgcolor="aqua">Votes</td>
+			<td bgcolor="aqua">%</td>
+			<td bgcolor="aqua">Transfer</td>
+			<td bgcolor="aqua">Votes</td>
+			<td bgcolor="aqua">%</td>
+			<td bgcolor="aqua">Transfer</td>
+			<td bgcolor="aqua">Votes</td>
+			<td bgcolor="aqua">%</td>
+			<td bgcolor="aqua">Transfer</td>
+			<td bgcolor="aqua">Votes</td>
+			<td bgcolor="aqua">%</td>
+			<td bgcolor="aqua">Transfer</td>
+			<td bgcolor="aqua">Votes</td>
+			<td bgcolor="aqua">%</td>
+			<td bgcolor="aqua">Transfer</td>
+			<td bgcolor="aqua">Votes</td>
+			<td bgcolor="aqua">%</td>
+			<td bgcolor="aqua">Transfer</td>
+		</tr>
+		<tr class="CandidateRow">
+			<td class="CandidateCell">DON PERATA</td>
+			<td class="LeaderVotesCell">32773</td>
+			<td class="LeaderPercentageCell">33.96%</td>
+			<td class="LeaderVotesTransferredCell">+8</td>
+			<td class="LeaderVotesCell">32781</td>
+			<td class="LeaderPercentageCell">33.98%</td>
+			<td class="LeaderVotesTransferredCell">+65</td>
+			<td class="LeaderVotesCell">32846</td>
+			<td class="LeaderPercentageCell">34.09%</td>
+			<td class="LeaderVotesTransferredCell">+103</td>
+			<td class="LeaderVotesCell">32949</td>
+			<td class="LeaderPercentageCell">34.24%</td>
+			<td class="LeaderVotesTransferredCell">+93</td>
+			<td class="LeaderVotesCell">33042</td>
+			<td class="LeaderPercentageCell">34.40%</td>
+			<td class="LeaderVotesTransferredCell">+67</td>
+			<td class="LeaderVotesCell">33109</td>
+			<td class="LeaderPercentageCell">34.54%</td>
+			<td class="LeaderVotesTransferredCell">+387</td>
+			<td class="LeaderVotesCell">33496</td>
+			<td class="LeaderPercentageCell">35.15%</td>
+			<td class="LeaderVotesTransferredCell">+596</td>
+			<td class="LeaderVotesCell">34092</td>
+			<td class="LeaderPercentageCell">36.09%</td>
+			<td class="LeaderVotesTransferredCell">+2724</td>
+			<td class="LeaderVotesCell">36816</td>
+			<td class="LeaderPercentageCell">40.21%</td>
+			<td class="LeaderVotesTransferredCell">+5133</td>
+			<td bgcolor="yellow">41949</td>
+			<td bgcolor="yellow">48.91%</td>
+			<td bgcolor="yellow">0</td>
+		</tr>
+		<tr class="AlternateCandidateRow">
+			<td class="CandidateCell">TERENCE CANDELL</td>
+			<td class="VotesCell">1671</td>
+			<td class="PercentageCell">1.73%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">1671</td>
+			<td class="PercentageCell">1.73%</td>
+			<td class="VotesTransferredCell">+51</td>
+			<td class="VotesCell">1722</td>
+			<td class="PercentageCell">1.79%</td>
+			<td class="VotesTransferredCell">+75</td>
+			<td class="VotesCell">1797</td>
+			<td class="PercentageCell">1.87%</td>
+			<td class="VotesTransferredCell">+87</td>
+			<td class="VotesCell">1884</td>
+			<td class="PercentageCell">1.96%</td>
+			<td class="VotesTransferredCell">+52</td>
+			<td bgcolor="yellow">1936</td>
+			<td bgcolor="yellow">2.02%</td>
+			<td bgcolor="yellow">-1936</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="CandidateRow">
+			<td class="CandidateCell">GREG HARLAND</td>
+			<td class="VotesCell">791</td>
+			<td class="PercentageCell">0.82%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">791</td>
+			<td class="PercentageCell">0.82%</td>
+			<td class="VotesTransferredCell">+74</td>
+			<td class="VotesCell">865</td>
+			<td class="PercentageCell">0.90%</td>
+			<td class="VotesTransferredCell">+14</td>
+			<td bgcolor="yellow">879</td>
+			<td bgcolor="yellow">0.91%</td>
+			<td bgcolor="yellow">-879</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="AlternateCandidateRow">
+			<td class="CandidateCell">DON MACLEAY</td>
+			<td class="VotesCell">1325</td>
+			<td class="PercentageCell">1.37%</td>
+			<td class="VotesTransferredCell">+3</td>
+			<td class="VotesCell">1328</td>
+			<td class="PercentageCell">1.38%</td>
+			<td class="VotesTransferredCell">+27</td>
+			<td class="VotesCell">1355</td>
+			<td class="PercentageCell">1.41%</td>
+			<td class="VotesTransferredCell">+28</td>
+			<td class="VotesCell">1383</td>
+			<td class="PercentageCell">1.44%</td>
+			<td class="VotesTransferredCell">+112</td>
+			<td bgcolor="yellow">1495</td>
+			<td bgcolor="yellow">1.56%</td>
+			<td bgcolor="yellow">-1495</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="CandidateRow">
+			<td bgcolor="red">JEAN QUAN</td>
+			<td class="VotesCell">23774</td>
+			<td class="PercentageCell">24.64%</td>
+			<td class="VotesTransferredCell">+13</td>
+			<td class="VotesCell">23787</td>
+			<td class="PercentageCell">24.66%</td>
+			<td class="VotesTransferredCell">+60</td>
+			<td class="VotesCell">23847</td>
+			<td class="PercentageCell">24.75%</td>
+			<td class="VotesTransferredCell">+84</td>
+			<td class="VotesCell">23931</td>
+			<td class="PercentageCell">24.87%</td>
+			<td class="VotesTransferredCell">+108</td>
+			<td class="VotesCell">24039</td>
+			<td class="PercentageCell">25.03%</td>
+			<td class="VotesTransferredCell">+697</td>
+			<td class="VotesCell">24736</td>
+			<td class="PercentageCell">25.80%</td>
+			<td class="VotesTransferredCell">+283</td>
+			<td class="VotesCell">25019</td>
+			<td class="PercentageCell">26.25%</td>
+			<td class="VotesTransferredCell">+562</td>
+			<td class="VotesCell">25581</td>
+			<td class="PercentageCell">27.08%</td>
+			<td class="VotesTransferredCell">+2818</td>
+			<td class="VotesCell">28399</td>
+			<td class="PercentageCell">31.02%</td>
+			<td class="VotesTransferredCell">+15426</td>
+			<td bgcolor="red">43825</td>
+			<td bgcolor="red">51.09%</td>
+			<td bgcolor="red">0</td>
+		</tr>
+		<tr class="AlternateCandidateRow">
+			<td class="CandidateCell">ARNOLD FIELDS</td>
+			<td class="VotesCell">548</td>
+			<td class="PercentageCell">0.57%</td>
+			<td class="VotesTransferredCell">+1</td>
+			<td bgcolor="yellow">549</td>
+			<td bgcolor="yellow">0.57%</td>
+			<td bgcolor="yellow">-549</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="CandidateRow">
+			<td class="CandidateCell">JOE TUMAN</td>
+			<td class="VotesCell">11957</td>
+			<td class="PercentageCell">12.39%</td>
+			<td class="VotesTransferredCell">+3</td>
+			<td class="VotesCell">11960</td>
+			<td class="PercentageCell">12.40%</td>
+			<td class="VotesTransferredCell">+83</td>
+			<td class="VotesCell">12043</td>
+			<td class="PercentageCell">12.50%</td>
+			<td class="VotesTransferredCell">+54</td>
+			<td class="VotesCell">12097</td>
+			<td class="PercentageCell">12.57%</td>
+			<td class="VotesTransferredCell">+197</td>
+			<td class="VotesCell">12294</td>
+			<td class="PercentageCell">12.80%</td>
+			<td class="VotesTransferredCell">+131</td>
+			<td class="VotesCell">12425</td>
+			<td class="PercentageCell">12.96%</td>
+			<td class="VotesTransferredCell">+192</td>
+			<td class="VotesCell">12617</td>
+			<td class="PercentageCell">13.24%</td>
+			<td class="VotesTransferredCell">+204</td>
+			<td bgcolor="yellow">12821</td>
+			<td bgcolor="yellow">13.57%</td>
+			<td bgcolor="yellow">-12821</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="AlternateCandidateRow">
+			<td class="CandidateCell">MARCIE HODGE</td>
+			<td class="VotesCell">2205</td>
+			<td class="PercentageCell">2.28%</td>
+			<td class="VotesTransferredCell">+2</td>
+			<td class="VotesCell">2207</td>
+			<td class="PercentageCell">2.29%</td>
+			<td class="VotesTransferredCell">+23</td>
+			<td class="VotesCell">2230</td>
+			<td class="PercentageCell">2.31%</td>
+			<td class="VotesTransferredCell">+87</td>
+			<td class="VotesCell">2317</td>
+			<td class="PercentageCell">2.41%</td>
+			<td class="VotesTransferredCell">+40</td>
+			<td class="VotesCell">2357</td>
+			<td class="PercentageCell">2.45%</td>
+			<td class="VotesTransferredCell">+40</td>
+			<td class="VotesCell">2397</td>
+			<td class="PercentageCell">2.50%</td>
+			<td class="VotesTransferredCell">+262</td>
+			<td bgcolor="yellow">2659</td>
+			<td bgcolor="yellow">2.79%</td>
+			<td bgcolor="yellow">-2659</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="CandidateRow">
+			<td class="CandidateCell">LARRY LIONEL ''LL'' YOUNG JR.</td>
+			<td class="VotesCell">653</td>
+			<td class="PercentageCell">0.68%</td>
+			<td class="VotesTransferredCell">+1</td>
+			<td class="VotesCell">654</td>
+			<td class="PercentageCell">0.68%</td>
+			<td class="VotesTransferredCell">+26</td>
+			<td bgcolor="yellow">680</td>
+			<td bgcolor="yellow">0.71%</td>
+			<td bgcolor="yellow">-680</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="AlternateCandidateRow">
+			<td class="CandidateCell">REBECCA KAPLAN</td>
+			<td class="VotesCell">20724</td>
+			<td class="PercentageCell">21.48%</td>
+			<td class="VotesTransferredCell">+7</td>
+			<td class="VotesCell">20731</td>
+			<td class="PercentageCell">21.49%</td>
+			<td class="VotesTransferredCell">+44</td>
+			<td class="VotesCell">20775</td>
+			<td class="PercentageCell">21.56%</td>
+			<td class="VotesTransferredCell">+100</td>
+			<td class="VotesCell">20875</td>
+			<td class="PercentageCell">21.69%</td>
+			<td class="VotesTransferredCell">+70</td>
+			<td class="VotesCell">20945</td>
+			<td class="PercentageCell">21.80%</td>
+			<td class="VotesTransferredCell">+312</td>
+			<td class="VotesCell">21257</td>
+			<td class="PercentageCell">22.18%</td>
+			<td class="VotesTransferredCell">+245</td>
+			<td class="VotesCell">21502</td>
+			<td class="PercentageCell">22.56%</td>
+			<td class="VotesTransferredCell">+470</td>
+			<td class="VotesCell">21972</td>
+			<td class="PercentageCell">23.26%</td>
+			<td class="VotesTransferredCell">+4361</td>
+			<td bgcolor="yellow">26333</td>
+			<td bgcolor="yellow">28.76%</td>
+			<td bgcolor="yellow">-26333</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="CandidateRow">
+			<td class="CandidateCell">Write-In</td>
+			<td bgcolor="yellow">80</td>
+			<td bgcolor="yellow">0.08%</td>
+			<td bgcolor="yellow">-80</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">0.00%</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="NonCandidateRow">
+			<td class="CandidateCell">Exhausted by Over Votes</td>
+			<td class="VotesCell">165</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">165</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+3</td>
+			<td class="VotesCell">168</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+4</td>
+			<td class="VotesCell">172</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+2</td>
+			<td class="VotesCell">174</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+2</td>
+			<td class="VotesCell">176</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+12</td>
+			<td class="VotesCell">188</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+5</td>
+			<td class="VotesCell">193</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+13</td>
+			<td class="VotesCell">206</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+22</td>
+			<td class="VotesCell">228</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="NonCandidateRow">
+			<td class="CandidateCell">Under Votes</td>
+			<td class="VotesCell">1304</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">1304</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">1304</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">1304</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">1304</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">1304</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">1304</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">1304</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">1304</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+			<td class="VotesCell">1304</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="NonCandidateRow">
+			<td class="CandidateCell">Exhausted Ballots</td>
+			<td class="VotesCell">0</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+42</td>
+			<td class="VotesCell">42</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+93</td>
+			<td class="VotesCell">135</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+131</td>
+			<td class="VotesCell">266</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+170</td>
+			<td class="VotesCell">436</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+194</td>
+			<td class="VotesCell">630</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+555</td>
+			<td class="VotesCell">1185</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+822</td>
+			<td class="VotesCell">2007</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+2905</td>
+			<td class="VotesCell">4912</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">+5752</td>
+			<td class="VotesCell">10664</td>
+			<td class="PercentageCell">&nbsp;</td>
+			<td class="VotesTransferredCell">0</td>
+		</tr>
+		<tr class="NonCandidateRow">
+			<td class="ContinuingBallotsTitleCell">Continuing Ballots</td>
+			<td class="ContinuingVotesCell">96501</td>
+			<td class="ContinuingPercentageCell">100.00%</td>
+			<td class="ContinuingVotesTransferredCell">&nbsp;</td>
+			<td class="ContinuingVotesCell">96459</td>
+			<td class="ContinuingPercentageCell">100.00%</td>
+			<td class="ContinuingVotesTransferredCell">&nbsp;</td>
+			<td class="ContinuingVotesCell">96363</td>
+			<td class="ContinuingPercentageCell">100.00%</td>
+			<td class="ContinuingVotesTransferredCell">&nbsp;</td>
+			<td class="ContinuingVotesCell">96228</td>
+			<td class="ContinuingPercentageCell">100.00%</td>
+			<td class="ContinuingVotesTransferredCell">&nbsp;</td>
+			<td class="ContinuingVotesCell">96056</td>
+			<td class="ContinuingPercentageCell">100.00%</td>
+			<td class="ContinuingVotesTransferredCell">&nbsp;</td>
+			<td class="ContinuingVotesCell">95860</td>
+			<td class="ContinuingPercentageCell">100.00%</td>
+			<td class="ContinuingVotesTransferredCell">&nbsp;</td>
+			<td class="ContinuingVotesCell">95293</td>
+			<td class="ContinuingPercentageCell">100.00%</td>
+			<td class="ContinuingVotesTransferredCell">&nbsp;</td>
+			<td class="ContinuingVotesCell">94466</td>
+			<td class="ContinuingPercentageCell">100.00%</td>
+			<td class="ContinuingVotesTransferredCell">&nbsp;</td>
+			<td class="ContinuingVotesCell">91548</td>
+			<td class="ContinuingPercentageCell">100.00%</td>
+			<td class="ContinuingVotesTransferredCell">&nbsp;</td>
+			<td class="ContinuingVotesCell">85774</td>
+			<td class="ContinuingPercentageCell">100.00%</td>
+			<td class="ContinuingVotesTransferredCell">&nbsp;</td>
+		</tr>
+		<tr>
+			<td class="TotalHeaderCell">TOTAL</td>
+			<td class="PassTotalVotesCell">97970</td>
+			<td class="PassTotalPercentageCell">&nbsp;</td>
+			<td class="PassTotalVotesTransferredCell">0</td>
+			<td class="PassTotalVotesCell">97970</td>
+			<td class="PassTotalPercentageCell">&nbsp;</td>
+			<td class="PassTotalVotesTransferredCell">0</td>
+			<td class="PassTotalVotesCell">97970</td>
+			<td class="PassTotalPercentageCell">&nbsp;</td>
+			<td class="PassTotalVotesTransferredCell">0</td>
+			<td class="PassTotalVotesCell">97970</td>
+			<td class="PassTotalPercentageCell">&nbsp;</td>
+			<td class="PassTotalVotesTransferredCell">0</td>
+			<td class="PassTotalVotesCell">97970</td>
+			<td class="PassTotalPercentageCell">&nbsp;</td>
+			<td class="PassTotalVotesTransferredCell">0</td>
+			<td class="PassTotalVotesCell">97970</td>
+			<td class="PassTotalPercentageCell">&nbsp;</td>
+			<td class="PassTotalVotesTransferredCell">0</td>
+			<td class="PassTotalVotesCell">97970</td>
+			<td class="PassTotalPercentageCell">&nbsp;</td>
+			<td class="PassTotalVotesTransferredCell">0</td>
+			<td class="PassTotalVotesCell">97970</td>
+			<td class="PassTotalPercentageCell">&nbsp;</td>
+			<td class="PassTotalVotesTransferredCell">0</td>
+			<td class="PassTotalVotesCell">97970</td>
+			<td class="PassTotalPercentageCell">&nbsp;</td>
+			<td class="PassTotalVotesTransferredCell">0</td>
+			<td class="PassTotalVotesCell">97970</td>
+			<td class="PassTotalPercentageCell">&nbsp;</td>
+			<td class="PassTotalVotesTransferredCell">0</td>
+		</tr>
+		<tr>
+			<td class="RemarksTitleCell">REMARKS</td>
+			<td class="RemarksCell" colspan="30">&nbsp;</td>
+		</tr>
+	</table>
+
+<br>
+
+<p><b>Acknowledgments:</b>
+I thank Juho Laatu for converting Oakland's ballot-image file to a sensible format
+and Rob LeGrand and Eric Gorr for software.
+
+</P>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

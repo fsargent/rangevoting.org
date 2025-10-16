@@ -1,0 +1,323 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Criteria obeyed and disobeyed by score voting
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H1> Mathematical criteria obeyed and disobeyed by score voting </H1>
+
+<p>
+<small>
+This discussion is based on a French&rarr;English translation of
+<a href="http://www.votedevaleur.org/co/criteresRespectes.html">this</a> and
+<a href="http://www.votedevaleur.org/co/criteresNonRespectes.html">this</a> web page
+at the <a href="http://www.votedevaleur.org">Vote de Valeur</a> site, with additional
+remarks then added by us.
+</small>
+</p>
+
+<H3> Criteria obeyed by score voting </H3>
+
+<p><b>1. Generically untied:</b>
+In the limit of a large number of voters with some nonzero proportion voting randomly, the
+probability <a href="TieRisk.html">of</a> 
+a tied election (non-unique winner) goes to zero.  Indeed with 
+"continuum range voting" ties have probability=0 if there is even a single 
+uniformly-random ballot.
+</p>
+
+<p><b>2. No dictator (and no vetoer):</b>
+"No elector shall be able to force a winner of his choosing (or force somebody 
+of his choosing <i>not</i> to win) regardless of the preferences of everybody else."
+</p>
+
+<p><b>3. Unanimity:</b>
+"If a candidate is the unanimous favorite of every voter, it should be the winner."
+Also, "If every ballot scores A ahead of B, the voting method output shall rank A ahead of B,
+and in particular B cannot win."
+</p>
+
+<p><b>4. Indifference to Irrelevant Options:</b>
+"The voting system's output's relative ranking of two candidates A,B should depend only on 
+their relative positions within ballots and <i>not</i> on those for other candidates C.
+So if/when we consider only a subset of candidates, the voting system should 
+not change its output-ordering within this subset."
+</p>
+
+<p><b><a href="ArrowThm.html">Arrow's impossibility theorem</a>:</b>
+Says that there is no voting system <i>based on rank-orderings as ballots</i>
+that meets criteria 2-4 and never is tied.
+But score voting (with some tiebreak rule added) <i>does</i> meet these criteria.  
+It can, and does, evade Arrow's "proof of impossibility" because it does
+not use rank-orderings as ballots, but rather numerical candidate-<i>ratings</i>.
+</p>
+
+<p><b>5. <a href="Monotone.html">Monotonicity</a>:</b>
+Both
+<ol type="I">
+<li>
+If some set of voters increase their vote for candidate C 
+(meanwhile leaving the rest of their vote unchanged, 
+or decreasing votes for C-rivals)
+that should not worsen C's chances of winning the election.
+</li><li>
+If some set of voters decrease their vote for candidate B 
+(meanwhile leaving the rest of their vote unchanged,
+or increasing votes for B-rivals)
+that should not improve B's chances of winning the election.
+</li>
+</ol>
+
+<p><b>6. Loser-independence:</b>
+"In an election where X is a winner: after adding a new candidate Y, the new 
+winner can only be X or Y."  Similarly, if a losing candidate is removed, that should
+not alter the winner.
+
+<!--???
+Non-overvaluation
+"A voter should not be able to overstate a candidate to his favorite book easy to defeat duel candidate."
+The current system of presidential elections in France does not meet this criterion .
+The Vote of value meets this criterion by removing the second round, rendered useless.
+-->
+
+<p><b>7. <a href="CandCloning.html">Cloneproof</a>:</b>
+Definition: "A set of clones is a set of candidates ranked adjacent to each other
+on each ballot (in some order which may vary depending on the ballot), for
+voting systems based on rank-orderings as ballots.  For voting systems based on numerical ratings,
+the 'clones' must all have ratings equal to within &plusmn;&epsilon; in the limit &epsilon;&rarr;0,
+on each ballot."
+</p><p>
+Cloneproofness: "If clones are added (or eliminated, so long as at least one remains), 
+then the winner should not change
+except perhaps to a clone of the old winner."
+</p>
+
+<p><b>8. Partitionable:</b>
+"Partition the voters into two subsets, such the Northern and Southern ones. 
+Suppose that the same candidate X is elected by the North and by the South.
+Then X must be elected countrywide."
+</p>
+
+<p>
+<b>9. Participation:</b>
+"If a new ballot which scores the current winner W top, is added to the election,
+this should not alter the winner."  
+(Actually, that was a special case of #8.)
+Also: "If a new ballot which scores some loser
+L bottom is added to the election, this should not cause L to win."
+
+</p>
+
+<p>
+<b>10. Reversal symmetry:</b>
+"If a candidate is winning and then we 'reverse' every ballot,
+the same candidate will lose."
+(Applied to vote value, the operation is to negate the scale of values;
+for a rank-ordering ballot it is to reverse all the orders.)
+</p>
+
+<p>
+<b>11. Does not incentivize Favorite-Betrayal:</b>
+A voter cannot achieve a better election result (in her view) by dishonestly scoring her
+true-favorite candidate, below topmost.
+</p>
+
+<p>
+<b>12. Neutrality:</b>
+(aka symmetry under candidate renaming):
+Permuting the candidate names 
+on each ballot permutes their winning probabilities in the same way.
+</p>
+
+<p>
+<b><a href="SimmonsSmithPf.html">Smith-Simmons impossibility theorem</a>:</b>
+No voting system based on rank-orderings as ballots can obey criteria 
+2, 7, 11, 12.  But score voting accomplishes this "impossible" feat because
+its ballots are not rank-orderings of the candidates, but rather assignments of
+numerical scores to them.
+</p>
+
+<p>
+<b>Asterisk about "normalized" and "no opinion" score voting rule-variants:</b>
+A score ballot is "normalized" if it employs 
+the maximum allowed score and employs the minimum allowed score, at least once each.
+Some criteria above obeyed by score voting (e.g. #4, 6), can become disobeyed if we demand
+all ballots be normalized.  Also, in "highest average wins" score voting 
+rules where voters are allowed to express "no opinion" about candidates 
+(instead of scoring them), #8, 9 can be disobeyed.
+</p>
+
+<p>
+<b>13. NESD:</b>
+Assume all voters initially honest, and election initally untied.
+A single-winner voting system obeys the "NESD property" if, after <i>every</i> voter 
+"exaggerates about A and B," i.e.
+changes her ballot to now rank A top and B bottom 
+(or B top and A bottom; which depends on the voter and is "honest"), 
+leaving it otherwise unaltered, then there exist untied
+elections in which somebody besides A or B wins.
+(The NESD criterion is not applicable to
+"multiround" voting systems, in which the voters vote
+a second time, knowing the result of the first election.  Perhaps it could be made applicable
+by modifying the definition of NESD, but we do not attempt that now.)
+I speculate that 1-round voting systems failing the NESD criterion will 
+yield 2-party domination.  
+</p>
+
+<p>
+<b>Contrast with other voting systems:</b>
+Plain <a href="Plurality.html">plurality</a> voting disobeys 4, 
+<a href="PlurBadRemove.html">6</a>, 7, 10, 11, 13.
+Instant (and non-instant) runoff voting both disobey 4, 5, 
+<a href="IRVbadRemove.html">6</a>, 
+<a href="IrvNonAdd.html">8</a>, 
+<a href="IrvPartic.html">9</a>, 
+<a href="IrvRevFail.html">10</a>, 
+<a href="IRVcs.html">11</a>, 13.
+The non-instant 2-round "plurality+top-two" runoff system (used in France 2013) and
+various IRV-like systems involving, e.g. ranking only the top three (but not all) candidates
+(used in San Francisco 2013), also disobey 7.  
+The "Borda count" disobeys 4, 
+<a href="rangeVborda.html#JoghnsonEx">6</a>, 
+<a href="rangeVborda.html#clones">7</a>, 
+<a href="IncentToExagg.html">11</a>.
+All Condorcet systems disobey 
+8, 
+<a href="CondPF.html">9</a>, 
+<a href="IncentToExagg.html">11</a>, 
+13.  Score-voting-like systems based
+on <i>median</i> instead of <i>average</i> score disobey 
+<a href="MedianVrange.html#partic">8</a>, 
+<a href="MedianVrange.html#partition">9</a>
+(they would also disobey 1 &amp; 13, but if certain tie-breaking schemes are added
+as in <a href="MedianVrange.html#GMJ">GMJ</a> instead of
+just naively using the median score alone, then 1 &amp; 13 come back to life).
+
+<!--Every system obeying majority-top (below) fails NESD*.-->
+</p>
+
+
+<H3> Naively desirable-sounding criteria <i>dis</i>obeyed by score voting </H3>
+
+<p>
+<b>1. Secret preferences:</b> (Also has been called "later no harm"):
+"If a candidate X wins and the preferences are changed among the candidates scored below X
+on some ballot, then X still should win."
+</p><p>
+(We think this criterion is undesirable:  raising some rival R of the current winner W
+from last to second place on your W-top ballot, should instead be allowed sometimes to
+cause R now to win.   Those in favor of this property have argued that 
+without it, voters will fear hurting their favorite by honestly scoring their 
+second-favorite high, thus will be incentivized to lie about their second-favorite.
+But with, say, a voting method like IRV complying with this property, voters 
+<i>still</i> have incentive to lie about both their favorite and second favorite.)
+</p>
+
+<p>
+<b>2. Majority-top:</b>
+"If a candidate X is the favorite of a majority of voters (i.e. is scored top on
+more than 50% of the ballots)
+then X must win.
+</p><p>
+(We think this criterion is undesirable:  a candidate scored top by 51% and bottom by 49%
+of the voters, might really be a worse choice than one scored near-top by 100% of
+the voters.)
+</p>
+
+<p>
+<b>3. Mutual-Majority-top:</b>
+"If every member of some subset X of candidates is scored above all others 
+on more than 50% of the ballots,
+then some member of X must win.
+</p><p>
+(Undesirable for same reason.)
+</p>
+
+<p><b>4. Condorcet winner:</b>
+"If there is a Condorcet winner, i.e. a candidate C who is scored above R on
+more than 50% of the ballots (for every rival R, albeit the ballot-set is allowed to depend on R), 
+then C must win."
+</p><p>
+<i>But:</i> Score voting <i>does</i> obey the closely related condition that
+"If there is a candidate C who would win an election versus R if all candidates 
+besides C and R were erased from all ballots (and this is true for every R&ne;C), then C
+must win."
+(And this modified criterion might actually have been what Condorcet himself wanted!)
+</p><p>
+Also, in the presence of <i>strategic voters</i> 
+voting methods which are guaranteed to elect Condorcet
+winners with honest voters, may no longer elect a candidate who would have been
+an honest-votes Condorcet winner &ndash; but approval and score voting under certain
+<a href="AppCW.html">assumptions</a>
+about strategic voter behavior <i>will</i> elect any candidate who would have been a
+Condorcet winner using honest votes!  Paradoxically, this effect 
+can cause approval and score voting 
+actually to elect more Condorcet winners in real life, than methods obeying the
+Condorcet winner criterion!!
+</p>
+
+<p><b>5. Smith-set winner:</b>
+"If there is a set S of candidates such that for each candidate C&isin;S,
+more than 50% of the ballots score C above R 
+(for every R&notin;S; the majority-forming ballot-set is allowed to depend on R and C), 
+then some member of S must win."
+</p><p>
+<i>But:</i> Score voting <i>does</i> obey a closely related condition, similar modification 
+to above.
+</p>
+
+<!--
+<p><b>Contrast with other voting systems:</b>
+Plain plurality voting disobeys 1, 4, 5 (2 is obeyed and 3 is inapplicable).
+Instant (and non-instant) runoff voting both disobey 4, 5.
+(IRV obeys 1, 2, 3??).
+The "Borda count" disobeys all of 1-5 but
+many Condorcet systems obey them all.
+-->
+
+<h3> Criteria, while interesting and useful for enhancing understanding,  
+should <i>not</i> be your foundation </h3>
+
+<p>
+<a href="BayRegExec.html">Bayesian Regret</a> is what voting system comparisons should 
+rest on, not logical criteria.   
+</p><p>
+Problems with criteria: <i>qual</i>itative and
+ "all or nothing" &ndash; each criterion is either obeyed or not
+by a voting system.  No <i>quant</i>itative notion of "how often" and "how severely."
+Also, maybe "my criterion is important and yours is not"... except you disagree!
+That kind of argument never ends.
+Also, maybe there is some important criterion that has not yet been invented.
+Bayesian regret bypasses those problems: automatically assesses all possible criteria
+(whether anybody ever invented them, or not) correctly weighting according to 
+frequency and severity of failures,  <i>quantitatively</i> 
+measures "how much social utility" a voting system "loses" compared to 
+hypothetical and unachievable "optimum" system.
+</p>
+
+<H3> News flash! </H3>
+<p>
+"Only criteria <a href="RangeVoting.html">range voting</a> obeys
+can be regarded as 'good' criteria."
+</p><p>
+For explanation/clarification and justification of this remarkable 
+(but, as above, imprecisely stated) claim, see
+<a href="PreEmProp.html">this page</a>.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

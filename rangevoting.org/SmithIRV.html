@@ -1,0 +1,180 @@
+<html>
+<head>
+<title>
+RangeVoting.org -  Woodall's "Smith,IRV" Condorcet voting method
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<h2>
+Woodall's "Smith,IRV" Condorcet voting method
+</h2>
+
+<p><small>By Chris Benham &amp; Warren D. Smith</small></p>
+
+<p>
+T.N.Tideman, in his <a href="RVPapers.html">book</a>,
+considered a particular voting method
+that combined 
+the "Smith set" notion with "Instant Runoff Voting,"
+to be tentatively the "best" of the voting methods
+examined in his book.
+However, Tideman unfortunately was unaware of the following
+[Douglas R. Woodall:
+<i>Monotonicity of single seat preferential election rules</i>,
+Discrete Applied Maths. 77,1 (1997) 81-98].
+As Chris Benham pointed out, and so did Woodall in that paper,
+there is reason to believe Tideman's method
+is clearly inferior to the following related
+</p>
+<dl>
+<dt>
+<b>Woodall's Smith+IRV-type voting method (WoodSIRV):</b>
+</dt>
+<dd>
+Proceed by successively eliminating
+the candidates with the fewest top-rank votes (just as in <a href="rangeVirv.html">IRV</a>)
+except that before each IRV elimination, check to see if
+there is a single candidate X
+with no (among remaining candidates) pairwise losses. 
+As soon as such an X appears, elect X.
+</dd>
+</dl>
+<p>
+On what basis can we claim that
+WoodSIRV appears superior?
+Well,  WoodSIRV appears to be easier to describe and
+appears to obey the same set of Tideman's properties.
+And it also obeys these two properties that Tideman's Smith+IRV method fails:
+"mono-append" and
+"mono-add-plump."
+
+<h3> Properties obeyed by WoodSIRV </h3>
+
+<ul>
+<li>
+"Mono-append":
+Appending X to ballots that left X unranked (and hence had treated X as ranked co-equal last)
+cannot decrease X's chances of winning.
+</li><li>
+"Mono-add-plump": Adding ballots that "plump" for X cannot decrease X's chances of winning.
+</li><li>
+<a href="CandCloning.html">Clone immunity</a>.
+</li><li>
+Woodall's "plurality criterion" and "symmetric completion" criterion.
+</li><li>
+"Majority for solid coalitions": if a voter-majority 
+prefers every candidate in some set S over every candidate not in S, then a member of S must win.
+<!-- IRV obeys "Dominant mutual third":
+If more than a third
+of voters rank a set S of candidates above all others and if all the
+members of S pairwise-beat all the outside-S candidates,
+then the winner must come from S. -->
+</li>
+<a name="SmithSetDefn"></a>
+<li>
+"Smith set": If all the members of some candidate-subset S pairwise-beat 
+all the non-members then the winner must come from S.
+</li><li>
+"Condorcet criterion":  If a "Condorcet winner" exists (who beats all opponents
+pairwise) then he must win.  
+(Note: A Condorcet winner is a Smith set which has exactly one element.)
+</li><li>
+"Dominant mutual third burial resistance":
+If there are
+three candidates X,Y,Z and X is top-ranked on more than a third of the
+ballots and wins, then if some Y>X>Z ballots are changed to "bury" X, 
+i.e. becoming Y>Z>X, the
+winner can't change to Y.
+</li>
+</ul>
+
+<h3> The mono-append and mono-add-plump properties that Tideman fails but WoodSIRV satisfies </h3>
+
+We demonstrate both property failures in one example:
+</p>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="yellow" rules="rows">
+<tr> 
+<th> #voters </th>
+<th> their vote </th>
+</tr>
+<tr> 
+<td> 10 </td>
+<td> A>B>C>D </td>
+</tr>
+<tr> 
+<td> 6 </td>
+<td> B>C>D>A </td>
+</tr>
+<tr>
+<td> 2 </td>
+<td> C </td>
+</tr>
+<tr>
+<td> 5 </td>
+<td> D>C>A>B </td>
+</tr>
+</table>
+<p>
+In this election, all the candidates are in the <a href="#SmithSetDefn">Smith set</a>
+(which Woodall calls the "top tier"), 
+and the IRV winner &ndash; and hence winner with Tideman's Smith+IRV method &ndash; is <b>A</b>.  
+But if you <i>add two extra ballots that "plump" for A</i> 
+(i.e. vote for A and leave the rest unranked;
+unranked candidates being regarded as ranked coequal bottom)
+<i>or</i> which <i>append A</i> to the two C ballots, then the top tier becomes {A,B,C}, 
+and (when you delete D from all the ballots before applying IRV) then, according
+to Tideman and paradoxically, <b>C wins.</b> 
+</p>
+<p>
+Meanwhile WoodSIRV behaves reasonably: <b>A</b> still wins.
+</p>
+<p>
+So, at least based on Tideman's own properties (and provided the WoodSIRV modification does not
+injure the method's "strategy resistance") the WoodSIRV modification seems clearly superior
+to Tideman's "best" method.
+</p>
+
+
+<h3> Properties failed by WoodSIRV (which Tideman's method also fails) </h3>
+
+<ul>
+</li><li>
+<a href="FBCsurvey.html">Favorite Betrayal</a>.
+</li><li>
+"Participation": that is, unfortunately, casting an honest vote can be strategically worse 
+for a voter, than not voting at all (e.g. it causes somebody that voter regards as worse, to win).
+</li><li>
+Also fails numerous monotonicity criteria defined by Woodall including
+"mono-raise", "add-top", "remove-bottom", "raise-random", "sub-top", "raise-delete", "sub-plump".
+E.g, unfortunately, raising a candidate in your vote can cause him to lose.
+</li><li>
+Subdistrict partitioning: that is, unfortunately, if X wins in district I and in district II,
+<a href="CondNonAdd.html">somebody else</a> could win in the combined 2-district country.
+This prevents WoodSIRV from being "counted in precincts."
+</li><li>
+"Later no harm": manipulations you make to the ordering of the candidates you rank
+below X on your ballot, should not harm X's winning chances.
+</li><li>
+"Later no help": manipulations you make to the ordering of the candidates you rank
+below X on your ballot, should not help X's winning chances.
+</li>
+</ul>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

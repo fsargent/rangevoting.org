@@ -1,0 +1,688 @@
+<html>
+<head>
+<title>
+RangeVoting.org - survey of FBC (Favorite-Betrayal Criterion)
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Survey of Voting Methods that avoid Favorite-Betrayal </H2>
+
+<p><small>By Mike Ossipoff &amp; Warren D. Smith</small></p>
+
+<p><a href="FBCexecSumm.html">Executive summary</a></p>
+
+<p><b>The Favorite Betrayal Criterion (FBC):</b>
+<i>Voters should have no incentive to vote someone else over their favorite.</i>
+</p>
+<p><small>
+By "incentive" we mean, "increases expected utility of the election winner versus
+if you'd voted in a way with your favorite top."
+</small></p>
+<p>
+FBC is a very basic criterion to make democracy work well.
+Instant Runoff <a href="TarrIrv.html">fails FBC</a>, as do 
+<a href="IncentToExagg.html">many other systems, including every Condorcet system</a>
+and also all
+<a href="VenzkePf.html"> Condorcet systems where equal-rankings are permitted and
+even if based on &quot;<a href="WinningVotes.html">winning votes</a>&quot; not "margins."</a>
+Also every <a href="PointRunoff.html">point runoff</a> system disobeys FBC,
+and so does every 
+<a href="WtPositnl.html">weighted positional</a> rank-order ballot system
+except for anti-plurality voting.
+</p>
+<p>
+That won't do.  We need to be able to assure voters that they simply never
+need to vote their sleazy lesser-evil over their favorite in order to 
+fully protect the lesser-evil.  Ever.
+</p>
+<p>
+So we need an election method that complies with FBC.  We shall now survey them.
+</p>
+<p>
+<b>1. Approval Voting:</b>
+<ol type="A">
+<li> Voters may mark, on their ballots, the names of as many candidates as they 
+    want to.
+</li><li>
+The winner is the candidate who is marked on the most ballots.
+</li></ol>
+<p>
+Approval meets FBC.
+</p>
+<p>
+Approval is remarkably good, for such a briefly-defined method. 
+(Incidentally, we make the obvious, though significant, remark that Approval
+Voting causes the election of the candidate who is "ok" in the eyes
+of the maximum number of voters, provided "ok" means they approved of him.)
+And Approval 
+is, of course, the most modest change from Plurality.  Approval is "Plurality 
+done right."  What would it take to change from Plurality to Approval?: 
+On the 
+ballot, the words "Vote for 1" would have to be changed to "Vote for 1 or 
+more."  Two new words on the ballot.  That's it.  Cost of changing from 
+Plurality to Approval?  Zero.
+</p>
+<p>
+Approval could be called "Set Voting", because the voter can vote any set of 
+candidates over any other set of candidates.  The voter has complete freedom 
+of what sets, and what size sets.  Nothing else equals its elegant simplicity.
+</p>
+<p>
+But some object to Approval because of a confused and fallacious use of 
+"1-person-1-vote". Of course 1-person-1-vote just means that everyone should 
+have the same voting opportunity, counted the same way.  That fallacious 
+objection can be avoided by introducing Approval as Set Voting.
+</p>
+<p>
+It can also be avoided by introducing Approval as a variation of "the Score
+System".  Let me define the Score System, which, in voting system circles, 
+is known as "<a href="RangeVoting.html">Range Voting</a>":
+</p>
+<p>
+<b>2. Range Voting:</b>
+<ol type="A">
+<li>
+Each voter may give to any candidate any number of points, within a range 
+(such as "0 to 10") pre-specified by the election rules.
+</li><li>
+The winner is the candidate with the largest average score.
+</li></ol>
+</p>
+<p>
+For instance, one popular version of Range Voting 
+lets every voter give to any candidate any number of points from 0 to 10.
+This is basically what Olympics judges use, except they really are doing 0 to 100
+range voting since they work on 0.1-point increments.
+</p>
+<p>
+That method, 0-to-10 Range Voting, is probably the most winnable and popular 
+one.   We abbreviate Range Voting "RV".
+</p>
+<p>
+So, Approval could be introduced and offered by first defining RV, and then 
+proposing the {0, 1} version of RV  &ndash; in which a voter 
+may give to any candidate either 1 vote or 0 votes.
+</p>
+<p>
+But the really familiar and popular RV version is the 0-to-10 RV version. 
+0-to-10 RV might therefore be the most winnable voting system reform proposal, 
+due to its head start in familiarity and popularity.
+</p>
+<p><small>
+For mathematicians we note that range voting could be done using median score instead
+of average score, or indeed a candidate's "total score" could be <i>any</i> function
+of his ordered set of scores monotonically increasing and continuous
+in each argument separately.  Also, we could restrict the permitted scores to almost
+an subset of the real interval [0,1].  The result of all this freedom is
+a tremendously infinite set of FBC-obeying voting methods.
+</small>
+</p>
+<p>
+By the way, all of the RV versions are <i>strategically</i> equivalent to Approval: 
+You maximize your expectation in the election if you give maximum points to 
+every candidate whom you'd vote for if it were an Approval election, and 
+give minimum points to the other candidates. 
+<small>
+This is not quite true &ndash; there are <a href="RVstrat1.html#examples">examples</a>
+where it is strategically best to give some candidates intermediate scores.
+</small>
+</p>
+<p>
+For that reason, one might say that there isn't a great practical difference 
+between RV and Approval. But in fact, there are several:
+</p>
+<ol type="I">
+<li>
+As we said, RV is more familiar and popular. Approval is a new idea, and, 
+at least when not presented properly, is subject to the fallacious 
+"1-person-1-vote" objection.
+</li><li>
+In Approval, the Lo2E voters who now vote for Kerry instead of Nader would
+feel compelled to vote for Kerry in addition to voting for Nader.
+But in RV, 
+many of them may very well give to Kerry slightly fewer points than they 
+give to Nader.  That's a greater degree of honesty.  RV, then, could let voters 
+vote a little more honestly, showing some preference for their favorite over 
+their lesser-evil.
+</li><li>
+Additionally, some genuine preferrers of Kerry might give some points 
+to Nader, which is more honest for them than zero.  
+</li></ol>
+<p>
+Experimental polling 
+has shown a <i>pronounced</i> effect of that kind.  In the 2004 election 
+Nader would have gotten
+<a href="PsEl04.html">83 times</a> 
+as many votes as he did (relative to Bush) if RV had been used, and 
+Cobb would have gotten 63 times more.  But Cobb would have only gotten 25 times more
+with Approval &ndash; experimentally, RV always seems to give candidates not
+from the top-2 parties more votes than either Approval or Plurality, usually <i>far</i>
+more.  This has been called the "<a href="NurseryEffect.html">nursery effect</a>" 
+since it "coddles" small
+"infant" third party candidates in a protective shell of voter honesty, allowing them
+experimentally to get much higher vote counts than with the all-or-nothing Approval system.
+That effect may be key in allowing third parties to grow to adulthood rather than dying of
+infant mortality.
+</p>
+<p>
+An infinite number of variants of Range and Approval voting can be defined which also satisfy FBC,
+for example range voting with integer scores in {1,2,3,4,5},
+and "procrustean"
+range voting where your vote <i>must</i> score your top-most candidate over 90% of
+the maximum possible, and <i>must</i>
+score your bottom-most candidate below 10%, etc.
+</p>
+<H3>3. Rank Methods:</H3>
+<p>
+Some prefer rank balloting methods. 
+Instant Runoff is the one that we hear 
+about the most.  As we said, IRV fails FBC.  It also has other problems.  For 
+instance, in IRV you can make someone lose by voting him higher.  ("Non-monotonicity.")
+In fact, in IRV, voters can 
+<a href="rangeVirv.html">make someone lose by moving him 
+from last place to first place</a> on their ballot.  Few or no serious participants in 
+the discussion of voting systems prefer IRV.
+</p>
+<p>
+But rank balloting has great promise, and some rank methods meet FBC.
+Many of them were invented by Kevin Venzke.
+</p>
+<p>
+In Approval or RV, to fully protect your lesser-evil against your 
+greater-evil, you have to vote your lesser-evil equal to your favorite. 
+That's what rank methods can improve on.  I'm going to describe one or more 
+methods that accomplish that improvement.  Methods that meet FBC, but which, 
+in addition, let you fully protect your lesser-evil against your 
+greater-evil by merely ranking your lesser-evil below your favorite, and 
+above your greater-evil.
+</p>
+<p>
+<b>3a. Majority-Defeat-Disqualification Approval 
+(<a href="http://wiki.electorama.com/wiki/Majority_Defeat_Disqualification_Approval">MDDA</a>):</b>
+<ol>
+<li>
+Voters may rank, in order of preference, as many or as few candidates as 
+    they want to.  A voter may rank 2 or more candidates equally at the same rank 
+    position if s/he wants to.  Ranking X but not Y counts as a way of ranking X 
+    over Y.  For example a legal vote might be "Nader=Gore>Buchanan>Bush"
+    where Phillips and Moorehead are not ranked.
+</li><li>
+Candidates are disqualified if another candidate is ranked over them on 
+more than half of the ballots.
+(Unless that rule would disqualify all the candidates, in which case no one 
+is disqualified.)  For example, among the three votes "Nader=Bush", "Gore>Bush",
+and "Nader>Gore>Bush", Bush is not disqualified by Nader since only 1 out
+of the 3 ballots (not a majority) rank Nader above Bush.  However Bush here
+is disqualified by Gore.
+</li><li>
+The winner is the un-disqualified candidate who is ranked on the most 
+ballots.
+</li></ol>
+<p>
+<small>
+It is also possible to consider a different version of MDDA where voters rank <i>all</i>
+candidates but also include a "threshold" in their vote such that all candidates
+above the threshold are considered "approved."  That has been called "deluxe MDDA."
+It also avoids favorite betrayal, but it is felt by MDDA's inventors to be inferior
+to plain MDDA for reasons both of simplicity and strategic exploitation.
+</small>
+</p>
+<p>
+As we said, MDDA meets FBC. <a href="IncentToExagg.html">Very few rank methods do</a>.
+</p>
+<p>
+Additionally, MDDA enforces majority wishes well enough so that when you rank 
+Compromise below Favorite, but above Worst, you are fully and reliably 
+helping Compromise against Worst.  Because ranking Worst below Compromise 
+helps Compromise to majority-disqualify Worst, and also presumably you will leave Worst
+"unranked" to maximally decrease Worst's "approvals" (where ranking someone counts
+as "approving" them in MDDA).
+</p>
+<p>
+That would let Nader voters safely rank Nader in 
+1st place and Kerry in 2nd place.
+</p>
+<p>
+Let me be more specific, and define some of the particular ways in which MDDA 
+enforces majority wishes:
+</p>
+<p>
+A preliminary definition:
+</p>
+<p>
+"CW" stands for "<a href="Glossary.html">Condorcet winner</a>", a candidate who, when compared 
+separately to each one of the other candidates, is preferred to him/her by 
+more voters than vice-versa.
+</p>
+<p>
+There is usually a CW. 
+When there isn't, it's difficult to say who should win.
+</p>
+<p>
+<b>Strategy-Free Criterion (SFC):</b>
+<i>If no one falsifies a preference, and if more than half of the voters prefer 
+the CW to Y, and vote sincerely, then Y shouldn't win.</i>
+</p>
+<p>
+MDDA meets SFC.  MDDA's compliance with SFC means that the members of that 
+majority need do nothing other than vote sincerely, to ensure that 
+greater-evil Y won't win.  It describes a common, plausible set of conditions 
+under which voters don't need to use any strategy, i.e. can just rank 
+sincerely.
+</p>
+<p>
+<b>Strong Defensive Strategy Criterion (SDSC):</b>
+<i>If more than half of the voters prefer X to Y, then they should have a way 
+of voting that ensures that Y won't win, without their having to reverse a 
+preference, or fail to vote all of their sincere preferences among those 
+candidates whom they vote over other candidates.
+</i>
+</p>
+<p>
+MDDA complies with SDSC.  (So do Range and Approval.)
+</p>
+<p>
+With MDDA, and other methods that comply with SDSC, the members of that 
+majority who prefer X to Y can ensure that Y won't win by merely ranking X 
+but not Y.
+</p>
+<p>
+Thus, MDDA's SDSC compliance gives additional majority-enforcement.  SFC and 
+SDSC are a powerful majority-enforcement combination.
+</p>
+<p>
+Voting in MDDA, one should rank candidates all the way down to the candidate 
+whom they're sure can get a majority against the worse candidates.  That 
+candidate is the needed compromise, and typically is the CW.
+</p>
+<p>
+Because of MDDA's SFC compliance, you can usually safely rank all the 
+candidates if you want to.  Certainly there's little danger if you overshoot 
+a bit, and rank lower than you need to.
+</p>
+<p>
+But of course you don't want to rank your greater-evil(s).  Don't rank anyone 
+who is completely unacceptable to you.  In that way, you bring SDSC's 
+majority-enforcement power to bear against those unacceptable candidates, 
+in addition to that of SFC.
+</p>
+<p>
+As we said, MDDA meets FBC, SFC, and SDSC.
+</p>
+<p>
+Though MDDA seems to me to be the best proposal for a rank method, let me describe some
+alternatives.  "MDDB" differs from MDDA only in how it chooses from among the un-disqualified 
+candidates:
+</p>
+<p>
+<b>3b. Majority-Defeat-Disqualification Borda (MDDB):</b>
+<ol type="A">
+<li>
+(Same as for MDDA.)
+</li><li>
+Candidates are disqualified if another candidate is ranked over them by 
+more than half of the voters.
+(Unless that rule would disqualify all the candidates, in which case no one 
+is disqualified).
+</li><li>
+The winner is the un-disqualified candidate who has fewest candidates ranked 
+over him/her, as summed over all the rankings.  (E.g. for the two votes
+"Nader>Gore>Bush" and "Gore>Bush", Bush has 3 candidates ranked above him, as 
+summed over both rankings.)
+</li></ol>
+</p>
+<p>
+But MDDA seems superior to MDDB because of its <a href="CandCloning.html">immunity to clones</a>.
+<small>That was assuming all X's clones are ranked co-equal to X on all ballots.
+But if voters can have slight <i>preferences</i>
+among the clones, then MDDA is <i>not</i> clone-immune
+and indeed every MDD-method is not (and nor is
+Simpson-Kramer min-max[pairwise opposition] nor ICA), 
+because a majority-preference cycle can appear
+disqualifying every clone of the winner, including that winner.  
+Similarly, ER-Bucklin is clone-immune with clones equality-ranked,
+but <i>not</i> with preferences among the clones, since cloning the winner can cause 
+all winner-clones to be delayed in acquiring the necessary vote-majority, allowing somebody 
+else to win sooner.
+</small>
+MDDB indeed shares a lot of horror-features with <a href="rangeVborda.html">Borda</a> voting.
+</p>
+<p>
+<b>3c. ER-Bucklin:</b>
+<ol type="A">
+<li>
+(Same as for MDDA.)
+</li><li>
+We proceed in rounds.
+If a ballot lists <i>n</i> candidates as tied in <i>k</i>th place, 
+count that ballot as a whole point for all <i>n</i> candidates beginning in the <i>k</i>th round.
+</li><li>
+Note: A candidate is ranked "in <i>k</i>th place" on a given ballot if there are 
+<i>k-1</i> candidates who are ranked strictly higher. 
+For example, a ballot marked A>B=C=D>E>F=G=H=I>J should be considered to rank A first, 
+B, C, and D tied for second, E fifth, F, G, H, and I tied for sixth, and J tenth. 
+Thus, the ballot would not count in favor of E until the 5th round, 
+and it would not count in favor of J until the 10th round.
+</li><li>
+The rounds proceed until the candidate with the most points
+has more points than
+50% of the number of voters; that candidate wins.
+</li></ol>
+</p>
+<p>
+As just defined, ER-Bucklin unfortunately can fail to deliver <i>any</i> winner,
+if enough voters truncate their ballots.  We can solve that problem by (in that case)
+just declaring whoever gets the most votes in the <i>first</i> round, to be the winner
+(in which case ER-Bucklin just becomes approval voting), but that "solution"
+unfortunately can reward ballot truncation.  Actually Bucklin already does reward 
+ballot truncation,
+because voters soon realize that ranking somebody lower than their favorite can help to 
+defeat that favorite.  Bucklin (although not the ER variant with equal-ranks permitted)
+was employed in several US states to elect governors, but was abandoned 
+(FairVote alleges) for
+precisely this reason: 
+most voters simply voted plurality-style, i.e. maximally truncating their ballot.
+We're not convinced that really was the reason, but it indisputably was abandoned.
+Other "solutions" would be
+to outlaw truncated ballots or to artificially extend any truncated ballots to
+rank the remaining candidates coequal last.  Those both have disadvantages.
+Chris Benham suggested another idea: whoever has the most points at the end of the process 
+just wins, even if the threshhold is not reached.
+(<small>Bucklin also resembles Approval in the sense that 
+if the last Bucklin round is the <i>k</i>th, then
+the same result would be obtained by a Bucklin election and an Approval
+election in which each voter "approved" candidates ranked <i>k</i> or better.
+</small>)
+</p>
+<p>
+<b>3d. Simpson-Kramer Min-Max(Pairwise Opposition):</b>
+<ol type="A">
+<li>
+(Same as for MDDA.)
+</li><li>
+Elects the candidate whose greatest <i>opposition</i> from another candidate is minimal. 
+Pairwise wins or losses are not considered; all that matters is the number of votes ranking
+the opposed candidate over you.
+</li></ol>
+<p>
+<b>3e. <a href="http://wiki.electorama.com/wiki/Improved_Condorcet_Approval">ICA</a></b>:
+<ol type="A">
+<li>
+(Same as for MDDA.)
+</li><li>
+Again as in MDDA, a voter implicitly <i>approves</i> every candidate whom he explicitly ranks.
+</li><li>
+Let v[a,b] signify the number of voters ranking candidate <i>a</i> above candidate
+<i>b</i>, and let t[a,b]
+signify the number of voters ranking <i>a</i> and <i>b</i> 
+equally at the top of the ranking (possibly 
+tied with other candidates).
+</li><li>
+Define a set <i>S</i> of candidates, which contains every candidate <i>x</i> for whom there is no other candidate <i>y</i> such that v[x,y]+t[x,y]&lt;v[y,x].
+</li><li>
+If <i>S</i> is empty, then let <i>S</i> contain all the candidates.
+</li><li>
+Elect the candidate in <i>S</i> with the greatest approval.
+</li></ol>
+<p>
+In other words, every candidate <i>a</i> is disqualified who pairwise loses to some other candidate <i>b</i>, and would still lose to <i>b</i> even when the voters supporting both equally as first preferences are counted in favor of <i>a</i>. If everyone is disqualified, then no one is. Then the most approved candidate who isn't disqualified is elected.
+</p>
+<p>
+Perhaps also other voting methods may be converted to be FBC-compliant by
+using Venzke's 
+<a href="http://wiki.electorama.com/wiki/Tied_at_the_top">"tied at the top trick."</a>
+(I am not quite sure when this works.)
+</p>
+<p>
+<small>
+Venzke has also discussed some 
+<a href="http://wiki.electorama.com/wiki/Improved_Condorcet_Approval">variant forms of ICA</a>. 
+Venzke also notes:
+For another way tied-at-the-top can work, consider a (rather bad) method which elects
+the candidate with the greatest number of rankings over some
+other candidate. (That is, if the matrix has no value greater
+than v[x,y], elect <i>x</i>.) By itself, this method doesn't satisfy
+FBC because it could be that introducing a strict ranking
+between <i>x</i> and <i>y</i> could cause v[x,y] to be the greatest win and
+move the win to <i>x</i> from some other candidate.
+<br>
+But we can use the "tied at the top" rule to fix this. Just say
+that when <i>x</i> and <i>y</i> are "tied at the top" on a given ballot, this
+vote counts to both v[x,y] and v[y,x]. Then all that can be
+"gained" by introducing a strict <i>x</i>&gt;<i>y</i> ranking is that v[y,x] is
+reduced.
+</small>
+</p>
+<p>
+<b>MDD-hybrids:</b>
+It is possible to create new FBC-complying voting methods by 
+including an MDD (Majority-Defeat-Disqualification) step as a <i>preface</i>
+to some FBC-obeying method. 
+For example, two MDD-range hybrids would be:
+</p>
+<p><b>MDDR1:</b>
+<ol type="A">
+<li>
+voters contribute range-style votes.
+</li><li>
+candidates A scored below B by a majority of the voters, are disqualified
+(unless all would be disqualified, in which case none are)
+</li><li>
+among the remaining candidates:
+your "margin of disfavor" is the sum, over all ballots,
+of the difference between the max-scored candidate's score and yours.
+</li><li>
+The winner is the candidate with the least margin-of-disfavor.
+</li></ol>
+<p>
+<b>MDDR2</b> would be the same, except in step C redefine
+a candidate's "margin of disfavor" as the sum, over all ballots, over all candidates scored
+above him, of the difference between that candidate's score and his.
+</p>
+<p>
+MDDR1 seems superior to MDDR2 because of its 
+<a href="CandCloning.html">immunity to clones</a>.
+MDDR1  has the severe disadvantages relative to Range Voting that
+"no opinion" scores for some candidate are easy to permit in range voting but
+not in MDDR1; also MDDR1 is more complicated to describe.
+</p>
+<p>
+Another interesting MDD-hybrid method would be <b>MDD-ER-Bucklin</b>
+which is ER-Bucklin prefaced by a disqualification of majority-defeated candidates.
+</p>
+<H3> 4. Lottery methods </H3>
+<p>
+The simplest lottery methods, introduced by Gibbard, are "random dictator"
+and "random pair."
+</p>
+<p><b>Random dictator:</b>
+<ol type="A">
+<li>
+voters contribute rank-orderings as votes (for simplicity, let us disallow
+equal rankings).
+</li><li>
+A random voter is chosen and his top choice is declared the winner.
+</li></ol>
+</p>
+<p><b>Random Pair:</b>
+<ol type="A">
+<li>
+voters contribute rank-orderings as votes (equalities can be allowed, or not, either works)
+</li><li>
+A random pair of candidates is chosen, and the winer is whichever among those two
+candidates wins the head-to-head election got by removing all other candidates from all votes.
+</li></ol>
+</p>
+<p>
+These two schemes are remarkable and unique in that sincere and optimally-strategic
+voting are always <i>the same thing</i>.
+However, Gibbard dismissed these schemes as having no practical interest in
+real elections
+because "they leave too much to chance."
+</p>
+<H3> 5. AntiPlurality </H3>
+<p>
+The "AntiPlurality" voting system (which we do <i>not</i> recommend) is you name
+your least-favorite candidate as your vote, and the least-named candidate wins.
+It and some other related systems technically obey FBC.
+</p>
+<!--
+<p>
+Forest Simmons more recently introduced the idea of designing
+"lottery methods" which
+leave <i>less</i> to chance but hopefully still gain <i>most</i> of the 
+anti-strategy properties of Gibbard's methods.
+Here is one of Simmon's methods which, as he points out, obeys FBC.
+</p>
+<p><b>Simmons' Approval/Beater Toss-Up method:</b>
+<ol type="A">
+<li>
+voters contribute rank-orderings as votes (equalities not allowed)
+with an "approval cutoff," e.g. "Nader>Gore|>Buchanan>Bush" would be a legal vote
+with "|" denoting the approval cutoff (this voter "approves" both Nader and Gore).
+</li><li>
+Consider the alternatives X different from, and not majority-defeated by,
+the approval winner A.
+Toss a coin to decide between A and the most-approved X.
+(If no X exists, then A wins.)
+</li></ol>
+</p>
+<p>
+You will have to decide for yourself whether you are happy about having
+a method such as this that incorporates randomness.
+</p>
+-->
+<H3> How to prove FBC </H3>
+<p>
+For all of the voting systems above, one can prove FBC-compliance by the following strategy:
+<i>If</i> betraying favorite F in order to make X win is the plan,
+and <i>if</i> that plan actually works,
+<i>then</i> the alternate non-betrayal
+plan of simply raising X to be co-equal top with F
+(carried out by the same set of voters who planned to betray F, using the same set
+of votes they planned on)
+<i>also</i> works to make X win.  Q.E.D.
+</p>
+<p>
+Specifically, this proof works for MDDA, MDDB, MDDR1, MDDR2, ICA,
+ER-Bucklin, Min-Max(pairwise-opposition), and MDD-hybrid-X
+where X is any FBC-obeying system for which that proof strategy worked.
+</p>
+<p>
+But for Range and Approval voting (and the lottery methods)
+a <i>simpler</i> FBC proof works, because these systems actually
+obey a <i>stronger</i> form of FBC.
+Specifically, raising or lowering your range or approval vote for F <i>in no way affects</i>
+the relative election chances of the other candidates.  This makes it <i>immediately
+obvious</i> that betraying F is strategically pointless.  With
+MDDA and MDDB, in contrast, betraying F <i>can</i> be strategically useful &ndash;
+it is just that when it is, there is an alternate non-betrayal strategy that also works.
+<p>
+For example in MDDA:
+</p>
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr><td>  2 </td><td> F>X </td></tr>
+<tr><td> 49 </td><td> F>X>Y </td></tr>
+<tr><td> 49 </td><td> Y>X </td></tr>
+</table>
+<p>
+<b>Y wins.</b>
+However, if F  is maximally-betrayed we get
+</p>
+<table border="3" cellpadding="5"  bordercolor="red" bgcolor="yellow">
+<tr> 
+<th> #voters </th>
+<th> Their Vote </th>
+</tr>
+<tr><td>  2 </td><td> X </td></tr>
+<tr><td> 49 </td><td> X>Y </td></tr>
+<tr><td> 49 </td><td> Y>X </td></tr>
+</table>
+<p>
+and <b>X wins,</b> which those voters prefer.
+The reason MDDA obeys FBC is that, although this betrayal works, it is not
+the only thing that works &ndash; non-betrayal strategies also work.
+<p>
+So FBC is obeyed is a <i>stronger sense</i> by Range Voting than by MDDA.
+With range voting, if you blow away F by betraying him, then 
+that will not alter the winner (unless F had won).  In contrast, in MDDA, betraying F
+can alter the winner, and sometimes in a way you consider favorable.
+</p>
+<p>
+So with range voting, favorite-betrayal just doesn't work.
+</p>
+<p>
+With MDDA,  favorite-betrayal can work, but there is always a non-betrayal method of
+achieving the same strategic goal.
+</p>
+<H3> Comparison </H3>
+<p>
+MDDA, MDDB, MDDR1, MDDR2, ER-Bucklin, Simpson-Kramer-Min-Max(PO),
+and every MDD-hybrid method
+all might suffer in practice from the devastating
+<a href="DH3.html">DH3 pathology</a>, which, however, plain 
+Range and Approval voting are immune to.
+</p>
+<p>
+MDDA, MDDB, MDDR2, MDDR1, ER-Bucklin, Simpson-Kramer-Min-Max(PO),
+and every MDD-hybrid method all are vulnerable to 
+<a href="CandCloning.html">candidate-cloning</a> if the voters express slight preferences 
+among the clones. 
+Range and approval (but the latter only under the assumption clones
+get equal approval ratings) are immune to cloning.
+MDDA, MDDR1,  ER-Bucklin, and Simpson-Kramer-Min-Max(PO) <i>are</i>, however,
+immune to clones assuming (probably unrealistically) voters always rate clones as equal.
+</p>
+<p>
+This leads to the very interesting
+</p>
+<p>
+<b>Conjecture:</b>
+<i>Continuum Range Voting (and its obvious variants, such as range voting where the top-scored
+candidate must be given at least 90% of the maximum score)
+are the <u>only</u> FBC-obeying
+voting methods immune to candidate-cloning (with voters assumed to have tiny
+preferences among the clones) where we disregard non-deterministic election methods.
+</i>
+</p>
+<p>
+<b>Later Note (Jan 2007):</b> Big <a href="SimmonsSmithPf.html">progress</a>
+has been made toward proving this conjecture.
+</p>
+<p>
+Also, because the MDD-based methods are considerably more complicated than Range Voting, 
+RV is probably the best proposal for public consumption.  
+In particular, both Approval and RV <a href="VotMach.html">can be
+handled by all US voting machines</a>.
+None of rank-ballot FBC-methods (although Simpson-Kramer and ER-Bucklin come 
+substantially closer than usual) 
+can be.
+Also the experimental "nursery effect" may not be present with the rank-ballot
+methods, in which
+case range would be far superior from the point of view of US third parties.
+</p>
+<p>
+A range voting advocacy group has formed: the 
+"Center For Range Voting"
+<a href=""></a>.
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>

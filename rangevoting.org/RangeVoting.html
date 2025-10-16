@@ -1,0 +1,2157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN" "http://www.w3.org/TR/xhtml2/DTD/xhtml1-strict.dtd">
+<html lang="en" xml:lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<title>
+RangeVoting.org - Center for Range Voting - front page
+</title>
+<meta name="description" content="Voting reform advocacy and educational organization."></meta>
+<meta name="keywords" content="gerrymandering, voting, technology, corruption, government, 
+voting systems, election methods, democracy, score voting, range voting,
+voting machines, third party, libertarian, green, republican, democrat, socialist,
+approval, range, condorcet, borda, IRV, Iowa"></meta>
+<style type="text/css">
+body {
+min-width: 736px;
+background: white;
+color: #1b1b1b;
+padding: 10px;
+margin: 0px;
+}
+
+a {
+border: 1px;
+color: #00d;
+text-decoration: none}
+
+a:visited {
+color: #5f0e00;
+text-decoration: none}
+
+a:hover {
+background: #d19a3b; /*f66*/
+color: #000}
+
+div#linkbarcontainer1 {
+float: right;
+z-index: 97;
+clear: left;
+width: 100%;
+background:#fefefe;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px}
+
+div#linkbarcontainer2 {
+float: right;
+padding-left: 10px; /*make smaller or larger? activates 2 safari bugs*/
+z-index: 97;
+margin-top: 0px;
+margin-left: 0px;
+margin-right: 0px;
+margin-bottom: 0px}
+
+div#lmenucontainer {
+float:left; 
+width: 165px;
+margin-top: 0px;
+}
+
+div#headline {
+margin-left: 40px;
+margin-right: 35px;
+margin-bottom: 67px;
+margin-top: 0px;
+clear: both;
+padding-left: 0px;
+text-align: center}
+
+div#search {
+margin-top: 10px;
+margin-right: 1px;
+margin-left: 5px;
+margin-bottom: 2px;
+border: 1px black solid;
+float: right;
+width: 290px; /*adjusted to the pixel to prevent a safari bug*/
+z-index: 0;
+background-color: #FD0;
+padding: 2px;
+text-align: left }
+
+div#main {
+/*width: 100%;*/
+margin-top: 0.7em; /*28px;*/
+margin-left: 159px;
+font-family: arial,sans-serif,arial narrow;}
+
+/*<span>THIS HERE</span> elements inside hyperlinks in main normally are invisible:*/
+div#main a span {display:none;} 
+
+/*but appear on hover:*/
+div#main a:hover span {display:block;
+position:relative; 
+margin-top:-21px; 
+background:#d5d5ff;
+z-index:100}
+
+div#footer {
+margin-top: 132px;
+margin-left: 140px;
+margin-right: 140px;
+font-size: 8px;
+font-weight: bold;
+text-align: center }
+
+/*CSSplay horizontal flyout menu.  
+We are mostly only going to use 1 menu level, not multiple.  But do use multiple some places.
+[DL-based menus are easier to style and do, but do not lend themselves to multiple levels, so no.]
+Fails in IE5mac, Works in Safari1.3.2, IE5.5, IE6, IE7, Firefox3.5, Opera8.54, Konqueror, SeaMonkey2, MSIE7, MSIE5.5/windows, Mozilla and Netscape:*/
+/* style the outer div to give it width: */
+.Hmenu {
+width:560; /*140*4, need more if more than 4 items in row*/
+height:30px;
+float: right;
+text-align: center;
+}
+/* remove all bullets, borders and padding from default list styling: */
+.Hmenu ul {
+padding:0;
+margin:0;
+list-style-type:none;
+}
+.Hmenu ul ul {
+width:140px;
+}
+/* float list to make it horizontal and relative position so can control dropdown menu position: */
+.Hmenu li {
+float:left;
+width:140px;
+position:relative;
+}
+/* style the links for top level: */
+.Hmenu a, .Hmenu a:visited {
+display:block;
+font-size:13px;
+text-decoration:none; 
+color:#000; /*text color black=000*/
+width:129px; /*150-11*/
+height:30px; 
+border:1px solid #fff; 
+border-width:1px 1px 0 0; 
+background:#88b0d7; /*this is brighter blue; drab olive= d4d8bd*/
+padding-left:10px; 
+line-height:29px;
+}
+/* a hack so that IE5.5 faulty box model is corrected: */
+* html .Hmenu a, * html .Hmenu a:visited {
+width:140px;
+}
+/* style the second level background: */
+.Hmenu ul ul a.drop, .Hmenu ul ul a.drop:visited {background:#949e7c;}
+/* style the second level hover: */
+.Hmenu ul ul a.drop:hover {background:#d19a3b;}
+.Hmenu ul ul :hover > a.drop {background:#d19a3b;}
+/* style the third level background */
+.Hmenu ul ul ul a, .Hmenu ul ul ul a:visited {background:#88b0d7;}
+/* style the third level hover */
+.Hmenu ul ul ul a:hover{background:#d19a3b;}
+.Hmenu ul ul ul :hover > a {background:#d19a3b;}
+/* style the table so that it takes no part in the layout - required for IE to work: */
+.Hmenu table {border-collapse:collapse; border:0; position:absolute; left:0; top:-1px;}
+/*in above line, use top for dropdown, bottom for flyup.*/
+/* hide the sub levels and give them absolute position so they take up no room: */
+.Hmenu ul ul {
+visibility:hidden;
+position:absolute;
+top:31px; /*change to bottom for flyup, top for dropdown*/
+left:0; 
+width:140px;
+}
+* html .Hmenu ul ul {bottom:30px;}
+/* position third level flyout Hmenu: */
+.Hmenu ul ul ul{
+left:140px; 
+top:0; /*change to bottom for flyup, top for dropdown*/
+width:140px;
+}
+/* position third level flyout Hmenu for left flyout: */
+.Hmenu ul ul ul.left {left:-140px;}
+/* style second level links: */
+.Hmenu ul ul a, .Hmenu ul ul a:visited {
+background:#88b0d7; /*drab olive*/
+color:#000; /*text color black=000*/
+height:auto; 
+line-height:1em; 
+padding:5px 10px; 
+width:119px
+/* yet another hack for IE5.5: */
+}
+* html .Hmenu ul ul a{width:140px;}
+/* style the top level hover: */
+.Hmenu a:hover, .Hmenu ul ul a:hover{
+color:#000;
+background:#d19a3b;
+}
+.Hmenu :hover > a, .Hmenu ul ul :hover > a {
+color:#000;
+background:#d19a3b;
+}
+/* make the second level visible when hover on first level list OR link: */
+.Hmenu ul :hover ul{
+visibility:visible;
+height:auto;
+}
+/* keep the third level hidden when hover on first level list OR link: */
+.Hmenu ul :hover ul ul{display:none;}
+/* keep the fourth level hidden when hover on second level list OR link: */
+.Hmenu ul :hover ul :hover ul ul{display:none;}
+/* make the third level visible when hover over second level list OR link: */
+.Hmenu ul :hover ul :hover ul{ 
+display:block;
+bottom:0;
+}
+/* make the fourth level visible when hover over third level list OR link */
+.Hmenu ul :hover ul :hover ul :hover ul { 
+display:block;
+bottom:0;
+}
+
+/*CSSplay vertical flyout menu.  Useful to know: &laquo; is << &raquo; is >>
+Fails in IE5mac.
+Works in Safari1.3.2, IE5.5, IE6, IE7, Firefox, Opera, Mozilla and Netscape:*/
+** This copyright notice must be untouched at all times.
+The original version of this stylesheet and the associated (x)html
+is available at http://www.cssplay.co.uk/menus/flyout_4level.html
+Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
+This stylesheet and the associated (x)html may be modified in any
+way to fit your requirements. **/
+.Vmenu { margin: 10px; height: 100px; font-size:9pt; font-family: "arial narrow", 
+"Helvetica Compressed",
+"Helvetica Narrow",
+"DejaVu Sans Condensed", 
+"Droid", "Playbill", "CampanileFLF";}
+.Vmenu ul { margin: 0pt; padding: 0pt; position: relative; z-index: 500; list-style-type: none; width: 9em; }
+.Vmenu li { background-color: #6699ff; float: left; }
+.Vmenu li.sub { background-color: #6699ff; }
+.Vmenu table { position: absolute; border-collapse: collapse; top: 0pt; left: 0pt; z-index: 100; font-size: 1em; margin-top: -1px; }
+.Vmenu a.last, .Vmenu a:visited.last {border-width:1px;}
+.Vmenu a, .Vmenu a:visited { border: 1px solid #ffffff; border-width:1px 1px 0 1px; display: block; text-decoration: none; height: 2em; line-height: 2em; width: 9em; color: #000000; padding-left: 0.5em; font-weight: normal; font-style: normal; font-variant: normal; text-transform: none; }
+.Vmenu b { float: right; margin-right: 5px; }
+* html .Vmenu a, * html .Vmenu a:visited { width: 9em; line-height: 2em; }
+* html .Vmenu a:hover { border-color: #ffffff; color: #000000; background-color: #ff6600; position: relative; font-weight: normal; font-style: normal; font-variant: normal; text-decoration: none; text-transform: none; }
+.Vmenu li:hover { position: relative; }
+.Vmenu a:active, .Vmenu a:focus { border-color: #ffffff; color: #000000; background-color: #ff6600; font-weight: normal; font-style: normal; font-variant: normal; text-decoration: none; text-transform: none; }
+.Vmenu li:hover > a { border-color: #ffffff; color: #000000; background-color: #ff6600; font-weight: normal; font-style: normal; font-variant: normal; text-decoration: none; text-transform: none; }
+.Vmenu li ul { padding: 2em; visibility: hidden; position: absolute; top: -2.5em; left: 5em; background-color: transparent; }
+.Vmenu li:hover > ul { visibility: visible; }
+.Vmenu ul a:hover ul ul { visibility: hidden; }
+.Vmenu ul a:hover ul a:hover ul ul { visibility: hidden; }
+.Vmenu ul a:hover ul a:hover ul a:hover ul ul { visibility: hidden; }
+.Vmenu ul a:hover ul { visibility: visible; }
+.Vmenu ul a:hover ul a:hover ul { visibility: visible; }
+.Vmenu ul a:hover ul a:hover ul a:hover ul { visibility: visible; }
+.Vmenu ul a:hover ul a:hover ul a:hover ul a:hover ul { visibility: visible; }
+</style>
+</head>
+<body>  
+
+<div id="headline">
+<table border="0" cellpadding="0" align="left">
+<tr>
+<th rowspan="2"><font size="+4"><a href="" title="Score Voting main page in English - Home" style="color: black">RangeVoting.org</a></font></th>
+<td width="5"></td>
+<th><span style="color: #122985">The Center for Range Voting</span></th>
+</tr>
+<tr>
+<td width="5"></td>
+<th><span style="color: #a60a00">GET REAL DEMOCRACY</span></th>
+</tr>
+</table>
+</div>
+
+<div id="linkbarcontainer1">
+<div class="Hmenu">
+<ul>
+<li><a href="HowToImprove.html" title="How to improve CRV web pages">Improve</a>
+</li>
+<li><a href="MotPlusMenu.html" title="Present page too complicated? Try this instead">Simplified Page</a>
+</li>
+<li>
+<a href="voldir/Volunteer.html" title="Fill out a form to join CRV so that we can know about your skills &amp; can contact you and have you help us.">Join</a>
+</li>
+<li><a href="Donate.html" title="How to donate money to CRV">Donate</a>
+</li>
+</ul>
+<!--<a href="RV-TB.html" title="Your browser too old to handle present web page? Try this">Old browsers</a>-->
+</div>
+</div>
+
+<div id="linkbarcontainer2">
+<div class="Hmenu">
+<ul>
+<li><a class="drop" href="HowToTranslate.html" title="Please help translate CRV pages into other languages.  Click this link to see how and get linked to all our translations so far.">Other Languages<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul>
+        <li><a href="RVeasyT.html">Easy(?) English</a></li>
+        <li><a href="ARABIC/RangeVoting.html">machine Arabic</a></li>
+        <li><a href="CHINESE-SIMP/RangeVoting.html">machine Chinese-simp</a></li>
+        <li><a href="PORTUGUESE/RangeVoting.html">Portuguese</a></li>
+        <li><a href="RVfrench.html">French &raquo;<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+<ul>
+<li><a href="PORTUGUESE/RangeVoting.html">Front Page</a></li>
+<li><a href="PORTUGUESE/SmithWM.html">1-page intro</a></li>
+</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+        <li><a href="RUSSIAN/RangeVoting.html">machine Russian</a></li>
+        <li><a href="SPANISH/RangeVoting.html">machine Spanish</a></li>
+        <li><a href="HowToTranslate.html"><b>All</b></a></li>
+        <li><a href="HowToTranslate.html"><b>How to Translate</b></a></li>
+</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="drop" href="Endorse.html" title="Fill out a form here to endorse any subset of several endorseable statements.  Can't change the world without enough endorsers."><blink>Endorse</blink><!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul>
+        <li><a href="AboutEndorse.html" style="margin-left: 0px; margin-right: 0px">About Endorsing</a></li>
+</ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="drop" href="WaysToHelp.html">Help CRV<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul>
+        <li><a href="WaysToHelp.html">Ways to help CRV</a></li>
+        <li><a href="HowToImprove.html">Improve CRV pages</a></li>
+        <li><a href="ClickCopy.html">Click &amp; Copy link to CRV</a></li>
+        </ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+<li><a class="drop" href="http://groups.yahoo.com/group/RangeVoting" title="Read and/or join the Score Voting Bulletin Board">Discuss<!--[if IE 7]><!--></a><!--<![endif]-->
+<!--[if lte IE 6]><table><tr><td><![endif]-->
+        <ul>
+        <li><a href="AboutBlog.html">About blog</a></li>
+        <li><a href="http://groups.yahoo.com/group/RangeVoting">RangeVoting forum</a></li>
+        <li><a href="http://electology.org">Electology.org</a></li>
+        <li><a href="http://groups.google.com/group/electionscience">CES forum</a></li>
+        <li><a href="http://www.votedevaleur.org">Vote de Valeur</a></li>
+        <li><a href="http://groups.google.com/group/votedevaleur">VdV forum</a></li>
+        <li><a href="http://electorama.com">Electorama</a></li>
+        <li><a href="http://wiki.electorama.com/wiki/Election-methods_mailing_list">Electorama forum</a></li>
+        </ul>
+<!--[if lte IE 6]></td></tr></table></a><![endif]-->
+</li>
+</ul>
+</div>
+</div>
+
+<div id="lmenucontainer">
+<div class="Vmenu">
+<ul>
+<li>
+<a href="http://www.commoncause.org/take-action/actions/register-to-vote.html">R<small>EGISTER</small> to vote</a>
+</li>
+<li>
+<a href="AboutUs.html">
+<b>&#187;</b>About Us<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="AboutUs.html">CRV</a>
+</li>
+<li>
+<a class="last" href="AboutCofounders.html">Co-founders</a>
+</li>
+<li>
+<a class="last" href="Copyright.html">Copyright</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="http://groups.yahoo.com/group/RangeVoting/links" title="List of over 300 useful links">
+<b>&#187;</b>Links/News/Rcnt<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="http://groups.yahoo.com/group/RangeVoting/links">Links</a>
+</li>
+<li>
+<a href="news.html" title="ScoreVoting-related current news">News</a>
+</li>
+<li>
+<a href="https://search.freefind.com/find.html?id=78874049&amp;w=0&amp;p=0" title="Recently-modified pages on ScoreVoting.net">New CRV pages</a>
+</li>
+<li>
+<a href="https://search.freefind.com/find.html?id=78874049&amp;map=0&amp;page=0&amp;ics=1">Site Map</a>
+</li>
+<li>
+<a class="last"  href="https://search.freefind.com/siteindex.html?id=78874049&amp;ics=1" title="Alphabetical index">Index</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="Faq.html" title="Frequently Asked Questions">
+<b>&#187;</b>FAQ<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="Faq.html">FAQ</a>
+</li>
+<li>
+<a href="SmithWM.html">SV Quick Intro</a>
+</li>
+<li>
+<a class="last" href="Lectures.html">Lecture Slides</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="ContactUs.html">
+<b>&#187;</b>Contact Us<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="ContactUs.html">Contacting CRV</a>
+</li>
+<li>
+<a class="last"  href="voldir/Directory.html">Directory</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li style="background-color: #FFA2A8">
+<a href="Endorse.html" title="Please add your endorsement too">Endorsements</a>
+</li>
+<li style="background-color: green">
+<a href="#" title="SV arguments designed for your kind of person...">
+<b>&#187;</b>If you are<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="ForReps.html" title="How SV will benefit Republicans">Republican?</a>
+</li>
+<li>
+<a href="ForDems.html" title="How SV will benefit Democrats">Democrat?</a>
+</li>
+<li>
+<a href="InOffice.html" title="How SV will benefit politicians already in office">In Office?</a>
+</li>
+<li>
+<a href="ForLibs.html" title="At its philosophical core, SV is an immensely libertarian voting system">Libertarian?</a>
+</li>
+<li>
+<a href="ForGreens.html" title="Greens need SV or they will die">Green Party?</a>
+</li>
+<li>
+<a href="ForConst.html" title="Const. Party needs SV or it will die">Constitutionalist?</a>
+</li>
+<li>
+<a href="ForSocial.html" title="SV essential for survival of both Socialist party and its vision">Socialist?</a>
+</li>
+<li>
+<a href="ForIndep.html" title="A third of all US voters are unaffiliated - guess what percent of politicians are?">Unaffiliated?</a>
+</li>
+<li>
+<a href="Duverger.html" title="Duverger's law plurality & IRV lead to 2-party domination">
+<b>&#187;</b>Third parties?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="Duverger.html">Duverger's law</a>
+</li>
+<li>
+<a href="AusIRV.html">
+<b>&#187;</b>IRV experience<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="NoIrv.html">Foolish for 3rd ptys</a>
+</li>
+<li>
+<a class="last" href="KISSirv.html">IRV bad (simpler)</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="TPHist.html">Sad history of 3rd Ps</a>
+</li>
+<li>
+<a href="PsEl04.html">2004 US Prez Electn</a>
+</li>
+<li>
+<a href="NurseryEffect.html" title="Score voting should be much more friendly to growth of small third parties than, e.g. Approval voting">Nursery effect</a>
+</li>
+<li>
+<a class="last" href="USpartyComp.html">Country Data</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="NaderRV.html">Ralph Nader?</a>
+</li>
+<li>
+<a href="ForIowan.html">Iowan?</a>
+</li>
+<li>
+<a href="ForMaths.html">Mathematician?</a>
+</li>
+<li>
+<a href="NonVoters.html" title="Ever wonder why voter turnout is so low in USA?">Non-voter?</a>
+</li>
+<li>
+<a href="Media.html">
+<b>&#187;</b>Media?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="Media.html">Role of</a>
+</li>
+<li>
+<a class="last" href="MediaLapdogs.html">Lapdogs</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a class="last" href="BibVt.html" title="Bible has some interesting things to say about voting, for those willing to look">Biblical?</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li style="background-color: red">
+<a href="#">
+<b>&#187;</b>SV versus <u>&nbsp;&nbsp;&nbsp;</u><!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="rangeVirv.html"  title="Instant Runoff Voting">
+<b>&#187;</b>IRV System?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="IrvExec.html">
+<b>&#187;</b>Summary<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a class="last" href="rangeVirv.html">Details</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="CFERlet.html">Score Voting better</a>
+</li>
+<li>
+<a href="IrvPathologySurvey.html">Pathology survey</a>
+</li>
+<li>
+<a href="Irvtalk.html">Myths &amp; Lies re</a>
+</li>
+<li>
+<a href="LNH.html">Later-no-harm</a>
+</li>
+<li>
+<a href="IRVpubGotcha.html"><strike>Transparency</strike></a>
+</li>
+<li>
+<a href="IRVpartic.html">
+<b>&#187;</b>Nader spoiler w/<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="IRVcs.html">2nd spoiler effect</a>
+</li>
+<li>
+<a class="last" href="IRV1519.html">3rd spoiler effect</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="TarrIrv.html">&rArr;2-pty dominatn</a>
+</li>
+<li>
+<a href="NoIrv.html">
+<b>&#187;</b>Foolish for 3rd ptys<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a class="last" href="KISSirv.html">3rd parties (simpler)</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="Peru06Exec.html">
+<b>&#187;</b>Peru 2006<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="Ireland1990.html" title="The only race where Ireland's president was not from FF party; but exhibits IRV pathologies">Ireland 1990</a>
+</li>
+<li>
+<a href="LizVwiz.html" title="Lizard v. Wizard race exhibits 5 IRV paradoxes">Louisiana 1991</a>
+</li>
+<li>
+<a href="Burlington.html" title="Burlington VT 2009 Mayoral IRV race exhibits 6 IRV paradoxes">Burlington 2009</a>
+</li>
+<li>
+<a href="Aus07.html" title="Australia: 2-party dominated in IRV seats">Australia 2007</a>
+</li>
+<li>
+<a href="IrvExhaustionSF.html">San Francisco</a>
+</li>
+<li>
+<a href="PierceHatesIRV.html" title="In Pierce County WA, 63% of 91K voters [ooled said the switch to IRV had been a mistake">Pierce Co. WA 2008</a>
+</li>
+<li>
+<a class="last" href="Peru06.html">Peru 2006</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="ClayIrv2.html">
+<b>&#187;</b>Anti-logic<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="TwoAndAHalf.html">2&frac12;-canddt flaw-think</a>
+</li>
+<li>
+<a href="CoreSupp.html">"Core support"?</a>
+</li>
+<li>
+<a href="IgnoreExec.html">Ignores most votes</a>
+</li>
+<li>
+<a href="Monotone.html">Non-monotonicity</a>
+</li>
+<li>
+<a href="IRVbadRemove.html">Dropout&rArr;reversal</a>
+</li>
+<li>
+<a href="IrvRevFail.html">Winner=loser</a>
+</li>
+<li>
+<a href="IrvLogicBogus.html">Bogus logic behind</a>
+</li>
+<li>
+<a class="last" href="IRVamp.html#bad">"Chaos" phenomenon</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="IrvNonAdd.html">Can't precinct count</a>
+</li>
+<li>
+<a href="RichieRV.html">
+<b>&#187;</b>Refuting R.Richie<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="Lorenzo.html">...and A.Lorenzo</a>
+</li>
+<li>
+<a class="last" href="https://rangevoting.org/REisestadt.html">And J.Eisenstadt</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="NCIRVrules.html">Practical Complexity</a>
+</li>
+<li>
+<a href="IRV3.html">
+<b>&#187;</b>Bastardized top-3<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a class="last" href="IrvExhaustionSF.html">In San Francisco</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a class="last" href="VermontIrvCost.html">U.Vermont cost study</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="Plurality.html">
+<b>&#187;</b>Plurality system?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="Plurality.html">About</a>
+</li>
+<li>
+<a class="last" href="LoseAll.html">Elects loser-to-all</a>
+</li>
+<li>
+<a href="PlurBadRemove.html">Dropout&rArr;reversal</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="BordaExec.html">
+<b>&#187;</b>Borda Count?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="BordaExec.html">Summary</a>
+</li>
+<li>
+<a class="last" href="rangeVborda.html">Details</a>
+</li>
+<li>
+<a class="last" href="DonSaari.html">Saari critique</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="AppExec.html">
+<b>&#187;</b>Approval System?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="AppExec.html">Summary</a>
+</li>
+<li>
+<a href="rangeVapp.html">Details</a>
+</li>
+<li>
+<a href="Approval.html">Paean to</a>
+</li>
+<li>
+<a href="BurrSummary.html">"Burr Dilemma"</a>
+</li>
+<li>
+<a class="last" href="NurserySumm.html">3rd parties and</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="CondorcetExec.html">
+<b>&#187;</b>Condorcet?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="CondorcetExec.html">Summary</a>
+</li>
+<li>
+<a href="rangeVcond.html">Details</a>
+</li>
+<li>
+<a href="DH3.html">DH3 Pathology</a>
+</li>
+<li>
+<a href="CondDQ.html">Definitional quibbles</a>
+</li>
+<li>
+<a href="RangeYieldsCondSumm.html">SV for Condorcetists</a>
+</li>
+<li>
+<a href="AppCW.html">Range "is" Condct?</a>
+</li>
+<li>
+<a href="OssiDelusion.html">
+<b>&#187;</b>Myth #1<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="CondStratProb.html">Myth #2</a>
+</li>
+<li>
+<a class="last" href="BlackSingle.html#condmyth">More Myths</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="FishburnAntiC.html">
+<b>&#187;</b>Condorcet=good?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="FishburnAntiC.html">Fishburn example</a>
+</li>
+<li>
+<a class="last" href="CondorcetCycles.html#naivemaj">Naive Maj'tarianism</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a class="last" href="CondNonAdd.html">Non-additivity</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="MedianVrange.html">Max Median Score?</a>
+</li>
+<li>
+<a href="rangeVcumulative.html">Cumulative?</a>
+</li>
+<li>
+<a class="last" href="Fusion.html">
+<b>&#187;</b>Fusion? / PR?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="PropRep.html">Proportnl Reprsnttn</a>
+</li>
+<li>
+<a href="PRExec.html">PR (summary only)</a>
+</li>
+<li>
+<a href="Fusion.html">Fusion</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a class="last" href="BtrIrv.html" title="&quot;Bottom Two Ranks&quot; IRV">BTR-IRV?</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li style="background-color: aqua">
+<a href="#">
+<b>&#187;</b>Unify for Range<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="ForcedSumm.html" title="There are reasons all other voting methods have never gained a foothold in the last 200 years of US &amp; UK history">Summary</a>
+</li>
+<li>
+<a href="OtherSyst.html">Details</a>
+</li>
+<li>
+<a class="last" href="NurserySumm.html">Nursery effect</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li style="background-color: indigo">
+<a href="#">
+<b>&#187;</b>Other topics<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="ConstVt.html">
+<b>&#187;</b>Constitutionality?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="ConstitExec.html">Summary</a>
+</li>
+<li>
+<a class="last" href="ConstVt.html">Details</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="VMSumm.html" title="Surprisingly, score voting does not require new voting machines">
+<b>&#187;</b>Voting Machines<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="VMSumm.html">Summary</a>
+</li>
+<li>
+<a href="VotMach.html">Details</a>
+</li>
+<li>
+<a href="VotSystMap.html">US mchn-type map</a>
+</li>
+<li>
+<a href="VMcompstn.html">Vote-type freqs</a>
+</li>
+<li>
+<a href="VoteCostCalc.html">Manual/mchn costs</a>
+</li>
+<li>
+<a class="last" href="kokidea.txt">Math'l transform</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="ManyChoices.html" title="A rather ridiculous criticism of score voting">
+<b>&#187;</b>Too many choices?<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a class="last" href="REisenstadt.html">Psychometrics</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="NurseryEffect.html">
+<b>&#187;</b>Nursery Effect<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="NurserySumm.html">Summary</a>
+</li>
+<li>
+<a href="NurseryEffect.html">Details</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="DH3Summ.html" title="A severe flaw in many rank-order voting systems such as Condorcet &amp; Borda">
+<b>&#187;</b>DH3 pathology<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="DH3Summ.html">Summary</a>
+</li>
+<li>
+<a href="DH3.html">Details</a>
+</li>
+<li>
+<a href="WinningVotes.html#DH3">Condorcet(wv/margin)</a>
+</li>
+<li>
+<a class="last" href="CondStratProb.html">
+<b>&#187;</b>Burial(Condorcet)<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a class="last" href="CondBurial.html">More</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="FunnyElections.html">
+<b>&#187;</b>Wrong way electns<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="FunnyElections.html">Thru History</a>
+</li>
+<li>
+<a class="last" href="FunnyElections.html#summ">Conclusion only</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="WorldProblems.html">
+<b>&#187;</b>World Problems<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="WorldProblems.html">Effect on Chomsky's</a>
+</li>
+<li>
+<a class="last" href="NewOrleansBudget.html">New Orleans</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="LivesSaved.html">
+<b>&#187;</b>Lives Saved<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="LivesSaved.html">#Lives will save</a>
+</li>
+<li>
+<a class="last" href="BaileyNum.html">Economic Estimates</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="RVPapers.html">Bibliography</a>
+</li>
+<li>
+<a href="BayRegExec.html">Bayesian Regret</a>
+</li>
+<li>
+<a href="PPPP.html"  title="Possible Platform Plank for your party">Platform Plank</a>
+</li>
+<li>
+<a href="rvinvit"  title="Email personalized invite to people">Invite Newbies</a>
+</li>
+<li>
+<a class="last" href="BackSlide.html" title="Historical reasons for backsliding to worse voting systems; why SV shouldn't">Backsliding?</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="quickdemo/PresRadio.html"  title="Email personalized invite to people">
+<b>&#187;</b>Try demo<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="quickdemo/PresBallot.html">Write-in scores</a>
+</li>
+<li>
+<a href="quickdemo/PresRadio.html">Plurality-type mchn</a>
+</li>
+<li>
+<a href="presdemo/PresBallot.html">42-way best US Prez</a>
+</li>
+<li>
+<a href="http://vote.superduperapps.com" title="Excellent free commercial voting service">SuperDuperApps</a>
+</li>
+<li>
+<a href="http://zohopolls.com/us/pres">Zohopolls US Prez'08</a>
+</li>
+<li>
+<a href="MakeBal1.html" title="Create paper ballots for printout & use in own election">Create Ballot</a>
+</li>
+<li>
+<a href="RVsampleBal.html">Sample Ballot</a>
+</li>
+<li>
+<a href="PsEl04.html">2004 US Prez Electn</a>
+</li>
+<li>
+<a href="VoteCalc.html">Voting Calculator</a>
+</li>
+<li>
+<a class="last" href="http://BetterPolls.com">BetterPolls.com</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="ActionNews.html">Action News</a>
+</li>
+<li>
+<a href="Glossary.html">
+<b>&#187;</b>Glossary &amp; Bib<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="Glossary.html">Glossary</a>
+</li>
+<li>
+<a class="last" href="RVPapers.html">Bibliography</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+<li>
+<a href="CanadaOverview.html">
+<b>&#187;</b>Canada<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="CanadaOverview.html">overview</a>
+</li>
+<li>
+<a href="CanadaVoteHistory.html">failures history</a>
+</li>
+<li>
+<a href="BC2018.html">BC 2018 proposal</a>
+</li>
+<li>
+<a class="last" href="CanadaSeatsVotes.html">seat/vote data</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="BallInit.html">Ballot Initiative</a>
+</li>
+<li>
+<a href="SoundFiles.html">Audio/visual Files</a>
+</li>
+<li>
+<a href="NewspaperP.html">
+<b>&#187;</b>Press<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="NewspaperP.html">Published Articles</a>
+</li>
+<li>
+<a href="Press.html">Press releases</a>
+</li>
+<li>
+<a href="Lectures.html">Lecture slides</a>
+</li>
+<li>
+<a class="last" href="PsEl04.html">2004 range poll</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="RivSmiPRshort.html" title="Rivest's revolutionarily-simple method for getting verifiable yet secret-ballot elections; score &amp; approval voting are perfectly suited for it">
+<b>&#187;</b>Riv/Smi antifraud<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="RivSmiAnswers.html">Qs &amp; Answers</a>
+</li>
+<li>
+<a href="RivSmiPRshort.html">Press Release</a>
+</li>
+<li>
+<a href="PresFraud.html">Presidents &amp; Fraud</a>
+</li>
+<li>
+<a class="last" href="SleatorCheapo.html">Sleator's Cheapo plan</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a href="SplitLR.html">AntiGerrymandering</a>
+</li>
+<li>
+<a href="PrivacyPolicy.html">Privacy Policy</a>
+</li>
+<li>
+<a href="PuzzlePage.html">
+<b>&#187;</b>Puzzles<!--[if IE 7]>
+<!-->
+</a>
+<!--<![endif]-->
+<!--[if lte IE 6]>
+<table>
+<tr>
+<td>
+<![endif]-->
+<ul>
+<li>
+<a href="PuzzIndex.html">Index of</a>
+</li>
+<li>
+<a class="last" href="PuzzlePage.html">Puzzles</a>
+</li>
+</ul>
+<!--[if lte IE 6]>
+</td>
+</tr>
+</table>
+</a>
+<![endif]-->
+</li>
+<li>
+<a class="last" href="MiscelStuff.html">Miscellaneous</a>
+</li>
+</ul>
+</div> <!--end of Vmenu-->
+</div> <!--end of lmenucontainer-->
+
+<div id="main">
+
+<div id="search">
+<form action="https://search.freefind.com/find.html" method="GET" accept-charset="utf-8">
+<table cellpadding="0" style="width: 100%; padding: 2px">
+<tr>
+<td style="width: 20%"><nobr><small>Search CRV:</small></nobr></td>
+<td style="text-align: center">
+<input type="hidden" name="id" value="78874049">
+<input type="hidden" name="pageid" value="r">
+<input type="hidden" name="mode" value="ALL">
+<input type="hidden" name="n" value="0">
+<input type="hidden" name="_charset_" value="">
+<input type="hidden" name="bcd" value="&#247;">
+<input type="text" name="query" style="width: 98%; text-align: left" value=" type keywords & hit enter">
+</td>
+</tr>
+</table>
+</form>
+</div>
+
+<!-- <h2>Score Voting</h2> -->
+
+<p>
+<font color="white">.</font><br>
+If you were trying to design the <i>worst</i> way to vote,
+you might:
+<ul>
+<li>
+Force voters to say the <i>least</i> possible amount &ndash; name just one candidate, 
+and say nothing about how much you like
+or dislike any of the others.
+</li><li>
+Make it <i>reward</i> voters for  <i>not</i> voting for whom they really want.
+</li><li>
+Make it operate, over time, in such a way as to diminish your number of
+choices to the <i>minimum</i>  &ndash; only 2 (or 1, meaning no choice at all).
+</li><li>
+Make it easy for fraudsters to invalidate ballots ("overvoting").
+</li></ul>
+
+<table align="right" cellpadding="10"><tr><td align="center">
+<a href="quickdemo/PresRadio.html" title="click table for SV demo" style="color: black">
+<table bgcolor="#ffffe0" style="border: 4px solid black"
+cellspacing="0" cellpadding="3" frame="border" border="1">
+<tr>
+<th>Candidate</th>
+<th colspan="100">Your Vote</th>
+</tr>
+
+<tr>
+<td><nobr>EISENHOWER, Dwight D.</nobr></td>
+
+<td colspan="60" bgcolor="#0000ff"></td>
+<td colspan="39"  bgcolor="#ffffbb"></td>
+<td align="center">60</td>
+</tr>
+
+<tr>
+<td><nobr>HARDING, Warren G.</nobr></td>
+<td colspan="5"  bgcolor="#0000ff"></td>
+<td colspan="94"  bgcolor="#ffffbb"></td>
+<td align="center">5</td>
+</tr>
+
+<tr>
+<td><nobr>RASPUTIN, Grigori</nobr></td>
+
+<!-- doesn't like colspan=0 -->
+<td colspan="99"  bgcolor="#ffffbb"></td>
+<td align="center">0</td>
+</tr>
+
+<tr>
+<td><nobr>HOOVER, Herbert</nobr></td>
+<td colspan="25"  bgcolor="#0000ff"></td>
+<td colspan="74"  bgcolor="#ffffbb"></td>
+<td align="center">25</td>
+</tr>
+
+<tr>
+<td><nobr>LINCOLN, Abraham</nobr></td>
+
+<td colspan="99" bgcolor="#0000ff"></td>
+<!-- doesn't like colspan=0 -->
+<td align="center">99</td>
+</tr>
+
+<tr>
+<td><nobr>PEROT, H. Ross</nobr></td>
+<td colspan="9"  bgcolor="#dc143c"></td>
+<td colspan="9"  bgcolor="#ffffff"></td>
+<td colspan="9"  bgcolor="#dc143c"></td>
+<td colspan="9"  bgcolor="#ffffff"></td>
+<td colspan="9"  bgcolor="#dc143c"></td>
+<td colspan="9"  bgcolor="#ffffff"></td>
+<td colspan="9"  bgcolor="#dc143c"></td>
+<td colspan="9"  bgcolor="#ffffff"></td>
+
+<td colspan="9"  bgcolor="#dc143c"></td>
+<td colspan="9"  bgcolor="#ffffff"></td>
+<td colspan="9"  bgcolor="#dc143c"></td>
+<td align="center">X</td>
+</tr>
+
+<tr>
+<td><nobr>ROOSEVELT, Franklin D.</nobr></td>
+<td colspan="50"  bgcolor="#0000ff"></td>
+<td colspan="49"  bgcolor="#ffffbb"></td>
+<td align="center">50</td>
+</tr>
+
+<tr>
+
+<td><nobr>WASHINGTON, George</nobr></td>
+<td colspan="75"  bgcolor="#0000ff"></td>
+<td colspan="24"  bgcolor="#ffffbb"></td>
+<td align="center">75</td>
+</tr>
+
+</table>
+</a>
+</td></tr><tr><td align="center">
+<b>FIGURE</b> illustrates a hypothetical <a href="BallotPict.html" title="Pictures of ballots">ballot</a> on<br> 
+a score voting machine's display screen.
+</td></tr></table>
+
+But <a href="PConsumer.html" title="Estimated catastrophic failure rate">wait</a>!
+That's <a href="Plurality.html">our</a> voting system now!
+</p><p>
+There's a better way:  <b>score voting</b>
+(also known as "range voting").
+</p><p>
+You've all seen score voting in action as the
+<a href="OlympCover.html" title="The Olympics uses score voting...">Olympic</a>
+scoring system.
+Judges give the competitors scores and the highest average score wins.
+Similarly, in a score voting election, voters would give the candidates scores,
+and the one with the highest average would win.
+</p><p>
+Score voting permits voters to express their opinions about any number of
+candidates (not just one).
+It eliminates the 
+&quot;<a href="Glossary.html#spoiler">spoiler</a>,&quot; 
+"wasted vote," and &quot;<a href="CandCloning.html">candidate cloning</a>&quot; problems.
+All candidates compete on a level playing field, whether
+<a href="ForDems.html">Democrat</a>, 
+<a href="ForReps.html">Republican</a>, 
+<a href="ForIndep.html">Independent</a>, or 
+<a href="Duverger.html">other</a>.
+It's simple enough to run on all of today's voting machines and
+to be used by <a href="ShermanPetElection.pdf">kindergarteners</a>.
+
+<table align="right"><tr><td valign="center" align="center">
+<!--[if IE]> <a href="RExample.html"> <![endif]-->
+<!--[if !IE]><!--> <a> <!--<![endif]-->
+Examples<span>
+<table cellpadding="3" cellspacing="0" border="1" bgcolor="#d5d5ff">
+<tr>
+<td align="center">
+<a href="RExample.html" title="Worked numerical example Score Voting election">Example</a>
+</td>
+<td align="center">
+<a href="Valedictorian.html" title="History of how academia reached consensus on score voting for choosing valedictorians">Valedictorians</a> 
+</td>
+</tr>
+<tr>
+<td colspan="2">
+<a href="http://zohopolls.com/us/pres" title="Zohopolls.com score voting poll for 2008 US president; try it">SV poll for <b>US President</b> 2008</a>
+</td>
+</tr>
+</table>
+</span></a>
+</td></tr></table>
+
+<p><nobr><big><b>How score voting works:</b></big></nobr>
+
+<!--
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+<nobr>
+<a href="RExample.html" title="Worked numerical example Score Voting election">Example</a>
+&nbsp;
+<a href="Valedictorian.html" title="History of how academia reached consensus on score voting for choosing valedictorians">Valedictorians</a> 
+&nbsp;
+<a href="http://zohopolls.com/us/pres" title="Zohopolls.com score voting poll for 2008 US president; try it">SV poll for <b>US President</b> 2008</a>
+</nobr>
+-->
+</p>
+
+<ol type="a">
+<li> 
+Each <a href="MeaningOfVote.html" title="What a 'vote' is">vote</a> 
+consists of a numerical score within some range (say
+<a href="Why99.html" title="Other scores such as 0-10 also are possible and we do not insist on 0-99.  Link explains why 0-99 is a good choice and how to use other scores.">0 to 99</a>)
+for each candidate.
+Simpler is 0 to 9 ("single digit score voting").
+Voters may also indicate 
+<a href="Blanks.html" title="How blanks work, why they are needed &amp; a good idea.">"X"</a> 
+or 
+<a href="Blanks.html" title="How blanks work, why they are needed &amp; a good idea.">"<small>NO OPINION</small>"</a> 
+if they have no opinion
+about a candidate.
+Such votes don't affect that candidate's average.
+</li><li>
+For 
+<table border="1" cellspacing="0" cellpadding="1" 
+bgcolor="#ffffbb" align="right">
+<tr><td bgcolor="#ffffe0"> Andrews </td>
+<td>0
+</td><td>1
+</td><td>2
+</td><td>3
+</td><td>4
+</td><td>5
+</td><td>6
+</td><td>7
+</td><td>8
+</td><td bgcolor="aqua">9
+</td><td>NO OPINION
+</td></tr>
+<tr><td bgcolor="#ffffe0"> Benson </td>
+<td bgcolor="aqua">0
+</td><td>1
+</td><td>2
+</td><td>3
+</td><td>4
+</td><td>5
+</td><td>6
+</td><td>7
+</td><td>8
+</td><td>9
+</td><td>NO OPINION
+</td></tr>
+<tr><td bgcolor="#ffffe0"> Carey </td>
+<td>0
+</td><td>1
+</td><td>2
+</td><td bgcolor="aqua">3
+</td><td>4
+</td><td>5
+</td><td>6
+</td><td>7
+</td><td>8
+</td><td>9
+</td><td>NO OPINION</td></tr>
+<tr><td bgcolor="#ffffe0"> Davis </td>
+<td>0
+</td><td>1
+</td><td>2
+</td><td>3
+</td><td>4
+</td><td>5
+</td><td>6
+</td><td>7
+</td><td>8
+</td><td bgcolor="aqua">9
+</td><td>NO OPINION</td></tr>
+<tr><td bgcolor="#ffffe0"> Elbert </td>
+<td>0
+</td><td>1
+</td><td>2
+</td><td>3
+</td><td>4
+</td><td>5
+</td><td>6
+</td><td>7
+</td><td>8
+</td><td>9
+</td><td bgcolor="aqua">NO OPINION</td> </tr>
+</table>
+example,
+"Andrews=9, Benson=0, Carey=3, Davis=9, Elbert=X" could be your vote
+in a Score voting election, where 9 indicates best and X indicates "<small>NO OPINION</small>."
+</li><li>
+The candidate with the highest <a href="Averaging.html" title="Properties of averaging">average</a>
+score wins... except
+</li><li>
+<small>
+If desired, the candidates can pre-agree that each is to be awarded T fake votes
+using score S (for some pre-agreed values of S and T) before the election begins.
+The highest average based on both the real <i>and</i> fake votes, wins.
+This is fair since S and T are the same for every candidate.
+(<a href="BetterQuorum.html" titel="Better quorum rule:">Why do that?</a>)
+</small>
+</li>
+</ol>
+
+<p><nobr><big><b>CRV's purpose:</b></big></nobr></p>
+
+<ol>
+<li>
+To educate the public about the advantages of score voting
+and comparative disadvantages of other systems
+(especially the USA's embarrassingly poor current 
+"<a href="Plurality.html" title="Plurality - what it is and why it is bad">plurality</a>" system),
+</li>
+<li>
+To lobby for the adoption of score voting.
+</li>
+<li>
+To assist anyone looking to use Score Voting for an election, whether 
+for public office, student elections, or anything else.
+</li>
+</ol>
+<p>
+But CRV also supports research into (and is open-minded about) all voting systems.
+Indeed, CRV, for some purposes, even
+<i>advocates</i> <a href="AdvocatedSystems.html" title="Other voting systems that can be good in the right circumstances">other systems</a>. 
+CRV is nonpartisan.
+</p>
+<p>
+Learn more:  &nbsp;
+<a href="CurrentMissions.html" title="Present organization goals">Current missions</a>, longer term
+<a href="StratSumm.html" title=" Summary of strategy to get Score Voting enacted">strategic plan</a>, and the
+<a href="IowaSumm.html" title="Why Iowa primaries are an excellent place to enact score voting">Iowa 08 project</a>. 
+Visit <a href="http://groups.yahoo.com/group/RangeVoting/">blog</a>.
+</p>
+
+<p><big><b>How to <a href="WaysToHelp.html">help</a>:</b></big> 
+See those <a href="RangeVoting.html">buttons</a> up top &uarr; marked 
+<a href="Donate.html">donate</a>,
+<a href="voldir/Volunteer.html">join</a>,
+<a href="Endorse.html">endorse</a>,
+<a href="HowToTranslate.html">translate</a> (into other languages), etc?  Bingo.
+
+<a name="virtues"></a>
+<h2>Virtues of Score Voting 
+&nbsp;&nbsp;<small>(&amp <a href="RVcrit.html">criticisms</a>)</small>
+&nbsp;&nbsp;<small>(<a href="OlympHist.html">history</a>)</small>
+&nbsp;&nbsp;<small>(<a href="CompChart.html">comparison chart</a>)</small>
+&nbsp;&nbsp;<small>(<a href="Criteria.html">criteria</a>)</small>
+</h2>
+<ol>
+<li>
+<a href="MeaningOfVote.html" title="What is a 'vote'?">
+E<small>XPRESSIVE</small>:</a> 
+You give <a href="Expressiveness.html">information</a>,
+about <i>all</i> candidates not just one.
+</li><li>
+<a href="SmittyExp.html" title="Example illustrating how most voting methods can be cluseless without access to quantitative information in votes">Q<small>UANTITATIVE</small>:</a> 
+Your vote not only says that you prefer candidate A over B, but also by <i>how much.</i>
+</li><li>
+<a href="HonestyExec.html" title="Explains a precise sense in which range voting 'encourages voter honesty' better than every possible rank-order-ballot system; offers data showing huge impact of voter-dishonesty">E<small>NCOURAGES HONESTY NOT STRATEGY</small>:</a> 
+Your score for candidate C in no way affects the battle between A vs. B. 
+Hence, you can give your honest opinion of C 
+without fear of "wasting your vote" or hurting A.
+You never have an incentive to
+<a href="FBCexecSumm.html" title="Survey of voting systems that avoid 'favorite betrayal'">betray</a>
+your favorite candidate by
+giving a higher score to a candidate you like less.
+(This may sound like an obvious and easy criterion, but
+<a href="IncentToExagg.html" title="Simple example where favorite-betrayal pays in almost all voting systems">very few other
+voting systems obey it</a>!)
+The decreased importance of "convincing voters you can win"
+(as opposed to "convincing them you are the best")
+may decrease the importance of 
+<a href="RL2parties.html#cash" title="Explains why the favorite-betrayal flaw of voting systems creates an immense need for corrupting cash">cash</a>.
+</li><li>
+<a href="CandCloning.html" title="About 'cloning'">U<small>NAFFECTED BY CANDIDATE CLONING</small>:</a> 
+Consider the situation where A has "clones" A<sub>2</sub> and  A<sub>3</sub>.
+In the old 
+&quot;<a href="Plurality.html" title="Plurality - what it is and why it is bad">plurality voting</a>&quot; system, the clones "split the vote" and lose.
+In the 
+&quot;<a href="BordaExec.html" title="Borda voting: what it is and why it is bad (probably even worse than plurality)">Borda voting</a>&quot; system, 
+a party assures victory merely by running enough clones.
+<a href="SimmonsSmithPf.html">In contrast</a>, in Range voting, A is neither harmed nor 
+helped &ndash;
+no more bitter <a href="Enmity.html">enmity</a> between similar candidates.
+</li><li>
+B<small>REAKS 
+<a href="Strangle.html" title="Facts about stranglehold in US - it's even worse than you think">STRANGLEHOLD</a> 
+OF <!--SELF-REINFORCING-->
+<a href="Duverger.html" title="Duverger's law of 2-party domination">2-PARTY DOMINATION</a> 
+SO VOTERS GET MORE CHOICES</small>:
+<a href="Plurality.html" title="Plurality - what it is and why it is bad">Plurality</a>
+&amp; 
+&quot;<a href="rangeVirv.html" title="IRV (Instant runoff voting) - what it is, why it is bad.  It is a common myth that IRV solves the 'spoiler' and 'wasted vote' problems that underly Duverger's law of 2-party domination.  But actually it does not and still leads to 2-party domination">Instant Runoff</a>  Voting&quot;
+<a href="TarrIrvSumm.html" title="Example illustrating spoiler and wasted votes phenomena under IRV">yield</a> 2-party domination. 
+&quot;<a href="Approval.html" title="Paean to approval voting - 'count all the votes'">Approval
+voting</a>&quot; 
+improves over those systems by
+allowing voters to vote for <i>all</i> the candidates that they approve &ndash; with no
+built-in penalty for approving a third-party candidate.
+But range voting is even better, since it empirically yields
+<a href="PsEl04.html" title="See what would have happened in USA 2004 presidential election had been held with range or approval voting.  Huge differences">much greater support</a> for 3rd parties 
+than 
+<a href="rangeVapp.html" title="range versus approval">approval</a>  voting.
+Having <a href="MoreAltParties.html" title="Is having more parties a good thing?">more</a> 
+parties should also decrease the importance 
+of <a href="GerryExec.html" title="Gerrymandering - what it is, how severe it is, and simple cure, the 'shortest splitline algorithm'">gerrymandering</a>,
+and increase
+<a href="NonVoters.html">interest &amp; turnout</a>.
+<!-- decrease  <a href="NonVoters.html" title="Data showing immense predictability and rigged nature of US elections; also data on voter turnout">predictability below 98%</a>, 
+-->
+</li><li>
+<a href="VMSumm.html" title="You might think voting machines designed for plurality elections 'obviously' cannot handle range voting.  But, non-obviously, they can, and often quite nicely too.  This makes switching to SV easy and painless">C<small>URRENT VOTING MACHINES CAN HANDLE RANGE VOTING:</small></a>
+That can't be said of 
+<a href="rangeVirv.html" title="IRV can't be handled by many plurality-voting machines">IRV</a>
+and
+<a href="rangeVcond.html" title="Condorcet voting systems can't be handled by many plurality-voting machines"
+>Condorcet</a>.
+</li><li>
+<a href="AppCW.html" title="Many 'Condorcet' advocates disfavored Score Voting because SV is capable of electing A even if more voters prefer B (if the A-preferrers give A higher scores).  I.e. SV can avoid electing 'Condorcet winners.'  But here we show a surprisingly simple theorem that, under reasonable assumptions about voter behavior, SV will always elect Condorcet winners, and in fact in practice probably will produce them more reliably than 'official' Condorcet methods!  Argument over.">T<small>HE "BEATS-ALL" CANDIDATE WINS:</small></a> 
+A beats-all candidate is one who would beat every other candidate in
+one-on-one races.
+Counterintuitively, in many voting systems  "beats all" candidates do not necessarily prevail.
+(Indeed,  a "lose to all" candidate <a href="LoseAll.html">can</a> easily win under
+our current system.)
+But in range voting (under certain assumptions about
+strategic voter behavior)
+the beats-all candidate always wins.
+</li><li>
+<a href="PleasantSurprise.html" title="A surprising and simple optimality property of range voting.">
+M<small>AXIMIZES PLEASANT SURPRISE:</small></a> 
+A voter is "pleasantly surprised" when the election winner is better
+than she expected.  It is a theorem that range voting (under certain assumptions about
+strategic voter behavior) maximizes the number of pleasantly surprised voters.
+</li><li>
+<a href="SPRates.html" title="Data on ballot spoilage rates under different voting systems.  IRV leads to a lot more voter errors and spoiled ballots than plurality voting - but range and approval voting may actually decrease spoilage - suggesting that worries about the 'complexity' of range voting are misguided">F<small>EWER</small></a> "<a href="SpoilExec.html" title="How ballot 'spoilage' is used as a tool by election manipulators"><small>SPOILED BALLOTS</small></a>"
+and <a href="LessFraud.html" title="There is some reason to believe range voting will reduce election manipulation &amp; fraud"><small>LESS FRAUD</small>:</a>
+In 
+<a href="Plurality.html" title="Plurality - what it is and why it is bad">plurality</a>
+voting, an accidental hanging chad or overvote can cause your vote to be discarded.  
+With range voting, it causes only <i>part</i> of your vote to get discarded
+(converted to "no opinion") 
+with the rest &ndash; your opinions of all the other candidates &ndash;
+still operational.  There's no such thing as an "overvote" since expressing opinions
+about <i>all</i> candidates is the <i>idea</i>; there's no wrong way to fill in a ballot.
+Score voting 
+also reduces risk of <a href="TieRisk.html" title="Election ties and near-ties - a nightmare that IRV makes much more likely, but range voting makes less likely."><small>TIES</small></a>.
+</li><li>
+U<small>SING OBJECTIVE CRITERIA, RANGE VOTING IS 
+<a href="UniqBest.html" title="Bayesian Regret Numbers.">BEST</a>:</small>
+For the mathematicians...
+Range voting has the lowest 
+<a href="BayRegExec.html" title="Quick summary of 'Bayesian Regret' the right objective yardstick for comparing (and measuring the quality of) single-winner voting systems">B<small>AYESIAN REGRET</small></a>
+among all common single-winner election methods.
+(Found from massive computer simulations
+for all 720 tried combinations of the following:
+number V of voters and N of candidates with V>N>2, several kinds of "utility generators",
+several amounts of "voter ignorance," and with either "honest" or "strategic" voters.)
+</li><li>
+<a href="UniqBest.html#HugePos" title="Quantitative estimates of impact">
+H<small>UGE POSITIVE IMPACT</small>:</a> &quot;Democracy&quot; 
+improved over monarchy and feudalism.
+We can 
+<a href="RelImport.html" title="Estimated relative importances of different democracy-reforms as numbers">express</a>
+that improvement as a <i>number</i> by using the
+<a href="BayRegDum.html" title="Bayesian regret methodology for dummies">Bayesian regret</a>
+yardstick and assuming, e.g, that those nondemocratic systems
+were at least as good as "random winner."
+Measurements on this same yardstick suggest
+that switching from plurality to range
+will <a href="LivesSaved.html">cause</a> at least as much further regret reduction.
+</li><li>
+When you consider
+&quot;<small><a href="PoundstoneRev.html#2pdnursery">INDIRECT EFFECTS</a></small>&quot;
+invisible to Bayesian Regret ("direct" effects happen in one election,
+indirect ones over a sequence of many elections) that usually increases 
+Score Voting's edge over competing methods. (Examples: 2-party domination and 
+&quot;<a href="NurseryEffect.html">nursery effect</a>.&quot;)
+</li><li>
+<a href="Extremism.html" title="Pro-extremist and pro-centrist bias in voting methods">U<small>NBIASED:</small></a>
+Plurality and <a href="IrvExtreme.html">IRV</a> both have natural pro-extremist biases,
+while <a href="Approval.html">approval</a> has 
+pro-centrist <a href="IEVS/Pictures.html">bias</a>.
+But score-voting has little or no discernible such bias.
+</li><li>
+N<small>ATURE USES RANGE VOTING:</small>
+<a href="ApisMellifera.html" title="How honeybees conduct'elections'">Honeybees</a>
+&amp; <a href="LAlbipennis.html" title="Ants also range vote">ants</a>
+have run <i>trillions</i> of elections over the last 20-50 million years
+to make hive relocation decisions.  
+Under severe evolutionary pressure, they 
+<a href="ApisMExec.html" title="Bees and ants - executive summary">came</a>
+up with... range voting! (Cf. <a href="Bonobos.html">Bonobos</a>.)
+</li><li>
+<a href="WhatVotersWant.html" title="Poll evidence about which voting systems voters prefer">
+V<small>OTERS WANT IT!</small></a>
+Referenda and poll studies show that voters want score voting
+and would enact it by landslide (&asymp;60%).  However they do <i>not</i> want various other
+systems including IRV.
+</li>
+</ol>
+
+<a href="BayRegsFig.html"><img align="right" src="BR52002bw.png"></a>
+</div>
+
+<div id="footer">
+<a href="FlagCounterPage.html"><img width="107" height="35" src="https://s03.flagcounter.com/count/c0gg/bg=FFFFFF/txt=FFFFFF/border=FFFFFF/columns=1/maxflags=1/viewers=3/labels=0/" alt="free counters" border="0"></a>
+Styling by
+ <a href="http://brokenladder.com/">Clay SHENTRUP</a>,
+ <a href="WarrenSmithPages/homepage/works.html">Warren D. SMITH</a>,
+ <a href="http://en.wikipedia.org/wiki/K._Eric_Drexler">K.Eric DREXLER</a>,
+ <a href="http://www.channel1.com/users/dkesh/">Dan KESHET</a>,
+ and
+ <a href="http://cssplay.co.uk">CSSplay</a>.
+</div>
+
+<!--StatCounter Code - get rid of this if only want to stat subpages-->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="https://www.statcounter.com/counter/counter.js"></script><noscript><a href="https://www.statcounter.com/" target="_blank"><img  src="https://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

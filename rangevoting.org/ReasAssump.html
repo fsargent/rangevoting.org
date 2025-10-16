@@ -1,0 +1,358 @@
+<html>
+<head>
+<title>
+RangeVoting.org - Which voting systems yield Condorcet Winners under reasonable assumptns about voter strategic behavior?
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2>
+ Which voting systems yield Condorcet Winners under reasonable assumptions 
+about voter strategic behavior?
+ </H2>
+
+<p>
+We had 
+<a href="AppCW.html">argued</a> under "reasonable assumptions" about 
+strategic voter behavior, that
+<a href="RangeVoting.html">range voting</a> with strategic voters
+would always elect 
+<a href="Glossary.html#condwin">Condorcet winners</a>
+(based on honest voters)
+whenever a Condorcet winner (CW) exists.
+(<small>
+The "reasonability" of these assumptions can be questioned, but it at least
+[1] should be clear exactly
+what they are and [2] should be clear that they enjoy at least 
+some approximate validity in practice.
+</small>)
+</p><p>
+Counter-intuitively,  with strategic voters
+<a href="Glossary.html#condmeths">Condorcet</a>
+voting systems (which are <i>designed</I> to elect Condorcet winners)
+actually can (and in some simulation studies 
+<a href="StratHonMix.html">do</a>)
+exhibit <i>smaller</i> probability of electing CWs than range voting.
+</p>
+<p>
+The 
+<a href="AppCW.html">argument</a>
+for why Range elects CWs seems very simple and quite general.  
+Therefore you might expect/hope that,
+via slight variants of that argument, we could show that strategic voters under
+many <i>other</i> voting
+systems <i>also</i> elect CWs. 
+We now examine that and find that the argument clearly works <i>better</i> when applied to
+range voting, than when applied to Plurality, Approval, and Instant Runoff (IRV).
+</p>
+<p>
+
+<h3>
+<i>Which</i> voting systems elect CWs?
+</h3>
+
+<p>
+We go through systems one at a time.
+</p>
+
+<p>
+<b>Plurality voting.</b>
+You might (as a first try) argue that plurality voters will elect Condorcet
+winners because
+<ol>
+<li>
+If they were to elect somebody else P,
+then they would not because
+</li><li>
+They'd view both the Condorcet winner C and P as
+top-2 competitors (?) in which case
+</li><li>
+They'd strategically vote for one of those top-two
+</li><li>
+causing C to win, not P.
+</li></ol>
+<p>
+However, the way voters <i>learn</i> who <i>are</i> the top-2 that they
+must strategically vote for (else they "waste their vote")
+is via e.g, pre-election polls. 
+Such polls, assuming they too are conducted using
+plurality voting, will <a href="LoseAll.html">not necessarily</a>
+indicate that a Condorcet winner
+is in the top two. 
+(E.g. one who is everybody's second choice would
+get zero plurality votes, completely escaping notice. There are many
+other less-dramatic scenarios.  This is very common when, for example, a third-party candidate
+is preferred by the voters from each of the two major parties over the major-opponent,
+and the two majors have approximately equal support.  
+In that case the third-party candidate is the
+Condorcet "beats all" winner but gets a very tiny percentage of the plurality top-rank votes.
+To see <i>how</i> common this is, see the <a href="#app">appendix</a>.)
+</p><p>
+Hence plurality voting will <i>not</i> necessarily
+elect CWs under reasonable assumptions about strategic voter behavior.
+</p>
+
+<p>
+<b>Instant Runoff Voting (IRV):</b>
+You might at first argue, IRV voters will elect Condorcet winners
+because
+<ol>
+<li>
+If they were to elect somebody else "I",
+then they would not because
+</li><li>
+They'd view both the Condorcet winner C and I as
+top-2 competitors (?) in which case
+</li><li>
+They'd strategically vote for one of those top-two
+</li><li>
+causing C to win, not I.
+</li></ol>
+<p>
+
+<p>
+However, the pre-election polls (presumably now conducted using IRV)
+would again <a href="CoreSupp.html">not necessarily</a>
+indicate a CW (e.g. in the same third-party CW scenario we just explained). 
+Again a CW who was everybody's 2nd
+choice would get eliminated instantly by IRV and would score
+pessimally in any poll. 
+So such a CW would never be spotted
+as a strong contender by IRV pre-election polls. 
+Indeed,
+any CW (or anybody) placing 3rd-or-worse as in <a href="Peru06Exec.html">Peru 2006</a>,
+would then not be elected by
+(this kind of) strategic IRV voters.
+(To see <i>how</i> common it is for a Condorcet winner not to be one of the
+two top finishers in IRV, see the <a href="#app">appendix</a>.  
+This seems to have happened 9 times in the 150 federal IRV elections in
+<a href="Aus07.html">Australia 2007</a>.)
+</p><P>
+So again &ndash; IRV voting will not necessarily
+elect CWs under reasonable assumptions about strategic voter behavior.
+</p>
+
+<p>
+<b>Range voting:</b>
+In order for the <a href="AppCW.html">argument</a> to
+work to cause strategic range voters to elect an honest-voter
+Condorcet winner C, it suffices if the range voters get the idea
+that C is a strong contender.
+If they believe C is one of
+the top-2 most likely to win, then (the argument roughly proceeds)
+<ol>
+<li>
+If somebody else R is
+the winner of the pre-election range-voting polls, then
+after strategic range voting, C will win.
+</li><Li>
+else (C won the pre-election polls and R was
+the 2nd-placer) then C will still win.
+</li></ol>
+
+<p>
+So if range voters get the idea that the Condorcet Winner
+C is one of the top 2 contenders, then when they vote strategically,
+C will win.
+</p>
+<p>
+In short, <i>if</i> range were going to elect C as the winner
+or second-place finisher, <i>then</i> range would elect C
+with strategic voters.  <i>Strategic voting <b>amplifies</b> the chances range elects
+a Condorcet winner to be <b>at least</b> as large as the chances it elects
+the CW as top or second.</i>
+</p>
+<p>
+In practice, I suggest to you, those chances are pretty big.
+See the 
+<a href="#app">appendix</a>
+to see <i>how</i> big &ndash; clearly there is a greater chance 
+the Condorcet winner is among the top-two range finishers, 
+than for any other voting method tried (namely IRV, plurality,
+approval) in that appendix, <i>and</i> as we'll explain next paragraph,
+those numbers are <i>only a lower bound</i>
+on the chance strategic range  voters will elect an honest-CW (<i>unlike</i>
+for IRV and plurality
+where they are also an upper bound).
+</p>
+<p>
+If, however, the range voters in honest-voting pre-election polls
+make C be the 3rd-place finisher, then what?
+Well (unlike IRV &amp; plurality),
+strategic range voters then <i>still</i> might elect C.
+(It's pretty likely, but no longer a sure thing.)
+So we can see immediately that the argument works
+<i>better</i> for range than for Plurality or IRV.
+<!--
+For example, say A and B are the top 2 finishers in pre-election
+polls with say,
+55: A=9 C=3 B=0
+35: B=9 C=3 A=0
+10: C=9 B=7 A=0
+then C is the Condorcet winner. But the top-2 range finishers
+are A with 495 and B with 385, with C bringing up the
+rear with 340. In view of these poll results, the
+range voters here would then re-vote strategically
+55: A=9 C=? B=0
+35: B=9 C=? A=0
+10: C=B=9 A=0
+where ? presumably is 3 or less.
+So C still ends up (even further in) 3rd place.
+
+In this contrasting range pre-election poll
+23: A=9 C=1 B=0
+30: A=9 C=6 B=0
+45: B=9 C=6 A=0
+2: C=9 B=8 A=0
+C is the condorcet winner but 3rd-place range finisher.
+The range voters in view of this would strategically vote
+23: A=9 C=B=0
+30: A=C=9 B=0
+45: B=C=9 A=0
+2: C=B=9 A=0
+and C wins.
+-->
+
+<p>
+Finally, what about <b>Condorcet methods?</b>
+Will they elect CWs?
+</p><p>
+Well... presumably C (the CW) wins the pre-election (assumed conducted
+with Condorcet) poll!
+</p><p>
+Now what happens in the subsequent
+real election? 
+Now the anti-C voters strategically rank C bottom.
+As a result, it is possible that now no Condorcet winner
+exists, and hence C no longer wins. See
+<a href="CondStratProb.html">this</a>
+and
+<a href="CondBurial.html">this</a>
+for exactly how that can happen plus some
+discussion of how often that happens in different Condorcet flavors.
+</p><P>
+Thus, in this sort of scenario, strategic Condorcet voters will,
+quite plausibly, fail to elect an (honest-voter) Condorcet winner, even assuming
+there are honest voters in the pre-election poll so that  one is "elected" by that poll.
+(The difference is because the "strategy" <i>worked</i>.)
+</p><P>
+Observe that this will not happen with range.
+With range, if C wins the pre-election poll, C will still win
+the real election with strategic voters this time. Guaranteed.
+With Condorcet: not guaranteed.
+</p><p>
+That is an example of the strange fact that range voting can be more
+likely to elect Condorcet winners, than "official" Condorcet methods.
+Counterintutive, but it can be true (<a href="StratHonMix.html">simulation experiments</a>
+have clearly verified this).
+</p>
+
+<a name="app"></a>
+<h3> Appendix: Numbers (to back this all up) </h3>
+
+<p><small> All numbers here are from
+<a href="IEVS/IEVS.c">IEVS 3.24</a> Monte Carlo runs. (29999 elections per datapoint.
+Each election using 31 honest voters.  I have also done runs with
+63 and 127 voters but the results change little, hence are not tabulated here.)
+</small></p>
+
+<p>
+Given that a Condorcet Winner exists, it is one of the top two finishers in a plurality
+election this often [in the <a href="Glossary.html#REM">random elections model</a>]:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>Given that a CW exists &ndash; how often is it the plurality+top2 runoff winner?</b></caption>
+<tr> 
+<th> #candidates,voters: </th>
+<td>C=2,V=arb</td><td>C=3,V=31</td><td>C=4</td><td>C=5</td><td>C=6</td><td>C=7</td><td>C=8</td><td>C=9</td>
+</tr>
+<tr>
+<th>Percentage</th>
+<td>100%</td><td>96%</td><td>90%</td><td>83%</td><td>77%</td><td>72%</td><td>68%</td><td>64%</td>
+</tr>
+</table>
+
+
+<p>
+Given that a Condorcet Winner exists, it is one of the top two finishers in an approval
+election this often:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ff8888">
+<caption><b>Given that a CW exists &ndash; how often is it the approval+top2 runoff winner?</b></caption>
+<tr> 
+<th> #candidates,voters: </th>
+<td>C=2,V=arb</td><td>C=3,V=31</td><td>C=4</td><td>C=5</td><td>C=6</td><td>C=7</td><td>C=8</td><td>C=9</td>
+</tr>
+<tr>
+<th>Percentage</th>
+<td>100%</td><td>96%</td><td>93%</td><td>89%</td><td>88%</td><td>86%</td><td>85%</td><td>84%</td>
+</tr>
+</table>
+
+
+<p>
+Given that a Condorcet Winner exists, it is one of the top two finishers in an Instant Runoff
+election (and hence the IRV winner) this often:
+</p>
+
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#ffff88">
+<caption><b>Given that a CW exists &ndash; how often is it the IRV winner?</b></caption>
+<tr> 
+<th> #candidates,voters: </th>
+<td>C=2,V=arb</td><td>C=3,V=31</td><td>C=4</td><td>C=5</td><td>C=6</td><td>C=7</td><td>C=8</td><td>C=9</td>
+</tr>
+<tr>
+<th>Percentage</th>
+<td>100%</td><td>96%</td><td>93%</td><td>89%</td><td>87%</td><td>84%</td><td>82%</td><td>80%</td>
+</tr>
+</table>
+
+<p>
+Given that a Condorcet Winner exists, it is one of the top two finishers in a range
+election this often:
+</p>
+
+<a name="end"></a>
+<table border="3" cellpadding="5" bordercolor="red" bgcolor="#88ff88">
+<caption><b>Given that a CW exists &ndash; how often is it the range+top2 runoff winner?</b></caption>
+<tr> 
+<th> #candidates,voters: </th>
+<td>C=2,V=arb</td><td>C=3,V=31</td><td>C=4</td><td>C=5</td><td>C=6</td><td>C=7</td><td>C=8</td><td>C=9</td>
+</tr>
+<tr>
+<th>Percentage</th>
+<td>100%</td><td>99%</td><td>97%</td><td>96%</td><td>95%</td><td>95%</td><td>94%</td><td>95%</td>
+</tr>
+</table>
+
+<p>
+The reader may not love the
+<a href="Glossary.html#REM">random elections model</a>.
+Those readers should check the
+2D <a href="IEVS/Pictures.html">positional politics</a>
+models:  Range also usually elects Condorcet winners there. 
+Each picture there contains
+40,000 pixels, each one representing a different election result.  If you check the
+pictures based on the set of 14 random candidates, you will observe that the range and 
+Condorcet pictures very nearly coincide.  However, in contrast, the Condorcet picture
+disagrees with the IRV picture in about 25% of the pixels (i.e. 
+in about 25% of 2D-positional-model elections).
+</p>
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

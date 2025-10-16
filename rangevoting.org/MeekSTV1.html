@@ -1,0 +1,644 @@
+<!DOCTYPE HTML PUBLIC "-//IETF//DTD HTML 2.0 strict //EN">
+<html>
+<head>
+<title>
+Voting matters, Issue 1: pp 1-7
+</title>
+</head>
+<body>
+<B>Up:</B> <A HREF="https://rangevoting.org/INDEX.HTM"> Issue 1 </A>
+<B>Next:</B> <A HREF="https://rangevoting.org/P2.HTM"> Paper 2 </A>
+<BR><P>
+<H1>Voting matters - Issue 1, March 1994</h1>
+
+
+<H2>A New Approach to the Single Transferable Vote</h2>
+
+<h3>Paper I: Equality of Treatment of voters and a feedback mechanism for
+vote counting</h3>
+
+<h4>B L Meek, Computer Unit, Queen Elizabeth College, London</h4>
+
+<p> Brian Meek is now at King's College London.
+
+<p>
+<i>With some differences in presentation, the paper was originally published
+in French in Math&eacute;matiques et Sciences Humaines, No 25, pp13-23,
+1969.</i>
+
+<h3>Abstract</h3>
+It is shown that none of the counting methods so far used in single
+transferable vote elections satisfies the criterion that all votes should,
+as far as possible, be taken equally into account. A feedback method of
+counting is described which does satisfy this criterion within the general
+limitations imposed by the STV system. This counting method, though very
+laborious for manual counting, would be feasible in automated elections.
+
+<h3>1. Introduction</h3>
+While the preferential voting system known as the Single Transferable Vote
+(STV)<a href="#r1">[1]</a> has been criticised on various grounds, the
+following advantages claimed for it do not seem to have been seriously
+challenged:
+
+<ul>
+<li>(A) The number of 'wasted' votes in an election (i.e, which do not
+contribute to the election of any candidate) is kept to a minimum.
+
+<li>(B) As far as possible the opinions of each voter are taken equally into
+account.
+
+<li>(C) There is no incentive for a voter to vote in any way other than
+according to his actual preference.
+
+</ul>
+
+It is the purpose of this and a subsequent paper to consider (A), (B) and
+(C) from a decision-theoretic viewpoint, within a single constituency; it
+will be shown that (A), (B) and (C) in fact do not hold in present STV
+procedures, but may be made to hold, within certain overall limitations, by
+appropriate modification of the counting method.
+
+<h3>2. The wasted vote </h3>
+
+An essential feature of an STV election is the 'quota'. If there are
+<i>s</i> vacancies to be filled, the quota <i>q</i> is the
+<i><b>smallest</b></i> number such that, if <i>s</i> candidates have
+<i>q</i> votes each, it is not possible for an <i>(s+</i>1<i>)</i>th
+candidate to have as many as <i>q</i> votes. Thus if the total votes are<i>
+T</i>, then <i>T-sq </i>&lt;<i> q</i>, but<i> T-s(q-</i>1<i>)</i> &gt;=
+<i>q-</i>1, whence <i>q</i> = [1+<i>T/(s</i>+1<i>)</i>], where the square
+brackets denote 'integer part of'.
+
+<p>
+Candidates with more than <i>q</i> votes are elected, and have their surplus
+votes transferred according to the next preferences marked; if there are no
+such candidates, the bottom candidate is eliminated and all his votes so
+transferred. Repeated application of these rules ensures that at the end of
+the count <i>s</i> candidates have at least <i>q</i> votes each and so the
+total wasted vote<i> w</i> satisfies <i>w</i> &lt; <i>T/(s+</i>1<i>)</i>.
+
+<p>
+Given <i>s</i> and <i>T</i>, it is clear from the definition of <i>q</i>
+that condition (A) is satisfied provided the next preference at each
+transfer is always given. It is possible for the above inequality, and hence
+condition (A), to be violated, if <i>w</i> is increased by the addition of
+votes which are non-transferable because no next preference has been
+indicated. In this paper we shall assume that this does not occur; it will
+be shown in a second paper that it is possible still to satisfy (A) in such
+cases by modifying the definition of <i>q</i>.
+
+<a name="s3"><h3>3. Equality of treatment</h3></a>
+
+The discussion of condition (A) shows that, in general, there will be some
+wasted votes, except in the  trivial  cases  when <i>s</i> &gt;= <i>T</i>.
+It is therefore not possible under STV to guarantee that <b><i>all</i></b>
+votes will be taken equally into account (e.g. votes with first preferences
+for runner-up candidates), although all are taken indirectly into account
+when calculating the quota.<a href="#r2">[2]</a>
+
+<p>
+Within this obvious limitation, attempts have been made to eliminate
+possible sources of inequity of treatment by various modifications of the
+counting rules. Such sources include:
+
+<ol>
+<li> the choice of which votes to transfer from the total for a candidate
+who has exceeded the quota
+
+<li> errors introduced by taking whole-number approximations to fractions of
+totals for transfer - particularly in elections with small total vote
+
+<li> calculation of the proportion for transfer from an elected candidate on
+the basis of the last batch of votes transferred to him, and not on his
+total vote.
+</ol>
+
+The common way of overcoming difficulties (1) and (2) is to use the variant
+of STV known as the Senate Rules. Each vote is divided into <i>K</i> parts
+(usually <i>K</i> = 100 or 1000) and each part treated as a separate vote
+(of value 1/<i>K</i>) with identical preference listings.
+
+<p>
+Difficulty (1) is overcome by transferring the appropriate proportion of
+each divided vote, while the method clearly reduces the errors involved in
+(2) by the factor 1/<i>K</i>. If <i>K</i>=10**<i>n</i> this is simply
+working to <i>n</i> decimal places. The value of <i>K</i> has only to be
+increased until the errors are too small to affect the result of the
+election.<a href="#r3">[3]</a> The method is equivalent to transferring the
+<i>whole</i> vote at an appropriately reduced value, and it is this
+interpretation we shall use from now on.
+
+<p>
+Difficulty (3) is slightly more technical, and warrants further explanation.
+Suppose at some stage a candidate has obtained <i>x</i> (&lt;<i>q</i>)
+votes. By transfer from another (elected or eliminated) candidate he now
+acquires a further <i>y</i> votes, where <i>x+y</i> &gt;= <i>q</i>. His
+surplus is now <i>z=x+y-q</i>. It would appear that his <i>x+y</i> votes
+should now be transferred, with value reduced by the factor<i> z/(x+y)</i>.
+
+<p>
+It is, however, common practice for only the <i>y</i> votes to be
+transferred, with value reduced by the factor <i>z/y</i>. The reason for
+adopting this procedure is simply the practical one, in a manual count, of
+reducing as much as possible the rescrutiny of ballots for later
+preferences. However, neither this nor the argument that 'the difference is
+unlikely to affect the result' are particularly relevant to a
+decision-theoretic discussion, though we shall return to the practicability
+problem later.
+
+<p>
+Of more importance here is the argument 'in STV a vote only counts for one
+candidate at a time, and should count for the first preference where
+possible'. If accepted, this would of course also render difficulties (i)
+and (ii) irrelevant, and the Senate Rules unnecessary; the first part of it
+is in fact sometimes used as a 'proof' that STV satisfies condition (B). But
+even without the Senate Rules the statement is false; however the surplus
+votes are chosen for transfer, <i>it is</i> <i>the existence of the
+untransferred votes which makes the</i> <i>transferred votes surplus.</i> A
+vote not only counts directly for one candidate; it can indirectly affect
+the progress of the count, the pattern of transfers, and ultimately the
+<i>election or</i> <i>non-election of other candidates.</i><a
+href="#r4">[4]</a>
+ 
+<p>
+It is this fact which is at the root of the failure of STV to satisfy
+condition (B).
+
+<p>
+In the specific situation described above, the candidate achieves election
+not only because of the accession of the <i>y</i> new votes, but because of
+the existence of the <i>x</i> previous votes; hence for condition (B) to be
+satisfied, all <i>x+y</i> votes should be transferred at the appropriate
+reduced value.
+
+<p>
+However, there is yet a fourth difficulty, one which does not seem to have
+been recognised hitherto.
+
+<ul>
+<li>(4) In determining the next preference to which a vote is to be
+transferred, <i>elected as well as eliminated</i> <i>candidates are
+ignored.</i>
+</ul>
+
+<p>
+Let us suppose that of <i>y</i> votes to be transferred, <i>y/2</i> are
+marked next to go to candidate A, and <i>y/2</i> to candidate B. Let us
+further suppose that A has already been elected; under STV the <i>y/2</i>
+votes which would otherwise go to him are transferred to the next candidate
+marked (assumed C in every case) provided that that candidate is not also
+already elected. Thus <i>y/2</i> go to B, and <i>y/2</i> to C. The
+inequities are plain; the votes for A which enabled the <i>y/2</i> to go to
+C rather than A had no say in their destination, while C obtains these votes
+at the same value as B receives his. Suppose these <i>y</i> votes were
+originally first-preference votes for a candidate D, now eliminated; those
+who voted for A next and then C at least have had their second choice
+elected, while those who voted next for B have not - yet these votes go,
+under STV, to both B and C at full value.
+
+<p>
+In <a href="#s6">section 6</a> we shall describe a counting mechanism which
+overcomes all these difficulties.
+
+<h3>4. Making the most of one's vote</h3>
+
+Any system which contains wasted votes contains at least some element of
+incentive to vote in other than his preferred way; the case for (C) in STV
+is that it is difficult for a voter to be sure (rightly or wrongly) that his
+vote will be wasted, both because the number of wasted votes is relatively
+small, and because the wasted votes are those for the non-elected but
+non-eliminated candidates - i.e. of the stronger, not the weaker,
+runners-up. However, it is also possible for voters to take advantage of the
+features of STV described in <a href="#s3">section 3,</a> provided they are
+sufficiently well informed, by voting in a sophisticated manner. This is
+most easily shown by an example:
+
+<p>
+Let <i>T</i>=3599, <i>s</i>=3, <i>q</i>=900, and the unsophisticated
+first-preference votes for the six candidates A, B, ... F be as follows:
+
+<pre>
+     A      B      C       D       E     F
+  1020    890    880     589     200    20
+</pre>
+In this case the 120 surplus votes of A divide 60 to B, 20 to C, 40 to D and
+the elected candidates are A, B and C.
+
+<p>
+Suppose there are 170 voters who above voted A, D, C ... It is known that
+the second-preference votes of F will go to C, and of E to D. Then the
+sophisticated way for these 170 to vote is F, A, D, C,... <i>in order to
+prevent A from being elected on the first count.</i>
+
+<pre>
+     A      B      C       D       E      F
+   850    890    880     589     200    190
+</pre>
+On the elimination of F, his original 20 votes go to C, and the 170
+sophisticated votes return to A. However, the 120 surplus is now taken
+entirely from this batch (see (3) in <a href="#s3">section 3</a>) and goes
+to D. C having no surplus, E must be eliminated and D is elected.
+
+<p>
+A different type of sophisticated voting is given below:
+<i>T</i>=239, <i>s</i>=2, <i>q</i>=80.
+
+<p>
+Unsophisticated case: C and A elected:
+<pre>
+   C,A,B...      C,B,A...     B,A....     A,B.....
+    120            80           31          8
+</pre>
+Sophisticated case: C and B elected:
+<pre>
+   C,A,B...      C,B,A...    E,B,A...     B,A....     A,B.....
+    120            50          30          31           8
+</pre>
+
+It seems to be a new result that sophisticated voting is possible in STV,
+though it is well-known that it can occur in other voting systems and
+considerable work has been done on decision processes using a
+games-theoretic approach. Black <a href="#r5">[5]</a> in his discussion of
+STV does mention the possibility of 'an organised minority (perverting) the
+use of the system' but only in connection with a candidate with just the
+quota on first preferences who is rated last by the rest of the electorate.
+STV supporters would claim that if a candidate can obtain a quota this
+<i>ipso facto </i>entitles him to be elected, particularly if he gets the
+quota on first preferences, and it is certainly difficult to understand what
+Black means by 'pervert' in this context.
+
+<a name="s5"><h3>5. Other considerations</h3></a>
+
+At this point we shall mention some other aspects of STV, mainly in order to
+define the limitations of the present discussion. Proper treatment of the
+points raised in this section are well outside the scope of the present
+work, and is the subject of a projected further, more general paper.
+
+<p>
+The conditions (A), (B), (C) discussed so far were chosen simply because
+they seem to be specific to STV among constituency-type systems in
+parliamentary elections. However, other conditions could be applied, notably
+those specified by Arrow in his General Possibility Theorem.<a
+href="#r6">[6]</a>
+
+<p>
+As STV elections are multi-vacancy, the preferences between candidates
+listed by the voters do not as they stand represent an ordering of
+<i>independent</i> alternatives, and so Arrow's  analysis is not directly
+applicable. The deduction from the voter's ordering of candidates of his
+ordering of the actual independent alternatives (the possible subsets of the
+set of all candidates who might actually be elected) is by no means
+straightforward. Nevertheless, at some stage of the count the process
+reduces to electing one candidate to one remaining vacancy, and so the
+consequences of the theorem, and the Condorcet paradox, cannot be escaped.
+Using the alternatives as they stand, even though they are not independent,
+STV clearly satisfies Arrow's conditions 1, 4, and 5. The condition 3 of
+independence of irrelevant alternatives is not satisfied, nor is condition 2
+(the positive association of social and individual values). This can be seen
+from the above analysis.
+
+<p>
+A related point, and probably the strongest decision-theoretic argument
+against STV, is the fact that a candidate may be everyone's second choice
+but not be elected. This difficulty is not overcome by the feedback method,
+and it does not seem to the author to be possible to do so while retaining a
+system which would be recognisably a 'single' transferable vote.
+
+<p>
+Virtually all other discussion of STV, both for and against, seem to have
+been about political and not decision-theoretic considerations.
+
+<p>
+For example, Black<a href="#r5">[5]</a> does discuss STV from what he terms
+the 'statical' point of view, but although he does express some disquiet
+about the 'heterogeneity' involved in STV (basically, that some votes count
+for first preferences, others for second or later preferences), he does not
+go into the problem in detail and concludes 'in spite of those drawbacks
+(STV) has merits ... it is not difficult to see why many people,
+<i>regarding it purely as a statical system</i>, (Black's italics) should
+hold (it) in esteem'. The italicised phrase is to introduce other,
+'dynamical' arguments against STV.<a href="#r7">[7]</a> Black does not discuss
+the conditions mentioned here; though the germ of the idea of inequity is
+contained in the word 'heterogeneity'; in fact as <a href="#s3">section
+3</a> shows, the heterogeneity which worries him is more apparent than real,
+and the feedback method described in <a href="#s6">section 6</a> eliminates
+what there is. Nor - oddly - does the 'everyone's second choice' problem,
+even though this is closely connected with the doubts mentioned at the end
+of the last section.
+
+<a name="s6"><h3>6. The feedback process</h3></a>
+
+One of the criticisms of STV which is often made is that its rules are too
+complicated, and are not derived from principles which can be simply stated.
+The above discussion shows that this is not surprising; the rules are in
+many cases little more than rules of thumb, designed for practical
+convenience rather than theoretic merit. The feedback process, however, is
+derived from simply-stated principles:
+
+<ul>
+<li><b>Principle 1.</b> If a candidate is eliminated, all ballots are
+treated <i>as if that candidate had never stood</i>. <a href="#r8">[8]</a>
+
+<li><b>Principle 2.</b> If a candidate has achieved the quota, he retains a
+fixed proportion of every vote received, and transfers the remainder to the
+next <i>non-eliminated</i> candidate, the retained total equalling the
+quota.
+</ul>
+
+Principle 1 is the one which leads to the feedback mechanism. For, suppose
+a voter marks his ballot A, B, C,.. and A is eliminated, the ballot, by
+Principle 1, is henceforward treated as if it read B, C,.. on the
+assumption that if A had not stood at all, the voter would have ordered the
+other candidates as before and B would have been first preference <a
+href="#r8">[9]</a>. But suppose that B has at an earlier count reached the
+quota. Then this ballot must now be treated as an original first preference
+for B; that is, according to Principle 2, the same proportion of this vote
+must be retained by B as for the others, passing the rest to C (instead of
+the <i>whole</i> vote going to C as in previous methods). However, this
+will mean that the total retained by B is now greater than the quota. Thus
+the proportion of B's votes to be retained must be recalculated, and will
+in fact drop - in other words we must go back to the beginning, with A now
+eliminated. This is the feedback process.
+
+<p>
+Note that the proportion of each of B's votes to be transferred is increased
+by this accession of support; B's supporters have a say in the transfer of
+the extra surplus, since it is their existence which has made it surplus.
+All support for B is now treated equally, being divided proportionately to
+leave him with exactly the quota.
+
+<p>
+Consider now the effect of Principle 2. The transfer of B's vote may lead to
+another candidate, D, being elected. All votes, new and old, for D, have now
+to be divided, leaving D with the quota and distributing the rest to the
+next <i>non-</i><i>eliminated</i> candidate. Some ballots may have B,
+another elected candidate, as next candidate. Under previous rules, only
+continuing (i.e. non-eliminated and <i>non-elected</i>) candidates can
+receive transfers. Now these votes are regarded as extra support for B: he
+takes the proportion allotted him by D, <i>retains the proportion that he
+keeps of all he receives</i>, and transfers the rest - now the <i>third</i>
+marked candidate. Formerly the third candidate would get all of the
+proportion transferred by D (see (iv) <a href="#s3">section 3</a>).
+
+<p>
+It can be seen that B will once more have more than the quota if he does not
+again reduce the proportion which he retains. However, the increased
+proportion transferred may in part go to D who will therefore have to reduce
+the proportion <i>he</i> retains. This will react back on B, and it is clear
+that we have an infinite regression. However, it is also clear that the
+proportions for transfer do not increase without limit, there being only a
+finite total surplus available from B and D, who must each retain a quota.
+The problem is in fact a mathematical one of determining the proportions to
+be retained by each which will leave them both with a quota, taking into
+account the extent of mutual support.  If <i>pB</i> is the proportion B
+transfers, and <i>pD</i> that which D transfers, supporters of both B and D
+have their votes transferred to third preferences at value
+<i>pB&times;pD</i>. Those putting B first have 1-<i>pB</i> retained by him
+and <i>pB&times;(</i>1-<i>pD)</i> retained by D; those putting D first have
+1-<i>pD</i> retained by him and <i>pD&times;(</i>1-<i>pB)</i> retained by B.
+
+<p>
+We now, as examples, give the formulae for the proportions for transfer in
+the cases of 1, 2, 3 and 4 elected candidates:
+
+<h4><b>One candidate</b></h4>
+
+<i>t1(</i>1-<i>p1)=q</i>
+
+
+<p>
+This is the same formula as before, except that <i>t1</i> now contains all
+effective first-preference votes for the candidate, including those obtained
+from eliminated candidates, who by Principle 1 are now ignored. The
+proportion <i>p1</i> is recalculated every time <i>t1</i> is increased by
+the elimination of a candidate.
+
+<h4><b>Two candidates</b></h4>
+
+The first elected candidate has <i>t1</i> first preference votes, of which
+<i>t12</i> have the second elected candidate as second preference. Hence
+<i>p1&times;t12</i> are passed on to that candidate. Similarly
+<i>p2&times;t21</i> are received from the second candidate. Thus
+
+<p>
+<i>(t1</i>+<i>p2&times;t21)(</i>1-<i>p1)=q</i>
+
+<p>
+<i>(t2</i>+<i>p1&times;t12)(</i>1-<i>p2)=q</i>
+
+<h4><b>Three candidates</b></h4>
+
+The votes received by candidate 1 are now his first-preference <i>t1</i>,
+second-preference <i>p2&times;t21</i> from candidate 2 and
+<i>p3&times;t31</i> from candidate 3, and third-preference
+<i>p2(p3&times;t321)</i> from candidate 3 (1st), 2 (2nd) and
+<i>p3(p2&times;t231)</i> from candidate 2 (1st), 3(2nd).
+
+<p>
+Thus:
+
+<p>
+<i>[t1+p2&times;t21+p3&times;t31+p2&times;p3(t321+t231)](</i>1<i>-p1)=q</i>
+
+<p>
+Two similar formulae hold, obtained by cyclic permutation of the suffices.
+
+<h4><b>Four candidates</b></h4>
+
+The formula now is:
+<p>
+<img src="https://rangevoting.org/IMG1.GIF">
+
+<p>
+where dashed summation indicates summation over all permutations of (234);
+there are three similar formulae.
+
+<p>
+The extension to any number of candidates is straightforward. It should be
+noted:
+
+<ol>
+<li> The formulae for <i>n</i> candidates may be reduced to those for
+<i>n</i>-1 candidates by eliminating the <i>n</i>th equation and putting
+<i>pn</i>=0 in the others;
+
+<li> Full recursion is not necessary on the elimination of a candidate if
+none of the totals or subtotals in the formulae in use at that stage are
+changed as a result.
+</ol>
+
+<h3>7. Calculating the proportions</h3>
+
+It can be seen that one of the difficulties involved in the feedback process
+arises from the need to calculate the proportions for transfer. However, a
+simple iterative procedure enables this to be done to any required accuracy.
+We shall take as the simplest example the position with two elected
+candidates, where the equations to be solved are, as above:
+
+<ol>
+<li><i>(t1+p2&times;t21)(</i>1-<i>p1)=q</i>
+
+<li><i>(t2+p1&times;t12)(</i>1-<i>p2)=q</i>
+</ol>
+
+In these equations only the <i>pi</i> are unknown. Suppose we guess a value
+of <i>p2</i> which is too low; then <i>(</i>1-<i>p1)</i> will be too large
+in equation (1), that is<i> p1</i> will also be too small. If we substitute
+this in equation (2) it will similarly give a value of <i>p2</i> which is
+too low.
+
+<p>
+The total vote for the two candidates is <i>t1+t2</i>; for them both to be
+elected <i>t1+t2</i> &gt;= 2<i>q</i>. Suppose the strict inequality holds;
+in a non-trivial case <i>t12, t21</i> are both non-zero. Further, at least
+one of <i>t1, t2</i> is greater than <i>q</i>; assume it is<i> t1</i>. If we
+put<i> p2</i>=0 in (1) we can solve for <i>p1</i>, giving a value <i>p1</i>
+&gt; 0. This <i>p1</i> is the proportion to be transferred if candidate 1
+were the only elected candidate; thus <i>t2+p1&times;t12</i> &gt; <i>q</i>
+or candidate 2 would not be elected. If the equality holds, candidate 2 only
+just gets the quota and so <i>p2</i>=0 from equation (2); thus the equations
+are solved.
+
+<p>
+If the strict inequality holds, we get a value of <i>p2 </i> &gt; 0 which is
+too small.  Substituting in (1) increases the coefficient of
+<i>(</i>1-<i>p1)</i> and hence increases <i>p1</i>; the new value of
+<i>p1</i> is increased (but is still too low). Substitution in (2) gives
+similarly an increased, but too low, value of <i>p2</i>. Thus the iterative
+process gives monotonically increasing sequences of values <i>p1, p2</i>
+bounded above, which hence tend to limits which are the solutions of the
+equations. A cycle of iterations which leads to two successive sets of
+values the same to the given accuracy is taken as the approximate solution
+required. Note that the approximate values may be slightly smaller than the
+exact ones, but this is exactly what we want; otherwise too much of the
+support for the candidate concerned would be transferred and he would be
+left with less than the quota. The process can also be easily shown to work
+in the limiting case, <i>t1+t2</i>=2<i>q.</i>
+
+<p>
+It is clear that the success of this iterative procedure depends on the fact
+that all the quantities in the totals (the coefficients of<i>
+(</i>1-<i>pi)</i> in each equation) are non-negative, and that therefore it
+will work for any number of equations provided they are solved cyclically in
+order of election - this condition being necessary to avoid getting negative
+values of <i>pi</i>. Since the counting process can only increase the totals
+of support for elected candidates, it is also clear that the <i>pi</i> for
+those candidates can only increase as the count progresses;<a
+href="#r10">[10]</a> thus it is safe to take as starting values of the
+<i>pi</i> the ones obtained at a previous stage, putting <i>pi</i>=0
+initially for newly-elected candidates only (in which case, as mentioned
+above, the equations reduce to the ones at the previous stage and hence will
+yield, at the beginning of the iteration, the same answers).
+
+<p>
+It can be shown fairly simply that the convergence rate of the iterative
+process is likely to be unsatisfactory only when both of the following
+conditions hold; that all the <i>pi</i><i> </i>are small, and the
+cross-totals <i>tij</i> etc, are as large as possible. This would not cause
+difficulty even on the rare occasions on which all these conditions were
+satisfied, since the occurrence of slow convergence can be detected in
+advance and allowed for, while at a later stage in the count some at least
+of the <i>pi </i>are likely to rise sufficiently to accelerate to the true
+convergence satisfactorily.
+
+<h3>8. Conclusions</h3>
+
+It is obvious even from the above example that the feedback process is a
+much more laborious method of arriving at a result than any at present in
+use; in a full-scale election with thousands of ballots to scrutinise, it
+would be very lengthy indeed. However, even the present methods are
+sufficiently lengthy to make it worthwhile using computers to help in the
+counting,<a href="#r11">[11]</a>  and if this is done, then complex counting
+methods are no problem.
+
+<p>
+It may be argued that the actual results of any election would be different
+so infrequently that the additional complication is unnecessary. This is a
+matter for conjecture, or preferably, for further investigation. However,
+the method has been tried out in two cases, once using figures obtained by a
+quasi-random process, and once in an actual STV election. In both, there
+were differences in the candidates elected.<a href="#r12">[12]</a> 
+Particularly since STV supporters lay such emphasis on the criterion of
+equality of treatment (condition (B)), it would seem worthwhile in automated
+counting to adopt the feedback method.
+
+<p>
+To sum up, the feedback method does satisfy the criterion, subject to the
+limitations imposed by the basic STV system - i.e. the theoretical minimum
+of wasted votes, and the elimination of candidates. There is one further
+limitation not so far discussed, imposed by the voters themselves if they
+take advantage of the possibility allowed by STV of listing only some of the
+candidates in preference order. The extension of the feedback method to
+cover this is dealt with in Paper II; it turns out that the extension also,
+as a bonus, allows voters to express their views much more accurately than
+under previous STV methods.<a href="#r13">[13]</a>
+
+<h3>References and Notes</h3>
+<ol>
+
+<li> <a name="r1">For a complete description of STV see E Lakeman and J
+Lambert: Voting in Democracies (Faber and Faber 1955). <i>(The current
+edition in 1994 is E Lakeman: How Democracies Vote (4th edition, Faber and
+Faber 1974).)</i> </a>
+
+<li> <a name="r2">This is nevertheless more than can be said for some common
+voting systems, such as the simple majority system.</a>
+
+<li> <a name="r3">This cannot, of course, cope with the case of exact
+equality, where some other method has to be used, if only drawing of lots.
+</a>
+
+<li> <a name="r4">To argue, in connection with a <i>transferable</i> system,
+that a vote should where possible not be transferable, seems inconsistent,
+particularly in view of the strong arguments put forward by STV supporters
+against the single non-transferable vote system, where an elector may choose
+only one from a list of candidates even though more than one are to be
+elected. See Lakeman and Lambert, <i>op, cit.</i> <a href="#r1">[1]</a> </a>
+
+<li> <a name="r5">Duncan Black: Theory of Committees and Elections (2nd
+edition, Cambridge, 1963, pp 80-83). </a>
+
+<li> <a name="r6">K Arrow: Social Choice and Individual Values (2nd edition,
+Wiley 1962).</a>
+
+<li> <a name="r7">The case for the other side may be found in Lakeman and
+Lambert, <i>op cit.</i><a href="#r1">[1]</a> </a>
+
+<li> <a name="r8">The similarity of this principle to Arrow's condition of
+independence of irrelevant alternatives is obvious. However, the
+interdependence of the alternatives here means that the condition is not in
+fact satisfied. </a>
+
+<li> <a name="r9">This innocent-looking assumption is open to major
+criticism. Full discussion is outside the scope of this paper; it is hoped
+to include this in the projected more general paper mentioned in <a
+href="#s5">section 5</a>. </a>
+
+<li> <a name="r10">Clearly Arrow's condition 2, the positive association of
+individual and social values, is now satisfied by the non-independent
+alternatives. </a>
+
+<li> <a name="r11">For a feasibility study in general terms, see P Dean and
+B L Meek: the Automation of Voting Systems; Paper I; Analysis (Data and
+Control Systems, January 1967, p16); Paper II; Implementation (Data and
+Control Systems, February 1967, p22), and B L Meek: Electronic Voting by
+1975? (Data Systems, July 1967, p12) - the date in the last source referring
+to the UK. For a description of the actual use of computers in STV elections
+in the United States, see Walter L Pragnell: Computers and Conventions (The
+Living Church, 20th August 1967, p12). </a>
+
+<li> <a name="r12">For obvious reasons the work on the actual election
+cannot be made public! </a>
+
+<li> <a name="r13">These papers are the result of a problem posed by Miss
+Enid Lakeman, Director of the Electoral Reform Society, London; the author
+wishes to thank her for her encouragement in the progress of the work.
+Thanks are due also to Professor W B Bonnor, Mr Robert Cassen, Mr Peter
+Dean, Mr Michael Steed and Professor Gordon Tullock for valuable
+discussions, correspondence and advice. </a> </ol>
+
+<hr>
+<B>Up:</B> <A HREF="https://rangevoting.org/INDEX.HTM"> Issue 1 </A>
+<B>Next:</B> <A HREF="https://rangevoting.org/P2.HTM"> Paper 2 </A>
+</body>
+</html>

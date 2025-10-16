@@ -1,0 +1,106 @@
+<html>
+<head>
+<BASE HREF="">
+<title>
+RangeVoting.org
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+<H2> Answer to Puzzle #13: range-voting with outlier-discarding </H2>
+
+<p><b>
+Puzzle:
+</b>
+Suppose each voter's "vote" is an integer
+numerical score from 0 to 99 for each candidate, for example a legal vote
+in a 4-candidate election might be (99, 54, 0, 99).
+Suppose the "final score" for a candidate is the average of all his scores that remain
+after you discard the top X% and the bottom X% of them.
+<small>
+If X=50, this
+is just the <i>median score</i>, and if X=0 then this is just the usual kind
+of range voting. These are both important special cases.  But more generally
+any fixed X with 0&le;X&le;50 can be considered.
+</small>
+One of the advantages of ordinary range voting, which appears to be sacrificed in this
+more general kind of voting, is the fact that with range voting only a <i>small</i>
+amount of information may be sent by each precinct to central tabulating, <i>summarizing</i>
+all the ballots (no matter how many) in that precinct.  The entire set of
+ballots need not be sent.
+<ol type="a">
+<li>
+Show that this "appearance" is delusory &ndash; this more general kind of range voting
+<i>still</i> has the small-amount-of-info-summary-can-be-sent property allowing
+precincts to do their own "subtotals."
+</li>
+<li>
+Why is this more-general kind of range voting (with X&gt;0)
+far less democratic than ordinary range voting?
+</li>
+<li>
+What bad phenomenon would often happen in practice were median-range-voting
+(the X=50 special case) were adopted?  Hint: consider the
+<a href="FrenchStudy.html">French Approval-Voting study</a>.
+</li>
+</ol>
+
+<p>
+<b>Solution (a):</b>
+for each candidate, send the 100 <i>counts</i> of 0-votes, 1-votes, 2-votes,... 99-votes,
+for that candidate to central tabulating. 
+This is 100C numbers worth of information, where C is the number of candidates,
+<i>regardless</i> of the number of voters in the precincts (there could be a million voters and
+we don't care), and it suffices.
+</p>
+
+<p>
+<b>Solution (b):</b>
+The main objection to "trimmed mean" range-voting variants
+where you discard X% of the outliers then take the average (median-range is the
+special case X=50, but one could also consider X=10, etc) is precisely that
+this discarding happens. For example,
+<center>
+90% of the voters: Bush=0; &nbsp;&nbsp; 10% of the voters: Bush=100
+</center>
+is considered the same as
+<center>
+100% of the voters: Bush=0;
+</center>
+when it comes to rating Bush. 
+That is (from the standpoint of democratic ideals) insane. 
+It could easily cause all lesser-known
+third-party candidates to get <i>zero</i>.
+It just <i>discards</i> opinions of a minority
+of society. 
+That is very anti-democratic. 
+It was enough to convince
+me not to support any such variant.
+</p>
+<blockquote><b>Later note:</b>
+<i>However</i>, Balinski &amp; Laraki (after this puzzle was written)
+<a href="MedianVrange.html">advanced</a> a version of median-based range voting
+with a crucial "tie breaking" second stage.  Their tie-breaking stage (when invoked)
+causes that 10% not to be totally discarded... they still can have some effect.
+</blockquote>
+
+<p>
+<b>Solution (c):</b>
+Massive ties would often happen with highest-median-score voting.
+In the <a href="FrenchStudy.html">French Approval-Voting study</a>
+if voters gave <i>zero</i> scores to those they disapproved 
+(or if they merely did so 80% of the time at random), then 
+there would have been a 16-way tie
+for first place with all contenders getting an exactly-equal median score value of zero.
+</p>
+
+
+<small>
+Solution b was pointed out by Jan Kok.  
+</small>
+
+<br>
+<p><a href="PuzzlePage.html">Return to puzzles</a></p>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+</body>
+</html>
