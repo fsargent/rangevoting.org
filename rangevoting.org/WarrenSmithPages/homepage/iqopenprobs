@@ -1,0 +1,39 @@
+LIST OF IMPORTANT OPEN PROBLEMS ABOUT INTELLIGENCE
+===============Warren D Smith====May 2006=========
+
+(*d problems are the most important ones.)
+
+1*. Achieve a multiresearcher consensus as fast as possible on 
+the definition of intelligence and how the AI field should proceed by starting 
+standardized intelligence-measuring IQ-contests   (I have already written
+such a consensus statement in section 25 of my MDoI paper, the only problem
+is to get people to sign it to make it *be* a consensus)
+
+2. Understand more about the ME(FP) computational complexity class from section 14.
+For example, the theory of NP has impressively grown to cover thousands of
+problems and extended with the "PCP theorem"  and "APX completeness."  What are the 
+analogues, if any, for ME(FP)?
+
+3. Re section 15, can you devise generators of all isomorphism classes of
+trees of certain types (e.g, specified valence sequence, specified number of nodes 
+with ordered and nodes  with unordered descendants) with N nodes, that run in
+(which would be optimal)  O(1) amortized time per tree
+generated, and in which that O(1) also includes the cost of walking upward from all 
+modified nodes to the root?  And now redo the same problem - but for DAGs not trees?
+Sublinear amortized time would be a good achievement although falling short of
+the ultimate goal of O(1) time.
+
+4. Re sections 17 and 18: study examples of pairs of human mental tests which exhibit
+negative centered correlations - investigate the Piagetian development of the
+corresponding mental abilities in children.
+
+5*. Write computer programs that are intelligence tests and are universal intelligent-entities,
+enter them both in the IQ-contests, and write papers about, and prove theorems about 
+how they work.
+
+6. Is there some way to define mathematically the "usefulness" or 
+"interestingness" of an algorithm?
+For example, Gaussian elimination to solve systems of linear equations is an interesting
+and useful algorithm - but an algorithm that just prints out some completely random-looking
+string of symbols is probably not useful and not interesting.   Well, that is fine as a subjective
+judgement, but is there a way to make this objective and quantitative?

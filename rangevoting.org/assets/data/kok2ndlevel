@@ -1,0 +1,87 @@
+HOW TO DO 2-DIGIT RANGE VOTING ON ORDINARY PLURALITY VOTING MACHINES
+-----------------------Warren D. Smith----Aug 2005------------------
+
+We explain how to
+extend Jan Kok's method for doing 1-digit range voting (range 0-9)
+on any voting machine capable of handling multiple plurality contests
+(i.e. every USA voting machine) to handle 2-digit range voting (range 0-99), 
+if anybody should desire that.
+
+The idea is to transform an election  Amy v Bob v Cal  to
+6 plurality "elections" namely
+(1)   Amy0s v Amy1s v Amy2s v ... v Amy9s
+(2)   Amy0u v Amy1u v Amy2u v ... v Amy9u
+
+(3)   Bob0s v Bob1s v Bob2s v ... v Bob9s
+(4)   Bob0u v Bob1u v Bob2u v ... v Bob9u
+
+(5)   Cal0s v Cal1s v Cal2s v ... v Cal9s
+(6)   Cal0u v Cal1u v Cal2u v ... v Cal9u
+
+where the "s" elections handle the most Significant digit
+whereas the "u" elections handle the Units-place digit.
+
+For example, a range voter wishing to give Amy a score of "57",
+Bob a score of "32" and leave Cal's score blank,
+would vote for:
+   Amy5s and Amy7u,
+   Bob3s and Bob2u,
+and not vote in elections 5 and 6.
+
+Equivalent picture of the 6 pseudo-elections:
+
+(1)   Amy00 v Amy10 v Amy20 v ... v Amy90
+(2)   Amy_0 v Amy_1 v Amy_2 v ... v Amy_9 
+
+(3)   Bob00 v Bob10 v Bob20 v ... v Bob90
+(4)   Bob_0 v Bob_1 v Bob_2 v ... v Bob_9 
+
+(5)   Cal00 v Cal10 v Cal20 v ... v Cal90
+(6)   Cal_0 v Cal_1 v Cal_2 v ... v Cal_9 
+
+The people in charge of the voting machines would then
+reconstruct Amy's summed score via
+   10*Amy1s + 20*Amy2s + ... + 90*Amy9s + Amy1u + 2*Amy2u + ... + 9*Amy9u
+(and Bob's and Cal's summed scores similarly)
+and then divide Amy's summed score by the number of votes cast in election 1,
+to get Amy's averaged score.
+(And for Bob and Cal we would divide by #votes in elections 3 and 5, respectively.)
+
+If you wanted to refuse to do these final divisions (i.e. base the range election on
+totals rather than averages, i.e. equivalently regard "blank" votes as "zero") that would
+of course be slightly easier.
+
+WARNING:
+A problem arises here which did not arise in the original Kok scheme for single-digit range voting
+(allowed scores 0,1,2,3,4,5,6,7,8,9, and X for intentional blank).  That is
+that voters here could vote, say, Amy2s BUT NOT vote in the Amyu election (2).
+This would be a "partially blank" vote 2X where the unit-digit X was left unspecified by the 
+voter.  (Also votes like X2 would be possible.)  Dumb plurality 
+machines would be unable to handle these kinds of votes except if we agree to treat X as 0.
+Then they would work, but we would thus be sacrificing the idea of having blank-votes
+not affect a candidate's total -- they would now be treated as 0s and the total would
+now be a sum, not an average of the non-blank scores.
+
+THEREFORE WE RECOMMEND using single-digit range voting (0-9 & X) whenever old-style plurality 
+machines are employed, but with gradual upgrading to 0-99 & X two-digit range voting when 
+machines specifically designed for range voting instead of plurality voting, come along later.  
+The old-style machines for 0-9 & X will need to have their results multiplied by 11 to
+coexist with the newer 0-99 finer-grained machines.
+
+DISCUSSION:
+Although this may seem a bit complicated, the complexity from the point of view of the
+VOTER is not bad: you can set this up on most kinds of voting machines (lever, punch
+card, optical scan) so that it is pretty intuitive and straightforward for the 
+voter to cast his range vote.  From the point of view of the election officials
+it is more complicated, but still this is just maybe 30 extra entries into
+a calculator per machine per election, which is a trivial increment to the large amount
+of work they have to do anyway to run an election (for example pre-configuring all their
+machines in the first place) so I am not much bothered by that.
+
+(Side note:  It would be rather simpler and more advantageous if everybody had only 2 fingers, 
+i.e. we all thought in binary rather than decimal...  which was my original plan
+before Jan Kok came along, and which left me unsatisfied for obvious reasons...)
+
+Naturally I would prefer it if special machines were developed designed specifically
+for range voting, but the point of schemes like this one is they'd still permit
+range elections to be held using low-tech plurality-election equipment if necessary.

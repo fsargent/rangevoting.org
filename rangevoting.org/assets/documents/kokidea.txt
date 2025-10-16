@@ -1,0 +1,102 @@
+JAN KOK's BRILLIANTLY SIMPLE IDEA SHOWING HOW TO RUN SINGLE DIGIT
+RANGE-VOTING ELECTIONS ON TODAY'S PLURALITY VOTING MACHINES
+----Warren D. Smith July 2005-----------------------------------
+
+SINGLE DIGIT RANGE VOTING (DEFINITION):
+I. You provide as your vote in an N-candidate election,
+  an N-tuple of numbers, each entry consisting of a single
+  digit {0,1,2,3,4,5,6,7,8,9} or an INTENTIONAL-BLANK.
+II.  The candidate with the highest average score is elected (where blanks are
+    not incorporated into the averaging).
+Example:  3 voters and 3 candidates:
+          voter#1:  (9, 9, 0)
+          voter#2:  (5, *, 9)    where *=BLANK
+          voter#3:  (2, 2, 9)
+   average scores:  (16/3=5.33, 11/2=5.50, 18/3=6.00)
+and the third candidate wins.
+
+JAN KOK's IDEA:
+Kok pointed out that on any kind of voting machine capable of handling
+multiple parallel plurality-elections (i.e. all the voting machines 
+in the USA) it 
+also is possible to make them handle single-digit range voting. 
+
+You transform the election  Joe vs Dick vs Jane
+to three parallel plurality (pseudo)elections
+    JoeElection:    Joe0 vs  Joe1 vs ..  Joe9,
+   DickElection:    Dick0 vs Dick1 vs .. Dick9,
+   JaneElection:    Jane0 vs Jane1 vs .. Jane9.
+The results of these three 10-candidate plurality elections -- i.e. the total count for Joe9, 
+the total count  for Joe8, etc are easily used to find the result of the single 3-candidate
+single-digit-range election.  With, say, 5000 voters, the total amount of work to
+do that is tiny compared to the amount of work the voters did to vote.
+
+This transformation works fine except for the fact that it multiplies
+the number of "candidates" by 10, which may strain some kinds of voting
+machine.
+
+The same kind of transformation could also be used to do Approval Voting on 
+plurality machines, namely  Joe vs Dick vs Jane  (approval election)  is
+transformed to three 2-"candidate" plurality elections
+      Disapprove_Joe   vs  Approve_Joe,
+      Disapprove_Dick  vs  Approve_Dick,
+      Disapprove_Jane  vs  Approve_Jane.
+
+Note that these transformations both also permit the improved
+variant forms of range and approval voting with "you get to leave it
+blank" votes for candidates you feel ignorant about, and we could
+have (or not have) an "intentional blank" button.
+
+DEFINITION OF "DUMB PLURALITY MACHINE":
+It computes the total number of votes, and the N totals for each of the N candidates,
+and it prevents the voter from entering (or at least refuses to count) an illegal "overvote."
+
+ERROR DETECTION:
+Plurality machines that detect overvotes would detect illegal range votes.
+Plurality machines that detect undervotes would detect "unintentional blank" votes.
+
+THEOREM: Any dumb plurality machine can be used to perform a single-digit range voting
+election (with "X" no-opinion scores allowed, or forbidden, either is ok) if it is capable
+of handling multiple plurality races.
+
+EVALUATION:
+How well would all this work in practice?  Well frankly I would
+prefer to have voting machines purposely designed for range voting, 
+but it  is nice to know
+that present voting machines can handle the job.  But how well depends
+on the machine:
+
+LEVERS
+in New York State I use lever machines with about 300 binary levers... 
+there is a map so the voter can figure out which levers to depress... 
+Kok's scheme
+would work fine with them with an appropriate new "map" - and I think it
+would be just as easy and clear for the voters as it currently is -
+BUT considerably more levers would be consumed per contest,
+which might force typical elections to use more than 1 voting machine,
+while they presently use one.   For that reason approval would be better than
+range voting in practice on such machines.
+
+OPTICAL SCAN
+I think Kok's plan would work quite excellently with many kinds of 
+optical scan ballots (and many kinds of punch card ballots too).
+In fact there would seem to be little or no advantage for approval
+versus range on such machines. A range election would be just as easy
+for a voter to understand and do as a plurality election.
+
+BUTTERFLY BALLOT PUNCH CARD (ALA PALM BEACH FLORIDA 2000)
+I think Kok's scheme would be in big trouble on this sad 
+kind of voting machine.
+A 10-candidate contest would become a 100 "candidate" 10-contest
+election which would require a large number, not just one, of those
+puke-inducing butterfly cards, really inconveniencing voters although
+in principle it would work.
+
+"D.R.E." MACHINES
+Which contain computers, touch screens, etc, obviously can be programmed
+to handle practically any kind of voting... as well as practically 
+any kind of election fraud...
+
+PEN-AND-PAPER HUMAN-COUNTED BALLOTS LIKE IN IOWA
+Both AV and single-digit RV are easy to handle, no Kok-transformation
+required.

@@ -1,0 +1,35 @@
+TITLE:
+Sinkhorn ratings, and new strongly polynomial time algorithms
+for Sinkhorn balancing, Perron eigenvectors, and Markov chains
+
+AUTHOR:
+Warren D. Smith
+
+ABSTRACT:
+We describe a new method, ``Sinkhorn ratings,''
+for pairwise-comparison based ranking of chessplayers,
+web pages, or football teams;
+it also may be used to rank the candidates in an election
+in which each vote is a partial ordering of the candidates.
+
+We also describe the first ``strongly polynomial time'' algorithm for finding
+the Perron-Frobenius eigenvector of a matrix with non-negative entries, and
+the second
+strongly polynomial time algorithm (and the first practical one)
+for Sinkhorn balancing 
+a matrix with non-negative entries.
+The former also may be regarded as the first
+strongly polynomial algorithm for finding the stationary distribution of an $N$-state
+Markov chain with known transition matrix.  Along the way we also present a new formulation
+of the Perron-Frobenius eigenvector
+and Markov stationary distribution problems as concave-$\cup$ minimization 
+problems, and present a powerful new technique for proving monotonicity statements e.g. about
+Markov chains.
+
+KEYWORDS:
+Voting paradoxes, rating systems, Sinkhorn matrix balancing,
+Perron-Frobenius eigenvectors, Markov chains, strongly polynomial
+algorithms, linear algebra, minimum-entropy statistical estimators,
+concavity, monotonicity.
+
+DATE:  23 June 2005

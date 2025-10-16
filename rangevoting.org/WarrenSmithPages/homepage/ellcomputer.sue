@@ -1,0 +1,47 @@
+Title 
+The computational power of iterating analytic functions
+
+Author
+Warren D. Smith
+
+Abstract
+
+We describe a meromorphic function $g(z)$ and an entire analytic
+function $h(z)$ whose iterations each simulate a universal
+computer. The simulation is unaffected by ``noise'' of bounded
+magnitude.  Consequently, numerous problems about such iterations are
+undecidable.
+
+There are senses in which $g(z)$ and $h(z)$ are simplest possible:
+we show iterating rational functions cannot
+cause Turing universal behavior.
+
+Finally, we consider Blum, Cucker, Shub, and Smale's notion of
+``undecidable'' problems for a machine capable of performing real
+arithmetic operations. B,C,S\&S had claimed without proof 
+that membership of a point in the ``Mandelbrot set'' $M$ was
+undecidable in their sense. Although we provide a proof, we argue
+that this statement is very deceptive. For example, we show (assuming
+Douady's conjecture that $M$ is ``locally connected'') that this
+problem {\em is} decidable if the point is known to be either in the
+interior or complement of $M$, or if the point is known to have
+algebraic coordinates. Neither the inscrutable nature of $M$, nor the
+fact that its boundary has Haussdorf dimension $2$, need have anything
+to do with the undecidability. To see that, we show
+the well behaved set $S_e = \{x,y | y \le e^x \}$ is
+BCSS-undecidable. Again, though, we have decidability if $(x,y)$ is
+known to lie in the interior or complement of $S_e$, or if $x$ and $y$ are
+known to be algebraic numbers.
+For these reasons we recommend a redefinition of BCSS-undecidability.
+
+
+Keywords
+
+Elliptic functions, meromorphic functions, simple computers,
+counter machines, Turing universal, entire functions,
+iteration of rational functions, repetition count functions,
+Mandelbrot set, Julia set.
+
+Not patentable. 
+
+

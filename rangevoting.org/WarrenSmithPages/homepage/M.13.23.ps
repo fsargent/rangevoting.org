@@ -1,0 +1,1568 @@
+%!PS-Adobe-3.0 EPSF-3.0
+%%Creator: Tk Canvas Widget
+%%For: Unknown
+%%Title: Window .tree
+%%CreationDate: Thu Jun 23 16:03:44 1994
+%%BoundingBox: 197 36 415 757
+%%Pages: 1
+%%DocumentData: Clean7Bit
+%%Orientation: Landscape
+%%DocumentNeededResources: font Times-Roman
+%%EndComments
+
+% This file contains the standard Postscript prolog used when
+% generating Postscript from canvas widgets.
+%
+% $Header: /user6/ouster/wish/library/RCS/prolog.ps,v 1.6 93/04/01 14:03:52 ouster Exp $ SPRITE (Berkeley);
+
+%%BeginProlog
+50 dict begin
+
+% The definitions below just define all of the variables used in
+% any of the procedures here.  This is needed for obscure reasons
+% explained on p. 716 of the Postscript manual (Section H.2.7,
+% "Initializing Variables," in the section on Encapsulated Postscript).
+
+/baseline 0 def
+/stipimage 0 def
+/height 0 def
+/justify 0 def
+/maxwidth 0 def
+/spacing 0 def
+/stipple 0 def
+/strings 0 def
+/xoffset 0 def
+/yoffset 0 def
+/tmpstip null def
+/encoding {ISOLatin1Encoding} def
+
+% Override setfont to automatically encode the font in the style defined by 
+% by 'encoding' (ISO Latin1 by default).
+
+systemdict /encodefont known {
+    /realsetfont /setfont load def
+    /setfont {
+	encoding encodefont realsetfont
+    } def
+} if
+
+% desiredSize EvenPixels closestSize
+%
+% The procedure below is used for stippling.  Given the optimal size
+% of a dot in a stipple pattern in the current user coordinate system,
+% compute the closest size that is an exact multiple of the device's
+% pixel size.  This allows stipple patterns to be displayed without
+% aliasing effects.
+
+/EvenPixels {
+    % Compute exact number of device pixels per stipple dot.
+    dup 0 matrix currentmatrix dtransform
+    dup mul exch dup mul add sqrt
+
+    % Round to an integer, make sure the number is at least 1, and compute
+    % user coord distance corresponding to this.
+    dup round dup 1 lt {pop 1} if
+    exch div mul
+} bind def
+
+% width height string filled StippleFill --
+%
+% Given a path and other graphics information already set up, this
+% procedure will fill the current path in a stippled fashion.  "String"
+% contains a proper image description of the stipple pattern and
+% "width" and "height" give its dimensions.  If "filled" is true then
+% it means that the area to be stippled is gotten by filling the
+% current path (e.g. the interior of a polygon); if it's false, the
+% area is gotten by stroking the current path (e.g. a wide line).
+% Each stipple dot is assumed to be about one unit across in the
+% current user coordinate system.
+
+/StippleFill {
+    % Turn the path into a clip region that we can then cover with
+    % lots of images corresponding to the stipple pattern.  Warning:
+    % some Postscript interpreters get errors during strokepath for
+    % dashed lines.  If this happens, turn off dashes and try again.
+
+    1 index /tmpstip exch def %% Works around NeWSprint bug
+
+    gsave
+    {eoclip}
+    {{strokepath} stopped {grestore gsave [] 0 setdash strokepath} if clip}
+    ifelse
+
+    % Change the scaling so that one user unit in user coordinates
+    % corresponds to the size of one stipple dot.
+    1 EvenPixels dup scale
+
+    % Compute the bounding box occupied by the path (which is now
+    % the clipping region), and round the lower coordinates down
+    % to the nearest starting point for the stipple pattern.
+
+    pathbbox
+    4 2 roll
+    5 index div cvi 5 index mul 4 1 roll
+    6 index div cvi 6 index mul 3 2 roll
+
+    % Stack now: width height string y1 y2 x1 x2
+    % Below is a doubly-nested for loop to iterate across this area
+    % in units of the stipple pattern size, going up columns then
+    % across rows, blasting out a stipple-pattern-sized rectangle at
+    % each position
+
+    6 index exch {
+	2 index 5 index 3 index {
+	    % Stack now: width height string y1 y2 x y
+
+	    gsave
+	    1 index exch translate
+	    5 index 5 index true matrix tmpstip imagemask
+	    grestore
+	} for
+	pop
+    } for
+    pop pop pop pop pop
+    grestore
+    newpath
+} bind def
+
+% -- AdjustColor --
+% Given a color value already set for output by the caller, adjusts
+% that value to a grayscale or mono value if requested by the CL
+% variable.
+
+/AdjustColor {
+    CL 2 lt {
+	currentgray
+	CL 0 eq {
+	    .5 lt {0} {1} ifelse
+	} if
+	setgray
+    } if
+} bind def
+
+% x y strings spacing xoffset yoffset justify stipple stipimage DrawText --
+% This procedure does all of the real work of drawing text.  The
+% color and font must already have been set by the caller, and the
+% following arguments must be on the stack:
+%
+% x, y -	Coordinates at which to draw text.
+% strings -	An array of strings, one for each line of the text item,
+%		in order from top to bottom.
+% spacing -	Spacing between lines.
+% xoffset -	Horizontal offset for text bbox relative to x and y: 0 for
+%		nw/w/sw anchor, -0.5 for n/center/s, and -1.0 for ne/e/se.
+% yoffset -	Vertical offset for text bbox relative to x and y: 0 for
+%		nw/n/ne anchor, +0.5 for w/center/e, and +1.0 for sw/s/se.
+% justify -	0 for left justification, 0.5 for center, 1 for right justify.
+% stipple -	Boolean value indicating whether or not text is to be
+%		drawn in stippled fashion.
+% stipimage -	Image for stippling, if stipple is True.
+%
+% Also, when this procedure is invoked, the color and font must already
+% have been set for the text.
+
+/DrawText {
+    /stipimage exch def
+    /stipple exch def
+    /justify exch def
+    /yoffset exch def
+    /xoffset exch def
+    /spacing exch def
+    /strings exch def
+
+    % First scan through all of the text to find the widest line.
+
+    /maxwidth 0 def
+    strings {
+	stringwidth pop
+	dup maxwidth gt {/maxwidth exch def} {pop} ifelse
+	newpath
+    } forall
+
+    % Compute the baseline offset and the actual font height.
+
+    0 0 moveto (TXygqPZ) false charpath
+    pathbbox dup /baseline exch def
+    exch pop exch sub /height exch def pop
+    newpath
+
+    % Translate coordinates first so that the origin is at the upper-left
+    % corner of the text's bounding box. Remember that x and y for
+    % positioning are still on the stack.
+
+    translate
+    maxwidth xoffset mul
+    strings length 1 sub spacing mul height add yoffset mul translate
+
+    % Now use the baseline and justification information to translate so
+    % that the origin is at the baseline and positioning point for the
+    % first line of text.
+
+    justify maxwidth mul baseline neg translate
+
+    % Iterate over each of the lines to output it.  For each line,
+    % compute its width again so it can be properly justified, then
+    % display it.
+
+    strings {
+	dup stringwidth pop
+	justify neg mul 0 moveto
+	show
+	0 spacing neg translate
+    } forall
+} bind def
+
+%%EndProlog
+%%BeginSetup
+/CL 2 def
+%%IncludeResource: font Times-Roman
+%%EndSetup
+
+%%Page: 1 1
+save
+306.0 396.0 translate
+90 rotate
+0.8063 0.8063 scale
+-446 -134 translate
+0 268 moveto 893 268 lineto 893 0 lineto 0 0 lineto closepath clip newpath
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+12 36 [
+    (4:2)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+38 36 [
+    (4:4)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+26 67 [
+    (5:4)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+64 36 [
+    (2:1)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+90 36 [
+    (7:8)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+78 67 [
+    (8:8)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+53 98 [
+    (12:18)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+121 36 [
+    (10:13)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+155 36 [
+    (8:13)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+137.5 67 [
+    (9:13)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+162.5 67 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+147.5 98 [
+    (4:4)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+98.75 129 [
+    (8:10)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+183 36 [
+    (6:7)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+206 36 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+193.5 67 [
+    (4:4)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+216.5 67 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+204 98 [
+    (12:20)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+225.5 36 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+250.5 36 [
+    (8:16)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+241.5 67 [
+    (9:17)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+281.5 36 [
+    (9:17)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+312.5 36 [
+    (6:14)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+297.5 67 [
+    (7:14)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+270 98 [
+    (5:7)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+235.5 129 [
+    (11:20)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+169.125 160 [
+    (10:16)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+340.5 36 [
+    (5:4)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+366.5 36 [
+    (3:3)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+354.5 67 [
+    (8:10)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+379.5 67 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+364.5 98 [
+    (4:4)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+395.5 36 [
+    (9:13)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+423.5 36 [
+    (6:7)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+409 67 [
+    (6:6)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+454.5 36 [
+    (11:20)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+482.5 36 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+465 67 [
+    (13:23)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+440.5 98 [
+    (6:8)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+403.5 129 [
+    (12:20)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+431.5 129 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+414 160 [
+    (4:5)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+290.0625 191 [
+    (2:2)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+507.5 36 [
+    (8:10)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+538.5 36 [
+    (9:12)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+523.5 67 [
+    (4:7)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+546.5 67 [
+    (T)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+534 98 [
+    (7:11)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+559 98 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+544 129 [
+    (11:17)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+565.5 67 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+571.5 36 [
+    (2:6)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+602.5 36 [
+    (11:17)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+590.5 67 [
+    (6:11)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+581.5 98 [
+    (2:5)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+604.5 98 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+592 129 [
+    (11:18)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+569 160 [
+    (13:22)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+646.25 98 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+630.5 36 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+652.5 36 [
+    (4:9)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+644 67 [
+    (8:17)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+678.5 36 [
+    (2:6)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+709.5 36 [
+    (12:21)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+697.5 67 [
+    (6:16)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+671.25 98 [
+    (6:14)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+662.25 129 [
+    (9:18)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+734.5 67 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+743.5 36 [
+    (6:10)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+774.5 36 [
+    (8:17)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+759.5 67 [
+    (5:10)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+750.5 98 [
+    (11:22)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+799.5 36 [
+    (P)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+824.5 36 [
+    (9:19)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+815.5 67 [
+    (5:14)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+852.5 36 [
+    (2:5)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+878.5 36 [
+    (2:8)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+866.5 67 [
+    (1:3)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+840.5 98 [
+    (8:19)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+795 129 [
+    (6:14)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+729.125 160 [
+    (11:21)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+650.0625 191 [
+    (10:18)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+473.5625 222 [
+    (3:5)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+/Times-Roman findfont 8 scalefont setfont
+0.000 0.000 0.000 setrgbcolor AdjustColor
+474.5625 253 [
+    (m.13.23=34)
+] 11 -0.5 0.5 0 () false DrawText
+grestore
+gsave
+474.5625 247 moveto
+473.5625 227 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+473.5625 216 moveto
+290.0625 196 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+290.0625 185 moveto
+169.125 165 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+169.125 154 moveto
+98.75 134 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+98.75 123 moveto
+53 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+53 92 moveto
+26 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+26 61 moveto
+12 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+26 61 moveto
+38 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+53 92 moveto
+78 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+78 61 moveto
+64 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+78 61 moveto
+90 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+98.75 123 moveto
+147.5 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+147.5 92 moveto
+137.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+137.5 61 moveto
+121 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+137.5 61 moveto
+155 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+147.5 92 moveto
+162.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+169.125 154 moveto
+235.5 134 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+235.5 123 moveto
+204 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+204 92 moveto
+193.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+193.5 61 moveto
+183 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+193.5 61 moveto
+206 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+204 92 moveto
+216.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+235.5 123 moveto
+270 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+270 92 moveto
+241.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+241.5 61 moveto
+225.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+241.5 61 moveto
+250.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+270 92 moveto
+297.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+297.5 61 moveto
+281.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+297.5 61 moveto
+312.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+290.0625 185 moveto
+414 165 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+414 154 moveto
+403.5 134 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+403.5 123 moveto
+364.5 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+364.5 92 moveto
+354.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+354.5 61 moveto
+340.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+354.5 61 moveto
+366.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+364.5 92 moveto
+379.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+403.5 123 moveto
+440.5 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+440.5 92 moveto
+409 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+409 61 moveto
+395.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+409 61 moveto
+423.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+440.5 92 moveto
+465 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+465 61 moveto
+454.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+465 61 moveto
+482.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+414 154 moveto
+431.5 134 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+473.5625 216 moveto
+650.0625 196 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+650.0625 185 moveto
+569 165 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+569 154 moveto
+544 134 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+544 123 moveto
+534 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+534 92 moveto
+523.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+523.5 61 moveto
+507.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+523.5 61 moveto
+538.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+534 92 moveto
+546.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+544 123 moveto
+559 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+569 154 moveto
+592 134 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+592 123 moveto
+581.5 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+581.5 92 moveto
+565.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+581.5 92 moveto
+590.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+590.5 61 moveto
+571.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+590.5 61 moveto
+602.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+592 123 moveto
+604.5 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+650.0625 185 moveto
+729.125 165 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+729.125 154 moveto
+662.25 134 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+662.25 123 moveto
+646.25 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+662.25 123 moveto
+671.25 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+671.25 92 moveto
+644 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+644 61 moveto
+630.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+644 61 moveto
+652.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+671.25 92 moveto
+697.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+697.5 61 moveto
+678.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+697.5 61 moveto
+709.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+729.125 154 moveto
+795 134 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+795 123 moveto
+750.5 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+750.5 92 moveto
+734.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+750.5 92 moveto
+759.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+759.5 61 moveto
+743.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+759.5 61 moveto
+774.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+795 123 moveto
+840.5 103 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+840.5 92 moveto
+815.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+815.5 61 moveto
+799.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+815.5 61 moveto
+824.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+840.5 92 moveto
+866.5 72 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+866.5 61 moveto
+852.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+gsave
+866.5 61 moveto
+878.5 41 lineto
+1 setlinewidth
+0 setlinecap
+1 setlinejoin
+0.000 0.000 0.000 setrgbcolor AdjustColor
+stroke
+grestore
+restore showpage
+
+%%Trailer
+end
+%%EOF
+

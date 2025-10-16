@@ -1,0 +1,55 @@
+Title 
+Classical reversible computation with zero Lyapunov exponent
+
+Author
+Warren D. Smith
+
+Abstract
+In 1982, Edward Fredkin invented a way to build a 
+time-reversible universal computer
+using frictionless ``billiard balls'' rolling on a table top,
+and in which ball ``bounces'' corresponded to Boolean logical operations.
+This model made it seem possible to perform unboundedly long
+computations while consuming zero power.
+But, achieving that feat seemed to require perfect precision
+and perfectly precise billiard balls making perfectly precise bounces
+forever. Actually, we would expect an exponential buildup
+of imprecision with time $t$. If uncorrected, this
+error buildup would destroy the computer; while on the other hand,
+continually correcting the errors seems to require
+power dissipation $> 1.34 k_B T$ per bounce.
+The present note shows how to make a variant of Fredkin's
+computer with {\em zero} Lyapunov exponent, and in which
+we expect errors to grow at worst proportionally to $t^{3/2}$.
+This would seem to allow us to consume $k_B T$ per
+every $P$ bounces, where $P$ can be made to grow
+as a power law
+in the mass, precision, velocity, strength and rigidity of the billiard balls.
+E.g. with perfectly rigid billiard balls 
+of constant size moving
+at constant velocity, $P$ grows at least proportionally to
+the sixth root of their masses.
+But we still need to assume zero friction and we still are subject to
+the usual limitations of reversible circuitry.
+
+The new scheme's ``zero-power'' advantage seems to come at the cost
+of requiring more hardware than
+Fredkin's original scheme: emulating a 
+(reversible with bounded tape) Turing machine for
+$N$ steps
+takes hardware growing proportionally to $N$ in my scheme, but 
+not growing with $N$ in Fredkin's scheme. 
+
+Considering that and some other people's results suggests the
+following tentative conjectural {\em ``no free lunch'' principle:}
+``Zero power'' computing can be done, but it comes at a price.  That price
+is: performing $N$ computational steps
+requires a factor of $\ge N^\beta$ extra hardware$\times$delay product,
+if the
+energy consumption is reduced from order $k_B T N$ to order 
+$k_B T N^{1 - \beta}$ (for any $0 \le \beta \le 1$).
+
+Keywords
+Reversible computation, ultimate limits on computation,
+Landauer bit erasure principle, zero Lyapunov exponent,
+billiard ball model, no free lunch.

@@ -1,0 +1,50 @@
+Title
+On Carmichael numbers with 3 factors and the strong pseudoprime test
+
+Author
+Warren D. Smith
+
+Abstract
+The well known ``strong pseudoprime test'' has its highest probability
+of error ($\approx 1/4$) when the numbers being tested are certain Carmichael
+numbers with 3 prime factors. We present a nonrigorous plausibility
+argument that the count $C_3(x)$ of 3-factor
+Carmichaels up to
+$x$, is asymptotically
+$C_3(x) \asympt K x^{1/3} ( \ln x )^{-3}$
+where $K \approx 559 \pm 110$ is an absolute constant given by
+\BE \label{Kdef1}
+K = 3^3 \sum_{1 \le a<b<c} \frac{1}{(abc)^{4/3}} \prod_p F_{abc}(p)
+\EE
+where the sum is over 3-tuples $(a,b,c)$ of {\em pairwise 
+relatively prime} sorted distinct positive integers, the product is
+over {\em prime} $p$, and $F_{abc}(p)$ is defined as follows.
+Let $y$, $y \in \{ 0,1,2,3 \}$, be the number of distinct values
+among the {\em nonzero} $\{a,b,c\}$ mod $p$.
+Then
+\BE \label{Fdef1}
+F_{abc}(p)  = \frac{(p-y)p^2}{(p-1)^3} .
+\EE
+The 3-factor Carmichaels which cause error probability $\asympt 1/4$
+in the strong pseudoprime test also should obey a law of the same
+form,
+but with a different constant $K' \approx 316 \pm 62$,
+defined by the same formula as
+$K$, except that in the sum, $a$, $b$, and $c$ are now also required to be
+{\em odd}.
+
+It is even more plausible (since fewer conjectural assumptions
+are required) that $C_3 ( x ) x^{-1/3} (\ln x)^3$
+is bounded between two constants.
+
+The only other numbers which can cause a probability of error 
+$> 1/8$ in the strong pseudoprime test
+are certain numbers with only 2 prime factors and certain prime
+powers. However
+if these cases are somehow known to apply,
+then we show how to improve the
+strong pseudoprime test so that its probability of error on $N$
+is $O (  1/\sqrt{\ln N} )$.
+
+Keywords
+Carmichael numbers, Fermat test, pseudoprimes

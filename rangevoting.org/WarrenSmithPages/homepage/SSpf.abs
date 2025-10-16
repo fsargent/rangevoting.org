@@ -1,0 +1,25 @@
+TITLE
+Range Voting satisfies properties that no rank-order system can
+
+AUTHOR
+Warren D. Smith
+Center for Range Voting, 21 Shore Oaks Drive, Stony Brook NY 11790
+
+ABSTRACT::
+The top two reasons people are interested in replacing Plurality Voting with something else are
+1. the ``vote splitting'' problem and
+2. the ``lesser evil'' problem.
+Crudely speaking, the properties which cause a voting system to be
+immune to those two problems are (respectively),
+ICC={i}mmunity to {c}andidate {c}loning,
+and
+AFB={a}voids ``{f}avorite {b}etrayal.''
+We show that no voting system based on rank-order preference ballots,
+an enjoy both properties simultaneously.  Indeed, with a slight weakening AFB' of the 
+definition of AFB, we show impossibility of achieving both ICC and AFB' even by rank-order 
+voting systems {with rank-equalities allowed}.
+
+However, {range voting} satisfies both properties.  Range voting is the system where each 
+voter rates each candidate on an 0-9 scale and highest average score wins.
+At the end we survey some other important voting-system impossibility theorems, again 
+noting that range voting often ``accomplishes the impossible.''

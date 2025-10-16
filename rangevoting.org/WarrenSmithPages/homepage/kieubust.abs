@@ -1,0 +1,47 @@
+TITLE
+Three counterexamples refuting Kieu's plan for ``quantum adiabatic hypercomputation'';
+and some uncomputable quantum mechanical tasks
+
+AUTHOR
+Warren D. Smith
+
+DATE
+May 2005
+
+ABSTRACT
+Tien D. Kieu, in 10 papers posted to the  quant-ph  section of the  xxx.lanl.gov
+preprint archive [some of which were also published in printed journals such as
+Proc. Royal Soc. A 460 (2004) 1535]
+had claimed to have a scheme showing how, in principle, physical
+``quantum adiabatic systems'' could be used to solve
+the prototypical computationally undecidable problem,
+Turing's ``halting problem,'' in finite time, with success probability >2/3
+(where this 2/3 is independent of the input halting problem).
+
+There were several errors in those papers, most which ultimately
+could be corrected.
+More seriously, we here exhibit counterexamples to a crucial step in Kieu's argument.
+The counterexamples are small quantum adiabatic systems in which ``decoy''
+nonground states arise with high probability (>99.999%).  Kieu had wrongly
+claimed no decoy state could ever acquire occupation probability greater than 50%.
+These counterexamples destroy Kieu's entire plan and there seems no way to correct the
+plan to escape them.
+
+Nevertheless, there are some important consequences  salvageable from
+Kieu's idea:
+we can prove that the ``relaxation time'' of Kieu's quantum systems is uncomputably large
+and no fully general form of the quantum adiabatic theorem
+can exist that yields computable upper bounds on adiabatic convergence times
+(both unless Church's thesis is false so that finite time
+adiabatic quantum system evolution is unsimulable);
+and we can prove that no
+algorithm exists to find the ground state energy of Kieu's class of quantum Hamiltonians
+and hence their long-term thermal behavior is uncomputable.
+
+KEYWORDS
+Quantum adiabatic theorem,
+long term evolution of quantum systems,
+relaxation time,
+uncomputability,
+undecidability.
+

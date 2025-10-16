@@ -1,5 +1,7 @@
 <html>
 <head>
+<link rel="stylesheet" href="/assets/css/original-layout.css">
+
 <title>
 RangeVoting.org - Optimal proportional representation
 </title>
@@ -399,9 +401,9 @@ Then choose the W-winner set which extremizes this <b>new quality function</b>
 &sum;<sub>1&le;j&le;W</sub> (S<sub>v,c[j,v]</sub>-S<sub>v,c[j+1,v]</sub>) L{ 
   j R(T<sub>c[j,v]</sub>) }.
 </center><p>
-<b>Single-winner case is plain <a href="https://rangevoting.org/RangeVoting,html">score voting</a> Theorem.</b>
+<b>Single-winner case is plain <a href="https://rangevoting.org/RangeVoting.html">score voting</a> Theorem.</b>
 These new Pereira-transformed methods reduce in the single-winner case (W=1) to plain
-<a href="https://rangevoting.org/RangeVoting,html">score voting</a>.  This is because when W=1 we have
+<a href="https://rangevoting.org/RangeVoting.html">score voting</a>.  This is because when W=1 we have
 </p><center>
   Q(c) = 
 &sum;<sub>1&le;v&le;V</sub>
@@ -550,7 +552,7 @@ Both these systems should enjoy proportionally (even in the
 <a href="#strongPRthm">strong</a> 
 kind where commonly-rated candidates exist), scale invariance, and
 in the single-winner case W=1 reduce to plain
-<a href="https://rangevoting.org/RangeVoting,html">score voting</a>. 
+<a href="https://rangevoting.org/RangeVoting.html">score voting</a>. 
 </p><p>
 Here, to hopefully make these systems clearer, is a simple <b>worked election example.</b>
 Let the candidates be named A,B,C,D.  Let the votes be
@@ -1813,7 +1815,7 @@ The purpose of this section is to survey some facts about such hulls, mainly foc
 the fact that they have remarkably <i>small</i> cardinality,
 and that this cardinality is accurately <i>predictable</i> with high confidence.
 </p>
-<img src="UndomPoints.png" width="25%" align="right">
+<img src="assets/images/UndomPoints.png" width="25%" align="right">
 <p>
 A given point (X,Y) among a set S of points in the (x,y) plane 
 is said to be "undominated" if the closed 
@@ -1830,9 +1832,9 @@ This is not just an "observation."  It is,
 in a number of concrete probability models, a "theorem."
 </p><table>
 <tr><td>
-<img src="BivarNormal50Kconvhull.png" width="98%">
+<img src="assets/images/BivarNormal50Kconvhull.png" width="98%">
 </td><td>
-<img src="UnifCircle1000.png" width="98%">
+<img src="assets/images/UnifCircle1000.png" width="98%">
 <td></tr></table>
 <p>
 <b>Golin's Undominated Points Theorem.</b>
@@ -1943,7 +1945,7 @@ or is exp(-x-y) in the positive quadrant, or is uniform in an axis-oriented rect
 then the mean and variance of the number of undominated points both will be
 asymptotic to lnN.
 </p>
-<img src="SquareDiamond.png" width="25%" align="right">
+<img src="assets/images/SquareDiamond.png" width="25%" align="right">
 <p>
 <b>Remark.</b>
 If instead of X and Y being "independent" they are "<i>positively</i> correlated"
@@ -2255,7 +2257,7 @@ I claim this will be a very small set of parliaments and the work to find
 them is tiny compared to the work you had to do anyway to compute all 
 the X and Y values; and simultaneously the memory consumption needs can be kept tiny.
 Call the ones on that chain the "good" parliaments.
-<img src="ParlConvHull.png">
+<img src="assets/images/ParlConvHull.png">
 <blockquote><small>
 One way to compute the "upper right chain" of the
 convex hull in "online" fashion is as follows. 
@@ -2362,7 +2364,7 @@ differentiation in machine learning: a survey</a>,
 arXiv:1502.05767, 2015.
 </p><p>
 Kenneth Benoit:
-<a href="PA84-381-388.pdf">Which Electoral Formula Is the Most
+<a href="assets/documents/PA84-381-388.pdf">Which Electoral Formula Is the Most
 Proportional? A New Look with New Evidence</a>, Political Analysis 8,4 (2000) 381-388.
 </p><p>
 J.L. Bentley, H.T. Kung, M. Schkolnick, C.D. Thompson:
@@ -2571,7 +2573,7 @@ Douglas R. Woodall:
 <a href="WoodallVotSystProperties1994.html">
 Properties of Preferential Election Rules</a>, Voting Matters 3,4 (Dec. 1994).
 There also was a later paper by Woodall with considerable overlap with this one:
-<a href="Woodall97.pdf">Monotonicity of single-seat preferential election rules</a>, 
+<a href="assets/documents/Woodall97.pdf">Monotonicity of single-seat preferential election rules</a>, 
 Discrete Applied Mathematics 77 (1997) 81-98.      
 </p>
 <!-- Randomized incremental convex hull algorithms:

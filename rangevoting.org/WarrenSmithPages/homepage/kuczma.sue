@@ -1,0 +1,39 @@
+Fixed point for negamaxing probability distributions on
+regular trees
+
+Warren D. Smith   NECI
+
+Abstract
+
+Consider a rooted tree with branching factor $b > 1$ having $b^h$
+leafs, each at distance $h$ from the root.  Suppose the leafs are
+assigned real values chosen i.i.d.  from some probability density, and
+the interior nodes of the tree are then also assigned values
+recursively, according to the {\em negamax rule}: The value of a node
+is the maximum of the negated values of its children.
+
+The root will then be a random variable, with some probability
+distribution $\Phi_h ( x )$ depending on $b$, $h$, and the
+distribution $\Phi_0 ( x )$ of leaf values, and indeed obeying certain
+recursive relations.
+
+We find a closed form for $\Phi_h ( x )$.  It then turns out that
+(usually) the behavior of the distribution at the root, when $h$
+becomes sufficiently large, is, except for scaling, asymptotically
+{\em independent} of the nature of $\Phi_0 ( x )$ and $h$ and depends
+only on $b$.  The function merely scales self-similarly as $h$ becomes
+larger.  This may be thought of as a new kind of central limit
+theorem.
+
+The limiting form $\Psi_b ( x )$,
+is apparently new to probability theory
+and is of intrinsic interest as a new special function.
+Its properties are investigated here, but
+much remains unknown.
+
+Keywords
+
+Minimax, negamax, Poincare equation, Schr\"oder equation,
+attractive fixed point, probability distributions, iterative
+functional equation, special functions, on-line quantile estimates.
+

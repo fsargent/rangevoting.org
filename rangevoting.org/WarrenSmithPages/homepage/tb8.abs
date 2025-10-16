@@ -1,0 +1,17 @@
+TITLE:
+Three Voting Protocols: ThreeBallot, VAV, and Twin
+
+AUTHORS:  Ronald L. Rivest and Warren D. Smith
+
+DATE: April 2007
+
+LENGTH: 16 pages (sorry for the heavy compression)
+
+ABSTRACT:
+We present three new paper-based voting systems that attempt to
+achieve, without cryptography, the end-to-end security guarantees of
+cryptographic voting systems.  With ThreeBallot, each voter submits
+three plaintext ballots, and keeps a copy of one.  With VAV, the
+voter submits three, but one is an anti-vote that cancels one of the
+other ones.  With Twin, floating receipts provide security guarantees
+in an interesting way.

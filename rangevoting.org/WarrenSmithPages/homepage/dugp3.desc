@@ -1,0 +1,36 @@
+Three disproofs of the Gilbert-Pollak Steiner ratio conjecture in more than
+                two dimensions
+
+W.D. Smith, NECI
+
+TR was "two disproofs" but now coauthored with D-Z Du and "three"
+
+10/13/92
+
+
+
+ The Gilbert-Pollak conjecture, posed in 1968, was the most important
+conjecture in the area of ``Steiner trees.'' The ``Steiner minimal
+tree'' (SMT) of a point set $P$ is the shortest network of ``wires''
+which will suffice to ``electrically'' interconnect $P$. The ``minimum
+spanning tree'' (MST) is the shortest such network when only {\it
+intersite line segments} are permitted. The GP conjecture stated that
+$$\rho_d = \inf_{P \subset {\bf R}^d} 
+   \frac{\ell \ro{SMT} ( P )}{\ell \ro{MST} ( P )}$$
+was achieved when $P$ was the vertices
+of a regular $d$-simplex. This conjecture is now settled: it is true
+when $d=2$ and false when $d \ge 3$.
+
+Indeed we give bounds showing that the point
+sets minimizing the Steiner ratio necessarily
+have an exponentially large number of sites, in high dimensions.
+
+The real question now is: What
+are the true minimal-$\rho$ point sets? The paper introduces the
+``$d$-dimensional sausage'' point sets, which may have a lot to do
+with the answer.
+
+
+KEYWORDS:
+                GILBERT-POLLAK CONJECTURE, STEINER TREES, MINIMUM
+                SPANNING TREES, INEQUALITIES, NETWORKS, SAUSAGE

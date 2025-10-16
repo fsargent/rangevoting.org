@@ -1,0 +1,27 @@
+TITLE 
+Linear-time algorithms to color topological graphs
+
+AUTHOR
+Warren D. Smith
+
+ABSTRACT
+We describe a linear-time algorithm for
+4-coloring planar graphs.  
+We indeed give an $O(V+E+|\chi|+1)$-time
+algorithm to $C$-color  $V$-vertex $E$-edge graphs
+embeddable on a 2-manifold $M$ of Euler characteristic $\chi$
+where $C(M)$ is given by Heawood's (minimax optimal) formula.
+Finally, there is a linear-time algorithm to 5-color a graph embedded
+on any fixed surface $M$ \emph{except} that an $M$-dependent constant number 
+of vertices are left uncolored.
+All the algorithms are simple and practical and run on a deterministic
+pointer machine, except
+for planar graph 4-coloring which involves enormous constant factors and requires
+an integer RAM with a random number generator.
+All of the algorithms mentioned so far are in the ultra-parallelizable deterministic
+computational complexity class ``NC.''
+We also have more practical planar 4-coloring algorithms that can run on 
+pointer machines in $O(V \log V)$ randomized time and $O(V)$ space,
+and a very simple $O(V)$-time
+coloring algorithm for planar graphs which conjecturally uses 4 colors.
+

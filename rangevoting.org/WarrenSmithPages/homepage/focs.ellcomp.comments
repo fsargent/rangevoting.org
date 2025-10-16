@@ -1,0 +1,314 @@
+From avrim@archimedes.theory.cs.cmu.edu  Wed Jul  5 15:56:19 2000
+Date: Wed, 5 Jul 2000 15:55:49 -0400
+From: Avrim Blum <avrim@archimedes.theory.cs.cmu.edu>
+Subject: comments on your FOCS submission -The computational power of iterating
+Below are comments-for-authors (if any) on your FOCS-2000 submission.
+These are intended as feedback that we hope will be useful to authors
+whatever decision was made.  They are not necessarily intended to
+explain the reasoning behind the committee's decisions, and in
+general will not be representative of that reasoning.
+        Best Regards,
+        Avrim Blum
+        PC Chair, FOCS 2000
+=============================================================================
+wds: I include the referee report below, plus comments by me prefaced "wds:".
+=============================================================================
+REFEREE REPORT:
+The main result of this paper is an extension of an old result,
+stating that the iteration of an analytic function has universal Turing
+computational power. The extension allows the function to be entire
+as well as perturbed by noise.
+
+Besides this result, an important part of the paper is devoted to
+critique the BSS notion of decidability over the reals for which
+the author suggests an alternate definition.
+
+The following are some additional remarks.
+\begin{itemize}
+
+\item
+The fact that any open subset of $\R^n$ is BSS semidecidable is well known
+(see for instance F. Cucker, J.L. Monta\~na and L.M. Pardo,
+{\em Int. J. of Algebra and Computation}, 2, pp. 395--408, 1992).
+Thus, there is no novelty in showing that one can decide whether a point
+belongs to the Mandelbrot set if the point belongs to its interior.
+
+--wds: actually, the following subset of R^2: 
+  {x,y | my analytic fn iteration "halts" starting from here}
+  (where you can use various definitions of the "halt" state,
+  it does not matter terribly much which)
+and its complement, are both well behaved sets with nice smooth boundaries. 
+(Anyway even if not, we can restrict to such nice sets artificially.)
+If we restrict to their interiors, we get 2 disjoint open
+sets. Evidently, one of these 2 open subsets of R^2 is NOT BSS
+semidecidable. This counterexample contradicts the "well known" claim 
+by the referee.
+It is unfortunate that the referee was deluded on this point.--wds
+
+\item
+The fact that $\{(x,y)\in\R^2\mid y\leq e^x\}$ is not BSS decidable is
+folklore. If one wants the exponential (and a few more elementary functions)
+to be decidable, it is enough to add them to the BSS model either directly
+or by using oracles (as in E. Novak, {\em J. of Complexity} 11, pp. 57--73,
+1995). In practice, the exponential function is approximated by
+polynomials. Thus, to add it to the basic BSS model would be in
+agreement with both the BSS computability
+and a long tradition in approximation theory.
+
+--wds: It is hard to argue with an unsupported claim something is
+"folklore"...  so I will not... if it is folklore, all I can say is,
+it is a bit strange that BCSS, in their book allegedly summarizing the
+whole field, did not manage to mention this, since it represents a
+nicer example of "BSS-undecidability" than the examples they did
+give. And ditto for all the papers in the area I've managed to find...
+(and its proof is quite nontrivial, depending on some heavy results
+from number theory..., although once those results are known, the
+proof becomes pretty easy.) Don't you think it would be a
+little bit better if some publication actually MENTIONED this piece of
+"folklore"? As opposed to the approach of preventing anyone from ever 
+mentioning it in print, on the grounds that it is folklore??
+  The referee in any case apparently misses the main point, which is,
+that whether this is folklore or not, it makes it evident the BCSS
+decidability definition is a silly one which ought to be replaced by a
+better one. Namely, if a set this easy to decide is "undecidable" then
+the definition of "undecidable" was silly - we ought to have a better
+definition of "undecidable" in which easy sets are decidable and hard
+sets are not!
+  Finally, the Novak paper is a did-nothing paper with no results in it,
+and the latest idea of the referee would seem to yield the conclusion
+that ALL analytic functions should be added to the BSS model, which
+would result in one heck of a different model, and is hardly a small step!
+Indeed, merely adding exp to the model alone would change its complexity
+properties VASTLY. Thus this offhand remark is extremely deceptive.--wds
+
+\item
+The author claims that the book by BCSS does not provide a proof
+of the undecidability of the Mandelbrot set. Such a proof, although
+sketchy, is in page 68 of [BCSS]. And it uses the fact that the
+boundary of the Mandelbrot set has Haussdorf dimension 2 in such a way
+that any other subset of $\R^2$ whose boundary has Haussdorf dimension
+2 would be also BSS undecidable. Thus, the sentence in the abstract
+``Neither [\dots] nor the fact that its boundary has Haussdorf
+dimension 2, need have anything to do with the undecidability''
+is meaningless.
+
+--wds: I'll now quote the "proof, although sketchy" on page 68 of BCSS
+in full: "A direct proof of lemma 3 is folklore following discussions
+with M.Herman, A.Douady, J.Hubbard, and D.Sullivan."  I am afraid I do
+not understand why the referee thinks this is a proof. Even a sketchy
+one.  (And "Lemma 3" is the key fact that "any other subset of $\R^2$ whose
+boundary has Haussdorf dimension 2 would be also BSS undecidable" the
+referee needs.)  BCSS also confuse M with the boundary of M, which makes
+things less valid still. BCSS page 68 also cite L.Blum and S.Smale:
+The G\"odel incompleteness theorem and decidability over a ring,
+321-339 in From Topology to Computation Proceedings of Smalefest
+(ed.M.W.Hirsch, J.E.Marsden, M.Shub) Springer 1990 as the source of
+their theorem 1 (that Mandelbrot is undecidable). But the proof given
+in this cited paper (p.337-338) is not a proof either. I quote the last
+2 sentences of that "proof": 
+"Therefore, $\partial M intersect S_i$ is contained in $\partial M
+intersect S_i$ and has [Haussdorf] dimension $\le 1$.  So now we have 
+$\partial M = \Union_{i=1}^\infty (\partial M intersect S_i)$ has
+[Haussdorf] dimension $\le 1$."
+
+Observe in these two sentences that first, it seems a little bit
+vacuous to say X is contained in X. Presumably the authors wanted
+to say something non-vacuous instead, perhaps
+"$\partial M intersect S_i$ is contained in $\partial (M intersect S_i)$"
+or perhaps
+"$\partial M intersect S_i$ is contained in $\partial S_i$."
+Second, their following sentence depends implicitly on the assumption
+(although they did not bother to say so) that if the boundary
+$\partial M$ of a subset $M$ of $R^2$ is the union of a countable
+number of sets, each of which is the Haussdorf dimension 1 boundary of
+a semialgebraic set, then the Haussdorf dimension of $\partial M$ must 
+be $\le 1$. 
+That assumption in turn (although they again did not bother to say so)
+would seem to depend upon the assumption that, if you have
+a countable set of positive-valued functions f_1(r), f_2(r), f_3(r)...,
+each of which has the property that  |log f_i(r) / log r|-->1 as r-->0+,
+then  |( log sum_i f_i(r) ) / log r|-->1 as r-->0+.
+However, counterexamples to this assumption may be constructed!
+[Hint: first consider constructing a counterexample to
+the simpler related conjecture that if you have
+a countable set of positive-valued functions f_1(r), f_2(r), f_3(r)...,
+each of which has the property that  f_i(r)-->const_i>0 as r-->0+,
+then  sum_i f_i(r) --> const as  r-->0+. A counterexample involves
+f_i(r) being a gaussian(r) where the Gaussian's get sharper and sharper
+and higher and higher as i-->infinity.]
+Thus, not only is there not a proof in BCSS, in fact there has been
+no valid proof in the literature, ever, before my proof, that
+M is BSS-undecidable.
+(I would be happy to see the Blum-Smale proof rescuscitated somehow, which
+plausibly is possible. All I am saying now, is it obviously is not a proof 
+as it stands.)
+
+It is unfortunate that the referee was deluded on this point, and prefers
+non-proofs to actual proofs to the extent of preventing publication
+of the latter.
+
+Next, the referee's claim is misleading and verging on false:
+  First, open subsets of R^2 whose boundaries have Haussdorf dimension
+2 DO exist which ARE BSS-decidable... except for points exactly on
+that boundary. A sketch of one construction is as follows (quite
+sketchy, although far less so than BCSS p.68): consider a
+"fractal"-like set defined by an augmentational edge replacement rule
+like the Koch snowflake, except each edge is replaced by a sawtooth
+whose teeth keep getting narrower and narrower in aspect ratio
+approaching infinite aspect ratio on the nth stage as n-->infinity, so
+that the fractal dimension approaches 2. The Koch snowflake's
+complement is also constructible by a pure-augmentational replacement
+rule and one can work similarly in our case. Then by simultaneously
+constructing the snowflake and its complement algorithmically to
+greater and greater accuracy, we ultimately must terminate with a
+proof x,y is either inside or outside our set (unless x,y is exactly
+on the boundary). If x,y is exactly on the boundary, then in the case
+where we demand x,y be algebraic, or in the case where we demand
+immunity to infinitesimal "noise" we can make the decision
+algorithmically again. So, as usual, the only difficulty arises when
+x,y is exactly on the boundary and non-algebraic, thus as usual
+highlighting the specific wrongheaded nature of the BSS undecidability 
+definition.
+  Second, open subsets of R^2 whose boundaries have Haussdorf
+dimension ANYTHING (besides 1) are BCSS undecidable, to the extent
+this is true for Haussdorf dimension 2... i.e. a generic curve with
+Haussdorf dimension H, for any 1<H<=2, will presumably bound a set
+which is not a Countable Union of Algebraic Sets (and the curve itself
+will not be CUAS) and hence must be BSS-undecidable. This was the
+point the Blum-Smale "proof" I cited above, was striving to
+make (let us accept that proof for the present purpose). 
+Thus, again, dimension "H=2" has nothing to do with it, as I'd said.
+  Finally, my sentence in the abstract was not "meaningless".  The
+sentence in question, now restored with context (namely the sentence
+after) was "Neither the inscrutable nature of $M$, nor the fact that
+its boundary has Haussdorf dimension $2$, need have anything to do
+with the undecidability. To see that, we show the well behaved set
+$S_e = \{x,y | y \le e^x \}$ is BCSS-undecidable." Note that it
+obviously has meaning, and the meaning is evident from the immediately
+following sentence! However, I agree with the referee that if BCSS's
+"lemma 3" is accepted (and I am not willing to accept it until a
+genuine proof appears somewhere, as opposed to a vague reference to
+"folklore", some name-dropping, and a published non-proof) then half
+of the meaning is removed, it is sort of only a 1-way meaning.  I'd be
+happily willing to rephrase this, therefore, in the event anyone ever
+convinced me of that key lemma.--wds
+
+\item
+The author claims that, since the Mandelbrot set can be decided if we
+require the inputs not to be on the boundary of the set (or to have
+algebraic coordinates) then, such a set should be considered decidable.
+
+This is far from clear. As one may expect, difficulties increase when
+the input approaches the boundary of the set to be decided (this is
+well known even in the decidable world; the notion of conditioning,
+central in numerical analysis, deals with exactly this issue).
+
+Also, if we restrict the inputs to be algebraic numbers the set of
+inputs we are keeping has measure zero on the whole set of inputs. In
+addition, one feels that such a set is not decidable in the same way
+that, say, the set of positive definite matrices is. For the latter
+set, algorithms exist which do not rely on any assumption of the
+entries of the input matrix.
+
+--wds: That is, the ref in his last paragraph
+is pointing out that one may decide if an NxN
+matrix is positive definite by carrying out a finite number (depending
+on N only) of infinite-precision arithmetic operations. Meanwhile, the
+algorithms wds proposed for Mandelbrot set and the y<e^x set need a number of
+arithmetics depending on the real numbers themselves (there is nothing
+analogous to "N" here).  Yes: This is all true; but: so what? If the
+referee wants to be interested in this other notion, then he should define
+that notion as yet another definition of "decidable" and study it, by
+all means (although such a definition, would only allow unions of a
+bounded number of bounded-degree algebraic sets, hence would hardly be
+very interesting as a "decidability" notion!), but it is not my and it
+is not the BCSS definition, nor is it interesting, so it is simply not
+relevant to the present discussion.--wds
+
+Referee continues:
+Decidability is a worst-case notion. To claim that the Mandelbrot set
+should not be considered undecidable because the problem becomes
+decidable when restricted to some subset of inputs is as wrong as to
+claim that an NP-complete should not be considered so because there is
+an algorithm deciding the set in polynomial time when restricted to a
+large subset of inputs.
+
+--wds: there is a big difference! - my subset is DENSE and it is
+FINITELY SPECIFIABLE. In fact, it is precisely the subset of R^2
+recognizable in a finite number of steps of a BCSS machine (much like
+the spirit of the referee's example of positive definite matrices!).
+So the correct analogy would therefore have been "...because there is
+an algorithm deciding the set in polynomial time when restricted to
+the subset of the inputs which can be recognized as a `valid format' input in
+a finite amount of time."
+(A different correct analogy would have considered it important
+that the machine still work in the presence of infinitesimal noise -
+leading to my alternative definition of BCSS undecidable.)
+Because these revised corrected analogies would make the referee look silly.
+I think the referee is very philosophically off base here.  Even if
+he denies that, he needs to admit my philosophy is worth airing!--wds
+
+\item
+Last but not least. All the BSS undecidable sets which the
+author thinks should be considered decidable are actually very
+``tame'' undecidable sets.  They (or their complements) are
+recursively enumerable. Cucker (The arithmetical hierarchy over the
+reals {\em Journal of Logic and Computation}, 2, pp. 375-395, 1992)
+has studied properties of an arithmetical hierarchy over $\R$ and
+given complete problems for some of its lower levels. It would be
+interesting to classify the set given by the author in Theorem~9
+within this hierarhy.
+\end{itemize}
+
+--wds: so what? I happen to like tame undecidable sets.  In fact I was
+trying to make as tame ones as I could. If the referee thinks this
+usual aim is somehow a poor goal, I must disagree. It is a good
+goal. The fact I have succeeded in this goal can only be taken as a
+compliment to me. (I have not checked the Cucker cite here since the
+journal it is in is not available in any libraries in my part
+of the country.) Furthermore, it is now obvious since I have shown how
+to make a Turing machine with an analytic function, how to construct
+sets with any level of undecidability you want.--wds
+
+----
+ref's 1-paragraph summary of wds's paper:
+Considers computation with real numbers, more specifically functions
+whose iterations simulate universal Turing machines.  They prove that
+rational functions are not, but there is an analytic function with a
+pole at infinity that is.  The latter result was proved by others last
+year, but the function has different properties.  They consider a new
+definition of undecidability for sets in this model and argue that
+their definition is more natural than the original definition.
+
+--wds corrections to ref's summary: The ref's word "pole" should have
+"essential singularity". It is NOT a pole.  (Also my main construction
+is a meromorphic, not an analytic, function.)  The vague words "different
+properties" miss the point that my construction works in the presence
+of finite-amplitude noise, whereas the others all fail even in the
+presence of unboundedly small noise. This seems to me to mean, my
+construction is far more important than all previous ones, because it
+and only it, has any chance of being applicable in any real life
+scenario.  The previous ones are of little or no interest from that
+point of view. The ref's "last year" is misleading since that was
+actually done about 30 years ago.  The ref's "more natural" is a big
+understatement in my view, more accurate would be "the previous
+definition was a disaster, but now we can finally proceed since wds
+has at last suggested the `right' definition."--wds
+
+======================END OF REFEREE REPORT================
+
+--wds summary: this ref has tried harder than most FOCS referees in my
+experience, and I appreciate that,  BUT he has nevertheless gotten
+essentially everything he said about my paper that would seem
+negative, either wrong (since refuted by counterexample), or highly
+misleading... thus he has actually performed worse than a random coin
+toss, which is unsurprising since he was a biased coin, rather
+obviously motivated by his own personal agenda... (in fact it is
+rather obvious exactly who the referee is -- hint: it is an author of
+BCSS -- and therefore rather obvious the referee entered the picture 
+with a pre-made bias...) An important MORAL is... do not choose referees 
+who have pre-biases; it's somewhere between unethical, irresponsible,
+and unwise.
+--wds.
+
+

@@ -1,0 +1,77 @@
+Here are two adjacency matrices of 13-node tournaments,
+for which it is necessaary to reverse 28 edges to make them 
+become acyclic:
+
+-----
+
+13x13 MATRIX #1  
+(lower triangle shown; complete upper triangle by means of antisymmetry):
+
+  0
+ -1  0
+  1 -1  0
+ -1  1  1  0
+  1  1 -1 -1  0
+  1 -1  1  1 -1  0
+  1 -1 -1  1 -1 -1  0
+ -1 -1 -1 -1  1  1  1  0
+ -1 -1 -1  1  1 -1  1  1  0
+ -1 -1  1  1 -1  1 -1 -1  1  0
+ -1  1 -1 -1  1  1 -1 -1  1 -1  0
+  1  1  1 -1 -1 -1 -1  1 -1  1 -1  0
+  1  1  1  1  1  1 -1 -1 -1 -1 -1 -1  0
+
+Best vertex order 6,11,9,12,2,0,3,7,10,4,1,58
+
+-----
+
+13x13 MATRIX #2:
+  0
+ -1  0
+  1 -1  0
+ -1  1  1  0
+  1  1 -1 -1  0
+  1 -1  1  1 -1  0
+ -1 -1 -1  1 -1  1  0
+ -1 -1 -1  1  1 -1 -1  0
+ -1 -1 -1 -1  1  1  1 -1  0
+  1 -1  1 -1  1 -1 -1  1 -1  0
+ -1  1  1 -1 -1  1 -1 -1  1 -1  0
+  1  1 -1  1 -1 -1  1 -1 -1  1 -1  0
+  1  1  1  1  1  1 -1 -1 -1 -1 -1 -1  0
+
+best vertex order: 3,1,9,2,4,0,6,7,10,8,5,11,12
+
+-----
+
+Such matrices are extremely rare.  My computer examined over half of all
+13x13 regular tournament matrices (of which there are 1495297 isomorphism classes) 
+and found only these two examples.  The complete examination of all 
+1495297 should require about 1 week of compute time.
+
+----
+
+This is an extension of one of them to 14 vertices which
+requires reversing 30 arcs to make it acyclic.
+
+14
+  0
+ -1  0
+  1 -1  0
+ -1  1  1  0
+  1  1 -1 -1  0
+  1 -1  1  1 -1  0
+ -1 -1 -1  1 -1  1  0
+ -1 -1 -1  1  1 -1 -1  0
+ -1 -1 -1 -1  1  1  1 -1  0
+  1 -1  1 -1  1 -1 -1  1 -1  0
+ -1  1  1 -1 -1  1 -1 -1  1 -1  0
+  1  1 -1  1 -1 -1  1 -1 -1  1 -1  0
+  1  1  1  1  1  1 -1 -1 -1 -1 -1 -1  0
+  1  1  1 -1 -1 -1  1  1  1 -1 -1 -1  1  0
+
+best vertex order:  3,4,10,11,13,1,8,6,5,9,12,2,0,7
+
+----
+
+-Warren D. Smith September 2006.

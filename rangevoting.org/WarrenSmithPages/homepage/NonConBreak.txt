@@ -1,0 +1,44 @@
+1-PAGE EXPLANATION OF "NONCONSTRUCTIVE BREAKS" OF CRYPTOSYSTEMS
+---------------Warren D. Smith June 2007-----------------------
+
+> Daniel J. Bernstein:
+> I agree that there's a subset of {0,1,...,255} such that xor'ing the
+> corresponding bits of (a 16-byte string, AES(a 16-byte string), 1)
+> will predict the first bit of about 2^255 + 19 * 2^128 keys. 
+> [WDS: Bernstein here is referring to my simplified and weakened analysis
+> in section 3.4 "One more easy security estimate"]
+> How do you turn this subset, and the corresponding subsets for other bits of k, into
+> an attack algorithm?
+
+WDS answers:
+Well, the magic subsets are known to God, although not to you.
+God therefore could write down an attack algorithm.
+The attack algorithm exists.  You could then run that algorithm
+if you knew it.
+Therefore, since the attack exists, AES is not
+resistant to all attack algorithms i.e, fails to meet its design
+security level, i.e. is broken.
+
+I call this a "nonconstructive break" since it shows attack algorithms
+exist (or "makes it plausible" is a better word than "show") but
+without constructing them.  A large number of cryptosystems, probably
+almost all the ones ever designed so far, are vulnerable to my
+nonconstructive break techniques.
+
+It also is possible that the designers of AES don't need to have God
+tell them anything, since they already knew the magic subsets from day
+one. ("Trapdoor.")
+
+It is better to have cryptosystems immune even to nonconstructive
+breaks and incapable of containing such trapdoors.  Then even if God
+were willing to publicize the best attack algorithm, it would not 
+break the cryptosystem.
+
+The latter part of my paper discusses how to try to create secret
+key cryptosystems with that kind of security.  It gives a toolbox of
+ways to do that.
+
+The paper is #100 at
+http://www.math.temple.edu/~wds/homepage/works.html .
+
+--end.

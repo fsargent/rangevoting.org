@@ -1,0 +1,29 @@
+South Dakota US senator race 2014
+==================================
+
+CANDIDATES               OFFICIAL FINAL RESULT    RCP MANY-POLL AVERAGE
+Mike Rounds (R)              50.4                    42.2
+Rick Weiland (D)             29.5 margin 20.9        30.0 margin 12.2
+Larry Pressler (Indep)       17.1                    17.2
+
+http://www.realclearpolitics.com/epolls/2014/senate/sd/south_dakota_senate_rounds_vs_weiland-4091.html
+
+Significance:
+If the RCP average was based on polls of
+908+611+800+730+527=3576
+likely voters, then standard error
+sqrt(42*58/3576)=0.825
+and for the purpose of estimating the Rounds-Weiland vote DIFFERENCE this
+standard error must be doubled to  1.651  percent of the number of voters.
+So we are  8.7/1.651=5.27  standard deviations off.
+A perturbation this or more severe is an event of probability 10^(-7).
+
+As a different error-estimation method, the unweighted mean of these 5 polls 
+Rounds-Weiland margins was
+   m = (14 + 11 + 9 + 14 + 13)/5 = 12.200
+and their sample standard deviation was
+   sqrt(  ((14-m)^2 + (11-m)^2 + (9-m)^2 + (14-m)^2 + (13-m)^2)/4  ) = 2.168
+in which case the official results were   8.7/2.168=4.013  standard deviations off.
+This is an event of probability 0.00003.
+
+

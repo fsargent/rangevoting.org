@@ -1,0 +1,46 @@
+TITLE
+Completion of Gibbard-Satterthwaite impossibility theorem;
+range voting and voter honesty
+
+AUTHOR Warren D. Smith
+
+DATE August 2006
+
+ABSTRACT
+Let $S$ be a ``reasonable'' single-winner voting system.
+(The precise definition of ``reasonable'' will vary from theorem to theorem and is not
+stated in this abstract.)
+Then 
+
+(a) 
+For each $C \ge 3$: if $S$ is 
+based on rank-order ballots (with equalities either permitted or forbidden) 
+then there exist $C$-candidate election situations with ``complete information'' 
+(i.e, the voter
+knows everybody else's votes)  in which voting honestly is not best voting strategy.
+
+(b) 
+If $S$ is range voting, then
+in every $C$-candidate election situation ($C \ge 1$) with complete information,
+and also in every $C$-candidate election situation with incomplete information ($1 \le C \le 3$),
+there is a ``semi-honest'' vote (i.e, in which the $<$, $>$, and $=$ relations among
+the candidate-scores are valid for a \emph{limit} of scores obeying the honest relations)
+which is strategically best.
+
+(c)
+If $S$ is based on either rank-order ballots 
+(with equalities
+either permitted or forbidden)
+or candidate-scoring ``range vote'' type ballots where each candidate 
+is rated with a real number, then for each $C \ge 4$
+there exist $C$-candidate election situations with incomplete information
+in which no \emph{semi}-honest vote is best voting strategy.
+
+Part (a) is Gibbard \& Satterthwaite's impossibility theorem.  These results show a sense 
+in which range voting is a best possible deterministic single-winner voting system.  
+These theorems also hold for certain classes of probabilistic voting systems (in which chance
+plays a role in determining the winner) but not all.
+We conclude by introducing and beginning the study of the ``Nash model'' of voter honesty.
+
+KEYWORDS
+Voter honesty, semi-honesty, strategy, strong Nash equilibria, Nash model.

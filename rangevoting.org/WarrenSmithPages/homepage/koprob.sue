@@ -1,0 +1,31 @@
+Title
+Finding the maximum of a polynomial time computable bounded smooth
+function on an interval is NP-complete
+
+Author
+Warren D. Smith
+
+Abstract
+Ker-I Ko in his 1991 book ``Complexity theory of real functions''
+(Birkhauser) defined the notions of polynomial-time computable
+(P.T.C.) real numbers and real functions. On p.106 he posed as an open
+question ``whether differentiability helps in computing maximum
+values.'' We argue the answer is ``no.'' 
+
+But in order to make this argument, Ko's theory needs to be extended
+to encompass notions of the {\em codelength} of a P.T.C. real number,
+and the {\em code transformation time} for various real arithmetic
+operations. The question in Ko's unextended theory remains unsolved.
+
+Our result is:
+If $f(x)$ is $C^\infty$ and bounded and P.T.C. on $[0,1]$,
+then the maximum $M$ of $f$ on $[0,1]$ 
+either
+(1) is not P.T.C.,
+(2) or if it is, then the code of $M$ is not produceable
+  by an polytime algorithm from the code for $f$, or
+(3) P=NP.
+
+Keywords
+maximization, minimization, polynomial time computable real numbers,
+NP-completeness, code length.

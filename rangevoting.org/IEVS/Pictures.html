@@ -1,5 +1,7 @@
 <html>
 <head>
+<link rel="stylesheet" href="/assets/css/original-layout.css">
+
 <title>
 RangeVoting.org - Yee Pictures
 </title>
@@ -14,7 +16,7 @@ way to examine single-winner election methods
 via computer graphics.  
 Versions 2.0 and above of my program <a href="IEVS.c">IEVS</a>
 (<i>I</i>nfinitely <i>E</i>xtendible <i>V</i>oting <i>S</i>imulator;
-see <a href="IEVSinputs.txt">example input</a>)
+see <a href="assets/documents/IEVSinputs.txt">example input</a>)
 support generation of Yee-type pictures and the pictures in this directory were produced
 by using IEVS.
 </p>
@@ -41,8 +43,8 @@ voting method used, and the variance of the Gaussian.
 All election methods ever seriously proposed  return the same Yee-picture (at left;
 the candidate-locations are indicated by the little circles)
 </p>
-<img src="vorEqTri.bmp" alt="vorEqTri.bmp">
-<img src="worstEqTri.bmp" alt="worstEqTri.bmp">
+<img src="assets/images/vorEqTri.bmp" alt="vorEqTri.bmp">
+<img src="assets/images/worstEqTri.bmp" alt="worstEqTri.bmp">
 <p>
 All those methods perform "optimally," i.e. elect the best winner for society always
 in this scenario.  If they instead were to elect the <b>worst</b> winner,
@@ -55,9 +57,9 @@ we'd instead get the picture at right.
 <i>Almost</i> all election methods ever seriously proposed  return the same Yee-picture
 (at left):
 </p>
-<img src="vorSquare.bmp" alt="vorSquare.bmp">
-<img src="irvSquare.bmp" alt="irvSquare.bmp">
-<img src="irvPent5.bmp" alt="irvPent5.bmp">
+<img src="assets/images/vorSquare.bmp" alt="vorSquare.bmp">
+<img src="assets/images/irvSquare.bmp" alt="irvSquare.bmp">
+<img src="assets/images/irvPent5.bmp" alt="irvPent5.bmp">
 <p>
 which again represents optimal performance.
 But not all: the <b>IRV</b> (instant runoff) method returns a rather different (and crazy)
@@ -124,10 +126,10 @@ will happen with probability&rarr;1)
 all provably always yield the same Yee picture,
 namely the "<b>Voronoi diagram</b>" (at left):
 </p>
-<img src="voronoi666.bmp" alt="voronoi666.bmp">
-<img src="bramssanver666.bmp" alt="bramssanver666.bmp">
-<img src="approval666.bmp" alt="approval666.bmp">
-<img src="approval666Z2.bmp" alt="approval666Z2.bmp">
+<img src="assets/images/voronoi666.bmp" alt="voronoi666.bmp">
+<img src="assets/images/bramssanver666.bmp" alt="bramssanver666.bmp">
+<img src="assets/images/approval666.bmp" alt="approval666.bmp">
+<img src="assets/images/approval666Z2.bmp" alt="approval666Z2.bmp">
 <p>
 The <b>Brams-Sanver "preference approval voting"</b> method (pictured middle above)
 empirically also exhibits optimal performance 
@@ -165,10 +167,10 @@ prefer to use this parameter setting as opposed to trying much harder to take
 the number of voters to &infin;, because that way we can see the presence of
 "near-tie election nightmares" easily in the picture.]:
 </p>
-<img src="irv666.bmp" alt="irv666.bmp">
-<img src="bucklin666.bmp" alt="bucklin666.bmp">
-<img src="nauru666.bmp" alt="nauru666.bmp">
-<img src="coombs666.bmp" alt="coombs666.bmp">
+<img src="assets/images/irv666.bmp" alt="irv666.bmp">
+<img src="assets/images/bucklin666.bmp" alt="bucklin666.bmp">
+<img src="assets/images/nauru666.bmp" alt="nauru666.bmp">
+<img src="assets/images/coombs666.bmp" alt="coombs666.bmp">
 <p>
 2nd from left above is
 honest <b>Bucklin</b> voting, which I suppose exhibits better behavior than IRV
@@ -203,10 +205,10 @@ and note that
 and that some win-regions have slightly (but clearly) non-convex shapes.
 (Borda is less expressive than range voting since voters cannot express strength of preference.)
 </p>
-<img src="range666.bmp" alt="range666.bmp">
-<img src="borda666.bmp" alt="borda666.bmp">
-<img src="dabagh666.bmp" alt="dabagh666.bmp">
-<img src="plurality666.bmp" alt="plurality.bmp">
+<img src="assets/images/range666.bmp" alt="range666.bmp">
+<img src="assets/images/borda666.bmp" alt="borda666.bmp">
+<img src="assets/images/dabagh666.bmp" alt="dabagh666.bmp">
+<img src="assets/images/plurality666.bmp" alt="plurality.bmp">
 <p>
 Honest <b>Dabagh</b> voting (picture 2nd from right above) is much less expressive
 than Borda since Dabagh voters can indicate only their first and second choices.
@@ -244,10 +246,10 @@ IRNR looks worse (e.g. several winners not in their own win-regions, some weird 
 but still not too bad,
 albeit MCA and Approval+top2-runoff look pretty bad.
 </p>
-<img src="range2runoff666.bmp" alt="range2runoff666.bmp">
-<img src="app2runoff666.bmp" alt="app2runoff666.bmp">
-<img src="irnr666.bmp" alt="irnr666.bmp">
-<img src="mca666.bmp" alt="mca666.bmp">
+<img src="assets/images/range2runoff666.bmp" alt="range2runoff666.bmp">
+<img src="assets/images/app2runoff666.bmp" alt="app2runoff666.bmp">
+<img src="assets/images/irnr666.bmp" alt="irnr666.bmp">
+<img src="assets/images/mca666.bmp" alt="mca666.bmp">
 <p>
 Below (left three) are two related voting methods based on eigenvector and Markov-chain ideas.
 In the middle is the Voronoi diagram again (for comparison)
@@ -260,10 +262,10 @@ a result of "cloning" or "vote splitting," which are the opposite of teaming).
 On the far right (since we had to put it somewhere) is <b>Woodall-DAC</b>,
 which note refuses to permit the dark-blue and dark-green candidates to win anywhere.
 </p>
-<img src="keener666.bmp" alt="keener666.bmp">
-<img src="voronoi666.bmp" alt="voronoi666.bmp">
-<img src="sinkhorn666.bmp" alt="sinkhorn666.bmp">
-<img src="WoodallDAC666.bmp" alt="WoodallDAC666.bmp">
+<img src="assets/images/keener666.bmp" alt="keener666.bmp">
+<img src="assets/images/voronoi666.bmp" alt="voronoi666.bmp">
+<img src="assets/images/sinkhorn666.bmp" alt="sinkhorn666.bmp">
+<img src="assets/images/WoodallDAC666.bmp" alt="WoodallDAC666.bmp">
 <p>
 On the left below is <b>Top median rating</b> which is like range voting but
 based on median rating not average rating.  Presumably because of the less-smooth
@@ -274,10 +276,10 @@ even for honest voters. Second from left is <b>Lowest median rank</b>, which is
 like top median rating and range, only worse due to less voter expressivity,
 less smoothness, and more "near-tie nightmares."
 </p>
-<img src="topmdrating666.bmp" alt="topmdrating666.bmp">
-<img src="lomedianrank666.bmp" alt="topmdrating666.bmp">
-<img src="voteforagainst666.bmp" alt="voteforagainst666.bmp">
-<img src="worst666.bmp" alt="worst666.bmp">
+<img src="assets/images/topmdrating666.bmp" alt="topmdrating666.bmp">
+<img src="assets/images/lomedianrank666.bmp" alt="topmdrating666.bmp">
+<img src="assets/images/voteforagainst666.bmp" alt="voteforagainst666.bmp">
+<img src="assets/images/worst666.bmp" alt="worst666.bmp">
 <p>
 Second from right is <b>vote for and against</b> where you vote +1 for your favorite and -1 for
 your most-hated candidate, and highest total score wins.  The reason it
@@ -305,8 +307,8 @@ both yield the (rather boring) picture below left
 (which is certainly rather unfair &ndash; but at least,
 it is not filled with election-ties):
 </p>
-<img src="antiplurSqueeze.bmp" alt="antiplurSqueeze.bmp">
-<img src="antiplurRSqueeze.bmp" alt="antiplurRSqueeze.bmp">
+<img src="assets/images/antiplurSqueeze.bmp" alt="antiplurSqueeze.bmp">
+<img src="assets/images/antiplurRSqueeze.bmp" alt="antiplurRSqueeze.bmp">
 -->
 
 <!-- BUGGY
@@ -319,7 +321,7 @@ you can just see that immediately by observing
 the discrepancies between the Rouse picture and the Voronoi diagram.
 (These are not very large discrepancies, but they are quite real.)
 </p>
-<img src="Rouse666.bmp" alt="Rouse666.bmp">
+<img src="assets/images/Rouse666.bmp" alt="Rouse666.bmp">
 -->
 
 <H3> Another random 14-point set (which turned out to have only 13 points...) </H3>
@@ -337,9 +339,9 @@ but for a different random 14-point set,
 so you can see they differ (but not by a lot):
 </p>
 <!-- seed=99658767 -->
-<img src="vor14.bmp" alt="vor14.bmp">
-<img src="range14.bmp" alt="range14.bmp">
-<img src="approval14.bmp" alt="approval14.bmp">
+<img src="assets/images/vor14.bmp" alt="vor14.bmp">
+<img src="assets/images/range14.bmp" alt="range14.bmp">
+<img src="assets/images/approval14.bmp" alt="approval14.bmp">
 <p>
 [Only count 13 candidates?  There are 2 candidates exactly co-located at (27, 164)
 thanks to my brilliant random number generator...]
@@ -355,10 +357,10 @@ We'll examine that topic more soon...
 
 <H3> More IRV pictures </H3>
 
-<img src="voronoi10E.bmp" alt="voronoi10E.bmp">
-<img src="irv10E.bmp" alt="irv10E.bmp">
-<img src="irv10D.bmp" alt="irv10D.bmp">
-<img src="irv10C.bmp" alt="irv10C.bmp">
+<img src="assets/images/voronoi10E.bmp" alt="voronoi10E.bmp">
+<img src="assets/images/irv10E.bmp" alt="irv10E.bmp">
+<img src="assets/images/irv10D.bmp" alt="irv10D.bmp">
+<img src="assets/images/irv10C.bmp" alt="irv10C.bmp">
 <p>
 The 3 pictures on the right are <b>IRV</b> 10-candidate elections for
 random sets of 10 points; the middle two pictures actually are 
@@ -380,7 +382,7 @@ Condorcet ("beats all") winner.
 The following pictures illustrate the effect of candidate "cloning."
 Here is the situation before any cloning is done:
 </p>
-<img src="VorNoClon6.bmp" alt="VorNoClon6.bmp">
+<img src="assets/images/VorNoClon6.bmp" alt="VorNoClon6.bmp">
 <p>
 Now clone the green candidate in the top right with 6 additional clones.
 [&sigma;=100; 
@@ -402,10 +404,10 @@ nearly lies outside its own winning region.
 via cloning with Borda.)
 With Borda, a party can simply run an army of essentially identical clones to assure victory.
 </p>
-<img src="VorClon6.bmp" alt="VorClon6.bmp">
-<img src="BordaClon6.bmp" alt="BordaClon6.bmp">
-<img src="PlurClon6.bmp" alt="PlurClon6.bmp">
-<img src="IrvClon6.bmp" alt="IrvClon6.bmp">
+<img src="assets/images/VorClon6.bmp" alt="VorClon6.bmp">
+<img src="assets/images/BordaClon6.bmp" alt="BordaClon6.bmp">
+<img src="assets/images/PlurClon6.bmp" alt="PlurClon6.bmp">
+<img src="assets/images/IrvClon6.bmp" alt="IrvClon6.bmp">
 <p>
 Second from right is <b>Plurality</b> voting,
 which also is highly vulnerable to cloning &ndash; but in the opposite manner.
@@ -425,10 +427,10 @@ it has some other problems in that it unfairly discriminates among the clones
 a lot of "tough call" near-tie elections in which the election outcome is almost random.
 (Don't let anybody ever tell you that in IRV ties and near-ties are "negligibly rare.")
 </p>
-<img src="SinkClon6.bmp" alt="SinkClon6.bmp">
-<img src="AppClon6.bmp" alt="AppClon6.bmp">
-<img src="RangeClon6.bmp" alt="RangeClon6.bmp">
-<img src="RangeXClon6.bmp" alt="RangeXClon6.bmp">
+<img src="assets/images/SinkClon6.bmp" alt="SinkClon6.bmp">
+<img src="assets/images/AppClon6.bmp" alt="AppClon6.bmp">
+<img src="assets/images/RangeClon6.bmp" alt="RangeClon6.bmp">
+<img src="assets/images/RangeXClon6.bmp" alt="RangeXClon6.bmp">
 <p>
 Above at left is <b>Sinkhorn</b> which seems to act like Borda but evidently is
 even <i>more</i> vulnerable to cloning.  
@@ -456,10 +458,10 @@ Technically speaking, as far as I know none of these 4 systems are cloneproof.
 However, as you can see they often exhibit behavior which seems a lot
 like a cloneproof voting method.
 </p>
-<img src="range2runoffClon6.bmp" alt="range2runoffClon6.bmp">
-<img src="app2runoffClon6.bmp" alt="app2runoffClon6.bmp">
-<img src="irnrClon6.bmp" alt="irnrClon6.bmp">
-<img src="mcaClon6.bmp" alt="mcaClon6.bmp">
+<img src="assets/images/range2runoffClon6.bmp" alt="range2runoffClon6.bmp">
+<img src="assets/images/app2runoffClon6.bmp" alt="app2runoffClon6.bmp">
+<img src="assets/images/irnrClon6.bmp" alt="irnrClon6.bmp">
+<img src="assets/images/mcaClon6.bmp" alt="mcaClon6.bmp">
 <p>
 Below-left is <b>Woodall-DAC</b>, a complicated but very interesting method which we 
 do not recommend.
@@ -467,8 +469,8 @@ It may have its problems, but it has the virtue of being theoretically immune to
 candidate-cloning.  On the right is <b>Coombs</b> which is <i>not</i> clone-immune despite its
 apparent similarity-of-definition to IRV (which is clone-immune):
 </p>
-<img src="WoodallDACclon6.bmp" alt="WoodallDACclon6.bmp">
-<img src="CoombsClon6.bmp" alt="CoombsClon6.bmp">
+<img src="assets/images/WoodallDACclon6.bmp" alt="WoodallDACclon6.bmp">
+<img src="assets/images/CoombsClon6.bmp" alt="CoombsClon6.bmp">
 
 <H2> "Non-monotonicity" simply illustrated via a 3-candidate election </H2>
 
@@ -480,9 +482,9 @@ At right: <b>IRV</b>.  The candidate-coordinates are
 (26, 20) and &sigma;=100.  
 <small>[This point set was suggested by Ka-Ping Yee.]</small>
 </p>
-<img src="VorYe0.bmp" alt="VorYe0.bmp">
-<img src="PlurYe0.bmp" alt="PlurYe0.bmp">
-<img src="irvYe0x.bmp" alt="irvYe0x.bmp">
+<img src="assets/images/VorYe0.bmp" alt="VorYe0.bmp">
+<img src="assets/images/PlurYe0.bmp" alt="PlurYe0.bmp">
+<img src="assets/images/irvYe0x.bmp" alt="irvYe0x.bmp">
 <p>
 In the IRV picture,
 note how moving the center of society
@@ -522,10 +524,10 @@ the shadow regions would have almost-random outcome or would lead to election ad
 "chad counting" nightmares.
 [Coordinates: (43, 67), (152, 130), (84, 67), (170, 46); &sigma;=100.]
 </p>
-<img src="vorYe1.bmp" alt="vorYe1.bmp">
-<img src="PlurYe1.bmp" alt="PlurYe1.bmp">
-<img src="irvYe1.bmp" alt="irvYe1.bmp">
-<img src="irvYe1b.bmp" alt="irvYe1b.bmp">
+<img src="assets/images/vorYe1.bmp" alt="vorYe1.bmp">
+<img src="assets/images/PlurYe1.bmp" alt="PlurYe1.bmp">
+<img src="assets/images/irvYe1.bmp" alt="irvYe1.bmp">
+<img src="assets/images/irvYe1b.bmp" alt="irvYe1b.bmp">
 
 <p>
 The three pictures below
@@ -539,9 +541,9 @@ disconnected</i> win regions (for green and yellow) &ndash; and the green candid
 not even lie inside its own win-region. 
 [Coordinates: (61, 60), (54, 118), (31, 121), (152, 108); &sigma;=100.]
 </p>
-<img src="vorYe2.bmp" alt="vorYe2.bmp">
-<img src="PlurYe2.bmp" alt="PlurYe2.bmp">
-<img src="irvYe2c.bmp" alt="irvYe2c.bmp">
+<img src="assets/images/vorYe2.bmp" alt="vorYe2.bmp">
+<img src="assets/images/PlurYe2.bmp" alt="PlurYe2.bmp">
+<img src="assets/images/irvYe2c.bmp" alt="irvYe2c.bmp">
 
 <p>
 Below from left to right are 
@@ -565,10 +567,10 @@ and the situation only clarifies when <i>many</i> votes are counted.
 (186, 140);
 &sigma;=100.]
 </p>
-<img src="VorYe3x.bmp" alt="VorYe3x.bmp">
-<img src="PlurYe3xd.bmp" alt="PlurYe3xd.bmp">
-<img src="irvYe3.bmp" alt="irvYe3.bmp">
-<img src="irvYe3d.bmp" alt="irvYe3d.bmp">
+<img src="assets/images/VorYe3x.bmp" alt="VorYe3x.bmp">
+<img src="assets/images/PlurYe3xd.bmp" alt="PlurYe3xd.bmp">
+<img src="assets/images/irvYe3.bmp" alt="irvYe3.bmp">
+<img src="assets/images/irvYe3d.bmp" alt="irvYe3d.bmp">
 
 <p>
 "Squeeze out" is not a problem solely afflicting plurality voting. It can also
@@ -583,9 +585,9 @@ everywhere under both IRV and Plurality (honest) voting.
 (95, 47);
 &sigma;=130.]
 </p>
-<img src="VorSq2.bmp" alt="VorSq2.bmp">
-<img src="IrvSq2.bmp" alt="IrvSq2.bmp">
-<img src="PlurSq2b.bmp" alt="PlurSq2b.bmp">
+<img src="assets/images/VorSq2.bmp" alt="VorSq2.bmp">
+<img src="assets/images/IrvSq2.bmp" alt="IrvSq2.bmp">
+<img src="assets/images/PlurSq2b.bmp" alt="PlurSq2b.bmp">
 
 <br>
 <p><a href="../RangeVoting.html">Return to main page</a></p>

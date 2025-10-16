@@ -1,0 +1,50 @@
+Title 
+ Range voting
+Author
+ Warren D. Smith
+ NECI, 4 Independence Way, Princeton NJ 08540
+ wds@research.NJ.NEC.COM 
+
+Abstract
+The ``range voting'' system is as follows.  In a $c$-candidate
+election, you select a vector of $c$ real numbers, each of absolute
+value $\le 1$, as your vote.  E.g. you could vote $(+1,-1,+.3,-.9,+1)$
+in a 5-candidate election.  The vote-vectors are summed to get a
+vector $\vec{x}$ and the winner is the $i$ such that $x_i$ is maximum.
+
+Previously the area of voting systems lay under the dark
+cloud of ``impossibility theorems'' 
+showing that no voting system can satisfy certain seemingly reasonable sets
+of axioms.
+
+But I now prove theorems advancing the thesis that range voting is
+uniquely best among all possible ``Compact-set based, One time, 
+Additive, Fair'' (COAF) voting systems in the limit of a large number of
+voters. (``Best'' here roughly means that each voter has both
+incentive and opportunity to provide more information about
+more candidates in his vote than in any other COAF system; there are
+quantities uniquely maximized by range voting.)
+I then describe a utility-based Monte Carlo comparison
+of 31 different voting systems. The conclusion of this
+experimental study is that
+range voting has smaller Bayesian regret than
+all other systems tried, both for
+honest and for strategic voters for any of
+6 utility generation methods
+and several models of voter knowledge.
+Roughly: range voting entails $3$-$10$
+times less regret than plurality voting
+for honest, and $2.3$-$3.0$ for strategic, voters.
+Strategic plurality voting in turn entails $1.5$-$2.5$ times 
+less regret than simply picking a winner randomly.
+All previous such studies were
+much smaller and got inconclusive results, probably because
+none of them had included range voting.
+%"31" is somewhat deceptive since some are variants of each other.
+
+
+
+Keywords
+Approval voting, Borda count, plurality, uniqueness, social choice,
+strategic voting, Monte Carlo study, Condorcet Least Reversal,
+Gibbard's dishonesty theorem, Bayesian regret.

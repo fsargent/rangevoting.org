@@ -1,0 +1,265 @@
+Here are some typical inputs to IEVS 2.02
+[note, the program will ask you questions which you answer; in the below
+only the answers are shown]
+
+---
+To produce a Yee-type picture of IRV for a 4-candidate election with the
+candidates located at the 4 corners of the picture-square
+[runtime: about 10 min on an apple G5 "power PC," circa 2003 vintage; output file: "irvSquare.bmp"]
+
+99658767
+2
+5
+irvSquare
+4
+1
+0 0
+199 0
+199 199
+0 199
+256
+196
+
+Some voting methods take longer than others (depends on the method and on the candidates'
+locations). For example if you substitute 5 --> 3 and irvSquare --> plurSquare
+then the plurality method is run, which in this case requires 105 seconds.
+[With further speedups in IEVS 2.04, plurality falls to 75 sec; Coombs takes 64 sec.]
+And 4 --> 14 and irvSquare --> bucklinSquare runs Bucklin voting, which takes 10 min.
+
+---
+To produce a Yee-type picture of IRV for a 14-candidate election with the
+candidates located randomly within a 150x150 centered subsquare of the 200x200 picture
+[IEVS 2.02 runtime: about 70 min;  output file: "irv666.bmp"]
+
+666
+2
+5
+irv666
+14
+2
+150
+256
+70
+
+---
+To produce a Yee-type picture of the Voronoi diagram for the same 14-candidates
+[runtime: a few seconds; output file: "voronoi666.bmp"]
+
+666
+2
+0
+voronoi666
+14
+2
+150
+256
+70
+
+---
+To produce a Yee-type picture of the "Furthest Point Voronoi diagram" for the same 14-candidates
+[runtime: a few seconds, output file: "worst666.bmp"]
+
+666
+2
+1
+worst666
+14
+2
+150
+256
+70
+
+---
+Yee-type picture of 7 points forming a regular hexagon & center (finds Voronoi diagram):
+
+99658767
+2
+0
+vorHex7
+7
+1
+100 180
+169 140
+169 60
+100 20
+31 60
+31 140
+100 100
+256
+196
+
+---
+Yee-type picture of 7 points forming a regular hexagon & center (finds BramsSanver diagram,
+which turns out to be the same as the Voronoi diagram):
+
+99658767
+2
+39
+bramssanverHex7
+7
+1
+100 180
+169 140
+169 60
+100 20
+31 60
+31 140
+100 100
+256
+50
+
+---
+Yee-type picture of 6 points forming a regular hexagon (finds BramsSanver diagram
+which again in this case is the same as the Voronoi diagram):
+
+99658767
+2
+39
+bramssanverHex6
+6
+1
+100 180
+169 140
+169 60
+100 20
+31 60
+31 140
+256
+50
+
+--
+Yee-type picture of 5 points forming a regular pentagon with center 100,100 (irv):
+
+99658767
+2
+5
+irvPent5
+5
+1
+100 180
+176 125
+147 35
+53 35
+24 125
+256
+180
+
+--
+Yee-type picture of 10 random but specified points
+
+80411
+2
+5
+irv10E
+10
+1
+47 24
+96 110
+117 111
+133 48
+86 27
+92 116
+115 102
+167 31
+26 123
+102 96
+1024
+141
+
+--
+Yee-type picture of 10 random but specified points
+
+874774
+2
+5
+irv10C
+10
+1
+34 96
+54 68
+160 20
+24 105
+114 119
+86 169
+159 28
+40 93
+30 171
+117 109
+1024
+100
+
+--
+Squeeze out
+
+8754774
+2
+5
+irvSqueezeC
+3
+1
+14 40
+98 8
+82 10
+256
+100
+
+--
+IRV weird I
+
+8754774
+2
+5
+irvWeird1C
+4
+1
+24 56
+170 140
+78 56
+194 28
+256
+100
+
+--
+IRV weird II
+
+8754774
+2
+5
+irvWeird2C
+4
+1
+48 46
+38 124
+8 128
+170 110
+256
+100
+--
+IRV weird III
+
+8754774
+2
+5
+irvWeird3C
+4
+1
+80 114
+32 108
+10 124
+182 140
+256
+100
+--
+IRV weird IV
+
+8754774
+2
+5
+irvWeird4C
+3
+1
+108 94
+154 128
+26 20
+256
+100

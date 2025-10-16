@@ -1,0 +1,8 @@
+Some errata in the version that appeared in the STOC 1998 proceedings
+are corrected in this online version. Of the known errata, the only
+one that matters much is the "rounding assumption" at the beginning of
+section 2.
+
+The "L =" should say "L <=". Also, in the previous paragraph,
+       L = sqrt(d) * N / (delta * M)
+where  M >= 1  was the length of the old MST.

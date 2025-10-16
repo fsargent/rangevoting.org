@@ -1,0 +1,33 @@
+Massachusetts US Senate race 2014
+=================================
+Ed Markey (D)*
+Brian Herr (R)
+
+Final Results	--	--	--	62.0	38.0	Markey +24.0
+RCP Average	10/20 - 11/1	--	--	53.0	35.0   Markey +18.0
+PPP (D)		10/30 - 11/1	887 LV	3.3	52	38     Markey +14
+Suffolk/Boston Herald 10/27 - 10/29 500 LV	4.4	49     34     Markey +15
+Western NE University 10/21 - 10/30 430 LV	5.0	54     34     Markey +20
+WBUR/MassINC	      10/22 - 10/25 494 LV	4.4	57     32     Markey +25
+UMass Amherst/WBZ     10/20 - 10/27 591 LV	4.5	53     37     Markey +16
+CBS News/NYT/YouGov   10/16 - 10/23 2218 LV	3.0	54     32     Markey +22
+WBUR/MassINC	      10/1 - 10/4   504 LV	4.4	56     30     Markey +26
+
+
+http://www.realclearpolitics.com/epolls/2014/senate/ma/massachusetts_senate_herr_vs_markey-515\
+1.html#polls                      
+                                                                  
+The RCP average apparently was based on 6 polls of
+887+500+430+494+591=2902 LVs.
+Hence std error  sqrt(40*60/2902) = 0.909%
+which for estimating the Markey-Herr vote DIFFERENCE needs to double to 1.818% of
+the #voters.  Hence the discrepancy 24-18=6.0 is 6/1.818=3.30 standard deviations.
+This is an event of probability 0.000483.
+
+If we instead based our error-reckoning on inter-poll discrepancies then the 6 polls
+unweighted average is
+ m = (14+15+20+25+16)/5 = 18.00  margin for Markey.
+Their sample standard deviation is 
+  sqrt( ((14-m)^2+(15-m)^2+(20-m)^2+(25-m)^2+(16-m)^2)/4 ) = 4.52769
+Then the discrepancy is 6/4.52769=1.32 standard deviations, an event of probability
+0.0934.

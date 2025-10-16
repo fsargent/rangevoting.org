@@ -1,0 +1,43 @@
+TITLE
+New cryptographic voting scheme with best-known theoretical properties
+
+AUTHOR Warren D. Smith
+
+DATE June 2005
+
+ABSTRACT
+We describe a correct, ``verifiable,''
+and ``coercion resistant'' voting scheme
+which takes $O(N+V)$ (highly parallelizable)
+steps to process $V$ votes by $N$ voters.
+It can handle essentially any underlying vote-combining method, provided the number
+of possible distinct votes is far smaller than the number of voters.
+In these theoretical senses (aside from the proviso) the new voting protocol
+is optimal.
+
+Juels, Catalano, and Jakobsson
+had introduced the first such scheme in 2002, except that it consumed
+quadratic work and communication bandwidth and was vulnerable to two attacks
+(described here).  Our scheme is obtained from JCJ's by first
+modifying it to make it immune
+to the two attacks, then adding two ideas to speed it up to linear time,
+then finally adding a third idea to reduce the constant factor in the $O$ to
+the point where it apparently becomes practically feasible.
+
+The extra security guarantees encapsulated by ``coercion resistance'' perhaps are not enough,
+in a practical sense, to make our new protocol more
+desirable than simpler schemes based on homomorphic encryption and bulletin boards.
+That is because our new scheme makes heavy use of mixnets and cooperative computation
+on ``shared secrets''
+carried out by mutually distrustful parties --  both of which cause our communication
+and/or verification requirements to be comparatively large.
+
+Finally, we remind the reader that still
+\emph{no} secure voting scheme is presently known that is anywhere close to feasibility,
+for handling \emph{non}-additive election methods that involve enough
+bits per vote to allow typical voters to generate \emph{unique} votes. The author's
+``reweighted range voting'' is an example of such an election method -- it arguably is the best
+one available for multiwinner elections -- and the cryptographic community
+so far has not even considered how to handle such elections.
+
+

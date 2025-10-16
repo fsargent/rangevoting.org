@@ -1,0 +1,44 @@
+TITLE
+1. AES seems weak. 2. Linear time secure cryptography
+
+AUTHOR
+Warren D. Smith
+
+DATE
+June 2007
+
+ABSTRACT
+We describe a new simple but more powerful form of linear cryptanalysis.
+It appears to break AES (and undoubtably other cryptosystems too, e.g. SKIPJACK).
+The break is ``nonconstructive,'' i.e. we make it plausible
+(e.g. prove it in certain approximate probabilistic models)
+that a small algorithm for quickly determining AES-256 keys from plaintext-ciphertext pairs
+exists -- but without constructing the algorithm.  The attack's runtime is comparable 
+to performing $64^w$ encryptions where $w$ is the (unknown) minimum Hamming weight in certain
+binary linear error-correcting codes (BLECCs) associated with AES-256.  If $w < 43$ then
+our attack is faster than exhaustive key search; probably $w < 10$.
+(Also there should be ciphertext-only attacks if the plaintext is natural English.)
+
+Even if this break breaks due to the underlying models inadequately approximating the real world,
+we explain how AES still could contain ``trapdoors'' which would
+make cryptanalysis unexpectedly easy for anybody who knew the trapdoor.
+If AES's designers had inserted such a trapdoor, it could be very
+easy for them to convince us of that.
+But if none exist, then it is probably infeasibly difficult for them to convince us of \emph{that}.
+
+We then discuss how to use the theory of BLECCs to
+build cryptosystems provably
+1. not containing trapdoors of this sort,
+2. secure against our strengthened form of linear cryptanalysis,
+3. secure against ``differential'' cryptanalysis,
+4. secure against D.J.Bernstein's timing attack.
+Using this technique we prove a fundamental theorem:
+it is possible to thus-encrypt $n$ bits with security
+$2^{cn}$, via an circuit $Q_n$ containing $\le c n$
+two-input logic gates
+and operating in $\le c \log n$ gate-delays, where the three $c$s denote
+(possibly different) positive constants and $Q_n$ is constructible
+in polynomial$(n)$ time.
+At the end we give tables of useful binary codes.
+
+--end

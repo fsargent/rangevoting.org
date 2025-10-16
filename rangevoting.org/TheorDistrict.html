@@ -1,5 +1,7 @@
 <html>
 <head>
+<link rel="stylesheet" href="/assets/css/original-layout.css">
+
 <title>
 RangeVoting.org - Theoretical Issues in Districting
 </title>
@@ -51,7 +53,7 @@ the squared-distance-based measure </a></li><li>
 <a href="#HandyChart">Handy comparison chart (methods for producing maps with N equipopulous districts) </a></li><li>
 <a href="#Travel">What about travel time? Rivers? County lines? Census blocks? </a></li><li>
 <a href="#Minority">Will this "disenfranchise minorities?"</a></li><li>
-<a href="index.html%3F%3F.html">What about "competitive" districts??? [section missing]</a></li><li>
+<a href="index.html?%3F">What about "competitive" districts??? [section missing]</a></li><li>
 <a href="#PrettyPic">Pretty pictures section: Olson vs Voronoi vs Shortest splitline </a></li><li>
 <a href="#Ackno">Acknowledgments </a></li><li>
 <a href="#Bibliog">References about political districting math &amp; related topics </a></li>
@@ -487,7 +489,7 @@ by the inverse rotation matrices in the opposite order.  -->
 <p>
 I note that the <i>direction</i> to the Weiszfeld point 
 is always a descent direction (also true for
-<a href="Cooper1968Weiszfeld.pdf">Cooper 1968</a>'s
+<a href="assets/documents/Cooper1968Weiszfeld.pdf">Cooper 1968</a>'s
 variant based on distance<sup>e</sup> rather than plain distance, for any exponent
 e with 1&le;e&lt;&infin;; and also true for our gnomonic-projected version of the 
 spherical-distances problem; this using Cooper's or my generalized Weiszfeld iterations) 
@@ -668,7 +670,7 @@ The 14 US states with average(Q)&gt;50 during 2007-2008.
 </td></tr>
 </table>
 </td><td>
-<img src="JMackGerry1to5.gif" alt="All 5 Mackenzie Q-maps">
+<img src="assets/images/JMackGerry1to5.gif" alt="All 5 Mackenzie Q-maps">
 </td></tr>
 </table>
 <p>
@@ -828,7 +830,7 @@ smallest-enclosing circle, divided by the area of the district
 An even more-peculiar related quality measure was 
 Schwartzberg 1966's &ndash; defined on p.108 of 
 Young's review 
-<a href="YoungCompactness.pdf">paper</a> as
+<a href="assets/documents/YoungCompactness.pdf">paper</a> as
 the ratio of
 a polygonal pseudo-perimeter divided by
 the perimeter of a circle with the same area as the district.
@@ -857,7 +859,7 @@ is that you can take a multi-district map "optimal" by this measure, then add a 
 of essentially arbitrary wiggles to large portions of the district boundaries, while leaving the
 "quality" of that map <i>exactly the same.</i>  Here's an example for
 stupid measure #1:
-</p><img src="StupidDistrictExample1.png" /><p>
+</p><img src="assets/images/StupidDistrictExample1.png" /><p>
 The picture shows a disc-shaped "country" subdivided by a diameter-line into
 two semicircular districts, one in the North and one in the South.
 <!-- http://www2.stetson.edu/~efriedma/cirincir/ 
@@ -885,7 +887,7 @@ constant-width curve</a> (there are an continuum-<i>infinite</i>
 number of inequivalent such shapes)
 has ratio=1 and hence is "optimal" by stupid measure #3.
 </p><p><b>Example stupid idea #4:</b>
-<a href="Yamada09-3.pdf">Yamada 2009</a>
+<a href="assets/documents/Yamada09-3.pdf">Yamada 2009</a>
 had the idea that the cost of a districting should be the total length of its
 minimum spanning forest; that is, for each district you find the minimum-length
 tree (<a href="https://en.wikipedia.org/wiki/Minimum_spanning_tree">MST</a>) 
@@ -948,7 +950,7 @@ is optimum, but with this stupid idea so is the "squished beehive"
 with long thin needle-like districts (this picture was got by factor-2 squishing, but
 stupid ideas #5-7 would still regard this as "exactly optimum" even with 99!):
 </p>
-<img src="SquishedHexGraphPaper.png" />
+<img src="assets/images/SquishedHexGraphPaper.png" />
 <p>
 But Taylor's idea #7 goes beyond even that amount of stupidity to enter whole
 new regimes.  Observe that Taylor's idea is not even <i>defined</i> for a
@@ -994,7 +996,7 @@ true for all three of our optimality notions.  For example using Olson's measure
 the hexagon tesselation has average distance to tile-center which is approximately
 98.5883% of what it would have been using the square-grid tessellation.)
 </p>
-<img src="HexGraphPaper3.png" />
+<img src="assets/images/HexGraphPaper3.png" />
 <p>
 However, on a round earth, or in a finite country, or with non-uniform population density,
 the pictures would change and would no longer (in general) be identical and no longer
@@ -1004,7 +1006,7 @@ be the regular-hexagon-beehive.
 <a name="ApplySimp"></a>
 <h3> Let's apply our three quality measures to the simplest nontrivial artificial "country" </h3>
 
-<img src="DiscCountry2Districts.png" />
+<img src="assets/images/DiscCountry2Districts.png" />
 
 <p>
 The picture shows a disc-shaped "country,"
@@ -1774,7 +1776,7 @@ including long lists of NP-complete problems and how to prove
 problems NP-complete.
 </p><p>
 It was shown by 
-<a href="MegiddoSupowit1984.pdf">Megiddo &amp; Supowit 1984</a>,
+<a href="assets/documents/MegiddoSupowit1984.pdf">Megiddo &amp; Supowit 1984</a>,
 that this yes-no problem is NP-hard:
 <br> &nbsp;&nbsp;&nbsp;
 Given the (integer) coordinates of a set of people (points) on a flat Earth, and
@@ -1790,7 +1792,7 @@ time always bounded by <i>any</i> fixed
 polynomial in the number of people, the number of districts, and the number of bits
 in all those coordinates.
 </p><p>
-<a href="kmeansNPhard.pdf">Mahajan et al 2009</a>, by adapting
+<a href="assets/documents/kmeansNPhard.pdf">Mahajan et al 2009</a>, by adapting
 Megiddo &amp; Supowit's method,
 showed that the same yes-no problem, but using the <b>sum-of-squared-distances</b>-based
 cost measure instead of Olson's, is NP-hard.
@@ -1917,7 +1919,7 @@ any constant factor!
 That proof depended heavily upon the requirement that
 the population-split be <i>exactly</i> 50-50.
 However, 
-<a href="Fukuyama2006.10.2.pdf">Fukuyama 2006</a>
+<a href="assets/documents/Fukuyama2006.10.2.pdf">Fukuyama 2006</a>
 used a cleverer version of the same idea with a "tree shaped" country
 to show that,
 even if we did not require a 50-50 
@@ -1948,7 +1950,7 @@ Megiddo &amp; Supowit's,
 but modified to pertain to the min-perimeter cost measure instead of Olson.
 -->
 can be overcome by using the fact 
-(proven in theorem 4.6 of <a href="HuntMRS98.pdf">Hunt et al 1998</a>)
+(proven in theorem 4.6 of <a href="assets/documents/HuntMRS98.pdf">Hunt et al 1998</a>)
 that 
 <b>partition into triangles</b> remains NP-complete even in 
 <i>planar</i> graphs with bounded maximum valence.
@@ -2059,7 +2061,7 @@ For each of the current districts
 (each represented as the set of people in it), find a better, i.e. lower-cost,
 center.
 If we are using the sum-of-squared-distances cost measure, the <i>best</i> center 
-<a href="https://rangevoting.org/PuzzMeanSumSquares,html">is</a> the mean-location in 3-space of all its people.
+<a href="https://rangevoting.org/PuzzMeanSumSquares.html">is</a> the mean-location in 3-space of all its people.
 If we are using Olson's cost measure, the best center for a district is its FSW-point,
 but merely <i>improving</i> the center can be accomplished by 
 performing one <a href="#WeiszfeldIter">Weiszfeld</a>
@@ -2137,7 +2139,7 @@ by moving the district centers or by differently assigning the people to those d
 Each 2-phase improvement step takes only
 polynomial time, but it is conceivable that an exponentially long chain of
 improvements will happen (see
-<a href="VattaniKmeans.pdf">Vattani 2011</a> for a point set in the plane 
+<a href="assets/documents/VattaniKmeans.pdf">Vattani 2011</a> for a point set in the plane 
 that causes our 2-phase iteration to iterate an exponentially large number of times,
 all the while keeping all districts equipopulous to within an 
 additive constant).  But usually the number needed is small.
@@ -2172,7 +2174,7 @@ constant factor of optimum-quality.
 <!--
 <p>
 A beautiful idea of 
-<a href="kMeansPlusPlus.pdf">Arthur &amp; Vassilvitskii 2007</a>
+<a href="assets/documents/kMeansPlusPlus.pdf">Arthur &amp; Vassilvitskii 2007</a>
 tries to do something like that.
 </p>
 <p>
@@ -2500,7 +2502,7 @@ etc.
 The <a href="http://www.census.gov/">US Census</a> measures population
 in small regions called <b>"blocks."</b> 
 In California 2010 there are 533163 of these blocks, see
-<a href="camask.png">image (png 200KB)</a>.
+<a href="assets/images/camask.png">image (png 200KB)</a>.
 Note that some blocks are actually quite large, and their shapes are not always simple.
 The census also provides a coarser subdivision called census "tracts."
 There are roughly 50 blocks per tract.
@@ -2659,14 +2661,14 @@ Consider <b>Texas</b>.
 Left top, the official district map produced by the gerrymandering slimeballs in the TX
 legislature (32 districts).  Right top, Olson's near-optimal map. 
 Bottom left: splitlining's map.
-Bottom right, map by <a href="SpannGulottaKaneMCM2007.pdf">Spann, Gulotta &amp; Kane</a>
+Bottom right, map by <a href="assets/documents/SpannGulottaKaneMCM2007.pdf">Spann, Gulotta &amp; Kane</a>
 trying to minimize a sum-of-squared-distances based 
 measure (they use a method like our <a href="#Phase2">2-phase improver</a>
 working on a "flat Earth"
 allowing up to 4% population difference between the most- and least-populous districts).
 </p>
-<img width="100%" src="TX_ba.png"/>
-<img width="57%" src="TxNewSplitline.png"/><img width="43%" src="TXmoi2000.png"/>
+<img width="100%" src="assets/images/TX_ba.png"/>
+<img width="57%" src="assets/images/TxNewSplitline.png"/><img width="43%" src="assets/images/TXmoi2000.png"/>
 <p>
 The official map is clearly utterly despicable garbage.
 And if you liked TX's official districts based on the 2000 census, 
@@ -2675,7 +2677,7 @@ new ones from the 2010 census &ndash; below check a detail insert from the
 <a href="http://www.tlc.state.tx.us/redist/redist.html">Texas State Legislature</a>'s
 "plan C125" for congressional redistricting:
 </p>
-<img src="TXc125DetailInsert.png"/>
+<img src="assets/images/TXc125DetailInsert.png"/>
 <p>
 Meanwhile,
 Olson's, the squared-dist-based, and the splitlining maps all are pretty reasonable.
@@ -2696,7 +2698,7 @@ And here's <b>Virginia:</b>
 <table width="100%">
 <tr><th>Official</th><th>Olson</th></tr>
 <table>
-<img width="100%" src="VA_ba.png"/>
+<img width="100%" src="assets/images/VA_ba.png"/>
 <!-- <img width="100%" src="/SSHR/va_final.png"/>  -->
 <img width="100%" src="Splitline2009/va.png"/>
 <table width="100%">
@@ -2722,14 +2724,14 @@ The "best" map according to my subjective eye, is starred(*); your opinion may d
 <tr><th>TX (32 districts)</th>
 <td><a href="Olson2000/TX_ba.png">Official &amp; Olson</td>
 <td><a href="Splitline2009/tx.png">Splitline</td>
-<td><a href="TXmoi2000.png">&Sigma;dist&sup2;-based*</td>
+<td><a href="assets/images/TXmoi2000.png">&Sigma;dist&sup2;-based*</td>
 <td>As <a href="http://en.wikipedia.org/wiki/2003_Texas_redistricting">re</a>Gerrymandered 
 in 2003<br>to favor Republicans</td>
 </tr>
 <tr><th>NY (29 districts)</th>
 <td><a href="Olson2000/NY_ba.png">Official &amp; Olson</td>
 <td><a href="Splitline2009/ny.png">Splitline*</td>
-<td><a href="NYmoi2000.png">&Sigma;dist&sup2;-based</td>
+<td><a href="assets/images/NYmoi2000.png">&Sigma;dist&sup2;-based</td>
 <td>Census dept. provided erroneous<br>
 geographic data (chopped off part<br>of Long Island near Greenport).
 </td>
@@ -2737,7 +2739,7 @@ geographic data (chopped off part<br>of Long Island near Greenport).
 <tr><th>AZ (8 districts)</th>
 <td><a href="Olson2000/AZ_ba.png">Official &amp; Olson*</td>
 <td><a href="Splitline2009/az.png">Splitline</td>
-<td><a href="AZmoi2000.png">&Sigma;dist&sup2;-based</td>
+<td><a href="assets/images/AZmoi2000.png">&Sigma;dist&sup2;-based</td>
 <td>Districted by an "independent commission" (ha!);<br>
 note the green district <i>is</i> contiguous, but joined<br>
 by filaments too fine to see since &lt;&frac12; pixel wide.
@@ -2745,7 +2747,7 @@ by filaments too fine to see since &lt;&frac12; pixel wide.
 <tr><th>IL (19 districts)</th>
 <td><a href="Olson2000/IL_ba.png">Official &amp; Olson</td>
 <td><a href="Splitline2009/il.png">Splitline</td>
-<td><a href="ILmoi2000.png">&Sigma;dist&sup2;-based*</td>
+<td><a href="assets/images/ILmoi2000.png">&Sigma;dist&sup2;-based*</td>
 <td>Several too-fine-to-see filaments in the official map.</td>
 </tr>
 <tr><th>All 50 states</th>
@@ -2754,7 +2756,7 @@ by filaments too fine to see since &lt;&frac12; pixel wide.
 <td>&nbsp;</td>
 <td>
 (Unrelated: what if the entire 
-<a href="USsplitLine.png">Entire USA (lower 48)</a> were districted in 1 go?
+<a href="assets/images/USsplitLine.png">Entire USA (lower 48)</a> were districted in 1 go?
 </td></tr>
 </tr>
 </table>
@@ -2764,7 +2766,7 @@ Here's <b>New Jersey</b> (also districted by an "independent commission," ha ha 
 <table width="100%">
 <tr><th>Official</th><th>Olson</th><th>Splitline</th></tr>
 <table>
-<img width="66%" src="NJ_ba.png"/><img width="34%" src="Splitline2009/nj.png"/>
+<img width="66%" src="assets/images/NJ_ba.png"/><img width="34%" src="Splitline2009/nj.png"/>
 <p>
 The conclusion for other states is almost always basically the same as for VA, TX and NJ.
 </p><p>
@@ -2836,7 +2838,7 @@ Other papers on this include:
 <small>
 <br>
 Leon Cooper:
-<a href="Cooper1968Weiszfeld.pdf">An extension of the Generalized Weber Problem</a>,
+<a href="assets/documents/Cooper1968Weiszfeld.pdf">An extension of the Generalized Weber Problem</a>,
 J. of Regional Science 8,2 (1968) 181-197.
 [Incidentally, this is <i>not</i>  the physics Nobel prize winner Leon N. Cooper.]
 <br>
@@ -2854,7 +2856,7 @@ Math'l Programming 18,1 (1980) 186-196.
 <br>
 <!--
 P.T.Fletcher, S.Venkatasubramanian, S.Joshi:
-<a href="Fletcher_NeuroImage2009.pdf">The geometric median on Riemannian manifolds with applications to robust atlas estimation</a>,
+<a href="assets/documents/Fletcher_NeuroImage2009.pdf">The geometric median on Riemannian manifolds with applications to robust atlas estimation</a>,
 Neuroimage 45 (1 Suppl) (2008) s143-s152.
 <br> -->
 I.Norman Katz:
@@ -2879,7 +2881,7 @@ Although it is possible to devise problems for which Weiszfeld's convergence is 
 they arise rarely in practice.]
 <br>
 James G. Morris: 
-<a href="Morris1981Weiszfeld.pdf">Convergence of the Weiszfeld Algorithm
+<a href="assets/documents/Morris1981Weiszfeld.pdf">Convergence of the Weiszfeld Algorithm
 for Weber Problems Using a Generalized "Distance" Function</a>,
 Operations Research 29,1 (Jan-Feb 1981) 37-48.
 [Morris and Cooper1968 both consider minimizing the sum of <i>Kth powers</i>
@@ -2897,7 +2899,7 @@ But this has only been proven for K=1 and K=2.]
 <br>
 Lawrence M. Ostresh Jr: On the convergence of a class of iterative methods for solving the
 Weber location problem. Oper. Res. 26,4 (1978) 597-609;
-<a href="Ostresh1978WeisfeldTS.pdf">Convergence and Descent in the Fermat Location Problem</a>,
+<a href="assets/documents/Ostresh1978WeisfeldTS.pdf">Convergence and Descent in the Fermat Location Problem</a>,
 Transportation Science 12,2 (May 1978) 153-164.
 [Ostresh's 2nd paper first notes that
 if the sites are non-collinear the 
@@ -2936,11 +2938,11 @@ These papers were judged the best 5 among 351 submissions (by teams of undergrad
 the world) to a contest.  Here are those papers:
 </p><ol><li>
 Nikifor C. Bliznashki, Aaron Pollack, Russell Posner:
-<a href="MCM2007bpp.pdf">When Topologists Are Politicians</a>
+<a href="assets/documents/MCM2007bpp.pdf">When Topologists Are Politicians</a>
 (Duke Univ. pp.249-260);
 </li><li>
 Ben Conlee, Abe Othman, Chris Yetter:
-<a href="OthmanMCM.pdf">What to Feed a Gerrymander</a>
+<a href="assets/documents/OthmanMCM.pdf">What to Feed a Gerrymander</a>
 (Harvard, pp. 261-280);
 </li><li>
 Andrew Spann, Dan Gulotta, Daniel Kane:
@@ -2950,12 +2952,12 @@ redistricting with moment of inertia and diminishing halves methods
 (MIT, pp.281-300);
 </li><li>
 Lukas Svec, Sam Burden, Aaron Dilley:
-<a href="Week.8.lukas.svec.pdf">Applying Voronoi Diagrams to the Redistricting Problem 
+<a href="assets/documents/Week.8.lukas.svec.pdf">Applying Voronoi Diagrams to the Redistricting Problem 
 </a>
 (Univ.of Washington Seattle, pp.301-314);
 </li><li>
 Sam Whittle, Wesley Essig, Nathaniel S. Bottman:
-<a href="MCM_2007Smaller.pdf">
+<a href="assets/documents/MCM_2007Smaller.pdf">
 Why Weight? A Cluster-Theoretic Approach to Political Districting 
 </a>
 (Also Univ.of Washington Seattle,
@@ -2972,20 +2974,20 @@ its treatment by Spann et al.
 <b>C. Other books and papers:</b>
 </p>
 Sanjeev Arora:
-<a href="AroraTSP.ps">
+<a href="assets/documents/AroraTSP.ps">
 Polynomial-time Approximation Schemes for Euclidean TSP and other Geometric Problems</a>,
 Journal of the ACM 45,5 (1998) 753-782. 
-<a href="arorageo.ps">
+<a href="assets/documents/arorageo.ps">
 Approximation schemes for NP-hard geometric optimization problems: A survey<a>,
  Math'l Programming 97,1-2 (July 2003) 43-69.
 <br>
 S.Arora, P.Raghavan, S.Rao:
-<a href="AroraRaghavanRao.ps">Approximation schemes for Euclidean k-medians and related 
+<a href="assets/documents/AroraRaghavanRao.ps">Approximation schemes for Euclidean k-medians and related 
 problems</a>,
 STOC 30 (1998) 106-113.
 <br>
 David Arthur &amp; Sergei Vassilvitskii:
-<a href="kMeansPlusPlus.pdf"><tt>k-means++</tt>: The Advantages of Careful Seeding</a>,
+<a href="assets/documents/kMeansPlusPlus.pdf"><tt>k-means++</tt>: The Advantages of Careful Seeding</a>,
 Proceedings 18th annual ACM-SIAM symposium on Discrete algorithms SODA (2007) 1027-1035.
 [Unfortunately their proof does not work if we demand equipopulousness.]
 <!--
@@ -3016,7 +3018,7 @@ W. de Gruyter, Berlin 1989.
 QA685.F38
 <br>
 Junichiro Fukuyama:
-<a href="Fukuyama2006.10.2.pdf">NP-completeness of the planar separator problems</a>,
+<a href="assets/documents/Fukuyama2006.10.2.pdf">NP-completeness of the planar separator problems</a>,
 J. Graph Algorithms &amp; Applications 10,2 (2006) 317-328.
 <br>
 M.R.Garey &amp; D.S.Johnson: 
@@ -3034,7 +3036,7 @@ S.W.Hess, J.B.Weaver, H.J.Siegfeldt, J.N.Whelan, P.A.Zitlau:
 Nonpartisan political districting by computer, Operations Research 13 (1965) 998-1106.
 <br>
 Mehran Hojati: 
-<a href="Hojati.pdf">Optimal political districting</a>,
+<a href="assets/documents/Hojati.pdf">Optimal political districting</a>,
 Computer &amp; Operations Research 23,12 (1996) 1147-1161.
 [This paper proves an NP-completelness result and also suggests a method resembling both our
 <a href="#Phase2">2-phase improver</a> and the Spann-Gulotta-Kane approach,
@@ -3042,16 +3044,16 @@ for minimizing sum-of-squared-distances measure;
 and finally tries the method out on the problem of dividing Saskatoon into 42 districts.]
 <br>
 H.B. Hunt III, M.V. Marathe, V.Radhakrishnan, R.E.Stearns:
-<a href="HuntMRS98.pdf">The complexity of planar counting problems</a>,
+<a href="assets/documents/HuntMRS98.pdf">The complexity of planar counting problems</a>,
 SIAM J. Computing 27,4 (1998) 1142-1167.
 <br>
 <!-- Stavros G. Kolliopoulos &amp; Satish Rao:
-<a href="kmedian-3rd.pdf">
+<a href="assets/documents/kmedian-3rd.pdf">
 nearly linear-time approximation scheme for the Euclidean <i>k</i>-median problem</a>,
 SIAM J. Computing 37,3 (July 2007) 757-782.
 <br> -->
 Meena Mahajan, Prajakta Nimbhorkar, Kasturi Varadarajan:
-<a href="kmeansNPhard.pdf">The planar k-means problem is NP-hard</a>,
+<a href="assets/documents/kmeansNPhard.pdf">The planar k-means problem is NP-hard</a>,
 Theoretical Computer Science 442 (July 2012) 13-21.
 A preliminary version appeared in Proceedings of 
 3rd Annual Workshop on Algorithms and Computation
@@ -3061,7 +3063,7 @@ NP-hardness proof was found independently by Andrea Vattani, which works for
 k&asymp;N<sup>c</sup> for any 0&lt;c&lt;1.]
 <br>
 Nimrod Megiddo &amp; Kenneth J. Supowit: 
-<a href="MegiddoSupowit1984.pdf">On the Complexity of Some Common Geometric Location Problems</a>,
+<a href="assets/documents/MegiddoSupowit1984.pdf">On the Complexity of Some Common Geometric Location Problems</a>,
 SIAM J. Comput. 13,1 (1984) 182-196.
 [In their proof of the NP-hardness of the "k-median problem," it is almost trivial
 to make their NP-hard
@@ -3072,13 +3074,13 @@ Mahajan et al NP-completeness proof for the "k-means problem," thus showing the 
 of optimal equipopulous districting under the squared-distance-based cost measure.]
 <br>
 Joseph S.B. Mitchell:
-<a href="MitchellGuill99.ps">Guillotine Subdivisions 
+<a href="assets/documents/MitchellGuill99.ps">Guillotine Subdivisions 
 Approximate Polygonal Subdivisions:
 A simple polynomial-time approximation scheme for geometric TSP, k-MST, and related problems</a>,
 SIAM J. Computing 28,4 (1999) 1298-1309.
 There is also 
-an <a href=" MitchellGuillotine3.pdf">extension/improvement</a> of these techniques by Mitchell
-and a subsequent <a href="guillotineCut.ps">survey/reexamination</a> of them by
+an <a href="assets/documents/ MitchellGuillotine3.pdf">extension/improvement</a> of these techniques by Mitchell
+and a subsequent <a href="assets/documents/guillotineCut.ps">survey/reexamination</a> of them by
 by X.Cheng, D-Z.Du, J-M. Kim, H.Q.Ngo 2001.
 <br>
 F.P.Preparata &amp; S.I.Hong: Convex hulls of finite sets of points in two and
@@ -3089,7 +3091,7 @@ Finding the intersection of n halfspaces in time O(nlogn),
 Theoretical Computer Science  8 (1979) 45-55.
 <br>
 Kokichi Sugihara:
-<a href="jgg0606.pdf">Laguerre Voronoi Diagram on the Sphere</a>,
+<a href="assets/documents/jgg0606.pdf">Laguerre Voronoi Diagram on the Sphere</a>,
 J. Geometry and Graphics 6,1 (2002) 69-81.
 <br>
 Pravin M. Vaidya: 
@@ -3109,11 +3111,11 @@ Symposium Computational Geometry (SoCG 2004) 247-252;
 Symposium on Discrete Algorithms (SODA 1999) 805-814.
 <br>
 Andrea Vattani: 
-<a href="VattaniKmeans.pdf">K-means requires exponentially many iterations even in the plane</a>,
+<a href="assets/documents/VattaniKmeans.pdf">K-means requires exponentially many iterations even in the plane</a>,
 Special Issue of Discrete and Computational Geometry 45,4 (March 2011) 596-616.
 <br>
 Andrea Vattani: 
-<a href="VattaniKmeansNPC.pdf">The NP-hardness of k-means clustering in the plane</a>,
+<a href="assets/documents/VattaniKmeansNPC.pdf">The NP-hardness of k-means clustering in the plane</a>,
 Manuscript filched from Vattani's web page 2009.
 <br>
 B.Weaver &amp; S.W.Hess: A procedure for nonpartisan districting,
@@ -3137,7 +3139,7 @@ H.F.Kaiser:  An objective method for establishing legislative districts,
 Midwest  J. Political Science 10 (1966) 200-213.
 <!--
 <br>
-John Mackenzie: <a href="JohnMackGerry.pdf">Gerrymandering and Legislator Efficiency</a>
+John Mackenzie: <a href="assets/documents/JohnMackGerry.pdf">Gerrymandering and Legislator Efficiency</a>
 Mackenzie introduced the following measure Q of badness, which some have branded the
 "Mackenzie index":
 <blockquote>
@@ -3199,12 +3201,12 @@ Minnesota Law Review 50 (1966) 443-452.
 Peter J. Taylor: A new shape measure for evaluating electoral districts,
 American Political Science Review 67,3 (1977) 947-950.
 <br>
-Takeo Yamada: <a href="Yamada09-3.pdf">A minimax spanning forest
+Takeo Yamada: <a href="assets/documents/Yamada09-3.pdf">A minimax spanning forest
 approach to the political districting problem</a>,
 Int'l J. Systems Science 40,5 (May 2009) 471-477.
 <br>
 H.P.Young: 
-<a href="YoungCompactness.pdf">Measuring the compactness of legislative districts</a>, 
+<a href="assets/documents/YoungCompactness.pdf">Measuring the compactness of legislative districts</a>, 
 Legislative Studies Quarterly 13,1 (1988) 105-115.
 [Discusses how bad various district-shape-quality measures advanced by
 previous authors are, hence suggests giving up on all of them and abandoning problem as 

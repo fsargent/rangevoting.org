@@ -1,0 +1,31 @@
+TITLE
+Reweighted range voting -- new multiwinner voting method
+
+AUTHOR
+Warren D. Smith
+
+ABSTRACT
+Reweighted range voting (RRV), a new multiwinner voting scheme,
+is defined and its main properties elucidated.
+Compared with good quality single transferable vote (STV) schemes,
+RRV is algorithmically simpler,
+grants voters 
+greater expressivity (RRV votes are real vectors), 
+is monotonic, and is less vulnerable to painful tied and near-tied
+elections.  RRV also seems less ``chaotic'' than STV in its
+operation and seems to encourage voter honesty to a greater degree
+(although I have no precise definition of exactly what these things mean).
+RRV reduces to ``range voting,'' the experimentally
+best 1-winner scheme,  in the 1-winner case.
+Like good quality STV schemes and my previous
+``asset voting,'' RRV obeys a proportionality theorem and offers good immunity
+both to ``candidate cloning'' election-manipulation attempts, and to the
+``wasted vote'' strategic problem that plagues 3-candidate plurality elections.
+
+We also reexamine some fundamental issues about multiwinner elections,
+such as ``why is proportionality a good thing?''  and
+``what is the chance an STV election will be nonmonotonic?''
+and we prove a new fundamental impossibility theorem.
+
+DATE
+19 Sept 2004.

@@ -1,0 +1,29 @@
+ Title 
+The relative volumes of wires and components in a computer
+
+ Author 
+Warren D. Smith
+
+ Abstract
+In a computer with a fixed number of ``components'' of fixed sizes
+and a fixed ``wiring diagram,'' what
+wire thicknesses will result in maximum performance?
+For a model of neurons, Chklovskii and Stevens argued that the ``wires'' should
+optimally
+consume $x = 3/2$ times the volume of the ``components.''
+For 2D VLSI with thin sheet conductors we argue $x \to 0$ is best
+(albeit difficult to achieve in practice).
+For 2D or 3D VLSI with cylindrical wires, $x \to \infty$ is best if RC delays
+in wires
+dominate; $x \to 0$ is best if source resistances dominate.
+For fiber optics and superconducting transmission lines $x \to 0$ is
+best. For a model of the ``ultimate'' computer achieving
+thermodynamic limits on inter-component information fluxes, the same
+mathematics as Chklovskii and Stevens's neuron model re-occurs
+for a different reason, so that again $x = 3/2$ seems best.
+\end{Abstract}
+
+ Keywords
+Neurons, fiber optics, superconducting transmission lines, computer
+architecture, VLSI theory, thermodynamic limits on information flux.
+

@@ -1,0 +1,115 @@
+
+POSSIBLE PREFACE (written in LATEX) for book 
+"Quaternions, octonions, and now, 16-ons and $2^n$-ons; 
+New kinds of numbers"  
+by   Warren D. Smith   February 2004
+=================================================================
+This book introduces a new kind of numbers called ``$2^n$-ons.''
+The previously known real numbers, complex numbers,
+quaternions, and octonions are the 1, 2, 4, and 8-dimensional
+special cases of the $2^n$-ons, i.e., the 
+1-ons, 2-ons, 4-ons, and 8-ons, respectively.  
+By means of a new dimension-doubling process, we show how 
+to extend these into dimensions 16, 32, and so on forever.
+
+Why are only powers of 2 permitted as dimensions?
+One of the most important properties of a $2^n$-on
+$x$ is that it has a norm $|x|$
+(corresponding to its \emph{length} as a Euclidean vector)
+such that if $ab = c$, then $|a| \cdot |b| = |c|$.
+We shall see that this norm-multiplicativity
+requirement, combined with the demand that the multiplication
+law be computable solely by using the 4 arithmetic operations,
+prevents any dimensions besides powers of 2.
+If we restrict ourselves to the \emph{three}
+non-divisive arithmetic operations $\{+ , - , \cdot \}$
+then famous theorems show that
+only dimensions 1,2,4,8 are permissible; 
+our point is that this restriction is artificial and 
+there is no need to stop at the 8-ons.
+
+Why should people care about the $2^n$-ons, and
+why have they cared about quaternions and octonions?
+The top reason is that among all multidimensional
+algebraic entities, these are the
+ones most deserving to be called ``numbers:''
+\begin{enumerate}
+\item
+Numbers may be added, subtracted, or multiplied to get another.
+\item
+There are a continuum infinity of numbers.
+\item
+There is a unique number called $1$ such that $1x=x1=x$.
+\item
+Another unique number, called $0$, is such that $0x=x0=0$ and $x+0=0+x=x$.
+\item
+$x(y+z) = xy + xz$.
+\item
+If two numbers are multiplied, their lengths multiply.
+The length of a nonzero number is a positive real.
+\item
+If $x \ne 0$, then there is a unique number $x^{-1}$ such that 
+$x x^{-1} = x^{-1} x = 1$.
+\item
+If $x y = z$, then $y = x^{-1} z$.
+\item
+Exponentiation to integer powers obeys $x^p x^q = x^{p+q}$
+and $(x^p)^q = x^{pq}$.
+\end{enumerate}
+
+A second reason is that the $2^n$-ons generalize the 
+extremely useful 3D notion of the \emph{vector product} 
+$\vec{a} = \vec{b} \times  \vec{c}$
+(beloved by physicists)
+to all dimensions of the form $2^r - 1$.
+(Again, we shall show that these are the only
+permissible dimensions.)
+
+A third reason is that
+complex numbers, quaternions and octonions have been useful 
+for understanding, and for computing in, low-dimensional geometry.  
+For example, the quaternions yield a superior way to represent
+3D and 4D rotations.  Will the $2^n$-ons be equally useful?
+
+Finally, the fourth reason is that one would like to be
+able to \emph{divide} two numbers, that is, to solve
+$w x = y$ or $x w = y$ for $x$.  We shall show that
+solutions to generic division problems exist and
+are unique in the 16-ons, again surprisingly evading a famous
+impossibility theorem.
+
+The $2^n$-ons obey and disobey a whole world of properties,
+and much of the book is devoted to exploring them and
+to investigating ways in which our $2^n$-on definition
+is ``unique'' and best possible.''
+
+This book also contains three new contributions of
+non-$2^n$-onic interest:
+\begin{enumerate}
+\item
+New ways are invented to make your computer prove identities,
+instead of you.  This should be of interest to anybody
+who cares about computer algebra.
+\item
+We introduce a new notion called ``generalized smoothness'' 
+into topology which enables many important topological results
+to be applied even in the \emph{absence} of continuity. 
+The 16-on multiplication map is generalized smooth.
+But anybody interested in continuum topology would be
+strongly advised to comprehend this notion because it
+probably has many applications that have nothing to do 
+with 16-ons.
+\item
+We introduce for the first time a ``taxonomy of loops,''
+organizing loop theory into phylla and species
+to bring order where there once was chaos.
+(``Loops'' are non-associative groups.)
+This taxonomy suits our purposes by providing a ready-made
+pre-organized set of valid and invalid $2^n$-on identities.
+But again, it should be of wider interest.
+Indeed, anyone entering the wilds of loop theory without
+first reading this taxonomy,  will be in the position
+of a novice entering a new country without a map.
+\end{enumerate}  
+========================================================================
+

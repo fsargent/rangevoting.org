@@ -1,0 +1,85 @@
+
+Improved approximation schemes for geometrical graphs
+via ``spanners'' and ``banyans''
+
+ Satish B. Rao \& Warren D. Smith
+
+Abstract
+
+We give deterministic and
+randomized algorithms to find a Euclidean traveling salesman tour
+(TST) of length within $(1+1/s)$
+times optimal. They run in $O(N \log N)$ time and $O(N)$ space
+for constant dimension and $s$.
+These time and space bounds are optimal in
+an algebraic computation tree model.
+We can also find a $(1+1/s)$ times optimal
+length 2-matching (M2M), edge cover (EC), minimum spanning tree (MST),
+Steiner minimal tree (SMT), rectilinear ditto (RSMT),
+and related graphs in
+the same time bound.
+
+This improves recent algorithms of Arora,
+which had used
+$N (\log N)^{O(s^{d-1})}$ time in fixed
+dimension $d$ to produce a $(1+1/s)$ times optimal TST (or SMT, 
+RSMT) with success probability
+$1/2$.  To verify success, however, Arora could only use
+a deterministic version of his algorithm that took a factor of $N^d$ more
+time.  The increase in running time for our deterministic version
+depends only on $s$.
+
+Arora's approach can also be extended to produce other
+$(1+\epsilon)$-approximate geometrical graphs besides TSTs, e.g.
+the minimum matching (MM) and subgraph
+versions of the MST and TST problems. Our methods
+(at least at the moment) don't apply to those problems, but we
+can produce a $1.001 \exp ( 8 \cdot 2^{1-1/(d-1)} \sqrt{d} )$-approximate MM
+in $O(N \log N)$ Monte Carlo time.
+
+Our algorithms are based on using low-weight Euclidean {\em spanner
+graphs} (and generalizations of them)
+in conjunction with the hierarchical structure theorems that
+serve as the basis of Arora's work.  
+
+A ``$t$-spanner'' is a graph on $N$ sites such that shortest path
+distance between two spanner vertices approximates the Euclidean
+distance
+to within a factor of $t$. 
+By making work by Arya, Das, et al. more explicit,
+we show that
+a $(1+1/s)$-spanner of $N$ sites in $d$-space is
+computable in $(sd)^{O(d)} N \log N$ time and $(sd)^{O(d)} N$ space,
+has maximum valence $(sd)^{O(d)}$, and is $(sd)^{O(d)}$ times longer
+than the MST.
+We show that spanners can in principle be made orders of magnitude
+shorter and simpler by allowing ``Steiner points.''
+
+We introduce a remarkable
+generalization of the
+notion of ``$t$-spanner,'' the ``$t$-banyan,''
+that $t$-approximates interconnection costs for site subsets
+of {\it any} cardinality, not just 2. If $d \ge 1$ and $\epsilon > 0$
+are fixed, we show a $(1+\epsilon)$-banyan of $N$ sites
+in $d$-space exists, has $O(N)$ vertices and $O(N)$ edges,
+is only a constant factor longer than the MST,
+and is computable in $O(N \log N)$ time.
+
+Keywords
+
+Polynomial time approximation schemes,
+optimal algorithms,
+derandomization,
+Traveling salesman tour, 
+Steiner minimum tree,
+Minimum spanning tree,
+Minimum matchings,
+2-matchings,
+Edge cover,
+Rectilinear Steiner minimum tree,
+quadtrees,
+spanners,
+banyans.
+
+4 figures
+0 tables

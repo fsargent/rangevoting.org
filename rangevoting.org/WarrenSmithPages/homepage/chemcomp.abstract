@@ -1,0 +1,53 @@
+Computational complexity of synthetic chemistry -- Basic facts
+
+Warren D. Smith
+
+Abstract
+
+Three negative results:
+\begin{enumerate}
+\item
+ Given a set of allowed starting materials and allowed chemical
+reactions, the problem of determining whether a chemical of
+specified structure is synthesizable is Turing undecidable.
+\item
+ The question of whether it is synthesizable in $N$ steps is
+NP-complete. These 2 results apply in a general abstract setting
+and do not prove anything about how hard the problem is with any specific
+set of starting materials and allowed reactions. In particular
+we prove nothing about the case when the starting materials are all
+commercially available chemicals and the reactions are all known
+reactions!
+\item
+ The IUPAC naming scheme for assigning names to
+organic compounds will assign ambiguous names to most $N$-atom
+compounds and requires great chemical expertise.
+We show that both these problems are avoidable with
+alternative naming schemes,
+There are unquestionably {\it far} simpler and better 
+methods to name chemical compounds
+than the IUPAC scheme.
+\end{enumerate}
+All 3 of these facts are almost trivial from the viewpoint
+of modern computer science, but I don't think they've been mentioned
+in the chemical literature.
+
+Positive results:
+We discuss algorithms for finding out how to solve the
+synthesis problem (of determining whether something is synthesizable,
+and what the best synthetic process is). An interesting generalization
+of the famous ``shortest path problem'' in directed graphs arises
+in which the paths become synthetic trees, the graphs become hypergraphs, and
+the distances become synthetic costs. This problem is soluble
+either by generalizing Dijkstra's algorithm or the
+dynamic programming algorithm.
+Despite the fact that these algorithms are highly efficient
+as a function of the size of the hypergraph, in practice because the
+hypergraph arising from chemistry is enormous, that is inadequate.
+We discuss methods for ameliorating this.
+
+Keywords
+
+Hypergraph, graph isomorphism, chemical nomenclature, Turing undecidable,
+NP-complete, synthetic trees, generalized shortest paths.
+

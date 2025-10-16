@@ -1,0 +1,18 @@
+Title
+How to sample from a probability distribution
+
+Author
+Warren D. Smith
+ NECI, 4 Independence Way Princeton NJ 08540 USA
+ wds@research.NJ.NEC.COM
+
+Abstract
+
+This brief note explains how to sample a probability $N$-vector in
+$O(1)$ time per sample, with the aid of a $O(N)$-word data structure
+buildable in $O(N)$ steps. The algorithm is highly practical;
+we give pseudocode based on actual working code.
+
+Keywords
+
+Sampling. Linear time algorithm. Data structure.

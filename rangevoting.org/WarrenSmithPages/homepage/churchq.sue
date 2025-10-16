@@ -1,0 +1,86 @@
+ Title 
+Church's thesis meets quantum mechanics
+
+ Author
+Warren D. Smith
+
+ Abstract
+``Church's thesis'' is the notion that any ``reasonable physical
+system'' may be ``simulated'' by a Turing machine. The ``strong''
+Church's thesis adds ``...with at most polynomial slowdown.'' The
+``intermediate'' Church's thesis (my own invention) instead says
+``...with at most polynomial amplification of memory-space
+requirements.''  (All the terms in quotes need to be defined.) In your
+favorite set of physical laws: is Church's thesis true?
+
+Church's theses are central issues for both physics and computer
+science.  With the precise specification of some set of laws of
+physics, and a precise definition of ``simulation'' and
+``polynomial,'' Church's theses become susceptible to mathematical
+proof or disproof.
+
+In a previous report, I essentially settled the question for classical
+mechanics.  Recent theoretical investigations of ``quantum computers''
+make it look likely that the strong Church thesis is {\em false} in
+linear quantum mechanics, and indeed even in some models of {\em open}
+quantum systems. In the present paper, I show (at least, if one adopts
+my assumptions and definitions -- and there are a large number of
+them) that the weak Church's thesis is {\em true} for nonrelativistic
+quantum mechanics with sufficiently nice interparticle potentials.
+``Sufficiently nice'' includes ``Coulombic.''  I.e., {\em quantum
+mechanics is simulable.}  We give a simulation algorithm.  If the
+simulation is performed by a quantum computer rather than a
+conventional one, then the slowdown is only polynomial. In other
+words, even Church's strong thesis becomes true if ``Turing machine''
+is replaced by ``quantum Turing machine.''  With a conventional Turing
+machine, we then automatically get the intermediate thesis; and if the
+initial quantum state is represented non-sparsely, (i.e.  in a format
+in which exponentially many complex amplitudes are specified) then the
+simulation of quantum time evolution actually runs in quasipolynomial
+time with respect to that input length.
+On the other hand, QM is {\em not} algorithmic,
+nor even self-consistent, in the presence of point
+{\em magnetic} dipoles.
+
+The proof strategy involves 
+(1) defining what ``simulation'' and
+``reasonable physical system'' should be. 
+(2) showing that ``regularizing'' the potential introduces
+acceptably small error. (For Coulomb potentials, the
+most natural regularization procedure is to replace ``point''
+charges by uniform distributions of charge within small
+balls centered at the point.)
+(3) Showing how a quantum computer can approximately evaluate Feynman
+path integrals with phase factor integrands corresponding
+to regularized potentials.
+(4) Obtaining effectively computable
+error bounds for this approximation.  
+(5) Finally, the quantum computer is simulated
+by a conventional computer.
+
+A different method, based on Rayleigh-Ritz approximate eigenfunctions,
+also seems to yield Church's intermediate thesis. (Treated in an
+appendix.)  Although this method is conceptually simpler, it
+apparently does not lead to efficient algorithms for a quantum
+computer. But it does yield a proof that the spectral energies of
+quantum bound systems form a computable real sequence.
+
+
+
+ Keywords
+Church's thesis,
+quantum $N$-body problem,
+rigorous physics,
+uncertainty principle,
+quantum computers,
+Feynman path integrals,
+symplectic integration,
+exponential splitting formulas,
+Trotter product formula,
+BQP,
+Rayleigh Ritz variational method,
+computable real numbers,
+operator computability theory,
+potential singularities,
+Coulomb's law,
+analyticity.

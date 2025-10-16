@@ -1,0 +1,70 @@
+  Applications of geometric separator theorems
+Warren D. Smith and Nicholas C. Wormald
+
+ABSTRACT
+The companion paper ``Geometric separator theorems''
+proved a large number
+of separator theorems about geometrical objects.
+We now find geometric separator theorems about geometrical 
+{\em graphs}, and applications (mostly algorithmic) of them.
+
+Examples:
+{\tt I}: There exists a rectangle crossed by the minimal spanning
+tree of $N$ sites
+in the plane $\le (4 \cdot 3^{1/4} + o(1)) \sqrt{N}$ times, having
+$\le 2N/3$ sites inside and outside.
+{\tt II}: Similar results for
+other geometrical graphs such as minimum matchings and traveling
+salesman tours, and in arbitrary dimensions.
+{\tt III}: $E$-edge 2-connected torus (or Klein bottle)
+graphs, each of whose valencies and face sizes are $\ge 3$,
+have a $1/3$-$2/3$ separator with $\le (4+o(1)) \sqrt{E}$
+vertices in the separator. The separator corresponds to a simple
+closed curve.
+{\tt IV}: We exhibit $V$-vertex planar graphs such that any $1/3$-$2/3$
+separator must have cardinality$\ge \sqrt{5V/2}$.
+{\tt V}: We present the first subexponential algorithms for
+optimal traveling salesman tour and rectilinear
+Steiner tree of $N$ points in $d$-space, $d$ fixed.
+The runtime if $d \ge 2$ is fixed is $N^{O(N^{1-1/d})}$.
+The same runtime bound applies for finding a $1 + O(N^{-p})$ times
+optimal length Steiner tree in the Euclidean norm if $p > 0$
+is fixed.
+{\tt VI}: Algorithm to determine all intersection relationships
+among $N$ convex $d$-bodies with aspect ratios bounded by $B$.
+If a point of space can be in at most $\kappa$ of the bodies
+(i.e. they are ``$\kappa$-thick''),
+then the runtime is $(\log N + \kappa B^d C) d^{O(d)} N$
+and the memory requirement is $d^{O(d)} N$, where $C$ is
+the amount of time required to test if two given objects
+intersect.
+{\tt VII}: Solve linear systems whose graph structure is
+an intersection graph as in VI, in 
+$O ( [ d \kappa^{1/d} B N^{1-1/d}]^\omega )$
+time, $\omega < 2.376$.
+{\tt VIII}: New data structure with $O(\log N)$ query time,
+$O(N)$ space consumption, and $O(N \log N)$ build time,
+to support point location among
+$N$ convex boundedly thick convex bodies of
+bounded aspect ratios in bounded dimension.
+{\tt IX}: New algorithms for obstacle avoiding short paths among
+boundedly thick obstacles of bounded aspect ratio in the plane.
+E.g. this may be solved in preprocessing time
+$O(N^{3/2} \log N )$
+with storage 
+$O(N \log N)$
+and query time 
+$O ( \log N )$ to report a path $3.01$ times longer
+than optimal (in the $L_1$ obstacle avoiding metric)
+between any two given points.
+
+KEYWORDS
+Separator theorems, Steiner minimal tree, Rectilinear Steiner minimal
+tree, traveling salesman tour, minimum spanning tree, spanners,
+banyans, minimum matching, pigeonhole principle, torus graphs,
+planar graphs, point location, computational geometry,
+discrete isoperimetric theorems, Delaunay triangulation,
+Gabriel graph, universal graphs, nested dissection,
+obstacle avoiding shortest paths.
+
+

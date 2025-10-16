@@ -1,0 +1,67 @@
+TITLE
+Quaternions, octonions, and now, 16-ons and $2^n$-ons;
+New kinds of numbers.
+
+AUTHOR
+Warren D. Smith
+
+ABSTRACT
+``Cayley-Dickson doubling,'' starting from the real numbers,
+successively yields the complex numbers (dimension 2),
+quaternions (4), and octonions (8).
+Each contains all the previous ones as subalgebras.
+Famous Theorems, previously thought to be the last word,
+state that these are the full set of division (or normed) 
+algebras with $1$ over the real numbers.  
+Their properties keep degrading: the 
+complex numbers lose the ordering and 
+self-conjugacy ($\overline{\overline{x}} = x$)
+properties of the reals; at the quaternions we lose commutativity;
+and at the octonions we lose associativity.
+If one keeps Cayley-Dickson doubling to get the
+16-dimensional ``sedenions,'' zero-divisors appear.  
+
+We introduce a \emph{different} doubling process
+which also produces the complexes, quaternions, and octonions, but
+keeps going to yield $2^n$-dimensional normed algebraic
+structures, for every $n > 0$.
+Each contains all the previous ones as subalgebras.
+We'll see how these evade the Famous Impossibility Theorems.
+They also lead to a rational ``vector product'' operation in $2^k-1$ dimensions
+for each $k \ge 2$; this operation is impossible
+in other dimensions.
+
+But properties continue to degrade.  The 16-ons
+lose distributivity, 
+right-cancellation $yx \cdot x^{-1} = y$, 
+flexibility $a \cdot ba = ab \cdot a$, and
+antiautomorphism $\overline{ab} = \overline{b} \overline{a}$.
+The 32-ons lose the properties that the solutions
+of generic division problems necessarily exist
+and are unique, and they lose the ``Trotter product limit formula.''
+We introduce an important new notion to
+topology we call ``generalized smoothness.'' The $2^n$-ons 
+are generalized smooth for $n \le 4$.
+
+All the $2^n$-ons have $1$ and obey numerous identities
+including weakenings of the distributive, associative, 
+and antiautomorphism laws.
+In the case of 16-ons these weakened distributivity laws 
+\emph{characterize} them, i.e. our 16-ons are, in a sense,
+unique and best-possible.  Our $2^n$-ons are also unique,
+albeit in a much weaker sense.  
+The $2^n$-ons with $n \le 4$ support
+a version of the fundamental theorem of algebra.
+Normed algebras (rational but not nec. distributive) over
+the reals are impossible in dimensions other than powers of 2.
+
+KEYWORDS
+Quaternions, octonions, 16-ons, 
+fundamental theorem of algebra, division,
+loops, non-distributive algebras, topology,
+generalized smoothness,
+Brouwer degree, vector fields on spheres,
+vector product, weak-linearity, left-alternative, 
+Moufang and Bol laws, Schwartz-Zippel lemma,
+automatic verification of polynomial identities,
+Trotter product limit formula.

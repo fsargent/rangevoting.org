@@ -1,0 +1,34 @@
+
+Values of the merging function
+and algorithm design as a game
+
+Warren D. Smith
+and
+Kevin J. Lang
+
+Abstract:
+Finding algorithms that are optimal for worst case input is equivalent
+to solving a 2-player game of perfect information.  The {\it merging
+game} arises when finding the minimum number $M(m,n)$ of comparisons
+needed to merge two sorted lists of cardinalities $m$ and $n$.  We
+devised a computer program capable of determining
+any value of $M(m,n) \le 20$. This program was based on standard game
+solving techniques (alpha-beta search, transposition table) plus
+bounding, ``fuzzy trans table,'' and ``partitioning'' ideas specific
+to the merging game.  Thanks to a new idea called ``iterative
+widening,'' our game-solving program can also determine strong upper
+bounds (but not lower bounds) on $M(m,n)$ in a much larger region.
+The widening/shrinking idea may have other applications in computer
+game playing.
+
+We present a large table of
+bounds on $M(m,n)$ which were obtained
+by combining our new results with previous bounds on
+$M(m,n)$ (which we survey).
+
+Keywords:
+Computer game-playing, optimal algorithms, minimum comparison merging,
+iterative widening, algorithm design as a game.
+
+Other notes: at present (Thu Jun 23 17:31:01 EDT 1994)
+it has 24 figures and 2 tables, all 26 of them being on separate sheets.

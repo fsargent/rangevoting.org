@@ -1,0 +1,249 @@
+Possible press release about voting paper by Warren D. Smith...
+=============================================================
+
+With the battle between presidential candidates 
+A.Gore and G.W.Bush over tiny vote margins
+in Florida growing ever more tiresome, 
+the weary public  must be asking themselves: 
+"Isn't there a better way to run an election?"
+
+The problem is not just the tactics of Bush, Gore, and 
+their lawyers. An earlier problem had been the entry into 
+the race of third party candidate Ralph Nader. 
+Although only about 2-3% of voters nationwide voted for Nader,
+this percentage far exceeds the difference between the
+numbers of Bush and Gore votes - especially in the critical
+state of Florida.
+Polls indicate that 40% of Nader voters would have voted Gore,
+20% would have voted Bush, and the remaining 40% other
+(or no vote) - enough that Gore clearly would have won -
+had Nader not been in the race.  However, at present it appears
+that Bush has won. If so, that means that the USA
+was deprived of the candidate more Americans wanted than the 
+winner, by the very voting system itself.
+
+This suggests that the voting method used in the USA
+has somehow been mathematically ineffective
+and unfair to Gore.
+Looking more deeply, it has also been unfair to Nader
+and/or other 3rd party candidates,
+since millions of would-be Nader voters 
+felt "tactically forced" to betray their favorite and
+to "dishonestly" vote for their nonfavorite: Gore or Bush.
+Looking still more deeply, the candidate Bush
+had defeated in the earlier Republican "primary" election,
+John McCain, enjoyed (polls indicated) more combined voter
+support than either Bush or Gore. If so, the voting
+system has acted to deprive Americans of a choice
+they wanted more than the winner, not once, but twice,
+in the same election.
+
+So voting systems can and do pick the apparently "wrong" winner.
+Does this invalidate the whole idea of democracy? How flawed
+must voting systems be? What can mathematics tell us about this?
+
+Recent work by mathematician
+Warren D. Smith of NEC Research Institute
+indicates that the voting systems used by all democracies
+are considerably more flawed than they need be.
+Smith claims that the "cumulative historical damage caused
+by the use of mathematically non-optimal voting systems,
+has been tremendous."
+
+Smith advocates a system he calls "range voting."
+In this system, you provide a k-tuple of real numbers,
+each in some fixed range (Smith uses -1 to 1, but 0-1
+and 0-10 are other popular choices; all are equivalent) 
+as your "vote" in a k-candidate election. 
+
+For simplicity, let us, like Olympic figure skating judges,
+use the range 0-10. Consider a 4-way election
+with candidates (Buchanan, Bush, Gore, Nader).
+You could provide, as your vote, the 4-tuple
+(0, 2, 9, 10). All the vote-tuples are then added up,
+and the winner is the candidate with the largest 
+total. For example, if this vote and also somebody else's vote
+(6, 10, 0, 8) were added, we would get
+(6, 12, 9, 18). The largest total would be 18
+so (if these were the only two voters),
+Nader would be the winner.
+
+Notice that, in range voting, a Nader voter
+COULD indicate his preference for Gore over Bush
+(or vice versa)
+whereas, in the usual "plurality" system used in
+the election, it was impossible for a Nader voter to
+indicate that preference 
+in any way. Nor need a vote for Nader be "wasted"
+in range voting. Thus, range voting's net effect is to give the voter
+more ability to express more of his feelings more
+honestly, without being "tactically misguided."
+With more voters expressing more feelings more honestly,
+hopefully the election results reflect what the voters want,
+more accurately, more often.
+
+Smith has proved theorems saying, roughly, that range voting is the
+best possible voting system within a wide class of possible
+voting systems which he calls "COAF systems." (COAF stands for 
+"Compact set based One-vote Additive Fair"). By "best," Smith means
+that range voting, roughly, offers voters both the opportunity
+and the incentive to express the most possible information in their vote.
+
+But, the evidence for the superiority of Range Voting
+that Smith considers MOST convincing, is not a theorem,
+but rather a computer simulation of 31 kinds of voting systems
+in millions of artificial "elections," each with 2-5 contenders.
+The voting systems Smith tried (besides range voting) include:
+*  plain plurality (the most traditional system), 
+* "bullet" voting (which is like plurality, except instead of casting
+  a vote FOR your favorite candidate, you cast one AGAINST the candidate
+  you hate the most! The candidate hit by the fewest such "bullets" wins),
+* The "Borda count" system, invented by French scientist
+  Jean-Charles de Borda in 1770, where you rank the candidates in order
+  of preference as your vote (the rankings are added). For example,
+  with N candidates, your first preference gets N-1 points, your
+  second gets N-2, etc.; the candidate you dislike most gets 0.
+  The highest point-getter is the winner.
+  Borda's method was used in votes in the French Academy of Sciences 
+  for many years until Napoleon introduced a different method.
+* The Condorcet "least reversal" system advocated by Borda's rival
+  the Marquis de Condorcet, in 1785, but unfortunately largely
+  abandoned. In this system, the winner is the one who would require the fewest
+  reversals of voter pairwise preferences in order to win every
+  pairwise (2 candidate) election. (Voters give a list of
+  of all the candidates ordered by preference, as their vote.)
+* Two variants of the "single transferable vote" (STV) system. In this
+  system, the candidate with the fewest votes loses, and then all
+  votes for losing candidates are "transferred" to the next
+  candidate on a ordered list supplied by each voter. Such elimination-rounds
+  continue until only one non-losing candidate remains. This system
+  was invented by British politician Thomas Hare in about 1850 and praised
+  in the writing of John Stuart Mill, who called Hare "a man of great capacity,
+  fitted alike for large general views and for the contrivance of 
+  practical details" and said the "transcendant advantages" of Hare's
+  plan were "so numerous... that, in my conviction, they place Mr. Hare's plan
+  among the very greatest improvements yet made in the theory and practice 
+  of government." Hare's method is presently used to elect some Australian 
+  representatives and is used in national elections in Ireland, where it
+  is specified in the (1937) constitution. In two nationwide referendums
+  (in 1959 and 1968) the Irish were offered the option of abandoning the
+  STV system, and both times chose to keep it.
+* "Approval voting" where you "approve" or "disapprove"
+  of each candidate, and the most-approved candidate wins.
+  (This method was invented independently by several theorists in the 1970s, 
+  including S.J.Brams, a political science professor at NYU. It is used 
+  in the internal elections of a number of professional societies, including
+  the International society of Electrical & Electronics Engineers.)
+and various others. 
+
+Using each voting system, Smith's computer-generated "voters"
+voted for computer generated "candidates." Each voter had a
+"utility" number for each candidate saying how much that candidate's
+election would benefit him. All these numbers, too, were artificially
+computer generated, by a choice of several different 
+randomized methods.
+
+"This is largest-ever simulation trying many different
+voting systems on the same elections, and the only one
+which involved range voting as a participating system,"
+said Smith.
+"Unlike in real elections involving humans," 
+Smith explains, "in my computer generated elections
+we actually KNOW the true, private, `Bayesian Utility values' of every
+candidate inside every voter's mind. So we can, after the election
+is over, accurately assess the damage - the exact amount, measured
+as a summed utility, by which the
+whole of society will suffer because of occasional election of
+a less-than-best candidate." (Statisticians call this "damage"
+the "Bayesian regret.")
+
+Smith's voters 
+could employ a number of "strategies" when choosing their
+vote. For example, they could be "honest." Or, they could
+be "rational" and seek to maximize the positive impact
+of their vote - which might (like the decision to "betray Nader"
+made by millions of Americans) involve casting a "dishonest"
+vote not accurately reflecting that voter's preferences.
+
+After about a day of number crunching, the computer reported
+the results, which favored Range Voting over all the other
+systems tried, both for honest voters, and for
+strategic voters. "The computer simulations tell us that,
+by adopting plurality voting, the USA and other democracies are
+`suffering' from non-optimal election results 
+more than they would have suffered with range voting," said Smith.
+How much more? 
+"On average, by a factor of 3-10 more 
+assuming honest voters (depending on the number of candidates
+in the election and other variables),
+and by a factor between 2.1 and 2.9
+for strategic voters."
+
+What about the Australian/Irish system and
+the "Borda count"? 
+Smith: "These are about 2 times worse than range voting,
+for strategic voters, and about 2-7 times worse, for honest voters.
+I was quite surprised at the resounding
+superiority of range voting over all the other methods. Because
+of my theorems, I expected range voting to be the best voting system, or
+to at least to be comparatively good, in
+a good fraction of my computer generated elections.
+But in fact, it was THE
+best system in 144 different kinds of elections -
+that is, EVERY kind I tried."
+
+144 different kinds of elections? "The different kinds
+arise from choosing different numbers of voters, different numbers
+of candidates, or different ways of generating the utility numbers
+in each voter's head. I tried 144 different combinations
+of these factors, doing 144 different runs of the computer program,"
+Smith explained.
+
+But perhaps the fact that range voting is 2-10 times better
+than plurality voting does not really matter because plurality
+voting hardly ever gets it wrong anyway? Does this matter in the real world?
+How much damage is really caused by poor voting systems?
+"You can get an idea of the scale of the damage by
+considering the Bayesian regret of the WORST possible election
+system - namely - the candidate who is the worst for society
+is automatically elected by my computer. The table shows
+that plurality voting causes 30% of that amount of damage
+if the voters act strategically. This is 60% of the damage caused
+by choosing a random candidate. I think that amount
+of damage is pretty significant."
+
+--------------TABLE--------------------------------------------
+Average damage (Bayesian regret) caused by various voting systems in
+200-voter, random utility elections with 5 candidates. (Scaled
+to make the damage caused by WORST candidate's election be 100.)
+---------------------------------------------------------------
+Elect Worst candidate                          100
+Elect random candidate                          50
+Range voting ("honest" voters)                   1.7
+Range voting ("strategic" voters)               10
+Plurality voting (honest)                       17
+Plurality voting (strategic)                    30
+STV (Australian/Irish system; honest)           10
+STV (Australian/Irish system; strategic)        30
+Bullet voting (honest voters)                   18
+Bullet voting (strategic voters)                49.9
+---------------------------------------------------------------
+
+In what ways would the political scene change if Range Voting were adopted?
+First, most analysts suspect that 
+the grip of the "two party system" would weaken and
+third parties would gradually become relatively more powerful.
+Second, it is suspected that voter turnout (which in the last two 
+presidential election years has been about 49 and 51% in the USA -
+and only about 36% in nonpresidential election years)
+would increase under range voting because more voters would feel less impotent,
+less forced to dishonestly support candidates they dislike,
+and more able to express their feelings in their vote.
+For example, turnouts in Irish elections, run under the
+more-expressive STV system, are usually about 80%,
+far higher than in USA elections and also higher than the turnouts
+in most other European countries, which are usually about 70%.
+
+===end of press release.=================================================
+
+

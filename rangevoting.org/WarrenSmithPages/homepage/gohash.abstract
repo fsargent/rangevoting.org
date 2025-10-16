@@ -1,0 +1,40 @@
+Hash functions for binary and ternary words
+
+Warren D. Smith   NECI
+
+Abstract
+We describe a simple integer-valued ``hash'' function $h ( x )$,
+where $x$ is a binary word of some fixed length. This hash function
+has the properties that
+\begin{enumerate}
+\item $h(x)$ may be computed in $O(n)$ steps where
+$n$ is the length of $x$,
+\item $h(y)$ may be computed in $O(d)$ time, if $h(x)$ is known and
+$y$ and $x$ differ at $d$ (known) bits.
+\item $h$ is ``locally collisionless:'' $h(x) \neq h(y)$ if $x \neq y$
+and
+$x$ and $y$ are 
+Hamming distance $\le k$ apart.
+\end{enumerate}
+These properties of our hash functions emerge
+from simple number theoretic arguments.
+
+Modifications of the same idea work for ternary words, and binary words
+of constant weight.  We mention two applications of this hash function
+in computer programming: to playing the Oriental game of Go, and to a
+new heuristic method of finding good local optima for intractible
+combinatorial optimization problems.  As an application of these
+properties in mathematics, we obtain new error correcting codes to
+radix $B$, with minimal distance 3.  We find a lower bound on the
+number of codewords which implies, subject to a certain
+number-theoretic conjecture, that these codes include an infinite
+number of new record-cardinality distance-3 codes.  Regardless of the
+fate of that conjecture, our construction certainly leads to thousands of
+particular new record ternary codes.
+
+Keywords
+
+Go, combinational optimization, local optima, hash function,
+difference sets, prime numbers, ternary error-correcting codes,
+simulated annealing.
+

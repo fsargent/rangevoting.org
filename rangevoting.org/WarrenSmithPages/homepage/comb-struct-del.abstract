@@ -1,0 +1,44 @@
+Combinatorial Structure of Delaunay Triangulations of the Plane (Extended
+               Abstract)
+
+
+M.B. Dillencourt, University of California;I. Rivin, NECI;W.D. Smith,
+               NECI
+
+
+11/06/91
+
+ABSTRACT
+
+Delaunay triangulations are closely related to inscribable polyhedra. A
+polyhedron is {\it inscribable} if it can be realized as the convex hull of
+a set of points on the surface of the sphere. The question of characterizing
+inscribable polyhedra dates back to Descartes and was posed as an open
+problem by Steiner in 1832. This problem has been solved by Rivin and
+Smith in 1991 using methods from hyperbolic geometry.
+This extended abstract
+sketches the following extensions and applications of the Rivin-Smith
+characterization. 
+\begin{enumerate} 
+\item An algorithm for producing an
+inscription of a polyhedron. 
+\item A proof that ``almost any'' completion of a
+degenerate Delaunay triangulation can be realized as a nondegenerate
+Delaunay triangulation of an arbitrarily small perturbation of the original
+point set. This implies, in particular, that general-purpose schemes for
+resolving degeneracies in geometric data are unnecessary when computing
+planar Delaunay triangulations. 
+\item A proof that any 4-connected
+simplicial polyhedron is both inscribable and circumscribable. This result
+implies that any plane triangulation without chords or nonfacial triangles is
+realizable as a Delaunay triangulation. Moreover, any ``medial'' polyhedron
+is both inscribable and circumscribable. 
+\item Upper and lower bounds for
+the number of inscribable and circumscribable simplicial polyhedra.
+\end{enumerate} 
+We conclude by mentioning some related results and open
+problems.
+
+  KEYWORDS:
+INSCRIBABLE GRAPHS, POLYHEDRA, DELAUNAY
+TRIANGULATIONS, DEGENERACIES, CONVEX PROGRAMMING

@@ -1,0 +1,52 @@
+
+Title 
+Complexity of Minimization
+
+Abstract
+
+An important problem in numerical analysis is trying to minimize (or
+maximize) a real function $F(x_1,x_2,..., x_d)$ of $d$ real
+variables. We investigate (and survey) its computational complexity
+borderlines.
+
+Results include (precise theorem statements are in the text):
+Minimizing, e.g., functions specified by polynomial formulas involving
+both trigonometric and ordinary arguments, is undecidable. Hence
+consider plain rational functions; we'll show minimizing these (more
+precisely, deciding whether the minimum lies below some threshhold) is
+in NP.  If the sum of the numerator and denominator degrees of a
+(multivariate) rational function is $\le 4$, then finding all its
+local minima is in $P$, {\em except} for the $4+0$ case of a quartic
+polynomial (or its reciprocal) in which case it is NP-complete.
+(There is a slight caveat for the case $3+1$; the ``polynomial'' runtime
+unfortunately depends also on an additional parameter, but for
+practical purposes this does not matter.)
+Indeed, even deciding whether a {\em specified} point is a {\em local}
+min is NP-complete for a quartic.  Minimizing a linear function in a
+cube is polynomial, but minimizing a quadratic in a cube is
+NP-complete. Minimizing a quadratic in a ball is in P, but it is
+NP-complete for a quartic (cubics: unknown).  In all these
+NP-completeness results, even {\em approximating} the value of the min
+is NP-complete, and the problems remain NP-complete even if all
+integers are input in {\em unary.}  The P minimization algorithms for
+low degree rational functions involve new techniques of ``multi-stage
+minimization'' and ``dimension reduction.''
+
+Minimizing functions ``unimodal on lines,'' is in P.  Solving systems
+of nonlinear equations $\vec{F}(\vec{x})=0$ is in P, if all the
+nonlinear functions $F_j$ are monotonic on lines.  We present evidence
+that minimizing strictly unimodal functions (with exactly one minimum,
+and no saddlepoints)
+is exponentially hard; but if additionally the function obeys certain
+derivative bounds, then hardness seems to occur {\em precisely} when
+there are extremely long ``winding valleys.''
+
+%Some of these results are extremely easy but have remained unnoticed;
+%others are not so easy.
+
+Keywords
+
+rational functions,
+minimization,
+NP-completeness,
+unimodal on lines

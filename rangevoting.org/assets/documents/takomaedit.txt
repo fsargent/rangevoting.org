@@ -1,0 +1,129 @@
+Possible editorial, 
+title = "Voting systems - advantages and disadvantages"
+author = "Warren D. Smith"
+
+Note to editor:  _italics_   *bold*.
+This is 7002 characters & 1177 words
+which is a little shorter than
+the original Richie editorial at
+7335 characters and 1206 words.
+
+Note: this was published in the Takoma (MD) Voice, Monday 29 Oct 2005.
+
+For the graphical sidebar add-on material: 
+   http://math.temple.edu/~wds/crv/takomagraphic.html
+
+=====================================================================
+
+Voting systems - advantages and disadvantages
+
+Rob Richie recently wrote an editorial in this newspaper advocating replacing
+the usual "plurality" voting system in Takoma Park, by "Instant Runoff Voting" (IRV).
+Richie is the founder of the Center for Voting and Democracy (CVD), a group 
+advocating IRV.
+
+Although we believe IRV has advantages over plurality, considerably greater 
+advantages can be achieved with greater simplicity and less cost by using a different system,
+_range voting_.  We would both like to see Range implemented in a city such as Takoma Park,
+and for Richie and his organization to recognize Range's superiority and instead advocate it.
+
+*Plurality*: your vote is the name of a single candidate.  The most-named candidate wins.
+
+*IRV:* your vote is a preference-ordering of the candidates, such as "Amy>Bob>Cal>Dee."
+The candidate top-ranked by the fewest voters is eliminated from the election and
+from all votes.  (I.e. if Bob were eliminated, then this vote would become "Amy>Cal>Dee";
+if Amy were eliminated it would become "Bob>Cal>Dee.")
+Then we do another round using the modified votes and reduced candidate set -
+and so on round by round, until only a single candidate remains - the winner.
+
+Richie also apparently is advocating permitting ballot "truncation" where voters
+only rank some but not all of the candidates, e.g. "Amy>Bob" or just "Amy"
+would also be permissible votes.  With truncation, if your ranked candidates all lose,
+then your vote gets discarded and is unused in the remainder of the election process.
+
+*Range:* your vote is a score for each candidate in some fixed numerical range, for example 0-9.
+For example, you could vote Amy=9, Bob=9, Cal=4, Dee=0.  
+We also recommend permitting voters to express "no opinion" about candidates by
+instead writing an X (intentional blank), e.g. Cal=X.
+The candidate with the highest average score wins.
+
+There are many reasons why range voting is superior.
+*Expressivity:*  You can express not only who you prefer to whom, but also
+by _how much_.  You can also rank candidates as equal.  You can also express ignorance
+about a candidate ("X") to leave the scoring about them to other, hopefully better-informed
+voters.  Or, you can give them 0.  With plurality, you are forced to give the minimum 
+possible amount of information in your vote, making it the worst possible voting system
+in this respect - while Range is more like the best possible.
+With IRV, if you want to say Hitler is the worst, Gandhi is the best,
+and you are ignorant about Snickel and Boodle, you simply are not permitted to say it.
+
+*Voting Machines:* Range voting can be handled by any voting machine in the USA, 
+right now, with no modification required, because it can actually be treated 
+as several artificial plurality-style elections.  IRV cannot.  
+In fact, although Richie claimed Takoma's Diebold voting machines could
+handle IRV after modifications which cost "extra,"
+the only way that could be done is if either all the machines were connected together in a 
+network, or if all the votes were _individually_ sent to a central tabulator:
+not just the vote _totals_ - the votes _themselves_.  
+
+This can make election administration a lot more difficult and dangerous/hackable.
+For example, after San Francisco adopted IRV in the 2004
+elections it immediately experienced massive problems with their ES&S machines and had to 
+delay reporting all the non-obvious election results for weeks.
+The Utah Republican Party stopped using IRV 
+at its party conventions in January 2004 because
+"after three years of doing it with delegates, there was still a lot of confusion" 
+and counting votes took them hours longer than usual.
+(The quote is from Spencer Jenkins, executive director of the Utah GOP.)
+Although many US cities adopted IRV during the 1900s, almost all abandoned it.
+
+*Spoiled ballots:* With Plurality, an accidental "overvote" invalidates your ballot
+and it is discarded.
+With IRV, there are many more ways to spoil your ballot, for example by accidentally
+ranking two candidates the same.  But with Range, _every_ way to award candidates
+a single-digit score is legal, and there is no such thing as an overvote.
+And even if you do make an illegible score, it can be treated as an "X" in which case
+most of your vote still remains operational and undiscarded.
+
+*Tie-crises:* With IRV, every single round gives an opportunity for a tie or near-tie 
+Florida-style crisis, increasing the likelihood of crises and major delays.  
+With Range, in contrast, the chance of a tie is _reduced_
+versus either Plurality or (especially) IRV.
+
+*Better results:*  Our computer simulation studies indicate range voting yields higher-quality
+winners, on average, than any other common voting system proposal, across a very wide variety
+of scenarios.
+
+*Simplicity & Familiarity:*  Who has not been asked to rate things on a scale of 1 to 10?
+Everybody is familiar with the system and has seen it on TV in the Olympics.
+
+*Nader:*  Richie went on at great length about how IRV solves the "Nader stigma" problem where
+voters who prefer Nader over Gore over Bush, by voting Nader, sadly cause _both_ Nader
+and Gore to lose.  (Similarly, Buchanan votes caused Bush to lose some states to Gore.)
+Voters therefore are motivated to "dishonestly" vote Gore,  thus hurting Nader far more than
+he deserves and artificially perpetuating the USA's 2-party domination stranglehold 
+(of the top 600 US federal positions, not a single one is a member of a third party).
+
+But Richie's claim is only true sometimes: it is _still_ possible in
+IRV that your vote Nader>Gore>Bush will cause both Nader & Gore to lose, whereas voting
+Gore>Nader>Bush would cause Gore to win.  (Two example elections of that kind
+are on the CRV web site.)  So you can still be motivated to vote dishonestly.
+That's recognized by IRV voters, and hence the 2-party
+stranglehold and Nader effect can continue with IRV.  
+This presumably is exactly why every IRV country,
+such as Australia, is 2-party dominated.   Indeed, Richie _admitted_
+that "[With IRV] minor-party candidates aren't likely to win 
+office much more than under plurality rules."  
+
+But with range voting, if you like someone the best, you _really can_ honestly give them 
+a full 9.  This in no way hurts Gore or Bush in their battle versus the other, because
+your decision about what scores to give Gore & Bush, are totally _independent_
+decisions: you can give them 9 and 0 if you want.
+
+*Clones:* Finally, both IRV and Range totally solve the "cloning" problem where introducing
+a "clone" of some candidate into the race, causes them both to lose, even though
+either running alone would have won.  With IRV or Range, candidates neither gain advantage 
+nor lose it when clones enter (aside from the victory moving between the clones).
+
+To find out more about range voting, check the Center for Range Voting web site
+http://math.temple.edu/~wds/crv .  The CRV was founded by PhD mathematician  Warren D. Smith.

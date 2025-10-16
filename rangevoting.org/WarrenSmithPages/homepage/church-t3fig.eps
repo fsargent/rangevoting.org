@@ -1,0 +1,797 @@
+%!PS-Adobe-2.0 EPSF-2.0
+%%BoundingBox: 17 23 592 771
+%%Title: t3fig.show
+%%CreationDate: 9:43 AM September  9, 1993
+%%Pages: 1 +1
+%%EndComments
+1 setlinejoin
+/M  { moveto } bind def /S { show  } bind def
+/R { rmoveto } bind def /L { lineto } bind def
+/B { newpath 0 0 M 0 1 L 1 1 L 1 0 L closepath } bind def
+/CS { closepath stroke } bind def
+/newfont 10 dict def
+newfont begin
+
+ /FontType 3 def
+ /FontMatrix [1 0 0 1 0 0] def
+ /FontBBox [0 0 1 1] def
+ /Encoding 256 array def
+ 0 1 255 {Encoding exch /.notdef put} for
+
+ /CharProcs 1 dict def
+ CharProcs begin
+ /.notdef {} def
+
+end
+
+ /BuildChar {
+  1 0
+  0 0 1 1
+  setcachedevice
+  exch begin
+  Encoding exch get
+  CharProcs exch get
+  end
+  exec
+ } def
+end
+/PatternFont newfont definefont pop
+
+/bwproc {
+	rgbproc
+	dup length 3 idiv string 0 3 0
+	5 -1 roll {
+	add 2 1 roll 1 sub dup 0 eq
+	{ pop 3 idiv 3 -1 roll dup 4 -1 roll dup
+	  3 1 roll 5 -1 roll put 1 add 3 0 }
+	{ 2 1 roll } ifelse
+	} forall
+	pop pop pop
+} def
+systemdict /colorimage known not {
+	/colorimage {
+		pop
+		pop
+		/rgbproc exch def
+		{ bwproc } image
+	} def
+} if
+/incr {
+    2 1 roll dup 3 -1 roll
+    5 -1 roll dup 6 1 roll cvi put
+    3 1 roll dup 4 1 roll add 3 1 roll
+} bind def
+/scanspan {
+/xb2 exch def
+/xg2 exch def
+/xr2 exch def
+/xx2 exch def
+/xb1 exch def
+/xg1 exch def
+/xr1 exch def
+/xx1 exch def
+/dx xx2 xx1 sub def
+dx 0 ne {
+	/drdx xr2 xr1 sub dx div def
+	/dgdx xg2 xg1 sub dx div def
+	/dbdx xb2 xb1 sub dx div def
+}{
+	/drdx 0 def
+	/dgdx 0 def
+	/dbdx 0 def
+} ifelse
+/len dx 1 add cvi 3 mul def
+len string dup dup
+xr1 drdx 3 -1 roll
+0 3 len 1 sub { incr } for
+pop pop pop
+xg1 dgdx 3 -1 roll
+1 3 len 1 sub { incr } for
+pop pop pop
+xb1 dbdx 3 -1 roll
+2 3 len 1 sub { incr } for
+3 1 roll pop pop
+} bind def
+/scantrap {
+/trapsave save def
+/b4 exch def
+/g4 exch def
+/r4 exch def
+/x4 exch def
+/b3 exch def
+/g3 exch def
+/r3 exch def
+/x3 exch def
+/b2 exch def
+/g2 exch def
+/r2 exch def
+/y2 exch def
+/x2 exch def
+/b1 exch def
+/g1 exch def
+/r1 exch def
+/y1 exch def
+/x1 exch def
+/dy y1 y2 sub def
+dy 0 ne {
+	/dxdy12 x2 x1 sub dy div def
+	/dxdy43 x3 x4 sub dy div def
+	/drdy12 r2 r1 sub dy div def
+	/drdy43 r3 r4 sub dy div def
+	/dgdy12 g2 g1 sub dy div def
+	/dgdy43 g3 g4 sub dy div def
+	/dbdy12 b2 b1 sub dy div def
+	/dbdy43 b3 b4 sub dy div def
+}{
+	/dxdy12 0 def
+	/dxdy43 0 def
+	/drdy12 0 def
+	/drdy43 0 def
+	/dgdy12 0 def
+	/dgdy43 0 def
+	/dbdy12 0 def
+	/dbdy43 0 def
+} ifelse
+y1 -1 y2 {
+	x4 x1 sub 0 lt { exit } if
+	/y exch def
+	/traploopsave save def
+	x1 r1 g1 b1 x4 r4 g4 b4 scanspan
+	/img exch def
+	/xlen x4 x1 sub 1 add def
+	x1 y translate
+	xlen 1 scale
+	xlen cvi 1 8 [xlen 0 0 0.9 0 0] { img } false 3 colorimage
+	traploopsave restore
+	/x1 x1 dxdy12 add def
+	/r1 r1 drdy12 add def
+	/g1 g1 dgdy12 add def
+	/b1 b1 dbdy12 add def
+	/x4 x4 dxdy43 add def
+	/r4 r4 drdy43 add def
+	/g4 g4 dgdy43 add def
+	/b4 b4 dbdy43 add def
+} for
+trapsave restore
+} def
+/d {
+newpath
+moveto
+lineto
+lineto
+closepath
+stroke
+} bind def
+/q {
+newpath
+moveto
+lineto
+lineto
+lineto
+closepath
+stroke
+} bind def
+/draw3 {
+setgray
+newpath
+moveto
+lineto
+lineto
+closepath
+stroke
+} bind def
+/F3 {
+setgray
+newpath
+moveto
+lineto
+lineto
+closepath
+fill
+} bind def
+/F4 {
+setgray
+newpath
+moveto
+lineto
+lineto
+lineto
+closepath
+fill
+} bind def
+/F5 {
+setgray
+newpath
+moveto
+lineto
+lineto
+lineto
+lineto
+closepath
+fill
+} bind def
+/showcaseisoencoding [
+/.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef
+/.notdef /.notdef /.notdef /.notdef
+/space /exclam /quotedbl /numbersign
+/dollar /percent /ampersand /quoteright
+/parenleft /parenright /asterisk /plus
+/comma /minus /period /slash
+/zero /one /two /three /four /five /six /seven
+/eight /nine /colon /semicolon
+/less /equal /greater /question
+/at /A /B /C /D /E /F /G
+/H /I /J /K /L /M /N /O
+/P /Q /R /S /T /U /V /W
+/X /Y /Z /bracketleft
+/backslash /bracketright /asciicircum /underscore
+/quoteleft /a /b /c /d /e /f /g
+/h /i /j /k /l /m /n /o
+/p /q /r /s /t /u /v /w
+/x /y /z /braceleft
+/bar /braceright /asciitilde /guilsinglright
+/fraction /florin /quotesingle /quotedblleft
+/guilsinglleft /fi /fl /endash
+/dagger /daggerdbl /bullet /quotesinglbase
+/quotedblbase /quotedblright /ellipsis /trademark
+/dotlessi /grave /acute /circumflex
+/tilde /macron /breve /dotaccent
+/dieresis /perthousand /ring /cedilla
+/Ydieresis /hungarumlaut /ogonek /caron
+/emdash /exclamdown /cent /sterling
+/currency /yen /brokenbar /section
+/dieresis /copyright /ordfeminine /guillemotleft
+/logicalnot /hyphen /registered /macron
+/degree /plusminus /twosuperior /threesuperior
+/acute /mu /paragraph /periodcentered
+/cedilla /onesuperior /ordmasculine /guillemotright
+/onequarter /onehalf /threequarters /questiondown
+/Agrave /Aacute /Acircumflex /Atilde
+/Adieresis /Aring /AE /Ccedilla
+/Egrave /Eacute /Ecircumflex /Edieresis
+/Igrave /Iacute /Icircumflex /Idieresis
+/Eth /Ntilde /Ograve /Oacute
+/Ocircumflex /Otilde /Odieresis /multiply
+/Oslash /Ugrave /Uacute /Ucircumflex
+/Udieresis /Yacute /Thorn /germandbls
+/agrave /aacute /acircumflex /atilde
+/adieresis /aring /ae /ccedilla
+/egrave /eacute /ecircumflex /edieresis
+/igrave /iacute /icircumflex /idieresis
+/eth /ntilde /ograve /oacute
+/ocircumflex /otilde /odieresis /divide
+/oslash /ugrave /uacute /ucircumflex
+/udieresis /yacute /thorn /ydieresis ] def
+/Helvetica-Bold findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding showcaseisoencoding def
+  currentdict
+end
+/Helvetica-Bold-SHOWISO exch definefont pop
+/Courier-Bold findfont
+dup length dict begin
+  {1 index /FID ne {def} {pop pop} ifelse} forall
+  /Encoding showcaseisoencoding def
+  currentdict
+end
+/Courier-Bold-SHOWISO exch definefont pop
+%%EndProlog
+%%Page: label 1
+gsave
+0 0 0 setrgbcolor
+0 0 0 setrgbcolor
+gsave
+newpath
+57 707 M 37 761 L 315 761 L 315 707 L
+closepath clip newpath
+/Courier-Bold-SHOWISO findfont 14 scalefont setfont
+0 0 0 setrgbcolor
+67 749 M 0.6 0 (T0: a completely) ashow
+67 731 M 0.6 0 (general TM which ou) ashow
+0.6 0 (tputs) ashow
+67 713 M 0.6 0 (its state transitio) ashow
+0.6 0 (ns) ashow
+grestore
+0 0 0 setrgbcolor
+gsave
+0 0 0 setrgbcolor
+1 setlinewidth
+newpath
+62 698 M
+56.75 698.75 L
+53 701 L
+50.75 704.75 L
+50 710 L
+50 710 L
+50 710.637 L
+50 712.094 L
+50 714.254 L
+50 717 L
+50 720.215 L
+50 723.781 L
+50 727.582 L
+50 731.5 L
+50 735.418 L
+50 739.219 L
+50 742.785 L
+50 746 L
+50 748.746 L
+50 750.906 L
+50 752.363 L
+50 753 L
+50 753 L
+50.75 758.25 L
+53 762 L
+56.75 764.25 L
+62 765 L
+62 765 L
+62.7104 765 L
+64.6016 765 L
+67.5942 765 L
+71.6094 765 L
+76.5679 765 L
+82.3906 765 L
+88.9985 765 L
+96.3125 765 L
+104.253 765 L
+112.742 765 L
+121.7 765 L
+131.047 765 L
+140.705 765 L
+150.594 765 L
+160.635 765 L
+170.75 765 L
+180.859 765 L
+190.883 765 L
+200.743 765 L
+210.359 765 L
+219.654 765 L
+228.547 765 L
+236.959 765 L
+244.812 765 L
+252.027 765 L
+258.523 765 L
+264.223 765 L
+269.047 765 L
+272.916 765 L
+275.75 765 L
+277.471 765 L
+278 765 L
+278 765 L
+283.25 764.25 L
+287 762 L
+289.25 758.25 L
+290 753 L
+290 753 L
+290 752.363 L
+290 750.906 L
+290 748.746 L
+290 746 L
+290 742.785 L
+290 739.219 L
+290 735.418 L
+290 731.5 L
+290 727.582 L
+290 723.781 L
+290 720.215 L
+290 717 L
+290 714.254 L
+290 712.094 L
+290 710.637 L
+290 710 L
+290 710 L
+289.25 704.75 L
+287 701 L
+283.25 698.75 L
+278 698 L
+278 698 L
+277.295 698 L
+275.42 698 L
+272.454 698 L
+268.473 698 L
+263.556 698 L
+257.781 698 L
+251.226 698 L
+243.969 698 L
+236.088 698 L
+227.661 698 L
+218.766 698 L
+209.48 698 L
+199.883 698 L
+190.052 698 L
+180.065 698 L
+170 698 L
+159.935 698 L
+149.948 698 L
+140.117 698 L
+130.52 698 L
+121.234 698 L
+112.339 698 L
+103.912 698 L
+96.0313 698 L
+88.7742 698 L
+82.2192 698 L
+76.4443 698 L
+71.5273 698 L
+67.5464 698 L
+64.5796 698 L
+62.7048 698 L
+62 698 L
+closepath
+stroke
+grestore
+0 0 0 setrgbcolor
+gsave
+newpath
+119 553 M 99 571 L 179 571 L 179 553 L
+closepath clip newpath
+/Courier-Bold-SHOWISO findfont 14 scalefont setfont
+0 0 0 setrgbcolor
+129 559 M 0.6 0 (T1) ashow
+grestore
+0 0 0 setrgbcolor
+gsave
+0 0 0 setrgbcolor
+1 setlinewidth
+newpath
+132 548 M
+126.75 548.75 L
+123 551 L
+120.75 554.75 L
+120 560 L
+120 560 L
+120 563.482 L
+120 565 L
+120 565 L
+120.75 570.25 L
+123 574 L
+126.75 576.25 L
+132 577 L
+132 577 L
+133.143 577 L
+135.388 577 L
+138.245 577 L
+141.224 577 L
+143.837 577 L
+145.592 577 L
+146 577 L
+146 577 L
+151.25 576.25 L
+155 574 L
+157.25 570.25 L
+158 565 L
+158 565 L
+158 561.519 L
+158 560 L
+158 560 L
+157.25 554.75 L
+155 551 L
+151.25 548.75 L
+146 548 L
+146 548 L
+144.685 548 L
+142.148 548 L
+139 548 L
+135.852 548 L
+133.315 548 L
+132 548 L
+closepath
+stroke
+grestore
+0 0 0 setrgbcolor
+gsave
+0 0 0 setrgbcolor
+gsave
+0 setlinejoin
+306.412 658.089 translate
+-65.6589 rotate
+1.1 1.1 scale
+newpath 0 0 M -20 -5 L -20 5 L closepath fill
+grestore
+1 setlinewidth
+newpath
+287 701 M
+298.581 675.4 L
+stroke
+grestore
+0 0 0 setrgbcolor
+gsave
+newpath
+223 620 M 203 656 L 553 656 L 553 620 L
+closepath clip newpath
+/Courier-Bold-SHOWISO findfont 14 scalefont setfont
+0 0 0 setrgbcolor
+233 644 M 0.6 0 (Trajectory-topology) ashow
+0.6 0 (-describing) ashow
+233 626 M 0.6 0 (bit string \(finite ) ashow
+0.6 0 (iff T0 halts\)) ashow
+grestore
+0 0 0 setrgbcolor
+gsave
+0 0 0 setrgbcolor
+gsave
+0 setlinejoin
+157.038 570.727 translate
+-164.162 rotate
+1.1 1.1 scale
+newpath 0 0 M -20 -5 L -20 5 L closepath fill
+grestore
+1 setlinewidth
+newpath
+299 611 M
+175.317 575.913 L
+stroke
+grestore
+0 0 0 setrgbcolor
+gsave
+0 0 0 setrgbcolor
+gsave
+0 setlinejoin
+226.86 515.489 translate
+-30.7189 rotate
+1.1 1.1 scale
+newpath 0 0 M -20 -5 L -20 5 L closepath fill
+grestore
+1 setlinewidth
+newpath
+157 557 M
+210.526 525.195 L
+stroke
+grestore
+0 0 0 setrgbcolor
+gsave
+newpath
+210 476 M 190 512 L 540 512 L 540 476 L
+closepath clip newpath
+/Courier-Bold-SHOWISO findfont 14 scalefont setfont
+0 0 0 setrgbcolor
+220 500 M 0.6 0 (Real numbers descri) ashow
+0.6 0 (bing N-body) ashow
+220 482 M 0.6 0 (initial velocity & ) ashow
+0.6 0 (position data) ashow
+grestore
+0 0 0 setrgbcolor
+gsave
+0 0 0 setrgbcolor
+1 setlinewidth
+newpath
+138 422 M
+132.75 422.75 L
+129 425 L
+126.75 428.75 L
+126 434 L
+126 434 L
+126 437.481 L
+126 439 L
+126 439 L
+126.75 444.25 L
+129 448 L
+132.75 450.25 L
+138 451 L
+138 451 L
+139.143 451 L
+141.388 451 L
+144.245 451 L
+147.224 451 L
+149.837 451 L
+151.592 451 L
+152 451 L
+152 451 L
+157.25 450.25 L
+161 448 L
+163.25 444.25 L
+164 439 L
+164 439 L
+164 435.519 L
+164 434 L
+164 434 L
+163.25 428.75 L
+161 425 L
+157.25 422.75 L
+152 422 L
+152 422 L
+150.685 422 L
+148.148 422 L
+145 422 L
+141.852 422 L
+139.315 422 L
+138 422 L
+closepath
+stroke
+grestore
+0 0 0 setrgbcolor
+gsave
+newpath
+124 428 M 104 446 L 184 446 L 184 428 L
+closepath clip newpath
+/Courier-Bold-SHOWISO findfont 14 scalefont setfont
+0 0 0 setrgbcolor
+134 434 M 0.6 0 (T2) ashow
+grestore
+0 0 0 setrgbcolor
+gsave
+0 0 0 setrgbcolor
+gsave
+0 setlinejoin
+161.045 445.705 translate
+-162.814 rotate
+1.1 1.1 scale
+newpath 0 0 M -20 -5 L -20 5 L closepath fill
+grestore
+1 setlinewidth
+newpath
+259 476 M
+179.196 451.318 L
+stroke
+grestore
+0 0 0 setrgbcolor
+gsave
+newpath
+189 291 M 169 381 L 564 381 L 564 291 L
+closepath clip newpath
+/Courier-Bold-SHOWISO findfont 14 scalefont setfont
+0 0 0 setrgbcolor
+199 369 M 0.6 0 (Topology \(during fi) ashow
+0.6 0 (rst second of) ashow
+199 351 M 0.6 0 (motion\) bit string;) ashow
+0.6 0 ( T2 halts \(causing) ashow
+199 333 M 0.6 0 (kill signals to be ) ashow
+0.6 0 (sent to T0,T1, so) ashow
+199 315 M 0.6 0 (that T3 as a whole ) ashow
+0.6 0 (halts\) if this) ashow
+199 297 M 0.6 0 (string is finite.) ashow
+grestore
+0 0 0 setrgbcolor
+gsave
+0 0 0 setrgbcolor
+gsave
+0 setlinejoin
+216.804 383.405 translate
+-36.5289 rotate
+1.1 1.1 scale
+newpath 0 0 M -20 -5 L -20 5 L closepath fill
+grestore
+1 setlinewidth
+newpath
+162 424 M
+201.536 394.714 L
+stroke
+grestore
+0 0 0 setrgbcolor
+gsave
+newpath
+303 678 M 283 768 L 588 768 L 588 678 L
+closepath clip newpath
+/Courier-Bold-SHOWISO findfont 14 scalefont setfont
+0 0 0 setrgbcolor
+313 756 M 0.6 0 (T3: a Turing Machin) ashow
+0.6 0 (e) ashow
+313 738 M 0.6 0 (conceptually built) ashow
+313 720 M 0.6 0 (from smaller TMs T0) ashow
+0.6 0 (,T1,) ashow
+313 702 M 0.6 0 (and T2. Data stream) ashow
+0.6 0 (s) ashow
+313 684 M 0.6 0 (shown using lines &) ashow
+0.6 0 ( arrows.) ashow
+grestore
+0 0 0 setrgbcolor
+gsave
+0 0 0 setrgbcolor
+1 setlinewidth
+newpath
+309 770 M
+309 676 L
+550 677 L
+stroke
+grestore
+0 0 0 setrgbcolor
+gsave
+0 0 0 setrgbcolor
+1 setlinewidth
+newpath
+40 771 M
+551 771 L
+551 288 L
+39 287 L
+closepath
+stroke
+grestore
+0 0 0 setrgbcolor
+gsave
+newpath
+31 239 M 11 275 L 604 275 L 604 239 L
+closepath clip newpath
+/Courier-Bold-SHOWISO findfont 14 scalefont setfont
+0 0 0 setrgbcolor
+41 263 M 0.6 0 (Figure 0: Second in) ashow
+0.6 0 (terpretation of N-b) ashow
+0.6 0 (ody theorem, showin) ashow
+0.6 0 (g) ashow
+41 245 M 0.6 0 (how N bodies solve ) ashow
+0.6 0 (the halting problem) ashow
+0.6 0 ( for T3 in 2 second) ashow
+0.6 0 (s.) ashow
+grestore
+0 0 0 setrgbcolor
+gsave
+newpath
+98 210 M 78 228 L 356 228 L 356 210 L
+closepath clip newpath
+/Courier-Bold-SHOWISO findfont 14 scalefont setfont
+0 0 0 setrgbcolor
+108 216 M 0.6 0 (Face-to-face compar) ashow
+0.6 0 (ison:) ashow
+grestore
+0 0 0 setrgbcolor
+gsave
+newpath
+9 24 M -11 204 L 618 204 L 618 24 L
+closepath clip newpath
+/Courier-Bold-SHOWISO findfont 14 scalefont setfont
+0 0 0 setrgbcolor
+19 192 M 0.6 0 (Computer:   Turing ) ashow
+0.6 0 (machine T3      Our) ashow
+0.6 0 ( N-body systems) ashow
+19 174 M 0.6 0 (Input:     Finite b) ashow
+0.6 0 (it string       The) ashow
+0.6 0 ( computable real nu) ashow
+0.6 0 (mbers) ashow
+19 156 M 0.6 0 (          describin) ashow
+0.6 0 (g T0|T1.         de) ashow
+0.6 0 (scribed by T0|T1.) ashow
+19 138 M 0.6 0 (Output:    halts or) ashow
+0.6 0 (... doesn't.    If ) ashow
+0.6 0 (T3 halts, the cat i) ashow
+0.6 0 (s) ashow
+19 120 M 0.6 0 (          If latter) ashow
+0.6 0 (, you may      hit ) ashow
+0.6 0 (by asteroids and di) ashow
+0.6 0 (es.) ashow
+19 102 M 0.6 0 (          never kno) ashow
+0.6 0 (w...         Otherw) ashow
+0.6 0 (ise the asteroids f) ashow
+0.6 0 (ly off) ashow
+19 84 M 0.6 0 (                   ) ashow
+0.6 0 (          to infini) ashow
+0.6 0 (ty and the cat live) ashow
+0.6 0 (s.) ashow
+19 66 M 0.6 0 (                   ) ashow
+0.6 0 (        Either way,) ashow
+0.6 0 ( you know in 2 seco) ashow
+0.6 0 (nds.) ashow
+19 48 M 0.6 0 (Method:   Makes sta) ashow
+0.6 0 (te transitions,   A) ashow
+0.6 0 (steroids zip past s) ashow
+0.6 0 (tars,) ashow
+19 30 M 0.6 0 (        info stored) ashow
+0.6 0 ( on a tape.     inf) ashow
+0.6 0 (o stored in real nu) ashow
+0.6 0 (mbers.) ashow
+grestore
+0 0 0 setrgbcolor
+gsave
+matrix currentmatrix
+[0 0 0 0 126 178] concat
+B
+setmatrix
+1 setlinewidth
+gsave stroke grestore
+grestore
+0 0 0 setrgbcolor
+gsave
+matrix currentmatrix
+[575 0 0 -180 17 203] concat
+B
+setmatrix
+1 setlinewidth
+gsave stroke grestore
+grestore
+grestore
+showpage

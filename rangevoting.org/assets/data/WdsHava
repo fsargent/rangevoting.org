@@ -1,0 +1,270 @@
+MY COMMENTS on the proposed EAC "voluntary Voting System Guidelines."
+-------------------Warren D. Smith---Sept 2005-----------------------
+
+Before I begin, let me introduce myself: I am Warren D. Smith.  I am a
+mathematician writing a book (nearly complete) about voting.  I have a PhD in
+applied math from Princeton.  I am the inventor of the currently
+theoretically-best-available cryptographically-secure voting protocol,
+recently presented by me at the FEE 2005 conference in Milan.
+
+GENERALLY:
+These guidelines are 2 book volumes long and essentially unreadable.
+Checking whether a voting machine obeys the guidelines is an extremely
+hard problem - in fact beyond the resources of all of humanity and certainly
+beyond the resources of typical US counties - and yet no agency or
+entity is created by these guidelines with the technical wherewithal to have 
+any chance of testing machines to see if they meet the guidelines.  That
+means the guidelines are a joke.
+
+But it gets worse. It seems to me that the guidelines largely consist of 
+identifying bad things about the status quo, and then fossilizing them
+as "approved by these guidelines".
+
+
+SECTION 6.7: WIRELESS:
+Imagine a law intended to protect us from nuclear weapons that read "it
+is perfectly ok for you to own a nuclear weapon and keep in in your house, although we
+look down upon that practice.  All we ask (as a purely voluntary guideline,
+not required by law) is this: if you do choose to own a nuclear weapon,
+then you must sign a piece of paper saying you agree only to use it in the
+following authorized ways."
+
+Well that is precisely what this ludicrous section does.  It essentially
+says to possibly-corrupt voting machine manufacturers 
+  (and let me note: the major US voting machine 
+  companies contain known convicted criminals - bribery, theft, fraud,
+  drug trafficking -
+  in high management positions, and quite possibly employees who have
+  been bribed 
+  by foreign intelligence agencies - in fact it is wholy legal for those 
+  employees or even owners to literally BE foreign nationals who ADMIT
+  to also being employees of foreign intelligence agencies... and
+  indeed US voting machine companies HAVE been owned by
+  rich foreigners from non-democratic countries, who almost certainly were 
+  closely linked to that country's rulers): 
+Hey!  It is perfectly ok if you put wireless communications
+devices in your voting machines which would allow anybody within a mile
+to reprogram or control those machines to do whatever he wants - PROVIDED you sign a
+piece of paper (e.g. see 6.7.2.5 & 6.7.5.2  for typical laughably
+unenforceable examples - actually checking
+to see if these criteria are satisfied is well known to be a
+Turing-undecidable problem) saying "I certify my wireless interfaces will not 
+be used in those bad ways."
+
+There is a lot of mumbo jumbo about cryptography.  That is a red
+herring. What matters is: at any point in time a corruptor could emit the right
+radio message which would cause it to transition into a new "do whatever you
+want" mode that officially was claimed not to exist.  This mode could have been
+inserted secretly by a programmer.  No feasible amount of testing would be able
+to discover the existence of this secret mode and the fact it did not
+always obey the claimed crypto protocols, because the magic "open sesame" message could be 300
+random-looking bits long and depending in a secret way upon the time so that any
+failure of this sort would be essentially irreproducible (since by 2.2.5.2.1b the
+voting machine must include a real-time clock).  No amount of manual inspection of the
+computer program inside the voting machine (even if it were available for
+inspection) would necessarily find this trapdoor because it is well known to be a
+Turing-undecidable problem to determine whether a computer program
+contains such a trapdoor.  See Marvin Minsky: "Finite & Infinite Machines" for info about
+Turing-undecidability. Possible result: the end of democracy in the USA.
+
+Is the convenience of wireless really worth the very plausible risk of
+the end of our entire democracy?  Hello!  I don't think so!
+
+Ban all free-space electromagnetic communication methods into every
+voting machine.
+Period.
+
+ELECTRIC POWER:
+The current guidelines permit information to flow into the voting
+machine via signals injected into electric power lines.  No precaution 
+whatever is required.
+(This technology is commercially available in your local Radio Shack.)
+That is an outrage.  Ban all use of power lines for any sort of
+communication
+into or out of the voting machine.
+
+SPOILED BALLOTS:
+Suppose the voter feeds in an invalid ballot (such as an "overvote").
+Then I want it to be a requirement that the voting machine IMMEDIATELY
+notify the voter his ballot is invalid & rejected - and permit that
+voter to try again.
+It should be absolutely unacceptable for a voting machine to simply
+silently accept an invalid ballot without notifying the voter there is any
+problem - and indeed it should not be possible to adjust the machine to make it be so 
+silent - but these guidelines simply permit this practice without even a disparaging
+comment!
+
+This is the year 2005.  Unintended spoiled ballots simply should not
+exist.
+
+NATIONWIDE BALLOT STANDARDS:
+It is an outrage that the USA does not have uniform nationwide standards for ballot format,
+placing us well behind most other democracies and allowing huge scope for election manipulation,
+as well as just wasting time and causing confusion.
+
+PAPER TRAILS:
+First of all, these guidelines do not mandate a "voter-verified paper trail" i.e. a
+record of all the votes cast, readable by an unaided human.  (I do not think there is
+any reason to demand that this record actually literally be on "paper" -
+"Babylonian clay tablets" would be even better as far as I am
+concerned.)
+
+That non-mandate is an outrage.
+I believe that all voting machines containing an electronic computer
+should be required to be accompanied by such a paper trail.  There have
+already been instances of voting machine failure leading to uncorrectable errors due
+to the lack of such trails - and this includes cases where that data loss prevented
+determining the winner. There have already been instances where voting machines have
+been used and later proven on videotape to vote for candidates other than the
+one  the voter selected, with no way to correct the error in the election
+result.
+
+However, fortunately, there are numerous guidelines in sec 6.8
+concerning what voting machines that miraculously DO happen to go beyond guideline
+requirements by providing paper trails, should be like, and I largely agree with them.
+
+But 6.8.7.5 is a silly completely undefined requirement.  Here would be
+an improvement:
+"the (paper) record should withstand 5 hours exposure to 150C and -50C
+temperatures, exposure to direct Florida sunlight in an air atmosphere for 1 year, 
+or soaking in water for 1 week followed by careful drying.  It should
+withstand a 2 Tesla orientation-changing magnetic field for 1 minute."
+
+SUPPORT FOR IMPROVED VOTING SYSTEMS:
+The "plurality" voting system predominantly used in the USA at present
+(in which a "vote" is the "name of a single candidate") is well known
+to be severely flawed, and this has been known since the 1780s.
+For that reason, many people would like to see it replaced by a superior
+system.  Other systems have been and are being used in various locations in
+the USA and abroad, and are wholy constitutional.
+Predominant among the superior systems is "range voting" where your
+vote is a "numerical score from 0 to 99 awarded to each candidate" for example
+a range vote might be "Kerry=99, Bush=0, Nader=99, Badnarik=37".  
+The email bulletin board
+   http://groups.yahoo.com/group/RangeVoting/
+is devoted to range voting and click on the "related link" near the bottom of
+that page to be brought to an educational and advocacy site for range voting.
+
+I would like to see the guidelines recommend that voting machines provide support
+for improved voting systems.  It is known that range voting elections can be run on
+any voting machine that handles multiple plurality elections (without 
+modification of the machine).  This is good since it means fairly painless transitions
+between plurality and range voting are possible.  But still, this scheme engenders a
+certain amount (depending on the machine type) of inconvenience
+for either the election administrators or the voters, and it would be better if
+the machine itself supported this type of voting directly and by design.
+
+LIMITS ON COMPUTING POWER AND SECRET MANIPULABILITY:
+If a voting machine contains a computer, then it should be demanded
+that the computer contain 
+   * at most 1 Kbyte of random-access read/write memory, including
+   "registers" and "cache".
+   * unlimited amount of read-only random access memory (ROM) but all
+   ROM is required to be built-in and not easily replaceable.
+   * unlimited amount of write-only random access memory.
+   * unlimited amount of unidirectional-sequential-access read/write
+   memory.
+(In the above, "memory" includes both semiconductor, magnetic, or any
+other kind, and any removable rewriteable media such as disks.  "Write-once"
+memory such as PROMs or writeable optical disks does NOT count as "read-only" -
+it counts are "writeable" even if the voting machine itself does not have that
+writing capability.)
+   * The clock rate of the computer shall be at most 10 MegaHertz.
+   * All software must be made public by the manufacturer,
+    on a US government web site, at least a year before the machine is
+    used and throughout the operation of the machine, and in
+    both compiled and source-code forms, and with that source code
+    agreed by experts to be "clearly written".
+   * As soon as anybody spots a bug and reports it to that government
+   agency, all bug-fixes to the software must be paid for by the voting machine 
+   manufacturer and note that every such bug fix and paying is to include
+   the 1-year public pre-viewing requirement for the new modified program
+   and hence the payment must include the cost of the 1-year required
+   downtime for the buggy machine.
+    * Anybody who does spot and report such a bug must be paid a reward
+by the voting machine manufacturer, where the first reward is the price
+of that voting machine, and each successive reward is double the value of the
+previous one until the the price reaches the USA per capita income or 16 times
+the price of that machine, whichever is higher.
+This is to continue until such time as the manufacturer declares these
+machines to be incapable of meeting requirements and hence must all be
+withdrawn from use - and if that happens the manufacturer must refund half of
+all purchase prices of those machines.
+
+These here rules are intended to make it impossible or at least
+difficult to "reprogram" the computer without wholesale replacement of the ROM.
+That in turn allows us to at least hope to obtain reasonable confidence the machine is 
+actually running the program it was advertised to be running.  Also the difficulty and
+expense of replacing the ROM should tend to incentivize manufacturers to provide
+only simple programs without bugs.  
+It is technically possible to make computer programs bug-free - although
+only comparatively small, simple, and clear ones.
+But under the current guidelines there is little or no motivation for
+manufacturers to try to do so, as far as I know the manufacturers have never adopted
+bug-free software techniques, and the whole cost and responsibility of
+debugging the software is shifted to the US taxpayer and to some undefined and
+unprovided testing and certifying agency.  With the rule changes I recommend here, the
+voting machine manufacturer would actually be required or at least highly incentivized
+to do what it takes to provide bug-free code.
+
+You may ask: why are my rules demanding that the computer be a primitive, low-capacity
+sort of computer?  The answer is that voting only requires a low-capacity computer.
+So this is no handicap!  It is, however, a handicap when it comes to installing enormous
+bug-filled untested unclear programs.  Which is good because we want to prevent that
+and force all programs, and I mean "all," to be small and clear.
+(Realize: you can make the evil code actually eat itself
+so that it cannot be detected afterwards.  You can make evil code invisible in the source code
+by means of language-redefintion techniques.  This is known to have been done.  But these
+cheating techniques are not easy to do if the code is tiny.)
+
+In particular it is simply outrageous to allow voting machines to run
+enormous programs whose code is secret and undoubtably partially written by paid foreign
+secret agents, and containing huge bug counts, such as "Microsoft Windows".  But the
+present guidelines, outrageously, permit that.  (Why not simply tell the
+USSR to run our elections for us?  Wouldn't that be simpler?)
+
+A computer program 100 million lines long containing just a few lines of
+rogue code could do extremely dangerous things inside a voting machine, and no
+checking procedure whatever by anyone is capable of guaranteeing spotting that
+rogue code, because that checking problem is well known to be Turing-undecidable.  
+Voting machines in use in the USA are already known to contain trapdoor code and
+continue to be used anyway.   Thus computers are an extremely dangerous thing to
+have inside a voting machine.  For that reason, if they are there, we want to 
+maximize the chances the program is valid.
+If the program is small and on view by everybody in the world for 1 year, 
+that maximizes chances of spotting such trapdoors.  If the program is kept secret, made
+technically easy to change, and is allowed to be huge and to consist of "obscured"
+code - all of which is outrageously permitted by the proposed guidelines - then
+that minimizes the chances.
+
+Again my strategy with this rule is to make a rule that is checkable
+and that is not Turing-undecidable, and that removes the nuclear weapon
+rather than handing them out on streetcorners but with the caveat that the 
+recipients must sign pieces of paper saying they will not misuse them.
+(Here "large alterable computer programs" are playing the role of the
+"nuclear weapon".)
+
+CRYPTOGRAPHIC PROTOCOLS:
+One of the hopes for the future of voting is to employ "cryptographic protocols" which 
+enable certain mathematical guarantees about vote privacy and election correctness to be made.
+These schemes are based on "zero knowledge proof & verification protocols."
+They offer the potential for an immense increase in election validity and fraud prevention
+far above that ever previously achieved.  The guidelines leave the entire subject unaddressed.
+I suggest formulating at least a definition of what such a crypto-secure voting system IS,
+and then offering to allow more powerful computers in voting machines satisfying that definition.
+
+The definition should involve votes being 
+  *private: a voter who wishes to keep his vote anonymous and secret should be able to do so
+  (with mathematical certainty under cryptographic assumptions).   Note: this means
+  secret even from the machine which itself receives that vote (it receives it only
+  in encrypted form).
+
+  *valid: zero-knowledge proofs must be produced that the vote is valid
+
+  *zero-knowledge proofs must be output by the voting system that only pre-registered voters voted and
+   no double votes were used
+
+  *the correct election result must be produced, with zero-knowledge proof of correctness
+
+---
+Warren D. Smith

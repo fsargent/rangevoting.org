@@ -1,0 +1,42 @@
+
+  Geometric separator theorems
+Warren D. Smith and Nicholas C. Wormald 1998
+
+ABSTRACT
+We have a 4-step method for producing ``separator theorems'' about
+geometrical objects en masse.
+Examples:
+{\tt I}: 
+Given $N$ disjoint iso-oriented squares in the plane, there exists
+a rectangle with $\le 2N/3$ squares inside, $\le 2N/3$ squares
+outside, and $\le (4 + o(1)) \sqrt{N}$ partly in \& out.
+{\tt II}: 
+More generally, given $N$ iso-oriented $d$-cubes in $d$-space,
+no more than $\kappa$ of which cover a point,
+there exists a box with $\le 2N/3$ cubes inside, $\le 2N/3$ cubes
+outside, and $O(d \kappa^{1/d} N^{1-1/d})$ partly in \& out.
+Here ``$2/3$'' is best possible, and the dependence of the
+bound on $\kappa$, $d$, and $N$ is best possible up to the absolute
+constant factor in the $O$.
+{\tt III}:
+We have more general versions where the ``$d$-cubes'' and/or
+the separating ``box'' could instead
+be any of a wide variety of convex objects with bounded diameter/width
+ratios, and where the disjointness condition can be replaced with a
+variety of other conditions: (a) no more than $\kappa$ objects cover a point,
+or (b) no subcollection's measure exceeds the union of its measures by
+more than a factor $\kappa$, or (c) no more than $\kappa$ objects,
+among objects whose linear dimensions vary by a factor at most
+$\lambda$, cover a point.
+
+For tons of applications of these theorems,
+see the companion paper
+``Applications of geometric separator theorems.''
+For example, we get the first subexponential algorithms for
+optimal traveling salesman tour and rectilinear
+Steiner tree of $N$ points in $d$-space, $d$ fixed.
+
+KEYWORDS
+Separator theorems, centerpoints, sandwich theorems, cube
+tiling, Hadwiger hypothesis, pigeonhole principle, 
+Vapnik-Chervonenkis dimension, computational geometry, covering problems.

@@ -1,0 +1,162 @@
+<html>
+<head>
+<link rel="stylesheet" href="/assets/css/original-layout.css">
+
+<title>
+RangeVoting.org - Tie breaking methods
+</title>
+</head>
+<body style="font-family: Arial, sans-serif">
+
+
+<p style="margin-bottom: 0in;" align="center">  <font size="4"><b>Range Voting with Small Electorates; comparison of several Tie-breaking Methods<br>  </b></font> </p> 
+<p style="margin-bottom: 0in;" align="center">  <font size="3">by Thomas C. Smith and Warren D. Smith</font> </p> 
+
+<p>
+<b>WARNING:</b>
+This entire page is almost entirely irrelevant egghead-ness, because in large elections 
+TIES WILL ALMOST NEVER HAPPEN!!!
+However, if you are the sort of person who has to examine 
+every single issue, no matter how incredibly minor,
+to try to wring the last drop of juice from the topic... read on.
+</p>
+
+<p style="margin-bottom: 0in;" align="left">  <font size="3">Range
+voting is probably the voting method least likely to lead to a tie,
+especially if a large score-range is employed (for example, an 0-99
+range is less likely to lead to a tie than an 0-9 range). But the
+chance of a tie increases as the size of the electorate decreases. In
+voting by small committees, panels, or juries, ties could have a
+non-negligible chance of occurring, even with range voting. </font> </p> 
+ 
+
+<p style="margin-bottom: 0in;" align="left">  <font size="3">Range voting has major advantages over other methods of social choice. It is:<br>  </font> </p> 
+<ol>  
+<li>  <font size="3">&nbsp;independent of clones,<br>  </font>  </li>  
+<li>  <font size="3">&nbsp;independent
+of irrelevant alternatives (deleting a candidate from all votes and the
+election does not alter the relative standings of two non-deleted
+candidates),<br>  </font>  </li>  
+<li>  <font size="3">&nbsp;monotonic (raising a candidate's score in your vote cannot decrease his winning chances),<br>  </font>  </li>  
+<li>  <font size="3">&nbsp;participatory (casting a honest vote cannot hurt you versus not voting at all),<br>  </font>  </li>  
+<li>  <font size="3">&nbsp;consistent (if a candidate wins in two districts, then he also wins in the combined region),<br>  </font>  </li>  
+<li>  <font size="3">&nbsp;allows the voter </font><font size="3">(without strategic sacrifice) to never betray her favorite candidate.</font>  </li> 
+</ol> 
+ 
+
+<p style="margin-bottom: 0in;" align="left">  <font size="3">We shall
+discuss several possible ways to lessen the opportunity for ties and do
+tie-breaking in range (or other kinds of) voting.</font> </p> 
+ 
+<p style="margin-bottom: 0in;" align="left">  <font size="3"><b>Setting a resolution for preference intensity</b></font> </p>
+ 
+<p style="margin-bottom: 0in;" align="left">  <font size="3">Those
+administering an election could start with defined notions of support
+levels, such as: Unacceptable, indifference, mild
+support, moderate support, strong support. In its basic form, the
+ratings for these levels of support could be respectively, 0, 1, 2, 3,
+4. One could proceed to an additional step of resolution between these
+defined steps to obtain a range of 0, 1, 2, 3, 4, 5, 6, 7, 8, where 0
+still represents unacceptable and 8 still represents strong support.
+Where much greater resolution is desired, one could use a range of
+0-100, where 0 is still unacceptable and 100 is strong support. </font> </p>
+ 
+<p style="margin-bottom: 0in;" align="left">  <font size="3">The
+greater the range resolution, the less chance a tie will occur in an
+election. That is one factor to consider regarding the acceptability of
+resolution settings.</font> </p> 
+
+<p style="margin-bottom: 0in;" align="left">  <font size="3"><br>  <span style="font-weight: bold;">Drawback of the </span></font><font size="3"><b>"flip a coin" tie-breaking method</b></font> </p> 
+<p style="margin-bottom: 0in;" align="left">  I<font size="3">f N
+candidates are tied (most commonly, of course, it would be N=2) then
+one can flip a coin (or if N&gt;2 then flip an "N-sided coin") to
+choose the winner. </font> </p> 
+ 
+<p style="margin-bottom: 0in;" align="left">  <font size="3"> This method has the advantage of extreme simplicity.
+But a tiny disadvantage is its vulnerability to candidate cloning.</font> <font size="3">That is, if A's party "clones" A, then if A and B (and A's clone) tie, then A and its clone have </font>a
+2/3 chance of winning instead of 1/2.&nbsp; I.e, cloning helped the
+A-team.&nbsp; That is a non-optimum result.&nbsp; It's better if
+cloning candidates neither help nor hurt the clone-team.&nbsp; However,
+we know that coin-flip tie-breaking cannot be too bad because range
+voting with coin-flip tie-breaking is equivalent to range voting with
+infinitesimally randomly-perturbed scores. </p> 
+ 
+
+<p style="margin-bottom: 0in;" align="left"> <font size="3"><b>An improvement with randomness: "Random ballot" tie-breaking method</b></font> </p> 
+<p>
+ <font size="3"> Choose a ballot at random, and use those ratings
+to break the tie.&nbsp; (I.e. if the tied candidates are A and B, and
+the randomly chosen ballot scores A higher than B, then A wins.) In the
+unlikely event this ballot <i>still</i>
+indicates that some or all of the tied candidates are tied, then one
+chooses at random again, and continues until the number of tied
+candidates is reduced to a unique winner.
+<br><br>
+This method is immune to cloning.&nbsp; It also encourages sincere
+voting. If your vote is picked as the tie-breaker, then you risk
+breaking the tie the wrong way if you rated the candidates on your
+ballot in a dishonest order.&nbsp; With the random ballot method,
+dishonesty is strategically self-defeating.<br> <br> 
+</font><font size="3"><span style="font-weight: bold;">Another alternative: Selecting a median rating</span><br> <br>
+
+This procedure is to inspect the ratings on every ballot for each
+tied-winner, then find the median rating for each tied winner.&nbsp;
+With an odd number of ballots, this will be the middle rated ballot(s)
+for each tied winner, and for an even number of ballots, this will be
+the average of the two middle rated ballots. In both cases, the median
+will have the same number of ballots rated above them as below them.
+The unique winner has the highest median score.&nbsp; We shall call
+this method the Median Ballot Rating or MBR.<br> 
+<br> 
+ MBR disobeys the participation and consistency criterions.  
+With a small electorate, where tallying is done in one location only for 
+tie-breaking purposes, this disadvantage arguably is irrelevant. 
+MBR does not violate any other of the usual
+voting method criteria that Range Voting complies with.
+</font><br> </p>
+ 
+ 
+<p style="margin-bottom: 0in;" align="left"> <font size="3"><b>A more sophisticated method:&nbsp; Tie-breaking utilizing the method itself</b></font> </p> 
+ 
+ <p style="margin-bottom: 0in;" align="left"> <font size="3">We
+advocate tie-breaking by use of the range voting method itself (actually its
+more primitive form called <A href="Approval.html">approval</a> voting), thereby retaining
+compliance with these same voting method criteria. Here's one way to do
+that:<br> </font> </p> 
+ 
+
+<p style="margin-bottom: 0in;" align="left"> <font size="3">Each tied
+candidate receives one point for each voter who rates him above her
+arithmetic mean score for all the tied candidates. Ratings at or below
+the arithmetic mean receive zero points.</font> <font size="3">The candidate with the most points wins.&nbsp; We shall call this method Votes Exceeding Arithmetic Mean or VEAM.</font></p><p style="margin-bottom: 0in;" align="left">VEAM
+has the advantage over random ballot in that it will make more voters
+happy.&nbsp; In fact, if a "happy" voter is one who feels that
+candidate X was better than a random choice among the tied-candidates,
+then this method to choose X maximizes the number of happy voters.<br></p><font size="3"> </font><font size="3"><b><br>
+Conclusions<br> <br> </b></font><font size="3"> 
+VEAM should be the primary method used to break a tie in a Range voting election as it complies with the same criteria as does Range.   MBR would be a fallback method if VEAM still produced a tie, but requires central tabulation of all ballots.  The Random Ballot method would require a truly random selection, that is, independent of demographics and geography, for this method to be considered impartial towards candidates.
+</p>
+<p>
+If we employ range voting with small electorates, we can design it to accurately express strength of support and lessen the chance of a tie. Even if a tie does occur, there are methods to resolve such a situation from cast ballots. Voting method criteria compliances need not be sacrificed in the case of ties, nor (usually) need ties be decided by chance.
+</p>
+
+ 
+<p style="margin-bottom: 0in;" align="left">  <font size="3">3 March 2007</font> </p>
+
+
+
+<br>
+<p><a href="RangeVoting.html">Return to main page</a></p>
+<!-- Start of StatCounter Code -->
+<script type="text/javascript" language="javascript">
+var sc_project=1613646; 
+var sc_invisible=1; 
+var sc_partition=15; 
+var sc_security="a35ff8fb"; 
+</script>
+
+<script type="text/javascript" language="javascript" src="http://www.statcounter.com/counter/counter.js"></script><noscript><a href="http://www.statcounter.com/" target="_blank"><img  src="http://c16.statcounter.com/counter.php?sc_project=1613646&amp;java=0&amp;security=a35ff8fb&amp;invisible=1" alt="php hit counter" border="0"></a> </noscript>
+<!-- End of StatCounter Code to be inserted immediately before the /body command near end of your page -->
+</body>
+</html>
+

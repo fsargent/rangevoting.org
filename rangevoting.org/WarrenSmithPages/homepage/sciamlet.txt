@@ -1,0 +1,128 @@
+Letter To Scientific American
+-----------------------------
+
+Concerning "The Fairest Vote of All"
+by Dasgupta & Maskin (March 2004).
+
+A simpler and better voting system is "range voting" where each voter
+provides as his vote, a score for every candidate on a 0-10 scale. 
+The candidate with the highest summed score wins.  
+
+My 2000 paper "Range voting" (available as #56 at
+www.math.temple.edu/~wds/homepage/works.html; see also #59)
+studies it heavily and compares it with numerous other proposed
+voting systems by means of millions of computerized simulated 
+elections.  That study clearly showed the superiority of range 
+voting over all other yet-proposed systems, as measured by a 
+yardstick called "Bayesian regret".
+
+Dasgupta & Maskin do not actually specify the voting system they are 
+pushing (!), but I believe that they meant "Black's system," which 
+dates to the 1950s or earlier. It was described in my paper and 
+included in my computerized study.  
+
+Dasgupta & Maskin completely ignored the massive effects of voters 
+who vote "strategically" instead of honestly in an attempt to "game 
+the system."  For example, in the 2000 election, many voters who 
+liked Nader best, instead chose to dishonestly vote (as they
+were urged in hundreds of editorials) for Gore, for strategic 
+reasons ("don't waste your vote").  My paper's theorem 8 shows 
+that with strategic voters, the winner in an N-candidate 
+Black-Dasgupta-Maskin election will be exactly the same as the winner 
+in a plain-plurality election!  This theorem destroys Dasgupta & Maskin's
+claim that Black's system is superior to plain plurality.
+This theorem also holds for the "IRV system" (which Dasgupta &
+Maskin also mention but do not describe, but which also is described
+and studied in my paper).  This is an equally severe indictment of IRV.
+
+My computerized studies allowed either honest or strategic voters,
+and allowed adjustable "voter ignorance," and included many different 
+"utility generators" for creating different election scenarios.
+In all, 432 different kinds of scenarios were investigated, running 
+millions of elections for each. Range voting performed as well 
+or better than every competing system in every scenario - very 
+conclusive!
+
+Not only are IRV and Black inferior to range voting on performance
+grounds, they also are harder to describe and use and are 
+more susceptible to near-ties such as Bush-Gore 2000 (since ties
+can occur at more than one stage in those procedures).
+
+Dasgupta & Maskin also disserve us by propagating the myth that
+the "true majority winner" (if one exists) is the best.
+Counterexample:  Suppose candidate Hitler, if elected,
+will award 51% of the voters 1 dollar worth of societal benefit
+but kill the other 49%.  Meanwhile candidate Gandhi will award 49% 
+of the voters 1000 dollars and kill nobody.  Everybody knows this
+and everybody acts for their own benefit solely.  
+While Hitler will be the "true majority winner," Gandhi is better
+for society as a whole.  Range voting with honest voters
+would allow the election of Gandhi in this situation, but no
+other competing system would.  
+
+In conclusion, I point out that the "Bayesian regret"
+yardstick is a QUANTITATIVE way to compare voting systems.  It
+allows estimating the damage society suffers from poor voting system
+performance to be translated into extremely real terms such as dollars.
+So here are 3 systems: 
+ (1) choose the winner at random (essentially
+     like monarchy, but probably worse).
+ (2) Use plurality voting (essentially what happens in most
+     contemporary democracies).
+ (3) Use range voting.
+My study shows that the societal benefit obtainable by switching 
+from (2) to (3) EXCEEDS that obtained from switching from (1) to (2), 
+regardless of whether the voters are honest or strategic.  The damage
+society is suffering by employing the flawed plurality voting system
+thus is absolutely immense, outrageous, and inexecusable.
+
+--Warren D. Smith.
+ 
+-------------------------------------------------------------------
+POSTSCRIPT:
+
+Dasgupta and Maskin in their more formal paper
+ On the Robustness of Majority Rule and Unanimity Rule 
+ http://www.econ.cam.ac.uk/faculty/dasgupta/
+rely heavily on a crude model (due to Duncan Black)
+of voters as 1-dimensional single-peaked distributions.
+In this model (Black proved, and Dasgupta and Maskin re-proved 
+in more generality) we have the THEOREM that 
+"preference cycles" are impossible.  That theorem's
+validity is due to the fact that, if 3 candidates A,B,C
+occur in that order along the 1-dimensional line, then
+(in Black's model) no voter can regard B as worse than both A and C.
+
+However, this model is unrealistic (and hence cycles 
+can and will occur in reality) for several reasons:
+  1. Real voters are stategic.  A voter may well decide
+to exaggerate the badness of B, dishonestly ranking him "worst",
+for strategic reasons ("don't want to waste my vote").
+  2. Real voters CAN and SHOULD rank B as worse than both A and C.
+For example, suppose the most important issue is whether
+to invade and conquer an enemy country that is threatening to
+kill us all by next week, or to make a peace treaty with them.  
+Well, I would pretty much prefer my leader to do one or do the 
+other, but definitely do it fast.  I would NOT want my leader
+to take the middle course and do neither. 
+  3. Real voters are not 1-dimensional.
+For example, consider the Gore-Bush-Nader 2000 election.
+Voter #1 cares about honesty and says that, as far as honesty
+is concerned, Nader>>Gore>Bush.
+Voter #2 cares about experience: number of years in high office.
+So he ranks  Gore>Bush>>Nader.
+Voter #3 cares about lowering his taxes and figures Nader, as a consumer
+advocate, will cut taxes more (or raise them less) than Gore, so
+he ranks   Bush>Nader>Gore.
+The net result of these 3 voters is to create a preference cycle.
+
+The net result of this is that the Dasgupta-Maskin paper
+has little connection to reality.
+Their paper seems to have a pretty nice theorem in it - albeit
+one whose precise statement is rather hard to elucidate - but
+it is a theorem that lives in a mathematical fantasy world, 
+not the real world.
+
+END OF POSTSCRIPT.
+
+

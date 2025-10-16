@@ -1,11 +1,13 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.0 Transitional//EN">
 <!-- saved from url=(0035)http://rangevoting.org/AEStalk.html -->
-<HTML><HEAD><TITLE>RangeVoting.org - AES talk</TITLE>
+<HTML><HEAD>
+<link rel="stylesheet" href="/assets/css/original-layout.css">
+<TITLE>RangeVoting.org - AES talk</TITLE>
 <META http-equiv=Content-Type content="text/html; charset=windows-1252">
 <META content="MSHTML 6.00.2900.3157" name=GENERATOR></HEAD>
 <BODY style="FONT-FAMILY: Arial, sans-serif">
 <CENTER>
-<H1>How I broke AES (Advanced Encryption Standard) – if I did it </H1>
+<H1>How I broke AES (Advanced Encryption Standard) ï¿½ if I did it </H1>
 <P>by &nbsp; <STRIKE>O.J. Simpson</STRIKE> &nbsp; Warren D. Smith &nbsp;&nbsp; 
 <A href="../../index.html">http://rangevoting.org/</A> </P>
 <P>The paper: <A 
@@ -31,7 +33,7 @@ cryptography"?)
     <LI>secure against D.J.Bernstein's timing attack. </LI></OL>Using this 
   technique we prove a fundamental theorem: it is possible to thus-encrypt N 
   bits with security (against known attacks) 2<SUP>cN</SUP>, via an circuit 
-  Q<SUB>N</SUB> containing &#8804;cN two-input logic gates and operating in &#8804;c·logN 
+  Q<SUB>N</SUB> containing &#8804;cN two-input logic gates and operating in &#8804;cï¿½logN 
   gate-delays, where Q<SUB>N</SUB> is constructible in polynomial(N) time. 
   <OL></OL></LI></UL>
 <HR>
@@ -40,15 +42,15 @@ cryptography"?)
 <H2>"Nonconstructive break" of AES?? What the heck is <I>that</I>? 
 </H2></CENTER>
 <UL>
-  <LI>We make it plausible* break-algorithm <I>exists</I> – but do not 
+  <LI>We make it plausible* break-algorithm <I>exists</I> ï¿½ but do not 
   <I>construct</I> it. More precisely: construct parameterized class of 
   algorithms A(p), &amp; make it plausible some values of params p exist, 
   causing A(p) to efficiently break AES. 
   <LI>A(p) &amp; p both have small bit-length. 
   <LI>I.e: If God told you p once, you could use A(p) to break arbitrary AES 
   instances quickly from then on. 
-  <LI>Be better if there were <I>no</I> efficient small algorithm to break AES – 
-  then still helpless even with hint from God – and <I>this is usual way 
+  <LI>Be better if there were <I>no</I> efficient small algorithm to break AES ï¿½ 
+  then still helpless even with hint from God ï¿½ and <I>this is usual way 
   security goal is worded.</I> </LI></UL>
 <P>*Asterisk: We do not <I>prove</I>, merely <I>make plausible</I>. Why? Proving 
 security of cryptosystems will be impossible at least until can prove P&#8800;NP. 
@@ -105,7 +107,7 @@ goal in practice/theory. New approaches needed. </P>
   distance&#8805;d") 
   <LI>Equivalently, the min-weight (nonzero) word has weight d. ("Weight"&#8801;number 
   of 1-bits.) 
-  <LI><I>Generated</I> by the k rows of a k×n Boolean "generator matrix." 
+  <LI><I>Generated</I> by the k rows of a kï¿½n Boolean "generator matrix." 
   <LI>"Dual code" is the set of 2<SUP>n-k</SUP> words which have dot product 
   <I>zero</I> with words in original code. "Geometrically" is orthogonal 
   subspace hence also linear code. </LI></UL>
@@ -127,7 +129,7 @@ goal in practice/theory. New approaches needed. </P>
   nonlinear steps. 
   <LI>Employs 1920-bit "expanded key" generated once from 256-bit actual secret 
   key. 
-  <LI>1920=15·128. &nbsp;&nbsp; 15=14+1. &nbsp;&nbsp; 128=8·16. 
+  <LI>1920=15ï¿½128. &nbsp;&nbsp; 15=14+1. &nbsp;&nbsp; 128=8ï¿½16. 
   <LI>Break will deduce the 1920-bit expanded key from numerous 
   plaintext-ciphertext pairs. </LI></UL>
 <HR>
@@ -147,9 +149,9 @@ goal in practice/theory. New approaches needed. </P>
 <HR>
 
 <CENTER>
-<H2>Linear Cryptanalysis simplified – Matsui ingredients (blackboard-aid) <!-- interlude --></H2></CENTER>
+<H2>Linear Cryptanalysis simplified ï¿½ Matsui ingredients (blackboard-aid) <!-- interlude --></H2></CENTER>
 <UL>
-  <LI><B>Unbalance=U</B> &#8801; Boolean signal mean value is M with U=2|M-½|; 
+  <LI><B>Unbalance=U</B> &#8801; Boolean signal mean value is M with U=2|M-ï¿½|; 
   convenient since 0&#8804;U&#8804;1. 
 <BLOCKQUOTE>
 Example: a signal that is one 75% of the time and zero 25% has M=0.75 and U=0.5.
@@ -158,12 +160,12 @@ A "balanced" (50-50) signal has U=0; a constant bit has unbalance U=1.
 </BLOCKQUOTE>
   <LI><B>Logic Circuits:</B> Any boolean function can be built from 2-input NAND 
   gates... 
-  <LI><B>GF2-linear functions</B> &#8801; circuits made of XOR(<B>+</B>), NOT(¬), and 
+  <LI><B>GF2-linear functions</B> &#8801; circuits made of XOR(<B>+</B>), NOT(ï¿½), and 
   constant-bits only. 
   <LI><B>"Linear approximation" circuits:</B> N-input 1-output Boolean function 
   B is well "approximated" by another A if outputs disagree few (out of the 
   2<SUP>N</SUP>) times. Equivalently: A<B>+</B>B has large unbalance (and mean 
-  value&lt;½). Interested in good &amp; best approximations by GF2-<I>linear</I> 
+  value&lt;ï¿½). Interested in good &amp; best approximations by GF2-<I>linear</I> 
   functions. 
   <LI><B>Reversibility lemma:</B> NOT and XOR gates are reversible; "inputs" 
   &amp; "outputs" = artificial labelings. 
@@ -175,21 +177,21 @@ A "balanced" (50-50) signal has U=0; a constant bit has unbalance U=1.
   <LI><B>Piling up</B> lemma: For N noise gates in series with unbalances 
   U<SUB>1</SUB>, U<SUB>2</SUB>, ..., U<SUB>N</SUB>, net effect is 
   U=&#8719;U<SUB>j</SUB> if statist'ly independent; if all noise gates have 
-  change-prob&lt;½ then so does whole shebang. (If pos'ly correlated noises, 
+  change-prob&lt;ï¿½ then so does whole shebang. (If pos'ly correlated noises, 
   then U&#8805;&#8719;U<SUB>j</SUB>.) 
   <LI><B>Statistics:</B> to learn bit (distorted by unbalance=U noise with 
-  change-prob&lt;½) it suffices to do c·U<SUP>-2</SUP> experiments to get 
+  change-prob&lt;ï¿½) it suffices to do cï¿½U<SUP>-2</SUP> experiments to get 
   confidence exponentially(-c) near 100%. </LI></UL>
 <HR>
 
 <CENTER>
-<H2>Linear Cryptanalysis – Algorithm </H2></CENTER>
+<H2>Linear Cryptanalysis ï¿½ Algorithm </H2></CENTER>
 <OL>
   <LI>Write down the equivalent circuit of the cryptosystem. 
   <LI>Replace all nonlinear S-boxes by "noise"<B>+</B>{best linear approx circuit}. 
   <LI>Use "noise gate mobility" to slide all "noise gates" along wires until 
   reach key-bit inputs. 
-  <LI>Use "reversibility" – view plaintext &amp; ciphertext bits as "inputs," 
+  <LI>Use "reversibility" ï¿½ view plaintext &amp; ciphertext bits as "inputs," 
   key bits <B>+</B> "noise" as "outputs". 
   <LI>From plaintext-ciphertext pairs, deduce linear relations (over GF2) 
   satisfied by the K<SUB>n</SUB><B>+</B>R<SUB>n</SUB>. 
@@ -208,7 +210,7 @@ A "balanced" (50-50) signal has U=0; a constant bit has unbalance U=1.
   (using, perhaps, many different "codes of the code")? And they are 
   lin-independent enough? Now deduce key <I>itself</I> by Gaussian elimination 
   over GF2. 
-  <LI>Declare victory. Code is cracked – we know the (extended) key. </LI></OL>
+  <LI>Declare victory. Code is cracked ï¿½ we know the (extended) key. </LI></OL>
 <HR>
 
 <CENTER>
@@ -295,9 +297,9 @@ will have tons of linear independence, and AES is dead meat. </P>
 AES instances by rapidly deducing expanded-keys from order 64<SUP>w</SUP> sample 
 plaintext-ciphertext pairs. </P>
 <p><SMALL>And I 
-<I>would</I> know the hint if I did a huge one-time pre-computation – or if God told me – 
+<I>would</I> know the hint if I did a huge one-time pre-computation ï¿½ or if God told me ï¿½ 
 or if I were the AES-designer and I'd <I>started</I> with this "trapdoor" 
-knowledge – <I>and</I> my knowledge then could be written down in at most a few 
+knowledge ï¿½ <I>and</I> my knowledge then could be written down in at most a few 
 Mbytes </SMALL>
 <HR>
 
@@ -327,7 +329,7 @@ attacks? BLECC theory to the rescue! </H2></CENTER>
   <LI>Compute N "intermediate bits" by taking AND (or OR or NAND or NOR...)
  of disjoint input-bit <i>pairs</I>. 
   <LI>Compute K GF2-linear combinations of these N bits according to the rows of 
-  K×N Boolean generator matrix for [N,K,D] binary linear code. 
+  Kï¿½N Boolean generator matrix for [N,K,D] binary linear code. 
   <LI>Output them. </LI></OL>
 <P><B>Security Theorem:</B> 
 <OL>

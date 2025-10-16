@@ -1,0 +1,51 @@
+TITLE
+Cryptographic election protocols for reweighted range voting &
+reweighted transferable vote voting
+
+AUTHOR
+Warren D. Smith
+
+DATE
+Sept 2005
+
+ABSTRACT
+We describe a correct, ``verifiable,''
+and ``coercion resistant'' cryptographically secure election scheme
+which takes $O(NC^k+V)$ (highly parallelizable)
+steps to process $V$ votes by $N$ voters in a $C$-candidate election,
+which for the election systems we shall be considering is best possible
+if $k=1$, and we achieve $k=1$ and/or $k=2$.
+Previous cryptographic election schemes had only been able
+to handle ``additive'' election methods such as Plurality, Approval
+Voting, Condorcet, or Borda count,
+or methods with ``anonymizable'' votes such as Instant Runoff Voting with
+few enough candidates $C$ so that votes were not expected to be
+uniquifiable  (i.e. if $C! << V$).
+The new approach \emph{breaks} those barriers in the three most
+important special cases.
+First, we can handle the author's ``reweighted range voting'' (RRV)
+at least in the case
+when the number of possible scores for any given candidate is restricted
+to a small-enough set (such as the integer interval $[0,9]$)
+so that useful votes cannot be uniquely identified by consideration of
+the sum of its scores on the current winners.
+Second, we can handle Hare/Droop-reweighted STV
+(STV=\emph{s}ingle \emph{t}ransferable \emph{v}ote)
+provided we are willing to use inexact reweighting factors (truncated
+down to few bits of precision, e.g. to the nearest part in 120) with $k=2$.
+(For STV our runtime bound with $k=2$ probably is still best possible,
+but we have not proven this.)
+Third,  we can also handle STV without reweighting and ``BTR-IRV.''
+However, the new techniques still are not all-powerful  because
+Woodall's DAC (Decreasing Acquiescing Coalitions) voting method still
+apparently cannot be handled.
+
+KEYWORDS
+Single Transferable Vote,
+reweighted range voting
+range voting,
+instant runoff voting,
+mixnets,
+coercion resistance,
+cryptographic security.
+

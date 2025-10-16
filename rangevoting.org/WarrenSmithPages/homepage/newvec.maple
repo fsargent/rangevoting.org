@@ -1,0 +1,238 @@
+SOME MAPLE SCRIPTS TO CONFIRM WARREN D. SMITH'S NEW
+VECTOR CALCULUS THEOREM  (W.D.Smith June 2003)
+
+
+(I) GENERAL QUADRATIC ON HEMISPHERE   
+with(linalg);
+#general non-homogeneous quadratic R^3 --> R^3 polynomial map:
+F := 
+[a11*x^2 + a12*x*y + a13*x*z + a22*y^2 + a23*y*z + a33*z*z + aa1*x + aa2*y + aa3*z + aa0,
+ b11*x^2 + b12*x*y + b13*x*z + b22*y^2 + b23*y*z + b33*z*z + bb1*x + bb2*y + bb3*z + bb0,
+ c11*x^2 + c12*x*y + c13*x*z + c22*y^2 + c23*y*z + c33*z*z + cc1*x + cc2*y + cc3*z + cc0 ];
+v := [x,y,z];
+cF := curl(F,v);  #cF not needed, just did it for fun
+cpig := crossprod(F, [dx,dy,dz] );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[1] );
+curveint1 := integrate( %, t=0..2*Pi );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[2] );
+curveint2 := integrate( %, t=0..2*Pi );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[3] );
+curveint3 := integrate( %, t=0..2*Pi );
+
+vs := [sin(p)*cos(t), sin(p)*sin(t), cos(p)];
+vt := diff(vs, t);
+vu := diff(vs, p);
+vtls := simplify( innerprod(vt,vt) );
+vuls := simplify( innerprod(vu,vu) );
+va := simplify( crossprod(vu, vt) );  #outward
+vals := simplify( innerprod(va,va) );
+TDD :=    simplify(
+   innerprod( vt, diff( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), F), t ) )/vtls
++  innerprod( vu, diff( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), F), p ) )/vuls
+);
+
+B1 := integrate( integrate(  (TDD) * va[1] , p=0..Pi/2 ), t = 0..2*Pi );
+B2 := integrate( integrate(  (TDD) * va[2] , p=0..Pi/2 ), t = 0..2*Pi );
+B3 := integrate( integrate(  (TDD) * va[3] , p=0..Pi/2 ), t = 0..2*Pi );
+
+TDG := simplify( factor( expand( 
+   innerprod( diff( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), F), t ), va) * vt / vtls
++  innerprod( diff( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), F), p ), va) * vu / vuls
+)));
+TDG1 := innerprod( [1,0,0], TDG );
+TDG2 := innerprod( [0,1,0], TDG );
+TDG3 := innerprod( [0,0,1], TDG );
+C1 := integrate( integrate(  simplify(TDG1) , p=0..Pi/2 ), t = 0..2*Pi );
+C2 := integrate( integrate(  simplify(TDG2) , p=0..Pi/2 ), t = 0..2*Pi );
+C3 := integrate( integrate(  simplify(TDG3) , p=0..Pi/2 ), t = 0..2*Pi );
+
+curveint1-B1+C1;
+curveint2-B2+C2;
+curveint3-B3+C3;
+#get 0,0,0 confirming Theorem.
+
+(II) GENERAL QUADRATIC ON FLAT DISK
+with(linalg);
+F := 
+[a11*x^2 + a12*x*y + a13*x*z + a22*y^2 + a23*y*z + a33*z*z + aa1*x + aa2*y + aa3*z + aa0,
+ b11*x^2 + b12*x*y + b13*x*z + b22*y^2 + b23*y*z + b33*z*z + bb1*x + bb2*y + bb3*z + bb0,
+ c11*x^2 + c12*x*y + c13*x*z + c22*y^2 + c23*y*z + c33*z*z + cc1*x + cc2*y + cc3*z + cc0 ];
+v := [x,y,z];
+cF := curl(F,v);  #cF not needed, just did it for fun
+cpig := crossprod(F, [dx,dy,dz] );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[1] );
+curveint1 := integrate( %, t=0..2*Pi );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[2] );
+curveint2 := integrate( %, t=0..2*Pi );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[3] );
+curveint3 := integrate( %, t=0..2*Pi );
+
+vs := [p*cos(t), p*sin(t), 0];
+vt := diff(vs, t);
+vu := diff(vs, p);
+vtls := simplify( innerprod(vt,vt) );
+vuls := simplify( innerprod(vu,vu) );
+va := simplify( crossprod(vu, vt) );  #outward
+vals := simplify( innerprod(va,va) );
+TDD :=    simplify(
+   innerprod( vt, diff( subs( x=p*cos(t), y=p*sin(t), z=0, F), t ) )/vtls
++  innerprod( vu, diff( subs( x=p*cos(t), y=p*sin(t), z=0, F), p ) )/vuls
+);
+B1 := integrate( integrate(  (TDD) * va[1] , p=0..1 ), t = 0..2*Pi );
+B2 := integrate( integrate(  (TDD) * va[2] , p=0..1 ), t = 0..2*Pi );
+B3 := integrate( integrate(  (TDD) * va[3] , p=0..1 ), t = 0..2*Pi );
+
+TDG := simplify( factor( expand( 
+   innerprod( diff( subs( x=p*cos(t), y=p*sin(t), z=0, F), t ), va) * vt / vtls
++  innerprod( diff( subs( x=p*cos(t), y=p*sin(t), z=0, F), p ), va) * vu / vuls
+)));
+TDG1 := innerprod( [1,0,0], TDG );
+TDG2 := innerprod( [0,1,0], TDG );
+TDG3 := innerprod( [0,0,1], TDG );
+C1 := integrate( integrate(  simplify(TDG1) , p=0..1 ), t = 0..2*Pi );
+C2 := integrate( integrate(  simplify(TDG2) , p=0..1 ), t = 0..2*Pi );
+C3 := integrate( integrate(  simplify(TDG3) , p=0..1 ), t = 0..2*Pi );
+
+curveint1-B1+C1;
+curveint2-B2+C2;
+curveint3-B3+C3;
+#get 0,0,0  confirming Theorem.
+
+(Ic) GENERAL QUADRATIC ON HEMISPHERE   WITH SOME CUBIC TERMS ADDED
+with(linalg);
+#general non-homogeneous quadratic R^3 --> R^3 polynomial map:
+F := 
+[a11*x^2 + a12*x*y + a13*x*z + a22*y^2 + a23*y*z + a33*z*z + aa1*x + aa2*y + aa3*z + aa0 + ac1*x^3 + ac2*z^3,
+ b11*x^2 + b12*x*y + b13*x*z + b22*y^2 + b23*y*z + b33*z*z + bb1*x + bb2*y + bb3*z + bb0,
+ c11*x^2 + c12*x*y + c13*x*z + c22*y^2 + c23*y*z + c33*z*z + cc1*x + cc2*y + cc3*z + cc0 + ac3*x^3 + ac4*z^3];
+v := [x,y,z];
+cF := curl(F,v);  #cF not needed, just did it for fun
+cpig := crossprod(F, [dx,dy,dz] );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[1] );
+curveint1 := integrate( %, t=0..2*Pi );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[2] );
+curveint2 := integrate( %, t=0..2*Pi );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[3] );
+curveint3 := integrate( %, t=0..2*Pi );
+
+vs := [sin(p)*cos(t), sin(p)*sin(t), cos(p)];
+vt := diff(vs, t);
+vu := diff(vs, p);
+vtls := simplify( innerprod(vt,vt) );
+vuls := simplify( innerprod(vu,vu) );
+va := simplify( crossprod(vu, vt) );  #outward
+vals := simplify( innerprod(va,va) );
+TDD :=    simplify(
+   innerprod( vt, diff( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), F), t ) )/vtls
++  innerprod( vu, diff( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), F), p ) )/vuls
+);
+
+B1 := integrate( integrate(  (TDD) * va[1] , p=0..Pi/2 ), t = 0..2*Pi );
+B2 := integrate( integrate(  (TDD) * va[2] , p=0..Pi/2 ), t = 0..2*Pi );
+B3 := integrate( integrate(  (TDD) * va[3] , p=0..Pi/2 ), t = 0..2*Pi );
+
+TDG := simplify( factor( expand( 
+   innerprod( diff( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), F), t ), va) * vt / vtls
++  innerprod( diff( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), F), p ), va) * vu / vuls
+)));
+TDG1 := innerprod( [1,0,0], TDG );
+TDG2 := innerprod( [0,1,0], TDG );
+TDG3 := innerprod( [0,0,1], TDG );
+C1 := integrate( integrate(  simplify(TDG1) , p=0..Pi/2 ), t = 0..2*Pi );
+C2 := integrate( integrate(  simplify(TDG2) , p=0..Pi/2 ), t = 0..2*Pi );
+C3 := integrate( integrate(  simplify(TDG3) , p=0..Pi/2 ), t = 0..2*Pi );
+
+curveint1-B1+C1;
+curveint2-B2+C2;
+curveint3-B3+C3;
+#get 0,0,0, confirming Theorem
+
+(IIc) GENERAL QUADRATIC ON FLAT DISK     WITH SOME CUBIC TERMS ADDED
+with(linalg);
+F := 
+[a11*x^2 + a12*x*y + a13*x*z + a22*y^2 + a23*y*z + a33*z*z + aa1*x + aa2*y + aa3*z + aa0 + ac1*x^3 + ac2*z^3,
+ b11*x^2 + b12*x*y + b13*x*z + b22*y^2 + b23*y*z + b33*z*z + bb1*x + bb2*y + bb3*z + bb0,
+ c11*x^2 + c12*x*y + c13*x*z + c22*y^2 + c23*y*z + c33*z*z + cc1*x + cc2*y + cc3*z + cc0 + ac3*x^3 + ac4*z^3];
+v := [x,y,z];
+cF := curl(F,v);  #cF not needed, just did it for fun
+cpig := crossprod(F, [dx,dy,dz] );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[1] );
+curveint1 := integrate( %, t=0..2*Pi );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[2] );
+curveint2 := integrate( %, t=0..2*Pi );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[3] );
+curveint3 := integrate( %, t=0..2*Pi );
+
+vs := [p*cos(t), p*sin(t), 0];
+vt := diff(vs, t);
+vu := diff(vs, p);
+vtls := simplify( innerprod(vt,vt) );
+vuls := simplify( innerprod(vu,vu) );
+va := simplify( crossprod(vu, vt) );  #outward
+vals := simplify( innerprod(va,va) );
+TDD :=    simplify(
+   innerprod( vt, diff( subs( x=p*cos(t), y=p*sin(t), z=0, F), t ) )/vtls
++  innerprod( vu, diff( subs( x=p*cos(t), y=p*sin(t), z=0, F), p ) )/vuls
+);
+B1 := integrate( integrate(  (TDD) * va[1] , p=0..1 ), t = 0..2*Pi );
+B2 := integrate( integrate(  (TDD) * va[2] , p=0..1 ), t = 0..2*Pi );
+B3 := integrate( integrate(  (TDD) * va[3] , p=0..1 ), t = 0..2*Pi );
+
+TDG := simplify( factor( expand( 
+   innerprod( diff( subs( x=p*cos(t), y=p*sin(t), z=0, F), t ), va) * vt / vtls
++  innerprod( diff( subs( x=p*cos(t), y=p*sin(t), z=0, F), p ), va) * vu / vuls
+)));
+TDG1 := innerprod( [1,0,0], TDG );
+TDG2 := innerprod( [0,1,0], TDG );
+TDG3 := innerprod( [0,0,1], TDG );
+C1 := integrate( integrate(  simplify(TDG1) , p=0..1 ), t = 0..2*Pi );
+C2 := integrate( integrate(  simplify(TDG2) , p=0..1 ), t = 0..2*Pi );
+C3 := integrate( integrate(  simplify(TDG3) , p=0..1 ), t = 0..2*Pi );
+
+curveint1-B1+C1;
+curveint2-B2+C2;
+curveint3-B3+C3;
+#get 0,0,0  confirming Theorem.
+
+(Ic) GENERAL QUADRATIC ON HEMISPHERE   WITH SOME CUBIC TERMS ADDED  3D-ONLY FORMULATION
+with(linalg);
+#general non-homogeneous quadratic R^3 --> R^3 polynomial map:
+F := 
+[a11*x^2 + a12*x*y + a13*x*z + a22*y^2 + a23*y*z + a33*z*z + aa1*x + aa2*y + aa3*z + aa0 + ac1*x^3 + ac2*z^3,
+ b11*x^2 + b12*x*y + b13*x*z + b22*y^2 + b23*y*z + b33*z*z + bb1*x + bb2*y + bb3*z + bb0,
+ c11*x^2 + c12*x*y + c13*x*z + c22*y^2 + c23*y*z + c33*z*z + cc1*x + cc2*y + cc3*z + cc0 + ac3*x^3 + ac4*z^3];
+v := [x,y,z];
+cF := curl(F,v);  #cF not needed, just did it for fun
+dF := diverge(F,v);
+gF1 := grad(F[1], v);
+gF2 := grad(F[2], v);
+gF3 := grad(F[3], v);
+cpig := crossprod(F, [dx,dy,dz] );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[1] );
+curveint1 := integrate( %, t=0..2*Pi );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[2] );
+curveint2 := integrate( %, t=0..2*Pi );
+subs( x=cos(t), y=sin(t), z=0, dx=-sin(t), dy=cos(t), dz=0, cpig[3] );
+curveint3 := integrate( %, t=0..2*Pi );
+
+vs := [sin(p)*cos(t), sin(p)*sin(t), cos(p)];
+vt := diff(vs, t);
+vu := diff(vs, p);
+vtls := simplify( innerprod(vt,vt) );
+vuls := simplify( innerprod(vu,vu) );
+va := simplify( crossprod(vu, vt) );  #outward
+vals := simplify( innerprod(va,va) );
+ig1 := dF*va[1] - gF1[1]*va[1] - gF2[1]*va[2] - gF3[1]*va[3];
+ig2 := dF*va[2] - gF1[2]*va[1] - gF2[2]*va[2] - gF3[2]*va[3];
+ig3 := dF*va[3] - gF1[3]*va[1] - gF2[3]*va[2] - gF3[3]*va[3];
+sig1 :=  simplify( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), ig1 ) );
+sig2 :=  simplify( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), ig2 ) );
+sig3 :=  simplify( subs( x=sin(p)*cos(t), y=sin(p)*sin(t), z=cos(p), ig3 ) );
+C1 := integrate( integrate(  sig1 , p=0..Pi/2 ), t = 0..2*Pi );
+C2 := integrate( integrate(  sig2 , p=0..Pi/2 ), t = 0..2*Pi );
+C3 := integrate( integrate(  sig3 , p=0..Pi/2 ), t = 0..2*Pi );
+
+curveint1-C1;
+curveint2-C2;
+curveint3-C3;
+#get 0,0,0, confirming Theorem in the 3D-only reformulation

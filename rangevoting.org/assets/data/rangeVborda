@@ -1,0 +1,190 @@
+WHY RANGE VOTING IS BETTER THAN BORDA COUNT VOTING
+--------------Warren D. Smith----Nov 2004---------
+
+
+1.WHAT THEY ARE.
+Range voting: In an N-candidate election, each vote
+is an N-tuple of numbers each in the range 0 to 99.
+The Kth number in the tuple is a "score" for candidate K.
+You take the average of all the Kth entries to find
+the average score for candidate K.  The candidate
+with the highest average score wins.
+(Voters are allowed to leave an entry BLANK to denote
+"don't know anything about that candidate."  Blank entries
+not incorporated into average.)
+
+Borda: Each vote is an ordering of the N candidates
+from best to worst.  (Voters are NOT allowed to omit a
+candidate they know nothing about, and are NOT allowed
+to regard two candidates as EQUAL.)
+The top ranked candidate gets a score of N-1, the bottom ranked 0,
+and more generally the Kth-ranked gets a score of N-K.
+All scores are summed and the candidate with the highest
+total score wins.
+
+Range and Borda voting are actually very similar as far as their advantages are concerned,
+but differ a lot with respect to Borda's disadvantages.
+(One way to see it: the only difference between 
+Borda and RV is that RV lets you <i>choose</i> what point assignments you'll give 
+to the candidates, making RV more democratic, expressive,  and responsive 
+than Borda; while Borda sometimes makes the choice for you.)
+
+
+2.STRATEGIC BORDA VOTING.
+The biggest problem with Borda is that it reacts very badly to "strategic voting."
+
+I remember one time when I worked for NEC Research Institute and we had to vote to decide
+who, among about a dozen candidates, to hire.  There were several camps, each favoring a 
+different candidate who excelled in one way or another.  There were also many mediocre 
+candidates - nonentities - whom nobody particularly wanted.  Arguments grew impassioned.
+
+So then our boss, who definitely was several watts shy of being the brightest 
+bulb in the box, said "we have to be fair about this. Let's vote."  
+And he right then (apparently) independently reinvented the Borda count
+system and told us all to provide our Borda votes (preference orderings) - by
+secret ballot of course, since he'd read in some managerial
+handbook that secret ballots were better.  Then he'd add them up.
+
+Well, of course, since everybody there was an arrogant pushy scientist, everybody
+quickly figured out that the thing to do was to rank your favorite first,
+then artificially rank all of his perceived major rivals artificially last.
+Finally, by the rules of the Borda system, the non-entities had to be ranked
+somewhere in the middle.  (Of course, you *could* honestly rank all the top candidates
+top, but that would be like having one-tenth of a strategic vote, unacceptably weak.
+Nobody could afford to be that stupid and ineffectual.  Plus, there was no public
+embarrassment about submitting lies in your ballot, since everybody's ballot was secret.)
+Then, my boss made a great show of closing his eyes and shuffling all the ballots... 
+then opened them and added them up... and golly... that was odd... the 
+most-favored candidates all seemed to be ones that had been dismissed as
+nonentities before... they must have a good deal more support than he'd 
+realized...  hmm... the result-order really seems quite illogical and random... 
+but after all, this clearly IS the most fair possible voting system, so we have to
+concede that Mr. Putz really is the truly most-favored candidate, unexpected though
+he may be... ok, meeting over, thanks for all your input, folks.
+
+NEC Research Institute eventually collapsed and nearly all its scientists were fired.
+This particular meeting, in its small way, was one contribution to its downfall.
+(The parent company NEC still survives, thanks to a bailout by the Japanese government.)
+
+   AS A PICTURE:  if the 3 good candidates are A,B,C then the strategic votes are:
+    A > nonentities > B > C      (cast by about 1/3 of the voters)
+    B > nonentities > C > A      (cast by about 1/3 of the voters)
+    C > nonentities > A > B      (cast by about 1/3 of the voters)
+   ----------------------------------------------------------------
+    total:  A,B, and C each get an average score of about N/3, 
+       whereas the nonentities get, on average, a score of about N/2.
+       So a nonentity always wins and the 3 good candidates always
+       are ranked below average.  In this kind of scenario Borda actually
+       performs worse than plurality voting.
+
+Incidentally, this particular pathology is both very serious (near-pessimal candidate
+elected) and very common (occurs whenever 3 there are comparable rivals) and it 
+happens not only under Borda voting, but under *every* voting system of "Condorcet type."
+This severe reaction to strategic voting seems a very good reason to discard
+all Condorcet-type voting methods!
+
+
+3.CONTRAST THIS WITH STRATEGIC RANGE VOTING.
+Strategic voting also hurts us in the range system, but not nearly as much.  For example,
+in the scenario above, nobody would feel strategically forced to middle-rank the nonentities, 
+and in fact, they would, quite honestly, rank them last.  Hence, all the votes would
+consist of 99s and 0s for the good candidates, and 0s for the nonentities.
+(The 0s for the good candidates would be dishonest strategic attempts to hurt
+rivals.)  Despite this strategic dishonesty, one of the good candidates
+would still necessarily win.
+
+
+4. VOTER EXPRESSIVITY - and WHAT IF THE VOTERS REALLY ARE HONEST?
+Well,  they can be more honest and more expressive with range voting than with 
+Borda voting, so we would expect better results.
+
+In range voting, voters can express the idea that they think 2 candidates are equal.
+In Borda, they cannot. 
+
+Range voters can express the idea they are IGNORANT about a candidate and want to leave the
+task of rating him to other, hopefully more knowledgeable voters.  In Borda, they
+can't choose to do that.
+
+Borda voters who decide, in a 3-candidate election, to rank A top and B bottom,
+then have no choice about C - they have to middle-rank him and can in no way express
+their opinion of C.   In range voting, they can.
+
+If you think  A>B>C>D>E,  undoubtably some of your preferences are more INTENSE 
+than others.    Range voters can express that.  Borda voters cannot.
+
+Surveys show that a lot of voters want to just vote for one candidate, plurality-style.
+In range voting they can do that by voting (99, 0, 0, 0, 0, 0).
+With Borda, they can't do it.
+
+
+5.STRATEGY and 2-PARTY DOMINATION:
+Most will, in an election like Bush v Gore v Nader 2000,
+exaggerate their good and bad opinions of Bush and Gore by artificially ranking
+them first and last, even if they truly feel Nader is best or worst.
+They will do this in order to give their vote the "maximum possible impact"
+so it is not "wasted".  Once they make this decision, with Borda,  Nader automatically
+has to go in the middle slot, they have no choice about him.  If all
+voters behave this way, then automatically the winner will be either
+Bush or Gore.  Nader can NEVER win a Borda election with this kind of strategic voters.
+(Unless it is an exact 3-way tie and the tie-break goes Nader's way,
+which'll never happen in reality.)
+
+In view of this, third parties would be silly to push Borda.  They should advocate range.
+
+Analogously, in range voting, if the voters exaggerate and give Gore=99 and Bush=0 
+(or the reverse) in order to get maximum impact and not waste their vote, then 
+they are still free to give Nader 99 or 0 or anything in between.
+Consequently, it would still be ENTIRELY POSSIBLE for Nader to win with range,
+and without need of any kind of tie.
+
+Think this kind of strategic thinking won't matter much?  Wrong.
+The "National Election Study" showed that in 2000, among voters who honestly liked
+Nader better than every other candidate, fewer than 1 in 10 actually voted
+for Nader.  That was because of precisely this sort of strategic ploy - these
+voters did not wish to "waste their vote" and wanted "maximum impact"
+so they pretended either Bush or Gore was their favorite. (Same thing happened
+with voters whose true favorite was Buchanan.)  In short, strategy
+has an enormous impact in the real world, and over 90% of real
+voters act strategically and not honestly, given the chance.
+That is exactly why third parties always die out and the USA is
+stuck with 2-party domination.
+
+6.CLONES.
+Suppose several near-identical "clone" candidates run.
+Under plurality voting: they split the vote and all lose.
+Under Borda voting: with enough clones, one is assured victory!
+Range voting: clones don't matter, election result not affected.  Can't manipulate
+the election by creating or abolishing clones.
+
+Which would you prefer?
+
+7.BAYESIAN REGRET (FOR STATISTICS NERDS):
+Extensive computer simulations of millions of artificial "elections"
+by W.D.Smith show that range voting is the best single-winner voting
+system, among a large number compared by him (including Borda, Borda, Plurality, IRV
+Condorcet, Eigenvector, etc.) in terms of a statistical yardstick called "Bayesian regret".
+This is true regardless of whether the voters act honestly or strategically, whether
+the number of candidates is 3,4, or 5, whether the number of voters is 5 or 200,
+whether various levels of "voter ignorance" are introduced, and finally
+regardless of which of several randomized "utility generators" are
+used to generate election scenarios.
+
+Smith's papers on voting systems are available at
+   http://math.temple.edu/~wds/homepage/works.html
+as #56, 59, 76, 77, 78, 79, 80.
+
+8.SUMMARY:
+Isn't the purpose of voting to provide information about your opinions?
+Why would you want to have a system (Borda) that forces you to express less information,
+when you can have one (Range) that permits you to express more?
+
+If you think 2-party domination is a bad thing and would like to see a greater
+diversity of parties and more voter choice,  then why would you want Borda (in which, with 
+strategically-exaggerating voters, 3rd parties have no chance) when you could have Range?
+
+And why would you want a system (Borda) that we know reacts very badly to strategic voters,
+often giving a below-average candidate the victory?
+
+Duh.  You want range voting.  Forget Borda voting.
+
+-----end-----

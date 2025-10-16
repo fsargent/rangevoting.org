@@ -1,245 +1,460 @@
-/* Original RangeVoting.org Layout Styles - Extracted from inline CSS */
+/* Minimal CSS - Keep it simple */
 
 body {
-min-width: 736px;
-background: white;
-color: #1b1b1b;
-padding: 10px;
-margin: 0px;
+	font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+	font-size: 1em;
+	line-height: 1.5;
+	color: #333;
+	background: #fff;
+	padding: 1em 1em;
+	max-width: 120ch;
+	margin: auto;
 }
 
 a {
-border: 1px;
-color: #00d;
-text-decoration: none}
-
-a:visited {
-color: #5f0e00;
-text-decoration: none}
+	color: #0066cc;
+	text-decoration: none;
+}
 
 a:hover {
-background: #d19a3b; /*f66*/
-color: #000}
-
-div#linkbarcontainer1 {
-float: right;
-z-index: 97;
-clear: left;
-width: 100%;
-background:#fefefe;
-margin-top: 0px;
-margin-left: 0px;
-margin-right: 0px;
-margin-bottom: 0px}
-
-div#linkbarcontainer2 {
-float: right;
-padding-left: 10px; /*make smaller or larger? activates 2 safari bugs*/
-z-index: 97;
-margin-top: 0px;
-margin-left: 0px;
-margin-right: 0px;
-margin-bottom: 0px}
-
-div#lmenucontainer {
-float:left; 
-width: 165px;
-margin-top: 0px;
+	text-decoration: underline;
 }
 
+a:visited {
+	color: #663300;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	margin: 3em 0 1em;
+}
+
+p,
+ul,
+ol {
+	margin-bottom: 2em;
+	color: #1d1d1d;
+	font-family: sans-serif;
+}
+
+table {
+	border-collapse: collapse;
+	margin: 15px 0;
+	width: 100%;
+	max-width: 100%;
+}
+
+table td,
+table th {
+	border: 1px solid #ddd;
+	padding: 8px 10px;
+	text-align: left;
+}
+
+table th {
+	background: #f0f0f0;
+	font-weight: bold;
+}
+
+/* Layout */
 div#headline {
-margin-left: 40px;
-margin-right: 35px;
-margin-bottom: 67px;
-margin-top: 0px;
-clear: both;
-padding-left: 0px;
-text-align: center}
+	text-align: center;
+	padding: 20px 0;
+	margin: 0 0 20px 0;
+	border-bottom: 1px solid #ddd;
+}
 
-div#search {
-margin-top: 10px;
-margin-right: 1px;
-margin-left: 5px;
-margin-bottom: 2px;
-border: 1px black solid;
-float: right;
-width: 290px; /*adjusted to the pixel to prevent a safari bug*/
-z-index: 0;
-background-color: #FD0;
-padding: 2px;
-text-align: left }
+div#headline h1 {
+	margin: 0;
+	padding: 0;
+	font-size: 32px;
+	font-weight: bold;
+}
 
-div#main {
-/*width: 100%;*/
-margin-top: 0.7em; /*28px;*/
-margin-left: 159px;
-font-family: arial,sans-serif,arial narrow;}
+div#headline h1 a {
+	color: #000;
+	text-decoration: none;
+	transition: color 0.2s ease;
+}
 
-/*<span>THIS HERE</span> elements inside hyperlinks in main normally are invisible:*/
-div#main a span {display:none;} 
+div#headline h1 a:hover {
+	color: #0066cc;
+}
 
-/*but appear on hover:*/
-div#main a:hover span {display:block;
-position:relative; 
-margin-top:-21px; 
-background:#d5d5ff;
-z-index:100}
+/* Navigation containers */
+div#linkbarcontainer1,
+div#linkbarcontainer2 {
+	float: none !important;
+	width: 100% !important;
+	margin: 10px 0 !important;
+	padding: 0 !important;
+	background: transparent !important;
+	text-align: center;
+	clear: both;
+}
 
-div#footer {
-margin-top: 132px;
-margin-left: 140px;
-margin-right: 140px;
-font-size: 8px;
-font-weight: bold;
-text-align: center }
-
-/*CSSplay horizontal flyout menu.  
-We are mostly only going to use 1 menu level, not multiple.  But do use multiple some places.
-[DL-based menus are easier to style and do, but do not lend themselves to multiple levels, so no.]
-Fails in IE5mac, Works in Safari1.3.2, IE5.5, IE6, IE7, Firefox3.5, Opera8.54, Konqueror, SeaMonkey2, MSIE7, MSIE5.5/windows, Mozilla and Netscape:*/
-/* style the outer div to give it width: */
+/* Top menu */
 .Hmenu {
-width:560; /*140*4, need more if more than 4 items in row*/
-height:30px;
-float: right;
-text-align: center;
+	width: auto !important;
+	height: auto !important;
+	float: none !important;
+	display: inline-block;
+	margin: 0 auto;
 }
-/* remove all bullets, borders and padding from default list styling: */
+
 .Hmenu ul {
-padding:0;
-margin:0;
-list-style-type:none;
+	list-style: none;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: flex;
+	flex-wrap: wrap;
+	justify-content: center;
+	gap: 0;
+	background: #f5f5f5;
+	border: 1px solid #ddd;
+	border-radius: 4px;
 }
-.Hmenu ul ul {
-width:140px;
-}
-/* float list to make it horizontal and relative position so can control dropdown menu position: */
+
 .Hmenu li {
-float:left;
-width:140px;
-position:relative;
+	float: none !important;
+	width: auto !important;
+	position: relative;
+	margin: 0;
+	border-right: 1px solid #ddd;
 }
-/* style the links for top level: */
-.Hmenu a, .Hmenu a:visited {
-display:block;
-font-size:13px;
-text-decoration:none; 
-color:#000; /*text color black=000*/
-width:129px; /*150-11*/
-height:30px; 
-border:1px solid #fff; 
-border-width:1px 1px 0 0; 
-background:#88b0d7; /*this is brighter blue; drab olive= d4d8bd*/
-padding-left:10px; 
-line-height:29px;
+
+.Hmenu li:last-child {
+	border-right: none;
 }
-/* a hack so that IE5.5 faulty box model is corrected: */
-* html .Hmenu a, * html .Hmenu a:visited {
-width:140px;
+
+.Hmenu a,
+.Hmenu a:visited {
+	display: block !important;
+	padding: 8px 12px !important;
+	width: auto !important;
+	height: auto !important;
+	line-height: 1.4 !important;
+	border: none !important;
+	background: transparent !important;
+	color: #333 !important;
+	font-size: 13px !important;
+	font-weight: normal;
 }
-/* style the second level background: */
-.Hmenu ul ul a.drop, .Hmenu ul ul a.drop:visited {background:#949e7c;}
-/* style the second level hover: */
-.Hmenu ul ul a.drop:hover {background:#d19a3b;}
-.Hmenu ul ul :hover > a.drop {background:#d19a3b;}
-/* style the third level background */
-.Hmenu ul ul ul a, .Hmenu ul ul ul a:visited {background:#88b0d7;}
-/* style the third level hover */
-.Hmenu ul ul ul a:hover{background:#d19a3b;}
-.Hmenu ul ul ul :hover > a {background:#d19a3b;}
-/* style the table so that it takes no part in the layout - required for IE to work: */
-.Hmenu table {border-collapse:collapse; border:0; position:absolute; left:0; top:-1px;}
-/*in above line, use top for dropdown, bottom for flyup.*/
-/* hide the sub levels and give them absolute position so they take up no room: */
+
+.Hmenu a:hover {
+	background: #e8e8e8 !important;
+	text-decoration: none;
+}
+
+/* Dropdown menus */
 .Hmenu ul ul {
-visibility:hidden;
-position:absolute;
-top:31px; /*change to bottom for flyup, top for dropdown*/
-left:0; 
-width:140px;
-}
-* html .Hmenu ul ul {bottom:30px;}
-/* position third level flyout Hmenu: */
-.Hmenu ul ul ul{
-left:140px; 
-top:0; /*change to bottom for flyup, top for dropdown*/
-width:140px;
-}
-/* position third level flyout Hmenu for left flyout: */
-.Hmenu ul ul ul.left {left:-140px;}
-/* style second level links: */
-.Hmenu ul ul a, .Hmenu ul ul a:visited {
-background:#88b0d7; /*drab olive*/
-color:#000; /*text color black=000*/
-height:auto; 
-line-height:1em; 
-padding:5px 10px; 
-width:119px
-/* yet another hack for IE5.5: */
-}
-* html .Hmenu ul ul a{width:140px;}
-/* style the top level hover: */
-.Hmenu a:hover, .Hmenu ul ul a:hover{
-color:#000;
-background:#d19a3b;
-}
-.Hmenu :hover > a, .Hmenu ul ul :hover > a {
-color:#000;
-background:#d19a3b;
-}
-/* make the second level visible when hover on first level list OR link: */
-.Hmenu ul :hover ul{
-visibility:visible;
-height:auto;
-}
-/* keep the third level hidden when hover on first level list OR link: */
-.Hmenu ul :hover ul ul{display:none;}
-/* keep the fourth level hidden when hover on second level list OR link: */
-.Hmenu ul :hover ul :hover ul ul{display:none;}
-/* make the third level visible when hover over second level list OR link: */
-.Hmenu ul :hover ul :hover ul{ 
-display:block;
-bottom:0;
-}
-/* make the fourth level visible when hover over third level list OR link */
-.Hmenu ul :hover ul :hover ul :hover ul { 
-display:block;
-bottom:0;
+	position: absolute !important;
+	top: 100%;
+	left: 0;
+	display: none !important;
+	visibility: hidden !important;
+	width: 180px !important;
+	background: white;
+	border: 1px solid #ccc;
+	box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+	z-index: 100;
+	margin-top: 0 !important;
+	padding: 0 !important;
 }
 
-/*CSSplay vertical flyout menu.  Useful to know: &laquo; is << &raquo; is >>
-Fails in IE5mac.
-Works in Safari1.3.2, IE5.5, IE6, IE7, Firefox, Opera, Mozilla and Netscape:*/
-/* This copyright notice must be untouched at all times.
-The original version of this stylesheet and the associated (x)html
-is available at http://www.cssplay.co.uk/menus/flyout_4level.html
-Copyright (c) 2005-2007 Stu Nicholls. All rights reserved.
-This stylesheet and the associated (x)html may be modified in any
-way to fit your requirements. */
-.Vmenu { margin: 10px; height: 100px; font-size:9pt; font-family: "arial narrow", 
-"Helvetica Compressed",
-"Helvetica Narrow",
-"DejaVu Sans Condensed", 
-"Droid", "Playbill", "CampanileFLF";}
-.Vmenu ul { margin: 0pt; padding: 0pt; position: relative; z-index: 500; list-style-type: none; width: 9em; }
-.Vmenu li { background-color: #6699ff; float: left; }
-.Vmenu li.sub { background-color: #6699ff; }
-.Vmenu table { position: absolute; border-collapse: collapse; top: 0pt; left: 0pt; z-index: 100; font-size: 1em; margin-top: -1px; }
-.Vmenu a.last, .Vmenu a:visited.last {border-width:1px;}
-.Vmenu a, .Vmenu a:visited { border: 1px solid #ffffff; border-width:1px 1px 0 1px; display: block; text-decoration: none; height: 2em; line-height: 2em; width: 9em; color: #000000; padding-left: 0.5em; font-weight: normal; font-style: normal; font-variant: normal; text-transform: none; }
-.Vmenu b { float: right; margin-right: 5px; }
-* html .Vmenu a, * html .Vmenu a:visited { width: 9em; line-height: 2em; }
-* html .Vmenu a:hover { border-color: #ffffff; color: #000000; background-color: #ff6600; position: relative; font-weight: normal; font-style: normal; font-variant: normal; text-decoration: none; text-transform: none; }
-.Vmenu li:hover { position: relative; }
-.Vmenu a:active, .Vmenu a:focus { border-color: #ffffff; color: #000000; background-color: #ff6600; font-weight: normal; font-style: normal; font-variant: normal; text-decoration: none; text-transform: none; }
-.Vmenu li:hover > a { border-color: #ffffff; color: #000000; background-color: #ff6600; font-weight: normal; font-style: normal; font-variant: normal; text-decoration: none; text-transform: none; }
-.Vmenu li ul { padding: 2em; visibility: hidden; position: absolute; top: -2.5em; left: 5em; background-color: transparent; }
-.Vmenu li:hover > ul { visibility: visible; }
-.Vmenu ul a:hover ul ul { visibility: hidden; }
-.Vmenu ul a:hover ul a:hover ul ul { visibility: hidden; }
-.Vmenu ul a:hover ul a:hover ul a:hover ul ul { visibility: hidden; }
-.Vmenu ul a:hover ul { visibility: visible; }
-.Vmenu ul a:hover ul a:hover ul { visibility: visible; }
-.Vmenu ul a:hover ul a:hover ul a:hover ul { visibility: visible; }
-.Vmenu ul a:hover ul a:hover ul a:hover ul a:hover ul { visibility: visible; }
+.Hmenu li:hover > ul {
+	display: block !important;
+	visibility: visible !important;
+}
 
+.Hmenu ul ul a,
+.Hmenu ul ul a:visited {
+	border: none !important;
+	border-right: none !important;
+	padding: 8px 12px !important;
+	width: 100% !important;
+	background: white !important;
+	text-align: left;
+}
+
+.Hmenu ul ul a:hover {
+	background: #f0f0f0 !important;
+}
+
+.Hmenu table {
+	display: none !important;
+}
+
+/* Sidebar menu */
+div#lmenucontainer {
+	float: left !important;
+	width: 200px !important;
+	margin: 0 20px 0 0 !important;
+	padding: 0 !important;
+	flex-shrink: 0;
+}
+
+.table-of-contents {
+	background: #f9f9f9;
+	border: 1px solid #ddd;
+	border-radius: 4px;
+	padding: 15px;
+	margin: 0;
+	font-size: 13px;
+	overflow-y: visible;
+}
+
+.table-of-contents h2 {
+	font-size: 16px;
+	margin: 0 0 15px 0;
+	padding-bottom: 10px;
+	border-bottom: 2px solid #ddd;
+}
+
+.table-of-contents ul {
+	margin: 0 !important;
+	padding-left: 20px;
+	font-size: 13px;
+}
+
+.table-of-contents li {
+	margin: 0;
+	line-height: 1.5;
+}
+
+.table-of-contents a {
+	color: #0066cc;
+	text-decoration: none;
+}
+
+.table-of-contents a:hover {
+	text-decoration: underline;
+}
+
+.table-of-contents a:visited {
+	color: #663300;
+}
+
+.Vmenu {
+	margin: 0 !important;
+	height: auto !important;
+	font-size: 12px !important;
+	font-family: inherit !important;
+	background: transparent;
+	border: none;
+	border-radius: 0;
+	padding: 0;
+}
+
+.Vmenu ul {
+	list-style: none;
+	margin: 0 !important;
+	padding: 0 !important;
+	display: flex !important;
+	flex-direction: column;
+	width: auto !important;
+	z-index: auto !important;
+	position: relative !important;
+}
+
+.Vmenu li {
+	background: transparent !important;
+	float: none !important;
+	position: relative;
+	margin: 0;
+	border-bottom: 1px solid #ddd;
+}
+
+.Vmenu li:last-child {
+	border-bottom: none;
+}
+
+.Vmenu a,
+.Vmenu a:visited {
+	display: block !important;
+	padding: 8px 10px !important;
+	text-decoration: none !important;
+	color: #333 !important;
+	height: auto !important;
+	line-height: 1.3 !important;
+	width: auto !important;
+	font-weight: normal;
+	background: transparent !important;
+	border: none !important;
+}
+
+.Vmenu a:hover {
+	background: #e8e8e8 !important;
+}
+
+/* Colored menu items */
+.Vmenu li[style*="background-color"] {
+	background: transparent !important;
+}
+
+.Vmenu li[style*="background-color"] a {
+	background: transparent !important;
+	font-weight: bold;
+}
+
+/* Nested menus */
+.Vmenu ul ul {
+	position: static !important;
+	display: none !important;
+	visibility: visible !important;
+	flex-direction: column;
+	width: 100% !important;
+	background: white;
+	border-top: 1px solid #ddd;
+	margin: 0 !important;
+	padding: 0 !important;
+	box-shadow: none;
+}
+
+.Vmenu li:hover > ul {
+	display: flex !important;
+}
+
+.Vmenu ul ul a {
+	padding: 6px 15px !important;
+	font-size: 11px;
+}
+
+.Vmenu table {
+	display: none !important;
+}
+
+.Vmenu b {
+	display: none;
+}
+
+/* Search box */
+div#search {
+	float: right !important;
+	width: auto !important;
+	margin: 10px 0 10px 15px !important;
+	padding: 10px;
+	background: #ffffcc !important;
+	border: 1px solid #999 !important;
+	border-radius: 4px;
+	clear: none;
+}
+
+div#search table {
+	margin: 0;
+	border: none;
+}
+
+div#search td {
+	border: none;
+	padding: 2px 5px;
+}
+
+div#search input {
+	padding: 4px;
+	border: 1px solid #999;
+	border-radius: 3px;
+	font-size: 12px;
+}
+
+/* Main content */
+div#main {
+	overflow: visible;
+	font-family: inherit !important;
+	display: flow-root;
+}
+
+div#main a span {
+	display: inline !important;
+	position: relative !important;
+	margin: 0 !important;
+	background: transparent !important;
+}
+
+/* Footer */
+div#footer {
+	clear: both;
+	margin-top: 30px !important;
+	margin-left: 0 !important;
+	margin-right: 0 !important;
+	padding: 20px 0;
+	border-top: 1px solid #ddd;
+	font-size: 11px;
+	text-align: center;
+	color: #666;
+}
+
+div#footer a {
+	margin: 0 5px;
+	color: #666;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+	body {
+		padding: 10px;
+	}
+
+	div#lmenucontainer {
+		float: none !important;
+		width: 100% !important;
+		margin: 0 0 15px 0 !important;
+	}
+
+	.table-of-contents {
+		max-height: none;
+	}
+
+	div#main {
+		margin-left: 0 !important;
+	}
+
+	.Vmenu ul {
+		flex-direction: row;
+		flex-wrap: wrap;
+	}
+
+	.Vmenu ul ul {
+		position: static;
+		width: 100% !important;
+		border: none;
+		display: flex;
+	}
+
+	.Hmenu ul {
+		flex-direction: column;
+	}
+
+	.Hmenu li {
+		border-right: none;
+		border-bottom: 1px solid #ddd;
+	}
+
+	.Hmenu li:last-child {
+		border-bottom: none;
+	}
+
+	div#search {
+		float: none !important;
+		margin: 10px 0 !important;
+	}
+}
+
+/* Remove deprecated elements styling */
+font {
+	font-family: inherit;
+	font-size: inherit;
+}
+
+blink {
+	animation: none;
+}
+
+/* Utility */
+small {
+	font-size: 0.85em;
+}

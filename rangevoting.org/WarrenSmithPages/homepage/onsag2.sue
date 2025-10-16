@@ -1,0 +1,55 @@
+ Title
+Criticism of Onsager's reciprocal relations
+
+ Author
+Warren D. Smith, NECI
+
+ Abstract
+Onsager's second kind of ``reciprocal relations'' 
+%[Phys.Rev. 37 (1931) 405-426; 38 (1931) 2265-2279]
+state that $\sigma (\vec{H}) = \sigma^{T} (-\vec{H})$ where $\sigma$
+is the $3 \times 3$ conductance matrix, $\vec{H}$ is an externally
+applied magnetic field, and $T$ means matrix transpose.  This is only
+supposed to hold for ``linear'' materials for which the current
+density $\vec{J}$ is related to the electric field $\vec{E}$ by
+$\langle \vec{J} \rangle = \sigma \vec{E}$.  This is just one instance
+of a class of mathematically equivalent but physically different
+relations; e.g. the same relation is supposed to hold if $\sigma$ is
+thermal conductivity and $\vec{H}$ is angular velocity for a rotating
+system.  We demonstrate by two counterexamples that this relation (and
+its isomorphs) can be dramatically false.  We also have
+counterexamples to the Onsager relations of the first kind (which are
+the special case $\vec{H}=\vec{0}$).  There are two flaws in Onsager's
+reasoning and each counterexample exploits one of them.  Both flaws
+had already been thought of
+%[M.Lax Symmetry Principles in Solid State and Molecular Physics, 
+%Wiley-Interscience 1973] %287-292
+but I feel that they are insufficiently appreciated.
+
+If we instead define $\sigma$ to be the $3\times 3$ {\em differential
+conductance} (Jacobian) matrix 
+$\sigma = {\rm d}\langle \vec{J} \rangle/{\rm d} \vec{E}$, then 
+$\sigma_{D} ( \vec{H}, \vec{E} ) = \sigma_{L} ( \vec{H}, \vec{E} )$
+where $\sigma_D$ is for the original material, but $\sigma_L$ is for a
+``reversed'' material in which all spins and angular momenta (and
+consequently all magnetic dipoles), and the chirality (by a central
+inversion of 3-space) are reversed.  
+%This allows nonlinear electrical materials, but 
+%only applies for the $3$ diagonal entries of $\sigma$.
+In the limit $| \vec{E} | \to 0$ (the ``zero voltage limit'')
+$\sigma_{D} ( \vec{H} ) = \sigma_{U}^{T} ( -\vec{H} )$ where
+$\sigma_U$ is for a ``spin-reversed'' material.  Note that the $U$ (or
+$L$) and $D$ materials could be inequivalent -- in which case
+Onsager's relation is not about one, but actually about two,
+materials, and hence is less useful.
+
+Apparently there have been zero intentional experimental tests (so far) of
+any Onsager relation in a material inequivalent to its reversal;
+but I will argue that a 1996 experiment by Solin, Thio, et al.
+quite likely disproved Onsager's relations of the second kind.
+%although those authors had not realized it.
+
+ Keywords
+Onsager relation, galvanomagnetic effects, magnetoresistance,
+non-ohmic resistors, nonlinear electrical materials,
+chirality, errors in textbooks.

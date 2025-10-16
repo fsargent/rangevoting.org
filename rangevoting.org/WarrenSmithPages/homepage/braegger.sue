@@ -1,0 +1,46 @@
+ Accurate Circle Configurations and Numerical Conformal Mapping in
+         Polynomial Time
+
+
+Warren D. Smith, NECI
+
+  Abstract
+
+According to a remarkable re-interpretation of a theorem of
+E.M. Andreev (1970) by W.P.  Thurston ($\approx$1982), there is a
+unique (up to inversive transformations) packing of interior-disjoint
+circles in the plane, whose contact graph is any given polyhedral
+graph $G$, and such that an analagous ``dual'' circle packing
+simultaneously exists, whose contact graph is the planar dual graph
+$G^{*}$, and such that the primal and dual circle packingss have the
+same set of tangency points and the primal circles are orthogonal to
+the dual ones at these tangency points.
+
+This note shows that relatively and absolutely accurate coordinates
+for the primal and dual circles may be obtained in time polynomial in
+$N$, the number of vertices of the polyhedral graph, $D$, the number
+of decimals of accuracy desired.
+
+Consequently one may also accurately ``midscribe'' a polyhedron -- and
+simultaneously its dual -- in polynomial time.
+
+Also consequently, one may implement Riemann's conformal mapping
+theorem numerically, in polynomial time with provable accuracy.
+
+Our result is obtained by generalizing and reformulating ideas found
+in the doctoral thesis of Walter Br\"agger [Math. Institut,
+Rheinsprung 21, CH-4051 Basel, Feb.  1991] to reduce our problem to
+maximizing a smooth convex function.  This maximization problem is
+then solved by using Khachian's ``ellipsoid method'' or Vaidya's
+algorithm.
+
+  Keywords
+
+Conformal Mapping,
+midscribed polyhedra,
+circle packings,
+ellipsoid algorithm,
+Clausen's integral,
+hyperbolic geometry,
+inversion.
+
