@@ -7,109 +7,109 @@
 <META content="MSHTML 6.00.2900.3157" name=GENERATOR></HEAD>
 <BODY style="FONT-FAMILY: Arial, sans-serif">
 <CENTER>
-<H1>How I broke AES (Advanced Encryption Standard) � if I did it </H1>
-<P>by &nbsp; <STRIKE>O.J. Simpson</STRIKE> &nbsp; Warren D. Smith &nbsp;&nbsp; 
+<H1>How I broke AES (Advanced Encryption Standard) ' if I did it </H1>
+<P>by &nbsp; <STRIKE>O.J. Simpson</STRIKE> &nbsp; Warren D. Smith &nbsp;&nbsp;
 <A href="../../index.html">http://rangevoting.org/</A> </P>
-<P>The paper: <A 
-href="http://math.temple.edu/~wds/homepage/works.html">http://math.temple.edu/~wds/homepage/works.html</A> 
+<P>The paper: <A
+href="http://math.temple.edu/~wds/homepage/works.html">http://math.temple.edu/~wds/homepage/works.html</A>
 #100</A> </P></CENTER>
-<P>We describe a new simple but more powerful form of linear cryptanalysis. It 
-appears to <B>break</B> AES-256 (and undoubtably other cryptosystems too, e.g. 
+<P>We describe a new simple but more powerful form of linear cryptanalysis. It
+appears to <B>break</B> AES-256 (and undoubtably other cryptosystems too, e.g.
 SKIPJACK). </P>
 <UL>
-  <LI>But the break is "nonconstructive." 
-  <LI>Even if this break is bogus (due to the underlying models inadequately 
-  approximating the real world) we explain how AES still could contain 
-  "trapdoors" which would make cryptanalysis unexpectedly easy for anybody who 
-  knew the trapdoor. </LI></UL>The <B>fix:</B> ("fundamental theorem of 
-cryptography"?) 
+  <LI>But the break is "nonconstructive."
+  <LI>Even if this break is bogus (due to the underlying models inadequately
+  approximating the real world) we explain how AES still could contain
+  "trapdoors" which would make cryptanalysis unexpectedly easy for anybody who
+  knew the trapdoor. </LI></UL>The <B>fix:</B> ("fundamental theorem of
+cryptography"?)
 <UL>
-  <LI>We then discuss how to use the theory of BLECCs to build cryptosystems 
-  provably 
+  <LI>We then discuss how to use the theory of BLECCs to build cryptosystems
+  provably
   <OL>
-    <LI>not containing trapdoors of this sort, 
-    <LI>secure against our strengthened form of linear cryptanalysis, 
-    <LI>secure against "differential" cryptanalysis, 
-    <LI>secure against D.J.Bernstein's timing attack. </LI></OL>Using this 
-  technique we prove a fundamental theorem: it is possible to thus-encrypt N 
-  bits with security (against known attacks) 2<SUP>cN</SUP>, via an circuit 
-  Q<SUB>N</SUB> containing &#8804;cN two-input logic gates and operating in &#8804;c�logN 
-  gate-delays, where Q<SUB>N</SUB> is constructible in polynomial(N) time. 
+    <LI>not containing trapdoors of this sort,
+    <LI>secure against our strengthened form of linear cryptanalysis,
+    <LI>secure against "differential" cryptanalysis,
+    <LI>secure against D.J.Bernstein's timing attack. </LI></OL>Using this
+  technique we prove a fundamental theorem: it is possible to thus-encrypt N
+  bits with security (against known attacks) 2<SUP>cN</SUP>, via an circuit
+  Q<SUB>N</SUB> containing &#8804;cN two-input logic gates and operating in &#8804;c'logN
+  gate-delays, where Q<SUB>N</SUB> is constructible in polynomial(N) time.
   <OL></OL></LI></UL>
 <HR>
 
 <CENTER>
-<H2>"Nonconstructive break" of AES?? What the heck is <I>that</I>? 
+<H2>"Nonconstructive break" of AES?? What the heck is <I>that</I>?
 </H2></CENTER>
 <UL>
-  <LI>We make it plausible* break-algorithm <I>exists</I> � but do not 
-  <I>construct</I> it. More precisely: construct parameterized class of 
-  algorithms A(p), &amp; make it plausible some values of params p exist, 
-  causing A(p) to efficiently break AES. 
-  <LI>A(p) &amp; p both have small bit-length. 
-  <LI>I.e: If God told you p once, you could use A(p) to break arbitrary AES 
-  instances quickly from then on. 
-  <LI>Be better if there were <I>no</I> efficient small algorithm to break AES � 
-  then still helpless even with hint from God � and <I>this is usual way 
+  <LI>We make it plausible* break-algorithm <I>exists</I> ' but do not
+  <I>construct</I> it. More precisely: construct parameterized class of
+  algorithms A(p), &amp; make it plausible some values of params p exist,
+  causing A(p) to efficiently break AES.
+  <LI>A(p) &amp; p both have small bit-length.
+  <LI>I.e: If God told you p once, you could use A(p) to break arbitrary AES
+  instances quickly from then on.
+  <LI>Be better if there were <I>no</I> efficient small algorithm to break AES '
+  then still helpless even with hint from God ' and <I>this is usual way
   security goal is worded.</I> </LI></UL>
-<P>*Asterisk: We do not <I>prove</I>, merely <I>make plausible</I>. Why? Proving 
-security of cryptosystems will be impossible at least until can prove P&#8800;NP. 
-Proving crypto-<I>breaking</I> algorithms work <I>also</I> usually is not 
-feasible: 
+<P>*Asterisk: We do not <I>prove</I>, merely <I>make plausible</I>. Why? Proving
+security of cryptosystems will be impossible at least until can prove P&#8800;NP.
+Proving crypto-<I>breaking</I> algorithms work <I>also</I> usually is not
+feasible:
 <UL>
-  <LI>You can program break, try it out, but that will not be feasible if 
-  break-time takes 2<SUP>100</SUP> steps, thus breaking supposed 2<SUP>128</SUP> 
-  security; also will not be feasible if nonconstructive break; 
-  <LI>(Our approach): You can prove break works in low expected runtime in 
-  probabilistic model; but these models are not genuinely true and you just have 
+  <LI>You can program break, try it out, but that will not be feasible if
+  break-time takes 2<SUP>100</SUP> steps, thus breaking supposed 2<SUP>128</SUP>
+  security; also will not be feasible if nonconstructive break;
+  <LI>(Our approach): You can prove break works in low expected runtime in
+  probabilistic model; but these models are not genuinely true and you just have
   to hope are true enough. </LI></UL>
 <HR>
 
 <CENTER>
 <H2>History of DES &amp; AES, brought to you by your government </H2></CENTER>
 <UL>
-  <LI><B>IBM &amp; NSA 1974:</B> DES proposed. During proposal, NSA reduces key 
-  length to 56 bits. 
-  <LI><B>EFF 1998:</B> DES broken by brute force (&#8804;1 day to break; one-time 
-  $250,000 machine cost). 
-  <LI><B>M.Matsui 1993/4:</B> DES broken by intelligence (known plaintext 
-  attack, prob. model). Theory verified by programming &amp; testing. About 
-  2<SUP>40</SUP> DES evals now suffice. Also the same method can provide 
-  ciphertext-only break if have huge amount of ciphertext. 
-  <LI><B>1993:</B> <A href="http://en.wikipedia.org/wiki/Clipper_chip">Clipper 
-  chip</A> sinks... 
-  <LI><B>2001:</B> J.Daemen &amp; V.Rijmen win NIST competition with AES 
-  proposal. 
-  <LI><B>2005:</B> D.J.Bernstein breaks large number of <I>implementations</I> 
-  of AES via "cache timing" attack. Attack employs (plaintext, ciphertext, time) 
-  triples, deduces key in &#8804;1 day. DJB argues his attacks should apply versus 
-  essentially <I>every</I> cryptosystem employing "S-boxes" &amp; implemented in 
-  reasonably efficient and straightforward manner. I.e. almost all proposals 
-  ever. But attack always against specific hardware &amp; software and depends 
-  on timing info; underlying <I>algorithm</I> unbroken. 
-  <LI><B>2007:</B> AES <I>algorithm</I> broken by W.D.Smith's theoretical 
-  "nonconstructive break" (known-plaintext attack, same properties as Matsui). 
-  Highly general attack method applies against large number of cryptosystems. 
+  <LI><B>IBM &amp; NSA 1974:</B> DES proposed. During proposal, NSA reduces key
+  length to 56 bits.
+  <LI><B>EFF 1998:</B> DES broken by brute force (&#8804;1 day to break; one-time
+  $250,000 machine cost).
+  <LI><B>M.Matsui 1993/4:</B> DES broken by intelligence (known plaintext
+  attack, prob. model). Theory verified by programming &amp; testing. About
+  2<SUP>40</SUP> DES evals now suffice. Also the same method can provide
+  ciphertext-only break if have huge amount of ciphertext.
+  <LI><B>1993:</B> <A href="http://en.wikipedia.org/wiki/Clipper_chip">Clipper
+  chip</A> sinks...
+  <LI><B>2001:</B> J.Daemen &amp; V.Rijmen win NIST competition with AES
+  proposal.
+  <LI><B>2005:</B> D.J.Bernstein breaks large number of <I>implementations</I>
+  of AES via "cache timing" attack. Attack employs (plaintext, ciphertext, time)
+  triples, deduces key in &#8804;1 day. DJB argues his attacks should apply versus
+  essentially <I>every</I> cryptosystem employing "S-boxes" &amp; implemented in
+  reasonably efficient and straightforward manner. I.e. almost all proposals
+  ever. But attack always against specific hardware &amp; software and depends
+  on timing info; underlying <I>algorithm</I> unbroken.
+  <LI><B>2007:</B> AES <I>algorithm</I> broken by W.D.Smith's theoretical
+  "nonconstructive break" (known-plaintext attack, same properties as Matsui).
+  Highly general attack method applies against large number of cryptosystems.
   </LI></UL>
-<P><B>My verdict:</B> AES should be replaced. Does not live up to goals as 
-cryptosystem suitable for all purposes. Bernstein/Smith's attacks devastate that 
+<P><B>My verdict:</B> AES should be replaced. Does not live up to goals as
+cryptosystem suitable for all purposes. Bernstein/Smith's attacks devastate that
 goal in practice/theory. New approaches needed. </P>
 <HR>
 
 <CENTER>
 <H2>BLECCs = Binary Linear Error Correcting Codes (quick review) </H2></CENTER>
 <UL>
-  <LI><B>[n,k,d] Binary linear code</B> = set of 2<SUP>k</SUP> binary words, 
-  each n bits long 
-  <LI>Code is closed under mod-2 vector addition ("GF2-linear"), i.e. wordwide 
-  XOR. 
-  <LI>Such that any two words differ in at least d positions ("Hamming 
-  distance&#8805;d") 
-  <LI>Equivalently, the min-weight (nonzero) word has weight d. ("Weight"&#8801;number 
-  of 1-bits.) 
-  <LI><I>Generated</I> by the k rows of a k�n Boolean "generator matrix." 
-  <LI>"Dual code" is the set of 2<SUP>n-k</SUP> words which have dot product 
-  <I>zero</I> with words in original code. "Geometrically" is orthogonal 
+  <LI><B>[n,k,d] Binary linear code</B> = set of 2<SUP>k</SUP> binary words,
+  each n bits long
+  <LI>Code is closed under mod-2 vector addition ("GF2-linear"), i.e. wordwide
+  XOR.
+  <LI>Such that any two words differ in at least d positions ("Hamming
+  distance&#8805;d")
+  <LI>Equivalently, the min-weight (nonzero) word has weight d. ("Weight"&#8801;number
+  of 1-bits.)
+  <LI><I>Generated</I> by the k rows of a k'n Boolean "generator matrix."
+  <LI>"Dual code" is the set of 2<SUP>n-k</SUP> words which have dot product
+  <I>zero</I> with words in original code. "Geometrically" is orthogonal
   subspace hence also linear code. </LI></UL>
 <HR>
 
@@ -117,167 +117,167 @@ goal in practice/theory. New approaches needed. </P>
 <H2>About AES-256 </H2></CENTER>
 <UL>
   <LI>Secret key cryptosystem, supposedly 2<sup>256</sup>-secure in
-  all imaginable ways  
-  <LI>Encrypts 128-bit plaintext to yield 128-bit ciphertext 
-  <LI>14 rounds successively transform the 128 message bits 
-  <LI>Each round &#8801; 
+  all imaginable ways
+  <LI>Encrypts 128-bit plaintext to yield 128-bit ciphertext
+  <LI>14 rounds successively transform the 128 message bits
+  <LI>Each round &#8801;
   <OL>
-    <LI>XOR with next 128-bit chunk of expanded key. 
-    <LI>16 parallel invocations of 8-to-8-bit bijective "S-box." (Always same 
-    S-box: one 256-byte table). 
-    <LI>Do some GF2-linear stuff (always same stuff). </LI></OL>Step 2 (Sbox) &#8801; the only 
-  nonlinear steps. 
-  <LI>Employs 1920-bit "expanded key" generated once from 256-bit actual secret 
-  key. 
-  <LI>1920=15�128. &nbsp;&nbsp; 15=14+1. &nbsp;&nbsp; 128=8�16. 
-  <LI>Break will deduce the 1920-bit expanded key from numerous 
+    <LI>XOR with next 128-bit chunk of expanded key.
+    <LI>16 parallel invocations of 8-to-8-bit bijective "S-box." (Always same
+    S-box: one 256-byte table).
+    <LI>Do some GF2-linear stuff (always same stuff). </LI></OL>Step 2 (Sbox) &#8801; the only
+  nonlinear steps.
+  <LI>Employs 1920-bit "expanded key" generated once from 256-bit actual secret
+  key.
+  <LI>1920=15'128. &nbsp;&nbsp; 15=14+1. &nbsp;&nbsp; 128=8'16.
+  <LI>Break will deduce the 1920-bit expanded key from numerous
   plaintext-ciphertext pairs. </LI></UL>
 <HR>
 
 <CENTER>
 <H2>Ingredients of our attack </H2></CENTER>
 <OL>
-  <LI>Matsui's idea: "linear cryptanalysis" (we re-build it, but M's idea) 
-  <LI>Combine with theory of BLECCs, introduce "code of the code" concept 
-  <LI>The weight w of the min-weight words in Code of the Code is crucial; 
-  attack's expected runtime depends exponentially on w 
-  <LI>Probabilistic analysis of w for the "worst" code of the code suggests 
-  sufficiently small w (highly probably) exists for AES. 
-  <LI>The "hint from God" you need to be able to break AES efficiently is: this 
-  BLECC (described by generator words) and some of its low weight words. 
+  <LI>Matsui's idea: "linear cryptanalysis" (we re-build it, but M's idea)
+  <LI>Combine with theory of BLECCs, introduce "code of the code" concept
+  <LI>The weight w of the min-weight words in Code of the Code is crucial;
+  attack's expected runtime depends exponentially on w
+  <LI>Probabilistic analysis of w for the "worst" code of the code suggests
+  sufficiently small w (highly probably) exists for AES.
+  <LI>The "hint from God" you need to be able to break AES efficiently is: this
+  BLECC (described by generator words) and some of its low weight words.
 </LI></OL>
 <HR>
 
 <CENTER>
-<H2>Linear Cryptanalysis simplified � Matsui ingredients (blackboard-aid) <!-- interlude --></H2></CENTER>
+<H2>Linear Cryptanalysis simplified ' Matsui ingredients (blackboard-aid) <!-- interlude --></H2></CENTER>
 <UL>
-  <LI><B>Unbalance=U</B> &#8801; Boolean signal mean value is M with U=2|M-�|; 
-  convenient since 0&#8804;U&#8804;1. 
+  <LI><B>Unbalance=U</B> &#8801; Boolean signal mean value is M with U=2|M-'|;
+  convenient since 0&#8804;U&#8804;1.
 <BLOCKQUOTE>
 Example: a signal that is one 75% of the time and zero 25% has M=0.75 and U=0.5.
 <BR>
 A "balanced" (50-50) signal has U=0; a constant bit has unbalance U=1.
 </BLOCKQUOTE>
-  <LI><B>Logic Circuits:</B> Any boolean function can be built from 2-input NAND 
-  gates... 
-  <LI><B>GF2-linear functions</B> &#8801; circuits made of XOR(<B>+</B>), NOT(�), and 
-  constant-bits only. 
-  <LI><B>"Linear approximation" circuits:</B> N-input 1-output Boolean function 
-  B is well "approximated" by another A if outputs disagree few (out of the 
-  2<SUP>N</SUP>) times. Equivalently: A<B>+</B>B has large unbalance (and mean 
-  value&lt;�). Interested in good &amp; best approximations by GF2-<I>linear</I> 
-  functions. 
-  <LI><B>Reversibility lemma:</B> NOT and XOR gates are reversible; "inputs" 
-  &amp; "outputs" = artificial labelings. 
-  <LI><B>Noise gates</B> also reversible. 
-  <LI><B>Noise gate mobility</B> lemma. 
-  <LI><B>Noise gate unbalance</B> lemma (O.Rothaus 1976): For best linear approx 
-  A of (&#8804;2n)-input Boolean function B, 
-  <NOBR>unbalance(A<B>+</B>B)&#8805;2<SUP>-n</SUP>.</NOBR> 
-  <LI><B>Piling up</B> lemma: For N noise gates in series with unbalances 
-  U<SUB>1</SUB>, U<SUB>2</SUB>, ..., U<SUB>N</SUB>, net effect is 
-  U=&#8719;U<SUB>j</SUB> if statist'ly independent; if all noise gates have 
-  change-prob&lt;� then so does whole shebang. (If pos'ly correlated noises, 
-  then U&#8805;&#8719;U<SUB>j</SUB>.) 
-  <LI><B>Statistics:</B> to learn bit (distorted by unbalance=U noise with 
-  change-prob&lt;�) it suffices to do c�U<SUP>-2</SUP> experiments to get 
+  <LI><B>Logic Circuits:</B> Any boolean function can be built from 2-input NAND
+  gates...
+  <LI><B>GF2-linear functions</B> &#8801; circuits made of XOR(<B>+</B>), NOT('), and
+  constant-bits only.
+  <LI><B>"Linear approximation" circuits:</B> N-input 1-output Boolean function
+  B is well "approximated" by another A if outputs disagree few (out of the
+  2<SUP>N</SUP>) times. Equivalently: A<B>+</B>B has large unbalance (and mean
+  value&lt;'). Interested in good &amp; best approximations by GF2-<I>linear</I>
+  functions.
+  <LI><B>Reversibility lemma:</B> NOT and XOR gates are reversible; "inputs"
+  &amp; "outputs" = artificial labelings.
+  <LI><B>Noise gates</B> also reversible.
+  <LI><B>Noise gate mobility</B> lemma.
+  <LI><B>Noise gate unbalance</B> lemma (O.Rothaus 1976): For best linear approx
+  A of (&#8804;2n)-input Boolean function B,
+  <NOBR>unbalance(A<B>+</B>B)&#8805;2<SUP>-n</SUP>.</NOBR>
+  <LI><B>Piling up</B> lemma: For N noise gates in series with unbalances
+  U<SUB>1</SUB>, U<SUB>2</SUB>, ..., U<SUB>N</SUB>, net effect is
+  U=&#8719;U<SUB>j</SUB> if statist'ly independent; if all noise gates have
+  change-prob&lt;' then so does whole shebang. (If pos'ly correlated noises,
+  then U&#8805;&#8719;U<SUB>j</SUB>.)
+  <LI><B>Statistics:</B> to learn bit (distorted by unbalance=U noise with
+  change-prob&lt;') it suffices to do c'U<SUP>-2</SUP> experiments to get
   confidence exponentially(-c) near 100%. </LI></UL>
 <HR>
 
 <CENTER>
-<H2>Linear Cryptanalysis � Algorithm </H2></CENTER>
+<H2>Linear Cryptanalysis ' Algorithm </H2></CENTER>
 <OL>
-  <LI>Write down the equivalent circuit of the cryptosystem. 
-  <LI>Replace all nonlinear S-boxes by "noise"<B>+</B>{best linear approx circuit}. 
-  <LI>Use "noise gate mobility" to slide all "noise gates" along wires until 
-  reach key-bit inputs. 
-  <LI>Use "reversibility" � view plaintext &amp; ciphertext bits as "inputs," 
-  key bits <B>+</B> "noise" as "outputs". 
-  <LI>From plaintext-ciphertext pairs, deduce linear relations (over GF2) 
-  satisfied by the K<SUB>n</SUB><B>+</B>R<SUB>n</SUB>. 
-  <LI>Characteristic vectors of the linear equation LHSs generate "code of the 
-  code" BLECC by vector XORing. The <I>min-weight</I> binary vectors in this 
-  code (fewest #1s) correspond to the <I>sparsest</I> linear relations among the 
-  K<SUB>n</SUB><B>+</B>R<SUB>n</SUB>. 
-  <LI>The sparsest relations involve the fewest number of "noise"-bits 
-  R<SUB>n</SUB>. 
-  <LI>Use "piling-up lemma" &amp; statistics: deduce sparse linear relations 
-  among the K<SUB>n</SUB> by <I>averaging out the noise</I> using <I>many</I> 
-  plaintext-ciphertext pairs. (If #bits involved in relation=weight=w, 
-  noise-unbalance=U, then need order U<SUP>-2w</SUP> pairs to get high 
-  confidence.) 
-  <LI>Deduced enough GF2 linear relations among the key-bits K<SUB>n</SUB> 
-  (using, perhaps, many different "codes of the code")? And they are 
-  lin-independent enough? Now deduce key <I>itself</I> by Gaussian elimination 
-  over GF2. 
-  <LI>Declare victory. Code is cracked � we know the (extended) key. </LI></OL>
+  <LI>Write down the equivalent circuit of the cryptosystem.
+  <LI>Replace all nonlinear S-boxes by "noise"<B>+</B>{best linear approx circuit}.
+  <LI>Use "noise gate mobility" to slide all "noise gates" along wires until
+  reach key-bit inputs.
+  <LI>Use "reversibility" ' view plaintext &amp; ciphertext bits as "inputs,"
+  key bits <B>+</B> "noise" as "outputs".
+  <LI>From plaintext-ciphertext pairs, deduce linear relations (over GF2)
+  satisfied by the K<SUB>n</SUB><B>+</B>R<SUB>n</SUB>.
+  <LI>Characteristic vectors of the linear equation LHSs generate "code of the
+  code" BLECC by vector XORing. The <I>min-weight</I> binary vectors in this
+  code (fewest #1s) correspond to the <I>sparsest</I> linear relations among the
+  K<SUB>n</SUB><B>+</B>R<SUB>n</SUB>.
+  <LI>The sparsest relations involve the fewest number of "noise"-bits
+  R<SUB>n</SUB>.
+  <LI>Use "piling-up lemma" &amp; statistics: deduce sparse linear relations
+  among the K<SUB>n</SUB> by <I>averaging out the noise</I> using <I>many</I>
+  plaintext-ciphertext pairs. (If #bits involved in relation=weight=w,
+  noise-unbalance=U, then need order U<SUP>-2w</SUP> pairs to get high
+  confidence.)
+  <LI>Deduced enough GF2 linear relations among the key-bits K<SUB>n</SUB>
+  (using, perhaps, many different "codes of the code")? And they are
+  lin-independent enough? Now deduce key <I>itself</I> by Gaussian elimination
+  over GF2.
+  <LI>Declare victory. Code is cracked ' we know the (extended) key. </LI></OL>
 <HR>
 
 <CENTER>
-<H2>"Code of the code," &amp; Boolean "noise" that actually is deterministic 
+<H2>"Code of the code," &amp; Boolean "noise" that actually is deterministic
 </H2></CENTER>
-<P>The "noise" bits R<SUB>n</SUB> for good cryptosystems <I>act</I> random, but 
-actually are deterministic (1 if linear approx circuit for Sbox got wrong value 
-disagreeing with true Sbox's bit-value; 0 if got it right). Hence they can be 
-canceled out in linear relations over GF2, by row operations. (I.e. R<B>+</B>R=0 is 
-true if R is deterministic bit, would not have been true for repeated instances 
+<P>The "noise" bits R<SUB>n</SUB> for good cryptosystems <I>act</I> random, but
+actually are deterministic (1 if linear approx circuit for Sbox got wrong value
+disagreeing with true Sbox's bit-value; 0 if got it right). Hence they can be
+canceled out in linear relations over GF2, by row operations. (I.e. R<B>+</B>R=0 is
+true if R is deterministic bit, would not have been true for repeated instances
 of genuine "noise.") </P><OP>Some linear relations like <PRE>K1<B>+</B>R1  <B>+</B>  K3<B>+</B>R3  <B>+</B>  K7<B>+</B>R7            = 1    (weight=3)
            K3<B>+</B>R3  <B>+</B>  K7<B>+</B>R7  <B>+</B>  K9<B>+</B>R9 = 0    (weight=3)
 </PRE>imply by row-ops others such as <PRE>K1<B>+</B>R1  <B>+</B>                        K9<B>+</B>R9 = 1    (weight=2)
 </PRE>The left hand sides can be viewed as generator vectors <PRE>1 0 1 0 0 0 1 0 0              (weight=3)
 0 0 1 0 0 0 1 0 1              (weight=3)
 </PRE>of a BLECC, and the min-weight word in the BLECC is <PRE>1 0 0 0 0 0 0 0 1              (weight=2)
-</PRE>For AES we get a [1920, 128, w] binary linear code. Different sets of 
-lin-approximation circuits &#8658; different codes. The <I>minimum distance</I> w is 
-<I>crucial</I>; governs runtime for crack. 
+</PRE>For AES we get a [1920, 128, w] binary linear code. Different sets of
+lin-approximation circuits &#8658; different codes. The <I>minimum distance</I> w is
+<I>crucial</I>; governs runtime for crack.
 <P></P>
 <HR>
 
 <CENTER>
 <H2>Combining GF2-linear relations on key bits to deduce the key </H2></CENTER>
-<P>Each plaintext-ciphertext pair yields 128 linear relations among key<B>+</B>noise 
-bits using any given set of Sbox lin-approximation circuits. That's 128 
-generator words for a BLECC with 2<SUP>128</SUP> codewords, each 1920 bits long. 
-Some of those 2<SUP>128</SUP> binary words hopefully have small weight, i.e. 
+<P>Each plaintext-ciphertext pair yields 128 linear relations among key<B>+</B>noise
+bits using any given set of Sbox lin-approximation circuits. That's 128
+generator words for a BLECC with 2<SUP>128</SUP> codewords, each 1920 bits long.
+Some of those 2<SUP>128</SUP> binary words hopefully have small weight, i.e.
 correspond to <I>sparse</I> linear relations involving few "noise bits."
-We need 1920 (or more) independent 
-linear relations, with noise <I>averaged out</I> of each (and it is only 
-feasibly-fast to average-out noise if lin-reln is <I>sparse</I>) to deduce 
+We need 1920 (or more) independent
+linear relations, with noise <I>averaged out</I> of each (and it is only
+feasibly-fast to average-out noise if lin-reln is <I>sparse</I>) to deduce
 entire 1920-bit expanded key. </P>
 <HR>
 
 <CENTER>
-<H2>What weight do we expect? Model as "random code." Other randomness 
+<H2>What weight do we expect? Model as "random code." Other randomness
 assumptions. </H2></CENTER>
 <P>Good news:</P>
 <UL>
-  <LI>"Noise" bits really do (&amp; <I>must</I>) look random for good 
-  cryptosystems. <BR>Indeed, good crypto-designers make sure of that with stat'l tests. 
-  <LI>Noise bits tend if anything to be <I>positively</I> correlated (one 
-  approx'n bit-error makes it more likely a second happens) because AES S-boxes 
-  are <I>bijective</I>... this tends to make piling-up lemma work <I>better</I> 
-  than for true random noise, empirically need <I>fewer</I> plaintext-ciphertext 
-  pairs to crack. 
-  <LI>No explicit BLECC family has ever been found that is better than (or that 
-  even equals) random codes. Big open problem in coding theory. So I doubt the 
-  AES code-of-code is better than random codes. Probably worse, i.e. probably 
-  <CENTER>min-weight(AES c.o.c.) &lt; min-weight(random code with same parameters). 
+  <LI>"Noise" bits really do (&amp; <I>must</I>) look random for good
+  cryptosystems. <BR>Indeed, good crypto-designers make sure of that with stat'l tests.
+  <LI>Noise bits tend if anything to be <I>positively</I> correlated (one
+  approx'n bit-error makes it more likely a second happens) because AES S-boxes
+  are <I>bijective</I>... this tends to make piling-up lemma work <I>better</I>
+  than for true random noise, empirically need <I>fewer</I> plaintext-ciphertext
+  pairs to crack.
+  <LI>No explicit BLECC family has ever been found that is better than (or that
+  even equals) random codes. Big open problem in coding theory. So I doubt the
+  AES code-of-code is better than random codes. Probably worse, i.e. probably
+  <CENTER>min-weight(AES c.o.c.) &lt; min-weight(random code with same parameters).
   <BR></CENTER>
-  <LI>AES Sbox has 8 "inputs" &amp; 8 "outputs." <B>Fact (found by my computer):</B> Each 
-  linear combo of outputs has &#8805;5 different best-lin-approx functions, each of 
-  which gets it right 144/256 times for unbalance U&#8805;1/8. 
-  <LI>So there are <I>at least</I> 5<SUP>1792</SUP>&#8776;2<SUP>4161</SUP> ways 
-  cryptanalyst could replace the 224 Sboxes in AES-encoder by 
-  best-lin-approximations. I.e. there are at least this many different AES 
-  "codes of the code" cryptanalyst could consider using; naturally he chooses 
-  the "worst" of all these codes (i.e. with <I>smallest</I> min-distance) to get 
+  <LI>AES Sbox has 8 "inputs" &amp; 8 "outputs." <B>Fact (found by my computer):</B> Each
+  linear combo of outputs has &#8805;5 different best-lin-approx functions, each of
+  which gets it right 144/256 times for unbalance U&#8805;1/8.
+  <LI>So there are <I>at least</I> 5<SUP>1792</SUP>&#8776;2<SUP>4161</SUP> ways
+  cryptanalyst could replace the 224 Sboxes in AES-encoder by
+  best-lin-approximations. I.e. there are at least this many different AES
+  "codes of the code" cryptanalyst could consider using; naturally he chooses
+  the "worst" of all these codes (i.e. with <I>smallest</I> min-distance) to get
   easiest cracking. </LI></UL>
 <P>The crux (but this one is more dubious) conjecture:</P>
 <UL>
-  <LI>All of these enormous number &#8805;2<SUP>4161</SUP> of different BLECCs, all 
+  <LI>All of these enormous number &#8805;2<SUP>4161</SUP> of different BLECCs, all
   act "enough like" independently chosen random [1920, 128, ?] BLECCs. </LI></UL>
-<P>If so: then (trivially since 2<SUP>4161</SUP>&gt;&gt;&gt;2<SUP>1920</SUP>) 
-tons of them will exist with tiny min-weights w, and their min-weight codewords 
+<P>If so: then (trivially since 2<SUP>4161</SUP>&gt;&gt;&gt;2<SUP>1920</SUP>)
+tons of them will exist with tiny min-weights w, and their min-weight codewords
 will have tons of linear independence, and AES is dead meat. </P>
 <HR>
 
@@ -285,107 +285,107 @@ will have tons of linear independence, and AES is dead meat. </P>
 <H2>Why is this a "nonconstructive" crack? </H2></CENTER>
 <P>I do not know (but God does know) the <B>"hint"</B> &equiv; </P>
 <UL>
-  <LI><I>which</I> exact combination of lin-approx circuits we should use for 
-  each of the AES S-boxes, to get a code-of-the-code, which magically happens to 
-  have small min-distance w. 
-  <LI>I don't even know what that min-distance w <I>is</I>, and what codeword 
-  achieves that min-weight. 
-  <LI>I'd really have to know this not just for one code-of-code and min-weight 
-  codeword, but for at least 15 codes and at least 1920 min-weight (or low-weight)  codewords. 
+  <LI><I>which</I> exact combination of lin-approx circuits we should use for
+  each of the AES S-boxes, to get a code-of-the-code, which magically happens to
+  have small min-distance w.
+  <LI>I don't even know what that min-distance w <I>is</I>, and what codeword
+  achieves that min-weight.
+  <LI>I'd really have to know this not just for one code-of-code and min-weight
+  codeword, but for at least 15 codes and at least 1920 min-weight (or low-weight)  codewords.
   </LI></UL>
-<P>But if ever did know that hint, then I could, from then on, crack arbitrary 
-AES instances by rapidly deducing expanded-keys from order 64<SUP>w</SUP> sample 
+<P>But if ever did know that hint, then I could, from then on, crack arbitrary
+AES instances by rapidly deducing expanded-keys from order 64<SUP>w</SUP> sample
 plaintext-ciphertext pairs. </P>
-<p><SMALL>And I 
-<I>would</I> know the hint if I did a huge one-time pre-computation � or if God told me � 
-or if I were the AES-designer and I'd <I>started</I> with this "trapdoor" 
-knowledge � <I>and</I> my knowledge then could be written down in at most a few 
+<p><SMALL>And I
+<I>would</I> know the hint if I did a huge one-time pre-computation ' or if God told me '
+or if I were the AES-designer and I'd <I>started</I> with this "trapdoor"
+knowledge ' <I>and</I> my knowledge then could be written down in at most a few
 Mbytes </SMALL>
 <HR>
 
 <CENTER>
 <H2>Trapdoor? </H2></CENTER>
-<P>A cryptosystem which is easy for its designers to break, but hard for 
+<P>A cryptosystem which is easy for its designers to break, but hard for
 everybody else, is said to have a "trapdoor." </P>
-<P>If I give you a generator matrix for a BLECC, it can be very hard for you to 
-know if the BLECC contains a low-weight word, or find it! (NP-hard!) But it 
-would be very easy for me to give you that word, if I felt like revealing it. 
-I.e. if the AES designers have a trapdoor, 
+<P>If I give you a generator matrix for a BLECC, it can be very hard for you to
+know if the BLECC contains a low-weight word, or find it! (NP-hard!) But it
+would be very easy for me to give you that word, if I felt like revealing it.
+I.e. if the AES designers have a trapdoor,
 <UL>
-  <LI>It might be very hard for <I>us</I> to find it, or to know whether it 
-  exists. 
-  <LI><I>If</I> trapdoor exists then would easy for AES designers to convince us 
-  they have it. 
-  <LI>If trapdoor does <I>not</I> exist, then I currently see no feasible way 
+  <LI>It might be very hard for <I>us</I> to find it, or to know whether it
+  exists.
+  <LI><I>If</I> trapdoor exists then would easy for AES designers to convince us
+  they have it.
+  <LI>If trapdoor does <I>not</I> exist, then I currently see no feasible way
   for AES designers to convince us of <I>that</I>. </LI></UL>
 <HR>
 
 <CENTER>
-<H2>How can we build cryptosystems immune to my (&amp; Bernstein's...) nasty 
+<H2>How can we build cryptosystems immune to my (&amp; Bernstein's...) nasty
 attacks? BLECC theory to the rescue! </H2></CENTER>
 <P>A way to build a big (but secure) S-box. </P>
 <P>2N input bits. K output bits (1&#8804;K&lt;N). </P>
 <OL>
   <LI>Compute N "intermediate bits" by taking AND (or OR or NAND or NOR...)
- of disjoint input-bit <i>pairs</I>. 
-  <LI>Compute K GF2-linear combinations of these N bits according to the rows of 
-  K�N Boolean generator matrix for [N,K,D] binary linear code. 
+ of disjoint input-bit <i>pairs</I>.
+  <LI>Compute K GF2-linear combinations of these N bits according to the rows of
+  K'N Boolean generator matrix for [N,K,D] binary linear code.
   <LI>Output them. </LI></OL>
-<P><B>Security Theorem:</B> 
+<P><B>Security Theorem:</B>
 <OL>
-  <LI>Totally immune to "differential cryptanalysis." 
-  <LI>Totally immune to Bernstein "timing attacks" since always same runtime 
-  regardless of data. 
-  <LI>Fast (can do with wordwide bitshifting, XORing, and ANDing, and ORing) if 
-  "cyclic" or "multicyclic" binary code. Also asymptotically fast if use "linear 
-  time information theory" BLECC constructions. 
-  <LI>Resistant (but not immune) to our "improved linear" cryptanalysis (here) 
-  since U&lt;2<SUP>-D</SUP> for any linear-approximant to any linear combination 
+  <LI>Totally immune to "differential cryptanalysis."
+  <LI>Totally immune to Bernstein "timing attacks" since always same runtime
+  regardless of data.
+  <LI>Fast (can do with wordwide bitshifting, XORing, and ANDing, and ORing) if
+  "cyclic" or "multicyclic" binary code. Also asymptotically fast if use "linear
+  time information theory" BLECC constructions.
+  <LI>Resistant (but not immune) to our "improved linear" cryptanalysis (here)
+  since U&lt;2<SUP>-D</SUP> for any linear-approximant to any linear combination
   of output bits. </LI></OL>
-<P><B>Proof:</B> <I>Any</I> nonconstant GF2-linear combo of output bits is a GF2-linear 
-combo of the intermediate bits with weight&#8805;D; every intermediate bit has 
+<P><B>Proof:</B> <I>Any</I> nonconstant GF2-linear combo of output bits is a GF2-linear
+combo of the intermediate bits with weight&#8805;D; every intermediate bit has
 unbalance=1/2 and all are independent; "piling up lemma" does rest. </P>
 <HR>
 
 <CENTER>
 <H2>"Fundamental theorem of cryptography" </H2></CENTER>
-<P>There is an &#8734;family of polynomial(N)-time constructible logic-circuits Q<SUB>N</SUB>, 
-where Q<SUB>N</SUB> encrypts 5N plaintext bits into 5N ciphertext bits, in O(N) 
-bit-operations requiring O(logN) gate-delays, using a 46N-bit enlarged secret 
-key, which achieves security level &#8805;2<SUP>2D</SUP> where D&gt;0.04N against all 
-the attacks we've mentioned (and conjecturally we get security against 
-<I>all</I> attacks for some appropriate values of the constants 5, 46, 0.04). 
+<P>There is an &#8734;family of polynomial(N)-time constructible logic-circuits Q<SUB>N</SUB>,
+where Q<SUB>N</SUB> encrypts 5N plaintext bits into 5N ciphertext bits, in O(N)
+bit-operations requiring O(logN) gate-delays, using a 46N-bit enlarged secret
+key, which achieves security level &#8805;2<SUP>2D</SUP> where D&gt;0.04N against all
+the attacks we've mentioned (and conjecturally we get security against
+<I>all</I> attacks for some appropriate values of the constants 5, 46, 0.04).
 </P>
-<P><B>Proof</B> employs the secure S-box above and "linear time info theory" 
-(Justesen, Spielman, Zemor, Barg, etc). Argue even if attacker gets 
-plaintext-ciphertext pairs that come with, as a free extra bonus, all the 
-internal bits at the outputs of all Sboxes inside the encryptor, then still 
+<P><B>Proof</B> employs the secure S-box above and "linear time info theory"
+(Justesen, Spielman, Zemor, Barg, etc). Argue even if attacker gets
+plaintext-ciphertext pairs that come with, as a free extra bonus, all the
+internal bits at the outputs of all Sboxes inside the encryptor, then still
 secure. </P>
 <HR>
 
 <CENTER>
 <H2>Is this practical? Sample design. </H2></CENTER><PRE>185749DE CF747EFF 4749F011 8BE9914C 0ADC7233
 3B272FC6 EEB7F0FB 7604D328 59457C7E C54C7B2E
-86905       (in hexadecimal)       
+86905       (in hexadecimal)
 </PRE>
-<P>is the generator of a [511, 175, 95] cyclic (BCH) code. Extend it with 
-overall parity check bit to get [512, 175, 96] code. That yields 1024-input, 
-175-output, Sbox with all unbalances&#8804;2<SUP>-96</SUP> and &#8804;8 gate delays between 
-each input &amp; output. (Fast in software too since program using wordwide 
-shifts and XORs since cyclic code.) Use in 21 rounds, each round alters 175 
-message-bits and XORs with 1195 expanded-key-bits, to get cryptosystem for 
+<P>is the generator of a [511, 175, 95] cyclic (BCH) code. Extend it with
+overall parity check bit to get [512, 175, 96] code. That yields 1024-input,
+175-output, Sbox with all unbalances&#8804;2<SUP>-96</SUP> and &#8804;8 gate delays between
+each input &amp; output. (Fast in software too since program using wordwide
+shifts and XORs since cyclic code.) Use in 21 rounds, each round alters 175
+message-bits and XORs with 1195 expanded-key-bits, to get cryptosystem for
 encrypting 1195 bits at once and presumed security level&#8805;2<SUP>192</SUP>. </P>
 <HR>
 
 <CENTER>
 <H2>Other stuff (in the paper but not in this talk) </H2></CENTER>
 <UL>
-  <LI>Big tables of useful-for-crypto binary codes 
-  <LI>More theorems... numerical data on random codes... the <I>dual</I> binary 
-  code also is useful for getting other kinds of security guarantees... 
-  <LI>Another attack ("bounded polynomial degree attack") which actually breaks 
-  the "secure Sbox"-based cryptosystems described above if they are implemented 
-  too simply (but we have a fancier way to use these Sboxes that avoids this 
+  <LI>Big tables of useful-for-crypto binary codes
+  <LI>More theorems... numerical data on random codes... the <I>dual</I> binary
+  code also is useful for getting other kinds of security guarantees...
+  <LI>Another attack ("bounded polynomial degree attack") which actually breaks
+  the "secure Sbox"-based cryptosystems described above if they are implemented
+  too simply (but we have a fancier way to use these Sboxes that avoids this
   attack, so OK). </LI></UL>
 <HR>
 
@@ -396,7 +396,7 @@ encrypting 1195 bits at once and presumed security level&#8805;2<SUP>192</SUP>. 
 <P>
 Have "universal" secret-key and public-key cryptosystems.  These are
 provably as hard to crack (up to polynomial factors &ndash; also will
-work versus crackers equipped with "quantum computers") as <i>any</i> 
+work versus crackers equipped with "quantum computers") as <i>any</i>
 secret-key (or public-key) crytosystem.
 The basic idea to build the universal secret-key cryptosystem is you
 compose <i>every</i> secret-key cryptosystem with
